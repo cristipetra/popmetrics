@@ -7,15 +7,25 @@
 //
 
 import UIKit
+import CoreData
+import Fabric
+import Crashlytics
+import STPopup
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var usersStore: UsersStore!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        // Setup crashlytics
+        // Fabric.with([Crashlytics.self])
+        
         return true
     }
 
