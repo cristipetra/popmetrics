@@ -10,6 +10,9 @@ target 'ipopmetrics' do
   pod 'Crashlytics'
   pod 'JSONWebToken'
   pod 'MGSwipeTableCell'
+  pod 'DGElasticPullToRefresh'
   pod 'RSKImageCropper'
   pod 'STPopup'
+  pod 'Chatto', '= 3.0.1'
+  pod 'ChattoAdditions', '= 3.0.1' # if you want to use the cells or the input component
 end

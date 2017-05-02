@@ -9,14 +9,19 @@
 import Foundation
 
 // MARK: - Constants
-private let PROTOCOL = "http"
-// private let HOST = "staging.homzen.com"
-// private let PORT = 80
-// private let HOST = "192.168.7.101"
-private let HOST = "10.0.1.11"
-private let PORT = 5055
+private let PROTOCOL = "https"
+// private let PROTOCOL = "http"
+private let HOST = "api.popmetrics.io"
+private let PORT = 443
+// private let HOST = "192.168.1.107"
+// private let HOST = "10.0.1.11"
+// private let PORT = 5055
+// private let PORT = 5030
 
 private let LOGIN_PATH = "/api/caas/sign_in_with_email"
+private let SEND_CODE_BY_SMS_PATH = "/api/caas/send_code_by_sms"
+private let LOGIN_WITH_CODE_PATH = "/api/caas/sign_in_with_code"
+
 private let LOGOUT_PATH = "/logout"
 private let REGISTER_PATH = "/register"
 
@@ -31,21 +36,9 @@ private let LOGIN_WITH_GOOGLE_PATH = "/api/caas/sign_in_with_google"
 private let REGISTER_WITH_GOOGLE_PATH = "/api/caas/sign_up_with_google"
 
 private let ACCOUNT_INFO_PATH = "/api/caas/me"
-private let ACCOUNT_EDIT_PATH = "/api/caas/me_edit"
+private let ACCOUNT_EDIT_PATH = "/api/caas/me"
 
-private let PROFILE_GET_PATH = "/api/me/home_profile"
-private let PROFILE_UPDATE_PATH = "/api/me/home_profile"
-
-private let PROPERTIES_CREATE_PATH = "/api/me/visits"
-private let PROPERTIES_UPDATE_PATH_FORMAT = "/api/me/visits/%@"
-private let PROPERTIES_GET_PATH_FORMAT = "/api/me/visits/%@"
-private let PROPERTIES_GET_ALL_PATH = "/api/me/visits"
-private let PROPERTIES_SHARE_PATH_FORMAT = "/shared/visit/%@"
-
-private let PHOTO_TAG_CREATE_PATH_FORMAT = "/api/me/visits/%@/images"
-private let PHOTO_TAG_UPLOAD_IMAGE_PATH_FORMAT = "/api/visit_image/%@"
-
-private let RATINGS_CONFIG_PATH = "" // TODO Add the actual path
+private let USER_FEED_PATH = "/api/feed/me"
 
 class ApiUrls {
     
@@ -59,7 +52,13 @@ class ApiUrls {
     }
     
     static func getBaseUrl() -> String {
-        return escapedUrl(String(format: "%@://%@:%d", PROTOCOL, HOST, PORT))
+        if (PORT == 80 || PORT == 443) {
+            return escapedUrl(String(format: "%@://%@", PROTOCOL, HOST, PORT))
+        }
+        else {
+            
+            return escapedUrl(String(format: "%@://%@:%d", PROTOCOL, HOST, PORT))
+        }
     }
     
     
@@ -108,43 +107,17 @@ class ApiUrls {
         return composedBaseUrl(ACCOUNT_EDIT_PATH)
     }
     
-    static func getProfilePreferencesUrl() -> String {
-        return composedBaseUrl(PROFILE_GET_PATH)
+    
+    static func getSendCodeBySmsUrl() -> String {
+        return composedBaseUrl(SEND_CODE_BY_SMS_PATH)
     }
     
-    static func getProfilePreferencesUpdateUrl() -> String {
-        return composedBaseUrl(PROFILE_UPDATE_PATH)
+    static func getLoginWithCodeUrl() -> String {
+        return composedBaseUrl(LOGIN_WITH_CODE_PATH)
     }
     
-    static func getPropetyCreateUrl() -> String {
-        return composedBaseUrl(PROPERTIES_CREATE_PATH)
+    static func getUserFeedUrl() -> String {
+        return composedBaseUrl(USER_FEED_PATH)
     }
     
-    static func getPropertyUpdateUrl(_ propertyId: String) -> String {
-        return composedBaseUrl(String(format: PROPERTIES_UPDATE_PATH_FORMAT, propertyId))
-    }
-    
-    static func getPropertyShareUrl(_ propertyId: String) -> String {
-        return composedBaseUrl(String(format: PROPERTIES_SHARE_PATH_FORMAT, propertyId))
-    }
-    
-    static func getPropertyUrl(_ propertyId: String) -> String {
-        return composedBaseUrl(String(format: PROPERTIES_GET_PATH_FORMAT, propertyId))
-    }
-    
-    static func getAllPropertiesUrl() -> String {
-        return composedBaseUrl(PROPERTIES_GET_ALL_PATH)
-    }
-    
-    static func getPhotoTagCreateUrl(_ propertyId: String) -> String {
-        return composedBaseUrl(String(format: PHOTO_TAG_CREATE_PATH_FORMAT, propertyId))
-    }
-    
-    static func getPhotoTagUploadImageUrl(_ photoTagId: String) -> String {
-        return composedBaseUrl(String(format: PHOTO_TAG_UPLOAD_IMAGE_PATH_FORMAT, photoTagId))
-    }
-    
-    static func getRatingsConfigUrl() -> String {
-        return composedBaseUrl(RATINGS_CONFIG_PATH)
-    }
 }

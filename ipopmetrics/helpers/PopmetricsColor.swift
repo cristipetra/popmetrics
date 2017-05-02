@@ -1,14 +1,20 @@
 //
 //  HomzenColor.swift
-//  Homzen
+//  Popmetrics
 //
-//  Created by Alexandru Oprea on 01/09/16.
-//  Copyright © 2016 Athanasys. All rights reserved.
+//  Created by Rares Pop
+//  Copyright © 2016 Popmetrics. All rights reserved.
 //
 
 import UIKit
 
-class HomzenColor {
+extension UIColor {
+    convenience init(hex: Int, alpha: Double = 1.0) {
+        self.init(red: CGFloat((hex>>16)&0xFF)/255.0, green: CGFloat((hex>>8)&0xFF)/255.0, blue: CGFloat((hex)&0xFF)/255.0, alpha: CGFloat(255 * alpha) / 255)
+    }
+}
+
+class PopmetricsColor {
     
     static let textLight = UIColor(red: 236/255.0, green: 236/255.0, blue: 236/255.0, alpha: 1.0)
     static let textMedium = UIColor(red: 160/255.0, green: 160/255.0, blue: 160/255.0, alpha: 1.0)
@@ -18,9 +24,9 @@ class HomzenColor {
     static let shadowMedium = UIColor(red: 144/255.0, green: 144/255.0, blue: 144/255.0, alpha: 0.8)
     static let shadowDark = UIColor(red: 22/255.0, green: 22/255.0, blue: 22/255.0, alpha: 0.8)
     
-    static let borderLight = HomzenColor.textLight
-    static let borderMedium = HomzenColor.textMedium
-    static let borderDark = HomzenColor.textDark
+    static let borderLight = PopmetricsColor.textLight
+    static let borderMedium = PopmetricsColor.textMedium
+    static let borderDark = PopmetricsColor.textDark
     
     static let orange = UIColor(red: 227/255.0, green: 135/255.0, blue: 58/255.0, alpha: 1.0)
     

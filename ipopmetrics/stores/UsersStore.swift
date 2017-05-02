@@ -42,7 +42,6 @@ class UsersStore: Store {
         user.name = name
         user.email = email
         user.imageURL = imageURL
-        user.uploadOnlyOnWiFi = NSNumber(value: uploadOnlyOnWiFi)
         return user
     }
     
