@@ -37,7 +37,7 @@
              "items": [
                        {
                        "type":"action_history",
-                       "header_title":"Connect your Twitter account",
+                       "header_title":"Action History",
                        "header_icon":"file://assets/icon1.png",
                        "message":"Twitter Posts (4)",
                        "action_handler":"connect_twitter",

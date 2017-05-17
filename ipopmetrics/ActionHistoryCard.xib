@@ -92,7 +92,6 @@
                 <constraints>
                     <constraint firstItem="Zdn-Gw-U8i" firstAttribute="leading" secondItem="VjG-YP-F39" secondAttribute="leading" constant="20" id="3Yr-5q-0iq"/>
                     <constraint firstItem="4KF-fh-4Ys" firstAttribute="top" secondItem="njQ-Sa-zcj" secondAttribute="bottom" constant="25" id="JKw-kk-y7e"/>
-                    <constraint firstItem="XW7-Vn-vkI" firstAttribute="top" secondItem="4KF-fh-4Ys" secondAttribute="bottom" constant="6" id="WLh-aS-B8I"/>
                     <constraint firstItem="XW7-Vn-vkI" firstAttribute="top" secondItem="4KF-fh-4Ys" secondAttribute="bottom" constant="19" id="jyf-bT-y5J"/>
                 </constraints>
                 <edgeInsets key="layoutMargins" top="57" left="30" bottom="8" right="21"/>
