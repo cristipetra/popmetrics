@@ -14,7 +14,7 @@ class HomeHubViewController: BaseTableViewController {
     
     fileprivate var sharingInProgress = false
     
-    fileprivate var items = [[String:Any]]()
+    fileprivate var sections: [FeedSection] = []
     
     fileprivate var completed = 0
     fileprivate var total = 100
@@ -35,6 +35,9 @@ class HomeHubViewController: BaseTableViewController {
         
         
         self.fetchItems()
+        
+        
+        
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
@@ -91,13 +94,17 @@ class HomeHubViewController: BaseTableViewController {
         let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
         let jsonData : NSData = NSData(contentsOfFile: path!)!
         
-        self.items = try! JSONSerialization.jsonObject(with: jsonData as Data, options: []) as! [[String:Any]]
+        let dict = try! JSONSerialization.jsonObject(with: jsonData as Data, options: []) as! [String:Any]
+        
+        let feedStore = FeedStore.getInstance()
+        feedStore.storeFeed(dict)
+        self.sections = feedStore.getFeed()
         
     }
     
     
     fileprivate func reloadData() {
-        self.fetchItems()
+        // self.fetchItems()
         
         tableView.reloadData()
     }
@@ -105,14 +112,7 @@ class HomeHubViewController: BaseTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         reloadData()
-        
-        if items.count > 0 {
-            showNoFeeds(false)
-        } else {
-            showNoFeeds(true)
-        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -147,33 +147,35 @@ class HomeHubViewController: BaseTableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        var sections = 1
-        if !hasRequiredActions() {
-            sections = 2
-        }
-        return sections
+        return self.sections.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if !hasRequiredActions() && section == 0 {
-            return 1
-        }
-        return items.count
+
+        return sections[section].items.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if (indexPath as NSIndexPath).section == 0 && !hasRequiredActions() {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FeedTableActionRequiredTableViewCell") as! FeedTableActionRequiredTableViewCell
+        let sectionIdx = (indexPath as NSIndexPath).section
+        let rowIdx = (indexPath as NSIndexPath).row
+        
+        let section = sections[sectionIdx]
+        let item = section.items[rowIdx]
+        
+        if item.type == "required_action" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
             cell.selectionStyle = .none
-            cell.completion = (completed, total)
+            cell.configure(item)
             return cell
         }
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FeedTableViewCell", for: indexPath) as! FeedTableViewCell
-        cell.selectionStyle = .none
-        cell.rightButtons = createSwipeButtons()
-        return cell
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
+            cell.selectionStyle = .none
+            cell.configure(item)
+            return cell
+            
+        }
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -186,13 +188,6 @@ class HomeHubViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if (indexPath as NSIndexPath).section == 0 && !hasRequiredActions() {
-            // take action
-            
-        }
-        
-        selectedIndexPath = indexPath
-//        performSegue(withIdentifier: SID_DETAILS_NAV_VC, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -205,18 +200,6 @@ class HomeHubViewController: BaseTableViewController {
     
     fileprivate func getCellHeight() -> CGFloat {
         return CGFloat(((tableView.frame.width * 9.0) / 16.0) + 16) // 16 is the padding
-    }
-    
-    fileprivate func showNoFeeds(_ state: Bool) {
-        if state {
-            let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-            label.text = "No feeds available as of yet"
-            label.textColor = PopmetricsColor.textDark
-            label.textAlignment = .center
-            tableView.backgroundView = label
-        } else {
-            tableView.backgroundView = nil
-        }
     }
     
     fileprivate func hasRequiredActions() -> Bool {

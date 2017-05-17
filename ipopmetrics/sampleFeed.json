@@ -1,12 +1,12 @@
 {"sections":
     [
-             { "title": "Required Actions",
+             { "name": "Required Actions",
              "items": [
               {
                 "type":"required_action",
                 "header_title":"Connect your Twitter account",
                 "header_icon":"file://assets/icon1.png",
-                "message":"Please connect your Twitter account with Popmetrics. This will allow us to tweet for you and expand your outreach."
+                "message":"Please connect your Twitter account with Popmetrics. This will allow us to tweet for you and expand your outreach.",
                 "action_handler":"connect_twitter",
                 "action_label":"Connect",
                 "image":"http://ng.popmetrics.io/assets/firefighters.png"

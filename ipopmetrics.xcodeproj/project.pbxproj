@@ -9,17 +9,13 @@
 /* Begin PBXBuildFile section */
 		1125ADAA1E96E67B0004B4AC /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1125ADA91E96E67B0004B4AC /* BaseTableViewController.swift */; };
 		1125ADAC1E96E7990004B4AC /* HomeHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1125ADAB1E96E7990004B4AC /* HomeHubController.swift */; };
-		1125ADB31E96F2160004B4AC /* FeedItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1125ADB11E96F2160004B4AC /* FeedItem+CoreDataClass.swift */; };
-		1125ADB41E96F2160004B4AC /* FeedItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1125ADB21E96F2160004B4AC /* FeedItem+CoreDataProperties.swift */; };
-		1125ADB61E97756D0004B4AC /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1125ADB51E97756D0004B4AC /* FeedTableViewCell.swift */; };
-		1125ADB81E977B960004B4AC /* FeedTableActionRequiredViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1125ADB71E977B960004B4AC /* FeedTableActionRequiredViewCell.swift */; };
 		1125ADBB1E97ADF80004B4AC /* Popmetrics.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1125ADB91E97ADF80004B4AC /* Popmetrics.xcdatamodeld */; };
 		113976A91E97C71300B535DF /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976A81E97C71300B535DF /* AccountViewController.swift */; };
 		113976AB1E97C74B00B535DF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976AA1E97C74B00B535DF /* BaseViewController.swift */; };
 		113976AE1E97C83500B535DF /* TextFieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976AD1E97C83500B535DF /* TextFieldValidator.swift */; };
 		113976B01E97CCF700B535DF /* FeedApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976AF1E97CCF700B535DF /* FeedApi.swift */; };
 		113976B21E97CE5000B535DF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976B11E97CE5000B535DF /* MainTabBarController.swift */; };
-		113976B41E97D31B00B535DF /* FeedItemsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976B31E97D31B00B535DF /* FeedItemsStore.swift */; };
+		113976B41E97D31B00B535DF /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976B31E97D31B00B535DF /* FeedStore.swift */; };
 		116431DF1E2D4E81009AA59E /* UsersApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116431DE1E2D4E81009AA59E /* UsersApi.swift */; };
 		1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */; };
 		1178D6801E1E5AD9005B96C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1178D67E1E1E5AD9005B96C3 /* Main.storyboard */; };
@@ -27,6 +23,7 @@
 		1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1178D6831E1E5AD9005B96C3 /* LaunchScreen.storyboard */; };
 		1178D6901E1E5AD9005B96C3 /* ipopmetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D68F1E1E5AD9005B96C3 /* ipopmetricsTests.swift */; };
 		1178D69B1E1E5AD9005B96C3 /* ipopmetricsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */; };
+		11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAA5E31ECC8BFA0099B50E /* Feed.swift */; };
 		11ACA9991E2CD1120021E64A /* LocalUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9971E2CD1120021E64A /* LocalUser+CoreDataProperties.swift */; };
 		11ACA99A1E2CD1120021E64A /* LocalUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9981E2CD1120021E64A /* LocalUser+CoreDataClass.swift */; };
 		11ACA99E1E2CD1960021E64A /* ConstantValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA99D1E2CD1960021E64A /* ConstantValues.swift */; };
@@ -64,10 +61,6 @@
 /* Begin PBXFileReference section */
 		1125ADA91E96E67B0004B4AC /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewController.swift; path = helpers/BaseTableViewController.swift; sourceTree = "<group>"; };
 		1125ADAB1E96E7990004B4AC /* HomeHubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeHubController.swift; path = feed/HomeHubController.swift; sourceTree = "<group>"; };
-		1125ADB11E96F2160004B4AC /* FeedItem+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FeedItem+CoreDataClass.swift"; path = "models/managed_objects/FeedItem+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1125ADB21E96F2160004B4AC /* FeedItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FeedItem+CoreDataProperties.swift"; path = "models/managed_objects/FeedItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		1125ADB51E97756D0004B4AC /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedTableViewCell.swift; path = feed/FeedTableViewCell.swift; sourceTree = "<group>"; };
-		1125ADB71E977B960004B4AC /* FeedTableActionRequiredViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedTableActionRequiredViewCell.swift; path = feed/FeedTableActionRequiredViewCell.swift; sourceTree = "<group>"; };
 		1125ADBA1E97ADF80004B4AC /* Popmetrics.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Popmetrics.xcdatamodel; sourceTree = "<group>"; };
 		112A93621EC9D52800AD2283 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		113976A81E97C71300B535DF /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = account/AccountViewController.swift; sourceTree = "<group>"; };
@@ -75,7 +68,7 @@
 		113976AD1E97C83500B535DF /* TextFieldValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldValidator.swift; path = helpers/TextFieldValidator.swift; sourceTree = "<group>"; };
 		113976AF1E97CCF700B535DF /* FeedApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedApi.swift; sourceTree = "<group>"; };
 		113976B11E97CE5000B535DF /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabBarController.swift; path = helpers/MainTabBarController.swift; sourceTree = "<group>"; };
-		113976B31E97D31B00B535DF /* FeedItemsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedItemsStore.swift; path = stores/FeedItemsStore.swift; sourceTree = "<group>"; };
+		113976B31E97D31B00B535DF /* FeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedStore.swift; path = stores/FeedStore.swift; sourceTree = "<group>"; };
 		116431DE1E2D4E81009AA59E /* UsersApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersApi.swift; path = api/UsersApi.swift; sourceTree = "<group>"; };
 		1178D6751E1E5AD9005B96C3 /* ipopmetrics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ipopmetrics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +82,7 @@
 		1178D6961E1E5AD9005B96C3 /* ipopmetricsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ipopmetricsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ipopmetricsUITests.swift; sourceTree = "<group>"; };
 		1178D69C1E1E5AD9005B96C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11AAA5E31ECC8BFA0099B50E /* Feed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Feed.swift; path = ipopmetrics/realm/Feed.swift; sourceTree = "<group>"; };
 		11ACA9971E2CD1120021E64A /* LocalUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "LocalUser+CoreDataProperties.swift"; path = "models/managed_objects/LocalUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		11ACA9981E2CD1120021E64A /* LocalUser+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "LocalUser+CoreDataClass.swift"; path = "models/managed_objects/LocalUser+CoreDataClass.swift"; sourceTree = "<group>"; };
 		11ACA99D1E2CD1960021E64A /* ConstantValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConstantValues.swift; path = models/ConstantValues.swift; sourceTree = "<group>"; };
@@ -138,8 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				1125ADAB1E96E7990004B4AC /* HomeHubController.swift */,
-				1125ADB51E97756D0004B4AC /* FeedTableViewCell.swift */,
-				1125ADB71E977B960004B4AC /* FeedTableActionRequiredViewCell.swift */,
 				11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */,
 			);
 			name = feed;
@@ -178,6 +170,7 @@
 		1178D6771E1E5AD9005B96C3 /* ipopmetrics */ = {
 			isa = PBXGroup;
 			children = (
+				11AAA5E21ECC8BEB0099B50E /* realm */,
 				113976AC1E97C77900B535DF /* account */,
 				1125ADA81E96E47A0004B4AC /* feed */,
 				11ACA9B11E2CE16A0021E64A /* login */,
@@ -215,6 +208,15 @@
 			path = ipopmetricsUITests;
 			sourceTree = "<group>";
 		};
+		11AAA5E21ECC8BEB0099B50E /* realm */ = {
+			isa = PBXGroup;
+			children = (
+				11AAA5E31ECC8BFA0099B50E /* Feed.swift */,
+			);
+			name = realm;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		11ACA9811E2CCCB40021E64A /* api */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,7 +234,7 @@
 			children = (
 				11ACA9A31E2CD1C90021E64A /* Store.swift */,
 				11ACA9A41E2CD1C90021E64A /* UsersStore.swift */,
-				113976B31E97D31B00B535DF /* FeedItemsStore.swift */,
+				113976B31E97D31B00B535DF /* FeedStore.swift */,
 			);
 			name = stores;
 			sourceTree = "<group>";
@@ -250,8 +252,6 @@
 		11ACA9901E2CCE150021E64A /* managed_objects */ = {
 			isa = PBXGroup;
 			children = (
-				1125ADB11E96F2160004B4AC /* FeedItem+CoreDataClass.swift */,
-				1125ADB21E96F2160004B4AC /* FeedItem+CoreDataProperties.swift */,
 				11ACA9971E2CD1120021E64A /* LocalUser+CoreDataProperties.swift */,
 				11ACA9981E2CD1120021E64A /* LocalUser+CoreDataClass.swift */,
 			);
@@ -495,12 +495,10 @@
 				11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */,
 				113976A91E97C71300B535DF /* AccountViewController.swift in Sources */,
 				11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */,
-				1125ADB61E97756D0004B4AC /* FeedTableViewCell.swift in Sources */,
 				11ACA9991E2CD1120021E64A /* LocalUser+CoreDataProperties.swift in Sources */,
 				1125ADAC1E96E7990004B4AC /* HomeHubController.swift in Sources */,
 				11D8D9F11ECB58AB00CCDAC4 /* RequiredActionViewCell.swift in Sources */,
 				11ACA99A1E2CD1120021E64A /* LocalUser+CoreDataClass.swift in Sources */,
-				1125ADB81E977B960004B4AC /* FeedTableActionRequiredViewCell.swift in Sources */,
 				116431DF1E2D4E81009AA59E /* UsersApi.swift in Sources */,
 				11ACA99E1E2CD1960021E64A /* ConstantValues.swift in Sources */,
 				11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */,
@@ -508,14 +506,13 @@
 				113976AB1E97C74B00B535DF /* BaseViewController.swift in Sources */,
 				113976B01E97CCF700B535DF /* FeedApi.swift in Sources */,
 				11ACA9A21E2CD1B90021E64A /* ApiUrls.swift in Sources */,
-				113976B41E97D31B00B535DF /* FeedItemsStore.swift in Sources */,
+				113976B41E97D31B00B535DF /* FeedStore.swift in Sources */,
 				113976AE1E97C83500B535DF /* TextFieldValidator.swift in Sources */,
 				11ACA9A51E2CD1C90021E64A /* Store.swift in Sources */,
 				11D8D9E91ECA37FC00CCDAC4 /* NavigationController.swift in Sources */,
 				1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */,
 				11ACA9B01E2CE0FC0021E64A /* PopmetricsColor.swift in Sources */,
-				1125ADB31E96F2160004B4AC /* FeedItem+CoreDataClass.swift in Sources */,
-				1125ADB41E96F2160004B4AC /* FeedItem+CoreDataProperties.swift in Sources */,
+				11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */,
 				1125ADAA1E96E67B0004B4AC /* BaseTableViewController.swift in Sources */,
 				113976B21E97CE5000B535DF /* MainTabBarController.swift in Sources */,
 				11ACA9A11E2CD1B90021E64A /* BaseApi.swift in Sources */,

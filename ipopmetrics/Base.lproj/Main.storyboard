@@ -118,7 +118,7 @@
         <!--Feed Table View Controller-->
         <scene sceneID="yN3-TS-G0L">
             <objects>
-                <tableViewController storyboardIdentifier="FEED_VC" title="My Homes Table View Controller" id="KcM-MX-1lY" userLabel="Feed Table View Controller" customClass="FeedTableViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="FEED_VC" title="My Homes Table View Controller" id="KcM-MX-1lY" userLabel="Feed Table View Controller" customClass="HomeHubViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="182" sectionHeaderHeight="28" sectionFooterHeight="28" id="IDh-YP-3oO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
