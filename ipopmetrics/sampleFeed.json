@@ -1,0 +1,37 @@
+{"sections":
+    [
+             { "title": "Required Actions",
+             "items": [
+              {
+                "type":"required_action",
+                "header_title":"Connect your Twitter account",
+                "header_icon":"file://assets/icon1.png",
+                "message":"Please connect your Twitter account with Popmetrics. This will allow us to tweet for you and expand your outreach."
+                "action_handler":"connect_twitter",
+                "action_label":"Connect",
+                "image":"http://ng.popmetrics.io/assets/firefighters.png"
+                       
+              },
+              {
+               "type":"required_action",
+               "header_title":"Connect your Facebook account",
+               "header_icon":"file://assets/icon1.png",
+               "message":"Please connect your Facebook account with Popmetrics. This will allow us to tweet for you and expand your outreach.",
+               "action_handler":"connect_facebook",
+               "action_label":"Connect",
+               "image":"http://ng.popmetrics.io/assets/firefighters.png"
+              },
+              {
+               "type":"required_action",
+               "header_title":"Connect your Google Analytics",
+               "header_icon":"file://assets/icon1.png",
+               "message":"Please connect your Google Analytics account with Popmetrics. The connection is required for traffic reports and insights.",
+               "action_handler":"connect_google_analytics",
+               "action_label":"Connect",
+               "image":"http://ng.popmetrics.io/assets/firefighters.png"
+              }
+             ]
+             
+             }
+    ]
+}

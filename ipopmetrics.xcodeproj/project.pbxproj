@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1125ADAA1E96E67B0004B4AC /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1125ADA91E96E67B0004B4AC /* BaseTableViewController.swift */; };
-		1125ADAC1E96E7990004B4AC /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1125ADAB1E96E7990004B4AC /* FeedTableViewController.swift */; };
+		1125ADAC1E96E7990004B4AC /* HomeHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1125ADAB1E96E7990004B4AC /* HomeHubController.swift */; };
 		1125ADB31E96F2160004B4AC /* FeedItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1125ADB11E96F2160004B4AC /* FeedItem+CoreDataClass.swift */; };
 		1125ADB41E96F2160004B4AC /* FeedItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1125ADB21E96F2160004B4AC /* FeedItem+CoreDataProperties.swift */; };
 		1125ADB61E97756D0004B4AC /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1125ADB51E97756D0004B4AC /* FeedTableViewCell.swift */; };
@@ -18,7 +18,7 @@
 		113976AB1E97C74B00B535DF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976AA1E97C74B00B535DF /* BaseViewController.swift */; };
 		113976AE1E97C83500B535DF /* TextFieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976AD1E97C83500B535DF /* TextFieldValidator.swift */; };
 		113976B01E97CCF700B535DF /* FeedApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976AF1E97CCF700B535DF /* FeedApi.swift */; };
-		113976B21E97CE5000B535DF /* MainNavigationTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976B11E97CE5000B535DF /* MainNavigationTabBarController.swift */; };
+		113976B21E97CE5000B535DF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976B11E97CE5000B535DF /* MainTabBarController.swift */; };
 		113976B41E97D31B00B535DF /* FeedItemsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976B31E97D31B00B535DF /* FeedItemsStore.swift */; };
 		116431DF1E2D4E81009AA59E /* UsersApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116431DE1E2D4E81009AA59E /* UsersApi.swift */; };
 		1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */; };
@@ -38,6 +38,9 @@
 		11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A91E2CE05D0021E64A /* CompletionView.swift */; };
 		11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */; };
 		11ACA9B01E2CE0FC0021E64A /* PopmetricsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9AF1E2CE0FC0021E64A /* PopmetricsColor.swift */; };
+		11D8D9E91ECA37FC00CCDAC4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D9E81ECA37FC00CCDAC4 /* NavigationController.swift */; };
+		11D8D9EF1ECB1B9800CCDAC4 /* sampleFeed.json in Resources */ = {isa = PBXBuildFile; fileRef = 11D8D9EE1ECB1B9800CCDAC4 /* sampleFeed.json */; };
+		11D8D9F11ECB58AB00CCDAC4 /* RequiredActionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */; };
 		631BDFACE57815E87C781181 /* Pods_ipopmetrics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,17 +63,18 @@
 
 /* Begin PBXFileReference section */
 		1125ADA91E96E67B0004B4AC /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewController.swift; path = helpers/BaseTableViewController.swift; sourceTree = "<group>"; };
-		1125ADAB1E96E7990004B4AC /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedTableViewController.swift; path = feed/FeedTableViewController.swift; sourceTree = "<group>"; };
+		1125ADAB1E96E7990004B4AC /* HomeHubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeHubController.swift; path = feed/HomeHubController.swift; sourceTree = "<group>"; };
 		1125ADB11E96F2160004B4AC /* FeedItem+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FeedItem+CoreDataClass.swift"; path = "models/managed_objects/FeedItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1125ADB21E96F2160004B4AC /* FeedItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FeedItem+CoreDataProperties.swift"; path = "models/managed_objects/FeedItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1125ADB51E97756D0004B4AC /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedTableViewCell.swift; path = feed/FeedTableViewCell.swift; sourceTree = "<group>"; };
 		1125ADB71E977B960004B4AC /* FeedTableActionRequiredViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedTableActionRequiredViewCell.swift; path = feed/FeedTableActionRequiredViewCell.swift; sourceTree = "<group>"; };
 		1125ADBA1E97ADF80004B4AC /* Popmetrics.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Popmetrics.xcdatamodel; sourceTree = "<group>"; };
+		112A93621EC9D52800AD2283 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		113976A81E97C71300B535DF /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = account/AccountViewController.swift; sourceTree = "<group>"; };
 		113976AA1E97C74B00B535DF /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = helpers/BaseViewController.swift; sourceTree = "<group>"; };
 		113976AD1E97C83500B535DF /* TextFieldValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldValidator.swift; path = helpers/TextFieldValidator.swift; sourceTree = "<group>"; };
 		113976AF1E97CCF700B535DF /* FeedApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedApi.swift; sourceTree = "<group>"; };
-		113976B11E97CE5000B535DF /* MainNavigationTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainNavigationTabBarController.swift; path = helpers/MainNavigationTabBarController.swift; sourceTree = "<group>"; };
+		113976B11E97CE5000B535DF /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabBarController.swift; path = helpers/MainTabBarController.swift; sourceTree = "<group>"; };
 		113976B31E97D31B00B535DF /* FeedItemsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedItemsStore.swift; path = stores/FeedItemsStore.swift; sourceTree = "<group>"; };
 		116431DE1E2D4E81009AA59E /* UsersApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersApi.swift; path = api/UsersApi.swift; sourceTree = "<group>"; };
 		1178D6751E1E5AD9005B96C3 /* ipopmetrics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ipopmetrics.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +100,9 @@
 		11ACA9A91E2CE05D0021E64A /* CompletionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompletionView.swift; path = views/CompletionView.swift; sourceTree = "<group>"; };
 		11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressHUD.swift; path = views/ProgressHUD.swift; sourceTree = "<group>"; };
 		11ACA9AF1E2CE0FC0021E64A /* PopmetricsColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopmetricsColor.swift; path = helpers/PopmetricsColor.swift; sourceTree = "<group>"; };
+		11D8D9E81ECA37FC00CCDAC4 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		11D8D9EE1ECB1B9800CCDAC4 /* sampleFeed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFeed.json; sourceTree = "<group>"; };
+		11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredActionViewCell.swift; sourceTree = "<group>"; };
 		4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release.xcconfig"; sourceTree = "<group>"; };
 		8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ipopmetrics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D5ECCAEA66BCED2B0405D78 /* Pods-ipopmetrics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,9 +137,10 @@
 		1125ADA81E96E47A0004B4AC /* feed */ = {
 			isa = PBXGroup;
 			children = (
-				1125ADAB1E96E7990004B4AC /* FeedTableViewController.swift */,
+				1125ADAB1E96E7990004B4AC /* HomeHubController.swift */,
 				1125ADB51E97756D0004B4AC /* FeedTableViewCell.swift */,
 				1125ADB71E977B960004B4AC /* FeedTableActionRequiredViewCell.swift */,
+				11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */,
 			);
 			name = feed;
 			sourceTree = "<group>";
@@ -179,10 +187,12 @@
 				11ACA98A1E2CCD600021E64A /* stores */,
 				11ACA9811E2CCCB40021E64A /* api */,
 				1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */,
+				11D8D9E81ECA37FC00CCDAC4 /* NavigationController.swift */,
 				1178D67E1E1E5AD9005B96C3 /* Main.storyboard */,
 				1178D6811E1E5AD9005B96C3 /* Assets.xcassets */,
 				1178D6831E1E5AD9005B96C3 /* LaunchScreen.storyboard */,
 				1178D6861E1E5AD9005B96C3 /* Info.plist */,
+				11D8D9EE1ECB1B9800CCDAC4 /* sampleFeed.json */,
 			);
 			path = ipopmetrics;
 			sourceTree = "<group>";
@@ -208,6 +218,7 @@
 		11ACA9811E2CCCB40021E64A /* api */ = {
 			isa = PBXGroup;
 			children = (
+				112A93621EC9D52800AD2283 /* BridgingHeader.h */,
 				11ACA99F1E2CD1B90021E64A /* BaseApi.swift */,
 				116431DE1E2D4E81009AA59E /* UsersApi.swift */,
 				11ACA9A01E2CD1B90021E64A /* ApiUrls.swift */,
@@ -263,7 +274,7 @@
 				1125ADA91E96E67B0004B4AC /* BaseTableViewController.swift */,
 				113976AA1E97C74B00B535DF /* BaseViewController.swift */,
 				113976AD1E97C83500B535DF /* TextFieldValidator.swift */,
-				113976B11E97CE5000B535DF /* MainNavigationTabBarController.swift */,
+				113976B11E97CE5000B535DF /* MainTabBarController.swift */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -405,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */,
+				11D8D9EF1ECB1B9800CCDAC4 /* sampleFeed.json in Resources */,
 				1178D6821E1E5AD9005B96C3 /* Assets.xcassets in Resources */,
 				1178D6801E1E5AD9005B96C3 /* Main.storyboard in Resources */,
 			);
@@ -439,7 +451,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B5BA09B8049FECDC31573D3E /* [CP] Copy Pods Resources */ = {
@@ -485,7 +497,8 @@
 				11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */,
 				1125ADB61E97756D0004B4AC /* FeedTableViewCell.swift in Sources */,
 				11ACA9991E2CD1120021E64A /* LocalUser+CoreDataProperties.swift in Sources */,
-				1125ADAC1E96E7990004B4AC /* FeedTableViewController.swift in Sources */,
+				1125ADAC1E96E7990004B4AC /* HomeHubController.swift in Sources */,
+				11D8D9F11ECB58AB00CCDAC4 /* RequiredActionViewCell.swift in Sources */,
 				11ACA99A1E2CD1120021E64A /* LocalUser+CoreDataClass.swift in Sources */,
 				1125ADB81E977B960004B4AC /* FeedTableActionRequiredViewCell.swift in Sources */,
 				116431DF1E2D4E81009AA59E /* UsersApi.swift in Sources */,
@@ -498,12 +511,13 @@
 				113976B41E97D31B00B535DF /* FeedItemsStore.swift in Sources */,
 				113976AE1E97C83500B535DF /* TextFieldValidator.swift in Sources */,
 				11ACA9A51E2CD1C90021E64A /* Store.swift in Sources */,
+				11D8D9E91ECA37FC00CCDAC4 /* NavigationController.swift in Sources */,
 				1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */,
 				11ACA9B01E2CE0FC0021E64A /* PopmetricsColor.swift in Sources */,
 				1125ADB31E96F2160004B4AC /* FeedItem+CoreDataClass.swift in Sources */,
 				1125ADB41E96F2160004B4AC /* FeedItem+CoreDataProperties.swift in Sources */,
 				1125ADAA1E96E67B0004B4AC /* BaseTableViewController.swift in Sources */,
-				113976B21E97CE5000B535DF /* MainNavigationTabBarController.swift in Sources */,
+				113976B21E97CE5000B535DF /* MainTabBarController.swift in Sources */,
 				11ACA9A11E2CD1B90021E64A /* BaseApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -661,6 +675,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.iapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -676,6 +691,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.iapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

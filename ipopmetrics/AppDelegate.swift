@@ -15,29 +15,44 @@ import Crashlytics
 
 
 private let SBID_LOGIN_NAV_VC = "LoginNavigationViewController"
-private let SBID_MAIN_TAB_VC = "MainNavigationTabBarController"
+private let SBID_MAIN_TAB_VC = "MainTabBarController"
 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var navigationController: NavigationController?
+    
     var window: UIWindow?
     var usersStore: UsersStore!
     var feedItemsStore: FeedItemsStore!
+    var storyBoard: UIStoryboard!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        self.storyBoard = UIStoryboard(name: "Main", bundle: nil)
             
         // Setup crashlytics
         // Fabric.with([Crashlytics.self])
+
+        navigationController = NavigationController()
+
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = window
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
+        
+        
         
         application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
-        usersStore = UsersStore(context: managedObjectContext)
-        feedItemsStore = FeedItemsStore(context: managedObjectContext)
         
-        setInitialViewController()
+//        usersStore = UsersStore(context: managedObjectContext)
+//        feedItemsStore = FeedItemsStore(context: managedObjectContext)
+//        setInitialViewController()
+
+//        open(viewURI: .homeHubViewURI, animated: false)
         
         return true
     }
@@ -147,6 +162,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    
+    private func createViewController(viewURI: URL) -> UIViewController? {
+
+        let mainTbc = storyBoard.instantiateViewController(withIdentifier: SBID_MAIN_TAB_VC)
+        return mainTbc
+             
+    }
+    
+    
+    
+    
+    @discardableResult private func open(viewURI: URL, animated: Bool) -> Bool {
+        guard let viewController = createViewController(viewURI: viewURI) else {
+            print("No view controller for URI \(viewURI)")
+            return false
+        }
+        
+        prepareAndPush(viewController: viewController, animated: animated)
+        
+        return true
+    }
+    
+    // MARK: - View controller handling
+    
+    private func prepareAndPush(viewController: UIViewController, animated: Bool) {
+        
+       
+        navigationController?.pushViewController(viewController, animated: animated)
+    }
 
 
     

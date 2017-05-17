@@ -10,14 +10,18 @@ import UIKit
 import MGSwipeTableCell
 import DGElasticPullToRefresh
 
-class FeedTableViewController: BaseTableViewController {
+class HomeHubViewController: BaseTableViewController {
     
     fileprivate var sharingInProgress = false
-    fileprivate var items = [FeedItem]()
+    
+    fileprivate var items = [[String:Any]]()
+    
     fileprivate var completed = 0
     fileprivate var total = 100
     
     fileprivate var selectedIndexPath: IndexPath?
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,46 +33,51 @@ class FeedTableViewController: BaseTableViewController {
         let nc = NotificationCenter.default
         nc.addObserver(forName:NSNotification.Name(rawValue: "SyncNotification"), object:nil, queue:nil, using:catchSyncNotifications)
         
+        
+        self.fetchItems()
+        
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             // Add your logic here
             // Do not forget to call dg_stopLoading() at the end
             
-            FeedApi().getItems(sinceDate: Date()){responseDict, error in
-                if error != nil {
-                    let message = "An error has occurred. Please try again later."
-                    self?.presentAlertWithTitle("Error", message: message)
-                    return
-                }
-                let success = responseDict?["success"] as! Bool
-                if (!success) {
-                    let message = responseDict?["message"] as! String
-                    self?.presentAlertWithTitle("Authentication failed.", message:message)
-                    return
-                }
-                
-                let store = FeedItemsStore.getInstance()
-                let itemsDict = responseDict?["items"] as! [[String:Any]]
-                if itemsDict != nil {
-                    for itemDict in itemsDict {
-                        var feedItem: FeedItem? = nil
-                        
-                        if let itemId = itemDict["id"] as? String {
-                            if let existingItem = store.findItemWithSrvId(itemId) {
-                                feedItem = existingItem
-                            }
-                        }
-                        if feedItem == nil {
-                            feedItem = store.createFeedItem(dict: itemDict)
-                        } else {
-                            _ = store.updateFeedItem(item: feedItem!, dict: itemDict)
-                        }
-                        
-                    }
-                store.saveState()
-                }
-            }
+//            FeedApi().getItems(sinceDate: Date()){responseDict, error in
+//                if error != nil {
+//                    let message = "An error has occurred. Please try again later."
+//                    self?.presentAlertWithTitle("Error", message: message)
+//                    return
+//                }
+//                let success = responseDict?["success"] as! Bool
+//                if (!success) {
+//                    let message = responseDict?["message"] as! String
+//                    self?.presentAlertWithTitle("Authentication failed.", message:message)
+//                    return
+//                }
+//                
+//                let store = FeedItemsStore.getInstance()
+//                let itemsDict = responseDict?["items"] as! [[String:Any]]
+//                if itemsDict != nil {
+//                    for itemDict in itemsDict {
+//                        var feedItem: FeedItem? = nil
+//                        
+//                        if let itemId = itemDict["id"] as? String {
+//                            if let existingItem = store.findItemWithSrvId(itemId) {
+//                                feedItem = existingItem
+//                            }
+//                        }
+//                        if feedItem == nil {
+//                            feedItem = store.createFeedItem(dict: itemDict)
+//                        } else {
+//                            _ = store.updateFeedItem(item: feedItem!, dict: itemDict)
+//                        }
+//                        
+//                    }
+//                store.saveState()
+//                }
+//            }
+            
+            
             self?.tableView.dg_stopLoading()
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
@@ -78,10 +87,17 @@ class FeedTableViewController: BaseTableViewController {
         
     }
     
+    func fetchItems() {
+        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
+        let jsonData : NSData = NSData(contentsOfFile: path!)!
+        
+        self.items = try! JSONSerialization.jsonObject(with: jsonData as Data, options: []) as! [[String:Any]]
+        
+    }
+    
     
     fileprivate func reloadData() {
-        let store = FeedItemsStore.getInstance()
-        items = store.getFeedItems()
+        self.fetchItems()
         
         tableView.reloadData()
     }
@@ -154,10 +170,8 @@ class FeedTableViewController: BaseTableViewController {
             return cell
         }
         
-        let property = getPropertyForIndexPath(indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedTableViewCell", for: indexPath) as! FeedTableViewCell
         cell.selectionStyle = .none
-        cell.property = property
         cell.rightButtons = createSwipeButtons()
         return cell
     }
@@ -188,9 +202,6 @@ class FeedTableViewController: BaseTableViewController {
 //        }
     }
 
-    fileprivate func getPropertyForIndexPath(_ indexPath: IndexPath) -> FeedItem {
-        return items[(indexPath as NSIndexPath).row]
-    }
     
     fileprivate func getCellHeight() -> CGFloat {
         return CGFloat(((tableView.frame.width * 9.0) / 16.0) + 16) // 16 is the padding

@@ -8,13 +8,11 @@
 
 import UIKit
 
-class MainNavigationTabBarController: UITabBarController {
+class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tabBar.tintColor = PopmetricsColor.textLight
-        tabBar.barTintColor = UIColor.black
+        return
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -22,7 +20,8 @@ class MainNavigationTabBarController: UITabBarController {
         
         // Check to see if the user didn't dismiss the intro
         // and that she/he still has unanswered items
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+        // let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
     }
     

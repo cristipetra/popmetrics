@@ -13,6 +13,7 @@ target 'ipopmetrics' do
   pod 'DGElasticPullToRefresh'
   pod 'RSKImageCropper'
   pod 'STPopup'
-  pod 'Chatto', '= 3.0.1'
-  pod 'ChattoAdditions', '= 3.0.1' # if you want to use the cells or the input component
+#  pod 'Chatto', '~> 3.0.1'
+#  pod 'ChattoAdditions', '~> 3.0.1' # if you want to use the cells or the input component
+#  pod 'HubFramework' # , :path => '/Users/ra/code/spotify/HubFramework'
 end
