@@ -24,6 +24,9 @@
 		1178D6901E1E5AD9005B96C3 /* ipopmetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D68F1E1E5AD9005B96C3 /* ipopmetricsTests.swift */; };
 		1178D69B1E1E5AD9005B96C3 /* ipopmetricsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */; };
 		11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAA5E31ECC8BFA0099B50E /* Feed.swift */; };
+		11AAA5E61ECCD4200099B50E /* RequiredActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11AAA5E51ECCD4200099B50E /* RequiredActionCard.xib */; };
+		11AAA5E81ECCD52A0099B50E /* ActionHistoryCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11AAA5E71ECCD52A0099B50E /* ActionHistoryCard.xib */; };
+		11AAA5EA1ECCD7040099B50E /* ActionHistoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAA5E91ECCD7040099B50E /* ActionHistoryViewCell.swift */; };
 		11ACA9991E2CD1120021E64A /* LocalUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9971E2CD1120021E64A /* LocalUser+CoreDataProperties.swift */; };
 		11ACA99A1E2CD1120021E64A /* LocalUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9981E2CD1120021E64A /* LocalUser+CoreDataClass.swift */; };
 		11ACA99E1E2CD1960021E64A /* ConstantValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA99D1E2CD1960021E64A /* ConstantValues.swift */; };
@@ -83,6 +86,9 @@
 		1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ipopmetricsUITests.swift; sourceTree = "<group>"; };
 		1178D69C1E1E5AD9005B96C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11AAA5E31ECC8BFA0099B50E /* Feed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Feed.swift; path = ipopmetrics/realm/Feed.swift; sourceTree = "<group>"; };
+		11AAA5E51ECCD4200099B50E /* RequiredActionCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequiredActionCard.xib; sourceTree = "<group>"; };
+		11AAA5E71ECCD52A0099B50E /* ActionHistoryCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionHistoryCard.xib; sourceTree = "<group>"; };
+		11AAA5E91ECCD7040099B50E /* ActionHistoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionHistoryViewCell.swift; sourceTree = "<group>"; };
 		11ACA9971E2CD1120021E64A /* LocalUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "LocalUser+CoreDataProperties.swift"; path = "models/managed_objects/LocalUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		11ACA9981E2CD1120021E64A /* LocalUser+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "LocalUser+CoreDataClass.swift"; path = "models/managed_objects/LocalUser+CoreDataClass.swift"; sourceTree = "<group>"; };
 		11ACA99D1E2CD1960021E64A /* ConstantValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConstantValues.swift; path = models/ConstantValues.swift; sourceTree = "<group>"; };
@@ -133,6 +139,7 @@
 			children = (
 				1125ADAB1E96E7990004B4AC /* HomeHubController.swift */,
 				11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */,
+				11AAA5E91ECCD7040099B50E /* ActionHistoryViewCell.swift */,
 			);
 			name = feed;
 			sourceTree = "<group>";
@@ -186,6 +193,8 @@
 				1178D6831E1E5AD9005B96C3 /* LaunchScreen.storyboard */,
 				1178D6861E1E5AD9005B96C3 /* Info.plist */,
 				11D8D9EE1ECB1B9800CCDAC4 /* sampleFeed.json */,
+				11AAA5E51ECCD4200099B50E /* RequiredActionCard.xib */,
+				11AAA5E71ECCD52A0099B50E /* ActionHistoryCard.xib */,
 			);
 			path = ipopmetrics;
 			sourceTree = "<group>";
@@ -417,8 +426,10 @@
 			files = (
 				1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */,
 				11D8D9EF1ECB1B9800CCDAC4 /* sampleFeed.json in Resources */,
+				11AAA5E81ECCD52A0099B50E /* ActionHistoryCard.xib in Resources */,
 				1178D6821E1E5AD9005B96C3 /* Assets.xcassets in Resources */,
 				1178D6801E1E5AD9005B96C3 /* Main.storyboard in Resources */,
+				11AAA5E61ECCD4200099B50E /* RequiredActionCard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +515,7 @@
 				11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */,
 				11ACA9A61E2CD1C90021E64A /* UsersStore.swift in Sources */,
 				113976AB1E97C74B00B535DF /* BaseViewController.swift in Sources */,
+				11AAA5EA1ECCD7040099B50E /* ActionHistoryViewCell.swift in Sources */,
 				113976B01E97CCF700B535DF /* FeedApi.swift in Sources */,
 				11ACA9A21E2CD1B90021E64A /* ApiUrls.swift in Sources */,
 				113976B41E97D31B00B535DF /* FeedStore.swift in Sources */,

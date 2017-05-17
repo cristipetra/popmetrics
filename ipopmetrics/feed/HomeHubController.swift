@@ -33,6 +33,12 @@ class HomeHubViewController: BaseTableViewController {
         let nc = NotificationCenter.default
         nc.addObserver(forName:NSNotification.Name(rawValue: "SyncNotification"), object:nil, queue:nil, using:catchSyncNotifications)
         
+        let requiredActionCardNib = UINib(nibName: "RequiredActionCard", bundle: nil)
+        tableView.register(requiredActionCardNib, forCellReuseIdentifier: "RequiredActionCard")
+        
+        let actionHistoryCardNib = UINib(nibName: "ActionHistoryCard", bundle: nil)
+        tableView.register(actionHistoryCardNib, forCellReuseIdentifier: "ActionHistoryCard")
+        
         
         self.fetchItems()
         
@@ -163,19 +169,28 @@ class HomeHubViewController: BaseTableViewController {
         let section = sections[sectionIdx]
         let item = section.items[rowIdx]
         
-        if item.type == "required_action" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
-            cell.selectionStyle = .none
-            cell.configure(item)
-            return cell
-        }
-        else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
-            cell.selectionStyle = .none
-            cell.configure(item)
-            return cell
+        
+        switch(item.type) {
+            case "required_action":
+                let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
+                cell.selectionStyle = .none
+                cell.configure(item)
+                return cell
             
+            case "action_history":
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ActionHistoryCard", for: indexPath) as! ActionHistoryViewCell
+                cell.selectionStyle = .none
+                cell.configure(item)
+                return cell
+            
+            default:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
+                cell.selectionStyle = .none
+                cell.configure(item)
+                return cell
+
         }
+        
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -199,7 +214,9 @@ class HomeHubViewController: BaseTableViewController {
 
     
     fileprivate func getCellHeight() -> CGFloat {
-        return CGFloat(((tableView.frame.width * 9.0) / 16.0) + 16) // 16 is the padding
+        let a =  CGFloat(((tableView.frame.width * 9.0) / 16.0) + 16) // 16 is the padding
+        return 300
+        // return a
     }
     
     fileprivate func hasRequiredActions() -> Bool {

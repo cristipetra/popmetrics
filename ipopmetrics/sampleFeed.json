@@ -32,6 +32,20 @@
               }
              ]
              
-             }
+             },
+             { "name": "History",
+             "items": [
+                       {
+                       "type":"action_history",
+                       "header_title":"Connect your Twitter account",
+                       "header_icon":"file://assets/icon1.png",
+                       "message":"Twitter Posts (4)",
+                       "action_handler":"connect_twitter",
+                       "action_label":"Connect",
+                       "image":"http://ng.popmetrics.io/assets/firefighters.png"
+                       
+                       }
+                       ]
+            }
     ]
 }
