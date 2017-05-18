@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9L-3r-7O1" userLabel="HeaderLabel">
-                        <rect key="frame" x="30" y="58.5" width="245" height="21.5"/>
+                        <rect key="frame" x="30" y="58" width="245" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" red="0.15294117647058825" green="0.15294117647058825" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -67,10 +67,18 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <integer key="value" value="30"/>
                             </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="string" keyPath="layer.shadowColor" value="UIColor(red: 0, green: 0, blue: 0, alpha: 0.55).CGColor"/>
-                            <userDefinedRuntimeAttribute type="string" keyPath="layer.shadowOffset" value="CGSizeMake(0.0, 5.0)"/>
-                            <userDefinedRuntimeAttribute type="string" keyPath="layer.shadowOpacity" value="1.0"/>
-                            <userDefinedRuntimeAttribute type="string" keyPath="layer.shadowRadius" value="0"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                <size key="value" width="0.0" height="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                <integer key="value" value="0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                <integer key="value" value="0"/>
+                            </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </button>
                 </subviews>
