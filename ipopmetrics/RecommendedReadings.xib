@@ -61,24 +61,17 @@
                             <constraint firstAttribute="width" constant="40" id="jDf-fs-NTs"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lHE-oj-FhD">
+                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHE-oj-FhD">
                         <rect key="frame" x="181" y="238" width="154" height="60"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="Dmv-us-mD9"/>
                             <constraint firstAttribute="width" constant="154" id="hQG-rD-fz2"/>
                         </constraints>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                         <size key="titleShadowOffset" width="2" height="0.0"/>
-                        <state key="normal" title="Hello">
-                            <attributedString key="attributedTitle">
-                                <fragment content="READ ARTICLE">
-                                    <attributes>
-                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
+                        <state key="normal" title="READ ARTICLE">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
