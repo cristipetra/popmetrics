@@ -11,7 +11,6 @@ import UIKit
 
 
 class RequiredActionViewCell: UITableViewCell {
-    
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var headerImageIcon: UIImageView!
     @IBOutlet weak var messageLabel: UILabel!
@@ -19,9 +18,24 @@ class RequiredActionViewCell: UITableViewCell {
     
     @IBOutlet weak var actionButton: UIButton!
     
-    func configure(_ item: FeedItem) {
+    var item: FeedItem?
+    var actionHandler: CardActionHandler?
+    
+    func configure(_ item: FeedItem, handler: CardActionHandler) {
         self.headerLabel.text = item.headerTitle
         self.messageLabel.text = item.message
+        self.item = item
+        self.actionHandler = handler
+        
+        self.actionButton.setTitle(item.actionLabel, for: .normal)
+        
+       
+        self.actionButton.addTarget(self, action:#selector(handleAction(_:)), for: .touchDown)
+
+    }
+    
+    @objc func handleAction(_ sender: UIButton) {
+        actionHandler?.handleRequiredAction(sender, item: self.item!)
     }
     
 }

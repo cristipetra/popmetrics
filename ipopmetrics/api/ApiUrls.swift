@@ -13,10 +13,10 @@ import Foundation
 private let PROTOCOL = "http"
 // private let HOST = "api.popmetrics.io"
 // private let PORT = 443
-// private let HOST = "192.168.1.107"
-private let HOST = "10.0.1.30"
-// private let PORT = 5055
-private let PORT = 5030
+private let HOST = "192.168.1.101"
+// private let HOST = "10.0.1.30"
+private let PORT = 5055
+// private let PORT = 5030
 
 private let LOGIN_PATH = "/api/caas/sign_in_with_email"
 private let SEND_CODE_BY_SMS_PATH = "/api/caas/send_code_by_sms"
@@ -39,6 +39,8 @@ private let ACCOUNT_INFO_PATH = "/api/caas/me"
 private let ACCOUNT_EDIT_PATH = "/api/caas/me"
 
 private let USER_FEED_PATH = "/api/feed/me"
+
+private let CONNECT_GOOGLE_ANALYTICS = "/connect_google_analytics_with_token"
 
 class ApiUrls {
     
@@ -119,5 +121,10 @@ class ApiUrls {
     static func getUserFeedUrl() -> String {
         return composedBaseUrl(USER_FEED_PATH)
     }
+    
+    static func getConnectGoogleAnalyticsUrl() -> String {
+        return composedBaseUrl(CONNECT_GOOGLE_ANALYTICS)
+    }
+    
     
 }
