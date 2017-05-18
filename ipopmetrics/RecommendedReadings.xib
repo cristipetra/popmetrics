@@ -31,9 +31,8 @@
                         <color key="textColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ylv-hm-7DU">
+                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ylv-hm-7DU">
                         <rect key="frame" x="30" y="156" width="140" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="#tag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cph-jS-ENh">
                                 <rect key="frame" x="0.0" y="0.0" width="32" height="18"/>
@@ -110,6 +109,7 @@
                     <constraint firstAttribute="trailingMargin" secondItem="lHE-oj-FhD" secondAttribute="trailing" constant="20" id="L0B-wZ-bMi"/>
                     <constraint firstAttribute="topMargin" secondItem="GnQ-9p-6Ne" secondAttribute="top" constant="-41" id="Xp4-jY-JwI"/>
                     <constraint firstItem="tdn-Ek-tun" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hGr-uD-lK5" secondAttribute="topMargin" constant="130" id="joL-PC-EFR"/>
+                    <constraint firstItem="ylv-hm-7DU" firstAttribute="leading" secondItem="Phz-Ie-U2H" secondAttribute="leading" id="kyv-FL-D6M"/>
                     <constraint firstAttribute="leadingMargin" secondItem="tdn-Ek-tun" secondAttribute="leading" constant="25" id="mKT-Mj-v7L"/>
                     <constraint firstAttribute="trailingMargin" secondItem="3QT-6J-zeW" secondAttribute="trailing" id="sHH-Wd-DqC"/>
                     <constraint firstAttribute="trailingMargin" secondItem="tdn-Ek-tun" secondAttribute="trailing" constant="-15" id="yIs-Ft-MBt"/>
