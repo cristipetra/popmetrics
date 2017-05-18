@@ -42,6 +42,7 @@
 		11D8D9EF1ECB1B9800CCDAC4 /* sampleFeed.json in Resources */ = {isa = PBXBuildFile; fileRef = 11D8D9EE1ECB1B9800CCDAC4 /* sampleFeed.json */; };
 		11D8D9F11ECB58AB00CCDAC4 /* RequiredActionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */; };
 		631BDFACE57815E87C781181 /* Pods_ipopmetrics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */; };
+		D9D937881ECDDF4C00CC3EC2 /* RecommendedReadings.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D937871ECDDF4C00CC3EC2 /* RecommendedReadings.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release.xcconfig"; sourceTree = "<group>"; };
 		8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ipopmetrics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D5ECCAEA66BCED2B0405D78 /* Pods-ipopmetrics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.debug.xcconfig"; sourceTree = "<group>"; };
+		D9D937871ECDDF4C00CC3EC2 /* RecommendedReadings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendedReadings.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 				11D8D9EE1ECB1B9800CCDAC4 /* sampleFeed.json */,
 				11AAA5E51ECCD4200099B50E /* RequiredActionCard.xib */,
 				11AAA5E71ECCD52A0099B50E /* ActionHistoryCard.xib */,
+				D9D937871ECDDF4C00CC3EC2 /* RecommendedReadings.xib */,
 			);
 			path = ipopmetrics;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9D937881ECDDF4C00CC3EC2 /* RecommendedReadings.xib in Resources */,
 				1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */,
 				11D8D9EF1ECB1B9800CCDAC4 /* sampleFeed.json in Resources */,
 				11AAA5E81ECCD52A0099B50E /* ActionHistoryCard.xib in Resources */,

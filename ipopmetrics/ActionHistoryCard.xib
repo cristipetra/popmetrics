@@ -70,11 +70,11 @@
                             <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
                                 <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
-                                <size key="value" width="0.0" height="1"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOffset">
+                                <integer key="value" value="1"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
-                                <integer key="value" value="0"/>
+                                <integer key="value" value="1"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
                                 <integer key="value" value="0"/>

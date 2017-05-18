@@ -54,7 +54,7 @@
                         <size key="titleShadowOffset" width="2" height="0.0"/>
                         <state key="normal" title="Hello">
                             <attributedString key="attributedTitle">
-                                <fragment content="VIEW">
+                                <fragment content="CONNECT">
                                     <attributes>
                                         <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
