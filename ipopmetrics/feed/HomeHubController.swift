@@ -36,7 +36,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         navigationItem.title = "Feed"
 //        tableView.separatorStyle = .none
         
-        self.tableView.contentInset = UIEdgeInsets(top: 40,left: 0,bottom: 0,right: 0)
         
         let nc = NotificationCenter.default
         nc.addObserver(forName:NSNotification.Name(rawValue: "SyncNotification"), object:nil, queue:nil, using:catchSyncNotifications)
@@ -56,9 +55,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         
         
-        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+//        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+//        loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
+//        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             // Add your logic here
             // Do not forget to call dg_stopLoading() at the end
             
@@ -98,10 +97,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
 //            }
             
             
-            self?.tableView.dg_stopLoading()
-            }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+//            self?.tableView.dg_stopLoading()
+//            }, loadingView: loadingView)
+//        tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
+//        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
         
         
@@ -238,7 +237,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     fileprivate func getCellHeight() -> CGFloat {
         let a =  CGFloat(((tableView.frame.width * 9.0) / 16.0) + 16) // 16 is the padding
-        return 320
+        return 340
         // return a
     }
     
