@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import GoogleSignIn
 import MGSwipeTableCell
 import DGElasticPullToRefresh
 
-class HomeHubViewController: BaseTableViewController {
+class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     fileprivate var sharingInProgress = false
     
@@ -21,14 +22,21 @@ class HomeHubViewController: BaseTableViewController {
     
     fileprivate var selectedIndexPath: IndexPath?
     
+    var requiredActionHandler = RequiredActionHandler()
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        GIDSignIn.sharedInstance().uiDelegate = self
+
+        
         // Style elements
         navigationItem.title = "Feed"
-        tableView.separatorStyle = .none
+//        tableView.separatorStyle = .none
+        
+        self.tableView.contentInset = UIEdgeInsets(top: 40,left: 0,bottom: 0,right: 0)
         
         let nc = NotificationCenter.default
         nc.addObserver(forName:NSNotification.Name(rawValue: "SyncNotification"), object:nil, queue:nil, using:catchSyncNotifications)
@@ -38,6 +46,9 @@ class HomeHubViewController: BaseTableViewController {
         
         let actionHistoryCardNib = UINib(nibName: "ActionHistoryCard", bundle: nil)
         tableView.register(actionHistoryCardNib, forCellReuseIdentifier: "ActionHistoryCard")
+        
+        let articleOfInterestCardNib = UINib(nibName: "ArticleOfInterestCard", bundle: nil)
+        tableView.register(articleOfInterestCardNib, forCellReuseIdentifier: "ArticleOfInterestCard")
         
         
         self.fetchItems()
@@ -161,6 +172,12 @@ class HomeHubViewController: BaseTableViewController {
         return sections[section].items.count
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section].name
+    }
+    
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let sectionIdx = (indexPath as NSIndexPath).section
@@ -174,19 +191,25 @@ class HomeHubViewController: BaseTableViewController {
             case "required_action":
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
                 cell.selectionStyle = .none
-                cell.configure(item)
+                cell.configure(item, handler:self.requiredActionHandler)
                 return cell
             
             case "action_history":
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ActionHistoryCard", for: indexPath) as! ActionHistoryViewCell
                 cell.selectionStyle = .none
-                cell.configure(item)
+                cell.configure(item, handler:self.requiredActionHandler)
+                return cell
+            
+            case "article_of_interest":
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleOfInterestCard", for: indexPath) as! ArticleOfInterestViewCell
+                cell.selectionStyle = .none
+                cell.configure(item, handler:self.requiredActionHandler)
                 return cell
             
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
                 cell.selectionStyle = .none
-                cell.configure(item)
+                cell.configure(item, handler:self.requiredActionHandler)
                 return cell
 
         }
@@ -215,7 +238,7 @@ class HomeHubViewController: BaseTableViewController {
     
     fileprivate func getCellHeight() -> CGFloat {
         let a =  CGFloat(((tableView.frame.width * 9.0) / 16.0) + 16) // 16 is the padding
-        return 300
+        return 320
         // return a
     }
     
@@ -280,6 +303,14 @@ class HomeHubViewController: BaseTableViewController {
         
         return [deleteBtn, shareBtn]
     }
+    
+    
+    ///
+    
+    @objc func handleRequiredAction(_ sender : UIButton){
+        print("handling required action")
+    }
+    
     
     
     

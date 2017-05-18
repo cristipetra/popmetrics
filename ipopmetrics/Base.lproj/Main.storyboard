@@ -247,7 +247,7 @@
                             <outletCollection property="gestureRecognizers" destination="PmT-yn-pek" appends="YES" id="Io2-55-9Le"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Account" image="clock" selectedImage="clock" id="OeU-dY-hcP"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="second" selectedImage="second" id="OeU-dY-hcP"/>
                     <connections>
                         <outlet property="emailLabel" destination="UTv-yD-O3p" id="bAw-1U-fls"/>
                         <outlet property="imageButton" destination="hlI-OT-hrN" id="zff-Pt-7Tc"/>
@@ -266,7 +266,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="clock" width="21" height="21"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
         <image name="user_profile" width="16" height="16"/>
