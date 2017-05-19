@@ -16,6 +16,12 @@ class ConciergeChatViewController: BaseChatViewController {
     }()
 
     override func viewDidLoad() {
+        
+        if dataSource == nil {
+            dataSource = FakeDataSource(count: 0, pageSize: 50)
+        }
+        self.messageSender = dataSource.messageSender
+        
         super.viewDidLoad()
         let image = UIImage(named: "bubble-incoming-tail-border", in: Bundle(for: ConciergeChatViewController.self), compatibleWith: nil)?.bma_tintWithColor(.blue)
         super.chatItemsDecorator = ChatItemsDemoDecorator()
