@@ -77,6 +77,7 @@
 		D9D937881ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D937871ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib */; };
 		D9D9378A1ECDEEE200CC3EC2 /* StatsSummaryCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D937891ECDEEE200CC3EC2 /* StatsSummaryCard.xib */; };
 		D9EC7E351ECEE37A00A54B53 /* BestCourseCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9EC7E341ECEE37A00A54B53 /* BestCourseCard.xib */; };
+		D9EC7E371ECF0D7E00A54B53 /* CitationErrorCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9EC7E361ECF0D7E00A54B53 /* CitationErrorCard.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +178,7 @@
 		D9D937871ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleOfInterestCard.xib; sourceTree = "<group>"; };
 		D9D937891ECDEEE200CC3EC2 /* StatsSummaryCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsSummaryCard.xib; sourceTree = "<group>"; };
 		D9EC7E341ECEE37A00A54B53 /* BestCourseCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BestCourseCard.xib; sourceTree = "<group>"; };
+		D9EC7E361ECF0D7E00A54B53 /* CitationErrorCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CitationErrorCard.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +318,7 @@
 				D9AB86571ECED85A0050A7AB /* BrandInsightCard.xib */,
 				D9D937891ECDEEE200CC3EC2 /* StatsSummaryCard.xib */,
 				D9EC7E341ECEE37A00A54B53 /* BestCourseCard.xib */,
+				D9EC7E361ECF0D7E00A54B53 /* CitationErrorCard.xib */,
 			);
 			path = ipopmetrics;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9D937881ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib in Resources */,
+				D9EC7E371ECF0D7E00A54B53 /* CitationErrorCard.xib in Resources */,
 				1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */,
 				11D8D9EF1ECB1B9800CCDAC4 /* sampleFeed.json in Resources */,
 				D9AB86581ECED85A0050A7AB /* BrandInsightCard.xib in Resources */,
