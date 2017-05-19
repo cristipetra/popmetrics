@@ -66,8 +66,10 @@
 		11D8D9EF1ECB1B9800CCDAC4 /* sampleFeed.json in Resources */ = {isa = PBXBuildFile; fileRef = 11D8D9EE1ECB1B9800CCDAC4 /* sampleFeed.json */; };
 		11D8D9F11ECB58AB00CCDAC4 /* RequiredActionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */; };
 		631BDFACE57815E87C781181 /* Pods_ipopmetrics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */; };
+		D9AB86581ECED85A0050A7AB /* BrandInsightCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9AB86571ECED85A0050A7AB /* BrandInsightCard.xib */; };
 		D9D937881ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D937871ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib */; };
 		D9D9378A1ECDEEE200CC3EC2 /* StatsSummaryCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D937891ECDEEE200CC3EC2 /* StatsSummaryCard.xib */; };
+		D9EC7E351ECEE37A00A54B53 /* BestCourseCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9EC7E341ECEE37A00A54B53 /* BestCourseCard.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,8 +158,10 @@
 		4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release.xcconfig"; sourceTree = "<group>"; };
 		8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ipopmetrics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D5ECCAEA66BCED2B0405D78 /* Pods-ipopmetrics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.debug.xcconfig"; sourceTree = "<group>"; };
+		D9AB86571ECED85A0050A7AB /* BrandInsightCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrandInsightCard.xib; sourceTree = "<group>"; };
 		D9D937871ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleOfInterestCard.xib; sourceTree = "<group>"; };
 		D9D937891ECDEEE200CC3EC2 /* StatsSummaryCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsSummaryCard.xib; sourceTree = "<group>"; };
+		D9EC7E341ECEE37A00A54B53 /* BestCourseCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BestCourseCard.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,7 +283,9 @@
 				11AAA5E51ECCD4200099B50E /* RequiredActionCard.xib */,
 				11AAA5E71ECCD52A0099B50E /* ActionHistoryCard.xib */,
 				D9D937871ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib */,
+				D9AB86571ECED85A0050A7AB /* BrandInsightCard.xib */,
 				D9D937891ECDEEE200CC3EC2 /* StatsSummaryCard.xib */,
+				D9EC7E341ECEE37A00A54B53 /* BestCourseCard.xib */,
 			);
 			path = ipopmetrics;
 			sourceTree = "<group>";
@@ -513,11 +519,13 @@
 				D9D937881ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib in Resources */,
 				1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */,
 				11D8D9EF1ECB1B9800CCDAC4 /* sampleFeed.json in Resources */,
+				D9AB86581ECED85A0050A7AB /* BrandInsightCard.xib in Resources */,
 				11AAA5E81ECCD52A0099B50E /* ActionHistoryCard.xib in Resources */,
 				1178D6821E1E5AD9005B96C3 /* Assets.xcassets in Resources */,
 				1178D6801E1E5AD9005B96C3 /* Main.storyboard in Resources */,
 				110A62E71ECEE6E60052B478 /* SendingStatusCollectionViewCell.xib in Resources */,
 				D9D9378A1ECDEEE200CC3EC2 /* StatsSummaryCard.xib in Resources */,
+				D9EC7E351ECEE37A00A54B53 /* BestCourseCard.xib in Resources */,
 				11AAA5E61ECCD4200099B50E /* RequiredActionCard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
