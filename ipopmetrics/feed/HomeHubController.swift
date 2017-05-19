@@ -52,6 +52,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let statsSummaryCardNib = UINib(nibName: "StatsSummaryCard", bundle: nil)
         tableView.register(statsSummaryCardNib, forCellReuseIdentifier: "StatsSummaryCard")
         
+        let bestCourseCardNib = UINib(nibName: "BestCourseCard", bundle: nil)
+        tableView.register(bestCourseCardNib, forCellReuseIdentifier: "BestCourseCard")
+        
         self.fetchItems()
         
         
@@ -209,6 +212,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             case "stats_summary":
                 let cell = tableView.dequeueReusableCell(withIdentifier: "StatsSummaryCard", for: indexPath) as! StatsSummaryViewCell
+                cell.selectionStyle = .none
+                cell.configure(item, handler:self.requiredActionHandler)
+                return cell
+            
+            case "best_course":
+                let cell = tableView.dequeueReusableCell(withIdentifier: "BestCourseCard", for: indexPath) as! BestCourseViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
                 return cell

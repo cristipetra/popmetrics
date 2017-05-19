@@ -53,10 +53,19 @@
                        "action_handler":"connect_twitter",
                        "action_label":"Traffic Report",
                        "image":"http://ng.popmetrics.io/assets/firefighters.png"
+                       },
+                       {
+                       "type":"best_course",
+                       "header_title":"Best Course Of Action",
+                       "header_icon":"file://assets/icon1.png",
+                       "message":"Twitter Posts (4)",
+                       "action_handler":"connect_twitter",
+                       "action_label":"Traffic Report",
+                       "image":"http://ng.popmetrics.io/assets/firefighters.png"
                        
                        }
                        ]
-            },
+                    },
             { "name": "Education",
                 "items": [
                    {
