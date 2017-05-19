@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icon_timescore_2x-2.png",
+      "filename" : "icon_viewdetails_1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "icon_viewdetails_2x.png",
       "scale" : "2x"
     },
     {

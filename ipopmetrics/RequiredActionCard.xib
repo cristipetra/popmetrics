@@ -37,7 +37,7 @@
                             <constraint firstAttribute="height" constant="101" id="EYT-hc-acw"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head" translatesAutoresizingMaskIntoConstraints="NO" id="PVt-59-ZBf" userLabel="HeaderImage">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_articlecard_splash" translatesAutoresizingMaskIntoConstraints="NO" id="PVt-59-ZBf" userLabel="HeaderImage">
                         <rect key="frame" x="316" y="49" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="dhi-xs-Jod"/>
@@ -105,6 +105,6 @@
     </objects>
     <resources>
         <image name="action_required" width="404" height="102"/>
-        <image name="head" width="78" height="78"/>
+        <image name="icon_articlecard_splash" width="81" height="81"/>
     </resources>
 </document>
