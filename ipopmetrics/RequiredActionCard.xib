@@ -31,13 +31,13 @@
                         <color key="textColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="action_required" translatesAutoresizingMaskIntoConstraints="NO" id="uaR-4f-pMe">
+                    <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="firefighter" translatesAutoresizingMaskIntoConstraints="NO" id="uaR-4f-pMe">
                         <rect key="frame" x="5" y="151" width="365" height="101"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="101" id="EYT-hc-acw"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_articlecard_splash" translatesAutoresizingMaskIntoConstraints="NO" id="PVt-59-ZBf" userLabel="HeaderImage">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_socialalert_splash" translatesAutoresizingMaskIntoConstraints="NO" id="PVt-59-ZBf" userLabel="HeaderImage">
                         <rect key="frame" x="316" y="49" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="dhi-xs-Jod"/>
@@ -104,7 +104,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="action_required" width="404" height="102"/>
-        <image name="icon_articlecard_splash" width="81" height="81"/>
+        <image name="firefighter" width="404" height="102"/>
+        <image name="icon_socialalert_splash" width="81" height="81"/>
     </resources>
 </document>

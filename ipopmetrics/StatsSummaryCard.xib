@@ -83,8 +83,8 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Potential Reach" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kVQ-me-YgT">
-                                        <rect key="frame" x="8.5" y="60.5" width="94.5" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Potential Reach" textAlignment="center" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kVQ-me-YgT">
+                                        <rect key="frame" x="8" y="60.5" width="95.5" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.71372549019607845" green="0.90980392156862744" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -93,12 +93,14 @@
                                 <color key="backgroundColor" red="0.15686274509803921" green="0.68235294117647061" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="gk3-ez-VjF" firstAttribute="top" secondItem="0l3-TL-kpv" secondAttribute="top" constant="19" id="8z7-6C-QoB"/>
+                                    <constraint firstItem="kVQ-me-YgT" firstAttribute="leading" relation="lessThanOrEqual" secondItem="0l3-TL-kpv" secondAttribute="leading" constant="8" id="KHP-2x-F8h"/>
                                     <constraint firstItem="P8n-xk-p8I" firstAttribute="centerX" secondItem="0l3-TL-kpv" secondAttribute="centerX" id="RGP-3G-i6a"/>
                                     <constraint firstItem="kVQ-me-YgT" firstAttribute="top" secondItem="gk3-ez-VjF" secondAttribute="bottom" constant="8" id="Xh1-yX-5D9"/>
                                     <constraint firstItem="gk3-ez-VjF" firstAttribute="centerX" secondItem="0l3-TL-kpv" secondAttribute="centerX" id="Z2K-HA-J0C"/>
                                     <constraint firstItem="P8n-xk-p8I" firstAttribute="top" secondItem="gk3-ez-VjF" secondAttribute="bottom" constant="43" id="d6F-uG-tYI"/>
                                     <constraint firstAttribute="height" constant="162" id="ee2-PW-eo8"/>
                                     <constraint firstItem="kVQ-me-YgT" firstAttribute="centerX" secondItem="0l3-TL-kpv" secondAttribute="centerX" id="efA-Kk-upP"/>
+                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="kVQ-me-YgT" secondAttribute="trailing" constant="8" id="ilN-6g-nCQ"/>
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="19" left="8" bottom="19" right="8"/>
                                 <userDefinedRuntimeAttributes>
