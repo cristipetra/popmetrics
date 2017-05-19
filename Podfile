@@ -16,6 +16,9 @@ target 'ipopmetrics' do
   pod 'RealmSwift'
   pod 'Google/SignIn'
   pod 'TwitterKit'
+
+#  pod 'SimpleLoadingButton', '~> 0.3'
+
   pod 'Chatto',  :git => 'https://github.com/badoo/Chatto.git', :branch => 'master'
   pod 'ChattoAdditions',  :git => 'https://github.com/badoo/Chatto.git', :branch => 'master'
 #  pod 'Chatto', '~> 3.0.1'

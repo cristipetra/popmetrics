@@ -13,14 +13,16 @@ import TwitterKit
 
 class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, GIDSignInDelegate {
 
-    func  handleRequiredAction(_ sender : UIButton, item: FeedItem) {
+    var actionButtonSaved : SimpleButton?
+    
+    func  handleRequiredAction(_ sender : SimpleButton, item: FeedItem) {
     
         switch(item.actionHandler) {
             case "connect_google_analytics":
-                connectGoogleAnalytics()
+                connectGoogleAnalytics(sender, item:item)
             
             case "connect_twitter":
-                connectTwitter()
+                connectTwitter(sender, item:item)
             
             default:
                 print("Unexpected handler "+item.actionHandler)
@@ -29,7 +31,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     }
     
     
-func connectGoogleAnalytics() {
+   func connectGoogleAnalytics(_ sender:SimpleButton, item:FeedItem) {
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().clientID = "15676396104-j0cma6ves7m66lkcp6mau2o62j6svo5l.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().serverClientID = "15676396104-hr43d2rk9fg466ahofmb5fisbaqpjl5v.apps.googleusercontent.com"
@@ -38,6 +40,8 @@ func connectGoogleAnalytics() {
         
         GIDSignIn.sharedInstance().scopes = [driveScope]
         GIDSignIn.sharedInstance().signOut()
+    
+        actionButtonSaved = sender
         GIDSignIn.sharedInstance().signIn()
         
     }
@@ -45,8 +49,11 @@ func connectGoogleAnalytics() {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
         if let error = error {
-            print ("Action failed")
-            // self.showError(message: error.localizedDescription)
+            self.actionButtonSaved!.isLoading = false
+            let nc = NotificationCenter.default
+            nc.post(name:Notification.Name(rawValue:"CardActionNotification"),
+                    object: nil,
+                    userInfo: ["success":false, "title":"Action error", "message":"Connection with Twitter has failed... \(error.localizedDescription)", "date":Date()])
             return
         }
         
@@ -58,40 +65,43 @@ func connectGoogleAnalytics() {
         
         // self.showProgressIndicator()
         api.connectGoogleAnalytics(userId: userId!, token: token!, serverAuthCode: serverAuthCode!, authentication: user.authentication) { responseDict, error in
-            //self.hideProgressIndicator()
+            self.actionButtonSaved!.isLoading = false
             if error != nil {
-                print("Error!")
-                // self.showError()
+               NotificationCenter.default.post(name:Notification.Name(rawValue:"CardActionNotification"),
+                        object: nil,
+                        userInfo: ["success":false, "title":"Action error", "message":"Connection with Google Analytics has failed.", "date":Date()])
             return
             } // error != nil
-            //self.handleLogInSuccess(userDict: responseDict?["user"] as? [String: Any])
-            print ("succeeded!")
+            self.actionButtonSaved!.setTitle("Connected.", for: .normal)
         } // usersApi.logInWithGoogle()
     }
         
         
-        func connectTwitter() {
-            print ("Connecting with Twitter!")
+    func connectTwitter(_ sender: SimpleButton, item:FeedItem) {
             Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
                 if (session != nil) {
-                    print("signed in as \(session?.userName)");
                     FeedApi().connectTwitter(userId: (session?.userID)!, token: (session?.authToken)!,
                                        tokenSecret: (session?.authTokenSecret)!) { responseDict, error in
-                        //self.hideProgressIndicator()
+                        sender.isLoading = false
                         if error != nil {
-                            print("Error!")
-                            // self.showError()
+                            let nc = NotificationCenter.default
+                            nc.post(name:Notification.Name(rawValue:"CardActionNotification"),
+                                    object: nil,
+                                    userInfo: ["success":false, "title":"Action error", "message":"Connection with Twitter has failed.", "date":Date()])
                             return
                         } // error != nil
-                        //self.handleLogInSuccess(userDict: responseDict?["user"] as? [String: Any])
-                        print ("succeeded!")
+                        else {
+                            sender.setTitle("Connected.", for: .normal)
+                            }
                     } // usersApi.logInWithGoogle()
- 
-                    
-                    
                     
                 } else {
-                    print("error: \(error?.localizedDescription)");
+                    sender.isLoading = false
+                    let nc = NotificationCenter.default
+                    nc.post(name:Notification.Name(rawValue:"CardActionNotification"),
+                            object: nil,
+                            userInfo: ["success":false, "title":"Action error", "message":"Connection with Twitter has failed... \(error?.localizedDescription)", "date":Date()])
+                    
                 }
             }
             

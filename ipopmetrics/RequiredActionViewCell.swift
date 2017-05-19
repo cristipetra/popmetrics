@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SimpleLoadingButton
 
 
 class RequiredActionViewCell: UITableViewCell {
@@ -16,10 +17,11 @@ class RequiredActionViewCell: UITableViewCell {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var bottomImage: UIImageView!
     
-    @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var actionButton: SimpleButton!
     
     var item: FeedItem?
     var actionHandler: CardActionHandler?
+    var indexPath: IndexPath?
     
     func configure(_ item: FeedItem, handler: CardActionHandler) {
         self.headerLabel.text = item.headerTitle
@@ -28,14 +30,15 @@ class RequiredActionViewCell: UITableViewCell {
         self.actionHandler = handler
         
         self.actionButton.setTitle(item.actionLabel, for: .normal)
-        
        
         self.actionButton.addTarget(self, action:#selector(handleAction(_:)), for: .touchDown)
 
     }
     
-    @objc func handleAction(_ sender: UIButton) {
+    @objc func handleAction(_ sender: SimpleButton) {
+        self.actionButton.isLoading = true        
         actionHandler?.handleRequiredAction(sender, item: self.item!)
+        
     }
     
 }

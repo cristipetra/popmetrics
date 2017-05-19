@@ -65,7 +65,7 @@ class FeedApi: BaseApi {
         let params = [
             "user_id":userId,
             "access_token": token,
-            "acesss_token_secret": tokenSecret
+            "access_token_secret": tokenSecret
             ] as [String : Any]
         
         Alamofire.request(ApiUrls.getConnectTwitterUrl(), method: .post, parameters: params, encoding: JSONEncoding.default,

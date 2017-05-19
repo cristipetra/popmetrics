@@ -52,6 +52,7 @@ PODS:
   - RealmSwift (2.7.0):
     - Realm (= 2.7.0)
   - RSKImageCropper (1.6.1)
+  - SimpleLoadingButton (0.3)
   - STPopup (1.8.2)
   - TwitterCore (2.8.0):
     - Fabric
@@ -70,6 +71,7 @@ DEPENDENCIES:
   - MGSwipeTableCell
   - RealmSwift
   - RSKImageCropper
+  - SimpleLoadingButton (~> 0.3)
   - STPopup
   - TwitterKit
 
@@ -110,10 +112,11 @@ SPEC CHECKSUMS:
   Realm: 07e5d3a9e0e41d65fd5f9f05150ed6295d0f093b
   RealmSwift: 6d06425d3900c86473c4f323bf6949b43fca22bc
   RSKImageCropper: 0df8c99e77a8ea7ca7a8b83ef468556f31584254
+  SimpleLoadingButton: 095b223c16abdbbf57ae5d4448d69edf70945e17
   STPopup: b69b3e7484ef7d2baec5f9ab2939f8a7bcdfe218
   TwitterCore: e959987be23c767004d29eb7fab8d85d8585a2e5
   TwitterKit: 3b6044a7320340326a4098f3e37aa1dbaeb94942
 
-PODFILE CHECKSUM: 572e6ab2ee7f23e94e8be132bf1b531ce21090e9
+PODFILE CHECKSUM: 24a5286d00f1426e7b4dd177d1eaa71c17f6fa48
 
 COCOAPODS: 1.2.1

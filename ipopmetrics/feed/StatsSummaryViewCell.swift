@@ -34,7 +34,7 @@ class StatsSummaryViewCell: UITableViewCell {
         
     }
     
-    @objc func handleAction(_ sender: UIButton) {
+    @objc func handleAction(_ sender: SimpleButton) {
         actionHandler?.handleRequiredAction(sender, item: self.item!)
     }
     

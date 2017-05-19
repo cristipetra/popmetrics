@@ -10,6 +10,7 @@ import UIKit
 import GoogleSignIn
 import MGSwipeTableCell
 import DGElasticPullToRefresh
+import SimpleLoadingButton
 
 class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
@@ -20,7 +21,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     fileprivate var completed = 0
     fileprivate var total = 100
     
-    fileprivate var selectedIndexPath: IndexPath?
     
     var requiredActionHandler = RequiredActionHandler()
     
@@ -35,10 +35,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         // Style elements
         navigationItem.title = "Feed"
 //        tableView.separatorStyle = .none
-        
+        tableView.allowsSelection = false
         
         let nc = NotificationCenter.default
-        nc.addObserver(forName:NSNotification.Name(rawValue: "SyncNotification"), object:nil, queue:nil, using:catchSyncNotifications)
+        nc.addObserver(forName:NSNotification.Name(rawValue: "CardActionNotification"), object:nil, queue:nil, using:catchCardActionNotification)
         
         let requiredActionCardNib = UINib(nibName: "RequiredActionCard", bundle: nil)
         tableView.register(requiredActionCardNib, forCellReuseIdentifier: "RequiredActionCard")
@@ -142,28 +142,20 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     
-    func catchSyncNotifications(notification:Notification) -> Void {
+    func catchCardActionNotification(notification:Notification) -> Void {
         
         self.hideProgressIndicator()
         guard let userInfo = notification.userInfo,
             let success    = userInfo["success"] as? Bool
-            // let property  = userInfo["property"] as? Property
             else {
-                print("Incomplete user info found in PropertySync notification")
+                self.presentAlertWithTitle("Error", message: "Unexpected error!. Incomplete error recovery data.")
                 return
-        }
+            }
         
         if !success {
-            self.presentAlertWithTitle("Error", message: "Home synchronization with the cloud has failed")
+            self.presentAlertWithTitle("Error", message: userInfo["message"] as! String ?? "Unknown error")
         }
         
-//        if self.sharingInProgress {
-//            self.sharingInProgress = false
-//            let textToShare = PropertyUtils.getPropertyShareMessage(property)
-//            let activityVC = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
-//            self.present(activityVC, animated: true, completion: nil)
-//            return
-//        }
         
     }
     
@@ -196,6 +188,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
+                cell.indexPath = indexPath
                 return cell
             
             case "action_history":

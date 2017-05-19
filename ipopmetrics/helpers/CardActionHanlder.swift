@@ -11,6 +11,6 @@ import UIKit
 
 protocol CardActionHandler {
     
-    func  handleRequiredAction(_ sender : UIButton, item: FeedItem)
+    func  handleRequiredAction(_ sender : SimpleButton, item: FeedItem)
     
 }
