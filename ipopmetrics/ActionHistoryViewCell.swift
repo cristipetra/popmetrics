@@ -19,7 +19,7 @@ class ActionHistoryViewCell: UITableViewCell {
     
     @IBOutlet weak var actionButton: UIButton!
     
-    func configure(_ item: FeedItem) {
+    func configure(_ item: FeedItem, handler: CardActionHandler) {
         self.headerLabel.text = item.headerTitle
 //        self.messageLabel.text = item.message
     }

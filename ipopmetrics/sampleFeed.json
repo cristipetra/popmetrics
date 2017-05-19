@@ -46,6 +46,21 @@
                        
                        }
                        ]
-            }
+            },
+            { "name": "Education",
+                "items": [
+                   {
+                   "type":"article_of_interest",
+                   "header_title":"Recommended  reading",
+                   "header_icon":"file://assets/icon1.png",
+                   "message":"Once upon a time there was a bad wolf living in a huge forrest ...",
+                   "action_handler":"article_of_interest",
+                   "action_label":"Read More",
+                   "action_uri":"http://alch.my/rares",
+                   "image":"http://ng.popmetrics.io/assets/firefighters.png"
+                   
+                   }
+                ]
+     }
     ]
 }

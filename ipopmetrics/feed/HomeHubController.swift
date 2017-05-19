@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import GoogleSignIn
 import MGSwipeTableCell
 import DGElasticPullToRefresh
 
-class HomeHubViewController: BaseTableViewController {
+class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     fileprivate var sharingInProgress = false
     
@@ -21,14 +22,20 @@ class HomeHubViewController: BaseTableViewController {
     
     fileprivate var selectedIndexPath: IndexPath?
     
+    var requiredActionHandler = RequiredActionHandler()
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        GIDSignIn.sharedInstance().uiDelegate = self
+
+        
         // Style elements
         navigationItem.title = "Feed"
-        tableView.separatorStyle = .none
+//        tableView.separatorStyle = .none
+        
         
         let nc = NotificationCenter.default
         nc.addObserver(forName:NSNotification.Name(rawValue: "SyncNotification"), object:nil, queue:nil, using:catchSyncNotifications)
@@ -39,15 +46,18 @@ class HomeHubViewController: BaseTableViewController {
         let actionHistoryCardNib = UINib(nibName: "ActionHistoryCard", bundle: nil)
         tableView.register(actionHistoryCardNib, forCellReuseIdentifier: "ActionHistoryCard")
         
+        let articleOfInterestCardNib = UINib(nibName: "ArticleOfInterestCard", bundle: nil)
+        tableView.register(articleOfInterestCardNib, forCellReuseIdentifier: "ArticleOfInterestCard")
+        
         
         self.fetchItems()
         
         
         
         
-        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+//        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+//        loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
+//        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             // Add your logic here
             // Do not forget to call dg_stopLoading() at the end
             
@@ -87,10 +97,10 @@ class HomeHubViewController: BaseTableViewController {
 //            }
             
             
-            self?.tableView.dg_stopLoading()
-            }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+//            self?.tableView.dg_stopLoading()
+//            }, loadingView: loadingView)
+//        tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
+//        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
         
         
@@ -161,6 +171,12 @@ class HomeHubViewController: BaseTableViewController {
         return sections[section].items.count
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section].name
+    }
+    
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let sectionIdx = (indexPath as NSIndexPath).section
@@ -174,19 +190,25 @@ class HomeHubViewController: BaseTableViewController {
             case "required_action":
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
                 cell.selectionStyle = .none
-                cell.configure(item)
+                cell.configure(item, handler:self.requiredActionHandler)
                 return cell
             
             case "action_history":
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ActionHistoryCard", for: indexPath) as! ActionHistoryViewCell
                 cell.selectionStyle = .none
-                cell.configure(item)
+                cell.configure(item, handler:self.requiredActionHandler)
+                return cell
+            
+            case "article_of_interest":
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleOfInterestCard", for: indexPath) as! ArticleOfInterestViewCell
+                cell.selectionStyle = .none
+                cell.configure(item, handler:self.requiredActionHandler)
                 return cell
             
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
                 cell.selectionStyle = .none
-                cell.configure(item)
+                cell.configure(item, handler:self.requiredActionHandler)
                 return cell
 
         }
@@ -215,7 +237,7 @@ class HomeHubViewController: BaseTableViewController {
     
     fileprivate func getCellHeight() -> CGFloat {
         let a =  CGFloat(((tableView.frame.width * 9.0) / 16.0) + 16) // 16 is the padding
-        return 300
+        return 340
         // return a
     }
     
@@ -280,6 +302,14 @@ class HomeHubViewController: BaseTableViewController {
         
         return [deleteBtn, shareBtn]
     }
+    
+    
+    ///
+    
+    @objc func handleRequiredAction(_ sender : UIButton){
+        print("handling required action")
+    }
+    
     
     
     

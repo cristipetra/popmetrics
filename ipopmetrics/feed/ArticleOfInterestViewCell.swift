@@ -1,8 +1,8 @@
 //
-//  RequiredActionCard.swift
+//  ArticleOfInterestViewCell.swift
 //  ipopmetrics
 //
-//  Created by Rares Pop on 16/05/2017.
+//  Created by Rares Pop on 18/05/2017.
 //  Copyright © 2017 Popmetrics. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class RequiredActionViewCell: UITableViewCell {
+class ArticleOfInterestViewCell: UITableViewCell {
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var headerImageIcon: UIImageView!
     @IBOutlet weak var messageLabel: UILabel!
@@ -29,9 +29,9 @@ class RequiredActionViewCell: UITableViewCell {
         
         self.actionButton.setTitle(item.actionLabel, for: .normal)
         
-       
+        
         self.actionButton.addTarget(self, action:#selector(handleAction(_:)), for: .touchDown)
-
+        
     }
     
     @objc func handleAction(_ sender: UIButton) {
