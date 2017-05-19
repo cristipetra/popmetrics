@@ -120,7 +120,7 @@
         <scene sceneID="7sh-0f-anS">
             <objects>
                 <navigationController id="CsM-lx-bVN" customClass="NavigationController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DGu-he-njX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DGu-he-njX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -196,7 +196,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hlI-OT-hrN">
-                                <rect key="frame" x="147.5" y="96" width="80" height="80"/>
+                                <rect key="frame" x="147.5" y="52" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="JLu-hy-Rol"/>
                                     <constraint firstAttribute="width" constant="80" id="zqB-DE-fq7"/>
@@ -207,7 +207,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(tap the icon to change your picture)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o80-3K-tKi">
-                                <rect key="frame" x="16" y="184" width="343" height="14.5"/>
+                                <rect key="frame" x="16" y="140" width="343" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -292,7 +292,7 @@
         <!--Concierge-->
         <scene sceneID="aQd-EV-7wF">
             <objects>
-                <viewController storyboardIdentifier="ConciergeViewController" id="mhc-LI-Iws" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConciergeChatViewController" id="mhc-LI-Iws" customClass="ConciergeChatViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8qj-oX-NIX"/>
                         <viewControllerLayoutGuide type="bottom" id="E3M-p9-6TV"/>
