@@ -9,14 +9,23 @@
 import Foundation
 import UIKit
 import GoogleSignIn
+import TwitterKit
 
 class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, GIDSignInDelegate {
 
     func  handleRequiredAction(_ sender : UIButton, item: FeedItem) {
     
-        if item.actionHandler == "connect_google_analytics" {
-            connectGoogleAnalytics()
-        }
+        switch(item.actionHandler) {
+            case "connect_google_analytics":
+                connectGoogleAnalytics()
+            
+            case "connect_twitter":
+                connectTwitter()
+            
+            default:
+                print("Unexpected handler "+item.actionHandler)
+        
+        }//switch
     }
     
     
@@ -59,5 +68,33 @@ func connectGoogleAnalytics() {
             print ("succeeded!")
         } // usersApi.logInWithGoogle()
     }
+        
+        
+        func connectTwitter() {
+            print ("Connecting with Twitter!")
+            Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
+                if (session != nil) {
+                    print("signed in as \(session?.userName)");
+                    FeedApi().connectTwitter(userId: (session?.userID)!, token: (session?.authToken)!,
+                                       tokenSecret: (session?.authTokenSecret)!) { responseDict, error in
+                        //self.hideProgressIndicator()
+                        if error != nil {
+                            print("Error!")
+                            // self.showError()
+                            return
+                        } // error != nil
+                        //self.handleLogInSuccess(userDict: responseDict?["user"] as? [String: Any])
+                        print ("succeeded!")
+                    } // usersApi.logInWithGoogle()
+ 
+                    
+                    
+                    
+                } else {
+                    print("error: \(error?.localizedDescription)");
+                }
+            }
+            
+        }
     
 }

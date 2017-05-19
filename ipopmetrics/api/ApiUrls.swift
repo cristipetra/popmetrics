@@ -40,7 +40,8 @@ private let ACCOUNT_EDIT_PATH = "/api/caas/me"
 
 private let USER_FEED_PATH = "/api/feed/me"
 
-private let CONNECT_GOOGLE_ANALYTICS = "/connect_google_analytics_with_token"
+private let CONNECT_GOOGLE_ANALYTICS = "/connect_google_analytics"
+private let CONNECT_TWITTER = "/connect_twitter"
 
 class ApiUrls {
     
@@ -124,6 +125,10 @@ class ApiUrls {
     
     static func getConnectGoogleAnalyticsUrl() -> String {
         return composedBaseUrl(CONNECT_GOOGLE_ANALYTICS)
+    }
+    
+    static func getConnectTwitterUrl() -> String {
+        return composedBaseUrl(CONNECT_TWITTER)
     }
     
     
