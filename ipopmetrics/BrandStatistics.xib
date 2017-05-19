@@ -73,6 +73,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="+ 40%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8n-xk-p8I">
                                         <rect key="frame" x="8" y="73" width="89" height="28"/>
@@ -98,6 +101,11 @@
                                     <constraint firstItem="P8n-xk-p8I" firstAttribute="top" secondItem="kVQ-me-YgT" secondAttribute="bottom" constant="4" id="z2o-jU-T1s"/>
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="19" left="8" bottom="19" right="8"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GXm-x7-1Nc" userLabel="View 2">
                                 <rect key="frame" x="117.5" y="0.0" width="112" height="162"/>
