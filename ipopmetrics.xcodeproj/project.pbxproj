@@ -49,6 +49,7 @@
 		D9AB86581ECED85A0050A7AB /* BrandInsightCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9AB86571ECED85A0050A7AB /* BrandInsightCard.xib */; };
 		D9D937881ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D937871ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib */; };
 		D9D9378A1ECDEEE200CC3EC2 /* StatsSummaryCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D937891ECDEEE200CC3EC2 /* StatsSummaryCard.xib */; };
+		D9EC7E351ECEE37A00A54B53 /* BestCourseCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9EC7E341ECEE37A00A54B53 /* BestCourseCard.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		D9AB86571ECED85A0050A7AB /* BrandInsightCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrandInsightCard.xib; sourceTree = "<group>"; };
 		D9D937871ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleOfInterestCard.xib; sourceTree = "<group>"; };
 		D9D937891ECDEEE200CC3EC2 /* StatsSummaryCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsSummaryCard.xib; sourceTree = "<group>"; };
+		D9EC7E341ECEE37A00A54B53 /* BestCourseCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BestCourseCard.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,7 +216,8 @@
 				11AAA5E71ECCD52A0099B50E /* ActionHistoryCard.xib */,
 				D9D937871ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib */,
 				D9AB86571ECED85A0050A7AB /* BrandInsightCard.xib */,
-				D9D937891ECDEEE200CC3EC2 /* BrandStatistics.xib */,
+				D9D937891ECDEEE200CC3EC2 /* StatsSummaryCard.xib */,
+				D9EC7E341ECEE37A00A54B53 /* BestCourseCard.xib */,
 			);
 			path = ipopmetrics;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				1178D6821E1E5AD9005B96C3 /* Assets.xcassets in Resources */,
 				1178D6801E1E5AD9005B96C3 /* Main.storyboard in Resources */,
 				D9D9378A1ECDEEE200CC3EC2 /* StatsSummaryCard.xib in Resources */,
+				D9EC7E351ECEE37A00A54B53 /* BestCourseCard.xib in Resources */,
 				11AAA5E61ECCD4200099B50E /* RequiredActionCard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
