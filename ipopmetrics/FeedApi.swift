@@ -60,6 +60,28 @@ class FeedApi: BaseApi {
         }
     }
     
+    func connectTwitter(userId:String, token:String, tokenSecret: String,
+                                callback: @escaping (_ resultDict: [String: Any]?, _ error: ApiError?) -> Void) {
+        let params = [
+            "user_id":userId,
+            "access_token": token,
+            "acesss_token_secret": tokenSecret
+            ] as [String : Any]
+        
+        Alamofire.request(ApiUrls.getConnectTwitterUrl(), method: .post, parameters: params, encoding: JSONEncoding.default,
+                          headers:createHeaders()).responseJSON { response in
+                            if let err = self.createErrorWithHttpResponse(response: response.response) {
+                                callback(nil, err)
+                                return
+                            }
+                            
+                            if let resultDict = response.result.value as? [String: Any] {
+                                callback(resultDict, nil)
+                            }
+                            
+        }
+    }
+    
    
     
 }

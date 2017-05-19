@@ -11,6 +11,7 @@ import CoreData
 import Fabric
 import Crashlytics
 import GoogleSignIn
+import TwitterKit
 //import STPopup
 
 
@@ -39,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Setup crashlytics
         // Fabric.with([Crashlytics.self])
 
+        Fabric.with([Twitter.self])
+        
         navigationController = NavigationController()
 
         let window = UIWindow(frame: UIScreen.main.bounds)

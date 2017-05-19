@@ -29,6 +29,7 @@
 		110A62F31ECEE6FB0052B478 /* TimeSeparatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A62F01ECEE6FB0052B478 /* TimeSeparatorPresenter.swift */; };
 		110A62F41ECEE6FB0052B478 /* TimeSeparatorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A62F11ECEE6FB0052B478 /* TimeSeparatorCollectionViewCell.swift */; };
 		110A62F61ECEF7AA0052B478 /* BestCourseViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A62F51ECEF7AA0052B478 /* BestCourseViewCell.swift */; };
+		110A62F81ECEFF400052B478 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110A62F71ECEFF400052B478 /* SafariServices.framework */; };
 		1120F1FE1ECDF48F00576E39 /* CardActionHanlder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1120F1FD1ECDF48F00576E39 /* CardActionHanlder.swift */; };
 		1120F2001ECDF4F200576E39 /* RequiredActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1120F1FF1ECDF4F200576E39 /* RequiredActionHandler.swift */; };
 		1120F2021ECDF93F00576E39 /* ArticleOfInterestViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1120F2011ECDF93F00576E39 /* ArticleOfInterestViewCell.swift */; };
@@ -114,6 +115,7 @@
 		110A62F01ECEE6FB0052B478 /* TimeSeparatorPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSeparatorPresenter.swift; sourceTree = "<group>"; };
 		110A62F11ECEE6FB0052B478 /* TimeSeparatorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSeparatorCollectionViewCell.swift; sourceTree = "<group>"; };
 		110A62F51ECEF7AA0052B478 /* BestCourseViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BestCourseViewCell.swift; sourceTree = "<group>"; };
+		110A62F71ECEFF400052B478 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		1120F1FD1ECDF48F00576E39 /* CardActionHanlder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardActionHanlder.swift; path = helpers/CardActionHanlder.swift; sourceTree = "<group>"; };
 		1120F1FF1ECDF4F200576E39 /* RequiredActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequiredActionHandler.swift; path = feed/RequiredActionHandler.swift; sourceTree = "<group>"; };
 		1120F2011ECDF93F00576E39 /* ArticleOfInterestViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleOfInterestViewCell.swift; path = feed/ArticleOfInterestViewCell.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				110A62F81ECEFF400052B478 /* SafariServices.framework in Frameworks */,
 				631BDFACE57815E87C781181 /* Pods_ipopmetrics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,6 +400,7 @@
 		3370F07CEEDAD25A735B8558 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				110A62F71ECEFF400052B478 /* SafariServices.framework */,
 				8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */,
 			);
 			name = Frameworks;
@@ -424,6 +428,7 @@
 				1178D6731E1E5AD9005B96C3 /* Resources */,
 				FD9FB4AF998AEE764DC3C42C /* [CP] Embed Pods Frameworks */,
 				B5BA09B8049FECDC31573D3E /* [CP] Copy Pods Resources */,
+				110A62F91ECF000F0052B478 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -554,6 +559,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		110A62F91ECF000F0052B478 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 03453f6778a6e9edcc7fc47df94276b095265959 fcdc0b37c7b3387ae8b47beb12b6d585830439c7986b7eac4e70a3f703183cdf";
+		};
 		2FDEA40A3122DBE207B14F34 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
