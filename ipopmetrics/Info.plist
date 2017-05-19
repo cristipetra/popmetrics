@@ -2,38 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    
-    <key>Fabric</key>
-    <dict>
-        <key>APIKey</key>
-        <string>03453f6778a6e9edcc7fc47df94276b095265959</string>
-        <key>Kits</key>
-        <array>
-            <dict>
-                <key>KitInfo</key>
-                <dict>
-                    <key>consumerKey</key>
-                    <string>XF0oODa6SptgIfeQg07zHBy72</string>
-                    <key>consumerSecret</key>
-                    <string>PBnI2RheKevTTnpf1wIyWTW4CJjW6qkt0U6AFyVulEjbNC1joS</string>
-                </dict>
-                <key>KitName</key>
-                <string>Twitter</string>
-            </dict>
-        </array>
-    </dict>
-    
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.15676396104-j0cma6ves7m66lkcp6mau2o62j6svo5l</string>
-			</array>
-		</dict>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -49,9 +17,39 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.8.0</string>
+	<string>0.8.1</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.15676396104-j0cma6ves7m66lkcp6mau2o62j6svo5l</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
-	<string>B2</string>
+	<string>B3</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>03453f6778a6e9edcc7fc47df94276b095265959</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict>
+					<key>consumerKey</key>
+					<string>XF0oODa6SptgIfeQg07zHBy72</string>
+					<key>consumerSecret</key>
+					<string>PBnI2RheKevTTnpf1wIyWTW4CJjW6qkt0U6AFyVulEjbNC1joS</string>
+				</dict>
+				<key>KitName</key>
+				<string>Twitter</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
