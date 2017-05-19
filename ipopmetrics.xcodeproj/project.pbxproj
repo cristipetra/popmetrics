@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		110A62CA1ECEDADC0052B478 /* StatsSummaryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A62C91ECEDADC0052B478 /* StatsSummaryViewCell.swift */; };
 		1120F1FE1ECDF48F00576E39 /* CardActionHanlder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1120F1FD1ECDF48F00576E39 /* CardActionHanlder.swift */; };
 		1120F2001ECDF4F200576E39 /* RequiredActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1120F1FF1ECDF4F200576E39 /* RequiredActionHandler.swift */; };
 		1120F2021ECDF93F00576E39 /* ArticleOfInterestViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1120F2011ECDF93F00576E39 /* ArticleOfInterestViewCell.swift */; };
@@ -47,7 +48,7 @@
 		631BDFACE57815E87C781181 /* Pods_ipopmetrics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */; };
 		D9AB86581ECED85A0050A7AB /* BrandInsightCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9AB86571ECED85A0050A7AB /* BrandInsightCard.xib */; };
 		D9D937881ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D937871ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib */; };
-		D9D9378A1ECDEEE200CC3EC2 /* BrandStatistics.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D937891ECDEEE200CC3EC2 /* BrandStatistics.xib */; };
+		D9D9378A1ECDEEE200CC3EC2 /* StatsSummaryCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D937891ECDEEE200CC3EC2 /* StatsSummaryCard.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		110A62C91ECEDADC0052B478 /* StatsSummaryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatsSummaryViewCell.swift; path = feed/StatsSummaryViewCell.swift; sourceTree = "<group>"; };
 		1120F1FD1ECDF48F00576E39 /* CardActionHanlder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardActionHanlder.swift; path = helpers/CardActionHanlder.swift; sourceTree = "<group>"; };
 		1120F1FF1ECDF4F200576E39 /* RequiredActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequiredActionHandler.swift; path = feed/RequiredActionHandler.swift; sourceTree = "<group>"; };
 		1120F2011ECDF93F00576E39 /* ArticleOfInterestViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleOfInterestViewCell.swift; path = feed/ArticleOfInterestViewCell.swift; sourceTree = "<group>"; };
@@ -117,7 +119,7 @@
 		9D5ECCAEA66BCED2B0405D78 /* Pods-ipopmetrics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.debug.xcconfig"; sourceTree = "<group>"; };
 		D9AB86571ECED85A0050A7AB /* BrandInsightCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrandInsightCard.xib; sourceTree = "<group>"; };
 		D9D937871ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleOfInterestCard.xib; sourceTree = "<group>"; };
-		D9D937891ECDEEE200CC3EC2 /* BrandStatistics.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrandStatistics.xib; sourceTree = "<group>"; };
+		D9D937891ECDEEE200CC3EC2 /* StatsSummaryCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsSummaryCard.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */,
 				11AAA5E91ECCD7040099B50E /* ActionHistoryViewCell.swift */,
 				1120F2011ECDF93F00576E39 /* ArticleOfInterestViewCell.swift */,
+				110A62C91ECEDADC0052B478 /* StatsSummaryViewCell.swift */,
 			);
 			name = feed;
 			sourceTree = "<group>";
@@ -449,7 +452,7 @@
 				11AAA5E81ECCD52A0099B50E /* ActionHistoryCard.xib in Resources */,
 				1178D6821E1E5AD9005B96C3 /* Assets.xcassets in Resources */,
 				1178D6801E1E5AD9005B96C3 /* Main.storyboard in Resources */,
-				D9D9378A1ECDEEE200CC3EC2 /* BrandStatistics.xib in Resources */,
+				D9D9378A1ECDEEE200CC3EC2 /* StatsSummaryCard.xib in Resources */,
 				11AAA5E61ECCD4200099B50E /* RequiredActionCard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,6 +527,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1125ADBB1E97ADF80004B4AC /* Popmetrics.xcdatamodeld in Sources */,
+				110A62CA1ECEDADC0052B478 /* StatsSummaryViewCell.swift in Sources */,
 				11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */,
 				113976A91E97C71300B535DF /* AccountViewController.swift in Sources */,
 				11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */,
