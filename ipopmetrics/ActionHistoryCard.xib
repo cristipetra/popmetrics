@@ -37,7 +37,7 @@
                             <constraint firstAttribute="height" constant="101" id="23O-Mf-jlM"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="yKl-vm-p4H" userLabel="HeaderImage">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ivon_historycard" translatesAutoresizingMaskIntoConstraints="NO" id="yKl-vm-p4H" userLabel="HeaderImage">
                         <rect key="frame" x="316" y="49" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="Lqo-pT-cle"/>
@@ -104,7 +104,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="clock" width="78" height="78"/>
+        <image name="ivon_historycard" width="78" height="78"/>
         <image name="orange_arrows" width="404" height="102"/>
     </resources>
 </document>

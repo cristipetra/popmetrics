@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "head.png",
+      "filename" : "Icon_Messages_NoMessages_1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Icon_Messages_NoMessages_2x.png",
       "scale" : "2x"
     },
     {
