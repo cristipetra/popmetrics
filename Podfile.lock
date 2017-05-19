@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.4.0)
+  - Chatto (3.0.1)
+  - ChattoAdditions (3.0.1):
+    - Chatto
   - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
   - CryptoSwift (0.6.9)
@@ -50,9 +53,15 @@ PODS:
     - Realm (= 2.7.0)
   - RSKImageCropper (1.6.1)
   - STPopup (1.8.2)
+  - TwitterCore (2.8.0):
+    - Fabric
+  - TwitterKit (2.8.1):
+    - TwitterCore (>= 2.8)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
+  - Chatto (from `https://github.com/badoo/Chatto.git`, branch `master`)
+  - ChattoAdditions (from `https://github.com/badoo/Chatto.git`, branch `master`)
   - Crashlytics
   - DGElasticPullToRefresh
   - Fabric
@@ -62,9 +71,28 @@ DEPENDENCIES:
   - RealmSwift
   - RSKImageCropper
   - STPopup
+  - TwitterKit
+
+EXTERNAL SOURCES:
+  Chatto:
+    :branch: master
+    :git: https://github.com/badoo/Chatto.git
+  ChattoAdditions:
+    :branch: master
+    :git: https://github.com/badoo/Chatto.git
+
+CHECKOUT OPTIONS:
+  Chatto:
+    :commit: 46361a9a52eba9d0f9b9f8e261cf6a14a5d011d8
+    :git: https://github.com/badoo/Chatto.git
+  ChattoAdditions:
+    :commit: 46361a9a52eba9d0f9b9f8e261cf6a14a5d011d8
+    :git: https://github.com/badoo/Chatto.git
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Chatto: 760a1577da85ce75821fc5a4ecdd89c17fab2cd7
+  ChattoAdditions: e44d3aaf236af16735c58c711d289250d4bc85f7
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   CryptoSwift: a22f6ba238e9ce4d26ee7bf45b9ed82e7122d4a0
   DGElasticPullToRefresh: 28f11a6026302a90f8ffebbc6e24748e584dddd3
@@ -83,7 +111,9 @@ SPEC CHECKSUMS:
   RealmSwift: 6d06425d3900c86473c4f323bf6949b43fca22bc
   RSKImageCropper: 0df8c99e77a8ea7ca7a8b83ef468556f31584254
   STPopup: b69b3e7484ef7d2baec5f9ab2939f8a7bcdfe218
+  TwitterCore: e959987be23c767004d29eb7fab8d85d8585a2e5
+  TwitterKit: 3b6044a7320340326a4098f3e37aa1dbaeb94942
 
-PODFILE CHECKSUM: 862830cd3d9af699defab68979a73c8a5d8d4c78
+PODFILE CHECKSUM: 572e6ab2ee7f23e94e8be132bf1b531ce21090e9
 
 COCOAPODS: 1.2.1

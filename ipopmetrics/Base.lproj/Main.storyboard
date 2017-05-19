@@ -96,13 +96,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dc-zz-5EC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-583" y="1514"/>
+            <point key="canvasLocation" x="-465" y="1509"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8Dw-Ig-Qo4">
+            <objects>
+                <viewController storyboardIdentifier="BoardingChatViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NIV-M2-dc9" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yh8-W1-j0M"/>
+                        <viewControllerLayoutGuide type="bottom" id="36k-8F-ayY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jbk-5q-n0F">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kQ9-bc-BCT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="636" y="1509"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7sh-0f-anS">
             <objects>
                 <navigationController id="CsM-lx-bVN" customClass="NavigationController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DGu-he-njX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DGu-he-njX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -140,7 +158,7 @@
                 <tabBarItem title="Feed" image="first" id="FdZ-LU-Uik"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oUZ-N0-Ku8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1375" y="267"/>
+            <point key="canvasLocation" x="3215" y="333"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="min-fm-dln">
@@ -158,6 +176,7 @@
                         <segue destination="inY-RB-BJy" kind="show" id="lvS-wa-WIl"/>
                         <segue destination="KcM-MX-1lY" kind="relationship" relationship="viewControllers" id="59w-tb-V7u"/>
                         <segue destination="aLn-zU-J6Q" kind="relationship" relationship="viewControllers" id="leB-oI-OSK"/>
+                        <segue destination="mhc-LI-Iws" kind="relationship" relationship="viewControllers" id="cJE-ZC-asH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hb4-4Y-tFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -268,7 +287,26 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2058" y="918"/>
+            <point key="canvasLocation" x="1186" y="-78"/>
+        </scene>
+        <!--Concierge-->
+        <scene sceneID="aQd-EV-7wF">
+            <objects>
+                <viewController storyboardIdentifier="ConciergeViewController" id="mhc-LI-Iws" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8qj-oX-NIX"/>
+                        <viewControllerLayoutGuide type="bottom" id="E3M-p9-6TV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2QM-8m-dkq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Concierge" image="first" id="d9o-pt-2Bo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AIR-8q-4Dq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1815" y="976"/>
         </scene>
     </scenes>
     <resources>
@@ -277,6 +315,6 @@
         <image name="user_profile" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6Qu-xE-gV1"/>
+        <segue reference="AvS-pC-ZwA"/>
     </inferredMetricsTieBreakers>
 </document>
