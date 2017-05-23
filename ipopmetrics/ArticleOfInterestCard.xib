@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="514"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Egh-zk-EDH" id="hGr-uD-lK5">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="514"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="513"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Phz-Ie-U2H" userLabel="HeaderLabel">
@@ -56,7 +56,7 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tdn-Ek-tun">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landscape-photographer-Scotland (1)" translatesAutoresizingMaskIntoConstraints="NO" id="tdn-Ek-tun">
                         <rect key="frame" x="5" y="217" width="365" height="274"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="tdn-Ek-tun" secondAttribute="height" multiplier="4:3" id="RyO-1J-I6e"/>
@@ -134,5 +134,6 @@
     </objects>
     <resources>
         <image name="icon_articlecard_splash" width="81" height="81"/>
+        <image name="landscape-photographer-Scotland (1)" width="1000" height="665"/>
     </resources>
 </document>
