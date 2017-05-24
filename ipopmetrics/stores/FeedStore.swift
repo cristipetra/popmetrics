@@ -36,12 +36,12 @@ public func getFeed() -> [FeedSection] {
         
         // delete existing
         try! realm.write {
+            realm.delete(realm.objects(StatsSummaryItem))
             realm.delete(realm.objects(FeedItem))
             realm.delete(realm.objects(FeedSection))
         }
         
         try! realm.write {
-            
         
             var scount = 0
             if let sections = dict["sections"] as? [[String:Any]] {
@@ -65,6 +65,18 @@ public func getFeed() -> [FeedSection] {
                             feedItem.actionHandler = (jitem["action_handler"] as? String)!
                             feedItem.actionLabel = (jitem["action_label"] as? String)!
                             feedItem.imageUri = jitem["image"] as? String
+                            
+                            if let stats = jitem["stats"] as?  [[String:Any]]{
+                                feedItem.statsSummaryItems.removeAll()
+                                for sitem in stats {
+                                    let statItem = StatsSummaryItem()
+                                    statItem.change = (sitem["change"] as? Float)!
+                                    statItem.value = (sitem["value"] as? Float)!
+                                    statItem.label = (sitem["label"] as? String)!
+                                    realm.add(statItem)
+                                    feedItem.statsSummaryItems.append(statItem)
+                                }
+                            }
                             
                             realm.add(feedItem)
                             feedSection.items.append(feedItem)

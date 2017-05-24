@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="423"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zNC-f8-fIY" id="zIv-yc-Jv8">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="422"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="422.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand Statistics" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ah8-ML-596" userLabel="HeaderLabel">
@@ -32,7 +32,7 @@
                             <constraint firstAttribute="height" constant="40" id="Ltu-Og-Ew9"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KY5-nv-XmX">
+                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KY5-nv-XmX" customClass="SimpleButton" customModule="ipopmetrics" customModuleProvider="target">
                         <rect key="frame" x="181" y="318" width="154" height="60"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -212,6 +212,15 @@
                 <outlet property="actionButton" destination="KY5-nv-XmX" id="W5r-hE-sPf"/>
                 <outlet property="headerImageIcon" destination="2ky-il-5q7" id="Tl1-6v-J5n"/>
                 <outlet property="headerLabel" destination="Ah8-ML-596" id="sIW-Zv-DMt"/>
+                <outlet property="stat1ChangeLabel" destination="P8n-xk-p8I" id="6SH-Rw-dVG"/>
+                <outlet property="stat1MetricLabel" destination="kVQ-me-YgT" id="xv7-V8-gO3"/>
+                <outlet property="stat1ValueLabel" destination="gk3-ez-VjF" id="fg3-hH-473"/>
+                <outlet property="stat2ChangeLabel" destination="dcq-pC-HdF" id="UUB-1z-i7X"/>
+                <outlet property="stat2MetricLabel" destination="n31-cj-nJB" id="Hzp-O2-5uQ"/>
+                <outlet property="stat2ValueLabel" destination="VtM-CS-qqC" id="oJ5-Y7-DHx"/>
+                <outlet property="stat3ChangeLabel" destination="1xG-Nn-KpB" id="zBn-EE-BbU"/>
+                <outlet property="stat3MetricLabel" destination="lzw-6V-8R4" id="igJ-ra-y68"/>
+                <outlet property="stat3ValueLabel" destination="nSe-Mi-Wus" id="It7-Er-UEe"/>
             </connections>
             <point key="canvasLocation" x="-19.5" y="105.5"/>
         </tableViewCell>

@@ -49,11 +49,17 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let articleOfInterestCardNib = UINib(nibName: "ArticleOfInterestCard", bundle: nil)
         tableView.register(articleOfInterestCardNib, forCellReuseIdentifier: "ArticleOfInterestCard")
         
+        let insightCardNib = UINib(nibName: "InsightCard", bundle: nil)
+        tableView.register(insightCardNib, forCellReuseIdentifier: "InsightCard")
+        
         let statsSummaryCardNib = UINib(nibName: "StatsSummaryCard", bundle: nil)
         tableView.register(statsSummaryCardNib, forCellReuseIdentifier: "StatsSummaryCard")
         
         let bestCourseCardNib = UINib(nibName: "BestCourseCard", bundle: nil)
         tableView.register(bestCourseCardNib, forCellReuseIdentifier: "BestCourseCard")
+        
+        let actionCardNib = UINib(nibName: "ActionCard", bundle: nil)
+        tableView.register(actionCardNib, forCellReuseIdentifier: "ActionCard")
         
         self.fetchItems()
         
@@ -215,6 +221,17 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.configure(item, handler:self.requiredActionHandler)
                 return cell
 
+            case "insight":
+                let cell = tableView.dequeueReusableCell(withIdentifier: "InsightCard", for: indexPath) as! InsightViewCell
+                cell.selectionStyle = .none
+                cell.configure(item, handler:self.requiredActionHandler)
+            return cell
+            
+            case "action":
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ActionCard", for: indexPath) as! ActionViewCell
+                cell.selectionStyle = .none
+                cell.configure(item, handler:self.requiredActionHandler)
+            return cell
             
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell

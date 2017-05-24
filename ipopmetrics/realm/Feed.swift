@@ -9,6 +9,13 @@
 import Foundation
 import RealmSwift
 
+
+class StatsSummaryItem: Object {
+    dynamic var value: Float = 0
+    dynamic var label: String = ""
+    dynamic var change: Float = 0
+}
+
 class FeedItem: Object {
     
     dynamic var index = 0
@@ -18,6 +25,9 @@ class FeedItem: Object {
     dynamic var headerSubtitle: String? = nil
     dynamic var headerIconUri:String? = nil
     dynamic var message:String? = nil
+    
+    let statsSummaryItems = List<StatsSummaryItem>()
+    
     dynamic var actionHandler = ""
     dynamic var actionLabel = ""
     dynamic var imageUri:String? = nil

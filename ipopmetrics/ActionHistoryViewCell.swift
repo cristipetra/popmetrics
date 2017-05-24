@@ -21,7 +21,7 @@ class ActionHistoryViewCell: UITableViewCell {
     
     func configure(_ item: FeedItem, handler: CardActionHandler) {
         self.headerLabel.text = item.headerTitle
-//        self.messageLabel.text = item.message
+        self.messageLabel.text = item.message
     }
     
 }

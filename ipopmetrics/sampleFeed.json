@@ -39,7 +39,7 @@
                        "type":"action_history",
                        "header_title":"Action History",
                        "header_icon":"file://assets/icon1.png",
-                       "message":"Twitter Posts (4)",
+                       "message":"Twitter Posts (4)\nFacebook Posts(1)\n",
                        "action_handler":"connect_twitter",
                        "action_label":"Connect",
                        "image":"http://ng.popmetrics.io/assets/firefighters.png"
@@ -49,7 +49,23 @@
                        "type":"stats_summary",
                        "header_title":"Brand Statistics",
                        "header_icon":"file://assets/icon1.png",
-                       "message":"Twitter Posts (4)",
+                       "stats": [
+                            {
+                             "value":1200,
+                             "change":40,
+                             "label": "Audience"
+                            },
+                            {
+                             "value":56,
+                             "change":17,
+                             "label": "Social Posts"
+                            },
+                            {
+                             "value":143,
+                             "change":47,
+                             "label": "Social Posts"
+                            }
+                       ],
                        "action_handler":"connect_twitter",
                        "action_label":"Traffic Report",
                        "image":"http://ng.popmetrics.io/assets/firefighters.png"
