@@ -140,11 +140,16 @@ class UsersApi: BaseApi {
     }
     
     
-    func logInWithSmsCode(_ smsCode: String,
-                                   callback: @escaping (_ userDict: [String: Any]?, _ error: ApiError?) -> Void) {
-        let params = [
-            "code": smsCode
+    func logInWithSmsCode(_ phoneNumber:String, smsCode: String,
+                            callback: @escaping (_ userDict: [String: Any]?, _ error: ApiError?) -> Void) {
+        var params = [
+            "code": smsCode,
+            "phone_number": phoneNumber,
+            "ios_udid": UIDevice.current.identifierForVendor!.uuidString
         ]
+        if let deviceToken = UserDefaults.standard.string(forKey:"deviceToken") {
+            params["ios_device_token"] = deviceToken
+        }
         Alamofire.request(ApiUrls.getLoginWithCodeUrl(), method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { response in
             if let err = self.createErrorWithHttpResponse(response: response.response) {
                 callback(nil, err)

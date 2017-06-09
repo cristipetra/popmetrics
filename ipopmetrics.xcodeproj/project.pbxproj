@@ -36,7 +36,6 @@
 		1120F2021ECDF93F00576E39 /* ArticleOfInterestViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1120F2011ECDF93F00576E39 /* ArticleOfInterestViewCell.swift */; };
 		1125ADAA1E96E67B0004B4AC /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1125ADA91E96E67B0004B4AC /* BaseTableViewController.swift */; };
 		1125ADAC1E96E7990004B4AC /* HomeHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1125ADAB1E96E7990004B4AC /* HomeHubController.swift */; };
-		1125ADBB1E97ADF80004B4AC /* Popmetrics.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1125ADB91E97ADF80004B4AC /* Popmetrics.xcdatamodeld */; };
 		1128B3F61ECF256600BDA58C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1128B3F11ECF256600BDA58C /* Info.plist */; };
 		1128B3F71ECF256600BDA58C /* SimpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128B3F31ECF256600BDA58C /* SimpleButton.swift */; };
 		1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128B3F41ECF256600BDA58C /* SimpleButtonControlState.swift */; };
@@ -51,6 +50,9 @@
 		113976B21E97CE5000B535DF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976B11E97CE5000B535DF /* MainTabBarController.swift */; };
 		113976B41E97D31B00B535DF /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976B31E97D31B00B535DF /* FeedStore.swift */; };
 		116431DF1E2D4E81009AA59E /* UsersApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116431DE1E2D4E81009AA59E /* UsersApi.swift */; };
+		116540BD1EEAC3A600417D61 /* Signin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 116540BC1EEAC3A600417D61 /* Signin.storyboard */; };
+		116540BF1EEAC61E00417D61 /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116540BE1EEAC61E00417D61 /* AppStoryboard.swift */; };
+		116540C11EEACD4000417D61 /* UsersStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116540C01EEACD4000417D61 /* UsersStore.swift */; };
 		1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */; };
 		1178D6801E1E5AD9005B96C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1178D67E1E1E5AD9005B96C3 /* Main.storyboard */; };
 		1178D6821E1E5AD9005B96C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1178D6811E1E5AD9005B96C3 /* Assets.xcassets */; };
@@ -61,13 +63,8 @@
 		11AAA5E61ECCD4200099B50E /* RequiredActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11AAA5E51ECCD4200099B50E /* RequiredActionCard.xib */; };
 		11AAA5E81ECCD52A0099B50E /* ActionHistoryCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11AAA5E71ECCD52A0099B50E /* ActionHistoryCard.xib */; };
 		11AAA5EA1ECCD7040099B50E /* ActionHistoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAA5E91ECCD7040099B50E /* ActionHistoryViewCell.swift */; };
-		11ACA9991E2CD1120021E64A /* LocalUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9971E2CD1120021E64A /* LocalUser+CoreDataProperties.swift */; };
-		11ACA99A1E2CD1120021E64A /* LocalUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9981E2CD1120021E64A /* LocalUser+CoreDataClass.swift */; };
-		11ACA99E1E2CD1960021E64A /* ConstantValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA99D1E2CD1960021E64A /* ConstantValues.swift */; };
 		11ACA9A11E2CD1B90021E64A /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA99F1E2CD1B90021E64A /* BaseApi.swift */; };
 		11ACA9A21E2CD1B90021E64A /* ApiUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A01E2CD1B90021E64A /* ApiUrls.swift */; };
-		11ACA9A51E2CD1C90021E64A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A31E2CD1C90021E64A /* Store.swift */; };
-		11ACA9A61E2CD1C90021E64A /* UsersStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A41E2CD1C90021E64A /* UsersStore.swift */; };
 		11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */; };
 		11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A91E2CE05D0021E64A /* CompletionView.swift */; };
 		11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */; };
@@ -130,7 +127,6 @@
 		1120F2011ECDF93F00576E39 /* ArticleOfInterestViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleOfInterestViewCell.swift; path = feed/ArticleOfInterestViewCell.swift; sourceTree = "<group>"; };
 		1125ADA91E96E67B0004B4AC /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewController.swift; path = helpers/BaseTableViewController.swift; sourceTree = "<group>"; };
 		1125ADAB1E96E7990004B4AC /* HomeHubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeHubController.swift; path = feed/HomeHubController.swift; sourceTree = "<group>"; };
-		1125ADBA1E97ADF80004B4AC /* Popmetrics.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Popmetrics.xcdatamodel; sourceTree = "<group>"; };
 		1128B3F11ECF256600BDA58C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1128B3F21ECF256600BDA58C /* SimpleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleButton.h; sourceTree = "<group>"; };
 		1128B3F31ECF256600BDA58C /* SimpleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleButton.swift; sourceTree = "<group>"; };
@@ -147,6 +143,10 @@
 		113976B11E97CE5000B535DF /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabBarController.swift; path = helpers/MainTabBarController.swift; sourceTree = "<group>"; };
 		113976B31E97D31B00B535DF /* FeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedStore.swift; path = stores/FeedStore.swift; sourceTree = "<group>"; };
 		116431DE1E2D4E81009AA59E /* UsersApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersApi.swift; path = api/UsersApi.swift; sourceTree = "<group>"; };
+		116540BB1EEAA17A00417D61 /* ipopmetrics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ipopmetrics.entitlements; sourceTree = "<group>"; };
+		116540BC1EEAC3A600417D61 /* Signin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signin.storyboard; sourceTree = "<group>"; };
+		116540BE1EEAC61E00417D61 /* AppStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoryboard.swift; sourceTree = "<group>"; };
+		116540C01EEACD4000417D61 /* UsersStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersStore.swift; path = stores/UsersStore.swift; sourceTree = "<group>"; };
 		1178D6751E1E5AD9005B96C3 /* ipopmetrics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ipopmetrics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1178D67F1E1E5AD9005B96C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -163,13 +163,8 @@
 		11AAA5E51ECCD4200099B50E /* RequiredActionCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequiredActionCard.xib; sourceTree = "<group>"; };
 		11AAA5E71ECCD52A0099B50E /* ActionHistoryCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionHistoryCard.xib; sourceTree = "<group>"; };
 		11AAA5E91ECCD7040099B50E /* ActionHistoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionHistoryViewCell.swift; sourceTree = "<group>"; };
-		11ACA9971E2CD1120021E64A /* LocalUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "LocalUser+CoreDataProperties.swift"; path = "models/managed_objects/LocalUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		11ACA9981E2CD1120021E64A /* LocalUser+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "LocalUser+CoreDataClass.swift"; path = "models/managed_objects/LocalUser+CoreDataClass.swift"; sourceTree = "<group>"; };
-		11ACA99D1E2CD1960021E64A /* ConstantValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConstantValues.swift; path = models/ConstantValues.swift; sourceTree = "<group>"; };
 		11ACA99F1E2CD1B90021E64A /* BaseApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseApi.swift; path = api/BaseApi.swift; sourceTree = "<group>"; };
 		11ACA9A01E2CD1B90021E64A /* ApiUrls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiUrls.swift; path = api/ApiUrls.swift; sourceTree = "<group>"; };
-		11ACA9A31E2CD1C90021E64A /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Store.swift; path = stores/Store.swift; sourceTree = "<group>"; };
-		11ACA9A41E2CD1C90021E64A /* UsersStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersStore.swift; path = stores/UsersStore.swift; sourceTree = "<group>"; };
 		11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = login/LoginViewController.swift; sourceTree = "<group>"; };
 		11ACA9A91E2CE05D0021E64A /* CompletionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompletionView.swift; path = views/CompletionView.swift; sourceTree = "<group>"; };
 		11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressHUD.swift; path = views/ProgressHUD.swift; sourceTree = "<group>"; };
@@ -302,6 +297,7 @@
 		1178D6771E1E5AD9005B96C3 /* ipopmetrics */ = {
 			isa = PBXGroup;
 			children = (
+				116540BB1EEAA17A00417D61 /* ipopmetrics.entitlements */,
 				1128B3F01ECF256600BDA58C /* SimpleButton */,
 				110A62CC1ECEDE430052B478 /* chat */,
 				11AAA5E21ECC8BEB0099B50E /* realm */,
@@ -310,15 +306,12 @@
 				11ACA9B11E2CE16A0021E64A /* login */,
 				11ACA9AE1E2CE0F00021E64A /* helpers */,
 				11ACA9AD1E2CE0A80021E64A /* views */,
-				11ACA98B1E2CCDD80021E64A /* models */,
 				11ACA98A1E2CCD600021E64A /* stores */,
 				11ACA9811E2CCCB40021E64A /* api */,
 				1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */,
 				11D8D9E81ECA37FC00CCDAC4 /* NavigationController.swift */,
-				1178D67E1E1E5AD9005B96C3 /* Main.storyboard */,
 				1178D6811E1E5AD9005B96C3 /* Assets.xcassets */,
 				1178D6831E1E5AD9005B96C3 /* LaunchScreen.storyboard */,
-				1119F6171ED56F34009997FF /* Boarding.storyboard */,
 				1178D6861E1E5AD9005B96C3 /* Info.plist */,
 				11D8D9EE1ECB1B9800CCDAC4 /* sampleFeed.json */,
 				11AAA5E51ECCD4200099B50E /* RequiredActionCard.xib */,
@@ -374,35 +367,18 @@
 		11ACA98A1E2CCD600021E64A /* stores */ = {
 			isa = PBXGroup;
 			children = (
-				11ACA9A31E2CD1C90021E64A /* Store.swift */,
-				11ACA9A41E2CD1C90021E64A /* UsersStore.swift */,
 				113976B31E97D31B00B535DF /* FeedStore.swift */,
+				116540C01EEACD4000417D61 /* UsersStore.swift */,
 			);
 			name = stores;
-			sourceTree = "<group>";
-		};
-		11ACA98B1E2CCDD80021E64A /* models */ = {
-			isa = PBXGroup;
-			children = (
-				1125ADB91E97ADF80004B4AC /* Popmetrics.xcdatamodeld */,
-				11ACA99D1E2CD1960021E64A /* ConstantValues.swift */,
-				11ACA9901E2CCE150021E64A /* managed_objects */,
-			);
-			name = models;
-			sourceTree = "<group>";
-		};
-		11ACA9901E2CCE150021E64A /* managed_objects */ = {
-			isa = PBXGroup;
-			children = (
-				11ACA9971E2CD1120021E64A /* LocalUser+CoreDataProperties.swift */,
-				11ACA9981E2CD1120021E64A /* LocalUser+CoreDataClass.swift */,
-			);
-			name = managed_objects;
 			sourceTree = "<group>";
 		};
 		11ACA9AD1E2CE0A80021E64A /* views */ = {
 			isa = PBXGroup;
 			children = (
+				116540BC1EEAC3A600417D61 /* Signin.storyboard */,
+				1178D67E1E1E5AD9005B96C3 /* Main.storyboard */,
+				1119F6171ED56F34009997FF /* Boarding.storyboard */,
 				11ACA9A91E2CE05D0021E64A /* CompletionView.swift */,
 				11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */,
 			);
@@ -412,6 +388,7 @@
 		11ACA9AE1E2CE0F00021E64A /* helpers */ = {
 			isa = PBXGroup;
 			children = (
+				116540BE1EEAC61E00417D61 /* AppStoryboard.swift */,
 				1128B3FA1ECF26D800BDA58C /* UIColorExtensions.swift */,
 				1120F1FD1ECDF48F00576E39 /* CardActionHanlder.swift */,
 				11ACA9AF1E2CE0FC0021E64A /* PopmetricsColor.swift */,
@@ -523,6 +500,14 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = KDADK6KY68;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					1178D68A1E1E5AD9005B96C3 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -561,6 +546,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				116540BD1EEAC3A600417D61 /* Signin.storyboard in Resources */,
 				D9D937881ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib in Resources */,
 				D9EC7E371ECF0D7E00A54B53 /* ActionCard.xib in Resources */,
 				1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */,
@@ -660,18 +646,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1125ADBB1E97ADF80004B4AC /* Popmetrics.xcdatamodeld in Sources */,
 				110A62CA1ECEDADC0052B478 /* StatsSummaryViewCell.swift in Sources */,
 				1128B3F71ECF256600BDA58C /* SimpleButton.swift in Sources */,
 				1128B3F91ECF256600BDA58C /* SimpleButtonStateChangeValue.swift in Sources */,
 				11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */,
 				113976A91E97C71300B535DF /* AccountViewController.swift in Sources */,
 				11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */,
+				116540C11EEACD4000417D61 /* UsersStore.swift in Sources */,
 				1128B3FD1ED2E01F00BDA58C /* ActionViewCell.swift in Sources */,
 				110A62D71ECEDE8B0052B478 /* FakeMessageSender.swift in Sources */,
 				1128B3FF1ED2E12300BDA58C /* InsightViewCell.swift in Sources */,
 				110A62F21ECEE6FB0052B478 /* TimeSeparatorModel.swift in Sources */,
-				11ACA9991E2CD1120021E64A /* LocalUser+CoreDataProperties.swift in Sources */,
 				110A62DA1ECEDE8B0052B478 /* BaseMessageCollectionViewCellAvatarStyle.swift in Sources */,
 				110A62EE1ECEE6F30052B478 /* DemoTextMessageViewModel.swift in Sources */,
 				110A62D81ECEDE8B0052B478 /* SlidingDatasSource.swift in Sources */,
@@ -681,13 +666,10 @@
 				11D8D9F11ECB58AB00CCDAC4 /* RequiredActionViewCell.swift in Sources */,
 				1120F2021ECDF93F00576E39 /* ArticleOfInterestViewCell.swift in Sources */,
 				1120F1FE1ECDF48F00576E39 /* CardActionHanlder.swift in Sources */,
-				11ACA99A1E2CD1120021E64A /* LocalUser+CoreDataClass.swift in Sources */,
 				110A62E21ECEE6D90052B478 /* DemoPhotoMessageViewModel.swift in Sources */,
 				110A62E81ECEE6E60052B478 /* SendingStatusPresenter.swift in Sources */,
 				116431DF1E2D4E81009AA59E /* UsersApi.swift in Sources */,
-				11ACA99E1E2CD1960021E64A /* ConstantValues.swift in Sources */,
 				11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */,
-				11ACA9A61E2CD1C90021E64A /* UsersStore.swift in Sources */,
 				113976AB1E97C74B00B535DF /* BaseViewController.swift in Sources */,
 				1128B3FB1ECF26D800BDA58C /* UIColorExtensions.swift in Sources */,
 				11AAA5EA1ECCD7040099B50E /* ActionHistoryViewCell.swift in Sources */,
@@ -699,7 +681,6 @@
 				113976AE1E97C83500B535DF /* TextFieldValidator.swift in Sources */,
 				110A62E11ECEE6D90052B478 /* DemoPhotoMessageModel.swift in Sources */,
 				110A62D61ECEDE8B0052B478 /* FakeMessageFactory.swift in Sources */,
-				11ACA9A51E2CD1C90021E64A /* Store.swift in Sources */,
 				110A62F61ECEF7AA0052B478 /* BestCourseViewCell.swift in Sources */,
 				1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */,
 				11D8D9E91ECA37FC00CCDAC4 /* NavigationController.swift in Sources */,
@@ -715,6 +696,7 @@
 				11ACA9A11E2CD1B90021E64A /* BaseApi.swift in Sources */,
 				110A62E01ECEE6D90052B478 /* DemoPhotoMessageHandler.swift in Sources */,
 				1120F2001ECDF4F200576E39 /* RequiredActionHandler.swift in Sources */,
+				116540BF1EEAC61E00417D61 /* AppStoryboard.swift in Sources */,
 				110A62F31ECEE6FB0052B478 /* TimeSeparatorPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -866,11 +848,12 @@
 			baseConfigurationReference = 9D5ECCAEA66BCED2B0405D78 /* Pods-ipopmetrics.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ipopmetrics/ipopmetrics.entitlements;
 				DEVELOPMENT_TEAM = KDADK6KY68;
 				INFOPLIST_FILE = ipopmetrics/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.iapp;
+				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 3.0;
@@ -882,11 +865,12 @@
 			baseConfigurationReference = 4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ipopmetrics/ipopmetrics.entitlements;
 				DEVELOPMENT_TEAM = KDADK6KY68;
 				INFOPLIST_FILE = ipopmetrics/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.iapp;
+				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 3.0;
@@ -987,20 +971,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		1125ADB91E97ADF80004B4AC /* Popmetrics.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				1125ADBA1E97ADF80004B4AC /* Popmetrics.xcdatamodel */,
-			);
-			currentVersion = 1125ADBA1E97ADF80004B4AC /* Popmetrics.xcdatamodel */;
-			name = Popmetrics.xcdatamodeld;
-			path = models/Popmetrics.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 1178D66D1E1E5AD9005B96C3 /* Project object */;
 }

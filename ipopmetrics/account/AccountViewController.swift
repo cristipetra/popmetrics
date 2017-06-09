@@ -38,17 +38,15 @@ class AccountViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let localUser = UsersStore.getInstance().getCredentials() {
-            nameTextField.text = localUser.name
-            emailLabel.text = localUser.email
-            if let imageUrl = localUser.imageURL {
-                UsersApi().getImageWithUrl(imageUrl) { image, error in
-                    if error != nil { return }
-                    DispatchQueue.main.async(execute: {
-                        self.imageButton.setImage(image, for: UIControlState())
-                    })
-                }
-            }
+        let localUser = UsersStore.getInstance().getLocalUser()
+        nameTextField.text = localUser.name
+        emailLabel.text = localUser.email
+        let imageUrl = ApiUrls.getAccountThumbnailUrl(localUser.id)
+        UsersApi().getImageWithUrl(imageUrl) { image, error in
+            if error != nil { return }
+            DispatchQueue.main.async(execute: {
+                self.imageButton.setImage(image, for: UIControlState())
+            })
         }
     }
     
@@ -86,18 +84,19 @@ class AccountViewController: BaseViewController {
     }
     
     @IBAction func didChangeNameValue(_ sender: TextFieldValidator) {
-        if let localUser = UsersStore.getInstance().getCredentials() {
-            if let name = nameTextField.text {
-                localUser.name = name
-            }
+        let localUser = UsersStore.getInstance().getLocalUser()
+        if let name = nameTextField.text {
+            localUser.name = name
+            UsersStore.getInstance().storeLocalUser(localUser)
         }
     }
     
     
     @IBAction func didPressLogOut(_ sender: AnyObject) {
-        UsersStore.getInstance().clearCredentials()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.setInitialViewController()
+//        UsersStore.getInstance().clearCredentials()
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        appDelegate.setInitialViewController()
+        print("Not implemented yet!")
     }
     
     @IBAction func dismissKeyboard(_ sender: AnyObject) {

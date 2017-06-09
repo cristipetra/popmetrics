@@ -76,15 +76,13 @@ class LoginViewController: UIViewController {
     @IBAction func didPressSendPhoneNumber(_ sender: Any) {
     
         let phoneNumber = phoneNumberTextField.text!
+        showProgressIndicator()
         UsersApi().sendCodeBySms(phoneNumber: phoneNumber) {userDict, error in
+            self.hideProgressIndicator()
             if error != nil {
-                self.hideProgressIndicator()
                 var message = "An error has occurred. Please try again later."
                 if error == ApiError.userMismatch || error == ApiError.userNotAuthenticated {
                     message = "User /Password combination not found."
-                }
-                else {
-                    // Crashlytics.sharedInstance().crash()
                 }
                 self.presentAlertWithTitle("Error", message: message)
                 return
@@ -96,16 +94,17 @@ class LoginViewController: UIViewController {
     
     @IBAction func didPressSendSmsCode(_ sender: Any) {
         let smsCode = smsCodeTextField.text!
-        
-        UsersApi().logInWithSmsCode(smsCode) {responseDict, error in
+        let phoneNumber = phoneNumberTextField.text!
+        showProgressIndicator()
+        UsersApi().logInWithSmsCode(phoneNumber, smsCode: smsCode) {responseDict, error in
             self.hideProgressIndicator()
             if error != nil {
                 let message = "An error has occurred. Please try again later."
                 self.presentAlertWithTitle("Error", message: message)
                 return
             }
-            let success = responseDict?["success"] as! Bool
-            if (!success) {
+            let code = responseDict?["code"] as! String
+            if code != "success" {
                 let message = responseDict?["message"] as! String
                 self.presentAlertWithTitle("Authentication failed.", message:message)
                 return
@@ -133,11 +132,10 @@ class LoginViewController: UIViewController {
     }
     
     internal func showViewControllerWithStoryboardID(_ sbID: String) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: sbID) {
-            DispatchQueue.main.async(execute: {
-                self.present(vc, animated: true, completion: nil)
-            })
-        }
+        let vc = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: sbID)
+        DispatchQueue.main.async(execute: {
+            self.present(vc, animated: true, completion: nil)
+        })
     }
     
     internal func showMainNavigationController() {
@@ -155,14 +153,12 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            _ = UsersStore.getInstance().createCredentials(
-                userID: userID!,
-                authToken: authToken!,
-                name: userDict["name"] as! String?,
-                email: userDict["email"] as! String?,
-                imageURL: userDict["imageUrl"] as! String?
-            )
-            UsersStore.getInstance().saveState()
+            let user = User()
+            user.id = userID!
+            user.authToken = authToken!
+            user.name = userDict["name"] as! String?
+            user.email = userDict["email"] as! String?
+            UsersStore.getInstance().storeLocalUser(user)
             Crashlytics.sharedInstance().setUserEmail(userDict["name"] as! String?)
             Crashlytics.sharedInstance().setUserIdentifier(userID!)
             Crashlytics.sharedInstance().setUserName(userDict["name"] as! String?)

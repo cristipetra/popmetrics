@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="30e-sl-kUA">
+            <objects>
+                <navigationController storyboardIdentifier="LoginNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="PH9-cg-7gw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="1xM-wk-aAQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Msv-bz-b9x" kind="relationship" relationship="rootViewController" id="5xS-Wm-YAC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DZV-Za-uDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6178" y="5006"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="j8T-X2-JfX">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="Msv-bz-b9x" customClass="LoginViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z6k-TM-4Cc"/>
+                        <viewControllerLayoutGuide type="bottom" id="iNK-pn-CLT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0wK-ry-XYl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Welcome to Popmetrics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQa-cg-Qxf">
+                                <rect key="frame" x="40" y="79" width="295" height="34"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cWd-gE-TVC">
+                                <rect key="frame" x="16" y="174" width="223" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Your phone number ?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HxO-xc-oO3">
+                                <rect key="frame" x="16" y="131" width="163.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" alpha="0.55000001192092896" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdx-CY-drf">
+                                <rect key="frame" x="259" y="174" width="100" height="30"/>
+                                <color key="backgroundColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="tintColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <state key="normal" title="Send code">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressSendPhoneNumber:" destination="Msv-bz-b9x" eventType="touchUpInside" id="t5h-TR-suV"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B2V-5a-eGc">
+                                <rect key="frame" x="16" y="261" width="223" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <button opaque="NO" alpha="0.55000001192092896" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCd-LH-66B">
+                                <rect key="frame" x="259" y="260" width="100" height="30"/>
+                                <color key="backgroundColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="tintColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressSendSmsCode:" destination="Msv-bz-b9x" eventType="touchUpInside" id="I7A-nA-04T"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Your activation code ?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kp1-W4-cJj">
+                                <rect key="frame" x="16" y="224" width="168.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.33784666660000001" green="0.56507998699999995" blue="0.90127849579999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="QQa-cg-Qxf" firstAttribute="leading" secondItem="0wK-ry-XYl" secondAttribute="leadingMargin" constant="24" id="9HR-j0-SXZ"/>
+                            <constraint firstItem="B2V-5a-eGc" firstAttribute="leading" secondItem="cWd-gE-TVC" secondAttribute="leading" id="AOH-oU-kZT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QQa-cg-Qxf" secondAttribute="trailing" constant="24" id="DKe-s1-hNz"/>
+                            <constraint firstItem="HxO-xc-oO3" firstAttribute="top" secondItem="QQa-cg-Qxf" secondAttribute="bottom" constant="20" id="HzO-Tg-71F"/>
+                            <constraint firstItem="B2V-5a-eGc" firstAttribute="centerY" secondItem="BCd-LH-66B" secondAttribute="centerY" id="Nbf-9Z-0iN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cWd-gE-TVC" secondAttribute="trailing" constant="120" id="OL5-Dy-KWF"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="HxO-xc-oO3" secondAttribute="leading" constant="10" id="XYb-4W-kRs"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="kp1-W4-cJj" secondAttribute="leading" constant="10" id="YSf-KH-xya"/>
+                            <constraint firstItem="cWd-gE-TVC" firstAttribute="top" secondItem="HxO-xc-oO3" secondAttribute="bottom" constant="20" id="bx6-ny-LvI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gdx-CY-drf" secondAttribute="trailing" constant="10" id="dLe-cn-OjA"/>
+                            <constraint firstItem="B2V-5a-eGc" firstAttribute="leading" secondItem="0wK-ry-XYl" secondAttribute="leadingMargin" constant="10" id="fEw-i8-hLa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="B2V-5a-eGc" secondAttribute="trailing" constant="120" id="fzI-an-Iiy"/>
+                            <constraint firstItem="kp1-W4-cJj" firstAttribute="top" secondItem="cWd-gE-TVC" secondAttribute="bottom" constant="20" id="hUO-89-A1w"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="cWd-gE-TVC" secondAttribute="leading" constant="10" id="iEK-Of-ovg"/>
+                            <constraint firstItem="gdx-CY-drf" firstAttribute="centerY" secondItem="cWd-gE-TVC" secondAttribute="centerY" id="iut-j4-nSU"/>
+                            <constraint firstItem="QQa-cg-Qxf" firstAttribute="top" secondItem="z6k-TM-4Cc" secondAttribute="bottom" constant="15" id="nTK-Rh-CsU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BCd-LH-66B" secondAttribute="trailing" constant="10" id="qJF-QJ-H44"/>
+                            <constraint firstItem="B2V-5a-eGc" firstAttribute="top" secondItem="kp1-W4-cJj" secondAttribute="bottom" constant="20" id="z50-LY-sdd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="yaV-UZ-low"/>
+                    <connections>
+                        <outlet property="phoneNumberTextField" destination="cWd-gE-TVC" id="YfE-Rb-the"/>
+                        <outlet property="sendPhoneNumberButton" destination="gdx-CY-drf" id="lEk-AF-1BX"/>
+                        <outlet property="smsCodeTextField" destination="B2V-5a-eGc" id="JHo-iJ-MJm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yt5-zv-NlN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5295.1999999999998" y="5005.5472263868069"/>
+        </scene>
+    </scenes>
+</document>

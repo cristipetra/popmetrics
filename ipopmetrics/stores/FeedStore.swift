@@ -17,7 +17,7 @@ class FeedStore {
     }
     
     
-public func getFeed() -> [FeedSection] {
+    public func getFeed() -> [FeedSection] {
         let realm = try! Realm()
         let sections = realm.objects(FeedSection.self).sorted(byKeyPath: "index")
         

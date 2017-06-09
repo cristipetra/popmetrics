@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import CoreData
 import Fabric
 import Crashlytics
 import GoogleSignIn
 import TwitterKit
+import UserNotifications
 //import STPopup
 
 
@@ -35,8 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        usersStore = UsersStore(context: managedObjectContext)
         feedStore = FeedStore()
+        usersStore = UsersStore()
+        
         // Setup crashlytics
         // Fabric.with([Crashlytics.self])
 
@@ -46,15 +47,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
-        window.rootViewController = storyBoard.instantiateViewController(withIdentifier: SBID_MAIN_TAB_VC)
+        window.rootViewController = getInitialViewController()
         window.makeKeyAndVisible()
         
-        application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
+        registerForPushNotifications()
         
-//        feedItemsStore = FeedItemsStore(context: managedObjectContext)
-//        setInitialViewController()
-
-//        open(viewURI: .homeHubViewURI, animated: false)
+        // Check if launched from notification
+        if let notification = launchOptions?[.remoteNotification] as? [String: AnyObject] {
+            let aps = notification["aps"] as! [String: AnyObject]
+            print("launched from notifications ... ")
+            
+        }
+        
         
         return true
     }
@@ -89,82 +93,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func getInitialViewController() -> UIViewController {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         if !isLoggedIn() {
-            return storyBoard.instantiateViewController(withIdentifier: SBID_LOGIN_NAV_VC)
+            return AppStoryboard.Signin.instance.instantiateViewController(withIdentifier: SBID_LOGIN_NAV_VC)
         }
-        return storyBoard.instantiateViewController(withIdentifier: SBID_MAIN_TAB_VC)
+        return AppStoryboard.Main.instance.instantiateViewController(withIdentifier: SBID_MAIN_TAB_VC)
+
     }
     
     func isLoggedIn() -> Bool {
-        return usersStore.hasCredentials()
+        let defaults = UserDefaults.standard
+        if defaults.string(forKey: "userId") != nil { return true }
+            else { return false}
     }
 
-    
-    // MARK: - Core Data stack
-    
-    lazy var applicationDocumentsDirectory: URL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.athanasys.Homzen" in the application's documents Application Support directory.
-        let urls = FileManager().urls(for: .documentDirectory, in: .userDomainMask)
-        return urls[urls.count-1]
-    }()
-    
-    lazy var managedObjectModel: NSManagedObjectModel = {
-        // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        let modelURL = Bundle.main.url(forResource: "Popmetrics", withExtension: "momd")!
-        return NSManagedObjectModel(contentsOf: modelURL)!
-    }()
-    
-    lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
-        // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
-        // Create the coordinator and store
-        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.appendingPathComponent("PopmetricsCoreData.sqlite")
-        var failureReason = "There was an error creating or loading the application's saved data."
-        do {
-            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
-        } catch {
-            // Report any error we got.
-            var dict = [String: Any]()
-            dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
-            dict[NSLocalizedFailureReasonErrorKey] = failureReason
-            
-            dict[NSUnderlyingErrorKey] = error
-            let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
-            // Replace this with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog("Unresolved error \(wrappedError), \(wrappedError.userInfo)")
-            abort()
-        }
-        
-        return coordinator
-    }()
-    
-    lazy var managedObjectContext: NSManagedObjectContext = {
-        // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
-        let coordinator = self.persistentStoreCoordinator
-        var managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        managedObjectContext.persistentStoreCoordinator = coordinator
-        return managedObjectContext
-    }()
-    
-    // MARK: - Core Data Saving support
-    
-    func saveContext () {
-        if managedObjectContext.hasChanges {
-            do {
-                try managedObjectContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-                abort()
-            }
-        }
-    }
-    
-    
+
     
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool {
         let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String
@@ -204,10 +146,93 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
         navigationController?.pushViewController(viewController, animated: animated)
     }
-
-
+    
+    // PUSH NOTIFICATIONS
+    
+    
+    func application(
+        _ application: UIApplication,
+        didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+        fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        let aps = userInfo["aps"] as! [String: AnyObject]
+        
+//        if aps["content-available"] as? Int == 1 {
+//            let podcastStore = PodcastStore.sharedStore
+//            podcastStore.refreshItems { didLoadNewItems in
+//                completionHandler(didLoadNewItems ? .newData : .noData)
+//            }
+//        } else  {
+//            _ = NewsItem.makeNewsItem(aps)
+//            completionHandler(.newData)
+//        }
+    }
+    
+    
+    
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            
+            print("Permission granted: \(granted)")
+            guard granted else { return }
+            
+            self.getNotificationSettings()
+        }
+    }
+    
+    func getNotificationSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            print("Notification settings: \(settings)")
+            guard settings.authorizationStatus == .authorized else { return }
+            UIApplication.shared.registerForRemoteNotifications()
+        }
+    }
+    
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let tokenParts = deviceToken.map { data -> String in
+            return String(format: "%02.2hhx", data)
+        }
+        
+        let token = tokenParts.joined()
+        let defaults = UserDefaults.standard
+        defaults.set(token, forKey: "deviceToken")
+        let deviceID = UIDevice.current.identifierForVendor!.uuidString
+        defaults.set(deviceID, forKey:"deviceId")
+        
+    }
+    
+    func application(_ application: UIApplication,
+                     didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register: \(error)")
+    }
+    
     
 
 
 }
+
+//extension AppDelegate: UNUserNotificationCenterDelegate {
+//    
+//    func userNotificationCenter(_ center: UNUserNotificationCenter,
+//                                didReceive response: UNNotificationResponse,
+//                                withCompletionHandler completionHandler: @escaping () -> Void) {
+//        
+//        let userInfo = response.notification.request.content.userInfo
+//        let aps = userInfo["aps"] as! [String: AnyObject]
+//        
+//        if let newsItem = NewsItem.makeNewsItem(aps) {
+//            (window?.rootViewController as? UITabBarController)?.selectedIndex = 1
+//            
+//            if response.actionIdentifier == viewActionIdentifier,
+//                let url = URL(string: newsItem.link) {
+//                let safari = SFSafariViewController(url: url)
+//                window?.rootViewController?.present(safari, animated: true, completion: nil)
+//            }
+//        }
+//        
+//        completionHandler()
+//    }
+//}
 
