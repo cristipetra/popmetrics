@@ -15,6 +15,7 @@ target 'ipopmetrics' do
   pod 'STPopup'
   pod 'RealmSwift'
   pod 'Google/SignIn'
+  pod 'TwitterCore', '~> 2.8.0',
   pod 'TwitterKit', '~>  2.8.1'
 
 #  pod 'SimpleLoadingButton', '~> 0.3'
