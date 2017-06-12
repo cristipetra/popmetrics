@@ -31,7 +31,7 @@ class UsersStore {
         return user
     }
     
-func storeLocalUser(_ user:User) {
+    func storeLocalUser(_ user:User) {
         let defaults = UserDefaults.standard
         defaults.set(user.name, forKey: "userName")
         defaults.set(user.email, forKey: "userEmail")

@@ -118,14 +118,15 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     func fetchItems() {
-        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
-        let jsonData : NSData = NSData(contentsOfFile: path!)!
+//        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
+//        let jsonData : NSData = NSData(contentsOfFile: path!)!
         
-        let dict = try! JSONSerialization.jsonObject(with: jsonData as Data, options: []) as! [String:Any]
-        
-        let feedStore = FeedStore.getInstance()
-        feedStore.storeFeed(dict)
-        self.sections = feedStore.getFeed()
+        FeedApi().getItems("5720d6a12f522134a29e3054") { responseDict, error in
+            let dict = responseDict?["data"]
+            let feedStore = FeedStore.getInstance()
+            feedStore.storeFeed(dict as! [String : Any])
+            self.sections = feedStore.getFeed()
+        }
         
     }
     

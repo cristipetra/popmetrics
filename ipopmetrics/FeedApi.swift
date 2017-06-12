@@ -12,14 +12,16 @@ import GoogleSignIn
 
 class FeedApi: BaseApi {
     
-    func getItems(sinceDate: Date,
-                       callback: @escaping (_ resultDict: [String: Any]?, _ error: ApiError?) -> Void) {
+    func getItems(_ brandId: String,
+                  callback: @escaping (_ resultDict: [String: Any]?, _ error: ApiError?) -> Void) {
+        
         let params = [
-            "sinceDate": 0
+            "a": 0
         ]
         
         
-        Alamofire.request(ApiUrls.getUserFeedUrl(), method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { response in
+        Alamofire.request(ApiUrls.getMyBrandFeedUrl("5720d6a12f522134a29e3054"), method: .get, parameters: params,
+                          encoding: JSONEncoding.default, headers:createHeaders()).responseJSON { response in
             if let err = self.createErrorWithHttpResponse(response: response.response) {
                 callback(nil, err)
                 return
@@ -33,7 +35,7 @@ class FeedApi: BaseApi {
     }
     
     
-    func connectGoogleAnalytics(userId:String, token:String, serverAuthCode: String,
+    func connectGoogleAnalytics(userId:String, brandId:String,  token:String, serverAuthCode: String,
                                 authentication:GIDAuthentication,
                                 callback: @escaping (_ resultDict: [String: Any]?, _ error: ApiError?) -> Void) {
         let params = [
@@ -46,7 +48,7 @@ class FeedApi: BaseApi {
             "scopes": GIDSignIn.sharedInstance().scopes
         ] as [String : Any]
         
-        Alamofire.request(ApiUrls.getConnectGoogleAnalyticsUrl(), method: .post, parameters: params, encoding: JSONEncoding.default,
+        Alamofire.request(ApiUrls.getConnectGoogleAnalyticsUrl(brandId), method: .post, parameters: params, encoding: JSONEncoding.default,
                           headers:createHeaders()).responseJSON { response in
             if let err = self.createErrorWithHttpResponse(response: response.response) {
                 callback(nil, err)
@@ -60,7 +62,7 @@ class FeedApi: BaseApi {
         }
     }
     
-    func connectTwitter(userId:String, token:String, tokenSecret: String,
+    func connectTwitter(userId:String, brandId:String, token:String, tokenSecret: String,
                                 callback: @escaping (_ resultDict: [String: Any]?, _ error: ApiError?) -> Void) {
         let params = [
             "user_id":userId,
@@ -68,7 +70,7 @@ class FeedApi: BaseApi {
             "access_token_secret": tokenSecret
             ] as [String : Any]
         
-        Alamofire.request(ApiUrls.getConnectTwitterUrl(), method: .post, parameters: params, encoding: JSONEncoding.default,
+        Alamofire.request(ApiUrls.getConnectTwitterUrl(brandId), method: .post, parameters: params, encoding: JSONEncoding.default,
                           headers:createHeaders()).responseJSON { response in
                             if let err = self.createErrorWithHttpResponse(response: response.response) {
                                 callback(nil, err)

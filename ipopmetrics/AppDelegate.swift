@@ -43,6 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Fabric.with([Twitter.self])
         
+        
+        var configureError: NSError?
+        
         navigationController = NavigationController()
 
         let window = UIWindow(frame: UIScreen.main.bounds)

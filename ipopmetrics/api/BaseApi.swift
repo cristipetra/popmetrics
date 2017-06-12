@@ -26,7 +26,7 @@ class BaseApi {
     internal func createHeaders() -> HTTPHeaders {
         var headers = [String: String]()
 //        if let localUser = UsersStore.getInstance().getCredentials() {
-            headers["Authorization"] = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODE0MzEzNjcsImlhdCI6MTQ5NTAzMTM2NywibmJmIjoxNDk1MDMxMzY3LCJqdGkiOiI1NDIwYTkyMC00YTJmLTQ0MTAtYjZiMC1iZTBlNGYzZTBiMWUiLCJpZGVudGl0eSI6IjU5MWM0MGM4YWExNDM5YzZmNGI1NTdjZiIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyIsInVzZXJfY2xhaW1zIjp7fX0.l-12LFxgeE2dkqh0EinKAL8FYfFkFaNYgPLdAh5dIFE"
+            headers["Authorization"] = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODI1NDI2NDUsImlhdCI6MTQ5NjE0MjY0NSwibmJmIjoxNDk2MTQyNjQ1LCJqdGkiOiIzYTJkY2ZkYS0yZGRjLTRiYjUtOWNhNi1mZTZlNTM1YjU2MzkiLCJpZGVudGl0eSI6IjU5MjgwOTZmYWExNDM5YzZmNGI1YzM2MSIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyIsInVzZXJfY2xhaW1zIjp7fX0.3mutdjP-EbOdesuv3j4zLltpNrxs_5r183LW_dOJBiw"
                 // + localUser.authToken!
 //        }
         return headers

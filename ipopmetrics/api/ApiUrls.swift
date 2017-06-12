@@ -13,7 +13,7 @@ import Foundation
 private let PROTOCOL = "http"
 // private let HOST = "api.popmetrics.io"
 // private let PORT = 443
-private let HOST = "192.168.1.114"
+private let HOST = "192.168.1.111"
 // private let HOST = "10.0.1.30"
 // private let HOST = "72.20.10.2"
 // private let PORT = 5055
@@ -40,10 +40,10 @@ private let ACCOUNT_INFO_PATH = "/api/caas/me"
 private let ACCOUNT_EDIT_PATH = "/api/caas/me"
 private let ACCOUNT_THUMBNAIL_PATH_FORMAT = "/api/caas/user/%@/image/thumbnail"
 
-private let USER_FEED_PATH = "/api/feed/me"
+private let USER_FEED_PATH = "/api/market/brand/%@/feed"
 
-private let CONNECT_GOOGLE_ANALYTICS = "/connect_google_analytics"
-private let CONNECT_TWITTER = "/connect_twitter"
+private let CONNECT_GOOGLE_ANALYTICS = "/api/market/brand/%@/connect_google_analytics"
+private let CONNECT_TWITTER = "/api/market/brand/%@/connect_twitter"
 
 class ApiUrls {
     
@@ -125,16 +125,16 @@ class ApiUrls {
         return composedBaseUrl(LOGIN_WITH_CODE_PATH)
     }
     
-    static func getUserFeedUrl() -> String {
-        return composedBaseUrl(USER_FEED_PATH)
+    static func getMyBrandFeedUrl(_ brandId:String) -> String {
+        return composedBaseUrl(String(format:USER_FEED_PATH, brandId))
     }
     
-    static func getConnectGoogleAnalyticsUrl() -> String {
-        return composedBaseUrl(CONNECT_GOOGLE_ANALYTICS)
+    static func getConnectGoogleAnalyticsUrl(_ brandId:String) -> String {
+        return composedBaseUrl(String(format:CONNECT_GOOGLE_ANALYTICS, brandId))
     }
     
-    static func getConnectTwitterUrl() -> String {
-        return composedBaseUrl(CONNECT_TWITTER)
+    static func getConnectTwitterUrl(_ brandId:String) -> String {
+        return composedBaseUrl(String(format:CONNECT_TWITTER, brandId))
     }
     
     

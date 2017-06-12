@@ -29,12 +29,19 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         
         }//switch
     }
+   
+    func application(_ application: UIApplication,
+                     open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url,
+                                                 sourceApplication: sourceApplication,
+                                                 annotation: annotation)
+    }
+    
     
     
    func connectGoogleAnalytics(_ sender:SimpleButton, item:FeedItem) {
         GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().clientID = "15676396104-j0cma6ves7m66lkcp6mau2o62j6svo5l.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance().serverClientID = "15676396104-hr43d2rk9fg466ahofmb5fisbaqpjl5v.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().clientID = "850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com"
     
         let driveScope = "https://www.googleapis.com/auth/analytics.readonly"
         
@@ -64,7 +71,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         let api = FeedApi()
         
         // self.showProgressIndicator()
-        api.connectGoogleAnalytics(userId: userId!, token: token!, serverAuthCode: serverAuthCode!, authentication: user.authentication) { responseDict, error in
+        api.connectGoogleAnalytics(userId: userId!, brandId:"5720d6a12f522134a29e3054", token: token!, serverAuthCode: serverAuthCode!, authentication: user.authentication) { responseDict, error in
             self.actionButtonSaved!.isLoading = false
             if error != nil {
                NotificationCenter.default.post(name:Notification.Name(rawValue:"CardActionNotification"),
@@ -80,7 +87,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     func connectTwitter(_ sender: SimpleButton, item:FeedItem) {
             Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
                 if (session != nil) {
-                    FeedApi().connectTwitter(userId: (session?.userID)!, token: (session?.authToken)!,
+                    FeedApi().connectTwitter(userId: (session?.userID)!, brandId:"5720d6a12f522134a29e3054", token: (session?.authToken)!,
                                        tokenSecret: (session?.authTokenSecret)!) { responseDict, error in
                         sender.isLoading = false
                         if error != nil {
