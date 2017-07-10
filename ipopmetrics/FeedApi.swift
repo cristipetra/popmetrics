@@ -20,7 +20,7 @@ class FeedApi: BaseApi {
         ]
         
         
-        Alamofire.request(ApiUrls.getMyBrandFeedUrl("5720d6a12f522134a29e3054"), method: .get, parameters: params,
+        Alamofire.request(ApiUrls.getMyBrandFeedUrl(brandId), method: .get, parameters: params,
                           encoding: JSONEncoding.default, headers:createHeaders()).responseJSON { response in
             if let err = self.createErrorWithHttpResponse(response: response.response) {
                 callback(nil, err)

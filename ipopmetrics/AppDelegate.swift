@@ -11,6 +11,7 @@ import Fabric
 import Crashlytics
 import GoogleSignIn
 import TwitterKit
+import FBSDKCoreKit
 import UserNotifications
 //import STPopup
 
@@ -42,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Fabric.with([Crashlytics.self])
 
         Fabric.with([Twitter.self])
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         
         var configureError: NSError?
@@ -201,7 +203,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let token = tokenParts.joined()
         let defaults = UserDefaults.standard
         defaults.set(token, forKey: "deviceToken")
-        let deviceID = UIDevice.current.identifierForVendor!.uuidString
+        let deviceID = UIDevice.current.name
         defaults.set(deviceID, forKey:"deviceId")
         
     }

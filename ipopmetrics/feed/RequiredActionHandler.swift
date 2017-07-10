@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import GoogleSignIn
 import TwitterKit
+import FacebookCore
+import FacebookLogin
 
 class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, GIDSignInDelegate {
 
@@ -42,6 +44,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
    func connectGoogleAnalytics(_ sender:SimpleButton, item:FeedItem) {
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().clientID = "850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().serverClientID = "850179116799-024u4fn5ddmkm3dnius3fq3l1gs81toi.apps.googleusercontent.com"
     
         let driveScope = "https://www.googleapis.com/auth/analytics.readonly"
         
@@ -71,7 +74,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         let api = FeedApi()
         
         // self.showProgressIndicator()
-        api.connectGoogleAnalytics(userId: userId!, brandId:"5720d6a12f522134a29e3054", token: token!, serverAuthCode: serverAuthCode!, authentication: user.authentication) { responseDict, error in
+        api.connectGoogleAnalytics(userId: userId!, brandId:"58fe437ac7631a139803757e", token: token!, serverAuthCode: serverAuthCode!, authentication: user.authentication) { responseDict, error in
             self.actionButtonSaved!.isLoading = false
             if error != nil {
                NotificationCenter.default.post(name:Notification.Name(rawValue:"CardActionNotification"),
@@ -87,7 +90,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     func connectTwitter(_ sender: SimpleButton, item:FeedItem) {
             Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
                 if (session != nil) {
-                    FeedApi().connectTwitter(userId: (session?.userID)!, brandId:"5720d6a12f522134a29e3054", token: (session?.authToken)!,
+                    FeedApi().connectTwitter(userId: (session?.userID)!, brandId:"58fe437ac7631a139803757e", token: (session?.authToken)!,
                                        tokenSecret: (session?.authTokenSecret)!) { responseDict, error in
                         sender.isLoading = false
                         if error != nil {
@@ -113,5 +116,49 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
             }
             
         }
+    
+    
+    // MARK: Facebook LogIn Process
+    func connectFacebookfunc(_ sender: SimpleButton, item:FeedItem) {
+//        let loginManager = LoginManager()
+//        let permissions = [.publicProfile, .email]
+//        loginManager.logOut()
+//        loginManager.logIn([.publicProfile, .email], viewController: self) { result in
+//            switch result {
+//            case .Failed(let error):
+//                print("failed")
+//            case .Cancelled:
+//                print("cancelled")
+//            case .Success(let grantedPermissions, let declinedPermissions, let accessToken):
+//                
+//                print("success")
+////                let userId = result?.token.userID
+////                let token = result?.token.tokenString
+//                userId = ""
+//                
+//                callback(userId, token, nil)
+//            }
+//        }
+    }
+    
+//    func getFacebookUserInfo(callback: @escaping (_ name: String?, _ email: String?, _ picture: String?, _ error: SocialLoginError?) -> Void) {
+//        let params = ["fields": "name, email, picture"]
+//        let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: params)!
+//        graphRequest.start { connection, result, error in
+//            if error == nil, let result = result as? [String: Any] {
+//                let name = result["name"] as? String
+//                let email = result["email"] as? String
+//                var picture: String? = nil
+//                if let pictureData = result["picture"] as? [String: Any] {
+//                    if let data = pictureData["data"] as? [String: Any] {
+//                        picture = data["url"] as? String
+//                    }
+//                }
+//                callback(name, email, picture, nil)
+//                return
+//            }
+//            callback(nil, nil, nil, SocialLoginError.unknown)
+//        }
+//    }
     
 }

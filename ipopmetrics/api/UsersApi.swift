@@ -145,7 +145,7 @@ class UsersApi: BaseApi {
         var params = [
             "code": smsCode,
             "phone_number": phoneNumber,
-            "ios_udid": UIDevice.current.identifierForVendor!.uuidString
+            "ios_udid": UIDevice.current.name
         ]
         if let deviceToken = UserDefaults.standard.string(forKey:"deviceToken") {
             params["ios_device_token"] = deviceToken

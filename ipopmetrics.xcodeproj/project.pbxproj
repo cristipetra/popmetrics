@@ -439,6 +439,7 @@
 				2FDEA40A3122DBE207B14F34 /* [CP] Check Pods Manifest.lock */,
 				1178D6711E1E5AD9005B96C3 /* Sources */,
 				1178D6721E1E5AD9005B96C3 /* Frameworks */,
+				11307C701EFD380A00067540 /* ShellScript */,
 				1178D6731E1E5AD9005B96C3 /* Resources */,
 				FD9FB4AF998AEE764DC3C42C /* [CP] Embed Pods Frameworks */,
 				B5BA09B8049FECDC31573D3E /* [CP] Copy Pods Resources */,
@@ -501,7 +502,6 @@
 				TargetAttributes = {
 					1178D6741E1E5AD9005B96C3 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = KDADK6KY68;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -597,6 +597,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 03453f6778a6e9edcc7fc47df94276b095265959 fcdc0b37c7b3387ae8b47beb12b6d585830439c7986b7eac4e70a3f703183cdf";
+		};
+		11307C701EFD380A00067540 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
 		};
 		2FDEA40A3122DBE207B14F34 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -853,11 +866,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ipopmetrics/ipopmetrics.entitlements;
-				DEVELOPMENT_TEAM = KDADK6KY68;
+				DEVELOPMENT_TEAM = M3K246T7Z9;
 				INFOPLIST_FILE = ipopmetrics/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 3.0;
@@ -870,11 +883,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ipopmetrics/ipopmetrics.entitlements;
-				DEVELOPMENT_TEAM = KDADK6KY68;
+				DEVELOPMENT_TEAM = M3K246T7Z9;
 				INFOPLIST_FILE = ipopmetrics/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 3.0;

@@ -28,6 +28,7 @@ class UsersStore {
         user.name = UserDefaults.standard.string(forKey:"userName")
         user.email = UserDefaults.standard.string(forKey:"userEmail")
         user.id = UserDefaults.standard.string(forKey:"userId")
+        user.authToken = UserDefaults.standard.string(forKey:"userAuthToken")
         return user
     }
     
@@ -36,6 +37,7 @@ class UsersStore {
         defaults.set(user.name, forKey: "userName")
         defaults.set(user.email, forKey: "userEmail")
         defaults.set(user.id, forKey: "userId")
+        defaults.set(user.authToken, forKey:"userAuthToken")
         
     }
     

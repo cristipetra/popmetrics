@@ -30,7 +30,7 @@ class FeedStore {
 
     }
     
-    public func storeFeed(_ dict: [String:Any] ) {
+public func storeFeed(_ dict: [String:Any] ) {
         
         let realm = try! Realm()
         

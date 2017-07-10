@@ -10,17 +10,12 @@ import UIKit
 import GoogleSignIn
 import MGSwipeTableCell
 import DGElasticPullToRefresh
-import SimpleLoadingButton
 
 class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     fileprivate var sharingInProgress = false
     
     fileprivate var sections: [FeedSection] = []
-    
-    fileprivate var completed = 0
-    fileprivate var total = 100
-    
     
     var requiredActionHandler = RequiredActionHandler()
     
@@ -61,86 +56,59 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let actionCardNib = UINib(nibName: "ActionCard", bundle: nil)
         tableView.register(actionCardNib, forCellReuseIdentifier: "ActionCard")
         
-        self.fetchItems()
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            self?.fetchItems(silent:false)
+            self?.tableView.dg_stopLoading()
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
-        
-        
-        
-//        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-//        loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
-//        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            // Add your logic here
-            // Do not forget to call dg_stopLoading() at the end
-            
-//            FeedApi().getItems(sinceDate: Date()){responseDict, error in
-//                if error != nil {
-//                    let message = "An error has occurred. Please try again later."
-//                    self?.presentAlertWithTitle("Error", message: message)
-//                    return
-//                }
-//                let success = responseDict?["success"] as! Bool
-//                if (!success) {
-//                    let message = responseDict?["message"] as! String
-//                    self?.presentAlertWithTitle("Authentication failed.", message:message)
-//                    return
-//                }
-//                
-//                let store = FeedItemsStore.getInstance()
-//                let itemsDict = responseDict?["items"] as! [[String:Any]]
-//                if itemsDict != nil {
-//                    for itemDict in itemsDict {
-//                        var feedItem: FeedItem? = nil
-//                        
-//                        if let itemId = itemDict["id"] as? String {
-//                            if let existingItem = store.findItemWithSrvId(itemId) {
-//                                feedItem = existingItem
-//                            }
-//                        }
-//                        if feedItem == nil {
-//                            feedItem = store.createFeedItem(dict: itemDict)
-//                        } else {
-//                            _ = store.updateFeedItem(item: feedItem!, dict: itemDict)
-//                        }
-//                        
-//                    }
-//                store.saveState()
-//                }
-//            }
-            
-            
-//            self?.tableView.dg_stopLoading()
-//            }, loadingView: loadingView)
-//        tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
-//        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
-        
-        
+        fetchItems(silent: false)
         
     }
     
-    func fetchItems() {
+    func fetchItems(silent:Bool) {
 //        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
 //        let jsonData : NSData = NSData(contentsOfFile: path!)!
         
-        FeedApi().getItems("5720d6a12f522134a29e3054") { responseDict, error in
+        FeedApi().getItems("58fe437ac7631a139803757e") { responseDict, error in
+            
+            if error != nil {
+                let message = "An error has occurred. Please try again later."
+                self.presentAlertWithTitle("Error", message: message)
+                return
+            }
+            if let code = responseDict?["code"] as? String {
+                if "success" != code {
+                    let message = responseDict?["message"] as! String
+                    self.presentAlertWithTitle("Error", message: message)
+                    return
+                }
+            }
+            else {
+                self.presentAlertWithTitle("Error", message: "An unexpected error has occured. Please try again later")
+                return
+            }
             let dict = responseDict?["data"]
+            let code = responseDict?["code"] as! String
             let feedStore = FeedStore.getInstance()
-            feedStore.storeFeed(dict as! [String : Any])
+
+            if "success" == code {
+                if dict != nil {
+                    feedStore.storeFeed(dict as! [String : Any])
+                    }
+            }
+            
             self.sections = feedStore.getFeed()
+            if !silent { self.tableView.reloadData() }
         }
         
     }
     
-    
-    fileprivate func reloadData() {
-        // self.fetchItems()
-        
-        tableView.reloadData()
-    }
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        reloadData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -270,9 +238,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         // return a
     }
     
-    fileprivate func hasRequiredActions() -> Bool {
-        return (completed == total)
-    }
     
     fileprivate func createSwipeButtons() -> [MGSwipeButton] {
         let deleteBtn = MGSwipeButton(
