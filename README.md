@@ -39,6 +39,7 @@ git clone git@git.popmetrics.io:mobile/ipopmetrics.git
 ```
 
 6. Setup cocoapods dependencies
+
 ```
 cd ~/code/popmetrics/ipopmetrics
 pod update
