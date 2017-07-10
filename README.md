@@ -33,15 +33,15 @@ brew install git
 
 We recommend keeping the same folder structure so current and future scripts work right of the bat.
 ```
-mkdir -p ~/code/popmetrics
-cd ~/code/popmetrics
+mkdir -p ~/code/popmetrics/mobile
+cd ~/code/popmetrics/mobile
 git clone git@git.popmetrics.io:mobile/ipopmetrics.git
 ```
 
 ## Setup cocoapods dependencies
 
 ```
-cd ~/code/popmetrics/ipopmetrics
+cd ~/code/popmetrics/mobile/ipopmetrics
 pod update
 ```
 
