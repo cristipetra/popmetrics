@@ -19,14 +19,13 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     var requiredActionHandler = RequiredActionHandler()
     
-    
+    var firstCellSection = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         GIDSignIn.sharedInstance().uiDelegate = self
-
-        
+      
         // Style elements
         navigationItem.title = "Feed"
 //        tableView.separatorStyle = .none
@@ -34,6 +33,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         let nc = NotificationCenter.default
         nc.addObserver(forName:NSNotification.Name(rawValue: "CardActionNotification"), object:nil, queue:nil, using:catchCardActionNotification)
+      
+        let sectionHeaderNib = UINib(nibName: "HeaderCardCell", bundle: nil)
+        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "headerCell")
         
         let requiredActionCardNib = UINib(nibName: "RequiredActionCard", bundle: nil)
         tableView.register(requiredActionCardNib, forCellReuseIdentifier: "RequiredActionCard")
@@ -72,7 +74,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     func fetchItems(silent:Bool) {
 //        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
 //        let jsonData : NSData = NSData(contentsOfFile: path!)!
-        
         FeedApi().getItems("58fe437ac7631a139803757e") { responseDict, error in
             
             if error != nil {
@@ -94,7 +95,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             let dict = responseDict?["data"]
             let code = responseDict?["code"] as! String
             let feedStore = FeedStore.getInstance()
-
             if "success" == code {
                 if dict != nil {
                     feedStore.storeFeed(dict as! [String : Any])
@@ -157,14 +157,22 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let section = sections[sectionIdx]
         let item = section.items[rowIdx]
         
-        
+      
         switch(item.type) {
             case "required_action":
-                let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
-                cell.selectionStyle = .none
-                cell.configure(item, handler:self.requiredActionHandler)
-                cell.indexPath = indexPath
-                return cell
+                if sectionIdx == 0 && rowIdx == 0 {
+                    firstCellSection = true
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as! HeaderCardCell
+                    cell.selectionStyle = .none
+                    return cell
+                } else {
+                    firstCellSection = false
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
+                    cell.selectionStyle = .none
+                    cell.configure(item, handler:self.requiredActionHandler)
+                    cell.indexPath = indexPath
+                  return cell
+                }
             
             case "action_history":
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ActionHistoryCard", for: indexPath) as! ActionHistoryViewCell
@@ -217,7 +225,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return getCellHeight()
+        return firstCellSection ? 50 : getCellHeight()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
