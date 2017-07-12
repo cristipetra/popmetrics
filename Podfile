@@ -30,6 +30,6 @@ target 'ipopmetrics' do
 
 #  pod 'Chatto',  :git => 'https://github.com/badoo/Chatto.git', :branch => 'master'
 #  pod 'ChattoAdditions',  :git => 'https://github.com/badoo/Chatto.git', :branch => 'master'
-  pod 'Chatto', '~> 3.0.1'
-  pod 'ChattoAdditions', '~> 3.0.1' # if you want to use the cells or the input component
+  pod 'Chatto'
+  pod 'ChattoAdditions' # if you want to use the cells or the input component
 end
