@@ -1,0 +1,81 @@
+//
+//  RecommendationCardCell.swift
+//  ipopmetrics
+//
+//  Created by Cristian Petra on 13/07/2017.
+//  Copyright © 2017 Popmetrics. All rights reserved.
+//
+
+import UIKit
+
+class RecommendationCardCell: UITableViewCell {
+  
+  @IBOutlet weak var titleImage: UIImageView!
+  @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var messageLabel: UILabel!
+  @IBOutlet weak var hashtagLabel: UILabel!
+  @IBOutlet weak var bottomImage: UIImageView!
+  
+  @IBOutlet weak var headerView: UIView!
+    
+    
+    var item: FeedItem?
+    var actionHandler: CardActionHandler?
+    var indexPath: IndexPath?
+  
+  @IBOutlet weak var secondContanerView: UIView!
+  
+  
+    func configure(_ item: FeedItem, handler: CardActionHandler) {
+        self.titleLabel.text = "Get a Twitter account ASAP"
+        self.messageLabel.text = "Increase your digital footprint & important for SEO"
+        
+        self.titleImage.image = #imageLiteral(resourceName: "icon_twitter");
+        
+        adjustLabelLineSpaceing()
+    }
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+     
+    self.backgroundColor = UIColor.cloudsColor()
+    adjustLabelLineSpaceing()
+    headerView.backgroundColor = UIColor.turquoiseColor()
+    setCornerRadious()
+  }
+  
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+    
+    // Configure the view for the selected state
+  }
+  
+  func adjustLabelLineSpaceing() {
+    
+    if let titleText = titleLabel.text {
+      let attributedString = NSMutableAttributedString(string: titleText)
+      let style = NSMutableParagraphStyle()
+      style.lineSpacing = 5
+      style.maximumLineHeight = 26
+      attributedString.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSRange(location: 0, length: (titleText.characters.count)))
+      titleLabel.attributedText = attributedString
+    }
+    
+    if let messageText = messageLabel.text {
+      let attributedString = NSMutableAttributedString(string: messageText)
+      let style = NSMutableParagraphStyle()
+      style.lineSpacing = 5
+      style.maximumLineHeight = 26
+      attributedString.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSRange(location: 0, length: (messageText.characters.count)))
+      messageLabel.attributedText = attributedString
+    }
+  }
+  
+  func setCornerRadious() {
+    
+    secondContanerView.layer.cornerRadius = 14
+    secondContanerView.layer.masksToBounds = true
+  }
+  
+}
+
