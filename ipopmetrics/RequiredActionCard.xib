@@ -63,43 +63,39 @@
                                 <constraint firstAttribute="bottom" secondItem="vec-zy-g2G" secondAttribute="bottom" constant="11" id="xtT-MR-ilL"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google analytics is our most " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRQ-E1-jZ7">
-                            <rect key="frame" x="21" y="68" width="301" height="60"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="60" id="wtD-qP-ThQ"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
-                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow us to connect your GA " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnR-pM-Tol">
-                            <rect key="frame" x="21" y="136" width="301" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="fw2-6n-2Og"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
-                            <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iAn-gv-DO0">
-                            <rect key="frame" x="10" y="174" width="264" height="48"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="WxD-kw-y0O">
+                            <rect key="frame" x="21" y="160" width="301" height="140"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="google.png" translatesAutoresizingMaskIntoConstraints="NO" id="X8k-2g-SxI">
-                                    <rect key="frame" x="0.0" y="0.0" width="64" height="48"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="64" id="11I-as-Uar"/>
-                                        <constraint firstAttribute="height" constant="48" id="iqO-OI-tqK"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Analytics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1VB-QN-nCN">
-                                    <rect key="frame" x="64" y="0.0" width="200" height="48"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="200" id="SXP-vb-pQy"/>
-                                    </constraints>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google analytics is our most " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRQ-E1-jZ7">
+                                    <rect key="frame" x="0.0" y="0.0" width="301" height="25"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow us to connect your GA " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnR-pM-Tol">
+                                    <rect key="frame" x="0.0" y="47" width="301" height="25"/>
+                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
+                                    <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <stackView opaque="NO" contentMode="left" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iAn-gv-DO0">
+                                    <rect key="frame" x="0.0" y="94" width="301" height="46"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="google.png" translatesAutoresizingMaskIntoConstraints="NO" id="X8k-2g-SxI">
+                                            <rect key="frame" x="0.0" y="0.0" width="48" height="46"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="48" id="11I-as-Uar"/>
+                                                <constraint firstAttribute="height" constant="46" id="iqO-OI-tqK"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Analytics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1VB-QN-nCN">
+                                            <rect key="frame" x="58" y="0.0" width="243" height="46"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
                             </subviews>
                         </stackView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="firefighter" translatesAutoresizingMaskIntoConstraints="NO" id="sNA-x1-bFd">
@@ -121,11 +117,11 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ol8-51-P7I" customClass="SimpleButton" customModule="ipopmetrics" customModuleProvider="target">
-                            <rect key="frame" x="154" y="385" width="150" height="60"/>
+                            <rect key="frame" x="162" y="385" width="160" height="60"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="1AD-fb-Q0b"/>
-                                <constraint firstAttribute="width" constant="150" id="5lR-vI-x3b"/>
+                                <constraint firstAttribute="width" constant="160" id="5lR-vI-x3b"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                             <state key="normal" title="Button">
@@ -136,25 +132,20 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="SoU-Cv-kIW" firstAttribute="leading" secondItem="wC8-va-urZ" secondAttribute="leading" id="0Mm-Ou-e2v"/>
-                        <constraint firstItem="pnR-pM-Tol" firstAttribute="leading" secondItem="wC8-va-urZ" secondAttribute="leading" constant="21" id="3Pk-oy-20D"/>
+                        <constraint firstItem="WxD-kw-y0O" firstAttribute="leading" secondItem="wC8-va-urZ" secondAttribute="leading" constant="21" id="4bL-Yk-3tz"/>
                         <constraint firstAttribute="trailing" secondItem="sNA-x1-bFd" secondAttribute="trailing" id="4hL-26-I4y"/>
-                        <constraint firstItem="pnR-pM-Tol" firstAttribute="top" secondItem="FRQ-E1-jZ7" secondAttribute="bottom" constant="8" id="9Z3-aA-cqJ"/>
                         <constraint firstItem="sNA-x1-bFd" firstAttribute="leading" secondItem="wC8-va-urZ" secondAttribute="leading" id="AhQ-av-u82"/>
                         <constraint firstAttribute="trailing" secondItem="LcP-dg-dbz" secondAttribute="trailing" id="DAs-cw-XVi"/>
                         <constraint firstItem="ol8-51-P7I" firstAttribute="top" secondItem="sNA-x1-bFd" secondAttribute="bottom" constant="-75" id="DOb-bC-7FF"/>
-                        <constraint firstItem="FRQ-E1-jZ7" firstAttribute="leading" secondItem="wC8-va-urZ" secondAttribute="leading" constant="21" id="OFJ-dl-YUi"/>
                         <constraint firstAttribute="bottom" secondItem="sNA-x1-bFd" secondAttribute="bottom" id="OLU-LR-aDz"/>
-                        <constraint firstItem="iAn-gv-DO0" firstAttribute="leading" secondItem="wC8-va-urZ" secondAttribute="leading" constant="10" id="Otm-Qf-z0V"/>
                         <constraint firstAttribute="trailing" secondItem="SoU-Cv-kIW" secondAttribute="trailing" id="Rec-zc-tpW"/>
-                        <constraint firstAttribute="trailing" secondItem="ol8-51-P7I" secondAttribute="trailing" constant="39" id="SOn-IB-cLK"/>
+                        <constraint firstAttribute="trailing" secondItem="ol8-51-P7I" secondAttribute="trailing" constant="21" id="SOn-IB-cLK"/>
                         <constraint firstItem="yVy-9s-bIQ" firstAttribute="leading" secondItem="wC8-va-urZ" secondAttribute="leading" constant="21" id="UIq-AX-Vvp"/>
-                        <constraint firstAttribute="trailing" secondItem="pnR-pM-Tol" secondAttribute="trailing" constant="21" id="VgT-DF-dXu"/>
                         <constraint firstItem="LcP-dg-dbz" firstAttribute="top" secondItem="SoU-Cv-kIW" secondAttribute="bottom" id="Z1v-ik-nRi"/>
                         <constraint firstItem="LcP-dg-dbz" firstAttribute="leading" secondItem="wC8-va-urZ" secondAttribute="leading" id="aFw-es-XuP"/>
                         <constraint firstItem="yVy-9s-bIQ" firstAttribute="top" secondItem="sNA-x1-bFd" secondAttribute="bottom" constant="-75" id="fAb-VC-mry"/>
-                        <constraint firstAttribute="trailing" secondItem="FRQ-E1-jZ7" secondAttribute="trailing" constant="21" id="iVI-CA-5rE"/>
-                        <constraint firstItem="iAn-gv-DO0" firstAttribute="top" secondItem="pnR-pM-Tol" secondAttribute="bottom" constant="18" id="kWy-EU-61y"/>
-                        <constraint firstItem="FRQ-E1-jZ7" firstAttribute="top" secondItem="LcP-dg-dbz" secondAttribute="bottom" constant="8" id="mYS-4g-Hkf"/>
+                        <constraint firstAttribute="trailing" secondItem="WxD-kw-y0O" secondAttribute="trailing" constant="21" id="lsN-vQ-U12"/>
+                        <constraint firstItem="WxD-kw-y0O" firstAttribute="centerY" secondItem="wC8-va-urZ" secondAttribute="centerY" id="qs7-jy-tZx"/>
                         <constraint firstItem="LcP-dg-dbz" firstAttribute="top" secondItem="wC8-va-urZ" secondAttribute="top" constant="10" id="r6E-KF-E7H"/>
                         <constraint firstItem="SoU-Cv-kIW" firstAttribute="top" secondItem="wC8-va-urZ" secondAttribute="top" id="vKN-85-BAg"/>
                     </constraints>

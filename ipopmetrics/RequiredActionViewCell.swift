@@ -42,12 +42,37 @@ class RequiredActionViewCell: UITableViewCell {
         self.configureActionType();
  
       
-      self.backgroundColor = UIColor.cloudsColor()
-      setCornerRadious()
-      infoButton.setTitle("i", for: .normal)
-
-    }
+        self.backgroundColor = UIColor.cloudsColor()
+        setCornerRadious()
+        infoButton.setTitle("i", for: .normal)
+      
+        self.titleLabel.text  = item.headerTitle
+        messageLabel.text = item.message
+      adjustLabelLineSpaceing()
+  }
   
+  func adjustLabelLineSpaceing() {
+    
+    if let titleText = titleLabel.text {
+        let attributedString = NSMutableAttributedString(string: titleText)
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 5
+        style.maximumLineHeight = 26
+        attributedString.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSRange(location: 0, length: (titleText.characters.count)))
+        titleLabel.attributedText = attributedString
+    }
+    
+    if let messageText = messageLabel.text {
+        let attributedString = NSMutableAttributedString(string: messageText)
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 5
+        style.maximumLineHeight = 26
+        attributedString.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSRange(location: 0, length: (messageText.characters.count)))
+        messageLabel.attributedText = attributedString
+    }
+    
+  }
+
     func configureActionType() {
       
       switch item?.actionHandler {
@@ -62,10 +87,11 @@ class RequiredActionViewCell: UITableViewCell {
       case ActionHandlerType.connectTwitter.rawValue?:
           self.actionButton.setTitle("Connect Twitter", for: .normal)
           self.socialMediaNameLabel.text = "Twitter"
-          let colorTwitter = UIColor(red: 65/255.0, green: 155/255.0, blue: 249/255.0, alpha: 1.0)
-          self.socialMediaLogo.image = UIImage.fontAwesomeIcon(code: "fa-twitter", textColor: colorTwitter, size: CGSize(width: 64, height: 48))
+            self.socialMediaLogo.image = #imageLiteral(resourceName: "icon_twitter")
       case ActionHandlerType.connectLinkedin.rawValue?:
-        break;
+          self.actionButton.setTitle("Connect Linkedin", for: .normal)
+          self.socialMediaNameLabel.text = "Linkedin"
+          break;
       default:
         break;
       }
