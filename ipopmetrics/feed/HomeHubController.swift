@@ -39,7 +39,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         let requiredActionCardNib = UINib(nibName: "RequiredActionCard", bundle: nil)
         tableView.register(requiredActionCardNib, forCellReuseIdentifier: "RequiredActionCard")
-        
+      
+        let recommendationCardNib = UINib(nibName: "RecommendationCard", bundle: nil)
+        tableView.register(recommendationCardNib, forCellReuseIdentifier: "RecommendationCard")
+      
         let actionHistoryCardNib = UINib(nibName: "ActionHistoryCard", bundle: nil)
         tableView.register(actionHistoryCardNib, forCellReuseIdentifier: "ActionHistoryCard")
         
@@ -160,6 +163,14 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
       
         switch(item.type) {
             case "required_action":
+              
+              firstCellSection = false
+              let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
+              cell.selectionStyle = .none
+              cell.configure(item, handler:self.requiredActionHandler)
+              cell.indexPath = indexPath
+              return cell
+              
                 if sectionIdx == 0 && rowIdx == 0 {
                     firstCellSection = true
                     let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as! HeaderCardCell
@@ -175,10 +186,18 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 }
             
             case "action_history":
+              
+                firstCellSection = false
+                let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendationCard", for: indexPath) as! RecommendationCardCell
+                cell.selectionStyle = .none
+                cell.configure(item, handler:self.requiredActionHandler)
+                return cell
+              /*
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ActionHistoryCard", for: indexPath) as! ActionHistoryViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
                 return cell
+                */
             
             case "article_of_interest":
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleOfInterestCard", for: indexPath) as! ArticleOfInterestViewCell
@@ -242,7 +261,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     fileprivate func getCellHeight() -> CGFloat {
         let a =  CGFloat(((tableView.frame.width * 9.0) / 16.0) + 16) // 16 is the padding
-        return 340
+        return 464
         // return a
     }
     
