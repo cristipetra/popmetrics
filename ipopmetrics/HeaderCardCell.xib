@@ -53,7 +53,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="KUX-ot-Mkw" firstAttribute="top" secondItem="nGq-H7-3Ig" secondAttribute="top" constant="3" id="54G-nm-Tca"/>
                             <constraint firstItem="2nx-Bd-phr" firstAttribute="leading" secondItem="nGq-H7-3Ig" secondAttribute="leading" constant="16" id="BA9-Lq-pCc"/>
@@ -74,6 +73,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="connectionView" destination="2nx-Bd-phr" id="sI9-y3-9S5"/>
+                <outlet property="containerView" destination="H2p-sc-9uM" id="fvb-In-qre"/>
                 <outlet property="roundConnectionView" destination="eM7-9m-LX5" id="lcA-fh-fR1"/>
                 <outlet property="sectionTitleLabel" destination="KUX-ot-Mkw" id="5bf-Z8-10v"/>
             </connections>

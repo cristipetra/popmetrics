@@ -28,7 +28,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
       
         // Style elements
         navigationItem.title = "Feed"
-//        tableView.separatorStyle = .none
+        tableView.separatorStyle = .none
         tableView.allowsSelection = false
         
         let nc = NotificationCenter.default

@@ -12,10 +12,12 @@ class HeaderCardCell: UITableViewCell {
   @IBOutlet weak var connectionView: UIView!
   @IBOutlet weak var roundConnectionView: UIView!
   @IBOutlet weak var sectionTitleLabel: UILabel!
+  @IBOutlet weak var containerView: UIView!
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    self.backgroundColor = UIColor(red: 240, green: 240, blue: 240, alpha: 1)
+    self.backgroundColor = UIColor.cloudsColor()
+    containerView.backgroundColor = UIColor.cloudsColor()
     roundConnectionView.layer.cornerRadius = 6
   }
   
