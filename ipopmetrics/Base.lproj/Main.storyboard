@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,7 +27,6 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Feed" image="second" id="g6b-nh-pyf"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Feed" id="RNW-aJ-sFX" userLabel="Feed"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -36,7 +35,7 @@
                 <tabBarItem title="Feed" image="first" id="FdZ-LU-Uik"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oUZ-N0-Ku8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1697" y="752"/>
+            <point key="canvasLocation" x="2636" y="751.57421289355329"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="min-fm-dln">
@@ -51,7 +50,7 @@
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="KcM-MX-1lY" kind="relationship" relationship="viewControllers" id="59w-tb-V7u"/>
+                        <segue destination="NdU-Vz-erg" kind="relationship" relationship="viewControllers" id="59w-tb-V7u"/>
                         <segue destination="aLn-zU-J6Q" kind="relationship" relationship="viewControllers" id="leB-oI-OSK"/>
                         <segue destination="mhc-LI-Iws" kind="relationship" relationship="viewControllers" id="cJE-ZC-asH"/>
                     </connections>
@@ -73,7 +72,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hlI-OT-hrN">
-                                <rect key="frame" x="147.5" y="96" width="80" height="80"/>
+                                <rect key="frame" x="147.5" y="52" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="JLu-hy-Rol"/>
                                     <constraint firstAttribute="width" constant="80" id="zqB-DE-fq7"/>
@@ -84,7 +83,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(tap the icon to change your picture)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o80-3K-tKi">
-                                <rect key="frame" x="16" y="184" width="343" height="14.5"/>
+                                <rect key="frame" x="16" y="140" width="343" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -184,6 +183,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AIR-8q-4Dq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-473" y="1632"/>
+        </scene>
+        <!--Feed-->
+        <scene sceneID="BgY-0i-GYY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NdU-Vz-erg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Feed" image="second" id="g6b-nh-pyf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="z2a-iC-IPh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KcM-MX-1lY" kind="relationship" relationship="rootViewController" id="TNh-Xc-ucY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fkq-Lr-Oth" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1696.8" y="751.57421289355329"/>
         </scene>
     </scenes>
     <resources>

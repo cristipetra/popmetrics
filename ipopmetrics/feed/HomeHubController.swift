@@ -19,25 +19,47 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     var requiredActionHandler = RequiredActionHandler()
     
-    
+    var shouldDisplayCell = true
+    var isInfoCellType = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         GIDSignIn.sharedInstance().uiDelegate = self
-
-        
+      
         // Style elements
-        navigationItem.title = "Feed"
-//        tableView.separatorStyle = .none
+        navigationItem.title = "Home Feed"
+        
+        tableView.separatorStyle = .none
         tableView.allowsSelection = false
+        
+        self.navigationController?.navigationBar.backgroundColor = UIColor.white
+        
         
         let nc = NotificationCenter.default
         nc.addObserver(forName:NSNotification.Name(rawValue: "CardActionNotification"), object:nil, queue:nil, using:catchCardActionNotification)
+      
+        let sectionHeaderNib = UINib(nibName: "HeaderCardCell", bundle: nil)
+        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "headerCell")
         
         let requiredActionCardNib = UINib(nibName: "RequiredActionCard", bundle: nil)
         tableView.register(requiredActionCardNib, forCellReuseIdentifier: "RequiredActionCard")
+      
+        let recommendationCardNib = UINib(nibName: "RecommendationCard", bundle: nil)
+        tableView.register(recommendationCardNib, forCellReuseIdentifier: "RecommendationCard")
         
+        let approvalCardNib = UINib(nibName: "ApprovalCard", bundle: nil)
+        tableView.register(approvalCardNib, forCellReuseIdentifier: "ApprovalCard")
+        
+        let approvalCardInfoNib = UINib(nibName: "ApprovalCardInfo", bundle: nil)
+        tableView.register(approvalCardInfoNib, forCellReuseIdentifier: "ApprovalCardInfo")
+        
+        let dailyInsightNib = UINib(nibName: "DailyInsightsCardCell", bundle: nil)
+        tableView.register(dailyInsightNib, forCellReuseIdentifier: "DailyInsightsCard")
+        
+        let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
+        tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
+      
         let actionHistoryCardNib = UINib(nibName: "ActionHistoryCard", bundle: nil)
         tableView.register(actionHistoryCardNib, forCellReuseIdentifier: "ActionHistoryCard")
         
@@ -72,7 +94,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     func fetchItems(silent:Bool) {
 //        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
 //        let jsonData : NSData = NSData(contentsOfFile: path!)!
-        
         FeedApi().getItems("58fe437ac7631a139803757e") { responseDict, error in
             
             if error != nil {
@@ -94,14 +115,103 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             let dict = responseDict?["data"]
             let code = responseDict?["code"] as! String
             let feedStore = FeedStore.getInstance()
-
             if "success" == code {
                 if dict != nil {
                     feedStore.storeFeed(dict as! [String : Any])
                     }
             }
             
+            
             self.sections = feedStore.getFeed()
+            
+            
+            // Add temp recommendation sections
+            var tmpSectionRecommendation:FeedSection = FeedSection()
+            tmpSectionRecommendation.name = "Recommendation"
+            tmpSectionRecommendation.index  = 2;
+            
+            let recommendationItem: FeedItem = FeedItem();
+            recommendationItem.actionHandler = "no_action"
+            recommendationItem.actionLabel = "Connect"
+            recommendationItem.headerIconUri = "icon_twitter";
+            recommendationItem.imageUri = "back_twitter";
+            recommendationItem.headerTitle = "Get a Twitter Account ASAP"
+            recommendationItem.message = "Increase your digital footprint & important for SEO"
+            recommendationItem.type = "recommendation"
+            
+            let recommendationItem2: FeedItem = FeedItem();
+            recommendationItem2.actionHandler = "no_action"
+            recommendationItem2.actionLabel = "Connect"
+            recommendationItem2.headerIconUri = "icon_citation_error";
+            recommendationItem2.imageUri = "social_media";
+            recommendationItem2.headerTitle = "Social Media Automation"
+            recommendationItem2.message = "Why do it... and a description goes in here to compel the user to click on the card, Im sure if it needs a secondary CTA or whether the card is sufficient."
+            recommendationItem2.type = "recommendation"
+            
+            tmpSectionRecommendation.items.append(recommendationItem)
+            tmpSectionRecommendation.items.append(recommendationItem2)
+            
+            
+            self.sections.append(tmpSectionRecommendation)
+            
+            var tmpSectionApproval:FeedSection = FeedSection()
+            tmpSectionApproval.name = "Approval"
+            tmpSectionApproval.index = 2;
+            
+            let approvalItem2: FeedItem = FeedItem();
+            approvalItem2.actionHandler = "no_action"
+            approvalItem2.headerIconUri = "icon_citationerror_splash";
+            approvalItem2.imageUri = "icon_citationerror_splash";
+            approvalItem2.headerTitle = "Article Title Goes Here"
+            approvalItem2.message = ""
+            approvalItem2.type = "approval"
+            
+            tmpSectionApproval.items.append(approvalItem2)
+            
+            let approvalItem: FeedItem = FeedItem();
+            approvalItem.actionHandler = "no_action"
+            approvalItem.headerIconUri = "icon_citationerror_splash";
+            approvalItem.imageUri = "icon_citationerror_splash";
+            approvalItem.headerTitle = "Article Title Goes Here"
+            approvalItem.message = "What is the citation error relating to? Where is it that this person needs to do?"
+            approvalItem.type = "approval"
+            
+            tmpSectionApproval.items.append(approvalItem)
+            
+            self.sections.append(tmpSectionApproval)
+            
+            
+            var tmpSectionInsight:FeedSection = FeedSection()
+            tmpSectionInsight.name = "Daily Insight"
+            tmpSectionInsight.index = 1;
+            
+            
+            let insightItem: FeedItem = FeedItem();
+            insightItem.actionHandler = "no_action"
+            insightItem.headerIconUri = "icon_citationerror_splash";
+            insightItem.imageUri = "icon_citationerror_splash";
+            insightItem.headerTitle = "Article Title Goes Here"
+            insightItem.message = "What is the citation error relating to? Where is it that this person needs to do?"
+            insightItem.type = "daily_insight"
+            
+            tmpSectionInsight.items.append(insightItem)
+            
+            self.sections.append(tmpSectionInsight)
+            
+            
+            let lastSection: FeedSection = FeedSection()
+            lastSection.name = ""
+            lastSection.index = 1;
+            let lastItem: FeedItem = FeedItem();
+            lastItem.type = "info"
+            lastSection.items.append(lastItem)
+            
+            self.sections.append(lastSection)
+
+            
+            ///---- End add temporary sections
+            
+            
             if !silent { self.tableView.reloadData() }
         }
         
@@ -143,10 +253,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         return sections[section].items.count
     }
     
+    /*
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section].name
     }
-    
+    */
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -157,52 +268,109 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let section = sections[sectionIdx]
         let item = section.items[rowIdx]
         
-        
+        isInfoCellType = false
         switch(item.type) {
             case "required_action":
+                shouldDisplayCell = true
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
                 cell.indexPath = indexPath
+                if((sections[sectionIdx].items.count-1) == indexPath.row) {
+                    cell.connectionView.isHidden = true;
+                }
+                return cell
+
+            case "recommendation":
+                shouldDisplayCell = true
+                let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendationCard", for: indexPath) as! RecommendationCardCell
+                cell.selectionStyle = .none
+                cell.configure(item, handler:self.requiredActionHandler)
+                cell.indexPath = indexPath
+                if((sections[sectionIdx].items.count-1) == indexPath.row) {
+                    //cell.connectionView.isHidden = true;
+                }
                 return cell
             
+            case "approval":
+                shouldDisplayCell = true
+                
+                //Fixme: find a way to add card info for approval
+                if(rowIdx == 0) {
+                    isInfoCellType = true
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "ApprovalCardInfo", for: indexPath) as! ApprovalCardInfoCell
+                    return cell;
+                }
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ApprovalCard", for: indexPath) as! ApprovalCardCell
+                cell.selectionStyle = .none
+                cell.configure(item, handler:self.requiredActionHandler)
+                if((sections[sectionIdx].items.count-1) == indexPath.row) {
+                    cell.connectionView.isHidden = true;
+                }
+                return cell
+            case "daily_insight":
+                shouldDisplayCell = true
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DailyInsightsCard", for: indexPath) as! DailyInsightsCardCell
+                cell.selectionStyle = .none
+                cell.configure(item, handler:self.requiredActionHandler)
+                if((sections[sectionIdx].items.count-1) == indexPath.row) {
+                    cell.connectionView.isHidden = true;
+                }
+                return cell
+            case "info":
+                shouldDisplayCell = true
+                isInfoCellType = true
+                let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
+                cell.selectionStyle = .none
+                
+                return cell
+            /*
             case "action_history":
+                shouldDisplayCell = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ActionHistoryCard", for: indexPath) as! ActionHistoryViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
                 return cell
             
             case "article_of_interest":
+                shouldDisplayCell = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleOfInterestCard", for: indexPath) as! ArticleOfInterestViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
                 return cell
             
             case "stats_summary":
+                shouldDisplayCell = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "StatsSummaryCard", for: indexPath) as! StatsSummaryViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
                 return cell
             
             case "best_course":
+                shouldDisplayCell = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "BestCourseCard", for: indexPath) as! BestCourseViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
                 return cell
 
             case "insight":
+                shouldDisplayCell = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "InsightCard", for: indexPath) as! InsightViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
             return cell
             
             case "action":
+                shouldDisplayCell = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ActionCard", for: indexPath) as! ActionViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
             return cell
-            
+ */
             default:
+                shouldDisplayCell = false
+                //shouldDisplayHeaderCell = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
@@ -211,13 +379,70 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         }
         
     }
+    var shouldDisplayHeaderCell = false
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        switch section {
+        case 0:
+            shouldDisplayHeaderCell = true
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            cell.changeColor(section: 0)
+            
+            return cell
+        case 1:
+            shouldDisplayHeaderCell = true
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            cell.changeColor(section: 1)
+            cell.sectionTitleLabel.text = "Recommendation For You";
+            return cell
+        case 2:
+            shouldDisplayHeaderCell = true
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            cell.changeColor(section: 2)
+            //cell.isHidden = true;
+            return cell
+        case 3:
+            shouldDisplayHeaderCell = true
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            cell.changeColor(section: 3)
+            return cell
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            cell.changeColor(section: 4)
+            cell.sectionTitleLabel.text = "Tasks For Approval";
+            return cell
+        case 5:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            cell.changeColor(section: 5)
+            cell.sectionTitleLabel.text = "Daily Insights";
+            return cell
+        default:
+            shouldDisplayHeaderCell = false
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            cell.backgroundColor = UIColor.red
+            return cell
+        }
+    }
+
     
+    /*
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return getCellHeight()
     }
+     */
+    
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        print(shouldDisplayHeaderCell)
+        var height: CGFloat = 0;
+        if (section == 0 || section == 1 || section == 4 || section == 5) {
+            height = 50;
+        }
+        return height
+    }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return getCellHeight()
+        return shouldDisplayCell ? getCellHeight() : 0
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -234,7 +459,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     fileprivate func getCellHeight() -> CGFloat {
         let a =  CGFloat(((tableView.frame.width * 9.0) / 16.0) + 16) // 16 is the padding
-        return 340
+        var heightCell: CGFloat = 464
+        if(isInfoCellType) {
+            heightCell = 172
+        }
+        return heightCell
         // return a
     }
     
