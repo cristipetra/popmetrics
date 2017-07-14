@@ -48,6 +48,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         let approvalCardInfoNib = UINib(nibName: "ApprovalCardInfo", bundle: nil)
         tableView.register(approvalCardInfoNib, forCellReuseIdentifier: "ApprovalCardInfo")
+        
+        let dailyInsightNib = UINib(nibName: "DailyInsightsCardCell", bundle: nil)
+        tableView.register(dailyInsightNib, forCellReuseIdentifier: "DailyInsightsCard")
       
         let actionHistoryCardNib = UINib(nibName: "ActionHistoryCard", bundle: nil)
         tableView.register(actionHistoryCardNib, forCellReuseIdentifier: "ActionHistoryCard")
@@ -159,6 +162,24 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             self.sections.append(tmpSectionApproval)
             
+            
+            var tmpSectionInsight:FeedSection = FeedSection()
+            tmpSectionInsight.name = "Daily Insight"
+            tmpSectionInsight.index = 1;
+            
+            let insightItem: FeedItem = FeedItem();
+            insightItem.actionHandler = "no_action"
+            insightItem.headerIconUri = "icon_citationerror_splash";
+            insightItem.imageUri = "icon_citationerror_splash";
+            insightItem.headerTitle = "Article Title Goes Here"
+            insightItem.message = "What is the citation error relating to? Where is it that this person needs to do?"
+            insightItem.type = "daily_insight"
+            
+            tmpSectionInsight.items.append(insightItem)
+            
+            self.sections.append(tmpSectionInsight)
+
+            
             ///---- End add temporary sections
             
             
@@ -238,6 +259,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             case "approval":
                 shouldDisplayCell = true
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ApprovalCardInfo", for: indexPath) as! ApprovalCardInfoCell
+                cell.selectionStyle = .none
+                cell.configure(item, handler:self.requiredActionHandler)
+                return cell
+            case "daily_insight":
+                shouldDisplayCell = true
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DailyInsightsCard", for: indexPath) as! DailyInsightsCardCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
                 return cell
