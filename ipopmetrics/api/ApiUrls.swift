@@ -9,15 +9,16 @@
 import Foundation
 
 // MARK: - Constants
-// private let PROTOCOL = "https"
-private let PROTOCOL = "http"
+private let PROTOCOL = "https"
+// private let PROTOCOL = "http"
 private let HOST = "api.popmetrics.io"
-// private let PORT = 443
+
+private let PORT = 443
 // private let HOST = "192.168.1.114"
 // private let HOST = "10.0.1.30"
 // private let HOST = "72.20.10.2"
 // private let PORT = 5055
-private let PORT = 5030
+//private let PORT = 5030
 
 private let LOGIN_PATH = "/api/caas/sign_in_with_email"
 private let SEND_CODE_BY_SMS_PATH = "/api/caas/send_code_by_sms"
