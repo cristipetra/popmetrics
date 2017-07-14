@@ -45,6 +45,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         let approvalCardNib = UINib(nibName: "ApprovalCard", bundle: nil)
         tableView.register(approvalCardNib, forCellReuseIdentifier: "ApprovalCard")
+        
+        let approvalCardInfoNib = UINib(nibName: "ApprovalCardInfo", bundle: nil)
+        tableView.register(approvalCardInfoNib, forCellReuseIdentifier: "ApprovalCardInfo")
       
         let actionHistoryCardNib = UINib(nibName: "ActionHistoryCard", bundle: nil)
         tableView.register(actionHistoryCardNib, forCellReuseIdentifier: "ActionHistoryCard")
@@ -234,7 +237,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             case "approval":
                 shouldDisplayCell = true
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ApprovalCard", for: indexPath) as! ApprovalCardCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ApprovalCardInfo", for: indexPath) as! ApprovalCardInfoCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
                 return cell
