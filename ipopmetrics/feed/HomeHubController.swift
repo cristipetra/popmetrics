@@ -269,6 +269,40 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
     }
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        switch section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            cell.changeColor(section: 0)
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            cell.changeColor(section: 1)
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            cell.changeColor(section: 2)
+            return cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            cell.changeColor(section: 3)
+            return cell
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            cell.changeColor(section: 4)
+            return cell
+        case 5:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            cell.changeColor(section: 5)
+            return cell
+        default:
+            return UITableViewCell()
+        }
+    }
+
+    
+    
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return getCellHeight()
     }
