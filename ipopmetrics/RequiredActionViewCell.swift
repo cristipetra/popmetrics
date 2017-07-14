@@ -79,13 +79,16 @@ class RequiredActionViewCell: UITableViewCell {
       case ActionHandlerType.connectFacebook.rawValue?:
           self.actionButton.setTitle("Allow notifications", for: .normal)
           self.socialMediaNameLabel.isHidden = true
+          self.bottomImage.image = UIImage(named: "image_card_notifications")
           self.socialMediaLogo.isHidden = true
       case ActionHandlerType.connectGoogleAnalytics.rawValue?:
           self.actionButton.setTitle("Connect Analytics", for: .normal)
+          self.bottomImage.image = UIImage(named: "image_card_google")
           self.socialMediaNameLabel.text = "Google Analytics"
           self.socialMediaLogo.image = #imageLiteral(resourceName: "icon_google")
       case ActionHandlerType.connectTwitter.rawValue?:
           self.actionButton.setTitle("Connect Twitter", for: .normal)
+          self.bottomImage.image = UIImage(named: "image_card_twitter")
           self.socialMediaNameLabel.text = "Twitter"
             self.socialMediaLogo.image = #imageLiteral(resourceName: "icon_twitter")
       case ActionHandlerType.connectLinkedin.rawValue?:
