@@ -20,6 +20,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     var requiredActionHandler = RequiredActionHandler()
     
     var shouldDisplayCell = true
+    var isInfoCellType = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         let dailyInsightNib = UINib(nibName: "DailyInsightsCardCell", bundle: nil)
         tableView.register(dailyInsightNib, forCellReuseIdentifier: "DailyInsightsCard")
+        
+        let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
+        tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
       
         let actionHistoryCardNib = UINib(nibName: "ActionHistoryCard", bundle: nil)
         tableView.register(actionHistoryCardNib, forCellReuseIdentifier: "ActionHistoryCard")
@@ -148,7 +152,17 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             var tmpSectionApproval:FeedSection = FeedSection()
             tmpSectionApproval.name = "Approval"
-            tmpSectionApproval.index = 1;
+            tmpSectionApproval.index = 2;
+            
+            let approvalItem2: FeedItem = FeedItem();
+            approvalItem2.actionHandler = "no_action"
+            approvalItem2.headerIconUri = "icon_citationerror_splash";
+            approvalItem2.imageUri = "icon_citationerror_splash";
+            approvalItem2.headerTitle = "Article Title Goes Here"
+            approvalItem2.message = ""
+            approvalItem2.type = "approval"
+            
+            tmpSectionApproval.items.append(approvalItem2)
             
             let approvalItem: FeedItem = FeedItem();
             approvalItem.actionHandler = "no_action"
@@ -167,6 +181,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             tmpSectionInsight.name = "Daily Insight"
             tmpSectionInsight.index = 1;
             
+            
             let insightItem: FeedItem = FeedItem();
             insightItem.actionHandler = "no_action"
             insightItem.headerIconUri = "icon_citationerror_splash";
@@ -178,6 +193,16 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             tmpSectionInsight.items.append(insightItem)
             
             self.sections.append(tmpSectionInsight)
+            
+            
+            let lastSection: FeedSection = FeedSection()
+            lastSection.name = ""
+            lastSection.index = 1;
+            let lastItem: FeedItem = FeedItem();
+            lastItem.type = "info"
+            lastSection.items.append(lastItem)
+            
+            self.sections.append(lastSection)
 
             
             ///---- End add temporary sections
@@ -239,6 +264,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let section = sections[sectionIdx]
         let item = section.items[rowIdx]
         
+        isInfoCellType = false
         switch(item.type) {
             case "required_action":
                 shouldDisplayCell = true
@@ -258,7 +284,15 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             case "approval":
                 shouldDisplayCell = true
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ApprovalCardInfo", for: indexPath) as! ApprovalCardInfoCell
+                
+                //Fixme: find a way to add card info for approval
+                if(rowIdx == 0) {
+                    isInfoCellType = true
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "ApprovalCardInfo", for: indexPath) as! ApprovalCardInfoCell
+                    return cell;
+                }
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ApprovalCard", for: indexPath) as! ApprovalCardCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
                 return cell
@@ -267,6 +301,13 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DailyInsightsCard", for: indexPath) as! DailyInsightsCardCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
+                return cell
+            case "info":
+                shouldDisplayCell = true
+                isInfoCellType = true
+                let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
+                cell.selectionStyle = .none
+                
                 return cell
             
             case "action_history":
@@ -390,7 +431,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     fileprivate func getCellHeight() -> CGFloat {
         let a =  CGFloat(((tableView.frame.width * 9.0) / 16.0) + 16) // 16 is the padding
-        return 464
+        var heightCell: CGFloat = 464
+        if(isInfoCellType) {
+            heightCell = 172
+        }
+        return heightCell
         // return a
     }
     
