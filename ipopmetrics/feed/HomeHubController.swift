@@ -32,6 +32,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
         
+        
         let nc = NotificationCenter.default
         nc.addObserver(forName:NSNotification.Name(rawValue: "CardActionNotification"), object:nil, queue:nil, using:catchCardActionNotification)
       
@@ -272,6 +273,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
                 cell.indexPath = indexPath
+                if((sections[sectionIdx].items.count-1) == indexPath.row) {
+                    cell.connectionView.isHidden = true;
+                }
                 return cell
 
             case "recommendation":
@@ -280,6 +284,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
                 cell.indexPath = indexPath
+                if((sections[sectionIdx].items.count-1) == indexPath.row) {
+                    //cell.connectionView.isHidden = true;
+                }
                 return cell
             
             case "approval":
@@ -295,12 +302,18 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ApprovalCard", for: indexPath) as! ApprovalCardCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
+                if((sections[sectionIdx].items.count-1) == indexPath.row) {
+                    cell.connectionView.isHidden = true;
+                }
                 return cell
             case "daily_insight":
                 shouldDisplayCell = true
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DailyInsightsCard", for: indexPath) as! DailyInsightsCardCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
+                if((sections[sectionIdx].items.count-1) == indexPath.row) {
+                    cell.connectionView.isHidden = true;
+                }
                 return cell
             case "info":
                 shouldDisplayCell = true
@@ -309,7 +322,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.selectionStyle = .none
                 
                 return cell
-            
+            /*
             case "action_history":
                 shouldDisplayCell = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ActionHistoryCard", for: indexPath) as! ActionHistoryViewCell
@@ -351,8 +364,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
             return cell
+ */
             default:
                 shouldDisplayCell = false
+                //shouldDisplayHeaderCell = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
@@ -363,40 +378,45 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     var shouldDisplayHeaderCell = false
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        shouldDisplayHeaderCell = true
+        
         switch section {
         case 0:
+            shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(section: 0)
             
             return cell
         case 1:
+            shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(section: 1)
+            cell.sectionTitleLabel.text = "Recommendation For You";
             return cell
         case 2:
+            shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(section: 2)
-            cell.isHidden = true;
+            //cell.isHidden = true;
             return cell
         case 3:
+            shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(section: 3)
-            cell.isHidden = true;
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(section: 4)
-            cell.isHidden = true;
+            cell.sectionTitleLabel.text = "Tasks For Approval";
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(section: 5)
-            cell.isHidden = true;
+            cell.sectionTitleLabel.text = "Daily Insights";
             return cell
         default:
             shouldDisplayHeaderCell = false
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            cell.backgroundColor = UIColor.red
             return cell
         }
     }
@@ -408,9 +428,14 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
      */
     
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-        return shouldDisplayHeaderCell ? 50 : 0
+        print(shouldDisplayHeaderCell)
+        var height: CGFloat = 0;
+        if (section == 0 || section == 1 || section == 4 || section == 5) {
+            height = 50;
+        }
+        return height
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

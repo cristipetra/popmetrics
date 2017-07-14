@@ -35,6 +35,15 @@ class HeaderCardCell: UITableViewCell {
             connectionView.backgroundColor = UIColor.turquoiseColor()
             roundConnectionView.backgroundColor = UIColor.turquoiseColor()
             break
+        case 4:
+            let yellowColor = UIColor(red: 255/255.0, green: 189/255.0, blue: 80/255.0, alpha: 1.0)
+            connectionView.backgroundColor = yellowColor
+            roundConnectionView.backgroundColor = yellowColor
+            break
+        case 5:
+            connectionView.backgroundColor = UIColor.turquoiseColor()
+            roundConnectionView.backgroundColor = UIColor.turquoiseColor()
+            break
         default:
             
             break
