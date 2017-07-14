@@ -28,9 +28,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         GIDSignIn.sharedInstance().uiDelegate = self
       
         // Style elements
-        navigationItem.title = "Feed"
+        navigationItem.title = "Home Feed"
+        
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
+        
+        self.navigationController?.navigationBar.backgroundColor = UIColor.white
         
         
         let nc = NotificationCenter.default
