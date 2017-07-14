@@ -74,7 +74,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landscape-photographer-Scotland (1)" translatesAutoresizingMaskIntoConstraints="NO" id="J75-88-uVK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="back_twitter" translatesAutoresizingMaskIntoConstraints="NO" id="J75-88-uVK">
                                 <rect key="frame" x="0.0" y="227" width="343" height="217"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -112,7 +112,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="back_twitter" width="375" height="250"/>
         <image name="icon_twitter" width="47" height="38"/>
-        <image name="landscape-photographer-Scotland (1)" width="1000" height="665"/>
     </resources>
 </document>

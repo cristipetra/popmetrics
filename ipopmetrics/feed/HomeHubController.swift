@@ -104,7 +104,40 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                     }
             }
             
+            
             self.sections = feedStore.getFeed()
+            
+            
+            // Add temp recommendation sections
+            var tmpSectionRecommendation:FeedSection = FeedSection()
+            tmpSectionRecommendation.name = "Recommendation"
+            tmpSectionRecommendation.index  = 2;
+            
+            let recommendationItem: FeedItem = FeedItem();
+            recommendationItem.actionHandler = "no_action"
+            recommendationItem.actionLabel = "Connect"
+            recommendationItem.headerIconUri = "icon_twitter";
+            recommendationItem.imageUri = "back_twitter";
+            recommendationItem.headerTitle = "Get a Twitter Account ASAP"
+            recommendationItem.message = "Increase your digital footprint & important for SEO"
+            recommendationItem.type = "recommendation"
+            
+            let recommendationItem2: FeedItem = FeedItem();
+            recommendationItem2.actionHandler = "no_action"
+            recommendationItem2.actionLabel = "Connect"
+            recommendationItem2.headerIconUri = "icon_citation_error";
+            recommendationItem2.imageUri = "social_media";
+            recommendationItem2.headerTitle = "Social Media Automation"
+            recommendationItem2.message = "Why do it... and a description goes in here to compel the user to click on the card, Im sure if it needs a secondary CTA or whether the card is sufficient."
+            recommendationItem2.type = "recommendation"
+            
+            tmpSectionRecommendation.items.append(recommendationItem)
+            tmpSectionRecommendation.items.append(recommendationItem2)
+            
+            
+            self.sections.append(tmpSectionRecommendation)
+            
+            
             if !silent { self.tableView.reloadData() }
         }
         
@@ -184,20 +217,17 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                     cell.indexPath = indexPath
                   return cell
                 }
-            
-            case "action_history":
-              
-                firstCellSection = false
+            case "recommendation":
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendationCard", for: indexPath) as! RecommendationCardCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
                 return cell
-              /*
+            
+            case "action_history":
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ActionHistoryCard", for: indexPath) as! ActionHistoryViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
                 return cell
-                */
             
             case "article_of_interest":
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleOfInterestCard", for: indexPath) as! ArticleOfInterestViewCell

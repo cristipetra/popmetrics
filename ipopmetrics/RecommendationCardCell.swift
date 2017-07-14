@@ -27,10 +27,16 @@ class RecommendationCardCell: UITableViewCell {
   
   
     func configure(_ item: FeedItem, handler: CardActionHandler) {
-        self.titleLabel.text = "Get a Twitter account ASAP"
-        self.messageLabel.text = "Increase your digital footprint & important for SEO"
+        self.titleLabel.text = item.headerTitle
+        self.messageLabel.text = item.message
         
-        self.titleImage.image = #imageLiteral(resourceName: "icon_twitter");
+        if let iconImage = item.headerIconUri {
+            self.titleImage.image = UIImage(named: iconImage)
+        }
+        
+        if let imageUri = item.imageUri {
+            self.bottomImage.image = UIImage(named: imageUri)
+        }
         
         adjustLabelLineSpaceing()
     }
