@@ -19,7 +19,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     var requiredActionHandler = RequiredActionHandler()
     
-    var firstCellSection = true
+    var shouldDisplayCell = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -179,10 +179,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         return sections[section].items.count
     }
     
+    /*
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section].name
     }
-    
+    */
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -193,73 +194,66 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let section = sections[sectionIdx]
         let item = section.items[rowIdx]
         
-      
         switch(item.type) {
             case "required_action":
-              
-              firstCellSection = false
-              let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
-              cell.selectionStyle = .none
-              cell.configure(item, handler:self.requiredActionHandler)
-              cell.indexPath = indexPath
-              return cell
-              
-                if sectionIdx == 0 && rowIdx == 0 {
-                    firstCellSection = true
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as! HeaderCardCell
-                    cell.selectionStyle = .none
-                    return cell
-                } else {
-                    firstCellSection = false
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
-                    cell.selectionStyle = .none
-                    cell.configure(item, handler:self.requiredActionHandler)
-                    cell.indexPath = indexPath
-                  return cell
-                }
+                shouldDisplayCell = true
+                let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
+                cell.selectionStyle = .none
+                cell.configure(item, handler:self.requiredActionHandler)
+                cell.indexPath = indexPath
+                return cell
+
             case "recommendation":
+                shouldDisplayCell = true
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendationCard", for: indexPath) as! RecommendationCardCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
+                cell.indexPath = indexPath
                 return cell
             
             case "action_history":
+                shouldDisplayCell = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ActionHistoryCard", for: indexPath) as! ActionHistoryViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
                 return cell
             
             case "article_of_interest":
+                shouldDisplayCell = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleOfInterestCard", for: indexPath) as! ArticleOfInterestViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
                 return cell
             
             case "stats_summary":
+                shouldDisplayCell = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "StatsSummaryCard", for: indexPath) as! StatsSummaryViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
                 return cell
             
             case "best_course":
+                shouldDisplayCell = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "BestCourseCard", for: indexPath) as! BestCourseViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
                 return cell
 
             case "insight":
+                shouldDisplayCell = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "InsightCard", for: indexPath) as! InsightViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
             return cell
             
             case "action":
+                shouldDisplayCell = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ActionCard", for: indexPath) as! ActionViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
             return cell
-            
             default:
+                shouldDisplayCell = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
@@ -268,13 +262,14 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         }
         
     }
-    
+    var shouldDisplayHeaderCell = false
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
+        shouldDisplayHeaderCell = true
         switch section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(section: 0)
+            
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
@@ -283,32 +278,44 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(section: 2)
+            cell.isHidden = true;
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(section: 3)
+            cell.isHidden = true;
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(section: 4)
+            cell.isHidden = true;
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(section: 5)
+            cell.isHidden = true;
             return cell
         default:
-            return UITableViewCell()
+            shouldDisplayHeaderCell = false
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            return cell
         }
     }
 
     
-    
+    /*
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return getCellHeight()
     }
+     */
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+        return shouldDisplayHeaderCell ? 50 : 0
+    }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return firstCellSection ? 50 : getCellHeight()
+        return shouldDisplayCell ? getCellHeight() : 0
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
