@@ -42,6 +42,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
       
         let recommendationCardNib = UINib(nibName: "RecommendationCard", bundle: nil)
         tableView.register(recommendationCardNib, forCellReuseIdentifier: "RecommendationCard")
+        
+        let approvalCardNib = UINib(nibName: "ApprovalCard", bundle: nil)
+        tableView.register(approvalCardNib, forCellReuseIdentifier: "ApprovalCard")
       
         let actionHistoryCardNib = UINib(nibName: "ActionHistoryCard", bundle: nil)
         tableView.register(actionHistoryCardNib, forCellReuseIdentifier: "ActionHistoryCard")
@@ -137,6 +140,24 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             self.sections.append(tmpSectionRecommendation)
             
+            var tmpSectionApproval:FeedSection = FeedSection()
+            tmpSectionApproval.name = "Approval"
+            tmpSectionApproval.index = 1;
+            
+            let approvalItem: FeedItem = FeedItem();
+            approvalItem.actionHandler = "no_action"
+            approvalItem.headerIconUri = "icon_citationerror_splash";
+            approvalItem.imageUri = "icon_citationerror_splash";
+            approvalItem.headerTitle = "Article Title Goes Here"
+            approvalItem.message = "What is the citation error relating to? Where is it that this person needs to do?"
+            approvalItem.type = "approval"
+            
+            tmpSectionApproval.items.append(approvalItem)
+            
+            self.sections.append(tmpSectionApproval)
+            
+            ///---- End add temporary sections
+            
             
             if !silent { self.tableView.reloadData() }
         }
@@ -209,6 +230,13 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.selectionStyle = .none
                 cell.configure(item, handler:self.requiredActionHandler)
                 cell.indexPath = indexPath
+                return cell
+            
+            case "approval":
+                shouldDisplayCell = true
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ApprovalCard", for: indexPath) as! ApprovalCardCell
+                cell.selectionStyle = .none
+                cell.configure(item, handler:self.requiredActionHandler)
                 return cell
             
             case "action_history":
