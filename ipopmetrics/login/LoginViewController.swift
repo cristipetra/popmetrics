@@ -16,13 +16,18 @@ class LoginViewController: UIViewController {
     
     @IBOutlet var phoneNumberTextField: UITextField!
     @IBOutlet var sendPhoneNumberButton: UIButton!
-    
     @IBOutlet var smsCodeTextField: UITextField!
+    
+    var splashView: LDSplashView?
+    var indicatorView: UIActivityIndicatorView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(progressHUD)
         progressHUD.hide()
+        
+        self.logoSplash()
     }
     
     internal func setProgressIndicatorText(_ text: String?) {
@@ -168,3 +173,30 @@ class LoginViewController: UIViewController {
     }
     
 }
+
+// MARK : splash logo animation
+extension LoginViewController {
+    func logoSplash() {
+        let logoSplashIcon = LDSplashIcon(initWithImage: UIImage(named: "logo_loading")!, animationType: .bounce)
+        let iconColor = UIColor.yellowBackgroundColor()
+        self.splashView = LDSplashView(initWithSplashIcon: logoSplashIcon!, backgroundColor: iconColor, animationType: .none)
+        splashView!.delegate = self
+        splashView!.animationDuration = 3
+        self.view.addSubview(splashView!)
+        self.view.bringSubview(toFront: splashView!)
+        splashView!.startAnimation()
+    }
+}
+
+//MARK : - Delegate Methods, implement if you need to know when the animations have started and ended
+extension LoginViewController: LDSplashDelegate {
+    func didBeginAnimatingWithDuration(_ duration: CGFloat) {
+        indicatorView?.startAnimating()
+    }
+    
+    func splashViewDidEndAnimating(_ splashView: LDSplashView) {
+        indicatorView?.stopAnimating()
+        indicatorView?.removeFromSuperview()
+    }
+}
+
