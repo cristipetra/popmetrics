@@ -12,6 +12,8 @@
 		08C7B18D1F1CF40C00E456C6 /* WelcomeScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C7B18C1F1CF40C00E456C6 /* WelcomeScreen.xib */; };
 		08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */; };
 		08D1BC371F1DF4F900D377B2 /* ViewNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC361F1DF4F900D377B2 /* ViewNames.swift */; };
+		08D1BC3B1F1E568A00D377B2 /* PhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC3A1F1E568A00D377B2 /* PhoneView.swift */; };
+		08D1BC3D1F1E59D800D377B2 /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC3C1F1E59D800D377B2 /* PhoneViewController.swift */; };
 		08F368891F18D7C500819CDE /* ApprovalCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08F368881F18D7C500819CDE /* ApprovalCard.xib */; };
 		08F3688B1F18DC4900819CDE /* ApprovalCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3688A1F18DC4900819CDE /* ApprovalCardCell.swift */; };
 		08F3688F1F18E43100819CDE /* ApprovalCardInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08F3688E1F18E43100819CDE /* ApprovalCardInfo.xib */; };
@@ -122,6 +124,8 @@
 		08C7B18C1F1CF40C00E456C6 /* WelcomeScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WelcomeScreen.xib; path = views/WelcomeScreen.xib; sourceTree = "<group>"; };
 		08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		08D1BC361F1DF4F900D377B2 /* ViewNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewNames.swift; sourceTree = "<group>"; };
+		08D1BC3A1F1E568A00D377B2 /* PhoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneView.swift; sourceTree = "<group>"; };
+		08D1BC3C1F1E59D800D377B2 /* PhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
 		08F368881F18D7C500819CDE /* ApprovalCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ApprovalCard.xib; sourceTree = "<group>"; };
 		08F3688A1F18DC4900819CDE /* ApprovalCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApprovalCardCell.swift; path = feed/ApprovalCardCell.swift; sourceTree = "<group>"; };
 		08F3688E1F18E43100819CDE /* ApprovalCardInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ApprovalCardInfo.xib; sourceTree = "<group>"; };
@@ -459,6 +463,7 @@
 				11ACA9A91E2CE05D0021E64A /* CompletionView.swift */,
 				11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */,
 				08C7B18C1F1CF40C00E456C6 /* WelcomeScreen.xib */,
+				08D1BC3A1F1E568A00D377B2 /* PhoneView.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -482,6 +487,7 @@
 			isa = PBXGroup;
 			children = (
 				11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */,
+				08D1BC3C1F1E59D800D377B2 /* PhoneViewController.swift */,
 			);
 			name = login;
 			sourceTree = "<group>";
@@ -762,6 +768,7 @@
 				110A62EE1ECEE6F30052B478 /* DemoTextMessageViewModel.swift in Sources */,
 				110A62D81ECEDE8B0052B478 /* SlidingDatasSource.swift in Sources */,
 				1125ADAC1E96E7990004B4AC /* HomeHubController.swift in Sources */,
+				08D1BC3B1F1E568A00D377B2 /* PhoneView.swift in Sources */,
 				110A62D91ECEDE8B0052B478 /* BaseMessageHandler.swift in Sources */,
 				110A62F41ECEE6FB0052B478 /* TimeSeparatorCollectionViewCell.swift in Sources */,
 				11D8D9F11ECB58AB00CCDAC4 /* RequiredActionViewCell.swift in Sources */,
@@ -791,6 +798,7 @@
 				08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */,
 				11D8D9E91ECA37FC00CCDAC4 /* NavigationController.swift in Sources */,
 				1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */,
+				08D1BC3D1F1E59D800D377B2 /* PhoneViewController.swift in Sources */,
 				11ACA9B01E2CE0FC0021E64A /* PopmetricsColor.swift in Sources */,
 				11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */,
 				110A62EC1ECEE6F30052B478 /* DemoTextMessageHandler.swift in Sources */,
