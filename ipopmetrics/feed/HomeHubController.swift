@@ -126,7 +126,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             
             // Add temp recommendation sections
-            var tmpSectionRecommendation:FeedSection = FeedSection()
+            let tmpSectionRecommendation:FeedSection = FeedSection()
             tmpSectionRecommendation.name = "Recommendation"
             tmpSectionRecommendation.index  = 2;
             
@@ -154,7 +154,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             self.sections.append(tmpSectionRecommendation)
             
-            var tmpSectionApproval:FeedSection = FeedSection()
+            let tmpSectionApproval:FeedSection = FeedSection()
             tmpSectionApproval.name = "Approval"
             tmpSectionApproval.index = 2;
             
@@ -181,7 +181,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             self.sections.append(tmpSectionApproval)
             
             
-            var tmpSectionInsight:FeedSection = FeedSection()
+            let tmpSectionInsight:FeedSection = FeedSection()
             tmpSectionInsight.name = "Daily Insight"
             tmpSectionInsight.index = 1;
             

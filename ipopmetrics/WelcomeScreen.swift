@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import ActiveLabel
 
 class WelcomeScreen: UIViewController {
     
     @IBOutlet weak var topImageView: UIImageView!
-    @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var welcomeLabel: ActiveLabel!
     @IBOutlet weak var blueButton: UIButton!
     @IBOutlet weak var btnNew: UIButton!
     @IBOutlet weak var heartButton: UIButton!
@@ -29,6 +30,22 @@ class WelcomeScreen: UIViewController {
     
     
     private func setUpColors() {
+        let customColor = ActiveType.custom(pattern: "\\smarketing\\b")
+        let customColor2 = ActiveType.custom(pattern: "\\sA.I\\b")
+        let customColor3 = ActiveType.custom(pattern: "\\sautomation\\b")
+        
+        welcomeLabel.enabledTypes.append(customColor)
+        welcomeLabel.enabledTypes.append(customColor2)
+        welcomeLabel.enabledTypes.append(customColor3)
+        
+        welcomeLabel.customize { (welcome) in
+            
+            welcome.customColor[customColor] = UIColor(red: 68.0 / 255.0, green: 180.0 / 255.0, blue: 142.0 / 255.0, alpha: 1.0)
+            welcome.customColor[customColor2] = UIColor(red: 68.0 / 255.0, green: 180.0 / 255.0, blue: 142.0 / 255.0, alpha: 1.0)
+            welcome.customColor[customColor3] = UIColor(red: 68.0 / 255.0, green: 180.0 / 255.0, blue: 142.0 / 255.0, alpha: 1.0)
+        }
+        
+        
         containerView.backgroundColor = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1.0)
         blueButton.layer.backgroundColor = UIColor(red: 65/255, green: 155/255, blue: 249/255, alpha: 1.0).cgColor
         blueButton.setTitleColor(UIColor.white, for: .normal)
@@ -48,6 +65,17 @@ class WelcomeScreen: UIViewController {
         toView.layer.shadowRadius = 2
         toView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         toView.layer.shouldRasterize = true
+    }
+    
+    @IBAction func handlerSpoken(_ sender: UIButton) {
+        let loginVC = AppStoryboard.Signin.instance.instantiateViewController(withIdentifier: ViewNames.SBID_LOGIN_NAV_VC);
+        
+        self.present(loginVC, animated: true, completion: nil)
+    }
+
+    @IBAction func handlerHeartButton(_ sender: UIButton) {
+        let mainTabVC = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC)
+        self.present(mainTabVC, animated: true, completion: nil)
     }
     
 }

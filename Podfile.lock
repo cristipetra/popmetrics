@@ -1,4 +1,5 @@
 PODS:
+  - ActiveLabel (0.7.1)
   - Alamofire (4.5.0)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
@@ -81,6 +82,7 @@ PODS:
   - Whisper (5.0.0)
 
 DEPENDENCIES:
+  - ActiveLabel
   - Alamofire (~> 4.0)
   - Chatto
   - ChattoAdditions
@@ -103,6 +105,7 @@ DEPENDENCIES:
   - Whisper
 
 SPEC CHECKSUMS:
+  ActiveLabel: 68625f22775f51c31bb691ca8de20f1e5a3bc825
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Chatto: d959be2d284db62c713c68d7c39f2712ff902fa2
@@ -136,6 +139,6 @@ SPEC CHECKSUMS:
   TwitterKit: 3b6044a7320340326a4098f3e37aa1dbaeb94942
   Whisper: 051f25e704bf8992641ffd28b20d5682ddc5f5d3
 
-PODFILE CHECKSUM: fe4d61c2af98a7e8a80e5c7ec65b86d856e4ba9b
+PODFILE CHECKSUM: c12ca512f1c40b72090129bac1ec53a0d8feb6b1
 
 COCOAPODS: 1.2.1

@@ -27,7 +27,7 @@ class ApprovalCardInfoCell: UITableViewCell {
         let colorTop = UIColor(red: 255/255, green: 240/255, blue: 162/255, alpha: 1.0).cgColor
         let colorBottom = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1.0).cgColor
         
-        var gl = CAGradientLayer()
+        let gl = CAGradientLayer()
         gl.colors = [colorTop, colorBottom]
         gl.locations = [0.0, 1.0]
     

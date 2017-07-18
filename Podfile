@@ -34,4 +34,5 @@ target 'ipopmetrics' do
   pod 'ChattoAdditions' # if you want to use the cells or the input component
   
   pod 'FontAwesome.swift'
+  pod 'ActiveLabel'
 end
