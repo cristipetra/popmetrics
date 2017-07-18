@@ -87,4 +87,8 @@ extension UIColor {
         return UIColor(r:127, g:140, b:141)
     }
     
+    class func feedBackgroundColor()->UIColor {
+        return UIColor(r:240, g:240, b:240)
+    }
+    
 }

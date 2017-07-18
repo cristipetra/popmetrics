@@ -40,6 +40,7 @@ class ApprovalCardInfoCell: UITableViewCell {
         addGradient();
         adjustLabelLineSpaceing()
         setCornerRadious()
+        self.backgroundColor = UIColor.feedBackgroundColor()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
