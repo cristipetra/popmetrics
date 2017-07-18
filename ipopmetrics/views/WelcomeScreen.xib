@@ -22,7 +22,7 @@
                 <outlet property="heartButton" destination="ZY0-lM-8bn" id="QNP-d4-lrG"/>
                 <outlet property="topImageView" destination="Ya5-DM-MeA" id="lCS-zz-nIN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="welcomeLabel" destination="Xx9-yR-Zb0" id="5VJ-5t-Z83"/>
+                <outlet property="welcomeLabel" destination="Xx9-yR-Zb0" id="ENU-LX-3z0"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -36,14 +36,19 @@
                         <constraint firstAttribute="height" constant="98" id="UpL-Wc-BYP"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey,welcome to Popmetrics beta! See how marketing and A.I &amp; automation can improve your business." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xx9-yR-Zb0">
-                    <rect key="frame" x="24" y="198" width="327" height="80"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey, welcome to Popmetrics beta! See how marketing and A.I &amp; automation can improve your business." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xx9-yR-Zb0" customClass="ActiveLabel" customModule="ActiveLabel">
+                    <rect key="frame" x="32" y="198" width="311" height="80"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="80" id="vay-RO-Y26"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                     <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="lineSpacing">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWP-6v-Dou">
                     <rect key="frame" x="71" y="457" width="233" height="60"/>
@@ -53,6 +58,9 @@
                     </constraints>
                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                     <state key="normal" title="I've Spoken With Aimee"/>
+                    <connections>
+                        <action selector="handlerSpoken:" destination="-1" eventType="touchUpInside" id="gIu-ea-d6X"/>
+                    </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="JIV-ap-ci7">
                     <rect key="frame" x="70.5" y="557" width="234" height="60"/>
@@ -64,6 +72,9 @@
                                 <constraint firstAttribute="height" constant="60" id="Hi0-lg-4yl"/>
                             </constraints>
                             <state key="normal" image="blackHeart"/>
+                            <connections>
+                                <action selector="handlerHeartButton:" destination="-1" eventType="touchUpInside" id="iFR-W7-3mF"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAj-GT-EHI">
                             <rect key="frame" x="74" y="0.0" width="160" height="60"/>
@@ -85,14 +96,14 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Ya5-DM-MeA" secondAttribute="trailing" constant="68" id="10c-wu-lH2"/>
-                <constraint firstAttribute="trailing" secondItem="Xx9-yR-Zb0" secondAttribute="trailing" constant="24" id="5Uq-44-lqf"/>
+                <constraint firstAttribute="trailing" secondItem="Xx9-yR-Zb0" secondAttribute="trailing" constant="32" id="5Uq-44-lqf"/>
                 <constraint firstItem="Ya5-DM-MeA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="68" id="6qW-2L-ZDJ"/>
                 <constraint firstItem="JIV-ap-ci7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Bva-hU-3ZU"/>
                 <constraint firstAttribute="bottom" secondItem="JIV-ap-ci7" secondAttribute="bottom" constant="50" id="H0w-2C-XzA"/>
                 <constraint firstItem="Ya5-DM-MeA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="L8m-M4-ncG"/>
                 <constraint firstItem="ZWP-6v-Dou" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="PLj-bt-eWh"/>
                 <constraint firstItem="Xx9-yR-Zb0" firstAttribute="top" secondItem="Ya5-DM-MeA" secondAttribute="bottom" constant="30" id="XhA-HJ-Q9E"/>
-                <constraint firstItem="Xx9-yR-Zb0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="lGi-s6-fbN"/>
+                <constraint firstItem="Xx9-yR-Zb0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="32" id="lGi-s6-fbN"/>
                 <constraint firstItem="JIV-ap-ci7" firstAttribute="top" secondItem="ZWP-6v-Dou" secondAttribute="bottom" constant="40" id="llA-Cf-6j9"/>
             </constraints>
             <point key="canvasLocation" x="24.5" y="51.5"/>

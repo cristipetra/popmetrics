@@ -121,12 +121,6 @@ class LoginViewController: UIViewController {
                 
                 self.showMainNavigationController()
             }
-            
-            
-            
-            
-            
-            
         }
         
     }

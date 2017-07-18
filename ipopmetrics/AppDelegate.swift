@@ -17,10 +17,6 @@ import UserNotifications
 
 
 
-private let SBID_LOGIN_NAV_VC = "LoginNavigationViewController"
-private let SBID_MAIN_TAB_VC = "MainTabBarController"
-
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -99,9 +95,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func getInitialViewController() -> UIViewController {
         if !isLoggedIn() {
-            return AppStoryboard.Signin.instance.instantiateViewController(withIdentifier: SBID_LOGIN_NAV_VC)
+            return WelcomeScreen()
         }
-        return AppStoryboard.Main.instance.instantiateViewController(withIdentifier: SBID_MAIN_TAB_VC)
+        return AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC)
 
     }
     
@@ -125,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func createViewController(viewURI: URL) -> UIViewController? {
 
-        let mainTbc = storyBoard.instantiateViewController(withIdentifier: SBID_MAIN_TAB_VC)
+        let mainTbc = storyBoard.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC)
         return mainTbc
              
     }
