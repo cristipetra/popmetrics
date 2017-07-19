@@ -18,6 +18,9 @@ class WelcomeScreen: UIViewController {
     @IBOutlet weak var heartButton: UIButton!
     @IBOutlet var containerView: UIView!
     
+    var splashView: LDSplashView?
+    var indicatorView: UIActivityIndicatorView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +29,8 @@ class WelcomeScreen: UIViewController {
         addShadowToView(blueButton)
         addShadowToView(btnNew)
         addShadowToView(heartButton)
+        
+        self.logoSplash()
     }
     
     
@@ -78,3 +83,30 @@ class WelcomeScreen: UIViewController {
     }
     
 }
+
+// MARK : splash logo animation
+extension WelcomeScreen {
+    func logoSplash() {
+        let logoSplashIcon = LDSplashIcon(initWithImage: UIImage(named: "logo")!, animationType: .bounce)
+        let iconColor = UIColor.yellowBackgroundColor()
+        self.splashView = LDSplashView(initWithSplashIcon: logoSplashIcon!, backgroundColor: iconColor, animationType: .none)
+        splashView!.delegate = self
+        splashView!.animationDuration = 3
+        self.view.addSubview(splashView!)
+        self.view.bringSubview(toFront: splashView!)
+        splashView!.startAnimation()
+    }
+}
+
+//MARK : - Delegate Methods, implement if you need to know when the animations have started and ended
+extension WelcomeScreen: LDSplashDelegate {
+    func didBeginAnimatingWithDuration(_ duration: CGFloat) {
+        indicatorView?.startAnimating()
+    }
+    
+    func splashViewDidEndAnimating(_ splashView: LDSplashView) {
+        indicatorView?.stopAnimating()
+        indicatorView?.removeFromSuperview()
+    }
+}
+
