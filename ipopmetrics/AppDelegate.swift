@@ -95,7 +95,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func getInitialViewController() -> UIViewController {
         if !isLoggedIn() {
-            return PhoneViewController()
             return WelcomeScreen()
         }
         return AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC)
