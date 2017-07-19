@@ -15,7 +15,7 @@
             <objects>
                 <navigationController storyboardIdentifier="LoginNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="PH9-cg-7gw" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1xM-wk-aAQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="1xM-wk-aAQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -27,6 +27,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DZV-Za-uDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-6178" y="5006"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="CGe-9U-e9x">
+            <objects>
+                <viewController id="L0G-Lb-pIx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8ss-jm-j0l"/>
+                        <viewControllerLayoutGuide type="bottom" id="D6p-7c-kwI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IrC-i4-bir">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wH-aW-TIK" customClass="DigitCodeView" customModule="ipopmetrics" customModuleProvider="target">
+                                <rect key="frame" x="16" y="20" width="343" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9wH-aW-TIK" firstAttribute="leading" secondItem="IrC-i4-bir" secondAttribute="leadingMargin" id="M5S-Or-5e9"/>
+                            <constraint firstItem="9wH-aW-TIK" firstAttribute="trailing" secondItem="IrC-i4-bir" secondAttribute="trailingMargin" id="meH-Ye-Gh2"/>
+                            <constraint firstItem="D6p-7c-kwI" firstAttribute="top" secondItem="9wH-aW-TIK" secondAttribute="bottom" id="oMQ-Z6-lj1"/>
+                            <constraint firstItem="9wH-aW-TIK" firstAttribute="top" secondItem="8ss-jm-j0l" secondAttribute="bottom" id="oeB-ah-U7G"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IkN-TZ-pes" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5800.8000000000002" y="5722.4887556221893"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="j8T-X2-JfX">
@@ -70,8 +100,8 @@
                                     <action selector="didPressSendPhoneNumber:" destination="Msv-bz-b9x" eventType="touchUpInside" id="t5h-TR-suV"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B2V-5a-eGc">
-                                <rect key="frame" x="16" y="261" width="223" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B2V-5a-eGc">
+                                <rect key="frame" x="26" y="265" width="213" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -110,7 +140,6 @@
                             <constraint firstItem="B2V-5a-eGc" firstAttribute="leading" secondItem="0wK-ry-XYl" secondAttribute="leadingMargin" constant="10" id="fEw-i8-hLa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="B2V-5a-eGc" secondAttribute="trailing" constant="120" id="fzI-an-Iiy"/>
                             <constraint firstItem="kp1-W4-cJj" firstAttribute="top" secondItem="cWd-gE-TVC" secondAttribute="bottom" constant="20" id="hUO-89-A1w"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="cWd-gE-TVC" secondAttribute="leading" constant="10" id="iEK-Of-ovg"/>
                             <constraint firstItem="gdx-CY-drf" firstAttribute="centerY" secondItem="cWd-gE-TVC" secondAttribute="centerY" id="iut-j4-nSU"/>
                             <constraint firstItem="QQa-cg-Qxf" firstAttribute="top" secondItem="z6k-TM-4Cc" secondAttribute="bottom" constant="15" id="nTK-Rh-CsU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BCd-LH-66B" secondAttribute="trailing" constant="10" id="qJF-QJ-H44"/>

@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     
     var phoneView: PhoneView = PhoneView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
+    let digitCodeView = DigitCodeView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height));
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +79,7 @@ class LoginViewController: UIViewController {
                 return
             } else {
                 let codeVC = CodeViewController();
+                codeVC.phoneNo = phoneNumber;
                 self.navigationController?.pushViewController(codeVC, animated: true)
             }
         }
