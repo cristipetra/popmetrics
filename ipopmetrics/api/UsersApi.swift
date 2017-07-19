@@ -152,22 +152,22 @@ class UsersApi: BaseApi {
         }
         Alamofire.request(ApiUrls.getLoginWithCodeUrl(), method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { response in
             if let err = self.createErrorWithHttpResponse(response: response.response) {
-                callback(nil, err)
-                return
+                //callback(nil, err)
+                //return
             }
             
             if let resultDict = response.result.value as? [String: Any] {
-                    // Check for user does not exist
-                    if let errorsDict = resultDict["errors"] as? [String: Any] {
-                        if errorsDict["email"] != nil {
-                            callback(nil, ApiError.userMismatch)
-                            return
-                        }
+                // Check for user does not exist
+                if let errorsDict = resultDict["errors"] as? [String: Any] {
+                    if errorsDict["email"] != nil {
+                        callback(nil, ApiError.userMismatch)
+                        return
                     }
-                    callback(resultDict, nil)
                 }
+                callback(resultDict, nil)
+            }
             
-            callback(nil, ApiError.apiNotAvailable)
+            //callback(nil, ApiError.apiNotAvailable)
         }
     }
     

@@ -118,8 +118,8 @@ class CodeViewController: UIViewController {
     }
     
     internal func showMainNavigationController() {
-        AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC)
-        
+        let mainTabVC = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC)
+        self.present(mainTabVC, animated: false, completion: nil)
     }
 
 }
