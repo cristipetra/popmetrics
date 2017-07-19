@@ -15,20 +15,20 @@ class PhoneView: UIView {
         numberCellTxt.translatesAutoresizingMaskIntoConstraints = false
         numberCellTxt.textAlignment = .center
         numberCellTxt.font = UIFont(name: "OpenSans", size: 23)
+        numberCellTxt.keyboardType = .numbersAndPunctuation
         return numberCellTxt
     }()
     
     lazy var messageLbl : UILabel = {
-        
         let msgLbl = UILabel()
         msgLbl.translatesAutoresizingMaskIntoConstraints = false
         msgLbl.text = "We’ll send you a magic code that you can use to login."
         msgLbl.font = UIFont(name: "OpenSans", size: 15)
+        
         return msgLbl
     }()
     
     lazy var sendCodeBtn : UIButton = {
-        
         let sendCodeButton = UIButton()
         sendCodeButton.translatesAutoresizingMaskIntoConstraints = false
         sendCodeButton.setTitle("Send The Magic Code", for: .normal)
@@ -47,13 +47,12 @@ class PhoneView: UIView {
         numberTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 122).isActive = true
         numberTextField.heightAnchor.constraint(equalToConstant: 60).isActive = true
         numberTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        let str = NSAttributedString(string: "Enter your cell #", attributes: [NSForegroundColorAttributeName: textNumberColor])
-        numberTextField.attributedPlaceholder = str
         
         numberTextField.borderStyle = .roundedRect
         numberTextField.font = UIFont(name: "OpenSans", size: 23)
         numberTextField.textColor = textNumberColor;
         numberTextField.backgroundColor = UIColor(red: 255/255, green: 233/255, blue: 156/255, alpha: 1.0)
+        setPlaceholder()
         
         // Message Label
         self.addSubview(messageLbl)
@@ -66,7 +65,6 @@ class PhoneView: UIView {
         messageLbl.textColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1.0)
         
         // Send code button
-        
         self.addSubview(sendCodeBtn)
         sendCodeBtn.widthAnchor.constraint(equalToConstant: 233).isActive = true
         sendCodeBtn.heightAnchor.constraint(equalToConstant: 60).isActive = true
@@ -75,21 +73,27 @@ class PhoneView: UIView {
         sendCodeBtn.layer.backgroundColor = UIColor(red: 255/255, green: 210/255, blue: 55/255, alpha: 1.0).cgColor
         sendCodeBtn.setTitleColor(UIColor(red: 228/255, green: 185/255, blue: 39/255, alpha: 1.0), for: .normal)
         sendCodeBtn.layer.cornerRadius = 30
+        addShadowToView(sendCodeBtn)
         
     }
     
     private func setPlaceholder() {
         let mutableAttrString = NSMutableAttributedString()
-        
         let regularAttribute = [
             NSFontAttributeName: UIFont(name: "OpenSans", size: 23),
             NSForegroundColorAttributeName: UIColor(red: 68/255, green: 180/255, blue: 142/255, alpha: 1.0)
         ]
-        
         let regularAttributedString = NSAttributedString(string: "Enter your cell #", attributes: regularAttribute)
-        //mutableAttrString.append(regularAttributedString)
-        numberTextField.attributedPlaceholder = regularAttributedString
-        //numberTextField.attributedPlaceholder = mutableAttrString
+        mutableAttrString.append(regularAttributedString)
+        numberTextField.attributedPlaceholder = mutableAttrString
+    }
+    
+    internal func addShadowToView(_ toView: UIView) {
+        toView.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor
+        toView.layer.shadowOpacity = 0.3;
+        toView.layer.shadowRadius = 2
+        toView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        toView.layer.shouldRasterize = true
     }
     
     

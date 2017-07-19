@@ -9,20 +9,32 @@
 import Foundation
 import UIKit
 import Crashlytics
+import EZAlertController
 
 class LoginViewController: UIViewController {
     
     fileprivate let progressHUD = ProgressHUD(text: "Loading...")
     
-    @IBOutlet var phoneNumberTextField: UITextField!
-    @IBOutlet var sendPhoneNumberButton: UIButton!
+    var phoneView: PhoneView = PhoneView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
-    @IBOutlet var smsCodeTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        phoneView.numberTextField.delegate = self
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+        
+        phoneView.sendCodeBtn.addTarget(self, action: #selector(didPressSendPhoneNumber), for: .touchUpInside)
+        addPhoneView();
+        
+        
         view.addSubview(progressHUD)
         progressHUD.hide()
+    }
+    
+    func addPhoneView() {
+        self.view.addSubview(phoneView);
     }
     
     internal func setProgressIndicatorText(_ text: String?) {
@@ -43,19 +55,6 @@ class LoginViewController: UIViewController {
         })
     }
     
-    internal func handleApiError(_ error: ApiError, completionHandler: () -> Void) {
-        if error == ApiError.userNotAuthenticated {
-            UsersStore.getInstance().clearCredentials()
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.setInitialViewController()
-            completionHandler()
-        } else {
-            let message = "Something went wrong. Please try again later."
-            self.presentAlertWithTitle("Error", message: message)
-            completionHandler()
-        }
-    }
-    
     internal func presentAlertWithTitle(_ title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -65,17 +64,8 @@ class LoginViewController: UIViewController {
         })
     }
     
-    internal func addShadowToView(_ toView: UIView) {
-        toView.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor
-        toView.layer.shadowOpacity = 0.8;
-        toView.layer.shadowRadius = 2
-        toView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-    }
-    
-    
-    @IBAction func didPressSendPhoneNumber(_ sender: Any) {
-    
-        let phoneNumber = phoneNumberTextField.text!
+    internal func didPressSendPhoneNumber() {
+        let phoneNumber = phoneView.numberTextField.text!
         showProgressIndicator()
         UsersApi().sendCodeBySms(phoneNumber: phoneNumber) {userDict, error in
             self.hideProgressIndicator()
@@ -84,46 +74,15 @@ class LoginViewController: UIViewController {
                 if error == ApiError.userMismatch || error == ApiError.userNotAuthenticated {
                     message = "User /Password combination not found."
                 }
-                self.presentAlertWithTitle("Error", message: message)
+                EZAlertController.alert("Error", message: message)
                 return
-            }
-            
-        }
-
-    } // func
-    
-    @IBAction func didPressSendSmsCode(_ sender: Any) {
-        let smsCode = smsCodeTextField.text!
-        let phoneNumber = phoneNumberTextField.text!
-        showProgressIndicator()
-        UsersApi().logInWithSmsCode(phoneNumber, smsCode: smsCode) {responseDict, error in
-            self.hideProgressIndicator()
-            if error != nil {
-                let message = "An error has occurred. Please try again later."
-                self.presentAlertWithTitle("Error", message: message)
-                return
-            }
-            let code = responseDict?["code"] as! String
-            if code != "success" {
-                let message = responseDict?["message"] as! String
-                self.presentAlertWithTitle("Authentication failed.", message:message)
-                return
-            }
-            
-            let userDict = responseDict?["user"] as! [String: Any]
-            self.storeUserDict(userDict) { success in
-                if !success {
-                    Crashlytics.sharedInstance().crash()
-                    let message = "An error has occurred. Please try again later."
-                    self.presentAlertWithTitle("Error", message: message)
-                    return
-                }
-                
-                self.showMainNavigationController()
+            } else {
+                let codeVC = CodeViewController();
+                self.navigationController?.pushViewController(codeVC, animated: true)
             }
         }
-        
     }
+    
     
     internal func showViewControllerWithStoryboardID(_ sbID: String) {
         let vc = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: sbID)
@@ -136,29 +95,35 @@ class LoginViewController: UIViewController {
         showViewControllerWithStoryboardID("FEED_VC")
     }
     
-    
-    internal func storeUserDict(_ userDict: [String: Any]?, callback: (_ success: Bool) -> Void) {
-        if let userDict = userDict {
-            let userID = userDict["id"] as? String
-            let authToken = userDict["authentication_token"] as? String
-            
-            if userID == nil || authToken == nil {
-                callback(false)
-                return
-            }
-            
-            let user = User()
-            user.id = userID!
-            user.authToken = authToken!
-            user.name = userDict["name"] as! String?
-            user.email = userDict["email"] as! String?
-            UsersStore.getInstance().storeLocalUser(user)
-            Crashlytics.sharedInstance().setUserEmail(userDict["name"] as! String?)
-            Crashlytics.sharedInstance().setUserIdentifier(userID!)
-            Crashlytics.sharedInstance().setUserName(userDict["name"] as! String?)
-            
-            callback(true)
+    internal func dismissKeyboard() {
+        if phoneView.numberTextField.text?.characters.count == 0 {
+            phoneView.sendCodeBtn.isUserInteractionEnabled = false
+            phoneView.sendCodeBtn.layer.backgroundColor = UIColor(red: 255/255, green: 210/255, blue: 55/255, alpha: 1.0).cgColor
+            phoneView.sendCodeBtn.setTitleColor(UIColor(red: 228/255, green: 185/255, blue: 39/255, alpha: 1.0), for: .normal)
         }
+        phoneView.numberTextField.resignFirstResponder()
+    }
+    
+}
+
+// MARK: - UITextFieldDelegate
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    internal func textFieldDidBeginEditing(_ textField: UITextField) {
+        phoneView.sendCodeBtn.isUserInteractionEnabled = true
+        phoneView.sendCodeBtn.layer.backgroundColor = UIColor(red: 65/255, green: 155/255, blue: 249/255, alpha: 1.0).cgColor
+        phoneView.sendCodeBtn.setTitleColor(UIColor.white, for: .normal)
+    }
+    
+    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if phoneView.numberTextField.text?.characters.count == 0 {
+            phoneView.sendCodeBtn.isUserInteractionEnabled = false
+            phoneView.sendCodeBtn.layer.backgroundColor = UIColor(red: 255/255, green: 210/255, blue: 55/255, alpha: 1.0).cgColor
+            phoneView.sendCodeBtn.setTitleColor(UIColor(red: 228/255, green: 185/255, blue: 39/255, alpha: 1.0), for: .normal)
+        }
+        phoneView.numberTextField.resignFirstResponder()
+        return true
     }
     
 }

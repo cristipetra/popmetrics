@@ -35,4 +35,6 @@ target 'ipopmetrics' do
   
   pod 'FontAwesome.swift'
   pod 'ActiveLabel'
+  pod 'EZAlertController'
+  
 end
