@@ -10,9 +10,13 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
+    var splashView: LDSplashView?
+    var indicatorView: UIActivityIndicatorView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        return
+        
+        self.logoSplash()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,4 +41,30 @@ class MainTabBarController: UITabBarController {
      return true
      }
      */
+}
+
+// MARK : splash logo animation
+extension MainTabBarController {
+    func logoSplash() {
+        let logoSplashIcon = LDSplashIcon(initWithImage: UIImage(named: "logo")!, animationType: .bounce)
+        let iconColor = UIColor.yellowBackgroundColor()
+        self.splashView = LDSplashView(initWithSplashIcon: logoSplashIcon!, backgroundColor: iconColor, animationType: .none)
+        splashView!.delegate = self
+        splashView!.animationDuration = 3
+        self.view.addSubview(splashView!)
+        self.view.bringSubview(toFront: splashView!)
+        splashView!.startAnimation()
+    }
+}
+
+//MARK : - Delegate Methods, implement if you need to know when the animations have started and ended
+extension MainTabBarController: LDSplashDelegate {
+    func didBeginAnimatingWithDuration(_ duration: CGFloat) {
+        indicatorView?.startAnimating()
+    }
+    
+    func splashViewDidEndAnimating(_ splashView: LDSplashView) {
+        indicatorView?.stopAnimating()
+        indicatorView?.removeFromSuperview()
+    }
 }
