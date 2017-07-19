@@ -15,7 +15,7 @@ class PhoneView: UIView {
         numberCellTxt.translatesAutoresizingMaskIntoConstraints = false
         numberCellTxt.textAlignment = .center
         numberCellTxt.font = UIFont(name: "OpenSans", size: 23)
-        numberCellTxt.keyboardType = .numbersAndPunctuation
+        //numberCellTxt.keyboardType = .numbersAndPunctuation
         return numberCellTxt
     }()
     
