@@ -68,8 +68,7 @@ class WelcomeScreen: UIViewController {
     }
     
     @IBAction func handlerSpoken(_ sender: UIButton) {
-        let loginVC = AppStoryboard.Signin.instance.instantiateViewController(withIdentifier: ViewNames.SBID_LOGIN_NAV_VC);
-        
+        let loginVC = LoginNavigationViewController()
         self.present(loginVC, animated: true, completion: nil)
     }
 
