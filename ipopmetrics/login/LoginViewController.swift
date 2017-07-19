@@ -177,7 +177,7 @@ class LoginViewController: UIViewController {
 // MARK : splash logo animation
 extension LoginViewController {
     func logoSplash() {
-        let logoSplashIcon = LDSplashIcon(initWithImage: UIImage(named: "logo_loading")!, animationType: .bounce)
+        let logoSplashIcon = LDSplashIcon(initWithImage: UIImage(named: "logo")!, animationType: .bounce)
         let iconColor = UIColor.yellowBackgroundColor()
         self.splashView = LDSplashView(initWithSplashIcon: logoSplashIcon!, backgroundColor: iconColor, animationType: .none)
         splashView!.delegate = self
@@ -188,7 +188,7 @@ extension LoginViewController {
     }
 }
 
-//MARK : - Delegate Methods, implement if you need to know when the animations have started and ended
+// MARK : - Delegate Methods, implement if you need to know when the animations have started and ended
 extension LoginViewController: LDSplashDelegate {
     func didBeginAnimatingWithDuration(_ duration: CGFloat) {
         indicatorView?.startAnimating()

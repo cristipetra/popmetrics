@@ -46,7 +46,7 @@ class MainTabBarController: UITabBarController {
 // MARK : splash logo animation
 extension MainTabBarController {
     func logoSplash() {
-        let logoSplashIcon = LDSplashIcon(initWithImage: UIImage(named: "logo_loading")!, animationType: .bounce)
+        let logoSplashIcon = LDSplashIcon(initWithImage: UIImage(named: "logo")!, animationType: .bounce)
         let iconColor = UIColor.yellowBackgroundColor()
         self.splashView = LDSplashView(initWithSplashIcon: logoSplashIcon!, backgroundColor: iconColor, animationType: .none)
         splashView!.delegate = self

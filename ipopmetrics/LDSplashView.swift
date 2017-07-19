@@ -275,7 +275,7 @@ import UIKit
         }
     }
     
-    var iconSize: CGSize = CGSize(width: 80, height: 80) {
+    var iconSize: CGSize = CGSize(width: 98, height: 101) {
         didSet {
             self.frame = CGRect(x: 0, y: 0, width: iconSize.width, height: iconSize.height)
         }
@@ -363,7 +363,7 @@ import UIKit
         let growDuration = self.animationDuration * 0.7
         
         UIView.animate(withDuration: Double(shrinkDuration), delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: UIViewAnimationOptions(), animations: { () -> Void in
-            let scaleTransform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+            let scaleTransform = CGAffineTransform(scaleX: 0.95, y: 0.95)
             self.transform = scaleTransform
             }) { (_) -> Void in
                 UIView.animate(withDuration: Double(growDuration), animations: { () -> Void in
