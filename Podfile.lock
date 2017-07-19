@@ -14,6 +14,7 @@ PODS:
     - Fabric (~> 1.6.3)
   - CryptoSwift (0.6.9)
   - DGElasticPullToRefresh (1.1)
+  - EZAlertController (3.2)
   - Fabric (1.6.12)
   - FacebookCore (0.2.0):
     - Bolts (~> 1.8)
@@ -88,6 +89,7 @@ DEPENDENCIES:
   - ChattoAdditions
   - Crashlytics
   - DGElasticPullToRefresh
+  - EZAlertController
   - Fabric
   - FacebookCore
   - FacebookLogin
@@ -113,6 +115,7 @@ SPEC CHECKSUMS:
   Crashlytics: dfbae35ef22ca189240d230ad501feea4ee85d2d
   CryptoSwift: a22f6ba238e9ce4d26ee7bf45b9ed82e7122d4a0
   DGElasticPullToRefresh: 28f11a6026302a90f8ffebbc6e24748e584dddd3
+  EZAlertController: 633be01320bed47720be54054df47667d61c2481
   Fabric: f050464eac45a2ce5a8e6e6a07e977c0df32fe28
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
@@ -139,6 +142,6 @@ SPEC CHECKSUMS:
   TwitterKit: 3b6044a7320340326a4098f3e37aa1dbaeb94942
   Whisper: 051f25e704bf8992641ffd28b20d5682ddc5f5d3
 
-PODFILE CHECKSUM: c12ca512f1c40b72090129bac1ec53a0d8feb6b1
+PODFILE CHECKSUM: 205f8840165f3ed23c9d302fb7d14e2a50c91357
 
 COCOAPODS: 1.2.1

@@ -10,9 +10,9 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        return
     }
     
     override func viewWillAppear(_ animated: Bool) {

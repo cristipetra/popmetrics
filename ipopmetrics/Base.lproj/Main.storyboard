@@ -51,8 +51,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="NdU-Vz-erg" kind="relationship" relationship="viewControllers" id="59w-tb-V7u"/>
-                        <segue destination="aLn-zU-J6Q" kind="relationship" relationship="viewControllers" id="leB-oI-OSK"/>
-                        <segue destination="mhc-LI-Iws" kind="relationship" relationship="viewControllers" id="cJE-ZC-asH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hb4-4Y-tFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -190,7 +188,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NdU-Vz-erg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Feed" image="second" id="g6b-nh-pyf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="z2a-iC-IPh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="z2a-iC-IPh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

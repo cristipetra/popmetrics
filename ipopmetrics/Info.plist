@@ -74,6 +74,13 @@
 	<string>Pictures captured with the camera can be sent by chat.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Pictures from the photo library can be added to the chat.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>OpenSans-Bold.ttf</string>
+		<string>OpenSans-Light.ttf</string>
+		<string>OpenSans-Regular.ttf</string>
+		<string>OpenSans-Semibold.ttf</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

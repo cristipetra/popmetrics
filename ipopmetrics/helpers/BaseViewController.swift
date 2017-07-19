@@ -78,8 +78,6 @@ class BaseViewController: UIViewController {
         
     }
     
-    
-    
     internal func presentAlertWithTitle(_ title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
