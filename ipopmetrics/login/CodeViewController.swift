@@ -29,6 +29,7 @@ class CodeViewController: UIViewController {
         
         digitCodeView.sendCodeBtn.addTarget(self, action: #selector(didPressSendSmsCode), for: .touchUpInside)
         digitCodeView.contactBtn.addTarget(self, action: #selector(didPressContact), for: .touchUpInside)
+        digitCodeView.resendCodeBtn.addTarget(self, action: #selector(didPressResendCode), for: .touchUpInside)
         
         
         view.addSubview(progressHUD)
@@ -78,6 +79,19 @@ class CodeViewController: UIViewController {
             }
         }
         
+    }
+    
+    internal func didPressResendCode() {
+        let phoneNumber = phoneNo!
+        showProgressIndicator()
+        UsersApi().sendCodeBySms(phoneNumber: phoneNumber) {userDict, error in
+            self.hideProgressIndicator()
+            if error != nil {
+                let message = "An error has occurred. Please try again later."
+                EZAlertController.alert("Error", message: message)
+                return
+            }
+        }
     }
     
     func didPressContact() {
