@@ -33,11 +33,10 @@ class WelcomeScreen: UIViewController {
         self.logoSplash()
     }
     
-    
     private func setUpColors() {
-        let customColor = ActiveType.custom(pattern: "\\smarketing\\b")
-        let customColor2 = ActiveType.custom(pattern: "\\sA.I\\b")
-        let customColor3 = ActiveType.custom(pattern: "\\sautomation\\b")
+        let customColor = ActiveType.custom(pattern: "\\sMarketing\\b")
+        let customColor2 = ActiveType.custom(pattern: "\\sA.I. \\b")
+        let customColor3 = ActiveType.custom(pattern: "\\sAutomation\\b")
         
         welcomeLabel.enabledTypes.append(customColor)
         welcomeLabel.enabledTypes.append(customColor2)
@@ -69,7 +68,6 @@ class WelcomeScreen: UIViewController {
         toView.layer.shadowOpacity = 0.3;
         toView.layer.shadowRadius = 2
         toView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        toView.layer.shouldRasterize = true
     }
     
     @IBAction func handlerSpoken(_ sender: UIButton) {
@@ -78,10 +76,12 @@ class WelcomeScreen: UIViewController {
     }
 
     @IBAction func handlerHeartButton(_ sender: UIButton) {
-        let mainTabVC = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC)
-        self.present(mainTabVC, animated: true, completion: nil)
+        UIApplication.shared.open(URL(string: Config.appWebLink)!, options: [:], completionHandler: nil)
     }
     
+    @IBAction func handlerDidPressNewButton(_ sender: UIButton) {
+        UIApplication.shared.open(URL(string: Config.appWebAimeeLink)!, options: [:], completionHandler: nil)
+    }
 }
 
 // MARK : splash logo animation

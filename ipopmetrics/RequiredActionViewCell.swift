@@ -42,7 +42,7 @@ class RequiredActionViewCell: UITableViewCell {
         self.configureActionType();
  
       
-        self.backgroundColor = UIColor.cloudsColor()
+        self.backgroundColor = UIColor.feedBackgroundColor()
         setCornerRadious()
         infoButton.setTitle("i", for: .normal)
       

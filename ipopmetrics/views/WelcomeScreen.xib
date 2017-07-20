@@ -36,11 +36,8 @@
                         <constraint firstAttribute="height" constant="98" id="UpL-Wc-BYP"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey, welcome to Popmetrics beta! See how marketing and A.I &amp; automation can improve your business." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xx9-yR-Zb0" customClass="ActiveLabel" customModule="ActiveLabel">
-                    <rect key="frame" x="32" y="198" width="311" height="80"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="80" id="vay-RO-Y26"/>
-                    </constraints>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi and welcome to the Popmetrics beta! See how Marketing Automation &amp; A.I. can improve your business today." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xx9-yR-Zb0" customClass="ActiveLabel" customModule="ActiveLabel">
+                    <rect key="frame" x="32" y="198" width="311" height="66"/>
                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                     <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -65,7 +62,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="JIV-ap-ci7">
                     <rect key="frame" x="70.5" y="557" width="234" height="60"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZY0-lM-8bn">
+                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZY0-lM-8bn">
                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="30j-ut-txk"/>
@@ -86,6 +83,9 @@
                             <state key="normal" title="I'm New">
                                 <color key="titleColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="handlerDidPressNewButton:" destination="-1" eventType="touchUpInside" id="C89-rj-aZf"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
