@@ -35,9 +35,9 @@ class WelcomeScreen: UIViewController {
     
     
     private func setUpColors() {
-        let customColor = ActiveType.custom(pattern: "\\smarketing\\b")
-        let customColor2 = ActiveType.custom(pattern: "\\sA.I\\b")
-        let customColor3 = ActiveType.custom(pattern: "\\sautomation\\b")
+        let customColor = ActiveType.custom(pattern: "\\sMarketing\\b")
+        let customColor2 = ActiveType.custom(pattern: "\\sA.I. \\b")
+        let customColor3 = ActiveType.custom(pattern: "\\sAutomation\\b")
         
         welcomeLabel.enabledTypes.append(customColor)
         welcomeLabel.enabledTypes.append(customColor2)
@@ -69,7 +69,6 @@ class WelcomeScreen: UIViewController {
         toView.layer.shadowOpacity = 0.3;
         toView.layer.shadowRadius = 2
         toView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        toView.layer.shouldRasterize = true
     }
     
     @IBAction func handlerSpoken(_ sender: UIButton) {

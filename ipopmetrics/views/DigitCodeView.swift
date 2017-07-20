@@ -102,15 +102,6 @@ class DigitCodeView: UIView {
         digitextField.attributedPlaceholder = mutableAttrString
     }
     
-    internal func addShadowToView(_ toView: UIView) {
-        toView.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor
-        toView.layer.shadowOpacity = 0.3;
-        toView.layer.shadowRadius = 2
-        toView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        toView.layer.shouldRasterize = true
-    }
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame);
         setup();

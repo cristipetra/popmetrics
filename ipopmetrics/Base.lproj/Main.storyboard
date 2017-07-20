@@ -47,7 +47,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="NdU-Vz-erg" kind="relationship" relationship="viewControllers" id="59w-tb-V7u"/>
@@ -182,13 +183,13 @@
             </objects>
             <point key="canvasLocation" x="-473" y="1632"/>
         </scene>
-        <!--Feed-->
+        <!--Home-->
         <scene sceneID="BgY-0i-GYY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NdU-Vz-erg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" image="second" id="g6b-nh-pyf"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="Icon_Home_Unselected" id="g6b-nh-pyf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="z2a-iC-IPh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="z2a-iC-IPh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -203,6 +204,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Icon_Home_Unselected" width="23" height="20"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
         <image name="user_profile" width="16" height="16"/>
