@@ -90,5 +90,9 @@ extension UIColor {
     class func yellowBackgroundColor()->UIColor {
         return UIColor(r:255, g:221, b:105)
     }
+
+    class func feedBackgroundColor()->UIColor {
+        return UIColor(r:240, g:240, b:240)
+    }
     
 }

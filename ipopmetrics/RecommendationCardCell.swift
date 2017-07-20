@@ -44,7 +44,7 @@ class RecommendationCardCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
      
-    self.backgroundColor = UIColor.cloudsColor()
+    self.backgroundColor = UIColor.feedBackgroundColor()
     adjustLabelLineSpaceing()
     headerView.backgroundColor = UIColor.turquoiseColor()
     setCornerRadious()
