@@ -14,14 +14,21 @@ class Config: NSObject {
     
     class var appWebLink: String {
         get {
-            return "http://www.popmetrics.io";
+            return "http://www.popmetrics.io"
         }
     }
     
     class var appWebAimeeLink: String {
         get {
-            return appWebLink + "/aimee";
+            return appWebLink + "/aimee"
         }
     }
+    
+    class var mailContact: String {
+        get {
+            return "concierge@popmetrics.io"
+        }
+    }
+    
 
 }

@@ -28,6 +28,7 @@ class CodeViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
         
         digitCodeView.sendCodeBtn.addTarget(self, action: #selector(didPressSendSmsCode), for: .touchUpInside)
+        digitCodeView.contactBtn.addTarget(self, action: #selector(didPressContact), for: .touchUpInside)
         
         
         view.addSubview(progressHUD)
@@ -77,6 +78,11 @@ class CodeViewController: UIViewController {
             }
         }
         
+    }
+    
+    func didPressContact() {
+        let message = "mailto:" + Config.mailContact
+        UIApplication.shared.open(URL(string: message)!, options: [:], completionHandler: nil)
     }
     
     internal func storeUserDict(_ userDict: [String: Any]?, callback: (_ success: Bool) -> Void) {
