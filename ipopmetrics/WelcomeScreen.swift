@@ -33,7 +33,6 @@ class WelcomeScreen: UIViewController {
         self.logoSplash()
     }
     
-    
     private func setUpColors() {
         let customColor = ActiveType.custom(pattern: "\\sMarketing\\b")
         let customColor2 = ActiveType.custom(pattern: "\\sA.I. \\b")
@@ -77,10 +76,12 @@ class WelcomeScreen: UIViewController {
     }
 
     @IBAction func handlerHeartButton(_ sender: UIButton) {
-        let mainTabVC = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC)
-        self.present(mainTabVC, animated: true, completion: nil)
+        UIApplication.shared.open(URL(string: Config.appWebLink)!, options: [:], completionHandler: nil)
     }
     
+    @IBAction func handlerDidPressNewButton(_ sender: UIButton) {
+        UIApplication.shared.open(URL(string: Config.appWebAimeeLink)!, options: [:], completionHandler: nil)
+    }
 }
 
 // MARK : splash logo animation
