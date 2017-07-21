@@ -66,7 +66,11 @@ PODS:
     - GTMSessionFetcher/Core (= 1.1.11)
   - JSONWebToken (2.1.1):
     - CryptoSwift (~> 0.6.1)
+  - MarqueeLabel/Swift (3.1.1)
   - MGSwipeTableCell (1.5.6)
+  - NotificationBannerSwift (1.4.0):
+    - MarqueeLabel/Swift
+    - SnapKit (~> 3.2)
   - ObjectMapper (2.2.8)
   - Reachability (3.2)
   - Realm (2.8.3):
@@ -75,7 +79,9 @@ PODS:
   - RealmSwift (2.8.3):
     - Realm (= 2.8.3)
   - RSKImageCropper (1.6.3)
+  - SnapKit (3.2.0)
   - STPopup (1.8.2)
+  - SwiftRichString (0.9.9)
   - TwitterCore (2.8.0):
     - Fabric
   - TwitterKit (2.8.1):
@@ -97,11 +103,13 @@ DEPENDENCIES:
   - Google/SignIn
   - JSONWebToken
   - MGSwipeTableCell
+  - NotificationBannerSwift
   - ObjectMapper
   - Reachability
   - RealmSwift
   - RSKImageCropper
   - STPopup
+  - SwiftRichString
   - TwitterCore (~> 2.8.0)
   - TwitterKit (~> 2.8.1)
   - Whisper
@@ -131,17 +139,21 @@ SPEC CHECKSUMS:
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
   JSONWebToken: 21a2c3ea5f034882e90f28c656ffce0396155907
+  MarqueeLabel: 17c5148b6f7144498eff5e0d286bd2e7e866f972
   MGSwipeTableCell: 616700eb0ffd1c611ba909066cb7fd739790a0a7
+  NotificationBannerSwift: b2a81c9f0f816851686ca2e802058afd65676adc
   ObjectMapper: 3d571bb5af471c779e1160828cd9ad5c4ef90958
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
   RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
   RSKImageCropper: 356e36fc58c57c371b5d8b23d603936d6a73df6c
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   STPopup: b69b3e7484ef7d2baec5f9ab2939f8a7bcdfe218
+  SwiftRichString: 44e99361a01e7e6c27e194b8af079c0e344bab8c
   TwitterCore: e959987be23c767004d29eb7fab8d85d8585a2e5
   TwitterKit: 3b6044a7320340326a4098f3e37aa1dbaeb94942
   Whisper: 051f25e704bf8992641ffd28b20d5682ddc5f5d3
 
-PODFILE CHECKSUM: 205f8840165f3ed23c9d302fb7d14e2a50c91357
+PODFILE CHECKSUM: 72c05b99d75d925e89f999acbe21d961a2dfa958
 
 COCOAPODS: 1.2.1

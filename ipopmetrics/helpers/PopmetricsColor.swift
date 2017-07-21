@@ -41,4 +41,6 @@ class PopmetricsColor {
     static let redMedium = UIColor(red: 224/255.0, green: 114/255.0, blue: 114/255.0, alpha: 1.0)
     
     static let overlayBGColor = UIColor(red: 20/255.0, green: 20/255.0, blue: 20/255.0, alpha: 0.5)
+    
+    static let notificationBGColor = UIColor(red: 179/255, green: 50/255, blue: 39/255, alpha: 1.0)
 }

@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 import Crashlytics
 import EZAlertController
+import SwiftRichString
+import NotificationBannerSwift
+
 
 class LoginViewController: UIViewController {
     
@@ -79,13 +82,19 @@ class LoginViewController: UIViewController {
                 EZAlertController.alert("Error", message: message)
                 return
             } else {
+                if let code = userDict?["code"] as? String {
+                    if code == "invalid_input" {
+                        self.sendInAppNotification()
+                        return
+                    }
+                }
+                
                 let codeVC = CodeViewController();
                 codeVC.phoneNo = phoneNumber;
                 self.navigationController?.pushViewController(codeVC, animated: true)
             }
         }
     }
-    
     
     internal func showViewControllerWithStoryboardID(_ sbID: String) {
         let vc = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: sbID)
@@ -107,6 +116,40 @@ class LoginViewController: UIViewController {
         phoneView.numberTextField.resignFirstResponder()
     }
     
+}
+
+// MARK: - Notification
+extension LoginViewController {
+    internal func sendInAppNotification() {
+        let first = Style.default {
+            $0.font = FontAttribute.init("OpenSans", size: 12)
+            $0.color = UIColor.white
+        }
+        
+        let second = Style.default {
+            $0.font = FontAttribute.init("OpenSans-Bold", size: 12)
+            $0.underline = UnderlineAttribute.init(color: SRColor.white, style: NSUnderlineStyle.styleSingle)
+            $0.color = UIColor.white
+        }
+        
+        let title = Style.default {
+            $0.font = FontAttribute.init("OpenSans-Semibold", size: 12)
+            $0.color = UIColor(red: 179/255, green: 50/255, blue: 39/255, alpha: 1.0)
+        }
+        
+        let fullStr = "Haven't spoken with Aimee yet? 👋 ".set(style: first) + "Click here.".set(style: second)
+        let attrTitle = "Unrecognized Number".set(style: title)
+        
+        let banner = NotificationBanner(attributedTitle: attrTitle, attributedSubtitle: fullStr, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
+        banner.backgroundColor = PopmetricsColor.notificationBGColor
+        banner.duration = TimeInterval(exactly: 7.0)!
+        banner.show()
+        
+        banner.onTap = {
+            UIApplication.shared.open(URL(string: Config.appWebAimeeLink)!, options: [:], completionHandler: nil)
+        }
+        
+    }
 }
 
 // MARK: - UITextFieldDelegate
