@@ -189,7 +189,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NdU-Vz-erg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="Icon_Home_Unselected" id="g6b-nh-pyf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="z2a-iC-IPh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="z2a-iC-IPh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

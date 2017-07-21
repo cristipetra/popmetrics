@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0809AEB41F22183400A13178 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0809AEB31F22183400A13178 /* Constants.swift */; };
 		08A812741F16601A00672126 /* HeaderCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A812731F16601A00672126 /* HeaderCardCell.xib */; };
 		08A812761F1660A300672126 /* HeaderCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A812751F1660A300672126 /* HeaderCardCell.swift */; };
 		08B485E01F20EA23005918A1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485DF1F20EA23005918A1 /* Config.swift */; };
+		08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485E31F210992005918A1 /* VideoScreenViewController.swift */; };
+		08B485E61F210A61005918A1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485E51F210A61005918A1 /* RoundButton.swift */; };
 		08B745911F1F638000EC3F8C /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B745901F1F638000EC3F8C /* LoginNavigationViewController.swift */; };
 		08B745921F1F6C0100EC3F8C /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A812791F1672DC00672126 /* OpenSans-Semibold.ttf */; };
 		08B745931F1F6C0100EC3F8C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A812781F1672D300672126 /* OpenSans-Light.ttf */; };
@@ -124,12 +127,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0809AEB31F22183400A13178 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		08A812731F16601A00672126 /* HeaderCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCardCell.xib; sourceTree = "<group>"; };
 		08A812751F1660A300672126 /* HeaderCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderCardCell.swift; path = feed/HeaderCardCell.swift; sourceTree = "<group>"; };
 		08A812781F1672D300672126 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		08A812791F1672DC00672126 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		08A8127A1F1672E700672126 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		08B485DF1F20EA23005918A1 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		08B485E31F210992005918A1 /* VideoScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoScreenViewController.swift; sourceTree = "<group>"; };
+		08B485E51F210A61005918A1 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		08B745901F1F638000EC3F8C /* LoginNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginNavigationViewController.swift; path = login/LoginNavigationViewController.swift; sourceTree = "<group>"; };
 		08B745951F1F6C1D00EC3F8C /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		08B745971F1F718300EC3F8C /* CodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeViewController.swift; path = login/CodeViewController.swift; sourceTree = "<group>"; };
@@ -285,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */,
+				08B485E31F210992005918A1 /* VideoScreenViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -293,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				08D1BC361F1DF4F900D377B2 /* ViewNames.swift */,
+				0809AEB31F22183400A13178 /* Constants.swift */,
 			);
 			name = constants;
 			sourceTree = "<group>";
@@ -489,6 +497,7 @@
 				11ACA9A91E2CE05D0021E64A /* CompletionView.swift */,
 				11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */,
 				08C7B18C1F1CF40C00E456C6 /* WelcomeScreen.xib */,
+				08B485E51F210A61005918A1 /* RoundButton.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -789,6 +798,7 @@
 				113976A91E97C71300B535DF /* AccountViewController.swift in Sources */,
 				11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */,
 				116540C11EEACD4000417D61 /* UsersStore.swift in Sources */,
+				08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */,
 				1128B3FD1ED2E01F00BDA58C /* ActionViewCell.swift in Sources */,
 				08F3688B1F18DC4900819CDE /* ApprovalCardCell.swift in Sources */,
 				08D1BC371F1DF4F900D377B2 /* ViewNames.swift in Sources */,
@@ -809,6 +819,7 @@
 				08F368991F1903B100819CDE /* LastCardCell.swift in Sources */,
 				110A62E21ECEE6D90052B478 /* DemoPhotoMessageViewModel.swift in Sources */,
 				110A62E81ECEE6E60052B478 /* SendingStatusPresenter.swift in Sources */,
+				0809AEB41F22183400A13178 /* Constants.swift in Sources */,
 				116431DF1E2D4E81009AA59E /* UsersApi.swift in Sources */,
 				08F368911F18E6A000819CDE /* ApprovalCardInfoCell.swift in Sources */,
 				11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */,
@@ -842,6 +853,7 @@
 				1125ADAA1E96E67B0004B4AC /* BaseTableViewController.swift in Sources */,
 				08B485E01F20EA23005918A1 /* Config.swift in Sources */,
 				113976B21E97CE5000B535DF /* MainTabBarController.swift in Sources */,
+				08B485E61F210A61005918A1 /* RoundButton.swift in Sources */,
 				11ACA9A11E2CD1B90021E64A /* BaseApi.swift in Sources */,
 				110A62E01ECEE6D90052B478 /* DemoPhotoMessageHandler.swift in Sources */,
 				1120F2001ECDF4F200576E39 /* RequiredActionHandler.swift in Sources */,

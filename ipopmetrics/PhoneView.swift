@@ -14,7 +14,6 @@ class PhoneView: UIView {
         let numberCellTxt = UITextField()
         numberCellTxt.translatesAutoresizingMaskIntoConstraints = false
         numberCellTxt.textAlignment = .center
-        numberCellTxt.font = UIFont(name: "OpenSans", size: 23)
         //numberCellTxt.keyboardType = .numbersAndPunctuation
         return numberCellTxt
     }()
@@ -23,7 +22,7 @@ class PhoneView: UIView {
         let msgLbl = UILabel()
         msgLbl.translatesAutoresizingMaskIntoConstraints = false
         msgLbl.text = "We’ll send you a magic code that you can use to login."
-        msgLbl.font = UIFont(name: "OpenSans", size: 15)
+        msgLbl.font = UIFont(name: FontBook.regular, size: 15)
         
         return msgLbl
     }()
@@ -49,7 +48,7 @@ class PhoneView: UIView {
         numberTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
         numberTextField.borderStyle = .roundedRect
-        numberTextField.font = UIFont(name: "OpenSans", size: 23)
+        numberTextField.font = UIFont(name: FontBook.regular, size: 23)
         numberTextField.textColor = textNumberColor;
         numberTextField.backgroundColor = UIColor(red: 255/255, green: 233/255, blue: 156/255, alpha: 1.0)
         setPlaceholder()
@@ -80,7 +79,7 @@ class PhoneView: UIView {
     private func setPlaceholder() {
         let mutableAttrString = NSMutableAttributedString()
         let regularAttribute = [
-            NSFontAttributeName: UIFont(name: "OpenSans", size: 23),
+            NSFontAttributeName: UIFont(name: FontBook.regular, size: 23),
             NSForegroundColorAttributeName: UIColor(red: 68/255, green: 180/255, blue: 142/255, alpha: 1.0)
         ]
         let regularAttributedString = NSAttributedString(string: "Enter your cell #", attributes: regularAttribute)
