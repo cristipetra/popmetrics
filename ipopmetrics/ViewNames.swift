@@ -11,4 +11,5 @@ import Foundation
 struct ViewNames {
     static let SBID_LOGIN_NAV_VC = "LoginNavigationViewController"
     static let SBID_MAIN_TAB_VC = "MainTabBarController"
+    static let SBID_VIDEO_SCREEN = "VideoScreenViewController"
 }
