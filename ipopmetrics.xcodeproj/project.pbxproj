@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0809AEB41F22183400A13178 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0809AEB31F22183400A13178 /* Constants.swift */; };
+		0809AEB71F223F3B00A13178 /* WelcomeVideo.mov in Resources */ = {isa = PBXBuildFile; fileRef = 0809AEB61F223F3B00A13178 /* WelcomeVideo.mov */; };
 		08A812741F16601A00672126 /* HeaderCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A812731F16601A00672126 /* HeaderCardCell.xib */; };
 		08A812761F1660A300672126 /* HeaderCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A812751F1660A300672126 /* HeaderCardCell.swift */; };
 		08B485E01F20EA23005918A1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485DF1F20EA23005918A1 /* Config.swift */; };
@@ -128,6 +129,7 @@
 
 /* Begin PBXFileReference section */
 		0809AEB31F22183400A13178 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0809AEB61F223F3B00A13178 /* WelcomeVideo.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = WelcomeVideo.mov; sourceTree = "<group>"; };
 		08A812731F16601A00672126 /* HeaderCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCardCell.xib; sourceTree = "<group>"; };
 		08A812751F1660A300672126 /* HeaderCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderCardCell.swift; path = feed/HeaderCardCell.swift; sourceTree = "<group>"; };
 		08A812781F1672D300672126 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -267,6 +269,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0809AEB51F2238FE00A13178 /* videos */ = {
+			isa = PBXGroup;
+			children = (
+				0809AEB61F223F3B00A13178 /* WelcomeVideo.mov */,
+			);
+			name = videos;
+			sourceTree = "<group>";
+		};
 		08A812771F1672C000672126 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +409,7 @@
 		1178D6771E1E5AD9005B96C3 /* ipopmetrics */ = {
 			isa = PBXGroup;
 			children = (
+				0809AEB51F2238FE00A13178 /* videos */,
 				08D1BC351F1DF4D700D377B2 /* constants */,
 				08C7B18E1F1CF41200E456C6 /* controllers */,
 				08A812771F1672C000672126 /* fonts */,
@@ -680,6 +691,7 @@
 				08F368931F18F87800819CDE /* DailyInsightsCardCell.xib in Resources */,
 				08A812741F16601A00672126 /* HeaderCardCell.xib in Resources */,
 				1178D6821E1E5AD9005B96C3 /* Assets.xcassets in Resources */,
+				0809AEB71F223F3B00A13178 /* WelcomeVideo.mov in Resources */,
 				08C7B18D1F1CF40C00E456C6 /* WelcomeScreen.xib in Resources */,
 				1178D6801E1E5AD9005B96C3 /* Main.storyboard in Resources */,
 				110A62E71ECEE6E60052B478 /* SendingStatusCollectionViewCell.xib in Resources */,
