@@ -7,6 +7,7 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - BubbleTransition (2.0.2)
   - Chatto (3.1.0)
   - ChattoAdditions (3.1.0):
     - Chatto
@@ -91,6 +92,7 @@ PODS:
 DEPENDENCIES:
   - ActiveLabel
   - Alamofire (~> 4.0)
+  - BubbleTransition
   - Chatto
   - ChattoAdditions
   - Crashlytics
@@ -118,6 +120,7 @@ SPEC CHECKSUMS:
   ActiveLabel: 68625f22775f51c31bb691ca8de20f1e5a3bc825
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  BubbleTransition: 7d98ed7d56f0940e83f350a98103ad473491c769
   Chatto: d959be2d284db62c713c68d7c39f2712ff902fa2
   ChattoAdditions: 64cfe2d3414a65d2d6bc8a1c5704df491eec28b6
   Crashlytics: dfbae35ef22ca189240d230ad501feea4ee85d2d
@@ -154,6 +157,6 @@ SPEC CHECKSUMS:
   TwitterKit: 3b6044a7320340326a4098f3e37aa1dbaeb94942
   Whisper: 051f25e704bf8992641ffd28b20d5682ddc5f5d3
 
-PODFILE CHECKSUM: 72c05b99d75d925e89f999acbe21d961a2dfa958
+PODFILE CHECKSUM: 275e66306f26d97d335881544bb96eed4b3fc423
 
 COCOAPODS: 1.2.1

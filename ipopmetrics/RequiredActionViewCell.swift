@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import FontAwesome_swift
+import BubbleTransition
 
 class RequiredActionViewCell: UITableViewCell {
     @IBOutlet weak var headerLabel: UILabel!
@@ -25,11 +26,14 @@ class RequiredActionViewCell: UITableViewCell {
   
     @IBOutlet weak var infoButton: SimpleButton!
     @IBOutlet weak var containerView: UIView!
+    
+    let transition = BubbleTransition()
   
   
     var item: FeedItem?
     var actionHandler: CardActionHandler?
     var indexPath: IndexPath?
+    var delegate: InfoButtonDelegate?
  
     func configure(_ item: FeedItem, handler: CardActionHandler) {
         self.item = item
@@ -48,7 +52,9 @@ class RequiredActionViewCell: UITableViewCell {
       
         self.titleLabel.text  = item.headerTitle
         messageLabel.text = item.message
-      adjustLabelLineSpaceing()
+        adjustLabelLineSpaceing()
+        
+        self.infoButton.addTarget(self, action: #selector(didPressInfoButton(_:)), for: .touchDown);
   }
   
   func adjustLabelLineSpaceing() {
@@ -114,7 +120,11 @@ class RequiredActionViewCell: UITableViewCell {
     
         actionButton.layer.cornerRadius = 30
         actionButton.layer.masksToBounds = true
-  }
+    }
+    
+    @objc func didPressInfoButton(_ sender: SimpleButton) {
+        delegate?.sendInfo(sender)
+    }
     
 }
 
@@ -123,4 +133,8 @@ enum ActionHandlerType: String {
     case connectGoogleAnalytics = "connect_google_analytics"
     case connectTwitter = "connect_twitter"
     case connectLinkedin = "connect_linkedin"
+}
+
+protocol InfoButtonDelegate {
+    func sendInfo(_ sender: UIButton)
 }
