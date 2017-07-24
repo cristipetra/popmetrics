@@ -67,7 +67,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watch this 30 second video to learn what to do next!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nb4-N8-kQt">
-                                <rect key="frame" x="60" y="151.5" width="255" height="41"/>
+                                <rect key="frame" x="60" y="145.5" width="255" height="41"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -85,7 +85,7 @@
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aJ8-St-gjj">
-                                <rect key="frame" x="0.0" y="222.5" width="375" height="180"/>
+                                <rect key="frame" x="0.0" y="216.5" width="375" height="180"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="Skv-pr-Fvs"/>
@@ -100,14 +100,17 @@
                             <constraint firstItem="C53-zx-oI6" firstAttribute="centerX" secondItem="1Kk-F9-Not" secondAttribute="centerX" id="JVM-F2-1kY"/>
                             <constraint firstAttribute="trailing" secondItem="nb4-N8-kQt" secondAttribute="trailing" constant="60" id="Vpa-Yb-ITY"/>
                             <constraint firstItem="C53-zx-oI6" firstAttribute="top" secondItem="ZUv-Z0-jxN" secondAttribute="bottom" constant="70" id="WGk-z9-sgH"/>
+                            <constraint firstAttribute="trailing" secondItem="aJ8-St-gjj" secondAttribute="trailing" id="Wip-pB-jUy"/>
                             <constraint firstItem="nb4-N8-kQt" firstAttribute="centerX" secondItem="1Kk-F9-Not" secondAttribute="centerX" id="bCE-Uw-Diy"/>
-                            <constraint firstItem="nb4-N8-kQt" firstAttribute="top" secondItem="C53-zx-oI6" secondAttribute="bottom" constant="41" id="cOL-nk-T32"/>
+                            <constraint firstItem="nb4-N8-kQt" firstAttribute="top" secondItem="C53-zx-oI6" secondAttribute="bottom" constant="35" id="cOL-nk-T32"/>
                             <constraint firstItem="Vlo-yK-LmJ" firstAttribute="centerX" secondItem="1Kk-F9-Not" secondAttribute="centerX" id="nza-0k-N2O"/>
                             <constraint firstItem="aJ8-St-gjj" firstAttribute="top" secondItem="nb4-N8-kQt" secondAttribute="bottom" constant="30" id="r1n-bR-Uf0"/>
+                            <constraint firstItem="aJ8-St-gjj" firstAttribute="leading" secondItem="1Kk-F9-Not" secondAttribute="leading" id="sA6-yr-oj2"/>
                             <constraint firstAttribute="trailing" secondItem="aJ8-St-gjj" secondAttribute="trailing" id="zYT-tF-TPc"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnStarted" destination="Vlo-yK-LmJ" id="XaD-Cc-u5O"/>
                         <outlet property="containerPlayer" destination="aJ8-St-gjj" id="E1T-0Q-gAS"/>
                     </connections>
                 </viewController>

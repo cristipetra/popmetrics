@@ -9,50 +9,67 @@
 import UIKit
 import AVKit
 import AVFoundation
+import VIMVideoPlayer
 
 class VideoScreenViewController: UIViewController {
     
     @IBOutlet weak var containerPlayer: UIView!
-    var player: AVPlayer?
-    var playerController = AVPlayerViewController()
+    
+    @IBOutlet weak var btnStarted: RoundButton!
+    var player: AVPlayer!
+    var playerViewController: AVPlayerViewController = AVPlayerViewController();
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1.0)
+        self.view.backgroundColor = PopmetricsColor.yellowBGColor
         
-        setupVideoPlayer()
+        playLocalVideo()
         
     }
     
-    internal func setupVideoPlayer() {
-        self.playerController.contentOverlayView?.backgroundColor = UIColor.red
+    func playLocalVideo() {
         
-        let videoString: String? = Bundle.main.path(forResource: "WelcomeVideo", ofType: ".mov")
+        let filePath = Bundle.main.path(forResource: "WelcomeVideo", ofType: ".mov")
+        let videoURL = URL(fileURLWithPath: filePath!)
+        player = AVPlayer(url: videoURL)
         
-        if let url = videoString {
-            let videoUrl = URL(fileURLWithPath: url)
-            self.player = AVPlayer(url: videoUrl)
-            self.playerController.player = self.player
+    
+        playerViewController.player = player
+        
+        playerViewController.view.frame = self.containerPlayer.bounds
+        
+        setVideoInContainer();
+        
+        self.present(playerViewController, animated: true) { 
+            self.playerViewController.player?.play()
+        }
+        self.view.addSubview(playerViewController.view)
+        
+        
+        player.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: nil)
+        player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
+    }
+    
+    internal func setVideoInContainer() {
+        var height = 180
+        let heightDevice = UIScreen.main.bounds.size.height
+        if heightDevice >= 568 && heightDevice < 667  {
+            height = 220
+        } else {
+            height = 280
         }
         
-        self.playerController.view.frame = self.containerPlayer.bounds
-        self.playerController.view.frame.origin.x = self.containerPlayer.frame.origin.x
-        self.playerController.view.frame.origin.y = self.containerPlayer.frame.origin.y
-        
-        playerController.showsPlaybackControls = true
-        
-        self.view.addSubview(playerController.view)
-        self.showDetailViewController(self.playerController, sender: self)
-        
-        player?.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: nil)
-        player?.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
+        playerViewController.view.frame.origin.x = self.containerPlayer.frame.origin.x
+        playerViewController.view.frame.origin.y = self.containerPlayer.frame.origin.y
+        playerViewController.view.frame.size.width = UIScreen.main.bounds.size.width;
+        playerViewController.view.frame.size.height = CGFloat(height)
         
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if (keyPath == "rate") {
-            self.playerController.view.frame = self.view.bounds
+            //self.playerController.view.frame = self.view.bounds
         }
         if (keyPath == "status") {
         }
