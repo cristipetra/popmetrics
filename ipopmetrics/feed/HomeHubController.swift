@@ -10,6 +10,7 @@ import UIKit
 import GoogleSignIn
 import MGSwipeTableCell
 import DGElasticPullToRefresh
+import BubbleTransition
 
 class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
@@ -21,6 +22,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     var shouldDisplayCell = true
     var isInfoCellType = false;
+    
+    let transition = BubbleTransition();
+    var transitionButton:UIButton = UIButton();
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -274,6 +278,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 shouldDisplayCell = true
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
                 cell.selectionStyle = .none
+                cell.delegate = self
                 cell.configure(item, handler:self.requiredActionHandler)
                 cell.indexPath = indexPath
                 if((sections[sectionIdx].items.count-1) == indexPath.row) {
@@ -533,7 +538,36 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         print("handling required action")
     }
     
+}
+
+// MARK: UIViewControllerTransitioningDelegate
+
+extension HomeHubViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
+        transition.startingPoint = transitionButton.center
+        transition.bubbleColor = PopmetricsColor.yellowBGColor
+        return transition
+    }
     
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .dismiss
+        transition.startingPoint = transitionButton.center
+        transition.bubbleColor = PopmetricsColor.yellowBGColor
+        return transition
+    }
     
-    
+}
+
+extension HomeHubViewController: InfoButtonDelegate {
+    func sendInfo(_ sender: UIButton) {
+        let infoCardVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "InfoCardViewID") as! InfoCardViewController;
+        
+        infoCardVC.transitioningDelegate = self
+        infoCardVC.modalPresentationStyle = .custom
+        
+        transitionButton = sender
+        
+        self.present(infoCardVC, animated: true, completion: nil)
+    }
 }

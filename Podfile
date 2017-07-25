@@ -38,5 +38,7 @@ target 'ipopmetrics' do
   pod 'EZAlertController'
   pod 'SwiftRichString'
   pod 'NotificationBannerSwift'
+  pod 'BubbleTransition'
+  
   
 end

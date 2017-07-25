@@ -10,6 +10,8 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
+    var homeNavigationController: UINavigationController!;
+    var calendarViewController: UINavigationController = UINavigationController();
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,19 @@ class MainTabBarController: UITabBarController {
         // and that she/he still has unanswered items
 
         // let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        homeNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationID") as! UINavigationController
+        homeNavigationController.tabBarItem.title = "Home"
+        homeNavigationController.tabBarItem.image = #imageLiteral(resourceName: "Icon_Home_Selected")
+        
+        let tabs: [UIViewController] = [homeNavigationController, calendarViewController]
+        
+        let calendarVC = UIStoryboard(name: "Calendar", bundle: nil).instantiateViewController(withIdentifier: "CalendarID")
+        calendarViewController.pushViewController(calendarVC, animated: false)
+        calendarVC.tabBarItem.title = "Calendar"
+        calendarVC.tabBarItem.image = #imageLiteral(resourceName: "Icon_Home_Selected")
+        
+        self.setViewControllers(tabs, animated: false)
         
     }
     
