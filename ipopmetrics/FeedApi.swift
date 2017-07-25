@@ -19,18 +19,17 @@ class FeedApi: BaseApi {
             "a": 0
         ]
         
-        let url = ApiUrls.getMyBrandFeedUrl(brandId)
-        print(url)
-        Alamofire.request(ApiUrls.getMyBrandFeedUrl(brandId), method: .get, parameters: params, headers:createHeaders()).responseJSON { response in
-            if let err = self.createErrorWithHttpResponse(response: response.response) {
-                callback(nil, err)
-                return
-            }
-            
-            if let resultDict = response.result.value as? [String: Any] {
-                callback(resultDict, nil)
-            }
-            
+        Alamofire.request(ApiUrls.getMyBrandFeedUrl(brandId), method: .get, parameters: params,
+                          headers:createHeaders()).responseJSON { response in
+                            if let err = self.createErrorWithHttpResponse(response: response.response) {
+                                callback(nil, err)
+                                return
+                            }
+                            
+                            if let resultDict = response.result.value as? [String: Any] {
+                                callback(resultDict, nil)
+                            }
+                            
         }
     }
     
@@ -46,24 +45,24 @@ class FeedApi: BaseApi {
             "refresh_token": authentication.refreshToken,
             "server_auth_code": serverAuthCode,
             "scopes": GIDSignIn.sharedInstance().scopes
-        ] as [String : Any]
+            ] as [String : Any]
         
         Alamofire.request(ApiUrls.getConnectGoogleAnalyticsUrl(brandId), method: .post, parameters: params, encoding: JSONEncoding.default,
                           headers:createHeaders()).responseJSON { response in
-            if let err = self.createErrorWithHttpResponse(response: response.response) {
-                callback(nil, err)
-                return
-            }
-            
-            if let resultDict = response.result.value as? [String: Any] {
-                callback(resultDict, nil)
-            }
-            
+                            if let err = self.createErrorWithHttpResponse(response: response.response) {
+                                callback(nil, err)
+                                return
+                            }
+                            
+                            if let resultDict = response.result.value as? [String: Any] {
+                                callback(resultDict, nil)
+                            }
+                            
         }
     }
     
     func connectTwitter(userId:String, brandId:String, token:String, tokenSecret: String,
-                                callback: @escaping (_ resultDict: [String: Any]?, _ error: ApiError?) -> Void) {
+                        callback: @escaping (_ resultDict: [String: Any]?, _ error: ApiError?) -> Void) {
         let params = [
             "user_id":userId,
             "access_token": token,
@@ -84,6 +83,6 @@ class FeedApi: BaseApi {
         }
     }
     
-   
+    
     
 }
