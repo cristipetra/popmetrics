@@ -97,7 +97,7 @@ class DigitCodeView: UIView {
             NSFontAttributeName: UIFont(name: "OpenSans", size: 23),
             NSForegroundColorAttributeName: UIColor(red: 68/255, green: 180/255, blue: 142/255, alpha: 1.0)
         ]
-        let regularAttributedString = NSAttributedString(string: "Enter 4-digit code", attributes: regularAttribute)
+        let regularAttributedString = NSAttributedString(string: "Enter 6-digit code", attributes: regularAttribute)
         mutableAttrString.append(regularAttributedString)
         digitextField.attributedPlaceholder = mutableAttrString
     }

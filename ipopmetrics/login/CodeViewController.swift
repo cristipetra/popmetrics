@@ -75,7 +75,7 @@ class CodeViewController: UIViewController {
                     return
                 }
                 
-                self.showMainNavigationController()
+                self.showVideoScreen()
             }
         }
         
@@ -137,9 +137,9 @@ class CodeViewController: UIViewController {
         })
     }
     
-    internal func showMainNavigationController() {
-        let mainTabVC = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC)
-        self.present(mainTabVC, animated: false, completion: nil)
+    internal func showVideoScreen() {
+        let videoScreenVC = AppStoryboard.Signin.instance.instantiateViewController(withIdentifier: ViewNames.SBID_VIDEO_SCREEN)
+        self.present(videoScreenVC, animated: true, completion: nil)
     }
 
 }

@@ -25,6 +25,15 @@ class VideoScreenViewController: UIViewController {
         
         playLocalVideo()
         
+        btnStarted.addTarget(self, action: #selector(getStartedHandler), for: .touchUpInside)
+        
+        NotificationCenter.default.addObserver(self, selector:#selector(self.playerDidFinishPlaying(note:)),name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
+    }
+    
+    func playerDidFinishPlaying(note: NSNotification) {
+        btnStarted.isUserInteractionEnabled = true
+        btnStarted.layer.backgroundColor = UIColor(red: 65/255, green: 155/255, blue: 249/255, alpha: 1.0).cgColor
+        btnStarted.setTitleColor(UIColor.white, for: .normal)
     }
     
     func playLocalVideo() {
@@ -48,6 +57,7 @@ class VideoScreenViewController: UIViewController {
         
         player.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: nil)
         player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
+
     }
     
     internal func setVideoInContainer() {
@@ -68,10 +78,19 @@ class VideoScreenViewController: UIViewController {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if (keyPath == "rate") {
-            //self.playerController.view.frame = self.view.bounds
+            if player.rate == 0.0 {
+                btnStarted.isUserInteractionEnabled = true
+                btnStarted.layer.backgroundColor = UIColor(red: 65/255, green: 155/255, blue: 249/255, alpha: 1.0).cgColor
+                btnStarted.setTitleColor(UIColor.white, for: .normal)
+            }
         }
         if (keyPath == "status") {
         }
+    }
+    
+    func getStartedHandler() {
+        let mainTabVC = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC)
+        self.present(mainTabVC, animated: false, completion: nil)
     }
     
 }
