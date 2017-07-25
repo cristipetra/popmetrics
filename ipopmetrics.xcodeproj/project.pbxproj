@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0809AEB41F22183400A13178 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0809AEB31F22183400A13178 /* Constants.swift */; };
 		0809AEB71F223F3B00A13178 /* WelcomeVideo.mov in Resources */ = {isa = PBXBuildFile; fileRef = 0809AEB61F223F3B00A13178 /* WelcomeVideo.mov */; };
+		085053FE1F2787A100FE8234 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085053FD1F2787A100FE8234 /* CalendarViewController.swift */; };
+		085054011F2793AE00FE8234 /* CalendarCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085054001F2793AE00FE8234 /* CalendarCard.xib */; };
+		085054031F27A25B00FE8234 /* CalendarCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085054021F27A25B00FE8234 /* CalendarCardViewCell.swift */; };
 		0856F3581F272F020061DF7E /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0856F3571F272F020061DF7E /* Calendar.storyboard */; };
 		08A812741F16601A00672126 /* HeaderCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A812731F16601A00672126 /* HeaderCardCell.xib */; };
 		08A812761F1660A300672126 /* HeaderCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A812751F1660A300672126 /* HeaderCardCell.swift */; };
@@ -132,6 +135,9 @@
 /* Begin PBXFileReference section */
 		0809AEB31F22183400A13178 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0809AEB61F223F3B00A13178 /* WelcomeVideo.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = WelcomeVideo.mov; sourceTree = "<group>"; };
+		085053FD1F2787A100FE8234 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		085054001F2793AE00FE8234 /* CalendarCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCard.xib; sourceTree = "<group>"; };
+		085054021F27A25B00FE8234 /* CalendarCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCardViewCell.swift; sourceTree = "<group>"; };
 		0856F3571F272F020061DF7E /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		08A812731F16601A00672126 /* HeaderCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCardCell.xib; sourceTree = "<group>"; };
 		08A812751F1660A300672126 /* HeaderCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderCardCell.swift; path = feed/HeaderCardCell.swift; sourceTree = "<group>"; };
@@ -281,6 +287,23 @@
 			name = videos;
 			sourceTree = "<group>";
 		};
+		085053FC1F27876100FE8234 /* calendar */ = {
+			isa = PBXGroup;
+			children = (
+				085053FD1F2787A100FE8234 /* CalendarViewController.swift */,
+			);
+			name = calendar;
+			sourceTree = "<group>";
+		};
+		085053FF1F27938500FE8234 /* calendar */ = {
+			isa = PBXGroup;
+			children = (
+				085054001F2793AE00FE8234 /* CalendarCard.xib */,
+				085054021F27A25B00FE8234 /* CalendarCardViewCell.swift */,
+			);
+			name = calendar;
+			sourceTree = "<group>";
+		};
 		08A812771F1672C000672126 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +327,7 @@
 		08C7B18E1F1CF41200E456C6 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				085053FC1F27876100FE8234 /* calendar */,
 				08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */,
 				08B485E31F210992005918A1 /* VideoScreenViewController.swift */,
 				08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */,
@@ -506,6 +530,7 @@
 		11ACA9AD1E2CE0A80021E64A /* views */ = {
 			isa = PBXGroup;
 			children = (
+				085053FF1F27938500FE8234 /* calendar */,
 				08B745991F1F992A00EC3F8C /* login */,
 				116540BC1EEAC3A600417D61 /* Signin.storyboard */,
 				1178D67E1E1E5AD9005B96C3 /* Main.storyboard */,
@@ -697,6 +722,7 @@
 				11AAA5E81ECCD52A0099B50E /* ActionHistoryCard.xib in Resources */,
 				08F368931F18F87800819CDE /* DailyInsightsCardCell.xib in Resources */,
 				08A812741F16601A00672126 /* HeaderCardCell.xib in Resources */,
+				085054011F2793AE00FE8234 /* CalendarCard.xib in Resources */,
 				1178D6821E1E5AD9005B96C3 /* Assets.xcassets in Resources */,
 				0809AEB71F223F3B00A13178 /* WelcomeVideo.mov in Resources */,
 				08C7B18D1F1CF40C00E456C6 /* WelcomeScreen.xib in Resources */,
@@ -851,6 +877,7 @@
 				113976B01E97CCF700B535DF /* FeedApi.swift in Sources */,
 				11ACA9A21E2CD1B90021E64A /* ApiUrls.swift in Sources */,
 				110A62D41ECEDE8B0052B478 /* ChatItemsDemoDecorator.swift in Sources */,
+				085053FE1F2787A100FE8234 /* CalendarViewController.swift in Sources */,
 				113976B41E97D31B00B535DF /* FeedStore.swift in Sources */,
 				113976AE1E97C83500B535DF /* TextFieldValidator.swift in Sources */,
 				110A62E11ECEE6D90052B478 /* DemoPhotoMessageModel.swift in Sources */,
@@ -868,6 +895,7 @@
 				110A62E61ECEE6E60052B478 /* SendingStatusCollectionViewCell.swift in Sources */,
 				08B7459B1F1F996B00EC3F8C /* DigitCodeView.swift in Sources */,
 				110A62ED1ECEE6F30052B478 /* DemoTextMessageModel.swift in Sources */,
+				085054031F27A25B00FE8234 /* CalendarCardViewCell.swift in Sources */,
 				08A812761F1660A300672126 /* HeaderCardCell.swift in Sources */,
 				110A62DC1ECEDF2D0052B478 /* ConciergeChatViewController.swift in Sources */,
 				1125ADAA1E96E67B0004B4AC /* BaseTableViewController.swift in Sources */,
