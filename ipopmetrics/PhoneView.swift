@@ -15,6 +15,7 @@ class PhoneView: UIView {
         numberCellTxt.translatesAutoresizingMaskIntoConstraints = false
         numberCellTxt.textAlignment = .center
         //numberCellTxt.keyboardType = .numbersAndPunctuation
+        numberCellTxt.keyboardType = .namePhonePad
         return numberCellTxt
     }()
     
@@ -48,6 +49,7 @@ class PhoneView: UIView {
         numberTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
         numberTextField.borderStyle = .roundedRect
+        numberTextField.keyboardType = .phonePad
         numberTextField.font = UIFont(name: FontBook.regular, size: 23)
         numberTextField.textColor = textNumberColor;
         numberTextField.backgroundColor = UIColor(red: 255/255, green: 233/255, blue: 156/255, alpha: 1.0)

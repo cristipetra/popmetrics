@@ -58,6 +58,7 @@ class DigitCodeView: UIView {
         digitextField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
         digitextField.borderStyle = .roundedRect
+        digitextField.keyboardType = .numberPad
         digitextField.font = UIFont(name: "OpenSans", size: 23)
         digitextField.textColor = texDigitColor;
         digitextField.backgroundColor = UIColor(red: 255/255, green: 233/255, blue: 156/255, alpha: 1.0)
