@@ -83,6 +83,7 @@ PODS:
   - SnapKit (3.2.0)
   - STPopup (1.8.2)
   - SwiftRichString (0.9.9)
+  - SwiftyJSON (3.1.4)
   - TwitterCore (2.8.0):
     - Fabric
   - TwitterKit (2.8.1):
@@ -112,6 +113,7 @@ DEPENDENCIES:
   - RSKImageCropper
   - STPopup
   - SwiftRichString
+  - SwiftyJSON
   - TwitterCore (~> 2.8.0)
   - TwitterKit (~> 2.8.1)
   - Whisper
@@ -153,10 +155,11 @@ SPEC CHECKSUMS:
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   STPopup: b69b3e7484ef7d2baec5f9ab2939f8a7bcdfe218
   SwiftRichString: 44e99361a01e7e6c27e194b8af079c0e344bab8c
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TwitterCore: e959987be23c767004d29eb7fab8d85d8585a2e5
   TwitterKit: 3b6044a7320340326a4098f3e37aa1dbaeb94942
   Whisper: 051f25e704bf8992641ffd28b20d5682ddc5f5d3
 
-PODFILE CHECKSUM: 275e66306f26d97d335881544bb96eed4b3fc423
+PODFILE CHECKSUM: 26737e9978e5c37752a6a11d925af4897a6d2d31
 
 COCOAPODS: 1.2.1

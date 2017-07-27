@@ -1,0 +1,54 @@
+{
+  "items": [
+    {
+      "type":"required_action",
+      "status": "scheduled",
+      "status_date": "123",
+      "article_category": "article_category",
+      "article_text": "Article text",
+      "article_url": "article url",
+      "article_hastag": "article hastag",
+      "article_image": "image"
+    },
+    {
+      "type":"required_action",
+      "status": "scheduled",
+      "status_date": "123",
+      "article_category": "article_category",
+      "article_text": "Article text",
+      "article_url": "article url",
+      "article_hastag": "article hastag",
+      "article_image": "image"
+    },
+    {
+     "type":"required_action",
+      "status": "scheduled",
+      "status_date": "123",
+      "article_category": "article_category",
+      "article_text": "Article text",
+      "article_url": "article url",
+      "article_hastag": "article hastag",
+      "article_image": "image"
+    },
+    {
+     "type":"required_action",
+      "status": "executed",
+      "status_date": "123",
+      "article_category": "article_category",
+      "article_text": "Article text",
+      "article_url": "article url",
+      "article_hastag": "article hastag",
+      "article_image": "image"
+    },
+    {
+     "type":"required_action",
+      "status": "failed",
+      "status_date": "123",
+      "article_category": "article_category",
+      "article_text": "Article text",
+      "article_url": "article url",
+      "article_hastag": "article hastag",
+      "article_image": "image"
+    }
+  ]
+}

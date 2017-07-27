@@ -39,6 +39,7 @@ target 'ipopmetrics' do
   pod 'SwiftRichString'
   pod 'NotificationBannerSwift'
   pod 'BubbleTransition'
+  pod 'SwiftyJSON'
   
   
 end
