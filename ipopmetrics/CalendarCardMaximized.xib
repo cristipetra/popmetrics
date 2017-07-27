@@ -162,12 +162,11 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <constraints>
+                                                                <constraints>
                                     <constraint firstAttribute="bottom" secondItem="1pu-yr-0jo" secondAttribute="bottom" id="2Ih-hU-4Ef"/>
                                     <constraint firstItem="1pu-yr-0jo" firstAttribute="leading" secondItem="fzR-2l-bme" secondAttribute="leading" id="9GH-gZ-JlY"/>
                                     <constraint firstItem="1pu-yr-0jo" firstAttribute="top" secondItem="fzR-2l-bme" secondAttribute="top" id="D5I-D3-yMF"/>
                                     <constraint firstAttribute="trailing" secondItem="1pu-yr-0jo" secondAttribute="trailing" id="Ef2-0z-RXm"/>
-                                    <constraint firstAttribute="height" constant="344.5" id="zIU-pc-3c7"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RYQ-7a-97U">
@@ -200,6 +199,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="RYQ-7a-97U" secondAttribute="bottom" id="1kC-l2-qT3"/>
+                            <constraint firstItem="RYQ-7a-97U" firstAttribute="top" secondItem="fzR-2l-bme" secondAttribute="bottom" id="2Sb-gj-bgj"/>
                             <constraint firstItem="fzR-2l-bme" firstAttribute="leading" secondItem="yvm-lJ-9xs" secondAttribute="leading" id="2eU-wM-4P3"/>
                             <constraint firstAttribute="trailing" secondItem="fzR-2l-bme" secondAttribute="trailing" id="5qc-39-1N6"/>
                             <constraint firstItem="fzR-2l-bme" firstAttribute="top" secondItem="yvm-lJ-9xs" secondAttribute="top" id="hFz-58-sdw"/>
@@ -216,6 +216,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="connectionContainerView" destination="2FW-vY-81j" id="MEZ-8u-B4f"/>
                 <outlet property="connectionStackView" destination="RYQ-7a-97U" id="rWK-T7-16S"/>
                 <outlet property="imageContainerView" destination="VjF-HY-X4v" id="H0I-a7-tsK"/>
                 <outlet property="topContainerVIew" destination="1pu-yr-0jo" id="EjS-8J-m3c"/>

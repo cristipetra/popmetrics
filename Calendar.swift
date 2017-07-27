@@ -28,8 +28,9 @@ class CalendarItem: NSObject{
 class CalendarSection: NSObject{
     
     dynamic var name = ""
+    dynamic var status: String = "";
     dynamic var index = 0
     
     //let items = List<CalendarItem>()
-    let items = [CalendarItem]()
+    var items = [CalendarItem]()
 }

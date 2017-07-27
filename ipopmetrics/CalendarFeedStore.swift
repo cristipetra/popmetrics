@@ -16,16 +16,40 @@ class CalendarFeedStore {
     
     
     public func getFeed() -> [CalendarSection] {
-        var calendarSectionSchedule = [CalendarSection]()
-        var calendarSetionFailed = [CalendarSection]()
+        var calendarSectionSchedule:CalendarSection = CalendarSection()
+        calendarSectionSchedule.status = "scheduled"
         
-        var results = [CalendarSection]()
+        let calendarItem1: CalendarItem = CalendarItem();
+        let calendarItem2: CalendarItem = CalendarItem();
+        let calendarItem3: CalendarItem = CalendarItem();
+        calendarSectionSchedule.items.append(calendarItem1)
+        calendarSectionSchedule.items.append(calendarItem2)
+        calendarSectionSchedule.items.append(calendarItem3)
         
+        var calendarSectionFailed = CalendarSection()
+        calendarSectionFailed.status = "failed"
+        let calendarSectionFailedItem1 = CalendarItem();
+        calendarSectionFailed.items.append(calendarSectionFailedItem1)
+        
+        
+        var calendarSectionExecuted = CalendarSection();
+        calendarSectionExecuted.status = "executed"
+        let calendarSectionExecutedItem1 = CalendarItem()
+        let calendarSectionExecutedItem2 = CalendarItem()
+        calendarSectionExecuted.items.append(calendarSectionExecutedItem1)
+        calendarSectionExecuted.items.append(calendarSectionExecutedItem2)
+        
+        var results = [CalendarSection]();
+        results.append(calendarSectionSchedule)
+        results.append(calendarSectionFailed)
+        results.append(calendarSectionExecuted)
+        print("count")
+        print(results.count)
         return results;
     }
     
     public func storeFeed(_ dict: [String:Any] ) {
-        
+    
     }
     
     

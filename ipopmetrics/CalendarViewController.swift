@@ -13,7 +13,8 @@ import SwiftyJSON
 class CalendarViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    fileprivate var sections: [FeedSection] = []
+    ///fileprivate var sections: [FeedSection] = []
+    fileprivate var sections: [CalendarSection] = []
     var reachedFooter = false
     var shouldMaximizeCell = false
     
@@ -35,7 +36,7 @@ class CalendarViewController: UIViewController {
         
         tableView.separatorStyle = .none
         
-        fetchItems(silent: false)
+        fetchItemsLocally(silent: false)
     }
     
     func fetchItemsLocally(silent: Bool) {
@@ -47,6 +48,10 @@ class CalendarViewController: UIViewController {
             var calendarItem = CalendarItem()
             //calendarFeedStore.app
         }
+        
+        calendarFeedStore.getFeed()
+        
+         self.sections = calendarFeedStore.getFeed()
     }
     
     func fetchItems(silent:Bool) {
@@ -80,7 +85,7 @@ class CalendarViewController: UIViewController {
             }
             
             
-            self.sections = feedStore.getFeed()
+            //self.sections = feedStore.getFeed()
             
             if !silent { self.tableView.reloadData() }
         }
@@ -108,6 +113,12 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             
         } else {
             let maxCell = tableView.dequeueReusableCell(withIdentifier: "extendedCell", for: indexPath) as! CalendarCardMaximizedViewCell
+            if indexPath.section == sections.count - 1 {
+                if indexPath.row == (sections[indexPath.section].items.count - 1) {
+                    maxCell.connectionStackView.isHidden = true
+                    maxCell.notLastCell = false
+                }
+            }
             return maxCell
         }
     }
