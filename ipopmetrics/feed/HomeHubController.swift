@@ -263,7 +263,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     */
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let sectionIdx = (indexPath as NSIndexPath).section
@@ -384,6 +383,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         }
         
     }
+    
     var shouldDisplayHeaderCell = false
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -567,6 +567,7 @@ extension HomeHubViewController: InfoButtonDelegate {
         infoCardVC.modalPresentationStyle = .custom
         
         transitionButton = sender
+        infoCardVC.modalPresentationStyle = .overCurrentContext
         
         self.present(infoCardVC, animated: true, completion: nil)
     }
