@@ -46,7 +46,19 @@ class CalendarViewController: UIViewController {
         let calendarFeedStore = CalendarFeedStore.getInstance()
         for item in json["items"] {
             var calendarItem = CalendarItem()
+            calendarItem.status = item.1["status"].description
+            calendarItem.articleTitle = item.1["article_title"].description
+            calendarItem.statusDate = Date(timeIntervalSince1970: Double(item.1["status_date"].description)!)
+            calendarItem.articleImage = item.1["article_image"].description
+            calendarItem.articleText = item.1["article_text"].description
+            calendarItem.type = item.1["type"].description
+            calendarItem.articleUrl = item.1["article_url"].description
+            calendarItem.articleCategory = item.1["article_category"].description
+            print(Double(item.1["status_date"].description));
+            //calendarItem.articleCategory
+            print(item.1["status"].description)
             //calendarFeedStore.app
+            calendarFeedStore.storeItem(item: calendarItem)
         }
         
         calendarFeedStore.getFeed()
@@ -97,9 +109,15 @@ class CalendarViewController: UIViewController {
 
 extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, ChangeCellProtocol {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let sectionIdx = (indexPath as NSIndexPath).section
+        let rowIdx = (indexPath as NSIndexPath).row
+        
+        let section = sections[sectionIdx]
+        let item = section.items[rowIdx]
+        
         if shouldMaximizeCell == false {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
-            
+            cell.configure(item)
             if indexPath.section == 0  {
                 if indexPath.row == 0 {
                     cell.topStackViewVIew.isHidden = false
@@ -113,6 +131,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             
         } else {
             let maxCell = tableView.dequeueReusableCell(withIdentifier: "extendedCell", for: indexPath) as! CalendarCardMaximizedViewCell
+            maxCell.configure(item)
             if indexPath.section == sections.count - 1 {
                 if indexPath.row == (sections[indexPath.section].items.count - 1) {
                     maxCell.connectionStackView.isHidden = true

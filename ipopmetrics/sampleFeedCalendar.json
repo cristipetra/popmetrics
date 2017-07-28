@@ -1,54 +1,48 @@
 {
   "items": [
     {
-      "type":"required_action",
+      "type":"twitter_article",
       "status": "scheduled",
-      "status_date": "123",
-      "article_category": "article_category",
-      "article_text": "Article text",
-      "article_url": "article url",
-      "article_hastag": "article hastag",
-      "article_image": "image"
+      "status_date": "1501402440",
+      "article_title": "Torornto Real Estate Skyrecketing",
+      "article_category": "Local News",
+      "article_text": "The wildfires continue to affect the Northern Provinces Alch.my/AGGA #wildfire",
+      "article_url": "Alch.my/AGGA",
+      "article_hastag": "wildfire",
+      "article_image": "image_card_notifications"
     },
     {
-      "type":"required_action",
+      "type": "linkedin_article",
       "status": "scheduled",
-      "status_date": "123",
-      "article_category": "article_category",
-      "article_text": "Article text",
-      "article_url": "article url",
+      "status_date": "1501488840",
+      "article_title": "Russia on Jehovah's",
+      "article_category": "test category",
+      "article_text": "Where do you want to start with social media schedulling? Find out here! Alch.my/AGGA #socialmedai #scheduling?",
+      "article_url": "Alch.my/AGGA",
       "article_hastag": "article hastag",
-      "article_image": "image"
+      "article_image": "back_twitter"
     },
     {
-     "type":"required_action",
-      "status": "scheduled",
-      "status_date": "123",
-      "article_category": "article_category",
-      "article_text": "Article text",
-      "article_url": "article url",
-      "article_hastag": "article hastag",
-      "article_image": "image"
-    },
-    {
-     "type":"required_action",
+      "type": "linkedin_article",
       "status": "executed",
-      "status_date": "123",
-      "article_category": "article_category",
-      "article_text": "Article text",
-      "article_url": "article url",
+      "status_date": "1501316040",
+      "article_category": "category 2",
+      "article_title": "Optimizing Your website with SEO",
+      "article_text": "Why is SEO such a challenging yet intergral part fo building a successful website? Alch.my/AGG #SEO",
+      "article_url": "Alch.my/AGGA",
       "article_hastag": "article hastag",
-      "article_image": "image"
+      "article_image": "image_card_google"
     },
     {
      "type":"required_action",
       "status": "failed",
-      "status_date": "123",
+      "status_date": "1501488840",
       "article_category": "article_category",
-      "article_text": "Article text",
+      "article_title": "Scheduling Social Media Posts 101",
+      "article_text": "Where do you start with social media scheduling? Find out here #socialmedia #scheduling",
       "article_url": "article url",
       "article_hastag": "article hastag",
-      "article_image": "image"
+      "article_image": "back_twitter"
     }
   ]
 }
