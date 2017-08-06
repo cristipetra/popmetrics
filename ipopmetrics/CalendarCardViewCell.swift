@@ -14,29 +14,37 @@ class CalendarCardViewCell: UITableViewCell {
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var foregroundImage: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var messageLbl: UILabel!
-    @IBOutlet weak var timeLbl: ActiveLabel!
     @IBOutlet weak var topStackView: UIStackView!
     @IBOutlet weak var topStackViewVIew: UIView!
+    @IBOutlet weak var statusText: UILabel!
     
     internal var calendarItem: CalendarItem!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.feedBackgroundColor()
-        topStackViewVIew.roundCorners(corners: [.topLeft, .topRight], radius: 12)
-        
+       
+        setupCorners()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
+    func setupCorners() {
+        DispatchQueue.main.async {
+            self.topStackViewVIew.roundCorners(corners: [.topRight, .topLeft] , radius: 12)
+        }
+    }
+    
     func configure(_ item: CalendarItem) {
         calendarItem = item;
         self.titleLbl.text = item.articleTitle
         let formatedDate = self.formatDate((item.statusDate)!)
-        self.timeLbl.text = item.socialTextString + " " + formatedDate
+        self.statusText.text = item.socialTextString
+        self.timeLbl.text = self.formatDate(item.statusDate!)
         
         self.messageLbl.text = item.articleText
         
@@ -47,14 +55,7 @@ class CalendarCardViewCell: UITableViewCell {
     }
     
     func changeColor() {
-        let customColor = ActiveType.custom(pattern: "\\\(calendarItem.socialTextString)\\b")
-        //let customColor1 = ActiveType.custom(pattern: "\\sScheduled\\b")
-        
-        timeLbl.enabledTypes.append(customColor)
-        
-        timeLbl.customize { (article) in
-            article.customColor[customColor] = calendarItem.socialTextStringColor
-        }
+        statusText.textColor = calendarItem.socialTextStringColor
     }
     
     func formatDate(_ date: Date) -> String {

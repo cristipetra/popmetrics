@@ -154,6 +154,7 @@
 		085282731F28D9DE0065A968 /* CalendarFooterViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarFooterViewCell.swift; sourceTree = "<group>"; };
 		085282751F28F2500065A968 /* sampleFeedCalendar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFeedCalendar.json; sourceTree = "<group>"; };
 		0856F3571F272F020061DF7E /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
+		0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		08A812731F16601A00672126 /* HeaderCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCardCell.xib; sourceTree = "<group>"; };
 		08A812751F1660A300672126 /* HeaderCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderCardCell.swift; path = feed/HeaderCardCell.swift; sourceTree = "<group>"; };
 		08A812781F1672D300672126 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -333,6 +334,7 @@
 			children = (
 				08A812791F1672DC00672126 /* OpenSans-Semibold.ttf */,
 				08B745951F1F6C1D00EC3F8C /* OpenSans-Regular.ttf */,
+				0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */,
 				08A812781F1672D300672126 /* OpenSans-Light.ttf */,
 				08A8127A1F1672E700672126 /* OpenSans-Bold.ttf */,
 			);

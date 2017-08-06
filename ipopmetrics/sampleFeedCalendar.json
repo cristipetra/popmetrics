@@ -12,6 +12,17 @@
       "article_image": "image_card_notifications"
     },
     {
+    "type": "linkedin_article",
+    "status": "executed",
+    "status_date": "1501316040",
+    "article_category": "category 2",
+    "article_title": "Optimizing Your website with SEO",
+    "article_text": "Why is SEO such a challenging yet intergral part fo building a successful website? Alch.my/AGG #SEO",
+    "article_url": "Alch.my/AGGA",
+    "article_hastag": "article hastag",
+    "article_image": "image_card_google"
+    },
+    {
       "type": "linkedin_article",
       "status": "scheduled",
       "status_date": "1501488840",

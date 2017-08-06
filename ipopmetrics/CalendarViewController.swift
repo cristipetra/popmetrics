@@ -169,7 +169,11 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if shouldMaximizeCell == false {
-            return 130
+            if indexPath.row == 0 {
+                return 109
+            } else {
+                return 94
+            }
         }
         return 367
     }
