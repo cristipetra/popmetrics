@@ -17,20 +17,23 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
     @IBOutlet weak var topHeaderView: UIView!
     @IBOutlet weak var imageContainerView: UIView!
     @IBOutlet weak var connectionContainerView: UIView!
-    
+    @IBOutlet weak var topImageButton: UIButton!
+    @IBOutlet weak var dateLbl: ActiveLabel!
     @IBOutlet weak var messageLbl: ActiveLabel!
+    @IBOutlet weak var postLbl: UILabel!
+    
     @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var titleIcon: UIImageView!
+    
     @IBOutlet weak var articleImage: UIImageView!
     @IBOutlet weak var articleDate: ActiveLabel!
+    @IBOutlet weak var postIconImageView: UIImageView!
     @IBOutlet weak var socialNetworkLbl: UILabel!
-    @IBOutlet weak var socialPostImage: UIImageView!
     @IBOutlet weak var actionBtn: RoundButton!
     
     private var calendarItem: CalendarItem!
-    
-    
     var notLastCell = true
-    
+    var isLastCell = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,7 +41,6 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         self.backgroundColor = UIColor.feedBackgroundColor()
         self.connectionContainerView.backgroundColor = UIColor.feedBackgroundColor()
 
-        
         setUpCorners()
     }
     
@@ -48,9 +50,11 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         var formatedDate = self.formatDate((item.statusDate)!)
         self.articleDate.text = item.socialTextString + " " + formatedDate
         self.messageLbl.text = item.articleText
+        
         self.socialNetworkLbl.text = item.socialPost + ": " + item.articleCategory!
-        self.socialPostImage.image = UIImage(named: item.socialIcon)
+        self.postIconImageView.image = UIImage(named: item.socialIcon)
         self.articleImage.image = UIImage(named: item.articleImage!)
+
         updateBtnView()
         
         changeColor()
@@ -67,9 +71,7 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         
         let colorTextUrl = ActiveType.custom(pattern: "\\s\(calendarItem.articleUrl)\\b")
         let colorTextUrl1 = ActiveType.custom(pattern: "\\sAlch.my/AGGA\\b")
-        print("article url")
-        print(calendarItem.articleText)
-        print(calendarItem.articleUrl)
+        
         messageLbl.enabledTypes.append(colorTextUrl)
         messageLbl.enabledTypes.append(colorTextUrl1)
         messageLbl.customize { (textUrl) in
@@ -122,32 +124,21 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         return dateFormatter.string(from: date)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setUpCorners()
+    }
+    
     internal func setUpCorners() {
-        topHeaderView.roundCorners(corners: [.topLeft, .topRight], radius: 10)
-        print("notLastCell status : \(notLastCell)")
-        if notLastCell == true {
-            topContainerVIew.layer.cornerRadius = 22
-            imageContainerView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 10)
-        } else {
-            topContainerVIew.roundCorners(corners: [.topLeft, .topRight], radius: 10)
-            imageContainerView.layer.cornerRadius = 0
+        DispatchQueue.main.async {
+            self.topContainerVIew.roundCorners(corners: [.topRight, .topLeft] , radius: 10)
+            self.topImageButton.layer.cornerRadius = 16
+            if self.isLastCell == false {
+                self.imageContainerView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 10)
+                self.topContainerVIew.roundCorners(corners: [.bottomLeft, .bottomRight, .topLeft, .topRight] , radius: 10)
+            }
+            self.topContainerVIew.layer.masksToBounds = true
         }
-        
+        self.layoutIfNeeded()
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
-    private let elementProp: Dictionary<String, ElementProperties> = [
-        StatusArticle.failed.rawValue: ElementProperties(colorBtn: PopmetricsColor.salmondColor, colorTxt: UIColor.red, isBtnVisible: true, titleBtn: "Reschedule")
-    ]
-    
-}
-
-struct ElementProperties {
-    var colorBtn: UIColor
-    var colorTxt: UIColor
-    var isBtnVisible: Bool
-    var titleBtn: String
 }

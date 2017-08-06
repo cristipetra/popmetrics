@@ -131,11 +131,13 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             
         } else {
             let maxCell = tableView.dequeueReusableCell(withIdentifier: "extendedCell", for: indexPath) as! CalendarCardMaximizedViewCell
+            tableView.allowsSelection = false
+            maxCell.topImageButton.isHidden = true
             maxCell.configure(item)
             if indexPath.section == sections.count - 1 {
                 if indexPath.row == (sections[indexPath.section].items.count - 1) {
                     maxCell.connectionStackView.isHidden = true
-                    maxCell.notLastCell = false
+                    maxCell.isLastCell = true
                 }
             }
             return maxCell
@@ -175,7 +177,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
                 return 94
             }
         }
-        return 367
+        return 459
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -205,8 +207,6 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if reachedFooter == true {
             if scrollView.contentOffset.y == 0 {
-                
-                print("SSS im on the top")
             }
         }
     }
