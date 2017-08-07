@@ -17,7 +17,8 @@ class CalendarCardViewCell: UITableViewCell {
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var messageLbl: UILabel!
     @IBOutlet weak var topStackView: UIStackView!
-    @IBOutlet weak var topStackViewVIew: UIView!
+    @IBOutlet weak var circleView: UIView!
+    @IBOutlet weak var topToolbar: UIView!
     @IBOutlet weak var statusText: UILabel!
     
     internal var calendarItem: CalendarItem!
@@ -35,7 +36,8 @@ class CalendarCardViewCell: UITableViewCell {
     
     func setupCorners() {
         DispatchQueue.main.async {
-            self.topStackViewVIew.roundCorners(corners: [.topRight, .topLeft] , radius: 12)
+            self.topToolbar.roundCorners(corners: [.topRight, .topLeft] , radius: 12)
+            self.circleView.roundCorners(corners: .allCorners, radius: self.circleView.frame.size.width/2)
         }
     }
     

@@ -139,14 +139,16 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         if shouldMaximizeCell == false {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
             cell.configure(item)
-            if indexPath.section == 0  {
-                if indexPath.row == 0 {
-                    cell.topStackViewVIew.isHidden = false
+            if indexPath.row == 0 {
+                cell.topToolbar.isHidden = false
+                print(item.status!+StatusArticle.scheduled.rawValue)
+                if item.status! != StatusArticle.scheduled.rawValue {
+                    cell.topToolbar.backgroundColor = item.socialTextStringColor
                 } else {
-                    cell.topStackViewVIew.isHidden = true
+                    cell.topToolbar.backgroundColor = PopmetricsColor.darkGrey
                 }
             } else {
-                cell.topStackViewVIew.isHidden = true
+                cell.topToolbar.isHidden = true
             }
             return cell
             
