@@ -21,6 +21,8 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpNavigationBar()
+        
         let calendarCardNib = UINib(nibName: "CalendarCard", bundle: nil)
         tableView.register(calendarCardNib, forCellReuseIdentifier: "CalendarCard")
         
@@ -37,6 +39,25 @@ class CalendarViewController: UIViewController {
         tableView.separatorStyle = .none
         
         fetchItemsLocally(silent: false)
+    }
+    
+    internal func setUpNavigationBar() {
+        let text = UIBarButtonItem(title: "Calendar", style: .plain, target: self, action: nil)
+        text.tintColor = UIColor(red: 67/255, green: 78/255, blue: 84/255, alpha: 1.0)
+        let titleFont = UIFont(name: FontBook.regular, size: 18)
+        text.setTitleTextAttributes([NSFontAttributeName: titleFont], for: .normal)
+        
+        self.navigationController?.navigationBar.backgroundColor = UIColor.white
+        navigationController?.navigationBar.isTranslucent = false
+        
+        let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "Icon_Menu"), style: .plain, target: self, action: #selector(handlerClickMenu))
+        self.navigationItem.leftBarButtonItem = leftButtonItem
+        self.navigationItem.leftBarButtonItems = [leftButtonItem, text]
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
+    }
+    
+    func handlerClickMenu() {
+        
     }
     
     func fetchItemsLocally(silent: Bool) {
