@@ -28,7 +28,7 @@
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Feed" id="RNW-aJ-sFX" userLabel="Feed"/>
+                    <navigationItem key="navigationItem" id="RNW-aJ-sFX" userLabel="Feed"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
@@ -183,7 +183,6 @@
         <!--Home-->
         <scene sceneID="BgY-0i-GYY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fkq-Lr-Oth" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="HomeNavigationID" automaticallyAdjustsScrollViewInsets="NO" id="NdU-Vz-erg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="tabBarItem:g6b-nh-pyf:image" id="g6b-nh-pyf"/>
                     <toolbarItems/>
@@ -196,6 +195,7 @@
                         <segue destination="KcM-MX-1lY" kind="relationship" relationship="rootViewController" id="TNh-Xc-ucY"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fkq-Lr-Oth" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1696.8" y="751.57421289355329"/>
         </scene>
