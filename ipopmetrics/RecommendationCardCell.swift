@@ -15,6 +15,7 @@ class RecommendationCardCell: UITableViewCell {
   @IBOutlet weak var messageLabel: UILabel!
   @IBOutlet weak var hashtagLabel: UILabel!
   @IBOutlet weak var bottomImage: UIImageView!
+  @IBOutlet weak var connectionView: UIView!
   
   @IBOutlet weak var headerView: UIView!
     

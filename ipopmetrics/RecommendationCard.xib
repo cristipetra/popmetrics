@@ -74,9 +74,8 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="back_twitter" translatesAutoresizingMaskIntoConstraints="NO" id="J75-88-uVK">
-                                <rect key="frame" x="0.0" y="227" width="343" height="217"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_twitter" translatesAutoresizingMaskIntoConstraints="NO" id="J75-88-uVK">
+                                <rect key="frame" x="0.0" y="235" width="343" height="209"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -85,22 +84,37 @@
                             <constraint firstItem="SX1-bs-fzY" firstAttribute="top" secondItem="UQU-dn-2QN" secondAttribute="top" id="8LQ-mK-zMh"/>
                             <constraint firstItem="SX1-bs-fzY" firstAttribute="leading" secondItem="UQU-dn-2QN" secondAttribute="leading" id="Ljh-Lk-Tsg"/>
                             <constraint firstItem="mW5-s9-qyi" firstAttribute="leading" secondItem="UQU-dn-2QN" secondAttribute="leading" constant="21" id="P1S-R2-ghV"/>
+                            <constraint firstAttribute="bottom" secondItem="J75-88-uVK" secondAttribute="bottom" id="VIJ-C1-RQW"/>
                             <constraint firstItem="mW5-s9-qyi" firstAttribute="top" secondItem="UQU-dn-2QN" secondAttribute="top" constant="110" id="WXF-DR-4Us"/>
                             <constraint firstAttribute="trailing" secondItem="SX1-bs-fzY" secondAttribute="trailing" id="byi-3w-LFD"/>
+                            <constraint firstItem="J75-88-uVK" firstAttribute="top" secondItem="SX1-bs-fzY" secondAttribute="bottom" constant="225" id="cAv-HD-Pc9"/>
+                            <constraint firstItem="J75-88-uVK" firstAttribute="leading" secondItem="UQU-dn-2QN" secondAttribute="leading" id="m6h-3F-r71"/>
                             <constraint firstItem="Ijy-10-2qJ" firstAttribute="top" secondItem="UQU-dn-2QN" secondAttribute="top" constant="25" id="qnE-PD-neg"/>
+                            <constraint firstAttribute="trailing" secondItem="J75-88-uVK" secondAttribute="trailing" id="v56-MF-gRC"/>
                             <constraint firstItem="Ijy-10-2qJ" firstAttribute="leading" secondItem="UQU-dn-2QN" secondAttribute="leading" constant="15" id="xzX-d4-481"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzo-Aw-YaC">
+                        <rect key="frame" x="32" y="444" width="2" height="20"/>
+                        <color key="backgroundColor" red="0.2666666667" green="0.70588235290000001" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="KqU-s4-TDB"/>
+                            <constraint firstAttribute="width" constant="2" id="tml-eL-NUA"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="bzo-Aw-YaC" firstAttribute="top" secondItem="UQU-dn-2QN" secondAttribute="bottom" id="8ve-pz-anL"/>
                     <constraint firstItem="UQU-dn-2QN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="UBp-KJ-cCa"/>
                     <constraint firstAttribute="trailing" secondItem="UQU-dn-2QN" secondAttribute="trailing" constant="16" id="WMv-bc-Poo"/>
                     <constraint firstItem="UQU-dn-2QN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ZAb-S8-sBW"/>
+                    <constraint firstItem="bzo-Aw-YaC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="rxI-Mg-wer"/>
                     <constraint firstAttribute="bottom" secondItem="UQU-dn-2QN" secondAttribute="bottom" constant="19.5" id="u5x-9i-VP2"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="bottomImage" destination="J75-88-uVK" id="geg-7S-Ub6"/>
+                <outlet property="connectionView" destination="bzo-Aw-YaC" id="jvD-GU-POq"/>
                 <outlet property="hashtagLabel" destination="0ia-o2-nTu" id="vJm-4x-RD4"/>
                 <outlet property="headerView" destination="SX1-bs-fzY" id="wuU-qL-TG2"/>
                 <outlet property="messageLabel" destination="5HO-O7-qfA" id="jxj-lK-wNe"/>

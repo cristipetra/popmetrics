@@ -280,9 +280,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.delegate = self
                 cell.configure(item, handler:self.requiredActionHandler)
                 cell.indexPath = indexPath
-                if((sections[sectionIdx].items.count-1) == indexPath.row) {
-                    cell.connectionView.isHidden = true;
-                }
+                
+                cell.connectionView.isHidden = ((sections[sectionIdx].items.count-1) == indexPath.row) ? true : false;
                 return cell
 
             case "recommendation":
@@ -292,7 +291,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.configure(item, handler:self.requiredActionHandler)
                 cell.indexPath = indexPath
                 if((sections[sectionIdx].items.count-1) == indexPath.row) {
-                    //cell.connectionView.isHidden = true;
+                    cell.connectionView.isHidden = true;
                 }
                 return cell
             
