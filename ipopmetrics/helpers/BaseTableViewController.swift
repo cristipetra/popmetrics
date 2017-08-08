@@ -11,6 +11,7 @@ import UIKit
 class BaseTableViewController: UITableViewController {
     
     fileprivate let progressHUD = ProgressHUD(text: "Loading...")
+    internal var topHeaderView: HeaderView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

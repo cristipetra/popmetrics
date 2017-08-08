@@ -19,7 +19,7 @@ class PopmetricsColor {
     static let textLight = UIColor(red: 236/255.0, green: 236/255.0, blue: 236/255.0, alpha: 1.0)
     static let textMedium = UIColor(red: 160/255.0, green: 160/255.0, blue: 160/255.0, alpha: 1.0)
     static let textDark = UIColor(red: 36/255.0, green: 36/255.0, blue: 36/255.0, alpha: 1.0)
-    
+    static let darkGrey = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1.0)
     static let shadowLight = UIColor(red: 220/255.0, green: 220/255.0, blue: 220/255.0, alpha: 0.8)
     static let shadowMedium = UIColor(red: 144/255.0, green: 144/255.0, blue: 144/255.0, alpha: 0.8)
     static let shadowDark = UIColor(red: 22/255.0, green: 22/255.0, blue: 22/255.0, alpha: 0.8)

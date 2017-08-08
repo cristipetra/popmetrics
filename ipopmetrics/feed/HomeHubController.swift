@@ -26,6 +26,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     let transition = BubbleTransition();
     var transitionButton:UIButton = UIButton();
     
+    var isAnimatingHeader = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -90,6 +92,17 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         fetchItems(silent: false)
         
+        setupTopHeaderView()
+    }
+    
+    func setupTopHeaderView() {
+        if topHeaderView == nil {
+            topHeaderView = HeaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 0))
+            self.view.addSubview(topHeaderView)
+            //topHeaderView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 64).isActive = true
+            //topHeaderView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
+            //topHeaderView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true
+        }
     }
     
     func fetchItems(silent:Bool) {
@@ -545,6 +558,53 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         return [deleteBtn, shareBtn]
     }
     
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        var fixedHeaderFrame = self.topHeaderView.frame
+        fixedHeaderFrame.origin.y = 0 + scrollView.contentOffset.y
+        topHeaderView.frame = fixedHeaderFrame
+        
+        if let indexes = tableView.indexPathsForVisibleRows {
+            for index in indexes {
+                let indexPath = IndexPath(row: 0, section: index.section)
+                guard let lastRowInSection = indexes.last , indexes.first?.section == index.section else {
+                    return
+                }
+                let headerFrame = tableView.rectForHeader(inSection: index.section)
+                
+                let frameOfLastCell = tableView.rectForRow(at: lastRowInSection)
+                let cellFrame = tableView.rectForRow(at: indexPath)
+                if headerFrame.origin.y + 50 < tableView.contentOffset.y {
+                    animateHeader(colapse: false)
+                } else if frameOfLastCell.origin.y < tableView.contentOffset.y  {
+                    animateHeader(colapse: false)
+                } else {
+                    animateHeader(colapse: true)
+                }
+            }
+            if tableView.contentOffset.y == 0 {   //top of the tableView
+                animateHeader(colapse: true)
+            }
+        }
+        
+    }
+    
+    func animateHeader(colapse: Bool) {
+        if (self.isAnimatingHeader) {
+            return
+        }
+        self.isAnimatingHeader = true
+        UIView.animate(withDuration: 0.3, animations: {
+            if colapse {
+                self.topHeaderView.frame.size.height = 0
+            } else {
+                self.topHeaderView.frame.size.height = 30
+            }
+            self.topHeaderView.layoutIfNeeded()
+        }, completion: { (completed) in
+            self.isAnimatingHeader = false
+        })
+    }
     
     ///
     
@@ -586,3 +646,4 @@ extension HomeHubViewController: InfoButtonDelegate {
         self.present(infoCardVC, animated: true, completion: nil)
     }
 }
+

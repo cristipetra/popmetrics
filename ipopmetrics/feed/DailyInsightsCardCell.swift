@@ -28,7 +28,7 @@ class DailyInsightsCardCell: UITableViewCell {
     
     func setupView() {
         headerView.backgroundColor = UIColor.turquoiseColor()
-        self.backgroundColor = UIColor.cloudsColor()
+        self.backgroundColor = UIColor.feedBackgroundColor()
         connectionView.backgroundColor = UIColor.turquoiseColor()
         setCornerRadious()
         
