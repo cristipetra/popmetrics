@@ -25,6 +25,24 @@ class HeaderView: UIView {
         return label
     }()
     
+    lazy var stackView: UIStackView = {
+        let stack = UIStackView(frame: CGRect(x: 0, y: 0, width: 150, height: 30))
+        return stack
+    }()
+    
+    lazy var iconLbl: UILabel = {
+        let label = UILabel(frame: CGRect(x: 20, y: 0, width: 150, height: 18))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.font = UIFont(name: FontBook.regular, size: 12)
+        return label
+    }()
+    
+    lazy var iconView: UIImageView = {
+        let iconImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        return iconImage
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame);
         setup();
@@ -46,17 +64,50 @@ class HeaderView: UIView {
         circleView.widthAnchor.constraint(equalToConstant: 12).isActive = true
         circleView.heightAnchor.constraint(equalToConstant: 12).isActive = true
         circleView.layer.cornerRadius = 6
-        circleView.backgroundColor = PopmetricsColor.blueMedium
+        circleView.backgroundColor = PopmetricsColor.darkGrey
         
-        
+        //statusLbl
         self.addSubview(statusLbl)
         statusLbl.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         statusLbl.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 50).isActive = true
         statusLbl.text = "Attention required"
+        statusLbl.textColor = PopmetricsColor.darkGrey
+        
+        let rightContainer: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 30))
+        rightContainer.translatesAutoresizingMaskIntoConstraints = false
+        rightContainer.backgroundColor = UIColor.red
+        
+        //stackView
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.spacing = 10
+        
+        //iconImage
+        iconView.image = UIImage(named: "Icon_Menu")
+        
+        
+        stackView.addArrangedSubview(iconLbl)
+        stackView.addArrangedSubview(iconView)
+        
+        stackView.isHidden = true
+        self.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
+        stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
+    
+        iconLbl.text = "Maximize"
     }
     
     func changeTitle(title: String) {
         statusLbl.text = title
+    }
+    
+    func changeColorCircle(color: UIColor) {
+        circleView.backgroundColor = color
+    }
+    
+    func displayIcon(display: Bool) {
+        stackView.isHidden = !display
     }
     
 }
