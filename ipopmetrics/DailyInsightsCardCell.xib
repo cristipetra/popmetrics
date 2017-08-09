@@ -30,24 +30,24 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Omo-rz-7vT">
-                        <rect key="frame" x="18" y="0.0" width="339" height="459"/>
+                        <rect key="frame" x="10" y="0.0" width="355" height="459"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BbC-AR-fLX">
-                                <rect key="frame" x="0.0" y="0.0" width="339" height="10"/>
+                                <rect key="frame" x="0.0" y="0.0" width="355" height="10"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="10" id="ExY-we-haN"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gbp-QX-kYu">
-                                <rect key="frame" x="0.0" y="289" width="339" height="170"/>
+                                <rect key="frame" x="0.0" y="289" width="355" height="170"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="APi-3B-brC"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_pattern" translatesAutoresizingMaskIntoConstraints="NO" id="Oso-pe-wbK">
-                                <rect key="frame" x="0.0" y="289" width="339" height="170"/>
+                                <rect key="frame" x="0.0" y="289" width="355" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="Df5-gy-vrS"/>
                                 </constraints>
@@ -60,7 +60,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insight Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WsZ-Tz-oiq">
-                                <rect key="frame" x="74" y="25" width="232" height="33"/>
+                                <rect key="frame" x="74" y="25" width="248" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="xss-7V-RJG"/>
                                 </constraints>
@@ -69,16 +69,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="Vpt-kf-ZVu">
-                                <rect key="frame" x="16" y="82" width="315" height="117"/>
+                                <rect key="frame" x="16" y="82" width="331" height="117"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We noticed that 77% of your brand traffic is through a mobile platform." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtp-yj-Ugk">
-                                        <rect key="frame" x="0.0" y="0.0" width="315" height="49.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="331" height="49.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your site should be optimized for mobile." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HiJ-Ej-FaI">
-                                        <rect key="frame" x="0.0" y="67.5" width="315" height="49.5"/>
+                                        <rect key="frame" x="0.0" y="67.5" width="331" height="49.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -86,7 +86,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="he6-kQ-Uxw">
-                                <rect key="frame" x="159" y="378" width="154" height="60"/>
+                                <rect key="frame" x="175" y="378" width="154" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="154" id="B3L-ch-jrj"/>
@@ -131,11 +131,11 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Omo-rz-7vT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="3FL-ac-GyS"/>
+                    <constraint firstItem="Omo-rz-7vT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="3FL-ac-GyS"/>
                     <constraint firstItem="qBO-lj-hb6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="CTC-oi-RIL"/>
                     <constraint firstAttribute="bottom" secondItem="qBO-lj-hb6" secondAttribute="bottom" id="LK2-Rf-HPL"/>
                     <constraint firstAttribute="bottom" secondItem="Omo-rz-7vT" secondAttribute="bottom" constant="20" id="snd-ix-7jY"/>
-                    <constraint firstAttribute="trailing" secondItem="Omo-rz-7vT" secondAttribute="trailing" constant="18" id="v5H-CL-5xh"/>
+                    <constraint firstAttribute="trailing" secondItem="Omo-rz-7vT" secondAttribute="trailing" constant="10" id="v5H-CL-5xh"/>
                     <constraint firstItem="Omo-rz-7vT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="v7a-rS-6Ul"/>
                 </constraints>
             </tableViewCellContentView>
