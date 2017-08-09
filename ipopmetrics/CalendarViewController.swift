@@ -18,6 +18,9 @@ class CalendarViewController: UIViewController {
     var reachedFooter = false
     var shouldMaximizeCell = false
     
+    internal var topHeaderView: HeaderView!
+    internal var isAnimatingHeader: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +32,9 @@ class CalendarViewController: UIViewController {
         let sectionHeaderNib = UINib(nibName: "CalendarHeader", bundle: nil)
         tableView.register(sectionHeaderNib, forCellReuseIdentifier: "headerCell")
         
+        let sectionHeaderCardNib = UINib(nibName: "HeaderCardCell", bundle: nil)
+        tableView.register(sectionHeaderCardNib, forCellReuseIdentifier: "headerCardCell")
+        
         let sectionFooterNib = UINib(nibName: "CalendarFooter", bundle: nil)
         tableView.register(sectionFooterNib, forCellReuseIdentifier: "footerCell")
         
@@ -37,10 +43,24 @@ class CalendarViewController: UIViewController {
 
         
         tableView.separatorStyle = .none
+        setupTopHeaderView()
         
         fetchItemsLocally(silent: false)
     }
+
+    func setupTopHeaderView() {
+        if topHeaderView == nil {
+            topHeaderView = HeaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 0))
+            tableView.addSubview(topHeaderView)
+            topHeaderView.displayIcon(display: true)
+            topHeaderView.btnIcon.addTarget(self, action: #selector(handlerExpand), for: .touchUpInside)
+        }
+    }
     
+    func handlerExpand() {
+        maximizeCell()
+    }
+
     internal func setUpNavigationBar() {
         let text = UIBarButtonItem(title: "Calendar", style: .plain, target: self, action: nil)
         text.tintColor = UIColor(red: 67/255, green: 78/255, blue: 84/255, alpha: 1.0)
@@ -57,7 +77,7 @@ class CalendarViewController: UIViewController {
     }
     
     func handlerClickMenu() {
-        
+        maximizeCell()
     }
     
     func fetchItemsLocally(silent: Bool) {
@@ -139,23 +159,28 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         if shouldMaximizeCell == false {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
             cell.configure(item)
+        
             if indexPath.row == 0 {
                 cell.topToolbar.isHidden = false
                 print(item.status!+StatusArticle.scheduled.rawValue)
+
                 if item.status! != StatusArticle.scheduled.rawValue {
                     cell.topToolbar.backgroundColor = item.socialTextStringColor
                 } else {
                     cell.topToolbar.backgroundColor = PopmetricsColor.darkGrey
                 }
+
             } else {
-                cell.topToolbar.isHidden = true
+                //cell.topToolbar.isHidden = true
             }
+ 
             return cell
             
         } else {
             let maxCell = tableView.dequeueReusableCell(withIdentifier: "extendedCell", for: indexPath) as! CalendarCardMaximizedViewCell
             tableView.allowsSelection = false
             maxCell.topImageButton.isHidden = true
+            
             maxCell.configure(item)
             if indexPath.section == sections.count - 1 {
                 if indexPath.row == (sections[indexPath.section].items.count - 1) {
@@ -163,25 +188,14 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
                     maxCell.isLastCell = true
                 }
             }
+
             return maxCell
         }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
-            if reachedFooter == true {
-                headerCell.setupMinimizeView()
-            }
-            if shouldMaximizeCell == true {
-                headerCell.minimizeLbl.text = "Minimize"
-            }
-            reachedFooter = false
-            headerCell.maximizeDelegate = self
-            return headerCell
-        } else {
-            return UITableViewCell()
-        }
+        let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
+        return headerCell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -214,10 +228,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 50
-        }
-        return 0
+        return 80
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -226,22 +237,68 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         }
         return 0
     }
-    
+    /*
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if reachedFooter == true {
             if scrollView.contentOffset.y == 0 {
             }
         }
     }
+    */
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        var fixedHeaderFrame = self.topHeaderView.frame
+        fixedHeaderFrame.origin.y = 0 + scrollView.contentOffset.y
+        topHeaderView.frame = fixedHeaderFrame
+        
+        if let indexes = tableView.indexPathsForVisibleRows {
+            for index in indexes {
+                let indexPath = IndexPath(row: 0, section: index.section)
+                guard let lastRowInSection = indexes.last , indexes.first?.section == index.section else {
+                    return
+                }
+                let headerFrame = tableView.rectForHeader(inSection: index.section)
+                
+                let frameOfLastCell = tableView.rectForRow(at: lastRowInSection)
+                let cellFrame = tableView.rectForRow(at: indexPath)
+                if headerFrame.origin.y + 50 < tableView.contentOffset.y {
+                    animateHeader(colapse: false)
+                } else if frameOfLastCell.origin.y < tableView.contentOffset.y  {
+                    animateHeader(colapse: false)
+                } else {
+                    animateHeader(colapse: true)
+                }
+            }
+            if tableView.contentOffset.y == 0 {   //top of the tableView
+                animateHeader(colapse: true)
+            }
+        }
+        
+    }
+    
+    func animateHeader(colapse: Bool) {
+        if (self.isAnimatingHeader) {
+            return
+        }
+        self.isAnimatingHeader = true
+        UIView.animate(withDuration: 0.3, animations: {
+            if colapse {
+                self.topHeaderView.frame.size.height = 0
+            } else {
+                self.topHeaderView.frame.size.height = 30
+            }
+            self.topHeaderView.layoutIfNeeded()
+        }, completion: { (completed) in
+            self.isAnimatingHeader = false
+        })
+    }
     
     func maximizeCell() {
-        if shouldMaximizeCell == true {
-            shouldMaximizeCell = false
-            tableView.reloadData()
-            
-        } else {
-            shouldMaximizeCell = true
-            tableView.reloadData()
-        }   
+        shouldMaximizeCell = !shouldMaximizeCell
+        tableView.reloadData()
+        
+        let iconText = shouldMaximizeCell ? "Minimize" : "Maximize"
+        topHeaderView.changeIconText(iconText)
+        
     }
 }

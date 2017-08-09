@@ -35,12 +35,18 @@ class HeaderView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.font = UIFont(name: FontBook.regular, size: 12)
+        label.textColor = UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1.0)
         return label
     }()
     
     lazy var iconView: UIImageView = {
         let iconImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         return iconImage
+    }()
+    
+    lazy var btnIcon: UIButton = {
+        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        return btn
     }()
     
     override init(frame: CGRect) {
@@ -57,6 +63,7 @@ class HeaderView: UIView {
         self.clipsToBounds = true
         
         self.backgroundColor = UIColor.white
+        addShadowToView(self)
         
         self.addSubview(circleView)
         circleView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
@@ -85,9 +92,13 @@ class HeaderView: UIView {
         //iconImage
         iconView.image = UIImage(named: "Icon_Menu")
         
+        //btnIcon
+        btnIcon.setImage(UIImage(named: "Icon_Menu"), for: .normal)
+        
         
         stackView.addArrangedSubview(iconLbl)
-        stackView.addArrangedSubview(iconView)
+        //stackView.addArrangedSubview(iconView)
+        stackView.addArrangedSubview(btnIcon)
         
         stackView.isHidden = true
         self.addSubview(stackView)
@@ -108,6 +119,10 @@ class HeaderView: UIView {
     
     func displayIcon(display: Bool) {
         stackView.isHidden = !display
+    }
+    
+    func changeIconText(_ text: String) {
+        iconLbl.text = text
     }
     
 }
