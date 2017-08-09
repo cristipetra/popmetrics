@@ -221,7 +221,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             lastSection.items.append(lastItem)
             
             self.sections.append(lastSection)
-
+            
+            self.sections.forEach({ (section) in
+                if(section.name == "History" || section.name == "Education") {
+                    self.sections.remove(at: self.sections.index(of: section)!)
+                }
+            })
             
             ///---- End add temporary sections
             
@@ -356,57 +361,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.selectionStyle = .none
                 
                 return cell
-            /*
-            case "action_history":
-                shouldDisplayCell = false
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ActionHistoryCard", for: indexPath) as! ActionHistoryViewCell
-                cell.selectionStyle = .none
-                cell.configure(item, handler:self.requiredActionHandler)
-                return cell
-            
-            case "article_of_interest":
-                shouldDisplayCell = false
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleOfInterestCard", for: indexPath) as! ArticleOfInterestViewCell
-                cell.selectionStyle = .none
-                cell.configure(item, handler:self.requiredActionHandler)
-                return cell
-            
-            case "stats_summary":
-                shouldDisplayCell = false
-                let cell = tableView.dequeueReusableCell(withIdentifier: "StatsSummaryCard", for: indexPath) as! StatsSummaryViewCell
-                cell.selectionStyle = .none
-                cell.configure(item, handler:self.requiredActionHandler)
-                return cell
-            
-            case "best_course":
-                shouldDisplayCell = false
-                let cell = tableView.dequeueReusableCell(withIdentifier: "BestCourseCard", for: indexPath) as! BestCourseViewCell
-                cell.selectionStyle = .none
-                cell.configure(item, handler:self.requiredActionHandler)
-                return cell
-
-            case "insight":
-                shouldDisplayCell = false
-                let cell = tableView.dequeueReusableCell(withIdentifier: "InsightCard", for: indexPath) as! InsightViewCell
-                cell.selectionStyle = .none
-                cell.configure(item, handler:self.requiredActionHandler)
-            return cell
-            
-            case "action":
-                shouldDisplayCell = false
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ActionCard", for: indexPath) as! ActionViewCell
-                cell.selectionStyle = .none
-                cell.configure(item, handler:self.requiredActionHandler)
-            return cell
- */
             default:
                 shouldDisplayCell = false
-                //shouldDisplayHeaderCell = false
-                let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
-                cell.selectionStyle = .none
-                cell.configure(item, handler:self.requiredActionHandler)
+                let cell = UITableViewCell()
                 return cell
-
         }
         
     }
@@ -419,7 +377,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(section: 0)
-            
+            cell.sectionTitleLabel.text = "Attention required";
             return cell
         case 1:
             shouldDisplayHeaderCell = true
@@ -431,27 +389,18 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(section: 2)
+            cell.sectionTitleLabel.text = "Tasks For Approval";
             //cell.isHidden = true;
             return cell
         case 3:
             shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(section: 3)
-            return cell
-        case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
-            cell.changeColor(section: 4)
-            cell.sectionTitleLabel.text = "Tasks For Approval";
-            return cell
-        case 5:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
-            cell.changeColor(section: 5)
             cell.sectionTitleLabel.text = "Daily Insights";
             return cell
         default:
             shouldDisplayHeaderCell = false
-            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
-            cell.backgroundColor = UIColor.red
+            let cell = UITableViewCell()
             return cell
         }
     }
@@ -467,8 +416,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         print(shouldDisplayHeaderCell)
         var height: CGFloat = 0;
-        if (section == 0 || section == 1 || section == 4 || section == 5) {
-            height = 50;
+        if (section == 0 || section == 1 || section == 2 || section == 3) {
+            height = 80;
+        }
+        //last card don't have header
+        if( section == (sections.count - 1)) {
+            height = 0
         }
         return height
     }
@@ -575,6 +528,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 let frameOfLastCell = tableView.rectForRow(at: lastRowInSection)
                 let cellFrame = tableView.rectForRow(at: indexPath)
                 if headerFrame.origin.y + 50 < tableView.contentOffset.y {
+                    topHeaderView.changeTitle(title: sections[index.section].name)
                     animateHeader(colapse: false)
                 } else if frameOfLastCell.origin.y < tableView.contentOffset.y  {
                     animateHeader(colapse: false)
@@ -646,4 +600,5 @@ extension HomeHubViewController: InfoButtonDelegate {
         self.present(infoCardVC, animated: true, completion: nil)
     }
 }
+
 
