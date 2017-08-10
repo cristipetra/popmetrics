@@ -93,15 +93,21 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         fetchItems(silent: false)
         
         setupTopHeaderView()
+        
+        addImageOnLastCard()
+    }
+    
+    func addImageOnLastCard() {
+        let image = UIImage(named: "end_of_feed")
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.frame = CGRect(x: 0, y: self.view.frame.height - 350, width: self.view.frame.width, height: 300)
     }
     
     func setupTopHeaderView() {
         if topHeaderView == nil {
             topHeaderView = HeaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 0))
             self.view.addSubview(topHeaderView)
-            //topHeaderView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 64).isActive = true
-            //topHeaderView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
-            //topHeaderView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true
         }
     }
     
@@ -289,12 +295,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
 
         return sections[section].items.count
     }
-    
-    /*
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section].name
-    }
-    */
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -600,5 +600,3 @@ extension HomeHubViewController: InfoButtonDelegate {
         self.present(infoCardVC, animated: true, completion: nil)
     }
 }
-
-
