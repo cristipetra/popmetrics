@@ -32,14 +32,38 @@ class LoginViewController: UIViewController {
         phoneView.sendCodeBtn.addTarget(self, action: #selector(didPressSendPhoneNumber), for: .touchUpInside)
         addPhoneView();
         
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
         view.addSubview(progressHUD)
         progressHUD.hide()
         
     }
     
+    func rotated() {
+        if self.digitCodeView.isDescendant(of: self.view) {
+            self.digitCodeView.reloadSubViews()
+        } else {
+            self.phoneView.reloadSubViews()
+        }
+        
+    }
+    
     func addPhoneView() {
         self.view.addSubview(phoneView);
+        phoneView.translatesAutoresizingMaskIntoConstraints = false
+        phoneView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true
+        phoneView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
+        phoneView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
+        phoneView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
+    }
+    
+    func addDigitCodeView() {
+        self.view.addSubview(digitCodeView)
+        digitCodeView.translatesAutoresizingMaskIntoConstraints = false
+        digitCodeView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true
+        digitCodeView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
+        digitCodeView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
+        digitCodeView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
     }
     
     internal func setProgressIndicatorText(_ text: String?) {

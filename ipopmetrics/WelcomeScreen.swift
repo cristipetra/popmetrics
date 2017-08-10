@@ -58,8 +58,8 @@ class WelcomeScreen: UIViewController {
     }
     
     private func setUpCornerRadious() {
-        blueButton.layer.cornerRadius = 30
-        btnNew.layer.cornerRadius = 30
+        blueButton.layer.cornerRadius = blueButton.frame.height / 2
+        btnNew.layer.cornerRadius = btnNew.frame.height / 2
         heartButton.layer.cornerRadius = heartButton.frame.width / 2
     }
     

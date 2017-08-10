@@ -24,6 +24,8 @@ class VideoScreenViewController: UIViewController {
         self.view.backgroundColor = PopmetricsColor.yellowBGColor
         
         playLocalVideo()
+        NotificationCenter.default.addObserver(self, selector: #selector(VideoScreenViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        playLocalVideo()
         
         btnStarted.addTarget(self, action: #selector(getStartedHandler), for: .touchUpInside)
         
@@ -45,34 +47,28 @@ class VideoScreenViewController: UIViewController {
     
         playerViewController.player = player
         
-        playerViewController.view.frame = self.containerPlayer.bounds
+        self.containerPlayer.addSubview(playerViewController.view)
         
-        setVideoInContainer();
+        setVideoInContainer()
         
         self.present(playerViewController, animated: true) { 
             self.playerViewController.player?.play()
         }
-        self.view.addSubview(playerViewController.view)
-        
         
         player.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: nil)
         player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
 
     }
     
+    func rotated() {
+        setVideoInContainer()
+    }
+    
     internal func setVideoInContainer() {
-        var height = 180
-        let heightDevice = UIScreen.main.bounds.size.height
-        if heightDevice >= 568 && heightDevice < 667  {
-            height = 220
-        } else {
-            height = 280
-        }
-        
-        playerViewController.view.frame.origin.x = self.containerPlayer.frame.origin.x
-        playerViewController.view.frame.origin.y = self.containerPlayer.frame.origin.y
-        playerViewController.view.frame.size.width = UIScreen.main.bounds.size.width;
-        playerViewController.view.frame.size.height = CGFloat(height)
+        playerViewController.view.frame.origin.x = 0
+        playerViewController.view.frame.origin.y = 0
+        playerViewController.view.frame.size.height = self.containerPlayer.bounds.height
+        playerViewController.view.frame.size.width = self.containerPlayer.bounds.width
         
     }
     
