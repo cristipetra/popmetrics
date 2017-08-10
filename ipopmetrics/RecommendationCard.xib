@@ -26,6 +26,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="463.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HNI-YF-zDp">
+                        <rect key="frame" x="16" y="0.0" width="343" height="444"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UQU-dn-2QN">
                         <rect key="frame" x="16" y="0.0" width="343" height="444"/>
                         <subviews>
@@ -75,7 +79,7 @@
                                 </subviews>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_twitter" translatesAutoresizingMaskIntoConstraints="NO" id="J75-88-uVK">
-                                <rect key="frame" x="0.0" y="235" width="343" height="209"/>
+                                <rect key="frame" x="0.0" y="227" width="343" height="217"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -87,7 +91,7 @@
                             <constraint firstAttribute="bottom" secondItem="J75-88-uVK" secondAttribute="bottom" id="VIJ-C1-RQW"/>
                             <constraint firstItem="mW5-s9-qyi" firstAttribute="top" secondItem="UQU-dn-2QN" secondAttribute="top" constant="110" id="WXF-DR-4Us"/>
                             <constraint firstAttribute="trailing" secondItem="SX1-bs-fzY" secondAttribute="trailing" id="byi-3w-LFD"/>
-                            <constraint firstItem="J75-88-uVK" firstAttribute="top" secondItem="SX1-bs-fzY" secondAttribute="bottom" constant="225" id="cAv-HD-Pc9"/>
+                            <constraint firstItem="J75-88-uVK" firstAttribute="top" secondItem="SX1-bs-fzY" secondAttribute="bottom" constant="217" id="cAv-HD-Pc9"/>
                             <constraint firstItem="J75-88-uVK" firstAttribute="leading" secondItem="UQU-dn-2QN" secondAttribute="leading" id="m6h-3F-r71"/>
                             <constraint firstItem="Ijy-10-2qJ" firstAttribute="top" secondItem="UQU-dn-2QN" secondAttribute="top" constant="25" id="qnE-PD-neg"/>
                             <constraint firstAttribute="trailing" secondItem="J75-88-uVK" secondAttribute="trailing" id="v56-MF-gRC"/>
@@ -104,10 +108,14 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="HNI-YF-zDp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="3H5-hf-8p6"/>
+                    <constraint firstAttribute="bottom" secondItem="HNI-YF-zDp" secondAttribute="bottom" constant="19.5" id="4vc-kV-t7k"/>
                     <constraint firstItem="bzo-Aw-YaC" firstAttribute="top" secondItem="UQU-dn-2QN" secondAttribute="bottom" id="8ve-pz-anL"/>
+                    <constraint firstAttribute="trailing" secondItem="HNI-YF-zDp" secondAttribute="trailing" constant="16" id="IMi-mJ-kLr"/>
                     <constraint firstItem="UQU-dn-2QN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="UBp-KJ-cCa"/>
                     <constraint firstAttribute="trailing" secondItem="UQU-dn-2QN" secondAttribute="trailing" constant="16" id="WMv-bc-Poo"/>
                     <constraint firstItem="UQU-dn-2QN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ZAb-S8-sBW"/>
+                    <constraint firstItem="HNI-YF-zDp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="iL9-Bb-n5a"/>
                     <constraint firstItem="bzo-Aw-YaC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="rxI-Mg-wer"/>
                     <constraint firstAttribute="bottom" secondItem="UQU-dn-2QN" secondAttribute="bottom" constant="19.5" id="u5x-9i-VP2"/>
                 </constraints>
@@ -119,6 +127,7 @@
                 <outlet property="headerView" destination="SX1-bs-fzY" id="wuU-qL-TG2"/>
                 <outlet property="messageLabel" destination="5HO-O7-qfA" id="jxj-lK-wNe"/>
                 <outlet property="secondContanerView" destination="UQU-dn-2QN" id="Z6c-Xa-eSI"/>
+                <outlet property="shadowLayer" destination="HNI-YF-zDp" id="XR4-7T-9gi"/>
                 <outlet property="titleImage" destination="ADO-3t-Sjk" id="6Qj-kd-AFJ"/>
                 <outlet property="titleLabel" destination="EVY-tz-iNk" id="y6f-UT-Xtj"/>
             </connections>

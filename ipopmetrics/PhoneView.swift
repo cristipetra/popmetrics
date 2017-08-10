@@ -126,7 +126,7 @@ class PhoneView: UIView {
         sendCodeBtn.layer.backgroundColor = UIColor(red: 255/255, green: 210/255, blue: 55/255, alpha: 1.0).cgColor
         sendCodeBtn.setTitleColor(UIColor(red: 228/255, green: 185/255, blue: 39/255, alpha: 1.0), for: .normal)
         sendCodeBtn.layer.cornerRadius = 30
-        addShadowToView(sendCodeBtn)
+        
     }
     private func setPlaceholder() {
         let mutableAttrString = NSMutableAttributedString()
@@ -152,10 +152,10 @@ class PhoneView: UIView {
 }
 
 extension UIView {
-    func addShadowToView(_ toView: UIView) {
+    func addShadowToView(_ toView: UIView, radius: CGFloat,opacity: Float) {
         toView.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor
-        toView.layer.shadowOpacity = 0.3;
-        toView.layer.shadowRadius = 2
+        toView.layer.shadowOpacity = opacity;
+        toView.layer.shadowRadius = radius
         toView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
     }
     

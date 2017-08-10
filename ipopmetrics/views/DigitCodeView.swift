@@ -134,7 +134,7 @@ class DigitCodeView: UIView {
         sendCodeBtn.layer.backgroundColor = UIColor(red: 255/255, green: 210/255, blue: 55/255, alpha: 1.0).cgColor
         sendCodeBtn.setTitleColor(UIColor(red: 228/255, green: 185/255, blue: 39/255, alpha: 1.0), for: .normal)
         sendCodeBtn.layer.cornerRadius = 30
-        addShadowToView(sendCodeBtn)
+        //   addShadowToView(sendCodeBtn)
     }
     
     private func setResendCodeButton(yAnchor: CGFloat) {

@@ -63,7 +63,7 @@ class HeaderView: UIView {
         self.clipsToBounds = true
         
         self.backgroundColor = UIColor.white
-        addShadowToView(self)
+        
         
         self.addSubview(circleView)
         circleView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true

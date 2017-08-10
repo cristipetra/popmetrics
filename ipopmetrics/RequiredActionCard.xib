@@ -26,6 +26,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRn-Q6-ZHi">
+                    <rect key="frame" x="16" y="0.0" width="343" height="460"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wC8-va-urZ">
                     <rect key="frame" x="16" y="0.0" width="343" height="460"/>
                     <subviews>
@@ -159,10 +163,14 @@
                 </view>
             </subviews>
             <constraints>
+                <constraint firstItem="RRn-Q6-ZHi" firstAttribute="leading" secondItem="JIk-4W-0kU" secondAttribute="leading" constant="16" id="103-dx-4bI"/>
                 <constraint firstAttribute="bottom" secondItem="wC8-va-urZ" secondAttribute="bottom" constant="20" id="6jk-yF-Qa9"/>
+                <constraint firstAttribute="bottom" secondItem="RRn-Q6-ZHi" secondAttribute="bottom" constant="20" id="Juf-4Y-AMt"/>
                 <constraint firstItem="23F-gS-cyU" firstAttribute="top" secondItem="wC8-va-urZ" secondAttribute="bottom" id="LDq-Mq-vko"/>
+                <constraint firstItem="RRn-Q6-ZHi" firstAttribute="top" secondItem="JIk-4W-0kU" secondAttribute="top" id="QYv-h3-lof"/>
                 <constraint firstAttribute="trailing" secondItem="wC8-va-urZ" secondAttribute="trailing" constant="16" id="SAW-9A-KRa"/>
                 <constraint firstAttribute="bottom" secondItem="23F-gS-cyU" secondAttribute="bottom" id="d1E-jQ-HAT"/>
+                <constraint firstAttribute="trailing" secondItem="RRn-Q6-ZHi" secondAttribute="trailing" constant="16" id="fMU-SW-MuB"/>
                 <constraint firstItem="23F-gS-cyU" firstAttribute="leading" secondItem="JIk-4W-0kU" secondAttribute="leading" constant="32" id="iaO-gS-x7b"/>
                 <constraint firstItem="wC8-va-urZ" firstAttribute="top" secondItem="JIk-4W-0kU" secondAttribute="top" id="vQB-Sp-r6K"/>
                 <constraint firstItem="wC8-va-urZ" firstAttribute="leading" secondItem="JIk-4W-0kU" secondAttribute="leading" constant="16" id="zN4-PH-1mE"/>
@@ -173,8 +181,11 @@
                 <outlet property="bottomImage" destination="sNA-x1-bFd" id="oCY-NU-Nez"/>
                 <outlet property="connectionView" destination="23F-gS-cyU" id="uKx-49-t9F"/>
                 <outlet property="containerView" destination="wC8-va-urZ" id="9hy-XY-eJH"/>
+                <outlet property="headerImageIcon" destination="eBC-Hx-dmI" id="k6n-ms-ID0"/>
+                <outlet property="headerLabel" destination="vec-zy-g2G" id="G5J-GZ-nsw"/>
                 <outlet property="infoButton" destination="yVy-9s-bIQ" id="1bO-Su-ub0"/>
                 <outlet property="messageLabel" destination="pnR-pM-Tol" id="bAe-HU-Ump"/>
+                <outlet property="shadowLayer" destination="RRn-Q6-ZHi" id="mFm-k3-KiP"/>
                 <outlet property="socialMediaLogo" destination="X8k-2g-SxI" id="7xc-Ef-JaZ"/>
                 <outlet property="socialMediaNameLabel" destination="1VB-QN-nCN" id="zpC-aB-vY3"/>
                 <outlet property="titleLabel" destination="FRQ-E1-jZ7" id="srt-eE-wrR"/>

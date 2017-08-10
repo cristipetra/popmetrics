@@ -26,6 +26,7 @@ class RequiredActionViewCell: UITableViewCell {
   
     @IBOutlet weak var infoButton: SimpleButton!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var shadowLayer: UIView!
     
     let transition = BubbleTransition()
   
@@ -48,6 +49,7 @@ class RequiredActionViewCell: UITableViewCell {
       
         self.backgroundColor = UIColor.feedBackgroundColor()
         setCornerRadious()
+        addShadow()
         infoButton.setTitle("i", for: .normal)
       
         self.titleLabel.text  = item.headerTitle
@@ -120,6 +122,12 @@ class RequiredActionViewCell: UITableViewCell {
     
         actionButton.layer.cornerRadius = 30
         actionButton.layer.masksToBounds = true
+    }
+    
+    func addShadow() {
+        self.addShadowToView(shadowLayer, radius: 4, opacity: 0.4)
+        shadowLayer.layer.cornerRadius = 14
+        shadowLayer.layer.masksToBounds = false
     }
     
     @objc func didPressInfoButton(_ sender: SimpleButton) {

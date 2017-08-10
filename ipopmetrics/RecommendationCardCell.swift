@@ -16,15 +16,14 @@ class RecommendationCardCell: UITableViewCell {
   @IBOutlet weak var hashtagLabel: UILabel!
   @IBOutlet weak var bottomImage: UIImageView!
   @IBOutlet weak var connectionView: UIView!
+  @IBOutlet weak var shadowLayer: UIView!
   
   @IBOutlet weak var headerView: UIView!
-    
+  @IBOutlet weak var secondContanerView: UIView!
     
     var item: FeedItem?
     var actionHandler: CardActionHandler?
     var indexPath: IndexPath?
-  
-  @IBOutlet weak var secondContanerView: UIView!
   
   
     func configure(_ item: FeedItem, handler: CardActionHandler) {
@@ -49,6 +48,9 @@ class RecommendationCardCell: UITableViewCell {
     adjustLabelLineSpaceing()
     headerView.backgroundColor = UIColor.turquoiseColor()
     setCornerRadious()
+    addShadow()
+    
+    
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
@@ -79,10 +81,15 @@ class RecommendationCardCell: UITableViewCell {
   }
   
   func setCornerRadious() {
-    
     secondContanerView.layer.cornerRadius = 14
     secondContanerView.layer.masksToBounds = true
   }
   
+  func addShadow() {
+    self.addShadowToView(shadowLayer, radius: 4, opacity: 0.4)
+    shadowLayer.layer.cornerRadius = 14
+    shadowLayer.layer.masksToBounds = false
+  }
+    
 }
 
