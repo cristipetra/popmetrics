@@ -30,5 +30,11 @@ class Config: NSObject {
         }
     }
     
+    class var socialAutomationLink: String {
+        get {
+            return "http://blog.popmetrics.io/how-to-automate-your-social-media/"
+        }
+    }
+    
 
 }
