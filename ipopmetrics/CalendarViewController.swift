@@ -9,15 +9,18 @@
 import UIKit
 import EZAlertController
 import SwiftyJSON
+import MJCalendar
 
 class CalendarViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var calendarView: MJCalendarView!
     ///fileprivate var sections: [FeedSection] = []
     fileprivate var sections: [CalendarSection] = []
     var reachedFooter = false
     var shouldMaximizeCell = false
     
+    @IBOutlet weak var calendarHeight: NSLayoutConstraint!
     internal var topHeaderView: HeaderView!
     internal var isAnimatingHeader: Bool = false
     
@@ -44,6 +47,11 @@ class CalendarViewController: UIViewController {
         
         tableView.separatorStyle = .none
         setupTopHeaderView()
+        self.setUpCalendarConfiguration()
+        DispatchQueue.main.async {
+            self.animateToPeriod(.oneWeek)
+        }
+
         
         fetchItemsLocally(silent: false)
     }
@@ -305,4 +313,107 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         topHeaderView.changeIconText(iconText)
         
     }
+}
+
+extension CalendarViewController: MJCalendarViewDelegate {
+    func setUpCalendarConfiguration() {
+        self.calendarView.calendarDelegate = self
+        // Set displayed period type. Available types: Month, ThreeWeeks, TwoWeeks, OneWeek
+        self.calendarView.configuration.periodType = .month
+        
+        // Set shape of day view. Available types: Circle, Square
+        self.calendarView.configuration.dayViewType = .circle
+        
+        // Set selected day display type. Available types:
+        // Border - Only border is colored with selected day color
+        // Filled - Entire day view is filled with selected day color
+        self.calendarView.configuration.selectedDayType = .filled
+        
+        // Set day text color
+        self.calendarView.configuration.dayTextColor = PopmetricsColor.textGrey
+        
+        // Set day background color
+        self.calendarView.configuration.dayBackgroundColor = UIColor.white
+        
+        // Set selected day text color
+        self.calendarView.configuration.selectedDayTextColor = PopmetricsColor.greenSelectedDate
+        
+        // Set selected day background color
+        //self.calendarView.configuration.selectedDayBackgroundColor = UIColor(hexString: "2FBD8F")
+        
+        // Set other month day text color. Relevant only if periodType = .Month
+        //self.calendarView.configuration.otherMonthTextColor = UIColor(hexString: "6f787c")
+        
+        // Set other month background color. Relevant only if periodType = .Month
+        //self.calendarView.configuration.otherMonthBackgroundColor = UIColor(hexString: "E7E7E7")
+        
+        // Set week text color
+        self.calendarView.configuration.weekLabelTextColor = PopmetricsColor.weekDaysGrey
+        
+        // Set start day. Available type: .Monday, Sunday
+        self.calendarView.configuration.startDayType = .sunday
+        
+        // Set day text font
+        self.calendarView.configuration.dayTextFont = UIFont(name: "OpenSans", size: 18.0)!
+        
+        //Set week's day name font
+        self.calendarView.configuration.weekLabelFont = UIFont(name: "OpenSans-Semibold", size: 12.0)!
+        
+        //Set day view size. It includes border width if selectedDayType = .Border
+        self.calendarView.configuration.dayViewSize = CGSize(width: 24, height: 24)
+        
+        //Set height of row with week's days
+        self.calendarView.configuration.rowHeight = 25
+        
+        // Set height of week's days names view
+        self.calendarView.configuration.weekLabelHeight = 45
+        
+        //Set the day names to one letter
+        self.calendarView.configuration.lettersInWeekDayLabel = .one
+        
+        //Set min date
+        self.calendarView.configuration.minDate = (Date() as NSDate).subtractingDays(60)
+        
+        //Set max date
+        self.calendarView.configuration.maxDate = (Date() as NSDate).addingDays(60)
+        
+        self.calendarView.configuration.selectDayOnPeriodChange = false
+        
+        // To commit all configuration changes execute reloadView method
+        self.calendarView.reloadView()
+    }
+    
+    func setTitleWithDate(_ date: NSDate) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d"
+        let startDate = dateFormatter.string(from: date.atStartOfWeek())
+        let endDate = dateFormatter.string(from: date.atEndOfWeek())
+        //self.dateRangeLabel.text = "\(startDate) - \(endDate)"
+    }
+    
+    func calendar(_ calendarView: MJCalendarView, didChangePeriod periodDate: Date, bySwipe: Bool) {
+        self.setTitleWithDate(periodDate as NSDate)
+    }
+    
+    func calendar(_ calendarView: MJCalendarView, backgroundForDate date: Date) -> UIColor? {
+        return nil
+    }
+    
+    func calendar(_ calendarView: MJCalendarView, textColorForDate date: Date) -> UIColor? {
+        return nil
+    }
+    
+    func calendar(_ calendarView: MJCalendarView, didSelectDate date: Date) {
+        print(date)
+    }
+    
+    func animateToPeriod(_ period: MJConfiguration.PeriodType) {
+        self.calendarView.animateToPeriodType(period, duration: 0.1, animations: { (calendarHeight) -> Void in
+            // In animation block you can add your own animation. To adapat UI to new calendar height you can use calendarHeight param
+            self.calendarHeight.constant = calendarHeight
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+
+    
 }
