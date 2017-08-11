@@ -207,6 +207,8 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
+        headerCell.changeColor(color: sections[section].items[0].getSectionColor)
+        headerCell.sectionTitleLabel.text = sections[section].items[0].socialTextString
         return headerCell
     }
     
@@ -249,14 +251,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         }
         return 0
     }
-    /*
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if reachedFooter == true {
-            if scrollView.contentOffset.y == 0 {
-            }
-        }
-    }
-    */
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         var fixedHeaderFrame = self.topHeaderView.frame

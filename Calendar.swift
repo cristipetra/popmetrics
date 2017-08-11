@@ -81,8 +81,19 @@ class CalendarItem: NSObject{
         }
     }
     
-    func tmp() {
-        
+    var getSectionColor: UIColor {
+        get {
+            switch status! {
+            case StatusArticle.scheduled.rawValue:
+                return UIColor.darkGray
+            case StatusArticle.failed.rawValue:
+                return PopmetricsColor.salmondColor
+            case StatusArticle.executed.rawValue:
+                return PopmetricsColor.greenDark
+            default:
+                return UIColor.white
+            }
+        }
     }
 
 }
