@@ -55,7 +55,7 @@ class CalendarItem: NSObject{
         get {
             switch status! {
             case StatusArticle.scheduled.rawValue:
-                return "Scheduled for"
+                return "Scheduled"
             case StatusArticle.failed.rawValue:
                 return "Failed"
             case StatusArticle.executed.rawValue:

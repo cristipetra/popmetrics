@@ -296,6 +296,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
                 let frameOfLastCell = tableView.rectForRow(at: lastRowInSection)
                 let cellFrame = tableView.rectForRow(at: indexPath)
                 if headerFrame.origin.y + 50 < tableView.contentOffset.y {
+                    topHeaderView.changeTitle(title: sections[index.section].items[0].socialTextString)
                     animateHeader(colapse: false)
                 } else if frameOfLastCell.origin.y < tableView.contentOffset.y  {
                     animateHeader(colapse: false)
