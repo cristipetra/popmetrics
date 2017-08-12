@@ -1,15 +1,15 @@
 //
-//  CalendarCardViewCell.swift
+//  CalendarCardSimpleViewCell.swift
 //  ipopmetrics
 //
-//  Created by Cristian Petra on 25/07/2017.
+//  Created by Cristian Petra on 12/08/2017.
 //  Copyright © 2017 Popmetrics. All rights reserved.
 //
 
 import UIKit
-import ActiveLabel
+import EZAlertController
 
-class CalendarCardViewCell: UITableViewCell {
+class CalendarCardSimpleViewCell: UITableViewCell {
     
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var foregroundImage: UIImageView!
@@ -26,7 +26,7 @@ class CalendarCardViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.feedBackgroundColor()
-    
+        
         setupCorners()
     }
     
@@ -36,7 +36,6 @@ class CalendarCardViewCell: UITableViewCell {
     
     func setupCorners() {
         DispatchQueue.main.async {
-            self.topToolbar.roundCorners(corners: [.topRight, .topLeft] , radius: 12)
             self.circleView.roundCorners(corners: .allCorners, radius: self.circleView.frame.size.width/2)
         }
     }

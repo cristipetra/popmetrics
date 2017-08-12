@@ -32,6 +32,9 @@ class CalendarViewController: UIViewController {
         let calendarCardNib = UINib(nibName: "CalendarCard", bundle: nil)
         tableView.register(calendarCardNib, forCellReuseIdentifier: "CalendarCard")
         
+        let calendarCardSimpleNib = UINib(nibName: "CalendarCardSimple", bundle: nil)
+        tableView.register(calendarCardSimpleNib, forCellReuseIdentifier: "CalendarCardSimple")
+        
         let sectionHeaderNib = UINib(nibName: "CalendarHeader", bundle: nil)
         tableView.register(sectionHeaderNib, forCellReuseIdentifier: "headerCell")
         
@@ -98,7 +101,7 @@ class CalendarViewController: UIViewController {
         let json = JSON(data: jsonData as Data)
         let calendarFeedStore = CalendarFeedStore.getInstance()
         for item in json["items"] {
-            var calendarItem = CalendarItem()
+            let calendarItem = CalendarItem()
             calendarItem.status = item.1["status"].description
             calendarItem.articleTitle = item.1["article_title"].description
             calendarItem.statusDate = Date(timeIntervalSince1970: Double(item.1["status_date"].description)!)
@@ -169,25 +172,24 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         let item = section.items[rowIdx]
         
         if shouldMaximizeCell == false {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
-            cell.configure(item)
-        
             if indexPath.row == 0 {
-                cell.topToolbar.isHidden = false
+                let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
+                cell.configure(item)
                 print(item.status!+StatusArticle.scheduled.rawValue)
-
+                
                 if item.status! != StatusArticle.scheduled.rawValue {
                     cell.topToolbar.backgroundColor = item.socialTextStringColor
                 } else {
                     cell.topToolbar.backgroundColor = PopmetricsColor.darkGrey
                 }
-
+                
+                return cell
             } else {
-                //cell.topToolbar.isHidden = true
+                let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCardSimple", for: indexPath) as! CalendarCardSimpleViewCell
+                cell.configure(item)
+                
+                return cell
             }
- 
-            return cell
-            
         } else {
             let maxCell = tableView.dequeueReusableCell(withIdentifier: "extendedCell", for: indexPath) as! CalendarCardMaximizedViewCell
             tableView.allowsSelection = false
@@ -225,7 +227,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             if indexPath.row == 0 {
                 return 109
             } else {
-                return 94
+                return 93
             }
         }
         return 459
@@ -267,7 +269,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
                 let headerFrame = tableView.rectForHeader(inSection: index.section)
                 
                 let frameOfLastCell = tableView.rectForRow(at: lastRowInSection)
-                let cellFrame = tableView.rectForRow(at: indexPath)
+                _ = tableView.rectForRow(at: indexPath)
                 if headerFrame.origin.y + 50 < tableView.contentOffset.y {
                     animateHeader(colapse: false)
                 } else if frameOfLastCell.origin.y < tableView.contentOffset.y  {

@@ -19,6 +19,8 @@
 		085282721F28D9C50065A968 /* CalendarFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085282711F28D9C50065A968 /* CalendarFooter.xib */; };
 		085282741F28D9DE0065A968 /* CalendarFooterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085282731F28D9DE0065A968 /* CalendarFooterViewCell.swift */; };
 		085282761F28F2500065A968 /* sampleFeedCalendar.json in Resources */ = {isa = PBXBuildFile; fileRef = 085282751F28F2500065A968 /* sampleFeedCalendar.json */; };
+		0854AF331F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0854AF321F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift */; };
+		0854AF351F3F2B18007B60F9 /* CalendarCardSimple.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0854AF341F3F2B18007B60F9 /* CalendarCardSimple.xib */; };
 		0856F3581F272F020061DF7E /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0856F3571F272F020061DF7E /* Calendar.storyboard */; };
 		08A812741F16601A00672126 /* HeaderCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A812731F16601A00672126 /* HeaderCardCell.xib */; };
 		08A812761F1660A300672126 /* HeaderCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A812751F1660A300672126 /* HeaderCardCell.swift */; };
@@ -155,6 +157,8 @@
 		085282711F28D9C50065A968 /* CalendarFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarFooter.xib; sourceTree = "<group>"; };
 		085282731F28D9DE0065A968 /* CalendarFooterViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarFooterViewCell.swift; sourceTree = "<group>"; };
 		085282751F28F2500065A968 /* sampleFeedCalendar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFeedCalendar.json; sourceTree = "<group>"; };
+		0854AF321F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCardSimpleViewCell.swift; sourceTree = "<group>"; };
+		0854AF341F3F2B18007B60F9 /* CalendarCardSimple.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCardSimple.xib; sourceTree = "<group>"; };
 		0856F3571F272F020061DF7E /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		08A812731F16601A00672126 /* HeaderCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCardCell.xib; sourceTree = "<group>"; };
@@ -328,6 +332,8 @@
 				08B5D4BB1F29CD5000B79AD3 /* CalendarCardMaximized.xib */,
 				08B5D4BD1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift */,
 				0848280E1F39F9200054B04C /* HeaderView.swift */,
+				0854AF321F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift */,
+				0854AF341F3F2B18007B60F9 /* CalendarCardSimple.xib */,
 			);
 			name = calendar;
 			sourceTree = "<group>";
@@ -745,6 +751,7 @@
 				08B745931F1F6C0100EC3F8C /* OpenSans-Light.ttf in Resources */,
 				08B745941F1F6C0100EC3F8C /* OpenSans-Bold.ttf in Resources */,
 				0856F3581F272F020061DF7E /* Calendar.storyboard in Resources */,
+				0854AF351F3F2B18007B60F9 /* CalendarCardSimple.xib in Resources */,
 				116540BD1EEAC3A600417D61 /* Signin.storyboard in Resources */,
 				D9D937881ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib in Resources */,
 				D9EC7E371ECF0D7E00A54B53 /* ActionCard.xib in Resources */,
@@ -886,6 +893,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08D1BC391F1E3D6200D377B2 /* LDSplashView.swift in Sources */,
+				0854AF331F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift in Sources */,
 				110A62CA1ECEDADC0052B478 /* StatsSummaryViewCell.swift in Sources */,
 				1128B3F71ECF256600BDA58C /* SimpleButton.swift in Sources */,
 				1128B3F91ECF256600BDA58C /* SimpleButtonStateChangeValue.swift in Sources */,
