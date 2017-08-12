@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import EZAlertController
 
 class CalendarCardSimpleViewCell: UITableViewCell {
     

@@ -15,7 +15,17 @@ class CalendarViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calendarView: MJCalendarView!
-    ///fileprivate var sections: [FeedSection] = []
+    
+    @IBOutlet weak var dateRangeLabel: UILabel!
+    @IBOutlet weak var currentDateBtn: UIView!
+    @IBOutlet weak var topPickerViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var rightArrow: UIButton!
+    @IBOutlet weak var topPickerStackView: UIStackView!
+    @IBOutlet weak var todayLabelView: UIView!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var topPickerStackViewHeight: NSLayoutConstraint!
+    
     fileprivate var sections: [CalendarSection] = []
     var reachedFooter = false
     var shouldMaximizeCell = false
@@ -51,10 +61,18 @@ class CalendarViewController: UIViewController {
         tableView.separatorStyle = .none
         setupTopHeaderView()
         self.setUpCalendarConfiguration()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(CalendarViewController.tapFunction))
+        currentDateBtn.isUserInteractionEnabled = true
+        currentDateBtn.addGestureRecognizer(tap)
         DispatchQueue.main.async {
             self.animateToPeriod(.oneWeek)
+            self.rightArrow.transform = CGAffineTransform(scaleX: -1, y: 1)
+            self.todayLabelView.layer.borderColor = PopmetricsColor.textGrey.cgColor
+            self.todayLabelView.layer.borderWidth = 2.0
+            self.todayLabelView.layer.cornerRadius = self.todayLabelView.bounds.width / 2
+            self.todayLabelView.layer.masksToBounds = true
         }
-
         
         fetchItemsLocally(silent: false)
     }
@@ -256,6 +274,13 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
+        let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview!)
+        if translation.y > 0 {
+            animateTopPart(shouldCollapse: false, offset: scrollView.contentOffset.y)
+        } else {
+            animateTopPart(shouldCollapse: true, offset: scrollView.contentOffset.y)
+        }
+        
         var fixedHeaderFrame = self.topHeaderView.frame
         fixedHeaderFrame.origin.y = 0 + scrollView.contentOffset.y
         topHeaderView.frame = fixedHeaderFrame
@@ -269,7 +294,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
                 let headerFrame = tableView.rectForHeader(inSection: index.section)
                 
                 let frameOfLastCell = tableView.rectForRow(at: lastRowInSection)
-                _ = tableView.rectForRow(at: indexPath)
+                let cellFrame = tableView.rectForRow(at: indexPath)
                 if headerFrame.origin.y + 50 < tableView.contentOffset.y {
                     animateHeader(colapse: false)
                 } else if frameOfLastCell.origin.y < tableView.contentOffset.y  {
@@ -404,12 +429,47 @@ extension CalendarViewController: MJCalendarViewDelegate {
         print(date)
     }
     
+    func animateTopPart(shouldCollapse: Bool, offset: CGFloat) {
+        UIView.animate(withDuration: 0.1, animations: {
+            let initialHeight = 56.0 as CGFloat
+            let initialStackHeight = 27.0 as CGFloat
+            if shouldCollapse {
+                if offset <= initialHeight && offset >= 0{
+                    self.topPickerViewHeight.constant = initialHeight - offset
+                    if offset <= initialStackHeight {
+                        self.topPickerStackViewHeight.constant = initialStackHeight - offset
+                    }
+                } else {
+                    self.topPickerStackView.isHidden = true
+                    //self.topPickerViewHeight.constant = 0
+                }
+            } else {
+                if offset <= initialHeight && offset >= 0 {
+                    self.topPickerStackView.isHidden = false
+                    self.topPickerViewHeight.constant = initialHeight - offset
+                    if offset <= initialStackHeight {
+                        self.topPickerStackViewHeight.constant = initialStackHeight - offset
+                    }
+                    //                } else if offset <= 3{
+                    //                    self.topPickerStackViewHeight.constant = initialStackHeight
+                    //                    self.topPickerViewHeight.constant = initialHeight
+                    //                }
+                }
+            }
+        }, completion: nil)
+    }
+    
     func animateToPeriod(_ period: MJConfiguration.PeriodType) {
         self.calendarView.animateToPeriodType(period, duration: 0.1, animations: { (calendarHeight) -> Void in
             // In animation block you can add your own animation. To adapat UI to new calendar height you can use calendarHeight param
             self.calendarHeight.constant = calendarHeight
             self.view.layoutIfNeeded()
         }, completion: nil)
+        
+    }
+    
+    func tapFunction(sender:UITapGestureRecognizer) {
+        //self.calendarView.selectNewPeriod(calendarView.date)
     }
 
     

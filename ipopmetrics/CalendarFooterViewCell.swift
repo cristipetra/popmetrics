@@ -23,8 +23,13 @@ class CalendarFooterViewCell: UITableViewCell {
         
         addShadowToViewBtn(loadMoreBtn)
         
-        //containerView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 10)
-        
+        setupCorners()
+    }
+    
+    func setupCorners() {
+        DispatchQueue.main.async {
+            self.containerView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 10)
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
