@@ -14,7 +14,6 @@ class CompleteCardCell: UITableViewCell {
         
         let container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
-        container.backgroundColor = UIColor.green
         return container
     }()
     
@@ -22,6 +21,7 @@ class CompleteCardCell: UITableViewCell {
         
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.feedBackgroundColor()
         return view
         
     }()
@@ -55,7 +55,7 @@ class CompleteCardCell: UITableViewCell {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "You're all caught up."
-        title.font = UIFont(name: "OpenSans-Bold", size: 20)
+        title.font = UIFont(name: FontBook.bold, size: 23)
         title.textColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
         return title
     }()
@@ -74,7 +74,7 @@ class CompleteCardCell: UITableViewCell {
         let message = UILabel()
         message.translatesAutoresizingMaskIntoConstraints = false
         message.text = "Find more actions to improve your business in the Home Feed!"
-        message.font = UIFont(name: "OpenSans-Semibold", size: 14)
+        message.font = UIFont(name: FontBook.semibold, size: 14)
         message.textColor = UIColor(red: 189/255, green: 197/255, blue: 203/255, alpha: 1)
         return message
     }()
@@ -107,8 +107,9 @@ class CompleteCardCell: UITableViewCell {
     
     func setup() {
         self.backgroundColor = UIColor.feedBackgroundColor()
-        self.contentView.addSubview(shadowContainerView)
-        self.shadowContainerView.addSubview(containerView)
+        self.contentView.insertSubview(shadowContainerView, belowSubview: containerView)
+        
+        self.contentView.addSubview(containerView)
         self.containerView.addSubview(topImageView)
         self.containerView.addSubview(titleLabel)
         self.containerView.addSubview(xButton)
@@ -116,19 +117,23 @@ class CompleteCardCell: UITableViewCell {
         self.containerView.addSubview(bottomView)
         self.containerView.addSubview(buttonContainerView)
         
-        //containerView.addShadowToViewBtn(containerView)
-        //containerView.roundCorners(corners: .allCorners, radius: 12)
-        addShadowToView(containerView, radius: 2, opacity: 0.4)
+        
+        containerView.layer.cornerRadius = 10
+        containerView.layer.masksToBounds = true
+        
+        shadowContainerView.layer.masksToBounds = false
+        addShadowToView(shadowContainerView, radius: 3, opacity: 0.5)
+        shadowContainerView.layer.cornerRadius = 10
         
         setContainerView()
+        setShadowView()
         setBottomView()
         setButtonContainerView()
         setToHomeFeedBtn()
         setTopImageView()
         setMessageLbl()
-        setTitleLbl()
-        
         setXButton()
+        setTitleLbl()
     }
     
     func setContainerView() {
@@ -195,14 +200,15 @@ class CompleteCardCell: UITableViewCell {
     func setTitleLbl() {
         
         titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 29).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: topImageView.rightAnchor, constant: 23).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: topImageView.rightAnchor, constant: 10).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: xButton.leftAnchor, constant:10)
         titleLabel.numberOfLines = 2
     }
     
     func setXButton() {
         
         xButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 24).isActive = true
-        xButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -15).isActive = true
+        xButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -5).isActive = true
         xButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         xButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
         xButton.setImage(UIImage(named: "icon_close"), for: .normal)
@@ -220,5 +226,5 @@ class CompleteCardCell: UITableViewCell {
         topImageView.contentMode = .scaleAspectFit
         
     }
-
+    
 }
