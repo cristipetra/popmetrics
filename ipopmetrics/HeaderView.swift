@@ -90,10 +90,10 @@ class HeaderView: UIView {
         stackView.spacing = 10
         
         //iconImage
-        iconView.image = UIImage(named: "Icon_Menu")
+        iconView.image = UIImage(named: "iconExpand")
         
         //btnIcon
-        btnIcon.setImage(UIImage(named: "Icon_Menu"), for: .normal)
+        btnIcon.setImage(UIImage(named: "iconExpand"), for: .normal)
         
         
         stackView.addArrangedSubview(iconLbl)
@@ -106,11 +106,22 @@ class HeaderView: UIView {
         stackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
         stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
     
-        iconLbl.text = "Maximize"
+        iconLbl.text = "Expand"
     }
     
     func changeTitle(title: String) {
         statusLbl.text = title
+    }
+    
+    func changeStatus(type: HeaderViewType) {
+        if type == HeaderViewType.minimize {
+            changeIconText("Expand")
+            btnIcon.setImage(UIImage(named: "iconExpand"), for: .normal)
+            
+        } else {
+            changeIconText("Minimize")
+            btnIcon.setImage(UIImage(named: "iconMinimize"), for: .normal)
+        }
     }
     
     func changeColorCircle(color: UIColor) {
@@ -125,4 +136,9 @@ class HeaderView: UIView {
         iconLbl.text = text
     }
     
+}
+
+enum  HeaderViewType {
+    case minimize
+    case expand
 }

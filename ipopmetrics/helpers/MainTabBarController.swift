@@ -34,7 +34,7 @@ class MainTabBarController: UITabBarController {
         let calendarVC = UIStoryboard(name: "Calendar", bundle: nil).instantiateViewController(withIdentifier: "CalendarID")
         calendarViewController.pushViewController(calendarVC, animated: false)
         calendarVC.tabBarItem.title = "Calendar"
-        calendarVC.tabBarItem.image = #imageLiteral(resourceName: "Icon_Home_Selected")
+        calendarVC.tabBarItem.image = #imageLiteral(resourceName: "iconCalendarTab")
         
         self.setViewControllers(tabs, animated: false)
         

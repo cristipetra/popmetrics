@@ -332,8 +332,8 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         shouldMaximizeCell = !shouldMaximizeCell
         tableView.reloadData()
         
-        let iconText = shouldMaximizeCell ? "Minimize" : "Maximize"
-        topHeaderView.changeIconText(iconText)
+        let type = shouldMaximizeCell ? HeaderViewType.expand : HeaderViewType.minimize
+        topHeaderView.changeStatus(type: type)
         
     }
 }
