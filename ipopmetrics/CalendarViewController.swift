@@ -56,6 +56,8 @@ class CalendarViewController: UIViewController {
         
         let extendedCardNib = UINib(nibName: "CalendarCardMaximized", bundle: nil)
         tableView.register(extendedCardNib, forCellReuseIdentifier: "extendedCell")
+        
+        tableView.register(CompleteCardCell.self, forCellReuseIdentifier: "lastCell")
 
         
         tableView.separatorStyle = .none
@@ -180,7 +182,6 @@ class CalendarViewController: UIViewController {
 
 }
 
-
 extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, ChangeCellProtocol {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionIdx = (indexPath as NSIndexPath).section
@@ -188,6 +189,14 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         
         let section = sections[sectionIdx]
         let item = section.items[rowIdx]
+        
+        if item.type == "last_cell" {
+            let lastCell = tableView.dequeueReusableCell(withIdentifier: "lastCell", for: indexPath) as! CompleteCardCell
+            lastCell.backgroundColor = UIColor.feedBackgroundColor()
+            lastCell.containerView.backgroundColor = UIColor.white
+            lastCell.selectionStyle = .none
+            return lastCell
+        }
         
         if shouldMaximizeCell == false {
             if indexPath.row == 0 {
@@ -241,6 +250,9 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if ( indexPath.section == (sections.count - 1) ) {
+            return 222
+        }
         if shouldMaximizeCell == false {
             if indexPath.row == 0 {
                 return 109
@@ -262,6 +274,9 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == sections.count - 1 {
+            return 0
+        }
         return 80
     }
     
