@@ -25,7 +25,7 @@ class VideoScreenViewController: UIViewController {
         
         playLocalVideo()
         NotificationCenter.default.addObserver(self, selector: #selector(VideoScreenViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-        playLocalVideo()
+        
         
         btnStarted.addTarget(self, action: #selector(getStartedHandler), for: .touchUpInside)
         

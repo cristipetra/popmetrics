@@ -469,8 +469,15 @@ extension CalendarViewController: MJCalendarViewDelegate {
         
     }
     
+    @IBAction func nextPeriodBtnPressed(_ sender: Any) {
+        self.calendarView.moveToNextPeriod()
+    }
+    @IBAction func previousPeriodBtnPressed(_ sender: Any) {
+        self.calendarView.moveToPreviousPeriod()
+    }
+    
     func tapFunction(sender:UITapGestureRecognizer) {
-        //self.calendarView.selectNewPeriod(calendarView.date)
+        self.calendarView.selectNewPeriod(calendarView.date)
     }
 
     
