@@ -222,7 +222,7 @@ class CompleteCardCell: UITableViewCell {
         topImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 31).isActive = true
         topImageView.heightAnchor.constraint(equalToConstant: 22).isActive = true
         topImageView.widthAnchor.constraint(equalToConstant: 28).isActive = true
-        topImageView.image = UIImage(named: "lastCardCheckImg")
+        topImageView.image = UIImage(named: "iconCheck")
         topImageView.contentMode = .scaleAspectFit
         
     }
