@@ -38,6 +38,8 @@
 		08B745961F1F6C1D00EC3F8C /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08B745951F1F6C1D00EC3F8C /* OpenSans-Regular.ttf */; };
 		08B745981F1F718300EC3F8C /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B745971F1F718300EC3F8C /* CodeViewController.swift */; };
 		08B7459B1F1F996B00EC3F8C /* DigitCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7459A1F1F996B00EC3F8C /* DigitCodeView.swift */; };
+		08C6FBFB1F41FFCB007D6101 /* Todo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C6FBFA1F41FFCB007D6101 /* Todo.storyboard */; };
+		08C6FBFD1F4205EF007D6101 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */; };
 		08C7B18D1F1CF40C00E456C6 /* WelcomeScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C7B18C1F1CF40C00E456C6 /* WelcomeScreen.xib */; };
 		08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */; };
 		08D1BC371F1DF4F900D377B2 /* ViewNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC361F1DF4F900D377B2 /* ViewNames.swift */; };
@@ -178,6 +180,8 @@
 		08B745951F1F6C1D00EC3F8C /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		08B745971F1F718300EC3F8C /* CodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeViewController.swift; path = login/CodeViewController.swift; sourceTree = "<group>"; };
 		08B7459A1F1F996B00EC3F8C /* DigitCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DigitCodeView.swift; path = views/DigitCodeView.swift; sourceTree = "<group>"; };
+		08C6FBFA1F41FFCB007D6101 /* Todo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Todo.storyboard; sourceTree = "<group>"; };
+		08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
 		08C7B18C1F1CF40C00E456C6 /* WelcomeScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WelcomeScreen.xib; path = views/WelcomeScreen.xib; sourceTree = "<group>"; };
 		08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		08D1BC361F1DF4F900D377B2 /* ViewNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewNames.swift; sourceTree = "<group>"; };
@@ -369,6 +373,7 @@
 				08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */,
 				08B485E31F210992005918A1 /* VideoScreenViewController.swift */,
 				08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */,
+				08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -581,6 +586,7 @@
 				08C7B18C1F1CF40C00E456C6 /* WelcomeScreen.xib */,
 				08B485E51F210A61005918A1 /* RoundButton.swift */,
 				0856F3571F272F020061DF7E /* Calendar.storyboard */,
+				08C6FBFA1F41FFCB007D6101 /* Todo.storyboard */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -777,6 +783,7 @@
 				08B5D4BC1F29CD5000B79AD3 /* CalendarCardMaximized.xib in Resources */,
 				08F3688F1F18E43100819CDE /* ApprovalCardInfo.xib in Resources */,
 				1128B3F61ECF256600BDA58C /* Info.plist in Resources */,
+				08C6FBFB1F41FFCB007D6101 /* Todo.storyboard in Resources */,
 				08F368971F19029100819CDE /* LastCard.xib in Resources */,
 				1119F6181ED56F34009997FF /* Boarding.storyboard in Resources */,
 				D9D9378A1ECDEEE200CC3EC2 /* StatsSummaryCard.xib in Resources */,
@@ -935,6 +942,7 @@
 				0809AEB41F22183400A13178 /* Constants.swift in Sources */,
 				116431DF1E2D4E81009AA59E /* UsersApi.swift in Sources */,
 				08F368911F18E6A000819CDE /* ApprovalCardInfoCell.swift in Sources */,
+				08C6FBFD1F4205EF007D6101 /* ToDoViewController.swift in Sources */,
 				11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */,
 				113976AB1E97C74B00B535DF /* BaseViewController.swift in Sources */,
 				1128B3FB1ECF26D800BDA58C /* UIColorExtensions.swift in Sources */,

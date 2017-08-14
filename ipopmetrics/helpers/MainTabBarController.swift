@@ -12,6 +12,7 @@ class MainTabBarController: UITabBarController {
     
     var homeNavigationController: UINavigationController!;
     var calendarViewController: UINavigationController = UINavigationController();
+    var todoNavigationViewController: UINavigationController = UINavigationController();
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,15 +30,18 @@ class MainTabBarController: UITabBarController {
         homeNavigationController.tabBarItem.title = "Home"
         homeNavigationController.tabBarItem.image = #imageLiteral(resourceName: "Icon_Home_Selected")
         
-        let tabs: [UIViewController] = [homeNavigationController, calendarViewController]
+        let todoVC = UIStoryboard(name: "Todo", bundle: nil).instantiateViewController(withIdentifier: "todo")
+        todoNavigationViewController.pushViewController(todoVC, animated: false)
+        todoVC.tabBarItem.title = "To Do"
+        todoVC.tabBarItem.image = #imageLiteral(resourceName: "iconTodo")
         
         let calendarVC = UIStoryboard(name: "Calendar", bundle: nil).instantiateViewController(withIdentifier: "CalendarID")
         calendarViewController.pushViewController(calendarVC, animated: false)
         calendarVC.tabBarItem.title = "Calendar"
         calendarVC.tabBarItem.image = #imageLiteral(resourceName: "iconCalendarTab")
         
+        let tabs: [UIViewController] = [homeNavigationController, todoNavigationViewController, calendarViewController]
         self.setViewControllers(tabs, animated: false)
-        
     }
     
     /*
