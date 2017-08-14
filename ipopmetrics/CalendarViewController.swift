@@ -202,7 +202,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
                 cell.configure(item)
-                print(item.status!+StatusArticle.scheduled.rawValue)
+                cell.maximizeDelegate = self
                 
                 if item.status! != StatusArticle.scheduled.rawValue {
                     cell.topToolbar.backgroundColor = item.socialTextStringColor
@@ -214,7 +214,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCardSimple", for: indexPath) as! CalendarCardSimpleViewCell
                 cell.configure(item)
-                
+                cell.maximizeDelegate = self
                 return cell
             }
         } else {
@@ -223,11 +223,9 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             maxCell.topImageButton.isHidden = true
             
             maxCell.configure(item)
-            if indexPath.section == sections.count - 1 {
-                if indexPath.row == (sections[indexPath.section].items.count - 1) {
-                    maxCell.connectionStackView.isHidden = true
-                    maxCell.isLastCell = true
-                }
+            if indexPath.row == (sections[indexPath.section].items.count - 1) {
+                maxCell.connectionStackView.isHidden = true
+                maxCell.isLastCell = true
             }
 
             return maxCell
@@ -238,6 +236,10 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
         headerCell.changeColor(color: sections[section].items[0].getSectionColor)
         headerCell.sectionTitleLabel.text = sections[section].items[0].socialTextString
+        if section == sections.endIndex - 1 {
+            return UIView()
+        }
+
         return headerCell
     }
     

@@ -23,11 +23,21 @@ class CalendarCardViewCell: UITableViewCell {
     
     internal var calendarItem: CalendarItem!
     
+    weak var maximizeDelegate: ChangeCellProtocol?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.feedBackgroundColor()
-    
+        
+        let tapCard = UITapGestureRecognizer(target: self, action: #selector(handlerClickCard))
+        self.isUserInteractionEnabled = true
+        self.addGestureRecognizer(tapCard)
+        
         setupCorners()
+    }
+    
+    func handlerClickCard() {
+        maximizeDelegate?.maximizeCell()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
