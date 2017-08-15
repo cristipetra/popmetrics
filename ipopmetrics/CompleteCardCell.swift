@@ -201,7 +201,7 @@ class CompleteCardCell: UITableViewCell {
         
         titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 29).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: topImageView.rightAnchor, constant: 10).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: xButton.leftAnchor, constant:10)
+        titleLabel.rightAnchor.constraint(equalTo: xButton.leftAnchor, constant:10).isActive = true
         titleLabel.numberOfLines = 2
     }
     
