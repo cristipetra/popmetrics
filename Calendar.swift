@@ -21,7 +21,7 @@ class CalendarItem: NSObject{
     
     dynamic var articleText = ""
     dynamic var articleUrl = ""
-    dynamic var articleHastags:String? = nil
+    var articleHastags: [Any?] = []
     dynamic var articleImage:String? = nil
     
     var socialIcon: String {
@@ -93,6 +93,12 @@ class CalendarItem: NSObject{
             default:
                 return UIColor.white
             }
+        }
+    }
+    
+    var socialURLColor: UIColor {
+        get {
+            return PopmetricsColor.blueURLColor
         }
     }
 

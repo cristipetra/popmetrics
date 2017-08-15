@@ -17,10 +17,10 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
     @IBOutlet weak var topHeaderView: UIView!
     @IBOutlet weak var imageContainerView: UIView!
     @IBOutlet weak var connectionContainerView: UIView!
+    @IBOutlet weak var connectionLine: UIView!
     @IBOutlet weak var topImageButton: UIButton!
     @IBOutlet weak var dateLbl: ActiveLabel!
     @IBOutlet weak var messageLbl: ActiveLabel!
-    @IBOutlet weak var postLbl: UILabel!
     
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var titleIcon: UIImageView!
@@ -54,6 +54,9 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         self.socialNetworkLbl.text = item.socialPost + ": " + item.articleCategory!
         self.postIconImageView.image = UIImage(named: item.socialIcon)
         self.articleImage.image = UIImage(named: item.articleImage!)
+        
+        self.connectionLine.backgroundColor = item.getSectionColor
+        self.topHeaderView.backgroundColor = item.getSectionColor
 
         updateBtnView()
         
@@ -70,13 +73,10 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         }
         
         let colorTextUrl = ActiveType.custom(pattern: "\\s\(calendarItem.articleUrl)\\b")
-        let colorTextUrl1 = ActiveType.custom(pattern: "\\sAlch.my/AGGA\\b")
         
         messageLbl.enabledTypes.append(colorTextUrl)
-        messageLbl.enabledTypes.append(colorTextUrl1)
         messageLbl.customize { (textUrl) in
-            textUrl.customColor[colorTextUrl] = calendarItem.socialTextStringColor
-            textUrl.customColor[colorTextUrl1] = calendarItem.socialTextStringColor
+            textUrl.customColor[colorTextUrl] = calendarItem.socialURLColor
         }
     }
     

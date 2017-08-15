@@ -12,6 +12,9 @@
         <array key="OpenSans-Bold.ttf">
             <string>OpenSans-Bold</string>
         </array>
+        <array key="OpenSans-BoldItalic.ttf">
+            <string>OpenSans-BoldItalic</string>
+        </array>
         <array key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
         </array>
@@ -102,11 +105,11 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="Kkq-db-zx0"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-BoldItalic" family="Open Sans" pointSize="15"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The wildfires continue to affect the Northern Provinces www.alch.my/ #wildfire" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmL-62-fG7" customClass="ActiveLabel" customModule="ActiveLabel">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The wildfires continue to affect the Northern Provinces www.alch.my/ " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmL-62-fG7" customClass="ActiveLabel" customModule="ActiveLabel">
                                                         <rect key="frame" x="21" y="56" width="356" height="82"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="82" id="KVE-ES-B92"/>
@@ -114,6 +117,11 @@
                                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                                         <color key="textColor" red="0.74117647058823533" green="0.77254901960784317" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="hashtagColor">
+                                                                <color key="value" red="0.74117647058823533" green="0.77254901960784317" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </label>
                                                 </subviews>
                                                 <constraints>
@@ -239,6 +247,7 @@
                 <outlet property="articleDate" destination="01U-8U-Uj5" id="uJZ-8f-GQh"/>
                 <outlet property="articleImage" destination="g33-N6-hTc" id="svr-YI-FhK"/>
                 <outlet property="connectionContainerView" destination="2FW-vY-81j" id="MEZ-8u-B4f"/>
+                <outlet property="connectionLine" destination="byU-xl-5me" id="KfN-Ld-h8U"/>
                 <outlet property="connectionStackView" destination="RYQ-7a-97U" id="rWK-T7-16S"/>
                 <outlet property="imageContainerView" destination="VjF-HY-X4v" id="H0I-a7-tsK"/>
                 <outlet property="messageLbl" destination="pmL-62-fG7" id="O4I-o7-kWt"/>

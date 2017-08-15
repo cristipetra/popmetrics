@@ -130,7 +130,10 @@ class CalendarViewController: UIViewController {
             calendarItem.type = item.1["type"].description
             calendarItem.articleUrl = item.1["article_url"].description
             calendarItem.articleCategory = item.1["article_category"].description
-            print(Double(item.1["status_date"].description));
+            if( item.1["article_hastags"].array != nil) {
+                calendarItem.articleHastags = ((item.1["article_hastags"].array)!)
+            }
+            
             //calendarItem.articleCategory
             print(item.1["status"].description)
             //calendarFeedStore.app
@@ -314,6 +317,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
                 let cellFrame = tableView.rectForRow(at: indexPath)
                 if headerFrame.origin.y + 50 < tableView.contentOffset.y {
                     topHeaderView.changeTitle(title: sections[index.section].items[0].socialTextString)
+                    topHeaderView.changeColorCircle(color: sections[index.section].items[0].getSectionColor)
                     animateHeader(colapse: false)
                 } else if frameOfLastCell.origin.y < tableView.contentOffset.y  {
                     animateHeader(colapse: false)
