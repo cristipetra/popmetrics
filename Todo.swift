@@ -1,15 +1,15 @@
 //
-//  Calendar.swift
+//  Todo.swift
 //  ipopmetrics
 //
-//  Created by Cristian Petra on 26/07/2017.
+//  Created by Cristian Petra on 15/08/2017.
 //  Copyright © 2017 Popmetrics. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class CalendarItem: NSObject{
+class TodoItem: NSObject{
     
     dynamic var index = 0
     
@@ -95,31 +95,15 @@ class CalendarItem: NSObject{
             }
         }
     }
-
+    
 }
 
 
-class CalendarSection: NSObject{
-
-    
+class TodoSection: NSObject{
     dynamic var name = ""
     dynamic var status: String = "";
     dynamic var index = 0
     
-    //let items = List<CalendarItem>()
-    var items = [CalendarItem]()
-    
+    var items = [TodoItem]()
 }
 
-enum TypeArticle: String {
-    case twitter = "twitter_article"
-    case linkedin = "linkedin_article"
-}
-
-enum StatusArticle: String {
-    case scheduled = "scheduled"
-    case failed = "failed"
-    case executed = "executed"
-    case unapproved = "unapproved"
-    case inProgress = "in-progress"
-}
