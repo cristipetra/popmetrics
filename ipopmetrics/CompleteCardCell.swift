@@ -175,16 +175,15 @@ class CompleteCardCell: UITableViewCell {
     }
     
     func setToHomeFeedBtn() {
-        
-        toHomeFeedButton.bottomAnchor.constraint(equalTo: buttonContainerView.bottomAnchor, constant: 0).isActive = true
         toHomeFeedButton.leftAnchor.constraint(equalTo: buttonContainerView.leftAnchor, constant: 0).isActive = true
         toHomeFeedButton.rightAnchor.constraint(equalTo: buttonContainerView.rightAnchor, constant: 0).isActive = true
-        toHomeFeedButton.topAnchor.constraint(equalTo: buttonContainerView.topAnchor, constant: 0).isActive = true
-        //toHomeFeedButton.centerXAnchor.constraint(equalTo: buttonContainerView.centerXAnchor).isActive = true
+        toHomeFeedButton.centerYAnchor.constraint(equalTo: self.buttonContainerView.centerYAnchor).isActive = true
         
+        toHomeFeedButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+    
         addShadowToViewBtn(toHomeFeedButton)
         toHomeFeedButton.tintColor = UIColor.black
-        toHomeFeedButton.layer.cornerRadius = 32
+        toHomeFeedButton.layer.cornerRadius = 22
         
     }
     
@@ -201,7 +200,7 @@ class CompleteCardCell: UITableViewCell {
         
         titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 29).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: topImageView.rightAnchor, constant: 10).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: xButton.leftAnchor, constant:10).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: xButton.leftAnchor, constant:30).isActive = true
         titleLabel.numberOfLines = 2
     }
     
