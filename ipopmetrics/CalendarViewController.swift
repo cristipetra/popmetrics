@@ -432,7 +432,7 @@ extension CalendarViewController: MJCalendarViewDelegate {
         dateFormatter.dateFormat = "MMM d"
         let startDate = dateFormatter.string(from: date.atStartOfWeek())
         let endDate = dateFormatter.string(from: date.atEndOfWeek())
-        //self.dateRangeLabel.text = "\(startDate) - \(endDate)"
+        self.dateRangeLabel.text = "\(startDate) - \(endDate)"
     }
     
     func calendar(_ calendarView: MJCalendarView, didChangePeriod periodDate: Date, bySwipe: Bool) {
@@ -452,30 +452,26 @@ extension CalendarViewController: MJCalendarViewDelegate {
     }
     
     func animateTopPart(shouldCollapse: Bool, offset: CGFloat) {
-        UIView.animate(withDuration: 0.1, animations: {
+        UIView.animate(withDuration: 0.4, animations: {
             let initialHeight = 56.0 as CGFloat
-            let initialStackHeight = 27.0 as CGFloat
+            //let initialStackHeight = 27.0 as CGFloat
             if shouldCollapse {
                 if offset <= initialHeight && offset >= 0{
                     self.topPickerViewHeight.constant = initialHeight - offset
-                    if offset <= initialStackHeight {
-                        self.topPickerStackViewHeight.constant = initialStackHeight - offset
-                    }
                 } else {
+                    self.topPickerStackView.alpha = 0.0
                     self.topPickerStackView.isHidden = true
                     //self.topPickerViewHeight.constant = 0
                 }
             } else {
-                if offset <= initialHeight && offset >= 0 {
+                if offset <= initialHeight {
+                    self.topPickerStackView.alpha = 1.0
                     self.topPickerStackView.isHidden = false
-                    self.topPickerViewHeight.constant = initialHeight - offset
-                    if offset <= initialStackHeight {
-                        self.topPickerStackViewHeight.constant = initialStackHeight - offset
+                    if offset >= 2 {
+                        self.topPickerViewHeight.constant = initialHeight - offset
+                    } else {
+                        self.topPickerViewHeight.constant = initialHeight
                     }
-                    //                } else if offset <= 3{
-                    //                    self.topPickerStackViewHeight.constant = initialStackHeight
-                    //                    self.topPickerViewHeight.constant = initialHeight
-                    //                }
                 }
             }
         }, completion: nil)
