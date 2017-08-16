@@ -90,6 +90,8 @@ class CalendarItem: NSObject{
                 return PopmetricsColor.salmondColor
             case StatusArticle.executed.rawValue:
                 return PopmetricsColor.greenDark
+            case StatusArticle.unapproved.rawValue:
+                return UIColor.red
             default:
                 return UIColor.white
             }

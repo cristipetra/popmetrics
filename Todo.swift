@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+class TodoItem: CalendarItem {
+    
+}
+
+/*
 class TodoItem: NSObject{
     
     dynamic var index = 0
@@ -97,7 +102,7 @@ class TodoItem: NSObject{
     }
     
 }
-
+*/
 
 class TodoSection: NSObject{
     dynamic var name = ""
