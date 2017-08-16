@@ -229,6 +229,8 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             if indexPath.row == (sections[indexPath.section].items.count - 1) {
                 maxCell.connectionStackView.isHidden = true
                 maxCell.isLastCell = true
+            } else {
+                maxCell.connectionStackView.isHidden = false
             }
 
             return maxCell
