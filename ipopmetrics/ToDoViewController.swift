@@ -18,16 +18,23 @@ class ToDoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        registerCellsForTable()
 
         setUpNavigationBar()
         
         fetchItemsLocally()
-        
+    }
+    
+    internal func registerCellsForTable() {
         let calendarCardNib = UINib(nibName: "CalendarCard", bundle: nil)
         tableView.register(calendarCardNib, forCellReuseIdentifier: "CalendarCard")
         
         let calendarCardSimpleNib = UINib(nibName: "CalendarCardSimple", bundle: nil)
         tableView.register(calendarCardSimpleNib, forCellReuseIdentifier: "CalendarCardSimple")
+        
+        let toDoHeaderCardNib = UINib(nibName: "HeaderCardCell", bundle: nil)
+        tableView.register(toDoHeaderCardNib, forCellReuseIdentifier: "headerCardCell")
     }
     
     internal func setUpNavigationBar() {
@@ -79,13 +86,24 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
-            
+            cell.topToolbar.backgroundColor = PopmetricsColor.yellowUnapproved
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCardSimple", for: indexPath) as! CalendarCardSimpleViewCell
 
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let toDoHeader = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
+        toDoHeader.changeColor(color: UIColor(red: 255/255, green: 189/255, blue: 80/255, alpha: 1))
+        toDoHeader.sectionTitleLabel.text = "Unapproved"//sections[section].items[0].socialTextString
+        return toDoHeader.contentView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 80
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -51,4 +51,6 @@ class PopmetricsColor {
     static let salmondColor = UIColor(red: 255/255, green: 119/255, blue: 106/255, alpha: 1.0)
     
     static let blueURLColor = UIColor(red: 65/255, green: 155/255, blue: 249/255, alpha: 1.0)
+    
+    static let yellowUnapproved = UIColor(red: 255/255, green: 189/255, blue: 80/255, alpha: 1.0)
 }
