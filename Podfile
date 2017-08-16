@@ -39,6 +39,8 @@ target 'ipopmetrics' do
   pod 'SwiftRichString'
   pod 'NotificationBannerSwift'
   pod 'BubbleTransition'
+  pod 'SwiftyJSON'
+  pod “MJCalendar”, :git=>’https://github.com/cristipetra/MJCalendar’
   
   
 end

@@ -11,6 +11,7 @@ import RealmSwift
 
 class FeedStore {
     
+    
     static func getInstance() -> FeedStore {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.feedStore

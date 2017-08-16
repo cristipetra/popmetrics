@@ -20,6 +20,10 @@ class DailyInsightsCardCell: UITableViewCell {
     @IBOutlet weak var connectionView: UIView!
     @IBOutlet weak var secondContainerView: UIView!
     
+    lazy var shadowLayerView: UIView = {
+        let shadowLayer = UIView(frame: CGRect(x: 5, y: 0, width: self.secondContainerView.frame.width - 45, height: self.secondContainerView.frame.height + 0))
+        return shadowLayer
+    }()
     
     
     func configure(_ item: FeedItem, handler: CardActionHandler) {
@@ -28,7 +32,7 @@ class DailyInsightsCardCell: UITableViewCell {
     
     func setupView() {
         headerView.backgroundColor = UIColor.turquoiseColor()
-        self.backgroundColor = UIColor.cloudsColor()
+        self.backgroundColor = UIColor.feedBackgroundColor()
         connectionView.backgroundColor = UIColor.turquoiseColor()
         setCornerRadious()
         
@@ -37,6 +41,9 @@ class DailyInsightsCardCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+    
+        self.insertSubview(shadowLayerView, at: 0)
+        addShadow()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -71,8 +78,12 @@ class DailyInsightsCardCell: UITableViewCell {
         
         learnMoreButton.layer.cornerRadius = 30
         learnMoreButton.layer.masksToBounds = true
-        
     }
     
+    func addShadow() {
+        self.addShadowToView(shadowLayerView, radius: 6, opacity: 0.4)
+        shadowLayerView.layer.cornerRadius = 14
+        shadowLayerView.layer.masksToBounds = false
+    }
     
 }

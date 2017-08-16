@@ -17,11 +17,12 @@ class LastCardCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
     
+    internal var shadowView: UIView!;
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.cloudsColor()
+        self.backgroundColor = UIColor.feedBackgroundColor()
         setCornerRadiou()
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

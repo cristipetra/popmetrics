@@ -19,7 +19,9 @@ class PopmetricsColor {
     static let textLight = UIColor(red: 236/255.0, green: 236/255.0, blue: 236/255.0, alpha: 1.0)
     static let textMedium = UIColor(red: 160/255.0, green: 160/255.0, blue: 160/255.0, alpha: 1.0)
     static let textDark = UIColor(red: 36/255.0, green: 36/255.0, blue: 36/255.0, alpha: 1.0)
-    
+    static let textGrey = UIColor(red: 67/255.0, green: 76/255.0, blue: 84/255.0, alpha: 1.0)
+    static let weekDaysGrey = UIColor(red: 189/255.0, green: 197/255.0, blue: 203/255.0, alpha: 1.0)
+    static let darkGrey = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1.0)
     static let shadowLight = UIColor(red: 220/255.0, green: 220/255.0, blue: 220/255.0, alpha: 0.8)
     static let shadowMedium = UIColor(red: 144/255.0, green: 144/255.0, blue: 144/255.0, alpha: 0.8)
     static let shadowDark = UIColor(red: 22/255.0, green: 22/255.0, blue: 22/255.0, alpha: 0.8)
@@ -33,6 +35,7 @@ class PopmetricsColor {
     static let greenLight = UIColor(red: 176/255.0, green: 247/255.0, blue: 222/255.0, alpha: 1.0)
     static let greenMedium = UIColor(red: 73/255.0, green: 196/255.0, blue: 153/255.0, alpha: 1.0)
     static let greenDark = UIColor(red: 0/255.0, green: 127/255.0, blue: 120/255.0, alpha: 1.0)
+    static let greenSelectedDate = UIColor(red: 68/255.0, green: 180/255.0, blue: 142/255.0, alpha: 1.0)
     
     static let transparentGrayDark = UIColor(red: 80/255.0, green: 80/255.0, blue: 80/255.0, alpha: 0.7)
     
@@ -45,4 +48,7 @@ class PopmetricsColor {
     static let notificationBGColor = UIColor(red: 179/255, green: 50/255, blue: 39/255, alpha: 1.0)
     
     static let yellowBGColor = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1.0)
+    static let salmondColor = UIColor(red: 255/255, green: 119/255, blue: 106/255, alpha: 1.0)
+    
+    static let blueURLColor = UIColor(red: 65/255, green: 155/255, blue: 249/255, alpha: 1.0)
 }

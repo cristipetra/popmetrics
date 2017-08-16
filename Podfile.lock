@@ -25,9 +25,9 @@ PODS:
     - FacebookCore (~> 0.2)
     - FBSDKCoreKit (~> 4.15)
     - FBSDKLoginKit (~> 4.15)
-  - FBSDKCoreKit (4.24.0):
+  - FBSDKCoreKit (4.25.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.24.0):
+  - FBSDKLoginKit (4.25.0):
     - FBSDKCoreKit
   - FirebaseAnalytics (3.9.0):
     - FirebaseCore (~> 3.6)
@@ -67,26 +67,32 @@ PODS:
     - GTMSessionFetcher/Core (= 1.1.11)
   - JSONWebToken (2.1.1):
     - CryptoSwift (~> 0.6.1)
-  - MarqueeLabel/Swift (3.1.1)
+  - MarqueeLabel/Swift (3.1.2)
   - MGSwipeTableCell (1.5.6)
-  - NotificationBannerSwift (1.4.0):
+  - MJCalendar (0.4.0):
+    - NSDate-Escort (~> 1.5)
+    - UIView+JMFrame
+  - NotificationBannerSwift (1.4.2):
     - MarqueeLabel/Swift
     - SnapKit (~> 3.2)
+  - NSDate-Escort (1.8.2)
   - ObjectMapper (2.2.8)
   - Reachability (3.2)
-  - Realm (2.8.3):
-    - Realm/Headers (= 2.8.3)
-  - Realm/Headers (2.8.3)
-  - RealmSwift (2.8.3):
-    - Realm (= 2.8.3)
+  - Realm (2.9.1):
+    - Realm/Headers (= 2.9.1)
+  - Realm/Headers (2.9.1)
+  - RealmSwift (2.9.1):
+    - Realm (= 2.9.1)
   - RSKImageCropper (1.6.3)
   - SnapKit (3.2.0)
   - STPopup (1.8.2)
   - SwiftRichString (0.9.9)
+  - SwiftyJSON (3.1.4)
   - TwitterCore (2.8.0):
     - Fabric
   - TwitterKit (2.8.1):
     - TwitterCore (>= 2.8)
+  - UIView+JMFrame (0.1.2)
   - Whisper (5.0.0)
 
 DEPENDENCIES:
@@ -105,6 +111,7 @@ DEPENDENCIES:
   - Google/SignIn
   - JSONWebToken
   - MGSwipeTableCell
+  - MJCalendar (from `https://github.com/cristipetra/MJCalendar`)
   - NotificationBannerSwift
   - ObjectMapper
   - Reachability
@@ -112,9 +119,19 @@ DEPENDENCIES:
   - RSKImageCropper
   - STPopup
   - SwiftRichString
+  - SwiftyJSON
   - TwitterCore (~> 2.8.0)
   - TwitterKit (~> 2.8.1)
   - Whisper
+
+EXTERNAL SOURCES:
+  MJCalendar:
+    :git: https://github.com/cristipetra/MJCalendar
+
+CHECKOUT OPTIONS:
+  MJCalendar:
+    :commit: c7d8eae3f9447b0bcb0b30e38ca1df9b6d1a214e
+    :git: https://github.com/cristipetra/MJCalendar
 
 SPEC CHECKSUMS:
   ActiveLabel: 68625f22775f51c31bb691ca8de20f1e5a3bc825
@@ -130,8 +147,8 @@ SPEC CHECKSUMS:
   Fabric: f050464eac45a2ce5a8e6e6a07e977c0df32fe28
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
-  FBSDKCoreKit: f8c9eb0dd34a9cd277c7b60da4b32226d142502d
-  FBSDKLoginKit: 1214c6d5a1c4995b694d8db8a9ba6910c6028acf
+  FBSDKCoreKit: 53e3f4bfb64e80c5f229dd30ae33ff57fbbbd2d1
+  FBSDKLoginKit: f628c09684dae9c17f071cf90b014e886f5093ea
   FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
   FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
   FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
@@ -142,21 +159,25 @@ SPEC CHECKSUMS:
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
   JSONWebToken: 21a2c3ea5f034882e90f28c656ffce0396155907
-  MarqueeLabel: 17c5148b6f7144498eff5e0d286bd2e7e866f972
+  MarqueeLabel: fcd7057a779422d86589be759036f1510b08c6a0
   MGSwipeTableCell: 616700eb0ffd1c611ba909066cb7fd739790a0a7
-  NotificationBannerSwift: b2a81c9f0f816851686ca2e802058afd65676adc
+  MJCalendar: a529b085b0b988ae7b493ce7c000946cc186bf0e
+  NotificationBannerSwift: 23be55635199b78cd34ea63f980718f85011ad73
+  NSDate-Escort: c79db277a401c0ad219acd295ec17c7b4f61266f
   ObjectMapper: 3d571bb5af471c779e1160828cd9ad5c4ef90958
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  Realm: 3601ef091c8c499a31101d8563b991e75546cdce
-  RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
+  Realm: f91fb43bd474c4f731a116ebf7392c75dd015920
+  RealmSwift: 207f12a4a36b696c5183c60a1c06d70234a23e56
   RSKImageCropper: 356e36fc58c57c371b5d8b23d603936d6a73df6c
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   STPopup: b69b3e7484ef7d2baec5f9ab2939f8a7bcdfe218
   SwiftRichString: 44e99361a01e7e6c27e194b8af079c0e344bab8c
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TwitterCore: e959987be23c767004d29eb7fab8d85d8585a2e5
   TwitterKit: 3b6044a7320340326a4098f3e37aa1dbaeb94942
+  UIView+JMFrame: a907974c9d34b1c300aef85ae2a1a5af746f2b8a
   Whisper: 051f25e704bf8992641ffd28b20d5682ddc5f5d3
 
-PODFILE CHECKSUM: 275e66306f26d97d335881544bb96eed4b3fc423
+PODFILE CHECKSUM: 495d2da6659de2fa7dffaba88c75eb92842f2b0c
 
 COCOAPODS: 1.2.1

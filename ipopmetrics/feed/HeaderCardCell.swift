@@ -48,7 +48,11 @@ class HeaderCardCell: UITableViewCell {
             
             break
         }
-        
+    }
+    
+    func changeColor(color: UIColor) {
+        connectionView.backgroundColor = color
+        roundConnectionView.backgroundColor = color
     }
 
   

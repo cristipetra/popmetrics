@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable
 class DigitCodeView: UIView {
-
+    
     lazy var digitextField : UITextField = {
         let digitCellTxt = UITextField()
         digitCellTxt.translatesAutoresizingMaskIntoConstraints = false
@@ -44,6 +44,36 @@ class DigitCodeView: UIView {
         return contactButton
     }()
     
+    func reloadSubViews() {
+        digitextField.removeFromSuperview()
+        sendCodeBtn.removeFromSuperview()
+        resendCodeBtn.removeFromSuperview()
+        contactBtn.removeFromSuperview()
+        self.addSubview(digitextField)
+        self.addSubview(sendCodeBtn)
+        self.addSubview(resendCodeBtn)
+        self.addSubview(contactBtn)
+        if UIDevice.current.orientation.isPortrait {
+            setNumberTextView(yAnchor: 122)
+            self.layoutIfNeeded()
+            print("portrait")
+        } else {
+            setNumberTextView(yAnchor: 65)
+            self.layoutIfNeeded()
+            print("landscape")
+        }
+        setSendCodeButton(yAnchor: 30)
+        if UIDevice.current.orientation.isPortrait {
+            setResendCodeButton(yAnchor: -130)
+        } else {
+            setResendCodeButton(yAnchor: -60)
+        }
+        if UIDevice.current.orientation.isPortrait {
+            setContactButton(yAnchor: -90)
+        } else {
+            setContactButton(yAnchor: -30)
+        }
+    }
     
     func setup() {
         self.backgroundColor = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1.0)
@@ -51,42 +81,72 @@ class DigitCodeView: UIView {
         
         // TextField for number
         self.addSubview(digitextField)
-        let texDigitColor = UIColor(red: 68/255, green: 180/255, blue: 142/255, alpha: 1.0)
-        digitextField.widthAnchor.constraint(equalToConstant: 264).isActive = true
-        digitextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 122).isActive = true
-        digitextField.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        digitextField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        
-        digitextField.borderStyle = .roundedRect
-        digitextField.font = UIFont(name: "OpenSans", size: 23)
-        digitextField.textColor = texDigitColor;
-        digitextField.backgroundColor = UIColor(red: 255/255, green: 233/255, blue: 156/255, alpha: 1.0)
-        setPlaceholder()
+        if UIDevice.current.orientation.isPortrait {
+            setNumberTextView(yAnchor: 122)
+            self.layoutIfNeeded()
+            print("portrait")
+        } else {
+            setNumberTextView(yAnchor: 65)
+            self.layoutIfNeeded()
+            print("landscape")
+        }
         
         // Send code button
         self.addSubview(sendCodeBtn)
-        sendCodeBtn.widthAnchor.constraint(equalToConstant: 233).isActive = true
-        sendCodeBtn.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        sendCodeBtn.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        sendCodeBtn.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 40).isActive = true
-        sendCodeBtn.layer.backgroundColor = UIColor(red: 255/255, green: 210/255, blue: 55/255, alpha: 1.0).cgColor
-        sendCodeBtn.setTitleColor(UIColor(red: 228/255, green: 185/255, blue: 39/255, alpha: 1.0), for: .normal)
-        sendCodeBtn.layer.cornerRadius = 30
-        addShadowToView(sendCodeBtn)
-        
+        setSendCodeButton(yAnchor: 30)
         
         //Resend code button
         self.addSubview(resendCodeBtn)
-        resendCodeBtn.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 12)
-        resendCodeBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -130).isActive = true
-        resendCodeBtn.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        resendCodeBtn.setTitleColor(UIColor(red: 166/255, green: 135/255, blue: 28/255, alpha: 1.0), for: .normal)
+        if UIDevice.current.orientation.isPortrait {
+            setResendCodeButton(yAnchor: -130)
+        } else {
+            setResendCodeButton(yAnchor: -60)
+        }
         
-    
         //Contact button
         self.addSubview(contactBtn)
+        if UIDevice.current.orientation.isPortrait {
+            setContactButton(yAnchor: -90)
+        } else {
+            setContactButton(yAnchor: -30)
+        }
+    }
+    
+    private func setNumberTextView(yAnchor: CGFloat) {
+        digitextField.widthAnchor.constraint(equalToConstant: 264).isActive = true
+        digitextField.topAnchor.constraint(equalTo: self.topAnchor, constant: yAnchor).isActive = true
+        digitextField.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        digitextField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        digitextField.borderStyle = .roundedRect
+        digitextField.keyboardType = .numberPad
+        digitextField.font = UIFont(name: "OpenSans", size: 23)
+        let texDigitColor = UIColor(red: 68/255, green: 180/255, blue: 142/255, alpha: 1.0)
+        digitextField.textColor = texDigitColor;
+        digitextField.backgroundColor = UIColor(red: 255/255, green: 233/255, blue: 156/255, alpha: 1.0)
+        setPlaceholder()
+    }
+    
+    private func setSendCodeButton(yAnchor: CGFloat) {
+        sendCodeBtn.widthAnchor.constraint(equalToConstant: 233).isActive = true
+        sendCodeBtn.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        sendCodeBtn.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        sendCodeBtn.centerYAnchor.constraint(equalTo: centerYAnchor, constant: yAnchor).isActive = true
+        sendCodeBtn.layer.backgroundColor = UIColor(red: 255/255, green: 210/255, blue: 55/255, alpha: 1.0).cgColor
+        sendCodeBtn.setTitleColor(UIColor(red: 228/255, green: 185/255, blue: 39/255, alpha: 1.0), for: .normal)
+        sendCodeBtn.layer.cornerRadius = 30
+        //   addShadowToView(sendCodeBtn)
+    }
+    
+    private func setResendCodeButton(yAnchor: CGFloat) {
+        resendCodeBtn.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 12)
+        resendCodeBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: yAnchor).isActive = true
+        resendCodeBtn.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        resendCodeBtn.setTitleColor(UIColor(red: 166/255, green: 135/255, blue: 28/255, alpha: 1.0), for: .normal)
+    }
+    
+    private func setContactButton(yAnchor: CGFloat) {
         contactBtn.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 12)
-        contactBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -90).isActive = true
+        contactBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: yAnchor).isActive = true
         contactBtn.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         contactBtn.setTitleColor(UIColor(red: 166/255, green: 135/255, blue: 28/255, alpha: 1.0), for: .normal)
     }
@@ -112,12 +172,14 @@ class DigitCodeView: UIView {
         setup();
     }
     
+    
+    
     func changeColorButton() {
         if digitextField.text?.characters.count == 0 {
             sendCodeBtn.isUserInteractionEnabled = false
             sendCodeBtn.layer.backgroundColor = UIColor(red: 255/255, green: 210/255, blue: 55/255, alpha: 1.0).cgColor
             sendCodeBtn.setTitleColor(UIColor(red: 228/255, green: 185/255, blue: 39/255, alpha: 1.0), for: .normal)
-        } 
+        }
     }
     
     func changeColorToEdit() {
@@ -125,5 +187,5 @@ class DigitCodeView: UIView {
         sendCodeBtn.layer.backgroundColor = UIColor(red: 65/255, green: 155/255, blue: 249/255, alpha: 1.0).cgColor
         sendCodeBtn.setTitleColor(UIColor.white, for: .normal)
     }
-
+    
 }

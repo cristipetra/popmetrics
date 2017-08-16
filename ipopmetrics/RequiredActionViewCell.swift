@@ -26,6 +26,7 @@ class RequiredActionViewCell: UITableViewCell {
   
     @IBOutlet weak var infoButton: SimpleButton!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var shadowLayer: UIView!
     
     let transition = BubbleTransition()
   
@@ -48,6 +49,7 @@ class RequiredActionViewCell: UITableViewCell {
       
         self.backgroundColor = UIColor.feedBackgroundColor()
         setCornerRadious()
+        addShadow()
         infoButton.setTitle("i", for: .normal)
       
         self.titleLabel.text  = item.headerTitle
@@ -55,7 +57,21 @@ class RequiredActionViewCell: UITableViewCell {
         adjustLabelLineSpaceing()
         
         self.infoButton.addTarget(self, action: #selector(didPressInfoButton(_:)), for: .touchDown);
-  }
+        
+        addGoogleTmpData()
+    }
+    
+    func addGoogleTmpData() {
+        if item?.actionHandler == "no_action" {
+            self.actionButton.setTitle("Connect Analytics", for: .normal)
+            self.messageLabel.text = "Allow us to connect your GA and tailor your solutions."
+            self.titleLabel.text = "Google Analytics is our most important access point to make effective business decisions."
+            self.socialMediaLogo.image = UIImage(named: "icon_google")
+            self.socialMediaNameLabel.text = "Google Analytics"
+            self.bottomImage.image = UIImage(named: "image_card_google")
+        }
+    }
+
   
   func adjustLabelLineSpaceing() {
     
@@ -120,6 +136,12 @@ class RequiredActionViewCell: UITableViewCell {
     
         actionButton.layer.cornerRadius = 30
         actionButton.layer.masksToBounds = true
+    }
+    
+    func addShadow() {
+        self.addShadowToView(shadowLayer, radius: 4, opacity: 0.4)
+        shadowLayer.layer.cornerRadius = 14
+        shadowLayer.layer.masksToBounds = false
     }
     
     @objc func didPressInfoButton(_ sender: SimpleButton) {
