@@ -26,6 +26,8 @@
 		085AA0D21F42E45A0014D4CE /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085AA0D11F42E45A0014D4CE /* TodoStore.swift */; };
 		085AA0D41F42ECAA0014D4CE /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085AA0D31F42ECAA0014D4CE /* Todo.swift */; };
 		08A4A53D1F458423001071E3 /* ToolbarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */; };
+		08A4A5411F45B563001071E3 /* AlfaSlabOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */; };
+		08A4A5431F45B5D6001071E3 /* TwoImagesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4A5421F45B5D6001071E3 /* TwoImagesButton.swift */; };
 		08A812741F16601A00672126 /* HeaderCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A812731F16601A00672126 /* HeaderCardCell.xib */; };
 		08A812761F1660A300672126 /* HeaderCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A812751F1660A300672126 /* HeaderCardCell.swift */; };
 		08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */; };
@@ -174,6 +176,8 @@
 		085AA0D31F42ECAA0014D4CE /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarViewCell.swift; sourceTree = "<group>"; };
+		08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AlfaSlabOne-Regular.ttf"; sourceTree = "<group>"; };
+		08A4A5421F45B5D6001071E3 /* TwoImagesButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoImagesButton.swift; sourceTree = "<group>"; };
 		08A812731F16601A00672126 /* HeaderCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCardCell.xib; sourceTree = "<group>"; };
 		08A812751F1660A300672126 /* HeaderCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderCardCell.swift; path = feed/HeaderCardCell.swift; sourceTree = "<group>"; };
 		08A812781F1672D300672126 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -362,6 +366,7 @@
 				08A812791F1672DC00672126 /* OpenSans-Semibold.ttf */,
 				08B745951F1F6C1D00EC3F8C /* OpenSans-Regular.ttf */,
 				0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */,
+				08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */,
 				08A812781F1672D300672126 /* OpenSans-Light.ttf */,
 				08A8127A1F1672E700672126 /* OpenSans-Bold.ttf */,
 			);
@@ -626,6 +631,7 @@
 				113976AA1E97C74B00B535DF /* BaseViewController.swift */,
 				113976AD1E97C83500B535DF /* TextFieldValidator.swift */,
 				113976B11E97CE5000B535DF /* MainTabBarController.swift */,
+				08A4A5421F45B5D6001071E3 /* TwoImagesButton.swift */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -804,6 +810,7 @@
 				1178D6821E1E5AD9005B96C3 /* Assets.xcassets in Resources */,
 				0809AEB71F223F3B00A13178 /* WelcomeVideo.mov in Resources */,
 				08C7B18D1F1CF40C00E456C6 /* WelcomeScreen.xib in Resources */,
+				08A4A5411F45B563001071E3 /* AlfaSlabOne-Regular.ttf in Resources */,
 				1178D6801E1E5AD9005B96C3 /* Main.storyboard in Resources */,
 				110A62E71ECEE6E60052B478 /* SendingStatusCollectionViewCell.xib in Resources */,
 				08B5D4BC1F29CD5000B79AD3 /* CalendarCardMaximized.xib in Resources */,
@@ -970,6 +977,7 @@
 				110A62E81ECEE6E60052B478 /* SendingStatusPresenter.swift in Sources */,
 				0809AEB41F22183400A13178 /* Constants.swift in Sources */,
 				116431DF1E2D4E81009AA59E /* UsersApi.swift in Sources */,
+				08A4A5431F45B5D6001071E3 /* TwoImagesButton.swift in Sources */,
 				08F368911F18E6A000819CDE /* ApprovalCardInfoCell.swift in Sources */,
 				08C6FBFD1F4205EF007D6101 /* ToDoViewController.swift in Sources */,
 				11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */,

@@ -446,7 +446,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let a =  CGFloat(((tableView.frame.width * 9.0) / 16.0) + 16) // 16 is the padding
         var heightCell: CGFloat = 464
         if(isInfoCellType) {
-            heightCell = 172
+            heightCell = 261
         }
         return heightCell
         // return a
