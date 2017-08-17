@@ -111,9 +111,9 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
         todoFooter.xButton.setImage(UIImage(named: "iconCloseCard")?.withRenderingMode(.alwaysOriginal), for: .normal)
         todoFooter.informationBtn.setImage(UIImage(named: "iconInfoPage")?.withRenderingMode(.alwaysOriginal), for: .normal)
         todoFooter.loadMoreBtn.setImage(UIImage(named: "iconLoadMore")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        todoFooter.doubleButton.setImage(UIImage(named: "iconCtaApproveall")?.withRenderingMode(.alwaysOriginal), for: .normal)
+       
         
-        return toDoFooter
+        return todoFooter
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
