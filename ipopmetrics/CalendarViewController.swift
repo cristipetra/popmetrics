@@ -202,24 +202,10 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         }
         
         if shouldMaximizeCell == false {
-            if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
-                cell.configure(item)
-                cell.maximizeDelegate = self
-                
-                if item.status! != StatusArticle.scheduled.rawValue {
-                    cell.topToolbar.backgroundColor = item.socialTextStringColor
-                } else {
-                    cell.topToolbar.backgroundColor = PopmetricsColor.darkGrey
-                }
-                
-                return cell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCardSimple", for: indexPath) as! CalendarCardSimpleViewCell
-                cell.configure(item)
-                cell.maximizeDelegate = self
-                return cell
-            }
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCardSimple", for: indexPath) as! CalendarCardSimpleViewCell
+            cell.configure(item)
+            cell.maximizeDelegate = self
+            return cell
         } else {
             let maxCell = tableView.dequeueReusableCell(withIdentifier: "extendedCell", for: indexPath) as! CalendarCardMaximizedViewCell
             tableView.allowsSelection = false
@@ -238,9 +224,11 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
+        let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
         headerCell.changeColor(color: sections[section].items[0].getSectionColor)
-        headerCell.sectionTitleLabel.text = sections[section].items[0].socialTextString
+        headerCell.changeTitle(title: sections[section].items[0].socialTextString)
+        
+        //last section don't have an header view
         if section == sections.endIndex - 1 {
             return UIView()
         }
@@ -261,11 +249,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             return 222
         }
         if shouldMaximizeCell == false {
-            if indexPath.row == 0 {
-                return 109
-            } else {
-                return 93
-            }
+            return 93
         }
         return 459
     }
@@ -284,7 +268,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         if section == sections.count - 1 {
             return 0
         }
-        return 80
+        return 109
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
