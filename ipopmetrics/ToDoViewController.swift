@@ -19,6 +19,8 @@ class ToDoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.separatorStyle = .none
+        
         registerCellsForTable()
 
         setUpNavigationBar()
@@ -35,6 +37,8 @@ class ToDoViewController: UIViewController {
         
         let toDoHeaderCardNib = UINib(nibName: "HeaderCardCell", bundle: nil)
         tableView.register(toDoHeaderCardNib, forCellReuseIdentifier: "headerCardCell")
+        tableView.register(TableFooterView.self, forHeaderFooterViewReuseIdentifier: "footerId")
+        
     }
     
     internal func setUpNavigationBar() {
@@ -102,7 +106,21 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
         return toDoHeader.contentView
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
+        todoFooter.xButton.setImage(UIImage(named: "iconCloseCard")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        todoFooter.informationBtn.setImage(UIImage(named: "iconInfoPage")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        todoFooter.loadMoreBtn.setImage(UIImage(named: "iconLoadMore")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        todoFooter.doubleButton.setImage(UIImage(named: "iconCtaApproveall")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        return toDoFooter
+    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 80
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 80
     }
     

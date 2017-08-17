@@ -55,7 +55,7 @@ class CompleteCardCell: UITableViewCell {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "You're all caught up."
-        title.font = UIFont(name: FontBook.bold, size: 23)
+        title.font = UIFont(name: FontBook.alfaRegular, size: 23)
         title.textColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
         return title
     }()
@@ -197,10 +197,10 @@ class CompleteCardCell: UITableViewCell {
     }
     
     func setTitleLbl() {
-        
         titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 29).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: topImageView.rightAnchor, constant: 10).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: xButton.leftAnchor, constant:30).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: xButton.leftAnchor, constant: -20).isActive = true
+        
         titleLabel.numberOfLines = 2
     }
     
@@ -226,4 +226,15 @@ class CompleteCardCell: UITableViewCell {
         
     }
     
+}
+
+extension UILabel {
+    func lineSpacing(spacing: Double) {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 130 // Whatever line spacing you want in points
+        let attrString = NSMutableAttributedString(string: self.text!)
+        attrString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSRange(location: 0, length: (self.text?.characters.count)!))
+        
+        self.attributedText = attrString;
+    }
 }
