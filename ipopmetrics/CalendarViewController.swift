@@ -57,7 +57,8 @@ class CalendarViewController: UIViewController {
         let extendedCardNib = UINib(nibName: "CalendarCardMaximized", bundle: nil)
         tableView.register(extendedCardNib, forCellReuseIdentifier: "extendedCell")
         
-        tableView.register(CompleteCardCell.self, forCellReuseIdentifier: "lastCell")
+        let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
+        tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
 
         
         tableView.separatorStyle = .none
@@ -194,6 +195,11 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         let item = section.items[rowIdx]
         
         if item.type == "last_cell" {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
+            cell.selectionStyle = .none
+            return cell
+            
             let lastCell = tableView.dequeueReusableCell(withIdentifier: "lastCell", for: indexPath) as! CompleteCardCell
             lastCell.backgroundColor = UIColor.feedBackgroundColor()
             lastCell.containerView.backgroundColor = UIColor.white
@@ -245,8 +251,9 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        //height for last card
         if ( indexPath.section == (sections.count - 1) ) {
-            return 222
+            return 261
         }
         if shouldMaximizeCell == false {
             return 93
