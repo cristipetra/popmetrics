@@ -16,6 +16,8 @@ class ToDoViewController: UIViewController {
     
     fileprivate var sections: [TodoSection] = []
     var approveIndex = 3
+    
+    internal var shouldMaximize = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +40,17 @@ class ToDoViewController: UIViewController {
         
         let toDoHeaderCardNib = UINib(nibName: "HeaderCardCell", bundle: nil)
         tableView.register(toDoHeaderCardNib, forCellReuseIdentifier: "headerCardCell")
+        
+        let sectionHeaderNib = UINib(nibName: "CalendarHeader", bundle: nil)
+        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "headerCell")
+        
         tableView.register(TableFooterView.self, forHeaderFooterViewReuseIdentifier: "footerId")
         
         let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
         tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
         
+        let maximizedCell = UINib(nibName: "CalendarCardMaximized", bundle: nil)
+        tableView.register(maximizedCell, forCellReuseIdentifier: "maxCellId")
     }
     
     internal func setUpNavigationBar() {
@@ -104,30 +112,41 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
         
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
-            cell.topToolbar.backgroundColor = PopmetricsColor.yellowUnapproved
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
+        if shouldMaximize {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "maxCellId", for: indexPath) as! CalendarCardMaximizedViewCell
+            cell.articleDate.isHidden = true
+            //cell.setUpMaximizeToDo()
+            //cell.approve_deny_delegate = self
+            //cell.postIndex = indexPath.row
             if sections[0].items[indexPath.row].isApproved == true {
-                cell.setUpApprovedView()
+                //cell.setUpApprovedView()
             }
             return cell
         }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
+        if sections[0].items[indexPath.row].isApproved == true {
+            cell.setUpApprovedView()
+        }
+        return cell
+        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        //last section don't have an header view
+        //last section doesn't have a header view
         if section == sections.endIndex - 1 {
             return UIView()
         }
         
-        let toDoHeader = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
-        toDoHeader.changeColor(color: sections[section].items[0].getSectionColor)
-        toDoHeader.sectionTitleLabel.text = sections[section].items[0].socialTextString
-        
-        return toDoHeader.contentView
+        if shouldMaximize == false {
+            let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
+            headerCell.changeColor(color: sections[section].items[0].getSectionColor)
+            headerCell.changeTitle(title: sections[section].items[0].socialTextString)
+            return headerCell
+        } else {
+            let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
+            return headerCell
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -144,7 +163,10 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 80
+        if section == sections.endIndex - 1 {
+            return 60
+        }
+        return 109
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -162,16 +184,20 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
         return sections[section].items.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        shouldMaximize = !shouldMaximize
+        tableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //height for last card
         if ( indexPath.section == (sections.count - 1) ) {
             return 261
         }
-        if indexPath.row == 0 {
-            return 109
-        } else {
-            return 93
+        if shouldMaximize {
+            return 459
         }
+        return 93
     }
 }
 

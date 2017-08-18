@@ -32,6 +32,13 @@ class TableFooterView: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // VIEW
+    lazy var topLineView: UIView = {
+        let view = UIView();
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var loadMoreBtn : UIButton = {
         
         let button = UIButton(type: UIButtonType.system)
@@ -98,11 +105,14 @@ class TableFooterView: UITableViewHeaderFooterView {
     var loadMoreStackView: UIStackView!
     var approveStackView: UIStackView!
     
+    // END VIEW
+    
     func setUpFooter() {
         
         contentView.addSubview(containerView)
         setContainerView()
         
+        setTopLineView()
         setUpLoadMoreStackView()
         setUpApproveStackView()
         
@@ -116,11 +126,26 @@ class TableFooterView: UITableViewHeaderFooterView {
     }
     
     func setContainerView() {
-        
         containerView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 8).isActive = true
         containerView.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
         containerView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -8).isActive = true
         containerView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
+        setupCorners()
+    }
+    
+    func setupCorners() {
+        DispatchQueue.main.async {
+            self.containerView.roundCorners(corners: [.bottomLeft, .bottomRight] , radius: 12)
+        }
+    }
+    
+    func setTopLineView() {
+        contentView.addSubview(topLineView)
+        topLineView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 0).isActive = true
+        topLineView.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 0).isActive = true
+        topLineView.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: 0).isActive = true
+        topLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        topLineView.backgroundColor = PopmetricsColor.separatorColor
     }
     
     func setUpLoadMoreStackView() {

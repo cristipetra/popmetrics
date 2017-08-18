@@ -19,7 +19,6 @@ class TodoTopView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setUpView()
-        //fatalError("init(coder:) has not been implemented")
     }
     
     lazy var clockView : UIView = {
@@ -115,6 +114,7 @@ class TodoTopView: UIView {
         
         stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        stackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -5).isActive = true
         
         //self.addSubview(clockView)
         //self.addSubview(keyView)
@@ -129,7 +129,7 @@ class TodoTopView: UIView {
     func setUpClockView() {
         
         clockView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        clockView.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
+        clockView.leftAnchor.constraint(equalTo: stackView.leftAnchor,constant: 5).isActive = true
         clockView.heightAnchor.constraint(equalToConstant: 24).isActive = true
         clockView.widthAnchor.constraint(equalToConstant: 72).isActive = true
         clockView.layer.cornerRadius = 4
@@ -154,12 +154,10 @@ class TodoTopView: UIView {
     }
     
     func setUpNotificationView() {
-        
         notificationView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         notificationView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -40).isActive = true
         notificationView.heightAnchor.constraint(equalToConstant: 24).isActive = true
         notificationView.widthAnchor.constraint(equalToConstant: 72).isActive = true
-        
         notificationView.addSubview(notificationImageView)
         setUpNotificationImageView()
         notificationView.addSubview(notificationLabel)
