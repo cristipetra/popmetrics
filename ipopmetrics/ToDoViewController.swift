@@ -15,6 +15,7 @@ class ToDoViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     fileprivate var sections: [TodoSection] = []
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,9 @@ class ToDoViewController: UIViewController {
         let toDoHeaderCardNib = UINib(nibName: "HeaderCardCell", bundle: nil)
         tableView.register(toDoHeaderCardNib, forCellReuseIdentifier: "headerCardCell")
         tableView.register(TableFooterView.self, forHeaderFooterViewReuseIdentifier: "footerId")
+        
+        let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
+        tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
         
     }
     
@@ -88,25 +92,45 @@ class ToDoViewController: UIViewController {
 
 extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let sectionIdx = (indexPath as NSIndexPath).section
+        let rowIdx = (indexPath as NSIndexPath).row
+        
+        let section = sections[sectionIdx]
+        let item = section.items[rowIdx]
+        
+        if item.type == "last_cell" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
+            cell.selectionStyle = .none
+            return cell
+        }
+        
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
             cell.topToolbar.backgroundColor = PopmetricsColor.yellowUnapproved
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCardSimple", for: indexPath) as! CalendarCardSimpleViewCell
-
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        //last section don't have an header view
+        if section == sections.endIndex - 1 {
+            return UIView()
+        }
+        
         let toDoHeader = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
-        toDoHeader.changeColor(color: UIColor(red: 255/255, green: 189/255, blue: 80/255, alpha: 1))
-        toDoHeader.sectionTitleLabel.text = "Unapproved"//sections[section].items[0].socialTextString
+        toDoHeader.changeColor(color: sections[section].items[0].getSectionColor)
+        toDoHeader.sectionTitleLabel.text = sections[section].items[0].socialTextString
+        
         return toDoHeader.contentView
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if (section == sections.endIndex - 1) {
+            return UIView()
+        }
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
         todoFooter.xButton.setImage(UIImage(named: "iconCloseCard")?.withRenderingMode(.alwaysOriginal), for: .normal)
         todoFooter.informationBtn.setImage(UIImage(named: "iconInfoPage")?.withRenderingMode(.alwaysOriginal), for: .normal)
@@ -121,6 +145,9 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == sections.endIndex - 1 {
+            return 0
+        }
         return 80
     }
     
@@ -133,6 +160,10 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        //height for last card
+        if ( indexPath.section == (sections.count - 1) ) {
+            return 261
+        }
         if indexPath.row == 0 {
             return 109
         } else {

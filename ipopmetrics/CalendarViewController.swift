@@ -195,16 +195,9 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         let item = section.items[rowIdx]
         
         if item.type == "last_cell" {
-            
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
             cell.selectionStyle = .none
             return cell
-            
-            let lastCell = tableView.dequeueReusableCell(withIdentifier: "lastCell", for: indexPath) as! CompleteCardCell
-            lastCell.backgroundColor = UIColor.feedBackgroundColor()
-            lastCell.containerView.backgroundColor = UIColor.white
-            lastCell.selectionStyle = .none
-            return lastCell
         }
         
         if shouldMaximizeCell == false {
@@ -230,16 +223,22 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
-        headerCell.changeColor(color: sections[section].items[0].getSectionColor)
-        headerCell.changeTitle(title: sections[section].items[0].socialTextString)
         
         //last section don't have an header view
         if section == sections.endIndex - 1 {
             return UIView()
         }
-
-        return headerCell
+        
+        if shouldMaximizeCell == false {
+            let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
+            headerCell.changeColor(color: sections[section].items[0].getSectionColor)
+            headerCell.changeTitle(title: sections[section].items[0].socialTextString)
+            return headerCell
+        } else {
+            let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
+            return headerCell
+        }
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -275,7 +274,12 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         if section == sections.count - 1 {
             return 0
         }
-        return 109
+        if shouldMaximizeCell == false {
+            return 109
+        } else {
+            return 80
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

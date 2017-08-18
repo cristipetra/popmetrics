@@ -60,6 +60,8 @@ class CalendarItem: NSObject{
                 return "Failed"
             case StatusArticle.executed.rawValue:
                 return "Executed"
+            case StatusArticle.unapproved.rawValue:
+                return "Unapproved"
             default:
                 return ""
             }
