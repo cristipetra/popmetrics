@@ -15,7 +15,7 @@ class ToDoViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     fileprivate var sections: [TodoSection] = []
-    
+    var approveIndex = 3
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +33,8 @@ class ToDoViewController: UIViewController {
         let calendarCardNib = UINib(nibName: "CalendarCard", bundle: nil)
         tableView.register(calendarCardNib, forCellReuseIdentifier: "CalendarCard")
         
-        let calendarCardSimpleNib = UINib(nibName: "CalendarCardSimple", bundle: nil)
-        tableView.register(calendarCardSimpleNib, forCellReuseIdentifier: "CalendarCardSimple")
+        let toDoCardCell = UINib(nibName: "ToDoCardCell", bundle: nil)
+        tableView.register(toDoCardCell, forCellReuseIdentifier: "toDoCardCellId")
         
         let toDoHeaderCardNib = UINib(nibName: "HeaderCardCell", bundle: nil)
         tableView.register(toDoHeaderCardNib, forCellReuseIdentifier: "headerCardCell")
@@ -109,7 +109,10 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
             cell.topToolbar.backgroundColor = PopmetricsColor.yellowUnapproved
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCardSimple", for: indexPath) as! CalendarCardSimpleViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
+            if sections[0].items[indexPath.row].isApproved == true {
+                cell.setUpApprovedView()
+            }
             return cell
         }
     }
@@ -135,7 +138,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
         todoFooter.xButton.setImage(UIImage(named: "iconCloseCard")?.withRenderingMode(.alwaysOriginal), for: .normal)
         todoFooter.informationBtn.setImage(UIImage(named: "iconInfoPage")?.withRenderingMode(.alwaysOriginal), for: .normal)
         todoFooter.loadMoreBtn.setImage(UIImage(named: "iconLoadMore")?.withRenderingMode(.alwaysOriginal), for: .normal)
-       
+        
         
         return todoFooter
     }
@@ -170,5 +173,29 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
             return 93
         }
     }
+}
+
+extension ToDoViewController: FooterButtonHandlerProtocol {
+    func loadMorePressed() {
+        
+    }
     
+    func approvalButtonPressed() {
+        print("approve handler")
+        for item in sections[0].items {
+            if sections[0].items.index(of: item)! < approveIndex {
+                item.isApproved = true
+            }
+        }
+        approveIndex += 3
+        tableView.reloadData()
+    }
+    
+    func closeButtonPressed() {
+        
+    }
+    
+    func informationButtonPressed() {
+        
+    }
 }

@@ -11,13 +11,15 @@ import UIKit
 @IBDesignable
 class TwoImagesButton: UIButton {
     
-    @IBInspectable var leftHandImage: UIImage? {
+    @IBInspectable
+    var leftHandImage: UIImage? {
         didSet {
             leftHandImage = leftHandImage?.withRenderingMode(.alwaysTemplate)
             setupImages()
         }
     }
-    @IBInspectable var rightHandImage: UIImage? {
+    @IBInspectable
+    var rightHandImage: UIImage? {
         didSet {
             rightHandImage = rightHandImage?.withRenderingMode(.alwaysTemplate)
             setupImages()
@@ -27,22 +29,45 @@ class TwoImagesButton: UIButton {
     open var leftImageView: UIImageView!
     open var rightImageView: UIImageView!
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupView()
+    }
+    
+    func setupView() {
+        self.layer.cornerRadius = 22
+        self.layer.borderColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1).cgColor
+        self.layer.borderWidth = 1.5
+        
+        leftHandImage = UIImage(named: "iconTodo")
+        rightHandImage = UIImage(named: "iconCalLeft")
+        
+        self.backgroundColor = PopmetricsColor.yellowBGColor
+    }
+    
     func setupImages() {
         if let leftImage = leftHandImage {
             leftImageView = UIImageView(image: leftImage)
-            let height  = 18 as CGFloat
-            let yPos = (self.frame.height - height) / 2
+            let height = 18 as CGFloat
+            //let yPos = (self.frame.height - height) / 2
+            let yPos = CGFloat(16)
             leftImageView.contentMode = .scaleAspectFill
             leftImageView.frame = CGRect(x: 20 as CGFloat, y: yPos, width: 26 as CGFloat, height: height)
             self.addSubview(leftImageView)
-        }
+        } 
         
         if let rightImage = rightHandImage {
             rightImageView = UIImageView(image: rightImage)
             //rightImageView.tintColor = UIColor.black
             let height = 18 as CGFloat
             //let xPos = self.frame.width - width
-            let yPos = (self.frame.height - height) / 2
+            //let yPos = (self.frame.height - height) / 2
+            let yPos = CGFloat(16)
             rightImageView.contentMode = .scaleAspectFill
             rightImageView.frame = CGRect(x: 54 as CGFloat, y: yPos, width: 16 as CGFloat, height: height)
             self.addSubview(rightImageView)

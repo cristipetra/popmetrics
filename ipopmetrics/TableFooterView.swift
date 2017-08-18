@@ -8,10 +8,19 @@
 
 import UIKit
 
+protocol FooterButtonHandlerProtocol: class {
+    func approvalButtonPressed()
+    func closeButtonPressed()
+    func informationButtonPressed()
+    func loadMorePressed()
+}
+
 class TableFooterView: UITableViewHeaderFooterView {
     
     var loadMoreCount : Int = 0
     var approveCount : Int = 0
+    
+    weak var buttonHandlerDelegate: FooterButtonHandlerProtocol?
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -45,9 +54,9 @@ class TableFooterView: UITableViewHeaderFooterView {
         return container
     }()
     
-    lazy var doubleButton : UIButton = {
+    lazy var doubleButton : TwoImagesButton = {
         
-        let button = UIButton(type: UIButtonType.system)
+        let button = TwoImagesButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
         
@@ -195,21 +204,22 @@ class TableFooterView: UITableViewHeaderFooterView {
     func loadMoreHandler() {
         print("SSS load more button pressed")
         animateButtonBlink(button: loadMoreBtn)
-        
+        buttonHandlerDelegate?.loadMorePressed()
     }
     
     func setUpDoubleButton() {
         
         doubleButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
         doubleButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
-        doubleButton.layer.cornerRadius = 22
-        doubleButton.layer.borderColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1).cgColor
-        doubleButton.layer.borderWidth = 1.5
+        
+        //doubleButton.centerYAnchor.constraint(equalTo: self.approveStackView.centerYAnchor, constant: 20).isActive = true
+        //doubleButton.layer.cornerRadius = 22
+        //doubleButton.layer.borderColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1).cgColor
+        //doubleButton.layer.borderWidth = 1.5
         doubleButton.addTarget(self, action: #selector(approveHandler), for: .touchUpInside)
     }
     
     func approveHandler() {
-        print("SSS Approve button pressed ")
         animateButtonBlink(button: doubleButton)
     }
     
