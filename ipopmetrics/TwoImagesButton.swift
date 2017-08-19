@@ -29,6 +29,12 @@ class TwoImagesButton: UIButton {
     open var leftImageView: UIImageView!
     open var rightImageView: UIImageView!
     
+    var imageButtonType: ImageButtonType = .approve {
+        didSet {
+            changeImageButtonType()
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -44,8 +50,7 @@ class TwoImagesButton: UIButton {
         self.layer.borderColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1).cgColor
         self.layer.borderWidth = 1.5
         
-        leftHandImage = UIImage(named: "iconTodo")
-        rightHandImage = UIImage(named: "iconCalLeft")
+        changeImageButtonType()
         
         self.backgroundColor = PopmetricsColor.yellowBGColor
     }
@@ -72,6 +77,27 @@ class TwoImagesButton: UIButton {
             rightImageView.frame = CGRect(x: 54 as CGFloat, y: yPos, width: 16 as CGFloat, height: height)
             self.addSubview(rightImageView)
         }
-        
     }
+    
+    func changeImageButtonType() {
+        switch imageButtonType {
+        case ImageButtonType.approve:
+            leftHandImage = UIImage(named: "iconTodo")
+            rightHandImage = UIImage(named: "iconCalLeft")
+        case .reschedule:
+            leftHandImage = UIImage(named: "icon_timescore")
+            rightHandImage = UIImage(named: "iconCalLeft")
+        case .complete:
+            leftHandImage = UIImage(named: "icon_timescore")
+            rightHandImage = UIImage(named: "iconCalLeft")
+        default:
+            break
+        }
+    }
+}
+
+enum  ImageButtonType {
+    case approve
+    case reschedule
+    case complete
 }
