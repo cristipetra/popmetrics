@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+        <array key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+        </array>
+        <array key="sf-san-francisco-ui-display-light.ttf">
+            <string>SFUIDisplay-Light</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Notifications View Controller-->
+        <scene sceneID="C6O-0v-6Vb">
+            <objects>
+                <viewController storyboardIdentifier="NotificationsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pc6-cY-x62" customClass="NotificationsViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lov-KO-k4w"/>
+                        <viewControllerLayoutGuide type="bottom" id="U45-fT-EyQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uOM-fC-49A">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="LHa-gz-y0P">
+                                <rect key="frame" x="26" y="180" width="324" height="97"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please allow us to send you push notifications!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2NN-Oa-kgM">
+                                        <rect key="frame" x="0.0" y="0.0" width="324" height="41"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="This way we will be able to keep you up to date." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="NCp-nb-cDw">
+                                        <rect key="frame" x="0.0" y="56" width="324" height="41"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <color key="textColor" red="0.65098039220000004" green="0.52941176469999995" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="popmetrics.io" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyx-ec-cQU">
+                                <rect key="frame" x="157.5" y="22" width="61.5" height="12"/>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="10"/>
+                                <color key="textColor" red="0.1529411765" green="0.1529411765" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glY-W5-PhM">
+                                <rect key="frame" x="0.0" y="277" width="375" height="390"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="xBm-zB-8b4" customClass="RoundButton" customModule="ipopmetrics" customModuleProvider="target">
+                                        <rect key="frame" x="66" y="178" width="242" height="60"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="9Zc-SC-n2i"/>
+                                            <constraint firstAttribute="width" constant="242" id="nVR-7w-j9s"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                                        <state key="normal" title="Maybe Next Time">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="pc6-cY-x62" eventType="touchUpInside" id="X3i-FU-hzH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="vHJ-Fc-uxr" customClass="RoundButton" customModule="ipopmetrics" customModuleProvider="target">
+                                        <rect key="frame" x="75" y="71" width="224" height="60"/>
+                                        <color key="backgroundColor" red="0.34509803919999998" green="0.60784313729999995" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="GVV-f9-PZk"/>
+                                            <constraint firstAttribute="width" constant="224" id="d7a-EN-aeX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="Allow Push Notifications">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="confirmButtonPressed:" destination="pc6-cY-x62" eventType="touchUpInside" id="sxf-dw-fMm"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="vHJ-Fc-uxr" firstAttribute="centerX" secondItem="glY-W5-PhM" secondAttribute="centerX" id="2iJ-qG-89y"/>
+                                    <constraint firstItem="xBm-zB-8b4" firstAttribute="top" secondItem="vHJ-Fc-uxr" secondAttribute="bottom" constant="47" id="XkC-hg-oqQ">
+                                        <variation key="heightClass=compact-widthClass=compact" constant="20"/>
+                                    </constraint>
+                                    <constraint firstItem="xBm-zB-8b4" firstAttribute="centerX" secondItem="glY-W5-PhM" secondAttribute="centerX" id="d0c-x1-biY"/>
+                                    <constraint firstItem="vHJ-Fc-uxr" firstAttribute="top" secondItem="glY-W5-PhM" secondAttribute="top" constant="71" id="ehv-tc-HWF">
+                                        <variation key="heightClass=compact-widthClass=compact" constant="40"/>
+                                    </constraint>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.86666666670000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="LHa-gz-y0P" firstAttribute="centerY" secondItem="uOM-fC-49A" secondAttribute="centerY" constant="-105" id="89d-rx-4lv">
+                                <variation key="heightClass=compact-widthClass=compact" constant="-70"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="-95"/>
+                            </constraint>
+                            <constraint firstItem="glY-W5-PhM" firstAttribute="top" secondItem="LHa-gz-y0P" secondAttribute="bottom" id="AKi-b6-7ui"/>
+                            <constraint firstAttribute="bottom" secondItem="glY-W5-PhM" secondAttribute="bottom" id="DFw-Pn-2Uz"/>
+                            <constraint firstItem="yyx-ec-cQU" firstAttribute="top" secondItem="uOM-fC-49A" secondAttribute="top" constant="22" id="L2l-en-Ihn"/>
+                            <constraint firstItem="glY-W5-PhM" firstAttribute="leading" secondItem="uOM-fC-49A" secondAttribute="leading" id="LTb-sb-hFx"/>
+                            <constraint firstAttribute="trailing" secondItem="glY-W5-PhM" secondAttribute="trailing" id="j0g-0k-AxA"/>
+                            <constraint firstItem="yyx-ec-cQU" firstAttribute="centerX" secondItem="LHa-gz-y0P" secondAttribute="centerX" id="kT5-lm-hqT"/>
+                            <constraint firstItem="LHa-gz-y0P" firstAttribute="leading" secondItem="uOM-fC-49A" secondAttribute="leading" constant="26" id="vom-4a-yvz"/>
+                            <constraint firstAttribute="trailing" secondItem="LHa-gz-y0P" secondAttribute="trailing" constant="25" id="xa7-Mp-bWQ"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="cancelButon" destination="xBm-zB-8b4" id="eQf-xZ-sWJ"/>
+                            <outlet property="confirmButton" destination="vHJ-Fc-uxr" id="DTS-yQ-gCW"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="xBm-zB-8b4" id="Shw-Ln-u3C"/>
+                        <outlet property="confirmButton" destination="vHJ-Fc-uxr" id="GgJ-MW-xnE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uEP-ud-vnl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="42" y="151"/>
+        </scene>
+    </scenes>
+</document>

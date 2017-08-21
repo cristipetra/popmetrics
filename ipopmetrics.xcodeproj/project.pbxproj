@@ -25,6 +25,8 @@
 		0857D5571F41B4E800D218DA /* CompleteCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0857D5561F41B4E800D218DA /* CompleteCardCell.swift */; };
 		085AA0D21F42E45A0014D4CE /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085AA0D11F42E45A0014D4CE /* TodoStore.swift */; };
 		085AA0D41F42ECAA0014D4CE /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085AA0D31F42ECAA0014D4CE /* Todo.swift */; };
+		085CB7B21F4ADCA200038C03 /* Notifications.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 085CB7B11F4ADCA200038C03 /* Notifications.storyboard */; };
+		085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085CB7B51F4ADD9C00038C03 /* NotificationsViewController.swift */; };
 		08A4A53D1F458423001071E3 /* ToolbarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */; };
 		08A4A5411F45B563001071E3 /* AlfaSlabOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */; };
 		08A4A5431F45B5D6001071E3 /* TwoImagesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4A5421F45B5D6001071E3 /* TwoImagesButton.swift */; };
@@ -177,6 +179,8 @@
 		0857D5561F41B4E800D218DA /* CompleteCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteCardCell.swift; sourceTree = "<group>"; };
 		085AA0D11F42E45A0014D4CE /* TodoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
 		085AA0D31F42ECAA0014D4CE /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		085CB7B11F4ADCA200038C03 /* Notifications.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notifications.storyboard; sourceTree = "<group>"; };
+		085CB7B51F4ADD9C00038C03 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarViewCell.swift; sourceTree = "<group>"; };
 		08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AlfaSlabOne-Regular.ttf"; sourceTree = "<group>"; };
@@ -366,6 +370,22 @@
 			name = calendar;
 			sourceTree = "<group>";
 		};
+		085CB7B31F4ADD1500038C03 /* notifications */ = {
+			isa = PBXGroup;
+			children = (
+				085CB7B11F4ADCA200038C03 /* Notifications.storyboard */,
+			);
+			name = notifications;
+			sourceTree = "<group>";
+		};
+		085CB7B41F4ADD8000038C03 /* notifications */ = {
+			isa = PBXGroup;
+			children = (
+				085CB7B51F4ADD9C00038C03 /* NotificationsViewController.swift */,
+			);
+			name = notifications;
+			sourceTree = "<group>";
+		};
 		08A812771F1672C000672126 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +411,7 @@
 		08C7B18E1F1CF41200E456C6 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				085CB7B41F4ADD8000038C03 /* notifications */,
 				085053FC1F27876100FE8234 /* calendar */,
 				08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */,
 				08B485E31F210992005918A1 /* VideoScreenViewController.swift */,
@@ -612,6 +633,7 @@
 		11ACA9AD1E2CE0A80021E64A /* views */ = {
 			isa = PBXGroup;
 			children = (
+				085CB7B31F4ADD1500038C03 /* notifications */,
 				08EE385B1F447BF0005D1D7C /* todo */,
 				085053FF1F27938500FE8234 /* calendar */,
 				08B745991F1F992A00EC3F8C /* login */,
@@ -800,6 +822,7 @@
 				08B745941F1F6C0100EC3F8C /* OpenSans-Bold.ttf in Resources */,
 				0856F3581F272F020061DF7E /* Calendar.storyboard in Resources */,
 				0854AF351F3F2B18007B60F9 /* CalendarCardSimple.xib in Resources */,
+				085CB7B21F4ADCA200038C03 /* Notifications.storyboard in Resources */,
 				116540BD1EEAC3A600417D61 /* Signin.storyboard in Resources */,
 				D9D937881ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib in Resources */,
 				D9EC7E371ECF0D7E00A54B53 /* ActionCard.xib in Resources */,
@@ -1009,6 +1032,7 @@
 				110A62F61ECEF7AA0052B478 /* BestCourseViewCell.swift in Sources */,
 				1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */,
 				08F368951F18F93800819CDE /* DailyInsightsCardCell.swift in Sources */,
+				085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */,
 				08B745981F1F718300EC3F8C /* CodeViewController.swift in Sources */,
 				08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */,
 				11D8D9E91ECA37FC00CCDAC4 /* NavigationController.swift in Sources */,
