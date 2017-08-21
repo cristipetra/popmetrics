@@ -358,8 +358,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 shouldDisplayCell = true
                 isInfoCellType = true
                 let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
+                cell.changeTitleWithSpacing(title: "You're all caught up.")
+                cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
                 cell.selectionStyle = .none
-                
                 return cell
             default:
                 shouldDisplayCell = false

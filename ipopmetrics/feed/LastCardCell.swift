@@ -46,6 +46,16 @@ class LastCardCell: UITableViewCell {
         view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
     }
     
+    func changeTitleWithSpacing(title: String) {
+        self.titleLabel.text = title
+        titleLabel.adjustLabelSpacing(spacing: 1.5, lineHeight: 24, letterSpacing: 0.3);
+    }
+    
+    func changeMessageWithSpacing(message: String) {
+        self.messageLbl.text = message
+        messageLbl.adjustLabelSpacing(spacing: 5, lineHeight: 15, letterSpacing: 0.3)
+    }
+    
     @IBAction func closeCard(_ sender: UIButton) {
         //        self.isHidden = true
         //        shouldBeDisplayed = false
@@ -53,5 +63,18 @@ class LastCardCell: UITableViewCell {
     }
     @IBAction func goToButtonPressed(_ sender: UIButton) {
         print("goTo fired")
+    }
+}
+
+extension UILabel {
+    func adjustLabelSpacing(spacing: CGFloat, lineHeight: CGFloat, letterSpacing: CGFloat) {
+        let attributedString = NSMutableAttributedString(string: self.text!)
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = spacing
+        style.maximumLineHeight = lineHeight
+        attributedString.addAttribute(NSKernAttributeName, value: letterSpacing, range: NSRange(location: 0, length: (self.text?.characters.count)!))
+        attributedString.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSRange(location: 0, length: (self.text?.characters.count)!))
+        self.numberOfLines = 2
+        self.attributedText = attributedString
     }
 }
