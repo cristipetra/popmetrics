@@ -114,11 +114,6 @@ class TodoTopView: UIView {
         
         stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        stackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -5).isActive = true
-        
-        //self.addSubview(clockView)
-        //self.addSubview(keyView)
-        //self.addSubview(notificationView)
         
         setUpClockView()
         setUpKeyView()
@@ -143,7 +138,7 @@ class TodoTopView: UIView {
     func setUpKeyView() {
         
         keyView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        keyView.leftAnchor.constraint(equalTo: clockView.rightAnchor, constant: 45).isActive = true
+        //keyView.leftAnchor.constraint(equalTo: clockView.rightAnchor, constant: 45).isActive = true
         keyView.heightAnchor.constraint(equalToConstant: 24).isActive = true
         keyView.widthAnchor.constraint(equalToConstant: 72).isActive = true
         
@@ -154,8 +149,8 @@ class TodoTopView: UIView {
     }
     
     func setUpNotificationView() {
-        notificationView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        notificationView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -40).isActive = true
+        notificationView.centerYAnchor.constraint(equalTo: stackView.centerYAnchor).isActive = true
+        notificationView.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: 5).isActive = true
         notificationView.heightAnchor.constraint(equalToConstant: 24).isActive = true
         notificationView.widthAnchor.constraint(equalToConstant: 72).isActive = true
         notificationView.addSubview(notificationImageView)

@@ -196,6 +196,8 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         
         if item.type == "last_cell" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
+            cell.titleLabel.text = "Thats it for now!"
+            cell.messageLbl.text = "Check back to see if there is anything more in the Home Feed"
             cell.selectionStyle = .none
             return cell
         }

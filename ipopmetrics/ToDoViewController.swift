@@ -108,6 +108,8 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
         if item.type == "last_cell" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
+            cell.titleLabel.text = "Finished with the actions?"
+            cell.messageLbl.text = "Check out the things you've schedulled in the caledar hub"
             cell.selectionStyle = .none
             return cell
         }
