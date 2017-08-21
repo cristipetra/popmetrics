@@ -233,7 +233,6 @@ class TableFooterView: UITableViewHeaderFooterView {
     }
     
     func loadMoreHandler() {
-        print("SSS load more button pressed")
         animateButtonBlink(button: loadMoreBtn)
         buttonHandlerDelegate?.loadMorePressed()
     }
@@ -242,7 +241,7 @@ class TableFooterView: UITableViewHeaderFooterView {
         
         actionButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
         actionButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
-        
+        actionButton.tintColor = PopmetricsColor.darkGrey
         //doubleButton.centerYAnchor.constraint(equalTo: self.approveStackView.centerYAnchor, constant: 20).isActive = true
         //doubleButton.layer.cornerRadius = 22
         //doubleButton.layer.borderColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1).cgColor
