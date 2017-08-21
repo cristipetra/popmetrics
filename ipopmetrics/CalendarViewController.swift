@@ -51,8 +51,8 @@ class CalendarViewController: UIViewController {
         let sectionHeaderCardNib = UINib(nibName: "HeaderCardCell", bundle: nil)
         tableView.register(sectionHeaderCardNib, forCellReuseIdentifier: "headerCardCell")
         
-        let sectionFooterNib = UINib(nibName: "CalendarFooter", bundle: nil)
-        tableView.register(sectionFooterNib, forCellReuseIdentifier: "footerCell")
+        
+        tableView.register(TableFooterView.self, forHeaderFooterViewReuseIdentifier: "footerId")
         
         let extendedCardNib = UINib(nibName: "CalendarCardMaximized", bundle: nil)
         tableView.register(extendedCardNib, forCellReuseIdentifier: "extendedCell")
@@ -196,8 +196,8 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         
         if item.type == "last_cell" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
-            cell.titleLabel.text = "Thats it for now!"
-            cell.messageLbl.text = "Check back to see if there is anything more in the Home Feed"
+            cell.changeTitleWithSpacing(title: "Thats it for now");
+            cell.changeMessageWithSpacing(message: "Check back to see if there is anything more in the Home Feed")
             cell.selectionStyle = .none
             return cell
         }
@@ -263,13 +263,13 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        reachedFooter = true
-        if section == sections.last?.index {
-            let footerCell = tableView.dequeueReusableCell(withIdentifier: "footerCell") as! CalendarFooterViewCell
-            return footerCell
-        } else {
-            return UITableViewCell()
+        if (section == sections.endIndex - 1) {
+            return UIView()
         }
+        let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
+        todoFooter.changeFeedType(feedType: FeedType.calendar)
+        
+        return todoFooter
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -285,10 +285,10 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == sections.last?.index{
-            return 80
+        if section == sections.endIndex - 1 {
+            return 0
         }
-        return 0
+        return 80
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
