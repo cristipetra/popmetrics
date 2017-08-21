@@ -29,7 +29,7 @@ class TwoImagesButton: UIButton {
     open var leftImageView: UIImageView!
     open var rightImageView: UIImageView!
     
-    var imageButtonType: ImageButtonType = .approve {
+    var imageButtonType: ImageButtonType = .unapproved {
         didSet {
             changeImageButtonType()
         }
@@ -81,10 +81,10 @@ class TwoImagesButton: UIButton {
     
     func changeImageButtonType() {
         switch imageButtonType {
-        case ImageButtonType.approve:
+        case .unapproved:
             leftHandImage = UIImage(named: "iconTodo")
             rightHandImage = UIImage(named: "iconCalLeft")
-        case .reschedule:
+        case .failed:
             leftHandImage = UIImage(named: "icon_timescore")
             rightHandImage = UIImage(named: "iconCalLeft")
         case .complete:
@@ -96,8 +96,9 @@ class TwoImagesButton: UIButton {
     }
 }
 
-enum  ImageButtonType {
-    case approve
-    case reschedule
+enum ImageButtonType {
+    case approved
+    case unapproved
+    case failed
     case complete
 }

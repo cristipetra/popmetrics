@@ -17,8 +17,14 @@ protocol FooterButtonHandlerProtocol: class {
 
 class TableFooterView: UITableViewHeaderFooterView {
     
-    var loadMoreCount : Int = 0
-    var approveCount : Int = 0
+    var loadMoreCount: Int = 0
+    var approveCount: Int = 0
+    
+    var typeSection: TypeSection = .complete {
+        didSet {
+            changeTypeSection()
+        }
+    }
     
     weak var buttonHandlerDelegate: FooterButtonHandlerProtocol?
     
@@ -61,7 +67,7 @@ class TableFooterView: UITableViewHeaderFooterView {
         return container
     }()
     
-    lazy var doubleButton : TwoImagesButton = {
+    lazy var actionButton : TwoImagesButton = {
         
         let button = TwoImagesButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -160,7 +166,7 @@ class TableFooterView: UITableViewHeaderFooterView {
     
     func setUpApproveStackView() {
         
-        approveStackView = UIStackView(arrangedSubviews: [doubleButton, approveLbl])
+        approveStackView = UIStackView(arrangedSubviews: [actionButton, approveLbl])
         approveStackView.axis = .vertical
         approveStackView.distribution = .equalSpacing
         approveStackView.alignment = .center
@@ -234,18 +240,18 @@ class TableFooterView: UITableViewHeaderFooterView {
     
     func setUpDoubleButton() {
         
-        doubleButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        doubleButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
+        actionButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        actionButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
         
         //doubleButton.centerYAnchor.constraint(equalTo: self.approveStackView.centerYAnchor, constant: 20).isActive = true
         //doubleButton.layer.cornerRadius = 22
         //doubleButton.layer.borderColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1).cgColor
         //doubleButton.layer.borderWidth = 1.5
-        doubleButton.addTarget(self, action: #selector(approveHandler), for: .touchUpInside)
+        actionButton.addTarget(self, action: #selector(approveHandler), for: .touchUpInside)
     }
     
     func approveHandler() {
-        animateButtonBlink(button: doubleButton)
+        animateButtonBlink(button: actionButton)
     }
     
     func animateButtonBlink(button: UIButton) {
@@ -267,4 +273,21 @@ class TableFooterView: UITableViewHeaderFooterView {
         //horizontalStackView.insertArrangedSubview(UIView(frame: CGRect(x: 0, y: 0, width: 46, height: 46)), at: 2)
     }
     
+    func changeTypeSection() {
+        switch typeSection {
+        case .failed:
+            actionButton.imageButtonType = .failed
+        case .unapproved:
+            actionButton.imageButtonType = .unapproved
+        default:
+            break
+        }
+    }
+    
+}
+
+enum TypeSection {
+    case failed
+    case unapproved
+    case complete
 }

@@ -98,7 +98,7 @@ class ToDoViewController: UIViewController {
     }
 }
 
-extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
+extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, ApproveDenySinglePostProtocol {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
@@ -115,11 +115,11 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
         if shouldMaximize {
             let cell = tableView.dequeueReusableCell(withIdentifier: "maxCellId", for: indexPath) as! CalendarCardMaximizedViewCell
             cell.articleDate.isHidden = true
-            //cell.setUpMaximizeToDo()
-            //cell.approve_deny_delegate = self
-            //cell.postIndex = indexPath.row
+            cell.setUpMaximizeToDo()
+            cell.approveDenyDelegate = self
+            cell.postIndex = indexPath.row
             if sections[0].items[indexPath.row].isApproved == true {
-                //cell.setUpApprovedView()
+                cell.setUpApprovedView()
             }
             return cell
         }
@@ -130,6 +130,12 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
         
+    }
+    
+    func approveSinglePostHandler(index: Int) {
+        print("approved")
+        sections[0].items[index].isApproved = true
+        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -157,8 +163,8 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
         todoFooter.xButton.setImage(UIImage(named: "iconCloseCard")?.withRenderingMode(.alwaysOriginal), for: .normal)
         todoFooter.informationBtn.setImage(UIImage(named: "iconInfoPage")?.withRenderingMode(.alwaysOriginal), for: .normal)
         todoFooter.loadMoreBtn.setImage(UIImage(named: "iconLoadMore")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        
-        
+        todoFooter.actionButton.addTarget(self, action: #selector(approveCard), for: .touchUpInside)
+        //todoFooter.actionButton = sections[section].items[0].
         return todoFooter
     }
     
@@ -198,6 +204,19 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
             return 459
         }
         return 93
+    }
+}
+
+extension ToDoViewController {
+    func approveCard() {
+        print("approve card")
+        for item in sections[0].items {
+            if sections[0].items.index(of: item)! < approveIndex {
+                item.isApproved = true
+            }
+        }
+        approveIndex += 3
+        tableView.reloadData()
     }
 }
 

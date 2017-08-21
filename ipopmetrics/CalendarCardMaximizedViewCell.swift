@@ -9,6 +9,10 @@
 import UIKit
 import ActiveLabel
 
+protocol ApproveDenySinglePostProtocol: class {
+    func approveSinglePostHandler(index: Int)
+}
+
 class CalendarCardMaximizedViewCell: UITableViewCell {
     
     @IBOutlet weak var topStackView: UIStackView!
@@ -30,6 +34,47 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
     @IBOutlet weak var postIconImageView: UIImageView!
     @IBOutlet weak var socialNetworkLbl: UILabel!
     @IBOutlet weak var actionBtn: RoundButton!
+    
+    
+    var postIndex = 0
+    weak var approveDenyDelegate : ApproveDenySinglePostProtocol?
+    var toDoStackView : UIStackView!
+    
+    lazy var denyButton : UIButton = {
+        
+        let button = UIButton(type: UIButtonType.system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setBackgroundImage(UIImage(named: "icon_deny"), for: .normal)
+        
+        return button
+    }()
+    
+    lazy var approveButton : UIButton = {
+        
+        let button = UIButton(type: UIButtonType.system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setBackgroundImage(UIImage(named: "icon_quepost"), for: .normal)
+        return button
+    }()
+    
+    lazy var approvedView : UIView = {
+        
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        return view
+        
+    }()
+    
+    lazy var approvedButton : UIButton = {
+        
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor(red: 54/255, green: 172/255, blue: 130/255, alpha: 1)
+        return button
+        
+    }()
+    
     
     private var calendarItem: CalendarItem!
     var notLastCell = true
@@ -91,6 +136,44 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
             return false
         }
         return true
+    }
+    
+    func setUpMaximizeToDo() {
+        actionBtn.isHidden = true
+        
+        toDoStackView = UIStackView(arrangedSubviews: [denyButton,approveButton])
+        toDoStackView.axis = .horizontal
+        toDoStackView.alignment = .center
+        toDoStackView.distribution = .equalSpacing
+        toDoStackView.spacing = 50
+        
+        topContainerVIew.addSubview(toDoStackView)
+        toDoStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        toDoStackView.centerXAnchor.constraint(equalTo: topContainerVIew.centerXAnchor).isActive = true
+        toDoStackView.centerYAnchor.constraint(equalTo: articleImage.centerYAnchor, constant: -20).isActive = true
+        
+        approveButton.addTarget(self, action: #selector(approvePostHandler), for: .touchUpInside)
+        
+    }
+    
+    func approvePostHandler() {
+        approveDenyDelegate?.approveSinglePostHandler(index: postIndex)
+    }
+    
+    func setUpApprovedView() {
+        self.insertSubview(approvedView, at: 1)
+        approvedView.topAnchor.constraint(equalTo: topContainerVIew.topAnchor).isActive = true
+        approvedView.bottomAnchor.constraint(equalTo: topContainerVIew.bottomAnchor).isActive = true
+        approvedView.leftAnchor.constraint(equalTo: topContainerVIew.leftAnchor).isActive = true
+        approvedView.rightAnchor.constraint(equalTo: topContainerVIew.rightAnchor).isActive = true
+        
+        approvedView.addSubview(approvedButton)
+        approvedButton.centerXAnchor.constraint(equalTo: approvedView.centerXAnchor).isActive = true
+        approvedButton.centerYAnchor.constraint(equalTo: approvedView.centerYAnchor).isActive = true
+        approvedButton.widthAnchor.constraint(equalToConstant: 110).isActive = true
+        approvedButton.heightAnchor.constraint(equalToConstant: 39).isActive = true
+        
     }
     
     internal func getBtnColor() -> UIColor {
