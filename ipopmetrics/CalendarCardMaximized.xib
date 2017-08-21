@@ -23,30 +23,30 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CalendarCardMaximizedViewCell" customModule="ipopmetrics" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="459"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="479"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="458.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="478.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yvm-lJ-9xs">
-                        <rect key="frame" x="8" y="0.0" width="398" height="458.5"/>
+                        <rect key="frame" x="8" y="0.0" width="398" height="478.5"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fzR-2l-bme">
-                                <rect key="frame" x="0.0" y="0.0" width="398" height="436.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="398" height="456.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1pu-yr-0jo">
-                                        <rect key="frame" x="0.0" y="0.0" width="398" height="436.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="456.5"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Gh-vd-6hw">
-                                                <rect key="frame" x="0.0" y="0.0" width="398" height="9"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Gh-vd-6hw" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="398" height="29"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="9" id="dv3-np-niJ"/>
+                                                    <constraint firstAttribute="height" constant="29" id="dv3-np-niJ"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4p-KF-UbQ">
-                                                <rect key="frame" x="0.0" y="10" width="398" height="70"/>
+                                                <rect key="frame" x="0.0" y="29" width="398" height="70"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_articlecard_splash" translatesAutoresizingMaskIntoConstraints="NO" id="maH-h1-ctl">
                                                         <rect key="frame" x="18" y="6" width="36" height="36"/>
@@ -75,7 +75,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bhs-k4-fYY">
-                                                <rect key="frame" x="0.0" y="90" width="398" height="185"/>
+                                                <rect key="frame" x="0.0" y="109" width="398" height="186"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x43-N9-gxP">
                                                         <rect key="frame" x="0.0" y="1" width="398" height="2"/>
@@ -101,7 +101,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scheduled for 07/15 @ 9:00 a.m." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01U-8U-Uj5" customClass="ActiveLabel" customModule="ActiveLabel">
-                                                        <rect key="frame" x="22" y="156" width="356" height="21"/>
+                                                        <rect key="frame" x="22" y="157" width="356" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="Kkq-db-zx0"/>
                                                         </constraints>
@@ -110,7 +110,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The wildfires continue to affect the Northern Provinces www.alch.my/ " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmL-62-fG7" customClass="ActiveLabel" customModule="ActiveLabel">
-                                                        <rect key="frame" x="21" y="56" width="356" height="82"/>
+                                                        <rect key="frame" x="21" y="57" width="356" height="82"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="82" id="KVE-ES-B92"/>
                                                         </constraints>
@@ -141,7 +141,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VjF-HY-X4v">
-                                                <rect key="frame" x="0.0" y="276.5" width="398" height="160"/>
+                                                <rect key="frame" x="0.0" y="296.5" width="398" height="160"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_card_approval" translatesAutoresizingMaskIntoConstraints="NO" id="g33-N6-hTc">
                                                         <rect key="frame" x="0.0" y="0.0" width="398" height="160"/>
@@ -182,9 +182,9 @@
                                             <constraint firstItem="n4p-KF-UbQ" firstAttribute="leading" secondItem="1pu-yr-0jo" secondAttribute="leading" id="YKb-ol-RQ9"/>
                                             <constraint firstItem="7Gh-vd-6hw" firstAttribute="leading" secondItem="1pu-yr-0jo" secondAttribute="leading" id="iC6-Ru-Z23"/>
                                             <constraint firstItem="g33-N6-hTc" firstAttribute="top" secondItem="01U-8U-Uj5" secondAttribute="bottom" constant="9.5" id="n1i-Sv-0W6"/>
-                                            <constraint firstItem="n4p-KF-UbQ" firstAttribute="top" secondItem="1pu-yr-0jo" secondAttribute="top" constant="10" id="nT1-H4-aS8"/>
                                             <constraint firstAttribute="bottom" secondItem="VjF-HY-X4v" secondAttribute="bottom" id="pbl-HN-k1j"/>
                                             <constraint firstItem="VjF-HY-X4v" firstAttribute="top" secondItem="bhs-k4-fYY" secondAttribute="bottom" constant="1.5" id="rm7-2r-ry6"/>
+                                            <constraint firstItem="n4p-KF-UbQ" firstAttribute="top" secondItem="7Gh-vd-6hw" secondAttribute="bottom" id="vmZ-U7-HuD"/>
                                             <constraint firstItem="7Gh-vd-6hw" firstAttribute="top" secondItem="1pu-yr-0jo" secondAttribute="top" id="xkd-nm-nwp"/>
                                         </constraints>
                                     </view>
@@ -197,7 +197,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RYQ-7a-97U">
-                                <rect key="frame" x="0.0" y="436.5" width="398" height="22"/>
+                                <rect key="frame" x="0.0" y="456.5" width="398" height="22"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2FW-vY-81j">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="22"/>
