@@ -118,8 +118,13 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             cell.setUpMaximizeToDo()
             cell.approveDenyDelegate = self
             cell.postIndex = indexPath.row
-            if sections[0].items[indexPath.row].isApproved == true {
-                cell.setUpApprovedView()
+            cell.setUpApprovedConnectionView()
+            
+            if sections[indexPath.section].items.endIndex - 1 == indexPath.row {
+                cell.connectionStackView.isHidden = true
+                cell.isLastCell = true
+            } else {
+                cell.connectionStackView.isHidden = false
             }
             return cell
         }
@@ -171,6 +176,9 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == sections.endIndex - 1 {
             return 60
+        }
+        if shouldMaximize {
+            return 80
         }
         return 109
     }

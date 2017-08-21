@@ -75,6 +75,15 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         
     }()
     
+    lazy var approvedConnectionView : UIView = {
+        
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+        
+    }()
+    
     
     private var calendarItem: CalendarItem!
     var notLastCell = true
@@ -173,6 +182,16 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         approvedButton.centerYAnchor.constraint(equalTo: approvedView.centerYAnchor).isActive = true
         approvedButton.widthAnchor.constraint(equalToConstant: 110).isActive = true
         approvedButton.heightAnchor.constraint(equalToConstant: 39).isActive = true
+        
+    }
+    
+    func setUpApprovedConnectionView() {
+        connectionContainerView.addSubview(approvedConnectionView)
+        approvedConnectionView.topAnchor.constraint(equalTo: connectionContainerView.topAnchor).isActive = true
+        approvedConnectionView.bottomAnchor.constraint(equalTo: connectionContainerView.bottomAnchor).isActive = true
+        approvedConnectionView.leftAnchor.constraint(equalTo: connectionLine.leftAnchor,constant: -1.5).isActive = true
+        approvedConnectionView.rightAnchor.constraint(equalTo: connectionLine.rightAnchor, constant: 1.5).isActive = true
+        connectionLine.backgroundColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
         
     }
     

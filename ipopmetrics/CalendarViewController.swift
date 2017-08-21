@@ -209,7 +209,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             let maxCell = tableView.dequeueReusableCell(withIdentifier: "extendedCell", for: indexPath) as! CalendarCardMaximizedViewCell
             tableView.allowsSelection = false
             maxCell.topImageButton.isHidden = true
-            
+            maxCell.setUpApprovedConnectionView()
             maxCell.configure(item)
             if indexPath.row == (sections[indexPath.section].items.count - 1) {
                 maxCell.connectionStackView.isHidden = true
