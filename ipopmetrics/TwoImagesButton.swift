@@ -26,8 +26,8 @@ class TwoImagesButton: UIButton {
         }
     }
     
-    open var leftImageView: UIImageView!
-    open var rightImageView: UIImageView!
+    open var leftImageView: UIImageView = UIImageView()
+    open var rightImageView: UIImageView =  UIImageView()
     
     var imageButtonType: ImageButtonType = .unapproved {
         didSet {
@@ -53,17 +53,22 @@ class TwoImagesButton: UIButton {
         changeImageButtonType()
         
         self.backgroundColor = PopmetricsColor.yellowBGColor
+        
+        self.addSubview(leftImageView)
+        self.addSubview(rightImageView)
+        
+        setupImages()
     }
     
     func setupImages() {
         if let leftImage = leftHandImage {
-            leftImageView = UIImageView(image: leftImage)
+            //leftImageView = UIImageView(image: leftImage)
+            leftImageView.image = leftImage
             let height = 18 as CGFloat
             //let yPos = (self.frame.height - height) / 2
             let yPos = CGFloat(16)
             leftImageView.contentMode = .scaleAspectFill
             leftImageView.frame = CGRect(x: 20 as CGFloat, y: yPos, width: 26 as CGFloat, height: height)
-            self.addSubview(leftImageView)
         } 
         
         if let rightImage = rightHandImage {
@@ -75,14 +80,14 @@ class TwoImagesButton: UIButton {
             let yPos = CGFloat(16)
             rightImageView.contentMode = .scaleAspectFill
             rightImageView.frame = CGRect(x: 54 as CGFloat, y: yPos, width: 16 as CGFloat, height: height)
-            self.addSubview(rightImageView)
+            
         }
     }
     
     func changeImageButtonType() {
         switch imageButtonType {
         case .unapproved:
-            leftHandImage = UIImage(named: "iconTodo")
+            leftHandImage = UIImage(named: "iconApprove")
             rightHandImage = UIImage(named: "iconCalLeft")
         case .failed:
             leftHandImage = UIImage(named: "icon_timescore")

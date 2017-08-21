@@ -132,4 +132,5 @@ enum StatusArticle: String {
     case executed = "executed"
     case unapproved = "unapproved"
     case inProgress = "in-progress"
+    case complete = "complete"
 }

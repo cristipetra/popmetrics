@@ -20,9 +20,9 @@ class TableFooterView: UITableViewHeaderFooterView {
     var loadMoreCount: Int = 0
     var approveCount: Int = 0
     
-    var typeSection: TypeSection = .complete {
+    var typeSection: StatusArticle = .complete {
         didSet {
-            changeTypeSection()
+            changeTypeSection(typeSection: typeSection)
         }
     }
     
@@ -125,7 +125,7 @@ class TableFooterView: UITableViewHeaderFooterView {
         setUpXButton()
         setUpInformationBtn()
         setUpLoadMore()
-        setUpDoubleButton()
+        setupActionButton()
         
         setUpHorizontalStackView()
         
@@ -200,14 +200,13 @@ class TableFooterView: UITableViewHeaderFooterView {
         xButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
         xButton.addTarget(self, action: #selector(deleteHandler), for: .touchUpInside)
         xButton.layer.cornerRadius = 23//xButton.frame.size.width / 2
+        
+        xButton.setImage(UIImage(named: "iconCloseCard")?.withRenderingMode(.alwaysOriginal), for: .normal)
         xButton.clipsToBounds = true
     }
     
     func deleteHandler() {
-        
-        print("SSS X Button pressed")
         animateButtonBlink(button: xButton)
-        
     }
     
     func setUpInformationBtn() {
@@ -215,20 +214,19 @@ class TableFooterView: UITableViewHeaderFooterView {
         informationBtn.widthAnchor.constraint(equalToConstant: 46).isActive = true
         informationBtn.heightAnchor.constraint(equalToConstant: 46).isActive = true
         informationBtn.addTarget(self, action: #selector(informationHandler), for: .touchUpInside)
+        informationBtn.setImage(UIImage(named: "iconInfoPage")?.withRenderingMode(.alwaysOriginal), for: .normal)
         informationBtn.layer.cornerRadius = 23
     }
     
     func informationHandler() {
-        print("SSS information button pressed")
         animateButtonBlink(button: informationBtn)
-        
     }
     
     func setUpLoadMore() {
-        
         loadMoreBtn.widthAnchor.constraint(equalToConstant: 46).isActive = true
         loadMoreBtn.heightAnchor.constraint(equalToConstant: 46).isActive = true
         loadMoreBtn.addTarget(self, action: #selector(loadMoreHandler), for: .touchUpInside)
+        loadMoreBtn.setImage(UIImage(named: "iconLoadMore")?.withRenderingMode(.alwaysOriginal), for: .normal)
         loadMoreBtn.layer.cornerRadius = 23
     }
     
@@ -237,15 +235,11 @@ class TableFooterView: UITableViewHeaderFooterView {
         buttonHandlerDelegate?.loadMorePressed()
     }
     
-    func setUpDoubleButton() {
+    func setupActionButton() {
         
         actionButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
         actionButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
         actionButton.tintColor = PopmetricsColor.darkGrey
-        //doubleButton.centerYAnchor.constraint(equalTo: self.approveStackView.centerYAnchor, constant: 20).isActive = true
-        //doubleButton.layer.cornerRadius = 22
-        //doubleButton.layer.borderColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1).cgColor
-        //doubleButton.layer.borderWidth = 1.5
         actionButton.addTarget(self, action: #selector(approveHandler), for: .touchUpInside)
     }
     
@@ -272,12 +266,23 @@ class TableFooterView: UITableViewHeaderFooterView {
         //horizontalStackView.insertArrangedSubview(UIView(frame: CGRect(x: 0, y: 0, width: 46, height: 46)), at: 2)
     }
     
-    func changeTypeSection() {
+    func changeTypeSection(typeSection: StatusArticle) {
+        print("--type:")
+        print(typeSection)
         switch typeSection {
         case .failed:
             actionButton.imageButtonType = .failed
         case .unapproved:
             actionButton.imageButtonType = .unapproved
+        default:
+            break
+        }
+    }
+    
+    func changeFeedType(feedType: FeedType) {
+        switch feedType {
+        case .calendar:
+            approveStackView.isHidden = true
         default:
             break
         }
@@ -289,4 +294,10 @@ enum TypeSection {
     case failed
     case unapproved
     case complete
+}
+
+enum FeedType {
+    case home
+    case todo
+    case calendar
 }

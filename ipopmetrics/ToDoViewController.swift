@@ -167,11 +167,8 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             return UIView()
         }
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
-        todoFooter.xButton.setImage(UIImage(named: "iconCloseCard")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        todoFooter.informationBtn.setImage(UIImage(named: "iconInfoPage")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        todoFooter.loadMoreBtn.setImage(UIImage(named: "iconLoadMore")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        todoFooter.changeTypeSection(typeSection: StatusArticle(rawValue: sections[section].status)!)
         todoFooter.actionButton.addTarget(self, action: #selector(approveCard), for: .touchUpInside)
-        //todoFooter.actionButton = sections[section].items[0].
         return todoFooter
     }
     
