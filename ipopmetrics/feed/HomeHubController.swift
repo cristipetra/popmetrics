@@ -22,7 +22,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     var shouldDisplayCell = true
     var isInfoCellType = false;
-    var toDoCellHeight = 241 as CGFloat
+    var toDoCellHeight = 50 as CGFloat
     var isToDoCellType = false
     
     let transition = BubbleTransition();
@@ -153,7 +153,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             }
             
             
-            self.sections = feedStore.getFeed()
+            //self.sections = feedStore.getFeed()
             
             self.sections = []
             // Add temp recommendation sections
@@ -240,8 +240,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             toDoSection.items.append(toDoItem)
             
             self.sections.append(toDoSection)
-
-            
             
             let lastSection: FeedSection = FeedSection()
             lastSection.name = ""
@@ -358,7 +356,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                     cell.setMessage(message: "Allow these push notifications to make sure you never miss a beat!")
                     cell.footerView.approveLbl.text = "Allow Notifications"
                 }
-                
                 return cell
             /*
             case "approval":
@@ -390,7 +387,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 }
                 return cell
   */
-            
+         
             case "toDo":
                 shouldDisplayCell = true
                 isToDoCellType = true
@@ -401,6 +398,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 toDoCellHeight = cell.toDoCountViewHeight.constant
                 cell.selectionStyle = .none
                 return cell
+
             case "info":
                 shouldDisplayCell = true
                 isInfoCellType = true
@@ -433,7 +431,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(section: 1)
-            cell.sectionTitleLabel.text = "Recommendation For You";
+            cell.sectionTitleLabel.text = "To Do"
             return cell
             /*
         case 2:
@@ -449,13 +447,14 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             cell.changeColor(section: 3)
             cell.sectionTitleLabel.text = "Daily Insights";
             return cell
-    */
+
         case 4:
             shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(section: 4)
             cell.sectionTitleLabel.text = "To Do"
             return cell
+     */
         default:
             shouldDisplayHeaderCell = false
             let cell = UITableViewCell()
