@@ -86,6 +86,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let toDoCardNib = UINib(nibName: "ToDoCell", bundle: nil)
         tableView.register(toDoCardNib, forCellReuseIdentifier: "ToDoCell")
         
+        let requiredActionNib = UINib(nibName: "RequiredAction", bundle: nil)
+        tableView.register(requiredActionNib, forCellReuseIdentifier: "requiredActionId")
+        
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
@@ -149,8 +152,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             self.sections = feedStore.getFeed()
             
-            
+            self.sections = []
             // Add temp recommendation sections
+            /*
             let tmpSectionRecommendation:FeedSection = FeedSection()
             tmpSectionRecommendation.name = "Recommendation"
             tmpSectionRecommendation.index  = 2;
@@ -205,7 +209,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             self.sections.append(tmpSectionApproval)
             
-            
+            */
             let tmpSectionInsight:FeedSection = FeedSection()
             tmpSectionInsight.name = "Daily Insight"
             tmpSectionInsight.index = 1;
@@ -223,6 +227,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             self.sections.append(tmpSectionInsight)
             
+            
+ 
             let toDoSection: FeedSection = FeedSection()
             toDoSection.name = ""
             toDoSection.index = 1
@@ -363,11 +369,14 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 return cell
             case "daily_insight":
                 shouldDisplayCell = true
-                let cell = tableView.dequeueReusableCell(withIdentifier: "DailyInsightsCard", for: indexPath) as! DailyInsightsCardCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "requiredActionId", for: indexPath) as! RequiredAction
                 cell.selectionStyle = .none
-                cell.configure(item, handler:self.requiredActionHandler)
+                cell.backgroundColor = UIColor.feedBackgroundColor()
+                cell.footerView.layer.backgroundColor = UIColor.clear.cgColor
+                cell.connectionLineView.isHidden = true
+                //cell.configure(item, handler:self.requiredActionHandler)
                 if((sections[sectionIdx].items.count-1) == indexPath.row) {
-                    cell.connectionView.isHidden = true;
+                    //cell.connectionLineView.isHidden = true;
                 }
                 return cell
             case "info":
@@ -480,7 +489,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     fileprivate func getCellHeight() -> CGFloat {
         let a =  CGFloat(((tableView.frame.width * 9.0) / 16.0) + 16) // 16 is the padding
-        var heightCell: CGFloat = 464
+        var heightCell: CGFloat = 479
         if(isInfoCellType) {
             heightCell = 261
         }

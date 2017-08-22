@@ -95,6 +95,9 @@ class TwoImagesButton: UIButton {
         case .complete:
             leftHandImage = UIImage(named: "icon_timescore")
             rightHandImage = UIImage(named: "iconCalLeft")
+        case .twitter:
+            leftHandImage = UIImage(named: "icon_twitter")
+            rightHandImage = UIImage(named: "iconCalLeft")
         default:
             break
         }
@@ -106,4 +109,5 @@ enum ImageButtonType {
     case unapproved
     case failed
     case complete
+    case twitter
 }
