@@ -60,6 +60,8 @@ class CalendarItem: NSObject{
                 return "Failed"
             case StatusArticle.executed.rawValue:
                 return "Executed"
+            case StatusArticle.unapproved.rawValue:
+                return "Unapproved"
             default:
                 return ""
             }
@@ -90,6 +92,8 @@ class CalendarItem: NSObject{
                 return PopmetricsColor.salmondColor
             case StatusArticle.executed.rawValue:
                 return PopmetricsColor.greenDark
+            case StatusArticle.unapproved.rawValue:
+                return PopmetricsColor.yellowUnapproved
             default:
                 return UIColor.white
             }
@@ -128,4 +132,5 @@ enum StatusArticle: String {
     case executed = "executed"
     case unapproved = "unapproved"
     case inProgress = "in-progress"
+    case complete = "complete"
 }

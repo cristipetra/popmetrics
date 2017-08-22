@@ -41,16 +41,20 @@
                                                 <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEF-kV-Dx9">
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEF-kV-Dx9">
                                                 <rect key="frame" x="174.5" y="0.0" width="15" height="27"/>
+                                                <color key="tintColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" image="iconCall"/>
                                                 <connections>
                                                     <action selector="previousPeriodBtnPressed:" destination="Bz0-Vs-PTi" eventType="touchUpInside" id="hgd-6h-cWS"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAW-va-RMl">
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAW-va-RMl">
                                                 <rect key="frame" x="244.5" y="0.0" width="15" height="27"/>
-                                                <state key="normal" image="iconCall"/>
+                                                <color key="tintColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" image="iconCall">
+                                                    <color key="titleColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="nextPeriodBtnPressed:" destination="Bz0-Vs-PTi" eventType="touchUpInside" id="viS-lw-Ltt"/>
                                                 </connections>

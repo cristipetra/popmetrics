@@ -14,46 +14,35 @@ protocol ChangeCellProtocol: class {
 
 class CalendarHeaderViewCell: UITableViewCell {
     
-    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var connectionView: UIView!
-    @IBOutlet weak var scheduleLbl: UILabel!
     @IBOutlet weak var roundConnectionView: UIView!
-    @IBOutlet weak var minimizeContainerView: UIView!
-    @IBOutlet weak var minimizeRoundConnectionView: UIView!
-    @IBOutlet weak var minimizeScheduleLbl: UILabel!
-    @IBOutlet weak var minimizeBtn: UIButton!
-    @IBOutlet weak var minimizeLbl: UILabel!
-    
-    weak var maximizeDelegate: ChangeCellProtocol?
+    @IBOutlet weak var sectionTitleLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var toolbarView: ToolbarViewCell!
     
     override func awakeFromNib() {
         self.backgroundColor = UIColor.feedBackgroundColor()
         containerView.backgroundColor = UIColor.feedBackgroundColor()
-        minimizeContainerView.isHidden = true
-        setUpCornerRadious()
-        minimizeBtn.addTarget(self, action: #selector(expandSchedule), for: .touchUpInside)
         
+        setUpCornerRadious()
     }
     
     func setUpCornerRadious() {
-        
-        roundConnectionView.layer.cornerRadius = roundConnectionView.layer.frame.width / 2
-        minimizeRoundConnectionView.layer.cornerRadius = roundConnectionView.layer.frame.width / 2
-        
+        roundConnectionView.layer.cornerRadius = 6
     }
     
-    func setupMinimizeView() {
-        minimizeContainerView.isHidden = false
-        minimizeContainerView.backgroundColor = UIColor.white
-        containerView.backgroundColor = UIColor.feedBackgroundColor()
-        
+    func changeColor(color: UIColor) {
+        //toolbarView.backgroundColor = color
+        toolbarView.changeColorCircle(color: color)
+        roundConnectionView.backgroundColor = color
+        connectionView.backgroundColor = color
     }
     
-    func expandSchedule() {
-        print("expand")
-        maximizeDelegate?.maximizeCell()
+    func changeTitle(title: String) {
+        toolbarView.title.text = title
+        sectionTitleLabel.text = title
     }
-    
+
 }
 
 extension UIView {

@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>112</string>
+	<string>155</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -80,6 +80,7 @@
 		<string>OpenSans-Light.ttf</string>
 		<string>OpenSans-Regular.ttf</string>
 		<string>OpenSans-Semibold.ttf</string>
+		<string>AlfaSlabOne-Regular.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

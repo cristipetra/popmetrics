@@ -115,7 +115,7 @@ class LoginViewController: UIViewController {
                 
                 let codeVC = CodeViewController();
                 codeVC.phoneNo = phoneNumber;
-                self.navigationController?.pushViewController(codeVC, animated: true)
+                self.present(codeVC, animated: true, completion: nil)
             }
         }
     }

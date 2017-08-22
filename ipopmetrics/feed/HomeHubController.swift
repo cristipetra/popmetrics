@@ -22,6 +22,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     var shouldDisplayCell = true
     var isInfoCellType = false;
+    var toDoCellHeight = 50 as CGFloat
+    var isToDoCellType = false
     
     let transition = BubbleTransition();
     var transitionButton:UIButton = UIButton();
@@ -42,9 +44,19 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let nc = NotificationCenter.default
         nc.addObserver(forName:NSNotification.Name(rawValue: "CardActionNotification"), object:nil, queue:nil, using:catchCardActionNotification)
       
+        let requiredActionNib = UINib(nibName: "RequiredAction", bundle: nil)
+        tableView.register(requiredActionNib, forCellReuseIdentifier: "requiredActionId")
+        
         let sectionHeaderNib = UINib(nibName: "HeaderCardCell", bundle: nil)
         tableView.register(sectionHeaderNib, forCellReuseIdentifier: "headerCell")
         
+        let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
+        tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
+        
+        let toDoCardNib = UINib(nibName: "ToDoCell", bundle: nil)
+        tableView.register(toDoCardNib, forCellReuseIdentifier: "ToDoCell")
+        
+        /*
         let requiredActionCardNib = UINib(nibName: "RequiredActionCard", bundle: nil)
         tableView.register(requiredActionCardNib, forCellReuseIdentifier: "RequiredActionCard")
       
@@ -59,9 +71,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         let dailyInsightNib = UINib(nibName: "DailyInsightsCardCell", bundle: nil)
         tableView.register(dailyInsightNib, forCellReuseIdentifier: "DailyInsightsCard")
-        
-        let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
-        tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
       
         let actionHistoryCardNib = UINib(nibName: "ActionHistoryCard", bundle: nil)
         tableView.register(actionHistoryCardNib, forCellReuseIdentifier: "ActionHistoryCard")
@@ -80,6 +89,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         let actionCardNib = UINib(nibName: "ActionCard", bundle: nil)
         tableView.register(actionCardNib, forCellReuseIdentifier: "ActionCard")
+         */
+        
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
@@ -142,9 +153,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             }
             
             
-            self.sections = feedStore.getFeed()
+            //self.sections = feedStore.getFeed()
             
-            
+            self.sections = []
             // Add temp recommendation sections
             let tmpSectionRecommendation:FeedSection = FeedSection()
             tmpSectionRecommendation.name = "Recommendation"
@@ -173,6 +184,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             
             self.sections.append(tmpSectionRecommendation)
+              /*
             
             let tmpSectionApproval:FeedSection = FeedSection()
             tmpSectionApproval.name = "Approval"
@@ -200,7 +212,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             self.sections.append(tmpSectionApproval)
             
-            
+            */
             let tmpSectionInsight:FeedSection = FeedSection()
             tmpSectionInsight.name = "Daily Insight"
             tmpSectionInsight.index = 1;
@@ -218,6 +230,16 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             self.sections.append(tmpSectionInsight)
             
+            
+ 
+            let toDoSection: FeedSection = FeedSection()
+            toDoSection.name = ""
+            toDoSection.index = 1
+            let toDoItem : FeedItem = FeedItem()
+            toDoItem.type = "toDo"
+            toDoSection.items.append(toDoItem)
+            
+            self.sections.append(toDoSection)
             
             let lastSection: FeedSection = FeedSection()
             lastSection.name = ""
@@ -304,8 +326,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let section = sections[sectionIdx]
         let item = section.items[rowIdx]
         
+        isToDoCellType = false
         isInfoCellType = false
         switch(item.type) {
+            /*
             case "required_action":
                 shouldDisplayCell = true
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
@@ -316,22 +340,26 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 
                 cell.connectionView.isHidden = ((sections[sectionIdx].items.count-1) == indexPath.row) ? true : false;
                 return cell
-
+ */
             case "recommendation":
                 shouldDisplayCell = true
-                let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendationCard", for: indexPath) as! RecommendationCardCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "requiredActionId", for: indexPath) as! RequiredAction
                 cell.selectionStyle = .none
-                cell.configure(item, handler:self.requiredActionHandler)
-                cell.indexPath = indexPath
+                cell.backgroundColor = UIColor.feedBackgroundColor()
+                cell.footerView.layer.backgroundColor = UIColor.clear.cgColor
                 if((sections[sectionIdx].items.count-1) == indexPath.row) {
-                    cell.connectionView.isHidden = true;
+                    cell.connectionLineView.isHidden = true;
+                }
+                if indexPath.row == 0 {
+                    //cell.footerView.actionButton.imageButtonType = .notification
+                    cell.setTitle(title: "Yo!You didn't allow notifications the first time round :)")
+                    cell.setMessage(message: "Allow these push notifications to make sure you never miss a beat!")
+                    cell.footerView.approveLbl.text = "Allow Notifications"
                 }
                 return cell
-            
+            /*
             case "approval":
                 shouldDisplayCell = true
-                
-                //Fixme: find a way to add card info for approval
                 if(rowIdx == 0) {
                     isInfoCellType = true
                     let cell = tableView.dequeueReusableCell(withIdentifier: "ApprovalCardInfo", for: indexPath) as! ApprovalCardInfoCell
@@ -345,22 +373,41 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                     cell.connectionView.isHidden = true;
                 }
                 return cell
+
             case "daily_insight":
                 shouldDisplayCell = true
-                let cell = tableView.dequeueReusableCell(withIdentifier: "DailyInsightsCard", for: indexPath) as! DailyInsightsCardCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "requiredActionId", for: indexPath) as! RequiredAction
                 cell.selectionStyle = .none
-                cell.configure(item, handler:self.requiredActionHandler)
+                cell.backgroundColor = UIColor.feedBackgroundColor()
+                cell.footerView.layer.backgroundColor = UIColor.clear.cgColor
+                cell.connectionLineView.isHidden = true
+                //cell.configure(item, handler:self.requiredActionHandler)
                 if((sections[sectionIdx].items.count-1) == indexPath.row) {
-                    cell.connectionView.isHidden = true;
+                    //cell.connectionLineView.isHidden = true;
                 }
                 return cell
+  */
+         
+            case "toDo":
+                shouldDisplayCell = true
+                isToDoCellType = true
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath) as!
+                ToDoCell
+                cell.toDoCountView.numberOfRows = 2
+                cell.toDoCountViewHeight.constant = CGFloat(cell.toDoCountView.numberOfRows * 60 + 93)
+                toDoCellHeight = cell.toDoCountViewHeight.constant
+                cell.selectionStyle = .none
+                return cell
+
             case "info":
                 shouldDisplayCell = true
                 isInfoCellType = true
                 let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
+                cell.changeTitleWithSpacing(title: "You're all caught up.")
+                cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
                 cell.selectionStyle = .none
-                
                 return cell
+
             default:
                 shouldDisplayCell = false
                 let cell = UITableViewCell()
@@ -379,12 +426,14 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             cell.changeColor(section: 0)
             cell.sectionTitleLabel.text = "Attention required";
             return cell
+            
         case 1:
             shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(section: 1)
-            cell.sectionTitleLabel.text = "Recommendation For You";
+            cell.sectionTitleLabel.text = "To Do"
             return cell
+            /*
         case 2:
             shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
@@ -398,6 +447,14 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             cell.changeColor(section: 3)
             cell.sectionTitleLabel.text = "Daily Insights";
             return cell
+
+        case 4:
+            shouldDisplayHeaderCell = true
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            cell.changeColor(section: 4)
+            cell.sectionTitleLabel.text = "To Do"
+            return cell
+     */
         default:
             shouldDisplayHeaderCell = false
             let cell = UITableViewCell()
@@ -416,17 +473,16 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         print(shouldDisplayHeaderCell)
         var height: CGFloat = 0;
-        if (section == 0 || section == 1 || section == 2 || section == 3) {
+        if (section == 0 || section == 1) {
             height = 80;
-        }
-        //last card don't have header
-        if( section == (sections.count - 1)) {
-            height = 0
         }
         return height
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if isToDoCellType {
+            return toDoCellHeight
+        }
         return shouldDisplayCell ? getCellHeight() : 0
     }
     
@@ -444,9 +500,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     fileprivate func getCellHeight() -> CGFloat {
         let a =  CGFloat(((tableView.frame.width * 9.0) / 16.0) + 16) // 16 is the padding
-        var heightCell: CGFloat = 464
+        var heightCell: CGFloat = 479
         if(isInfoCellType) {
-            heightCell = 172
+            heightCell = 261
         }
         return heightCell
         // return a
