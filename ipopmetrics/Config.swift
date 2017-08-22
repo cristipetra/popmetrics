@@ -20,7 +20,7 @@ class Config: NSObject {
     
     class var appWebAimeeLink: String {
         get {
-            return "http://chat.popmetrics.io/#/aimee/start/58fe437ac7631a139803757e/59525092c7631a102e88b9ea"
+            return "http://popmetrics.io/aimee"
         }
     }
     
