@@ -71,7 +71,7 @@ class WelcomeScreen: UIViewController {
     }
     
     @IBAction func handlerSpoken(_ sender: UIButton) {
-        let loginVC = LoginNavigationViewController()
+        let loginVC = LoginViewController()
         self.present(loginVC, animated: true, completion: nil)
     }
 
