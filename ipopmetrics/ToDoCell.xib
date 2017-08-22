@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ToDoCell" customModule="ipopmetrics" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="241"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="240.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4iY-f6-hjf">
+                        <rect key="frame" x="10" y="0.0" width="355" height="240.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DxU-lr-rx7" customClass="ToDoCountView" customModule="ipopmetrics" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="355" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="vyt-TY-hit"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tk4-WE-T5P">
+                                <rect key="frame" x="0.0" y="148.5" width="355" height="92"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3l-2P-biX" customClass="TwoImagesButton" customModule="ipopmetrics" customModuleProvider="target">
+                                        <rect key="frame" x="252" y="13" width="90" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="JqX-sg-UU1"/>
+                                            <constraint firstAttribute="width" constant="90" id="cQs-EN-aLb"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="leftHandImage" value="iconTodo"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="rightHandImage" value="iconCalLeft"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View To Do List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUx-6e-tKk">
+                                        <rect key="frame" x="261" y="64" width="73" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="WmM-Lu-Mce"/>
+                                            <constraint firstAttribute="width" constant="73" id="t0O-gM-U6D"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="10"/>
+                                        <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KtK-xA-HfK">
+                                        <rect key="frame" x="12" y="13" width="45" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="628-cM-fhZ"/>
+                                            <constraint firstAttribute="height" constant="45" id="HjC-Y1-9id"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.93168885869999996" green="0.94091350080000002" blue="0.94091350080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="iconCloseCard"/>
+                                        <state key="highlighted" image="iconClosecard"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJz-91-PGz">
+                                        <rect key="frame" x="80" y="13" width="45" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="DMm-ow-8l9"/>
+                                            <constraint firstAttribute="width" constant="45" id="E92-T2-BSX"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.93168885869999996" green="0.94091350080000002" blue="0.94091350080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="iconInfoPage"/>
+                                        <state key="highlighted" image="iconClosecard"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="gUx-6e-tKk" secondAttribute="trailing" constant="21" id="4yo-JY-hWy"/>
+                                    <constraint firstItem="KtK-xA-HfK" firstAttribute="top" secondItem="tk4-WE-T5P" secondAttribute="top" constant="13" id="Nmh-w9-p5b"/>
+                                    <constraint firstAttribute="trailing" secondItem="N3l-2P-biX" secondAttribute="trailing" constant="13" id="SSF-e2-AnG"/>
+                                    <constraint firstItem="gUx-6e-tKk" firstAttribute="top" secondItem="N3l-2P-biX" secondAttribute="bottom" constant="6" id="VE4-Ao-Kh1"/>
+                                    <constraint firstItem="N3l-2P-biX" firstAttribute="top" secondItem="tk4-WE-T5P" secondAttribute="top" constant="13" id="VdS-ln-adB"/>
+                                    <constraint firstAttribute="height" constant="92" id="arw-mO-1zf"/>
+                                    <constraint firstItem="bJz-91-PGz" firstAttribute="top" secondItem="tk4-WE-T5P" secondAttribute="top" constant="13" id="cGV-Ab-s3w"/>
+                                    <constraint firstItem="bJz-91-PGz" firstAttribute="leading" secondItem="KtK-xA-HfK" secondAttribute="trailing" constant="23" id="u9j-TV-Vz6"/>
+                                    <constraint firstItem="KtK-xA-HfK" firstAttribute="leading" secondItem="tk4-WE-T5P" secondAttribute="leading" constant="12" id="uVf-nD-rJh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="tk4-WE-T5P" secondAttribute="bottom" id="1RX-l0-1OS"/>
+                            <constraint firstItem="DxU-lr-rx7" firstAttribute="leading" secondItem="4iY-f6-hjf" secondAttribute="leading" id="F4g-cI-zOW"/>
+                            <constraint firstItem="DxU-lr-rx7" firstAttribute="top" secondItem="4iY-f6-hjf" secondAttribute="top" id="WSE-vB-G9l"/>
+                            <constraint firstAttribute="trailing" secondItem="DxU-lr-rx7" secondAttribute="trailing" id="ewu-9H-2oq"/>
+                            <constraint firstItem="tk4-WE-T5P" firstAttribute="leading" secondItem="4iY-f6-hjf" secondAttribute="leading" id="gzM-48-oqf"/>
+                            <constraint firstAttribute="trailing" secondItem="tk4-WE-T5P" secondAttribute="trailing" id="hHa-p5-4o3"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="4iY-f6-hjf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="85t-Dm-DS9"/>
+                    <constraint firstAttribute="trailing" secondItem="4iY-f6-hjf" secondAttribute="trailing" constant="10" id="CXr-8p-0Gr"/>
+                    <constraint firstAttribute="bottom" secondItem="4iY-f6-hjf" secondAttribute="bottom" id="EjC-55-og0"/>
+                    <constraint firstItem="4iY-f6-hjf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ql6-DC-798"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="goToButton" destination="N3l-2P-biX" id="unC-mB-gQd"/>
+                <outlet property="toDoCountView" destination="DxU-lr-rx7" id="P2G-vw-xlv"/>
+                <outlet property="toDoCountViewHeight" destination="vyt-TY-hit" id="LAO-th-jBU"/>
+                <outlet property="wrapperView" destination="4iY-f6-hjf" id="MYv-jR-zdb"/>
+            </connections>
+            <point key="canvasLocation" x="24.5" y="75.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="iconCalLeft" width="15" height="24"/>
+        <image name="iconCloseCard" width="53" height="53"/>
+        <image name="iconClosecard" width="53" height="53"/>
+        <image name="iconInfoPage" width="53" height="53"/>
+        <image name="iconTodo" width="30" height="16"/>
+    </resources>
+</document>

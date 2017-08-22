@@ -22,6 +22,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     var shouldDisplayCell = true
     var isInfoCellType = false;
+    var toDoCellHeight = 0 as CGFloat
+    var isToDoCellType = false
     
     let transition = BubbleTransition();
     var transitionButton:UIButton = UIButton();
@@ -80,6 +82,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         let actionCardNib = UINib(nibName: "ActionCard", bundle: nil)
         tableView.register(actionCardNib, forCellReuseIdentifier: "ActionCard")
+        
+        let toDoCardNib = UINib(nibName: "ToDoCell", bundle: nil)
+        tableView.register(toDoCardNib, forCellReuseIdentifier: "ToDoCell")
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
@@ -218,6 +223,16 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             self.sections.append(tmpSectionInsight)
             
+            let toDoSection: FeedSection = FeedSection()
+            toDoSection.name = ""
+            toDoSection.index = 1
+            let toDoItem : FeedItem = FeedItem()
+            toDoItem.type = "toDo"
+            toDoSection.items.append(toDoItem)
+            
+            self.sections.append(toDoSection)
+
+            
             
             let lastSection: FeedSection = FeedSection()
             lastSection.name = ""
@@ -304,6 +319,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let section = sections[sectionIdx]
         let item = section.items[rowIdx]
         
+        isToDoCellType = false
         isInfoCellType = false
         switch(item.type) {
             case "required_action":
@@ -362,6 +378,16 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
                 cell.selectionStyle = .none
                 return cell
+            case "toDo":
+                shouldDisplayCell = true
+                isToDoCellType = true
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath) as!
+                ToDoCell
+                cell.toDoCountView.numberOfRows = 2
+                cell.toDoCountViewHeight.constant = CGFloat(cell.toDoCountView.numberOfRows * 60 + 93)
+                toDoCellHeight = cell.toDoCountViewHeight.constant
+                cell.selectionStyle = .none
+                return cell
             default:
                 shouldDisplayCell = false
                 let cell = UITableViewCell()
@@ -399,6 +425,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             cell.changeColor(section: 3)
             cell.sectionTitleLabel.text = "Daily Insights";
             return cell
+        case 4:
+            shouldDisplayHeaderCell = true
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            cell.changeColor(section: 4)
+            cell.sectionTitleLabel.text = "To Do"
+            return cell
         default:
             shouldDisplayHeaderCell = false
             let cell = UITableViewCell()
@@ -417,7 +449,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         print(shouldDisplayHeaderCell)
         var height: CGFloat = 0;
-        if (section == 0 || section == 1 || section == 2 || section == 3) {
+        if (section == 0 || section == 1 || section == 2 || section == 3 || section == 4) {
             height = 80;
         }
         //last card don't have header
@@ -428,6 +460,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if isToDoCellType {
+            return toDoCellHeight
+        }
         return shouldDisplayCell ? getCellHeight() : 0
     }
     

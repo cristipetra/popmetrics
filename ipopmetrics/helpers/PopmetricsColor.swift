@@ -29,7 +29,7 @@ class PopmetricsColor {
     static let borderLight = PopmetricsColor.textLight
     static let borderMedium = PopmetricsColor.textMedium
     static let borderDark = PopmetricsColor.textDark
-    
+    static let dividerBorder = UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 1)
     static let orange = UIColor(red: 227/255.0, green: 135/255.0, blue: 58/255.0, alpha: 1.0)
     
     static let greenLight = UIColor(red: 176/255.0, green: 247/255.0, blue: 222/255.0, alpha: 1.0)
