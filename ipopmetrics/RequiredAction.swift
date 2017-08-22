@@ -38,6 +38,20 @@ class RequiredAction: UITableViewCell {
         }
     }
     
+    func setTitle(title: String) {
+        titleLabel.text = title
+        titleLabel.font = UIFont(name: FontBook.alfaRegular, size: 20)
+        
+        titleLabel.textColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
+    }
+    
+    func setMessage(message: String) {
+        titleLabel.text = message
+        titleLabel.font = UIFont(name: FontBook.semibold, size: 15)
+        titleLabel.textColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
+        
+    }
+    
     func setUpTopView() {
         
         toolbarView.isLeftImageHidden = false
