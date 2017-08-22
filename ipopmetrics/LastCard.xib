@@ -91,11 +91,11 @@
                                             <action selector="goToButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4Pt-kn-PQP"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View To Do List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGG-Xw-ktc">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View To Do List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGG-Xw-ktc">
                                         <rect key="frame" x="261" y="67" width="73" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14" id="VWd-ef-j1J"/>
-                                            <constraint firstAttribute="width" constant="73" id="tYN-Cb-ALh"/>
+                                            <constraint firstAttribute="width" constant="83" id="tYN-Cb-ALh"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="10"/>
                                         <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
@@ -120,7 +120,7 @@
                                     <constraint firstAttribute="trailing" secondItem="OhX-Wm-mus" secondAttribute="trailing" constant="13" id="30N-LQ-BRO"/>
                                     <constraint firstItem="OhX-Wm-mus" firstAttribute="top" secondItem="lCs-7n-YJn" secondAttribute="top" constant="16" id="7ha-BE-MGj"/>
                                     <constraint firstItem="HXD-4C-rk7" firstAttribute="leading" secondItem="lCs-7n-YJn" secondAttribute="leading" id="8L6-ER-Pmf"/>
-                                    <constraint firstAttribute="trailing" secondItem="uGG-Xw-ktc" secondAttribute="trailing" constant="21" id="Jrw-Ob-1CW"/>
+                                    <constraint firstAttribute="trailing" secondItem="uGG-Xw-ktc" secondAttribute="trailing" constant="17" id="Jrw-Ob-1CW"/>
                                     <constraint firstAttribute="height" constant="101" id="UTx-KY-sBT"/>
                                     <constraint firstItem="w9c-sO-KQx" firstAttribute="top" secondItem="HXD-4C-rk7" secondAttribute="bottom" constant="15" id="Vyc-VV-FAl"/>
                                     <constraint firstItem="HXD-4C-rk7" firstAttribute="top" secondItem="lCs-7n-YJn" secondAttribute="top" id="nMj-0z-MWc"/>
@@ -168,6 +168,7 @@
                 <outlet property="imageTitle" destination="gZZ-g1-aRE" id="25t-he-WkI"/>
                 <outlet property="messageLbl" destination="EQQ-Uf-qQE" id="i53-Vt-ags"/>
                 <outlet property="secondContainerView" destination="TXX-Yp-XlA" id="2h5-bR-dZ8"/>
+                <outlet property="titleActionButton" destination="uGG-Xw-ktc" id="qa5-az-Oot"/>
                 <outlet property="titleLabel" destination="i6x-z1-jd3" id="Cid-dA-ILf"/>
                 <outlet property="xbutton" destination="w9c-sO-KQx" id="iWs-Xt-c5i"/>
             </connections>

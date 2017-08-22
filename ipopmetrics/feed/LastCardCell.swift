@@ -16,6 +16,7 @@ class LastCardCell: UITableViewCell {
     @IBOutlet weak var messageLbl: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleActionButton: UILabel!
     
     internal var shadowView: UIView!;
     

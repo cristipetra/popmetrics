@@ -198,6 +198,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
             cell.changeTitleWithSpacing(title: "Thats it for now");
             cell.changeMessageWithSpacing(message: "Check back to see if there is anything more in the Home Feed")
+            cell.titleActionButton.text = "View Home Feed"
             cell.selectionStyle = .none
             return cell
         }
