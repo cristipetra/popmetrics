@@ -13,6 +13,7 @@ import SwiftyJSON
 class ToDoViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var toDoTopView: TodoTopView!
     
     fileprivate var sections: [TodoSection] = []
     var approveIndex = 3
@@ -110,6 +111,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
             cell.changeTitleWithSpacing(title: "Finished with the actions?");
             cell.changeMessageWithSpacing(message: "Check out the things you've schedulled in the caledar hub")
+            cell.titleActionButton.text = "View Calendar"
             cell.selectionStyle = .none
             return cell
         }
@@ -155,6 +157,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
             headerCell.changeColor(color: sections[section].items[0].getSectionColor)
             headerCell.changeTitle(title: sections[section].items[0].socialTextString)
+            toDoTopView.setUpView(view: StatusArticle(rawValue: sections[section].status)!)
             return headerCell
         } else {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
