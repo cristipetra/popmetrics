@@ -117,10 +117,6 @@
                             <constraint firstItem="LHa-gz-y0P" firstAttribute="leading" secondItem="uOM-fC-49A" secondAttribute="leading" constant="26" id="vom-4a-yvz"/>
                             <constraint firstAttribute="trailing" secondItem="LHa-gz-y0P" secondAttribute="trailing" constant="25" id="xa7-Mp-bWQ"/>
                         </constraints>
-                        <connections>
-                            <outlet property="cancelButon" destination="xBm-zB-8b4" id="eQf-xZ-sWJ"/>
-                            <outlet property="confirmButton" destination="vHJ-Fc-uxr" id="DTS-yQ-gCW"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="xBm-zB-8b4" id="Shw-Ln-u3C"/>

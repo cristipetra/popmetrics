@@ -11,7 +11,7 @@ import UIKit
 
 enum AppStoryboard : String {
     
-    case Main, Signin, Boarding
+    case Main, Signin, Boarding, Notifications
     
     var instance : UIStoryboard {
         

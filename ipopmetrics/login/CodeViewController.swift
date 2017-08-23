@@ -75,7 +75,12 @@ class CodeViewController: UIViewController {
                     return
                 }
                 
-                self.showVideoScreen()
+                let isRegisteredForRemoteNotifications = UIApplication.shared.isRegisteredForRemoteNotifications
+                if isRegisteredForRemoteNotifications {
+                    self.showVideoScreen()
+                } else {
+                    self.showPushNotificationsScreen()
+                }
             }
         }
         
@@ -140,6 +145,11 @@ class CodeViewController: UIViewController {
     internal func showVideoScreen() {
         let videoScreenVC = AppStoryboard.Signin.instance.instantiateViewController(withIdentifier: ViewNames.SBID_VIDEO_SCREEN)
         self.present(videoScreenVC, animated: true, completion: nil)
+    }
+    
+    internal func showPushNotificationsScreen() {
+        let notificationsVC = AppStoryboard.Notifications.instance.instantiateViewController(withIdentifier: ViewNames.SBID_PUSH_NOTIFICATIONS_VC)
+        self.present(notificationsVC, animated: false, completion: nil)
     }
 
 }
