@@ -15,14 +15,14 @@ class TwoImagesButton: UIButton {
     var leftHandImage: UIImage? {
         didSet {
             leftHandImage = leftHandImage?.withRenderingMode(.alwaysTemplate)
-            setupImages()
+            setLeftImage()
         }
     }
     @IBInspectable
     var rightHandImage: UIImage? {
         didSet {
             rightHandImage = rightHandImage?.withRenderingMode(.alwaysTemplate)
-            setupImages()
+            setRightImage()
         }
     }
     
@@ -64,21 +64,22 @@ class TwoImagesButton: UIButton {
         
         self.addSubview(leftImageView)
         self.addSubview(rightImageView)
+        self.addSubview(rightTextLabel)
         
-        setupImages()
     }
     
-    func setupImages() {
+    func setLeftImage() {
         if let leftImage = leftHandImage {
-            //leftImageView = UIImageView(image: leftImage)
             leftImageView.image = leftImage
             let height = 18 as CGFloat
             //let yPos = (self.frame.height - height) / 2
             let yPos = CGFloat(16)
             leftImageView.contentMode = .scaleAspectFill
             leftImageView.frame = CGRect(x: 20 as CGFloat, y: yPos, width: 26 as CGFloat, height: height)
-        } 
-        
+        }
+    }
+    
+    func setRightImage() {
         if let rightImage = rightHandImage {
             rightImageView = UIImageView(image: rightImage)
             //rightImageView.tintColor = UIColor.black
@@ -88,7 +89,6 @@ class TwoImagesButton: UIButton {
             let yPos = CGFloat(16)
             rightImageView.contentMode = .scaleAspectFill
             rightImageView.frame = CGRect(x: 54 as CGFloat, y: yPos, width: 16 as CGFloat, height: height)
-            
         }
     }
     
@@ -130,9 +130,11 @@ class TwoImagesButton: UIButton {
             rightHandImage = UIImage(named: "iconCalLeft")
         case .approved:
             leftHandImage = UIImage(named: "icon2CtaApprovepost")
+            rightImageView.isHidden = true
             approveButtonText = "Approved"
         case .rescheduled:
             leftHandImage = UIImage(named: "icon2CtaApprovepost")
+            rightImageView.isHidden = true
             approveButtonText = "Rescheduled"
         default:
             break

@@ -66,7 +66,6 @@ class ToDoCardCell: UITableViewCell {
             approvedButton.imageButtonType = .rescheduled
         }
         
-        //approvedButton.imageButtonType = .approved
         approvedButton.rightImageView.image = nil
         approvedButton.layer.cornerRadius = 6
         
