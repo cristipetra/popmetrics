@@ -55,4 +55,11 @@ class UsersStore {
         }
     }
     
+    static var isNotificationsAllowed: Bool {
+        get {
+            let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
+            return notificationType == [] ? false : true
+        }
+    }
+    
 }

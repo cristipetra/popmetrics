@@ -36,5 +36,11 @@ class Config: NSObject {
         }
     }
     
+    class var howToTurnNotificationLink: String {
+        get {
+            return "http://blog.popmetrics.io/how-to-turn-on-push-notifications/"
+        }
+    }
+    
 
 }

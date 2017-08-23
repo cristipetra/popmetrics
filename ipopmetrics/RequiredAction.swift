@@ -43,11 +43,22 @@ class RequiredAction: UITableViewCell {
         self.item = item
         self.actionHandler = handler
         
-        self.footerView.actionButton.addTarget(self, action:#selector(handleAction(_:)), for: .touchDown)
+        
     
         self.backgroundColor = UIColor.feedBackgroundColor()
         self.titleLabel.text  = item.headerTitle
         messageLabel.text = item.message
+        
+        
+        //Todo move from here addTarget
+        if(item.actionLabel == "Notifications") {
+            footerView.actionButton.imageButtonType = .allowNotification
+            self.footerView.actionButton.addTarget(self, action:#selector(handleActionNotifications(_:)), for: .touchDown)
+        } else {
+            self.footerView.actionButton.addTarget(self, action:#selector(handleActionTwitter(_:)), for: .touchDown)
+        }
+        
+        
     }
     
     internal func setupCorners() {
@@ -94,7 +105,11 @@ class RequiredAction: UITableViewCell {
         toolbarView.title.attributedText = headerTitle
     }
     
-    @objc func handleAction(_ sender: SimpleButton) {
+    func handleActionNotifications(_ sender: SimpleButton) {
+        UIApplication.shared.open(URL(string: Config.howToTurnNotificationLink)!, options: [:], completionHandler: nil)
+    }
+    
+    @objc func handleActionTwitter(_ sender: SimpleButton) {
         //self.actionButton.isLoading = true
         //actionHandler?.handleRequiredAction(sender, item: self.item!)
         connectTwitter(sender, item: self.item!)

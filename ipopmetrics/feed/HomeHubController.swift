@@ -28,6 +28,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     let transition = BubbleTransition();
     var transitionButton:UIButton = UIButton();
     
+    
+    let tmpSectionRecommendation:FeedSection = FeedSection()
+    let recommendationNotificationItem: FeedItem = FeedItem();
+    
     var isAnimatingHeader = false
     
     override func viewDidLoad() {
@@ -58,41 +62,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         let recommendedNib = UINib(nibName: "RecommendedCell", bundle: nil)
         tableView.register(recommendedNib, forCellReuseIdentifier: "recommendedId")
-        
-        /*
-        let requiredActionCardNib = UINib(nibName: "RequiredActionCard", bundle: nil)
-        tableView.register(requiredActionCardNib, forCellReuseIdentifier: "RequiredActionCard")
-      
-        let recommendationCardNib = UINib(nibName: "RecommendationCard", bundle: nil)
-        tableView.register(recommendationCardNib, forCellReuseIdentifier: "RecommendationCard")
-        
-        let approvalCardNib = UINib(nibName: "ApprovalCard", bundle: nil)
-        tableView.register(approvalCardNib, forCellReuseIdentifier: "ApprovalCard")
-        
-        let approvalCardInfoNib = UINib(nibName: "ApprovalCardInfo", bundle: nil)
-        tableView.register(approvalCardInfoNib, forCellReuseIdentifier: "ApprovalCardInfo")
-        
-        let dailyInsightNib = UINib(nibName: "DailyInsightsCardCell", bundle: nil)
-        tableView.register(dailyInsightNib, forCellReuseIdentifier: "DailyInsightsCard")
-      
-        let actionHistoryCardNib = UINib(nibName: "ActionHistoryCard", bundle: nil)
-        tableView.register(actionHistoryCardNib, forCellReuseIdentifier: "ActionHistoryCard")
-        
-        let articleOfInterestCardNib = UINib(nibName: "ArticleOfInterestCard", bundle: nil)
-        tableView.register(articleOfInterestCardNib, forCellReuseIdentifier: "ArticleOfInterestCard")
-        
-        let insightCardNib = UINib(nibName: "InsightCard", bundle: nil)
-        tableView.register(insightCardNib, forCellReuseIdentifier: "InsightCard")
-        
-        let statsSummaryCardNib = UINib(nibName: "StatsSummaryCard", bundle: nil)
-        tableView.register(statsSummaryCardNib, forCellReuseIdentifier: "StatsSummaryCard")
-        
-        let bestCourseCardNib = UINib(nibName: "BestCourseCard", bundle: nil)
-        tableView.register(bestCourseCardNib, forCellReuseIdentifier: "BestCourseCard")
-        
-        let actionCardNib = UINib(nibName: "ActionCard", bundle: nil)
-        tableView.register(actionCardNib, forCellReuseIdentifier: "ActionCard")
-         */
         
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
@@ -160,33 +129,36 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             self.sections = []
             // Add temp recommendation sections
-            let tmpSectionRecommendation:FeedSection = FeedSection()
-            tmpSectionRecommendation.name = "Recommendation"
-            tmpSectionRecommendation.index  = 2;
+            
+            
+            self.tmpSectionRecommendation.name = "Required Actions"
+            self.tmpSectionRecommendation.index  = 2;
             
             let recommendationItem: FeedItem = FeedItem();
             recommendationItem.actionHandler = "no_action"
-            recommendationItem.actionLabel = "Connect"
+            recommendationItem.actionLabel = "Notifications"
             recommendationItem.headerIconUri = "icon_twitter";
             recommendationItem.imageUri = "back_twitter";
-            recommendationItem.headerTitle = "Get a Twitter Account ASAP"
-            recommendationItem.message = "Increase your digital footprint & important for SEO"
-            recommendationItem.type = "recommendation"
-            
-            let recommendationItem2: FeedItem = FeedItem();
-            recommendationItem2.actionHandler = "no_action"
-            recommendationItem2.actionLabel = "Connect"
-            recommendationItem2.headerIconUri = "icon_citation_error";
-            recommendationItem2.imageUri = "social_media";
-            recommendationItem2.headerTitle = "Social Media Automation"
-            recommendationItem2.message = "Why do it... and a description goes in here to compel the user to click on the card, Im sure if it needs a secondary CTA or whether the card is sufficient."
-            recommendationItem2.type = "recommendation"
-            
-            tmpSectionRecommendation.items.append(recommendationItem)
-            tmpSectionRecommendation.items.append(recommendationItem2)
+            recommendationItem.headerTitle = "Yo!You didn't allow notifications the first time round :)"
+            recommendationItem.message = "Allow those push notifications to make sure never miss a beat!"
+            recommendationItem.type = "required"
             
             
-            self.sections.append(tmpSectionRecommendation)
+            self.recommendationNotificationItem.actionHandler = "no_action"
+            self.recommendationNotificationItem.actionLabel = "Twitter"
+            self.recommendationNotificationItem.headerIconUri = "icon_citation_error";
+            self.recommendationNotificationItem.imageUri = "social_media";
+            self.recommendationNotificationItem.headerTitle = "Connect your Twitter and optimize your content for maximum growth."
+            self.recommendationNotificationItem.message = "Twitter is a key access point to increase your social following."
+            self.recommendationNotificationItem.type = "required"
+            
+            self.tmpSectionRecommendation.items.append(recommendationItem)
+            self.tmpSectionRecommendation.items.append(self.recommendationNotificationItem)
+            
+            if( UsersStore.isTwitterConnected) {
+                //self.sections.append(tmpSectionRecommendation)
+            }
+            self.sections.append(self.tmpSectionRecommendation)
               /*
             
             let tmpSectionApproval:FeedSection = FeedSection()
@@ -216,8 +188,19 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             self.sections.append(tmpSectionApproval)
             
             */
+            
+            let toDoSection: FeedSection = FeedSection()
+            toDoSection.name = "To Do"
+            toDoSection.index = 1
+            let toDoItem : FeedItem = FeedItem()
+            toDoItem.type = "toDo"
+            toDoSection.items.append(toDoItem)
+            
+            self.sections.append(toDoSection)
+            
+            
             let tmpSectionInsight:FeedSection = FeedSection()
-            tmpSectionInsight.name = "Daily Insight"
+            tmpSectionInsight.name = "Recommended For You"
             tmpSectionInsight.index = 1;
             
             
@@ -227,23 +210,24 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             insightItem.imageUri = "icon_citationerror_splash";
             insightItem.headerTitle = "Article Title Goes Here"
             insightItem.message = "What is the citation error relating to? Where is it that this person needs to do?"
-            insightItem.type = "daily_insight"
+            insightItem.type = "recommended"
+            
+            let recommendationItem3: FeedItem = FeedItem();
+            recommendationItem3.actionHandler = "no_action"
+            recommendationItem3.actionLabel = "Connect"
+            recommendationItem3.headerIconUri = "icon_citation_error";
+            recommendationItem3.imageUri = "social_media";
+            recommendationItem3.headerTitle = "Social Media Automation"
+            recommendationItem3.message = "Why do it... and a description goes in here to compel the user to click on the card, Im sure if it needs a secondary CTA or whether the card is sufficient."
+            recommendationItem3.type = "recommended"
             
             tmpSectionInsight.items.append(insightItem)
+            tmpSectionInsight.items.append(recommendationItem3)
             
             self.sections.append(tmpSectionInsight)
             
             
  
-            let toDoSection: FeedSection = FeedSection()
-            toDoSection.name = ""
-            toDoSection.index = 1
-            let toDoItem : FeedItem = FeedItem()
-            toDoItem.type = "toDo"
-            toDoSection.items.append(toDoItem)
-            
-            self.sections.append(toDoSection)
-            
             let lastSection: FeedSection = FeedSection()
             lastSection.name = ""
             lastSection.index = 1;
@@ -265,6 +249,18 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             if !silent { self.tableView.reloadData() }
         }
         
+    }
+    
+    func changeSections() {
+        if( !UsersStore.isTwitterConnected) {
+            self.sections.append(tmpSectionRecommendation)
+        } else {
+            
+        }
+        
+        if (UsersStore.isNotificationsAllowed) {
+            
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -336,38 +332,32 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         isToDoCellType = false
         isInfoCellType = false
-        switch(item.type) {
-            /*
-            case "required_action":
-                shouldDisplayCell = true
-                let cell = tableView.dequeueReusableCell(withIdentifier: "RequiredActionCard", for: indexPath) as! RequiredActionViewCell
-                cell.selectionStyle = .none
-                cell.delegate = self
-                cell.configure(item, handler:self.requiredActionHandler)
-                cell.indexPath = indexPath
-                
-                cell.connectionView.isHidden = ((sections[sectionIdx].items.count-1) == indexPath.row) ? true : false;
-                return cell
- */
-            case "recommendation":
-                /*
+        switch(item.type) {    
+            case "required":
                 shouldDisplayCell = true
                 let cell = tableView.dequeueReusableCell(withIdentifier: "requiredActionId", for: indexPath) as! RequiredAction
                 cell.selectionStyle = .none
                 cell.backgroundColor = UIColor.feedBackgroundColor()
+                
                 cell.footerView.layer.backgroundColor = UIColor.clear.cgColor
                 if((sections[sectionIdx].items.count-1) == indexPath.row) {
                     cell.connectionLineView.isHidden = true;
+                    cell.configure(item, handler: self.requiredActionHandler)
                 }
                 if indexPath.row == 0 {
+                    cell.configure(item, handler: self.requiredActionHandler)
                     //cell.footerView.actionButton.imageButtonType = .notification
-                    cell.setTitle(title: "Yo!You didn't allow notifications the first time round :)")
-                    cell.setMessage(message: "Allow these push notifications to make sure you never miss a beat!")
+                    //cell.setTitle(title: "Yo!You didn't allow notifications the first time round :)")
+                    //cell.setMessage(message: "Allow these push notifications to make sure you never miss a beat!")
                     cell.footerView.approveLbl.text = "Allow Notifications"
+                    cell.bottomImageView.image = UIImage(named: "backAllowNotification")
+                } else {
+                    
                 }
                 return cell
- */
-            
+
+            case "recommended":
+ 
                 shouldDisplayCell = true
                 
                 isInfoCellType = false
@@ -381,39 +371,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                     cell.connectionLine.isHidden = true;
                 }
                 return cell
-            
-            
-            /*
-            case "approval":
-                shouldDisplayCell = true
-                if(rowIdx == 0) {
-                    isInfoCellType = true
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "ApprovalCardInfo", for: indexPath) as! ApprovalCardInfoCell
-                    return cell;
-                }
-                
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ApprovalCard", for: indexPath) as! ApprovalCardCell
-                cell.selectionStyle = .none
-                cell.configure(item, handler:self.requiredActionHandler)
-                if((sections[sectionIdx].items.count-1) == indexPath.row) {
-                    cell.connectionView.isHidden = true;
-                }
-                return cell
-
-            case "daily_insight":
-                shouldDisplayCell = true
-                let cell = tableView.dequeueReusableCell(withIdentifier: "requiredActionId", for: indexPath) as! RequiredAction
-                cell.selectionStyle = .none
-                cell.backgroundColor = UIColor.feedBackgroundColor()
-                cell.footerView.layer.backgroundColor = UIColor.clear.cgColor
-                cell.connectionLineView.isHidden = true
-                //cell.configure(item, handler:self.requiredActionHandler)
-                if((sections[sectionIdx].items.count-1) == indexPath.row) {
-                    //cell.connectionLineView.isHidden = true;
-                }
-                return cell
-  */
-         
             case "toDo":
                 shouldDisplayCell = true
                 isToDoCellType = true
@@ -432,6 +389,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.changeTitleWithSpacing(title: "You're all caught up.")
                 cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
                 cell.selectionStyle = .none
+                cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
                 return cell
 
             default:
@@ -441,46 +399,34 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         }
         
     }
+    @objc private func goToNextTab() {
+        self.tabBarController?.selectedIndex += 1
+    }
     
     var shouldDisplayHeaderCell = false
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        switch section {
-        case 0:
+        switch sections[section].items[0].type {
+        case "required" :
             shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
-            cell.changeColor(section: 0)
+            cell.changeColor(cardType: .required)
             cell.sectionTitleLabel.text = "Attention required";
             return cell
             
-        case 1:
+        case "todo":
             shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
-            cell.changeColor(section: 1)
+            cell.changeColor(cardType: .todo)
             cell.sectionTitleLabel.text = "To Do"
             return cell
-            /*
-        case 2:
+            
+        case "recommended":
             shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
-            cell.changeColor(section: 2)
-            cell.sectionTitleLabel.text = "Tasks For Approval";
-            //cell.isHidden = true;
+            cell.changeColor(cardType: .recommended)
+            cell.sectionTitleLabel.text = "Recommended For You";
             return cell
-        case 3:
-            shouldDisplayHeaderCell = true
-            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
-            cell.changeColor(section: 3)
-            cell.sectionTitleLabel.text = "Daily Insights";
-            return cell
-
-        case 4:
-            shouldDisplayHeaderCell = true
-            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
-            cell.changeColor(section: 4)
-            cell.sectionTitleLabel.text = "To Do"
-            return cell
-     */
         default:
             shouldDisplayHeaderCell = false
             let cell = UITableViewCell()
@@ -499,9 +445,17 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         print(shouldDisplayHeaderCell)
         var height: CGFloat = 0;
-        if (section == 0 || section == 1) {
+        if( sections[section].items[0].type == "required") {
+            height = (UsersStore.isTwitterConnected) ? 80 : 80
+        }
+        
+        if( sections[section].items[0].type == "todo") {
             height = 80;
         }
+        if( sections[section].items[0].type == "recommended") {
+            height = 80
+        }
+        
         return height
     }
     
@@ -509,6 +463,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         if isToDoCellType {
             return toDoCellHeight
         }
+        
         return shouldDisplayCell ? getCellHeight() : 0
     }
     
@@ -681,4 +636,10 @@ extension HomeHubViewController: InfoButtonDelegate {
         
         self.present(infoCardVC, animated: true, completion: nil)
     }
+}
+
+enum CardType: String {
+    case required = "required"
+    case recommended = "recommended"
+    case todo = "todo"
 }

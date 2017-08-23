@@ -203,6 +203,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             cell.changeTitleWithSpacing(title: "Thats it for now");
             cell.changeMessageWithSpacing(message: "Check back to see if there is anything more in the Home Feed")
             cell.titleActionButton.text = "View Home Feed"
+            cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
             cell.selectionStyle = .none
             return cell
         }
@@ -227,6 +228,10 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
 
             return maxCell
         }
+    }
+    
+    @objc private func goToNextTab() {
+        self.tabBarController?.selectedIndex = 0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

@@ -91,7 +91,7 @@ class FooterView: UIView {
     
     func setUpApproveStackView() {
         
-        approveStackView = UIStackView(arrangedSubviews: [actionButton, approveLbl])
+        approveStackView = UIStackView(arrangedSubviews: [actionButton])
         approveStackView.axis = .vertical
         approveStackView.distribution = .equalSpacing
         approveStackView.alignment = .center
@@ -102,8 +102,8 @@ class FooterView: UIView {
     func setUpHorizontalStackView() {
         
         let placeholderView = UIView(frame: CGRect(x: 0, y: 0, width: 46, height: 46))
-        
-        horizontalStackView = UIStackView(arrangedSubviews: [xButton,informationBtn,placeholderView,approveStackView])
+        placeholderView.backgroundColor = .red
+        horizontalStackView = UIStackView(arrangedSubviews: [xButton, informationBtn, placeholderView, approveStackView])
         
         horizontalStackView.axis = .horizontal
         horizontalStackView.distribution = .equalSpacing
@@ -112,6 +112,7 @@ class FooterView: UIView {
         
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(horizontalStackView)
+        
         
         horizontalStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -8).isActive = true
         horizontalStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
@@ -130,6 +131,7 @@ class FooterView: UIView {
         xButton.setImage(UIImage(named: "iconCtaClose"), for: .normal)
         xButton.layer.borderColor = UIColor.black.cgColor
         xButton.tintColor = UIColor.black
+        xButton.backgroundColor = UIColor.white
         xButton.layer.borderWidth = 1.5
     }
     
@@ -155,6 +157,7 @@ class FooterView: UIView {
         informationBtn.setAttributedTitle("i".set(style: attrTitle), for: .normal)
         informationBtn.layer.borderColor = UIColor.black.cgColor
         informationBtn.layer.borderWidth = 1.5
+        informationBtn.backgroundColor = UIColor.white
     }
     
     func informationHandler() {

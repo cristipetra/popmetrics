@@ -37,7 +37,7 @@ class ToDoCountView: UIView {
     func setupViews(numberOfRows: Int) {
         let labelY = 17 as CGFloat
         var wrapperViewY = 0 as CGFloat
-        let labelWidth = 80 as CGFloat
+        let labelWidth = 120 as CGFloat
         for row in 0 ..< numberOfRows  {
             let wrapperView = UIView(frame: CGRect(x: 0, y: wrapperViewY, width: self.frame.width, height: 60))
             let leftLabel = UILabel(frame: CGRect(x: 23, y: labelY, width: labelWidth, height: 20))
@@ -58,7 +58,19 @@ class ToDoCountView: UIView {
             wrapperView.addSubview(divider)
             wrapperViewY += wrapperView.frame.height
             self.addSubview(wrapperView)
+            
+            if (row == 0) {
+                leftLabel.text = "Unapproved"
+                rightLabel.text = "12 Actions"
+                rightLabel.textColor = PopmetricsColor.yellowUnapproved
+            } else if (row == 1) {
+                leftLabel.text = "Failed"
+                rightLabel.text = "2 Actions"
+                rightLabel.textColor = PopmetricsColor.salmondColor
+            }
         }
     }
+    
+
 }
 

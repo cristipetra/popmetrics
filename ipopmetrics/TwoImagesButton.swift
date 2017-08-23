@@ -136,6 +136,9 @@ class TwoImagesButton: UIButton {
             leftHandImage = UIImage(named: "icon2CtaApprovepost")
             rightImageView.isHidden = true
             approveButtonText = "Rescheduled"
+        case .allowNotification:
+            leftHandImage = UIImage(named: "iconAlertMessage")
+            leftImageView.frame.origin.y = 14
         default:
             break
         }
@@ -149,4 +152,5 @@ enum ImageButtonType {
     case complete
     case twitter
     case rescheduled
+    case allowNotification
 }

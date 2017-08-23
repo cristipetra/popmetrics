@@ -136,6 +136,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             cell.changeMessageWithSpacing(message: "Check out the things you've schedulled in the caledar hub")
             cell.titleActionButton.text = "View Calendar"
             cell.selectionStyle = .none
+            cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
             return cell
         }
         
@@ -165,6 +166,9 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         }
         return cell
         
+    }
+    @objc private func goToNextTab() {
+        self.tabBarController?.selectedIndex += 1
     }
     
     func approveSinglePostHandler(index: Int) {

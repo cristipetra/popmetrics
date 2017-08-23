@@ -209,7 +209,6 @@ class TableFooterView: UITableViewHeaderFooterView {
         xButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
         xButton.addTarget(self, action: #selector(deleteHandler), for: .touchUpInside)
         xButton.layer.cornerRadius = 23//xButton.frame.size.width / 2
-        
         xButton.setImage(UIImage(named: "iconCloseCard")?.withRenderingMode(.alwaysOriginal), for: .normal)
         xButton.clipsToBounds = true
     }
