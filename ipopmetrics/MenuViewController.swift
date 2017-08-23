@@ -7,29 +7,55 @@
 //
 
 import UIKit
+import ElasticTransition
 
-class MenuViewController: UIViewController {
-
+class MenuViewController: ElasticModalViewController {
+    
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var logoImage: UIImageView!
+    
+    var transition = ElasticTransition()
+    var dismissByBackgroundTouch = false
+    var dismissByBackgroundDrag = true
+    //var dismissByForegroundDrag = true
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        setup()
+        transition.edge = .right
+        transition.sticky = false
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        segue.destination.transitioningDelegate = transition as UIViewControllerTransitioningDelegate
+        segue.destination.modalPresentationStyle = .custom
     }
-    */
-
+    
+    private func setup() {
+        
+        let closeButtonImage = UIImage(named: "iconCloseBlack")!.withRenderingMode(.alwaysTemplate)
+        let logo = UIImage(named: "blackHeart")!.withRenderingMode(.alwaysTemplate)
+        closeButtonImage.bma_tintWithColor(UIColor.white)
+        logo.bma_tintWithColor(UIColor.white)
+        closeButton.setImage(closeButtonImage, for: .normal)
+        logoImage.image = logo
+        
+    }
+    @IBAction func closeButtonPressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func contactButtonPressed(_ sender: UIButton) {
+        let message = "mailto:" + Config.mailContact
+        UIApplication.shared.open(URL(string: message)!, options: [:], completionHandler: nil)
+    }
+    
+    @IBAction func aboutButtonPressed(_ sender: UIButton) {
+        UIApplication.shared.open(URL(string: Config.socialAutomationLink)!, options: [:], completionHandler: nil)
+    }
+    
+    @IBAction func logoutButtonPressed(_ sender: UIButton) {
+        UsersStore.getInstance().clearCredentials()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.setInitialViewController()
+        
+    }
 }

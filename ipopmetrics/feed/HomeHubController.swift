@@ -291,8 +291,13 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     }
     
+    
     func handlerClickMenu() {
-        
+        let modalViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MENU_VC") as! MenuViewController
+        // customization:
+        modalViewController.modalTransition.edge = .left
+        modalViewController.modalTransition.radiusFactor = 0.3
+        self.present(modalViewController, animated: true, completion: nil)
     }
     
     func catchCardActionNotification(notification:Notification) -> Void {

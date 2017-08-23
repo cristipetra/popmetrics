@@ -113,7 +113,11 @@ class CalendarViewController: UIViewController {
     }
     
     func handlerClickMenu() {
-        maximizeCell()
+        let modalViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MENU_VC") as! MenuViewController
+        // customization:
+        modalViewController.modalTransition.edge = .left
+        modalViewController.modalTransition.radiusFactor = 0.3
+        self.present(modalViewController, animated: true, completion: nil)
     }
     
     func fetchItemsLocally(silent: Bool) {
