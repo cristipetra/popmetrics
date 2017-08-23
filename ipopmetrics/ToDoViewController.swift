@@ -69,6 +69,23 @@ class ToDoViewController: UIViewController {
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     }
     
+    internal func setupTopViewItemCount() {
+        for section in sections {
+            if let status = StatusArticle(rawValue: section.status) {
+                switch status {
+                case .unapproved:
+                    toDoTopView.setTextClockLabel(text: ("(\(section.items.count))"))
+                    break
+                case .failed:
+                    toDoTopView.setTextNotificationLabel(text: ("(\(section.items.count))"))
+                    break
+                default:
+                    break
+                }
+            }
+        }
+    }
+    
     func handlerClickMenu() {
         
     }
@@ -96,6 +113,7 @@ class ToDoViewController: UIViewController {
         }
         
         self.sections = todoStore.getFeed()
+        self.setupTopViewItemCount()
     }
 }
 
@@ -217,6 +235,20 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             return 459
         }
         return 93
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let index = tableView.indexPathsForVisibleRows?.first {
+            let headerFrame = tableView.rectForHeader(inSection: index.section)
+            if headerFrame.origin.y <= tableView.contentOffset.y{
+                if let status = StatusArticle(rawValue: sections[index.section].status) {
+                    toDoTopView.setActive(section: status)
+                }
+            }
+            if tableView.contentOffset.y == 0 {   //top of the tableView
+                toDoTopView.setActive(section: .unapproved)
+            }
+        }
     }
 }
 
