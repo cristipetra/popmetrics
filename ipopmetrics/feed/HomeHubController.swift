@@ -56,6 +56,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let toDoCardNib = UINib(nibName: "ToDoCell", bundle: nil)
         tableView.register(toDoCardNib, forCellReuseIdentifier: "ToDoCell")
         
+        let recommendedNib = UINib(nibName: "RecommendedCell", bundle: nil)
+        tableView.register(recommendedNib, forCellReuseIdentifier: "recommendedId")
+        
         /*
         let requiredActionCardNib = UINib(nibName: "RequiredActionCard", bundle: nil)
         tableView.register(requiredActionCardNib, forCellReuseIdentifier: "RequiredActionCard")
@@ -342,6 +345,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 return cell
  */
             case "recommendation":
+                /*
                 shouldDisplayCell = true
                 let cell = tableView.dequeueReusableCell(withIdentifier: "requiredActionId", for: indexPath) as! RequiredAction
                 cell.selectionStyle = .none
@@ -357,6 +361,23 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                     cell.footerView.approveLbl.text = "Allow Notifications"
                 }
                 return cell
+ */
+            
+                shouldDisplayCell = true
+                
+                isInfoCellType = false
+                let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedId", for: indexPath) as! RecommendedCell
+                if(rowIdx == 0) {
+                    cell.setUpCell(type: "Recommended Reading")
+                    return cell;
+                }
+                cell.setUpCell(type: "Popmetrics Insight")
+                if((sections[sectionIdx].items.count-1) == indexPath.row) {
+                    cell.connectionLine.isHidden = true;
+                }
+                return cell
+            
+            
             /*
             case "approval":
                 shouldDisplayCell = true

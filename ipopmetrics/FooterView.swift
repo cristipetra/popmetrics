@@ -8,6 +8,7 @@
 
 
 import UIKit
+import SwiftRichString
 
 class FooterView: UIView {
     
@@ -126,9 +127,10 @@ class FooterView: UIView {
         xButton.addTarget(self, action: #selector(deleteHandler), for: .touchUpInside)
         xButton.layer.cornerRadius = 23//xButton.frame.size.width / 2
         xButton.clipsToBounds = true
-        //xButton.setImage(UIImage(named: "iconCloseCard"), for: .normal)
-        xButton.setBackgroundImage(UIImage(named: "iconCloseCard"), for: .normal)
-        
+        xButton.setImage(UIImage(named: "iconCtaClose"), for: .normal)
+        xButton.layer.borderColor = UIColor.black.cgColor
+        xButton.tintColor = UIColor.black
+        xButton.layer.borderWidth = 1.5
     }
     
     func deleteHandler() {
@@ -144,7 +146,15 @@ class FooterView: UIView {
         informationBtn.heightAnchor.constraint(equalToConstant: 46).isActive = true
         informationBtn.addTarget(self, action: #selector(informationHandler), for: .touchUpInside)
         informationBtn.layer.cornerRadius = 23
-        informationBtn.setBackgroundImage(UIImage(named: "iconInfoPage"), for: .normal)
+        
+        let attrTitle = Style.default {
+            
+            $0.font = FontAttribute(FontBook.regular, size: 30)
+            $0.color = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
+        }
+        informationBtn.setAttributedTitle("i".set(style: attrTitle), for: .normal)
+        informationBtn.layer.borderColor = UIColor.black.cgColor
+        informationBtn.layer.borderWidth = 1.5
     }
     
     func informationHandler() {
