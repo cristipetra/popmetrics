@@ -75,11 +75,11 @@ class CodeViewController: UIViewController {
                     return
                 }
                 
-                let isRegisteredForRemoteNotifications = UIApplication.shared.isRegisteredForRemoteNotifications
-                if isRegisteredForRemoteNotifications {
-                    self.showVideoScreen()
-                } else {
+                let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
+                if notificationType == [] {
                     self.showPushNotificationsScreen()
+                } else {
+                    self.showVideoScreen()
                 }
             }
         }
