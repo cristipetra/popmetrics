@@ -45,4 +45,21 @@ class UsersStore {
         
     }
     
+    static var isTwitterConnected: Bool {
+        set {
+            let defaults = UserDefaults.standard
+            defaults.set(newValue, forKey: "isTwitterConnected")
+        }
+        get {
+            return UserDefaults.standard.bool(forKey: "isTwitterConnected")
+        }
+    }
+    
+    static var isNotificationsAllowed: Bool {
+        get {
+            let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
+            return notificationType == [] ? false : true
+        }
+    }
+    
 }

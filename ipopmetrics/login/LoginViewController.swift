@@ -184,6 +184,9 @@ extension LoginViewController: UITextFieldDelegate {
         phoneView.sendCodeBtn.isUserInteractionEnabled = true
         phoneView.sendCodeBtn.layer.backgroundColor = UIColor(red: 65/255, green: 155/255, blue: 249/255, alpha: 1.0).cgColor
         phoneView.sendCodeBtn.setTitleColor(UIColor.white, for: .normal)
+        if phoneView.numberTextField.text == "" {
+            phoneView.numberTextField.text = "+1"
+        }
     }
     
     internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {

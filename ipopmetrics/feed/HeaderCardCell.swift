@@ -50,10 +50,21 @@ class HeaderCardCell: UITableViewCell {
         }
     }
     
-    func changeColor(color: UIColor) {
-        connectionView.backgroundColor = color
-        roundConnectionView.backgroundColor = color
+    func changeColor(cardType :CardType) {
+        switch cardType {
+        case .todo:
+            connectionView.backgroundColor = PopmetricsColor.yellowUnapproved
+            roundConnectionView.backgroundColor = PopmetricsColor.yellowUnapproved
+        case .recommended:
+            connectionView.backgroundColor = PopmetricsColor.darkGrey
+            roundConnectionView.backgroundColor = PopmetricsColor.darkGrey
+        case .required:
+            connectionView.backgroundColor = PopmetricsColor.salmondColor
+            roundConnectionView.backgroundColor = PopmetricsColor.salmondColor
+        default:
+            break
+        }
     }
+    
 
-  
 }

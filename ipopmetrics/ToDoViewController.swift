@@ -69,8 +69,30 @@ class ToDoViewController: UIViewController {
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     }
     
+    internal func setupTopViewItemCount() {
+        for section in sections {
+            if let status = StatusArticle(rawValue: section.status) {
+                switch status {
+                case .unapproved:
+                    toDoTopView.setTextClockLabel(text: ("(\(section.items.count))"))
+                    break
+                case .failed:
+                    toDoTopView.setTextNotificationLabel(text: ("(\(section.items.count))"))
+                    break
+                default:
+                    break
+                }
+            }
+        }
+    }
+    
+    
     func handlerClickMenu() {
-        
+        let modalViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MENU_VC") as! MenuViewController
+        // customization:
+        modalViewController.modalTransition.edge = .left
+        modalViewController.modalTransition.radiusFactor = 0.3
+        self.present(modalViewController, animated: true, completion: nil)
     }
     
     internal func fetchItemsLocally() {
@@ -96,6 +118,7 @@ class ToDoViewController: UIViewController {
         }
         
         self.sections = todoStore.getFeed()
+        self.setupTopViewItemCount()
     }
 }
 
@@ -113,6 +136,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             cell.changeMessageWithSpacing(message: "Check out the things you've schedulled in the caledar hub")
             cell.titleActionButton.text = "View Calendar"
             cell.selectionStyle = .none
+            cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
             return cell
         }
         
@@ -130,15 +154,21 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             } else {
                 cell.connectionStackView.isHidden = false
             }
+            if sections[0].items[indexPath.row].isApproved == true {
+                cell.setUpApprovedView(approved: true)
+            }
             return cell
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
         if sections[0].items[indexPath.row].isApproved == true {
-            cell.setUpApprovedView()
+             cell.setUpApprovedView(approved: true)
         }
         return cell
         
+    }
+    @objc private func goToNextTab() {
+        self.tabBarController?.selectedIndex += 1
     }
     
     func approveSinglePostHandler(index: Int) {
@@ -214,6 +244,20 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             return 459
         }
         return 93
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let index = tableView.indexPathsForVisibleRows?.first {
+            let headerFrame = tableView.rectForHeader(inSection: index.section)
+            if headerFrame.origin.y <= tableView.contentOffset.y{
+                if let status = StatusArticle(rawValue: sections[index.section].status) {
+                    toDoTopView.setActive(section: status)
+                }
+            }
+            if tableView.contentOffset.y == 0 {   //top of the tableView
+                toDoTopView.setActive(section: .unapproved)
+            }
+        }
     }
 }
 

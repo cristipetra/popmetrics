@@ -19,6 +19,7 @@ class TableFooterView: UITableViewHeaderFooterView {
     
     var loadMoreCount: Int = 0
     var approveCount: Int = 0
+    var emptyView: UIView!
     
     var typeSection: StatusArticle = .complete {
         didSet {
@@ -128,6 +129,7 @@ class TableFooterView: UITableViewHeaderFooterView {
         setupActionButton()
         
         setUpHorizontalStackView()
+        setupEmptyView()
         
     }
     
@@ -194,13 +196,19 @@ class TableFooterView: UITableViewHeaderFooterView {
         approveStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
     }
     
+    func setupEmptyView() {
+        emptyView = UIView(frame: CGRect(x: 0, y: 0, width: 80, height: 50))
+        emptyView.widthAnchor.constraint(equalToConstant: 80)
+        emptyView.backgroundColor = UIColor.blue
+        emptyView.isHidden = true
+    }
+    
     func setUpXButton() {
         
         xButton.widthAnchor.constraint(equalToConstant: 46).isActive = true
         xButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
         xButton.addTarget(self, action: #selector(deleteHandler), for: .touchUpInside)
         xButton.layer.cornerRadius = 23//xButton.frame.size.width / 2
-        
         xButton.setImage(UIImage(named: "iconCloseCard")?.withRenderingMode(.alwaysOriginal), for: .normal)
         xButton.clipsToBounds = true
     }
@@ -282,7 +290,9 @@ class TableFooterView: UITableViewHeaderFooterView {
     func changeFeedType(feedType: FeedType) {
         switch feedType {
         case .calendar:
-            approveStackView.isHidden = true
+            DispatchQueue.main.async {
+                self.approveStackView.alpha = 0.0
+            }
         default:
             break
         }

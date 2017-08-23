@@ -9,6 +9,14 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Feed Table View Controller-->
         <scene sceneID="yN3-TS-G0L">
@@ -36,6 +44,121 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oUZ-N0-Ku8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2636" y="751.57421289355329"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="vnq-XG-9Wi">
+            <objects>
+                <viewController storyboardIdentifier="MENU_VC" id="vgc-BL-sQ3" customClass="MenuViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rSp-0Z-2F3"/>
+                        <viewControllerLayoutGuide type="bottom" id="Pfw-ZC-4fg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="A0N-Un-MwM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vqp-bm-yP8">
+                                <rect key="frame" x="29" y="28" width="24" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="Idd-IR-TzK"/>
+                                    <constraint firstAttribute="height" constant="23" id="p7s-yY-pQX"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="closeButtonPressed:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="0I6-yB-2Ag"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="VHs-si-dMo">
+                                <rect key="frame" x="48" y="93" width="218" height="132"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dA-tg-zu2">
+                                        <rect key="frame" x="0.0" y="0.0" width="218" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="r1b-N7-uoe"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="Contact Marketing Concierge">
+                                            <color key="titleColor" red="0.74117647058823533" green="0.77254901960784317" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="contactButtonPressed:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="euV-yq-zF4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2u3-HH-eog">
+                                        <rect key="frame" x="0.0" y="56" width="218" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="4ff-tx-lga"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="About Popmetrics">
+                                            <color key="titleColor" red="0.74117647058823533" green="0.77254901960784317" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="aboutButtonPressed:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="6R9-WR-iF6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybe-Us-fFL">
+                                        <rect key="frame" x="0.0" y="112" width="218" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="XX8-aI-aSF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logoutButtonPressed:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="4Xq-Kd-Q0I"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't worry! More settings are comming." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V64-sc-33c">
+                                <rect key="frame" x="63" y="363" width="249" height="41"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuL-Ym-nrt">
+                                <rect key="frame" x="306.5" y="29" width="40.5" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="xyI-zF-V3d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackHeart" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-wi-QSE">
+                                <rect key="frame" x="74" y="27" width="32" height="30"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="OHx-Qg-zGb"/>
+                                    <constraint firstAttribute="height" constant="30" id="t0O-cX-BsY"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.27058823529411763" green="0.29803921568627451" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="V64-sc-33c" secondAttribute="trailing" constant="63" id="2Lz-eO-5Bu"/>
+                            <constraint firstAttribute="trailing" secondItem="tuL-Ym-nrt" secondAttribute="trailing" constant="28" id="2Xz-aU-hWl"/>
+                            <constraint firstItem="VHs-si-dMo" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leadingMargin" constant="32" id="B7w-v9-eEC"/>
+                            <constraint firstItem="VHs-si-dMo" firstAttribute="top" secondItem="Vqp-bm-yP8" secondAttribute="bottom" constant="42" id="EMD-tO-dEv"/>
+                            <constraint firstItem="eP9-wi-QSE" firstAttribute="leading" secondItem="Vqp-bm-yP8" secondAttribute="trailing" constant="21" id="Lyv-R0-oa5"/>
+                            <constraint firstItem="V64-sc-33c" firstAttribute="top" secondItem="VHs-si-dMo" secondAttribute="bottom" constant="138" id="Vp8-FV-LNc"/>
+                            <constraint firstItem="V64-sc-33c" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leading" constant="63" id="dQM-PC-xA6"/>
+                            <constraint firstItem="Vqp-bm-yP8" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leading" constant="29" id="erw-yw-FCk"/>
+                            <constraint firstItem="Vqp-bm-yP8" firstAttribute="top" secondItem="rSp-0Z-2F3" secondAttribute="bottom" constant="8" id="ohT-iy-TeE"/>
+                            <constraint firstItem="tuL-Ym-nrt" firstAttribute="top" secondItem="rSp-0Z-2F3" secondAttribute="bottom" constant="9" id="uPF-Q1-bfU"/>
+                            <constraint firstItem="eP9-wi-QSE" firstAttribute="top" secondItem="rSp-0Z-2F3" secondAttribute="bottom" constant="7" id="wDB-6W-CHh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="Vqp-bm-yP8" id="jTj-XT-VJy"/>
+                        <outlet property="logoImage" destination="eP9-wi-QSE" id="OYZ-aC-Ged"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bDa-y3-Fcw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3517.5999999999999" y="751.57421289355329"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="min-fm-dln">
@@ -186,7 +309,7 @@
                 <navigationController storyboardIdentifier="HomeNavigationID" automaticallyAdjustsScrollViewInsets="NO" id="NdU-Vz-erg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="tabBarItem:g6b-nh-pyf:image" id="g6b-nh-pyf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="z2a-iC-IPh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="z2a-iC-IPh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -201,6 +324,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="blackHeart" width="29" height="28"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
         <image name="tabBarItem:g6b-nh-pyf:image" width="23" height="20">

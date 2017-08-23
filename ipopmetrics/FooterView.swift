@@ -8,6 +8,7 @@
 
 
 import UIKit
+import SwiftRichString
 
 class FooterView: UIView {
     
@@ -90,7 +91,7 @@ class FooterView: UIView {
     
     func setUpApproveStackView() {
         
-        approveStackView = UIStackView(arrangedSubviews: [actionButton, approveLbl])
+        approveStackView = UIStackView(arrangedSubviews: [actionButton])
         approveStackView.axis = .vertical
         approveStackView.distribution = .equalSpacing
         approveStackView.alignment = .center
@@ -101,8 +102,8 @@ class FooterView: UIView {
     func setUpHorizontalStackView() {
         
         let placeholderView = UIView(frame: CGRect(x: 0, y: 0, width: 46, height: 46))
-        
-        horizontalStackView = UIStackView(arrangedSubviews: [xButton,informationBtn,placeholderView,approveStackView])
+        placeholderView.backgroundColor = .red
+        horizontalStackView = UIStackView(arrangedSubviews: [xButton, informationBtn, placeholderView, approveStackView])
         
         horizontalStackView.axis = .horizontal
         horizontalStackView.distribution = .equalSpacing
@@ -111,6 +112,7 @@ class FooterView: UIView {
         
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(horizontalStackView)
+        
         
         horizontalStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -8).isActive = true
         horizontalStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
@@ -126,9 +128,11 @@ class FooterView: UIView {
         xButton.addTarget(self, action: #selector(deleteHandler), for: .touchUpInside)
         xButton.layer.cornerRadius = 23//xButton.frame.size.width / 2
         xButton.clipsToBounds = true
-        //xButton.setImage(UIImage(named: "iconCloseCard"), for: .normal)
-        xButton.setBackgroundImage(UIImage(named: "iconCloseCard"), for: .normal)
-        
+        xButton.setImage(UIImage(named: "iconCtaClose"), for: .normal)
+        xButton.layer.borderColor = UIColor.black.cgColor
+        xButton.tintColor = UIColor.black
+        xButton.backgroundColor = UIColor.white
+        xButton.layer.borderWidth = 1.5
     }
     
     func deleteHandler() {
@@ -144,7 +148,16 @@ class FooterView: UIView {
         informationBtn.heightAnchor.constraint(equalToConstant: 46).isActive = true
         informationBtn.addTarget(self, action: #selector(informationHandler), for: .touchUpInside)
         informationBtn.layer.cornerRadius = 23
-        informationBtn.setBackgroundImage(UIImage(named: "iconInfoPage"), for: .normal)
+        
+        let attrTitle = Style.default {
+            
+            $0.font = FontAttribute(FontBook.regular, size: 30)
+            $0.color = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
+        }
+        informationBtn.setAttributedTitle("i".set(style: attrTitle), for: .normal)
+        informationBtn.layer.borderColor = UIColor.black.cgColor
+        informationBtn.layer.borderWidth = 1.5
+        informationBtn.backgroundColor = UIColor.white
     }
     
     func informationHandler() {

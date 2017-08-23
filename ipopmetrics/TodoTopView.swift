@@ -114,7 +114,10 @@ class TodoTopView: UIView {
         stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
-        setActive(section: view)
+        initialSetup(view: clockView, label: clockLabel, image: clockImageView)
+        initialSetup(view: keyView, label: keyLabel, image: keyImageView)
+        initialSetup(view: notificationView, label: notificationLabel, image: notificationImageView)
+        setActive(section: .unapproved)
     }
     
     func setUpClockView(selected: Bool) {
@@ -255,6 +258,30 @@ class TodoTopView: UIView {
         } else {
             keyLabel.textColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 1)
         }
+        
+    }
+    
+    private func initialSetup(view: UIView, label: UILabel, image: UIImageView) {
+        view.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        view.widthAnchor.constraint(equalToConstant: 72).isActive = true
+        view.layer.cornerRadius = 4
+        initialLabelAndImageSetup(label: label, view: view, image: image)
+    }
+    
+    private func initialLabelAndImageSetup(label: UILabel, view: UIView, image: UIImageView) {
+        view.addSubview(image)
+        view.addSubview(label)
+        label.leftAnchor.constraint(equalTo: image.rightAnchor, constant: 5).isActive = true
+        label.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        label.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        label.text = "(3)"
+        label.font = UIFont(name: FontBook.regular, size: 15)
+        label.textAlignment = .center
+        label.textColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 1)
+        image.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        image.heightAnchor.constraint(equalToConstant: 18).isActive = true
+        image.widthAnchor.constraint(equalToConstant: 18).isActive = true
+        image.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 9).isActive = true
         
     }
     

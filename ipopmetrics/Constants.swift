@@ -14,6 +14,7 @@ struct FontBook {
     static let light = "OpenSans-Light"
     static let semibold = "OpenSans-Semibold"
     static let bold = "OpenSans-Bold"
+    static let extraBold = "OpenSans-ExtraBold"
     static let alfaRegular = "AlfaSlabOne-Regular"
 }
 

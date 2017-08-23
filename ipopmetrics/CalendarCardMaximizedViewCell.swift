@@ -66,9 +66,9 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         
     }()
     
-    lazy var approvedButton : UIButton = {
+    lazy var approvedButton : TwoImagesButton = {
         
-        let button = UIButton()
+        let button = TwoImagesButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(red: 54/255, green: 172/255, blue: 130/255, alpha: 1)
         return button
@@ -170,7 +170,7 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         approveDenyDelegate?.approveSinglePostHandler(index: postIndex)
     }
     
-    func setUpApprovedView() {
+    func setUpApprovedView(approved: Bool) {
         self.insertSubview(approvedView, at: 1)
         approvedView.topAnchor.constraint(equalTo: topContainerVIew.topAnchor).isActive = true
         approvedView.bottomAnchor.constraint(equalTo: topContainerVIew.bottomAnchor).isActive = true
@@ -182,6 +182,14 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         approvedButton.centerYAnchor.constraint(equalTo: approvedView.centerYAnchor).isActive = true
         approvedButton.widthAnchor.constraint(equalToConstant: 110).isActive = true
         approvedButton.heightAnchor.constraint(equalToConstant: 39).isActive = true
+        if approved {
+            approvedButton.imageButtonType = .approved
+        } else {
+            approvedButton.imageButtonType = .rescheduled
+        }
+        
+        approvedButton.rightImageView.image = nil
+        approvedButton.layer.cornerRadius = 6
         
     }
     

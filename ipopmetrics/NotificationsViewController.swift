@@ -21,6 +21,12 @@ class NotificationsViewController: UIViewController {
     }
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
+        
+        UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(NotificationsViewController.applicationWillEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+        return
+        
         let alert = UIAlertController(title: "", message: "Popmetrics is requesting to enable push notifications.", preferredStyle: UIAlertControllerStyle.alert)
         let backView = alert.view.subviews.last?.subviews.last
         backView?.layer.cornerRadius = 10.0
@@ -40,6 +46,11 @@ class NotificationsViewController: UIViewController {
     }
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func applicationWillEnterForeground() {
+        let videoScreenVC = AppStoryboard.Signin.instance.instantiateViewController(withIdentifier: ViewNames.SBID_VIDEO_SCREEN)
+        self.present(videoScreenVC, animated: true, completion: nil)
     }
     
 }
