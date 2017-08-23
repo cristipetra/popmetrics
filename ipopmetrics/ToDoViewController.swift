@@ -130,12 +130,15 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             } else {
                 cell.connectionStackView.isHidden = false
             }
+            if sections[0].items[indexPath.row].isApproved == true {
+                cell.setUpApprovedView(approved: true)
+            }
             return cell
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
         if sections[0].items[indexPath.row].isApproved == true {
-            cell.setUpApprovedView()
+             cell.setUpApprovedView(approved: true)
         }
         return cell
         

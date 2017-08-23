@@ -26,8 +26,16 @@ class TwoImagesButton: UIButton {
         }
     }
     
+    var approveButtonText : String? {
+        didSet {
+            rightTextLabel.text = approveButtonText
+            setUpTitleBtn()
+        }
+    }
+    
     open var leftImageView: UIImageView = UIImageView()
     open var rightImageView: UIImageView =  UIImageView()
+    open var rightTextLabel: UILabel = UILabel()
     
     var imageButtonType: ImageButtonType = .unapproved {
         didSet {
@@ -84,6 +92,28 @@ class TwoImagesButton: UIButton {
         }
     }
     
+    func setUpTitleBtn() {
+        
+        if let leftImage = leftHandImage {
+            leftImageView.image = leftImage
+            leftImageView.tintColor = UIColor.white
+            let height = 16
+            //let yPos = (self.frame.height - height) / 2
+            let yPos = 12
+            leftImageView.contentMode = .scaleAspectFill
+            leftImageView.frame = CGRect(x: 15, y: yPos, width: 20, height: height)
+        }
+        
+        if let buttonText = approveButtonText {
+            rightTextLabel.textColor = UIColor.white
+            rightTextLabel.font = UIFont(name: FontBook.semibold, size: 10)
+            rightTextLabel.text = buttonText
+            rightTextLabel.textAlignment = .center
+            rightTextLabel.frame = CGRect(x: 44, y: 10, width: 50, height: 18)
+            
+        }
+    }
+    
     func changeImageButtonType() {
         switch imageButtonType {
         case .unapproved:
@@ -98,6 +128,12 @@ class TwoImagesButton: UIButton {
         case .twitter:
             leftHandImage = UIImage(named: "icon_twitter")
             rightHandImage = UIImage(named: "iconCalLeft")
+        case .approved:
+            leftHandImage = UIImage(named: "icon2CtaApprovepost")
+            approveButtonText = "Approved"
+        case .rescheduled:
+            leftHandImage = UIImage(named: "icon2CtaApprovepost")
+            approveButtonText = "Rescheduled"
         default:
             break
         }
@@ -110,4 +146,5 @@ enum ImageButtonType {
     case failed
     case complete
     case twitter
+    case rescheduled
 }
