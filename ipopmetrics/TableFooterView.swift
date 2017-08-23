@@ -19,6 +19,7 @@ class TableFooterView: UITableViewHeaderFooterView {
     
     var loadMoreCount: Int = 0
     var approveCount: Int = 0
+    var emptyView: UIView!
     
     var typeSection: StatusArticle = .complete {
         didSet {
@@ -128,6 +129,7 @@ class TableFooterView: UITableViewHeaderFooterView {
         setupActionButton()
         
         setUpHorizontalStackView()
+        setupEmptyView()
         
     }
     
@@ -192,6 +194,13 @@ class TableFooterView: UITableViewHeaderFooterView {
         horizontalStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
         loadMoreStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         approveStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+    }
+    
+    func setupEmptyView() {
+        emptyView = UIView(frame: CGRect(x: 0, y: 0, width: 80, height: 50))
+        emptyView.widthAnchor.constraint(equalToConstant: 80)
+        emptyView.backgroundColor = UIColor.blue
+        emptyView.isHidden = true
     }
     
     func setUpXButton() {
@@ -282,7 +291,9 @@ class TableFooterView: UITableViewHeaderFooterView {
     func changeFeedType(feedType: FeedType) {
         switch feedType {
         case .calendar:
-            approveStackView.isHidden = true
+            DispatchQueue.main.async {
+                self.approveStackView.alpha = 0.0
+            }
         default:
             break
         }
