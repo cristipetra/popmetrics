@@ -78,6 +78,8 @@ class VideoScreenViewController: UIViewController {
                 btnStarted.isUserInteractionEnabled = true
                 btnStarted.layer.backgroundColor = UIColor(red: 65/255, green: 155/255, blue: 249/255, alpha: 1.0).cgColor
                 btnStarted.setTitleColor(UIColor.white, for: .normal)
+            } else {
+                self.playerViewController.goFullScreen()
             }
         }
         if (keyPath == "status") {
@@ -89,4 +91,13 @@ class VideoScreenViewController: UIViewController {
         self.present(mainTabVC, animated: false, completion: nil)
     }
     
+}
+
+extension AVPlayerViewController {
+    func goFullScreen() {
+        let selector = NSSelectorFromString("_transitionToFullScreenViewControllerAnimated:completionHandler:")
+        if self.responds(to: selector) {
+            self.perform(selector, with: true, with: nil)
+        }
+    }
 }
