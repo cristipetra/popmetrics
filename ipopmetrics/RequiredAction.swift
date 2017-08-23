@@ -9,6 +9,8 @@
 
 import UIKit
 import SwiftRichString
+import TwitterKit
+import NotificationBannerSwift
 
 class RequiredAction: UITableViewCell {
     
@@ -20,6 +22,12 @@ class RequiredAction: UITableViewCell {
     @IBOutlet weak var bottomImageView: UIImageView!
     @IBOutlet weak var connectionLineView: UIView!
     
+    
+    var item: FeedItem?
+    var actionHandler: CardActionHandler?
+    var indexPath: IndexPath?
+    var delegate: InfoButtonDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setUpTopView()
@@ -29,6 +37,17 @@ class RequiredAction: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    func configure(_ item: FeedItem, handler: CardActionHandler) {
+        self.item = item
+        self.actionHandler = handler
+        
+        self.footerView.actionButton.addTarget(self, action:#selector(handleAction(_:)), for: .touchDown)
+    
+        self.backgroundColor = UIColor.feedBackgroundColor()
+        self.titleLabel.text  = item.headerTitle
+        messageLabel.text = item.message
     }
     
     internal func setupCorners() {
@@ -73,6 +92,65 @@ class RequiredAction: UITableViewCell {
         
         let headerTitle = "Heads Up:".set(style: headsUpStyle) + "Required Action".set(style: requiredAction)
         toolbarView.title.attributedText = headerTitle
+    }
+    
+    @objc func handleAction(_ sender: SimpleButton) {
+        //self.actionButton.isLoading = true
+        //actionHandler?.handleRequiredAction(sender, item: self.item!)
+        connectTwitter(sender, item: self.item!)
+    }
+    
+    func connectTwitter(_ sender: SimpleButton, item:FeedItem) {
+        Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
+            if (session != nil) {
+                FeedApi().connectTwitter(userId: (session?.userID)!, brandId:"58fe437ac7631a139803757e", token: (session?.authToken)!,
+                                         tokenSecret: (session?.authTokenSecret)!) { responseDict, error in
+                                            //sender.isLoading = false
+                                            if error != nil {
+                                                let nc = NotificationCenter.default
+                                                nc.post(name:Notification.Name(rawValue:"CardActionNotification"),
+                                                        object: nil,
+                                                        userInfo: ["success":false, "title":"Action error", "message":"Connection with Twitter has failed.", "date":Date()])
+                                                return
+                                            } // error != nil
+                                            else {
+                                                sender.setTitle("Connected.", for: .normal)
+                                                UsersStore.isTwitterConnected = true
+                                                self.showBanner()
+                                            }
+                } // usersApi.logInWithGoogle()
+                
+            } else {
+                //sender.isLoading = false
+                let nc = NotificationCenter.default
+                nc.post(name:Notification.Name(rawValue:"CardActionNotification"),
+                        object: nil,
+                        userInfo: ["success":false, "title":"Action error", "message":"Connection with Twitter has failed... \(error!.localizedDescription)", "date":Date()])
+                
+            }
+        }
+        
+    }
+    
+    internal func showBanner() {
+        let title = "Authentication Success!"
+        let titleAttribute = [
+            NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 12),
+            NSForegroundColorAttributeName: PopmetricsColor.darkGrey]
+        let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [String : Any]))
+        let subtitle = "Twitter Connected"
+        let subtitleAttribute = [
+            NSFontAttributeName: UIFont(name: "OpenSans-SemiBold", size: 12),
+            NSForegroundColorAttributeName: UIColor.white]
+        let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [String : Any]))
+        let banner = NotificationBanner(attributedTitle: attributedTitle, attributedSubtitle: attributedSubtitle, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
+        banner.backgroundColor = PopmetricsColor.greenMedium
+        banner.duration = TimeInterval(exactly: 7.0)!
+        banner.show()
+        
+        banner.onTap = {
+            UIApplication.shared.open(URL(string: Config.appWebAimeeLink)!, options: [:], completionHandler: nil)
+        }
     }
     
 }

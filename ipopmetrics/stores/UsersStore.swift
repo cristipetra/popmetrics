@@ -45,4 +45,14 @@ class UsersStore {
         
     }
     
+    static var isTwitterConnected: Bool {
+        set {
+            let defaults = UserDefaults.standard
+            defaults.set(newValue, forKey: "isTwitterConnected")
+        }
+        get {
+            return UserDefaults.standard.bool(forKey: "isTwitterConnected")
+        }
+    }
+    
 }
