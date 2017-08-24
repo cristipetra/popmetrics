@@ -49,11 +49,26 @@ class UsersStore {
         set {
             let defaults = UserDefaults.standard
             defaults.set(newValue, forKey: "isTwitterConnected")
+            NotificationCenter.default.post(name: Notification.Name("didChangeTwitterConnected"), object: nil);
         }
         get {
+            //return true
             return UserDefaults.standard.bool(forKey: "isTwitterConnected")
         }
     }
+    
+    static var isInsightShowed: Bool {
+        set {
+            let defaults = UserDefaults.standard
+            defaults.set(newValue, forKey: "isDisplayedInsight")
+            
+        }
+        get {
+            //return true
+            return UserDefaults.standard.bool(forKey: "isDisplayedInsight")
+        }
+    }
+ 
     
     static var isNotificationsAllowed: Bool {
         get {
@@ -63,3 +78,4 @@ class UsersStore {
     }
     
 }
+

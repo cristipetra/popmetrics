@@ -37,7 +37,6 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.86666666670000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Keg-D7-jEA" firstAttribute="top" secondItem="Ad5-Ix-xda" secondAttribute="bottom" id="3Ez-ZU-WH2"/>
                             <constraint firstItem="Keg-D7-jEA" firstAttribute="top" secondItem="Ad5-Ix-xda" secondAttribute="bottom" id="GGT-Qo-v38"/>

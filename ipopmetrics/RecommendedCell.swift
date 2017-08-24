@@ -85,16 +85,17 @@ class RecommendedCell: UITableViewCell {
         case "Popmetrics Insight":
             setUpToolbar(imageName: "iconHeaderBrandinsight", titleName: "Popmetrics Insight")
             self.backgroundImageView.image = UIImage(named: "image_pattern")
-            self.setTitleInsight(title : "Your Twitter handle could do with some love.)")
-            self.setMessage(message: "We've noticed that your profile is missing some vital details that will help people find your business")
+            self.setTitleInsight(title : "We've had a look and your brand's Twitter could do with some love!")
+            self.setMessage(message: "We've looked at your industry and prepared some actions for you to improve your digital footprint: ")
             self.messageLabel.textColor = UIColor.white
             self.messageLabel.font = UIFont(name: FontBook.regular, size: 18)
-            self.secondMessageLabel.text = "Take these actions to get started:"
+            self.secondMessageLabel.text = ""
             self.secondMessageLabel.textColor = UIColor.white
             self.secondMessageLabel.font = UIFont(name: FontBook.regular, size: 18)
+            
             self.footerVIew.informationBtn.isHidden = true
-            self.footerVIew.actionButton.leftHandImage = UIImage(named: "icon2CtaTodolist")
-            self.footerVIew.approveLbl.text = "Variable CTA"
+            self.footerVIew.actionButton.imageButtonType = .unapproved
+            self.footerVIew.approveLbl.text = "View To Do List"
             self.footerVIew.approveLbl.textColor = UIColor.black
             
             break

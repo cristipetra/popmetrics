@@ -77,9 +77,17 @@ class CalendarViewController: UIViewController {
             self.todayLabelView.layer.masksToBounds = true
         }
         
-        fetchItemsLocally(silent: false)
+        NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
+        
+        if (UsersStore.isTwitterConnected) {
+            fetchItemsLocally(silent: false)
+        }
     }
 
+    func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
+        fetchItemsLocally(silent: false)
+    }
+    
     func setupTopHeaderView() {
         if topHeaderView == nil {
             topHeaderView = HeaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 0))

@@ -29,6 +29,15 @@ class ToDoViewController: UIViewController {
 
         setUpNavigationBar()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
+        
+        if (UsersStore.isTwitterConnected) {
+            fetchItemsLocally()
+        }
+        
+    }
+    
+    func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
         fetchItemsLocally()
     }
     
