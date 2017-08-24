@@ -106,7 +106,7 @@ class FooterView: UIView {
         horizontalStackView = UIStackView(arrangedSubviews: [xButton, informationBtn, placeholderView, approveStackView])
         
         horizontalStackView.axis = .horizontal
-        horizontalStackView.distribution = .equalSpacing
+        //horizontalStackView.distribution = .equalSpacing
         horizontalStackView.alignment = .top
         horizontalStackView.spacing = 16
         

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftRichString
 
 protocol FooterButtonHandlerProtocol: class {
     func approvalButtonPressed()
@@ -14,6 +15,7 @@ protocol FooterButtonHandlerProtocol: class {
     func informationButtonPressed()
     func loadMorePressed()
 }
+
 
 class TableFooterView: UITableViewHeaderFooterView {
     
@@ -178,7 +180,7 @@ class TableFooterView: UITableViewHeaderFooterView {
     
     func setUpHorizontalStackView() {
         
-        horizontalStackView = UIStackView(arrangedSubviews: [xButton,informationBtn,loadMoreStackView,approveStackView])
+        horizontalStackView = UIStackView(arrangedSubviews: [xButton, informationBtn, loadMoreStackView, approveStackView])
         
         horizontalStackView.axis = .horizontal
         horizontalStackView.distribution = .equalSpacing
@@ -197,7 +199,7 @@ class TableFooterView: UITableViewHeaderFooterView {
     }
     
     func setupEmptyView() {
-        emptyView = UIView(frame: CGRect(x: 0, y: 0, width: 80, height: 50))
+        emptyView = UIView(frame: CGRect(x: 0, y: 0, width: 80, height: 46))
         emptyView.widthAnchor.constraint(equalToConstant: 80)
         emptyView.backgroundColor = UIColor.blue
         emptyView.isHidden = true
@@ -209,7 +211,14 @@ class TableFooterView: UITableViewHeaderFooterView {
         xButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
         xButton.addTarget(self, action: #selector(deleteHandler), for: .touchUpInside)
         xButton.layer.cornerRadius = 23//xButton.frame.size.width / 2
-        xButton.setImage(UIImage(named: "iconCloseCard")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        xButton.setImage(UIImage(named: "iconCtaClose"), for: .normal)
+        xButton.layer.borderColor = UIColor.black.cgColor
+        xButton.tintColor = UIColor.black
+        xButton.backgroundColor = UIColor.white
+        xButton.layer.borderWidth = 1.5
+        
+        
         xButton.clipsToBounds = true
     }
     
@@ -222,7 +231,21 @@ class TableFooterView: UITableViewHeaderFooterView {
         informationBtn.widthAnchor.constraint(equalToConstant: 46).isActive = true
         informationBtn.heightAnchor.constraint(equalToConstant: 46).isActive = true
         informationBtn.addTarget(self, action: #selector(informationHandler), for: .touchUpInside)
-        informationBtn.setImage(UIImage(named: "iconInfoPage")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        //informationBtn.setImage(UIImage(named: "iconInfoPage")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        
+        
+        let attrTitle = Style.default {
+            
+            $0.font = FontAttribute(FontBook.regular, size: 30)
+            $0.color = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
+        }
+        informationBtn.setAttributedTitle("i".set(style: attrTitle), for: .normal)
+        informationBtn.layer.borderColor = UIColor.black.cgColor
+        informationBtn.layer.borderWidth = 1.5
+        informationBtn.backgroundColor = UIColor.white
+        
+        
         informationBtn.layer.cornerRadius = 23
     }
     
@@ -234,8 +257,13 @@ class TableFooterView: UITableViewHeaderFooterView {
         loadMoreBtn.widthAnchor.constraint(equalToConstant: 46).isActive = true
         loadMoreBtn.heightAnchor.constraint(equalToConstant: 46).isActive = true
         loadMoreBtn.addTarget(self, action: #selector(loadMoreHandler), for: .touchUpInside)
-        loadMoreBtn.setImage(UIImage(named: "iconLoadMore")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        loadMoreBtn.setImage(UIImage(named: "iconLoadMore"), for: .normal)
         loadMoreBtn.layer.cornerRadius = 23
+        
+        loadMoreBtn.layer.borderColor = UIColor.black.cgColor
+        loadMoreBtn.tintColor = UIColor.black
+        loadMoreBtn.backgroundColor = UIColor.white
+        loadMoreBtn.layer.borderWidth = 1.5
     }
     
     func loadMoreHandler() {
@@ -295,10 +323,11 @@ class TableFooterView: UITableViewHeaderFooterView {
             }
         default:
             break
+            
         }
     }
-    
 }
+
 
 enum TypeSection {
     case failed
