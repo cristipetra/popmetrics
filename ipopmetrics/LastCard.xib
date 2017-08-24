@@ -77,7 +77,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OhX-Wm-mus" customClass="TwoImagesButton" customModule="ipopmetrics" customModuleProvider="target">
-                                        <rect key="frame" x="252" y="16" width="90" height="45"/>
+                                        <rect key="frame" x="255" y="16" width="90" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="LGX-a6-an0"/>
                                             <constraint firstAttribute="width" constant="90" id="Lhl-Ga-V3n"/>
@@ -117,7 +117,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="OhX-Wm-mus" secondAttribute="trailing" constant="13" id="30N-LQ-BRO"/>
+                                    <constraint firstAttribute="trailing" secondItem="OhX-Wm-mus" secondAttribute="trailing" constant="10" id="30N-LQ-BRO"/>
                                     <constraint firstItem="OhX-Wm-mus" firstAttribute="top" secondItem="lCs-7n-YJn" secondAttribute="top" constant="16" id="7ha-BE-MGj"/>
                                     <constraint firstItem="HXD-4C-rk7" firstAttribute="leading" secondItem="lCs-7n-YJn" secondAttribute="leading" id="8L6-ER-Pmf"/>
                                     <constraint firstAttribute="trailing" secondItem="uGG-Xw-ktc" secondAttribute="trailing" constant="17" id="Jrw-Ob-1CW"/>

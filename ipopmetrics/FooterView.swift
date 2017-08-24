@@ -167,7 +167,7 @@ class FooterView: UIView {
     
     func setUpDoubleButton() {
         
-        actionButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        actionButton.widthAnchor.constraint(equalToConstant: 90).isActive = true
         actionButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
         actionButton.tintColor = PopmetricsColor.darkGrey
         actionButton.addTarget(self, action: #selector(approveHandler), for: .touchUpInside)

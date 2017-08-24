@@ -166,7 +166,7 @@
                 <tabBarController storyboardIdentifier="MainTabBarController" title="Main Tab Bar Controller" id="11g-qt-nej" customClass="MainTabBarController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="vI3-Am-2cK"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="k0Q-yd-kzN">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="k0Q-yd-kzN">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -309,7 +309,7 @@
                 <navigationController storyboardIdentifier="HomeNavigationID" automaticallyAdjustsScrollViewInsets="NO" id="NdU-Vz-erg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="tabBarItem:g6b-nh-pyf:image" id="g6b-nh-pyf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="z2a-iC-IPh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="z2a-iC-IPh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

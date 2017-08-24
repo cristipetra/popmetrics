@@ -26,6 +26,9 @@ class MainTabBarController: UITabBarController {
 
         // let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
+        self.tabBar.tintColor = PopmetricsColor.textGrey
+        self.tabBar.unselectedItemTintColor = PopmetricsColor.unselectedTabBarItemTint
+        
         homeNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationID") as! UINavigationController
         homeNavigationController.tabBarItem.title = "Home"
         homeNavigationController.tabBarItem.image = #imageLiteral(resourceName: "Icon_Home_Selected")
