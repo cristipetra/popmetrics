@@ -14,12 +14,15 @@ class ToDoCell: UITableViewCell {
     @IBOutlet weak var toDoCountViewHeight: NSLayoutConstraint!
     @IBOutlet weak var goToButton: TwoImagesButton!
     @IBOutlet weak var toDoCountView: ToDoCountView!
+    @IBOutlet weak var todoHeaderView: ToolbarViewCell!
+    
     @IBOutlet weak var wrapperView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         self.goToButton.backgroundColor = PopmetricsColor.yellowBGColor
         self.backgroundColor = UIColor.feedBackgroundColor()
         setCornerRadius()
+        setBarContent()
         setShadows(view: goToButton)
     }
     
@@ -27,6 +30,20 @@ class ToDoCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
+    }
+    
+    func setHeaderTitle(title: String) {   
+        todoHeaderView.title.text = title
+        todoHeaderView.title.textColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
+        
+    }
+    
+    func setBarContent() {
+        todoHeaderView.isLeftImageHidden = false
+        todoHeaderView.leftImage.contentMode = .scaleAspectFit
+        todoHeaderView.leftImage.image = UIImage(named: "iconTodoSnapshotCard")
+        
+        todoHeaderView.backgroundColor = PopmetricsColor.yellowBGColor
     }
     
     func setCornerRadius() {

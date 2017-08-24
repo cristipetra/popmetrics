@@ -377,9 +377,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath) as!
                 ToDoCell
                 cell.toDoCountView.numberOfRows = 2
-                cell.toDoCountViewHeight.constant = CGFloat(cell.toDoCountView.numberOfRows * 60 + 93)
+                cell.toDoCountViewHeight.constant = CGFloat(cell.toDoCountView.numberOfRows * 60 + 122)
                 toDoCellHeight = cell.toDoCountViewHeight.constant
                 cell.selectionStyle = .none
+                cell.setHeaderTitle(title: "Snapshot") 
                 return cell
 
             case "info":
