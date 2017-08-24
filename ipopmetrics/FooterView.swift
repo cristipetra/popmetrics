@@ -91,7 +91,7 @@ class FooterView: UIView {
     
     func setUpApproveStackView() {
         
-        approveStackView = UIStackView(arrangedSubviews: [actionButton])
+        approveStackView = UIStackView(arrangedSubviews: [actionButton,approveLbl])
         approveStackView.axis = .vertical
         approveStackView.distribution = .equalSpacing
         approveStackView.alignment = .center
@@ -107,18 +107,16 @@ class FooterView: UIView {
         
         horizontalStackView.axis = .horizontal
         horizontalStackView.distribution = .equalSpacing
-        horizontalStackView.alignment = .center
+        horizontalStackView.alignment = .top
         horizontalStackView.spacing = 16
         
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(horizontalStackView)
         
         
-        horizontalStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -8).isActive = true
+        horizontalStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 8).isActive = true
         horizontalStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
         horizontalStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-        horizontalStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        approveStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
     
     func setUpXButton() {
