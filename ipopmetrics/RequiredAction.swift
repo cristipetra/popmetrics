@@ -56,6 +56,7 @@ class RequiredAction: UITableViewCell {
             self.footerView.actionButton.addTarget(self, action:#selector(handleActionNotifications(_:)), for: .touchDown)
         } else {
             self.footerView.actionButton.addTarget(self, action:#selector(handleActionTwitter(_:)), for: .touchDown)
+            self.footerView.informationBtn.addTarget(self, action: #selector(handleInfoButtonPressed), for: .touchDown)
         }
         
         
@@ -131,7 +132,7 @@ class RequiredAction: UITableViewCell {
                                             else {
                                                 sender.setTitle("Connected.", for: .normal)
                                                 UsersStore.isTwitterConnected = true
-                                                self.showBanner()
+                                                self.showBanner(bannerType: .success)
                                             }
                 } // usersApi.logInWithGoogle()
                 
@@ -147,26 +148,56 @@ class RequiredAction: UITableViewCell {
         
     }
     
-    internal func showBanner() {
-        let title = "Authentication Success!"
-        let titleAttribute = [
-            NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 12),
-            NSForegroundColorAttributeName: PopmetricsColor.darkGrey]
-        let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [String : Any]))
-        let subtitle = "Twitter Connected"
-        let subtitleAttribute = [
-            NSFontAttributeName: UIFont(name: "OpenSans-SemiBold", size: 12),
-            NSForegroundColorAttributeName: UIColor.white]
-        let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [String : Any]))
-        let banner = NotificationBanner(attributedTitle: attributedTitle, attributedSubtitle: attributedSubtitle, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
-        banner.backgroundColor = PopmetricsColor.greenMedium
+    private func showBanner(bannerType: BannerType) {
+        let banner: NotificationBanner!
+        switch bannerType {
+        case .success:
+            let title = "Authentication Success!"
+            let titleAttribute = [
+                NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 12),
+                NSForegroundColorAttributeName: PopmetricsColor.darkGrey]
+            let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [String : Any]))
+            let subtitle = "Twitter Connected"
+            let subtitleAttribute = [
+                NSFontAttributeName: UIFont(name: "OpenSans-SemiBold", size: 12),
+                NSForegroundColorAttributeName: UIColor.white]
+            let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [String : Any]))
+            banner = NotificationBanner(attributedTitle: attributedTitle, attributedSubtitle: attributedSubtitle, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
+            banner.backgroundColor = PopmetricsColor.greenMedium
+            break
+        case .failed:
+            let title = "Authentication Failed"
+            let titleAttribute = [
+                NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 12),
+                NSForegroundColorAttributeName: PopmetricsColor.notificationBGColor]
+            let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [String : Any]))
+            let subtitle = "Twitter failed to connect! Try again"
+            let subtitleAttribute = [
+                NSFontAttributeName: UIFont(name: "OpenSans-SemiBold", size: 12),
+                NSForegroundColorAttributeName: UIColor.white]
+            let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [String : Any]))
+            banner = NotificationBanner(attributedTitle: attributedTitle, attributedSubtitle: attributedSubtitle, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
+            banner.backgroundColor = PopmetricsColor.salmondColor
+            break
+        default:
+            break
+        }
         banner.duration = TimeInterval(exactly: 7.0)!
         banner.show()
         
         banner.onTap = {
-            UIApplication.shared.open(URL(string: Config.appWebAimeeLink)!, options: [:], completionHandler: nil)
+            banner.dismiss()
         }
+    }
+    
+    
+    @objc func handleInfoButtonPressed() {
+        showBanner(bannerType: .failed)
     }
     
 }
 
+enum BannerType {
+    case success
+    case failed
+}
