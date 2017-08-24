@@ -11,7 +11,7 @@ import UIKit
 class LastCardCell: UITableViewCell {
     @IBOutlet weak var secondContainerView: UIView!
     @IBOutlet weak var imageTitle: UIImageView!
-    @IBOutlet weak var xbutton: UIButton!
+    @IBOutlet weak var xbutton: RoundButton!
     @IBOutlet weak var goToButton: TwoImagesButton!
     @IBOutlet weak var messageLbl: UILabel!
     @IBOutlet weak var headerView: UIView!

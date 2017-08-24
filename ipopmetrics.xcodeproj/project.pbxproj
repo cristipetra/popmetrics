@@ -31,6 +31,7 @@
 		085AA0D41F42ECAA0014D4CE /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085AA0D31F42ECAA0014D4CE /* Todo.swift */; };
 		085CB7B21F4ADCA200038C03 /* Notifications.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 085CB7B11F4ADCA200038C03 /* Notifications.storyboard */; };
 		085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085CB7B51F4ADD9C00038C03 /* NotificationsViewController.swift */; };
+		0888C5BE1F4EECEC00E3DB04 /* RoundedCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */; };
 		08953E6B1F4C269E003ABEFC /* ToDoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08953E6A1F4C269E003ABEFC /* ToDoCell.xib */; };
 		08953E6D1F4C275C003ABEFC /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E6C1F4C275C003ABEFC /* ToDoCell.swift */; };
 		08953E6F1F4C2790003ABEFC /* ToDoCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */; };
@@ -196,6 +197,7 @@
 		085CB7B11F4ADCA200038C03 /* Notifications.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notifications.storyboard; sourceTree = "<group>"; };
 		085CB7B51F4ADD9C00038C03 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersButton.swift; sourceTree = "<group>"; };
 		08953E6A1F4C269E003ABEFC /* ToDoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoCell.xib; sourceTree = "<group>"; };
 		08953E6C1F4C275C003ABEFC /* ToDoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCountView.swift; sourceTree = "<group>"; };
@@ -421,6 +423,15 @@
 				085CB7B51F4ADD9C00038C03 /* NotificationsViewController.swift */,
 			);
 			name = notifications;
+			sourceTree = "<group>";
+		};
+		0888C5BC1F4EECBF00E3DB04 /* buttons */ = {
+			isa = PBXGroup;
+			children = (
+				0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */,
+				08B485E51F210A61005918A1 /* RoundButton.swift */,
+			);
+			name = buttons;
 			sourceTree = "<group>";
 		};
 		08953E701F4C3503003ABEFC /* required */ = {
@@ -685,6 +696,7 @@
 		11ACA9AD1E2CE0A80021E64A /* views */ = {
 			isa = PBXGroup;
 			children = (
+				0888C5BC1F4EECBF00E3DB04 /* buttons */,
 				080DCA841F4D96EB000C73DC /* recommended */,
 				08953E701F4C3503003ABEFC /* required */,
 				085CB7B31F4ADD1500038C03 /* notifications */,
@@ -697,7 +709,6 @@
 				11ACA9A91E2CE05D0021E64A /* CompletionView.swift */,
 				11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */,
 				08C7B18C1F1CF40C00E456C6 /* WelcomeScreen.xib */,
-				08B485E51F210A61005918A1 /* RoundButton.swift */,
 				0856F3571F272F020061DF7E /* Calendar.storyboard */,
 				08C6FBFA1F41FFCB007D6101 /* Todo.storyboard */,
 				08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */,
@@ -1120,6 +1131,7 @@
 				110A62E01ECEE6D90052B478 /* DemoPhotoMessageHandler.swift in Sources */,
 				1120F2001ECDF4F200576E39 /* RequiredActionHandler.swift in Sources */,
 				116540BF1EEAC61E00417D61 /* AppStoryboard.swift in Sources */,
+				0888C5BE1F4EECEC00E3DB04 /* RoundedCornersButton.swift in Sources */,
 				110A62F31ECEE6FB0052B478 /* TimeSeparatorPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

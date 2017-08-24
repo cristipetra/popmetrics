@@ -9,8 +9,8 @@
 import UIKit
 
 class NotificationsViewController: UIViewController {
-    @IBOutlet weak var confirmButton: RoundButton!
-    @IBOutlet weak var cancelButton: RoundButton!
+    @IBOutlet weak var confirmButton: RoundedCornersButton!
+    @IBOutlet weak var cancelButton: RoundedCornersButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

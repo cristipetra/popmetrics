@@ -14,7 +14,7 @@ class VideoScreenViewController: UIViewController {
     
     @IBOutlet weak var containerPlayer: UIView!
     
-    @IBOutlet weak var btnStarted: RoundButton!
+    @IBOutlet weak var btnStarted: RoundedCornersButton!
     var player: AVPlayer!
     var playerViewController: AVPlayerViewController = AVPlayerViewController();
 

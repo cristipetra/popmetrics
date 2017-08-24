@@ -58,7 +58,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glY-W5-PhM">
                                 <rect key="frame" x="0.0" y="277" width="375" height="390"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="xBm-zB-8b4" customClass="RoundButton" customModule="ipopmetrics" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="xBm-zB-8b4" customClass="RoundedCornersButton" customModule="ipopmetrics" customModuleProvider="target">
                                         <rect key="frame" x="66" y="178" width="242" height="60"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -73,7 +73,7 @@
                                             <action selector="cancelButtonPressed:" destination="pc6-cY-x62" eventType="touchUpInside" id="X3i-FU-hzH"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="vHJ-Fc-uxr" customClass="RoundButton" customModule="ipopmetrics" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="vHJ-Fc-uxr" customClass="RoundedCornersButton" customModule="ipopmetrics" customModuleProvider="target">
                                         <rect key="frame" x="75" y="71" width="224" height="60"/>
                                         <color key="backgroundColor" red="0.34509803919999998" green="0.60784313729999995" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>

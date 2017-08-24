@@ -33,7 +33,7 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
     @IBOutlet weak var articleDate: ActiveLabel!
     @IBOutlet weak var postIconImageView: UIImageView!
     @IBOutlet weak var socialNetworkLbl: UILabel!
-    @IBOutlet weak var actionBtn: RoundButton!
+    @IBOutlet weak var actionBtn: RoundedCornersButton!
     
     
     var postIndex = 0
