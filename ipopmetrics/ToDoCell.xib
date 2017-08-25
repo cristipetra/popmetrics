@@ -36,7 +36,7 @@
                                     <constraint firstAttribute="height" constant="29" id="5LT-fR-xcn"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tk4-WE-T5P">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tk4-WE-T5P" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="177.5" width="355" height="92"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3l-2P-biX" customClass="TwoImagesButton" customModule="ipopmetrics" customModuleProvider="target">
@@ -61,7 +61,7 @@
                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KtK-xA-HfK" customClass="RoundButton" customModule="ipopmetrics" customModuleProvider="target">
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KtK-xA-HfK" customClass="RoundButton" customModule="ipopmetrics" customModuleProvider="target">
                                         <rect key="frame" x="12" y="13" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="628-cM-fhZ"/>
@@ -114,7 +114,7 @@
                             <constraint firstItem="DxU-lr-rx7" firstAttribute="leading" secondItem="4iY-f6-hjf" secondAttribute="leading" id="Zea-pE-mgc"/>
                             <constraint firstItem="tk4-WE-T5P" firstAttribute="leading" secondItem="4iY-f6-hjf" secondAttribute="leading" id="gzM-48-oqf"/>
                             <constraint firstAttribute="trailing" secondItem="tk4-WE-T5P" secondAttribute="trailing" id="hHa-p5-4o3"/>
-                            <constraint firstItem="tk4-WE-T5P" firstAttribute="top" secondItem="DxU-lr-rx7" secondAttribute="bottom" constant="28.5" id="idR-p4-Ac3"/>
+                            <constraint firstItem="tk4-WE-T5P" firstAttribute="top" secondItem="DxU-lr-rx7" secondAttribute="bottom" constant="28" id="idR-p4-Ac3"/>
                             <constraint firstAttribute="trailing" secondItem="CTm-Fi-JSr" secondAttribute="trailing" id="vLb-n6-8Fb"/>
                             <constraint firstItem="CTm-Fi-JSr" firstAttribute="top" secondItem="4iY-f6-hjf" secondAttribute="top" id="vVK-ZR-CH6"/>
                             <constraint firstItem="CTm-Fi-JSr" firstAttribute="leading" secondItem="4iY-f6-hjf" secondAttribute="leading" id="zlu-hP-fly"/>
@@ -129,6 +129,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="footerView" destination="tk4-WE-T5P" id="U12-4l-dEV"/>
                 <outlet property="goToButton" destination="N3l-2P-biX" id="unC-mB-gQd"/>
                 <outlet property="toDoCountView" destination="DxU-lr-rx7" id="P2G-vw-xlv"/>
                 <outlet property="toDoCountViewHeight" destination="vyt-TY-hit" id="LAO-th-jBU"/>

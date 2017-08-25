@@ -82,16 +82,9 @@ class FooterView: UIView {
         setUpHorizontalStackView()
     }
     
-    //  func setupCorners() {
-    //    DispatchQueue.main.async {
-    //      self.roundCorners(corners: [.bottomLeft, .bottomRight] , radius: 12)
-    //      self.layer.masksToBounds = true
-    //    }
-    //  }
     
     func setUpApproveStackView() {
-        
-        approveStackView = UIStackView(arrangedSubviews: [actionButton,approveLbl])
+        approveStackView = UIStackView(arrangedSubviews: [actionButton, approveLbl])
         approveStackView.axis = .vertical
         approveStackView.distribution = .equalSpacing
         approveStackView.alignment = .center
