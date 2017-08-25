@@ -143,6 +143,14 @@ class TwoImagesButton: UIButton {
             break
         }
     }
+    
+    func changeToDisabled() {
+        self.backgroundColor = .white
+        self.leftImageView.layer.opacity = 0.3
+        self.rightImageView.layer.opacity = 0.3
+        self.layer.borderColor = UIColor.black.withAlphaComponent(0.2).cgColor
+        self.isEnabled = false
+    }
 }
 
 enum ImageButtonType {

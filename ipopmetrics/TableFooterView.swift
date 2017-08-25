@@ -10,7 +10,7 @@ import UIKit
 import SwiftRichString
 
 protocol FooterButtonHandlerProtocol: class {
-    func approvalButtonPressed()
+    func approvalButtonPressed(section: Int)
     func closeButtonPressed()
     func informationButtonPressed()
     func loadMorePressed()
@@ -24,6 +24,8 @@ class TableFooterView: UITableViewHeaderFooterView {
     var loadMoreCount: Int = 0
     var approveCount: Int = 0
     var emptyView: UIView!
+    
+    var section = 0
     
     var typeSection: StatusArticle = .complete {
         didSet {
@@ -265,6 +267,7 @@ class TableFooterView: UITableViewHeaderFooterView {
     
     func approveHandler() {
         animateButtonBlink(button: actionButton)
+        buttonHandlerDelegate?.approvalButtonPressed(section: self.section)
     }
     
     func animateButtonBlink(button: UIButton) {
@@ -309,6 +312,22 @@ class TableFooterView: UITableViewHeaderFooterView {
             break
             
         }
+    }
+    
+    func setUpDisabledLabels() {
+        approveLbl.layer.opacity = 0.3
+        approveLbl.text = "Approve (0)"
+        
+        loadMoreLbl.layer.opacity = 0.3
+        loadMoreLbl.text = "Load More (0)"
+    }
+    
+    func setUpLoadMoreDisabled() {
+        loadMoreBtn.isEnabled = false
+        loadMoreBtn.imageView?.layer.opacity = 0.3
+        loadMoreBtn.layer.borderColor = UIColor.black.withAlphaComponent(0.2).cgColor
+        
+        
     }
 }
 
