@@ -12,7 +12,7 @@ import SwiftyJSON
 import MJCalendar
 
 class CalendarViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calendarView: MJCalendarView!
     
@@ -23,6 +23,8 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var topPickerStackView: UIStackView!
     @IBOutlet weak var todayLabelView: UIView!
     
+    
+    @IBOutlet weak var topPickerStackViewWrapper: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var topPickerStackViewHeight: NSLayoutConstraint!
     
@@ -59,12 +61,12 @@ class CalendarViewController: UIViewController {
         
         let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
         tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
-
+        
         
         tableView.separatorStyle = .none
         setupTopHeaderView()
         self.setUpCalendarConfiguration()
-        
+        addDivider()
         let tap = UITapGestureRecognizer(target: self, action: #selector(CalendarViewController.tapFunction))
         currentDateBtn.isUserInteractionEnabled = true
         currentDateBtn.addGestureRecognizer(tap)
@@ -83,7 +85,7 @@ class CalendarViewController: UIViewController {
             fetchItemsLocally(silent: false)
         }
     }
-
+    
     func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
         fetchItemsLocally(silent: false)
     }
@@ -104,7 +106,7 @@ class CalendarViewController: UIViewController {
     func handlerExpand() {
         maximizeCell()
     }
-
+    
     internal func setUpNavigationBar() {
         let text = UIBarButtonItem(title: "Calendar", style: .plain, target: self, action: nil)
         text.tintColor = UIColor(red: 67/255, green: 78/255, blue: 84/255, alpha: 1.0)
@@ -155,7 +157,7 @@ class CalendarViewController: UIViewController {
         
         calendarFeedStore.getFeed()
         
-         self.sections = calendarFeedStore.getFeed()
+        self.sections = calendarFeedStore.getFeed()
     }
     
     func fetchItems(silent:Bool) {
@@ -195,7 +197,7 @@ class CalendarViewController: UIViewController {
         }
         
     }
-
+    
 }
 
 extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, ChangeCellProtocol {
@@ -233,7 +235,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             } else {
                 maxCell.connectionStackView.isHidden = false
             }
-
+            
             return maxCell
         }
     }
@@ -308,14 +310,22 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         }
         return 80
     }
-
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview!)
-        if translation.y > 0 {
+        let yVelocity = scrollView.panGestureRecognizer.velocity(in: scrollView).y
+        if yVelocity < 0 {
+            animateTopPart(shouldCollapse: true, offset: scrollView.contentOffset.y)
+        } else if yVelocity > 0 {
             animateTopPart(shouldCollapse: false, offset: scrollView.contentOffset.y)
         } else {
-            animateTopPart(shouldCollapse: true, offset: scrollView.contentOffset.y)
+            let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview!)
+            if translation.y > 0 {
+                animateTopPart(shouldCollapse: false, offset: scrollView.contentOffset.y)
+            } else {
+                animateTopPart(shouldCollapse: true, offset: scrollView.contentOffset.y)
+            }
+            
         }
         
         var fixedHeaderFrame = self.topHeaderView.frame
@@ -345,6 +355,15 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             if tableView.contentOffset.y == 0 {   //top of the tableView
                 animateHeader(colapse: true)
             }
+        }
+        
+    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let initialHeight = 56 as CGFloat
+        if scrollView.contentOffset.y <= initialHeight {
+            animateTopPart(shouldCollapse: false, offset: scrollView.contentOffset.y)
+        } else {
+            animateTopPart(shouldCollapse: true, offset: scrollView.contentOffset.y)
         }
         
     }
@@ -424,10 +443,10 @@ extension CalendarViewController: MJCalendarViewDelegate {
         self.calendarView.configuration.dayViewSize = CGSize(width: 24, height: 24)
         
         //Set height of row with week's days
-        self.calendarView.configuration.rowHeight = 25
+        self.calendarView.configuration.rowHeight = 45
         
         // Set height of week's days names view
-        self.calendarView.configuration.weekLabelHeight = 45
+        self.calendarView.configuration.weekLabelHeight = 17
         
         //Set the day names to one letter
         self.calendarView.configuration.lettersInWeekDayLabel = .one
@@ -484,7 +503,7 @@ extension CalendarViewController: MJCalendarViewDelegate {
                 if offset <= initialHeight {
                     self.topPickerStackView.alpha = 1.0
                     self.topPickerStackView.isHidden = false
-                    if offset >= 2 {
+                    if offset >= 10 {
                         self.topPickerViewHeight.constant = initialHeight - offset
                     } else {
                         self.topPickerViewHeight.constant = initialHeight
@@ -513,6 +532,10 @@ extension CalendarViewController: MJCalendarViewDelegate {
     func tapFunction(sender:UITapGestureRecognizer) {
         self.calendarView.selectNewPeriod(calendarView.date)
     }
-
     
+    func addDivider() {
+        let divider = UIView(frame: CGRect(x: -17, y: self.topPickerStackViewWrapper.frame.height - 0.5, width: self.topPickerStackViewWrapper.frame.width, height: 0.5))
+        divider.backgroundColor = PopmetricsColor.dividerBorder
+        self.topPickerStackViewWrapper.addSubview(divider)
+    }
 }

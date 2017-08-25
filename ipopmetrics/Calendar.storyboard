@@ -153,6 +153,7 @@
                         <outlet property="todayLabelView" destination="DBl-DD-3tA" id="ctq-fC-bey"/>
                         <outlet property="topPickerStackView" destination="nqb-ha-4lf" id="YZj-dd-IHD"/>
                         <outlet property="topPickerStackViewHeight" destination="Ynl-0P-Y6G" id="Nix-I1-bOc"/>
+                        <outlet property="topPickerStackViewWrapper" destination="cQG-q0-7FL" id="YXJ-70-2SS"/>
                         <outlet property="topPickerViewHeight" destination="3f2-7w-1OH" id="OwU-nv-hcA"/>
                     </connections>
                 </viewController>
