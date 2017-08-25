@@ -19,6 +19,8 @@ protocol FooterButtonHandlerProtocol: class {
 
 class TableFooterView: UITableViewHeaderFooterView {
     
+    let SPACE_ELEMENTS: CGFloat = 15
+    
     var loadMoreCount: Int = 0
     var approveCount: Int = 0
     var emptyView: UIView!
@@ -48,16 +50,14 @@ class TableFooterView: UITableViewHeaderFooterView {
         return view
     }()
     
-    lazy var loadMoreBtn : UIButton = {
-        
-        let button = UIButton(type: UIButtonType.system)
+    lazy var loadMoreBtn : RoundButton = {
+        let button = RoundButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    lazy var informationBtn : UIButton = {
-        
-        let button = UIButton(type: UIButtonType.system)
+    lazy var informationBtn : RoundButton = {
+        let button = RoundButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -78,9 +78,9 @@ class TableFooterView: UITableViewHeaderFooterView {
         
     }()
     
-    lazy var xButton : UIButton = {
+    lazy var xButton: RoundButton = {
         
-        let button = UIButton(type: UIButtonType.system)
+        let button = RoundButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -185,7 +185,7 @@ class TableFooterView: UITableViewHeaderFooterView {
         horizontalStackView.axis = .horizontal
         horizontalStackView.distribution = .equalSpacing
         horizontalStackView.alignment = .center
-        horizontalStackView.spacing = 16
+        horizontalStackView.spacing = SPACE_ELEMENTS
         
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(horizontalStackView)
@@ -199,8 +199,8 @@ class TableFooterView: UITableViewHeaderFooterView {
     }
     
     func setupEmptyView() {
-        emptyView = UIView(frame: CGRect(x: 0, y: 0, width: 80, height: 46))
-        emptyView.widthAnchor.constraint(equalToConstant: 80)
+        emptyView = UIView(frame: CGRect(x: 0, y: 0, width: 90, height: 46))
+        emptyView.widthAnchor.constraint(equalToConstant: 90)
         emptyView.backgroundColor = UIColor.blue
         emptyView.isHidden = true
     }
@@ -213,12 +213,6 @@ class TableFooterView: UITableViewHeaderFooterView {
         xButton.layer.cornerRadius = 23//xButton.frame.size.width / 2
         
         xButton.setImage(UIImage(named: "iconCtaClose"), for: .normal)
-        xButton.layer.borderColor = UIColor.black.cgColor
-        xButton.tintColor = UIColor.black
-        xButton.backgroundColor = UIColor.white
-        xButton.layer.borderWidth = 1.5
-        
-        
         xButton.clipsToBounds = true
     }
     
@@ -231,9 +225,7 @@ class TableFooterView: UITableViewHeaderFooterView {
         informationBtn.widthAnchor.constraint(equalToConstant: 46).isActive = true
         informationBtn.heightAnchor.constraint(equalToConstant: 46).isActive = true
         informationBtn.addTarget(self, action: #selector(informationHandler), for: .touchUpInside)
-        //informationBtn.setImage(UIImage(named: "iconInfoPage")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        
-        
+        //informationBtn.setImage(UIImage(named: "iconInfoPage")?.withRenderingMode(.alwaysOriginal), for: .normal
         
         let attrTitle = Style.default {
             
@@ -241,10 +233,6 @@ class TableFooterView: UITableViewHeaderFooterView {
             $0.color = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
         }
         informationBtn.setAttributedTitle("i".set(style: attrTitle), for: .normal)
-        informationBtn.layer.borderColor = UIColor.black.cgColor
-        informationBtn.layer.borderWidth = 1.5
-        informationBtn.backgroundColor = UIColor.white
-        
         
         informationBtn.layer.cornerRadius = 23
     }
@@ -260,10 +248,6 @@ class TableFooterView: UITableViewHeaderFooterView {
         loadMoreBtn.setImage(UIImage(named: "iconLoadMore"), for: .normal)
         loadMoreBtn.layer.cornerRadius = 23
         
-        loadMoreBtn.layer.borderColor = UIColor.black.cgColor
-        loadMoreBtn.tintColor = UIColor.black
-        loadMoreBtn.backgroundColor = UIColor.white
-        loadMoreBtn.layer.borderWidth = 1.5
     }
     
     func loadMoreHandler() {

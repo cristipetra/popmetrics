@@ -29,6 +29,7 @@ class RoundButton: UIButton {
         self.layer.borderWidth = 2.0
         self.layer.borderColor = PopmetricsColor.textGrey.cgColor
         self.layer.cornerRadius = self.frame.height / 2
+        self.tintColor = PopmetricsColor.darkGrey
     }
     
     private func setShadows() {

@@ -36,7 +36,6 @@ class ToDoCell: UITableViewCell {
         setShadows(view: goToButton)
         setUpShadowLayer()
         
-        footerView.changeTypeSection(typeSection: StatusArticle.unapproved)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
