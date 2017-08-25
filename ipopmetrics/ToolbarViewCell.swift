@@ -83,7 +83,7 @@ class ToolbarViewCell: UIView {
         leftImage.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         leftImage.widthAnchor.constraint(equalToConstant: 24).isActive = true
         leftImage.heightAnchor.constraint(equalToConstant: 15).isActive = true
-        leftImage.image = UIImage(named: "iconTodo")
+        leftImage.image = UIImage(named: "iconCtaTodo")
         
     }
     

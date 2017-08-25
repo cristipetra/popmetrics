@@ -271,11 +271,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             //self.sections.append(tmpSectionInsight)
             
-            
- 
-            
-            
-            
             //self.sections.append(lastSection)
             
             self.sections.forEach({ (section) in
@@ -453,7 +448,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(cardType: .required)
-            cell.sectionTitleLabel.text = "Attention required";
+            cell.sectionTitleLabel.text = "Required Actions";
             return cell
             
         case "todo":
