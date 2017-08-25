@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class NotificationsViewController: UIViewController {
     @IBOutlet weak var confirmButton: RoundedCornersButton!
@@ -21,8 +22,8 @@ class NotificationsViewController: UIViewController {
     }
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
-        
-        UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+        openURLInside(url: UIApplicationOpenSettingsURLString)
+        //UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(NotificationsViewController.applicationWillEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
         return
@@ -55,4 +56,9 @@ class NotificationsViewController: UIViewController {
     
 }
 
-
+//MARK: Safari open
+extension NotificationsViewController {
+    private func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        dismiss(animated: true)
+    }
+}

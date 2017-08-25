@@ -296,11 +296,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     func changeSections() {
         
         sections = []
-        
-        
-        print("whattt")
-        
-        
+
         if (UsersStore.isTwitterConnected) {
             if( UsersStore.isInsightShowed ) {
                 self.sections.append(toDoSection)

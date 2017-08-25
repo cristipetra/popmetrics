@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class RecommendationCardCell: UITableViewCell {
 
@@ -53,7 +54,7 @@ class RecommendationCardCell: UITableViewCell {
     }
     
     func handlerClickCard() {
-        UIApplication.shared.open(URL(string: Config.socialAutomationLink)!, options: [:], completionHandler: nil)
+        openUrl(string: Config.socialAutomationLink)
     }
 
     override func awakeFromNib() {
@@ -112,4 +113,16 @@ class RecommendationCardCell: UITableViewCell {
         bottomImage.layer.addSublayer(gl)
     }
 
+}
+
+extension RecommendationCardCell {
+    func openUrl(string: String) {
+        let url = URL(string: string)
+        let safari = SFSafariViewController(url: url!)
+        self.parentViewController?.present(safari, animated: true)
+    }
+    
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        self.parentViewController?.dismiss(animated: true)
+    }
 }

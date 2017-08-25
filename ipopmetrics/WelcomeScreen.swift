@@ -8,6 +8,7 @@
 
 import UIKit
 import ActiveLabel
+import SafariServices
 
 class WelcomeScreen: UIViewController {
     
@@ -76,11 +77,11 @@ class WelcomeScreen: UIViewController {
     }
 
     @IBAction func handlerHeartButton(_ sender: UIButton) {
-        UIApplication.shared.open(URL(string: Config.appWebLink)!, options: [:], completionHandler: nil)
+        openURLInside(url: Config.appWebLink)
     }
     
     @IBAction func handlerDidPressNewButton(_ sender: UIButton) {
-        UIApplication.shared.open(URL(string: Config.appWebAimeeLink)!, options: [:], completionHandler: nil)
+        openURLInside(url: Config.appWebLink)
     }
 }
 
@@ -110,3 +111,23 @@ extension WelcomeScreen: LDSplashDelegate {
     }
 }
 
+
+extension WelcomeScreen {
+    private func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        dismiss(animated: true)
+    }
+}
+
+
+extension UIView {
+    var parentViewController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder!.next
+            if parentResponder is UIViewController {
+                return parentResponder as! UIViewController!
+            }
+        }
+        return nil
+    }
+}

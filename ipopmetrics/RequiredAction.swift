@@ -11,6 +11,7 @@ import UIKit
 import SwiftRichString
 import TwitterKit
 import NotificationBannerSwift
+import SafariServices
 
 class RequiredAction: UITableViewCell {
     
@@ -59,7 +60,8 @@ class RequiredAction: UITableViewCell {
             self.footerView.informationBtn.addTarget(self, action: #selector(handleInfoButtonPressed), for: .touchDown)
         }
         
-        
+        titleLabel.textColor = PopmetricsColor.darkGrey
+        messageLabel.textColor = PopmetricsColor.darkGrey
     }
     
     internal func setupCorners() {
@@ -73,13 +75,13 @@ class RequiredAction: UITableViewCell {
         titleLabel.text = title
         titleLabel.font = UIFont(name: FontBook.alfaRegular, size: 20)
         
-        titleLabel.textColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
+        titleLabel.textColor = PopmetricsColor.darkGrey
     }
     
     func setMessage(message: String) {
         titleLabel.text = message
         titleLabel.font = UIFont(name: FontBook.semibold, size: 15)
-        titleLabel.textColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
+        titleLabel.textColor = PopmetricsColor.darkGrey
         
     }
     
@@ -102,12 +104,12 @@ class RequiredAction: UITableViewCell {
             $0.color = UIColor.white
         }
         
-        let headerTitle = "Heads Up:".set(style: headsUpStyle) + "Required Action".set(style: requiredAction)
+        let headerTitle = "Heads Up: ".set(style: headsUpStyle) + "Required Action".set(style: requiredAction)
         toolbarView.title.attributedText = headerTitle
     }
     
     func handleActionNotifications(_ sender: SimpleButton) {
-        UIApplication.shared.open(URL(string: Config.howToTurnNotificationLink)!, options: [:], completionHandler: nil)
+        openUrl(string: Config.howToTurnNotificationLink)
     }
     
     @objc func handleActionTwitter(_ sender: SimpleButton) {
@@ -195,6 +197,18 @@ class RequiredAction: UITableViewCell {
         showBanner(bannerType: .failed)
     }
     
+}
+
+extension RequiredAction {
+    func openUrl(string: String) {
+        let url = URL(string: string)
+        let safari = SFSafariViewController(url: url!)
+        self.parentViewController?.present(safari, animated: true)
+    }
+    
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        self.parentViewController?.dismiss(animated: true)
+    }
 }
 
 enum BannerType {

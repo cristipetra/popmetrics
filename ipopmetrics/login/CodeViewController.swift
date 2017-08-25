@@ -9,6 +9,7 @@
 import UIKit
 import Crashlytics
 import EZAlertController
+import SafariServices
 
 class CodeViewController: UIViewController {
     
@@ -101,7 +102,7 @@ class CodeViewController: UIViewController {
     
     func didPressContact() {
         let message = "mailto:" + Config.mailContact
-        UIApplication.shared.open(URL(string: message)!, options: [:], completionHandler: nil)
+        openURLInside(url: message)
     }
     
     internal func storeUserDict(_ userDict: [String: Any]?, callback: (_ success: Bool) -> Void) {
@@ -182,4 +183,10 @@ extension CodeViewController: UITextFieldDelegate {
         return true
     }
     
+}
+
+extension CodeViewController {
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        dismiss(animated: true)
+    }
 }

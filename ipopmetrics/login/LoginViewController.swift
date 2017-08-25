@@ -12,7 +12,7 @@ import Crashlytics
 import EZAlertController
 import SwiftRichString
 import NotificationBannerSwift
-
+import SafariServices
 
 class LoginViewController: UIViewController {
     
@@ -170,7 +170,7 @@ extension LoginViewController {
         banner.show()
         
         banner.onTap = {
-            UIApplication.shared.open(URL(string: Config.appWebAimeeLink)!, options: [:], completionHandler: nil)
+            self.openURLInside(url: Config.appWebLink)
         }
         
     }
@@ -199,4 +199,10 @@ extension LoginViewController: UITextFieldDelegate {
         return true
     }
     
+}
+
+extension LoginViewController {
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        dismiss(animated: true)
+    }
 }
