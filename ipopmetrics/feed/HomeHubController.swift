@@ -382,6 +382,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.selectionStyle = .none
         
                 cell.footerView.layer.backgroundColor = UIColor.clear.cgColor
+                cell.footerView.approveLbl.textColor = UIColor.white
                 cell.configure(item, handler: self.requiredActionHandler)
                 if((sections[sectionIdx].items.count-1) == indexPath.row) {
                     cell.connectionLineView.isHidden = true;

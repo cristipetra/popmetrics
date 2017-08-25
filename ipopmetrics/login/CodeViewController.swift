@@ -102,7 +102,7 @@ class CodeViewController: UIViewController {
     
     func didPressContact() {
         let message = "mailto:" + Config.mailContact
-        openURLInside(url: message)
+        UIApplication.shared.open(URL(string: message)!, options: [:], completionHandler: nil)
     }
     
     internal func storeUserDict(_ userDict: [String: Any]?, callback: (_ success: Bool) -> Void) {

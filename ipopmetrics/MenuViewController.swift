@@ -46,7 +46,7 @@ class MenuViewController: ElasticModalViewController {
     }
     @IBAction func contactButtonPressed(_ sender: UIButton) {
         let message = "mailto:" + Config.mailContact
-        openURLInside(url: message)
+        UIApplication.shared.open(URL(string: message)!, options: [:], completionHandler: nil)
     }
     
     @IBAction func aboutButtonPressed(_ sender: UIButton) {

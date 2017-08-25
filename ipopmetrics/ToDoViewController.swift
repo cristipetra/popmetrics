@@ -222,7 +222,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             return UIView()
         }
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
-        //todoFooter.changeTypeSection(typeSection: StatusArticle(rawValue: sections[section].status)!)
+        todoFooter.changeTypeSection(typeSection: StatusArticle(rawValue: sections[section].status)!)
         todoFooter.actionButton.addTarget(self, action: #selector(approveCard), for: .touchUpInside)
         todoFooter.section = section
         todoFooter.buttonHandlerDelegate = self

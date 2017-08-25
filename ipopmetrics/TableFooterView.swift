@@ -16,7 +16,6 @@ protocol FooterButtonHandlerProtocol: class {
     func loadMorePressed()
 }
 
-
 class TableFooterView: UITableViewHeaderFooterView {
     
     let SPACE_ELEMENTS: CGFloat = 15
@@ -182,10 +181,9 @@ class TableFooterView: UITableViewHeaderFooterView {
     
     func setUpHorizontalStackView() {
         
-        horizontalStackView = UIStackView(arrangedSubviews: [xButton, informationBtn, loadMoreStackView, approveStackView])
+        horizontalStackView = UIStackView(arrangedSubviews: [xButton, informationBtn, loadMoreStackView])
         
         horizontalStackView.axis = .horizontal
-        horizontalStackView.distribution = .equalSpacing
         horizontalStackView.alignment = .center
         horizontalStackView.spacing = SPACE_ELEMENTS
         
@@ -193,11 +191,14 @@ class TableFooterView: UITableViewHeaderFooterView {
         containerView.addSubview(horizontalStackView)
         
         horizontalStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: -8).isActive = true
-        horizontalStackView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive = true
-        horizontalStackView.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -10).isActive = true
+        horizontalStackView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 12).isActive = true
         horizontalStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
         loadMoreStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        
+        
+        containerView.addSubview(approveStackView)
         approveStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        approveStackView.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -12).isActive = true
     }
     
     func setupEmptyView() {
@@ -294,6 +295,8 @@ class TableFooterView: UITableViewHeaderFooterView {
         switch typeSection {
         case .failed:
             actionButton.imageButtonType = .failed
+            approveLbl.text = "Reschedule All (1)"
+            
         case .unapproved:
             actionButton.imageButtonType = .unapproved
         default:

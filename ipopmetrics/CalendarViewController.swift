@@ -294,7 +294,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == sections.count - 1 {
-            return 0
+            return 60
         }
         if shouldMaximizeCell == false {
             return 109
