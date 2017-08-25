@@ -325,11 +325,10 @@ class TableFooterView: UITableViewHeaderFooterView {
     }
     
     func setUpLoadMoreDisabled() {
-        loadMoreBtn.isEnabled = false
         loadMoreBtn.imageView?.layer.opacity = 0.3
+        loadMoreLbl.layer.opacity = 0.3
         loadMoreBtn.layer.borderColor = UIColor.black.withAlphaComponent(0.2).cgColor
-        
-        
+        loadMoreBtn.isEnabled = false
     }
 }
 

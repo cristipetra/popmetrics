@@ -130,14 +130,12 @@ class FooterView: UIView {
     }
     
     func deleteHandler() {
-        
-        print("SSS X Button pressed")
         animateButtonBlink(button: xButton)
         
     }
     
     func informationHandler() {
-        print("SSS information button pressed")
+        print("information button pressed")
         animateButtonBlink(button: informationBtn)
         
     }

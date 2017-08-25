@@ -28,8 +28,10 @@ class HeaderCardCell: UITableViewCell {
     func changeColor(section: Int) {
         switch section {
         case 0:
-            connectionView.backgroundColor = UIColor.carrotColor()
-            roundConnectionView.backgroundColor = UIColor.carrotColor()
+            connectionView.backgroundColor = PopmetricsColor.darkGrey
+            roundConnectionView.backgroundColor = PopmetricsColor.darkGrey
+            //connectionView.backgroundColor = UIColor.carrotColor()
+            //roundConnectionView.backgroundColor = UIColor.carrotColor()
             break
         case 1:
             connectionView.backgroundColor = UIColor.turquoiseColor()
@@ -66,5 +68,8 @@ class HeaderCardCell: UITableViewCell {
         }
     }
     
+    func changeTitle(title: String) {
+        sectionTitleLabel.text = title
+    }
 
 }

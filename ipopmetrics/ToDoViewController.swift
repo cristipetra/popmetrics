@@ -164,6 +164,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
         if shouldMaximize {
             let cell = tableView.dequeueReusableCell(withIdentifier: "maxCellId", for: indexPath) as! CalendarCardMaximizedViewCell
+            cell.configure(item)
             cell.articleDate.isHidden = true
             cell.setUpMaximizeToDo()
             cell.approveDenyDelegate = self
@@ -213,6 +214,8 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             return headerCell
         } else {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
+            headerCell.changeColor(section: section)
+            headerCell.changeTitle(title: sections[section].items[0].socialTextString)
             return headerCell
         }
     }
@@ -229,6 +232,9 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         if isAllApproved {
             todoFooter.actionButton.changeToDisabled()
             todoFooter.setUpDisabledLabels()
+            todoFooter.setUpLoadMoreDisabled()
+        }
+        DispatchQueue.main.async {
             todoFooter.setUpLoadMoreDisabled()
         }
         

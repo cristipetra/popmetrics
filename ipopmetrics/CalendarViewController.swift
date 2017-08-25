@@ -258,6 +258,9 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             return headerCell
         } else {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
+            headerCell.changeColor(section: section)
+            headerCell.changeTitle(title: sections[section].items[0].socialTextString)
+            
             return headerCell
         }
         
@@ -288,6 +291,9 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         }
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
         todoFooter.changeFeedType(feedType: FeedType.calendar)
+        DispatchQueue.main.async {
+            todoFooter.setUpLoadMoreDisabled()
+        }
         
         return todoFooter
     }

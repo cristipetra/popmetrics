@@ -139,6 +139,8 @@ class TwoImagesButton: RoundButton {
         case .allowNotification:
             leftHandImage = UIImage(named: "iconAlertMessage")
             leftImageView.frame.origin.y = 14
+        case .todo:
+            leftHandImage = UIImage(named: "iconCtaTodo")
         default:
             break
         }
@@ -161,4 +163,5 @@ enum ImageButtonType {
     case twitter
     case rescheduled
     case allowNotification
+    case todo
 }

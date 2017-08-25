@@ -411,7 +411,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.toDoCountViewHeight.constant = CGFloat(cell.toDoCountView.numberOfRows * 60 + 122)
                 toDoCellHeight = cell.toDoCountViewHeight.constant
                 cell.selectionStyle = .none
-                cell.setHeaderTitle(title: "Snapshot") 
+                cell.setHeaderTitle(title: "Snapshot")
                 return cell
 
             case "info":
