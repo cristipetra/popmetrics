@@ -17,12 +17,13 @@ class ToDoCardCell: UITableViewCell {
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var messageLbl: UILabel!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var circleView: UIView!
     
     lazy var approvedView : UIView = {
         
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        view.backgroundColor = PopmetricsColor.darkGrey.withAlphaComponent(0.8)
         return view
         
     }()
@@ -40,6 +41,13 @@ class ToDoCardCell: UITableViewCell {
         super.awakeFromNib()
         self.backgroundColor = UIColor.feedBackgroundColor()
         //setUpApprovedView()
+        setupCorners()
+    }
+    
+    func setupCorners() {
+        DispatchQueue.main.async {
+            self.circleView.roundCorners(corners: .allCorners, radius: self.circleView.frame.size.width/2)
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

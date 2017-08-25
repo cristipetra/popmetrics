@@ -61,7 +61,7 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        view.backgroundColor = PopmetricsColor.darkGrey.withAlphaComponent(0.8)
         return view
         
     }()
