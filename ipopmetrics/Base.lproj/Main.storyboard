@@ -112,7 +112,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't worry! More settings are comming." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V64-sc-33c">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't worry! More settings are coming." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V64-sc-33c">
                                 <rect key="frame" x="63" y="363" width="249" height="41"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -309,7 +309,7 @@
                 <navigationController storyboardIdentifier="HomeNavigationID" automaticallyAdjustsScrollViewInsets="NO" id="NdU-Vz-erg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="tabBarItem:g6b-nh-pyf:image" id="g6b-nh-pyf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="z2a-iC-IPh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="z2a-iC-IPh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

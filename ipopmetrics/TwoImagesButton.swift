@@ -126,7 +126,9 @@ class TwoImagesButton: RoundButton {
             leftHandImage = UIImage(named: "icon_timescore")
             rightHandImage = UIImage(named: "iconCalLeft")
         case .twitter:
-            leftHandImage = UIImage(named: "icon_twitter")
+            leftHandImage = UIImage(named: "iconCtaTwitter")
+            leftImageView.frame.size.height = 24
+            leftImageView.frame.origin.y = 12
             rightHandImage = UIImage(named: "iconCalLeft")
         case .approved:
             leftHandImage = UIImage(named: "icon2CtaApprovepost")
