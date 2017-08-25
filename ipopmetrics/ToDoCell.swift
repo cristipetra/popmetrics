@@ -17,6 +17,16 @@ class ToDoCell: UITableViewCell {
     @IBOutlet weak var todoHeaderView: ToolbarViewCell!
     
     @IBOutlet weak var wrapperView: UIView!
+    @IBOutlet weak var footerView: FooterView!
+    
+    
+    lazy var shadowLayer : UIView  = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.feedBackgroundColor()
+        return view
+    }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.goToButton.backgroundColor = PopmetricsColor.yellowBGColor
@@ -24,6 +34,9 @@ class ToDoCell: UITableViewCell {
         setCornerRadius()
         setBarContent()
         setShadows(view: goToButton)
+        setUpShadowLayer()
+        
+        footerView.changeTypeSection(typeSection: StatusArticle.unapproved)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -60,6 +73,19 @@ class ToDoCell: UITableViewCell {
         view.layer.shadowOpacity = 1.0;
         view.layer.shadowRadius = 2.0
         view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+    }
+    
+    func setUpShadowLayer() {
+        self.insertSubview(shadowLayer, at: 0)
+        shadowLayer.topAnchor.constraint(equalTo: wrapperView.topAnchor).isActive = true
+        shadowLayer.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor).isActive = true
+        shadowLayer.leftAnchor.constraint(equalTo: wrapperView.leftAnchor).isActive = true
+        shadowLayer.rightAnchor.constraint(equalTo: wrapperView.rightAnchor).isActive = true
+        
+        shadowLayer.layer.masksToBounds = false
+        addShadowToView(shadowLayer, radius: 3, opacity: 0.6)
+        
+        shadowLayer.layer.cornerRadius = 12
     }
     
 }

@@ -29,11 +29,18 @@ class RequiredAction: UITableViewCell {
     var indexPath: IndexPath?
     var delegate: InfoButtonDelegate?
     
+    lazy var shadowLayer : UIView  = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.white
+        return view
+    }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setUpTopView()
         setupCorners()
-        
+        setUpShadowLayer()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -195,6 +202,19 @@ class RequiredAction: UITableViewCell {
     
     @objc func handleInfoButtonPressed() {
         showBanner(bannerType: .failed)
+    }
+    
+    func setUpShadowLayer() {
+        self.insertSubview(shadowLayer, at: 0)
+        shadowLayer.topAnchor.constraint(equalTo: toolbarView.topAnchor).isActive = true
+        shadowLayer.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        shadowLayer.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+        shadowLayer.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
+        
+        shadowLayer.layer.masksToBounds = false
+        addShadowToView(shadowLayer, radius: 3, opacity: 0.6)
+        
+        shadowLayer.layer.cornerRadius = 12
     }
     
 }

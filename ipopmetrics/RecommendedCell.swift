@@ -20,11 +20,19 @@ class RecommendedCell: UITableViewCell {
     @IBOutlet weak var secondMessageLabel: UILabel!
     
     
+    lazy var shadowLayer : UIView  = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.white
+        return view
+    }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.feedBackgroundColor()
         self.backgroundImageView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         setupCorners()
+        setUpShadowLayer()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -103,6 +111,19 @@ class RecommendedCell: UITableViewCell {
             break
         }
         
+    }
+    
+    func setUpShadowLayer() {
+        self.insertSubview(shadowLayer, at: 0)
+        shadowLayer.topAnchor.constraint(equalTo: toolBarView.topAnchor).isActive = true
+        shadowLayer.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        shadowLayer.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+        shadowLayer.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
+        
+        shadowLayer.layer.masksToBounds = false
+        addShadowToView(shadowLayer, radius: 3, opacity: 0.6)
+        
+        shadowLayer.layer.cornerRadius = 12
     }
     
 }

@@ -20,12 +20,20 @@ class LastCardCell: UITableViewCell {
     
     internal var shadowView: UIView!;
     
+    lazy var shadowLayer : UIView  = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.white
+        return view
+    }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.feedBackgroundColor()
         self.goToButton.backgroundColor = PopmetricsColor.yellowBGColor
         setCornerRadiou()
         setShadows(view: goToButton)
+        //setUpShadowLayer()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -57,11 +65,25 @@ class LastCardCell: UITableViewCell {
         messageLbl.adjustLabelSpacing(spacing: 5, lineHeight: 15, letterSpacing: 0.3)
     }
     
+    func setUpShadowLayer() {
+        self.insertSubview(shadowLayer, at: 0)
+        shadowLayer.topAnchor.constraint(equalTo: secondContainerView.topAnchor).isActive = true
+        shadowLayer.bottomAnchor.constraint(equalTo: secondContainerView.bottomAnchor).isActive = true
+        shadowLayer.leftAnchor.constraint(equalTo: secondContainerView.leftAnchor).isActive = true
+        shadowLayer.rightAnchor.constraint(equalTo: secondContainerView.rightAnchor).isActive = true
+        
+        shadowLayer.layer.masksToBounds = false
+        addShadowToView(shadowLayer, radius: 3, opacity: 0.6)
+        
+        shadowLayer.layer.cornerRadius = 12
+    }
+    
     @IBAction func closeCard(_ sender: UIButton) {
         //        self.isHidden = true
         //        shouldBeDisplayed = false
         print("x fired")
     }
+    
     @IBAction func goToButtonPressed(_ sender: UIButton) {
         print("goTo fired")
     }
