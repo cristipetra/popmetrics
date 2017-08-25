@@ -12,7 +12,7 @@ import UIKit
 class ToDoCell: UITableViewCell {
     
     @IBOutlet weak var toDoCountViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var goToButton: TwoImagesButton!
+    
     @IBOutlet weak var toDoCountView: ToDoCountView!
     @IBOutlet weak var todoHeaderView: ToolbarViewCell!
     
@@ -29,11 +29,11 @@ class ToDoCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.goToButton.backgroundColor = PopmetricsColor.yellowBGColor
+        
         self.backgroundColor = UIColor.feedBackgroundColor()
         setCornerRadius()
         setBarContent()
-        setShadows(view: goToButton)
+        
         setUpShadowLayer()
         
     }
@@ -59,12 +59,8 @@ class ToDoCell: UITableViewCell {
     }
     
     func setCornerRadius() {
-        
         wrapperView.layer.cornerRadius = 14
         wrapperView.layer.masksToBounds = true
-        self.goToButton.layer.borderWidth = 2.0
-        self.goToButton.layer.borderColor = UIColor.black.cgColor
-        self.goToButton.layer.cornerRadius = self.goToButton.frame.height / 2
     }
     
     private func setShadows(view: AnyObject) {

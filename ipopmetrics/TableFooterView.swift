@@ -215,7 +215,6 @@ class TableFooterView: UITableViewHeaderFooterView {
         xButton.layer.cornerRadius = 23//xButton.frame.size.width / 2
         
         xButton.setImage(UIImage(named: "iconCtaClose"), for: .normal)
-        xButton.clipsToBounds = true
     }
     
     func deleteHandler() {

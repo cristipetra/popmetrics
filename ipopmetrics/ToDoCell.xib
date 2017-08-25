@@ -8,14 +8,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="OpenSans-Regular.ttf">
-            <string>OpenSans</string>
-        </array>
-        <array key="OpenSans-Semibold.ttf">
-            <string>OpenSans-Semibold</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -38,64 +30,9 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tk4-WE-T5P" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="177.5" width="355" height="92"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3l-2P-biX" customClass="TwoImagesButton" customModule="ipopmetrics" customModuleProvider="target">
-                                        <rect key="frame" x="252" y="13" width="90" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="JqX-sg-UU1"/>
-                                            <constraint firstAttribute="width" constant="90" id="cQs-EN-aLb"/>
-                                        </constraints>
-                                        <color key="tintColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="leftHandImage" value="iconTodo"/>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="rightHandImage" value="iconCalLeft"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View To Do List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUx-6e-tKk">
-                                        <rect key="frame" x="261" y="64" width="73" height="14"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="14" id="WmM-Lu-Mce"/>
-                                            <constraint firstAttribute="width" constant="73" id="t0O-gM-U6D"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="10"/>
-                                        <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KtK-xA-HfK" customClass="RoundButton" customModule="ipopmetrics" customModuleProvider="target">
-                                        <rect key="frame" x="12" y="13" width="45" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="45" id="628-cM-fhZ"/>
-                                            <constraint firstAttribute="height" constant="45" id="HjC-Y1-9id"/>
-                                        </constraints>
-                                        <color key="tintColor" red="0.93168885869999996" green="0.94091350080000002" blue="0.94091350080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="iconCtaClose"/>
-                                        <state key="highlighted" image="iconClosecard"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJz-91-PGz" customClass="RoundButton" customModule="ipopmetrics" customModuleProvider="target">
-                                        <rect key="frame" x="80" y="13" width="45" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="DMm-ow-8l9"/>
-                                            <constraint firstAttribute="width" constant="45" id="E92-T2-BSX"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="30"/>
-                                        <color key="tintColor" red="0.93168885869999996" green="0.94091350080000002" blue="0.94091350080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="i">
-                                            <color key="titleColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <state key="highlighted" image="iconClosecard"/>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="gUx-6e-tKk" secondAttribute="trailing" constant="21" id="4yo-JY-hWy"/>
-                                    <constraint firstItem="KtK-xA-HfK" firstAttribute="top" secondItem="tk4-WE-T5P" secondAttribute="top" constant="13" id="Nmh-w9-p5b"/>
-                                    <constraint firstAttribute="trailing" secondItem="N3l-2P-biX" secondAttribute="trailing" constant="13" id="SSF-e2-AnG"/>
-                                    <constraint firstItem="gUx-6e-tKk" firstAttribute="top" secondItem="N3l-2P-biX" secondAttribute="bottom" constant="6" id="VE4-Ao-Kh1"/>
-                                    <constraint firstItem="N3l-2P-biX" firstAttribute="top" secondItem="tk4-WE-T5P" secondAttribute="top" constant="13" id="VdS-ln-adB"/>
                                     <constraint firstAttribute="height" constant="92" id="arw-mO-1zf"/>
-                                    <constraint firstItem="bJz-91-PGz" firstAttribute="top" secondItem="tk4-WE-T5P" secondAttribute="top" constant="13" id="cGV-Ab-s3w"/>
-                                    <constraint firstItem="bJz-91-PGz" firstAttribute="leading" secondItem="KtK-xA-HfK" secondAttribute="trailing" constant="23" id="u9j-TV-Vz6"/>
-                                    <constraint firstItem="KtK-xA-HfK" firstAttribute="leading" secondItem="tk4-WE-T5P" secondAttribute="leading" constant="12" id="uVf-nD-rJh"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DxU-lr-rx7" customClass="ToDoCountView" customModule="ipopmetrics" customModuleProvider="target">
@@ -130,7 +67,6 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="footerView" destination="tk4-WE-T5P" id="U12-4l-dEV"/>
-                <outlet property="goToButton" destination="N3l-2P-biX" id="unC-mB-gQd"/>
                 <outlet property="toDoCountView" destination="DxU-lr-rx7" id="P2G-vw-xlv"/>
                 <outlet property="toDoCountViewHeight" destination="vyt-TY-hit" id="LAO-th-jBU"/>
                 <outlet property="todoHeaderView" destination="CTm-Fi-JSr" id="0uJ-Xj-AiN"/>
@@ -139,10 +75,4 @@
             <point key="canvasLocation" x="24.5" y="75.5"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="iconCalLeft" width="15" height="24"/>
-        <image name="iconClosecard" width="16" height="16"/>
-        <image name="iconCtaClose" width="19" height="19"/>
-        <image name="iconTodo" width="30" height="16"/>
-    </resources>
 </document>

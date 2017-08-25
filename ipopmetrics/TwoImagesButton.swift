@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class TwoImagesButton: UIButton {
+class TwoImagesButton: RoundButton {
     
     @IBInspectable
     var leftHandImage: UIImage? {
@@ -56,7 +56,7 @@ class TwoImagesButton: UIButton {
     func setupView() {
         self.layer.cornerRadius = 22
         self.layer.borderColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1).cgColor
-        self.layer.borderWidth = 1.5
+        self.layer.borderWidth = 2
         
         changeImageButtonType()
         

@@ -21,7 +21,9 @@ class RoundButton: UIButton {
     }
     
     func setup() {
-        setRadiusAndBorder()
+        DispatchQueue.main.async {
+            self.setRadiusAndBorder()
+        }
         setShadows()
     }
     
