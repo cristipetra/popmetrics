@@ -81,7 +81,7 @@ class TwoImagesButton: RoundButton {
     
     func setRightImage() {
         if let rightImage = rightHandImage {
-            rightImageView = UIImageView(image: rightImage)
+            rightImageView.image = rightImage
             //rightImageView.tintColor = UIColor.black
             let height = 18 as CGFloat
             //let xPos = self.frame.width - width
@@ -149,11 +149,11 @@ class TwoImagesButton: RoundButton {
     }
     
     func changeToDisabled() {
+        self.isEnabled = false
         self.backgroundColor = .white
         self.leftImageView.layer.opacity = 0.3
         self.rightImageView.layer.opacity = 0.3
         self.layer.borderColor = UIColor.black.withAlphaComponent(0.2).cgColor
-        self.isEnabled = false
     }
 }
 
