@@ -91,8 +91,8 @@ class RecommendedCell: UITableViewCell {
             
             break
         case "Popmetrics Insight":
-            setUpToolbar(imageName: "iconHeaderBrandinsight", titleName: "Popmetrics Insight")
-            self.backgroundImageView.image = UIImage(named: "image_pattern")
+            setUpToolbar(imageName: "iconHeaderBranding", titleName: "Popmetrics Insight")
+            self.backgroundImageView.image = UIImage(named: "imagePyramid")
             self.setTitleInsight(title : "We've had a look and your brand's Twitter could do with some love!")
             self.setMessage(message: "We've looked at your industry and prepared some actions for you to improve your digital footprint: ")
             self.messageLabel.textColor = UIColor.white
@@ -101,9 +101,9 @@ class RecommendedCell: UITableViewCell {
             self.secondMessageLabel.textColor = UIColor.white
             self.secondMessageLabel.font = UIFont(name: FontBook.regular, size: 18)
             
-            self.footerVIew.informationBtn.isHidden = true
-            self.footerVIew.actionButton.imageButtonType = .unapproved
-            self.footerVIew.approveLbl.text = "View To Do List"
+            //self.footerVIew.informationBtn.isHidden = true
+            self.footerVIew.actionButton.imageButtonType = .todo
+            self.footerVIew.approveLbl.text = "Connect Twitter"
             self.footerVIew.approveLbl.textColor = UIColor.black
             
             break
