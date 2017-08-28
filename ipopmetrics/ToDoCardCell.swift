@@ -17,12 +17,13 @@ class ToDoCardCell: UITableViewCell {
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var messageLbl: UILabel!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var circleView: UIView!
     
     lazy var approvedView : UIView = {
         
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        view.backgroundColor = PopmetricsColor.darkGrey.withAlphaComponent(0.8)
         return view
         
     }()
@@ -40,6 +41,13 @@ class ToDoCardCell: UITableViewCell {
         super.awakeFromNib()
         self.backgroundColor = UIColor.feedBackgroundColor()
         //setUpApprovedView()
+        setupCorners()
+    }
+    
+    func setupCorners() {
+        DispatchQueue.main.async {
+            self.circleView.roundCorners(corners: .allCorners, radius: self.circleView.frame.size.width/2)
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -73,7 +81,16 @@ class ToDoCardCell: UITableViewCell {
     
     func removeApprovedView() {
         approvedView.removeFromSuperview()
+    }
+    
+    func sideShadow(view: UIView) {
+        view.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor
+        view.layer.shadowOpacity = 0.5;
+        view.layer.shadowRadius = 2
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         
+        let shadowRect : CGRect = view.bounds.insetBy(dx: 0, dy: 0)
+        view.layer.shadowPath = UIBezierPath(rect: shadowRect).cgPath
     }
     
 }

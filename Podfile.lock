@@ -139,7 +139,7 @@ CHECKOUT OPTIONS:
     :commit: f74997bc1520b017f3e6ca986c618bf54ab9befb
     :git: https://github.com/ionutboanta/ElasticTransition
   MJCalendar:
-    :commit: c7d8eae3f9447b0bcb0b30e38ca1df9b6d1a214e
+    :commit: 20f49bef6688334a801fd145b2e36399caeddb19
     :git: https://github.com/cristipetra/MJCalendar
 
 SPEC CHECKSUMS:

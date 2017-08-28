@@ -19,6 +19,7 @@ class ToDoViewController: UIViewController {
     var approveIndex = 3
     
     internal var shouldMaximize = false
+    var isAllApproved : Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,15 @@ class ToDoViewController: UIViewController {
 
         setUpNavigationBar()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
+        
+        if (UsersStore.isTwitterConnected) {
+            fetchItemsLocally()
+        }
+        
+    }
+    
+    func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
         fetchItemsLocally()
     }
     
@@ -84,6 +94,18 @@ class ToDoViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func checkApprovedAll() -> Bool {
+        sections[0].items.forEach { (item) in
+            if item.isApproved == true {
+                isAllApproved = true
+            } else {
+                isAllApproved = false
+            }
+        }
+        
+        return isAllApproved
     }
     
     
@@ -142,6 +164,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
         if shouldMaximize {
             let cell = tableView.dequeueReusableCell(withIdentifier: "maxCellId", for: indexPath) as! CalendarCardMaximizedViewCell
+            cell.configure(item)
             cell.articleDate.isHidden = true
             cell.setUpMaximizeToDo()
             cell.approveDenyDelegate = self
@@ -191,6 +214,8 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             return headerCell
         } else {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
+            headerCell.changeColor(section: section)
+            headerCell.changeTitle(title: sections[section].items[0].socialTextString)
             return headerCell
         }
     }
@@ -202,6 +227,17 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
         todoFooter.changeTypeSection(typeSection: StatusArticle(rawValue: sections[section].status)!)
         todoFooter.actionButton.addTarget(self, action: #selector(approveCard), for: .touchUpInside)
+        todoFooter.section = section
+        todoFooter.buttonHandlerDelegate = self
+        if isAllApproved {
+            todoFooter.actionButton.changeToDisabled()
+            todoFooter.setUpDisabledLabels()
+            todoFooter.setUpLoadMoreDisabled()
+        }
+        DispatchQueue.main.async {
+            todoFooter.setUpLoadMoreDisabled()
+        }
+        
         return todoFooter
     }
     
@@ -279,16 +315,20 @@ extension ToDoViewController: FooterButtonHandlerProtocol {
         
     }
     
-    func approvalButtonPressed() {
-        print("approve handler")
-        for item in sections[0].items {
-            if sections[0].items.index(of: item)! < approveIndex {
-                item.isApproved = true
+    func approvalButtonPressed(section : Int) {
+        print("SSS section \(section)")
+        if section == 0 {
+            for item in sections[0].items {
+                if sections[0].items.index(of: item)! < approveIndex {
+                    item.isApproved = true
+                }
             }
+            isAllApproved = checkApprovedAll()
+            approveIndex += 3
+            tableView.reloadData()
         }
-        approveIndex += 3
-        tableView.reloadData()
     }
+
     
     func closeButtonPressed() {
         

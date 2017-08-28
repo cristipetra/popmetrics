@@ -20,11 +20,19 @@ class RecommendedCell: UITableViewCell {
     @IBOutlet weak var secondMessageLabel: UILabel!
     
     
+    lazy var shadowLayer : UIView  = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.white
+        return view
+    }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.feedBackgroundColor()
         self.backgroundImageView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         setupCorners()
+        setUpShadowLayer()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -85,16 +93,17 @@ class RecommendedCell: UITableViewCell {
         case "Popmetrics Insight":
             setUpToolbar(imageName: "iconHeaderBrandinsight", titleName: "Popmetrics Insight")
             self.backgroundImageView.image = UIImage(named: "image_pattern")
-            self.setTitleInsight(title : "Your Twitter handle could do with some love.)")
-            self.setMessage(message: "We've noticed that your profile is missing some vital details that will help people find your business")
+            self.setTitleInsight(title : "We've had a look and your brand's Twitter could do with some love!")
+            self.setMessage(message: "We've looked at your industry and prepared some actions for you to improve your digital footprint: ")
             self.messageLabel.textColor = UIColor.white
             self.messageLabel.font = UIFont(name: FontBook.regular, size: 18)
-            self.secondMessageLabel.text = "Take these actions to get started:"
+            self.secondMessageLabel.text = ""
             self.secondMessageLabel.textColor = UIColor.white
             self.secondMessageLabel.font = UIFont(name: FontBook.regular, size: 18)
+            
             self.footerVIew.informationBtn.isHidden = true
-            self.footerVIew.actionButton.leftHandImage = UIImage(named: "icon2CtaTodolist")
-            self.footerVIew.approveLbl.text = "Variable CTA"
+            self.footerVIew.actionButton.imageButtonType = .unapproved
+            self.footerVIew.approveLbl.text = "View To Do List"
             self.footerVIew.approveLbl.textColor = UIColor.black
             
             break
@@ -102,6 +111,19 @@ class RecommendedCell: UITableViewCell {
             break
         }
         
+    }
+    
+    func setUpShadowLayer() {
+        self.insertSubview(shadowLayer, at: 0)
+        shadowLayer.topAnchor.constraint(equalTo: toolBarView.topAnchor).isActive = true
+        shadowLayer.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        shadowLayer.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+        shadowLayer.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
+        
+        shadowLayer.layer.masksToBounds = false
+        addShadowToView(shadowLayer, radius: 3, opacity: 0.6)
+        
+        shadowLayer.layer.cornerRadius = 12
     }
     
 }

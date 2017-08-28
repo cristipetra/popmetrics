@@ -83,7 +83,7 @@ class ToolbarViewCell: UIView {
         leftImage.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         leftImage.widthAnchor.constraint(equalToConstant: 24).isActive = true
         leftImage.heightAnchor.constraint(equalToConstant: 15).isActive = true
-        leftImage.image = UIImage(named: "iconTodo")
+        leftImage.image = UIImage(named: "iconCtaTodo")
         
     }
     
@@ -102,4 +102,13 @@ class ToolbarViewCell: UIView {
         circleView.backgroundColor = color
     }
 
+}
+
+extension ToolbarViewCell {
+    func addGradient() {
+        let gradientView = GradientView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+        gradientView.startColor = PopmetricsColor.statisticsGradientStartColor
+        gradientView.endColor = PopmetricsColor.statisticsGradientEndColor
+        insertSubview(gradientView, belowSubview: circleView)
+    }
 }

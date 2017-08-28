@@ -8,6 +8,7 @@
 
 import UIKit
 import ElasticTransition
+import SafariServices
 
 class MenuViewController: ElasticModalViewController {
     
@@ -30,6 +31,15 @@ class MenuViewController: ElasticModalViewController {
         segue.destination.modalPresentationStyle = .custom
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+    }
+    
     private func setup() {
         
         let closeButtonImage = UIImage(named: "iconCloseBlack")!.withRenderingMode(.alwaysTemplate)
@@ -49,7 +59,7 @@ class MenuViewController: ElasticModalViewController {
     }
     
     @IBAction func aboutButtonPressed(_ sender: UIButton) {
-        UIApplication.shared.open(URL(string: Config.socialAutomationLink)!, options: [:], completionHandler: nil)
+        openURLInside(url: Config.socialAutomationLink)
     }
     
     @IBAction func logoutButtonPressed(_ sender: UIButton) {
@@ -57,5 +67,21 @@ class MenuViewController: ElasticModalViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setInitialViewController()
         
+    }
+}
+
+
+//MARK: Safari open
+extension MenuViewController {
+    private func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        dismiss(animated: true)
+    }
+}
+
+extension UIViewController {
+    func openURLInside(url: String) {
+        let url = URL(string: url)
+        let safari = SFSafariViewController(url: url!)
+        self.present(safari, animated: true)
     }
 }

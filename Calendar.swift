@@ -59,7 +59,7 @@ class CalendarItem: NSObject{
             case StatusArticle.failed.rawValue:
                 return "Failed"
             case StatusArticle.executed.rawValue:
-                return "Executed"
+                return "Completed"
             case StatusArticle.unapproved.rawValue:
                 return "Unapproved"
             default:
@@ -76,7 +76,7 @@ class CalendarItem: NSObject{
             case StatusArticle.failed.rawValue:
                 return PopmetricsColor.salmondColor
             case StatusArticle.executed.rawValue:
-                return PopmetricsColor.greenDark
+                return PopmetricsColor.greenSelectedDate
             default:
                 return PopmetricsColor.blueMedium
             }
@@ -91,7 +91,7 @@ class CalendarItem: NSObject{
             case StatusArticle.failed.rawValue:
                 return PopmetricsColor.salmondColor
             case StatusArticle.executed.rawValue:
-                return PopmetricsColor.greenDark
+                return PopmetricsColor.greenSelectedDate
             case StatusArticle.unapproved.rawValue:
                 return PopmetricsColor.yellowUnapproved
             default:

@@ -18,7 +18,7 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
     @IBOutlet weak var topStackView: UIStackView!
     @IBOutlet weak var connectionStackView: UIStackView!
     @IBOutlet weak var topContainerVIew: UIView!
-    @IBOutlet weak var topHeaderView: UIView!
+    @IBOutlet weak var topHeaderView: ToolbarViewCell!
     @IBOutlet weak var imageContainerView: UIView!
     @IBOutlet weak var connectionContainerView: UIView!
     @IBOutlet weak var connectionLine: UIView!
@@ -33,7 +33,7 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
     @IBOutlet weak var articleDate: ActiveLabel!
     @IBOutlet weak var postIconImageView: UIImageView!
     @IBOutlet weak var socialNetworkLbl: UILabel!
-    @IBOutlet weak var actionBtn: RoundButton!
+    @IBOutlet weak var actionBtn: RoundedCornersButton!
     
     
     var postIndex = 0
@@ -61,7 +61,7 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        view.backgroundColor = PopmetricsColor.darkGrey.withAlphaComponent(0.8)
         return view
         
     }()
@@ -110,8 +110,11 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         self.articleImage.image = UIImage(named: item.articleImage!)
         
         self.connectionLine.backgroundColor = item.getSectionColor
-        self.topHeaderView.backgroundColor = item.getSectionColor
+        //self.topHeaderView.backgroundColor = item.getSectionColor
 
+        self.topHeaderView.circleView.backgroundColor = item.getSectionColor
+        self.topHeaderView.title.text = "\(item.socialTextString)"
+        
         updateBtnView()
         
         changeColor()

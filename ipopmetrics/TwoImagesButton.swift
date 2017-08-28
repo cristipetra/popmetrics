@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class TwoImagesButton: UIButton {
+class TwoImagesButton: RoundButton {
     
     @IBInspectable
     var leftHandImage: UIImage? {
@@ -56,7 +56,7 @@ class TwoImagesButton: UIButton {
     func setupView() {
         self.layer.cornerRadius = 22
         self.layer.borderColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1).cgColor
-        self.layer.borderWidth = 1.5
+        self.layer.borderWidth = 2
         
         changeImageButtonType()
         
@@ -81,7 +81,7 @@ class TwoImagesButton: UIButton {
     
     func setRightImage() {
         if let rightImage = rightHandImage {
-            rightImageView = UIImageView(image: rightImage)
+            rightImageView.image = rightImage
             //rightImageView.tintColor = UIColor.black
             let height = 18 as CGFloat
             //let xPos = self.frame.width - width
@@ -126,7 +126,9 @@ class TwoImagesButton: UIButton {
             leftHandImage = UIImage(named: "icon_timescore")
             rightHandImage = UIImage(named: "iconCalLeft")
         case .twitter:
-            leftHandImage = UIImage(named: "icon_twitter")
+            leftHandImage = UIImage(named: "iconCtaTwitter")
+            leftImageView.frame.size.height = 24
+            leftImageView.frame.origin.y = 12
             rightHandImage = UIImage(named: "iconCalLeft")
         case .approved:
             leftHandImage = UIImage(named: "icon2CtaApprovepost")
@@ -139,9 +141,23 @@ class TwoImagesButton: UIButton {
         case .allowNotification:
             leftHandImage = UIImage(named: "iconAlertMessage")
             leftImageView.frame.origin.y = 14
+        case .todo:
+            leftHandImage = UIImage(named: "iconCtaTodo")
+        case .traffic:
+            leftImageView.frame.origin.x = 24
+            leftImageView.frame.size.width = 16
+            rightImageView.frame.origin.x = 58
         default:
             break
         }
+    }
+    
+    func changeToDisabled() {
+        self.isEnabled = false
+        self.backgroundColor = .white
+        self.leftImageView.layer.opacity = 0.3
+        self.rightImageView.layer.opacity = 0.3
+        self.layer.borderColor = UIColor.black.withAlphaComponent(0.2).cgColor
     }
 }
 
@@ -153,4 +169,6 @@ enum ImageButtonType {
     case twitter
     case rescheduled
     case allowNotification
+    case todo
+    case traffic
 }

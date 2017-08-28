@@ -11,6 +11,7 @@ import GoogleSignIn
 import MGSwipeTableCell
 import DGElasticPullToRefresh
 import BubbleTransition
+import EZAlertController
 
 class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
@@ -30,7 +31,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     
     let tmpSectionRecommendation:FeedSection = FeedSection()
-    let recommendationNotificationItem: FeedItem = FeedItem();
+    let recommendationTwitterItem: FeedItem = FeedItem();
+    let lastSection: FeedSection = FeedSection()
+    let insightSection:FeedSection = FeedSection()
+    let toDoSection: FeedSection = FeedSection()
     
     var isAnimatingHeader = false
     
@@ -44,6 +48,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
+        tabBarController?.delegate = self
         
         let nc = NotificationCenter.default
         nc.addObserver(forName:NSNotification.Name(rawValue: "CardActionNotification"), object:nil, queue:nil, using:catchCardActionNotification)
@@ -73,11 +78,18 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
-        fetchItems(silent: false)
+        //fetchItems(silent: false)
+        localData()
         
         setupTopHeaderView()
         
         addImageOnLastCard()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
+    }
+    
+    func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
+        changeSections()
     }
     
     func addImageOnLastCard() {
@@ -92,6 +104,53 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             topHeaderView = HeaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 0))
             self.view.addSubview(topHeaderView)
         }
+    }
+    
+    func localData() {
+        
+        self.tmpSectionRecommendation.name = "Required Actions"
+        self.tmpSectionRecommendation.index  = 2;
+        
+        self.recommendationTwitterItem.actionHandler = "no_action"
+        self.recommendationTwitterItem.actionLabel = "Twitter"
+        self.recommendationTwitterItem.headerIconUri = "icon_citation_error";
+        self.recommendationTwitterItem.imageUri = "social_media";
+        self.recommendationTwitterItem.headerTitle = "Connect your Twitter and optimize your content for maximum growth."
+        self.recommendationTwitterItem.message = "Twitter is a key access point to increase your social following."
+        self.recommendationTwitterItem.type = "required"
+        
+        tmpSectionRecommendation.items.append(recommendationTwitterItem)
+        
+        
+        self.toDoSection.name = "To Do"
+        self.toDoSection.index = 1
+        let toDoItem : FeedItem = FeedItem()
+        toDoItem.type = "todo"
+        self.toDoSection.items.append(toDoItem)
+        
+        self.lastSection.name = ""
+        self.lastSection.index = 1;
+        let lastItem: FeedItem = FeedItem();
+        lastItem.type = "info"
+        self.lastSection.items.append(lastItem)
+        
+        
+        self.insightSection.name = "Recommended For You"
+        self.insightSection.index = 1;
+        
+        
+        let insightItem: FeedItem = FeedItem();
+        insightItem.actionHandler = "no_action"
+        insightItem.headerIconUri = "icon_citationerror_splash";
+        insightItem.imageUri = "icon_citationerror_splash";
+        insightItem.headerTitle = "Article Title Goes Here"
+        insightItem.message = "What is the citation error relating to? Where is it that this person needs to do?"
+        insightItem.type = "recommended"
+        self.insightSection.items.append(insightItem)
+        
+
+        
+        changeSections()
     }
     
     func fetchItems(silent:Bool) {
@@ -131,8 +190,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             // Add temp recommendation sections
             
             
-            self.tmpSectionRecommendation.name = "Required Actions"
-            self.tmpSectionRecommendation.index  = 2;
+            
             
             let recommendationItem: FeedItem = FeedItem();
             recommendationItem.actionHandler = "no_action"
@@ -144,16 +202,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             recommendationItem.type = "required"
             
             
-            self.recommendationNotificationItem.actionHandler = "no_action"
-            self.recommendationNotificationItem.actionLabel = "Twitter"
-            self.recommendationNotificationItem.headerIconUri = "icon_citation_error";
-            self.recommendationNotificationItem.imageUri = "social_media";
-            self.recommendationNotificationItem.headerTitle = "Connect your Twitter and optimize your content for maximum growth."
-            self.recommendationNotificationItem.message = "Twitter is a key access point to increase your social following."
-            self.recommendationNotificationItem.type = "required"
             
-            self.tmpSectionRecommendation.items.append(recommendationItem)
-            self.tmpSectionRecommendation.items.append(self.recommendationNotificationItem)
+            
             
             if( UsersStore.isTwitterConnected) {
                 //self.sections.append(tmpSectionRecommendation)
@@ -189,19 +239,14 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             */
             
-            let toDoSection: FeedSection = FeedSection()
-            toDoSection.name = "To Do"
-            toDoSection.index = 1
-            let toDoItem : FeedItem = FeedItem()
-            toDoItem.type = "toDo"
-            toDoSection.items.append(toDoItem)
-            
-            self.sections.append(toDoSection)
             
             
-            let tmpSectionInsight:FeedSection = FeedSection()
-            tmpSectionInsight.name = "Recommended For You"
-            tmpSectionInsight.index = 1;
+            
+            //self.sections.append(toDoSection)
+            
+            
+            self.insightSection.name = "Recommended For You"
+            self.insightSection.index = 1;
             
             
             let insightItem: FeedItem = FeedItem();
@@ -221,21 +266,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             recommendationItem3.message = "Why do it... and a description goes in here to compel the user to click on the card, Im sure if it needs a secondary CTA or whether the card is sufficient."
             recommendationItem3.type = "recommended"
             
-            tmpSectionInsight.items.append(insightItem)
-            tmpSectionInsight.items.append(recommendationItem3)
+            self.insightSection.items.append(insightItem)
+            self.insightSection.items.append(recommendationItem3)
             
-            self.sections.append(tmpSectionInsight)
+            //self.sections.append(tmpSectionInsight)
             
-            
- 
-            let lastSection: FeedSection = FeedSection()
-            lastSection.name = ""
-            lastSection.index = 1;
-            let lastItem: FeedItem = FeedItem();
-            lastItem.type = "info"
-            lastSection.items.append(lastItem)
-            
-            self.sections.append(lastSection)
+            //self.sections.append(lastSection)
             
             self.sections.forEach({ (section) in
                 if(section.name == "History" || section.name == "Education") {
@@ -246,21 +282,28 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             ///---- End add temporary sections
             
             
-            if !silent { self.tableView.reloadData() }
+            //if !silent { self.tableView.reloadData() }
+            self.changeSections()
         }
         
     }
     
     func changeSections() {
-        if( !UsersStore.isTwitterConnected) {
-            self.sections.append(tmpSectionRecommendation)
+        
+        sections = []
+
+        if (UsersStore.isTwitterConnected) {
+            if( UsersStore.isInsightShowed ) {
+                self.sections.append(toDoSection)
+                sections.append(lastSection)
+            } else {
+                sections.append(insightSection)
+            }
         } else {
-            
+            self.sections.append(self.tmpSectionRecommendation)
         }
         
-        if (UsersStore.isNotificationsAllowed) {
-            
-        }
+        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -337,23 +380,14 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 shouldDisplayCell = true
                 let cell = tableView.dequeueReusableCell(withIdentifier: "requiredActionId", for: indexPath) as! RequiredAction
                 cell.selectionStyle = .none
-                cell.backgroundColor = UIColor.feedBackgroundColor()
-                
+        
                 cell.footerView.layer.backgroundColor = UIColor.clear.cgColor
+                cell.footerView.approveLbl.textColor = UIColor.white
+                cell.configure(item, handler: self.requiredActionHandler)
                 if((sections[sectionIdx].items.count-1) == indexPath.row) {
                     cell.connectionLineView.isHidden = true;
-                    cell.configure(item, handler: self.requiredActionHandler)
                 }
-                if indexPath.row == 0 {
-                    cell.configure(item, handler: self.requiredActionHandler)
-                    //cell.footerView.actionButton.imageButtonType = .notification
-                    //cell.setTitle(title: "Yo!You didn't allow notifications the first time round :)")
-                    //cell.setMessage(message: "Allow these push notifications to make sure you never miss a beat!")
-                    cell.footerView.approveLbl.text = "Allow Notifications"
-                    cell.bottomImageView.image = UIImage(named: "backAllowNotification")
-                } else {
-                    
-                }
+
                 return cell
 
             case "recommended":
@@ -362,24 +396,22 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 
                 isInfoCellType = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedId", for: indexPath) as! RecommendedCell
-                if(rowIdx == 0) {
-                    cell.setUpCell(type: "Recommended Reading")
-                    return cell;
-                }
                 cell.setUpCell(type: "Popmetrics Insight")
                 if((sections[sectionIdx].items.count-1) == indexPath.row) {
                     cell.connectionLine.isHidden = true;
                 }
+                cell.footerVIew.actionButton.addTarget(self, action: #selector(handlerInsightButton), for: .touchUpInside)
                 return cell
-            case "toDo":
+            case "todo":
                 shouldDisplayCell = true
                 isToDoCellType = true
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath) as!
                 ToDoCell
                 cell.toDoCountView.numberOfRows = 2
-                cell.toDoCountViewHeight.constant = CGFloat(cell.toDoCountView.numberOfRows * 60 + 93)
+                cell.toDoCountViewHeight.constant = CGFloat(cell.toDoCountView.numberOfRows * 60 + 122)
                 toDoCellHeight = cell.toDoCountViewHeight.constant
                 cell.selectionStyle = .none
+                cell.setHeaderTitle(title: "Snapshot")
                 return cell
 
             case "info":
@@ -399,6 +431,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         }
         
     }
+    
+    func handlerInsightButton() {
+        UsersStore.isInsightShowed = true
+        goToNextTab()
+    }
+    
     @objc private func goToNextTab() {
         self.tabBarController?.selectedIndex += 1
     }
@@ -411,7 +449,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(cardType: .required)
-            cell.sectionTitleLabel.text = "Attention required";
+            cell.sectionTitleLabel.text = "Required Actions";
             return cell
             
         case "todo":
@@ -603,6 +641,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         print("handling required action")
     }
     
+    
+    
 }
 
 // MARK: UIViewControllerTransitioningDelegate
@@ -638,8 +678,20 @@ extension HomeHubViewController: InfoButtonDelegate {
     }
 }
 
+
+// MARK: UITabBarControllerDelegate
+extension HomeHubViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let selectedIndex = tabBarController.selectedIndex
+        if selectedIndex == 0 {
+            changeSections()
+        }
+    }
+}
+
 enum CardType: String {
     case required = "required"
     case recommended = "recommended"
     case todo = "todo"
+    case traffic = "traffic"
 }

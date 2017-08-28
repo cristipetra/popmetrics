@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import SwiftRichString
 
 protocol FooterButtonHandlerProtocol: class {
-    func approvalButtonPressed()
+    func approvalButtonPressed(section: Int)
     func closeButtonPressed()
     func informationButtonPressed()
     func loadMorePressed()
@@ -17,9 +18,13 @@ protocol FooterButtonHandlerProtocol: class {
 
 class TableFooterView: UITableViewHeaderFooterView {
     
+    let SPACE_ELEMENTS: CGFloat = 15
+    
     var loadMoreCount: Int = 0
     var approveCount: Int = 0
     var emptyView: UIView!
+    
+    var section = 0
     
     var typeSection: StatusArticle = .complete {
         didSet {
@@ -40,22 +45,26 @@ class TableFooterView: UITableViewHeaderFooterView {
     }
     
     // VIEW
+    lazy var footerShadow : UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var topLineView: UIView = {
         let view = UIView();
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var loadMoreBtn : UIButton = {
-        
-        let button = UIButton(type: UIButtonType.system)
+    lazy var loadMoreBtn : RoundButton = {
+        let button = RoundButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    lazy var informationBtn : UIButton = {
-        
-        let button = UIButton(type: UIButtonType.system)
+    lazy var informationBtn : RoundButton = {
+        let button = RoundButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -76,9 +85,9 @@ class TableFooterView: UITableViewHeaderFooterView {
         
     }()
     
-    lazy var xButton : UIButton = {
+    lazy var xButton: RoundButton = {
         
-        let button = UIButton(type: UIButtonType.system)
+        let button = RoundButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -178,27 +187,29 @@ class TableFooterView: UITableViewHeaderFooterView {
     
     func setUpHorizontalStackView() {
         
-        horizontalStackView = UIStackView(arrangedSubviews: [xButton,informationBtn,loadMoreStackView,approveStackView])
+        horizontalStackView = UIStackView(arrangedSubviews: [xButton, informationBtn, loadMoreStackView])
         
         horizontalStackView.axis = .horizontal
-        horizontalStackView.distribution = .equalSpacing
         horizontalStackView.alignment = .center
-        horizontalStackView.spacing = 16
+        horizontalStackView.spacing = SPACE_ELEMENTS
         
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(horizontalStackView)
         
         horizontalStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: -8).isActive = true
-        horizontalStackView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive = true
-        horizontalStackView.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -10).isActive = true
+        horizontalStackView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 12).isActive = true
         horizontalStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
         loadMoreStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        
+        
+        containerView.addSubview(approveStackView)
         approveStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        approveStackView.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -12).isActive = true
     }
     
     func setupEmptyView() {
-        emptyView = UIView(frame: CGRect(x: 0, y: 0, width: 80, height: 50))
-        emptyView.widthAnchor.constraint(equalToConstant: 80)
+        emptyView = UIView(frame: CGRect(x: 0, y: 0, width: 90, height: 46))
+        emptyView.widthAnchor.constraint(equalToConstant: 90)
         emptyView.backgroundColor = UIColor.blue
         emptyView.isHidden = true
     }
@@ -209,8 +220,8 @@ class TableFooterView: UITableViewHeaderFooterView {
         xButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
         xButton.addTarget(self, action: #selector(deleteHandler), for: .touchUpInside)
         xButton.layer.cornerRadius = 23//xButton.frame.size.width / 2
-        xButton.setImage(UIImage(named: "iconCloseCard")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        xButton.clipsToBounds = true
+        
+        xButton.setImage(UIImage(named: "iconCtaClose"), for: .normal)
     }
     
     func deleteHandler() {
@@ -222,7 +233,15 @@ class TableFooterView: UITableViewHeaderFooterView {
         informationBtn.widthAnchor.constraint(equalToConstant: 46).isActive = true
         informationBtn.heightAnchor.constraint(equalToConstant: 46).isActive = true
         informationBtn.addTarget(self, action: #selector(informationHandler), for: .touchUpInside)
-        informationBtn.setImage(UIImage(named: "iconInfoPage")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        //informationBtn.setImage(UIImage(named: "iconInfoPage")?.withRenderingMode(.alwaysOriginal), for: .normal
+        
+        let attrTitle = Style.default {
+            
+            $0.font = FontAttribute(FontBook.regular, size: 30)
+            $0.color = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
+        }
+        informationBtn.setAttributedTitle("i".set(style: attrTitle), for: .normal)
+        
         informationBtn.layer.cornerRadius = 23
     }
     
@@ -234,8 +253,9 @@ class TableFooterView: UITableViewHeaderFooterView {
         loadMoreBtn.widthAnchor.constraint(equalToConstant: 46).isActive = true
         loadMoreBtn.heightAnchor.constraint(equalToConstant: 46).isActive = true
         loadMoreBtn.addTarget(self, action: #selector(loadMoreHandler), for: .touchUpInside)
-        loadMoreBtn.setImage(UIImage(named: "iconLoadMore")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        loadMoreBtn.setImage(UIImage(named: "iconLoadMore"), for: .normal)
         loadMoreBtn.layer.cornerRadius = 23
+        
     }
     
     func loadMoreHandler() {
@@ -245,7 +265,7 @@ class TableFooterView: UITableViewHeaderFooterView {
     
     func setupActionButton() {
         
-        actionButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        actionButton.widthAnchor.constraint(equalToConstant: 90).isActive = true
         actionButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
         actionButton.tintColor = PopmetricsColor.darkGrey
         actionButton.addTarget(self, action: #selector(approveHandler), for: .touchUpInside)
@@ -253,6 +273,7 @@ class TableFooterView: UITableViewHeaderFooterView {
     
     func approveHandler() {
         animateButtonBlink(button: actionButton)
+        buttonHandlerDelegate?.approvalButtonPressed(section: self.section)
     }
     
     func animateButtonBlink(button: UIButton) {
@@ -280,6 +301,8 @@ class TableFooterView: UITableViewHeaderFooterView {
         switch typeSection {
         case .failed:
             actionButton.imageButtonType = .failed
+            approveLbl.text = "Reschedule All (1)"
+            
         case .unapproved:
             actionButton.imageButtonType = .unapproved
         default:
@@ -295,10 +318,40 @@ class TableFooterView: UITableViewHeaderFooterView {
             }
         default:
             break
+            
         }
     }
     
+    func setUpDisabledLabels() {
+        approveLbl.layer.opacity = 0.3
+        approveLbl.text = "Approve (0)"
+        
+        loadMoreLbl.layer.opacity = 0.3
+        loadMoreLbl.text = "Load More (0)"
+    }
+    
+    func setUpLoadMoreDisabled() {
+        loadMoreBtn.imageView?.layer.opacity = 0.3
+        loadMoreLbl.layer.opacity = 0.3
+        loadMoreBtn.layer.borderColor = UIColor.black.withAlphaComponent(0.2).cgColor
+        loadMoreBtn.isEnabled = false
+    }
+    
+    func setUpFooterShadowView() {
+        contentView.insertSubview(footerShadow, belowSubview: containerView)
+        footerShadow.backgroundColor = containerView.backgroundColor
+        footerShadow.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+        footerShadow.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
+        footerShadow.topAnchor.constraint(equalTo:  containerView.topAnchor).isActive = true
+        footerShadow.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        
+        footerShadow.layer.masksToBounds = false
+        addShadowToView(footerShadow, radius: 2, opacity: 0.5)
+        footerShadow.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        footerShadow.layer.cornerRadius = 12
+    }
 }
+
 
 enum TypeSection {
     case failed

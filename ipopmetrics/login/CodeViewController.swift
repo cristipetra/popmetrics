@@ -9,6 +9,7 @@
 import UIKit
 import Crashlytics
 import EZAlertController
+import SafariServices
 
 class CodeViewController: UIViewController {
     
@@ -182,4 +183,10 @@ extension CodeViewController: UITextFieldDelegate {
         return true
     }
     
+}
+
+extension CodeViewController {
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        dismiss(animated: true)
+    }
 }

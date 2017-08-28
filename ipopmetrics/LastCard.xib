@@ -77,14 +77,14 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OhX-Wm-mus" customClass="TwoImagesButton" customModule="ipopmetrics" customModuleProvider="target">
-                                        <rect key="frame" x="252" y="16" width="90" height="45"/>
+                                        <rect key="frame" x="255" y="16" width="90" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="LGX-a6-an0"/>
                                             <constraint firstAttribute="width" constant="90" id="Lhl-Ga-V3n"/>
                                         </constraints>
                                         <color key="tintColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="leftHandImage" value="iconTodo"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="leftHandImage" value="iconCtaTodo"/>
                                             <userDefinedRuntimeAttribute type="image" keyPath="rightHandImage" value="iconCalLeft"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -92,7 +92,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View To Do List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGG-Xw-ktc">
-                                        <rect key="frame" x="261" y="67" width="73" height="14"/>
+                                        <rect key="frame" x="255" y="67" width="83" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14" id="VWd-ef-j1J"/>
                                             <constraint firstAttribute="width" constant="83" id="tYN-Cb-ALh"/>
@@ -101,14 +101,14 @@
                                         <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9c-sO-KQx">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9c-sO-KQx" customClass="RoundButton" customModule="ipopmetrics" customModuleProvider="target">
                                         <rect key="frame" x="12" y="16" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="bXD-wk-6kg"/>
                                             <constraint firstAttribute="height" constant="45" id="v0v-sc-wFe"/>
                                         </constraints>
                                         <color key="tintColor" red="0.93168885865721207" green="0.94091350082213498" blue="0.94091350082213498" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="iconCloseCard"/>
+                                        <state key="normal" image="iconCtaClose"/>
                                         <state key="highlighted" image="iconClosecard"/>
                                         <connections>
                                             <action selector="closeCard:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wzU-83-IOi"/>
@@ -117,7 +117,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="OhX-Wm-mus" secondAttribute="trailing" constant="13" id="30N-LQ-BRO"/>
+                                    <constraint firstAttribute="trailing" secondItem="OhX-Wm-mus" secondAttribute="trailing" constant="10" id="30N-LQ-BRO"/>
                                     <constraint firstItem="OhX-Wm-mus" firstAttribute="top" secondItem="lCs-7n-YJn" secondAttribute="top" constant="16" id="7ha-BE-MGj"/>
                                     <constraint firstItem="HXD-4C-rk7" firstAttribute="leading" secondItem="lCs-7n-YJn" secondAttribute="leading" id="8L6-ER-Pmf"/>
                                     <constraint firstAttribute="trailing" secondItem="uGG-Xw-ktc" secondAttribute="trailing" constant="17" id="Jrw-Ob-1CW"/>
@@ -178,8 +178,8 @@
     <resources>
         <image name="iconCalLeft" width="15" height="24"/>
         <image name="iconCheck" width="26" height="26"/>
-        <image name="iconCloseCard" width="53" height="53"/>
         <image name="iconClosecard" width="53" height="53"/>
-        <image name="iconTodo" width="30" height="16"/>
+        <image name="iconCtaClose" width="19" height="19"/>
+        <image name="iconCtaTodo" width="27" height="19"/>
     </resources>
 </document>
