@@ -536,8 +536,7 @@ extension CalendarViewController: MJCalendarViewDelegate {
     }
     
     func tapFunction(sender:UITapGestureRecognizer) {
-        //self.calendarView.selectNewPeriod(calendarView.date)
-        self.calendarView.selectNewPeriod(NSDate().atStartOfDay())
+        self.calendarView.goToCurrentDay()
     }
     
     func addDivider() {
