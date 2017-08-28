@@ -13,6 +13,7 @@ class MainTabBarController: UITabBarController {
     var homeNavigationController: UINavigationController!;
     var calendarViewController: UINavigationController = UINavigationController();
     var todoNavigationViewController: UINavigationController = UINavigationController();
+    var statisticsNavigationViewController: UINavigationController = UINavigationController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,12 @@ class MainTabBarController: UITabBarController {
         calendarVC.tabBarItem.title = "Calendar"
         calendarVC.tabBarItem.image = #imageLiteral(resourceName: "iconCalendarTab")
         
-        let tabs: [UIViewController] = [homeNavigationController, todoNavigationViewController, calendarViewController]
+        let statisticsVC = UIStoryboard(name: "Statistics", bundle: nil).instantiateViewController(withIdentifier: "statistics")
+        statisticsNavigationViewController.pushViewController(statisticsVC, animated: false)
+        statisticsVC.tabBarItem.title = "Statistics"
+        statisticsVC.tabBarItem.image = #imageLiteral(resourceName: "iconStats")
+        
+        let tabs: [UIViewController] = [homeNavigationController, todoNavigationViewController, calendarViewController, statisticsNavigationViewController]
         self.setViewControllers(tabs, animated: false)
     }
     

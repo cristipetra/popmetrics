@@ -80,6 +80,11 @@
 		08F368991F1903B100819CDE /* LastCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F368981F1903B100819CDE /* LastCardCell.swift */; };
 		08F7A0971F17AB0C00A1B2C3 /* RecommendationCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F7A0961F17AB0C00A1B2C3 /* RecommendationCardCell.swift */; };
 		08F7A09B1F17AC2700A1B2C3 /* RecommendationCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08F7A09A1F17AC2700A1B2C3 /* RecommendationCard.xib */; };
+		08FAE8411F541D060097DF3E /* Statistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08FAE8401F541D060097DF3E /* Statistics.storyboard */; };
+		08FAE8441F541D790097DF3E /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE8431F541D790097DF3E /* StatisticsViewController.swift */; };
+		08FAE8471F541FF40097DF3E /* TrafficCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08FAE8461F541FF40097DF3E /* TrafficCard.xib */; };
+		08FAE8491F5420050097DF3E /* TrafficCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */; };
+		08FAE84B1F54247B0097DF3E /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE84A1F54247B0097DF3E /* GradientView.swift */; };
 		110A62CA1ECEDADC0052B478 /* StatsSummaryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A62C91ECEDADC0052B478 /* StatsSummaryViewCell.swift */; };
 		110A62D41ECEDE8B0052B478 /* ChatItemsDemoDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A62CD1ECEDE8B0052B478 /* ChatItemsDemoDecorator.swift */; };
 		110A62D51ECEDE8B0052B478 /* FakeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A62CE1ECEDE8B0052B478 /* FakeDataSource.swift */; };
@@ -245,6 +250,11 @@
 		08F368981F1903B100819CDE /* LastCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LastCardCell.swift; path = feed/LastCardCell.swift; sourceTree = "<group>"; };
 		08F7A0961F17AB0C00A1B2C3 /* RecommendationCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationCardCell.swift; sourceTree = "<group>"; };
 		08F7A09A1F17AC2700A1B2C3 /* RecommendationCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendationCard.xib; sourceTree = "<group>"; };
+		08FAE8401F541D060097DF3E /* Statistics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Statistics.storyboard; sourceTree = "<group>"; };
+		08FAE8431F541D790097DF3E /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		08FAE8461F541FF40097DF3E /* TrafficCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrafficCard.xib; sourceTree = "<group>"; };
+		08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficCardViewCell.swift; sourceTree = "<group>"; };
+		08FAE84A1F54247B0097DF3E /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		110A62C91ECEDADC0052B478 /* StatsSummaryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatsSummaryViewCell.swift; path = feed/StatsSummaryViewCell.swift; sourceTree = "<group>"; };
 		110A62CD1ECEDE8B0052B478 /* ChatItemsDemoDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatItemsDemoDecorator.swift; sourceTree = "<group>"; };
 		110A62CE1ECEDE8B0052B478 /* FakeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeDataSource.swift; sourceTree = "<group>"; };
@@ -470,6 +480,7 @@
 		08C7B18E1F1CF41200E456C6 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				08FAE8421F541D5E0097DF3E /* statistics */,
 				080DCA7F1F4D6ED5000C73DC /* menu */,
 				085CB7B41F4ADD8000038C03 /* notifications */,
 				085053FC1F27876100FE8234 /* calendar */,
@@ -502,6 +513,23 @@
 				08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */,
 			);
 			name = todo;
+			sourceTree = "<group>";
+		};
+		08FAE8421F541D5E0097DF3E /* statistics */ = {
+			isa = PBXGroup;
+			children = (
+				08FAE8431F541D790097DF3E /* StatisticsViewController.swift */,
+			);
+			name = statistics;
+			sourceTree = "<group>";
+		};
+		08FAE8451F541FC90097DF3E /* statistics */ = {
+			isa = PBXGroup;
+			children = (
+				08FAE8461F541FF40097DF3E /* TrafficCard.xib */,
+				08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */,
+			);
+			name = statistics;
 			sourceTree = "<group>";
 		};
 		110A62CC1ECEDE430052B478 /* chat */ = {
@@ -696,6 +724,7 @@
 		11ACA9AD1E2CE0A80021E64A /* views */ = {
 			isa = PBXGroup;
 			children = (
+				08FAE8451F541FC90097DF3E /* statistics */,
 				0888C5BC1F4EECBF00E3DB04 /* buttons */,
 				080DCA841F4D96EB000C73DC /* recommended */,
 				08953E701F4C3503003ABEFC /* required */,
@@ -712,6 +741,7 @@
 				0856F3571F272F020061DF7E /* Calendar.storyboard */,
 				08C6FBFA1F41FFCB007D6101 /* Todo.storyboard */,
 				08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */,
+				08FAE8401F541D060097DF3E /* Statistics.storyboard */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -728,6 +758,7 @@
 				113976AD1E97C83500B535DF /* TextFieldValidator.swift */,
 				113976B11E97CE5000B535DF /* MainTabBarController.swift */,
 				08A4A5421F45B5D6001071E3 /* TwoImagesButton.swift */,
+				08FAE84A1F54247B0097DF3E /* GradientView.swift */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -886,6 +917,7 @@
 				08B745931F1F6C0100EC3F8C /* OpenSans-Light.ttf in Resources */,
 				08953E6B1F4C269E003ABEFC /* ToDoCell.xib in Resources */,
 				08B745941F1F6C0100EC3F8C /* OpenSans-Bold.ttf in Resources */,
+				08FAE8411F541D060097DF3E /* Statistics.storyboard in Resources */,
 				0856F3581F272F020061DF7E /* Calendar.storyboard in Resources */,
 				0854AF351F3F2B18007B60F9 /* CalendarCardSimple.xib in Resources */,
 				085CB7B21F4ADCA200038C03 /* Notifications.storyboard in Resources */,
@@ -920,6 +952,7 @@
 				08C6FBFB1F41FFCB007D6101 /* Todo.storyboard in Resources */,
 				08F368971F19029100819CDE /* LastCard.xib in Resources */,
 				08AF04981F46FB9B0040012B /* ToDoCardCell.xib in Resources */,
+				08FAE8471F541FF40097DF3E /* TrafficCard.xib in Resources */,
 				1119F6181ED56F34009997FF /* Boarding.storyboard in Resources */,
 				D9D9378A1ECDEEE200CC3EC2 /* StatsSummaryCard.xib in Resources */,
 				D9EC7E351ECEE37A00A54B53 /* BestCourseCard.xib in Resources */,
@@ -1072,6 +1105,7 @@
 				08DF9E621F261C8100C60C2D /* InfoCardViewController.swift in Sources */,
 				0848280F1F39F9200054B04C /* HeaderView.swift in Sources */,
 				08B5D4BA1F29C28A00B79AD3 /* CalendarFeedStore.swift in Sources */,
+				08FAE84B1F54247B0097DF3E /* GradientView.swift in Sources */,
 				110A62F41ECEE6FB0052B478 /* TimeSeparatorCollectionViewCell.swift in Sources */,
 				11D8D9F11ECB58AB00CCDAC4 /* RequiredActionViewCell.swift in Sources */,
 				1120F2021ECDF93F00576E39 /* ArticleOfInterestViewCell.swift in Sources */,
@@ -1089,6 +1123,7 @@
 				11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */,
 				113976AB1E97C74B00B535DF /* BaseViewController.swift in Sources */,
 				080DCA881F4D9716000C73DC /* RecommendedCell.swift in Sources */,
+				08FAE8491F5420050097DF3E /* TrafficCardViewCell.swift in Sources */,
 				080DCA811F4D6EE6000C73DC /* MenuViewController.swift in Sources */,
 				1128B3FB1ECF26D800BDA58C /* UIColorExtensions.swift in Sources */,
 				11AAA5EA1ECCD7040099B50E /* ActionHistoryViewCell.swift in Sources */,
@@ -1125,6 +1160,7 @@
 				1125ADAA1E96E67B0004B4AC /* BaseTableViewController.swift in Sources */,
 				08B485E01F20EA23005918A1 /* Config.swift in Sources */,
 				113976B21E97CE5000B535DF /* MainTabBarController.swift in Sources */,
+				08FAE8441F541D790097DF3E /* StatisticsViewController.swift in Sources */,
 				08B485E61F210A61005918A1 /* RoundButton.swift in Sources */,
 				11ACA9A11E2CD1B90021E64A /* BaseApi.swift in Sources */,
 				08B5D4BE1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift in Sources */,

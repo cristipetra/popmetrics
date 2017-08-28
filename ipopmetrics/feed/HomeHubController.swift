@@ -693,4 +693,5 @@ enum CardType: String {
     case required = "required"
     case recommended = "recommended"
     case todo = "todo"
+    case traffic = "traffic"
 }

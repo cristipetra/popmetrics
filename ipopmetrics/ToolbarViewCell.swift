@@ -103,3 +103,12 @@ class ToolbarViewCell: UIView {
     }
 
 }
+
+extension ToolbarViewCell {
+    func addGradient() {
+        let gradientView = GradientView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+        gradientView.startColor = PopmetricsColor.statisticsGradientStartColor
+        gradientView.endColor = PopmetricsColor.statisticsGradientEndColor
+        insertSubview(gradientView, belowSubview: circleView)
+    }
+}
