@@ -81,7 +81,7 @@ class FooterView: UIView {
     }()
     
     
-    private var horizontalStackView: UIStackView!
+    internal var horizontalStackView: UIStackView!
     var approveStackView: UIStackView!
     
     // END VIEW
@@ -176,3 +176,11 @@ class FooterView: UIView {
     
 }
 
+extension FooterView {
+    func addGradient() {
+        let gradientView = GradientView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+        gradientView.startColor = PopmetricsColor.statisticsGradientStartColor
+        gradientView.endColor = PopmetricsColor.statisticsGradientEndColor
+        insertSubview(gradientView, belowSubview: self.horizontalStackView)
+    }
+}

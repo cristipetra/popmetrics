@@ -45,6 +45,12 @@ class TableFooterView: UITableViewHeaderFooterView {
     }
     
     // VIEW
+    lazy var footerShadow : UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var topLineView: UIView = {
         let view = UIView();
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -329,6 +335,20 @@ class TableFooterView: UITableViewHeaderFooterView {
         loadMoreLbl.layer.opacity = 0.3
         loadMoreBtn.layer.borderColor = UIColor.black.withAlphaComponent(0.2).cgColor
         loadMoreBtn.isEnabled = false
+    }
+    
+    func setUpFooterShadowView() {
+        contentView.insertSubview(footerShadow, belowSubview: containerView)
+        footerShadow.backgroundColor = containerView.backgroundColor
+        footerShadow.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+        footerShadow.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
+        footerShadow.topAnchor.constraint(equalTo:  containerView.topAnchor).isActive = true
+        footerShadow.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        
+        footerShadow.layer.masksToBounds = false
+        addShadowToView(footerShadow, radius: 2, opacity: 0.5)
+        footerShadow.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        footerShadow.layer.cornerRadius = 12
     }
 }
 

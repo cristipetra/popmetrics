@@ -81,7 +81,16 @@ class ToDoCardCell: UITableViewCell {
     
     func removeApprovedView() {
         approvedView.removeFromSuperview()
+    }
+    
+    func sideShadow(view: UIView) {
+        view.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor
+        view.layer.shadowOpacity = 0.5;
+        view.layer.shadowRadius = 2
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         
+        let shadowRect : CGRect = view.bounds.insetBy(dx: 0, dy: 0)
+        view.layer.shadowPath = UIBezierPath(rect: shadowRect).cgPath
     }
     
 }

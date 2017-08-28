@@ -20,6 +20,12 @@ class CalendarHeaderViewCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var toolbarView: ToolbarViewCell!
     
+    lazy var headerShadow : UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override func awakeFromNib() {
         self.backgroundColor = UIColor.feedBackgroundColor()
         containerView.backgroundColor = UIColor.feedBackgroundColor()
@@ -41,6 +47,20 @@ class CalendarHeaderViewCell: UITableViewCell {
     func changeTitle(title: String) {
         toolbarView.title.text = title
         sectionTitleLabel.text = title
+    }
+    
+    func setUpHeaderShadowView() {
+        
+        containerView.insertSubview(headerShadow, belowSubview: toolbarView)
+        headerShadow.backgroundColor = toolbarView.backgroundColor
+        headerShadow.leftAnchor.constraint(equalTo: toolbarView.leftAnchor).isActive = true
+        headerShadow.rightAnchor.constraint(equalTo: toolbarView.rightAnchor).isActive = true
+        headerShadow.topAnchor.constraint(equalTo:  toolbarView.topAnchor).isActive = true
+        headerShadow.bottomAnchor.constraint(equalTo: toolbarView.bottomAnchor).isActive = true
+        
+        headerShadow.layer.masksToBounds = false
+        addShadowToView(headerShadow, radius: 2, opacity: 0.5)
+        headerShadow.layer.cornerRadius = 12
     }
 
 }
