@@ -31,8 +31,12 @@ class StatisticsViewController: UIViewController {
     internal func registerCellsForTable() {
         let trafficNib = UINib(nibName: "TrafficCard", bundle: nil)
         tableView.register(trafficNib, forCellReuseIdentifier: "TrafficCard")
+        
         let sectionHeaderNib = UINib(nibName: "HeaderCardCell", bundle: nil)
         tableView.register(sectionHeaderNib, forCellReuseIdentifier: "headerCell")
+        
+        let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
+        tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
     }
     
     internal func setUpNavigationBar() {
@@ -53,33 +57,68 @@ class StatisticsViewController: UIViewController {
     func handlerClickMenu() {
         
     }
+    
+    @objc internal func goToNextTab() {
+        self.tabBarController?.selectedIndex = 0
+    }
 }
 
 extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficCard", for: indexPath) as! TrafficCardViewCell
-        cell.selectionStyle = .none
-        cell.backgroundColor = UIColor.feedBackgroundColor()
-        cell.wrapperView.backgroundColor = UIColor.white
-        return cell
+        let sectionIdx = (indexPath as NSIndexPath).section
+        if sectionIdx == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficCard", for: indexPath) as! TrafficCardViewCell
+            cell.selectionStyle = .none
+            cell.backgroundColor = UIColor.feedBackgroundColor()
+            cell.wrapperView.backgroundColor = UIColor.white
+            return cell
+        } else if sectionIdx == 1{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
+            cell.changeTitleWithSpacing(title: "You're all caught up.")
+            cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
+            cell.selectionStyle = .none
+            cell.titleActionButton.text = "View Home Feed"
+            cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
+            return cell
+        } else {
+            return UITableViewCell()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 404
+        let sectionIdx = (indexPath as NSIndexPath).section
+        if sectionIdx == 1 {
+            return 261
+        } else {
+            return 404
+        }
+
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
-        cell.changeColor(cardType: .traffic)
-        cell.sectionTitleLabel.text = "Traffic";
-        return cell
+        if section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            cell.changeColor(cardType: .traffic)
+            cell.sectionTitleLabel.text = "Traffic";
+            return cell
+        } else {
+            return nil
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 80
+        if section == 0 {
+            return 80
+        } else {
+            return 0
+        }
     }
 }
