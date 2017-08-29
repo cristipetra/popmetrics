@@ -2,14 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "iconHeaderBrandinsight.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "iconHeaderBrandinsight@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "iconHeaderBrandinsight@3x.png",
       "scale" : "3x"
     }
   ],

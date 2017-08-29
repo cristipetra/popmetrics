@@ -8,12 +8,17 @@
 
 import UIKit
 import DGElasticPullToRefresh
+import SwiftyJSON
 
 class StatisticsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+    var insightIsDisplayed = false
+    var cellHeight = 0 as CGFloat
+    fileprivate var sections: [StatisticsSection] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
@@ -26,6 +31,8 @@ class StatisticsViewController: UIViewController {
         tableView.backgroundColor = PopmetricsColor.statisticsTableBackground
         tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        
+        fetchItemsLocally()
     }
     
     internal func registerCellsForTable() {
@@ -37,6 +44,9 @@ class StatisticsViewController: UIViewController {
         
         let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
         tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
+        
+        let recommendedNib = UINib(nibName: "RecommendedCell", bundle: nil)
+        tableView.register(recommendedNib, forCellReuseIdentifier: "RecommendedCell")
     }
     
     internal func setUpNavigationBar() {
@@ -54,6 +64,30 @@ class StatisticsViewController: UIViewController {
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     }
     
+    
+    internal func fetchItemsLocally() {
+        let path = Bundle.main.path(forResource: "sampleFeedStatistics", ofType: "json")
+        let jsonData: NSData = NSData(contentsOfFile: path!)!
+        let json = JSON(data: jsonData as Data)
+        let statisticsStore = StatisticsStore.getInstance()
+        for item in json["items"] {
+            let statisticsItem = StatisticsItem()
+            statisticsItem.status = item.1["status"].description
+            statisticsItem.articleTitle = item.1["article_title"].description
+            statisticsItem.statusDate = Date(timeIntervalSince1970: Double(item.1["status_date"].description)!)
+            statisticsItem.articleImage = item.1["article_image"].description
+            statisticsItem.articleText = item.1["article_text"].description
+            statisticsItem.type = item.1["type"].description
+            statisticsItem.articleUrl = item.1["article_url"].description
+            statisticsItem.articleCategory = item.1["article_category"].description
+            print(Double(item.1["status_date"].description));
+        
+            statisticsStore.storeItem(item: statisticsItem)
+        }
+        
+        self.sections = statisticsStore.getFeed()
+    }
+    
     func handlerClickMenu() {
         let modalViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ViewNames.SBID_MENU_VC) as! MenuViewController
         // customization:
@@ -69,46 +103,55 @@ class StatisticsViewController: UIViewController {
 
 extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let sectionIdx = (indexPath as NSIndexPath).section
-        if sectionIdx == 0 {
+        let rowIdx = (indexPath as NSIndexPath).row
+        
+        let section = sections[sectionIdx]
+        let item = section.items[rowIdx]
+        if item.type == "traffic" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficCard", for: indexPath) as! TrafficCardViewCell
+            cellHeight = 424
+            setTrafficCard(cell: cell, item: item)
             cell.selectionStyle = .none
             cell.backgroundColor = UIColor.feedBackgroundColor()
-            cell.wrapperView.backgroundColor = UIColor.white
             return cell
-        } else if sectionIdx == 1{
+        } else if item.type == "last_cell" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
+            cellHeight = 261
             cell.changeTitleWithSpacing(title: "You're all caught up.")
             cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
             cell.selectionStyle = .none
             cell.titleActionButton.text = "View Home Feed"
             cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
             return cell
+        } else if item.type == "insight" && insightIsDisplayed{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendedCell", for: indexPath) as! RecommendedCell
+            cellHeight = 469
+            cell.selectionStyle = .none
+            cell.setUpCell(type: "Popmetrics Insight")
+            return cell
         } else {
-            return UITableViewCell()
+            let cell = UITableViewCell()
+            cellHeight = 0
+            cell.isHidden = true
+            return cell
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return sections[section].items.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let sectionIdx = (indexPath as NSIndexPath).section
-        if sectionIdx == 1 {
-            return 261
-        } else {
-            return 404
-        }
-
+        return cellHeight
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
+            if (section == sections.endIndex - 1) {
+                return nil
+            }
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(cardType: .traffic)
             cell.sectionTitleLabel.text = "Traffic";
@@ -123,6 +166,25 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             return 80
         } else {
             return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        print(sections.count)
+        return sections.count
+    }
+    
+    private func setTrafficCard(cell: TrafficCardViewCell, item: StatisticsItem) {
+        if item.status == StatusArticle.unapproved.rawValue {
+            insightIsDisplayed = true
+            cell.connectionLine.isHidden = false
+        } else {
+            cellHeight = 404
+            cell.connectionLine.isHidden = true
         }
     }
 }

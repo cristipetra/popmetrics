@@ -10,12 +10,14 @@ import UIKit
 
 class TrafficCardViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var toolbarView: ToolbarViewCell!
     @IBOutlet weak var uniqueVisitsView: UIView!
+    @IBOutlet weak var connectionLine: UIView!
+    @IBOutlet weak var contentWrapperView: UIView!
     @IBOutlet weak var overallVisitsView: UIView!
     @IBOutlet weak var footerView: FooterView!
     @IBOutlet weak var wrapperView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setCornerRadius()

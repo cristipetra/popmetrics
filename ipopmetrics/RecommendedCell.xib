@@ -27,20 +27,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OVB-Nz-PDL" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
-                        <rect key="frame" x="16" y="0.0" width="288" height="29"/>
+                        <rect key="frame" x="10" y="0.0" width="300" height="29"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="29" id="iT6-Od-Dhn"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xmp-ns-pr3">
-                        <rect key="frame" x="16" y="29" width="288" height="439.5"/>
+                        <rect key="frame" x="10" y="29" width="300" height="439.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eYK-Rm-n8D">
-                                <rect key="frame" x="0.0" y="0.0" width="288" height="345"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="345"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is an article for you to read" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="404-LX-Lbg">
-                                <rect key="frame" x="20" y="16" width="258" height="80"/>
+                                <rect key="frame" x="20" y="16" width="270" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Dq1-j8-EWF"/>
                                 </constraints>
@@ -49,7 +49,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter is a key access point to increase your social following." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEd-JZ-7L4">
-                                <rect key="frame" x="20" y="112" width="258" height="112"/>
+                                <rect key="frame" x="20" y="112" width="270" height="112"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="112" id="d06-5n-cXh"/>
                                 </constraints>
@@ -58,14 +58,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aL3-tc-p25" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="345" width="288" height="94"/>
+                                <rect key="frame" x="0.0" y="345" width="300" height="94"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="94" id="ABK-Fm-RIs"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter is a key access point to increase your social following." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aui-QH-5um">
-                                <rect key="frame" x="20" y="238" width="258" height="97"/>
+                                <rect key="frame" x="20" y="238" width="270" height="97"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -104,11 +104,11 @@
                     <constraint firstItem="aKF-7W-goR" firstAttribute="leading" secondItem="Iw2-KH-qXD" secondAttribute="leading" constant="37" id="L9n-YR-sUp"/>
                     <constraint firstItem="xmp-ns-pr3" firstAttribute="top" secondItem="OVB-Nz-PDL" secondAttribute="bottom" id="Owd-TK-H42"/>
                     <constraint firstItem="aKF-7W-goR" firstAttribute="top" secondItem="xmp-ns-pr3" secondAttribute="bottom" id="Q0M-Pk-IXq"/>
-                    <constraint firstAttribute="trailing" secondItem="xmp-ns-pr3" secondAttribute="trailing" constant="16" id="Rvt-z2-ZX0"/>
+                    <constraint firstAttribute="trailing" secondItem="xmp-ns-pr3" secondAttribute="trailing" constant="10" id="Rvt-z2-ZX0"/>
                     <constraint firstAttribute="bottom" secondItem="xmp-ns-pr3" secondAttribute="bottom" constant="37" id="Zsq-Xp-KUl"/>
-                    <constraint firstItem="xmp-ns-pr3" firstAttribute="leading" secondItem="Iw2-KH-qXD" secondAttribute="leading" constant="16" id="buQ-nD-gex"/>
-                    <constraint firstItem="OVB-Nz-PDL" firstAttribute="leading" secondItem="Iw2-KH-qXD" secondAttribute="leading" constant="16" id="enW-TR-B7N"/>
-                    <constraint firstAttribute="trailing" secondItem="OVB-Nz-PDL" secondAttribute="trailing" constant="16" id="fQC-2e-5Xa"/>
+                    <constraint firstItem="xmp-ns-pr3" firstAttribute="leading" secondItem="Iw2-KH-qXD" secondAttribute="leading" constant="10" id="buQ-nD-gex"/>
+                    <constraint firstItem="OVB-Nz-PDL" firstAttribute="leading" secondItem="Iw2-KH-qXD" secondAttribute="leading" constant="10" id="enW-TR-B7N"/>
+                    <constraint firstAttribute="trailing" secondItem="OVB-Nz-PDL" secondAttribute="trailing" constant="10" id="fQC-2e-5Xa"/>
                     <constraint firstAttribute="bottom" secondItem="aKF-7W-goR" secondAttribute="bottom" id="pOl-Vb-kYe"/>
                     <constraint firstItem="OVB-Nz-PDL" firstAttribute="top" secondItem="Iw2-KH-qXD" secondAttribute="top" id="s6E-uT-kyh"/>
                 </constraints>
