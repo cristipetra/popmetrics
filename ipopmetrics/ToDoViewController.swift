@@ -285,7 +285,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if let index = tableView.indexPathsForVisibleRows?.first {
             let headerFrame = tableView.rectForHeader(inSection: index.section)
-            if headerFrame.origin.y <= tableView.contentOffset.y{
+            if headerFrame.origin.y < tableView.contentOffset.y{
                 if let status = StatusArticle(rawValue: sections[index.section].status) {
                     toDoTopView.setActive(section: status)
                 }
