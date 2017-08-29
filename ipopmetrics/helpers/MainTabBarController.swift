@@ -29,6 +29,7 @@ class MainTabBarController: UITabBarController {
         
         self.tabBar.tintColor = PopmetricsColor.textGrey
         self.tabBar.unselectedItemTintColor = PopmetricsColor.unselectedTabBarItemTint
+        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -3)
         
         homeNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationID") as! UINavigationController
         homeNavigationController.tabBarItem.title = "Home"
