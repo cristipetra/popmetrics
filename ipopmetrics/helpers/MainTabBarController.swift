@@ -46,6 +46,9 @@ class MainTabBarController: UITabBarController {
         calendarVC.tabBarItem.image = #imageLiteral(resourceName: "iconCalendarTab")
         
         let statisticsVC = UIStoryboard(name: "Statistics", bundle: nil).instantiateViewController(withIdentifier: "statistics")
+        
+        let trafficReportVC = AppStoryboard.Statistics.instance.instantiateViewController(withIdentifier: ViewNames.SBID_TRAFFIC_REPORT)
+        
         statisticsNavigationViewController.pushViewController(statisticsVC, animated: false)
         statisticsVC.tabBarItem.title = "Statistics"
         statisticsVC.tabBarItem.image = #imageLiteral(resourceName: "iconStats")

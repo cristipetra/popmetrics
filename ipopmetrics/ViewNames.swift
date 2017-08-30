@@ -14,4 +14,5 @@ struct ViewNames {
     static let SBID_VIDEO_SCREEN = "VideoScreenViewController"
     static let SBID_PUSH_NOTIFICATIONS_VC = "NotificationsViewController"
     static let SBID_MENU_VC = "MENU_VC"
+    static let SBID_TRAFFIC_REPORT = "trafficReportViewId"
 }

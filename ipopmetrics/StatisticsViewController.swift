@@ -99,6 +99,11 @@ class StatisticsViewController: UIViewController {
     @objc internal func goToNextTab() {
         self.tabBarController?.selectedIndex = 0
     }
+    
+    internal func openTrafficReport(_ sender: AnyObject) {
+        let trafficReportVC = AppStoryboard.Statistics.instance.instantiateViewController(withIdentifier: ViewNames.SBID_TRAFFIC_REPORT)
+        self.navigationController?.pushViewController(trafficReportVC, animated: true)
+    }
 }
 
 extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -115,6 +120,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             setTrafficCard(cell: cell, item: item)
             cell.selectionStyle = .none
             cell.backgroundColor = UIColor.feedBackgroundColor()
+            cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_:)), for: .touchUpInside)
             return cell
         } else if item.type == "last_cell" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
