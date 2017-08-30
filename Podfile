@@ -42,6 +42,7 @@ target 'ipopmetrics' do
   pod 'SwiftyJSON'
   pod “MJCalendar”, :git=>’https://github.com/cristipetra/MJCalendar’
   pod 'ElasticTransition', :git=>’https://github.com/ionutboanta/ElasticTransition’
+  pod 'ScrollableGraphView'
   
   
 end

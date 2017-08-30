@@ -38,7 +38,10 @@ class TrafficStatusView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        //contentView.backgroundColor = UIColor.darkGray
+        
+        bottomLabel.textColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
+        bottomLabel.font = UIFont(name: FontBook.semibold, size: 15)
+        bottomLabel.textAlignment = .center
         
         topPageControl.tintColor = UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1)
         topPageControl.currentPageIndicatorTintColor = UIColor(red: 87/255, green: 93/255, blue: 99/255, alpha: 1)

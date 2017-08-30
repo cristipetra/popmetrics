@@ -15,9 +15,20 @@ class TrafficReportViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addChartView()
         addPageView()
     }
     
+    func addChartView() {
+        let chartVC = UIStoryboard(name: "ChartStatistics", bundle: nil).instantiateViewController(withIdentifier: "ChartViewId") as! ChartViewController
+        
+        chartVC.view.frame = CGRect(x: 0, y: 0, width: self.containerView.frame.width, height: 400)
+        addChildViewController(chartVC)
+        self.containerView.addSubview(chartVC.view)
+        chartVC.didMove(toParentViewController: self)
+        
+    }
     
     func addPageView() {
         statsPageVC.view.frame = CGRect(x: 0, y: 300, width: self.containerView.frame.width, height: 562)
