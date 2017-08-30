@@ -25,6 +25,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     var isInfoCellType = false;
     var toDoCellHeight = 50 as CGFloat
     var isToDoCellType = false
+    var isTrafficCard = false
     
     let transition = BubbleTransition();
     var transitionButton:UIButton = UIButton();
@@ -35,6 +36,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     let lastSection: FeedSection = FeedSection()
     let insightSection:FeedSection = FeedSection()
     let toDoSection: FeedSection = FeedSection()
+    let statisticsSection: FeedSection = FeedSection()
     
     var isAnimatingHeader = false
     
@@ -67,6 +69,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         let recommendedNib = UINib(nibName: "RecommendedCell", bundle: nil)
         tableView.register(recommendedNib, forCellReuseIdentifier: "recommendedId")
+        
+        let trafficNib = UINib(nibName: "TrafficCard", bundle: nil)
+        tableView.register(trafficNib, forCellReuseIdentifier: "TrafficCard")
         
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
@@ -127,6 +132,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let toDoItem : FeedItem = FeedItem()
         toDoItem.type = "todo"
         self.toDoSection.items.append(toDoItem)
+        
+        self.statisticsSection.name = "Statistics"
+        self.statisticsSection.index = 1
+        let statisticsItem: FeedItem = FeedItem()
+        statisticsItem.type = "traffic"
+        self.statisticsSection.items.append(statisticsItem)
         
         self.lastSection.name = ""
         self.lastSection.index = 1;
@@ -295,6 +306,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         if (UsersStore.isTwitterConnected) {
             if( UsersStore.isInsightShowed ) {
                 self.sections.append(toDoSection)
+                self.sections.append(statisticsSection)
                 sections.append(lastSection)
             } else {
                 sections.append(insightSection)
@@ -375,6 +387,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         isToDoCellType = false
         isInfoCellType = false
+        isTrafficCard = false
         switch(item.type) {    
             case "required":
                 shouldDisplayCell = true
@@ -387,14 +400,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 if((sections[sectionIdx].items.count-1) == indexPath.row) {
                     cell.connectionLineView.isHidden = true;
                 }
-
                 return cell
-
             case "recommended":
- 
                 shouldDisplayCell = true
-                
-                isInfoCellType = false
+                isTrafficCard = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedId", for: indexPath) as! RecommendedCell
                 cell.setUpCell(type: "Popmetrics Insight")
                 if((sections[sectionIdx].items.count-1) == indexPath.row) {
@@ -412,16 +421,26 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 toDoCellHeight = cell.toDoCountViewHeight.constant
                 cell.selectionStyle = .none
                 cell.setHeaderTitle(title: "Snapshot")
+                
+                cell.footerView.informationBtn.addTarget(self, action: #selector(openInfoCard(_:)), for: .touchUpInside)
                 return cell
 
             case "info":
                 shouldDisplayCell = true
                 isInfoCellType = true
+                isTrafficCard = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
                 cell.changeTitleWithSpacing(title: "You're all caught up.")
                 cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
                 cell.selectionStyle = .none
                 cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
+                return cell
+        case "traffic":
+                isTrafficCard = true
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficCard", for: indexPath) as! TrafficCardViewCell
+                cell.selectionStyle = .none
+                cell.connectionLine.isHidden = true
+                cell.backgroundColor = UIColor.feedBackgroundColor()
                 return cell
 
             default:
@@ -465,6 +484,13 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             cell.changeColor(cardType: .recommended)
             cell.sectionTitleLabel.text = "Recommended For You";
             return cell
+            
+        case "traffic":
+            shouldDisplayHeaderCell = true
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            cell.changeColor(cardType: .traffic)
+            cell.sectionTitleLabel.text = "Traffic Intelligence";
+            return cell
         default:
             shouldDisplayHeaderCell = false
             let cell = UITableViewCell()
@@ -493,13 +519,19 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         if( sections[section].items[0].type == "recommended") {
             height = 80
         }
+        if (sections[section].items[0].type == "traffic") {
+            height = 80
+        }
         
         return height
     }
     
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if isToDoCellType {
             return toDoCellHeight
+        } else if isTrafficCard {
+            return 424
         }
         
         return shouldDisplayCell ? getCellHeight() : 0
@@ -676,6 +708,19 @@ extension HomeHubViewController: InfoButtonDelegate {
         
         self.present(infoCardVC, animated: true, completion: nil)
     }
+    
+    func openInfoCard(_ sender: UIButton) {
+        let infoCardVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "InfoCardViewID") as! InfoCardViewController;
+        
+        infoCardVC.modalPresentationStyle = .custom
+        
+        transitionButton = sender
+        infoCardVC.modalPresentationStyle = .overCurrentContext
+        
+        self.present(infoCardVC, animated: true, completion: nil)
+        
+    }
+    
 }
 
 

@@ -1,0 +1,37 @@
+{
+    "items": [
+        {
+            "type":"traffic",
+            "status": "unapproved",
+            "status_date": "1501402440",
+            "article_title": "Toronto Real Estate Skyrecketing",
+            "article_category": "Local News",
+            "article_text": "The wildfires continue to affect the Northern Provinces Alch.my/AGGA #wildfire",
+            "article_url": "Alch.my/AGGA",
+            "article_hastag": "wildfire",
+            "article_image": "image_toronto"
+        },
+        {
+            "type":"insight",
+            "status": "unapproved",
+            "status_date": "1501402440",
+            "article_title": "Toronto Real Estate Skyrecketing",
+            "article_category": "Local News",
+            "article_text": "The wildfires continue to affect the Northern Provinces Alch.my/AGGA #wildfire",
+            "article_url": "Alch.my/AGGA",
+            "article_hastag": "wildfire",
+            "article_image": "image_toronto"
+        },
+        {
+            "type":"last_cell",
+            "status": "last",
+            "status_date": "1501402440",
+            "article_title": "Optimizing Your Website",
+            "article_category": "Local News",
+            "article_text": "Why is SEO such a challenging yet integral part of a building a successful website?",
+            "article_url": "Alch.my/AGGA",
+            "article_hastag": "wildfire",
+            "article_image": "image_optimize"
+        }
+    ]
+}

@@ -102,7 +102,7 @@ class TodoTopView: UIView {
     
     func setUpView(view: StatusArticle) {
         
-        stackView = UIStackView(arrangedSubviews: [clockView, keyView, notificationView])
+        stackView = UIStackView(arrangedSubviews: [clockView, notificationView])
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
         stackView.alignment = .center
@@ -115,15 +115,15 @@ class TodoTopView: UIView {
         stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
         initialSetup(view: clockView, label: clockLabel, image: clockImageView)
-        initialSetup(view: keyView, label: keyLabel, image: keyImageView)
+        //initialSetup(view: keyView, label: keyLabel, image: keyImageView)
         initialSetup(view: notificationView, label: notificationLabel, image: notificationImageView)
-        setActive(section: .unapproved)
+        //setActive(section: .unapproved)
     }
     
     func setUpClockView(selected: Bool) {
         
-        clockView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        clockView.leftAnchor.constraint(equalTo: stackView.leftAnchor,constant: 5).isActive = true
+        //clockView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        //clockView.leftAnchor.constraint(equalTo: stackView.leftAnchor,constant: 5).isActive = true
         clockView.heightAnchor.constraint(equalToConstant: 24).isActive = true
         clockView.widthAnchor.constraint(equalToConstant: 72).isActive = true
         clockView.layer.cornerRadius = 4
@@ -140,10 +140,10 @@ class TodoTopView: UIView {
     
     func setUpKeyView(selected: Bool) {
         
-        keyView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        //keyView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         //keyView.leftAnchor.constraint(equalTo: clockView.rightAnchor, constant: 45).isActive = true
-        keyView.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        keyView.widthAnchor.constraint(equalToConstant: 72).isActive = true
+        //keyView.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        //keyView.widthAnchor.constraint(equalToConstant: 72).isActive = true
         if selected {
             keyView.backgroundColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
         } else {
@@ -157,8 +157,8 @@ class TodoTopView: UIView {
     }
     
     func setUpNotificationView(selected: Bool) {
-        notificationView.centerYAnchor.constraint(equalTo: stackView.centerYAnchor).isActive = true
-        notificationView.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: 5).isActive = true
+        //notificationView.centerYAnchor.constraint(equalTo: stackView.centerYAnchor).isActive = true
+        //notificationView.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: 5).isActive = true
         notificationView.heightAnchor.constraint(equalToConstant: 24).isActive = true
         notificationView.widthAnchor.constraint(equalToConstant: 72).isActive = true
         if selected {
@@ -174,10 +174,10 @@ class TodoTopView: UIView {
     
     func setUpClockImageView(selected: Bool) {
         
-        clockImageView.centerYAnchor.constraint(equalTo: clockView.centerYAnchor).isActive = true
-        clockImageView.heightAnchor.constraint(equalToConstant: 16).isActive = true
-        clockImageView.widthAnchor.constraint(equalToConstant: 16).isActive = true
-        clockImageView.leftAnchor.constraint(equalTo: clockView.leftAnchor, constant: 9).isActive = true
+        //clockImageView.centerYAnchor.constraint(equalTo: clockView.centerYAnchor).isActive = true
+        //clockImageView.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        //clockImageView.widthAnchor.constraint(equalToConstant: 16).isActive = true
+        //clockImageView.leftAnchor.constraint(equalTo: clockView.leftAnchor, constant: 9).isActive = true
         if selected {
             clockImageView.tintColor = UIColor.white
         } else {
@@ -187,10 +187,10 @@ class TodoTopView: UIView {
     
     func setUpNotificationImageView(selected: Bool) {
         
-        notificationImageView.centerYAnchor.constraint(equalTo: notificationView.centerYAnchor).isActive = true
-        notificationImageView.heightAnchor.constraint(equalToConstant: 16).isActive = true
-        notificationImageView.widthAnchor.constraint(equalToConstant: 16).isActive = true
-        notificationImageView.leftAnchor.constraint(equalTo: notificationView.leftAnchor, constant: 9).isActive = true
+        //notificationImageView.centerYAnchor.constraint(equalTo: notificationView.centerYAnchor).isActive = true
+        //notificationImageView.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        //notificationImageView.widthAnchor.constraint(equalToConstant: 16).isActive = true
+        //notificationImageView.leftAnchor.constraint(equalTo: notificationView.leftAnchor, constant: 9).isActive = true
         if selected {
             notificationImageView.tintColor = UIColor.white
         } else {
@@ -213,10 +213,10 @@ class TodoTopView: UIView {
     
     func setUpClockLabel(selected: Bool) {
         
-        clockLabel.leftAnchor.constraint(equalTo: clockImageView.rightAnchor, constant: 5).isActive = true
+        //clockLabel.leftAnchor.constraint(equalTo: clockImageView.rightAnchor, constant: 5).isActive = true
         clockLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        clockLabel.topAnchor.constraint(equalTo: clockView.topAnchor, constant: 1).isActive = true
-        clockLabel.text = "(10)"
+        //clockLabel.topAnchor.constraint(equalTo: clockView.topAnchor, constant: 1).isActive = true
+        //clockLabel.text = "(10)"
         clockLabel.font = UIFont(name: FontBook.semibold, size: 15)
         if selected {
             clockLabel.textColor = UIColor.white
@@ -229,10 +229,10 @@ class TodoTopView: UIView {
     
     func setUpNotificationLabel(selected: Bool) {
         
-        notificationLabel.leftAnchor.constraint(equalTo: notificationImageView.rightAnchor, constant: 5).isActive = true
+        //notificationLabel.leftAnchor.constraint(equalTo: notificationImageView.rightAnchor, constant: 5).isActive = true
         notificationLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        notificationLabel.topAnchor.constraint(equalTo: notificationView.topAnchor).isActive = true
-        notificationLabel.text = "(3)"
+        //notificationLabel.topAnchor.constraint(equalTo: notificationView.topAnchor).isActive = true
+        //notificationLabel.text = "(3)"
         notificationLabel.font = UIFont(name: FontBook.regular, size: 15)
         notificationLabel.textAlignment = .center
         notificationLabel.textColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 1)
@@ -249,7 +249,7 @@ class TodoTopView: UIView {
         keyLabel.leftAnchor.constraint(equalTo: keyImageView.rightAnchor, constant: 5).isActive = true
         keyLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         keyLabel.topAnchor.constraint(equalTo: keyView.topAnchor).isActive = true
-        keyLabel.text = "(3)"
+        //keyLabel.text = "(3)"
         keyLabel.font = UIFont(name: FontBook.regular, size: 15)
         keyLabel.textAlignment = .center
         keyLabel.textColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 1)
@@ -274,7 +274,7 @@ class TodoTopView: UIView {
         label.leftAnchor.constraint(equalTo: image.rightAnchor, constant: 5).isActive = true
         label.heightAnchor.constraint(equalToConstant: 20).isActive = true
         label.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        label.text = "(3)"
+        //label.text = "(3)"
         label.font = UIFont(name: FontBook.regular, size: 15)
         label.textAlignment = .center
         label.textColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 1)

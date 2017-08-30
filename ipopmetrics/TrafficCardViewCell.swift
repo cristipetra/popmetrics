@@ -10,15 +10,26 @@ import UIKit
 
 class TrafficCardViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var toolbarView: ToolbarViewCell!
     @IBOutlet weak var uniqueVisitsView: UIView!
+    @IBOutlet weak var connectionLine: UIView!
+    @IBOutlet weak var contentWrapperView: UIView!
     @IBOutlet weak var overallVisitsView: UIView!
     @IBOutlet weak var footerView: FooterView!
     @IBOutlet weak var wrapperView: UIView!
+    
+    lazy var shadowLayer : UIView  = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.white
+        return view
+    }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        setCornerRadius()
+        self.setCornerRadius()
+        setUpShadowLayer()
+        
         self.footerView.approveLbl.textColor = UIColor.white
         self.footerView.actionButton.leftHandImage = UIImage(named: "iconTrafficReport")
         self.toolbarView.title.text = "Traffic stats: hutcheson.io"
@@ -35,21 +46,22 @@ class TrafficCardViewCell: UITableViewCell {
         }
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
-    }
-    
     func setCornerRadius() {
-        self.wrapperView.layer.cornerRadius = 14
-        self.wrapperView.layer.masksToBounds = true
+        self.contentWrapperView.layer.cornerRadius = 12
+        self.contentWrapperView.layer.masksToBounds = true
     }
     
-    private func setShadows(view: AnyObject) {
-        view.layer.shadowColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.22).cgColor
-        view.layer.shadowOpacity = 1.0;
-        view.layer.shadowRadius = 2.0
-        view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+    func setUpShadowLayer() {
+        self.insertSubview(shadowLayer, at: 0)
+        shadowLayer.topAnchor.constraint(equalTo: toolbarView.topAnchor).isActive = true
+        shadowLayer.bottomAnchor.constraint(equalTo: contentWrapperView.bottomAnchor).isActive = true
+        shadowLayer.leftAnchor.constraint(equalTo: contentWrapperView.leftAnchor).isActive = true
+        shadowLayer.rightAnchor.constraint(equalTo: contentWrapperView.rightAnchor).isActive = true
+        
+        shadowLayer.layer.masksToBounds = false
+        addShadowToView(shadowLayer, radius: 3, opacity: 0.6)
+        
+        shadowLayer.layer.cornerRadius = 12
     }
     
     func setDivider(view : AnyObject) {
