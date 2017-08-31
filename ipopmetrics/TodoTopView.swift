@@ -132,9 +132,9 @@ class TodoTopView: UIView {
         } else {
             clockView.backgroundColor = UIColor.white
         }
-        clockView.addSubview(clockImageView)
+        //clockView.addSubview(clockImageView)
         setUpClockImageView(selected: selected)
-        clockView.addSubview(clockLabel)
+        //clockView.addSubview(clockLabel)
         setUpClockLabel(selected: selected)
     }
     
@@ -149,9 +149,9 @@ class TodoTopView: UIView {
         } else {
             keyView.backgroundColor = UIColor.white
         }
-        keyView.addSubview(keyImageView)
+        //keyView.addSubview(keyImageView)
         setUpKeyImageView(selected: selected)
-        keyView.addSubview(keyLabel)
+        //keyView.addSubview(keyLabel)
         setUpkeyLabel(selected: selected)
         keyView.isHidden = true
     }
@@ -166,9 +166,9 @@ class TodoTopView: UIView {
         } else {
             notificationView.backgroundColor = UIColor.white
         }
-        notificationView.addSubview(notificationImageView)
+        //notificationView.addSubview(notificationImageView)
         setUpNotificationImageView(selected: selected)
-        notificationView.addSubview(notificationLabel)
+        //notificationView.addSubview(notificationLabel)
         setUpNotificationLabel(selected: selected)
     }
     
@@ -199,11 +199,12 @@ class TodoTopView: UIView {
     }
     
     func setUpKeyImageView(selected: Bool) {
-        
+        /*
         keyImageView.centerYAnchor.constraint(equalTo: keyView.centerYAnchor).isActive = true
         keyImageView.heightAnchor.constraint(equalToConstant: 18).isActive = true
         keyImageView.widthAnchor.constraint(equalToConstant: 18).isActive = true
         keyImageView.leftAnchor.constraint(equalTo: keyView.leftAnchor, constant: 9).isActive = true
+         */
         if selected {
             keyImageView.tintColor = UIColor.white
         } else {
@@ -246,9 +247,9 @@ class TodoTopView: UIView {
     
     func setUpkeyLabel(selected: Bool) {
         
-        keyLabel.leftAnchor.constraint(equalTo: keyImageView.rightAnchor, constant: 5).isActive = true
+        //keyLabel.leftAnchor.constraint(equalTo: keyImageView.rightAnchor, constant: 5).isActive = true
         keyLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        keyLabel.topAnchor.constraint(equalTo: keyView.topAnchor).isActive = true
+        //keyLabel.topAnchor.constraint(equalTo: keyView.topAnchor).isActive = true
         //keyLabel.text = "(3)"
         keyLabel.font = UIFont(name: FontBook.regular, size: 15)
         keyLabel.textAlignment = .center
@@ -277,7 +278,7 @@ class TodoTopView: UIView {
         //label.text = "(3)"
         label.font = UIFont(name: FontBook.regular, size: 15)
         label.textAlignment = .center
-        label.textColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 1)
+        //label.textColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 1)
         image.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         image.heightAnchor.constraint(equalToConstant: 18).isActive = true
         image.widthAnchor.constraint(equalToConstant: 18).isActive = true

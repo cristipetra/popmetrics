@@ -30,6 +30,7 @@ class ToDoViewController: UIViewController {
 
         setUpNavigationBar()
         
+        self.toDoTopView.setActive(section: .unapproved)
         NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
         
         if (UsersStore.isTwitterConnected) {
