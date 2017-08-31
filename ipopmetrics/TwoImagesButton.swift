@@ -144,6 +144,7 @@ class TwoImagesButton: RoundButton {
         case .todo:
             leftHandImage = UIImage(named: "iconCtaTodo")
         case .traffic:
+            leftHandImage = UIImage(named: "iconTrafficReport")
             leftImageView.frame.origin.x = 24
             leftImageView.frame.size.width = 16
             rightImageView.frame.origin.x = 58
@@ -158,6 +159,9 @@ class TwoImagesButton: RoundButton {
         self.leftImageView.layer.opacity = 0.3
         self.rightImageView.layer.opacity = 0.3
         self.layer.borderColor = UIColor.black.withAlphaComponent(0.2).cgColor
+        DispatchQueue.main.async {
+            self.layer.borderWidth = 0
+        }
     }
 }
 

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-SemiboldItalic.ttf">
+            <string>OpenSans-SemiboldItalic</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="TrafficEmptyView" customModule="ipopmetrics" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="215.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dM-1u-BkG">
+                        <rect key="frame" x="10" y="0.0" width="300" height="215.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Fv-0O-45D" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="29"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="YQR-rj-kRJ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgT-eO-bof">
+                                <rect key="frame" x="0.0" y="29" width="300" height="94"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No stats to show just yet! Feature coming soon." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eX9-qS-NID">
+                                        <rect key="frame" x="31" y="23" width="257" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="ymI-O4-Kqz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-SemiboldItalic" family="Open Sans" pointSize="18"/>
+                                        <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="eX9-qS-NID" firstAttribute="leading" secondItem="cgT-eO-bof" secondAttribute="leading" constant="31" id="EcE-10-Q93"/>
+                                    <constraint firstAttribute="trailing" secondItem="eX9-qS-NID" secondAttribute="trailing" constant="12" id="Ot4-GA-78j"/>
+                                    <constraint firstItem="eX9-qS-NID" firstAttribute="top" secondItem="cgT-eO-bof" secondAttribute="top" constant="23" id="QAn-98-bza"/>
+                                    <constraint firstAttribute="height" constant="94" id="z8S-rf-k6m"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NNb-o3-Rg2" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="123" width="300" height="93"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="93" id="4mk-qM-VXh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cgT-eO-bof" firstAttribute="top" secondItem="2Fv-0O-45D" secondAttribute="bottom" id="173-iE-AzQ"/>
+                            <constraint firstAttribute="trailing" secondItem="NNb-o3-Rg2" secondAttribute="trailing" id="DSE-ox-Vpm"/>
+                            <constraint firstItem="2Fv-0O-45D" firstAttribute="top" secondItem="2dM-1u-BkG" secondAttribute="top" id="HKh-8H-MQs"/>
+                            <constraint firstAttribute="trailing" secondItem="2Fv-0O-45D" secondAttribute="trailing" id="NRG-mg-XIB"/>
+                            <constraint firstItem="NNb-o3-Rg2" firstAttribute="top" secondItem="cgT-eO-bof" secondAttribute="bottom" id="ZPI-y0-j0r"/>
+                            <constraint firstItem="2Fv-0O-45D" firstAttribute="leading" secondItem="2dM-1u-BkG" secondAttribute="leading" id="oRu-Xn-IoI"/>
+                            <constraint firstItem="NNb-o3-Rg2" firstAttribute="leading" secondItem="2dM-1u-BkG" secondAttribute="leading" id="qxp-V4-dN4"/>
+                            <constraint firstAttribute="trailing" secondItem="cgT-eO-bof" secondAttribute="trailing" id="sEC-lJ-uAk"/>
+                            <constraint firstItem="cgT-eO-bof" firstAttribute="leading" secondItem="2dM-1u-BkG" secondAttribute="leading" id="xMD-25-4jS"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="2dM-1u-BkG" secondAttribute="trailing" constant="10" id="9OT-sM-bs1"/>
+                    <constraint firstItem="2dM-1u-BkG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="HTr-fE-nTj"/>
+                    <constraint firstAttribute="bottom" secondItem="2dM-1u-BkG" secondAttribute="bottom" id="LWz-Ya-gMX"/>
+                    <constraint firstItem="2dM-1u-BkG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="XEF-N7-VMV"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="footerView" destination="NNb-o3-Rg2" id="ZRJ-qZ-c0e"/>
+                <outlet property="messageLabel" destination="eX9-qS-NID" id="5ZI-Rd-SQJ"/>
+                <outlet property="toolbarView" destination="2Fv-0O-45D" id="7FJ-QU-nxu"/>
+                <outlet property="wrapperView" destination="2dM-1u-BkG" id="qHy-Hi-fyl"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
