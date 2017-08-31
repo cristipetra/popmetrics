@@ -306,7 +306,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         if (UsersStore.isTwitterConnected) {
             if( UsersStore.isInsightShowed ) {
                 self.sections.append(toDoSection)
-                self.sections.append(statisticsSection)
+                //self.sections.append(statisticsSection)
                 sections.append(lastSection)
             } else {
                 sections.append(insightSection)
