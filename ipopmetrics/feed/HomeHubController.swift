@@ -112,11 +112,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     func localData() {
-        
+        UsersStore.isTwitterConnected = false
         self.tmpSectionRecommendation.name = "Required Actions"
         self.tmpSectionRecommendation.index  = 2;
         
-        self.recommendationTwitterItem.actionHandler = "no_action"
+        self.recommendationTwitterItem.actionHandler = "connect_twitter"
         self.recommendationTwitterItem.actionLabel = "Twitter"
         self.recommendationTwitterItem.headerIconUri = "icon_citation_error";
         self.recommendationTwitterItem.imageUri = "social_media";
@@ -151,7 +151,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         
         let insightItem: FeedItem = FeedItem();
-        insightItem.actionHandler = "no_action"
+        insightItem.actionHandler = "connect_twitter"
         insightItem.headerIconUri = "icon_citationerror_splash";
         insightItem.imageUri = "icon_citationerror_splash";
         insightItem.headerTitle = "Article Title Goes Here"
@@ -398,6 +398,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.footerView.approveLbl.textColor = UIColor.white
                 cell.footerView.xButton.isHidden = true
                 cell.configure(item, handler: self.requiredActionHandler)
+                cell.infoDelegate = self
                 if((sections[sectionIdx].items.count-1) == indexPath.row) {
                     cell.connectionLineView.isHidden = true;
                 }
@@ -423,7 +424,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.selectionStyle = .none
                 cell.setHeaderTitle(title: "Snapshot")
                 
-                cell.footerView.informationBtn.addTarget(self, action: #selector(openInfoCard(_:)), for: .touchUpInside)
+                cell.footerView.informationBtn.addTarget(self, action: #selector(showTooltip(_:)), for: .touchUpInside)
                 return cell
 
             case "info":
@@ -698,7 +699,14 @@ extension HomeHubViewController: UIViewControllerTransitioningDelegate {
 }
 
 extension HomeHubViewController: InfoButtonDelegate {
+    
+    //
     func sendInfo(_ sender: UIButton) {
+        //self.requiredActionHandler.showBanner(bannerType: .success)
+        showTooltip(sender)
+    }
+    
+    func showTooltip(_ sender: UIButton) {
         let infoCardVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "InfoCardViewID") as! InfoCardViewController;
         
         infoCardVC.transitioningDelegate = self
@@ -709,19 +717,6 @@ extension HomeHubViewController: InfoButtonDelegate {
         
         self.present(infoCardVC, animated: true, completion: nil)
     }
-    
-    func openInfoCard(_ sender: UIButton) {
-        let infoCardVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "InfoCardViewID") as! InfoCardViewController;
-        
-        infoCardVC.modalPresentationStyle = .custom
-        
-        transitionButton = sender
-        infoCardVC.modalPresentationStyle = .overCurrentContext
-        
-        self.present(infoCardVC, animated: true, completion: nil)
-        
-    }
-    
 }
 
 

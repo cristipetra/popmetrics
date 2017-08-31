@@ -33,6 +33,7 @@ class RequiredActionViewCell: UITableViewCell {
   
     var item: FeedItem?
     var actionHandler: CardActionHandler?
+    var actionInfoHandler: CardInfoHandler?
     var indexPath: IndexPath?
     var delegate: InfoButtonDelegate?
  
