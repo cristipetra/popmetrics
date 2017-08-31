@@ -1,7 +1,7 @@
 {
     "items": [
         {
-            "type":"traffic",
+            "type":"traffic_unconnected",
             "status": "unapproved",
             "status_date": "1501402440",
             "article_title": "Toronto Real Estate Skyrecketing",

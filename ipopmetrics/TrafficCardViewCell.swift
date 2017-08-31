@@ -41,8 +41,8 @@ class TrafficCardViewCell: UITableViewCell {
         DispatchQueue.main.async {
             self.setDivider(view: self.overallVisitsView)
             self.setDivider(view: self.uniqueVisitsView)
-            self.toolbarView.addGradient()
-            self.footerView.addGradient()
+            self.toolbarView.setupGradient()
+            self.footerView.setupGradient()
         }
     }
     

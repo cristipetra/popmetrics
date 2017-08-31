@@ -80,11 +80,19 @@ class FooterView: UIView {
         
     }()
     
+    lazy var gradientLayer: GradientView = {
+        let view = GradientView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.startColor = PopmetricsColor.statisticsGradientStartColor
+        view.endColor = PopmetricsColor.statisticsGradientEndColor
+        return view
+    }()
+    
+    
+    // END VIEW
     
     internal var horizontalStackView: UIStackView!
     var approveStackView: UIStackView!
-    
-    // END VIEW
     
     func setUpFooter() {
         
@@ -111,7 +119,6 @@ class FooterView: UIView {
     func setUpHorizontalStackView() {
         
         let placeholderView = UIView(frame: CGRect(x: 0, y: 0, width: 46, height: 46))
-        placeholderView.backgroundColor = .red
         horizontalStackView = UIStackView(arrangedSubviews: [xButton, informationBtn, placeholderView, approveStackView])
         
         horizontalStackView.axis = .horizontal
@@ -124,6 +131,23 @@ class FooterView: UIView {
         
         
         //horizontalStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 8).isActive = true
+        horizontalStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 13).isActive = true
+        horizontalStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
+        horizontalStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
+    }
+    
+    func setIsTrafficUnconnected() {
+        let placeholderView = UIView(frame: CGRect(x: 0, y: 0, width: 46, height: 46))
+        horizontalStackView = UIStackView(arrangedSubviews: [xButton, placeholderView, informationBtn, approveStackView])
+        horizontalStackView.axis = .horizontal
+        xButton.alpha = 0.0
+        
+        horizontalStackView.alignment = .top
+        horizontalStackView.spacing = 16
+        
+        horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(horizontalStackView)
+        
         horizontalStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 13).isActive = true
         horizontalStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
         horizontalStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
@@ -154,6 +178,18 @@ class FooterView: UIView {
         animateButtonBlink(button: actionButton)
     }
     
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        setupCorners()
+        gradientLayer.frame = self.bounds
+    }
+    
+    internal func setupCorners() {
+        DispatchQueue.main.async {
+            self.roundCorners(corners: [.bottomLeft, .bottomRight] , radius: 12)
+        }
+    }
+    
     func animateButtonBlink(button: UIButton) {
         
         UIView.animate(withDuration: 0.1, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
@@ -177,10 +213,12 @@ class FooterView: UIView {
 }
 
 extension FooterView {
-    func addGradient() {
-        let gradientView = GradientView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
-        gradientView.startColor = PopmetricsColor.statisticsGradientStartColor
-        gradientView.endColor = PopmetricsColor.statisticsGradientEndColor
-        insertSubview(gradientView, belowSubview: self.horizontalStackView)
+    func setupGradient() {
+        self.insertSubview(gradientLayer, belowSubview: horizontalStackView)
+        gradientLayer.frame = self.bounds
+        gradientLayer.leftAnchor.constraint(equalTo: self.leftAnchor)
+        gradientLayer.rightAnchor.constraint(equalTo: self.rightAnchor)
+        gradientLayer.topAnchor.constraint(equalTo: self.topAnchor)
+        gradientLayer.bottomAnchor.constraint(equalTo: self.bottomAnchor)
     }
 }

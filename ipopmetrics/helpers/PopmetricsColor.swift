@@ -26,6 +26,7 @@ class PopmetricsColor {
     static let shadowMedium = UIColor(red: 144/255.0, green: 144/255.0, blue: 144/255.0, alpha: 0.8)
     static let shadowDark = UIColor(red: 22/255.0, green: 22/255.0, blue: 22/255.0, alpha: 0.8)
     
+    static let trafficEmptyApproveLbl = UIColor(red: 255/255, green: 132/255, blue: 171/255, alpha: 1.0)
     static let trafficHeaderColor = UIColor(red: 255/255, green: 32/255, blue: 128/255, alpha: 1.0)
     static let statisticsGradientStartColor = UIColor(red: 255/255, green: 34/255, blue: 105/255, alpha: 1.0)
     static let statisticsGradientEndColor = UIColor(red: 255/255, green: 41/255, blue: 138/255, alpha: 1.0)

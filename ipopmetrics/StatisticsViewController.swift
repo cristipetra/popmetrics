@@ -39,6 +39,9 @@ class StatisticsViewController: UIViewController {
         let trafficNib = UINib(nibName: "TrafficCard", bundle: nil)
         tableView.register(trafficNib, forCellReuseIdentifier: "TrafficCard")
         
+        let trafficUnconnectedNib = UINib(nibName: "TrafficEmptyCard", bundle: nil)
+        tableView.register(trafficUnconnectedNib, forCellReuseIdentifier: "TrafficEmptyCard")
+        
         let sectionHeaderNib = UINib(nibName: "HeaderCardCell", bundle: nil)
         tableView.register(sectionHeaderNib, forCellReuseIdentifier: "headerCell")
         
@@ -114,7 +117,8 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
         
         let section = sections[sectionIdx]
         let item = section.items[rowIdx]
-        if item.type == "traffic" {
+        switch item.type {
+        case "traffic":
             let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficCard", for: indexPath) as! TrafficCardViewCell
             cellHeight = 424
             setTrafficCard(cell: cell, item: item)
@@ -122,22 +126,44 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.backgroundColor = UIColor.feedBackgroundColor()
             cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_:)), for: .touchUpInside)
             return cell
-        } else if item.type == "last_cell" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
-            cellHeight = 261
-            cell.changeTitleWithSpacing(title: "You're all caught up.")
-            cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
+        case "traffic_unconnected" :
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficEmptyCard", for: indexPath) as! TrafficEmptyView
+            cellHeight = 216
             cell.selectionStyle = .none
-            cell.titleActionButton.text = "View Home Feed"
-            cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
+            cell.backgroundColor = UIColor.feedBackgroundColor()
+            //cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_:)), for: .touchUpInside)
             return cell
-        } else if item.type == "insight" && insightIsDisplayed{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendedCell", for: indexPath) as! RecommendedCell
-            cellHeight = 469
-            cell.selectionStyle = .none
-            cell.setUpCell(type: "Popmetrics Insight")
-            return cell
-        } else {
+        case "last_cell" :
+            if insightIsDisplayed {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
+                cellHeight = 261
+                cell.changeTitleWithSpacing(title: "You're all caught up.")
+                cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
+                cell.selectionStyle = .none
+                cell.titleActionButton.text = "View Home Feed"
+                cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
+                return cell
+            } else {
+                let cell = UITableViewCell()
+                cellHeight = 0
+                cell.isHidden = true
+                return cell
+            }
+            
+        case "insight" :
+            if insightIsDisplayed {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendedCell", for: indexPath) as! RecommendedCell
+                cellHeight = 469
+                cell.selectionStyle = .none
+                cell.setUpCell(type: "Popmetrics Insight")
+                return cell
+            } else {
+                let cell = UITableViewCell()
+                cellHeight = 0
+                cell.isHidden = true
+                return cell
+            }
+        default:
             let cell = UITableViewCell()
             cellHeight = 0
             cell.isHidden = true

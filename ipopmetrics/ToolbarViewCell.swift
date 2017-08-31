@@ -30,6 +30,14 @@ class ToolbarViewCell: UIView {
         label.font = UIFont(name: FontBook.bold, size: 15)
         return label
     }()
+    
+    lazy var gradientLayer: GradientView = {
+        let view = GradientView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.startColor = PopmetricsColor.statisticsGradientStartColor
+        view.endColor = PopmetricsColor.statisticsGradientEndColor
+        return view
+    }()
     //
     
     var isLeftImageHidden: Bool = true {
@@ -46,6 +54,12 @@ class ToolbarViewCell: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupView()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupCorners()
+        gradientLayer.frame = self.bounds
     }
     
     func setupView() {
@@ -105,10 +119,12 @@ class ToolbarViewCell: UIView {
 }
 
 extension ToolbarViewCell {
-    func addGradient() {
-        let gradientView = GradientView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
-        gradientView.startColor = PopmetricsColor.statisticsGradientStartColor
-        gradientView.endColor = PopmetricsColor.statisticsGradientEndColor
-        insertSubview(gradientView, belowSubview: circleView)
+    func setupGradient() {
+        self.insertSubview(gradientLayer, belowSubview: circleView)
+        gradientLayer.frame = self.bounds
+        gradientLayer.leftAnchor.constraint(equalTo: self.leftAnchor)
+        gradientLayer.rightAnchor.constraint(equalTo: self.rightAnchor)
+        gradientLayer.topAnchor.constraint(equalTo: self.topAnchor)
+        gradientLayer.bottomAnchor.constraint(equalTo: self.bottomAnchor)
     }
 }

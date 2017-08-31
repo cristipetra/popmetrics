@@ -14,16 +14,22 @@ import UIKit
     @IBInspectable var startColor: UIColor = UIColor.clear
     @IBInspectable var endColor: UIColor = UIColor.clear
     
+    let gradientLayer = CAGradientLayer()
+    
     override func draw(_ rect: CGRect) {
-        let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.transform = CATransform3DMakeRotation(3 * CGFloat.pi / 2, 0, 0, 1)
-        gradient.frame = CGRect(x: CGFloat(0),
+        
+        gradientLayer.transform = CATransform3DMakeRotation(3 * CGFloat.pi / 2, 0, 0, 1)
+        gradientLayer.frame = CGRect(x: CGFloat(0),
                                 y: CGFloat(0),
                                 width: self.frame.width,
                                 height: self.frame.height)
-        gradient.colors = [startColor.cgColor, endColor.cgColor]
-        gradient.zPosition = -1
-        layer.addSublayer(gradient)
+        gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
+        gradientLayer.zPosition = -1
+        layer.addSublayer(gradientLayer)
+    }
+    
+    override func layoutSubviews() {
+         gradientLayer.frame = self.bounds
     }
     
 }
