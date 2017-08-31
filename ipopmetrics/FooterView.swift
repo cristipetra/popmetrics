@@ -44,6 +44,7 @@ class FooterView: UIView {
         }
         button.setAttributedTitle("i".set(style: attrTitle), for: .normal)
         button.backgroundColor = UIColor.white
+        button.layer.cornerRadius = 23
         return button
     }()
     
@@ -65,6 +66,7 @@ class FooterView: UIView {
         button.setImage(UIImage(named: "iconCtaClose"), for: .normal)
         button.tintColor = PopmetricsColor.textGrey
         button.backgroundColor = UIColor.white
+        button.layer.cornerRadius = 23
         return button
     }()
     
@@ -161,7 +163,6 @@ class FooterView: UIView {
     func informationHandler() {
         print("information button pressed")
         animateButtonBlink(button: informationBtn)
-        
     }
     
     

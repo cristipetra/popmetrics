@@ -82,7 +82,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             self?.tableView.dg_stopLoading()
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
-        tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.yellowBGColor)
+        tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
         
         localData()
         
@@ -396,6 +396,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
                 cell.footerView.layer.backgroundColor = UIColor.clear.cgColor
                 cell.footerView.approveLbl.textColor = UIColor.white
+                cell.footerView.xButton.isHidden = true
                 cell.configure(item, handler: self.requiredActionHandler)
                 if((sections[sectionIdx].items.count-1) == indexPath.row) {
                     cell.connectionLineView.isHidden = true;

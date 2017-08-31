@@ -324,7 +324,7 @@ class TableFooterView: UITableViewHeaderFooterView {
     
     func setUpDisabledLabels() {
         approveLbl.layer.opacity = 0.3
-        approveLbl.text = "Approve (0)"
+        approveLbl.text = (section == 0)  ? "Approve (0)" : "Reschedule All (0)"
         
         loadMoreLbl.layer.opacity = 0.3
         loadMoreLbl.text = "Load More (0)"
@@ -349,6 +349,19 @@ class TableFooterView: UITableViewHeaderFooterView {
         addShadowToView(footerShadow, radius: 2, opacity: 0.5)
         footerShadow.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
         footerShadow.layer.cornerRadius = 12
+    }
+    
+    func setLabelText(section: Int, value: Int) {
+        switch section {
+        case 0:
+            approveLbl.text = "Approve all (\(value))"
+            break
+        case 1:
+            approveLbl.text = "Reschedule all (\(value))"
+            break
+        default:
+            break
+        }
     }
 }
 

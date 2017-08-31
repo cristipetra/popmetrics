@@ -185,9 +185,8 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
-        if sections[0].items[indexPath.row].isApproved == true {
-             cell.setUpApprovedView(approved: true)
-        }
+        cell.configure(item: item)
+ 
         return cell
         
     }
@@ -227,21 +226,23 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         }
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
         todoFooter.changeTypeSection(typeSection: StatusArticle(rawValue: sections[section].status)!)
-        todoFooter.actionButton.addTarget(self, action: #selector(approveCard), for: .touchUpInside)
+        //todoFooter.actionButton.addTarget(self, action: #selector(approveCard(_:section:)), for: .touchUpInside)
         todoFooter.section = section
         todoFooter.buttonHandlerDelegate = self
-        if isAllApproved {
+
+        if(sections[section].allApproved) {
             todoFooter.actionButton.changeToDisabled()
             todoFooter.setUpDisabledLabels()
             todoFooter.setUpLoadMoreDisabled()
         }
+        
         DispatchQueue.main.async {
             todoFooter.setUpLoadMoreDisabled()
         }
         
         return todoFooter
     }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == sections.endIndex - 1 {
             return 60
@@ -298,37 +299,25 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
 }
 
-extension ToDoViewController {
-    func approveCard() {
-        print("approve card")
-        for item in sections[0].items {
-            if sections[0].items.index(of: item)! < approveIndex {
-                item.isApproved = true
-            }
-        }
-        approveIndex += 3
-        tableView.reloadData()
-    }
-}
-
 extension ToDoViewController: FooterButtonHandlerProtocol {
     func loadMorePressed() {
         
     }
     
     func approvalButtonPressed(section : Int) {
-        print("SSS section \(section)")
-        if section == 0 {
-            for item in sections[0].items {
-                if sections[0].items.index(of: item)! < approveIndex {
-                    item.isApproved = true
-                }
+        print("section \(section)")
+        
+        for item in sections[section].items {
+            if sections[section].items.index(of: item)! < approveIndex {
+                item.isApproved = true
             }
-            isAllApproved = checkApprovedAll()
-            approveIndex += 3
-            tableView.reloadData()
         }
+        approveIndex += 3
+        sections[section].allApproved = true
+        tableView.reloadData()
     }
+    
+
 
     
     func closeButtonPressed() {
