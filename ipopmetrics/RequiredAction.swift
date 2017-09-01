@@ -117,9 +117,8 @@ class RequiredAction: UITableViewCell {
         openUrl(string: Config.howToTurnNotificationLink)
     }
     
-    @objc func handleActionTwitter(_ sender: SimpleButton) {
-        //self.actionButton.isLoading = true
-        actionHandler?.handleRequiredAction(sender, item: self.item!)
+    @objc func handleInfoButtonPressed(_ sender: SimpleButton) {
+        infoDelegate?.sendInfo(sender)
     }
     
     @objc func handleActionTwitter(_ sender: SimpleButton) {
