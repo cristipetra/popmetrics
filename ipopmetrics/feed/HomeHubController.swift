@@ -112,7 +112,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     func localData() {
-
+        
         self.tmpSectionRecommendation.name = "Required Actions"
         self.tmpSectionRecommendation.index  = 2;
         
@@ -702,8 +702,8 @@ extension HomeHubViewController: InfoButtonDelegate {
     
     //
     func sendInfo(_ sender: UIButton) {
-        //self.requiredActionHandler.showBanner(bannerType: .success)
-        showTooltip(sender)
+        self.requiredActionHandler.showBanner(bannerType: .success)
+        //showTooltip(sender)
     }
     
     func showTooltip(_ sender: UIButton) {
