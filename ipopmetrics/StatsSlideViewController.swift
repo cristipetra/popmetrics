@@ -56,7 +56,6 @@ class StatsSlideViewController: UIViewController {
             self.statusView.uniqueVisitorsView.setProgressValues(doubleValue: false, firstValue: 89, doubleFirst: nil, secondValue: 17, doubleSecond: nil)
             self.statusView.newVisitsView.setProgressValues(doubleValue: false, firstValue: 31, doubleFirst: nil, secondValue: 12, doubleSecond: nil)
             
-            //self.statusView.popmetricVisitsView.isHidden = true
             self.statusView.pageControl.currentPage = indexOfPage
             self.statusView.topPageControl.currentPage = indexOfPage
             self.statusView.bottomLabel.text = "Engagement"
@@ -78,6 +77,35 @@ class StatsSlideViewController: UIViewController {
             break
         }
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        setUpProgressGradient()
+    }
+    
+    private func setUpProgressGradient() {
+        let firstProgressViewGradient : [UIColor] = [UIColor(red: 196/255, green: 13/255, blue: 72/255, alpha: 1), UIColor(red: 192/255, green: 21/255, blue: 46/255, alpha: 1) ]
+        let secondProgressViewGradient : [UIColor] = [UIColor(red: 255/255, green: 34/255, blue: 105/255, alpha: 1), UIColor(red: 255/255, green: 27/255, blue: 192/255, alpha: 1) ]
+        
+        setGradiendForProgressView(view: self.statusView.popmetricVisitsView.firstProgressView, leftColor: firstProgressViewGradient[0], rightColor: firstProgressViewGradient[1])
+        setGradiendForProgressView(view: self.statusView.popmetricVisitsView.secondProgressView, leftColor: secondProgressViewGradient[0], rightColor: secondProgressViewGradient[1])
+        
+        setGradiendForProgressView(view: self.statusView.newVisitsView.firstProgressView, leftColor: firstProgressViewGradient[0], rightColor: firstProgressViewGradient[1])
+        setGradiendForProgressView(view: self.statusView.newVisitsView.secondProgressView, leftColor: secondProgressViewGradient[0], rightColor: secondProgressViewGradient[1])
+        
+        setGradiendForProgressView(view: self.statusView.uniqueVisitorsView.firstProgressView, leftColor: firstProgressViewGradient[0], rightColor: firstProgressViewGradient[1])
+        setGradiendForProgressView(view: self.statusView.uniqueVisitorsView.secondProgressView, leftColor: secondProgressViewGradient[0], rightColor: secondProgressViewGradient[1])
+    }
+    
+    func setGradiendForProgressView(view: UIView,leftColor : UIColor , rightColor: UIColor) {
+        let gradientLayer  = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        gradientLayer.colors = [leftColor.cgColor, rightColor.cgColor]
+        gradientLayer.locations = [0.0, 1.0]
+        
+        DispatchQueue.main.async {
+            view.layer.addSublayer(gradientLayer)
+        }
     }
     
 }

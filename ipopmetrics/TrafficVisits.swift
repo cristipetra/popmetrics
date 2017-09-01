@@ -126,15 +126,16 @@ class TrafficVisits: UIView {
     
     private func setProgress(firstValue: CGFloat, secondValue: CGFloat) {
         
-        firstProgressView.widthAnchor.constraint(equalToConstant: firstValue).isActive = true
-        secondProgressView.widthAnchor.constraint(equalToConstant: secondValue + firstValue).isActive = true
+        self.firstProgressView.widthAnchor.constraint(equalToConstant: firstValue).isActive = true
+        self.secondProgressView.widthAnchor.constraint(equalToConstant: secondValue + firstValue).isActive = true
+        self.firstProgressView.layer.masksToBounds = true
+        self.secondProgressView.layer.masksToBounds = true
         
-        let firstProgressViewGradient : [UIColor] = [UIColor(red: 196/255, green: 13/255, blue: 72/255, alpha: 1), UIColor(red: 192/255, green: 21/255, blue: 46/255, alpha: 1) ]
-        let secondProgressViewGradient : [UIColor] = [UIColor(red: 255/255, green: 34/255, blue: 105/255, alpha: 1), UIColor(red: 255/255, green: 27/255, blue: 192/255, alpha: 1) ]
+        firstProgressView.setNeedsLayout()
+        secondProgressView.setNeedsLayout()
         
-        
-        setGradiendForProgressView(view: firstProgressView, leftColor: firstProgressViewGradient[0], rightColor: firstProgressViewGradient[1])
-        setGradiendForProgressView(view: secondProgressView, leftColor: secondProgressViewGradient[0], rightColor: secondProgressViewGradient[1])
+        firstProgressView.layoutIfNeeded()
+        secondProgressView.layoutIfNeeded()
         
     }
     
@@ -158,20 +159,6 @@ class TrafficVisits: UIView {
         }
         
         setProgress(firstValue: CGFloat(firstValue), secondValue: CGFloat(secondValue))
-        
-    }
-    
-    func setGradiendForProgressView(view: UIView,leftColor : UIColor , rightColor: UIColor) {
-        
-        let gradientLayer  = CAGradientLayer()
-        gradientLayer.frame = view.bounds
-        gradientLayer.colors = [leftColor.cgColor, rightColor.cgColor]
-        gradientLayer.locations = [0.0, 1.0]
-        //view.layer.addSublayer(gradientLayer)
-        
-        DispatchQueue.main.async { 
-            view.layer.addSublayer(gradientLayer)
-        }
         
     }
     

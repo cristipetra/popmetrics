@@ -169,6 +169,7 @@
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="barChart" destination="urV-zd-Yra" id="pRH-7g-Ck1"/>
+                        <outlet property="containerView" destination="ULF-Db-1Hh" id="3RY-kt-jKn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wf7-dd-dAJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -12,7 +12,7 @@ import ScrollableGraphView
 class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
     
     @IBOutlet weak var barChart: ScrollableGraphView!
-    
+    @IBOutlet weak var containerView: UIView!
     
     
     var numberOfItems = 100
