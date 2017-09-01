@@ -10,6 +10,8 @@ import UIKit
 
 class RoundButton: UIButton {
     
+    var timer: Timer = Timer()
+    
     override init(frame: CGRect) {
         super.init(frame: frame);
         setup();
@@ -47,5 +49,42 @@ class RoundButton: UIButton {
         self.layer.masksToBounds = false
         self.backgroundColor = UIColor.white
     }
+    
+    func shouldPulsate(_ pulsate: Bool) {
+        if(pulsate) {
+            startPulsate()
+        } else {
+            endPulsate()
+        }
+    }
+    
+    private func startPulsate() {
+        timer.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func timerAction() {
+        self.pulsate()
+    }
 
+    private func endPulsate() {
+         timer.invalidate()
+    }
+
+
+}
+
+extension UIButton {
+    func pulsate() {
+        let pulse = CASpringAnimation(keyPath: "transform.scale")
+        pulse.duration = 0.6
+        pulse.fromValue = 0.95
+        pulse.toValue = 1.0
+        pulse.autoreverses = true
+        pulse.repeatCount = 2
+        pulse.initialVelocity = 0.5
+        pulse.damping = 1.0
+        
+        layer.add(pulse, forKey: "pulse")
+    }
 }

@@ -423,7 +423,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 toDoCellHeight = cell.toDoCountViewHeight.constant
                 cell.selectionStyle = .none
                 cell.setHeaderTitle(title: "Snapshot")
-                
+                //cell.footerView.informationBtn.shouldPulsate(true)
                 cell.footerView.informationBtn.addTarget(self, action: #selector(showTooltip(_:)), for: .touchUpInside)
                 return cell
 
@@ -702,8 +702,8 @@ extension HomeHubViewController: InfoButtonDelegate {
     
     //
     func sendInfo(_ sender: UIButton) {
-        //self.requiredActionHandler.showBanner(bannerType: .success)
-        showTooltip(sender)
+        self.requiredActionHandler.showBanner(bannerType: .success)
+        //showTooltip(sender)
     }
     
     func showTooltip(_ sender: UIButton) {
