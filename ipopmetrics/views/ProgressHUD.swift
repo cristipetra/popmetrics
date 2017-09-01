@@ -75,4 +75,41 @@ class ProgressHUD: UIVisualEffectView {
     func hide() {
         self.isHidden = true
     }
+    
+    fileprivate func topMostController() -> UIViewController? {
+        
+        var presentedVC = UIApplication.shared.keyWindow?.rootViewController
+        while let pVC = presentedVC?.presentedViewController
+        {
+            presentedVC = pVC
+        }
+        
+        if presentedVC == nil {
+            print("Error: You don't have any views set. You may be calling in viewdidload. Try viewdidappear.")
+        }
+        return presentedVC
+    }
+    
+    class var instance : ProgressHUD {
+        struct Static {
+            static let inst: ProgressHUD = ProgressHUD(text: "Loading...")
+        }
+        return Static.inst
+    }
+    
+    static func showProgressIndicator() {
+        let progressHUD = self.instance
+        progressHUD.contentView.backgroundColor = PopmetricsColor.yellowBGColor
+        let vc = progressHUD.topMostController()
+        vc?.view.addSubview(progressHUD)
+        vc?.view.isUserInteractionEnabled = false
+        progressHUD.show();
+    }
+    
+    static func hideProgressIndicator() {
+        let progressHUD = self.instance
+        let vc = progressHUD.topMostController()
+        vc?.view.isUserInteractionEnabled = true
+        progressHUD.removeFromSuperview()
+    }
 }

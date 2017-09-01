@@ -80,6 +80,16 @@ class ToDoCardCell: UITableViewCell {
             approvedButton.imageButtonType = .unapproved
         }
         
+        
+        if(todoItem.status == StatusArticle.failed.rawValue) {
+            approvedButton.rightTextLabel.text = "Reschedule"
+            
+            approvedButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
+            approvedButton.rightTextLabel.frame.size.width = 60
+        } else if (todoItem.status == StatusArticle.unapproved.rawValue) {
+            approvedButton.rightTextLabel.text = "Approved"
+        }
+        
         approvedButton.rightImageView.image = nil
         approvedButton.layer.cornerRadius = 6
     }

@@ -13,6 +13,7 @@ import TwitterKit
 import FacebookCore
 import FacebookLogin
 import NotificationBannerSwift
+import EZAlertController
 
 class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, GIDSignInDelegate {
 
@@ -89,8 +90,10 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         
     
     func connectTwitter(_ sender: SimpleButton, item:FeedItem) {
+        
         Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
             if (session != nil) {
+                ProgressHUD.showProgressIndicator()
                 FeedApi().connectTwitter(userId: (session?.userID)!, brandId:"58fe437ac7631a139803757e", token: (session?.authToken)!,
                                          tokenSecret: (session?.authTokenSecret)!) { responseDict, error in
                                             //sender.isLoading = false
@@ -102,6 +105,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                                                 return
                                             } // error != nil
                                             else {
+                                                ProgressHUD.hideProgressIndicator()
                                                 sender.setTitle("Connected.", for: .normal)
                                                 UsersStore.isTwitterConnected = true
                                                 self.showBanner(bannerType: .success)
@@ -109,6 +113,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                 } // usersApi.logInWithGoogle()
                 
             } else {
+                ProgressHUD.hideProgressIndicator()
                 //sender.isLoading = false
                 let nc = NotificationCenter.default
                 nc.post(name:Notification.Name(rawValue:"CardActionNotification"),
