@@ -121,40 +121,7 @@ class RequiredAction: UITableViewCell {
     
     @objc func handleActionTwitter(_ sender: SimpleButton) {
         //self.actionButton.isLoading = true
-        //actionHandler?.handleRequiredAction(sender, item: self.item!)
-        connectTwitter(sender, item: self.item!)
-    }
-    
-    func connectTwitter(_ sender: SimpleButton, item:FeedItem) {
-        Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
-            if (session != nil) {
-                FeedApi().connectTwitter(userId: (session?.userID)!, brandId:"58fe437ac7631a139803757e", token: (session?.authToken)!,
-                                         tokenSecret: (session?.authTokenSecret)!) { responseDict, error in
-                                            //sender.isLoading = false
-                                            if error != nil {
-                                                let nc = NotificationCenter.default
-                                                nc.post(name:Notification.Name(rawValue:"CardActionNotification"),
-                                                        object: nil,
-                                                        userInfo: ["success":false, "title":"Action error", "message":"Connection with Twitter has failed.", "date":Date()])
-                                                return
-                                            } // error != nil
-                                            else {
-                                                sender.setTitle("Connected.", for: .normal)
-                                                UsersStore.isTwitterConnected = true
-                                                self.showBanner(bannerType: .success)
-                                            }
-                } // usersApi.logInWithGoogle()
-                
-            } else {
-                //sender.isLoading = false
-                let nc = NotificationCenter.default
-                nc.post(name:Notification.Name(rawValue:"CardActionNotification"),
-                        object: nil,
-                        userInfo: ["success":false, "title":"Action error", "message":"Connection with Twitter has failed... \(error!.localizedDescription)", "date":Date()])
-                
-            }
-        }
-        
+        actionHandler?.handleRequiredAction(sender, item: self.item!)
     }
     
     private func showBanner(bannerType: BannerType) {

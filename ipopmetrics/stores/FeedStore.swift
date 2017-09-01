@@ -63,8 +63,8 @@ public func storeFeed(_ dict: [String:Any] ) {
                             feedItem.headerSubtitle = jitem["header_subtitle"] as? String
                             feedItem.headerIconUri = jitem["header_icon"] as? String
                             feedItem.message = jitem["message"] as? String
-                            feedItem.actionHandler = (jitem["action_handler"] as? String)!
-                            feedItem.actionLabel = (jitem["action_label"] as? String)!
+                            feedItem.actionHandler = (jitem["handler"] as? String)!
+                            feedItem.actionLabel = "custom action label" //(jitem["action_label"] as? String)!
                             feedItem.imageUri = jitem["image"] as? String
                             
                             if let stats = jitem["stats"] as?  [[String:Any]]{

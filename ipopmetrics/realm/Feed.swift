@@ -31,6 +31,9 @@ class FeedItem: Object {
     dynamic var actionHandler = ""
     dynamic var actionLabel = ""
     dynamic var imageUri:String? = nil
+    
+    dynamic var tooltipTitle: String? = nil
+    dynamic var tooltipContent: String? = nil
 }
 
 class FeedSection: Object {
