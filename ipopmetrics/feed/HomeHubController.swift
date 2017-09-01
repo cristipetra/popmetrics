@@ -112,7 +112,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     func localData() {
-        UsersStore.isTwitterConnected = false
+
         self.tmpSectionRecommendation.name = "Required Actions"
         self.tmpSectionRecommendation.index  = 2;
         
