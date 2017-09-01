@@ -472,6 +472,25 @@
 			name = buttons;
 			sourceTree = "<group>";
 		};
+		0894FBA31F595CC200ED251B /* oldies */ = {
+			isa = PBXGroup;
+			children = (
+				D9D937871ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib */,
+				11AAA5E51ECCD4200099B50E /* RequiredActionCard.xib */,
+				11AAA5E71ECCD52A0099B50E /* ActionHistoryCard.xib */,
+				1120F2011ECDF93F00576E39 /* ArticleOfInterestViewCell.swift */,
+				D9D937891ECDEEE200CC3EC2 /* StatsSummaryCard.xib */,
+				11AAA5E91ECCD7040099B50E /* ActionHistoryViewCell.swift */,
+				1128B3FC1ED2E01F00BDA58C /* ActionViewCell.swift */,
+				1128B3FE1ED2E12300BDA58C /* InsightViewCell.swift */,
+				D9EC7E341ECEE37A00A54B53 /* BestCourseCard.xib */,
+				D9AB86571ECED85A0050A7AB /* InsightCard.xib */,
+				110A62F51ECEF7AA0052B478 /* BestCourseViewCell.swift */,
+				D9EC7E361ECF0D7E00A54B53 /* ActionCard.xib */,
+			);
+			name = oldies;
+			sourceTree = "<group>";
+		};
 		08953E701F4C3503003ABEFC /* required */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,12 +624,7 @@
 				1120F1FF1ECDF4F200576E39 /* RequiredActionHandler.swift */,
 				1125ADAB1E96E7990004B4AC /* HomeHubController.swift */,
 				11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */,
-				11AAA5E91ECCD7040099B50E /* ActionHistoryViewCell.swift */,
-				1120F2011ECDF93F00576E39 /* ArticleOfInterestViewCell.swift */,
 				110A62C91ECEDADC0052B478 /* StatsSummaryViewCell.swift */,
-				1128B3FC1ED2E01F00BDA58C /* ActionViewCell.swift */,
-				110A62F51ECEF7AA0052B478 /* BestCourseViewCell.swift */,
-				1128B3FE1ED2E12300BDA58C /* InsightViewCell.swift */,
 				08A812751F1660A300672126 /* HeaderCardCell.swift */,
 				08F7A0961F17AB0C00A1B2C3 /* RecommendationCardCell.swift */,
 				08F3688A1F18DC4900819CDE /* ApprovalCardCell.swift */,
@@ -666,6 +680,7 @@
 		1178D6771E1E5AD9005B96C3 /* ipopmetrics */ = {
 			isa = PBXGroup;
 			children = (
+				0894FBA31F595CC200ED251B /* oldies */,
 				0809AEB51F2238FE00A13178 /* videos */,
 				08D1BC351F1DF4D700D377B2 /* constants */,
 				08C7B18E1F1CF41200E456C6 /* controllers */,
@@ -691,14 +706,7 @@
 				08ADA30A1F42D3FA00060ECD /* sampleFeedTodo.json */,
 				08B2803A1F5583CA00E36D19 /* sampleFeedStatistics.json */,
 				11D8D9EE1ECB1B9800CCDAC4 /* sampleFeed.json */,
-				11AAA5E51ECCD4200099B50E /* RequiredActionCard.xib */,
-				11AAA5E71ECCD52A0099B50E /* ActionHistoryCard.xib */,
-				D9D937871ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib */,
-				D9AB86571ECED85A0050A7AB /* InsightCard.xib */,
 				08D1BC381F1E3D6200D377B2 /* LDSplashView.swift */,
-				D9D937891ECDEEE200CC3EC2 /* StatsSummaryCard.xib */,
-				D9EC7E341ECEE37A00A54B53 /* BestCourseCard.xib */,
-				D9EC7E361ECF0D7E00A54B53 /* ActionCard.xib */,
 				08A812731F16601A00672126 /* HeaderCardCell.xib */,
 				08F7A09A1F17AC2700A1B2C3 /* RecommendationCard.xib */,
 				08F368881F18D7C500819CDE /* ApprovalCard.xib */,
