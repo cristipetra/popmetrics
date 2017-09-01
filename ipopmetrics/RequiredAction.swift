@@ -27,7 +27,7 @@ class RequiredAction: UITableViewCell {
     var item: FeedItem?
     var actionHandler: CardActionHandler?
     var indexPath: IndexPath?
-    var delegate: InfoButtonDelegate?
+    var infoDelegate: InfoButtonDelegate?
     
     lazy var shadowLayer : UIView  = {
         let view = UIView()
@@ -51,8 +51,6 @@ class RequiredAction: UITableViewCell {
         self.item = item
         self.actionHandler = handler
         
-        
-    
         self.backgroundColor = UIColor.feedBackgroundColor()
         self.titleLabel.text  = item.headerTitle
         messageLabel.text = item.message
@@ -64,7 +62,7 @@ class RequiredAction: UITableViewCell {
             self.footerView.actionButton.addTarget(self, action:#selector(handleActionNotifications(_:)), for: .touchDown)
         } else {
             self.footerView.actionButton.addTarget(self, action:#selector(handleActionTwitter(_:)), for: .touchDown)
-            self.footerView.informationBtn.addTarget(self, action: #selector(handleInfoButtonPressed), for: .touchDown)
+            self.footerView.informationBtn.addTarget(self, action: #selector(handleInfoButtonPressed(_:)), for: .touchDown)
         }
         
         titleLabel.textColor = PopmetricsColor.darkGrey
@@ -124,51 +122,12 @@ class RequiredAction: UITableViewCell {
         actionHandler?.handleRequiredAction(sender, item: self.item!)
     }
     
-    private func showBanner(bannerType: BannerType) {
-        let banner: NotificationBanner!
-        switch bannerType {
-        case .success:
-            let title = "Authentication Success!"
-            let titleAttribute = [
-                NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 12),
-                NSForegroundColorAttributeName: PopmetricsColor.darkGrey]
-            let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [String : Any]))
-            let subtitle = "Twitter Connected"
-            let subtitleAttribute = [
-                NSFontAttributeName: UIFont(name: "OpenSans-SemiBold", size: 12),
-                NSForegroundColorAttributeName: UIColor.white]
-            let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [String : Any]))
-            banner = NotificationBanner(attributedTitle: attributedTitle, attributedSubtitle: attributedSubtitle, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
-            banner.backgroundColor = PopmetricsColor.greenMedium
-            break
-        case .failed:
-            let title = "Authentication Failed"
-            let titleAttribute = [
-                NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 12),
-                NSForegroundColorAttributeName: PopmetricsColor.notificationBGColor]
-            let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [String : Any]))
-            let subtitle = "Twitter failed to connect! Try again"
-            let subtitleAttribute = [
-                NSFontAttributeName: UIFont(name: "OpenSans-SemiBold", size: 12),
-                NSForegroundColorAttributeName: UIColor.white]
-            let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [String : Any]))
-            banner = NotificationBanner(attributedTitle: attributedTitle, attributedSubtitle: attributedSubtitle, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
-            banner.backgroundColor = PopmetricsColor.salmondColor
-            break
-        default:
-            break
-        }
-        banner.duration = TimeInterval(exactly: 7.0)!
-        banner.show()
-        
-        banner.onTap = {
-            banner.dismiss()
-        }
+    @objc func handleActionTwitter(_ sender: SimpleButton) {
+        actionHandler?.handleRequiredAction(sender, item: self.item!)
     }
     
     
-    @objc func handleInfoButtonPressed() {
-        showBanner(bannerType: .failed)
+    @objc func handleInfoButtonPressed1() {
     }
     
     func setUpShadowLayer() {
@@ -202,3 +161,5 @@ enum BannerType {
     case success
     case failed
 }
+
+

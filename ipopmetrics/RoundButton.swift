@@ -22,14 +22,19 @@ class RoundButton: UIButton {
     
     func setup() {
         DispatchQueue.main.async {
-            self.setRadiusAndBorder()
+            
         }
+        setBorder()
+        self.setRadius()
         setShadows()
     }
     
-    private func setRadiusAndBorder() {
+    private func setBorder() {
         self.layer.borderWidth = 2.0
         self.layer.borderColor = PopmetricsColor.textGrey.cgColor
+    }
+    
+    private func setRadius() {
         self.layer.cornerRadius = self.frame.height / 2
         self.tintColor = PopmetricsColor.darkGrey
     }

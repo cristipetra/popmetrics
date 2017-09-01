@@ -67,13 +67,14 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
+        
+        loadingView.tintColor = PopmetricsColor.darkGrey
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            self?.fetchItems(silent:false)
+            //    self?.fetchItems(silent:false)
             self?.tableView.dg_stopLoading()
             }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
+        tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
         
         // fetchItems(silent: false)
         
@@ -215,7 +216,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
                 cell.footerView.layer.backgroundColor = UIColor.clear.cgColor
                 cell.footerView.approveLbl.textColor = UIColor.white
+                cell.footerView.xButton.isHidden = true
                 cell.configure(item, handler: self.requiredActionHandler)
+                cell.infoDelegate = self
                 if((sections[sectionIdx].items.count-1) == indexPath.row) {
                     cell.connectionLineView.isHidden = true;
                 }
@@ -241,7 +244,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.selectionStyle = .none
                 cell.setHeaderTitle(title: "Snapshot")
                 
-                cell.footerView.informationBtn.addTarget(self, action: #selector(openInfoCard(_:)), for: .touchUpInside)
+                cell.footerView.informationBtn.addTarget(self, action: #selector(showTooltip(_:)), for: .touchUpInside)
                 return cell
 
             case "info":
@@ -516,7 +519,14 @@ extension HomeHubViewController: UIViewControllerTransitioningDelegate {
 }
 
 extension HomeHubViewController: InfoButtonDelegate {
+    
+    //
     func sendInfo(_ sender: UIButton) {
+        self.requiredActionHandler.showBanner(bannerType: .success)
+        //showTooltip(sender)
+    }
+    
+    func showTooltip(_ sender: UIButton) {
         let infoCardVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "InfoCardViewID") as! InfoCardViewController;
         
         infoCardVC.transitioningDelegate = self
@@ -527,19 +537,6 @@ extension HomeHubViewController: InfoButtonDelegate {
         
         self.present(infoCardVC, animated: true, completion: nil)
     }
-    
-    func openInfoCard(_ sender: UIButton) {
-        let infoCardVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "InfoCardViewID") as! InfoCardViewController;
-        
-        infoCardVC.modalPresentationStyle = .custom
-        
-        transitionButton = sender
-        infoCardVC.modalPresentationStyle = .overCurrentContext
-        
-        self.present(infoCardVC, animated: true, completion: nil)
-        
-    }
-    
 }
 
 

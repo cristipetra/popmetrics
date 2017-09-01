@@ -52,7 +52,6 @@ class UsersStore {
             NotificationCenter.default.post(name: Notification.Name("didChangeTwitterConnected"), object: nil);
         }
         get {
-            //return true
             return UserDefaults.standard.bool(forKey: "isTwitterConnected")
         }
     }
@@ -64,7 +63,7 @@ class UsersStore {
             
         }
         get {
-            //return true
+            //return false
             return UserDefaults.standard.bool(forKey: "isDisplayedInsight")
         }
     }

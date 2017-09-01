@@ -14,3 +14,7 @@ protocol CardActionHandler {
     func  handleRequiredAction(_ sender : SimpleButton, item: FeedItem)
     
 }
+
+protocol CardInfoHandler {
+    func handleInfoAction( _ sender: SimpleButton, item: FeedItem)
+}

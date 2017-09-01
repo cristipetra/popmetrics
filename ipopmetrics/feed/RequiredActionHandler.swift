@@ -12,6 +12,8 @@ import GoogleSignIn
 import TwitterKit
 import FacebookCore
 import FacebookLogin
+import NotificationBannerSwift
+import EZAlertController
 
 class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, GIDSignInDelegate {
 
@@ -86,36 +88,43 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         } // usersApi.logInWithGoogle()
     }
         
-        
+    
     func connectTwitter(_ sender: SimpleButton, item:FeedItem) {
-            Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
-                if (session != nil) {
-                    FeedApi().connectTwitter(userId: (session?.userID)!, brandId:"58fe437ac7631a139803757e", token: (session?.authToken)!,
-                                       tokenSecret: (session?.authTokenSecret)!) { responseDict, error in
-                        sender.isLoading = false
-                        if error != nil {
-                            let nc = NotificationCenter.default
-                            nc.post(name:Notification.Name(rawValue:"CardActionNotification"),
-                                    object: nil,
-                                    userInfo: ["success":false, "title":"Action error", "message":"Connection with Twitter has failed.", "date":Date()])
-                            return
-                        } // error != nil
-                        else {
-                            sender.setTitle("Connected.", for: .normal)
-                            }
-                    } // usersApi.logInWithGoogle()
-                    
-                } else {
-                    sender.isLoading = false
-                    let nc = NotificationCenter.default
-                    nc.post(name:Notification.Name(rawValue:"CardActionNotification"),
-                            object: nil,
-                            userInfo: ["success":false, "title":"Action error", "message":"Connection with Twitter has failed... \(error?.localizedDescription)", "date":Date()])
-                    
-                }
+        
+        Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
+            if (session != nil) {
+                ProgressHUD.showProgressIndicator()
+                FeedApi().connectTwitter(userId: (session?.userID)!, brandId:"58fe437ac7631a139803757e", token: (session?.authToken)!,
+                                         tokenSecret: (session?.authTokenSecret)!) { responseDict, error in
+                                            //sender.isLoading = false
+                                            if error != nil {
+                                                let nc = NotificationCenter.default
+                                                nc.post(name:Notification.Name(rawValue:"CardActionNotification"),
+                                                        object: nil,
+                                                        userInfo: ["success":false, "title":"Action error", "message":"Connection with Twitter has failed.", "date":Date()])
+                                                return
+                                            } // error != nil
+                                            else {
+                                                ProgressHUD.hideProgressIndicator()
+                                                sender.setTitle("Connected.", for: .normal)
+                                                UsersStore.isTwitterConnected = true
+                                                self.showBanner(bannerType: .success)
+                                            }
+                } // usersApi.logInWithGoogle()
+                
+            } else {
+                ProgressHUD.hideProgressIndicator()
+                //sender.isLoading = false
+                let nc = NotificationCenter.default
+                nc.post(name:Notification.Name(rawValue:"CardActionNotification"),
+                        object: nil,
+                        userInfo: ["success":false, "title":"Action error", "message":"Connection with Twitter has failed... \(error!.localizedDescription)", "date":Date()])
+                
             }
-            
         }
+        
+    }
+
     
     
     // MARK: Facebook LogIn Process
@@ -162,3 +171,57 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
 //    }
     
 }
+
+extension RequiredActionHandler: InfoButtonDelegate {
+    func sendInfo(_ sender: UIButton) {
+        print("hello")
+        showBanner(bannerType: .failed)
+    }
+}
+
+extension RequiredActionHandler {    
+    internal func showBanner(bannerType: BannerType) {
+        let banner: NotificationBanner!
+        switch bannerType {
+        case .success:
+            let title = "Authentication Success!"
+            let titleAttribute = [
+                NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 12),
+                NSForegroundColorAttributeName: PopmetricsColor.darkGrey]
+            let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [String : Any]))
+            let subtitle = "Twitter Connected"
+            let subtitleAttribute = [
+                NSFontAttributeName: UIFont(name: "OpenSans-SemiBold", size: 12),
+                NSForegroundColorAttributeName: UIColor.white]
+            let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [String : Any]))
+            banner = NotificationBanner(attributedTitle: attributedTitle, attributedSubtitle: attributedSubtitle, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
+            banner.backgroundColor = PopmetricsColor.greenMedium
+            break
+        case .failed:
+            let title = "Authentication Failed"
+            let titleAttribute = [
+                NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 12),
+                NSForegroundColorAttributeName: PopmetricsColor.notificationBGColor]
+            let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [String : Any]))
+            let subtitle = "Twitter failed to connect! Try again"
+            let subtitleAttribute = [
+                NSFontAttributeName: UIFont(name: "OpenSans-SemiBold", size: 12),
+                NSForegroundColorAttributeName: UIColor.white]
+            let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [String : Any]))
+            banner = NotificationBanner(attributedTitle: attributedTitle, attributedSubtitle: attributedSubtitle, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
+            banner.backgroundColor = PopmetricsColor.salmondColor
+            break
+        default:
+            break
+        }
+        banner.duration = TimeInterval(exactly: 7.0)!
+        banner.show()
+        
+        banner.onTap = {
+            banner.dismiss()
+        }
+    }
+}
+
+
+

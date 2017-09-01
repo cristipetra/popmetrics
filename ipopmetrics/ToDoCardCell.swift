@@ -33,9 +33,12 @@ class ToDoCardCell: UITableViewCell {
         let button = TwoImagesButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(red: 54/255, green: 172/255, blue: 130/255, alpha: 1)
+        button.layer.borderWidth = 0
         return button
         
     }()
+    
+    var todoItem: TodoItem!;
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -55,7 +58,10 @@ class ToDoCardCell: UITableViewCell {
         
     }
     
-    func setUpApprovedView(approved : Bool) {
+    func setUpApprovedView(approved: Bool) {
+        if( approved == false) {
+            return
+        }
         self.insertSubview(approvedView, at: 1)
         approvedView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
         approvedView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
@@ -71,12 +77,26 @@ class ToDoCardCell: UITableViewCell {
         if approved {
             approvedButton.imageButtonType = .approved
         } else {
-            approvedButton.imageButtonType = .rescheduled
+            approvedButton.imageButtonType = .unapproved
+        }
+        
+        
+        if(todoItem.status == StatusArticle.failed.rawValue) {
+            approvedButton.rightTextLabel.text = "Reschedule"
+            
+            approvedButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
+            approvedButton.rightTextLabel.frame.size.width = 60
+        } else if (todoItem.status == StatusArticle.unapproved.rawValue) {
+            approvedButton.rightTextLabel.text = "Approved"
         }
         
         approvedButton.rightImageView.image = nil
         approvedButton.layer.cornerRadius = 6
-        
+    }
+    
+    func configure(item: TodoItem) {
+        todoItem = item
+        setUpApprovedView(approved: item.isApproved)
     }
     
     func removeApprovedView() {
