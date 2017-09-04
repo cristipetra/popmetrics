@@ -23,7 +23,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StatisticsInsight" customModule="ipopmetrics" customModuleProvider="target">
             <connections>
                 <outlet property="attentionLabel" destination="iAG-hM-6UR" id="oW1-Ra-w17"/>
-                <outlet property="bgPatternImageView" destination="jxI-mI-faJ" id="hpD-DO-eW0"/>
                 <outlet property="divider" destination="FTR-YR-duu" id="wXf-zZ-7N3"/>
                 <outlet property="maximizeButton" destination="yxe-IX-IES" id="JBw-CV-BQ4"/>
                 <outlet property="messageLabel" destination="iP7-S6-160" id="HKu-6P-juh"/>
@@ -99,11 +98,7 @@
                 <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="zj4-Ud-uYw">
                     <rect key="frame" x="0.0" y="198" width="375" height="189"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jxI-mI-faJ">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="189"/>
-                            <color key="tintColor" red="0.3411764705882353" green="0.36470588235294116" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iP7-S6-160">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iP7-S6-160">
                             <rect key="frame" x="22" y="0.0" width="340" height="115"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="115" id="9yf-eT-Nlh"/>
@@ -116,14 +111,10 @@
                     </subviews>
                     <color key="backgroundColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="jxI-mI-faJ" firstAttribute="leading" secondItem="zj4-Ud-uYw" secondAttribute="leading" id="0rg-dw-p71"/>
                         <constraint firstAttribute="height" constant="189" id="PWU-5i-j3J"/>
                         <constraint firstAttribute="trailing" secondItem="iP7-S6-160" secondAttribute="trailing" constant="13" id="Puz-lQ-cUJ"/>
-                        <constraint firstAttribute="trailing" secondItem="jxI-mI-faJ" secondAttribute="trailing" id="Yu8-H4-vzf"/>
-                        <constraint firstItem="jxI-mI-faJ" firstAttribute="top" secondItem="zj4-Ud-uYw" secondAttribute="top" id="hoP-9x-gXS"/>
                         <constraint firstItem="iP7-S6-160" firstAttribute="leading" secondItem="zj4-Ud-uYw" secondAttribute="leading" constant="22" id="rSu-rO-iJn"/>
                         <constraint firstItem="iP7-S6-160" firstAttribute="top" secondItem="zj4-Ud-uYw" secondAttribute="top" id="vqk-4h-YWP"/>
-                        <constraint firstAttribute="bottom" secondItem="jxI-mI-faJ" secondAttribute="bottom" id="zZz-qf-HqQ"/>
                     </constraints>
                 </view>
             </subviews>

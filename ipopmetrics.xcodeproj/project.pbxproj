@@ -15,6 +15,8 @@
 		080DCA881F4D9716000C73DC /* RecommendedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DCA871F4D9716000C73DC /* RecommendedCell.swift */; };
 		082D363C1F5D7CF0006B0985 /* StatisticsInsight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D363B1F5D7CF0006B0985 /* StatisticsInsight.swift */; };
 		082D363E1F5D7CFF006B0985 /* StatisticsInsight.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082D363D1F5D7CFF006B0985 /* StatisticsInsight.xib */; };
+		082D36401F5D952C006B0985 /* RecommendedActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082D363F1F5D952C006B0985 /* RecommendedActionCard.xib */; };
+		082D36421F5D9570006B0985 /* RecommendedActionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D36411F5D9570006B0985 /* RecommendedActionViewCell.swift */; };
 		0848280F1F39F9200054B04C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848280E1F39F9200054B04C /* HeaderView.swift */; };
 		085053FE1F2787A100FE8234 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085053FD1F2787A100FE8234 /* CalendarViewController.swift */; };
 		085054011F2793AE00FE8234 /* CalendarCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085054001F2793AE00FE8234 /* CalendarCard.xib */; };
@@ -201,6 +203,8 @@
 		080DCA871F4D9716000C73DC /* RecommendedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedCell.swift; sourceTree = "<group>"; };
 		082D363B1F5D7CF0006B0985 /* StatisticsInsight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsInsight.swift; sourceTree = "<group>"; };
 		082D363D1F5D7CFF006B0985 /* StatisticsInsight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticsInsight.xib; sourceTree = "<group>"; };
+		082D363F1F5D952C006B0985 /* RecommendedActionCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendedActionCard.xib; sourceTree = "<group>"; };
+		082D36411F5D9570006B0985 /* RecommendedActionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedActionViewCell.swift; sourceTree = "<group>"; };
 		0848280E1F39F9200054B04C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		085053FD1F2787A100FE8234 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		085054001F2793AE00FE8234 /* CalendarCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCard.xib; sourceTree = "<group>"; };
@@ -420,6 +424,8 @@
 			children = (
 				080DCA851F4D9707000C73DC /* RecommendedCell.xib */,
 				080DCA871F4D9716000C73DC /* RecommendedCell.swift */,
+				082D363F1F5D952C006B0985 /* RecommendedActionCard.xib */,
+				082D36411F5D9570006B0985 /* RecommendedActionViewCell.swift */,
 			);
 			name = recommended;
 			sourceTree = "<group>";
@@ -969,6 +975,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08B745921F1F6C0100EC3F8C /* OpenSans-Semibold.ttf in Resources */,
+				082D36401F5D952C006B0985 /* RecommendedActionCard.xib in Resources */,
 				085282761F28F2500065A968 /* sampleFeedCalendar.json in Resources */,
 				08B2803B1F5583CA00E36D19 /* sampleFeedStatistics.json in Resources */,
 				08B745931F1F6C0100EC3F8C /* OpenSans-Light.ttf in Resources */,
@@ -1178,6 +1185,7 @@
 				08F368991F1903B100819CDE /* LastCardCell.swift in Sources */,
 				110A62E21ECEE6D90052B478 /* DemoPhotoMessageViewModel.swift in Sources */,
 				110A62E81ECEE6E60052B478 /* SendingStatusPresenter.swift in Sources */,
+				082D36421F5D9570006B0985 /* RecommendedActionViewCell.swift in Sources */,
 				0809AEB41F22183400A13178 /* Constants.swift in Sources */,
 				116431DF1E2D4E81009AA59E /* UsersApi.swift in Sources */,
 				08A4A5431F45B5D6001071E3 /* TwoImagesButton.swift in Sources */,
