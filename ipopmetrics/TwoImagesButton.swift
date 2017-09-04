@@ -118,18 +118,18 @@ class TwoImagesButton: RoundButton {
         switch imageButtonType {
         case .unapproved:
             leftHandImage = UIImage(named: "iconApprove")
-            rightHandImage = UIImage(named: "iconCalLeft")
+            rightHandImage = UIImage(named: "iconCalRightBold")
         case .failed:
             leftHandImage = UIImage(named: "icon_timescore")
-            rightHandImage = UIImage(named: "iconCalLeft")
+            rightHandImage = UIImage(named: "iconCalRightBold")
         case .complete:
             leftHandImage = UIImage(named: "icon_timescore")
-            rightHandImage = UIImage(named: "iconCalLeft")
+            rightHandImage = UIImage(named: "iconCalRightBold")
         case .twitter:
             leftHandImage = UIImage(named: "iconCtaTwitter")
             leftImageView.frame.size.height = 24
             leftImageView.frame.origin.y = 12
-            rightHandImage = UIImage(named: "iconCalLeft")
+            rightHandImage = UIImage(named: "iconCalRightBold")
         case .approved:
             leftHandImage = UIImage(named: "icon2CtaApprovepost")
             rightImageView.isHidden = true

@@ -16,12 +16,16 @@ class TrafficReportViewController: UIViewController {
     let statsPageVC: StatsPageViewController = StatsPageViewController()
     let chartVC = UIStoryboard(name: "ChartStatistics", bundle: nil).instantiateViewController(withIdentifier: "ChartViewId") as! ChartViewController
     
+    let insight = StatisticsInsight()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpNavigationBar()
         addChartView()
         addPageView()
+        addInsight()
     }
     
     override func viewDidLayoutSubviews() {
@@ -55,8 +59,24 @@ class TrafficReportViewController: UIViewController {
         statsPageVC.view.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 0).isActive = true
         statsPageVC.view.topAnchor.constraint(equalTo: chartVC.view.bottomAnchor,constant: 1).isActive = true
         statsPageVC.view.heightAnchor.constraint(equalToConstant: 562).isActive = true
-        statsPageVC.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        //statsPageVC.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
         
+    }
+    
+    func addInsight() {
+        
+        self.containerView.addSubview(insight)
+        //insight.backgroundColor = UIColor.blue
+        insight.frame = self.containerView.bounds
+        print(containerView.frame.width)
+        
+        insight.setup()
+        insight.translatesAutoresizingMaskIntoConstraints = false
+        insight.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+        insight.topAnchor.constraint(equalTo: statsPageVC.view.bottomAnchor).isActive = true
+        insight.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
+        insight.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        insight.heightAnchor.constraint(equalToConstant: 389).isActive = true
     }
     
     func setUpNavigationBar() {
