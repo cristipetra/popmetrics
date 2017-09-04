@@ -103,7 +103,7 @@ class RecommendedCell: UITableViewCell {
             
             //self.footerVIew.informationBtn.isHidden = true
             self.footerVIew.actionButton.imageButtonType = .todo
-            self.footerVIew.approveLbl.text = "Connect Twitter"
+            self.footerVIew.approveLbl.text = "View To Do List"
             self.footerVIew.approveLbl.textColor = UIColor.black
             self.connectionLine.isHidden = true
             break

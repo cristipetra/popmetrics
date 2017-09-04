@@ -235,6 +235,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                     cell.connectionLine.isHidden = true;
                 }
                 cell.footerVIew.actionButton.addTarget(self, action: #selector(handlerInsightButton), for: .touchUpInside)
+                cell.footerVIew.informationBtn.addTarget(self, action: #selector(showTooltip(_:)), for: .touchUpInside)
                 return cell
             case "todo":
                 shouldDisplayCell = true
