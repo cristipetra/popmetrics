@@ -103,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func isLoggedIn() -> Bool {
         let defaults = UserDefaults.standard
-        if defaults.string(forKey: "userId") != nil { return true }
+        if defaults.string(forKey: "currentBrandId") != nil { return true }
             else { return false}
     }
 

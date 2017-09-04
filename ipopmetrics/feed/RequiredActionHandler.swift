@@ -25,7 +25,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
             case "connect_google_analytics":
                 connectGoogleAnalytics(sender, item:item)
             
-            case "connect_twitter":
+            case "brand_not_connected_with_twitter":
                 connectTwitter(sender, item:item)
             
             default:
@@ -93,9 +93,14 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         
         Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
             if (session != nil) {
+                let params = [
+                    "user_id":UsersStore.getInstance().getLocalUserAccount().id,
+                    "twitter_user_id":session?.userID,
+                    "access_token":session?.authToken,
+                    "access_token_secret":session?.authTokenSecret
+                    ]
                 ProgressHUD.showProgressIndicator()
-                FeedApi().connectTwitter(userId: (session?.userID)!, brandId:"58fe437ac7631a139803757e", token: (session?.authToken)!,
-                                         tokenSecret: (session?.authTokenSecret)!) { responseDict, error in
+                FeedApi().postRequiredAction(feedItemId: item.itemId!, params: params) { responseDict, error in
                                             //sender.isLoading = false
                                             if error != nil {
                                                 let nc = NotificationCenter.default

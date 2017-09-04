@@ -151,6 +151,7 @@
 		1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1178D6831E1E5AD9005B96C3 /* LaunchScreen.storyboard */; };
 		1178D6901E1E5AD9005B96C3 /* ipopmetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D68F1E1E5AD9005B96C3 /* ipopmetricsTests.swift */; };
 		1178D69B1E1E5AD9005B96C3 /* ipopmetricsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */; };
+		11A4823A1F5D58D9008D473C /* ApiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A482391F5D58D9008D473C /* ApiModels.swift */; };
 		11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAA5E31ECC8BFA0099B50E /* Feed.swift */; };
 		11AAA5E61ECCD4200099B50E /* RequiredActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11AAA5E51ECCD4200099B50E /* RequiredActionCard.xib */; };
 		11AAA5E81ECCD52A0099B50E /* ActionHistoryCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11AAA5E71ECCD52A0099B50E /* ActionHistoryCard.xib */; };
@@ -344,6 +345,7 @@
 		1178D6961E1E5AD9005B96C3 /* ipopmetricsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ipopmetricsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ipopmetricsUITests.swift; sourceTree = "<group>"; };
 		1178D69C1E1E5AD9005B96C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11A482391F5D58D9008D473C /* ApiModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiModels.swift; path = api/ApiModels.swift; sourceTree = "<group>"; };
 		11AAA5E31ECC8BFA0099B50E /* Feed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Feed.swift; path = ipopmetrics/realm/Feed.swift; sourceTree = "<group>"; };
 		11AAA5E51ECCD4200099B50E /* RequiredActionCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequiredActionCard.xib; sourceTree = "<group>"; };
 		11AAA5E71ECCD52A0099B50E /* ActionHistoryCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionHistoryCard.xib; sourceTree = "<group>"; };
@@ -756,6 +758,7 @@
 				116431DE1E2D4E81009AA59E /* UsersApi.swift */,
 				11ACA9A01E2CD1B90021E64A /* ApiUrls.swift */,
 				113976AF1E97CCF700B535DF /* FeedApi.swift */,
+				11A482391F5D58D9008D473C /* ApiModels.swift */,
 			);
 			name = api;
 			sourceTree = "<group>";
@@ -1143,6 +1146,7 @@
 				1128B3FD1ED2E01F00BDA58C /* ActionViewCell.swift in Sources */,
 				085282741F28D9DE0065A968 /* CalendarFooterViewCell.swift in Sources */,
 				08F3688B1F18DC4900819CDE /* ApprovalCardCell.swift in Sources */,
+				11A4823A1F5D58D9008D473C /* ApiModels.swift in Sources */,
 				08D1BC371F1DF4F900D377B2 /* ViewNames.swift in Sources */,
 				110A62D71ECEDE8B0052B478 /* FakeMessageSender.swift in Sources */,
 				1128B3FF1ED2E12300BDA58C /* InsightViewCell.swift in Sources */,

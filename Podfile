@@ -10,6 +10,7 @@ target 'ipopmetrics' do
   pod 'Whisper'
   pod 'Alamofire', '~> 4.0'
   pod 'ObjectMapper'
+  pod 'AlamofireObjectMapper', '~> 4.0'
   pod 'Fabric'  
   pod 'Crashlytics'
   pod 'JSONWebToken'

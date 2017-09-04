@@ -32,6 +32,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     var isAnimatingHeader = false
     
+    var currentBrandId = UsersStore.currentBrandId
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,14 +72,15 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         loadingView.tintColor = PopmetricsColor.darkGrey
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            //    self?.fetchItems(silent:false)
+            self?.fetchItems(silent:false)
+            self?.sections = FeedStore.getInstance().getFeed()
             self?.tableView.dg_stopLoading()
+            self?.tableView.reloadData()
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
         tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
         
         // fetchItems(silent: false)
-        
         self.sections = FeedStore.getInstance().getFeed()
         
         
@@ -106,7 +109,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     func fetchItems(silent:Bool) {
 //        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
 //        let jsonData : NSData = NSData(contentsOfFile: path!)!
-        FeedApi().getItems("58fe437ac7631a139803757e") { responseDict, error in
+        FeedApi().getItems(currentBrandId) { responseDict, error in
             
             if error != nil {
                 let message = "An error has occurred. Please try again later."
@@ -223,7 +226,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                     cell.connectionLineView.isHidden = true;
                 }
                 return cell
-            case "recommended":
+            case "insight":
                 shouldDisplayCell = true
                 isTrafficCard = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedId", for: indexPath) as! RecommendedCell

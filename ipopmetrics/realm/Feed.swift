@@ -18,6 +18,8 @@ class StatsSummaryItem: Object {
 
 class FeedItem: Object {
     
+    dynamic var itemId: String? = nil
+    
     dynamic var index = 0
     
     dynamic var type = ""

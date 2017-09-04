@@ -38,10 +38,10 @@ class AccountViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let localUser = UsersStore.getInstance().getLocalUser()
+        let localUser = UsersStore.getInstance().getLocalUserAccount()
         nameTextField.text = localUser.name
         emailLabel.text = localUser.email
-        let imageUrl = ApiUrls.getAccountThumbnailUrl(localUser.id)
+        let imageUrl = ApiUrls.getAccountThumbnailUrl(localUser.id!)
         UsersApi().getImageWithUrl(imageUrl) { image, error in
             if error != nil { return }
             DispatchQueue.main.async(execute: {
@@ -84,10 +84,10 @@ class AccountViewController: BaseViewController {
     }
     
     @IBAction func didChangeNameValue(_ sender: TextFieldValidator) {
-        let localUser = UsersStore.getInstance().getLocalUser()
+        let localUser = UsersStore.getInstance().getLocalUserAccount()
         if let name = nameTextField.text {
             localUser.name = name
-            UsersStore.getInstance().storeLocalUser(localUser)
+            UsersStore.getInstance().storeLocalUserAccount(localUser)
         }
     }
     

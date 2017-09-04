@@ -57,6 +57,7 @@ public func storeFeed(_ dict: [String:Any] ) {
                     if let items = jsection["items"] as? [[String:Any]] {
                         for jitem in items {
                             let feedItem = FeedItem()
+                            feedItem.itemId = jitem["id"] as? String
                             feedItem.index = icount
                             feedItem.type = (jitem["type"] as? String)!
                             feedItem.headerTitle = jitem["header_title"] as? String
