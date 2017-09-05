@@ -20,6 +20,9 @@ class ToDoViewController: BaseViewController {
     fileprivate var sections: [TodoSection] = []
     var approveIndex = 3
     
+    let indexToSection = [0: "Unapproved",
+                          1: "Insights"]
+    
     internal var shouldMaximize = false
     var isAllApproved : Bool = false
     var currentBrandId = UsersStore.currentBrandId
@@ -38,9 +41,11 @@ class ToDoViewController: BaseViewController {
         
         createItemsLocally()
         
-//        if (UsersStore.isTwitterConnected) {
-        fetchItemsLocally()
-//        }
+
+        //fetchItemsLocally()
+
+        
+        print(store.getTodoCards())
         
     }
     
@@ -169,7 +174,7 @@ class ToDoViewController: BaseViewController {
             let post1 = TodoSocialPost()
             post1.todoCard = todoCard
             post1.postId = "098tq098gr"
-            post1.status = "unaproved"
+            post1.status = "unapproved"
             post1.articleTitle = "Optimizing Your Website"
             post1.statusDate = Date()
             post1.articleImage = "image_optimize"
@@ -182,8 +187,7 @@ class ToDoViewController: BaseViewController {
             let post2 = TodoSocialPost()
             post2.todoCard = todoCard
             post2.postId = "fspodighjpsdfoi"
-            
-            post2.status = "unaproved"
+            post2.status = "unapproved"
             post2.articleTitle = "Optimizing Your Website 2"
             post2.statusDate = Date()
             post2.articleImage = "image_optimize"
@@ -193,8 +197,19 @@ class ToDoViewController: BaseViewController {
             post2.articleCategory = "Local News"
             store.realm.add(post2, update:true)
             
+            let post3 = TodoSocialPost()
+            post3.todoCard = todoCard
+            post3.postId = "fspsodighjpsdfoi"
+            post3.status = "unapproved"
+            post3.articleTitle = "Optimizing Your Website 3"
+            post3.statusDate = Date()
+            post3.articleImage = "image_optimize"
+            post3.articleText = "Why is SEO such a challenging yet integral part of a building a successful website? (3)"
+            post3.type = "twitter_article"
+            post3.articleUrl = "alchm.my/agga"
+            post3.articleCategory = "Local News"
+            store.realm.add(post3, update:true)
         }
-
         
     }
     
@@ -227,13 +242,15 @@ class ToDoViewController: BaseViewController {
 }
 
 extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, ApproveDenySinglePostProtocol {
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
-        
-        let section = sections[sectionIdx]
-        let item = section.items[rowIdx]
-        
+        let sectionCards = store.getTodoSocialPostsForCard(store.getTodoCards()[sectionIdx])
+        let item = sectionCards[rowIdx]
+
         if item.type == "last_cell" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
             cell.changeTitleWithSpacing(title: "Finished with the actions?");
@@ -246,28 +263,30 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
         if shouldMaximize {
             let cell = tableView.dequeueReusableCell(withIdentifier: "maxCellId", for: indexPath) as! CalendarCardMaximizedViewCell
-            cell.configure(item)
+            //cell.configure(item)
             cell.articleDate.isHidden = true
             cell.setUpMaximizeToDo()
             cell.approveDenyDelegate = self
             cell.postIndex = indexPath.row
             cell.setUpApprovedConnectionView()
-            
+            /*
             if sections[indexPath.section].items.endIndex - 1 == indexPath.row {
                 cell.connectionStackView.isHidden = true
                 cell.isLastCell = true
             } else {
                 cell.connectionStackView.isHidden = false
             }
+ 
             if sections[0].items[indexPath.row].isApproved == true {
                 cell.setUpApprovedView(approved: true)
             }
+             */
             return cell
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
         cell.configure(item: item)
- 
+        
         return cell
         
     }
@@ -276,7 +295,6 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func approveSinglePostHandler(index: Int) {
-        print("approved")
         sections[0].items[index].isApproved = true
         tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
     }
@@ -287,16 +305,19 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             return UIView()
         }
         
+        let item: TodoSocialPost = store.getTodoSocialPostsForCard(store.getTodoCards()[0])[0]
+        
+        
         if shouldMaximize == false {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
-            headerCell.changeColor(color: sections[section].items[0].getSectionColor)
-            headerCell.changeTitle(title: sections[section].items[0].socialTextString)
-            toDoTopView.setUpView(view: StatusArticle(rawValue: sections[section].status)!)
+            headerCell.changeColor(color: item.getSectionColor)
+            headerCell.changeTitle(title: item.socialTextString)
+            //toDoTopView.setUpView(view: StatusArticle(rawValue: sections[section].status)!)
             return headerCell
         } else {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
-            headerCell.changeColor(section: section)
-            headerCell.changeTitle(title: sections[section].items[0].socialTextString)
+            //headerCell.changeColor(section: section)
+            headerCell.changeTitle(title: item.socialTextString)
             return headerCell
         }
     }
@@ -306,16 +327,19 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             return UIView()
         }
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
-        todoFooter.changeTypeSection(typeSection: StatusArticle(rawValue: sections[section].status)!)
+        todoFooter.xButton.isHidden = true
+        //todoFooter.changeTypeSection(typeSection: StatusArticle(rawValue: sections[section].status)!)
         //todoFooter.actionButton.addTarget(self, action: #selector(approveCard(_:section:)), for: .touchUpInside)
         todoFooter.section = section
         todoFooter.buttonHandlerDelegate = self
-
+        
+        /*
         if(sections[section].allApproved) {
             todoFooter.actionButton.changeToDisabled()
             todoFooter.setUpDisabledLabels()
             todoFooter.setUpLoadMoreDisabled()
         }
+         */
         
         DispatchQueue.main.async {
             todoFooter.setUpLoadMoreDisabled()
@@ -342,10 +366,14 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return store.countSections()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return store.getTodoSocialPostsForCard(store.getTodoCards()[0]).count
+        
+        return store.getTodoCardsWithSection(indexToSection[section]!).count
+        
         return sections[section].items.count
     }
     
@@ -366,6 +394,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        return
         if let index = tableView.indexPathsForVisibleRows?.first {
             let headerFrame = tableView.rectForHeader(inSection: index.section)
             if headerFrame.origin.y < tableView.contentOffset.y{
@@ -387,19 +416,17 @@ extension ToDoViewController: FooterButtonHandlerProtocol {
     
     func approvalButtonPressed(section : Int) {
         print("section \(section)")
-        
+        /*
         for item in sections[section].items {
             if sections[section].items.index(of: item)! < approveIndex {
                 item.isApproved = true
             }
         }
+        */
         approveIndex += 3
-        sections[section].allApproved = true
+        //sections[section].allApproved = true
         tableView.reloadData()
     }
-    
-
-
     
     func closeButtonPressed() {
         
