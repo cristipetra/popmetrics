@@ -164,7 +164,7 @@ class ToDoViewController: BaseViewController {
 
             let todoCard = TodoCard()
             todoCard.cardId = "1234"
-            store.realm.add(todoCard)
+            store.realm.add(todoCard, update:true)
         
             let post1 = TodoSocialPost()
             post1.todoCard = todoCard
@@ -177,7 +177,7 @@ class ToDoViewController: BaseViewController {
             post1.type = "twitter_article"
             post1.articleUrl = "alchm.my/agga"
             post1.articleCategory = "Local News"
-            store.realm.add(post1)
+            store.realm.add(post1, update:true)
             
             let post2 = TodoSocialPost()
             post2.todoCard = todoCard
@@ -191,7 +191,7 @@ class ToDoViewController: BaseViewController {
             post2.type = "twitter_article"
             post2.articleUrl = "alchm.my/agga"
             post2.articleCategory = "Local News"
-            store.realm.add(post2)
+            store.realm.add(post2, update:true)
             
         }
 
