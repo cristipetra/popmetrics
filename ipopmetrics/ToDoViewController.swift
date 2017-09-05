@@ -20,6 +20,9 @@ class ToDoViewController: BaseViewController {
     fileprivate var sections: [TodoSection] = []
     var approveIndex = 3
     
+    let indexToSection = [0: "Unapproved",
+                          1: "Insights"]
+    
     internal var shouldMaximize = false
     var isAllApproved : Bool = false
     var currentBrandId = UsersStore.currentBrandId
@@ -38,9 +41,11 @@ class ToDoViewController: BaseViewController {
         
         createItemsLocally()
         
-//        if (UsersStore.isTwitterConnected) {
-        fetchItemsLocally()
-//        }
+
+        //fetchItemsLocally()
+
+        
+        print(store.getTodoCards())
         
     }
     
@@ -192,9 +197,10 @@ class ToDoViewController: BaseViewController {
             post2.articleUrl = "alchm.my/agga"
             post2.articleCategory = "Local News"
             store.realm.add(post2, update:true)
-            
         }
-
+        
+        
+        
         
     }
     
@@ -228,11 +234,20 @@ class ToDoViewController: BaseViewController {
 
 extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, ApproveDenySinglePostProtocol {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //let sectionIdx = (indexPath as NSIndexPath).section
+        //let rowIdx = (indexPath as NSIndexPath).row
+        
+        //let section = sections[sectionIdx]
+        //let item = section.items[rowIdx]
+        
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
         
-        let section = sections[sectionIdx]
-        let item = section.items[rowIdx]
+        
+        let sectionCards = store.getTodoCardsWithSection(indexToSection[sectionIdx]!)
+        let item = sectionCards[rowIdx]
+        print("cell for row at")
+        print(item)
         
         if item.type == "last_cell" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
@@ -246,7 +261,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
         if shouldMaximize {
             let cell = tableView.dequeueReusableCell(withIdentifier: "maxCellId", for: indexPath) as! CalendarCardMaximizedViewCell
-            cell.configure(item)
+            //cell.configure(item)
             cell.articleDate.isHidden = true
             cell.setUpMaximizeToDo()
             cell.approveDenyDelegate = self
@@ -266,7 +281,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
-        cell.configure(item: item)
+        //cell.configure(item: item)
  
         return cell
         
@@ -289,9 +304,9 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
         if shouldMaximize == false {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
-            headerCell.changeColor(color: sections[section].items[0].getSectionColor)
-            headerCell.changeTitle(title: sections[section].items[0].socialTextString)
-            toDoTopView.setUpView(view: StatusArticle(rawValue: sections[section].status)!)
+            //headerCell.changeColor(color: sections[section].items[0].getSectionColor)
+            //headerCell.changeTitle(title: sections[section].items[0].socialTextString)
+            //toDoTopView.setUpView(view: StatusArticle(rawValue: sections[section].status)!)
             return headerCell
         } else {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
@@ -306,16 +321,18 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             return UIView()
         }
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
-        todoFooter.changeTypeSection(typeSection: StatusArticle(rawValue: sections[section].status)!)
+        //todoFooter.changeTypeSection(typeSection: StatusArticle(rawValue: sections[section].status)!)
         //todoFooter.actionButton.addTarget(self, action: #selector(approveCard(_:section:)), for: .touchUpInside)
         todoFooter.section = section
         todoFooter.buttonHandlerDelegate = self
-
+        
+        /*
         if(sections[section].allApproved) {
             todoFooter.actionButton.changeToDisabled()
             todoFooter.setUpDisabledLabels()
             todoFooter.setUpLoadMoreDisabled()
         }
+         */
         
         DispatchQueue.main.async {
             todoFooter.setUpLoadMoreDisabled()
@@ -342,10 +359,14 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        return store.countSections()
         return sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return store.getTodoCardsWithSection(indexToSection[section]!).count
+        
         return sections[section].items.count
     }
     
