@@ -15,18 +15,18 @@ class StatsSummaryItem: Object, Mappable {
     
     dynamic var feedCard: FeedCard? = nil
     
-    dynamic var values: [Float] = []
-    dynamic var labels: [String] = []
-    dynamic var deltas: [Float] = []
+    dynamic var value: Float = 0
+    dynamic var label: String = ""
+    dynamic var delta: Float = 0
     
     required convenience init?(map: Map) {
         self.init()
     }
     
     func mapping(map: Map) {
-        values <- map["values"]
-        labels <- map["labels"]
-        deltas <- map["deltas"]
+        value <- map["value"]
+        label <- map["label"]
+        delta <- map["delta"]
     }
     
 }
