@@ -39,22 +39,22 @@ class FeedStore {
     
         var cardsToDelete: [FeedCard] = []
         try! realm.write {
+            
             for existingCard in cards {
                 let (exists, newCard) = feedResponse.matchCard(existingCard.cardId!)
                 if !exists {
                     cardsToDelete.append(existingCard)
                 }
-                else {
-                    newCard?.id = existingCard.id
-                    realm.add(newCard!, update:true)
-                }
-        
             }
             
             for card in cardsToDelete {
                 
                 //TODO delete all related items first
                 realm.delete(card)
+            }
+            
+            for newCard in feedResponse.cards! {
+                realm.add(newCard, update:true)
             }
         }//try
     

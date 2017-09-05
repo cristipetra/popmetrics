@@ -65,6 +65,7 @@ class FeedCard: Object, Mappable {
         cardId          <- map["id"]
         index           <- map["index"]
         type            <- map["type"]
+        section         <- map["section"]
         headerTitle     <- map["header_title"]
         headerSubtitle  <- map["header_subtitle"]
         headerIconUri   <- map["header_icon"]

@@ -123,10 +123,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                     return
             }
             else {
-                self.presentAlertWithTitle("Error", message: "An unexpected error has occured. Please try again later")
-                return
+                self.store.updateFeed((responseWrapper?.data)!)
+                self.tableView.reloadData()
             }
-            self.store.updateFeed((responseWrapper?.data)!)
         }
         
     }
@@ -182,7 +181,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.store.getFeedCards().count
+        //return self.store.getFeedCards().count
+        return sectionToIndex.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -280,10 +280,13 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let sectionCards = store.getFeedCardsWithSection(indexToSection[section]!)
-        let item = sectionCards[0]
+        var itemType = "unknown"
+        if sectionCards.count > 0 {
+            itemType = sectionCards[0].type
+        }
         
         
-        switch item.type {
+        switch itemType {
         case "required_action" :
             shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
@@ -331,21 +334,23 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         var height: CGFloat = 0;
         
         let sectionCards = store.getFeedCardsWithSection(indexToSection[section]!)
-        let item = sectionCards[0]
-        
-        
-        if( item.type == "required_action") {
-            height = (UsersStore.isTwitterConnected) ? 80 : 80
-        }
-        
-        if( item.type == "todo") {
-            height = 80;
-        }
-        if( item.type == "recommended") {
-            height = 80
-        }
-        if (item.type == "traffic") {
-            height = 80
+        if sectionCards.count > 0 {
+            let item = sectionCards[0]
+            
+            
+            if( item.type == "required_action") {
+                height = (UsersStore.isTwitterConnected) ? 80 : 80
+            }
+            
+            if( item.type == "todo") {
+                height = 80;
+            }
+            if( item.type == "recommended") {
+                height = 80
+            }
+            if (item.type == "traffic") {
+                height = 80
+            }
         }
         
         return height
