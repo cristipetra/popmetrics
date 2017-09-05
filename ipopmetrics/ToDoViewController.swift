@@ -371,10 +371,6 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return store.getTodoSocialPostsForCard(store.getTodoCards()[0]).count
-        
-        return store.getTodoCardsWithSection(indexToSection[section]!).count
-        
-        return sections[section].items.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

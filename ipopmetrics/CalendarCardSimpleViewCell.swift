@@ -20,7 +20,7 @@ class CalendarCardSimpleViewCell: UITableViewCell {
     @IBOutlet weak var topToolbar: UIView!
     @IBOutlet weak var statusText: UILabel!
     
-    internal var calendarItem: CalendarItem!
+    internal var calendarItem: CalendarSocialPost!
     
     weak var maximizeDelegate: ChangeCellProtocol?
     
@@ -49,7 +49,7 @@ class CalendarCardSimpleViewCell: UITableViewCell {
         }
     }
     
-    func configure(_ item: CalendarItem) {
+    func configure(_ item: CalendarSocialPost) {
         calendarItem = item;
         self.titleLbl.text = item.articleTitle
         let formatedDate = self.formatDate((item.statusDate)!)

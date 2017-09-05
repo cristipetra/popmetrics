@@ -85,7 +85,7 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
     }()
     
     
-    private var calendarItem: CalendarItem!
+    private var calendarItem: CalendarSocialPost!
     var notLastCell = true
     var isLastCell = false
     
@@ -98,7 +98,7 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         setUpCorners()
     }
     
-    func configure(_ item: CalendarItem) {
+    func configure(_ item: CalendarSocialPost) {
         self.calendarItem = item;
         self.titleLbl.text = item.articleTitle
         var formatedDate = self.formatDate((item.statusDate)!)

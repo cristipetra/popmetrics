@@ -27,8 +27,8 @@ class CalendarFeedStore {
         return realm.objects(CalendarCard.self).filter(predicate)
     }
     
-    public func getCalendarSocialPostsForCard(_ todoCard: CalendarCard) -> Results<CalendarSocialPost> {
-        let predicate = NSPredicate(format: "todoCard = %@", todoCard)
+    public func getCalendarSocialPostsForCard(_ calendarCard: CalendarCard) -> Results<CalendarSocialPost> {
+        let predicate = NSPredicate(format: "calendarCard = %@", calendarCard)
         return realm.objects(CalendarSocialPost.self).filter(predicate)
     }
     
