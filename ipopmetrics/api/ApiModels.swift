@@ -127,7 +127,7 @@ class FeedResponse: Mappable {
 class TodoResponse: Mappable {
     
     var cards: [TodoCard]?
-    var socialPosts: TodoSocialPost?
+    var socialPosts: [TodoSocialPost]?
     
     required init?(map: Map) {
     }
@@ -143,6 +143,19 @@ class TodoResponse: Mappable {
         }
         if let i = self.cards?.index(where: {$0.cardId == cardId}) {
             return (true, self.cards![i])
+        }
+        else {
+            return (false, nil)
+        }
+        
+    }
+    
+    func matchSocialPost(_ postId:String) -> (Bool, TodoSocialPost?) {
+        if self.socialPosts == nil {
+            return (false, nil)
+        }
+        if let i = self.socialPosts?.index(where: {$0.postId == postId}) {
+            return (true, self.socialPosts![i])
         }
         else {
             return (false, nil)

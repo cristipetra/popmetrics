@@ -22,6 +22,10 @@ class TodoStore {
         return realm.objects(TodoCard.self).sorted(byKeyPath: "index")
     }
     
+    public func getTodoCardWithId(_ cardId: String) -> TodoCard {
+        return realm.object(ofType: TodoCard.self, forPrimaryKey: cardId)!
+    }
+    
     public func getTodoCardsWithSection(_ section: String) -> Results<TodoCard> {
         let predicate = NSPredicate(format: "section = %@", section)
         return realm.objects(TodoCard.self).filter(predicate)
@@ -39,7 +43,7 @@ class TodoStore {
         return distinctTypes.count
     }
     
-    public func updateTodos(_ feedResponse: FeedResponse) {
+    public func updateTodos(_ todoResponse: TodoResponse) {
         
         let realm = try! Realm()
         let cards = realm.objects(TodoCard.self).sorted(byKeyPath: "index")
@@ -47,7 +51,7 @@ class TodoStore {
         var cardsToDelete: [TodoCard] = []
         try! realm.write {
             for existingCard in cards {
-                let (exists, newCard) = feedResponse.matchCard(existingCard.cardId!)
+                let (exists, newCard) = todoResponse.matchCard(existingCard.cardId!)
                 if !exists {
                     cardsToDelete.append(existingCard)
                 }
@@ -59,9 +63,35 @@ class TodoStore {
             }
             
             for card in cardsToDelete {
-                
                 //TODO delete all related items first
                 realm.delete(card)
+            }
+            
+            for newCard in todoResponse.cards! {
+                realm.add(newCard, update:true)
+            }
+            
+        }//try
+        
+        let posts = realm.objects(TodoSocialPost.self)
+        var postsToDelete: [TodoSocialPost] = []
+        // update social postings
+        try! realm.write {
+            for existingPost in posts {
+                let (exists, newPost) = todoResponse.matchSocialPost(existingPost.postId!)
+                if !exists {
+                    postsToDelete.append(existingPost)
+                }
+            }
+            
+            for post in postsToDelete {
+                //TODO delete all related items first
+                realm.delete(post)
+            }
+            
+            for newPost in todoResponse.socialPosts! {
+                newPost.todoCard = getTodoCardWithId(newPost.todoCardId!)
+                realm.add(newPost, update:true)
             }
         }//try
         
