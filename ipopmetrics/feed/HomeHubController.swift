@@ -17,10 +17,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     fileprivate var sharingInProgress = false
     
-    let sectionToIndex = ["Recommended Actions": 0,
+    let sectionToIndex = ["Required Actions": 0,
                            "Insights": 1]
     
-    let indexToSection = [0:"Recommended Actions",
+    let indexToSection = [0:"Required Actions",
                           1:"Insights"]
         
     
