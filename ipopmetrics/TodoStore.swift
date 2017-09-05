@@ -27,6 +27,13 @@ class TodoStore {
         return realm.objects(TodoCard.self).filter(predicate)
     }
     
+    public func getTodoSocialPostsForCard(_ todoCard: TodoCard) -> Results<TodoSocialPost> {
+        let predicate = NSPredicate(format: "todoCard = %@", todoCard)
+        return realm.objects(TodoSocialPost.self).filter(predicate)
+    }
+
+    
+    
     public func countSections() -> Int {
         let distinctTypes = Array(Set(self.getTodoCards().value(forKey: "section") as! [String]))
         return distinctTypes.count

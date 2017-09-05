@@ -61,6 +61,7 @@ class TodoSocialPost: Object, Mappable {
     dynamic var isApproved = false
     
     dynamic var type = ""
+    dynamic var section = ""
     dynamic var status: String? = nil
     dynamic var statusDate: Date? = nil
     
@@ -85,6 +86,7 @@ class TodoSocialPost: Object, Mappable {
         postId          <- map["id"]
         index           <- map["index"]
         type            <- map["type"]
+        section         <- map["section"]
         status          <- map["status"]
         articleCategory <- map["article_category"]
         articleTitle    <- map["article_title"]
