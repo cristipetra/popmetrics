@@ -48,6 +48,7 @@ class FeedCard: Object, Mappable {
     dynamic var message:String? = nil
     
     dynamic var actionLabel = ""
+    dynamic var actionHandler = ""
     dynamic var imageUri:String? = nil
     
     dynamic var tooltipTitle: String? = nil
@@ -71,6 +72,7 @@ class FeedCard: Object, Mappable {
         headerIconUri   <- map["header_icon"]
         message         <- map["message"]
         //actionLabel     <- map["action_label"]
+        actionHandler   <- map["handler"]
         tooltipTitle    <- map["tooltip_title"]
         tooltipContent  <- map["tooltip_conent"]
         
