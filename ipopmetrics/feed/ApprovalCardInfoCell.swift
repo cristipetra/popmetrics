@@ -19,7 +19,7 @@ class ApprovalCardInfoCell: UITableViewCell {
     @IBOutlet weak var connectionView: UIView!
     
     
-    func configure(_ item: FeedItem, handler: CardActionHandler) {
+    func configure(_ item: FeedCard, handler: CardActionHandler) {
         addGradient();
     }
     

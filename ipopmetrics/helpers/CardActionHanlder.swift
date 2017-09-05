@@ -11,10 +11,10 @@ import UIKit
 
 protocol CardActionHandler {
     
-    func  handleRequiredAction(_ sender : SimpleButton, item: FeedItem)
+    func  handleRequiredAction(_ sender : SimpleButton, item: FeedCard)
     
 }
 
 protocol CardInfoHandler {
-    func handleInfoAction( _ sender: SimpleButton, item: FeedItem)
+    func handleInfoAction( _ sender: SimpleButton, item: FeedCard)
 }

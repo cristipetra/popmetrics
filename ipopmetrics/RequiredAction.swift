@@ -24,7 +24,7 @@ class RequiredAction: UITableViewCell {
     @IBOutlet weak var connectionLineView: UIView!
     
     
-    var item: FeedItem?
+    var item: FeedCard?
     var actionHandler: CardActionHandler?
     var indexPath: IndexPath?
     var infoDelegate: InfoButtonDelegate?
@@ -47,7 +47,7 @@ class RequiredAction: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configure(_ item: FeedItem, handler: CardActionHandler) {
+    func configure(_ item: FeedCard, handler: CardActionHandler) {
         self.item = item
         self.actionHandler = handler
         

@@ -31,13 +31,13 @@ class RequiredActionViewCell: UITableViewCell {
     let transition = BubbleTransition()
   
   
-    var item: FeedItem?
+    var item: FeedCard?
     var actionHandler: CardActionHandler?
     var actionInfoHandler: CardInfoHandler?
     var indexPath: IndexPath?
     var delegate: InfoButtonDelegate?
  
-    func configure(_ item: FeedItem, handler: CardActionHandler) {
+    func configure(_ item: FeedCard, handler: CardActionHandler) {
         self.item = item
         self.actionHandler = handler
         

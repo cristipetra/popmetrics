@@ -17,9 +17,16 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     fileprivate var sharingInProgress = false
     
-    fileprivate var sections: [FeedSection] = []
+    let sectionToIndex = ["Recommended Actions": 0,
+                           "Insights": 1]
+    
+    let indexToSection = [0:"Recommended Actions",
+                          1:"Insights"]
+        
+    
     
     var requiredActionHandler = RequiredActionHandler()
+    let store = FeedStore.getInstance()
     
     var shouldDisplayCell = true
     var isInfoCellType = false;
@@ -73,16 +80,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         loadingView.tintColor = PopmetricsColor.darkGrey
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             self?.fetchItems(silent:false)
-            self?.sections = FeedStore.getInstance().getFeed()
             self?.tableView.dg_stopLoading()
             self?.tableView.reloadData()
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
         tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
-        
-        // fetchItems(silent: false)
-        self.sections = FeedStore.getInstance().getFeed()
-        
         
         setupTopHeaderView()
         
@@ -109,35 +111,23 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     func fetchItems(silent:Bool) {
 //        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
 //        let jsonData : NSData = NSData(contentsOfFile: path!)!
-        FeedApi().getItems(currentBrandId) { responseDict, error in
+        FeedApi().getItems(currentBrandId) { responseWrapper, error in
             
             if error != nil {
                 let message = "An error has occurred. Please try again later."
                 self.presentAlertWithTitle("Error", message: message)
                 return
             }
-            if let code = responseDict?["code"] as? String {
-                if "success" != code {
-                    let message = responseDict?["message"] as! String
-                    self.presentAlertWithTitle("Error", message: message)
+            if "success" != responseWrapper?.code {
+                    self.presentAlertWithTitle("Error", message: (responseWrapper?.message)!)
                     return
-                }
             }
             else {
                 self.presentAlertWithTitle("Error", message: "An unexpected error has occured. Please try again later")
                 return
             }
-            let dict = responseDict?["data"]
-            let code = responseDict?["code"] as! String
-            let feedStore = FeedStore.getInstance()
-            if "success" == code {
-                if dict != nil {
-                    feedStore.storeFeed(dict as! [String : Any])
-                    }
-            }
-            
+            self.store.updateFeed((responseWrapper?.data)!)
         }
-        
         
     }
     
@@ -192,12 +182,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.sections.count
+        return self.store.getFeedCards().count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return sections[section].items.count
+        return store.getFeedCardsWithSection(indexToSection[section]!).count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -205,8 +194,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
         
-        let section = sections[sectionIdx]
-        let item = section.items[rowIdx]
+        
+        let sectionCards = store.getFeedCardsWithSection(indexToSection[sectionIdx]!)
+        let item = sectionCards[rowIdx]
         
         isToDoCellType = false
         isInfoCellType = false
@@ -222,7 +212,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.footerView.xButton.isHidden = true
                 cell.configure(item, handler: self.requiredActionHandler)
                 cell.infoDelegate = self
-                if((sections[sectionIdx].items.count-1) == indexPath.row) {
+                if(sectionCards.count-1 == indexPath.row) {
                     cell.connectionLineView.isHidden = true;
                 }
                 return cell
@@ -231,7 +221,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 isTrafficCard = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedId", for: indexPath) as! RecommendedCell
                 cell.setUpCell(type: "Popmetrics Insight")
-                if((sections[sectionIdx].items.count-1) == indexPath.row) {
+                if(sectionCards.count-1 == indexPath.row) {
                     cell.connectionLine.isHidden = true;
                 }
                 cell.footerVIew.actionButton.addTarget(self, action: #selector(handlerInsightButton), for: .touchUpInside)
@@ -289,7 +279,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     var shouldDisplayHeaderCell = false
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        switch sections[section].items[0].type {
+        let sectionCards = store.getFeedCardsWithSection(indexToSection[section]!)
+        let item = sectionCards[0]
+        
+        
+        switch item.type {
         case "required_action" :
             shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
@@ -335,17 +329,22 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         print(shouldDisplayHeaderCell)
         var height: CGFloat = 0;
-        if( sections[section].items[0].type == "required_action") {
+        
+        let sectionCards = store.getFeedCardsWithSection(indexToSection[section]!)
+        let item = sectionCards[0]
+        
+        
+        if( item.type == "required_action") {
             height = (UsersStore.isTwitterConnected) ? 80 : 80
         }
         
-        if( sections[section].items[0].type == "todo") {
+        if( item.type == "todo") {
             height = 80;
         }
-        if( sections[section].items[0].type == "recommended") {
+        if( item.type == "recommended") {
             height = 80
         }
-        if (sections[section].items[0].type == "traffic") {
+        if (item.type == "traffic") {
             height = 80
         }
         
@@ -461,7 +460,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 let frameOfLastCell = tableView.rectForRow(at: lastRowInSection)
                 let cellFrame = tableView.rectForRow(at: indexPath)
                 if headerFrame.origin.y + 50 < tableView.contentOffset.y {
-                    topHeaderView.changeTitle(title: sections[index.section].name)
+                    topHeaderView.changeTitle(title: indexToSection[index.section]!)
                     animateHeader(colapse: false)
                 } else if frameOfLastCell.origin.y < tableView.contentOffset.y  {
                     animateHeader(colapse: false)

@@ -8,27 +8,44 @@
 
 import Foundation
 import RealmSwift
+import ObjectMapper
 
 
-class StatsSummaryItem: Object {
-    dynamic var value: Float = 0
-    dynamic var label: String = ""
-    dynamic var change: Float = 0
+class StatsSummaryItem: Object, Mappable {
+    
+    dynamic var feedCard: FeedCard? = nil
+    
+    dynamic var values: [Float] = []
+    dynamic var labels: [String] = []
+    dynamic var deltas: [Float] = []
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        values <- map["values"]
+        labels <- map["labels"]
+        deltas <- map["deltas"]
+    }
+    
 }
 
-class FeedItem: Object {
+class FeedCard: Object, Mappable {
     
-    dynamic var itemId: String? = nil
+    dynamic var id = 0
+    
+    dynamic var cardId: String? = nil
     
     dynamic var index = 0
     
     dynamic var type = ""
+    dynamic var section = ""
+    
     dynamic var headerTitle: String? = nil
     dynamic var headerSubtitle: String? = nil
     dynamic var headerIconUri:String? = nil
     dynamic var message:String? = nil
-    
-    let statsSummaryItems = List<StatsSummaryItem>()
     
     dynamic var actionHandler = ""
     dynamic var actionLabel = ""
@@ -36,15 +53,18 @@ class FeedItem: Object {
     
     dynamic var tooltipTitle: String? = nil
     dynamic var tooltipContent: String? = nil
-}
-
-class FeedSection: Object {
-
-    dynamic var name = ""
-    dynamic var index = 0
     
-    let items = List<FeedItem>()
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        cardId <- map["cardId"]
+    }
+    
     
 }
-
-

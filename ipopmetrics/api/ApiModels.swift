@@ -94,7 +94,35 @@ class UserAccount: Mappable {
         phone       <- map["phone"]
         profileDetails <- map["profile_details"]
     }
+}
+
+class FeedResponse: Mappable {
     
+    var cards: [FeedCard]?
+    var statsSummaryItem: StatsSummaryItem?
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map:Map) {
+        cards               <- map["cards"]
+        statsSummaryItem    <- map["stats_summary_item"]
+    }
+    
+    func matchCard(_ cardId:String) -> (Bool, FeedCard?) {
+        if self.cards == nil {
+            return (false, nil)
+        }
+        if let i = self.cards?.index(where: {$0.cardId == cardId}) {
+            return (true, self.cards![i])
+        }
+        else {
+            return (false, nil)
+        }
+        
+    }
     
 }
+
+
 

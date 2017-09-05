@@ -26,7 +26,7 @@ class DailyInsightsCardCell: UITableViewCell {
     }()
     
     
-    func configure(_ item: FeedItem, handler: CardActionHandler) {
+    func configure(_ item: FeedCard, handler: CardActionHandler) {
         setupView()
     }
     
