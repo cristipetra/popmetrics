@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 class TodoStore {
     
@@ -14,6 +15,54 @@ class TodoStore {
         return TodoStore()
     }
     
+    public let realm = try! Realm()
+    
+    
+    public func getTodoCards() -> Results<TodoCard> {
+        return realm.objects(TodoCard.self).sorted(byKeyPath: "index")
+    }
+    
+    public func getTodoCardsWithSection(_ section: String) -> Results<TodoCard> {
+        let predicate = NSPredicate(format: "section = %@", section)
+        return realm.objects(TodoCard.self).filter(predicate)
+    }
+    
+    public func countSections() -> Int {
+        let distinctTypes = Array(Set(self.getTodoCards().value(forKey: "section") as! [String]))
+        return distinctTypes.count
+    }
+    
+    public func updateTodos(_ feedResponse: FeedResponse) {
+        
+        let realm = try! Realm()
+        let cards = realm.objects(TodoCard.self).sorted(byKeyPath: "index")
+        
+        var cardsToDelete: [TodoCard] = []
+        try! realm.write {
+            for existingCard in cards {
+                let (exists, newCard) = feedResponse.matchCard(existingCard.cardId!)
+                if !exists {
+                    cardsToDelete.append(existingCard)
+                }
+                else {
+                    newCard?.cardId = existingCard.cardId!
+                    realm.add(newCard!, update:true)
+                }
+                
+            }
+            
+            for card in cardsToDelete {
+                
+                //TODO delete all related items first
+                realm.delete(card)
+            }
+        }//try
+        
+    }
+    
+    
+    
+    // TODO TO BE DELETED
     var sections:[TodoSection] = []
     
     public func getFeed() -> [TodoSection] {

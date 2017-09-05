@@ -15,6 +15,8 @@ class ToDoViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var toDoTopView: TodoTopView!
     
+    let store = TodoStore.getInstance()
+    
     fileprivate var sections: [TodoSection] = []
     var approveIndex = 3
     
@@ -33,6 +35,8 @@ class ToDoViewController: BaseViewController {
         
         self.toDoTopView.setActive(section: .unapproved)
         NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
+        
+        createItemsLocally()
         
 //        if (UsersStore.isTwitterConnected) {
         fetchItemsLocally()
@@ -154,7 +158,45 @@ class ToDoViewController: BaseViewController {
     }
 
     
-    
+    internal func createItemsLocally() {
+        
+        try! store.realm.write {
+
+            let todoCard = TodoCard()
+            todoCard.cardId = "1234"
+            store.realm.add(todoCard)
+        
+            let post1 = TodoSocialPost()
+            post1.todoCard = todoCard
+            post1.postId = "098tq098gr"
+            post1.status = "unaproved"
+            post1.articleTitle = "Optimizing Your Website"
+            post1.statusDate = Date()
+            post1.articleImage = "image_optimize"
+            post1.articleText = "Why is SEO such a challenging yet integral part of a building a successful website?"
+            post1.type = "twitter_article"
+            post1.articleUrl = "alchm.my/agga"
+            post1.articleCategory = "Local News"
+            store.realm.add(post1)
+            
+            let post2 = TodoSocialPost()
+            post2.todoCard = todoCard
+            post2.postId = "fspodighjpsdfoi"
+            
+            post2.status = "unaproved"
+            post2.articleTitle = "Optimizing Your Website 2"
+            post2.statusDate = Date()
+            post2.articleImage = "image_optimize"
+            post2.articleText = "Why is SEO such a challenging yet integral part of a building a successful website? (2)"
+            post2.type = "twitter_article"
+            post2.articleUrl = "alchm.my/agga"
+            post2.articleCategory = "Local News"
+            store.realm.add(post2)
+            
+        }
+
+        
+    }
     
     
     internal func fetchItemsLocally() {

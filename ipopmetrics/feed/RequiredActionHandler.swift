@@ -21,7 +21,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     
     func  handleRequiredAction(_ sender : SimpleButton, item: FeedCard) {
     
-        switch(item.actionHandler) {
+        switch(item.type) {
             case "connect_google_analytics":
                 connectGoogleAnalytics(sender, item:item)
             
@@ -29,7 +29,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                 connectTwitter(sender, item:item)
             
             default:
-                print("Unexpected handler "+item.actionHandler)
+                print("Unexpected name "+item.type)
         
         }//switch
     }

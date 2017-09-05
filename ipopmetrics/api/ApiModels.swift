@@ -124,5 +124,33 @@ class FeedResponse: Mappable {
     
 }
 
+class TodoResponse: Mappable {
+    
+    var cards: [TodoCard]?
+    var socialPosts: TodoSocialPost?
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map:Map) {
+        cards               <- map["cards"]
+        socialPosts         <- map["social_posts"]
+    }
+    
+    func matchCard(_ cardId:String) -> (Bool, TodoCard?) {
+        if self.cards == nil {
+            return (false, nil)
+        }
+        if let i = self.cards?.index(where: {$0.cardId == cardId}) {
+            return (true, self.cards![i])
+        }
+        else {
+            return (false, nil)
+        }
+        
+    }
+    
+}
+
 
 

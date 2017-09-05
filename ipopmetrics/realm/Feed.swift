@@ -47,7 +47,6 @@ class FeedCard: Object, Mappable {
     dynamic var headerIconUri:String? = nil
     dynamic var message:String? = nil
     
-    dynamic var actionHandler = ""
     dynamic var actionLabel = ""
     dynamic var imageUri:String? = nil
     
@@ -63,7 +62,17 @@ class FeedCard: Object, Mappable {
     }
     
     func mapping(map: Map) {
-        cardId <- map["cardId"]
+        cardId          <- map["id"]
+        index           <- map["index"]
+        type            <- map["type"]
+        headerTitle     <- map["header_title"]
+        headerSubtitle  <- map["header_subtitle"]
+        headerIconUri   <- map["header_icon"]
+        message         <- map["message"]
+        //actionLabel     <- map["action_label"]
+        tooltipTitle    <- map["tooltip_title"]
+        tooltipContent  <- map["tooltip_conent"]
+        
     }
     
     

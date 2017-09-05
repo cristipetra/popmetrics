@@ -8,9 +8,10 @@
 
 import Foundation
 import RealmSwift
+import ObjectMapper
 
 
-class TodoCard:  Object {
+class TodoCard:  Object, Mappable {
 
     dynamic var cardId: String? = nil
     dynamic var index = 0
@@ -22,16 +23,39 @@ class TodoCard:  Object {
     dynamic var headerIconUri:String? = nil
     dynamic var message:String? = nil
     
-    dynamic var actionHandler = ""
     dynamic var actionLabel = ""
     dynamic var imageUri:String? = nil
     dynamic var tooltipTitle: String? = nil
     dynamic var tooltipContent: String? = nil
     
+    override static func primaryKey() -> String? {
+        return "cardId"
+    }
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        cardId          <- map["id"]
+        index           <- map["index"]
+        type            <- map["type"]
+        headerTitle     <- map["header_title"]
+        headerSubtitle  <- map["header_subtitle"]
+        headerIconUri   <- map["header_icon"]
+        message         <- map["message"]
+        //actionLabel     <- map["action_label"]
+        tooltipTitle    <- map["tooltip_title"]
+        tooltipContent  <- map["tooltip_conent"]
+        
+    }
+
+    
 }
 
-class TodoSocialPost: Object {
+class TodoSocialPost: Object, Mappable {
     
+    dynamic var postId:  String? = nil
     dynamic var todoCard: TodoCard? = nil
     dynamic var index = 0
     dynamic var isApproved = false
@@ -45,13 +69,39 @@ class TodoSocialPost: Object {
     
     dynamic var articleText = ""
     dynamic var articleUrl = ""
-    var articleHastags: [Any?] = []
+    dynamic var articleHashtags = ""
     dynamic var articleImage:String? = nil
+    
+    
+    override static func primaryKey() -> String? {
+        return "postId"
+    }
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        postId          <- map["id"]
+        index           <- map["index"]
+        type            <- map["type"]
+        status          <- map["status"]
+        articleCategory <- map["article_category"]
+        articleTitle    <- map["article_title"]
+        articleText     <- map["article_text"]
+        articleUrl      <- map["article_url"]
+        articleHashtags <- map["article_hashtags"]
+        articleImage    <- map["article_image"]
+        
+    }
+    
     
     
 }
 
 
+
+// TO BE DELETED
 class TodoItem: CalendarItem {
     dynamic var isApproved = false
 }
