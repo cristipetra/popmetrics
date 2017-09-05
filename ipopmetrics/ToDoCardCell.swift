@@ -38,13 +38,21 @@ class ToDoCardCell: UITableViewCell {
         
     }()
     
-    var todoItem: TodoItem!;
+    var todoItem: TodoSocialPost!;
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.feedBackgroundColor()
         //setUpApprovedView()
         setupCorners()
+    }
+    
+    func configure(item: TodoSocialPost) {
+        todoItem = item
+        titleLbl.text = todoItem.articleTitle
+        messageLbl.text = todoItem.articleText
+        
+        setUpApprovedView(approved: item.isApproved)
     }
     
     func setupCorners() {
@@ -92,11 +100,6 @@ class ToDoCardCell: UITableViewCell {
         
         approvedButton.rightImageView.image = nil
         approvedButton.layer.cornerRadius = 6
-    }
-    
-    func configure(item: TodoItem) {
-        todoItem = item
-        setUpApprovedView(approved: item.isApproved)
     }
     
     func removeApprovedView() {

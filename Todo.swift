@@ -98,6 +98,90 @@ class TodoSocialPost: Object, Mappable {
     }
     
     
+    //TODO: check if can find another please to add these helpers
+    var socialIcon: String {
+        get {
+            switch type {
+            case TypeArticle.twitter.rawValue:
+                return "icon_twitter"
+            case TypeArticle.linkedin.rawValue:
+                return "icon_google"
+            default:
+                return "icon_twitter"
+            }
+            
+        }
+    }
+    
+    var socialPost: String {
+        get {
+            switch type {
+            case TypeArticle.twitter.rawValue:
+                return "Twitter Post"
+            case TypeArticle.linkedin.rawValue:
+                return "Linkedin Post"
+            default:
+                return ""
+            }
+        }
+    }
+    
+    var socialTextString: String {
+        get {
+            switch status! {
+            case StatusArticle.scheduled.rawValue:
+                return "Scheduled"
+            case StatusArticle.failed.rawValue:
+                return "Failed"
+            case StatusArticle.executed.rawValue:
+                return "Completed"
+            case StatusArticle.unapproved.rawValue:
+                return "Unapproved"
+            default:
+                return ""
+            }
+        }
+    }
+    
+    var socialTextStringColor: UIColor {
+        get {
+            switch status! {
+            case StatusArticle.scheduled.rawValue:
+                return PopmetricsColor.blueMedium
+            case StatusArticle.failed.rawValue:
+                return PopmetricsColor.salmondColor
+            case StatusArticle.executed.rawValue:
+                return PopmetricsColor.greenSelectedDate
+            default:
+                return PopmetricsColor.blueMedium
+            }
+        }
+    }
+    
+    var getSectionColor: UIColor {
+        get {
+            switch status! {
+            case StatusArticle.scheduled.rawValue:
+                return UIColor.darkGray
+            case StatusArticle.failed.rawValue:
+                return PopmetricsColor.salmondColor
+            case StatusArticle.executed.rawValue:
+                return PopmetricsColor.greenSelectedDate
+            case StatusArticle.unapproved.rawValue:
+                return PopmetricsColor.yellowUnapproved
+            default:
+                return UIColor.white
+            }
+        }
+    }
+    
+    var socialURLColor: UIColor {
+        get {
+            return PopmetricsColor.blueURLColor
+        }
+    }
+    
+    
     
 }
 
