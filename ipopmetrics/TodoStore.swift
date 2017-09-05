@@ -30,6 +30,10 @@ class TodoStore {
         
     }
     
+    public func storeTodo(_ item:[String:Any]) {
+        
+    }
+    
     internal func existSection(_ item: TodoItem) -> Bool {
         for section in sections{
             if(section.status ==  item.status) {

@@ -10,7 +10,7 @@ import UIKit
 import EZAlertController
 import SwiftyJSON
 
-class ToDoViewController: UIViewController {
+class ToDoViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var toDoTopView: TodoTopView!
@@ -20,6 +20,7 @@ class ToDoViewController: UIViewController {
     
     internal var shouldMaximize = false
     var isAllApproved : Bool = false
+    var currentBrandId = UsersStore.currentBrandId
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +34,9 @@ class ToDoViewController: UIViewController {
         self.toDoTopView.setActive(section: .unapproved)
         NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
         
-        if (UsersStore.isTwitterConnected) {
-            fetchItemsLocally()
-        }
+//        if (UsersStore.isTwitterConnected) {
+        fetchItemsLocally()
+//        }
         
     }
     
@@ -117,6 +118,44 @@ class ToDoViewController: UIViewController {
         modalViewController.modalTransition.radiusFactor = 0.3
         self.present(modalViewController, animated: true, completion: nil)
     }
+    
+    func fetchItems(silent:Bool) {
+        //        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
+        //        let jsonData : NSData = NSData(contentsOfFile: path!)!
+        TodoApi().getItems(currentBrandId) { responseDict, error in
+            
+            if error != nil {
+                let message = "An error has occurred. Please try again later."
+                self.presentAlertWithTitle("Error", message: message)
+                return
+            }
+            if let code = responseDict?["code"] as? String {
+                if "success" != code {
+                    let message = responseDict?["message"] as! String
+                    self.presentAlertWithTitle("Error", message: message)
+                    return
+                }
+            }
+            else {
+                self.presentAlertWithTitle("Error", message: "An unexpected error has occured. Please try again later")
+                return
+            }
+            let dict = responseDict?["data"]
+            let code = responseDict?["code"] as! String
+            if "success" == code {
+                if dict != nil {
+                    TodoStore().storeTodo(dict as! [String : Any])
+                }
+            }
+            
+        }
+        
+        
+    }
+
+    
+    
+    
     
     internal func fetchItemsLocally() {
         let path = Bundle.main.path(forResource: "sampleFeedTodo", ofType: "json")

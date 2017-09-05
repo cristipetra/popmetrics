@@ -81,9 +81,9 @@ class CalendarViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
         
-        if (UsersStore.isTwitterConnected) {
+//        if (UsersStore.isTwitterConnected) {
             fetchItemsLocally(silent: false)
-        }
+//        }
     }
     
     func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
