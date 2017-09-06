@@ -424,13 +424,17 @@ extension ToDoViewController:  TodoCardActionHandler {
         
         switch (todoCard.type) {
         case "articles_posting":
-            if action == "approve_one" {
+            if action == "approve_one" || action == "deny_one" {
                 var approvedPost: TodoSocialPost
                 approvedPost = params["social_post"] as! TodoSocialPost
                     try! store.realm.write {
-                        approvedPost.status = "approved"
+                        if action == "approve_one" {
+                            approvedPost.status = "approved"
+                        }
+                        else {
+                            approvedPost.status = "denied"
+                        }
                     }
-                    
             }
         
         default:
