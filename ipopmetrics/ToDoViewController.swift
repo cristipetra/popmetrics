@@ -10,6 +10,11 @@ import UIKit
 import EZAlertController
 import SwiftyJSON
 
+import MGSwipeTableCell
+import DGElasticPullToRefresh
+import BubbleTransition
+import EZAlertController
+
 class ToDoViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -39,13 +44,17 @@ class ToDoViewController: BaseViewController {
         self.toDoTopView.setActive(section: .unapproved)
         NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
         
-        createItemsLocally()
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         
-
-        //fetchItemsLocally()
-
+        loadingView.tintColor = PopmetricsColor.darkGrey
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            self?.fetchItems(silent:false)
+            self?.tableView.dg_stopLoading()
+            self?.tableView.reloadData()
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
+        tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
         
-        print(store.getTodoCards())
         
     }
     
@@ -131,30 +140,20 @@ class ToDoViewController: BaseViewController {
     func fetchItems(silent:Bool) {
         //        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
         //        let jsonData : NSData = NSData(contentsOfFile: path!)!
-        TodoApi().getItems(currentBrandId) { responseDict, error in
+        TodoApi().getItems(currentBrandId) { responseWrapper, error in
             
             if error != nil {
                 let message = "An error has occurred. Please try again later."
                 self.presentAlertWithTitle("Error", message: message)
                 return
             }
-            if let code = responseDict?["code"] as? String {
-                if "success" != code {
-                    let message = responseDict?["message"] as! String
-                    self.presentAlertWithTitle("Error", message: message)
-                    return
-                }
-            }
-            else {
-                self.presentAlertWithTitle("Error", message: "An unexpected error has occured. Please try again later")
+            if "success" != responseWrapper?.code {
+                self.presentAlertWithTitle("Error", message: (responseWrapper?.message)!)
                 return
             }
-            let dict = responseDict?["data"]
-            let code = responseDict?["code"] as! String
-            if "success" == code {
-                if dict != nil {
-                    TodoStore().storeTodo(dict as! [String : Any])
-                }
+            else {
+                self.store.updateTodos((responseWrapper?.data)!)
+                self.tableView.reloadData()
             }
             
         }
@@ -263,7 +262,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
         if shouldMaximize {
             let cell = tableView.dequeueReusableCell(withIdentifier: "maxCellId", for: indexPath) as! CalendarCardMaximizedViewCell
-            //cell.configure(item)
+            cell.configure(item)
             cell.articleDate.isHidden = true
             cell.setUpMaximizeToDo()
             cell.approveDenyDelegate = self

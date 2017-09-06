@@ -40,6 +40,7 @@ class TodoCard:  Object, Mappable {
         cardId          <- map["id"]
         index           <- map["index"]
         type            <- map["type"]
+        section         <- map["section"]
         headerTitle     <- map["header_title"]
         headerSubtitle  <- map["header_subtitle"]
         headerIconUri   <- map["header_icon"]
@@ -56,12 +57,13 @@ class TodoCard:  Object, Mappable {
 class TodoSocialPost: Object, Mappable {
     
     dynamic var postId:  String? = nil
+    
+    dynamic var todoCardId: String? = nil
     dynamic var todoCard: TodoCard? = nil
     dynamic var index = 0
     dynamic var isApproved = false
     
     dynamic var type = ""
-    dynamic var section = ""
     dynamic var status: String? = nil
     dynamic var statusDate: Date? = nil
     
@@ -83,10 +85,11 @@ class TodoSocialPost: Object, Mappable {
     }
     
     func mapping(map: Map) {
+        
+        todoCardId      <- map["todo_card_id"]
         postId          <- map["id"]
         index           <- map["index"]
         type            <- map["type"]
-        section         <- map["section"]
         status          <- map["status"]
         articleCategory <- map["article_category"]
         articleTitle    <- map["article_title"]
