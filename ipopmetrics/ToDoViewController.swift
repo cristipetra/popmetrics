@@ -79,7 +79,7 @@ class ToDoViewController: BaseViewController {
         let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
         tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
         
-        let maximizedCell = UINib(nibName: "CalendarCardMaximized", bundle: nil)
+        let maximizedCell = UINib(nibName: "TodoCardMaximized", bundle: nil)
         tableView.register(maximizedCell, forCellReuseIdentifier: "maxCellId")
     }
     
@@ -236,13 +236,14 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         }
         
         if shouldMaximize {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "maxCellId", for: indexPath) as! CalendarCardMaximizedViewCell
-            //cell.configure(item)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "maxCellId", for: indexPath) as! TodoCardMaximizedViewCell
+            cell.configure(item)
             cell.articleDate.isHidden = true
             cell.setUpMaximizeToDo()
             cell.approveDenyDelegate = self
             cell.postIndex = indexPath.row
             cell.setUpApprovedConnectionView()
+            
             /*
             if sections[indexPath.section].items.endIndex - 1 == indexPath.row {
                 cell.connectionStackView.isHidden = true
