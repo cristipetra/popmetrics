@@ -54,6 +54,8 @@
 		08AA6C6D1F56E9D70022DE91 /* TrafficStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AA6C6C1F56E9D70022DE91 /* TrafficStatusView.xib */; };
 		08AA6C6F1F56F3BA0022DE91 /* ChartStatistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */; };
 		08AA6C731F56F8630022DE91 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C721F56F8630022DE91 /* ChartViewController.swift */; };
+		08AD60D81F5FF5E0007095B9 /* TodoCardMaximized.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AD60D71F5FF5E0007095B9 /* TodoCardMaximized.xib */; };
+		08AD60DA1F5FF63D007095B9 /* TodoCardMaximizedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AD60D91F5FF63D007095B9 /* TodoCardMaximizedViewCell.swift */; };
 		08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */; };
 		08ADA30B1F42D3FA00060ECD /* sampleFeedTodo.json in Resources */ = {isa = PBXBuildFile; fileRef = 08ADA30A1F42D3FA00060ECD /* sampleFeedTodo.json */; };
 		08AF04981F46FB9B0040012B /* ToDoCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AF04971F46FB9B0040012B /* ToDoCardCell.xib */; };
@@ -245,6 +247,8 @@
 		08AA6C6C1F56E9D70022DE91 /* TrafficStatusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrafficStatusView.xib; sourceTree = "<group>"; };
 		08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChartStatistics.storyboard; sourceTree = "<group>"; };
 		08AA6C721F56F8630022DE91 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		08AD60D71F5FF5E0007095B9 /* TodoCardMaximized.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodoCardMaximized.xib; sourceTree = "<group>"; };
+		08AD60D91F5FF63D007095B9 /* TodoCardMaximizedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoCardMaximizedViewCell.swift; sourceTree = "<group>"; };
 		08ADA30A1F42D3FA00060ECD /* sampleFeedTodo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFeedTodo.json; sourceTree = "<group>"; };
 		08AF04971F46FB9B0040012B /* ToDoCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoCardCell.xib; sourceTree = "<group>"; };
 		08AF04991F46FBB60040012B /* ToDoCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCardCell.swift; sourceTree = "<group>"; };
@@ -566,6 +570,8 @@
 				08953E6A1F4C269E003ABEFC /* ToDoCell.xib */,
 				08953E6C1F4C275C003ABEFC /* ToDoCell.swift */,
 				08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */,
+				08AD60D71F5FF5E0007095B9 /* TodoCardMaximized.xib */,
+				08AD60D91F5FF63D007095B9 /* TodoCardMaximizedViewCell.swift */,
 			);
 			name = todo;
 			sourceTree = "<group>";
@@ -987,6 +993,7 @@
 				D9EC7E371ECF0D7E00A54B53 /* ActionCard.xib in Resources */,
 				08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */,
 				08F7A09B1F17AC2700A1B2C3 /* RecommendationCard.xib in Resources */,
+				08AD60D81F5FF5E0007095B9 /* TodoCardMaximized.xib in Resources */,
 				0852826C1F287DD70065A968 /* CalendarHeader.xib in Resources */,
 				08B745961F1F6C1D00EC3F8C /* OpenSans-Regular.ttf in Resources */,
 				1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */,
@@ -1245,6 +1252,7 @@
 				116540BF1EEAC61E00417D61 /* AppStoryboard.swift in Sources */,
 				0888C5BE1F4EECEC00E3DB04 /* RoundedCornersButton.swift in Sources */,
 				110A62F31ECEE6FB0052B478 /* TimeSeparatorPresenter.swift in Sources */,
+				08AD60DA1F5FF63D007095B9 /* TodoCardMaximizedViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
