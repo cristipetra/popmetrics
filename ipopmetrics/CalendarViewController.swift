@@ -228,7 +228,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             tableView.allowsSelection = false
             maxCell.topImageButton.isHidden = true
             maxCell.setUpApprovedConnectionView()
-            maxCell.configure(item)
+            maxCell.configureForCalendar(item)
             if indexPath.row == (sections[indexPath.section].items.count - 1) {
                 maxCell.connectionStackView.isHidden = true
                 maxCell.isLastCell = true

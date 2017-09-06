@@ -10,6 +10,11 @@ import UIKit
 import EZAlertController
 import SwiftyJSON
 
+import MGSwipeTableCell
+import DGElasticPullToRefresh
+import BubbleTransition
+import EZAlertController
+
 class ToDoViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -39,13 +44,17 @@ class ToDoViewController: BaseViewController {
         self.toDoTopView.setActive(section: .unapproved)
         NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
         
-        createItemsLocally()
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         
-
-        //fetchItemsLocally()
-
+        loadingView.tintColor = PopmetricsColor.darkGrey
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            self?.fetchItems(silent:false)
+            self?.tableView.dg_stopLoading()
+            self?.tableView.reloadData()
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
+        tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
         
-        print(store.getTodoCards())
         
     }
     
@@ -253,7 +262,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
         if shouldMaximize {
             let cell = tableView.dequeueReusableCell(withIdentifier: "maxCellId", for: indexPath) as! CalendarCardMaximizedViewCell
-            //cell.configure(item)
+            cell.configure(item)
             cell.articleDate.isHidden = true
             cell.setUpMaximizeToDo()
             cell.approveDenyDelegate = self
