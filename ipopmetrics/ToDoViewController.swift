@@ -477,6 +477,8 @@ extension ToDoViewController:  TodoCardActionHandler {
                 approvedPost = params["social_post"] as! TodoSocialPost
                     try! store.realm.write {
                         approvedPost.status = "approved"
+                        self.shouldMaximize = false
+                        self.tableView.reloadData()
                     }
                     
             }

@@ -31,6 +31,7 @@ class CalendarViewController: UIViewController {
     
     let store = CalendarFeedStore.getInstance()
     
+    var scrollToRow: IndexPath = IndexPath(row: 0, section: 0)
     var reachedFooter = false
     var shouldMaximizeCell = false
     
