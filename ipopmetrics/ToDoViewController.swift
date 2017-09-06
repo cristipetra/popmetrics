@@ -476,6 +476,18 @@ extension ToDoViewController:  TodoCardActionHandler {
                             approvedPost.status = "denied"
                         }
                     }
+                let apiParams = ["action":action,
+                                 "todo_social_post_id":approvedPost.postId]
+                TodoApi().postAction(todoCard.cardId!, params:apiParams) { result, error in
+                    if error != nil {
+                        self.presentAlertWithTitle("Communication error", message: "An error occurred while communicating with the Cloud")
+                        return
+                    }
+                    else {
+                        print("action occurred")
+                    }
+                    
+                }
             }
         
         default:
