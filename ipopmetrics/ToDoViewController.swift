@@ -30,6 +30,8 @@ class ToDoViewController: BaseViewController {
                           1: "Insights"]
     
     internal var shouldMaximize = false
+    var scrollToRow: IndexPath = IndexPath(row: 0, section: 0)
+    
     var isAllApproved : Bool = false
     var currentBrandId = UsersStore.currentBrandId
 
@@ -238,7 +240,6 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
             return cell
         }
-        
         if shouldMaximize {
             let cell = tableView.dequeueReusableCell(withIdentifier: "maxCellId", for: indexPath) as! TodoCardMaximizedViewCell
             cell.configure(item)
@@ -363,8 +364,13 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         shouldMaximize = !shouldMaximize
+        scrollToRow = indexPath
+        DispatchQueue.main.async {
+            self.tableView.scrollToRow(at: self.scrollToRow, at: .none, animated: false)
+        }
         tableView.reloadData()
     }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //height for last card
@@ -372,6 +378,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         if indexPath.section == store.getTodoCards().endIndex - 1 {
             return 261
         }*/
+        
         if shouldMaximize {
             return 459
         }

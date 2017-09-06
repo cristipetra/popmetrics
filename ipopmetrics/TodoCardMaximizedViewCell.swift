@@ -42,7 +42,6 @@ class TodoCardMaximizedViewCell: UITableViewCell {
     var isLastCell = false
     
     lazy var denyButton : UIButton = {
-        
         let button = UIButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setBackgroundImage(UIImage(named: "icon_deny"), for: .normal)
@@ -51,7 +50,6 @@ class TodoCardMaximizedViewCell: UITableViewCell {
     }()
     
     lazy var approveButton : UIButton = {
-        
         let button = UIButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setBackgroundImage(UIImage(named: "icon_quepost"), for: .normal)
@@ -59,16 +57,13 @@ class TodoCardMaximizedViewCell: UITableViewCell {
     }()
     
     lazy var approvedView : UIView = {
-        
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = PopmetricsColor.darkGrey.withAlphaComponent(0.8)
         return view
-        
     }()
     
     lazy var approvedButton : TwoImagesButton = {
-        
         let button = TwoImagesButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(red: 54/255, green: 172/255, blue: 130/255, alpha: 1)
@@ -77,7 +72,6 @@ class TodoCardMaximizedViewCell: UITableViewCell {
     }()
     
     lazy var approvedConnectionView : UIView = {
-        
         let view = UIView()
         view.backgroundColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
