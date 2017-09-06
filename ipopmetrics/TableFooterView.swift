@@ -13,8 +13,9 @@ protocol FooterButtonHandlerProtocol: class {
     func approvalButtonPressed(section: Int)
     func closeButtonPressed()
     func informationButtonPressed()
-    func loadMorePressed()
+    func loadMorePressed(section: Int)
 }
+
 
 class TableFooterView: UITableViewHeaderFooterView {
     
@@ -260,7 +261,8 @@ class TableFooterView: UITableViewHeaderFooterView {
     
     func loadMoreHandler() {
         animateButtonBlink(button: loadMoreBtn)
-        buttonHandlerDelegate?.loadMorePressed()
+        buttonHandlerDelegate?.loadMorePressed(section: section)
+
     }
     
     func setupActionButton() {
