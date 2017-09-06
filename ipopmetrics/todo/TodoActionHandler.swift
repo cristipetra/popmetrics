@@ -8,17 +8,8 @@
 
 import Foundation
 
-//func  handleRequiredAction(_ sender : SimpleButton, item: FeedCard) {
-//    
-//    switch(item.actionHandler) {
-//    case "connect_google_analytics":
-//        connectGoogleAnalytics(sender, item:item)
-//        
-//    case "brand_not_connected_with_twitter":
-//        connectTwitter(sender, item:item)
-//        
-//    default:
-//        print("Unexpected name "+item.type)
-//        
-//    }//switch
-//}
+protocol TodoCardActionHandler: class {
+    
+    func handleCardAction(_ action:String, todoCard: TodoCard, params:[String:Any])
+
+}

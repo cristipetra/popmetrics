@@ -33,7 +33,7 @@ class TodoCardMaximizedViewCell: UITableViewCell {
     
     
     var postIndex = 0
-    weak var approveDenyDelegate : ApproveDenySinglePostProtocol?
+    var approveDenyDelegate : TodoCardActionHandler?
     var toDoStackView : UIStackView!
     
     lazy var denyButton : UIButton = {
@@ -168,7 +168,8 @@ class TodoCardMaximizedViewCell: UITableViewCell {
     }
     
     func approvePostHandler() {
-        approveDenyDelegate?.approveSinglePostHandler(index: postIndex)
+        approveDenyDelegate?.handleCardAction("approve_one", todoCard: self.todoItem.todoCard!,
+                                             params:["social_post":self.todoItem])
     }
     
     func setUpApprovedView(approved: Bool) {

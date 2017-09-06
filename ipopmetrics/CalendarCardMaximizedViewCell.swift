@@ -10,7 +10,10 @@ import UIKit
 import ActiveLabel
 
 protocol ApproveDenySinglePostProtocol: class {
+
     func approveSinglePostHandler(index: Int)
+
+
 }
 
 class CalendarCardMaximizedViewCell: UITableViewCell {
