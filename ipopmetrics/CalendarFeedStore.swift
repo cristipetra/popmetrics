@@ -27,8 +27,8 @@ class CalendarFeedStore {
         return realm.objects(CalendarCard.self).filter(predicate)
     }
     
-    public func getCalendarSocialPostsForCard(_ todoCard: CalendarCard) -> Results<CalendarSocialPost> {
-        let predicate = NSPredicate(format: "todoCard = %@", todoCard)
+    public func getCalendarSocialPostsForCard(_ calendarCard: CalendarCard) -> Results<CalendarSocialPost> {
+        let predicate = NSPredicate(format: "calendarCard = %@", calendarCard)
         return realm.objects(CalendarSocialPost.self).filter(predicate)
     }
     
@@ -65,49 +65,6 @@ class CalendarFeedStore {
             }
         }//try
         
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // TO BE DELETED
-    
-    
-    var sections:[CalendarSection] = []
-    
-    public func getFeed() -> [CalendarSection] {
-        return sections
-    }
-    
-    public func storeFeed(_ dict: [String:Any] ) {
-    
-    }
-    
-    public func storeItem(item: CalendarItem) {
-        if !existSection(item) {
-            var section: CalendarSection = CalendarSection()
-            section.status = item.status!
-            section.items.append(item)
-            sections.append(section)
-        }
-    
-    }
-    
-    internal func existSection(_ item: CalendarItem) -> Bool {
-        for section in sections{
-            if(section.status ==  item.status) {
-                print("fouund")
-                section.items.append(item)
-                return true
-            }
-        }
-        return false
     }
 
 }

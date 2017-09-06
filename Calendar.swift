@@ -100,28 +100,6 @@ class CalendarSocialPost: Object, Mappable {
         
     }
     
-    
-}
-
-
-// TO BE DELETED
-
-
-class CalendarItem: Object{
-    
-    dynamic var index = 0
-    
-    dynamic var type = ""
-    dynamic var status: String? = nil
-    dynamic var statusDate: Date? = nil
-    dynamic var articleCategory:String? = nil
-    dynamic var articleTitle:String? = nil
-    
-    dynamic var articleText = ""
-    dynamic var articleUrl = ""
-    var articleHastags: [Any?] = []
-    dynamic var articleImage:String? = nil
-    
     var socialIcon: String {
         get {
             switch type {
@@ -203,21 +181,10 @@ class CalendarItem: Object{
             return PopmetricsColor.blueURLColor
         }
     }
-
-}
-
-
-class CalendarSection: NSObject{
-
     
-    dynamic var name = ""
-    dynamic var status: String = "";
-    dynamic var index = 0
-    
-    //let items = List<CalendarItem>()
-    var items = [CalendarItem]()
     
 }
+
 
 enum TypeArticle: String {
     case twitter = "twitter_article"

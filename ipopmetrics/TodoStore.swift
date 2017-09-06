@@ -97,38 +97,4 @@ class TodoStore {
         
     }
     
-    
-    
-    // TODO TO BE DELETED
-    var sections:[TodoSection] = []
-    
-    public func getFeed() -> [TodoSection] {
-        return sections
-    }
-    
-    public func storeItem(item: TodoItem) {
-        if !existSection(item) {
-            var section: TodoSection = TodoSection()
-            section.status = item.status!
-            section.items.append(item)
-            sections.append(section)
-        }
-        
-    }
-    
-    public func storeTodo(_ item:[String:Any]) {
-        
-    }
-    
-    internal func existSection(_ item: TodoItem) -> Bool {
-        for section in sections{
-            if(section.status ==  item.status) {
-                print("fouund")
-                section.items.append(item)
-                return true
-            }
-        }
-        return false
-    }
-    
 }

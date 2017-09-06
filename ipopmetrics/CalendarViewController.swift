@@ -10,6 +10,7 @@ import UIKit
 import EZAlertController
 import SwiftyJSON
 import MJCalendar
+import RealmSwift
 
 class CalendarViewController: UIViewController {
     
@@ -28,7 +29,8 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var topPickerStackViewHeight: NSLayoutConstraint!
     
-    fileprivate var sections: [CalendarSection] = []
+    let store = CalendarFeedStore.getInstance()
+    
     var reachedFooter = false
     var shouldMaximizeCell = false
     
@@ -81,13 +83,95 @@ class CalendarViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
         
-//        if (UsersStore.isTwitterConnected) {
-            fetchItemsLocally(silent: false)
-//        }
+
+        createItemsLocally()
+
     }
     
+    internal func createItemsLocally() {
+        
+        try! store.realm.write {
+            let calendarCard = CalendarCard()
+            calendarCard.cardId = "41345"
+            calendarCard.section = "scheduled"
+            store.realm.add(calendarCard, update: true)
+            
+            let post1: CalendarSocialPost = CalendarSocialPost()
+            post1.calendarCard = calendarCard
+            post1.postId = "asdfasdfsa"
+            post1.status = "scheduled"
+            post1.statusDate = Date()
+            post1.articleTitle = "Toronto Real Estate Skyrecketing"
+            post1.articleCategory = "Local News"
+            post1.articleText = "The wildfires continue to affect the Northern Provinces Alch.my/AGGA #wildfire";
+            post1.articleHashtags = "wildfire"
+            post1.articleImage = "image_toronto"
+            store.realm.add(post1, update:true)
+            
+            let post2: CalendarSocialPost = CalendarSocialPost()
+            post2.calendarCard = calendarCard
+            post2.postId = "twtwq"
+            post2.status = "scheduled"
+            post2.statusDate = Date()
+            post2.articleTitle = "Optimizing Your Website"
+            post2.articleCategory = "Local News"
+            post2.articleText = "TWhy is SEO such a challenging yet integral part of a building a successful website? Alch.my/AGGA #wildfire";
+            post2.articleHashtags = "wildfire"
+            post2.articleImage = "image_optimize"
+            store.realm.add(post2, update:true)
+            
+            let post3: CalendarSocialPost = CalendarSocialPost()
+            post3.calendarCard = calendarCard
+            post3.postId = "twtwq"
+            post3.status = "scheduled"
+            post3.statusDate = Date()
+            post3.articleTitle = "Scheduling Social Media"
+            post3.articleCategory = "Local News"
+            post3.articleText = "Where do you want to start with social media schedulling? Find out here! Alch.my/AGGA #socialmedia #scheduling?";
+            post3.articleHashtags = "wildfire"
+            post3.articleImage = "imageScheduleSocial"
+            store.realm.add(post3, update:true)
+            
+            
+            let calendarCompleteddCard = CalendarCard()
+            calendarCompleteddCard.cardId = "413452"
+            calendarCompleteddCard.section = "completed"
+            
+            store.realm.add(calendarCompleteddCard, update: true)
+            
+            let postCompleted1: CalendarSocialPost = CalendarSocialPost()
+            postCompleted1.calendarCard = calendarCompleteddCard
+            postCompleted1.postId = "iuueek"
+            postCompleted1.status = "executed"
+            postCompleted1.statusDate = Date()
+            postCompleted1.articleTitle = "Toronto Real Estate Skyrecketing"
+            postCompleted1.articleCategory = "Local News"
+            postCompleted1.articleText = "The wildfires continue to affect the Northern Provinces Alch.my/AGGA #wildfire";
+            postCompleted1.articleHashtags = "wildfire"
+            postCompleted1.articleImage = "image_toronto"
+            store.realm.add(postCompleted1, update:true)
+            
+            let postCompleted2: CalendarSocialPost = CalendarSocialPost()
+            postCompleted2.calendarCard = calendarCompleteddCard
+            postCompleted2.postId = "dsafsadf"
+            postCompleted2.status = "executed"
+            postCompleted2.statusDate = Date()
+            postCompleted2.articleTitle = "Optimizing Your website with SEO"
+            postCompleted2.articleCategory = "Local News"
+            postCompleted2.articleText = "Thy is SEO such a challenging yet intergral part fo building a successful website? Alch.my/AGGA #SEO";
+            postCompleted2.articleHashtags = "wildfire"
+            postCompleted2.articleImage = "image_card_google"
+            store.realm.add(postCompleted2, update:true)
+            
+        }
+        
+        print(store.getCalendarCards())
+        print(store.getCalendarSocialPostsForCard(store.getCalendarCards()[0]))
+        
+    }
+    
+    
     func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
-        fetchItemsLocally(silent: false)
     }
     
     func setupTopHeaderView() {
@@ -129,36 +213,7 @@ class CalendarViewController: UIViewController {
         modalViewController.modalTransition.radiusFactor = 0.3
         self.present(modalViewController, animated: true, completion: nil)
     }
-    
-    func fetchItemsLocally(silent: Bool) {
-        let path = Bundle.main.path(forResource: "sampleFeedCalendar", ofType: "json")
-        let jsonData: NSData = NSData(contentsOfFile: path!)!
-        let json = JSON(data: jsonData as Data)
-        let calendarFeedStore = CalendarFeedStore.getInstance()
-        for item in json["items"] {
-            let calendarItem = CalendarItem()
-            calendarItem.status = item.1["status"].description
-            calendarItem.articleTitle = item.1["article_title"].description
-            calendarItem.statusDate = Date(timeIntervalSince1970: Double(item.1["status_date"].description)!)
-            calendarItem.articleImage = item.1["article_image"].description
-            calendarItem.articleText = item.1["article_text"].description
-            calendarItem.type = item.1["type"].description
-            calendarItem.articleUrl = item.1["article_url"].description
-            calendarItem.articleCategory = item.1["article_category"].description
-            if( item.1["article_hastags"].array != nil) {
-                calendarItem.articleHastags = ((item.1["article_hastags"].array)!)
-            }
-            
-            //calendarItem.articleCategory
-            print(item.1["status"].description)
-            //calendarFeedStore.app
-            calendarFeedStore.storeItem(item: calendarItem)
-        }
-        
-        calendarFeedStore.getFeed()
-        
-        self.sections = calendarFeedStore.getFeed()
-    }
+
     
     func fetchItems(silent:Bool) {
 //        //        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
@@ -205,9 +260,10 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
         
-        let section = sections[sectionIdx]
-        let item = section.items[rowIdx]
-        
+        let sectionCards = store.getCalendarSocialPostsForCard(store.getCalendarCards()[sectionIdx])
+        let item = sectionCards[rowIdx]
+    
+    
         if item.type == "last_cell" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
             cell.changeTitleWithSpacing(title: "Thats it for now");
@@ -228,8 +284,11 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             tableView.allowsSelection = false
             maxCell.topImageButton.isHidden = true
             maxCell.setUpApprovedConnectionView()
-            maxCell.configureForCalendar(item)
-            if indexPath.row == (sections[indexPath.section].items.count - 1) {
+
+            let itemsCount = store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section]).count
+            //maxCell.configureForCalendar(item)
+            
+            if indexPath.row == (itemsCount - 1) {
                 maxCell.connectionStackView.isHidden = true
                 maxCell.isLastCell = true
             } else {
@@ -244,41 +303,49 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         self.tabBarController?.selectedIndex = 0
     }
     
+    
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
+        //get first item from every section
+        let item: CalendarSocialPost = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])[0]
         //last section don't have an header view
-        if section == sections.endIndex - 1 {
+        /*
+        if section == store.getCalendarCards().count - 1 {
             return UIView()
         }
+        */
         
         if shouldMaximizeCell == false {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
-            headerCell.changeColor(color: sections[section].items[0].getSectionColor)
-            headerCell.changeTitle(title: sections[section].items[0].socialTextString)
+            headerCell.changeColor(color: item.getSectionColor)
+            headerCell.changeTitle(title: item.socialTextString)
             return headerCell
         } else {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
             headerCell.changeColor(section: section)
-            headerCell.changeTitle(title: sections[section].items[0].socialTextString)
-            
+            headerCell.changeTitle(title: item.socialTextString)
             return headerCell
         }
         
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.sections.count
+        return store.countSections()
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].items.count
+        return store.getCalendarSocialPostsForCard(store.getCalendarCards()[section]).count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //height for last card
+        /*
+        //if (indexPath.section == store.getCalendarCards().count - 1 ){
         if ( indexPath.section == (sections.count - 1) ) {
             return 261
         }
+         */
         if shouldMaximizeCell == false {
             return 93
         }
@@ -286,9 +353,12 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if (section == sections.endIndex - 1) {
+        /*
+        if section == store.getCalendarCards().endIndex - 1 {
+            //if (section == sections.endIndex - 1) {
             return UIView()
         }
+         */
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
         todoFooter.changeFeedType(feedType: FeedType.calendar)
         DispatchQueue.main.async {
@@ -299,9 +369,12 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == sections.count - 1 {
+        /*
+        if section == store.getCalendarCards().count - 1 {
+            //if section == sections.count - 1 {
             return 60
         }
+         */
         if shouldMaximizeCell == false {
             return 109
         } else {
@@ -311,9 +384,12 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == sections.endIndex - 1 {
+        /*
+        if section == store.getCalendarCards().endIndex - 1 {
+            //if section == sections.endIndex - 1 {
             return 0
         }
+ */
         return 80
     }
     
@@ -349,8 +425,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
                 let frameOfLastCell = tableView.rectForRow(at: lastRowInSection)
                 let cellFrame = tableView.rectForRow(at: indexPath)
                 if headerFrame.origin.y + 50 < tableView.contentOffset.y {
-                    topHeaderView.changeTitle(title: sections[index.section].items[0].socialTextString)
-                    topHeaderView.changeColorCircle(color: sections[index.section].items[0].getSectionColor)
+                    self.changeTopHeaderTitle(section: index.section)
                     animateHeader(colapse: false)
                 } else if frameOfLastCell.origin.y < tableView.contentOffset.y  {
                     animateHeader(colapse: false)
@@ -364,6 +439,13 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         }
         
     }
+    
+    func changeTopHeaderTitle(section: Int) {
+        let item = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])[0]
+        topHeaderView.changeTitle(title: item.socialTextString)
+        topHeaderView.changeColorCircle(color: item.getSectionColor)
+    }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let initialHeight = 56 as CGFloat
         if scrollView.contentOffset.y <= initialHeight {

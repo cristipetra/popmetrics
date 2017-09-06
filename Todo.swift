@@ -184,24 +184,4 @@ class TodoSocialPost: Object, Mappable {
         }
     }
     
-    
-    
 }
-
-
-
-// TO BE DELETED
-class TodoItem: CalendarItem {
-    dynamic var isApproved = false
-}
-
-class TodoSection: NSObject{
-    dynamic var name = ""
-    dynamic var status: String = "";
-    dynamic var index = 0
-    
-    var allApproved: Bool = false
-    
-    var items = [TodoItem]()
-}
-
