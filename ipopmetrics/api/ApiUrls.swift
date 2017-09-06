@@ -46,6 +46,7 @@ private let USER_FEED_PATH = "/api/feed/brand/%@/feed"
 private let FEED_ACTION_PATH = "/api/feed/action/%@"
 
 private let USER_TODO_PATH = "/api/todo/brand/%@/todo"
+private let USER_TODO_ACTION_PATH = "/api/todo/brand/%@/action"
 
 private let USER_TEAMS_PATH = "/api/market/user/%@/teams"
 
@@ -140,6 +141,10 @@ class ApiUrls {
         return composedBaseUrl(String(format:USER_TODO_PATH, brandId))
     }
 
+    static func getTodoActionUrl(_ brandId:String) -> String {
+        return composedBaseUrl(String(format:USER_TODO_ACTION_PATH, brandId))
+    }
+    
     
     static func getFeedRequiredActionUrl(_ brandId:String) -> String {
         return composedBaseUrl(String(format:FEED_ACTION_PATH, brandId))
