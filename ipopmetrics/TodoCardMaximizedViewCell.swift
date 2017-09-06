@@ -36,6 +36,11 @@ class TodoCardMaximizedViewCell: UITableViewCell {
     var approveDenyDelegate : TodoCardActionHandler?
     var toDoStackView : UIStackView!
     
+    private var todoItem: TodoSocialPost!
+    
+    var notLastCell = true
+    var isLastCell = false
+    
     lazy var denyButton : UIButton = {
         
         let button = UIButton(type: UIButtonType.system)
@@ -80,11 +85,6 @@ class TodoCardMaximizedViewCell: UITableViewCell {
         
     }()
     
-    
-    private var todoItem: TodoSocialPost!
-    var notLastCell = true
-    var isLastCell = false
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -96,6 +96,7 @@ class TodoCardMaximizedViewCell: UITableViewCell {
     
     func configure(_ item: TodoSocialPost) {
         self.todoItem = item;
+        
         self.titleLbl.text = item.articleTitle
         //var formatedDate = self.formatDate((item.statusDate)!)
         var formatedDate = self.formatDate(Date())
@@ -111,6 +112,8 @@ class TodoCardMaximizedViewCell: UITableViewCell {
         
         self.topHeaderView.circleView.backgroundColor = item.getSectionColor
         self.topHeaderView.title.text = "\(item.socialTextString)"
+        
+        setUpApprovedView(approved: item.status == "approved")
         
         // updateBtnView()
         
@@ -173,6 +176,10 @@ class TodoCardMaximizedViewCell: UITableViewCell {
     }
     
     func setUpApprovedView(approved: Bool) {
+        if( approved == false) {
+            self.approvedView.isHidden = true
+            return
+        }
         self.insertSubview(approvedView, at: 1)
         approvedView.topAnchor.constraint(equalTo: topContainerVIew.topAnchor).isActive = true
         approvedView.bottomAnchor.constraint(equalTo: topContainerVIew.bottomAnchor).isActive = true

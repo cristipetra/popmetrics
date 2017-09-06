@@ -114,39 +114,16 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         self.postIconImageView.image = UIImage(named: item.socialIcon)
 //      self.articleImage.image = UIImage(named: item.articleImage!)
         
-//      self.connectionLine.backgroundColor = item.getSectionColor
-//      self.topHeaderView.backgroundColor = item.getSectionColor
+      self.connectionLine.backgroundColor = item.getSectionColor
+        //self.topHeaderView.backgroundColor = item.getSectionColor
 
-//      self.topHeaderView.circleView.backgroundColor = item.getSectionColor
+      self.topHeaderView.circleView.backgroundColor = item.getSectionColor
         self.topHeaderView.title.text = "\(item.socialTextString)"
         
         // updateBtnView()
         
         // changeColor()
     }
-    
-    func configureForCalendar(_ item: CalendarSocialPost) {
-        self.calendarItem = item
-        self.titleLbl.text = item.articleTitle
-        var formatedDate = self.formatDate((item.statusDate)!)
-        self.articleDate.text = item.socialTextString + " " + formatedDate
-        self.messageLbl.text = item.articleText
-        
-        self.socialNetworkLbl.text = item.socialPost + ": " + item.articleCategory!
-        self.postIconImageView.image = UIImage(named: item.socialIcon)
-        self.articleImage.image = UIImage(named: item.articleImage!)
-        
-        self.connectionLine.backgroundColor = item.getSectionColor
-        //self.topHeaderView.backgroundColor = item.getSectionColor
-        
-        self.topHeaderView.circleView.backgroundColor = item.getSectionColor
-        self.topHeaderView.title.text = "\(item.socialTextString)"
-        
-        updateBtnView()
-        
-        changeColor()
-    }
-    
     
     func changeColor() {
         let customColor = ActiveType.custom(pattern: "\\\(calendarItem.socialTextString)\\b")

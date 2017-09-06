@@ -327,7 +327,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             maxCell.setUpApprovedConnectionView()
 
             let itemsCount = store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section]).count
-            //maxCell.configureForCalendar(item)
+            maxCell.configure(item)
             
             if indexPath.row == (itemsCount - 1) {
                 maxCell.connectionStackView.isHidden = true
@@ -403,9 +403,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
          */
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
         todoFooter.changeFeedType(feedType: FeedType.calendar)
-        
         todoFooter.buttonActionHandler = self
-        
         updateStateLoadMore(todoFooter, section: section)
         
         return todoFooter
@@ -518,6 +516,8 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     
     func maximizeCell() {
         shouldMaximizeCell = !shouldMaximizeCell
+        
+        
         tableView.reloadData()
         
         let type = shouldMaximizeCell ? HeaderViewType.expand : HeaderViewType.minimize
