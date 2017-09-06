@@ -227,11 +227,8 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
-        let sectionCards = store.getTodoSocialPostsForCard(store.getTodoCards()[sectionIdx])
-        let item = sectionCards[rowIdx]
         
-
-        if item.type == "last_cell" {
+        if(sectionIdx == store.getTodoCards().count) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
             cell.changeTitleWithSpacing(title: "Finished with the actions?");
             cell.changeMessageWithSpacing(message: "Check out the things you've schedulled in the caledar hub")
@@ -240,6 +237,11 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
             return cell
         }
+        
+        
+        let sectionCards = store.getTodoSocialPostsForCard(store.getTodoCards()[sectionIdx])
+        let item = sectionCards[rowIdx]
+
         if shouldMaximize {
             let cell = tableView.dequeueReusableCell(withIdentifier: "maxCellId", for: indexPath) as! TodoCardMaximizedViewCell
             cell.configure(item)
@@ -276,11 +278,11 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         //last section doesn't have a header view
-        /*
-        if section == store.getTodoCards().endIndex - 1 {
+        
+        if section == store.getTodoCards().endIndex {
             //if section == sections.endIndex - 1 {
             return UIView()
-        }*/
+        }
         
         let item: TodoSocialPost = store.getTodoSocialPostsForCard(store.getTodoCards()[section])[0]
         
@@ -306,10 +308,10 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        /*
-        if section == store.getTodoCards().endIndex - 1 {
+        
+        if section == store.getTodoCards().endIndex {
             return UIView()
-        }*/
+        }
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
         
         todoFooter.xButton.isHidden = true
@@ -337,10 +339,10 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        /*
-        if section == store.getTodoCards().endIndex - 1 {
+        // height for header for last card
+        if section == store.getTodoCards().endIndex  {
             return 60
-        }*/
+        }
         if shouldMaximize {
             return 80
         }
@@ -348,18 +350,21 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        /*
-        if section == store.getTodoCards().endIndex - 1 {
+        //height for footer for last card
+        if section == store.getTodoCards().endIndex {
             return 0
-        }*/
+        }
         return 80
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return store.countSections()
+        return store.getTodoCards().count + 1   // adding the last card
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(section == store.getTodoCards().count) {
+            return 1
+        }
         return itemsToLoad(section: section)
     }
     
@@ -375,10 +380,9 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //height for last card
-        /*
-        if indexPath.section == store.getTodoCards().endIndex - 1 {
+        if indexPath.section == store.getTodoCards().endIndex {
             return 261
-        }*/
+        }
         
         if shouldMaximize {
             return 459
@@ -487,9 +491,6 @@ extension ToDoViewController:  TodoCardActionHandler {
         default:
             print("Unknown type")
         }//switch
-        
-        
-        
         
     }
     
