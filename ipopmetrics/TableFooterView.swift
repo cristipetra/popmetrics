@@ -13,8 +13,13 @@ protocol FooterButtonHandlerProtocol: class {
     func approvalButtonPressed(section: Int)
     func closeButtonPressed()
     func informationButtonPressed()
-    func loadMorePressed()
+    func loadMorePressed(section: Int)
 }
+
+protocol FooterActionHandlerProtocol: class {
+    func handlerAction(section: Int)
+}
+
 
 class TableFooterView: UITableViewHeaderFooterView {
     
@@ -33,6 +38,7 @@ class TableFooterView: UITableViewHeaderFooterView {
     }
     
     weak var buttonHandlerDelegate: FooterButtonHandlerProtocol?
+    weak var buttonActionHandler: FooterActionHandlerProtocol?
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -260,7 +266,8 @@ class TableFooterView: UITableViewHeaderFooterView {
     
     func loadMoreHandler() {
         animateButtonBlink(button: loadMoreBtn)
-        buttonHandlerDelegate?.loadMorePressed()
+        buttonHandlerDelegate?.loadMorePressed(section: section)
+        buttonActionHandler?.handlerAction(section: section)
     }
     
     func setupActionButton() {

@@ -23,6 +23,8 @@ class ToDoViewController: BaseViewController {
     let store = TodoStore.getInstance()
 
     var approveIndex = 3
+    var noItemsLoaded: [Int] = []
+    let noItemsLoadeInitial = 3
     
     let indexToSection = [0: "Unapproved",
                           1: "Insights"]
@@ -44,6 +46,7 @@ class ToDoViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        
         
         loadingView.tintColor = PopmetricsColor.darkGrey
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
@@ -224,6 +227,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         let rowIdx = (indexPath as NSIndexPath).row
         let sectionCards = store.getTodoSocialPostsForCard(store.getTodoCards()[sectionIdx])
         let item = sectionCards[rowIdx]
+        
 
         if item.type == "last_cell" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
@@ -305,9 +309,11 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             return UIView()
         }*/
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
+        
         todoFooter.xButton.isHidden = true
         //todoFooter.changeTypeSection(typeSection: StatusArticle(rawValue: sections[section].status)!)
         //todoFooter.actionButton.addTarget(self, action: #selector(approveCard(_:section:)), for: .touchUpInside)
+        
         todoFooter.section = section
         todoFooter.buttonHandlerDelegate = self
         
@@ -318,14 +324,16 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             todoFooter.setUpLoadMoreDisabled()
         }
          */
-        
-        DispatchQueue.main.async {
-            todoFooter.setUpLoadMoreDisabled()
+        if(noItemsLoaded(section) ==  store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count) {
+            DispatchQueue.main.async {
+                todoFooter.setUpLoadMoreDisabled()
+            }
+            
         }
         
         return todoFooter
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         /*
         if section == store.getTodoCards().endIndex - 1 {
@@ -350,7 +358,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return store.getTodoSocialPostsForCard(store.getTodoCards()[0]).count
+        return itemsToLoad(section: section)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -370,6 +378,31 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         return 93
     }
     
+    
+    func noItemsLoaded(_ section: Int) -> Int {
+        if( noItemsLoaded.isEmpty || noItemsLoaded.count <= section) {
+            noItemsLoaded.append(noItemsLoadeInitial)
+        }
+        return noItemsLoaded[section]
+    }
+    
+    func changeNoItemsLoaded(_ section: Int, value: Int) {
+        if( noItemsLoaded.isEmpty ) {
+            noItemsLoaded[section] = noItemsLoadeInitial
+        }
+        noItemsLoaded[section] += value
+    }
+    
+    
+    func itemsToLoad(section: Int) -> Int {
+        if (store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count > noItemsLoaded(section)) {
+            return noItemsLoaded(section)
+        } else {
+            return store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count
+        }
+        return noItemsLoadeInitial
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         if let index = tableView.indexPathsForVisibleRows?.first {
@@ -386,12 +419,20 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         }
     }
     
-    
 }
 
 extension ToDoViewController: FooterButtonHandlerProtocol {
-    func loadMorePressed() {
-        
+    func loadMorePressed(section: Int) {
+        var addItem = noItemsLoadeInitial
+        let posts = store.getTodoSocialPostsForCard(store.getTodoCards()[section])
+        if (posts.count > noItemsLoaded(section) + noItemsLoadeInitial) {
+            addItem = noItemsLoadeInitial
+        } else {
+            addItem = posts.count - noItemsLoaded(section)
+        }
+    
+        changeNoItemsLoaded(section, value: addItem)
+        tableView.reloadData()
     }
     
     func approvalButtonPressed(section : Int) {
