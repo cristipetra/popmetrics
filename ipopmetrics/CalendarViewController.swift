@@ -34,6 +34,10 @@ class CalendarViewController: UIViewController {
     var reachedFooter = false
     var shouldMaximizeCell = false
     
+    let noItemsLoadeInitial = 3
+    
+    var noItemsLoaded: [Int] = [3,3,3,3,3]
+    
     @IBOutlet weak var calendarHeight: NSLayoutConstraint!
     internal var topHeaderView: HeaderView!
     internal var isAnimatingHeader: Bool = false
@@ -122,7 +126,7 @@ class CalendarViewController: UIViewController {
             
             let post3: CalendarSocialPost = CalendarSocialPost()
             post3.calendarCard = calendarCard
-            post3.postId = "twtwq"
+            post3.postId = "tw34twq"
             post3.status = "scheduled"
             post3.statusDate = Date()
             post3.articleTitle = "Scheduling Social Media"
@@ -131,6 +135,44 @@ class CalendarViewController: UIViewController {
             post3.articleHashtags = "wildfire"
             post3.articleImage = "imageScheduleSocial"
             store.realm.add(post3, update:true)
+            
+            let post4: CalendarSocialPost = CalendarSocialPost()
+            post4.calendarCard = calendarCard
+            post4.postId = "twadtwq"
+            post4.status = "scheduled"
+            post4.statusDate = Date()
+            post4.articleTitle = "Scheduling Social Media"
+            post4.articleCategory = "Local News"
+            post4.articleText = "Where do you want to start with social media schedulling? Find out here! Alch.my/AGGA #socialmedia #scheduling?";
+            post4.articleHashtags = "wildfire"
+            post4.articleImage = "imageScheduleSocial"
+            store.realm.add(post4, update:true)
+            
+            let post5: CalendarSocialPost = CalendarSocialPost()
+            post5.calendarCard = calendarCard
+            post5.postId = "twtddwq"
+            post5.status = "scheduled"
+            post5.statusDate = Date()
+            post5.articleTitle = "Scheduling Social Media"
+            post5.articleCategory = "Local News"
+            post5.articleText = "Where do you want to start with social media schedulling? Find out here! Alch.my/AGGA #socialmedia #scheduling?";
+            post5.articleHashtags = "wildfire"
+            post5.articleImage = "imageScheduleSocial"
+            store.realm.add(post5, update:true)
+            
+            let post6: CalendarSocialPost = CalendarSocialPost()
+            post6.calendarCard = calendarCard
+            post6.postId = "tsadwtddwq"
+            post6.status = "scheduled"
+            post6.statusDate = Date()
+            post6.articleTitle = "Scheduling Social Media"
+            post6.articleCategory = "Local News"
+            post6.articleText = "Where do you want to start with social media schedulling? Find out here! Alch.my/AGGA #socialmedia #scheduling?";
+            post6.articleHashtags = "wildfire"
+            post5.articleImage = "imageScheduleSocial"
+            store.realm.add(post6, update:true)
+            
+
             
             
             let calendarCompleteddCard = CalendarCard()
@@ -252,7 +294,6 @@ class CalendarViewController: UIViewController {
 //        }
         
     }
-    
 }
 
 extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, ChangeCellProtocol {
@@ -335,6 +376,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return itemsToLoad(section: section)
         return store.getCalendarSocialPostsForCard(store.getCalendarCards()[section]).count
     }
     
@@ -361,9 +403,10 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
          */
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
         todoFooter.changeFeedType(feedType: FeedType.calendar)
-        DispatchQueue.main.async {
-            todoFooter.setUpLoadMoreDisabled()
-        }
+        
+        todoFooter.buttonActionHandler = self
+        
+        updateStateLoadMore(todoFooter, section: section)
         
         return todoFooter
     }
@@ -479,7 +522,57 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         
         let type = shouldMaximizeCell ? HeaderViewType.expand : HeaderViewType.minimize
         topHeaderView.changeStatus(type: type)
-        
+    }
+    
+    func updateStateLoadMore(_ footerView: TableFooterView, section: Int) {
+        let posts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])
+        if( posts.count <= noItemsLoaded[section]) {
+            footerView.setUpLoadMoreDisabled()
+        }
+    }
+    
+    func noItemsLoaded(_ section: Int) -> Int {
+        if( noItemsLoaded.isEmpty ) {
+            noItemsLoaded.append(noItemsLoadeInitial)
+        }
+        return noItemsLoaded[section]
+    }
+    
+    func changeNoItemsLoaded(_ section: Int, value: Int) {
+        if( noItemsLoaded.isEmpty ) {
+            noItemsLoaded[section] = noItemsLoadeInitial
+        }
+        noItemsLoaded[section] += value
+    }
+    
+    
+    func itemsToLoad(section: Int) -> Int {
+        let posts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])
+        if (posts.count > noItemsLoaded(section)) {
+            return noItemsLoaded(section)
+        } else {
+            return posts.count
+        }
+        return noItemsLoadeInitial
+    }
+    
+    func loadMore(section: Int) {
+        var addItem = noItemsLoadeInitial
+        let posts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])
+        if (posts.count > noItemsLoaded(section) + noItemsLoadeInitial) {
+            addItem = noItemsLoadeInitial
+        } else {
+            addItem = posts.count - noItemsLoaded(section)
+        }
+        changeNoItemsLoaded(section, value: addItem)
+        tableView.reloadData()
+    }
+    
+}
+
+extension CalendarViewController: FooterActionHandlerProtocol {
+    func handlerAction(section: Int) {
+        loadMore(section: section)
     }
 }
 

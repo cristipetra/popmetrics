@@ -58,8 +58,8 @@ class CalendarCardSimpleViewCell: UITableViewCell {
         
         self.messageLbl.text = item.articleText
         
-        self.backgroundImage.image = UIImage(named: item.articleImage!)
-        self.foregroundImage.image = UIImage(named: item.socialIcon)
+        //self.backgroundImage.image = UIImage(named: item.articleImage!)
+        //self.foregroundImage.image = UIImage(named: item.socialIcon)
         
         changeColor()
     }

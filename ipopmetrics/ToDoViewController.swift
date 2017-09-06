@@ -313,6 +313,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         todoFooter.xButton.isHidden = true
         //todoFooter.changeTypeSection(typeSection: StatusArticle(rawValue: sections[section].status)!)
         //todoFooter.actionButton.addTarget(self, action: #selector(approveCard(_:section:)), for: .touchUpInside)
+        
         todoFooter.section = section
         todoFooter.buttonHandlerDelegate = self
         
@@ -323,8 +324,6 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             todoFooter.setUpLoadMoreDisabled()
         }
          */
-
-        print("hello")
         if(noItemsLoaded(section) ==  store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count) {
             DispatchQueue.main.async {
                 todoFooter.setUpLoadMoreDisabled()
@@ -334,7 +333,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
         return todoFooter
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         /*
         if section == store.getTodoCards().endIndex - 1 {
@@ -360,7 +359,6 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemsToLoad(section: section)
-        return store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -425,17 +423,14 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
 
 extension ToDoViewController: FooterButtonHandlerProtocol {
     func loadMorePressed(section: Int) {
-        print("load more")
         var addItem = noItemsLoadeInitial
-        var posts = store.getTodoSocialPostsForCard(store.getTodoCards()[section])
+        let posts = store.getTodoSocialPostsForCard(store.getTodoCards()[section])
         if (posts.count > noItemsLoaded(section) + noItemsLoadeInitial) {
             addItem = noItemsLoadeInitial
         } else {
             addItem = posts.count - noItemsLoaded(section)
         }
-        
-        
-        
+    
         changeNoItemsLoaded(section, value: addItem)
         tableView.reloadData()
     }
