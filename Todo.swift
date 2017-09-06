@@ -10,7 +10,6 @@ import Foundation
 import RealmSwift
 import ObjectMapper
 
-
 class TodoCard:  Object, Mappable {
 
     dynamic var cardId: String? = nil

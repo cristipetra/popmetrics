@@ -9,6 +9,25 @@
 import Foundation
 import ObjectMapper
 
+
+class ResponseWrapperEmpty: Mappable {
+    
+    var code:String?
+    var message: String?
+    
+    
+    required init?(map:Map) {
+        
+    }
+    
+    func mapping(map:Map) {
+        code    <- map["code"]
+        message <- map["message"]
+    }
+    
+}
+
+
 class ResponseWrapperOne<T:Mappable>: Mappable {
     
     var code:String?

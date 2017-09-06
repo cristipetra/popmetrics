@@ -457,3 +457,31 @@ extension ToDoViewController: FooterButtonHandlerProtocol {
         
     }
 }
+
+
+extension ToDoViewController:  TodoCardActionHandler {
+    
+    func handleCardAction(_ action:String, todoCard: TodoCard, params:[String:Any]) {
+        
+        switch (todoCard.type) {
+        case "articles_posting":
+            if action == "approve_one" {
+                var approvedPost: TodoSocialPost
+                approvedPost = params["social_post"] as! TodoSocialPost
+                    try! store.realm.write {
+                        approvedPost.status = "approved"
+                    }
+                    
+            }
+        
+        default:
+            print("Unknown type")
+        }//switch
+        
+        
+        
+        
+    }
+    
+}
+

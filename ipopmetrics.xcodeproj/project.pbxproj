@@ -102,6 +102,7 @@
 		08FAE8491F5420050097DF3E /* TrafficCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */; };
 		08FAE84B1F54247B0097DF3E /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE84A1F54247B0097DF3E /* GradientView.swift */; };
 		1100F6F51F5E0E6F000AF1D4 /* TodoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1100F6F41F5E0E6F000AF1D4 /* TodoApi.swift */; };
+		1100F6F91F5FEBCE000AF1D4 /* TodoActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1100F6F81F5FEBCE000AF1D4 /* TodoActionHandler.swift */; };
 		110A62CA1ECEDADC0052B478 /* StatsSummaryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A62C91ECEDADC0052B478 /* StatsSummaryViewCell.swift */; };
 		110A62D41ECEDE8B0052B478 /* ChatItemsDemoDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A62CD1ECEDE8B0052B478 /* ChatItemsDemoDecorator.swift */; };
 		110A62D51ECEDE8B0052B478 /* FakeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A62CE1ECEDE8B0052B478 /* FakeDataSource.swift */; };
@@ -290,6 +291,7 @@
 		08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficCardViewCell.swift; sourceTree = "<group>"; };
 		08FAE84A1F54247B0097DF3E /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		1100F6F41F5E0E6F000AF1D4 /* TodoApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoApi.swift; path = api/TodoApi.swift; sourceTree = "<group>"; };
+		1100F6F81F5FEBCE000AF1D4 /* TodoActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoActionHandler.swift; path = todo/TodoActionHandler.swift; sourceTree = "<group>"; };
 		110A62C91ECEDADC0052B478 /* StatsSummaryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatsSummaryViewCell.swift; path = feed/StatsSummaryViewCell.swift; sourceTree = "<group>"; };
 		110A62CD1ECEDE8B0052B478 /* ChatItemsDemoDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatItemsDemoDecorator.swift; sourceTree = "<group>"; };
 		110A62CE1ECEDE8B0052B478 /* FakeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeDataSource.swift; sourceTree = "<group>"; };
@@ -544,6 +546,7 @@
 				08B485E31F210992005918A1 /* VideoScreenViewController.swift */,
 				08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */,
 				08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */,
+				1100F6F81F5FEBCE000AF1D4 /* TodoActionHandler.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -1235,6 +1238,7 @@
 				110A62DC1ECEDF2D0052B478 /* ConciergeChatViewController.swift in Sources */,
 				08953E6D1F4C275C003ABEFC /* ToDoCell.swift in Sources */,
 				1125ADAA1E96E67B0004B4AC /* BaseTableViewController.swift in Sources */,
+				1100F6F91F5FEBCE000AF1D4 /* TodoActionHandler.swift in Sources */,
 				08B485E01F20EA23005918A1 /* Config.swift in Sources */,
 				113976B21E97CE5000B535DF /* MainTabBarController.swift in Sources */,
 				08AA6C631F56C9560022DE91 /* TrafficReportViewController.swift in Sources */,

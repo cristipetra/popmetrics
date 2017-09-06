@@ -33,4 +33,24 @@ class TodoApi: BaseApi {
                             
         }
     }
+    
+    func postAction(todoCardId:String, params:[String:Any],
+                callback: @escaping (_ response: ResponseWrapperEmpty?, _ error: ApiError?) -> Void) {
+        
+        Alamofire.request(ApiUrls.getTodoActionUrl(todoCardId),
+                          method: .post, parameters: params, encoding: JSONEncoding.default,
+                          headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperEmpty>) in
+                            if let err = self.createErrorWithHttpResponse(response: response.response) {
+                                callback(nil, err)
+                                return
+                            }
+                            
+                            if let result = response.result.value {
+                                callback(result, nil)
+                            }
+                            
+        }
+    }
+    
+    
 }

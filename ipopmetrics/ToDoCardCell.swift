@@ -52,7 +52,7 @@ class ToDoCardCell: UITableViewCell {
         titleLbl.text = todoItem.articleTitle
         messageLbl.text = todoItem.articleText
         
-        setUpApprovedView(approved: item.isApproved)
+        setUpApprovedView(approved: item.status == "approved")
     }
     
     func setupCorners() {
