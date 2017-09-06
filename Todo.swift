@@ -188,7 +188,7 @@ class TodoSocialPost: Object, Mappable {
             case StatusArticle.unapproved.rawValue:
                 return PopmetricsColor.yellowUnapproved
             default:
-                return UIColor.white
+                return PopmetricsColor.yellowUnapproved
             }
         }
     }

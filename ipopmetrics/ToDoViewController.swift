@@ -251,7 +251,8 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             cell.postIndex = indexPath.row
             //cell.setUpApprovedConnectionView()
             
-            if store.getTodoSocialPostsForCard(store.getTodoCards()[sectionIdx]).endIndex - 1 == indexPath.row {
+            cell.connectionStackView.isHidden = true
+            if store.getTodoSocialPostsForCard(store.getTodoCards()[sectionIdx]).endIndex == indexPath.row {
                 cell.connectionStackView.isHidden = true
                 cell.isLastCell = true
             } else {
@@ -278,17 +279,12 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         //last section doesn't have a header view
-        
         if section == store.getTodoCards().endIndex {
-            //if section == sections.endIndex - 1 {
             return UIView()
         }
         
         let item: TodoSocialPost = store.getTodoSocialPostsForCard(store.getTodoCards()[section])[0]
-        
         let card = store.getTodoCards()[section]
-        
-        print(card)
         
         if shouldMaximize == false {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
@@ -299,8 +295,6 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             return headerCell
         } else {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
-            //headerCell.changeColor(section: section)
-            //headerCell.changeColor(section: card.getSectionColor)
             headerCell.changeColor(cardType: .todo)
             headerCell.changeTitle(title: card.section)
             return headerCell
