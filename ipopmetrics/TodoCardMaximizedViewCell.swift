@@ -112,6 +112,8 @@ class TodoCardMaximizedViewCell: UITableViewCell {
         // updateBtnView()
         
         // changeColor()
+        
+        addApprovedView()
     }
     
     
@@ -169,11 +171,7 @@ class TodoCardMaximizedViewCell: UITableViewCell {
                                              params:["social_post":self.todoItem])
     }
     
-    func setUpApprovedView(approved: Bool) {
-        if( approved == false) {
-            self.approvedView.isHidden = true
-            return
-        }
+    func addApprovedView() {
         self.insertSubview(approvedView, at: 1)
         approvedView.topAnchor.constraint(equalTo: topContainerVIew.topAnchor).isActive = true
         approvedView.bottomAnchor.constraint(equalTo: topContainerVIew.bottomAnchor).isActive = true
@@ -185,15 +183,27 @@ class TodoCardMaximizedViewCell: UITableViewCell {
         approvedButton.centerYAnchor.constraint(equalTo: approvedView.centerYAnchor).isActive = true
         approvedButton.widthAnchor.constraint(equalToConstant: 110).isActive = true
         approvedButton.heightAnchor.constraint(equalToConstant: 39).isActive = true
+        
+        approvedButton.rightImageView.image = nil
+        approvedButton.layer.cornerRadius = 6
+    }
+    
+    func setUpApprovedView(approved: Bool) {
+        
+        print("approved \(approved)")
+        
+        if( approved == false) {
+            self.approvedView.isHidden = true
+            return
+        } else {
+            self.approvedView.isHidden = false
+        }
+
         if approved {
             approvedButton.imageButtonType = .approved
         } else {
             approvedButton.imageButtonType = .rescheduled
         }
-        
-        approvedButton.rightImageView.image = nil
-        approvedButton.layer.cornerRadius = 6
-        
     }
     
     func setUpApprovedConnectionView() {
