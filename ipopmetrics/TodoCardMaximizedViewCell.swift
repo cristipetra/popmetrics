@@ -36,8 +36,12 @@ class TodoCardMaximizedViewCell: UITableViewCell {
     var approveDenyDelegate : TodoCardActionHandler?
     var toDoStackView : UIStackView!
     
+    private var todoItem: TodoSocialPost!
+    
+    var notLastCell = true
+    var isLastCell = false
+    
     lazy var denyButton : UIButton = {
-        
         let button = UIButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setBackgroundImage(UIImage(named: "icon_deny"), for: .normal)
@@ -46,7 +50,6 @@ class TodoCardMaximizedViewCell: UITableViewCell {
     }()
     
     lazy var approveButton : UIButton = {
-        
         let button = UIButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setBackgroundImage(UIImage(named: "icon_quepost"), for: .normal)
@@ -54,16 +57,13 @@ class TodoCardMaximizedViewCell: UITableViewCell {
     }()
     
     lazy var approvedView : UIView = {
-        
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = PopmetricsColor.darkGrey.withAlphaComponent(0.8)
         return view
-        
     }()
     
     lazy var approvedButton : TwoImagesButton = {
-        
         let button = TwoImagesButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(red: 54/255, green: 172/255, blue: 130/255, alpha: 1)
@@ -72,18 +72,12 @@ class TodoCardMaximizedViewCell: UITableViewCell {
     }()
     
     lazy var approvedConnectionView : UIView = {
-        
         let view = UIView()
         view.backgroundColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
         
     }()
-    
-    
-    private var todoItem: TodoSocialPost!
-    var notLastCell = true
-    var isLastCell = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -96,6 +90,7 @@ class TodoCardMaximizedViewCell: UITableViewCell {
     
     func configure(_ item: TodoSocialPost) {
         self.todoItem = item;
+        
         self.titleLbl.text = item.articleTitle
         //var formatedDate = self.formatDate((item.statusDate)!)
         var formatedDate = self.formatDate(Date())
@@ -112,9 +107,13 @@ class TodoCardMaximizedViewCell: UITableViewCell {
         self.topHeaderView.circleView.backgroundColor = item.getSectionColor
         self.topHeaderView.title.text = "\(item.socialTextString)"
         
+        setUpApprovedView(approved: item.status == "approved")
+        
         // updateBtnView()
         
         // changeColor()
+        
+        addApprovedView()
     }
     
     
@@ -172,7 +171,7 @@ class TodoCardMaximizedViewCell: UITableViewCell {
                                              params:["social_post":self.todoItem])
     }
     
-    func setUpApprovedView(approved: Bool) {
+    func addApprovedView() {
         self.insertSubview(approvedView, at: 1)
         approvedView.topAnchor.constraint(equalTo: topContainerVIew.topAnchor).isActive = true
         approvedView.bottomAnchor.constraint(equalTo: topContainerVIew.bottomAnchor).isActive = true
@@ -184,15 +183,27 @@ class TodoCardMaximizedViewCell: UITableViewCell {
         approvedButton.centerYAnchor.constraint(equalTo: approvedView.centerYAnchor).isActive = true
         approvedButton.widthAnchor.constraint(equalToConstant: 110).isActive = true
         approvedButton.heightAnchor.constraint(equalToConstant: 39).isActive = true
+        
+        approvedButton.rightImageView.image = nil
+        approvedButton.layer.cornerRadius = 6
+    }
+    
+    func setUpApprovedView(approved: Bool) {
+        
+        print("approved \(approved)")
+        
+        if( approved == false) {
+            self.approvedView.isHidden = true
+            return
+        } else {
+            self.approvedView.isHidden = false
+        }
+
         if approved {
             approvedButton.imageButtonType = .approved
         } else {
             approvedButton.imageButtonType = .rescheduled
         }
-        
-        approvedButton.rightImageView.image = nil
-        approvedButton.layer.cornerRadius = 6
-        
     }
     
     func setUpApprovedConnectionView() {

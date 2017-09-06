@@ -51,6 +51,22 @@ class TodoCard:  Object, Mappable {
     }
 
     
+    var getSectionColor: UIColor {
+        get {
+            switch section.lowercased() {
+            case StatusArticle.scheduled.rawValue:
+                return UIColor.darkGray
+            case StatusArticle.failed.rawValue:
+                return PopmetricsColor.salmondColor
+            case StatusArticle.executed.rawValue:
+                return PopmetricsColor.greenSelectedDate
+            case StatusArticle.unapproved.rawValue:
+                return PopmetricsColor.yellowUnapproved
+            default:
+                return UIColor.white
+            }
+        }
+    }
 }
 
 class TodoSocialPost: Object, Mappable {
@@ -172,7 +188,7 @@ class TodoSocialPost: Object, Mappable {
             case StatusArticle.unapproved.rawValue:
                 return PopmetricsColor.yellowUnapproved
             default:
-                return UIColor.white
+                return PopmetricsColor.yellowUnapproved
             }
         }
     }
