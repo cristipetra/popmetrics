@@ -21,8 +21,7 @@ class ToDoViewController: BaseViewController {
     @IBOutlet weak var toDoTopView: TodoTopView!
     
     let store = TodoStore.getInstance()
-    
-    fileprivate var sections: [TodoSection] = []
+
     var approveIndex = 3
     
     let indexToSection = [0: "Unapproved",
@@ -59,7 +58,7 @@ class ToDoViewController: BaseViewController {
     }
     
     func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
-        fetchItemsLocally()
+        
     }
     
     internal func registerCellsForTable() {
@@ -100,6 +99,7 @@ class ToDoViewController: BaseViewController {
     }
     
     internal func setupTopViewItemCount() {
+        /*
         for section in sections {
             if let status = StatusArticle(rawValue: section.status) {
                 switch status {
@@ -114,17 +114,19 @@ class ToDoViewController: BaseViewController {
                 }
             }
         }
+        */
     }
     
     func checkApprovedAll() -> Bool {
+        /*
         sections[0].items.forEach { (item) in
             if item.isApproved == true {
                 isAllApproved = true
             } else {
                 isAllApproved = false
             }
-        }
-        
+        }*/
+        isAllApproved = false
         return isAllApproved
     }
     
@@ -211,33 +213,6 @@ class ToDoViewController: BaseViewController {
         }
         
     }
-    
-    
-    internal func fetchItemsLocally() {
-        let path = Bundle.main.path(forResource: "sampleFeedTodo", ofType: "json")
-        let jsonData: NSData = NSData(contentsOfFile: path!)!
-        let json = JSON(data: jsonData as Data)
-        let todoStore = TodoStore.getInstance()
-        for item in json["items"] {
-            let todoItem = TodoItem()
-            todoItem.status = item.1["status"].description
-            todoItem.articleTitle = item.1["article_title"].description
-            todoItem.statusDate = Date(timeIntervalSince1970: Double(item.1["status_date"].description)!)
-            todoItem.articleImage = item.1["article_image"].description
-            todoItem.articleText = item.1["article_text"].description
-            todoItem.type = item.1["type"].description
-            todoItem.articleUrl = item.1["article_url"].description
-            todoItem.articleCategory = item.1["article_category"].description
-            print(Double(item.1["status_date"].description));
-            //calendarItem.articleCategory
-            print(item.1["status"].description)
-            //calendarFeedStore.app
-            todoStore.storeItem(item: todoItem)
-        }
-        
-        self.sections = todoStore.getFeed()
-        self.setupTopViewItemCount()
-    }
 }
 
 extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, ApproveDenySinglePostProtocol {
@@ -262,7 +237,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
         if shouldMaximize {
             let cell = tableView.dequeueReusableCell(withIdentifier: "maxCellId", for: indexPath) as! CalendarCardMaximizedViewCell
-            cell.configure(item)
+            //cell.configure(item)
             cell.articleDate.isHidden = true
             cell.setUpMaximizeToDo()
             cell.approveDenyDelegate = self
@@ -294,15 +269,17 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func approveSinglePostHandler(index: Int) {
-        sections[0].items[index].isApproved = true
+        //sections[0].items[index].isApproved = true
         tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         //last section doesn't have a header view
-        if section == sections.endIndex - 1 {
+        /*
+        if section == store.getTodoCards().endIndex - 1 {
+            //if section == sections.endIndex - 1 {
             return UIView()
-        }
+        }*/
         
         let item: TodoSocialPost = store.getTodoSocialPostsForCard(store.getTodoCards()[0])[0]
         
@@ -322,9 +299,10 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if (section == sections.endIndex - 1) {
+        /*
+        if section == store.getTodoCards().endIndex - 1 {
             return UIView()
-        }
+        }*/
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
         todoFooter.xButton.isHidden = true
         //todoFooter.changeTypeSection(typeSection: StatusArticle(rawValue: sections[section].status)!)
@@ -348,9 +326,10 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == sections.endIndex - 1 {
+        /*
+        if section == store.getTodoCards().endIndex - 1 {
             return 60
-        }
+        }*/
         if shouldMaximize {
             return 80
         }
@@ -358,9 +337,10 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == sections.endIndex - 1 {
+        /*
+        if section == store.getTodoCards().endIndex - 1 {
             return 0
-        }
+        }*/
         return 80
     }
     
@@ -379,9 +359,10 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //height for last card
-        if ( indexPath.section == (sections.count - 1) ) {
+        /*
+        if indexPath.section == store.getTodoCards().endIndex - 1 {
             return 261
-        }
+        }*/
         if shouldMaximize {
             return 459
         }
@@ -389,19 +370,22 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        return
+        
         if let index = tableView.indexPathsForVisibleRows?.first {
             let headerFrame = tableView.rectForHeader(inSection: index.section)
             if headerFrame.origin.y < tableView.contentOffset.y{
+                /*
                 if let status = StatusArticle(rawValue: sections[index.section].status) {
                     toDoTopView.setActive(section: status)
-                }
+                }*/
             }
             if tableView.contentOffset.y == 0 {   //top of the tableView
                 toDoTopView.setActive(section: .unapproved)
             }
         }
     }
+    
+    
 }
 
 extension ToDoViewController: FooterButtonHandlerProtocol {

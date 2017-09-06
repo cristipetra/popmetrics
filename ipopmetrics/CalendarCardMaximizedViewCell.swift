@@ -122,7 +122,7 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         // changeColor()
     }
     
-    func configureForCalendar(_ item: CalendarItem) {
+    func configureForCalendar(_ item: CalendarSocialPost) {
         self.calendarItem = item
         self.titleLbl.text = item.articleTitle
         var formatedDate = self.formatDate((item.statusDate)!)

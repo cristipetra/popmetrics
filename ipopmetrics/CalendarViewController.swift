@@ -29,8 +29,6 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var topPickerStackViewHeight: NSLayoutConstraint!
     
-    fileprivate var sections: [CalendarSection] = []
-    
     let store = CalendarFeedStore.getInstance()
     
     var reachedFooter = false
@@ -174,7 +172,6 @@ class CalendarViewController: UIViewController {
     
     
     func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
-        fetchItemsLocally(silent: false)
     }
     
     func setupTopHeaderView() {
@@ -216,36 +213,7 @@ class CalendarViewController: UIViewController {
         modalViewController.modalTransition.radiusFactor = 0.3
         self.present(modalViewController, animated: true, completion: nil)
     }
-    
-    func fetchItemsLocally(silent: Bool) {
-        let path = Bundle.main.path(forResource: "sampleFeedCalendar", ofType: "json")
-        let jsonData: NSData = NSData(contentsOfFile: path!)!
-        let json = JSON(data: jsonData as Data)
-        let calendarFeedStore = CalendarFeedStore.getInstance()
-        for item in json["items"] {
-            let calendarItem = CalendarItem()
-            calendarItem.status = item.1["status"].description
-            calendarItem.articleTitle = item.1["article_title"].description
-            calendarItem.statusDate = Date(timeIntervalSince1970: Double(item.1["status_date"].description)!)
-            calendarItem.articleImage = item.1["article_image"].description
-            calendarItem.articleText = item.1["article_text"].description
-            calendarItem.type = item.1["type"].description
-            calendarItem.articleUrl = item.1["article_url"].description
-            calendarItem.articleCategory = item.1["article_category"].description
-            if( item.1["article_hastags"].array != nil) {
-                calendarItem.articleHastags = ((item.1["article_hastags"].array)!)
-            }
-            
-            //calendarItem.articleCategory
-            print(item.1["status"].description)
-            //calendarFeedStore.app
-            calendarFeedStore.storeItem(item: calendarItem)
-        }
-        
-        calendarFeedStore.getFeed()
-        
-        self.sections = calendarFeedStore.getFeed()
-    }
+
     
     func fetchItems(silent:Bool) {
 //        //        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
@@ -296,7 +264,6 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         let item = sectionCards[rowIdx]
     
     
-        
         if item.type == "last_cell" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
             cell.changeTitleWithSpacing(title: "Thats it for now");
@@ -318,12 +285,10 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             maxCell.topImageButton.isHidden = true
             maxCell.setUpApprovedConnectionView()
 
-            
             let itemsCount = store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section]).count
+            //maxCell.configureForCalendar(item)
+            
             if indexPath.row == (itemsCount - 1) {
-
-            maxCell.configureForCalendar(item)
-            if indexPath.row == (sections[indexPath.section].items.count - 1) {
                 maxCell.connectionStackView.isHidden = true
                 maxCell.isLastCell = true
             } else {
@@ -338,13 +303,17 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         self.tabBarController?.selectedIndex = 0
     }
     
+    
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         //get first item from every section
         let item: CalendarSocialPost = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])[0]
         //last section don't have an header view
-        if section == sections.endIndex - 1 {
+        /*
+        if section == store.getCalendarCards().count - 1 {
             return UIView()
         }
+        */
         
         if shouldMaximizeCell == false {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
@@ -362,6 +331,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return store.countSections()
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -370,9 +340,12 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //height for last card
+        /*
+        //if (indexPath.section == store.getCalendarCards().count - 1 ){
         if ( indexPath.section == (sections.count - 1) ) {
             return 261
         }
+         */
         if shouldMaximizeCell == false {
             return 93
         }
@@ -380,9 +353,12 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if (section == sections.endIndex - 1) {
+        /*
+        if section == store.getCalendarCards().endIndex - 1 {
+            //if (section == sections.endIndex - 1) {
             return UIView()
         }
+         */
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
         todoFooter.changeFeedType(feedType: FeedType.calendar)
         DispatchQueue.main.async {
@@ -393,9 +369,12 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == sections.count - 1 {
+        /*
+        if section == store.getCalendarCards().count - 1 {
+            //if section == sections.count - 1 {
             return 60
         }
+         */
         if shouldMaximizeCell == false {
             return 109
         } else {
@@ -405,9 +384,12 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == sections.endIndex - 1 {
+        /*
+        if section == store.getCalendarCards().endIndex - 1 {
+            //if section == sections.endIndex - 1 {
             return 0
         }
+ */
         return 80
     }
     

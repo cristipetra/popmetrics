@@ -78,5 +78,4 @@ class FeedCard: Object, Mappable {
         
     }
     
-    
 }
