@@ -478,6 +478,9 @@ extension ToDoViewController:  TodoCardActionHandler {
                         approvedPost.status = "approved"
                         self.shouldMaximize = false
                         self.tableView.reloadData()
+                        DispatchQueue.main.async {
+                            self.tableView.scrollToRow(at: self.scrollToRow, at: .none, animated: false)
+                        }
                     }
                     
             }
