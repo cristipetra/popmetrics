@@ -488,7 +488,7 @@ extension ToDoViewController:  TodoCardActionHandler {
                         else {
                             approvedPost.status = "denied"
                         }
-                    }
+                    }//realm write
                 let apiParams = ["action":action,
                                  "todo_social_post_id":approvedPost.postId]
                 TodoApi().postAction(todoCard.cardId!, params:apiParams) { result, error in
@@ -503,8 +503,10 @@ extension ToDoViewController:  TodoCardActionHandler {
                 }
                 self.shouldMaximize = false
                 self.tableView.reloadData()
-            }
-        
+                DispatchQueue.main.async {
+                    self.tableView.scrollToRow(at: self.scrollToRow, at: .none, animated: false)
+                }
+            }// if action is approve_one or deny_one        
         default:
             print("Unknown type")
         }//switch
