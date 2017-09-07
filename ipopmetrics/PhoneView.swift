@@ -43,6 +43,7 @@ class PhoneView: UIView {
         self.addSubview(numberTextField)
         self.addSubview(messageLbl)
         self.addSubview(sendCodeBtn)
+        /*
         if UIDevice.current.orientation.isPortrait {
             setNumberTextField(yAnchor: 122)
             self.layoutIfNeeded()
@@ -62,6 +63,7 @@ class PhoneView: UIView {
         } else {
             setSendCodeButton(yAnchor: -30)
         }
+        */
     }
     
     func setup() {
@@ -70,27 +72,36 @@ class PhoneView: UIView {
         
         // TextField for number
         self.addSubview(numberTextField)
+        setNumberTextField(yAnchor: 122)
+        /*
         if UIDevice.current.orientation.isPortrait {
             setNumberTextField(yAnchor: 122)
         } else {
             setNumberTextField(yAnchor: 65)
         }
+        */
         
         // Message Label
         self.addSubview(messageLbl)
+        setMessageLbl(yAnchor: -66)
+        /*
         if UIDevice.current.orientation.isPortrait {
             setMessageLbl(yAnchor: -66)
         } else {
             setMessageLbl(yAnchor: 22)
         }
+        */
         
         // Send code button
         self.addSubview(sendCodeBtn)
+        setSendCodeButton(yAnchor: -136)
+        /*
         if UIDevice.current.orientation.isPortrait {
             setSendCodeButton(yAnchor: -136)
         } else {
             setSendCodeButton(yAnchor: -30)
         }
+        */
         
         
     }

@@ -31,6 +31,7 @@ class TodoCardMaximizedViewCell: UITableViewCell {
     @IBOutlet weak var socialNetworkLbl: UILabel!
     @IBOutlet weak var actionBtn: RoundedCornersButton!
     
+    @IBOutlet weak var connectionLineWidth: NSLayoutConstraint!
     
     var postIndex = 0
     var approveDenyDelegate : TodoCardActionHandler?
@@ -101,11 +102,13 @@ class TodoCardMaximizedViewCell: UITableViewCell {
         self.postIconImageView.image = UIImage(named: item.socialIcon)
         //        self.articleImage.image = UIImage(named: item.articleImage!)
         
-        self.connectionLine.backgroundColor = item.getSectionColor
+        self.connectionLine.backgroundColor = PopmetricsColor.darkGrey
         //self.topHeaderView.backgroundColor = item.getSectionColor
         
         self.topHeaderView.circleView.backgroundColor = item.getSectionColor
-        self.topHeaderView.title.text = "\(item.socialTextString)"
+        if let card = item.todoCard {
+                self.topHeaderView.title.text = card.getCardToolbarTitle
+        }
         
         setUpApprovedView(approved: item.status == "approved")
         
@@ -114,6 +117,8 @@ class TodoCardMaximizedViewCell: UITableViewCell {
         // changeColor()
         
         addApprovedView()
+        
+        connectionLineWidth.constant =  5
     }
     
     
@@ -173,7 +178,7 @@ class TodoCardMaximizedViewCell: UITableViewCell {
     
     func addApprovedView() {
         self.insertSubview(approvedView, at: 1)
-        approvedView.topAnchor.constraint(equalTo: topContainerVIew.topAnchor).isActive = true
+        approvedView.topAnchor.constraint(equalTo: topContainerVIew.topAnchor, constant: 29).isActive = true
         approvedView.bottomAnchor.constraint(equalTo: topContainerVIew.bottomAnchor).isActive = true
         approvedView.leftAnchor.constraint(equalTo: topContainerVIew.leftAnchor).isActive = true
         approvedView.rightAnchor.constraint(equalTo: topContainerVIew.rightAnchor).isActive = true
@@ -186,6 +191,8 @@ class TodoCardMaximizedViewCell: UITableViewCell {
         
         approvedButton.rightImageView.image = nil
         approvedButton.layer.cornerRadius = 6
+        
+        self.approvedView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 10)
     }
     
     func setUpApprovedView(approved: Bool) {

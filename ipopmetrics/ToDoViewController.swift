@@ -38,6 +38,7 @@ class ToDoViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor.feedBackgroundColor()
         tableView.separatorStyle = .none
         
         registerCellsForTable()
@@ -59,7 +60,13 @@ class ToDoViewController: BaseViewController {
         tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
         tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
         
+        setupTopViewItemCount()
         
+        //check for the first run 
+        if( store.getTodoCards().count == 0) {
+            self.tableView.isHidden = true
+            self.fetchItems(silent:false)
+        }
     }
     
     func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
@@ -104,22 +111,22 @@ class ToDoViewController: BaseViewController {
     }
     
     internal func setupTopViewItemCount() {
-        /*
-        for section in sections {
-            if let status = StatusArticle(rawValue: section.status) {
+        let todoCards = store.getTodoCards()
+        for  todoCard in todoCards {
+            if let status = StatusArticle(rawValue: todoCard.section.lowercased()) {
                 switch status {
                 case .unapproved:
-                    toDoTopView.setTextClockLabel(text: ("(\(section.items.count))"))
+                    toDoTopView.setTextClockLabel(text: ("(\(store.getTodoSocialPostsForCard(todoCard).count))"))
                     break
                 case .failed:
-                    toDoTopView.setTextNotificationLabel(text: ("(\(section.items.count))"))
+                    //toDoTopView.setTextNotificationLabel(text: ("(\(section.items.count))"))
                     break
                 default:
                     break
                 }
             }
         }
-        */
+        
     }
     
     func checkApprovedAll() -> Bool {
@@ -160,14 +167,13 @@ class ToDoViewController: BaseViewController {
             }
             else {
                 self.store.updateTodos((responseWrapper?.data)!)
+                self.tableView.isHidden = false
                 self.tableView.reloadData()
+                self.setupTopViewItemCount()
             }
-            
         }
         
-        
     }
-
     
     internal func createItemsLocally() {
         
@@ -252,7 +258,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             //cell.setUpApprovedConnectionView()
             
             cell.connectionStackView.isHidden = true
-            if store.getTodoSocialPostsForCard(store.getTodoCards()[sectionIdx]).endIndex == indexPath.row {
+            if (noItemsLoaded(indexPath.section) - 1 ==  indexPath.row) {
                 cell.connectionStackView.isHidden = true
                 cell.isLastCell = true
             } else {
@@ -290,6 +296,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
             headerCell.changeColor(color: card.getSectionColor)
             headerCell.changeTitle(title: card.section)
+            headerCell.changeTitleToolbar(title: card.getCardToolbarTitle)
             
             //toDoTopView.setUpView(view: StatusArticle(rawValue: sections[section].status)!)
             return headerCell

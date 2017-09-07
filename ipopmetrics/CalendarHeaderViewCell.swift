@@ -49,6 +49,10 @@ class CalendarHeaderViewCell: UITableViewCell {
         sectionTitleLabel.text = title
     }
     
+    func changeTitleToolbar(title: String) {
+        toolbarView.title.text = title
+    }
+    
     func setUpHeaderShadowView() {
         
         containerView.insertSubview(headerShadow, belowSubview: toolbarView)

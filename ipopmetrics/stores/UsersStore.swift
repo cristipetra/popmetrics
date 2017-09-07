@@ -38,7 +38,9 @@ class UsersStore {
     
     
     func clearCredentials() {
-        
+        let defaults = UserDefaults.standard
+        defaults.set(nil, forKey: "currentBrandId")
+        defaults.set(nil, forKey: "userAccountJson")
     }
     
     static var currentBrandId: String {

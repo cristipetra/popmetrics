@@ -53,6 +53,7 @@ class DigitCodeView: UIView {
         self.addSubview(sendCodeBtn)
         self.addSubview(resendCodeBtn)
         self.addSubview(contactBtn)
+        /*
         if UIDevice.current.orientation.isPortrait {
             setNumberTextView(yAnchor: 122)
             self.layoutIfNeeded()
@@ -62,17 +63,24 @@ class DigitCodeView: UIView {
             self.layoutIfNeeded()
             print("landscape")
         }
+        */
+        setNumberTextView(yAnchor: 122)
+        
         setSendCodeButton(yAnchor: 30)
+        /*
         if UIDevice.current.orientation.isPortrait {
             setResendCodeButton(yAnchor: -130)
         } else {
             setResendCodeButton(yAnchor: -60)
         }
+ 
         if UIDevice.current.orientation.isPortrait {
             setContactButton(yAnchor: -90)
         } else {
             setContactButton(yAnchor: -30)
         }
+        */
+        setContactButton(yAnchor: -90)
     }
     
     func setup() {
@@ -81,6 +89,7 @@ class DigitCodeView: UIView {
         
         // TextField for number
         self.addSubview(digitextField)
+        /*
         if UIDevice.current.orientation.isPortrait {
             setNumberTextView(yAnchor: 122)
             self.layoutIfNeeded()
@@ -90,6 +99,8 @@ class DigitCodeView: UIView {
             self.layoutIfNeeded()
             print("landscape")
         }
+        */
+        setNumberTextView(yAnchor: 122)
         
         // Send code button
         self.addSubview(sendCodeBtn)
@@ -97,19 +108,25 @@ class DigitCodeView: UIView {
         
         //Resend code button
         self.addSubview(resendCodeBtn)
+        /*
         if UIDevice.current.orientation.isPortrait {
             setResendCodeButton(yAnchor: -130)
         } else {
             setResendCodeButton(yAnchor: -60)
         }
+        */
+        setResendCodeButton(yAnchor: -130)
         
         //Contact button
         self.addSubview(contactBtn)
+        /*
         if UIDevice.current.orientation.isPortrait {
             setContactButton(yAnchor: -90)
         } else {
             setContactButton(yAnchor: -30)
         }
+        */
+        setContactButton(yAnchor: -90)
     }
     
     private func setNumberTextView(yAnchor: CGFloat) {

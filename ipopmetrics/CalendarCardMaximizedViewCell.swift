@@ -12,8 +12,6 @@ import ActiveLabel
 protocol ApproveDenySinglePostProtocol: class {
 
     func approveSinglePostHandler(index: Int)
-
-
 }
 
 class CalendarCardMaximizedViewCell: UITableViewCell {
@@ -42,6 +40,10 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
     var postIndex = 0
     weak var approveDenyDelegate : ApproveDenySinglePostProtocol?
     var toDoStackView : UIStackView!
+    
+    private var calendarItem: CalendarSocialPost!
+    
+    var isLastCell = false
     
     lazy var denyButton : UIButton = {
         
@@ -79,18 +81,12 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
     }()
     
     lazy var approvedConnectionView : UIView = {
-        
         let view = UIView()
         view.backgroundColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
-        
     }()
     
-    
-    private var calendarItem: CalendarSocialPost!
-    var notLastCell = true
-    var isLastCell = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -103,7 +99,6 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
     
     func configure(_ item: CalendarSocialPost) {
         self.calendarItem = item;
-        // self.calendarItem = item;
         self.titleLbl.text = item.articleTitle
         //var formatedDate = self.formatDate((item.statusDate)!)
         var formatedDate = self.formatDate(Date())
@@ -114,10 +109,10 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         self.postIconImageView.image = UIImage(named: item.socialIcon)
 //      self.articleImage.image = UIImage(named: item.articleImage!)
         
-      self.connectionLine.backgroundColor = item.getSectionColor
+        self.connectionLine.backgroundColor = item.getSectionColor
         //self.topHeaderView.backgroundColor = item.getSectionColor
 
-      self.topHeaderView.circleView.backgroundColor = item.getSectionColor
+        self.topHeaderView.circleView.backgroundColor = item.getSectionColor
         self.topHeaderView.title.text = "\(item.socialTextString)"
         
         // updateBtnView()
@@ -155,25 +150,6 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         return true
     }
     
-    func setUpMaximizeToDo() {
-        actionBtn.isHidden = true
-        
-        toDoStackView = UIStackView(arrangedSubviews: [denyButton,approveButton])
-        toDoStackView.axis = .horizontal
-        toDoStackView.alignment = .center
-        toDoStackView.distribution = .equalSpacing
-        toDoStackView.spacing = 50
-        
-        topContainerVIew.addSubview(toDoStackView)
-        toDoStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        toDoStackView.centerXAnchor.constraint(equalTo: topContainerVIew.centerXAnchor).isActive = true
-        toDoStackView.centerYAnchor.constraint(equalTo: articleImage.centerYAnchor, constant: -20).isActive = true
-        
-        approveButton.addTarget(self, action: #selector(approvePostHandler), for: .touchUpInside)
-        
-    }
-    
     func approvePostHandler() {
         approveDenyDelegate?.approveSinglePostHandler(index: postIndex)
     }
@@ -208,7 +184,6 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         approvedConnectionView.leftAnchor.constraint(equalTo: connectionLine.leftAnchor,constant: -1.5).isActive = true
         approvedConnectionView.rightAnchor.constraint(equalTo: connectionLine.rightAnchor, constant: 1.5).isActive = true
         connectionLine.backgroundColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
-        
     }
     
     internal func getBtnColor() -> UIColor {

@@ -20,16 +20,13 @@ class ToDoCardCell: UITableViewCell {
     @IBOutlet weak var circleView: UIView!
     
     lazy var approvedView : UIView = {
-        
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = PopmetricsColor.darkGrey.withAlphaComponent(0.8)
         return view
-        
     }()
     
     lazy var approvedButton : TwoImagesButton = {
-        
         let button = TwoImagesButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(red: 54/255, green: 172/255, blue: 130/255, alpha: 1)
@@ -43,7 +40,7 @@ class ToDoCardCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.feedBackgroundColor()
-        //setUpApprovedView()
+        addApprovedView()
         setupCorners()
     }
     
@@ -52,6 +49,7 @@ class ToDoCardCell: UITableViewCell {
         titleLbl.text = todoItem.articleTitle
         messageLbl.text = todoItem.articleText
         
+        changeTypeApprovedButton()
         setUpApprovedView(approved: item.status == "approved")
     }
     
@@ -68,8 +66,13 @@ class ToDoCardCell: UITableViewCell {
     
     func setUpApprovedView(approved: Bool) {
         if( approved == false) {
-            return
+            self.approvedView.isHidden = true
+        } else {
+            self.approvedView.isHidden = false
         }
+    }
+    
+    func addApprovedView() {
         self.insertSubview(approvedView, at: 1)
         approvedView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
         approvedView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
@@ -82,24 +85,28 @@ class ToDoCardCell: UITableViewCell {
         approvedButton.widthAnchor.constraint(equalToConstant: 110).isActive = true
         approvedButton.heightAnchor.constraint(equalToConstant: 39).isActive = true
         
+        
+        approvedButton.imageButtonType = .approved
+        /*
         if approved {
             approvedButton.imageButtonType = .approved
         } else {
             approvedButton.imageButtonType = .unapproved
         }
+        */
         
-        
+        approvedButton.rightImageView.image = nil
+        approvedButton.layer.cornerRadius = 6
+    }
+    
+    func changeTypeApprovedButton() {
         if(todoItem.status == StatusArticle.failed.rawValue) {
             approvedButton.rightTextLabel.text = "Reschedule"
-            
             approvedButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
             approvedButton.rightTextLabel.frame.size.width = 60
         } else if (todoItem.status == StatusArticle.unapproved.rawValue) {
             approvedButton.rightTextLabel.text = "Approved"
         }
-        
-        approvedButton.rightImageView.image = nil
-        approvedButton.layer.cornerRadius = 6
     }
     
     func removeApprovedView() {
