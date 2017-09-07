@@ -59,7 +59,7 @@ class ToDoViewController: BaseViewController {
         tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
         tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
         
-        
+        setupTopViewItemCount()
     }
     
     func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
@@ -104,22 +104,22 @@ class ToDoViewController: BaseViewController {
     }
     
     internal func setupTopViewItemCount() {
-        /*
-        for section in sections {
-            if let status = StatusArticle(rawValue: section.status) {
+        let todoCards = store.getTodoCards()
+        for  todoCard in todoCards {
+            if let status = StatusArticle(rawValue: todoCard.section.lowercased()) {
                 switch status {
                 case .unapproved:
-                    toDoTopView.setTextClockLabel(text: ("(\(section.items.count))"))
+                    toDoTopView.setTextClockLabel(text: ("(\(store.getTodoSocialPostsForCard(todoCard).count))"))
                     break
                 case .failed:
-                    toDoTopView.setTextNotificationLabel(text: ("(\(section.items.count))"))
+                    //toDoTopView.setTextNotificationLabel(text: ("(\(section.items.count))"))
                     break
                 default:
                     break
                 }
             }
         }
-        */
+        
     }
     
     func checkApprovedAll() -> Bool {
@@ -161,13 +161,12 @@ class ToDoViewController: BaseViewController {
             else {
                 self.store.updateTodos((responseWrapper?.data)!)
                 self.tableView.reloadData()
+                self.setupTopViewItemCount()
             }
             
         }
         
-        
     }
-
     
     internal func createItemsLocally() {
         
@@ -290,6 +289,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
             headerCell.changeColor(color: card.getSectionColor)
             headerCell.changeTitle(title: card.section)
+            headerCell.changeTitleToolbar(title: card.getCardToolbarTitle)
             
             //toDoTopView.setUpView(view: StatusArticle(rawValue: sections[section].status)!)
             return headerCell

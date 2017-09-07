@@ -67,6 +67,17 @@ class TodoCard:  Object, Mappable {
             }
         }
     }
+    
+    var getCardToolbarTitle: String {
+        get {
+            switch section.lowercased() {
+            case StatusArticle.unapproved.rawValue:
+                return "Recommended Action"
+            default:
+               return "Recommended Action"
+            }
+        }
+    }
 }
 
 class TodoSocialPost: Object, Mappable {

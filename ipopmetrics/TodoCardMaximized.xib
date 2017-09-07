@@ -248,6 +248,7 @@
                 <outlet property="articleImage" destination="g33-N6-hTc" id="svr-YI-FhK"/>
                 <outlet property="connectionContainerView" destination="2FW-vY-81j" id="MEZ-8u-B4f"/>
                 <outlet property="connectionLine" destination="byU-xl-5me" id="KfN-Ld-h8U"/>
+                <outlet property="connectionLineWidth" destination="KcU-46-Jyp" id="fnN-K0-aa7"/>
                 <outlet property="connectionStackView" destination="RYQ-7a-97U" id="rWK-T7-16S"/>
                 <outlet property="imageContainerView" destination="VjF-HY-X4v" id="H0I-a7-tsK"/>
                 <outlet property="messageLbl" destination="pmL-62-fG7" id="O4I-o7-kWt"/>
