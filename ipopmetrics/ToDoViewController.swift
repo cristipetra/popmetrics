@@ -494,6 +494,8 @@ extension ToDoViewController:  TodoCardActionHandler {
                     }
                     
                 }
+                self.shouldMaximize = false
+                self.tableView.reloadData()
             }
         
         default:
