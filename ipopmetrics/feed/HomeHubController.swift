@@ -181,11 +181,15 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        //return self.store.getFeedCards().count
-        return sectionToIndex.count
+        //return self.store.getFeedCards().count + 1
+        print("count \(sectionToIndex.count)");
+        return sectionToIndex.count + 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (section == sectionToIndex.count) {
+            return 1
+        }
         return store.getFeedCardsWithSection(indexToSection[section]!).count
     }
     
@@ -194,6 +198,18 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
         
+        
+        if(indexPath.section == sectionToIndex.count) {
+            shouldDisplayCell = true
+            isInfoCellType = true
+            isTrafficCard = false
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
+            cell.changeTitleWithSpacing(title: "You're all caught up.")
+            cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
+            cell.selectionStyle = .none
+            cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
+            return cell
+        }
         
         let sectionCards = store.getFeedCardsWithSection(indexToSection[sectionIdx]!)
         let item = sectionCards[rowIdx]
@@ -278,7 +294,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     var shouldDisplayHeaderCell = false
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
+        if(section == sectionToIndex.count) {
+            let cell = UITableViewCell()
+            return cell
+        }
         let sectionCards = store.getFeedCardsWithSection(indexToSection[section]!)
         var itemType = "unknown"
         if sectionCards.count > 0 {
@@ -332,6 +351,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         print(shouldDisplayHeaderCell)
         var height: CGFloat = 0;
+        if( section == indexToSection.count) {
+            return 0
+        }
         
         let sectionCards = store.getFeedCardsWithSection(indexToSection[section]!)
         if sectionCards.count > 0 {
