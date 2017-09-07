@@ -47,6 +47,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         GIDSignIn.sharedInstance().uiDelegate = self
       
         // Style elements
+        self.view.backgroundColor = UIColor.feedBackgroundColor()
         setUpNavigationBar()
         
         tableView.separatorStyle = .none
@@ -90,6 +91,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         addImageOnLastCard()
         
+        if(store.getFeedCards().count == 0) {
+            tableView.isHidden = true
+            self.fetchItems(silent:false)
+        }
+        
 //        NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
     }
     
@@ -124,6 +130,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             }
             else {
                 self.store.updateFeed((responseWrapper?.data)!)
+                self.tableView.isHidden = false
                 self.tableView.reloadData()
             }
         }

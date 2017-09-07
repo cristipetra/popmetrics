@@ -38,6 +38,7 @@ class ToDoViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor.feedBackgroundColor()
         tableView.separatorStyle = .none
         
         registerCellsForTable()
@@ -60,6 +61,12 @@ class ToDoViewController: BaseViewController {
         tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
         
         setupTopViewItemCount()
+        
+        //check for the first run 
+        if( store.getTodoCards().count == 0) {
+            self.tableView.isHidden = true
+            self.fetchItems(silent:false)
+        }
     }
     
     func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
@@ -160,10 +167,10 @@ class ToDoViewController: BaseViewController {
             }
             else {
                 self.store.updateTodos((responseWrapper?.data)!)
+                self.tableView.isHidden = false
                 self.tableView.reloadData()
                 self.setupTopViewItemCount()
             }
-            
         }
         
     }
