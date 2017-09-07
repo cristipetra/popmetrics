@@ -79,12 +79,10 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
     }()
     
     lazy var approvedConnectionView : UIView = {
-        
         let view = UIView()
         view.backgroundColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
-        
     }()
     
     
@@ -103,7 +101,6 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
     
     func configure(_ item: CalendarSocialPost) {
         self.calendarItem = item;
-        // self.calendarItem = item;
         self.titleLbl.text = item.articleTitle
         //var formatedDate = self.formatDate((item.statusDate)!)
         var formatedDate = self.formatDate(Date())
@@ -114,10 +111,10 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         self.postIconImageView.image = UIImage(named: item.socialIcon)
 //      self.articleImage.image = UIImage(named: item.articleImage!)
         
-      self.connectionLine.backgroundColor = item.getSectionColor
+        self.connectionLine.backgroundColor = item.getSectionColor
         //self.topHeaderView.backgroundColor = item.getSectionColor
 
-      self.topHeaderView.circleView.backgroundColor = item.getSectionColor
+        self.topHeaderView.circleView.backgroundColor = item.getSectionColor
         self.topHeaderView.title.text = "\(item.socialTextString)"
         
         // updateBtnView()

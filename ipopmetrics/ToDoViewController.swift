@@ -252,7 +252,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             //cell.setUpApprovedConnectionView()
             
             cell.connectionStackView.isHidden = true
-            if store.getTodoSocialPostsForCard(store.getTodoCards()[sectionIdx]).endIndex == indexPath.row {
+            if (noItemsLoaded(indexPath.section) - 1 ==  indexPath.row) {
                 cell.connectionStackView.isHidden = true
                 cell.isLastCell = true
             } else {
