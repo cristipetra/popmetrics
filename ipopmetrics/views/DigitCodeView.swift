@@ -53,6 +53,7 @@ class DigitCodeView: UIView {
         self.addSubview(sendCodeBtn)
         self.addSubview(resendCodeBtn)
         self.addSubview(contactBtn)
+        setResendCodeButton(yAnchor: -130)
         /*
         if UIDevice.current.orientation.isPortrait {
             setNumberTextView(yAnchor: 122)
