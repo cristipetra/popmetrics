@@ -252,10 +252,8 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             let cell = tableView.dequeueReusableCell(withIdentifier: "maxCellId", for: indexPath) as! TodoCardMaximizedViewCell
             cell.configure(item)
             cell.articleDate.isHidden = true
-            cell.setUpMaximizeToDo()
             cell.approveDenyDelegate = self
             cell.postIndex = indexPath.row
-            //cell.setUpApprovedConnectionView()
             
             cell.connectionStackView.isHidden = true
             if (noItemsLoaded(indexPath.section) - 1 ==  indexPath.row) {
@@ -503,7 +501,18 @@ extension ToDoViewController:  TodoCardActionHandler {
                     }
                     
             }
-        
+            if action == "deny_one" {
+                var socialPost: TodoSocialPost
+                socialPost = params["social_post"]  as! TodoSocialPost
+                try! store.realm.write {
+                    socialPost.status = "denied"
+                    self.shouldMaximize = false
+                    self.tableView.reloadData()
+                    DispatchQueue.main.async {
+                        self.tableView.scrollToRow(at: self.scrollToRow, at: .none, animated: false)
+                    }
+                }
+            }
         default:
             print("Unknown type")
         }//switch

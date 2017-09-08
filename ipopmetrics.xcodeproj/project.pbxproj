@@ -84,6 +84,7 @@
 		08D1BC371F1DF4F900D377B2 /* ViewNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC361F1DF4F900D377B2 /* ViewNames.swift */; };
 		08D1BC391F1E3D6200D377B2 /* LDSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC381F1E3D6200D377B2 /* LDSplashView.swift */; };
 		08D1BC3B1F1E568A00D377B2 /* PhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC3A1F1E568A00D377B2 /* PhoneView.swift */; };
+		08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D579F81F62E6ED00FDD744 /* StatusCardTypeView.swift */; };
 		08DF9E621F261C8100C60C2D /* InfoCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */; };
 		08EE385D1F447C0E005D1D7C /* TodoTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EE385C1F447C0E005D1D7C /* TodoTopView.swift */; };
 		08F368891F18D7C500819CDE /* ApprovalCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08F368881F18D7C500819CDE /* ApprovalCard.xib */; };
@@ -273,6 +274,7 @@
 		08D1BC361F1DF4F900D377B2 /* ViewNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewNames.swift; sourceTree = "<group>"; };
 		08D1BC381F1E3D6200D377B2 /* LDSplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDSplashView.swift; sourceTree = "<group>"; };
 		08D1BC3A1F1E568A00D377B2 /* PhoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneView.swift; sourceTree = "<group>"; };
+		08D579F81F62E6ED00FDD744 /* StatusCardTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCardTypeView.swift; sourceTree = "<group>"; };
 		08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCardViewController.swift; sourceTree = "<group>"; };
 		08EE385C1F447C0E005D1D7C /* TodoTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoTopView.swift; sourceTree = "<group>"; };
 		08F368881F18D7C500819CDE /* ApprovalCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ApprovalCard.xib; sourceTree = "<group>"; };
@@ -807,6 +809,7 @@
 				0856F3571F272F020061DF7E /* Calendar.storyboard */,
 				08C6FBFA1F41FFCB007D6101 /* Todo.storyboard */,
 				08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */,
+				08D579F81F62E6ED00FDD744 /* StatusCardTypeView.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -1165,6 +1168,7 @@
 				110A62D71ECEDE8B0052B478 /* FakeMessageSender.swift in Sources */,
 				1128B3FF1ED2E12300BDA58C /* InsightViewCell.swift in Sources */,
 				110A62F21ECEE6FB0052B478 /* TimeSeparatorModel.swift in Sources */,
+				08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */,
 				08B745911F1F638000EC3F8C /* LoginNavigationViewController.swift in Sources */,
 				110A62DA1ECEDE8B0052B478 /* BaseMessageCollectionViewCellAvatarStyle.swift in Sources */,
 				110A62EE1ECEE6F30052B478 /* DemoTextMessageViewModel.swift in Sources */,
