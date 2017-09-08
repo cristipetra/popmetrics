@@ -270,10 +270,22 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
         cell.configure(item: item)
-        
+        sideShadow(view: cell.containerView)
         return cell
         
     }
+    
+    func sideShadow(view: UIView) {
+        view.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor
+        view.layer.shadowOpacity = 0.5;
+        view.layer.shadowRadius = 2
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+
+        let shadowRect : CGRect = view.bounds.insetBy(dx: 0, dy: 0)
+        view.layer.shadowPath = UIBezierPath(rect: shadowRect).cgPath
+        
+    }
+    
     @objc private func goToNextTab() {
         self.tabBarController?.selectedIndex += 1
     }
@@ -297,7 +309,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             headerCell.changeColor(color: card.getSectionColor)
             headerCell.changeTitle(title: card.section)
             headerCell.changeTitleToolbar(title: card.getCardToolbarTitle)
-            
+            headerCell.setUpHeaderShadowView()
             //toDoTopView.setUpView(view: StatusArticle(rawValue: sections[section].status)!)
             return headerCell
         } else {
@@ -314,7 +326,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             return UIView()
         }
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
-        
+        todoFooter.setUpFooterShadowView()
         todoFooter.xButton.isHidden = true
         //todoFooter.changeTypeSection(typeSection: StatusArticle(rawValue: sections[section].status)!)
         //todoFooter.actionButton.addTarget(self, action: #selector(approveCard(_:section:)), for: .touchUpInside)
