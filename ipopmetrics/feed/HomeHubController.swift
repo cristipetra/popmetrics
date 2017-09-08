@@ -418,11 +418,13 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.selectionStyle = .none
                 cell.connectionLine.isHidden = true
                 cell.backgroundColor = UIColor.feedBackgroundColor()
+                
                 return cell
             case "recommended_action":
                 shouldDisplayCell = true
                 isMoreInfoType = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedActionId", for: indexPath) as! RecommendedActionViewCell
+                cell.footerView.actionButton.addTarget(self, action: #selector(openGoogleActionView), for: .touchUpInside)
                 return cell
             default:
                 shouldDisplayCell = false
@@ -430,6 +432,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 return cell
             }
         
+    }
+    
+    @objc func openGoogleActionView() {
+        print("open google")
+        let googleActionVc = GoogleActionViewController()
+        self.navigationController?.pushViewController(googleActionVc, animated: true)
     }
     
     func handlerInsightButton() {

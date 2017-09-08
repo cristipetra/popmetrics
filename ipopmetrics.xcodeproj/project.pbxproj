@@ -68,6 +68,9 @@
 		08B485E01F20EA23005918A1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485DF1F20EA23005918A1 /* Config.swift */; };
 		08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485E31F210992005918A1 /* VideoScreenViewController.swift */; };
 		08B485E61F210A61005918A1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485E51F210A61005918A1 /* RoundButton.swift */; };
+		08B4BCDC1F619BCF00660F5B /* TaskGoogleCitationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B4BCDB1F619BCF00660F5B /* TaskGoogleCitationView.xib */; };
+		08B4BCDE1F619BEF00660F5B /* TaskGoogleCitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4BCDD1F619BEF00660F5B /* TaskGoogleCitationView.swift */; };
+		08B4BCE11F619D4200660F5B /* GoogleActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4BCE01F619D4200660F5B /* GoogleActionViewController.swift */; };
 		08B5D4BA1F29C28A00B79AD3 /* CalendarFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5D4B91F29C28A00B79AD3 /* CalendarFeedStore.swift */; };
 		08B5D4BC1F29CD5000B79AD3 /* CalendarCardMaximized.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B5D4BB1F29CD5000B79AD3 /* CalendarCardMaximized.xib */; };
 		08B5D4BE1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5D4BD1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift */; };
@@ -259,6 +262,9 @@
 		08B485DF1F20EA23005918A1 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		08B485E31F210992005918A1 /* VideoScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoScreenViewController.swift; sourceTree = "<group>"; };
 		08B485E51F210A61005918A1 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		08B4BCDB1F619BCF00660F5B /* TaskGoogleCitationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskGoogleCitationView.xib; sourceTree = "<group>"; };
+		08B4BCDD1F619BEF00660F5B /* TaskGoogleCitationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskGoogleCitationView.swift; sourceTree = "<group>"; };
+		08B4BCE01F619D4200660F5B /* GoogleActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleActionViewController.swift; sourceTree = "<group>"; };
 		08B5D4B91F29C28A00B79AD3 /* CalendarFeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarFeedStore.swift; sourceTree = "<group>"; };
 		08B5D4BB1F29CD5000B79AD3 /* CalendarCardMaximized.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCardMaximized.xib; sourceTree = "<group>"; };
 		08B5D4BD1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCardMaximizedViewCell.swift; sourceTree = "<group>"; };
@@ -526,6 +532,23 @@
 			name = fonts;
 			sourceTree = "<group>";
 		};
+		08B4BCDA1F619BB200660F5B /* google */ = {
+			isa = PBXGroup;
+			children = (
+				08B4BCDB1F619BCF00660F5B /* TaskGoogleCitationView.xib */,
+				08B4BCDD1F619BEF00660F5B /* TaskGoogleCitationView.swift */,
+			);
+			name = google;
+			sourceTree = "<group>";
+		};
+		08B4BCDF1F619D2400660F5B /* google */ = {
+			isa = PBXGroup;
+			children = (
+				08B4BCE01F619D4200660F5B /* GoogleActionViewController.swift */,
+			);
+			name = google;
+			sourceTree = "<group>";
+		};
 		08B745991F1F992A00EC3F8C /* login */ = {
 			isa = PBXGroup;
 			children = (
@@ -538,6 +561,7 @@
 		08C7B18E1F1CF41200E456C6 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				08B4BCDF1F619D2400660F5B /* google */,
 				08FAE8421F541D5E0097DF3E /* statistics */,
 				080DCA7F1F4D6ED5000C73DC /* menu */,
 				085CB7B41F4ADD8000038C03 /* notifications */,
@@ -787,6 +811,7 @@
 		11ACA9AD1E2CE0A80021E64A /* views */ = {
 			isa = PBXGroup;
 			children = (
+				08B4BCDA1F619BB200660F5B /* google */,
 				08FAE8451F541FC90097DF3E /* statistics */,
 				0888C5BC1F4EECBF00E3DB04 /* buttons */,
 				080DCA841F4D96EB000C73DC /* recommended */,
@@ -1013,6 +1038,7 @@
 				08C7B18D1F1CF40C00E456C6 /* WelcomeScreen.xib in Resources */,
 				08A4A5411F45B563001071E3 /* AlfaSlabOne-Regular.ttf in Resources */,
 				1178D6801E1E5AD9005B96C3 /* Main.storyboard in Resources */,
+				08B4BCDC1F619BCF00660F5B /* TaskGoogleCitationView.xib in Resources */,
 				110A62E71ECEE6E60052B478 /* SendingStatusCollectionViewCell.xib in Resources */,
 				08B5D4BC1F29CD5000B79AD3 /* CalendarCardMaximized.xib in Resources */,
 				08F3688F1F18E43100819CDE /* ApprovalCardInfo.xib in Resources */,
@@ -1149,9 +1175,11 @@
 				085AA0D41F42ECAA0014D4CE /* Todo.swift in Sources */,
 				113976A91E97C71300B535DF /* AccountViewController.swift in Sources */,
 				08953E761F4C35AC003ABEFC /* RequiredAction.swift in Sources */,
+				08B4BCE11F619D4200660F5B /* GoogleActionViewController.swift in Sources */,
 				08BF9D4E1F45F2EF00141206 /* TableFooterView.swift in Sources */,
 				11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */,
 				116540C11EEACD4000417D61 /* UsersStore.swift in Sources */,
+				08B4BCDE1F619BEF00660F5B /* TaskGoogleCitationView.swift in Sources */,
 				08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */,
 				08AF049A1F46FBB60040012B /* ToDoCardCell.swift in Sources */,
 				1128B3FD1ED2E01F00BDA58C /* ActionViewCell.swift in Sources */,
