@@ -535,6 +535,17 @@ extension ToDoViewController:  TodoCardActionHandler {
                         print("action occurred")
                     }
                     
+            }
+            if action == "deny_one" {
+                var socialPost: TodoSocialPost
+                socialPost = params["social_post"]  as! TodoSocialPost
+                try! store.realm.write {
+                    socialPost.status = "denied"
+                    self.shouldMaximize = false
+                    self.tableView.reloadData()
+                    DispatchQueue.main.async {
+                        self.tableView.scrollToRow(at: self.scrollToRow, at: .none, animated: false)
+                    }
                 }
                 self.shouldMaximize = false
                 self.tableView.reloadData()
@@ -542,6 +553,7 @@ extension ToDoViewController:  TodoCardActionHandler {
                     self.tableView.scrollToRow(at: self.scrollToRow, at: .none, animated: false)
                 }
             }// if action is approve_one or deny_one        
+        }
         default:
             print("Unknown type")
         }//switch

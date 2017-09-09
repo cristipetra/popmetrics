@@ -187,7 +187,7 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
     }
     
     internal func getBtnColor() -> UIColor {
-        switch calendarItem.status! {
+        switch calendarItem.status {
         case StatusArticle.scheduled.rawValue:
             return UIColor(red: 255/255, green: 119/255, blue: 106/255, alpha: 1.0)
         case StatusArticle.failed.rawValue:
@@ -198,7 +198,7 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
     }
     
     internal func getTitleBtn() -> String {
-        switch calendarItem.status! {
+        switch calendarItem.status {
         case StatusArticle.scheduled.rawValue:
             return "Cancel"
         case StatusArticle.failed.rawValue:

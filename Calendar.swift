@@ -18,6 +18,8 @@ class CalendarCard:  Object, Mappable {
     
     dynamic var type = ""
     dynamic var section = ""
+    dynamic var status = ""
+    
     dynamic var headerTitle: String? = nil
     dynamic var headerSubtitle: String? = nil
     dynamic var headerIconUri:String? = nil
@@ -50,6 +52,89 @@ class CalendarCard:  Object, Mappable {
         tooltipContent  <- map["tooltip_conent"]
         
     }
+    
+    var socialIcon: String {
+        get {
+            switch type {
+            case TypeArticle.twitter.rawValue:
+                return "icon_twitter"
+            case TypeArticle.linkedin.rawValue:
+                return "icon_google"
+            default:
+                return "icon_twitter"
+            }
+            
+        }
+    }
+    
+    var socialPost: String {
+        get {
+            switch type {
+            case TypeArticle.twitter.rawValue:
+                return "Twitter Post"
+            case TypeArticle.linkedin.rawValue:
+                return "Linkedin Post"
+            default:
+                return ""
+            }
+        }
+    }
+    
+    var socialTextString: String {
+        get {
+            switch status {
+            case StatusArticle.scheduled.rawValue:
+                return "Scheduled"
+            case StatusArticle.failed.rawValue:
+                return "Failed"
+            case StatusArticle.executed.rawValue:
+                return "Completed"
+            case StatusArticle.unapproved.rawValue:
+                return "Unapproved"
+            default:
+                return ""
+            }
+        }
+    }
+    
+    var socialTextStringColor: UIColor {
+        get {
+            switch status {
+            case StatusArticle.scheduled.rawValue:
+                return PopmetricsColor.blueMedium
+            case StatusArticle.failed.rawValue:
+                return PopmetricsColor.salmondColor
+            case StatusArticle.executed.rawValue:
+                return PopmetricsColor.greenSelectedDate
+            default:
+                return PopmetricsColor.blueMedium
+            }
+        }
+    }
+    
+    var getSectionColor: UIColor {
+        get {
+            switch status {
+            case StatusArticle.scheduled.rawValue:
+                return UIColor.darkGray
+            case StatusArticle.failed.rawValue:
+                return PopmetricsColor.salmondColor
+            case StatusArticle.executed.rawValue:
+                return PopmetricsColor.greenSelectedDate
+            case StatusArticle.unapproved.rawValue:
+                return PopmetricsColor.yellowUnapproved
+            default:
+                return UIColor.white
+            }
+        }
+    }
+    
+    var socialURLColor: UIColor {
+        get {
+            return PopmetricsColor.blueURLColor
+        }
+    }
+    
 
     
 }
@@ -67,7 +152,7 @@ class CalendarSocialPost: Object, Mappable {
     
     dynamic var type = ""
     dynamic var section = ""
-    dynamic var status: String? = nil
+    dynamic var status = ""
     dynamic var statusDate: Date? = Date()
     dynamic var title:String? = nil
     
@@ -88,6 +173,7 @@ class CalendarSocialPost: Object, Mappable {
  
     func mapping(map: Map) {
         postId          <- map["id"]
+        calendarCardId  <- map["calendar_card_id"]
         index           <- map["index"]
         type            <- map["type"]
         scheduledDate   <- (map["schedule_dt"], DateTransform())
@@ -130,24 +216,13 @@ class CalendarSocialPost: Object, Mappable {
     
     var socialTextString: String {
         get {
-            switch status! {
-            case StatusArticle.scheduled.rawValue:
-                return "Scheduled"
-            case StatusArticle.failed.rawValue:
-                return "Failed"
-            case StatusArticle.executed.rawValue:
-                return "Completed"
-            case StatusArticle.unapproved.rawValue:
-                return "Unapproved"
-            default:
-                return ""
-            }
+            return status.capitalized
         }
     }
     
     var socialTextStringColor: UIColor {
         get {
-            switch status! {
+            switch status {
             case StatusArticle.scheduled.rawValue:
                 return PopmetricsColor.blueMedium
             case StatusArticle.failed.rawValue:
@@ -162,7 +237,7 @@ class CalendarSocialPost: Object, Mappable {
     
     var getSectionColor: UIColor {
         get {
-            switch status! {
+            switch status {
             case StatusArticle.scheduled.rawValue:
                 return UIColor.darkGray
             case StatusArticle.failed.rawValue:
@@ -182,6 +257,10 @@ class CalendarSocialPost: Object, Mappable {
             return PopmetricsColor.blueURLColor
         }
     }
+    
+
+    
+
     
     
 }

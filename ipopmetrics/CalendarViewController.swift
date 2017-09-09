@@ -96,6 +96,19 @@ class CalendarViewController: BaseViewController {
 
         //createItemsLocally()
         
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = PopmetricsColor.darkGrey
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            self?.fetchItems(silent:false)  
+            self?.tableView.dg_stopLoading()
+            self?.tableView.reloadData()
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
+        tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
+    
+        self.view.addSubview(transitionView)
+        transitionView.addSubview(tableView)
+        transitionView.addSubview(calendarView)
         
 
     }
@@ -121,7 +134,19 @@ class CalendarViewController: BaseViewController {
                 // self.setupTopViewItemCount()
             }
         }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        transitionView.alpha = 0.7
+        let tabInfo = MainTabInfo.getInstance()
+        let xValue = tabInfo.currentItemIndex >= tabInfo.lastItemIndex ? CGFloat(20) : CGFloat(-20)
+        transitionView.frame.origin.x = xValue
         
+        UIView.transition(with: tableView,
+                          duration: 0.22,
+                          animations: {
+                            self.transitionView.frame.origin.x = 0
+                            self.transitionView.alpha = 1
+                        })
     }
     
     
@@ -342,16 +367,24 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             return UIView()
         }
         //get first item from every section
-        let item: CalendarSocialPost = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])[0]
-        if shouldMaximizeCell == false {
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
-            headerCell.changeColor(color: item.getSectionColor)
-            headerCell.changeTitle(title: item.socialTextString)
-            return headerCell
-        } else {
+        
+        let sectionCard = store.getCalendarCards()[section]
+        let posts = store.getCalendarSocialPostsForCard(sectionCard)
+
+        if shouldMaximizeCell {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
-            headerCell.changeColor(section: section)
-            headerCell.changeTitle(title: item.socialTextString)
+            if posts.count > 0 {
+                let item = posts[0]
+                headerCell.changeColor(section: section)
+                headerCell.changeTitle(title: (item.calendarCard?.socialTextString)!)
+            }
+            return headerCell
+        }
+        else {
+        
+            let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
+            headerCell.changeColor(color: sectionCard.getSectionColor)
+            headerCell.changeTitle(title: sectionCard.socialTextString)
             return headerCell
         }
         

@@ -20,7 +20,7 @@ class CalendarApi: BaseApi {
             "a": 0
         ]
         
-        Alamofire.request(ApiUrls.getMyBrandTodoUrl(brandId), method: .get, parameters: params,
+        Alamofire.request(ApiUrls.getMyBrandCalendarUrl(brandId), method: .get, parameters: params,
                           headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperOne<CalendarResponse>>) in
                             
                             if let err = self.createErrorWithHttpResponse(response: response.response) {
