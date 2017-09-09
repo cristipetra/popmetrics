@@ -19,6 +19,7 @@ class ToDoViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var toDoTopView: TodoTopView!
+    let transitionView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     let store = TodoStore.getInstance()
 
@@ -67,6 +68,23 @@ class ToDoViewController: BaseViewController {
             self.tableView.isHidden = true
             self.fetchItems(silent:false)
         }
+        
+        self.view.addSubview(transitionView)
+        transitionView.addSubview(tableView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        transitionView.alpha = 0.7
+        let tabInfo = MainTabInfo.getInstance()
+        let xValue = tabInfo.currentItemIndex >= tabInfo.lastItemIndex ? CGFloat(20) : CGFloat(-20)
+        transitionView.frame.origin.x = xValue
+        
+        UIView.transition(with: tableView,
+                          duration: 0.22,
+                          animations: {
+                            self.transitionView.frame.origin.x = 0
+                            self.transitionView.alpha = 1
+                        })
     }
     
     func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
@@ -385,7 +403,16 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         DispatchQueue.main.async {
             self.tableView.scrollToRow(at: self.scrollToRow, at: .none, animated: false)
         }
-        tableView.reloadData()
+        //tableView.reloadData()
+        reloadDataTable()
+    }
+    
+    func reloadDataTable() {
+        UIView.transition(with: tableView,
+            duration: 0.35,
+            options: .transitionCrossDissolve,
+            animations: { self.tableView.reloadData()
+        })
     }
     
     

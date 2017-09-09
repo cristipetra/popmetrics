@@ -13,6 +13,9 @@ import SwiftyJSON
 class StatisticsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var leftAnchorTableView: NSLayoutConstraint!
+    
+    let transitionView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
     var insightIsDisplayed = false
@@ -21,6 +24,7 @@ class StatisticsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.feedBackgroundColor()
         setUpNavigationBar()
         
         registerCellsForTable()
@@ -33,6 +37,21 @@ class StatisticsViewController: UIViewController {
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
         fetchItemsLocally()
+        
+        self.view.addSubview(transitionView)
+        transitionView.addSubview(tableView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        transitionView.alpha = 0.7
+        transitionView.frame.origin.x = 20
+    
+        UIView.transition(with: tableView, duration: 0.22,
+            animations: {
+                self.transitionView.frame.origin.x = 0
+                self.transitionView.alpha = 1
+            }
+        )
     }
     
     internal func registerCellsForTable() {

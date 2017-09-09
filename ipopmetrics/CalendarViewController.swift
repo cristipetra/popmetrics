@@ -24,10 +24,11 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var topPickerStackView: UIStackView!
     @IBOutlet weak var todayLabelView: UIView!
     
-    
     @IBOutlet weak var topPickerStackViewWrapper: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var topPickerStackViewHeight: NSLayoutConstraint!
+    
+    let transitionView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     let store = CalendarFeedStore.getInstance()
     
@@ -45,7 +46,7 @@ class CalendarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tableView.backgroundColor = UIColor.feedBackgroundColor()
         setUpNavigationBar()
         
         let calendarCardNib = UINib(nibName: "CalendarCard", bundle: nil)
@@ -88,9 +89,26 @@ class CalendarViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
         
-
         createItemsLocally()
-
+    
+        self.view.addSubview(transitionView)
+        transitionView.addSubview(tableView)
+        transitionView.addSubview(calendarView)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        transitionView.alpha = 0.7
+        let tabInfo = MainTabInfo.getInstance()
+        let xValue = tabInfo.currentItemIndex >= tabInfo.lastItemIndex ? CGFloat(20) : CGFloat(-20)
+        transitionView.frame.origin.x = xValue
+        
+        UIView.transition(with: tableView,
+                          duration: 0.22,
+                          animations: {
+                            self.transitionView.frame.origin.x = 0
+                            self.transitionView.alpha = 1
+                        })
     }
     
     internal func createItemsLocally() {
@@ -207,9 +225,6 @@ class CalendarViewController: UIViewController {
             store.realm.add(postCompleted2, update:true)
             
         }
-        
-        print(store.getCalendarCards())
-        print(store.getCalendarSocialPostsForCard(store.getCalendarCards()[0]))
         
     }
     

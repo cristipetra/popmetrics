@@ -13,6 +13,7 @@
 		080DCA831F4D9586000C73DC /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 080DCA821F4D9586000C73DC /* OpenSans-ExtraBold.ttf */; };
 		080DCA861F4D9707000C73DC /* RecommendedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 080DCA851F4D9707000C73DC /* RecommendedCell.xib */; };
 		080DCA881F4D9716000C73DC /* RecommendedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DCA871F4D9716000C73DC /* RecommendedCell.swift */; };
+		083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083938FE1F63C334007DDA37 /* MainTabInfo.swift */; };
 		0848280F1F39F9200054B04C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848280E1F39F9200054B04C /* HeaderView.swift */; };
 		085053FE1F2787A100FE8234 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085053FD1F2787A100FE8234 /* CalendarViewController.swift */; };
 		085054011F2793AE00FE8234 /* CalendarCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085054001F2793AE00FE8234 /* CalendarCard.xib */; };
@@ -203,6 +204,7 @@
 		080DCA821F4D9586000C73DC /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		080DCA851F4D9707000C73DC /* RecommendedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendedCell.xib; sourceTree = "<group>"; };
 		080DCA871F4D9716000C73DC /* RecommendedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedCell.swift; sourceTree = "<group>"; };
+		083938FE1F63C334007DDA37 /* MainTabInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabInfo.swift; sourceTree = "<group>"; };
 		0848280E1F39F9200054B04C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		085053FD1F2787A100FE8234 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		085054001F2793AE00FE8234 /* CalendarCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCard.xib; sourceTree = "<group>"; };
@@ -549,6 +551,7 @@
 				08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */,
 				08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */,
 				1100F6F81F5FEBCE000AF1D4 /* TodoActionHandler.swift */,
+				083938FE1F63C334007DDA37 /* MainTabInfo.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -1198,6 +1201,7 @@
 				08A4A5431F45B5D6001071E3 /* TwoImagesButton.swift in Sources */,
 				08953E741F4C359E003ABEFC /* FooterView.swift in Sources */,
 				08F368911F18E6A000819CDE /* ApprovalCardInfoCell.swift in Sources */,
+				083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */,
 				08C6FBFD1F4205EF007D6101 /* ToDoViewController.swift in Sources */,
 				11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */,
 				113976AB1E97C74B00B535DF /* BaseViewController.swift in Sources */,
