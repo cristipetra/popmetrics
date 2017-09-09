@@ -36,6 +36,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     let transition = BubbleTransition();
     var transitionButton:UIButton = UIButton();
+    let transitionView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     var isAnimatingHeader = false
     
@@ -98,12 +99,27 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
 //        NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
         
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
         tableView.contentOffset = CGPoint(x: 0, y: 50)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.alpha = 1
+        let tabInfo = MainTabInfo.getInstance()
+        let xValue = tabInfo.currentItemIndex >= tabInfo.lastItemIndex ? CGFloat(20) : CGFloat(-20)
+        UIView.transition(with: tableView,
+                          duration: 0.22,
+                          animations: {
+                            self.tableView.alpha = 1
+        })
+    }
+
     
     
     func addImageOnLastCard() {
@@ -142,10 +158,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             }
         }
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
