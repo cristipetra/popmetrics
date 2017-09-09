@@ -26,10 +26,11 @@ class CalendarViewController: BaseViewController {
     @IBOutlet weak var topPickerStackView: UIStackView!
     @IBOutlet weak var todayLabelView: UIView!
     
-    
     @IBOutlet weak var topPickerStackViewWrapper: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var topPickerStackViewHeight: NSLayoutConstraint!
+    
+    let transitionView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     let store = CalendarFeedStore.getInstance()
     
@@ -239,9 +240,6 @@ class CalendarViewController: BaseViewController {
 //            store.realm.add(postCompleted2, update:true)
             
         }
-        
-        print(store.getCalendarCards())
-        print(store.getCalendarSocialPostsForCard(store.getCalendarCards()[0]))
         
     }
     

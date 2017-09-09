@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -26,6 +27,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2D-ym-ILA">
+                                <rect key="frame" x="0.0" y="155" width="375" height="512"/>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQG-q0-7FL">
                                 <rect key="frame" x="17" y="28" width="341" height="56"/>
                                 <subviews>
@@ -129,15 +134,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="sxt-Ax-gkm" firstAttribute="top" secondItem="cQG-q0-7FL" secondAttribute="bottom" constant="8" id="05h-hm-LAh"/>
+                            <constraint firstItem="ie1-Qs-Qb6" firstAttribute="top" secondItem="z2D-ym-ILA" secondAttribute="bottom" id="9SH-lc-ZVB"/>
                             <constraint firstAttribute="trailing" secondItem="E6I-0J-yYW" secondAttribute="trailing" id="9s2-bE-iyr"/>
                             <constraint firstItem="sxt-Ax-gkm" firstAttribute="leading" secondItem="xhT-q9-WYF" secondAttribute="leading" id="BnA-Yo-ZAe"/>
                             <constraint firstItem="E6I-0J-yYW" firstAttribute="leading" secondItem="xhT-q9-WYF" secondAttribute="leading" id="BzB-Da-fbl"/>
                             <constraint firstAttribute="trailing" secondItem="sxt-Ax-gkm" secondAttribute="trailing" id="HY6-eF-bRL"/>
+                            <constraint firstItem="z2D-ym-ILA" firstAttribute="top" secondItem="Miw-PH-q84" secondAttribute="bottom" constant="135" id="Noh-hI-IYB"/>
+                            <constraint firstItem="z2D-ym-ILA" firstAttribute="leading" secondItem="xhT-q9-WYF" secondAttribute="leadingMargin" constant="-16" id="TCt-5u-eVF"/>
                             <constraint firstItem="ie1-Qs-Qb6" firstAttribute="top" secondItem="E6I-0J-yYW" secondAttribute="bottom" id="UQT-Ta-9La"/>
                             <constraint firstItem="1c5-8J-U6W" firstAttribute="top" secondItem="sxt-Ax-gkm" secondAttribute="bottom" id="eUg-ec-cGb"/>
                             <constraint firstItem="cQG-q0-7FL" firstAttribute="top" secondItem="Miw-PH-q84" secondAttribute="bottom" constant="8" id="jXd-Li-CY8"/>
                             <constraint firstAttribute="trailing" secondItem="cQG-q0-7FL" secondAttribute="trailing" constant="17" id="kQf-GU-7n2"/>
                             <constraint firstItem="E6I-0J-yYW" firstAttribute="top" secondItem="1c5-8J-U6W" secondAttribute="bottom" id="kf7-9J-Dqs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="z2D-ym-ILA" secondAttribute="trailing" constant="-16" id="pbB-eY-5Ij"/>
                             <constraint firstAttribute="trailing" secondItem="1c5-8J-U6W" secondAttribute="trailing" id="uUZ-LJ-8ga"/>
                             <constraint firstItem="cQG-q0-7FL" firstAttribute="leading" secondItem="xhT-q9-WYF" secondAttribute="leading" constant="17" id="wHf-yJ-ou1"/>
                             <constraint firstItem="1c5-8J-U6W" firstAttribute="leading" secondItem="xhT-q9-WYF" secondAttribute="leading" id="xNn-AO-W8E"/>

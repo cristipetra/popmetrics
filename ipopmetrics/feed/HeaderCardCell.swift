@@ -66,6 +66,9 @@ class HeaderCardCell: UITableViewCell {
         case .traffic:
             connectionView.backgroundColor = PopmetricsColor.trafficHeaderColor
             roundConnectionView.backgroundColor = PopmetricsColor.trafficHeaderColor
+        case .insight:
+            connectionView.backgroundColor = PopmetricsColor.darkGrey
+            roundConnectionView.backgroundColor = PopmetricsColor.darkGrey
         default:
             break
         }

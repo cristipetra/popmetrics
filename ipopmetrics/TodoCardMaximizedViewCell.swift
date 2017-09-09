@@ -56,20 +56,11 @@ class TodoCardMaximizedViewCell: UITableViewCell {
         button.setBackgroundImage(UIImage(named: "icon_quepost"), for: .normal)
         return button
     }()
-    
-    lazy var approvedView : UIView = {
-        let view = UIView()
+
+    lazy var statusCardTypeView: StatusCardTypeView = {
+        let view = StatusCardTypeView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = PopmetricsColor.darkGrey.withAlphaComponent(0.8)
         return view
-    }()
-    
-    lazy var approvedButton : TwoImagesButton = {
-        let button = TwoImagesButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor(red: 54/255, green: 172/255, blue: 130/255, alpha: 1)
-        return button
-        
     }()
     
     lazy var approvedConnectionView : UIView = {
@@ -87,6 +78,8 @@ class TodoCardMaximizedViewCell: UITableViewCell {
         self.connectionContainerView.backgroundColor = UIColor.feedBackgroundColor()
         
         setUpCorners()
+        addStatusCardTypeView()
+        setUpMaximizeToDo()
     }
     
     func configure(_ item: TodoSocialPost) {
@@ -110,15 +103,17 @@ class TodoCardMaximizedViewCell: UITableViewCell {
                 self.topHeaderView.title.text = card.getCardToolbarTitle
         }
         
-        setUpApprovedView(approved: item.status == "approved")
-        
-        // updateBtnView()
-        
-        // changeColor()
-        
-        addApprovedView()
+        setupStatusCardView( approved: (item.status == "approved" || item.status == "denied"))
         
         connectionLineWidth.constant =  5
+    }
+    
+    func addStatusCardTypeView() {
+        self.addSubview(statusCardTypeView)
+        statusCardTypeView.topAnchor.constraint(equalTo: topContainerVIew.topAnchor, constant: 29).isActive = true
+        statusCardTypeView.bottomAnchor.constraint(equalTo: topContainerVIew.bottomAnchor).isActive = true
+        statusCardTypeView.leftAnchor.constraint(equalTo: topContainerVIew.leftAnchor).isActive = true
+        statusCardTypeView.rightAnchor.constraint(equalTo: topContainerVIew.rightAnchor).isActive = true
     }
     
     
@@ -155,7 +150,7 @@ class TodoCardMaximizedViewCell: UITableViewCell {
     func setUpMaximizeToDo() {
         actionBtn.isHidden = true
         
-        toDoStackView = UIStackView(arrangedSubviews: [denyButton,approveButton])
+        toDoStackView = UIStackView(arrangedSubviews: [denyButton, approveButton])
         toDoStackView.axis = .horizontal
         toDoStackView.alignment = .center
         toDoStackView.distribution = .equalSpacing
@@ -169,6 +164,7 @@ class TodoCardMaximizedViewCell: UITableViewCell {
         
         approveButton.addTarget(self, action: #selector(approvePostHandler), for: .touchUpInside)
         
+        denyButton.addTarget(self, action: #selector(denyPosHandler), for: .touchUpInside);
     }
     
     func approvePostHandler() {
@@ -176,40 +172,25 @@ class TodoCardMaximizedViewCell: UITableViewCell {
                                              params:["social_post":self.todoItem])
     }
     
-    func addApprovedView() {
-        self.insertSubview(approvedView, at: 1)
-        approvedView.topAnchor.constraint(equalTo: topContainerVIew.topAnchor, constant: 29).isActive = true
-        approvedView.bottomAnchor.constraint(equalTo: topContainerVIew.bottomAnchor).isActive = true
-        approvedView.leftAnchor.constraint(equalTo: topContainerVIew.leftAnchor).isActive = true
-        approvedView.rightAnchor.constraint(equalTo: topContainerVIew.rightAnchor).isActive = true
-        
-        approvedView.addSubview(approvedButton)
-        approvedButton.centerXAnchor.constraint(equalTo: approvedView.centerXAnchor).isActive = true
-        approvedButton.centerYAnchor.constraint(equalTo: approvedView.centerYAnchor).isActive = true
-        approvedButton.widthAnchor.constraint(equalToConstant: 110).isActive = true
-        approvedButton.heightAnchor.constraint(equalToConstant: 39).isActive = true
-        
-        approvedButton.rightImageView.image = nil
-        approvedButton.layer.cornerRadius = 6
-        
-        self.approvedView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 10)
+    func denyPosHandler() {
+        approveDenyDelegate?.handleCardAction("deny_one", todoCard: self.todoItem.todoCard!, params: ["social_post": self.todoItem])
     }
     
-    func setUpApprovedView(approved: Bool) {
-        
+    func setupStatusCardView(approved: Bool) {
         print("approved \(approved)")
-        
         if( approved == false) {
-            self.approvedView.isHidden = true
-            return
+            self.statusCardTypeView.isHidden = true
         } else {
-            self.approvedView.isHidden = false
+            setStatusCardViewType()
+            self.statusCardTypeView.isHidden = false
         }
-
-        if approved {
-            approvedButton.imageButtonType = .approved
-        } else {
-            approvedButton.imageButtonType = .rescheduled
+    }
+    
+    func setStatusCardViewType() {
+        if(todoItem.status == "approved") {
+            statusCardTypeView.typeStatusView = .approved
+        } else if(todoItem.status == "denied") {
+            statusCardTypeView.typeStatusView = .denied
         }
     }
     

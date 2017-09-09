@@ -19,6 +19,7 @@ class ToDoViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var toDoTopView: TodoTopView!
+    let transitionView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     let store = TodoStore.getInstance()
 
@@ -49,8 +50,6 @@ class ToDoViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        
-        
         loadingView.tintColor = PopmetricsColor.darkGrey
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             self?.fetchItems(silent:false)
@@ -67,6 +66,23 @@ class ToDoViewController: BaseViewController {
             self.tableView.isHidden = true
             self.fetchItems(silent:false)
         }
+        
+        self.view.addSubview(transitionView)
+        transitionView.addSubview(tableView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        transitionView.alpha = 0.7
+        let tabInfo = MainTabInfo.getInstance()
+        let xValue = tabInfo.currentItemIndex >= tabInfo.lastItemIndex ? CGFloat(20) : CGFloat(-20)
+        transitionView.frame.origin.x = xValue
+        
+        UIView.transition(with: tableView,
+                          duration: 0.22,
+                          animations: {
+                            self.transitionView.frame.origin.x = 0
+                            self.transitionView.alpha = 1
+                        })
     }
     
     func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
@@ -252,10 +268,8 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             let cell = tableView.dequeueReusableCell(withIdentifier: "maxCellId", for: indexPath) as! TodoCardMaximizedViewCell
             cell.configure(item)
             cell.articleDate.isHidden = true
-            cell.setUpMaximizeToDo()
             cell.approveDenyDelegate = self
             cell.postIndex = indexPath.row
-            //cell.setUpApprovedConnectionView()
             
             cell.connectionStackView.isHidden = true
             if (noItemsLoaded(indexPath.section) - 1 ==  indexPath.row) {
@@ -270,10 +284,22 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
         cell.configure(item: item)
-        
+        sideShadow(view: cell.containerView)
         return cell
         
     }
+    
+    func sideShadow(view: UIView) {
+        view.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor
+        view.layer.shadowOpacity = 0.5;
+        view.layer.shadowRadius = 2
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+
+        let shadowRect : CGRect = view.bounds.insetBy(dx: 0, dy: 0)
+        view.layer.shadowPath = UIBezierPath(rect: shadowRect).cgPath
+        
+    }
+    
     @objc private func goToNextTab() {
         self.tabBarController?.selectedIndex += 1
     }
@@ -297,7 +323,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             headerCell.changeColor(color: card.getSectionColor)
             headerCell.changeTitle(title: card.section)
             headerCell.changeTitleToolbar(title: card.getCardToolbarTitle)
-            
+            headerCell.setUpHeaderShadowView()
             //toDoTopView.setUpView(view: StatusArticle(rawValue: sections[section].status)!)
             return headerCell
         } else {
@@ -314,7 +340,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             return UIView()
         }
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
-        
+        todoFooter.setUpFooterShadowView()
         todoFooter.xButton.isHidden = true
         //todoFooter.changeTypeSection(typeSection: StatusArticle(rawValue: sections[section].status)!)
         //todoFooter.actionButton.addTarget(self, action: #selector(approveCard(_:section:)), for: .touchUpInside)
@@ -375,7 +401,16 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         DispatchQueue.main.async {
             self.tableView.scrollToRow(at: self.scrollToRow, at: .none, animated: false)
         }
-        tableView.reloadData()
+        //tableView.reloadData()
+        reloadDataTable()
+    }
+    
+    func reloadDataTable() {
+        UIView.transition(with: tableView,
+            duration: 0.35,
+            options: .transitionCrossDissolve,
+            animations: { self.tableView.reloadData()
+        })
     }
     
     

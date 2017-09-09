@@ -35,6 +35,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="leftAnchorTableView" destination="dl9-UC-ZnL" id="guN-RI-yZe"/>
                         <outlet property="tableView" destination="peS-3X-5Qv" id="3py-Lx-RON"/>
                     </connections>
                 </viewController>

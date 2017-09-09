@@ -69,4 +69,15 @@ class MainTabBarController: UITabBarController {
      return true
      }
      */
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        print("the selected index is : \(tabBar.items?.index(of: item))")
+        let selectedIndex = tabBar.items?.index(of: item)
+        let tabInfo = MainTabInfo.getInstance()
+        tabInfo.lastItemIndex = tabInfo.currentItemIndex
+        tabInfo.currentItemIndex = selectedIndex!
+    }
+    
+
 }
+

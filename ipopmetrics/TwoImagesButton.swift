@@ -134,6 +134,11 @@ class TwoImagesButton: RoundButton {
             leftHandImage = UIImage(named: "icon2CtaApprovepost")
             rightImageView.isHidden = true
             approveButtonText = "Approved"
+        case .denied:
+            leftHandImage = UIImage(named: "iconDenyBtn")
+            rightImageView.isHidden = true
+            approveButtonText = "Denied"
+            rightTextLabel.font = UIFont(name: FontBook.semibold, size: 12)
         case .rescheduled:
             leftHandImage = UIImage(named: "icon2CtaApprovepost")
             rightImageView.isHidden = true
@@ -175,4 +180,5 @@ enum ImageButtonType {
     case allowNotification
     case todo
     case traffic
+    case denied
 }

@@ -42,6 +42,7 @@ class PopmetricsColor {
     static let greenMedium = UIColor(red: 73/255.0, green: 196/255.0, blue: 153/255.0, alpha: 1.0)
     static let greenDark = UIColor(red: 0/255.0, green: 127/255.0, blue: 120/255.0, alpha: 1.0)
     static let greenSelectedDate = UIColor(red: 68/255.0, green: 180/255.0, blue: 142/255.0, alpha: 1.0)
+    static let greenBtn = UIColor(red: 54/255.0, green: 172/255.0, blue: 130/255.0, alpha: 1.0)
     
     static let transparentGrayDark = UIColor(red: 80/255.0, green: 80/255.0, blue: 80/255.0, alpha: 0.7)
     
