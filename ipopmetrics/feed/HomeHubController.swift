@@ -97,7 +97,14 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         }
         
 //        NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
+        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        tableView.contentOffset = CGPoint(x: 0, y: 50)
+    }
+    
     
     func addImageOnLastCard() {
         let image = UIImage(named: "end_of_feed")
@@ -340,6 +347,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             cell.changeColor(cardType: .traffic)
             cell.sectionTitleLabel.text = "Traffic Intelligence";
             return cell
+        case "insight":
+            shouldDisplayHeaderCell = true
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            cell.changeColor(cardType: .insight)
+            cell.sectionTitleLabel.text = "Recommended For You";
+            return cell
         default:
             shouldDisplayHeaderCell = false
             let cell = UITableViewCell()
@@ -378,6 +391,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 height = 80
             }
             if (item.type == "traffic") {
+                height = 80
+            }
+            if (item.type == "insight") {
                 height = 80
             }
         }
@@ -589,4 +605,5 @@ enum CardType: String {
     case recommended = "recommended"
     case todo = "todo"
     case traffic = "traffic"
+    case insight = "insight"
 }
