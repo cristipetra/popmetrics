@@ -99,13 +99,13 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
     
     func configure(_ item: CalendarSocialPost) {
         self.calendarItem = item;
-        self.titleLbl.text = item.articleTitle
+        self.titleLbl.text = item.title
         //var formatedDate = self.formatDate((item.statusDate)!)
         var formatedDate = self.formatDate(Date())
         self.articleDate.text = " " + formatedDate
-        self.messageLbl.text = item.articleText
+        self.messageLbl.text = item.text
         
-        self.socialNetworkLbl.text = item.socialPost + ": " + item.articleCategory!
+        self.socialNetworkLbl.text = item.socialPost + ": " + item.type
         self.postIconImageView.image = UIImage(named: item.socialIcon)
 //      self.articleImage.image = UIImage(named: item.articleImage!)
         
@@ -129,7 +129,7 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
             article.customColor[customColor] = calendarItem.socialTextStringColor
         }
         
-        let colorTextUrl = ActiveType.custom(pattern: "\\s\(calendarItem.articleUrl)\\b")
+        let colorTextUrl = ActiveType.custom(pattern: "\\s\(calendarItem.url)\\b")
         
         messageLbl.enabledTypes.append(colorTextUrl)
         messageLbl.customize { (textUrl) in

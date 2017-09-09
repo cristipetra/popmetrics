@@ -39,7 +39,7 @@ class CalendarFeedStore {
         return distinctTypes.count
     }
     
-    public func updateCalendars(_ feedResponse: FeedResponse) {
+    public func updateCalendars(_ calendarResponse: CalendarResponse) {
         
         let realm = try! Realm()
         let cards = realm.objects(CalendarCard.self).sorted(byKeyPath: "index")
@@ -47,7 +47,7 @@ class CalendarFeedStore {
         var cardsToDelete: [CalendarCard] = []
         try! realm.write {
             for existingCard in cards {
-                let (exists, newCard) = feedResponse.matchCard(existingCard.cardId!)
+                let (exists, newCard) = calendarResponse.matchCard(existingCard.cardId!)
                 if !exists {
                     cardsToDelete.append(existingCard)
                 }

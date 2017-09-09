@@ -40,6 +40,7 @@ class CalendarCard:  Object, Mappable {
         cardId          <- map["id"]
         index           <- map["index"]
         type            <- map["type"]
+        section         <- map["section"]
         headerTitle     <- map["header_title"]
         headerSubtitle  <- map["header_subtitle"]
         headerIconUri   <- map["header_icon"]
@@ -57,24 +58,23 @@ class CalendarSocialPost: Object, Mappable {
     
     dynamic var postId:  String? = nil
     dynamic var calendarCard: CalendarCard? = nil
+    dynamic var calendarCardId = ""
+    
     dynamic var index = 0
     dynamic var isApproved = false
     
     dynamic var scheduledDate: Date? = nil
     
-    
     dynamic var type = ""
     dynamic var section = ""
     dynamic var status: String? = nil
-    dynamic var statusDate: Date? = nil
+    dynamic var statusDate: Date? = Date()
+    dynamic var title:String? = nil
     
-    dynamic var articleCategory:String? = nil
-    dynamic var articleTitle:String? = nil
-    
-    dynamic var articleText = ""
-    dynamic var articleUrl = ""
-    dynamic var articleHashtags = ""
-    dynamic var articleImage:String? = nil
+    dynamic var text = ""
+    dynamic var url = ""
+    dynamic var hashtags = ""
+    dynamic var image:String? = nil
     
     
     override static func primaryKey() -> String? {
@@ -85,18 +85,19 @@ class CalendarSocialPost: Object, Mappable {
         self.init()
     }
     
+ 
     func mapping(map: Map) {
         postId          <- map["id"]
         index           <- map["index"]
         type            <- map["type"]
+        scheduledDate   <- (map["schedule_dt"], DateTransform())
         section         <- map["section"]
         status          <- map["status"]
-        articleCategory <- map["article_category"]
-        articleTitle    <- map["article_title"]
-        articleText     <- map["article_text"]
-        articleUrl      <- map["article_url"]
-        articleHashtags <- map["article_hashtags"]
-        articleImage    <- map["article_image"]
+        title           <- map["title"]
+        text            <- map["text"]
+        url             <- map["url"]
+        hashtags        <- map["hashtags"]
+        image           <- map["image"]
         
     }
     

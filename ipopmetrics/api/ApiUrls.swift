@@ -15,11 +15,11 @@ import Foundation
 
 
 private let PROTOCOL = "http"
-private let HOST = "192.168.7.101"
+// private let HOST = "192.168.7.101"
 private let PORT = 5030
 
 // private let HOST = "10.0.1.50"
-// private let HOST = "72.20.10.2"
+private let HOST = "172.20.10.2"
 
 private let LOGIN_PATH = "/api/caas/sign_in_with_email"
 private let SEND_CODE_BY_SMS_PATH = "/api/caas/send_code_by_sms"
@@ -42,11 +42,15 @@ private let ACCOUNT_INFO_PATH = "/api/caas/me"
 private let ACCOUNT_EDIT_PATH = "/api/caas/me"
 private let ACCOUNT_THUMBNAIL_PATH_FORMAT = "/api/caas/user/%@/image/thumbnail"
 
-private let USER_FEED_PATH = "/api/feed/brand/%@/feed"
+private let USER_FEED_PATH = "/api/feed/brand/%@"
 private let FEED_ACTION_PATH = "/api/feed/action/%@"
 
-private let USER_TODO_PATH = "/api/todo/brand/%@/todo"
+private let USER_TODO_PATH = "/api/todo/brand/%@"
 private let USER_TODO_ACTION_PATH = "/api/todo/action/%@"
+
+private let USER_CALENDAR_PATH = "/api/calendar/brand/%@"
+private let USER_CALENDAR_ACTION_PATH = "/api/calendar/action/%@"
+
 
 private let USER_TEAMS_PATH = "/api/market/user/%@/teams"
 
@@ -144,6 +148,16 @@ class ApiUrls {
     static func getTodoActionUrl(_ brandId:String) -> String {
         return composedBaseUrl(String(format:USER_TODO_ACTION_PATH, brandId))
     }
+    
+    static func getMyBrandCalendarUrl(_ brandId:String) -> String {
+        return composedBaseUrl(String(format:USER_CALENDAR_PATH, brandId))
+    }
+    
+    static func getCalendarActionUrl(_ brandId:String) -> String {
+        return composedBaseUrl(String(format:USER_CALENDAR_ACTION_PATH, brandId))
+    }
+    
+    
     
     
     static func getFeedRequiredActionUrl(_ brandId:String) -> String {

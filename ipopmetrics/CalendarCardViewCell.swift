@@ -53,14 +53,14 @@ class CalendarCardViewCell: UITableViewCell {
     
     func configure(_ item: CalendarSocialPost) {
         calendarItem = item;
-        self.titleLbl.text = item.articleTitle
+        self.titleLbl.text = item.title
         let formatedDate = self.formatDate((item.statusDate)!)
         self.statusText.text = item.socialTextString
         self.timeLbl.text = self.formatDate(item.statusDate!)
         
-        self.messageLbl.text = item.articleText
+        self.messageLbl.text = item.text
         
-        self.backgroundImage.image = UIImage(named: item.articleImage!)
+        self.backgroundImage.image = UIImage(named: item.image!)
         self.foregroundImage.image = UIImage(named: item.socialIcon)
         
         changeColor()
