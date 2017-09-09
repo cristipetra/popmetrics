@@ -50,8 +50,6 @@ class ToDoViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        
-        
         loadingView.tintColor = PopmetricsColor.darkGrey
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             self?.fetchItems(silent:false)
