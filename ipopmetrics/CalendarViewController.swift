@@ -11,6 +11,7 @@ import EZAlertController
 import SwiftyJSON
 import MJCalendar
 import RealmSwift
+import DGElasticPullToRefresh
 
 class CalendarViewController: UIViewController {
     
@@ -46,7 +47,7 @@ class CalendarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.backgroundColor = UIColor.feedBackgroundColor()
+        
         setUpNavigationBar()
         
         let calendarCardNib = UINib(nibName: "CalendarCard", bundle: nil)
@@ -90,6 +91,15 @@ class CalendarViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
         
         createItemsLocally()
+        
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = PopmetricsColor.darkGrey
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            self?.tableView.dg_stopLoading()
+            self?.tableView.reloadData()
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
+        tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
     
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)

@@ -28,7 +28,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2D-ym-ILA">
-                                <rect key="frame" x="0.0" y="170" width="375" height="497"/>
+                                <rect key="frame" x="0.0" y="155" width="375" height="512"/>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQG-q0-7FL">
@@ -139,7 +139,7 @@
                             <constraint firstItem="sxt-Ax-gkm" firstAttribute="leading" secondItem="xhT-q9-WYF" secondAttribute="leading" id="BnA-Yo-ZAe"/>
                             <constraint firstItem="E6I-0J-yYW" firstAttribute="leading" secondItem="xhT-q9-WYF" secondAttribute="leading" id="BzB-Da-fbl"/>
                             <constraint firstAttribute="trailing" secondItem="sxt-Ax-gkm" secondAttribute="trailing" id="HY6-eF-bRL"/>
-                            <constraint firstItem="z2D-ym-ILA" firstAttribute="top" secondItem="Miw-PH-q84" secondAttribute="bottom" constant="150" id="Noh-hI-IYB"/>
+                            <constraint firstItem="z2D-ym-ILA" firstAttribute="top" secondItem="Miw-PH-q84" secondAttribute="bottom" constant="135" id="Noh-hI-IYB"/>
                             <constraint firstItem="z2D-ym-ILA" firstAttribute="leading" secondItem="xhT-q9-WYF" secondAttribute="leadingMargin" constant="-16" id="TCt-5u-eVF"/>
                             <constraint firstItem="ie1-Qs-Qb6" firstAttribute="top" secondItem="E6I-0J-yYW" secondAttribute="bottom" id="UQT-Ta-9La"/>
                             <constraint firstItem="1c5-8J-U6W" firstAttribute="top" secondItem="sxt-Ax-gkm" secondAttribute="bottom" id="eUg-ec-cGb"/>
