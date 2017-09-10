@@ -54,9 +54,9 @@ class CalendarCardViewCell: UITableViewCell {
     func configure(_ item: CalendarSocialPost) {
         calendarItem = item;
         self.titleLbl.text = item.title
-        let formatedDate = self.formatDate((item.statusDate)!)
+        let formatedDate = self.formatDate((item.scheduledDate)!)
         self.statusText.text = item.socialTextString
-        self.timeLbl.text = self.formatDate(item.statusDate!)
+        self.timeLbl.text = formatedDate
         
         self.messageLbl.text = item.text
         

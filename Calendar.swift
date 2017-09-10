@@ -153,7 +153,6 @@ class CalendarSocialPost: Object, Mappable {
     dynamic var type = ""
     dynamic var section = ""
     dynamic var status = ""
-    dynamic var statusDate: Date? = Date()
     dynamic var title:String? = nil
     
     dynamic var text = ""
