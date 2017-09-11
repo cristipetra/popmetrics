@@ -266,6 +266,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
         cell.configure(item: item)
         sideShadow(view: cell.containerView)
+        cell.selectionStyle = .none
         return cell
         
     }
@@ -377,6 +378,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        return
         shouldMaximize = !shouldMaximize
         scrollToRow = indexPath
         DispatchQueue.main.async {
