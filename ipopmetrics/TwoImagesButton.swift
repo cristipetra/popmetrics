@@ -148,6 +148,13 @@ class TwoImagesButton: RoundButton {
             leftImageView.frame.origin.y = 14
         case .todo:
             leftHandImage = UIImage(named: "iconCtaTodo")
+        case .lastCardTodo:
+            leftHandImage = UIImage(named: "iconCalendarCta")
+            leftImageView.frame.size.width = 22
+            leftImageView.frame.origin.y = 14
+        case .lastCardCalendar:
+            leftHandImage = UIImage(named: "iconCtaHome")
+            leftImageView.frame.origin.y = 14
         case .traffic:
             leftHandImage = UIImage(named: "iconTrafficReport")
             leftImageView.frame.origin.x = 24
@@ -181,4 +188,6 @@ enum ImageButtonType {
     case todo
     case traffic
     case denied
+    case lastCardTodo
+    case lastCardCalendar
 }

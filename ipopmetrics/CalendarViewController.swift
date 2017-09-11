@@ -118,7 +118,6 @@ class CalendarViewController: BaseViewController {
         //        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
         //        let jsonData : NSData = NSData(contentsOfFile: path!)!
         CalendarApi().getItems(currentBrandId) { responseWrapper, error in
-            
             if error != nil {
                 let message = "An error has occurred. Please try again later."
                 self.presentAlertWithTitle("Error", message: message)
@@ -164,107 +163,106 @@ class CalendarViewController: BaseViewController {
 //            post1.calendarCard = calendarCard
 //            post1.postId = "asdfasdfsa"
 //            post1.status = "scheduled"
-//            post1.statusDate = Date()
-//            post1.articleTitle = "Toronto Real Estate Skyrecketing"
-//            post1.articleCategory = "Local News"
-//            post1.articleText = "The wildfires continue to affect the Northern Provinces Alch.my/AGGA #wildfire";
-//            post1.articleHashtags = "wildfire"
-//            post1.articleImage = "image_toronto"
+//             post1.statusDate = Date()
+//             post1.articleTitle = "Toronto Real Estate Skyrecketing"
+//             post1.articleCategory = "Local News"
+//             post1.articleText = "The wildfires continue to affect the Northern Provinces Alch.my/AGGA #wildfire";
+//             post1.articleHashtags = "wildfire"
+//             post1.articleImage = "image_toronto"
 //            store.realm.add(post1, update:true)
 //            
 //            let post2: CalendarSocialPost = CalendarSocialPost()
 //            post2.calendarCard = calendarCard
 //            post2.postId = "twtwq"
 //            post2.status = "scheduled"
-//            post2.statusDate = Date()
-//            post2.articleTitle = "Optimizing Your Website"
-//            post2.articleCategory = "Local News"
-//            post2.articleText = "TWhy is SEO such a challenging yet integral part of a building a successful website? Alch.my/AGGA #wildfire";
-//            post2.articleHashtags = "wildfire"
-//            post2.articleImage = "image_optimize"
+//             post2.statusDate = Date()
+//             post2.articleTitle = "Optimizing Your Website"
+//             post2.articleCategory = "Local News"
+//             post2.articleText = "TWhy is SEO such a challenging yet integral part of a building a successful website? Alch.my/AGGA #wildfire";
+//             post2.articleHashtags = "wildfire"
+//             post2.articleImage = "image_optimize"
 //            store.realm.add(post2, update:true)
 //            
 //            let post3: CalendarSocialPost = CalendarSocialPost()
 //            post3.calendarCard = calendarCard
 //            post3.postId = "tw34twq"
 //            post3.status = "scheduled"
-//            post3.statusDate = Date()
-//            post3.articleTitle = "Scheduling Social Media"
-//            post3.articleCategory = "Local News"
-//            post3.articleText = "Where do you want to start with social media schedulling? Find out here! Alch.my/AGGA #socialmedia #scheduling?";
-//            post3.articleHashtags = "wildfire"
-//            post3.articleImage = "imageScheduleSocial"
+//            post3.scheduledDate = Date()
+//             post3.articleTitle = "Scheduling Social Media"
+//             post3.articleCategory = "Local News"
+//             post3.articleText = "Where do you want to start with social media schedulling? Find out here! Alch.my/AGGA #socialmedia #scheduling?";
+//             post3.articleHashtags = "wildfire"
+//             post3.articleImage = "imageScheduleSocial"
 //            store.realm.add(post3, update:true)
 //            
 //            let post4: CalendarSocialPost = CalendarSocialPost()
 //            post4.calendarCard = calendarCard
 //            post4.postId = "twadtwq"
 //            post4.status = "scheduled"
-//            post4.statusDate = Date()
-//            post4.articleTitle = "Scheduling Social Media"
-//            post4.articleCategory = "Local News"
-//            post4.articleText = "Where do you want to start with social media schedulling? Find out here! Alch.my/AGGA #socialmedia #scheduling?";
-//            post4.articleHashtags = "wildfire"
-//            post4.articleImage = "imageScheduleSocial"
+//            post4.scheduledDate = Date()
+//             post4.articleTitle = "Scheduling Social Media"
+//             post4.articleCategory = "Local News"
+//             post4.articleText = "Where do you want to start with social media schedulling? Find out here! Alch.my/AGGA #socialmedia #scheduling?";
+//             post4.articleHashtags = "wildfire"
+//             post4.articleImage = "imageScheduleSocial"
+// 
 //            store.realm.add(post4, update:true)
-//            
-//            let post5: CalendarSocialPost = CalendarSocialPost()
-//            post5.calendarCard = calendarCard
-//            post5.postId = "twtddwq"
-//            post5.status = "scheduled"
-//            post5.statusDate = Date()
-//            post5.articleTitle = "Scheduling Social Media"
-//            post5.articleCategory = "Local News"
-//            post5.articleText = "Where do you want to start with social media schedulling? Find out here! Alch.my/AGGA #socialmedia #scheduling?";
-//            post5.articleHashtags = "wildfire"
-//            post5.articleImage = "imageScheduleSocial"
-//            store.realm.add(post5, update:true)
-//            
-//            let post6: CalendarSocialPost = CalendarSocialPost()
-//            post6.calendarCard = calendarCard
-//            post6.postId = "tsadwtddwq"
-//            post6.status = "scheduled"
-//            post6.statusDate = Date()
-//            post6.articleTitle = "Scheduling Social Media"
-//            post6.articleCategory = "Local News"
-//            post6.articleText = "Where do you want to start with social media schedulling? Find out here! Alch.my/AGGA #socialmedia #scheduling?";
-//            post6.articleHashtags = "wildfire"
-//            post5.articleImage = "imageScheduleSocial"
-//            store.realm.add(post6, update:true)
-//            
-//
-//            
-//            
-//            let calendarCompleteddCard = CalendarCard()
-//            calendarCompleteddCard.cardId = "413452"
-//            calendarCompleteddCard.section = "completed"
-//            
-//            store.realm.add(calendarCompleteddCard, update: true)
-//            
-//            let postCompleted1: CalendarSocialPost = CalendarSocialPost()
-//            postCompleted1.calendarCard = calendarCompleteddCard
-//            postCompleted1.postId = "iuueek"
-//            postCompleted1.status = "executed"
-//            postCompleted1.statusDate = Date()
-//            postCompleted1.articleTitle = "Toronto Real Estate Skyrecketing"
-//            postCompleted1.articleCategory = "Local News"
-//            postCompleted1.articleText = "The wildfires continue to affect the Northern Provinces Alch.my/AGGA #wildfire";
-//            postCompleted1.articleHashtags = "wildfire"
-//            postCompleted1.articleImage = "image_toronto"
-//            store.realm.add(postCompleted1, update:true)
-//            
-//            let postCompleted2: CalendarSocialPost = CalendarSocialPost()
-//            postCompleted2.calendarCard = calendarCompleteddCard
-//            postCompleted2.postId = "dsafsadf"
-//            postCompleted2.status = "executed"
-//            postCompleted2.statusDate = Date()
-//            postCompleted2.articleTitle = "Optimizing Your website with SEO"
-//            postCompleted2.articleCategory = "Local News"
-//            postCompleted2.articleText = "Thy is SEO such a challenging yet intergral part fo building a successful website? Alch.my/AGGA #SEO";
-//            postCompleted2.articleHashtags = "wildfire"
-//            postCompleted2.articleImage = "image_card_google"
-//            store.realm.add(postCompleted2, update:true)
-            
+//             let post5: CalendarSocialPost = CalendarSocialPost()
+//             post5.calendarCard = calendarCard
+//             post5.postId = "twtddwq"
+//             post5.status = "scheduled"
+//             post5.statusDate = Date()
+//             post5.articleTitle = "Scheduling Social Media"
+//             post5.articleCategory = "Local News"
+//             post5.articleText = "Where do you want to start with social media schedulling? Find out here! Alch.my/AGGA #socialmedia #scheduling?";
+//             post5.articleHashtags = "wildfire"
+//             post5.articleImage = "imageScheduleSocial"
+//             store.realm.add(post5, update:true)
+//             
+//             let post6: CalendarSocialPost = CalendarSocialPost()
+//             post6.calendarCard = calendarCard
+//             post6.postId = "tsadwtddwq"
+//             post6.status = "scheduled"
+//             post6.statusDate = Date()
+//             post6.articleTitle = "Scheduling Social Media"
+//             post6.articleCategory = "Local News"
+//             post6.articleText = "Where do you want to start with social media schedulling? Find out here! Alch.my/AGGA #socialmedia #scheduling?";
+//             post6.articleHashtags = "wildfire"
+//             post5.articleImage = "imageScheduleSocial"
+//             store.realm.add(post6, update:true)
+//             
+//             
+//             
+//             
+//             let calendarCompleteddCard = CalendarCard()
+//             calendarCompleteddCard.cardId = "413452"
+//             calendarCompleteddCard.section = "completed"
+//             
+//             store.realm.add(calendarCompleteddCard, update: true)
+//             
+//             let postCompleted1: CalendarSocialPost = CalendarSocialPost()
+//             postCompleted1.calendarCard = calendarCompleteddCard
+//             postCompleted1.postId = "iuueek"
+//             postCompleted1.status = "executed"
+//             postCompleted1.statusDate = Date()
+//             postCompleted1.articleTitle = "Toronto Real Estate Skyrecketing"
+//             postCompleted1.articleCategory = "Local News"
+//             postCompleted1.articleText = "The wildfires continue to affect the Northern Provinces Alch.my/AGGA #wildfire";
+//             postCompleted1.articleHashtags = "wildfire"
+//             postCompleted1.articleImage = "image_toronto"
+//             store.realm.add(postCompleted1, update:true)
+//             
+//             let postCompleted2: CalendarSocialPost = CalendarSocialPost()
+//             postCompleted2.calendarCard = calendarCompleteddCard
+//             postCompleted2.postId = "dsafsadf"
+//             postCompleted2.status = "executed"
+//             postCompleted2.statusDate = Date()
+//             postCompleted2.articleTitle = "Optimizing Your website with SEO"
+//             postCompleted2.articleCategory = "Local News"
+//             postCompleted2.articleText = "Thy is SEO such a challenging yet intergral part fo building a successful website? Alch.my/AGGA #SEO";
+//             postCompleted2.articleHashtags = "wildfire"
+//             postCompleted2.articleImage = "image_card_google"
+//             store.realm.add(postCompleted2, update:true)
         }
         
     }
@@ -323,7 +321,8 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
             cell.changeTitleWithSpacing(title: "Thats it for now");
             cell.changeMessageWithSpacing(message: "Check back to see if there is anything more in the Home Feed")
-            cell.titleActionButton.text = "View Statistics"
+            cell.titleActionButton.text = "View Home Feed"
+            cell.goToButton.imageButtonType = .lastCardCalendar
             cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
             cell.selectionStyle = .none
             return cell
@@ -357,8 +356,12 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         }
     }
     
+    func getCalendarPosts() {
+        
+    }
+    
     @objc private func goToNextTab() {
-        self.tabBarController?.selectedIndex += 1
+        self.tabBarController?.selectedIndex = 0
     }
     
     
@@ -375,17 +378,17 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         if shouldMaximizeCell {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
             if posts.count > 0 {
-                let item = posts[0]
-                headerCell.changeColor(section: section)
-                headerCell.changeTitle(title: (item.calendarCard?.socialTextString)!)
+                headerCell.changeColor(color: sectionCard.getSectionColor)
+                headerCell.changeTitle(title: sectionCard.socialTextString)
             }
             return headerCell
         }
         else {
-        
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
             headerCell.changeColor(color: sectionCard.getSectionColor)
-            headerCell.changeTitle(title: sectionCard.socialTextString)
+            headerCell.changeTitleToolbar(title: "")
+            headerCell.changeTitleSection(title: sectionCard.getCardSectionTitle)
+            
             return headerCell
         }
         
@@ -421,6 +424,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
         todoFooter.changeFeedType(feedType: FeedType.calendar)
         todoFooter.buttonActionHandler = self
+        todoFooter.xButton.isHidden = true
         updateStateLoadMore(todoFooter, section: section)
         
         return todoFooter
@@ -582,6 +586,10 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         tableView.reloadData()
     }
     
+    func reloadTableByDate(date: Date) {
+        
+    }
+    
 }
 
 extension CalendarViewController: FooterActionHandlerProtocol {
@@ -668,6 +676,8 @@ extension CalendarViewController: MJCalendarViewDelegate {
     
     func calendar(_ calendarView: MJCalendarView, didChangePeriod periodDate: Date, bySwipe: Bool) {
         self.setTitleWithDate(periodDate as NSDate)
+        print(periodDate)
+        reloadTableByDate(date: periodDate)
     }
     
     func calendar(_ calendarView: MJCalendarView, backgroundForDate date: Date) -> UIColor? {

@@ -236,6 +236,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             cell.changeMessageWithSpacing(message: "Check out the things you've scheduled in the calendar hub")
             cell.titleActionButton.text = "View Calendar"
             cell.selectionStyle = .none
+            cell.goToButton.imageButtonType = .lastCardTodo
             cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
             return cell
         }
