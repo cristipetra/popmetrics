@@ -69,6 +69,7 @@
                     <connections>
                         <outlet property="closeButton" destination="onE-Z4-mNz" id="FVg-m0-y1q"/>
                         <outlet property="messageLabel" destination="xPL-9b-33V" id="6xQ-Td-pf1"/>
+                        <outlet property="titleTooltip" destination="Lc4-Z1-LD7" id="X3E-WJ-SdC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rB5-tl-EI2" userLabel="First Responder" sceneMemberID="firstResponder"/>

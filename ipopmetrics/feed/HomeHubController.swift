@@ -597,7 +597,7 @@ extension HomeHubViewController: InfoButtonDelegate {
     
     func showTooltip(_ sender: UIButton) {
         let infoCardVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "InfoCardViewID") as! InfoCardViewController;
-        
+        infoCardVC.changeCardType(type: "insight")
         infoCardVC.transitioningDelegate = self
         infoCardVC.modalPresentationStyle = .custom
         
