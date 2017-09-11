@@ -622,4 +622,5 @@ enum CardType: String {
     case todo = "todo"
     case traffic = "traffic"
     case insight = "insight"
+    case scheduled = "scheduled"
 }

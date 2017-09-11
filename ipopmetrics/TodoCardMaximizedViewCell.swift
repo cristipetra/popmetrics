@@ -103,7 +103,7 @@ class TodoCardMaximizedViewCell: UITableViewCell {
                 self.topHeaderView.title.text = card.getCardToolbarTitle
         }
         
-        setupStatusCardView( approved: (item.status == "approved" || item.status == "denied"))
+        setupStatusCardView()
         
         connectionLineWidth.constant =  5
     }
@@ -170,19 +170,21 @@ class TodoCardMaximizedViewCell: UITableViewCell {
     func approvePostHandler() {
         approveDenyDelegate?.handleCardAction("approve_one", todoCard: self.todoItem.todoCard!,
                                              params:["social_post":self.todoItem])
+        setupStatusCardView()
     }
     
     func denyPosHandler() {
         approveDenyDelegate?.handleCardAction("deny_one", todoCard: self.todoItem.todoCard!, params: ["social_post": self.todoItem])
+        setupStatusCardView()
     }
     
-    func setupStatusCardView(approved: Bool) {
-        print("approved \(approved)")
-        if( approved == false) {
-            self.statusCardTypeView.isHidden = true
-        } else {
+    func setupStatusCardView() {
+        print(todoItem.status)
+        if (todoItem.status! == "approved" || todoItem.status! == "denied") {
             setStatusCardViewType()
             self.statusCardTypeView.isHidden = false
+        } else {
+            self.statusCardTypeView.isHidden = true
         }
     }
     

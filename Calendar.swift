@@ -82,15 +82,17 @@ class CalendarCard:  Object, Mappable {
     
     var socialTextString: String {
         get {
-            switch status {
+            switch section.lowercased() {
             case StatusArticle.scheduled.rawValue:
-                return "Scheduled"
+                return "Scheduled Tweets"
             case StatusArticle.failed.rawValue:
                 return "Failed"
             case StatusArticle.executed.rawValue:
                 return "Completed"
             case StatusArticle.unapproved.rawValue:
                 return "Unapproved"
+            case StatusArticle.complete.rawValue:
+                return "Failed"
             default:
                 return ""
             }
@@ -114,9 +116,9 @@ class CalendarCard:  Object, Mappable {
     
     var getSectionColor: UIColor {
         get {
-            switch status {
+            switch section.lowercased() {
             case StatusArticle.scheduled.rawValue:
-                return UIColor.darkGray
+                return PopmetricsColor.blueURLColor
             case StatusArticle.failed.rawValue:
                 return PopmetricsColor.salmondColor
             case StatusArticle.executed.rawValue:
@@ -132,6 +134,28 @@ class CalendarCard:  Object, Mappable {
     var socialURLColor: UIColor {
         get {
             return PopmetricsColor.blueURLColor
+        }
+    }
+    
+    var getCardToolbarTitle: String {
+        get {
+            switch section.lowercased() {
+            case StatusArticle.scheduled.rawValue:
+                return ""
+            default:
+                return "Scheduled Tweets"
+            }
+        }
+    }
+    
+    var getCardSectionTitle: String {
+        get {
+            switch section.lowercased() {
+            case StatusArticle.scheduled.rawValue:
+                return "Scheduled Tweets"
+            default:
+                return "Scheduled"
+            }
         }
     }
     
