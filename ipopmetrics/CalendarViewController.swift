@@ -79,6 +79,7 @@ class CalendarViewController: BaseViewController {
         setupTopHeaderView()
         self.setUpCalendarConfiguration()
         addDivider()
+        topHeaderView.displayElements(isHidden: true)
         let tap = UITapGestureRecognizer(target: self, action: #selector(CalendarViewController.tapFunction))
         currentDateBtn.isUserInteractionEnabled = true
         currentDateBtn.addGestureRecognizer(tap)
@@ -516,8 +517,10 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         UIView.animate(withDuration: 0.3, animations: {
             if colapse {
                 self.topHeaderView.frame.size.height = 0
+                self.topHeaderView.displayElements(isHidden: true)
             } else {
                 self.topHeaderView.frame.size.height = 30
+                self.topHeaderView.displayElements(isHidden: false)
             }
             self.topHeaderView.layoutIfNeeded()
         }, completion: { (completed) in

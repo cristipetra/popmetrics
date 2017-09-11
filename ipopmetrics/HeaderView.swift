@@ -107,6 +107,8 @@ class HeaderView: UIView {
         stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
     
         iconLbl.text = "Expand"
+        
+        addShadow()
     }
     
     func changeTitle(title: String) {
@@ -134,6 +136,19 @@ class HeaderView: UIView {
     
     func changeIconText(_ text: String) {
         iconLbl.text = text
+    }
+    
+    func addShadow() {
+        self.layer.masksToBounds = false
+        DispatchQueue.main.async {
+            self.addShadowToView(self, radius: 4, opacity: 0.5)
+        }
+    }
+    
+    func displayElements(isHidden: Bool) {
+        self.circleView.isHidden = isHidden
+        self.statusLbl.isHidden = isHidden
+        self.stackView.isHidden = isHidden
     }
     
 }

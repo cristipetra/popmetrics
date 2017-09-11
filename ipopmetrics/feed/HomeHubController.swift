@@ -545,8 +545,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         UIView.animate(withDuration: 0.3, animations: {
             if colapse {
                 self.topHeaderView.frame.size.height = 0
+                self.topHeaderView.circleView.isHidden = true
+                self.topHeaderView.statusLbl.isHidden = true
             } else {
                 self.topHeaderView.frame.size.height = 30
+                self.topHeaderView.circleView.isHidden = false
+                self.topHeaderView.statusLbl.isHidden = false
             }
             self.topHeaderView.layoutIfNeeded()
         }, completion: { (completed) in
