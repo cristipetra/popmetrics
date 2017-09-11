@@ -22,6 +22,11 @@ class CalendarFeedStore {
         return realm.objects(CalendarCard.self).sorted(byKeyPath: "index")
     }
     
+    public func getCalendarCardWithId(_ cardId: String) -> CalendarCard {
+        return realm.object(ofType: CalendarCard.self, forPrimaryKey: cardId)!
+    }
+    
+    
     public func getCalendarCardsWithSection(_ section: String) -> Results<CalendarCard> {
         let predicate = NSPredicate(format: "section = %@", section)
         return realm.objects(CalendarCard.self).filter(predicate)
@@ -39,7 +44,7 @@ class CalendarFeedStore {
         return distinctTypes.count
     }
     
-    public func updateCalendars(_ feedResponse: FeedResponse) {
+    public func updateCalendars(_ calendarResponse: CalendarResponse) {
         
         let realm = try! Realm()
         let cards = realm.objects(CalendarCard.self).sorted(byKeyPath: "index")
@@ -47,7 +52,7 @@ class CalendarFeedStore {
         var cardsToDelete: [CalendarCard] = []
         try! realm.write {
             for existingCard in cards {
-                let (exists, newCard) = feedResponse.matchCard(existingCard.cardId!)
+                let (exists, newCard) = calendarResponse.matchCard(existingCard.cardId!)
                 if !exists {
                     cardsToDelete.append(existingCard)
                 }
@@ -63,7 +68,34 @@ class CalendarFeedStore {
                 //TODO delete all related items first
                 realm.delete(card)
             }
+            
+            for newCard in calendarResponse.cards! {
+                realm.add(newCard, update:true)
+            }
         }//try
+        
+        let posts = realm.objects(CalendarSocialPost.self)
+        var postsToDelete: [CalendarSocialPost] = []
+        // update social postings
+        try! realm.write {
+            for existingPost in posts {
+                let (exists, newPost) = calendarResponse.matchSocialPost(existingPost.postId!)
+                if !exists {
+                    postsToDelete.append(existingPost)
+                }
+            }
+            
+            for post in postsToDelete {
+                //TODO delete all related items first
+                realm.delete(post)
+            }
+            
+            for newPost in calendarResponse.socialPosts! {
+                newPost.calendarCard = getCalendarCardWithId(newPost.calendarCardId)
+                realm.add(newPost, update:true)
+            }
+        }//try
+        
         
     }
 

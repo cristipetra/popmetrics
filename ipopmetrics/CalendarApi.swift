@@ -1,27 +1,27 @@
 //
-//  TodoApi.swift
+//  CalendarApi.swift
 //  ipopmetrics
 //
-//  Created by Rares Pop on 05/09/2017.
+//  Created by Rares Pop on 08/09/2017.
 //  Copyright © 2017 Popmetrics. All rights reserved.
 //
 
 import UIKit
 import Alamofire
 
-class TodoApi: BaseApi {
+class CalendarApi: BaseApi {
     
     
     
     func getItems(_ brandId: String,
-                  callback: @escaping (_ response: ResponseWrapperOne<TodoResponse>?, _ error: ApiError?) -> Void) {
+                  callback: @escaping (_ response: ResponseWrapperOne<CalendarResponse>?, _ error: ApiError?) -> Void) {
         
         let params = [
             "a": 0
         ]
         
-        Alamofire.request(ApiUrls.getMyBrandTodoUrl(brandId), method: .get, parameters: params,
-                          headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperOne<TodoResponse>>) in
+        Alamofire.request(ApiUrls.getMyBrandCalendarUrl(brandId), method: .get, parameters: params,
+                          headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperOne<CalendarResponse>>) in
                             
                             if let err = self.createErrorWithHttpResponse(response: response.response) {
                                 callback(nil, err)
@@ -35,7 +35,7 @@ class TodoApi: BaseApi {
     }
     
     func postAction(_ todoCardId:String, params:[String:Any],
-                callback: @escaping (_ response: ResponseWrapperEmpty?, _ error: ApiError?) -> Void) {
+                    callback: @escaping (_ response: ResponseWrapperEmpty?, _ error: ApiError?) -> Void) {
         
         Alamofire.request(ApiUrls.getTodoActionUrl(todoCardId),
                           method: .post, parameters: params, encoding: JSONEncoding.default,

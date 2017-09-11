@@ -191,55 +191,6 @@ class ToDoViewController: BaseViewController {
         
     }
     
-    internal func createItemsLocally() {
-        
-        try! store.realm.write {
-
-            let todoCard = TodoCard()
-            todoCard.cardId = "1234"
-            store.realm.add(todoCard, update:true)
-        
-            let post1 = TodoSocialPost()
-            post1.todoCard = todoCard
-            post1.postId = "098tq098gr"
-            post1.status = "unapproved"
-            post1.articleTitle = "Optimizing Your Website"
-            post1.statusDate = Date()
-            post1.articleImage = "image_optimize"
-            post1.articleText = "Why is SEO such a challenging yet integral part of a building a successful website?"
-            post1.type = "twitter_article"
-            post1.articleUrl = "alchm.my/agga"
-            post1.articleCategory = "Local News"
-            store.realm.add(post1, update:true)
-            
-            let post2 = TodoSocialPost()
-            post2.todoCard = todoCard
-            post2.postId = "fspodighjpsdfoi"
-            post2.status = "unapproved"
-            post2.articleTitle = "Optimizing Your Website 2"
-            post2.statusDate = Date()
-            post2.articleImage = "image_optimize"
-            post2.articleText = "Why is SEO such a challenging yet integral part of a building a successful website? (2)"
-            post2.type = "twitter_article"
-            post2.articleUrl = "alchm.my/agga"
-            post2.articleCategory = "Local News"
-            store.realm.add(post2, update:true)
-            
-            let post3 = TodoSocialPost()
-            post3.todoCard = todoCard
-            post3.postId = "fspsodighjpsdfoi"
-            post3.status = "unapproved"
-            post3.articleTitle = "Optimizing Your Website 3"
-            post3.statusDate = Date()
-            post3.articleImage = "image_optimize"
-            post3.articleText = "Why is SEO such a challenging yet integral part of a building a successful website? (3)"
-            post3.type = "twitter_article"
-            post3.articleUrl = "alchm.my/agga"
-            post3.articleCategory = "Local News"
-            store.realm.add(post3, update:true)
-        }
-        
-    }
 }
 
 extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, ApproveDenySinglePostProtocol {
@@ -513,16 +464,26 @@ extension ToDoViewController:  TodoCardActionHandler {
         
         switch (todoCard.type) {
         case "articles_posting":
-            if action == "approve_one" {
+            if action == "approve_one" || action == "deny_one" {
                 var approvedPost: TodoSocialPost
                 approvedPost = params["social_post"] as! TodoSocialPost
                     try! store.realm.write {
-                        approvedPost.status = "approved"
-                        self.shouldMaximize = false
-                        self.tableView.reloadData()
-                        DispatchQueue.main.async {
-                            self.tableView.scrollToRow(at: self.scrollToRow, at: .none, animated: false)
+                        if action == "approve_one" {
+                            approvedPost.status = "approved"
                         }
+                        else {
+                            approvedPost.status = "denied"
+                        }
+                    }//realm write
+                let apiParams = ["action":action,
+                                 "todo_social_post_id":approvedPost.postId]
+                TodoApi().postAction(todoCard.cardId!, params:apiParams) { result, error in
+                    if error != nil {
+                        self.presentAlertWithTitle("Communication error", message: "An error occurred while communicating with the Cloud")
+                        return
+                    }
+                    else {
+                        print("action occurred")
                     }
                     
             }
@@ -537,7 +498,13 @@ extension ToDoViewController:  TodoCardActionHandler {
                         self.tableView.scrollToRow(at: self.scrollToRow, at: .none, animated: false)
                     }
                 }
-            }
+                self.shouldMaximize = false
+                self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.tableView.scrollToRow(at: self.scrollToRow, at: .none, animated: false)
+                }
+            }// if action is approve_one or deny_one        
+        }
         default:
             print("Unknown type")
         }//switch

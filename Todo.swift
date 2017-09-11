@@ -91,7 +91,6 @@ class TodoSocialPost: Object, Mappable {
     
     dynamic var type = ""
     dynamic var status: String? = nil
-    dynamic var statusDate: Date? = nil
     
     dynamic var articleCategory:String? = nil
     dynamic var articleTitle:String? = nil
