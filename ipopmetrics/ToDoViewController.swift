@@ -272,15 +272,14 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         if shouldMaximize == false {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
             headerCell.changeColor(color: card.getSectionColor)
-            headerCell.changeTitle(title: card.section)
             headerCell.changeTitleToolbar(title: card.getCardToolbarTitle)
+            headerCell.changeTitleSection(title: card.getCardSectionTitle)
             headerCell.setUpHeaderShadowView()
-            //toDoTopView.setUpView(view: StatusArticle(rawValue: sections[section].status)!)
             return headerCell
         } else {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
             headerCell.changeColor(cardType: .todo)
-            headerCell.changeTitle(title: card.section)
+            headerCell.changeTitle(title: card.getCardSectionTitle)
             return headerCell
         }
     }
@@ -298,6 +297,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
         todoFooter.section = section
         todoFooter.buttonHandlerDelegate = self
+        todoFooter.changeTypeSection(typeSection: .unapproved)
         
         /*
         if(sections[section].allApproved) {

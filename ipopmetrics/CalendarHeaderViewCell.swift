@@ -50,6 +50,10 @@ class CalendarHeaderViewCell: UITableViewCell {
         sectionTitleLabel.text = title
     }
     
+    func changeTitleSection(title: String) {
+        sectionTitleLabel.text = title
+    }
+    
     func changeTitleToolbar(title: String) {
         toolbarView.title.text = title
     }

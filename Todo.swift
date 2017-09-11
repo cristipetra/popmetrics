@@ -72,9 +72,20 @@ class TodoCard:  Object, Mappable {
         get {
             switch section.lowercased() {
             case StatusArticle.unapproved.rawValue:
-                return "Recommended Action"
+                return ""
             default:
-               return "Recommended Action"
+                return "Recommended Action"
+            }
+        }
+    }
+    
+    var getCardSectionTitle: String {
+        get {
+            switch section.lowercased() {
+            case StatusArticle.unapproved.rawValue:
+                return "Recommended Twetts"
+            default:
+                return "Recommended Action"
             }
         }
     }
@@ -199,6 +210,17 @@ class TodoSocialPost: Object, Mappable {
                 return PopmetricsColor.yellowUnapproved
             default:
                 return PopmetricsColor.yellowUnapproved
+            }
+        }
+    }
+    
+    var getCardToolbarTitle: String {
+        get {
+            switch (status?.lowercased())! {
+            case StatusArticle.unapproved.rawValue:
+                return ""
+            default:
+                return "Recommended Action"
             }
         }
     }

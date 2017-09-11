@@ -96,7 +96,7 @@ class TodoCardMaximizedViewCell: UITableViewCell {
         //        self.articleImage.image = UIImage(named: item.articleImage!)
         
         self.connectionLine.backgroundColor = PopmetricsColor.darkGrey
-        //self.topHeaderView.backgroundColor = item.getSectionColor
+        self.topHeaderView.backgroundColor = item.getSectionColor
         
         self.topHeaderView.circleView.backgroundColor = item.getSectionColor
         if let card = item.todoCard {
