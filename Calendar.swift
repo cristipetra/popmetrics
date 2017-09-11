@@ -131,7 +131,7 @@ class CalendarSocialPost: Object, Mappable {
         get {
             switch status! {
             case StatusArticle.scheduled.rawValue:
-                return "Scheduled"
+                return "Scheduled Tweets"
             case StatusArticle.failed.rawValue:
                 return "Failed"
             case StatusArticle.executed.rawValue:
@@ -163,7 +163,7 @@ class CalendarSocialPost: Object, Mappable {
         get {
             switch status! {
             case StatusArticle.scheduled.rawValue:
-                return UIColor.darkGray
+                return PopmetricsColor.blueURLColor
             case StatusArticle.failed.rawValue:
                 return PopmetricsColor.salmondColor
             case StatusArticle.executed.rawValue:
