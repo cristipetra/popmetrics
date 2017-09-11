@@ -19,6 +19,8 @@ class ToDoViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var toDoTopView: TodoTopView!
+    @IBOutlet weak var topHeaderView: HeaderView!
+    
     let transitionView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     let store = TodoStore.getInstance()
@@ -32,6 +34,8 @@ class ToDoViewController: BaseViewController {
     
     internal var shouldMaximize = false
     var scrollToRow: IndexPath = IndexPath(row: 0, section: 0)
+    
+    internal var isAnimatingHeader: Bool = false
     
     var isAllApproved : Bool = false
     var currentBrandId = UsersStore.currentBrandId
@@ -404,18 +408,44 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
+        var fixedHeaderFrame = self.topHeaderView.frame
+        fixedHeaderFrame.origin.y = 0 + scrollView.contentOffset.y
+        topHeaderView.frame = fixedHeaderFrame
+        
         if let index = tableView.indexPathsForVisibleRows?.first {
             let headerFrame = tableView.rectForHeader(inSection: index.section)
-            if headerFrame.origin.y < tableView.contentOffset.y{
+            if headerFrame.origin.y < tableView.contentOffset.y {
                 /*
                 if let status = StatusArticle(rawValue: sections[index.section].status) {
                     toDoTopView.setActive(section: status)
                 }*/
+                animateHeader(colapse: false)
             }
             if tableView.contentOffset.y == 0 {   //top of the tableView
                 toDoTopView.setActive(section: .unapproved)
+                animateHeader(colapse: true)
             }
         }
+    }
+    
+    
+    func animateHeader(colapse: Bool) {
+        if (self.isAnimatingHeader) {
+            return
+        }
+        self.isAnimatingHeader = true
+        UIView.animate(withDuration: 0.3, animations: {
+            if colapse {
+                self.topHeaderView.frame.size.height = 0
+                self.topHeaderView.displayElements(isHidden: true)
+            } else {
+                self.topHeaderView.frame.size.height = 30
+                self.topHeaderView.displayElements(isHidden: false)
+            }
+            self.topHeaderView.layoutIfNeeded()
+        }, completion: { (completed) in
+            self.isAnimatingHeader = false
+        })
     }
     
 }

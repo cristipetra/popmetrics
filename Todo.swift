@@ -83,7 +83,7 @@ class TodoCard:  Object, Mappable {
         get {
             switch section.lowercased() {
             case StatusArticle.unapproved.rawValue:
-                return "Recommended Twetts"
+                return "Recommended Tweets"
             default:
                 return "Recommended Action"
             }

@@ -36,21 +36,32 @@
                                     <outlet property="delegate" destination="L4g-TZ-b9Y" id="eV9-3i-WDm"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4uF-2z-r9S" customClass="HeaderView" customModule="ipopmetrics" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="81" width="375" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ec6-Bs-jP0"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Keg-D7-jEA" firstAttribute="top" secondItem="Ad5-Ix-xda" secondAttribute="bottom" id="3Ez-ZU-WH2"/>
+                            <constraint firstItem="4uF-2z-r9S" firstAttribute="top" secondItem="Keg-D7-jEA" secondAttribute="bottom" id="A3R-yH-VcK"/>
                             <constraint firstItem="Keg-D7-jEA" firstAttribute="top" secondItem="Ad5-Ix-xda" secondAttribute="bottom" id="GGT-Qo-v38"/>
                             <constraint firstItem="Pfm-1K-JVL" firstAttribute="top" secondItem="Keg-D7-jEA" secondAttribute="bottom" id="GRe-B1-tfU"/>
+                            <constraint firstAttribute="trailing" secondItem="4uF-2z-r9S" secondAttribute="trailing" id="J9e-kC-0By"/>
                             <constraint firstItem="Keg-D7-jEA" firstAttribute="leading" secondItem="j5t-O1-8Fa" secondAttribute="leading" id="MD3-WB-52L"/>
                             <constraint firstAttribute="trailing" secondItem="Pfm-1K-JVL" secondAttribute="trailing" id="Qh9-vp-cXv"/>
                             <constraint firstItem="Pfm-1K-JVL" firstAttribute="leading" secondItem="j5t-O1-8Fa" secondAttribute="leading" id="XgH-ap-hew"/>
                             <constraint firstAttribute="trailing" secondItem="Keg-D7-jEA" secondAttribute="trailing" id="c6V-7y-vp5"/>
                             <constraint firstItem="Pfm-1K-JVL" firstAttribute="bottom" secondItem="A8V-SY-gGy" secondAttribute="top" id="heK-uJ-l1Y"/>
+                            <constraint firstItem="4uF-2z-r9S" firstAttribute="leading" secondItem="j5t-O1-8Fa" secondAttribute="leading" id="hgx-le-v8a"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Pfm-1K-JVL" id="kbh-sT-Dha"/>
                         <outlet property="toDoTopView" destination="Keg-D7-jEA" id="YLB-Uy-uFf"/>
+                        <outlet property="topHeaderView" destination="4uF-2z-r9S" id="3Hx-IT-5T1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lcQ-uD-6vZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
