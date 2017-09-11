@@ -19,10 +19,10 @@ class ToDoViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var toDoTopView: TodoTopView!
-    @IBOutlet weak var topHeaderView: HeaderView!
     
     let transitionView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
+    var topHeaderView: HeaderView!
     let store = TodoStore.getInstance()
 
     var approveIndex = 3
@@ -63,6 +63,7 @@ class ToDoViewController: BaseViewController {
         tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
         tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
         
+        setupTopHeaderView()
         setupTopViewItemCount()
         
         //check for the first run 
@@ -91,6 +92,19 @@ class ToDoViewController: BaseViewController {
     
     func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
         
+    }
+    
+    func setupTopHeaderView() {
+        if topHeaderView == nil {
+            topHeaderView = HeaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 0))
+            self.tableView.addSubview(topHeaderView)
+            topHeaderView.displayElements(isHidden: true)
+            topHeaderView.btn.addTarget(self, action: #selector(handlerExpand), for: .touchUpInside)
+        }
+    }
+    
+    func handlerExpand() {
+        maximizeCell()
     }
     
     internal func registerCellsForTable() {
@@ -195,6 +209,17 @@ class ToDoViewController: BaseViewController {
         
     }
     
+}
+
+extension ToDoViewController: ChangeCellProtocol {
+    func maximizeCell() {
+        shouldMaximize = !shouldMaximize
+        
+        tableView.reloadData()
+        
+        let type = shouldMaximize ? HeaderViewType.expand : HeaderViewType.minimize
+        topHeaderView.changeStatus(type: type)
+    }
 }
 
 extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, ApproveDenySinglePostProtocol {
@@ -412,22 +437,37 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         fixedHeaderFrame.origin.y = 0 + scrollView.contentOffset.y
         topHeaderView.frame = fixedHeaderFrame
         
-        if let index = tableView.indexPathsForVisibleRows?.first {
-            let headerFrame = tableView.rectForHeader(inSection: index.section)
-            if headerFrame.origin.y < tableView.contentOffset.y {
-                /*
-                if let status = StatusArticle(rawValue: sections[index.section].status) {
-                    toDoTopView.setActive(section: status)
-                }*/
-                animateHeader(colapse: false)
+        
+        if let indexes = tableView.indexPathsForVisibleRows {
+            for index in indexes {
+                let indexPath = IndexPath(row: 0, section: index.section)
+                guard let lastRowInSection = indexes.last , indexes.first?.section == index.section else {
+                    return
+                }
+                let headerFrame = tableView.rectForHeader(inSection: index.section)
+                
+                let frameOfLastCell = tableView.rectForRow(at: lastRowInSection)
+                let cellFrame = tableView.rectForRow(at: indexPath)
+                if headerFrame.origin.y + 50 < tableView.contentOffset.y {
+                    self.changeTopHeaderTitle(section: index.section)
+                    animateHeader(colapse: false)
+                } else if frameOfLastCell.origin.y < tableView.contentOffset.y  {
+                    animateHeader(colapse: false)
+                } else {
+                    animateHeader(colapse: true)
+                }
             }
             if tableView.contentOffset.y == 0 {   //top of the tableView
-                toDoTopView.setActive(section: .unapproved)
                 animateHeader(colapse: true)
             }
         }
     }
     
+    func changeTopHeaderTitle(section: Int) {
+        let item = store.getTodoSocialPostsForCard(store.getTodoCards()[section])[0]
+        topHeaderView.changeTitle(title: store.getTodoCards()[section].getCardSectionTitle)
+        topHeaderView.changeColorCircle(color: item.getSectionColor)
+    }
     
     func animateHeader(colapse: Bool) {
         if (self.isAnimatingHeader) {
