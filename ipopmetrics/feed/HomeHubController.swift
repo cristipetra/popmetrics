@@ -230,7 +230,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             isInfoCellType = true
             isTrafficCard = false
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
-            cell.changeTitleWithSpacing(title: "You're all caught up.")
+            cell.changeTitleWithSpacing(title: "More on it's way!")
             cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
             cell.selectionStyle = .none
             cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)

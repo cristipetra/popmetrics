@@ -19,6 +19,7 @@ class RecommendedCell: UITableViewCell {
     @IBOutlet weak var footerVIew: FooterView!
     @IBOutlet weak var secondMessageLabel: UILabel!
     
+    @IBOutlet weak var titleHeightConstraint: NSLayoutConstraint!
     
     lazy var shadowLayer : UIView  = {
         let view = UIView()
@@ -93,7 +94,9 @@ class RecommendedCell: UITableViewCell {
         case "Popmetrics Insight":
             setUpToolbar(imageName: "iconHeaderBranding", titleName: "Popmetrics Insight")
             self.backgroundImageView.image = UIImage(named: "imagePyramid")
+            titleHeightConstraint.constant = 150
             self.setTitleInsight(title : "We've had a look and your brand's Twitter could do with some love!")
+            self.titleLabel.font = UIFont(name: FontBook.alfaRegular, size: 26)
             self.setMessage(message: "We've looked at your industry and prepared some brand-boosting tweets to post on your behalf!")
             self.messageLabel.textColor = UIColor.white
             self.messageLabel.font = UIFont(name: FontBook.regular, size: 18)

@@ -44,7 +44,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Dq1-j8-EWF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AlfaSlabOne-Regular" family="Alfa Slab One" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="AlfaSlabOne-Regular" family="Alfa Slab One" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -120,6 +120,7 @@
                 <outlet property="footerVIew" destination="aL3-tc-p25" id="wBZ-Bv-RFJ"/>
                 <outlet property="messageLabel" destination="YEd-JZ-7L4" id="hZm-2p-cpQ"/>
                 <outlet property="secondMessageLabel" destination="aui-QH-5um" id="i3E-Fj-1LS"/>
+                <outlet property="titleHeightConstraint" destination="Dq1-j8-EWF" id="QSK-l7-ZjZ"/>
                 <outlet property="titleLabel" destination="404-LX-Lbg" id="A3z-oJ-cbb"/>
                 <outlet property="toolBarView" destination="OVB-Nz-PDL" id="xWd-mv-oCz"/>
             </connections>
