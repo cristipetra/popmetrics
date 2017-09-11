@@ -378,14 +378,15 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        return
         shouldMaximize = !shouldMaximize
         scrollToRow = indexPath
         DispatchQueue.main.async {
             self.tableView.scrollToRow(at: self.scrollToRow, at: .none, animated: false)
         }
-        //tableView.reloadData()
-        reloadDataTable()
+        tableView.reloadData()
+        
+        let type = shouldMaximize ? HeaderViewType.expand : HeaderViewType.minimize
+        topHeaderView.changeStatus(type: type)
     }
     
     func reloadDataTable() {
