@@ -49,6 +49,12 @@ class HeaderView: UIView {
         return btn
     }()
     
+    lazy var btn: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame);
         setup();
@@ -109,6 +115,17 @@ class HeaderView: UIView {
         iconLbl.text = "Expand"
         
         addShadow()
+        
+        //addTapView
+        addBtnView();
+    }
+    
+    func addBtnView() {
+        self.addSubview(btn)
+        btn.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
+        btn.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        btn.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+        btn.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
     func changeTitle(title: String) {

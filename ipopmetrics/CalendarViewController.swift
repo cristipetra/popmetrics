@@ -278,7 +278,7 @@ class CalendarViewController: BaseViewController {
             topHeaderView = HeaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 0))
             tableView.addSubview(topHeaderView)
             topHeaderView.displayIcon(display: true)
-            topHeaderView.btnIcon.addTarget(self, action: #selector(handlerExpand), for: .touchUpInside)
+            topHeaderView.btn.addTarget(self, action: #selector(handlerExpand), for: .touchUpInside)
             
             let labelTap = UITapGestureRecognizer(target: self, action: #selector(handlerExpand))
             topHeaderView.iconLbl.isUserInteractionEnabled = true
