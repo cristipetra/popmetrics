@@ -34,6 +34,8 @@ class LastCardCell: UITableViewCell {
         setCornerRadiou()
         setShadows(view: goToButton)
         setUpShadowLayer()
+        
+        self.xbutton.isHidden = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

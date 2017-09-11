@@ -109,6 +109,7 @@ class RecommendedCell: UITableViewCell {
             self.footerVIew.approveLbl.text = "View Tweets"
             self.footerVIew.approveLbl.textColor = UIColor.black
             self.connectionLine.isHidden = true
+            self.footerVIew.xButton.isHidden = true
             break
         default:
             break
