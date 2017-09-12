@@ -82,7 +82,7 @@ class CalendarCard:  Object, Mappable {
     
     var socialTextString: String {
         get {
-            switch section.lowercased() {
+            switch section {
             case StatusArticle.scheduled.rawValue:
                 return "Scheduled Tweets"
             case StatusArticle.failed.rawValue:
@@ -246,6 +246,24 @@ class CalendarSocialPost: Object, Mappable {
     }
     
     var socialTextString: String {
+        get {
+            switch status.capitalized {
+            case StatusArticle.scheduled.rawValue:
+                return "Scheduled "
+            case StatusArticle.failed.rawValue:
+                return "Failed"
+            case StatusArticle.executed.rawValue:
+                return "Completed"
+            case StatusArticle.unapproved.rawValue:
+                return "Scheduled"
+            default:
+                return ""
+            }
+            return status.capitalized
+        }
+    }
+    
+    var socialTextTime: String {
         get {
             switch status.capitalized {
             case StatusArticle.scheduled.rawValue:

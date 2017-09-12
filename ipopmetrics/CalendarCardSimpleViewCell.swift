@@ -53,7 +53,7 @@ class CalendarCardSimpleViewCell: UITableViewCell {
         calendarItem = item;
         self.titleLbl.text = item.title
         let formatedDate = self.formatDate((item.scheduledDate)!)
-        self.statusText.text = item.socialTextString
+        self.statusText.text = item.socialTextTime
         self.timeLbl.text = formatedDate
         
         self.messageLbl.text = item.text
