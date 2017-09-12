@@ -102,7 +102,7 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         self.titleLbl.text = item.title
         //var formatedDate = self.formatDate((item.statusDate)!)
         var formatedDate = self.formatDate(Date())
-        self.articleDate.text = " " + formatedDate
+        self.articleDate.text = calendarItem.socialTextTime + " " + formatedDate
         self.messageLbl.text = item.text
         
         self.socialNetworkLbl.text = item.socialPost + ": " + item.type
@@ -119,11 +119,11 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         
         // updateBtnView()
         
-        // changeColor()
+        changeColor()
     }
     
     func changeColor() {
-        let customColor = ActiveType.custom(pattern: "\\\(calendarItem.socialTextString)\\b")
+        let customColor = ActiveType.custom(pattern: "\\\(calendarItem.socialTextTime)\\b")
     
         articleDate.enabledTypes.append(customColor)
         

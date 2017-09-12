@@ -407,6 +407,9 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         let item = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])[0]
         topHeaderView.changeTitle(title: item.socialTextString)
         topHeaderView.changeColorCircle(color: item.getSectionColor)
+        if (item.status == "unapproved") {
+            topHeaderView.changeColorCircle(color: PopmetricsColor.blueURLColor);
+        }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
