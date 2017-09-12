@@ -113,7 +113,9 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         //self.topHeaderView.backgroundColor = item.getSectionColor
 
         self.topHeaderView.circleView.backgroundColor = item.getSectionColor
-        self.topHeaderView.title.text = "\(item.socialTextString)"
+        self.topHeaderView.backgroundColor = item.getSectionColor
+        //self.topHeaderView.title.text = "\(item.socialTextString)"
+        self.topHeaderView.title.text = ""
         
         // updateBtnView()
         

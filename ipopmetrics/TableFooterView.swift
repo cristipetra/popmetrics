@@ -314,6 +314,7 @@ class TableFooterView: UITableViewHeaderFooterView {
             
         case .unapproved:
             actionButton.imageButtonType = .unapproved
+            approveLbl.text = "Schedule All (3)"
         default:
             break
         }

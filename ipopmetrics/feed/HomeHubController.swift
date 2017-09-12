@@ -230,7 +230,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             isInfoCellType = true
             isTrafficCard = false
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
-            cell.changeTitleWithSpacing(title: "You're all caught up.")
+            cell.changeTitleWithSpacing(title: "More on it's way!")
             cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
             cell.selectionStyle = .none
             cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
@@ -545,8 +545,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         UIView.animate(withDuration: 0.3, animations: {
             if colapse {
                 self.topHeaderView.frame.size.height = 0
+                self.topHeaderView.circleView.isHidden = true
+                self.topHeaderView.statusLbl.isHidden = true
             } else {
                 self.topHeaderView.frame.size.height = 30
+                self.topHeaderView.circleView.isHidden = false
+                self.topHeaderView.statusLbl.isHidden = false
             }
             self.topHeaderView.layoutIfNeeded()
         }, completion: { (completed) in
@@ -593,7 +597,7 @@ extension HomeHubViewController: InfoButtonDelegate {
     
     func showTooltip(_ sender: UIButton) {
         let infoCardVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "InfoCardViewID") as! InfoCardViewController;
-        
+        infoCardVC.changeCardType(type: "insight")
         infoCardVC.transitioningDelegate = self
         infoCardVC.modalPresentationStyle = .custom
         
@@ -618,4 +622,5 @@ enum CardType: String {
     case todo = "todo"
     case traffic = "traffic"
     case insight = "insight"
+    case scheduled = "scheduled"
 }

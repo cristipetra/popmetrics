@@ -14,7 +14,7 @@ class ToDoCardCell: UITableViewCell {
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var foregroundImage: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
-    @IBOutlet weak var timeLbl: UILabel!
+    
     @IBOutlet weak var messageLbl: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var circleView: UIView!

@@ -38,14 +38,19 @@ class CalendarHeaderViewCell: UITableViewCell {
     }
     
     func changeColor(color: UIColor) {
-        //toolbarView.backgroundColor = color
+        toolbarView.backgroundColor = color
         toolbarView.changeColorCircle(color: color)
         roundConnectionView.backgroundColor = color
         connectionView.backgroundColor = color
     }
     
     func changeTitle(title: String) {
-        toolbarView.title.text = title
+        //toolbarView.title.text = title
+        toolbarView.title.text = ""
+        sectionTitleLabel.text = title
+    }
+    
+    func changeTitleSection(title: String) {
         sectionTitleLabel.text = title
     }
     

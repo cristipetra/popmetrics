@@ -84,6 +84,12 @@ class TodoTopView: UIView {
         return label
     }()
     
+    lazy var viewDivider: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private var stackView : UIStackView!
     
     func setUpView(view: StatusArticle) {
@@ -104,6 +110,13 @@ class TodoTopView: UIView {
         //initialSetup(view: keyView, label: keyLabel, image: keyImageView)
         initialSetup(view: notificationView, label: notificationLabel, image: notificationImageView)
         //setActive(section: .unapproved)
+        
+        self.addSubview(viewDivider)
+        viewDivider.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+        viewDivider.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
+        viewDivider.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        viewDivider.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        viewDivider.backgroundColor = PopmetricsColor.dividerBorder
     }
     
     func setUpClockView(selected: Bool) {

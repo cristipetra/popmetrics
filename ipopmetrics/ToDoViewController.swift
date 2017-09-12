@@ -19,8 +19,10 @@ class ToDoViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var toDoTopView: TodoTopView!
+    
     let transitionView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
+    var topHeaderView: HeaderView!
     let store = TodoStore.getInstance()
 
     var approveIndex = 3
@@ -32,6 +34,8 @@ class ToDoViewController: BaseViewController {
     
     internal var shouldMaximize = false
     var scrollToRow: IndexPath = IndexPath(row: 0, section: 0)
+    
+    internal var isAnimatingHeader: Bool = false
     
     var isAllApproved : Bool = false
     var currentBrandId = UsersStore.currentBrandId
@@ -59,6 +63,7 @@ class ToDoViewController: BaseViewController {
         tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
         tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
         
+        setupTopHeaderView()
         setupTopViewItemCount()
         
         //check for the first run 
@@ -87,6 +92,19 @@ class ToDoViewController: BaseViewController {
     
     func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
         
+    }
+    
+    func setupTopHeaderView() {
+        if topHeaderView == nil {
+            topHeaderView = HeaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 0))
+            self.tableView.addSubview(topHeaderView)
+            topHeaderView.displayElements(isHidden: true)
+            topHeaderView.btn.addTarget(self, action: #selector(handlerExpand), for: .touchUpInside)
+        }
+    }
+    
+    func handlerExpand() {
+        maximizeCell()
     }
     
     internal func registerCellsForTable() {
@@ -193,6 +211,17 @@ class ToDoViewController: BaseViewController {
     
 }
 
+extension ToDoViewController: ChangeCellProtocol {
+    func maximizeCell() {
+        shouldMaximize = !shouldMaximize
+        
+        tableView.reloadData()
+        
+        let type = shouldMaximize ? HeaderViewType.expand : HeaderViewType.minimize
+        topHeaderView.changeStatus(type: type)
+    }
+}
+
 extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, ApproveDenySinglePostProtocol {
     
     
@@ -204,9 +233,10 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         if(sectionIdx == store.getTodoCards().count) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
             cell.changeTitleWithSpacing(title: "Finished with the actions?");
-            cell.changeMessageWithSpacing(message: "Check out the things you've schedulled in the caledar hub")
+            cell.changeMessageWithSpacing(message: "Check out the things you've scheduled in the calendar hub")
             cell.titleActionButton.text = "View Calendar"
             cell.selectionStyle = .none
+            cell.goToButton.imageButtonType = .lastCardTodo
             cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
             return cell
         }
@@ -236,6 +266,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
         cell.configure(item: item)
         sideShadow(view: cell.containerView)
+        cell.selectionStyle = .none
         return cell
         
     }
@@ -272,15 +303,14 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         if shouldMaximize == false {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
             headerCell.changeColor(color: card.getSectionColor)
-            headerCell.changeTitle(title: card.section)
             headerCell.changeTitleToolbar(title: card.getCardToolbarTitle)
+            headerCell.changeTitleSection(title: card.getCardSectionTitle)
             headerCell.setUpHeaderShadowView()
-            //toDoTopView.setUpView(view: StatusArticle(rawValue: sections[section].status)!)
             return headerCell
         } else {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
             headerCell.changeColor(cardType: .todo)
-            headerCell.changeTitle(title: card.section)
+            headerCell.changeTitle(title: card.getCardSectionTitle)
             return headerCell
         }
     }
@@ -298,6 +328,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
         todoFooter.section = section
         todoFooter.buttonHandlerDelegate = self
+        todoFooter.changeTypeSection(typeSection: .unapproved)
         
         /*
         if(sections[section].allApproved) {
@@ -352,8 +383,10 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         DispatchQueue.main.async {
             self.tableView.scrollToRow(at: self.scrollToRow, at: .none, animated: false)
         }
-        //tableView.reloadData()
-        reloadDataTable()
+        tableView.reloadData()
+        
+        let type = shouldMaximize ? HeaderViewType.expand : HeaderViewType.minimize
+        topHeaderView.changeStatus(type: type)
     }
     
     func reloadDataTable() {
@@ -404,18 +437,59 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        if let index = tableView.indexPathsForVisibleRows?.first {
-            let headerFrame = tableView.rectForHeader(inSection: index.section)
-            if headerFrame.origin.y < tableView.contentOffset.y{
-                /*
-                if let status = StatusArticle(rawValue: sections[index.section].status) {
-                    toDoTopView.setActive(section: status)
-                }*/
+        var fixedHeaderFrame = self.topHeaderView.frame
+        fixedHeaderFrame.origin.y = 0 + scrollView.contentOffset.y
+        topHeaderView.frame = fixedHeaderFrame
+        
+        
+        if let indexes = tableView.indexPathsForVisibleRows {
+            for index in indexes {
+                let indexPath = IndexPath(row: 0, section: index.section)
+                guard let lastRowInSection = indexes.last , indexes.first?.section == index.section else {
+                    return
+                }
+                let headerFrame = tableView.rectForHeader(inSection: index.section)
+                
+                let frameOfLastCell = tableView.rectForRow(at: lastRowInSection)
+                let cellFrame = tableView.rectForRow(at: indexPath)
+                if headerFrame.origin.y + 50 < tableView.contentOffset.y {
+                    self.changeTopHeaderTitle(section: index.section)
+                    animateHeader(colapse: false)
+                } else if frameOfLastCell.origin.y < tableView.contentOffset.y  {
+                    animateHeader(colapse: false)
+                } else {
+                    animateHeader(colapse: true)
+                }
             }
             if tableView.contentOffset.y == 0 {   //top of the tableView
-                toDoTopView.setActive(section: .unapproved)
+                animateHeader(colapse: true)
             }
         }
+    }
+    
+    func changeTopHeaderTitle(section: Int) {
+        let item = store.getTodoSocialPostsForCard(store.getTodoCards()[section])[0]
+        topHeaderView.changeTitle(title: store.getTodoCards()[section].getCardSectionTitle)
+        topHeaderView.changeColorCircle(color: item.getSectionColor)
+    }
+    
+    func animateHeader(colapse: Bool) {
+        if (self.isAnimatingHeader) {
+            return
+        }
+        self.isAnimatingHeader = true
+        UIView.animate(withDuration: 0.3, animations: {
+            if colapse {
+                self.topHeaderView.frame.size.height = 0
+                self.topHeaderView.displayElements(isHidden: true)
+            } else {
+                self.topHeaderView.frame.size.height = 30
+                self.topHeaderView.displayElements(isHidden: false)
+            }
+            self.topHeaderView.layoutIfNeeded()
+        }, completion: { (completed) in
+            self.isAnimatingHeader = false
+        })
     }
     
 }

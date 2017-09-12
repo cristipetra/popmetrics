@@ -36,6 +36,8 @@ class PhoneView: UIView {
         return sendCodeButton
     }()
     
+    var buttonBottomConstraint: NSLayoutConstraint?
+    
     func reloadSubViews() {
         numberTextField.removeFromSuperview()
         messageLbl.removeFromSuperview()
@@ -132,9 +134,11 @@ class PhoneView: UIView {
     }
     
     private func setSendCodeButton(yAnchor: CGFloat) {
+        buttonBottomConstraint = sendCodeBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: yAnchor)
+        buttonBottomConstraint?.isActive = true
         sendCodeBtn.widthAnchor.constraint(equalToConstant: 233).isActive = true
         sendCodeBtn.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        sendCodeBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: yAnchor).isActive = true
+        //sendCodeBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: yAnchor).isActive = true
         sendCodeBtn.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         sendCodeBtn.layer.backgroundColor = UIColor(red: 255/255, green: 210/255, blue: 55/255, alpha: 1.0).cgColor
         sendCodeBtn.setTitleColor(UIColor(red: 228/255, green: 185/255, blue: 39/255, alpha: 1.0), for: .normal)
