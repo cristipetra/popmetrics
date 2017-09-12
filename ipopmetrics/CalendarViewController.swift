@@ -30,7 +30,7 @@ class CalendarViewController: BaseViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var topPickerStackViewHeight: NSLayoutConstraint!
     
-    let transitionView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+    let transitionView = UIView(frame: CGRect(x: 0, y: 40, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     let store = CalendarFeedStore.getInstance()
     
@@ -111,7 +111,6 @@ class CalendarViewController: BaseViewController {
         transitionView.addSubview(tableView)
         transitionView.addSubview(calendarView)
         
-
     }
     
     func fetchItems(silent:Bool) {
@@ -649,6 +648,9 @@ extension CalendarViewController: MJCalendarViewDelegate {
     
     func tapFunction(sender:UITapGestureRecognizer) {
         self.calendarView.goToCurrentDay()
+        selectedDate = Date()
+        self.store.selectedDate = selectedDate
+        self.tableView.reloadData()
     }
     
     func addDivider() {
