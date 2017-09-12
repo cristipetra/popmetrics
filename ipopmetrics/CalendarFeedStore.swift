@@ -17,6 +17,7 @@ class CalendarFeedStore {
     
     public let realm = try! Realm()
     
+    public var selectedDate = Date()
     
     public func getCalendarCards() -> Results<CalendarCard> {
         return realm.objects(CalendarCard.self).sorted(byKeyPath: "index")
@@ -33,11 +34,9 @@ class CalendarFeedStore {
     }
     
     public func getCalendarSocialPostsForCard(_ calendarCard: CalendarCard) -> Results<CalendarSocialPost> {
-        let predicate = NSPredicate(format: "calendarCard = %@", calendarCard)
+        let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@", calendarCard, selectedDate.startOfDay as CVarArg, selectedDate.endOfDay as CVarArg)
         return realm.objects(CalendarSocialPost.self).filter(predicate)
     }
-    
-    
     
     public func countSections() -> Int {
         let distinctTypes = Array(Set(self.getCalendarCards().value(forKey: "section") as! [String]))

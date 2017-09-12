@@ -46,6 +46,8 @@ class CalendarViewController: BaseViewController {
     internal var topHeaderView: HeaderView!
     internal var isAnimatingHeader: Bool = false
     
+    var selectedDate = Date()
+    
     var currentBrandId = UsersStore.currentBrandId
     
     override func viewDidLoad() {
@@ -116,8 +118,6 @@ class CalendarViewController: BaseViewController {
         //        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
         //        let jsonData : NSData = NSData(contentsOfFile: path!)!
         CalendarApi().getItems(currentBrandId) { responseWrapper, error in
-            //print(responseWrapper?.data?.socialPosts)
-            print(self.store.countSections())
             
             if error != nil {
                 let message = "An error has occurred. Please try again later."
@@ -601,7 +601,8 @@ extension CalendarViewController: MJCalendarViewDelegate {
     }
     
     func calendar(_ calendarView: MJCalendarView, didSelectDate date: Date) {
-        print(date)
+        store.selectedDate = date
+        tableView.reloadData()
     }
     
     func animateTopPart(shouldCollapse: Bool, offset: CGFloat) {
@@ -655,4 +656,27 @@ extension CalendarViewController: MJCalendarViewDelegate {
         divider.backgroundColor = PopmetricsColor.dividerBorder
         self.topPickerStackViewWrapper.addSubview(divider)
     }
+}
+
+
+extension Date {
+    var yesterday: Date {
+        return Calendar.current.date(byAdding: .day, value: -1, to: self)!
+    }
+    
+    var nextDay: Date {
+        return Calendar.current.date(byAdding: .day, value: 1, to: self)!
+    }
+    
+    var startOfDay: Date {
+        return Calendar.current.startOfDay(for: self)
+    }
+    
+    var endOfDay: Date {
+        var components = DateComponents()
+        components.day = 1
+        components.second = -1
+        return Calendar.current.date(byAdding: components, to: startOfDay)!
+    }
+    
 }
