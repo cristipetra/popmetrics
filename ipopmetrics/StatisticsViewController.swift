@@ -36,7 +36,7 @@ class StatisticsViewController: UIViewController {
         tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
-        fetchItemsLocally()
+        //fetchItemsLocally()
         
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
@@ -131,11 +131,18 @@ class StatisticsViewController: UIViewController {
 extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficEmptyCard", for: indexPath) as! TrafficEmptyView
+        cellHeight = 216
+        cell.selectionStyle = .none
+        cell.backgroundColor = UIColor.feedBackgroundColor()
+        //cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_:)), for: .touchUpInside)
+        return cell
+        
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
-        
         let section = sections[sectionIdx]
         let item = section.items[rowIdx]
+        
         switch item.type {
         case "traffic":
             let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficCard", for: indexPath) as! TrafficCardViewCell
@@ -191,6 +198,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
         return sections[section].items.count
     }
     
@@ -225,7 +233,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        print(sections.count)
+        return 1
         return sections.count
     }
     
