@@ -25,7 +25,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
             case "connect_google_analytics":
                 connectGoogleAnalytics(sender, item:item)
             
-            case "brand_not_connected_with_twitter":
+            case "required_actions.brand_not_connected_with_twitter":
                 connectTwitter(sender, item:item)
             
             default:

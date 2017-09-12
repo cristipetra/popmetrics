@@ -310,10 +310,10 @@ enum TypeArticle: String {
 }
 
 enum StatusArticle: String {
-    case scheduled = "scheduled"
-    case failed = "failed"
-    case executed = "executed"
-    case unapproved = "unapproved"
-    case inProgress = "in-progress"
-    case completed = "completed"
+    case scheduled = "Scheduled"
+    case failed = "Failed"
+    case executed = "Executed"
+    case unapproved = "Unapproved"
+    case inProgress = "In-progress"
+    case complete = "Complete"
 }
