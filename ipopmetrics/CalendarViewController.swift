@@ -158,7 +158,7 @@ class CalendarViewController: BaseViewController {
 //            calendarCard.cardId = "41345"
 //            calendarCard.section = "scheduled"
 //            store.realm.add(calendarCard, update: true)
-//            
+//
 //            let post1: CalendarSocialPost = CalendarSocialPost()
 //            post1.calendarCard = calendarCard
 //            post1.postId = "asdfasdfsa"
@@ -170,7 +170,7 @@ class CalendarViewController: BaseViewController {
 //             post1.articleHashtags = "wildfire"
 //             post1.articleImage = "image_toronto"
 //            store.realm.add(post1, update:true)
-//            
+//
 //            let post2: CalendarSocialPost = CalendarSocialPost()
 //            post2.calendarCard = calendarCard
 //            post2.postId = "twtwq"
@@ -182,7 +182,7 @@ class CalendarViewController: BaseViewController {
 //             post2.articleHashtags = "wildfire"
 //             post2.articleImage = "image_optimize"
 //            store.realm.add(post2, update:true)
-//            
+//
 //            let post3: CalendarSocialPost = CalendarSocialPost()
 //            post3.calendarCard = calendarCard
 //            post3.postId = "tw34twq"
@@ -194,7 +194,7 @@ class CalendarViewController: BaseViewController {
 //             post3.articleHashtags = "wildfire"
 //             post3.articleImage = "imageScheduleSocial"
 //            store.realm.add(post3, update:true)
-//            
+//
 //            let post4: CalendarSocialPost = CalendarSocialPost()
 //            post4.calendarCard = calendarCard
 //            post4.postId = "twadtwq"
@@ -205,7 +205,7 @@ class CalendarViewController: BaseViewController {
 //             post4.articleText = "Where do you want to start with social media schedulling? Find out here! Alch.my/AGGA #socialmedia #scheduling?";
 //             post4.articleHashtags = "wildfire"
 //             post4.articleImage = "imageScheduleSocial"
-// 
+//
 //            store.realm.add(post4, update:true)
 //             let post5: CalendarSocialPost = CalendarSocialPost()
 //             post5.calendarCard = calendarCard
@@ -218,7 +218,7 @@ class CalendarViewController: BaseViewController {
 //             post5.articleHashtags = "wildfire"
 //             post5.articleImage = "imageScheduleSocial"
 //             store.realm.add(post5, update:true)
-//             
+//
 //             let post6: CalendarSocialPost = CalendarSocialPost()
 //             post6.calendarCard = calendarCard
 //             post6.postId = "tsadwtddwq"
@@ -230,16 +230,16 @@ class CalendarViewController: BaseViewController {
 //             post6.articleHashtags = "wildfire"
 //             post5.articleImage = "imageScheduleSocial"
 //             store.realm.add(post6, update:true)
-//             
-//             
-//             
-//             
+//
+//
+//
+//
 //             let calendarCompleteddCard = CalendarCard()
 //             calendarCompleteddCard.cardId = "413452"
 //             calendarCompleteddCard.section = "completed"
-//             
+//
 //             store.realm.add(calendarCompleteddCard, update: true)
-//             
+//
 //             let postCompleted1: CalendarSocialPost = CalendarSocialPost()
 //             postCompleted1.calendarCard = calendarCompleteddCard
 //             postCompleted1.postId = "iuueek"
@@ -364,7 +364,6 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         self.tabBarController?.selectedIndex = 0
     }
     
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         //last section don't have an header view
         if section == store.getCalendarCards().count {
@@ -388,7 +387,6 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             headerCell.changeColor(color: sectionCard.getSectionColor)
             headerCell.changeTitleToolbar(title: "")
             headerCell.changeTitleSection(title: sectionCard.getCardSectionTitle)
-            
             return headerCell
         }
         
@@ -485,6 +483,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
                 let frameOfLastCell = tableView.rectForRow(at: lastRowInSection)
                 let cellFrame = tableView.rectForRow(at: indexPath)
                 if headerFrame.origin.y + 50 < tableView.contentOffset.y {
+                    scrollToRow = indexPath
                     self.changeTopHeaderTitle(section: index.section)
                     animateHeader(colapse: false)
                 } else if frameOfLastCell.origin.y < tableView.contentOffset.y  {
@@ -538,8 +537,10 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     func maximizeCell() {
         shouldMaximizeCell = !shouldMaximizeCell
         
-        
         tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.scrollToRow(at: self.scrollToRow, at: .none, animated: false)
+        }
         
         let type = shouldMaximizeCell ? HeaderViewType.expand : HeaderViewType.minimize
         topHeaderView.changeStatus(type: type)
