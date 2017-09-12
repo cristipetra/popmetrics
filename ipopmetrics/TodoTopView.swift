@@ -306,7 +306,7 @@ class TodoTopView: UIView {
             setUpKeyView(selected: false)
             setUpNotificationView(selected: true)
             return
-        case .completed         :
+        case .complete:
             setUpClockView(selected: false)
             setUpKeyView(selected: true)
             setUpNotificationView(selected: false)

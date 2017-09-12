@@ -53,7 +53,7 @@ class TodoCard:  Object, Mappable {
     
     var getSectionColor: UIColor {
         get {
-            switch section.lowercased() {
+            switch section {
             case StatusArticle.scheduled.rawValue:
                 return UIColor.darkGray
             case StatusArticle.failed.rawValue:
@@ -70,7 +70,7 @@ class TodoCard:  Object, Mappable {
     
     var getCardToolbarTitle: String {
         get {
-            switch section.lowercased() {
+            switch section {
             case StatusArticle.unapproved.rawValue:
                 return ""
             default:
@@ -81,7 +81,7 @@ class TodoCard:  Object, Mappable {
     
     var getCardSectionTitle: String {
         get {
-            switch section.lowercased() {
+            switch section {
             case StatusArticle.unapproved.rawValue:
                 return "Recommended Tweets"
             default:

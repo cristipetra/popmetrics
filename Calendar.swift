@@ -91,7 +91,7 @@ class CalendarCard:  Object, Mappable {
                 return "Completed"
             case StatusArticle.unapproved.rawValue:
                 return "Unapproved"
-            case StatusArticle.completed.rawValue:
+            case StatusArticle.complete.rawValue:
                 return "Completed"
             default:
                 return ""
@@ -116,14 +116,14 @@ class CalendarCard:  Object, Mappable {
     
     var getSectionColor: UIColor {
         get {
-            switch section.lowercased() {
+            switch section {
             case StatusArticle.scheduled.rawValue:
                 return PopmetricsColor.blueURLColor
             case StatusArticle.failed.rawValue:
                 return PopmetricsColor.salmondColor
             case StatusArticle.executed.rawValue:
                 return PopmetricsColor.greenSelectedDate
-            case StatusArticle.completed.rawValue:
+            case StatusArticle.complete.rawValue:
                 return PopmetricsColor.greenSelectedDate
             case StatusArticle.unapproved.rawValue:
                 return PopmetricsColor.yellowUnapproved
@@ -141,7 +141,7 @@ class CalendarCard:  Object, Mappable {
     
     var getCardToolbarTitle: String {
         get {
-            switch section.lowercased() {
+            switch section {
             case StatusArticle.scheduled.rawValue:
                 return ""
             case StatusArticle.executed.rawValue:
@@ -154,12 +154,12 @@ class CalendarCard:  Object, Mappable {
     
     var getCardSectionTitle: String {
         get {
-            switch section.lowercased() {
+            switch section{
             case StatusArticle.scheduled.rawValue:
                 return "Scheduled Tweets"
             case StatusArticle.executed.rawValue:
                 return "Completed Tweets"
-            case StatusArticle.completed.rawValue:
+            case StatusArticle.complete.rawValue:
                 return "Completed Tweets"
             default:
                 return "Scheduled"

@@ -31,7 +31,7 @@ class TableFooterView: UITableViewHeaderFooterView {
     
     var section = 0
     
-    var typeSection: StatusArticle = .completed {
+    var typeSection: StatusArticle = .complete {
         didSet {
             changeTypeSection(typeSection: typeSection)
         }
