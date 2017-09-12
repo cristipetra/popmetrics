@@ -247,15 +247,15 @@ class CalendarSocialPost: Object, Mappable {
     
     var socialTextString: String {
         get {
-            switch status {
+            switch status.capitalized {
             case StatusArticle.scheduled.rawValue:
-                return "Scheduled Tweets"
+                return "Scheduled "
             case StatusArticle.failed.rawValue:
                 return "Failed"
             case StatusArticle.executed.rawValue:
                 return "Completed"
             case StatusArticle.unapproved.rawValue:
-                return "Unapproved"
+                return "Scheduled for"
             default:
                 return ""
             }
