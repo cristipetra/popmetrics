@@ -32,11 +32,12 @@ class StatsSummaryItem: Object, Mappable {
 }
 
 class FeedCard: Object, Mappable {
-    
-    dynamic var id = 0
-    
+
     dynamic var cardId: String? = nil
     
+    dynamic var createDate: Date = Date()
+    dynamic var updateDate: Date = Date()
+
     dynamic var index = 0
     
     dynamic var type = ""
@@ -55,7 +56,7 @@ class FeedCard: Object, Mappable {
     dynamic var tooltipContent: String? = nil
     
     override static func primaryKey() -> String? {
-        return "id"
+        return "cardId"
     }
     
     required convenience init?(map: Map) {
@@ -63,6 +64,7 @@ class FeedCard: Object, Mappable {
     }
     
     func mapping(map: Map) {
+        
         cardId          <- map["id"]
         index           <- map["index"]
         type            <- map["type"]
@@ -75,6 +77,9 @@ class FeedCard: Object, Mappable {
         actionHandler   <- map["handler"]
         tooltipTitle    <- map["tooltip_title"]
         tooltipContent  <- map["tooltip_conent"]
+        
+        createDate      <- (map["create_dt"], DateTransform())
+        updateDate      <- (map["update_dt"], DateTransform())
         
     }
     

@@ -14,6 +14,10 @@ import ObjectMapper
 class CalendarCard:  Object, Mappable {
     
     dynamic var cardId: String? = nil
+    
+    dynamic var createDate: Date = Date()
+    dynamic var updateDate: Date = Date()
+    
     dynamic var index = 0
     
     dynamic var type = ""
@@ -50,6 +54,9 @@ class CalendarCard:  Object, Mappable {
         //actionLabel     <- map["action_label"]
         tooltipTitle    <- map["tooltip_title"]
         tooltipContent  <- map["tooltip_conent"]
+        
+        createDate      <- (map["create_dt"], DateTransform())
+        updateDate      <- (map["update_dt"], DateTransform())
         
     }
     
@@ -177,6 +184,10 @@ class CalendarSocialPost: Object, Mappable {
     dynamic var calendarCard: CalendarCard? = nil
     dynamic var calendarCardId = ""
     
+    dynamic var createDate: Date = Date()
+    dynamic var updateDate: Date = Date()
+
+    
     dynamic var index = 0
     dynamic var isApproved = false
     
@@ -215,6 +226,9 @@ class CalendarSocialPost: Object, Mappable {
         url             <- map["url"]
         hashtags        <- map["hashtags"]
         image           <- map["image"]
+        
+        createDate      <- (map["create_dt"], DateTransform())
+        updateDate      <- (map["update_dt"], DateTransform())
         
     }
     

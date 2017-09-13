@@ -13,6 +13,11 @@ import ObjectMapper
 class TodoCard:  Object, Mappable {
 
     dynamic var cardId: String? = nil
+    
+    dynamic var createDate: Date = Date()
+    dynamic var updateDate: Date = Date()
+
+    
     dynamic var index = 0
     
     dynamic var type = ""
@@ -47,6 +52,9 @@ class TodoCard:  Object, Mappable {
         //actionLabel     <- map["action_label"]
         tooltipTitle    <- map["tooltip_title"]
         tooltipContent  <- map["tooltip_conent"]
+        
+        createDate      <- (map["create_dt"], DateTransform())
+        updateDate      <- (map["update_dt"], DateTransform())
         
     }
 
@@ -97,6 +105,10 @@ class TodoSocialPost: Object, Mappable {
     
     dynamic var todoCardId: String? = nil
     dynamic var todoCard: TodoCard? = nil
+
+    dynamic var createDate: Date = Date()
+    dynamic var updateDate: Date = Date()
+    
     dynamic var index = 0
     dynamic var isApproved = false
     
@@ -133,6 +145,10 @@ class TodoSocialPost: Object, Mappable {
         articleUrl      <- map["article_url"]
         articleHashtags <- map["article_hashtags"]
         articleImage    <- map["article_image"]
+        
+        
+        createDate      <- (map["create_dt"], DateTransform())
+        updateDate      <- (map["update_dt"], DateTransform())
         
     }
     

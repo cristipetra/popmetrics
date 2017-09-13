@@ -22,8 +22,12 @@ class TodoStore {
         return realm.objects(TodoCard.self).sorted(byKeyPath: "index")
     }
     
-    public func getTodoCardWithId(_ cardId: String) -> TodoCard {
-        return realm.object(ofType: TodoCard.self, forPrimaryKey: cardId)!
+    public func getTodoCardWithId(_ cardId: String) -> TodoCard? {
+        return realm.object(ofType: TodoCard.self, forPrimaryKey: cardId)
+    }
+    
+    public func getTodoSocialPostWithId(_ postId: String) -> TodoSocialPost? {
+        return realm.object(ofType: TodoSocialPost.self, forPrimaryKey: postId)
     }
     
     public func getTodoCardsWithSection(_ section: String) -> Results<TodoCard> {
@@ -63,11 +67,22 @@ class TodoStore {
             }
             
             for card in cardsToDelete {
-                //TODO delete all related items first
+                
+                let socialPosts = self.getTodoSocialPostsForCard(card)
+                for post in socialPosts {
+                    realm.delete(post)
+                }
+                
                 realm.delete(card)
             }
             
             for newCard in todoResponse.cards! {
+                if let exCard = self.getTodoCardWithId(newCard.cardId!) {
+                    if exCard.updateDate == newCard.updateDate {
+                        continue
+                    }
+                }
+                
                 realm.add(newCard, update:true)
             }
             
@@ -90,6 +105,13 @@ class TodoStore {
             }
             
             for newPost in todoResponse.socialPosts! {
+                
+                if let exPost = self.getTodoSocialPostWithId(newPost.postId!) {
+                    if exPost.updateDate == newPost.updateDate {
+                        continue
+                    }
+                }
+                
                 newPost.todoCard = getTodoCardWithId(newPost.todoCardId!)
                 realm.add(newPost, update:true)
             }

@@ -22,6 +22,10 @@ class FeedStore {
         return realm.objects(FeedCard.self).sorted(byKeyPath: "index")
     }
     
+    public func getFeedCardWithId(_ cardId: String) -> FeedCard? {
+        return realm.object(ofType: FeedCard.self, forPrimaryKey: cardId)
+    }
+    
     public func getFeedCardsWithSection(_ section: String) -> Results<FeedCard> {
         let predicate = NSPredicate(format: "section = %@", section)
         return realm.objects(FeedCard.self).filter(predicate)
@@ -49,11 +53,15 @@ class FeedStore {
             
             for card in cardsToDelete {
                 
-                //TODO delete all related items first
                 realm.delete(card)
             }
             
             for newCard in feedResponse.cards! {
+                if let exCard = self.getFeedCardWithId(newCard.cardId!) {
+                    if exCard.updateDate == newCard.updateDate {
+                        continue
+                    }
+                }
                 realm.add(newCard, update:true)
             }
         }//try

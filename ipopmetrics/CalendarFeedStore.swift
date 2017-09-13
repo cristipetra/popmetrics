@@ -23,8 +23,12 @@ class CalendarFeedStore {
         return realm.objects(CalendarCard.self).sorted(byKeyPath: "index")
     }
     
-    public func getCalendarCardWithId(_ cardId: String) -> CalendarCard {
-        return realm.object(ofType: CalendarCard.self, forPrimaryKey: cardId)!
+    public func getCalendarCardWithId(_ cardId: String) -> CalendarCard? {
+        return realm.object(ofType: CalendarCard.self, forPrimaryKey: cardId)
+    }
+    
+    public func getCalendarSocialPostWithId(_ postId: String) -> CalendarSocialPost? {
+        return realm.object(ofType: CalendarSocialPost.self, forPrimaryKey: postId)
     }
     
     
@@ -64,11 +68,22 @@ class CalendarFeedStore {
             
             for card in cardsToDelete {
                 
-                //TODO delete all related items first
+                let socialPosts = self.getCalendarSocialPostsForCard(card)
+                for post in socialPosts {
+                    realm.delete(post)
+                }
+
                 realm.delete(card)
             }
             
             for newCard in calendarResponse.cards! {
+                
+                if let exCard = self.getCalendarCardWithId(newCard.cardId!) {
+                    if exCard.updateDate == newCard.updateDate {
+                        continue
+                    }
+                }
+                
                 realm.add(newCard, update:true)
             }
         }//try
@@ -85,11 +100,17 @@ class CalendarFeedStore {
             }
             
             for post in postsToDelete {
-                //TODO delete all related items first
                 realm.delete(post)
             }
             
             for newPost in calendarResponse.socialPosts! {
+                if let exPost = self.getCalendarSocialPostWithId(newPost.postId!) {
+                    if exPost.updateDate == newPost.updateDate {
+                        continue
+                    }
+                }
+                
+                
                 newPost.calendarCard = getCalendarCardWithId(newPost.calendarCardId)
                 realm.add(newPost, update:true)
             }
