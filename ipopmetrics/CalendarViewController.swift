@@ -147,6 +147,10 @@ class CalendarViewController: BaseViewController {
                         })
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        calendarView.reloadView()
+    }
+    
     func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
     }
     
