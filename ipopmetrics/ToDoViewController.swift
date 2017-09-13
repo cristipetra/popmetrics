@@ -558,6 +558,7 @@ extension ToDoViewController:  TodoCardActionHandler {
                     }
                     else {
                         print("action occurred")
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "didPostAction"), object: nil)
                     }
                     
             }
