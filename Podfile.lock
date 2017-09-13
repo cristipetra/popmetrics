@@ -1,6 +1,8 @@
 PODS:
   - ActiveLabel (0.7.1)
   - Alamofire (4.5.0)
+  - AlamofireImage (3.2.0):
+    - Alamofire (~> 4.1)
   - AlamofireObjectMapper (4.1.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 2.0)
@@ -105,6 +107,7 @@ PODS:
 DEPENDENCIES:
   - ActiveLabel
   - Alamofire (~> 4.0)
+  - AlamofireImage
   - AlamofireObjectMapper (~> 4.0)
   - BubbleTransition
   - Chatto
@@ -151,6 +154,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   ActiveLabel: 68625f22775f51c31bb691ca8de20f1e5a3bc825
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
   AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   BubbleTransition: 7d98ed7d56f0940e83f350a98103ad473491c769
@@ -197,6 +201,6 @@ SPEC CHECKSUMS:
   UIView+JMFrame: a907974c9d34b1c300aef85ae2a1a5af746f2b8a
   Whisper: 051f25e704bf8992641ffd28b20d5682ddc5f5d3
 
-PODFILE CHECKSUM: c3f98bf15049318e2c8aea7055b4cb2d628ad67b
+PODFILE CHECKSUM: 0aaa23a1cf88520c19e78cb72fd2e688255621f2
 
 COCOAPODS: 1.2.1

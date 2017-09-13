@@ -298,7 +298,7 @@ class CalendarSocialPost: Object, Mappable {
     
     var getSectionColor: UIColor {
         get {
-            switch status {
+            switch status.capitalized {
             case StatusArticle.scheduled.rawValue:
                 return PopmetricsColor.blueURLColor
             case StatusArticle.failed.rawValue:
@@ -306,7 +306,7 @@ class CalendarSocialPost: Object, Mappable {
             case StatusArticle.executed.rawValue:
                 return PopmetricsColor.greenSelectedDate
             case StatusArticle.unapproved.rawValue:
-                return PopmetricsColor.yellowUnapproved
+                return PopmetricsColor.blueURLColor
             default:
                 return UIColor.white
             }

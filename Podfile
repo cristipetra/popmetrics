@@ -9,6 +9,7 @@ target 'ipopmetrics' do
   pod 'Reachability'
   pod 'Whisper'
   pod 'Alamofire', '~> 4.0'
+  pod 'AlamofireImage'
   pod 'ObjectMapper'
   pod 'AlamofireObjectMapper', '~> 4.0'
   pod 'Fabric'  
