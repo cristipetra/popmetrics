@@ -117,7 +117,6 @@ class CalendarViewController: BaseViewController {
         //        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
         //        let jsonData : NSData = NSData(contentsOfFile: path!)!
         CalendarApi().getItems(currentBrandId) { responseWrapper, error in
-            
             if error != nil {
                 let message = "An error has occurred. Please try again later."
                 self.presentAlertWithTitle("Error", message: message)
@@ -131,7 +130,6 @@ class CalendarViewController: BaseViewController {
                 self.store.updateCalendars((responseWrapper?.data)!)
                 self.tableView.isHidden = false
                 self.tableView.reloadData()
-                // self.setupTopViewItemCount()
             }
         }
     }
@@ -223,7 +221,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             tableView.allowsSelection = false
             maxCell.topImageButton.isHidden = true
             maxCell.setUpApprovedConnectionView()
-
+            
             let itemsCount = store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section]).count
             maxCell.configure(item)
             

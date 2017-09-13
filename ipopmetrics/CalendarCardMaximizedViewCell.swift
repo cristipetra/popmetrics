@@ -106,14 +106,16 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         self.messageLbl.text = item.text
         
         self.socialNetworkLbl.text = item.socialPost + ": " + item.type
+        self.socialNetworkLbl.text = "Twitter Post"  //temp
         self.postIconImageView.image = UIImage(named: item.socialIcon)
 //      self.articleImage.image = UIImage(named: item.articleImage!)
         
         self.connectionLine.backgroundColor = item.getSectionColor
         //self.topHeaderView.backgroundColor = item.getSectionColor
 
-        self.topHeaderView.circleView.backgroundColor = item.getSectionColor
+        self.topHeaderView.circleView.backgroundColor = .clear
         self.topHeaderView.backgroundColor = item.getSectionColor
+        
         //self.topHeaderView.title.text = "\(item.socialTextString)"
         self.topHeaderView.title.text = ""
         
