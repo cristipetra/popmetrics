@@ -124,6 +124,7 @@
                     <connections>
                         <outlet property="btnStarted" destination="Vlo-yK-LmJ" id="XaD-Cc-u5O"/>
                         <outlet property="containerPlayer" destination="aJ8-St-gjj" id="E1T-0Q-gAS"/>
+                        <outlet property="topTextConstraint" destination="WGk-z9-sgH" id="hs7-zd-scF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xFp-n5-KlA" userLabel="First Responder" sceneMemberID="firstResponder"/>

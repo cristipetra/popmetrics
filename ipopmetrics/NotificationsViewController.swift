@@ -22,8 +22,8 @@ class NotificationsViewController: UIViewController {
     }
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
-        openURLInside(url: UIApplicationOpenSettingsURLString)
-        //UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+        //openURLInside(url: UIApplicationOpenSettingsURLString)
+        UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(NotificationsViewController.applicationWillEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
         return

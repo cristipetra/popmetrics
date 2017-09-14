@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="landscape">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -17,21 +17,25 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WelcomeScreen" customModule="ipopmetrics" customModuleProvider="target">
             <connections>
                 <outlet property="blueButton" destination="ZWP-6v-Dou" id="cgk-Pb-WnX"/>
+                <outlet property="bottomButtonsConstraint" destination="H0w-2C-XzA" id="9XH-zl-gDj"/>
                 <outlet property="btnNew" destination="kAj-GT-EHI" id="hFC-nI-h14"/>
                 <outlet property="containerView" destination="i5M-Pr-FkT" id="pzL-cc-Jcm"/>
                 <outlet property="heartButton" destination="ZY0-lM-8bn" id="QNP-d4-lrG"/>
+                <outlet property="heightTextConstraint" destination="dOB-TC-ab2" id="YSn-La-FxW"/>
+                <outlet property="topImageConstraint" destination="L8m-M4-ncG" id="4Sj-Lx-MmA"/>
                 <outlet property="topImageView" destination="Ya5-DM-MeA" id="lCS-zz-nIN"/>
+                <outlet property="topTextConstraint" destination="XhA-HJ-Q9E" id="WlZ-M0-Oic"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="welcomeLabel" destination="Xx9-yR-Zb0" id="ENU-LX-3z0"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellowHeart" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-DM-MeA">
-                    <rect key="frame" x="68" y="70" width="239" height="98"/>
+                    <rect key="frame" x="68" y="70" width="184" height="98"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="98" id="UpL-Wc-BYP">
                             <variation key="heightClass=compact-widthClass=compact" constant="70"/>
@@ -40,10 +44,10 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi and welcome to the Popmetrics beta! See how Marketing Automation &amp; A.I. can improve your business today." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xx9-yR-Zb0" customClass="ActiveLabel" customModule="ActiveLabel">
-                    <rect key="frame" x="32" y="238" width="311" height="66"/>
+                    <rect key="frame" x="32" y="238" width="256" height="66"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="66" id="dOB-TC-ab2">
-                            <variation key="heightClass=compact-widthClass=compact" constant="62"/>
+                            <variation key="heightClass=compact-widthClass=compact" constant="82"/>
                         </constraint>
                     </constraints>
                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
@@ -66,7 +70,7 @@
                     </variation>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWP-6v-Dou">
-                    <rect key="frame" x="71" y="457" width="233" height="60"/>
+                    <rect key="frame" x="43.5" y="358" width="233" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="233" id="CHO-T2-UCP"/>
                         <constraint firstAttribute="height" constant="60" id="nPW-iw-GG8">
@@ -81,7 +85,7 @@
                     </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="JIV-ap-ci7">
-                    <rect key="frame" x="70.5" y="557" width="234" height="60"/>
+                    <rect key="frame" x="43" y="458" width="234" height="60"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZY0-lM-8bn">
                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>

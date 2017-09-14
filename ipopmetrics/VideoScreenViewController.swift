@@ -18,6 +18,7 @@ class VideoScreenViewController: UIViewController {
     var player: AVPlayer!
     var playerViewController: AVPlayerViewController = AVPlayerViewController();
 
+    @IBOutlet weak var topTextConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +31,12 @@ class VideoScreenViewController: UIViewController {
         btnStarted.addTarget(self, action: #selector(getStartedHandler), for: .touchUpInside)
         
         NotificationCenter.default.addObserver(self, selector:#selector(self.playerDidFinishPlaying(note:)),name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        if UIScreen.main.bounds.height <= 480 {
+            topTextConstraint.constant = 20
+        }
     }
     
     func playerDidFinishPlaying(note: NSNotification) {

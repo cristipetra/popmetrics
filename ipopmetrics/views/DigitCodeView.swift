@@ -81,7 +81,17 @@ class DigitCodeView: UIView {
             setContactButton(yAnchor: -30)
         }
         */
-        setContactButton(yAnchor: -90)
+        if UIScreen.main.bounds.height > 480 {
+            setNumberTextView(yAnchor: 122)
+            setSendCodeButton(yAnchor: 30)
+            setResendCodeButton(yAnchor: -130)
+            setContactButton(yAnchor: -90)
+        } else {
+            setNumberTextView(yAnchor: 70)
+            setSendCodeButton(yAnchor: 30)
+            setResendCodeButton(yAnchor: -130)
+            setContactButton(yAnchor: -70)
+        }
     }
     
     func setup() {

@@ -448,6 +448,9 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
         if let indexes = tableView.indexPathsForVisibleRows {
             for index in indexes {
+                if(store.countSections() == 0) {
+                    return
+                }
                 let indexPath = IndexPath(row: 0, section: index.section)
                 guard let lastRowInSection = indexes.last , indexes.first?.section == index.section else {
                     return
@@ -562,6 +565,7 @@ extension ToDoViewController:  TodoCardActionHandler {
                     }
                     else {
                         print("action occurred")
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "didPostAction"), object: nil)
                     }
                     
             }

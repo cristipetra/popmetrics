@@ -50,6 +50,13 @@ class CalendarViewController: BaseViewController {
     
     var currentBrandId = UsersStore.currentBrandId
     
+    var shouldReloadData: Bool = false
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        addNotifications()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -94,8 +101,7 @@ class CalendarViewController: BaseViewController {
             self.todayLabelView.layer.masksToBounds = true
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
-
+        addNotifications()
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = PopmetricsColor.darkGrey
@@ -111,6 +117,18 @@ class CalendarViewController: BaseViewController {
         transitionView.addSubview(tableView)
         transitionView.addSubview(calendarView)
         
+        
+        if(shouldReloadData) {
+            fetchItems(silent: false)
+        }
+    }
+    
+    func addNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didPostActionHandler), name: NSNotification.Name("didPostAction"), object: nil)
+    }
+    
+    @objc func didPostActionHandler() {
+        self.shouldReloadData = true
     }
     
     func fetchItems(silent:Bool) {
