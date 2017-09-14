@@ -7,10 +7,22 @@
 //
 
 import Foundation
-import Foundation
-import UIKit
+import RealmSwift
 
-class StatisticsItem: CalendarItem {
+
+class StatisticsItem: Object {
+    dynamic var index = 0
+    
+    dynamic var type = ""
+    dynamic var status: String? = nil
+    dynamic var statusDate: Date? = nil
+    dynamic var articleCategory:String? = nil
+    dynamic var articleTitle:String? = nil
+    
+    dynamic var articleText = ""
+    dynamic var articleUrl = ""
+    var articleHastags: [Any?] = []
+    dynamic var articleImage:String? = nil
 }
 
 class StatisticsSection: NSObject{

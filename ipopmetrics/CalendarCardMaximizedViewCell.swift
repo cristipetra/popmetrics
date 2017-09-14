@@ -8,8 +8,12 @@
 
 import UIKit
 import ActiveLabel
+import AlamofireImage
+import Alamofire
+
 
 protocol ApproveDenySinglePostProtocol: class {
+
     func approveSinglePostHandler(index: Int)
 }
 
@@ -40,6 +44,10 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
     weak var approveDenyDelegate : ApproveDenySinglePostProtocol?
     var toDoStackView : UIStackView!
     
+    private var calendarItem: CalendarSocialPost!
+    
+    var isLastCell = false
+    
     lazy var denyButton : UIButton = {
         
         let button = UIButton(type: UIButtonType.system)
@@ -57,37 +65,13 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         return button
     }()
     
-    lazy var approvedView : UIView = {
-        
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = PopmetricsColor.darkGrey.withAlphaComponent(0.8)
-        return view
-        
-    }()
-    
-    lazy var approvedButton : TwoImagesButton = {
-        
-        let button = TwoImagesButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor(red: 54/255, green: 172/255, blue: 130/255, alpha: 1)
-        return button
-        
-    }()
-    
     lazy var approvedConnectionView : UIView = {
-        
         let view = UIView()
         view.backgroundColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
-        
     }()
     
-    
-    private var calendarItem: CalendarItem!
-    var notLastCell = true
-    var isLastCell = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -98,30 +82,51 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         setUpCorners()
     }
     
-    func configure(_ item: CalendarItem) {
+    func configure(_ item: CalendarSocialPost) {
         self.calendarItem = item;
-        self.titleLbl.text = item.articleTitle
-        var formatedDate = self.formatDate((item.statusDate)!)
-        self.articleDate.text = item.socialTextString + " " + formatedDate
-        self.messageLbl.text = item.articleText
+        self.titleLbl.text = item.title
+        //var formatedDate = self.formatDate((item.statusDate)!)
+        var formatedDate = self.formatDate(Date())
+        self.articleDate.text = calendarItem.socialTextTime + " " + formatedDate
+        self.messageLbl.text = item.text
         
-        self.socialNetworkLbl.text = item.socialPost + ": " + item.articleCategory!
+        self.socialNetworkLbl.text = item.socialPost + ": " + item.type
+        self.socialNetworkLbl.text = "Twitter Post"  //temp
         self.postIconImageView.image = UIImage(named: item.socialIcon)
-        self.articleImage.image = UIImage(named: item.articleImage!)
+//      self.articleImage.image = UIImage(named: item.articleImage!)
         
         self.connectionLine.backgroundColor = item.getSectionColor
         //self.topHeaderView.backgroundColor = item.getSectionColor
 
-        self.topHeaderView.circleView.backgroundColor = item.getSectionColor
-        self.topHeaderView.title.text = "\(item.socialTextString)"
+        self.topHeaderView.circleView.backgroundColor = .clear
+        self.topHeaderView.backgroundColor = item.getSectionColor
         
-        updateBtnView()
+        //self.topHeaderView.title.text = "\(item.socialTextString)"
+        self.topHeaderView.title.text = ""
+        
+        
+        if( item.image != nil) {
+            if let img = item.image {
+                loadImageFromLink(link: item.image!)
+            } else {
+                loadLocalImage()
+            }
+            
+        } else {
+            loadLocalImage()
+        }
+        
+        // updateBtnView()
         
         changeColor()
     }
     
+    func loadLocalImage() {
+        self.articleImage.image = UIImage(named: "image_card_approval")
+    }
+    
     func changeColor() {
-        let customColor = ActiveType.custom(pattern: "\\\(calendarItem.socialTextString)\\b")
+        let customColor = ActiveType.custom(pattern: "\\\(calendarItem.socialTextTime)\\b")
     
         articleDate.enabledTypes.append(customColor)
         
@@ -129,11 +134,17 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
             article.customColor[customColor] = calendarItem.socialTextStringColor
         }
         
-        let colorTextUrl = ActiveType.custom(pattern: "\\s\(calendarItem.articleUrl)\\b")
+        let colorTextUrl = ActiveType.custom(pattern: "\\s\(calendarItem.url)\\b")
         
         messageLbl.enabledTypes.append(colorTextUrl)
         messageLbl.customize { (textUrl) in
             textUrl.customColor[colorTextUrl] = calendarItem.socialURLColor
+        }
+    }
+    
+    func loadImageFromLink(link: String) {
+        Alamofire.request(link).responseImage { (response) in
+            self.articleImage.image = response.result.value
         }
     }
     
@@ -150,50 +161,8 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         return true
     }
     
-    func setUpMaximizeToDo() {
-        actionBtn.isHidden = true
-        
-        toDoStackView = UIStackView(arrangedSubviews: [denyButton,approveButton])
-        toDoStackView.axis = .horizontal
-        toDoStackView.alignment = .center
-        toDoStackView.distribution = .equalSpacing
-        toDoStackView.spacing = 50
-        
-        topContainerVIew.addSubview(toDoStackView)
-        toDoStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        toDoStackView.centerXAnchor.constraint(equalTo: topContainerVIew.centerXAnchor).isActive = true
-        toDoStackView.centerYAnchor.constraint(equalTo: articleImage.centerYAnchor, constant: -20).isActive = true
-        
-        approveButton.addTarget(self, action: #selector(approvePostHandler), for: .touchUpInside)
-        
-    }
-    
     func approvePostHandler() {
         approveDenyDelegate?.approveSinglePostHandler(index: postIndex)
-    }
-    
-    func setUpApprovedView(approved: Bool) {
-        self.insertSubview(approvedView, at: 1)
-        approvedView.topAnchor.constraint(equalTo: topContainerVIew.topAnchor).isActive = true
-        approvedView.bottomAnchor.constraint(equalTo: topContainerVIew.bottomAnchor).isActive = true
-        approvedView.leftAnchor.constraint(equalTo: topContainerVIew.leftAnchor).isActive = true
-        approvedView.rightAnchor.constraint(equalTo: topContainerVIew.rightAnchor).isActive = true
-        
-        approvedView.addSubview(approvedButton)
-        approvedButton.centerXAnchor.constraint(equalTo: approvedView.centerXAnchor).isActive = true
-        approvedButton.centerYAnchor.constraint(equalTo: approvedView.centerYAnchor).isActive = true
-        approvedButton.widthAnchor.constraint(equalToConstant: 110).isActive = true
-        approvedButton.heightAnchor.constraint(equalToConstant: 39).isActive = true
-        if approved {
-            approvedButton.imageButtonType = .approved
-        } else {
-            approvedButton.imageButtonType = .rescheduled
-        }
-        
-        approvedButton.rightImageView.image = nil
-        approvedButton.layer.cornerRadius = 6
-        
     }
     
     func setUpApprovedConnectionView() {
@@ -203,11 +172,10 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
         approvedConnectionView.leftAnchor.constraint(equalTo: connectionLine.leftAnchor,constant: -1.5).isActive = true
         approvedConnectionView.rightAnchor.constraint(equalTo: connectionLine.rightAnchor, constant: 1.5).isActive = true
         connectionLine.backgroundColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
-        
     }
     
     internal func getBtnColor() -> UIColor {
-        switch calendarItem.status! {
+        switch calendarItem.status {
         case StatusArticle.scheduled.rawValue:
             return UIColor(red: 255/255, green: 119/255, blue: 106/255, alpha: 1.0)
         case StatusArticle.failed.rawValue:
@@ -218,7 +186,7 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
     }
     
     internal func getTitleBtn() -> String {
-        switch calendarItem.status! {
+        switch calendarItem.status {
         case StatusArticle.scheduled.rawValue:
             return "Cancel"
         case StatusArticle.failed.rawValue:

@@ -19,17 +19,17 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
 
     var actionButtonSaved : SimpleButton?
     
-    func  handleRequiredAction(_ sender : SimpleButton, item: FeedItem) {
+    func  handleRequiredAction(_ sender : SimpleButton, item: FeedCard) {
     
         switch(item.actionHandler) {
             case "connect_google_analytics":
                 connectGoogleAnalytics(sender, item:item)
             
-            case "connect_twitter":
+            case "required_actions.brand_not_connected_with_twitter":
                 connectTwitter(sender, item:item)
             
             default:
-                print("Unexpected handler "+item.actionHandler)
+                print("Unexpected name "+item.type)
         
         }//switch
     }
@@ -43,7 +43,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     
     
     
-   func connectGoogleAnalytics(_ sender:SimpleButton, item:FeedItem) {
+   func connectGoogleAnalytics(_ sender:SimpleButton, item:FeedCard) {
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().clientID = "850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().serverClientID = "850179116799-024u4fn5ddmkm3dnius3fq3l1gs81toi.apps.googleusercontent.com"
@@ -89,13 +89,18 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     }
         
     
-    func connectTwitter(_ sender: SimpleButton, item:FeedItem) {
+    func connectTwitter(_ sender: SimpleButton, item:FeedCard) {
         
         Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
             if (session != nil) {
+                let params = [
+                    "user_id":UsersStore.getInstance().getLocalUserAccount().id,
+                    "twitter_user_id":session?.userID,
+                    "access_token":session?.authToken,
+                    "access_token_secret":session?.authTokenSecret
+                    ]
                 ProgressHUD.showProgressIndicator()
-                FeedApi().connectTwitter(userId: (session?.userID)!, brandId:"58fe437ac7631a139803757e", token: (session?.authToken)!,
-                                         tokenSecret: (session?.authTokenSecret)!) { responseDict, error in
+                FeedApi().postRequiredAction(feedItemId: item.cardId!, params: params) { responseDict, error in
                                             //sender.isLoading = false
                                             if error != nil {
                                                 let nc = NotificationCenter.default
@@ -128,7 +133,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     
     
     // MARK: Facebook LogIn Process
-    func connectFacebookfunc(_ sender: SimpleButton, item:FeedItem) {
+    func connectFacebookfunc(_ sender: SimpleButton, item:FeedCard) {
 //        let loginManager = LoginManager()
 //        let permissions = [.publicProfile, .email]
 //        loginManager.logOut()

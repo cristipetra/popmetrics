@@ -9,9 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="OpenSans-BoldItalic.ttf">
-            <string>OpenSans-BoldItalic</string>
-        </array>
         <array key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
         </array>
@@ -38,26 +35,6 @@
                                     <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="U4c-QM-Ckv">
-                                    <rect key="frame" x="101" y="73" width="182.5" height="14"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Scheduled for" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4b-3R-6j6">
-                                            <rect key="frame" x="0.0" y="0.0" width="78" height="14"/>
-                                            <fontDescription key="fontDescription" name="OpenSans-BoldItalic" family="Open Sans" pointSize="12"/>
-                                            <color key="textColor" red="0.25490196079999999" green="0.60784313729999995" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07/10 @ 8:10 a.m." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czW-QQ-Eb5">
-                                            <rect key="frame" x="83" y="0.0" width="99.5" height="14"/>
-                                            <fontDescription key="fontDescription" name="OpenSans-BoldItalic" family="Open Sans" pointSize="12"/>
-                                            <nil key="textColor"/>
-                                            <color key="highlightedColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="14" id="HF7-qv-iZJ"/>
-                                    </constraints>
-                                </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIG-64-fRa">
                                     <rect key="frame" x="0.0" y="0.0" width="91" height="91"/>
                                     <subviews>
@@ -108,10 +85,10 @@
                                         <constraint firstAttribute="trailing" secondItem="RdE-lK-bEz" secondAttribute="trailing" id="xda-nF-StJ"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRH-G2-gC6">
-                                    <rect key="frame" x="101" y="34" width="258" height="34"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRH-G2-gC6">
+                                    <rect key="frame" x="101" y="34" width="258" height="50"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="34" id="u94-VW-xJ8"/>
+                                        <constraint firstAttribute="height" constant="50" id="u94-VW-xJ8"/>
                                     </constraints>
                                     <string key="text">Residential real estate may contain either a single family or multifamily structure, that is available for occupation or for non-business purposes.</string>
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
@@ -121,14 +98,12 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="U4c-QM-Ckv" firstAttribute="top" secondItem="zRH-G2-gC6" secondAttribute="bottom" constant="5" id="1EQ-su-QNB"/>
                                 <constraint firstItem="RIG-64-fRa" firstAttribute="leading" secondItem="5HZ-Nj-Ugw" secondAttribute="leading" id="B6t-TA-5vG"/>
                                 <constraint firstItem="U8p-OZ-I0Q" firstAttribute="leading" secondItem="RIG-64-fRa" secondAttribute="trailing" constant="10" id="I0o-m9-Xeq"/>
                                 <constraint firstItem="U8p-OZ-I0Q" firstAttribute="top" secondItem="5HZ-Nj-Ugw" secondAttribute="top" constant="8" id="Ia1-XA-BrJ"/>
                                 <constraint firstAttribute="trailing" secondItem="zRH-G2-gC6" secondAttribute="trailing" id="MMd-4R-PBS"/>
                                 <constraint firstAttribute="trailing" secondItem="U8p-OZ-I0Q" secondAttribute="trailing" constant="8" id="W8q-WF-56e"/>
                                 <constraint firstItem="RIG-64-fRa" firstAttribute="top" secondItem="5HZ-Nj-Ugw" secondAttribute="top" id="adT-UR-U8g"/>
-                                <constraint firstItem="U4c-QM-Ckv" firstAttribute="leading" secondItem="RIG-64-fRa" secondAttribute="trailing" constant="10" id="hcN-v6-eWs"/>
                                 <constraint firstItem="zRH-G2-gC6" firstAttribute="top" secondItem="U8p-OZ-I0Q" secondAttribute="bottom" constant="6" id="rfM-pq-bTu"/>
                                 <constraint firstItem="zRH-G2-gC6" firstAttribute="leading" secondItem="RIG-64-fRa" secondAttribute="trailing" constant="10" id="viX-pU-mcp"/>
                             </constraints>
@@ -151,7 +126,6 @@
                 <outlet property="containerView" destination="5HZ-Nj-Ugw" id="DT5-22-C4z"/>
                 <outlet property="foregroundImage" destination="Xq6-cp-y4W" id="h9f-xy-U59"/>
                 <outlet property="messageLbl" destination="zRH-G2-gC6" id="YVP-4W-fw4"/>
-                <outlet property="timeLbl" destination="czW-QQ-Eb5" id="IpU-9h-vpL"/>
                 <outlet property="titleLbl" destination="U8p-OZ-I0Q" id="R8n-xq-KCI"/>
             </connections>
             <point key="canvasLocation" x="-277.5" y="67"/>

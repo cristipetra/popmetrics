@@ -34,6 +34,8 @@ class LastCardCell: UITableViewCell {
         setCornerRadiou()
         setShadows(view: goToButton)
         setUpShadowLayer()
+        
+        self.xbutton.isHidden = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -44,7 +46,7 @@ class LastCardCell: UITableViewCell {
         secondContainerView.layer.cornerRadius = 12
         secondContainerView.layer.masksToBounds = true
         self.goToButton.layer.borderWidth = 2.0
-        self.goToButton.layer.borderColor = UIColor.black.cgColor
+        self.goToButton.layer.borderColor = PopmetricsColor.darkGrey.cgColor
         self.goToButton.layer.cornerRadius = self.goToButton.frame.height / 2
     }
     

@@ -49,6 +49,12 @@ class HeaderView: UIView {
         return btn
     }()
     
+    lazy var btn: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame);
         setup();
@@ -107,6 +113,19 @@ class HeaderView: UIView {
         stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
     
         iconLbl.text = "Expand"
+        
+        addShadow()
+        
+        //addTapView
+        addBtnView();
+    }
+    
+    func addBtnView() {
+        self.addSubview(btn)
+        btn.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
+        btn.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        btn.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+        btn.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
     func changeTitle(title: String) {
@@ -134,6 +153,19 @@ class HeaderView: UIView {
     
     func changeIconText(_ text: String) {
         iconLbl.text = text
+    }
+    
+    func addShadow() {
+        self.layer.masksToBounds = false
+        DispatchQueue.main.async {
+            self.addShadowToView(self, radius: 4, opacity: 0.5)
+        }
+    }
+    
+    func displayElements(isHidden: Bool) {
+        self.circleView.isHidden = isHidden
+        self.statusLbl.isHidden = isHidden
+        self.stackView.isHidden = isHidden
     }
     
 }

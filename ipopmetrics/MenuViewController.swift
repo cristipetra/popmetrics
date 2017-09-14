@@ -66,7 +66,7 @@ class MenuViewController: ElasticModalViewController {
         UsersStore.getInstance().clearCredentials()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setInitialViewController()
-        
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
     }
 }
 

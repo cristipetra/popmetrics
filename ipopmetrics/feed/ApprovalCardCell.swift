@@ -23,7 +23,7 @@ class ApprovalCardCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleImage: UIImageView!
     
-    func configure(_ item: FeedItem, handler: CardActionHandler) {
+    func configure(_ item: FeedCard, handler: CardActionHandler) {
         self.titleLabel.text = item.headerTitle
         //self.messageLabel.text = item.message
         

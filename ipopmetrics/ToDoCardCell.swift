@@ -14,37 +14,35 @@ class ToDoCardCell: UITableViewCell {
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var foregroundImage: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
-    @IBOutlet weak var timeLbl: UILabel!
+    
     @IBOutlet weak var messageLbl: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var circleView: UIView!
     
-    lazy var approvedView : UIView = {
-        
-        let view = UIView()
+    var todoItem: TodoSocialPost!;
+    
+    
+    // Extend view
+    lazy var statusCardTypeView: StatusCardTypeView = {
+        let view = StatusCardTypeView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = PopmetricsColor.darkGrey.withAlphaComponent(0.8)
         return view
-        
     }()
-    
-    lazy var approvedButton : TwoImagesButton = {
-        
-        let button = TwoImagesButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor(red: 54/255, green: 172/255, blue: 130/255, alpha: 1)
-        button.layer.borderWidth = 0
-        return button
-        
-    }()
-    
-    var todoItem: TodoItem!;
+    // End extend view
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.feedBackgroundColor()
-        //setUpApprovedView()
+        addStatusCardTypeView()
         setupCorners()
+    }
+    
+    func configure(item: TodoSocialPost) {
+        todoItem = item
+        titleLbl.text = todoItem.articleTitle
+        messageLbl.text = todoItem.articleText
+        
+        setupStatusCardView( approved: (item.status == "approved" || item.status == "denied"))
     }
     
     func setupCorners() {
@@ -58,49 +56,31 @@ class ToDoCardCell: UITableViewCell {
         
     }
     
-    func setUpApprovedView(approved: Bool) {
+    func setupStatusCardView(approved: Bool) {
+        print("approved \(approved)")
         if( approved == false) {
-            return
-        }
-        self.insertSubview(approvedView, at: 1)
-        approvedView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        approvedView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-        approvedView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
-        approvedView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
-        
-        approvedView.addSubview(approvedButton)
-        approvedButton.centerXAnchor.constraint(equalTo: approvedView.centerXAnchor).isActive = true
-        approvedButton.centerYAnchor.constraint(equalTo: approvedView.centerYAnchor).isActive = true
-        approvedButton.widthAnchor.constraint(equalToConstant: 110).isActive = true
-        approvedButton.heightAnchor.constraint(equalToConstant: 39).isActive = true
-        
-        if approved {
-            approvedButton.imageButtonType = .approved
+            self.statusCardTypeView.isHidden = true
         } else {
-            approvedButton.imageButtonType = .unapproved
+            setStatusCardViewType()
+            self.statusCardTypeView.isHidden = false
         }
-        
-        
-        if(todoItem.status == StatusArticle.failed.rawValue) {
-            approvedButton.rightTextLabel.text = "Reschedule"
-            
-            approvedButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
-            approvedButton.rightTextLabel.frame.size.width = 60
-        } else if (todoItem.status == StatusArticle.unapproved.rawValue) {
-            approvedButton.rightTextLabel.text = "Approved"
-        }
-        
-        approvedButton.rightImageView.image = nil
-        approvedButton.layer.cornerRadius = 6
     }
     
-    func configure(item: TodoItem) {
-        todoItem = item
-        setUpApprovedView(approved: item.isApproved)
+    func setStatusCardViewType() {
+        if(todoItem.status == "approved") {
+            statusCardTypeView.typeStatusView = .approved
+        } else if(todoItem.status == "denied") {
+            statusCardTypeView.typeStatusView = .denied
+        }
     }
     
-    func removeApprovedView() {
-        approvedView.removeFromSuperview()
+    func addStatusCardTypeView() {
+        self.addSubview(statusCardTypeView)
+        statusCardTypeView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        statusCardTypeView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        statusCardTypeView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+        statusCardTypeView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
+        statusCardTypeView.layer.cornerRadius = 6
     }
     
     func sideShadow(view: UIView) {

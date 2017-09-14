@@ -172,7 +172,16 @@ extension LoginViewController {
         banner.onTap = {
             self.openURLInside(url: Config.appWebLink)
         }
+    }
+    
+    func moveButton(moveValue :CGFloat) {
+        self.phoneView.buttonBottomConstraint?.isActive = false
         
+        UIView.animate(withDuration: 0.3) {
+            self.phoneView.buttonBottomConstraint?.constant = moveValue
+            self.phoneView.buttonBottomConstraint?.isActive = true
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
@@ -187,6 +196,9 @@ extension LoginViewController: UITextFieldDelegate {
         if phoneView.numberTextField.text == "" {
             phoneView.numberTextField.text = "+1"
         }
+        if UIScreen.main.bounds.height > 480 {
+            moveButton(moveValue: -240)
+        }
     }
     
     internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -197,6 +209,12 @@ extension LoginViewController: UITextFieldDelegate {
         }
         phoneView.numberTextField.resignFirstResponder()
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if UIScreen.main.bounds.height > 480 {
+            moveButton(moveValue: -136)
+        }
     }
     
 }

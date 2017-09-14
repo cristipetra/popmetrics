@@ -20,7 +20,7 @@ class CalendarCardSimpleViewCell: UITableViewCell {
     @IBOutlet weak var topToolbar: UIView!
     @IBOutlet weak var statusText: UILabel!
     
-    internal var calendarItem: CalendarItem!
+    internal var calendarItem: CalendarSocialPost!
     
     weak var maximizeDelegate: ChangeCellProtocol?
     
@@ -49,17 +49,17 @@ class CalendarCardSimpleViewCell: UITableViewCell {
         }
     }
     
-    func configure(_ item: CalendarItem) {
+    func configure(_ item: CalendarSocialPost) {
         calendarItem = item;
-        self.titleLbl.text = item.articleTitle
-        let formatedDate = self.formatDate((item.statusDate)!)
-        self.statusText.text = item.socialTextString
-        self.timeLbl.text = self.formatDate(item.statusDate!)
+        self.titleLbl.text = item.title
+        let formatedDate = self.formatDate((item.scheduledDate)!)
+        self.statusText.text = item.socialTextTime
+        self.timeLbl.text = formatedDate
         
-        self.messageLbl.text = item.articleText
+        self.messageLbl.text = item.text
         
-        self.backgroundImage.image = UIImage(named: item.articleImage!)
-        self.foregroundImage.image = UIImage(named: item.socialIcon)
+        //self.backgroundImage.image = UIImage(named: item.articleImage!)
+        //self.foregroundImage.image = UIImage(named: item.socialIcon)
         
         changeColor()
     }

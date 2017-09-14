@@ -49,14 +49,14 @@
                                                 <rect key="frame" x="0.0" y="29" width="398" height="70"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_articlecard_splash" translatesAutoresizingMaskIntoConstraints="NO" id="maH-h1-ctl">
-                                                        <rect key="frame" x="18" y="6" width="36" height="36"/>
+                                                        <rect key="frame" x="18" y="6" width="0.0" height="36"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="36" id="TLb-Ce-YEp"/>
-                                                            <constraint firstAttribute="width" constant="36" id="ZC8-0i-5jl"/>
+                                                            <constraint firstAttribute="width" id="ZC8-0i-5jl"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Optimizing Your Website With SEO" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EaU-pY-dtZ">
-                                                        <rect key="frame" x="58" y="6" width="310" height="63"/>
+                                                        <rect key="frame" x="22" y="6" width="346" height="63"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="63" id="QJo-eb-dAO"/>
                                                         </constraints>
@@ -140,11 +140,12 @@
                                                     <constraint firstItem="tka-2A-lMI" firstAttribute="leading" secondItem="bhs-k4-fYY" secondAttribute="leading" constant="22" id="dmM-Cq-A5G"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VjF-HY-X4v">
+                                            <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="VjF-HY-X4v">
                                                 <rect key="frame" x="0.0" y="296.5" width="398" height="160"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_card_approval" translatesAutoresizingMaskIntoConstraints="NO" id="g33-N6-hTc">
+                                                    <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g33-N6-hTc">
                                                         <rect key="frame" x="0.0" y="0.0" width="398" height="160"/>
+                                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJL-R5-i8a">
                                                         <rect key="frame" x="108.5" y="58" width="181" height="45"/>
@@ -260,12 +261,11 @@
                 <outlet property="topImageButton" destination="tJL-R5-i8a" id="BVj-aQ-G3i"/>
                 <outlet property="topStackView" destination="fzR-2l-bme" id="977-oF-kht"/>
             </connections>
-            <point key="canvasLocation" x="24.5" y="51.5"/>
+            <point key="canvasLocation" x="24" y="51.5"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="icon_articlecard_splash" width="81" height="81"/>
         <image name="icon_twitter" width="47" height="38"/>
-        <image name="image_card_approval" width="375" height="225"/>
     </resources>
 </document>

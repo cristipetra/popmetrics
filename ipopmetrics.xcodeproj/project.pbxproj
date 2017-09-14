@@ -17,6 +17,7 @@
 		082D363E1F5D7CFF006B0985 /* StatisticsInsight.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082D363D1F5D7CFF006B0985 /* StatisticsInsight.xib */; };
 		082D36401F5D952C006B0985 /* RecommendedActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082D363F1F5D952C006B0985 /* RecommendedActionCard.xib */; };
 		082D36421F5D9570006B0985 /* RecommendedActionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D36411F5D9570006B0985 /* RecommendedActionViewCell.swift */; };
+		083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083938FE1F63C334007DDA37 /* MainTabInfo.swift */; };
 		0848280F1F39F9200054B04C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848280E1F39F9200054B04C /* HeaderView.swift */; };
 		085053FE1F2787A100FE8234 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085053FD1F2787A100FE8234 /* CalendarViewController.swift */; };
 		085054011F2793AE00FE8234 /* CalendarCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085054001F2793AE00FE8234 /* CalendarCard.xib */; };
@@ -58,6 +59,8 @@
 		08AA6C6D1F56E9D70022DE91 /* TrafficStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AA6C6C1F56E9D70022DE91 /* TrafficStatusView.xib */; };
 		08AA6C6F1F56F3BA0022DE91 /* ChartStatistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */; };
 		08AA6C731F56F8630022DE91 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C721F56F8630022DE91 /* ChartViewController.swift */; };
+		08AD60D81F5FF5E0007095B9 /* TodoCardMaximized.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AD60D71F5FF5E0007095B9 /* TodoCardMaximized.xib */; };
+		08AD60DA1F5FF63D007095B9 /* TodoCardMaximizedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AD60D91F5FF63D007095B9 /* TodoCardMaximizedViewCell.swift */; };
 		08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */; };
 		08ADA30B1F42D3FA00060ECD /* sampleFeedTodo.json in Resources */ = {isa = PBXBuildFile; fileRef = 08ADA30A1F42D3FA00060ECD /* sampleFeedTodo.json */; };
 		08AF04981F46FB9B0040012B /* ToDoCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AF04971F46FB9B0040012B /* ToDoCardCell.xib */; };
@@ -89,6 +92,7 @@
 		08D1BC371F1DF4F900D377B2 /* ViewNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC361F1DF4F900D377B2 /* ViewNames.swift */; };
 		08D1BC391F1E3D6200D377B2 /* LDSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC381F1E3D6200D377B2 /* LDSplashView.swift */; };
 		08D1BC3B1F1E568A00D377B2 /* PhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC3A1F1E568A00D377B2 /* PhoneView.swift */; };
+		08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D579F81F62E6ED00FDD744 /* StatusCardTypeView.swift */; };
 		08DF9E621F261C8100C60C2D /* InfoCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */; };
 		08EE385D1F447C0E005D1D7C /* TodoTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EE385C1F447C0E005D1D7C /* TodoTopView.swift */; };
 		08F368891F18D7C500819CDE /* ApprovalCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08F368881F18D7C500819CDE /* ApprovalCard.xib */; };
@@ -106,6 +110,8 @@
 		08FAE8471F541FF40097DF3E /* TrafficCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08FAE8461F541FF40097DF3E /* TrafficCard.xib */; };
 		08FAE8491F5420050097DF3E /* TrafficCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */; };
 		08FAE84B1F54247B0097DF3E /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE84A1F54247B0097DF3E /* GradientView.swift */; };
+		1100F6F51F5E0E6F000AF1D4 /* TodoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1100F6F41F5E0E6F000AF1D4 /* TodoApi.swift */; };
+		1100F6F91F5FEBCE000AF1D4 /* TodoActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1100F6F81F5FEBCE000AF1D4 /* TodoActionHandler.swift */; };
 		110A62CA1ECEDADC0052B478 /* StatsSummaryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A62C91ECEDADC0052B478 /* StatsSummaryViewCell.swift */; };
 		110A62D41ECEDE8B0052B478 /* ChatItemsDemoDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A62CD1ECEDE8B0052B478 /* ChatItemsDemoDecorator.swift */; };
 		110A62D51ECEDE8B0052B478 /* FakeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A62CE1ECEDE8B0052B478 /* FakeDataSource.swift */; };
@@ -158,6 +164,8 @@
 		1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1178D6831E1E5AD9005B96C3 /* LaunchScreen.storyboard */; };
 		1178D6901E1E5AD9005B96C3 /* ipopmetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D68F1E1E5AD9005B96C3 /* ipopmetricsTests.swift */; };
 		1178D69B1E1E5AD9005B96C3 /* ipopmetricsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */; };
+		11A4823A1F5D58D9008D473C /* ApiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A482391F5D58D9008D473C /* ApiModels.swift */; };
+		11A4EEA81F62CADE00605F0D /* CalendarApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A4EEA71F62CADE00605F0D /* CalendarApi.swift */; };
 		11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAA5E31ECC8BFA0099B50E /* Feed.swift */; };
 		11AAA5E61ECCD4200099B50E /* RequiredActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11AAA5E51ECCD4200099B50E /* RequiredActionCard.xib */; };
 		11AAA5E81ECCD52A0099B50E /* ActionHistoryCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11AAA5E71ECCD52A0099B50E /* ActionHistoryCard.xib */; };
@@ -208,6 +216,7 @@
 		082D363D1F5D7CFF006B0985 /* StatisticsInsight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticsInsight.xib; sourceTree = "<group>"; };
 		082D363F1F5D952C006B0985 /* RecommendedActionCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendedActionCard.xib; sourceTree = "<group>"; };
 		082D36411F5D9570006B0985 /* RecommendedActionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedActionViewCell.swift; sourceTree = "<group>"; };
+		083938FE1F63C334007DDA37 /* MainTabInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabInfo.swift; sourceTree = "<group>"; };
 		0848280E1F39F9200054B04C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		085053FD1F2787A100FE8234 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		085054001F2793AE00FE8234 /* CalendarCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCard.xib; sourceTree = "<group>"; };
@@ -253,6 +262,8 @@
 		08AA6C6C1F56E9D70022DE91 /* TrafficStatusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrafficStatusView.xib; sourceTree = "<group>"; };
 		08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChartStatistics.storyboard; sourceTree = "<group>"; };
 		08AA6C721F56F8630022DE91 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		08AD60D71F5FF5E0007095B9 /* TodoCardMaximized.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodoCardMaximized.xib; sourceTree = "<group>"; };
+		08AD60D91F5FF63D007095B9 /* TodoCardMaximizedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoCardMaximizedViewCell.swift; sourceTree = "<group>"; };
 		08ADA30A1F42D3FA00060ECD /* sampleFeedTodo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFeedTodo.json; sourceTree = "<group>"; };
 		08AF04971F46FB9B0040012B /* ToDoCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoCardCell.xib; sourceTree = "<group>"; };
 		08AF04991F46FBB60040012B /* ToDoCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCardCell.swift; sourceTree = "<group>"; };
@@ -280,6 +291,7 @@
 		08D1BC361F1DF4F900D377B2 /* ViewNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewNames.swift; sourceTree = "<group>"; };
 		08D1BC381F1E3D6200D377B2 /* LDSplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDSplashView.swift; sourceTree = "<group>"; };
 		08D1BC3A1F1E568A00D377B2 /* PhoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneView.swift; sourceTree = "<group>"; };
+		08D579F81F62E6ED00FDD744 /* StatusCardTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCardTypeView.swift; sourceTree = "<group>"; };
 		08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCardViewController.swift; sourceTree = "<group>"; };
 		08EE385C1F447C0E005D1D7C /* TodoTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoTopView.swift; sourceTree = "<group>"; };
 		08F368881F18D7C500819CDE /* ApprovalCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ApprovalCard.xib; sourceTree = "<group>"; };
@@ -297,6 +309,8 @@
 		08FAE8461F541FF40097DF3E /* TrafficCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrafficCard.xib; sourceTree = "<group>"; };
 		08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficCardViewCell.swift; sourceTree = "<group>"; };
 		08FAE84A1F54247B0097DF3E /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		1100F6F41F5E0E6F000AF1D4 /* TodoApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoApi.swift; path = api/TodoApi.swift; sourceTree = "<group>"; };
+		1100F6F81F5FEBCE000AF1D4 /* TodoActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoActionHandler.swift; path = todo/TodoActionHandler.swift; sourceTree = "<group>"; };
 		110A62C91ECEDADC0052B478 /* StatsSummaryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatsSummaryViewCell.swift; path = feed/StatsSummaryViewCell.swift; sourceTree = "<group>"; };
 		110A62CD1ECEDE8B0052B478 /* ChatItemsDemoDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatItemsDemoDecorator.swift; sourceTree = "<group>"; };
 		110A62CE1ECEDE8B0052B478 /* FakeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeDataSource.swift; sourceTree = "<group>"; };
@@ -358,6 +372,8 @@
 		1178D6961E1E5AD9005B96C3 /* ipopmetricsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ipopmetricsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ipopmetricsUITests.swift; sourceTree = "<group>"; };
 		1178D69C1E1E5AD9005B96C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11A482391F5D58D9008D473C /* ApiModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiModels.swift; path = api/ApiModels.swift; sourceTree = "<group>"; };
+		11A4EEA71F62CADE00605F0D /* CalendarApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarApi.swift; sourceTree = "<group>"; };
 		11AAA5E31ECC8BFA0099B50E /* Feed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Feed.swift; path = ipopmetrics/realm/Feed.swift; sourceTree = "<group>"; };
 		11AAA5E51ECCD4200099B50E /* RequiredActionCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequiredActionCard.xib; sourceTree = "<group>"; };
 		11AAA5E71ECCD52A0099B50E /* ActionHistoryCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionHistoryCard.xib; sourceTree = "<group>"; };
@@ -570,6 +586,8 @@
 				08B485E31F210992005918A1 /* VideoScreenViewController.swift */,
 				08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */,
 				08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */,
+				1100F6F81F5FEBCE000AF1D4 /* TodoActionHandler.swift */,
+				083938FE1F63C334007DDA37 /* MainTabInfo.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -593,6 +611,8 @@
 				08953E6A1F4C269E003ABEFC /* ToDoCell.xib */,
 				08953E6C1F4C275C003ABEFC /* ToDoCell.swift */,
 				08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */,
+				08AD60D71F5FF5E0007095B9 /* TodoCardMaximized.xib */,
+				08AD60D91F5FF63D007095B9 /* TodoCardMaximizedViewCell.swift */,
 			);
 			name = todo;
 			sourceTree = "<group>";
@@ -792,6 +812,9 @@
 				116431DE1E2D4E81009AA59E /* UsersApi.swift */,
 				11ACA9A01E2CD1B90021E64A /* ApiUrls.swift */,
 				113976AF1E97CCF700B535DF /* FeedApi.swift */,
+				11A482391F5D58D9008D473C /* ApiModels.swift */,
+				1100F6F41F5E0E6F000AF1D4 /* TodoApi.swift */,
+				11A4EEA71F62CADE00605F0D /* CalendarApi.swift */,
 			);
 			name = api;
 			sourceTree = "<group>";
@@ -829,6 +852,7 @@
 				0856F3571F272F020061DF7E /* Calendar.storyboard */,
 				08C6FBFA1F41FFCB007D6101 /* Todo.storyboard */,
 				08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */,
+				08D579F81F62E6ED00FDD744 /* StatusCardTypeView.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -1016,6 +1040,7 @@
 				D9EC7E371ECF0D7E00A54B53 /* ActionCard.xib in Resources */,
 				08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */,
 				08F7A09B1F17AC2700A1B2C3 /* RecommendationCard.xib in Resources */,
+				08AD60D81F5FF5E0007095B9 /* TodoCardMaximized.xib in Resources */,
 				0852826C1F287DD70065A968 /* CalendarHeader.xib in Resources */,
 				08B745961F1F6C1D00EC3F8C /* OpenSans-Regular.ttf in Resources */,
 				1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */,
@@ -1176,6 +1201,7 @@
 				113976A91E97C71300B535DF /* AccountViewController.swift in Sources */,
 				08953E761F4C35AC003ABEFC /* RequiredAction.swift in Sources */,
 				08B4BCE11F619D4200660F5B /* GoogleActionViewController.swift in Sources */,
+				1100F6F51F5E0E6F000AF1D4 /* TodoApi.swift in Sources */,
 				08BF9D4E1F45F2EF00141206 /* TableFooterView.swift in Sources */,
 				11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */,
 				116540C11EEACD4000417D61 /* UsersStore.swift in Sources */,
@@ -1185,10 +1211,12 @@
 				1128B3FD1ED2E01F00BDA58C /* ActionViewCell.swift in Sources */,
 				085282741F28D9DE0065A968 /* CalendarFooterViewCell.swift in Sources */,
 				08F3688B1F18DC4900819CDE /* ApprovalCardCell.swift in Sources */,
+				11A4823A1F5D58D9008D473C /* ApiModels.swift in Sources */,
 				08D1BC371F1DF4F900D377B2 /* ViewNames.swift in Sources */,
 				110A62D71ECEDE8B0052B478 /* FakeMessageSender.swift in Sources */,
 				1128B3FF1ED2E12300BDA58C /* InsightViewCell.swift in Sources */,
 				110A62F21ECEE6FB0052B478 /* TimeSeparatorModel.swift in Sources */,
+				08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */,
 				08B745911F1F638000EC3F8C /* LoginNavigationViewController.swift in Sources */,
 				110A62DA1ECEDE8B0052B478 /* BaseMessageCollectionViewCellAvatarStyle.swift in Sources */,
 				110A62EE1ECEE6F30052B478 /* DemoTextMessageViewModel.swift in Sources */,
@@ -1219,6 +1247,7 @@
 				08A4A5431F45B5D6001071E3 /* TwoImagesButton.swift in Sources */,
 				08953E741F4C359E003ABEFC /* FooterView.swift in Sources */,
 				08F368911F18E6A000819CDE /* ApprovalCardInfoCell.swift in Sources */,
+				083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */,
 				08C6FBFD1F4205EF007D6101 /* ToDoViewController.swift in Sources */,
 				11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */,
 				113976AB1E97C74B00B535DF /* BaseViewController.swift in Sources */,
@@ -1238,6 +1267,7 @@
 				085053FE1F2787A100FE8234 /* CalendarViewController.swift in Sources */,
 				113976B41E97D31B00B535DF /* FeedStore.swift in Sources */,
 				113976AE1E97C83500B535DF /* TextFieldValidator.swift in Sources */,
+				11A4EEA81F62CADE00605F0D /* CalendarApi.swift in Sources */,
 				110A62E11ECEE6D90052B478 /* DemoPhotoMessageModel.swift in Sources */,
 				110A62D61ECEDE8B0052B478 /* FakeMessageFactory.swift in Sources */,
 				110A62F61ECEF7AA0052B478 /* BestCourseViewCell.swift in Sources */,
@@ -1264,6 +1294,7 @@
 				110A62DC1ECEDF2D0052B478 /* ConciergeChatViewController.swift in Sources */,
 				08953E6D1F4C275C003ABEFC /* ToDoCell.swift in Sources */,
 				1125ADAA1E96E67B0004B4AC /* BaseTableViewController.swift in Sources */,
+				1100F6F91F5FEBCE000AF1D4 /* TodoActionHandler.swift in Sources */,
 				08B485E01F20EA23005918A1 /* Config.swift in Sources */,
 				113976B21E97CE5000B535DF /* MainTabBarController.swift in Sources */,
 				08AA6C631F56C9560022DE91 /* TrafficReportViewController.swift in Sources */,
@@ -1277,6 +1308,7 @@
 				116540BF1EEAC61E00417D61 /* AppStoryboard.swift in Sources */,
 				0888C5BE1F4EECEC00E3DB04 /* RoundedCornersButton.swift in Sources */,
 				110A62F31ECEE6FB0052B478 /* TimeSeparatorPresenter.swift in Sources */,
+				08AD60DA1F5FF63D007095B9 /* TodoCardMaximizedViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

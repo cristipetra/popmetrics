@@ -25,7 +25,7 @@ class BaseApi {
     
     internal func createHeaders() -> HTTPHeaders {
         var headers = [String: String]()
-        let localUser = UsersStore.getInstance().getLocalUser()
+        let localUser = UsersStore.getInstance().getLocalUserAccount()
         if localUser.authToken != nil { headers["Authorization"] = "Bearer "+localUser.authToken! }
         return headers
     }

@@ -18,10 +18,10 @@ class BestCourseViewCell: UITableViewCell {
     
     @IBOutlet weak var actionButton: UIButton!
     
-    var item: FeedItem?
+    var item: FeedCard?
     var actionHandler: CardActionHandler?
     
-    func configure(_ item: FeedItem, handler: CardActionHandler) {
+    func configure(_ item: FeedCard, handler: CardActionHandler) {
         self.headerLabel.text = item.headerTitle
         //        self.messageLabel.text = item.message
         self.item = item

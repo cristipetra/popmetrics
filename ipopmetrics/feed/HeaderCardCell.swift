@@ -66,9 +66,25 @@ class HeaderCardCell: UITableViewCell {
         case .traffic:
             connectionView.backgroundColor = PopmetricsColor.trafficHeaderColor
             roundConnectionView.backgroundColor = PopmetricsColor.trafficHeaderColor
+        case .insight:
+            connectionView.backgroundColor = PopmetricsColor.darkGrey
+            roundConnectionView.backgroundColor = PopmetricsColor.darkGrey
+        case .scheduled:
+            connectionView.backgroundColor = PopmetricsColor.blueURLColor
+            roundConnectionView.backgroundColor = PopmetricsColor.blueURLColor
         default:
             break
         }
+    }
+    
+    func changeColor(color: UIColor) {
+        connectionView.backgroundColor = color
+        roundConnectionView.backgroundColor = color
+        //containerView.backgroundColor = color
+        //toolbarView.backgroundColor = color
+        //toolbarView.changeColorCircle(color: color)
+        //roundConnectionView.backgroundColor = color
+        //connectionView.backgroundColor = color
     }
     
     func changeTitle(title: String) {

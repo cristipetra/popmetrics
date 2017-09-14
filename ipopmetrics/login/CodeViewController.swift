@@ -53,28 +53,24 @@ class CodeViewController: UIViewController {
         let smsCode = digitCodeView.digitextField.text!
         let phoneNumber = phoneNo!
         showProgressIndicator()
-        UsersApi().logInWithSmsCode(phoneNumber, smsCode: smsCode) {responseDict, error in
+        UsersApi().logInWithSmsCode(phoneNumber, smsCode: smsCode) {responseWrapper, error in
             self.hideProgressIndicator()
             if error != nil {
                 let message = "An error has occurred. Please try again later."
                 EZAlertController.alert("Error", message: message)
                 return
             }
-            let code = responseDict?["code"] as! String
+            
+            let code = responseWrapper?.code
             if code != "success" {
-                let message = responseDict?["message"] as! String
-                EZAlertController.alert("Authentication failed.", message: message)
+                EZAlertController.alert("Authentication failed.", message: (responseWrapper?.message)!)
                 return
             }
             
-            let userDict = responseDict?["user"] as! [String: Any]
-            self.storeUserDict(userDict) { success in
-                if !success {
-                    Crashlytics.sharedInstance().crash()
-                    let message = "An error has occurred. Please try again later."
-                    EZAlertController.alert("Error", message: message)
-                    return
-                }
+            let userAccount = responseWrapper?.data
+            if let teams = userAccount?.profileDetails?.brandTeams {
+                UsersStore.getInstance().storeLocalUserAccount(userAccount!)
+                UsersStore.currentBrandId = teams[0].brandId!
                 
                 let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
                 if notificationType == [] {
@@ -82,7 +78,14 @@ class CodeViewController: UIViewController {
                 } else {
                     self.showVideoScreen()
                 }
+                
             }
+            else {
+                EZAlertController.alert("Authentication failed.", message: "No brands associated with the account.")
+                return
+            }
+            
+            
         }
         
     }
@@ -103,30 +106,6 @@ class CodeViewController: UIViewController {
     func didPressContact() {
         let message = "mailto:" + Config.mailContact
         UIApplication.shared.open(URL(string: message)!, options: [:], completionHandler: nil)
-    }
-    
-    internal func storeUserDict(_ userDict: [String: Any]?, callback: (_ success: Bool) -> Void) {
-        if let userDict = userDict {
-            let userID = userDict["id"] as? String
-            let authToken = userDict["authentication_token"] as? String
-            
-            if userID == nil || authToken == nil {
-                callback(false)
-                return
-            }
-            
-            let user = User()
-            user.id = userID!
-            user.authToken = authToken!
-            user.name = userDict["name"] as! String?
-            user.email = userDict["email"] as! String?
-            UsersStore.getInstance().storeLocalUser(user)
-            Crashlytics.sharedInstance().setUserEmail(userDict["name"] as! String?)
-            Crashlytics.sharedInstance().setUserIdentifier(userID!)
-            Crashlytics.sharedInstance().setUserName(userDict["name"] as! String?)
-            
-            callback(true)
-        }
     }
     
     internal func showProgressIndicator() {

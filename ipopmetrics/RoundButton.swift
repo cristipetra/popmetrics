@@ -72,6 +72,13 @@ class RoundButton: UIButton {
     }
 
 
+    func setButtonDisabled() {
+        self.imageView?.layer.opacity = 0.3
+        self.layer.opacity = 0.3
+        self.layer.borderColor = UIColor.black.withAlphaComponent(0.2).cgColor
+        self.isEnabled = false
+    }
+
 }
 
 extension UIButton {

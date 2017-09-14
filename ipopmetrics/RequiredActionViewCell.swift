@@ -31,13 +31,13 @@ class RequiredActionViewCell: UITableViewCell {
     let transition = BubbleTransition()
   
   
-    var item: FeedItem?
+    var item: FeedCard?
     var actionHandler: CardActionHandler?
     var actionInfoHandler: CardInfoHandler?
     var indexPath: IndexPath?
     var delegate: InfoButtonDelegate?
  
-    func configure(_ item: FeedItem, handler: CardActionHandler) {
+    func configure(_ item: FeedCard, handler: CardActionHandler) {
         self.item = item
         self.actionHandler = handler
         
@@ -59,21 +59,8 @@ class RequiredActionViewCell: UITableViewCell {
         
         self.infoButton.addTarget(self, action: #selector(didPressInfoButton(_:)), for: .touchDown);
         
-        addGoogleTmpData()
     }
     
-    func addGoogleTmpData() {
-        if item?.actionHandler == "no_action" {
-            self.actionButton.setTitle("Connect Analytics", for: .normal)
-            self.messageLabel.text = "Allow us to connect your GA and tailor your solutions."
-            self.titleLabel.text = "Google Analytics is our most important access point to make effective business decisions."
-            self.socialMediaLogo.image = UIImage(named: "icon_google")
-            self.socialMediaNameLabel.text = "Google Analytics"
-            self.bottomImage.image = UIImage(named: "image_card_google")
-        }
-    }
-
-  
   func adjustLabelLineSpaceing() {
     
     if let titleText = titleLabel.text {
@@ -98,7 +85,7 @@ class RequiredActionViewCell: UITableViewCell {
 
     func configureActionType() {
       
-      switch item?.actionHandler {
+      switch item?.type {
       case ActionHandlerType.connectFacebook.rawValue?:
           self.actionButton.setTitle("Allow notifications", for: .normal)
           self.socialMediaNameLabel.isHidden = true

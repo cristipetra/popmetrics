@@ -13,8 +13,13 @@ protocol FooterButtonHandlerProtocol: class {
     func approvalButtonPressed(section: Int)
     func closeButtonPressed()
     func informationButtonPressed()
-    func loadMorePressed()
+    func loadMorePressed(section: Int)
 }
+
+protocol FooterActionHandlerProtocol: class {
+    func handlerAction(section: Int)
+}
+
 
 class TableFooterView: UITableViewHeaderFooterView {
     
@@ -33,6 +38,7 @@ class TableFooterView: UITableViewHeaderFooterView {
     }
     
     weak var buttonHandlerDelegate: FooterButtonHandlerProtocol?
+    weak var buttonActionHandler: FooterActionHandlerProtocol?
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -190,7 +196,7 @@ class TableFooterView: UITableViewHeaderFooterView {
         horizontalStackView = UIStackView(arrangedSubviews: [xButton, informationBtn, loadMoreStackView])
         
         horizontalStackView.axis = .horizontal
-        horizontalStackView.alignment = .center
+        horizontalStackView.alignment = .top
         horizontalStackView.spacing = SPACE_ELEMENTS
         
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -199,8 +205,9 @@ class TableFooterView: UITableViewHeaderFooterView {
         horizontalStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: -8).isActive = true
         horizontalStackView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 12).isActive = true
         horizontalStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-        loadMoreStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        horizontalStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10).isActive = true
         
+        loadMoreStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         
         containerView.addSubview(approveStackView)
         approveStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
@@ -233,6 +240,7 @@ class TableFooterView: UITableViewHeaderFooterView {
         informationBtn.widthAnchor.constraint(equalToConstant: 46).isActive = true
         informationBtn.heightAnchor.constraint(equalToConstant: 46).isActive = true
         informationBtn.addTarget(self, action: #selector(informationHandler), for: .touchUpInside)
+        
         //informationBtn.setImage(UIImage(named: "iconInfoPage")?.withRenderingMode(.alwaysOriginal), for: .normal
         
         let attrTitle = Style.default {
@@ -260,7 +268,8 @@ class TableFooterView: UITableViewHeaderFooterView {
     
     func loadMoreHandler() {
         animateButtonBlink(button: loadMoreBtn)
-        buttonHandlerDelegate?.loadMorePressed()
+        buttonHandlerDelegate?.loadMorePressed(section: section)
+        buttonActionHandler?.handlerAction(section: section)
     }
     
     func setupActionButton() {
@@ -305,6 +314,7 @@ class TableFooterView: UITableViewHeaderFooterView {
             
         case .unapproved:
             actionButton.imageButtonType = .unapproved
+            approveLbl.text = "Schedule All (3)"
         default:
             break
         }

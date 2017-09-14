@@ -23,27 +23,37 @@ class UsersStore {
         return appDelegate.usersStore
     }
     
-    func getLocalUser() -> User {
-        let user = User()
-        user.name = UserDefaults.standard.string(forKey:"userName")
-        user.email = UserDefaults.standard.string(forKey:"userEmail")
-        user.id = UserDefaults.standard.string(forKey:"userId")
-        user.authToken = UserDefaults.standard.string(forKey:"userAuthToken")
-        return user
-    }
-    
-    func storeLocalUser(_ user:User) {
-        let defaults = UserDefaults.standard
-        defaults.set(user.name, forKey: "userName")
-        defaults.set(user.email, forKey: "userEmail")
-        defaults.set(user.id, forKey: "userId")
-        defaults.set(user.authToken, forKey:"userAuthToken")
+    func getLocalUserAccount() -> UserAccount {
+
+        let jsonString = UserDefaults.standard.string(forKey: "userAccountJson")
+        let userAccount = UserAccount(JSONString: jsonString!)
+        return userAccount!
         
     }
+    
+    func storeLocalUserAccount(_ user: UserAccount) {
+        let defaults = UserDefaults.standard
+        defaults.set(user.toJSONString(), forKey:"userAccountJson")
+    }
+    
     
     func clearCredentials() {
-        
+        let defaults = UserDefaults.standard
+        defaults.set(nil, forKey: "currentBrandId")
+        defaults.set(nil, forKey: "userAccountJson")
     }
+    
+    static var currentBrandId: String {
+        set {
+            let defaults = UserDefaults.standard
+            defaults.set(newValue, forKey: "currentBrandId")
+        }
+        get {
+            return UserDefaults.standard.string(forKey: "currentBrandId")!
+        }
+    }
+
+    
     
     static var isTwitterConnected: Bool {
         set {

@@ -8,6 +8,8 @@
 
 import UIKit
 import Alamofire
+import AlamofireObjectMapper
+
 
 class UsersApi: BaseApi {
     
@@ -141,7 +143,7 @@ class UsersApi: BaseApi {
     
     
     func logInWithSmsCode(_ phoneNumber:String, smsCode: String,
-                            callback: @escaping (_ userDict: [String: Any]?, _ error: ApiError?) -> Void) {
+                            callback: @escaping (_ response: ResponseWrapperOne<UserAccount>?, _ error: ApiError?) -> Void) {
         var params = [
             "code": smsCode,
             "phone_number": phoneNumber,
@@ -150,24 +152,20 @@ class UsersApi: BaseApi {
         if let deviceToken = UserDefaults.standard.string(forKey:"deviceToken") {
             params["ios_device_token"] = deviceToken
         }
-        Alamofire.request(ApiUrls.getLoginWithCodeUrl(), method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { response in
+        
+        let url = ApiUrls.getLoginWithCodeUrl()
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseObject() { (response:
+            DataResponse<ResponseWrapperOne<UserAccount>>) in
+            
             if let err = self.createErrorWithHttpResponse(response: response.response) {
-                //callback(nil, err)
-                //return
+                callback(nil, err)
+                return
             }
-            
-            if let resultDict = response.result.value as? [String: Any] {
-                // Check for user does not exist
-                if let errorsDict = resultDict["errors"] as? [String: Any] {
-                    if errorsDict["email"] != nil {
-                        callback(nil, ApiError.userMismatch)
-                        return
-                    }
-                }
-                callback(resultDict, nil)
-            }
-            
-            //callback(nil, ApiError.apiNotAvailable)
+            else {
+                callback(response.result.value, nil)
+                return
+            }            
         }
     }
     

@@ -9,16 +9,18 @@
 import Foundation
 
 // MARK: - Constants
-private let PROTOCOL = "https"
-// private let PROTOCOL = "http"
-private let HOST = "api.popmetrics.io"
 
+private let PROTOCOL = "https"
+private let HOST = "api.popmetrics.io"
 private let PORT = 443
-// private let HOST = "192.168.1.114"
-// private let HOST = "10.0.1.30"
-// private let HOST = "72.20.10.2"
-// private let PORT = 5055
-//private let PORT = 5030
+
+
+// private let PROTOCOL = "http"
+// private let HOST = "192.168.7.101"
+// private let PORT = 5030
+
+// private let HOST = "10.0.1.50"
+// private let HOST = "172.20.10.2"
 
 private let LOGIN_PATH = "/api/caas/sign_in_with_email"
 private let SEND_CODE_BY_SMS_PATH = "/api/caas/send_code_by_sms"
@@ -41,7 +43,17 @@ private let ACCOUNT_INFO_PATH = "/api/caas/me"
 private let ACCOUNT_EDIT_PATH = "/api/caas/me"
 private let ACCOUNT_THUMBNAIL_PATH_FORMAT = "/api/caas/user/%@/image/thumbnail"
 
-private let USER_FEED_PATH = "/api/market/brand/%@/feed"
+private let USER_FEED_PATH = "/api/feed/brand/%@"
+private let FEED_ACTION_PATH = "/api/feed/action/%@"
+
+private let USER_TODO_PATH = "/api/todo/brand/%@"
+private let USER_TODO_ACTION_PATH = "/api/todo/action/%@"
+
+private let USER_CALENDAR_PATH = "/api/calendar/brand/%@"
+private let USER_CALENDAR_ACTION_PATH = "/api/calendar/action/%@"
+
+
+private let USER_TEAMS_PATH = "/api/market/user/%@/teams"
 
 private let CONNECT_GOOGLE_ANALYTICS = "/api/market/brand/%@/connect_google_analytics"
 private let CONNECT_TWITTER = "/api/market/brand/%@/connect_twitter"
@@ -129,6 +141,35 @@ class ApiUrls {
     static func getMyBrandFeedUrl(_ brandId:String) -> String {
         return composedBaseUrl(String(format:USER_FEED_PATH, brandId))
     }
+    
+    static func getMyBrandTodoUrl(_ brandId:String) -> String {
+        return composedBaseUrl(String(format:USER_TODO_PATH, brandId))
+    }
+
+    static func getTodoActionUrl(_ brandId:String) -> String {
+        return composedBaseUrl(String(format:USER_TODO_ACTION_PATH, brandId))
+    }
+    
+    static func getMyBrandCalendarUrl(_ brandId:String) -> String {
+        return composedBaseUrl(String(format:USER_CALENDAR_PATH, brandId))
+    }
+    
+    static func getCalendarActionUrl(_ brandId:String) -> String {
+        return composedBaseUrl(String(format:USER_CALENDAR_ACTION_PATH, brandId))
+    }
+    
+    
+    
+    
+    static func getFeedRequiredActionUrl(_ brandId:String) -> String {
+        return composedBaseUrl(String(format:FEED_ACTION_PATH, brandId))
+    }
+    
+    
+    static func getUserTeamsUrl(_ userId:String) -> String {
+        return composedBaseUrl(String(format:USER_TEAMS_PATH, userId))
+    }
+    
     
     static func getConnectGoogleAnalyticsUrl(_ brandId:String) -> String {
         return composedBaseUrl(String(format:CONNECT_GOOGLE_ANALYTICS, brandId))

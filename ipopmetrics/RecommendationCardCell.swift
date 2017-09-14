@@ -22,12 +22,12 @@ class RecommendationCardCell: UITableViewCell {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var secondContanerView: UIView!
 
-    var item: FeedItem?
+    var item: FeedCard?
     var actionHandler: CardActionHandler?
     var indexPath: IndexPath?
 
 
-    func configure(_ item: FeedItem, handler: CardActionHandler) {
+    func configure(_ item: FeedCard, handler: CardActionHandler) {
         print(item)
         self.titleLabel.text = item.headerTitle
         self.messageLabel.text = item.message

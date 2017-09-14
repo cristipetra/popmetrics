@@ -22,16 +22,13 @@ class TodoTopView: UIView {
     }
     
     lazy var clockView : UIView = {
-        
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
-        
         return view
     }()
     
     lazy var keyView : UIView = {
-        
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.white
@@ -39,7 +36,6 @@ class TodoTopView: UIView {
     }()
     
     lazy var notificationView : UIView = {
-        
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.white
@@ -47,7 +43,6 @@ class TodoTopView: UIView {
     }()
     
     lazy var clockImageView : UIImageView = {
-        
         let imageview = UIImageView()
         imageview.translatesAutoresizingMaskIntoConstraints = false
         imageview.image = UIImage(named: "iconClock")!.withRenderingMode(.alwaysTemplate)
@@ -55,7 +50,6 @@ class TodoTopView: UIView {
     }()
     
     lazy var keyImageView : UIImageView = {
-        
         let imageview = UIImageView()
         imageview.translatesAutoresizingMaskIntoConstraints = false
         imageview.image = UIImage(named: "icon_DIY_DifferentSection")!.withRenderingMode(.alwaysTemplate)
@@ -63,9 +57,7 @@ class TodoTopView: UIView {
         
     }()
     
-    
     lazy var notificationImageView : UIImageView = {
-        
         let imageview = UIImageView()
         imageview.translatesAutoresizingMaskIntoConstraints = false
         imageview.image = UIImage(named: "icon_Failed_DifferentSection")!.withRenderingMode(.alwaysTemplate)
@@ -74,28 +66,28 @@ class TodoTopView: UIView {
     }()
     
     lazy var clockLabel : UILabel = {
-        
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-        
     }()
     
     lazy var keyLabel : UILabel = {
-        
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-        
     }()
     
     
     lazy var notificationLabel : UILabel = {
-        
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-        
+    }()
+    
+    lazy var viewDivider: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     private var stackView : UIStackView!
@@ -118,6 +110,13 @@ class TodoTopView: UIView {
         //initialSetup(view: keyView, label: keyLabel, image: keyImageView)
         initialSetup(view: notificationView, label: notificationLabel, image: notificationImageView)
         //setActive(section: .unapproved)
+        
+        self.addSubview(viewDivider)
+        viewDivider.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+        viewDivider.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
+        viewDivider.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        viewDivider.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        viewDivider.backgroundColor = PopmetricsColor.dividerBorder
     }
     
     func setUpClockView(selected: Bool) {
@@ -278,6 +277,7 @@ class TodoTopView: UIView {
         //label.text = "(3)"
         label.font = UIFont(name: FontBook.regular, size: 15)
         label.textAlignment = .center
+        label.text = "(0)"
         //label.textColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 1)
         image.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         image.heightAnchor.constraint(equalToConstant: 18).isActive = true

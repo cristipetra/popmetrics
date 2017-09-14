@@ -36,6 +36,8 @@ class PhoneView: UIView {
         return sendCodeButton
     }()
     
+    var buttonBottomConstraint: NSLayoutConstraint?
+    
     func reloadSubViews() {
         numberTextField.removeFromSuperview()
         messageLbl.removeFromSuperview()
@@ -43,6 +45,16 @@ class PhoneView: UIView {
         self.addSubview(numberTextField)
         self.addSubview(messageLbl)
         self.addSubview(sendCodeBtn)
+        if UIScreen.main.bounds.height > 480 {
+            setNumberTextField(yAnchor: 122)
+            setMessageLbl(yAnchor: -66)
+            setSendCodeButton(yAnchor: -136)
+        } else {
+            setNumberTextField(yAnchor: 70)
+            setMessageLbl(yAnchor: 0)
+            setSendCodeButton(yAnchor: -70)
+        }
+        /*
         if UIDevice.current.orientation.isPortrait {
             setNumberTextField(yAnchor: 122)
             self.layoutIfNeeded()
@@ -62,6 +74,7 @@ class PhoneView: UIView {
         } else {
             setSendCodeButton(yAnchor: -30)
         }
+        */
     }
     
     func setup() {
@@ -70,28 +83,45 @@ class PhoneView: UIView {
         
         // TextField for number
         self.addSubview(numberTextField)
+        
+        /*
         if UIDevice.current.orientation.isPortrait {
             setNumberTextField(yAnchor: 122)
         } else {
             setNumberTextField(yAnchor: 65)
         }
+        */
         
         // Message Label
         self.addSubview(messageLbl)
+        
+        /*
         if UIDevice.current.orientation.isPortrait {
             setMessageLbl(yAnchor: -66)
         } else {
             setMessageLbl(yAnchor: 22)
         }
+        */
         
         // Send code button
         self.addSubview(sendCodeBtn)
+        if UIScreen.main.bounds.height > 480 {
+            setNumberTextField(yAnchor: 122)
+            setMessageLbl(yAnchor: -66)
+            setSendCodeButton(yAnchor: -136)
+        } else {
+            setNumberTextField(yAnchor: 70)
+            setMessageLbl(yAnchor: 0)
+            setSendCodeButton(yAnchor: -70)
+        }
+        
+        /*
         if UIDevice.current.orientation.isPortrait {
             setSendCodeButton(yAnchor: -136)
         } else {
             setSendCodeButton(yAnchor: -30)
         }
-        
+        */
         
     }
     private func setNumberTextField(yAnchor: CGFloat) {
@@ -119,9 +149,11 @@ class PhoneView: UIView {
     }
     
     private func setSendCodeButton(yAnchor: CGFloat) {
+        buttonBottomConstraint = sendCodeBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: yAnchor)
+        buttonBottomConstraint?.isActive = true
         sendCodeBtn.widthAnchor.constraint(equalToConstant: 233).isActive = true
         sendCodeBtn.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        sendCodeBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: yAnchor).isActive = true
+        //sendCodeBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: yAnchor).isActive = true
         sendCodeBtn.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         sendCodeBtn.layer.backgroundColor = UIColor(red: 255/255, green: 210/255, blue: 55/255, alpha: 1.0).cgColor
         sendCodeBtn.setTitleColor(UIColor(red: 228/255, green: 185/255, blue: 39/255, alpha: 1.0), for: .normal)
