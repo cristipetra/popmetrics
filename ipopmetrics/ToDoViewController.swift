@@ -77,6 +77,10 @@ class ToDoViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        fetchItems(silent:false)
+        tableView.reloadData()
+
+        
         transitionView.alpha = 0.7
         let tabInfo = MainTabInfo.getInstance()
         let xValue = tabInfo.currentItemIndex >= tabInfo.lastItemIndex ? CGFloat(20) : CGFloat(-20)

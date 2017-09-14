@@ -109,6 +109,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        fetchItems(silent:false)
+        tableView.reloadData()
         
         tableView.alpha = 1
         let tabInfo = MainTabInfo.getInstance()
