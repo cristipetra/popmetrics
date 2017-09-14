@@ -196,7 +196,9 @@ extension LoginViewController: UITextFieldDelegate {
         if phoneView.numberTextField.text == "" {
             phoneView.numberTextField.text = "+1"
         }
-        moveButton(moveValue: -240)
+        if UIScreen.main.bounds.height > 480 {
+            moveButton(moveValue: -240)
+        }
     }
     
     internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -210,7 +212,9 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        moveButton(moveValue: -136)
+        if UIScreen.main.bounds.height > 480 {
+            moveButton(moveValue: -136)
+        }
     }
     
 }

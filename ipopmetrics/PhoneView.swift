@@ -45,9 +45,15 @@ class PhoneView: UIView {
         self.addSubview(numberTextField)
         self.addSubview(messageLbl)
         self.addSubview(sendCodeBtn)
-        setNumberTextField(yAnchor: 122)
-        setMessageLbl(yAnchor: -66)
-        setSendCodeButton(yAnchor: -136)
+        if UIScreen.main.bounds.height > 480 {
+            setNumberTextField(yAnchor: 122)
+            setMessageLbl(yAnchor: -66)
+            setSendCodeButton(yAnchor: -136)
+        } else {
+            setNumberTextField(yAnchor: 70)
+            setMessageLbl(yAnchor: 0)
+            setSendCodeButton(yAnchor: -70)
+        }
         /*
         if UIDevice.current.orientation.isPortrait {
             setNumberTextField(yAnchor: 122)
@@ -77,7 +83,7 @@ class PhoneView: UIView {
         
         // TextField for number
         self.addSubview(numberTextField)
-        setNumberTextField(yAnchor: 122)
+        
         /*
         if UIDevice.current.orientation.isPortrait {
             setNumberTextField(yAnchor: 122)
@@ -88,7 +94,7 @@ class PhoneView: UIView {
         
         // Message Label
         self.addSubview(messageLbl)
-        setMessageLbl(yAnchor: -66)
+        
         /*
         if UIDevice.current.orientation.isPortrait {
             setMessageLbl(yAnchor: -66)
@@ -99,7 +105,16 @@ class PhoneView: UIView {
         
         // Send code button
         self.addSubview(sendCodeBtn)
-        setSendCodeButton(yAnchor: -136)
+        if UIScreen.main.bounds.height > 480 {
+            setNumberTextField(yAnchor: 122)
+            setMessageLbl(yAnchor: -66)
+            setSendCodeButton(yAnchor: -136)
+        } else {
+            setNumberTextField(yAnchor: 70)
+            setMessageLbl(yAnchor: 0)
+            setSendCodeButton(yAnchor: -70)
+        }
+        
         /*
         if UIDevice.current.orientation.isPortrait {
             setSendCodeButton(yAnchor: -136)

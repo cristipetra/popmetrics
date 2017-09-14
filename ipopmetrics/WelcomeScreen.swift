@@ -19,19 +19,37 @@ class WelcomeScreen: UIViewController {
     @IBOutlet weak var heartButton: UIButton!
     @IBOutlet var containerView: UIView!
     
+    @IBOutlet weak var topTextConstraint: NSLayoutConstraint!
+    @IBOutlet weak var heightTextConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topImageConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomButtonsConstraint: NSLayoutConstraint!
     var splashView: LDSplashView?
     var indicatorView: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         setUpColors()
+ 
         setUpCornerRadious()
         addShadowToView(blueButton)
         addShadowToView(btnNew)
         addShadowToView(heartButton)
         
         self.logoSplash()
+    }
+    override func viewDidLayoutSubviews() {
+        updateConstraintValues()
+    }
+    
+    private func updateConstraintValues() {
+        if UIScreen.main.bounds.height <= CGFloat(480) {
+            topImageConstraint.constant = 20
+            bottomButtonsConstraint.constant = 20
+            heightTextConstraint.constant = 100
+            topTextConstraint.constant = 20
+        }
     }
     
     private func setUpColors() {
