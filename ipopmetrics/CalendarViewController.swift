@@ -423,11 +423,13 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func changeTopHeaderTitle(section: Int) {
-        let item = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])[0]
-        topHeaderView.changeTitle(title: item.socialTextString)
-        topHeaderView.changeColorCircle(color: item.getSectionColor)
-        if (item.status == "unapproved") {
-            topHeaderView.changeColorCircle(color: PopmetricsColor.blueURLColor);
+        if section < store.countSections() {
+            let item = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])[0]
+            topHeaderView.changeTitle(title: item.socialTextString)
+            topHeaderView.changeColorCircle(color: item.getSectionColor)
+            if (item.status == "unapproved") {
+                topHeaderView.changeColorCircle(color: PopmetricsColor.blueURLColor);
+            }
         }
     }
     
