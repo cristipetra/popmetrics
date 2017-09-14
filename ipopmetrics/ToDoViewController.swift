@@ -265,7 +265,9 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
         cell.configure(item: item)
-        sideShadow(view: cell.containerView)
+        DispatchQueue.main.async {
+            self.sideShadow(view: cell.containerView)
+        }
         cell.selectionStyle = .none
         return cell
         
@@ -471,9 +473,11 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func changeTopHeaderTitle(section: Int) {
-        let item = store.getTodoSocialPostsForCard(store.getTodoCards()[section])[0]
-        topHeaderView.changeTitle(title: store.getTodoCards()[section].getCardSectionTitle)
-        topHeaderView.changeColorCircle(color: item.getSectionColor)
+        if section < store.countSections() {
+            let item = store.getTodoSocialPostsForCard(store.getTodoCards()[section])[0]
+            topHeaderView.changeTitle(title: store.getTodoCards()[section].getCardSectionTitle)
+            topHeaderView.changeColorCircle(color: item.getSectionColor)
+        }
     }
     
     func animateHeader(colapse: Bool) {
