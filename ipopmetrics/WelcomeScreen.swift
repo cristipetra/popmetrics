@@ -99,7 +99,7 @@ class WelcomeScreen: UIViewController {
     }
     
     @IBAction func handlerDidPressNewButton(_ sender: UIButton) {
-        openURLInside(url: Config.appWebLink)
+        openURLInside(url: Config.appWebAimeeLink)
     }
 }
 
