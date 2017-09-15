@@ -43,15 +43,16 @@ class MenuViewController: ElasticModalViewController {
     private func setup() {
         
         let closeButtonImage = UIImage(named: "iconCloseBlack")!.withRenderingMode(.alwaysTemplate)
-        let logo = UIImage(named: "blackHeart")!.withRenderingMode(.alwaysTemplate)
+        //let logo = UIImage(named: "logoCube")!.withRenderingMode(.alwaysTemplate)
         closeButtonImage.bma_tintWithColor(UIColor.white)
-        logo.bma_tintWithColor(UIColor.white)
+        //logo.bma_tintWithColor(UIColor.white)
         closeButton.setImage(closeButtonImage, for: .normal)
-        logoImage.image = logo
+        //logoImage.image = logo
         
     }
     @IBAction func closeButtonPressed(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismissAnimated(self.view)
+        //self.dismiss(animated: true, completion: nil)
     }
     @IBAction func contactButtonPressed(_ sender: UIButton) {
         let message = "mailto:" + Config.mailContact
@@ -83,5 +84,14 @@ extension UIViewController {
         let url = URL(string: url)
         let safari = SFSafariViewController(url: url!)
         self.present(safari, animated: true)
+    }
+}
+
+extension ElasticModalViewController {
+    func dismissAnimated(_ sender: UIView?) {
+        modalTransition.transformType = dragRightTransformType
+        modalTransition.edge = .left
+        modalTransition.startingPoint = sender?.center
+        dismiss(animated: true, completion: nil)
     }
 }
