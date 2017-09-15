@@ -225,11 +225,10 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
         
-        if(sectionIdx == store.getTodoCards().count) {
+        if( isLastSection(section: sectionIdx)) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
             cell.changeTitleWithSpacing(title: "Finished with the actions?");
             cell.changeMessageWithSpacing(message: "Check out the things you've scheduled in the calendar hub")
@@ -292,12 +291,27 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
     }
     
+    func isLastSection(section: Int) -> Bool {
+        if( store.getTodoCards().count == 1) {
+            if( store.getTodoSocialPostsForCard(store.getTodoCards()[0]).count == 0) {
+                return true
+            }
+        }
+        if section == store.getTodoCards().count {
+            return true
+        }
+        return false
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         //last section doesn't have a header view
-        if section == store.getTodoCards().endIndex {
+        if( isLastSection(section: section)) {
             return UIView()
         }
-        
+        if section == store.getTodoCards().count {
+            return UIView()
+        }
+
         let item: TodoSocialPost = store.getTodoSocialPostsForCard(store.getTodoCards()[section])[0]
         let card = store.getTodoCards()[section]
         
@@ -317,8 +331,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        
-        if section == store.getTodoCards().endIndex {
+        if( isLastSection(section: section)) {
             return UIView()
         }
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
@@ -342,7 +355,6 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             DispatchQueue.main.async {
                 todoFooter.setUpLoadMoreDisabled()
             }
-            
         }
         
         return todoFooter
@@ -350,7 +362,8 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         // height for header for last card
-        if section == store.getTodoCards().endIndex  {
+        //if section == store.getTodoCards().count  {
+        if isLastSection(section: section) {
             return 60
         }
         if shouldMaximize {
@@ -359,22 +372,33 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         return 109
     }
     
+    func getCountSection() -> Int {
+        //check if we receive card that has empty social post
+        if( store.getTodoCards().count == 1) {
+            if( store.getTodoSocialPostsForCard(store.getTodoCards()[0]).count == 0) {
+                return 1
+            }
+        }
+        return store.getTodoCards().count + 1  // adding the last card
+    }
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         //height for footer for last card
-        if section == store.getTodoCards().endIndex {
+        if isLastSection(section: section) {
             return 0
         }
         return 80
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return store.getTodoCards().count + 1   // adding the last card
+        return getCountSection()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(section == store.getTodoCards().count) {
+        if( isLastSection(section: section)) {
             return 1
         }
+    
         return itemsToLoad(section: section)
     }
     
@@ -401,7 +425,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //height for last card
-        if indexPath.section == store.getTodoCards().endIndex {
+        if(isLastSection(section: indexPath.section)) {
             return 261
         }
         
