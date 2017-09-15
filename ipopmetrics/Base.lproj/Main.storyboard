@@ -127,8 +127,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackHeart" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-wi-QSE">
-                                <rect key="frame" x="74" y="27" width="32" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoCube" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-wi-QSE">
+                                <rect key="frame" x="74" y="23" width="32" height="30"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="OHx-Qg-zGb"/>
@@ -148,7 +148,7 @@
                             <constraint firstItem="Vqp-bm-yP8" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leading" constant="29" id="erw-yw-FCk"/>
                             <constraint firstItem="Vqp-bm-yP8" firstAttribute="top" secondItem="rSp-0Z-2F3" secondAttribute="bottom" constant="8" id="ohT-iy-TeE"/>
                             <constraint firstItem="tuL-Ym-nrt" firstAttribute="top" secondItem="rSp-0Z-2F3" secondAttribute="bottom" constant="9" id="uPF-Q1-bfU"/>
-                            <constraint firstItem="eP9-wi-QSE" firstAttribute="top" secondItem="rSp-0Z-2F3" secondAttribute="bottom" constant="7" id="wDB-6W-CHh"/>
+                            <constraint firstItem="eP9-wi-QSE" firstAttribute="top" secondItem="rSp-0Z-2F3" secondAttribute="bottom" constant="3" id="wDB-6W-CHh"/>
                         </constraints>
                     </view>
                     <connections>
@@ -324,8 +324,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="blackHeart" width="29" height="28"/>
         <image name="first" width="30" height="30"/>
+        <image name="logoCube" width="67" height="77"/>
         <image name="second" width="30" height="30"/>
         <image name="tabBarItem:g6b-nh-pyf:image" width="23" height="20">
             <mutableData key="keyedArchiveRepresentation">

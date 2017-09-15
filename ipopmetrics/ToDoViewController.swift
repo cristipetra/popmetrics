@@ -189,7 +189,6 @@ class ToDoViewController: BaseViewController {
         //        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
         //        let jsonData : NSData = NSData(contentsOfFile: path!)!
         TodoApi().getItems(currentBrandId) { responseWrapper, error in
-            
             if error != nil {
                 let message = "An error has occurred. Please try again later."
                 self.presentAlertWithTitle("Error", message: message)
