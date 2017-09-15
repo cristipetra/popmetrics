@@ -49,6 +49,8 @@
 		08A4A53D1F458423001071E3 /* ToolbarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */; };
 		08A4A5411F45B563001071E3 /* AlfaSlabOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */; };
 		08A4A5431F45B5D6001071E3 /* TwoImagesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4A5421F45B5D6001071E3 /* TwoImagesButton.swift */; };
+		08A533341F6BD9060080BE64 /* MoreInfoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A533331F6BD9060080BE64 /* MoreInfoViewCell.xib */; };
+		08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A533351F6BD9130080BE64 /* MoreInfoViewCell.swift */; };
 		08A812741F16601A00672126 /* HeaderCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A812731F16601A00672126 /* HeaderCardCell.xib */; };
 		08A812761F1660A300672126 /* HeaderCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A812751F1660A300672126 /* HeaderCardCell.swift */; };
 		08AA6C631F56C9560022DE91 /* TrafficReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C621F56C9560022DE91 /* TrafficReportViewController.swift */; };
@@ -249,6 +251,8 @@
 		08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarViewCell.swift; sourceTree = "<group>"; };
 		08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AlfaSlabOne-Regular.ttf"; sourceTree = "<group>"; };
 		08A4A5421F45B5D6001071E3 /* TwoImagesButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoImagesButton.swift; sourceTree = "<group>"; };
+		08A533331F6BD9060080BE64 /* MoreInfoViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreInfoViewCell.xib; sourceTree = "<group>"; };
+		08A533351F6BD9130080BE64 /* MoreInfoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewCell.swift; sourceTree = "<group>"; };
 		08A812731F16601A00672126 /* HeaderCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCardCell.xib; sourceTree = "<group>"; };
 		08A812751F1660A300672126 /* HeaderCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderCardCell.swift; path = feed/HeaderCardCell.swift; sourceTree = "<group>"; };
 		08A812781F1672D300672126 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -531,6 +535,15 @@
 				08953E751F4C35AC003ABEFC /* RequiredAction.swift */,
 			);
 			name = required;
+			sourceTree = "<group>";
+		};
+		08A533321F6BD8E80080BE64 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				08A533331F6BD9060080BE64 /* MoreInfoViewCell.xib */,
+				08A533351F6BD9130080BE64 /* MoreInfoViewCell.swift */,
+			);
+			name = home;
 			sourceTree = "<group>";
 		};
 		08A812771F1672C000672126 /* fonts */ = {
@@ -834,6 +847,7 @@
 		11ACA9AD1E2CE0A80021E64A /* views */ = {
 			isa = PBXGroup;
 			children = (
+				08A533321F6BD8E80080BE64 /* home */,
 				08B4BCDA1F619BB200660F5B /* google */,
 				08FAE8451F541FC90097DF3E /* statistics */,
 				0888C5BC1F4EECBF00E3DB04 /* buttons */,
@@ -1054,6 +1068,7 @@
 				D9AB86581ECED85A0050A7AB /* InsightCard.xib in Resources */,
 				11AAA5E81ECCD52A0099B50E /* ActionHistoryCard.xib in Resources */,
 				08F368931F18F87800819CDE /* DailyInsightsCardCell.xib in Resources */,
+				08A533341F6BD9060080BE64 /* MoreInfoViewCell.xib in Resources */,
 				08A812741F16601A00672126 /* HeaderCardCell.xib in Resources */,
 				080DCA831F4D9586000C73DC /* OpenSans-ExtraBold.ttf in Resources */,
 				085054011F2793AE00FE8234 /* CalendarCard.xib in Resources */,
@@ -1273,6 +1288,7 @@
 				110A62F61ECEF7AA0052B478 /* BestCourseViewCell.swift in Sources */,
 				1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */,
 				08AA6C691F56DCDA0022DE91 /* TrafficStatusView.swift in Sources */,
+				08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */,
 				08F368951F18F93800819CDE /* DailyInsightsCardCell.swift in Sources */,
 				08B2803F1F55862100E36D19 /* Statistics.swift in Sources */,
 				085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */,
