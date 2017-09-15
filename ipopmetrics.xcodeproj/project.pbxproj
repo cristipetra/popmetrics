@@ -53,6 +53,8 @@
 		08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A533351F6BD9130080BE64 /* MoreInfoViewCell.swift */; };
 		08A533381F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A533371F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib */; };
 		08A5333A1F6BF85B0080BE64 /* RecommendedActionGoogleCitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A533391F6BF85B0080BE64 /* RecommendedActionGoogleCitationView.swift */; };
+		08A5333E1F6C2E910080BE64 /* ButtonWithContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A5333D1F6C2E910080BE64 /* ButtonWithContainer.swift */; };
+		08A533401F6C2ED50080BE64 /* IndividualTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A5333F1F6C2ED50080BE64 /* IndividualTaskView.swift */; };
 		08A812741F16601A00672126 /* HeaderCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A812731F16601A00672126 /* HeaderCardCell.xib */; };
 		08A812761F1660A300672126 /* HeaderCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A812751F1660A300672126 /* HeaderCardCell.swift */; };
 		08AA6C631F56C9560022DE91 /* TrafficReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C621F56C9560022DE91 /* TrafficReportViewController.swift */; };
@@ -257,6 +259,8 @@
 		08A533351F6BD9130080BE64 /* MoreInfoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewCell.swift; sourceTree = "<group>"; };
 		08A533371F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendedActionGoogleCitationView.xib; sourceTree = "<group>"; };
 		08A533391F6BF85B0080BE64 /* RecommendedActionGoogleCitationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedActionGoogleCitationView.swift; sourceTree = "<group>"; };
+		08A5333D1F6C2E910080BE64 /* ButtonWithContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithContainer.swift; sourceTree = "<group>"; };
+		08A5333F1F6C2ED50080BE64 /* IndividualTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualTaskView.swift; sourceTree = "<group>"; };
 		08A812731F16601A00672126 /* HeaderCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCardCell.xib; sourceTree = "<group>"; };
 		08A812751F1660A300672126 /* HeaderCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderCardCell.swift; path = feed/HeaderCardCell.swift; sourceTree = "<group>"; };
 		08A812781F1672D300672126 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -508,6 +512,7 @@
 			children = (
 				0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */,
 				08B485E51F210A61005918A1 /* RoundButton.swift */,
+				08A5333D1F6C2E910080BE64 /* ButtonWithContainer.swift */,
 			);
 			name = buttons;
 			sourceTree = "<group>";
@@ -572,6 +577,7 @@
 				08B4BCDD1F619BEF00660F5B /* TaskGoogleCitationView.swift */,
 				08A533371F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib */,
 				08A533391F6BF85B0080BE64 /* RecommendedActionGoogleCitationView.swift */,
+				08A5333F1F6C2ED50080BE64 /* IndividualTaskView.swift */,
 			);
 			name = google;
 			sourceTree = "<group>";
@@ -1269,6 +1275,7 @@
 				116431DF1E2D4E81009AA59E /* UsersApi.swift in Sources */,
 				08A4A5431F45B5D6001071E3 /* TwoImagesButton.swift in Sources */,
 				08953E741F4C359E003ABEFC /* FooterView.swift in Sources */,
+				08A5333E1F6C2E910080BE64 /* ButtonWithContainer.swift in Sources */,
 				08F368911F18E6A000819CDE /* ApprovalCardInfoCell.swift in Sources */,
 				083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */,
 				08C6FBFD1F4205EF007D6101 /* ToDoViewController.swift in Sources */,
@@ -1309,6 +1316,7 @@
 				11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */,
 				110A62EC1ECEE6F30052B478 /* DemoTextMessageHandler.swift in Sources */,
 				085AA0D21F42E45A0014D4CE /* TodoStore.swift in Sources */,
+				08A533401F6C2ED50080BE64 /* IndividualTaskView.swift in Sources */,
 				110A62E61ECEE6E60052B478 /* SendingStatusCollectionViewCell.swift in Sources */,
 				08AA6C731F56F8630022DE91 /* ChartViewController.swift in Sources */,
 				08B7459B1F1F996B00EC3F8C /* DigitCodeView.swift in Sources */,
