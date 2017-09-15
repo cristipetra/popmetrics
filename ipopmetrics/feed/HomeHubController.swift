@@ -18,7 +18,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     fileprivate var sharingInProgress = false
     
     let sectionToIndex = ["Required Actions": 0,
-                           "Insights": 1]
+                           "Insights": 2]
     
     let indexToSection = [0:"Required Actions",
                           1:"Insights"]
@@ -82,6 +82,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let trafficNib = UINib(nibName: "TrafficCard", bundle: nil)
         tableView.register(trafficNib, forCellReuseIdentifier: "TrafficCard")
         
+        let moreInfoNib = UINib(nibName: "MoreInfoViewCell", bundle: nil)
+        tableView.register(moreInfoNib, forCellReuseIdentifier: "moreInfoId")
+        
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         
@@ -103,9 +106,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             self.fetchItems(silent:false)
         }
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
+        createItemsLocally()
         
         
+        print(store.getFeedCards())
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -159,11 +163,41 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             }
             else {
                 self.store.updateFeed((responseWrapper?.data)!)
+                print(self.store.getFeedCards())
                 self.tableView.isHidden = false
                 self.tableView.reloadData()
             }
         }
         
+    }
+    
+    func createItemsLocally() {
+        try! store.realm.write {
+            let feedCard = FeedCard()
+            feedCard.section = "Insights"
+            feedCard.type = "recommended_action"
+            feedCard.cardId = "42314234"
+            store.realm.add(feedCard, update: true)
+            
+            /*
+            let feedCard1 = FeedCard()
+            feedCard1.section = "Insights"
+            feedCard1.type = "more_action"
+            feedCard1.cardId = "423114234"
+            store.realm.add(feedCard1, update: true)
+            */
+            
+            /*
+            let post1: CalendarSocialPost = CalendarSocialPost()
+            post1.calendarCard = calendarCard
+            post1.postId = "asdfasdfsa"
+            post1.status = "scheduled"
+            post1.scheduledDate = Date()
+            store.realm.add(post1, update:true)
+            */
+        }
+        
+        print(store.getFeedCards())
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -222,6 +256,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         if (section == sectionToIndex.count) {
             return 1
         }
+        print(section)
+        print(indexToSection[section])
         return store.getFeedCardsWithSection(indexToSection[section]!).count
     }
     
@@ -312,6 +348,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 isMoreInfoType = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedActionId", for: indexPath) as! RecommendedActionViewCell
                 cell.footerView.actionButton.addTarget(self, action: #selector(openGoogleActionView), for: .touchUpInside)
+                return cell
+            case "more_action":
+                isMoreInfoType = true
+                let cell = tableView.dequeueReusableCell(withIdentifier: "moreInfoId", for: indexPath) as! MoreInfoViewCell
+                cell.setUpToolbar()
                 return cell
             default:
                 shouldDisplayCell = false

@@ -145,12 +145,33 @@ class CalendarViewController: BaseViewController {
                 return
             }
             else {
-                self.store.updateCalendars((responseWrapper?.data)!)
+                //self.store.updateCalendars((responseWrapper?.data)!)
+                self.createItemsLocally()
                 self.tableView.isHidden = false
                 self.tableView.reloadData()
             }
         }
     }
+    
+    func createItemsLocally() {
+        try! store.realm.write {
+            let calendarCard = CalendarCard()
+            calendarCard.cardId = "4132345"
+            calendarCard.section = "scheduled"
+            store.realm.add(calendarCard, update: true)
+            
+            /*
+             //this for add calendarsocial post
+             let post1: CalendarSocialPost = CalendarSocialPost()
+             post1.calendarCard = calendarCard
+             post1.postId = "asdfasdfsa"
+             post1.status = "scheduled"
+             post1.scheduledDate = Date()
+             store.realm.add(post1, update:true)
+             */
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         transitionView.alpha = 0.7
         let tabInfo = MainTabInfo.getInstance()

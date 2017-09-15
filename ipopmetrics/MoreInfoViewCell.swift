@@ -58,7 +58,7 @@ class  MoreInfoViewCell: UITableViewCell {
     
     private func setUpFooter() {
         
-        footerView.actionButton.leftHandImage = UIImage(named:"icon2CtaShowitems")
+        footerView.actionButton.leftHandImage = UIImage(named:"icon2CtaShowItems")
         footerView.informationBtn.isHidden = true
         footerView.approveLbl.text = "Show Items"
     }
