@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftRichString
+import M13ProgressSuite
 
 class TaskGoogleCitationView: UIView {
     
@@ -21,55 +22,9 @@ class TaskGoogleCitationView: UIView {
     @IBOutlet weak var costMainProgressView: UIView!
     @IBOutlet weak var effortMainProgressView: UIView!
     @IBOutlet weak var drawView: UIView!
-    
-    
-    lazy var impactSimpleProgressView : UIView = {
-        
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-        
-    }()
-    
-    lazy var impactOnlineProgressView : UIView = {
-        
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-        
-    }()
-    
-    lazy var impactTrafficProgressView : UIView = {
-        
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-        
-    }()
-    
-    lazy var impactCustomerProgressView : UIView = {
-        
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-        
-    }()
-    
-    lazy var costProgressView : UIView = {
-        
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-        
-    }()
-    
-    lazy var effortProgressView : UIView = {
-        
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-        
-    }()
+    @IBOutlet weak var redSquareLbl: UILabel!
+    @IBOutlet weak var yellowSquareLbl: UILabel!
+    @IBOutlet weak var blueSquareLbl: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -88,11 +43,9 @@ class TaskGoogleCitationView: UIView {
         containerView.frame = self.bounds
         containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        setUpImpactSimpleProgressView()
-        setUpCostProgressView()
-        setUpEffortProgressView()
         setMultipleProgressViewConstaits()
         setCornerRadious()
+        
         
     }
     
@@ -103,6 +56,12 @@ class TaskGoogleCitationView: UIView {
         costMainProgressView.layer.cornerRadius = 4
         effortMainProgressView.layer.cornerRadius = 4
         
+        redSquareLbl.layer.cornerRadius = 2
+        yellowSquareLbl.layer.cornerRadius = 2
+        blueSquareLbl.layer.cornerRadius = 2
+        redSquareLbl.layer.masksToBounds = true
+        yellowSquareLbl.layer.masksToBounds = true
+        blueSquareLbl.layer.masksToBounds = true
     }
     
     func setUpLabel(impactLevel: String, cost: String, effort: String) {
@@ -154,20 +113,17 @@ class TaskGoogleCitationView: UIView {
         
         //here i need the value for the progress
         
-        impactSimpleProgressView.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        setCornerRadiousOneSide(mainView: impactSimpleMainProgressView, childView: impactSimpleProgressView)
-        self.impactSimpleProgressView.backgroundColor = UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1)
+        impactSimpleMainProgressView.clipsToBounds = true
+        
+        setProgress(animationBounds: impactSimpleMainProgressView.bounds, value: "70", childOff: impactSimpleMainProgressView, animationColor: UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1), animationDuration: nil)
         
     }
     
     func setCostStyle(cost: String) {
         
+        costMainProgressView.clipsToBounds = true
         
-        guard let costProgress = NumberFormatter().number(from: cost) else {return}
-        
-        costProgressView.widthAnchor.constraint(equalToConstant: CGFloat(costProgress)).isActive = true
-        setCornerRadiousOneSide(mainView: costMainProgressView, childView: costProgressView)
-        self.costProgressView.backgroundColor = UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1)
+        setProgress(animationBounds: costMainProgressView.bounds, value: cost, childOff: costMainProgressView, animationColor: UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1), animationDuration: nil)
         
         let circaCharacterStyle = Style.default { (style) -> (Void) in
             style.font = FontAttribute(FontBook.regular, size: 18)
@@ -185,11 +141,10 @@ class TaskGoogleCitationView: UIView {
     
     func setEffortStyle(effort: String) {
         
-        guard let effortProgress = NumberFormatter().number(from: effort) else {return}
+        effortMainProgressView.clipsToBounds = true
         
-        effortProgressView.widthAnchor.constraint(equalToConstant: CGFloat(effortProgress) * 10 ).isActive = true
-        setCornerRadiousOneSide(mainView: effortMainProgressView, childView: effortProgressView)
-        self.effortProgressView.backgroundColor = UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1)
+        setProgress(animationBounds: effortMainProgressView.bounds, value: effort, childOff: effortMainProgressView, animationColor: UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1), animationDuration: 15)
+        
         
         let circaCharacterStyle = Style.default { (style) -> (Void) in
             style.font = FontAttribute(FontBook.regular, size: 18)
@@ -204,81 +159,78 @@ class TaskGoogleCitationView: UIView {
         effortLbl.attributedText = "~".set(style: circaCharacterStyle) + effort.set(style: extraBoldStyle) + " hours".set(style: extraBoldStyle)
     }
     
-    private func setUpImpactSimpleProgressView() {
-        
-        impactSimpleMainProgressView.insertSubview(impactSimpleProgressView, at: 1)
-        impactSimpleProgressView.leftAnchor.constraint(equalTo: impactSimpleMainProgressView.leftAnchor).isActive = true
-        impactSimpleProgressView.topAnchor.constraint(equalTo: impactSimpleMainProgressView.topAnchor).isActive = true
-        impactSimpleProgressView.bottomAnchor.constraint(equalTo: impactSimpleMainProgressView.bottomAnchor).isActive = true
-        
-    }
-    
-    private func setUpCostProgressView() {
-        
-        costMainProgressView.insertSubview(costProgressView, at: 1)
-        costProgressView.leftAnchor.constraint(equalTo: costMainProgressView.leftAnchor).isActive = true
-        costProgressView.topAnchor.constraint(equalTo: costMainProgressView.topAnchor).isActive = true
-        costProgressView.bottomAnchor.constraint(equalTo: costMainProgressView.bottomAnchor).isActive = true
-        
-    }
-    
-    private func setUpEffortProgressView() {
-        
-        effortMainProgressView.insertSubview(effortProgressView, at: 1)
-        effortProgressView.leftAnchor.constraint(equalTo: effortMainProgressView.leftAnchor).isActive = true
-        effortProgressView.topAnchor.constraint(equalTo: effortMainProgressView.topAnchor).isActive = true
-        effortProgressView.bottomAnchor.constraint(equalTo: effortMainProgressView.bottomAnchor).isActive = true
-        
-    }
-    
     private func setMultipleProgressViewConstaits() {
         
-        impactMultipleMainProgressView.insertSubview(impactTrafficProgressView, at: 1)
-        impactMultipleMainProgressView.insertSubview(impactOnlineProgressView, at: 1)
-        impactMultipleMainProgressView.insertSubview(impactCustomerProgressView, at: 1)
+        impactMultipleMainProgressView.clipsToBounds = true
         
-        impactTrafficProgressView.leftAnchor.constraint(equalTo: impactMultipleMainProgressView.leftAnchor).isActive = true
-        impactTrafficProgressView.topAnchor.constraint(equalTo: impactMultipleMainProgressView.topAnchor).isActive = true
-        impactTrafficProgressView.bottomAnchor.constraint(equalTo: impactMultipleMainProgressView.bottomAnchor).isActive = true
+        setProgress(animationBounds: impactMultipleMainProgressView.bounds, value: "30", childOff: impactMultipleMainProgressView, animationColor:  UIColor(red: 255/255, green: 34/255, blue: 105/255, alpha: 1), animationDuration: nil)
         
+        // insetend if 30 will be the value we get from parameter
         
-        impactOnlineProgressView.topAnchor.constraint(equalTo: impactMultipleMainProgressView.topAnchor).isActive = true
-        impactOnlineProgressView.bottomAnchor.constraint(equalTo: impactMultipleMainProgressView.bottomAnchor).isActive = true
+        let onlineFootprintBounds = CGRect(x: impactMultipleMainProgressView.bounds.origin.x + 30, y: impactMultipleMainProgressView.bounds.origin.y, width: impactMultipleMainProgressView.bounds.width - 30 , height: impactMultipleMainProgressView.bounds.height)
         
+        let when = DispatchTime.now() + 6
+        //DispatchQueue.main.asyncAfter(deadline: when) {
+        self.setProgress(animationBounds: onlineFootprintBounds, value: "60", childOff: self.impactMultipleMainProgressView, animationColor:  UIColor(red: 255/255, green: 157/255, blue: 103/255, alpha: 1), animationDuration: nil)
+        // }
         
-        impactCustomerProgressView.topAnchor.constraint(equalTo: impactMultipleMainProgressView.topAnchor).isActive = true
-        impactCustomerProgressView.bottomAnchor.constraint(equalTo: impactMultipleMainProgressView.bottomAnchor).isActive = true
+        let customersBounds = CGRect(x: onlineFootprintBounds.origin.x + 60, y: impactMultipleMainProgressView.bounds.origin.y, width: impactMultipleMainProgressView.bounds.width - 60, height: impactMultipleMainProgressView.bounds.height)
         
+        // DispatchQueue.main.asyncAfter(deadline: when) {
+        self.setProgress(animationBounds: customersBounds, value: "90", childOff: self.impactMultipleMainProgressView, animationColor:   UIColor(red: 78/255, green: 198/255, blue: 255/255, alpha: 1), animationDuration: nil)
         
-        //for now i set here the width/progress
-        
-        impactTrafficProgressView.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        impactTrafficProgressView.backgroundColor = UIColor(red: 255/255, green: 34/255, blue: 105/255, alpha: 1)
-        //setCornerRadiousOneSide(mainView: impactMultipleMainProgressView, childView: impactTrafficProgressView)
-        
-        impactOnlineProgressView.leftAnchor.constraint(equalTo: impactMultipleMainProgressView.leftAnchor,constant: 60).isActive = true
-        impactOnlineProgressView.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        impactOnlineProgressView.backgroundColor = UIColor(red: 255/255, green: 157/255, blue: 103/255, alpha: 1)
-        
-        impactCustomerProgressView.leftAnchor.constraint(equalTo: impactMultipleMainProgressView.leftAnchor,constant: 140).isActive = true
-        impactCustomerProgressView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        impactCustomerProgressView.backgroundColor = UIColor(red: 78/255, green: 198/255, blue: 255/255, alpha: 1)
+        // }
         
     }
     
-    func setCornerRadiousOneSide(mainView: UIView, childView: UIView) {
+    func setProgress(animationBounds: CGRect, value: String, childOff: UIView, animationColor: UIColor?, animationDuration: CGFloat?) {
         
-        if mainView.frame.width == childView.frame.width {
-            DispatchQueue.main.async {
-                childView.roundCorners(corners: [.topLeft, .bottomLeft], radius: 4)
-            }
-        } else {
-            
-            DispatchQueue.main.async {
-                childView.roundCorners(corners: [.topLeft, .bottomLeft], radius: 4)
-            }
+        let impactProgressView = M13ProgressViewBorderedBar(frame: animationBounds)
+        
+        guard let progress = NumberFormatter().number(from: value) else {return}
+        
+        let progressValue = CGFloat(progress) / 100
+        
+        impactProgressView.primaryColor = animationColor//UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1)
+        impactProgressView.animationDuration = animationDuration == nil ? 6 : animationDuration!
+        impactProgressView.borderWidth = 0
+        impactProgressView.cornerRadius = 0
+        
+        childOff.addSubview(impactProgressView)
+        
+        DispatchQueue.main.async {
+            impactProgressView.setProgress(progressValue, animated: true)
         }
         
     }
+    
+    //  func setCornerRadiousOneSide(mainView: UIView, childView: UIView) {
+    //
+    //    if mainView.frame.width == childView.frame.width {
+    //      DispatchQueue.main.async {
+    //        childView.roundCorners(corners: [.topLeft, .bottomLeft], radius: 4)
+    //      }
+    //    } else {
+    //      
+    //    DispatchQueue.main.async {
+    //      childView.roundCorners(corners: [.topLeft, .bottomLeft], radius: 4)
+    //    }
+    //  }
+    //    
+    //}
+    
+    //  override func draw(_ rect: CGRect) {
+    //    
+    //      let firstContext = UIGraphicsGetCurrentContext()
+    //      firstContext?.setLineWidth(2)
+    //      firstContext?.setStrokeColor(UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1).cgColor)
+    //    
+    //      let startingPoint = CGPoint(x: drawView.bounds.origin.x, y: drawView.bounds.origin.y)
+    //      
+    //      firstContext?.move(to: startingPoint)
+    //      firstContext?.addLine(to: CGPoint(x: drawView.bounds.origin.x + 20, y: drawView.bounds.origin.y + 30))
+    //      firstContext?.strokePath()
+    //  }
+    //  
     
 }
