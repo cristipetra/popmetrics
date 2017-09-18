@@ -30,7 +30,7 @@ class PopmetricsColor {
     static let trafficHeaderColor = UIColor(red: 255/255, green: 32/255, blue: 128/255, alpha: 1.0)
     static let statisticsGradientStartColor = UIColor(red: 255/255, green: 34/255, blue: 105/255, alpha: 1.0)
     static let statisticsGradientEndColor = UIColor(red: 255/255, green: 41/255, blue: 138/255, alpha: 1.0)
-    
+    static let calendarCompleteGreen = UIColor(red: 124/255, green: 202/255, blue: 176/255, alpha: 1.0)
     static let borderLight = PopmetricsColor.textLight
     static let borderMedium = PopmetricsColor.textMedium
     static let borderDark = PopmetricsColor.textDark

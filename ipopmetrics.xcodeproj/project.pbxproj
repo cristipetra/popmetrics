@@ -31,6 +31,8 @@
 		0854AF331F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0854AF321F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift */; };
 		0854AF351F3F2B18007B60F9 /* CalendarCardSimple.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0854AF341F3F2B18007B60F9 /* CalendarCardSimple.xib */; };
 		085530461F6CEE0A00D82A09 /* GoogleActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085530451F6CEE0A00D82A09 /* GoogleActivationView.swift */; };
+		0855C0C91F6FFBDB00ACBFA9 /* EmptyCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0855C0C81F6FFBDB00ACBFA9 /* EmptyCard.xib */; };
+		0855C0CB1F6FFBF000ACBFA9 /* EmptyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0855C0CA1F6FFBF000ACBFA9 /* EmptyCardView.swift */; };
 		0856F3581F272F020061DF7E /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0856F3571F272F020061DF7E /* Calendar.storyboard */; };
 		0857D5571F41B4E800D218DA /* CompleteCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0857D5561F41B4E800D218DA /* CompleteCardCell.swift */; };
 		085AA0D21F42E45A0014D4CE /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085AA0D11F42E45A0014D4CE /* TodoStore.swift */; };
@@ -237,6 +239,8 @@
 		0854AF321F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCardSimpleViewCell.swift; sourceTree = "<group>"; };
 		0854AF341F3F2B18007B60F9 /* CalendarCardSimple.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCardSimple.xib; sourceTree = "<group>"; };
 		085530451F6CEE0A00D82A09 /* GoogleActivationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleActivationView.swift; sourceTree = "<group>"; };
+		0855C0C81F6FFBDB00ACBFA9 /* EmptyCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyCard.xib; sourceTree = "<group>"; };
+		0855C0CA1F6FFBF000ACBFA9 /* EmptyCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCardView.swift; sourceTree = "<group>"; };
 		0856F3571F272F020061DF7E /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		0857D5561F41B4E800D218DA /* CompleteCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteCardCell.swift; sourceTree = "<group>"; };
 		085AA0D11F42E45A0014D4CE /* TodoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
@@ -491,6 +495,15 @@
 				0857D5561F41B4E800D218DA /* CompleteCardCell.swift */,
 			);
 			name = calendar;
+			sourceTree = "<group>";
+		};
+		0855C0C71F6FFBC300ACBFA9 /* empty */ = {
+			isa = PBXGroup;
+			children = (
+				0855C0C81F6FFBDB00ACBFA9 /* EmptyCard.xib */,
+				0855C0CA1F6FFBF000ACBFA9 /* EmptyCardView.swift */,
+			);
+			name = empty;
 			sourceTree = "<group>";
 		};
 		085CB7B31F4ADD1500038C03 /* notifications */ = {
@@ -862,6 +875,7 @@
 		11ACA9AD1E2CE0A80021E64A /* views */ = {
 			isa = PBXGroup;
 			children = (
+				0855C0C71F6FFBC300ACBFA9 /* empty */,
 				08A533321F6BD8E80080BE64 /* home */,
 				08B4BCDA1F619BB200660F5B /* google */,
 				08FAE8451F541FC90097DF3E /* statistics */,
@@ -1093,6 +1107,7 @@
 				0809AEB71F223F3B00A13178 /* WelcomeVideo.mov in Resources */,
 				08C7B18D1F1CF40C00E456C6 /* WelcomeScreen.xib in Resources */,
 				08A4A5411F45B563001071E3 /* AlfaSlabOne-Regular.ttf in Resources */,
+				0855C0C91F6FFBDB00ACBFA9 /* EmptyCard.xib in Resources */,
 				1178D6801E1E5AD9005B96C3 /* Main.storyboard in Resources */,
 				08B4BCDC1F619BCF00660F5B /* TaskGoogleCitationView.xib in Resources */,
 				110A62E71ECEE6E60052B478 /* SendingStatusCollectionViewCell.xib in Resources */,
@@ -1249,6 +1264,7 @@
 				1128B3FF1ED2E12300BDA58C /* InsightViewCell.swift in Sources */,
 				110A62F21ECEE6FB0052B478 /* TimeSeparatorModel.swift in Sources */,
 				08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */,
+				0855C0CB1F6FFBF000ACBFA9 /* EmptyCardView.swift in Sources */,
 				08B745911F1F638000EC3F8C /* LoginNavigationViewController.swift in Sources */,
 				110A62DA1ECEDE8B0052B478 /* BaseMessageCollectionViewCellAvatarStyle.swift in Sources */,
 				110A62EE1ECEE6F30052B478 /* DemoTextMessageViewModel.swift in Sources */,
