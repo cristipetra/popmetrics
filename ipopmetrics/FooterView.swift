@@ -12,6 +12,7 @@ import SwiftRichString
 
 class FooterView: UIView {
     
+    var loadMoreCount: Int = 0
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpFooter()
@@ -28,7 +29,35 @@ class FooterView: UIView {
         
         let button = RoundButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.widthAnchor.constraint(equalToConstant: 46).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 46).isActive = true
+        button.backgroundColor = UIColor.white
+        button.layer.cornerRadius = 23
+        button.tintColor = PopmetricsColor.textGrey
+        button.setImage(UIImage(named: "iconLoadMore"), for: .normal)
+        button.alpha = 0.0
         return button
+    }()
+    
+    lazy var loadMoreLbl : UILabel = {
+        
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Load More"
+        label.font = UIFont(name: FontBook.semibold, size: 10)
+        label.textAlignment = .center
+        label.textColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
+        label.alpha = 0
+        return label
+        
+    }()
+    
+    lazy var containerView : UIView = {
+        
+        let container = UIView()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        container.backgroundColor = UIColor.clear
+        return container
     }()
     
     lazy var informationBtn : RoundButton = {
@@ -92,20 +121,29 @@ class FooterView: UIView {
     
     
     // END VIEW
-    var setCorners = true
+    var loadMoreStackView: UIStackView!
     internal var horizontalStackView: UIStackView!
     var approveStackView: UIStackView!
     
     func setUpFooter() {
-        
+        self.addSubview(containerView)
+        setContainerView()
         setUpApproveStackView()
         setShadow(button: actionButton)
         setShadow(button: informationBtn)
         setShadow(button: xButton)
         setShadow(button: loadMoreBtn)
         setUpDoubleButton()
-        
+        setUpLoadMoreStackView()
         setUpHorizontalStackView()
+    }
+    
+    func setContainerView() {
+        
+        containerView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
+        containerView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        containerView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
     
     
@@ -118,41 +156,53 @@ class FooterView: UIView {
         approveStackView.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func setUpHorizontalStackView() {
+    func setUpLoadMoreStackView() {
         
-        let placeholderView = UIView(frame: CGRect(x: 0, y: 0, width: 46, height: 46))
-        horizontalStackView = UIStackView(arrangedSubviews: [xButton, informationBtn, placeholderView, approveStackView])
+        loadMoreStackView = UIStackView(arrangedSubviews: [loadMoreBtn, loadMoreLbl])
+        loadMoreStackView.axis = .vertical
+        loadMoreStackView.distribution = .equalSpacing
+        loadMoreStackView.alignment = .center
+        loadMoreStackView.spacing = 2
+        loadMoreStackView.translatesAutoresizingMaskIntoConstraints = false
+        loadMoreStackView.widthAnchor.constraint(equalToConstant: 54).isActive = true
+    }
+    
+    func setUpHorizontalStackView() {
+        horizontalStackView = UIStackView(arrangedSubviews: [xButton, informationBtn, loadMoreStackView])
         
         horizontalStackView.axis = .horizontal
-        //horizontalStackView.distribution = .equalSpacing
+        //horizontalStackView.distribution = .equalCentering
         horizontalStackView.alignment = .top
         horizontalStackView.spacing = 16
-        
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(horizontalStackView)
         
-        
+        containerView.addSubview(horizontalStackView)
         //horizontalStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 8).isActive = true
-        horizontalStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 13).isActive = true
-        horizontalStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        horizontalStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
+        horizontalStackView.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 13).isActive = true
+        horizontalStackView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 10).isActive = true
+        
+        containerView.addSubview(approveStackView)
+        approveStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        approveStackView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
     }
     
     func setIsTrafficUnconnected() {
-        let placeholderView = UIView(frame: CGRect(x: 0, y: 0, width: 46, height: 46))
-        horizontalStackView = UIStackView(arrangedSubviews: [xButton, placeholderView, informationBtn, approveStackView])
+        horizontalStackView = UIStackView(arrangedSubviews: [xButton, loadMoreStackView, informationBtn])
         horizontalStackView.axis = .horizontal
+        loadMoreBtn.alpha = 0.0
         xButton.alpha = 0.0
-        
         horizontalStackView.alignment = .top
         horizontalStackView.spacing = 16
         
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(horizontalStackView)
+        containerView.addSubview(horizontalStackView)
+        //horizontalStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 8).isActive = true
+        horizontalStackView.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 13).isActive = true
+        horizontalStackView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 10).isActive = true
         
-        horizontalStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 13).isActive = true
-        horizontalStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        horizontalStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
+        containerView.addSubview(approveStackView)
+        approveStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        approveStackView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
     }
     
     func deleteHandler() {
@@ -181,15 +231,14 @@ class FooterView: UIView {
     
     override public func layoutSubviews() {
         super.layoutSubviews()
-        if setCorners == true {
-            setupCorners()
-        }
+        setupCorners()
         gradientLayer.frame = self.bounds
     }
     
     internal func setupCorners() {
         DispatchQueue.main.async {
             self.roundCorners(corners: [.bottomLeft, .bottomRight] , radius: 12)
+            self.containerView.roundCorners(corners: [.bottomLeft, .bottomRight] , radius: 12)
         }
     }
     
@@ -213,11 +262,21 @@ class FooterView: UIView {
         button.layer.shadowOffset = CGSize(width: 0, height: 2)
     }
     
+    func hideButton(button: UIButton) {
+        button.alpha = 0
+        button.isUserInteractionEnabled = false
+    }
+    
+    func disableButton(button: UIButton) {
+        button.alpha = 0.3
+        button.isUserInteractionEnabled = false
+    }
+    
 }
 
 extension FooterView {
     func setupGradient() {
-        self.insertSubview(gradientLayer, belowSubview: horizontalStackView)
+        self.insertSubview(gradientLayer, belowSubview: containerView)
         gradientLayer.frame = self.bounds
         gradientLayer.leftAnchor.constraint(equalTo: self.leftAnchor)
         gradientLayer.rightAnchor.constraint(equalTo: self.rightAnchor)

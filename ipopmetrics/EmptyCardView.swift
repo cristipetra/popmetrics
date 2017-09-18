@@ -35,7 +35,7 @@ class EmptyCardView: UITableViewCell {
     }
     
     func setupView(type: FeedType, toDoStatus: ToDoStatus = .unapproved, calendarStatus: StatusArticle = .scheduled) {
-        /*
+
         switch type {
         case .statistics:
             self.toolbarView.setupGradient()
@@ -112,7 +112,7 @@ class EmptyCardView: UITableViewCell {
             break
         }
         self.messageLabel.adjustLabelSpacing(spacing: 0, lineHeight: 24, letterSpacing: 0.3)
-        */
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

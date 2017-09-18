@@ -247,7 +247,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         let card = store.getCalendarCards()[sectionIdx]
         if sectionCards.isEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCard", for: indexPath) as! EmptyCardView
-            //cell.setupView(type: .calendar, calendarStatus: StatusArticle(rawValue: (card.section))!)
+            cell.setupView(type: .calendar, calendarStatus: StatusArticle(rawValue: (card.section))!)
             cell.backgroundColor = UIColor.feedBackgroundColor()
             cell.selectionStyle = .none
             return cell

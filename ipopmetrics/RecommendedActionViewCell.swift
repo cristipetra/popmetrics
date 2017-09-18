@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import M13ProgressSuite
 
 class RecommendedActionViewCell: UITableViewCell {
     
@@ -66,11 +67,12 @@ class RecommendedActionViewCell: UITableViewCell {
         setUpFooter()
         setUpToolbar()
         setUpShadowLayer()
-        setUpProgressView()
         
-        impactProgressValue(value: 30)
-        costProgressValue(value: 40)
-        effortProgressValue(value: 60)
+        DispatchQueue.main.async {
+            self.impactProgressValue(value: 100)
+            self.costProgressValue(value: 40)
+            self.effortProgressValue(value: 60)
+        }
         
         self.connectionView.isHidden = true
     }
@@ -94,33 +96,31 @@ class RecommendedActionViewCell: UITableViewCell {
         self.containerView.layer.cornerRadius = 12
     }
     
-    private func setUpProgressView() {
-        impactMainProgressView.addSubview(impactProgress)
-        impactProgress.leftAnchor.constraint(equalTo: impactMainProgressView.leftAnchor).isActive = true
-        impactProgress.topAnchor.constraint(equalTo: impactMainProgressView.topAnchor).isActive = true
-        impactProgress.bottomAnchor.constraint(equalTo: impactMainProgressView.bottomAnchor).isActive = true
-        
-        costMainProgressView.addSubview(costProgress)
-        costProgress.leftAnchor.constraint(equalTo: costMainProgressView.leftAnchor).isActive = true
-        costProgress.topAnchor.constraint(equalTo: costMainProgressView.topAnchor).isActive = true
-        costProgress.bottomAnchor.constraint(equalTo: costMainProgressView.bottomAnchor).isActive = true
-        
-        effortMainProgressView.addSubview(effortProgress)
-        effortProgress.leftAnchor.constraint(equalTo: effortMainProgressView.leftAnchor).isActive = true
-        effortProgress.topAnchor.constraint(equalTo: effortMainProgressView.topAnchor).isActive = true
-        effortProgress.bottomAnchor.constraint(equalTo: effortMainProgressView.bottomAnchor).isActive = true
+    func setProgress(animationBounds: CGRect, value: CGFloat, childOff: UIView, animationColor: UIColor?, animationDuration: CGFloat?) {
+        let view = M13ProgressViewBorderedBar(frame: animationBounds)
+        let progressValue = value / 100
+        view.primaryColor = animationColor
+        view.animationDuration = animationDuration == nil ? 6 : animationDuration!
+        view.borderWidth = 0
+        childOff.addSubview(view)
+        view.setProgress(progressValue, animated: true)
+        if value == 1 {
+            view.roundCorners(corners: [.allCorners], radius: 5)
+        } else {
+            view.roundCorners(corners: [.bottomLeft, .topLeft], radius: 5)
+        }
     }
     
     internal func impactProgressValue(value : CGFloat) {
-        impactProgress.widthAnchor.constraint(equalToConstant: value).isActive = true
+        setProgress(animationBounds: impactMainProgressView.bounds, value: value, childOff: impactMainProgressView, animationColor: PopmetricsColor.yellowBGColor, animationDuration: nil)
     }
     
     internal func costProgressValue(value : CGFloat) {
-        costProgress.widthAnchor.constraint(equalToConstant: value).isActive = true
+        setProgress(animationBounds: costMainProgressView.bounds, value: value, childOff: costMainProgressView, animationColor: PopmetricsColor.yellowBGColor, animationDuration: nil)
     }
     
     internal func effortProgressValue(value : CGFloat) {
-        effortProgress.widthAnchor.constraint(equalToConstant: value).isActive = true
+        setProgress(animationBounds: effortMainProgressView.bounds, value: value, childOff: effortMainProgressView, animationColor: PopmetricsColor.yellowBGColor, animationDuration: nil)
     }
     
     private func setUpToolbar() {

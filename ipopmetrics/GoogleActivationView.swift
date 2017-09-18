@@ -64,7 +64,7 @@ class GoogleActivationView: UIView {
         addRecommendedActionView()
         setUpFooterView()
         addBackgroundBeforeFooter()
-        footerView.setCorners = false
+        //footerView.setCorners = false
         
         addTaskView()
         addPopmetricsInsightView()
