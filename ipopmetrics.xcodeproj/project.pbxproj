@@ -30,6 +30,7 @@
 		085282761F28F2500065A968 /* sampleFeedCalendar.json in Resources */ = {isa = PBXBuildFile; fileRef = 085282751F28F2500065A968 /* sampleFeedCalendar.json */; };
 		0854AF331F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0854AF321F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift */; };
 		0854AF351F3F2B18007B60F9 /* CalendarCardSimple.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0854AF341F3F2B18007B60F9 /* CalendarCardSimple.xib */; };
+		085530461F6CEE0A00D82A09 /* GoogleActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085530451F6CEE0A00D82A09 /* GoogleActivationView.swift */; };
 		0856F3581F272F020061DF7E /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0856F3571F272F020061DF7E /* Calendar.storyboard */; };
 		0857D5571F41B4E800D218DA /* CompleteCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0857D5561F41B4E800D218DA /* CompleteCardCell.swift */; };
 		085AA0D21F42E45A0014D4CE /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085AA0D11F42E45A0014D4CE /* TodoStore.swift */; };
@@ -235,6 +236,7 @@
 		085282751F28F2500065A968 /* sampleFeedCalendar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFeedCalendar.json; sourceTree = "<group>"; };
 		0854AF321F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCardSimpleViewCell.swift; sourceTree = "<group>"; };
 		0854AF341F3F2B18007B60F9 /* CalendarCardSimple.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCardSimple.xib; sourceTree = "<group>"; };
+		085530451F6CEE0A00D82A09 /* GoogleActivationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleActivationView.swift; sourceTree = "<group>"; };
 		0856F3571F272F020061DF7E /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		0857D5561F41B4E800D218DA /* CompleteCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteCardCell.swift; sourceTree = "<group>"; };
 		085AA0D11F42E45A0014D4CE /* TodoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
@@ -578,6 +580,7 @@
 				08A533371F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib */,
 				08A533391F6BF85B0080BE64 /* RecommendedActionGoogleCitationView.swift */,
 				08A5333F1F6C2ED50080BE64 /* IndividualTaskView.swift */,
+				085530451F6CEE0A00D82A09 /* GoogleActivationView.swift */,
 			);
 			name = google;
 			sourceTree = "<group>";
@@ -1329,6 +1332,7 @@
 				1100F6F91F5FEBCE000AF1D4 /* TodoActionHandler.swift in Sources */,
 				08B485E01F20EA23005918A1 /* Config.swift in Sources */,
 				113976B21E97CE5000B535DF /* MainTabBarController.swift in Sources */,
+				085530461F6CEE0A00D82A09 /* GoogleActivationView.swift in Sources */,
 				08AA6C631F56C9560022DE91 /* TrafficReportViewController.swift in Sources */,
 				08FAE8441F541D790097DF3E /* StatisticsViewController.swift in Sources */,
 				08B485E61F210A61005918A1 /* RoundButton.swift in Sources */,
