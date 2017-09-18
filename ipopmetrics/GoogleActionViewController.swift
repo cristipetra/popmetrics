@@ -10,7 +10,7 @@ import UIKit
 
 class GoogleActionViewController: UIViewController {
     
-    let containerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.size.height + 620))
+    let containerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.size.height + 780))
     
     let scrollView: UIScrollView = UIScrollView()
     

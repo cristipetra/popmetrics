@@ -32,6 +32,19 @@ class GoogleActivationView: UIView {
         return view
     }()
     
+    lazy var footerView: FooterView = {
+        let view = FooterView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    // the view before the footer
+    lazy var backgroundImageView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     let statsView = IndividualTaskView()
     let aimeeView = IndividualTaskView()
     let instructionsView = IndividualTaskView()
@@ -49,12 +62,18 @@ class GoogleActivationView: UIView {
     
     func setup() {
         addRecommendedActionView()
+        setUpFooterView()
+        addBackgroundBeforeFooter()
+        footerView.setCorners = false
+        
         addTaskView()
         addPopmetricsInsightView()
         addStatsView()
         addRecommendedReadingView()
         addAimeeView()
         addInstructionView()
+        
+        setFooterButton(isTaskSelected: false)
     }
     
     
@@ -66,6 +85,31 @@ class GoogleActivationView: UIView {
         recommendedActionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         recommendedActionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         recommendedActionView.heightAnchor.constraint(equalToConstant: 355).isActive = true
+    }
+    
+    func setUpFooterView() {
+        
+        self.addSubview(footerView)
+        footerView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        footerView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        //footerView.topAnchor.constraint(equalTo: testView.bottomAnchor,constant: 20).isActive = true
+        footerView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        footerView.heightAnchor.constraint(equalToConstant: 93).isActive = true
+        footerView.informationBtn.isHidden = true
+        footerView.xButton.isHidden = true
+    }
+    
+    func addBackgroundBeforeFooter() {
+        self.addSubview(backgroundImageView)
+        backgroundImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        backgroundImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        backgroundImageView.bottomAnchor.constraint(equalTo: footerView.topAnchor).isActive = true
+        backgroundImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        backgroundImageView.addSubview(imageView)
+        imageView.image = UIImage(named: "end_of_feed")
+        imageView.contentMode = .scaleToFill
     }
     
     func addTaskView() {
@@ -205,6 +249,22 @@ class GoogleActivationView: UIView {
         //this has to be set for the last view cuz the bottom view (footer view) needs to set its top anchor to be able to scroll
         
         //footerView.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor).isActive = true
+        
+    }
+    
+    func setFooterButton(isTaskSelected: Bool) {
+        if isTaskSelected {
+            footerView.actionButton.leftHandImage = UIImage(named: "icon2CtaTaskcard")
+            footerView.actionButton.rightHandImage = UIImage(named: "")
+            footerView.actionButton.backgroundColor = UIColor(red: 238/255, green: 127/255, blue: 111/255, alpha: 1)
+            footerView.approveLbl.text = "Remove From Task"
+            
+        } else {
+            footerView.actionButton.leftHandImage = UIImage(named: "icon2CtaTaskcard")
+            footerView.actionButton.rightHandImage = UIImage(named: "")
+            footerView.actionButton.backgroundColor = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
+            footerView.approveLbl.text = "Add to Task"
+        }
         
     }
 

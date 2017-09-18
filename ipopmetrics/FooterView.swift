@@ -92,7 +92,7 @@ class FooterView: UIView {
     
     
     // END VIEW
-    
+    var setCorners = true
     internal var horizontalStackView: UIStackView!
     var approveStackView: UIStackView!
     
@@ -181,7 +181,9 @@ class FooterView: UIView {
     
     override public func layoutSubviews() {
         super.layoutSubviews()
-        setupCorners()
+        if setCorners == true {
+            setupCorners()
+        }
         gradientLayer.frame = self.bounds
     }
     
