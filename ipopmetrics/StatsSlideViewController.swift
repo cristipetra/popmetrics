@@ -80,4 +80,62 @@ class StatsSlideViewController: UIViewController {
         
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        setUpProgressGradient()
+    }
+    
+    private func setUpProgressGradient() {
+        
+        let firstProgressViewGradient : [UIColor] = [UIColor(red: 196/255, green: 13/255, blue: 72/255, alpha: 1), UIColor(red: 192/255, green: 21/255, blue: 46/255, alpha: 1) ]
+        let secondProgressViewGradient : [UIColor] = [UIColor(red: 255/255, green: 34/255, blue: 105/255, alpha: 1), UIColor(red: 255/255, green: 27/255, blue: 192/255, alpha: 1) ]
+        
+        if indexOfPage == 0 {
+            setGradiendForProgressView(view: self.statusView.popmetricVisitsView.firstProgressView, leftColor: firstProgressViewGradient[0], rightColor: firstProgressViewGradient[1])
+            setGradiendForProgressView(view: self.statusView.popmetricVisitsView.secondProgressView, leftColor: secondProgressViewGradient[0], rightColor: secondProgressViewGradient[1])
+        }
+        
+        setGradiendForProgressView(view: self.statusView.newVisitsView.firstProgressView, leftColor: firstProgressViewGradient[0], rightColor: firstProgressViewGradient[1])
+        setGradiendForProgressView(view: self.statusView.newVisitsView.secondProgressView, leftColor: secondProgressViewGradient[0], rightColor: secondProgressViewGradient[1])
+        
+        setGradiendForProgressView(view: self.statusView.uniqueVisitorsView.firstProgressView, leftColor: firstProgressViewGradient[0], rightColor: firstProgressViewGradient[1])
+        setGradiendForProgressView(view: self.statusView.uniqueVisitorsView.secondProgressView, leftColor: secondProgressViewGradient[0], rightColor: secondProgressViewGradient[1])
+    }
+    
+    func setGradiendForProgressView(view: UIView,leftColor : UIColor , rightColor: UIColor) {
+        
+        let gradientLayer = CAGradientLayer()
+        
+        gradientLayer.frame = view.bounds
+        gradientLayer.colors = [leftColor.cgColor, rightColor.cgColor]
+        gradientLayer.locations = [0.0, 1.0]
+        
+        DispatchQueue.main.async {
+            view.layer.addSublayer(gradientLayer)
+        }
+        
+        // MARK: starting the animation
+        
+        let newBounds = view.bounds.width
+        animateLayer(view: view,newBounds: newBounds)
+        
+    }
+    
+    func animateLayer(view: UIView, newBounds: CGFloat) {
+        
+        view.layer.position = CGPoint(x: 0.0, y: 0.0)
+        view.layer.anchorPoint = CGPoint(x: 0.0, y: 0.0)
+        
+        let animation = CABasicAnimation(keyPath: "bounds.size.width")
+        
+        animation.fromValue = 0
+        animation.toValue = newBounds
+        animation.fillMode = kCAFillModeForwards
+        animation.duration = 1
+        
+        view.layer.add(animation, forKey: "anim")
+    }
+
+    
 }
