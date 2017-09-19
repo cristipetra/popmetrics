@@ -85,9 +85,12 @@ class CalendarCardMaximizedViewCell: UITableViewCell {
     func configure(_ item: CalendarSocialPost) {
         self.calendarItem = item;
         self.titleLbl.text = item.title
-        //var formatedDate = self.formatDate((item.statusDate)!)
-        var formatedDate = self.formatDate(Date())
-        self.articleDate.text = calendarItem.socialTextTime + " " + formatedDate
+        
+        if let scheduledDate = item.scheduledDate {
+            var formatedDate = self.formatDate(scheduledDate)
+            self.articleDate.text = calendarItem.socialTextTime + " " + formatedDate
+        }
+        
         self.messageLbl.text = item.text
         
         self.socialNetworkLbl.text = item.socialPost + ": " + item.type
