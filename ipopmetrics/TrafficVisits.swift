@@ -27,7 +27,6 @@ class TrafficVisits: UIView {
     }()
     
     lazy var firstValueLabel : UILabel = {
-        
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -35,7 +34,6 @@ class TrafficVisits: UIView {
     }()
     
     lazy var secondValueLabel : UILabel = {
-        
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -43,7 +41,6 @@ class TrafficVisits: UIView {
     }()
     
     lazy var mainProgressView : UIView = {
-        
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -51,7 +48,6 @@ class TrafficVisits: UIView {
     }()
     
     lazy var firstProgressView : UIView = {
-        
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -59,7 +55,6 @@ class TrafficVisits: UIView {
     }()
     
     lazy var secondProgressView : UIView = {
-        
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -127,19 +122,28 @@ class TrafficVisits: UIView {
     private func setProgress(firstValue: CGFloat, secondValue: CGFloat) {
         
         self.firstProgressView.widthAnchor.constraint(equalToConstant: firstValue).isActive = true
-        self.secondProgressView.widthAnchor.constraint(equalToConstant: secondValue + firstValue).isActive = true
+
+        self.secondProgressView.widthAnchor.constraint(equalToConstant: (secondValue + firstValue)).isActive = true
+        
         self.firstProgressView.layer.masksToBounds = true
         self.secondProgressView.layer.masksToBounds = true
         
-        firstProgressView.setNeedsLayout()
-        secondProgressView.setNeedsLayout()
+        firstProgressView.layoutSubviews()
+        secondProgressView.layoutSubviews()
         
-        firstProgressView.layoutIfNeeded()
-        secondProgressView.layoutIfNeeded()
+        DispatchQueue.main.async {
+            self.firstProgressView.setNeedsLayout()
+            self.secondProgressView.setNeedsLayout()
+            
+        }
+        
+        mainProgressView.layoutIfNeeded()
         
     }
     
     func setProgressValues(doubleValue: Bool, firstValue: Int,doubleFirst: Int? ,secondValue: Int, doubleSecond: Int?) {
+        
+        setProgress(firstValue: CGFloat(firstValue), secondValue: CGFloat(secondValue))
         
         if doubleValue == false {
             firstValueLabel.text = "\(firstValue)"
@@ -159,6 +163,9 @@ class TrafficVisits: UIView {
         }
         
         setProgress(firstValue: CGFloat(firstValue), secondValue: CGFloat(secondValue))
+        
+        firstProgressView.layoutSubviews()
+        secondProgressView.layoutSubviews()
         
     }
     
