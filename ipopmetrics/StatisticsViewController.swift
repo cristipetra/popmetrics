@@ -36,7 +36,7 @@ class StatisticsViewController: UIViewController {
         tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
-        //fetchItemsLocally()
+        fetchItemsLocally()
         
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
@@ -131,11 +131,11 @@ class StatisticsViewController: UIViewController {
 extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        //empty card
         let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficEmptyCard", for: indexPath) as! TrafficEmptyView
         cellHeight = 216
         cell.selectionStyle = .none
         cell.backgroundColor = UIColor.feedBackgroundColor()
-        //cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_:)), for: .touchUpInside)
         return cell
         
         let sectionIdx = (indexPath as NSIndexPath).section

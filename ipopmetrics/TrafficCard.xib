@@ -180,7 +180,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="isy-zy-39L" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="311" width="355" height="93"/>
+                                        <rect key="frame" x="0.0" y="301" width="355" height="93"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="93" id="6Wx-jh-HUE"/>
@@ -198,7 +198,7 @@
                                     <constraint firstItem="l8U-Yl-puP" firstAttribute="leading" secondItem="p4D-1H-Vcf" secondAttribute="leading" id="HBi-3S-R1i"/>
                                     <constraint firstItem="3LY-rp-PF5" firstAttribute="top" secondItem="p4D-1H-Vcf" secondAttribute="top" id="Jit-HV-hQM"/>
                                     <constraint firstItem="fiY-gw-CCy" firstAttribute="top" secondItem="8pL-Se-hC7" secondAttribute="bottom" id="KNk-Zj-lEe"/>
-                                    <constraint firstItem="isy-zy-39L" firstAttribute="top" secondItem="fiY-gw-CCy" secondAttribute="bottom" id="Mh4-Z7-HTH"/>
+                                    <constraint firstItem="isy-zy-39L" firstAttribute="top" secondItem="fiY-gw-CCy" secondAttribute="bottom" constant="-10" id="Mh4-Z7-HTH"/>
                                     <constraint firstItem="l8U-Yl-puP" firstAttribute="top" secondItem="3LY-rp-PF5" secondAttribute="bottom" id="gAr-e2-Xmn"/>
                                     <constraint firstAttribute="trailing" secondItem="3LY-rp-PF5" secondAttribute="trailing" id="lzZ-V1-sSV"/>
                                     <constraint firstItem="isy-zy-39L" firstAttribute="leading" secondItem="p4D-1H-Vcf" secondAttribute="leading" id="sFk-W0-jbw"/>
