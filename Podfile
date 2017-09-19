@@ -45,6 +45,7 @@ target 'ipopmetrics' do
   pod “MJCalendar”, :git=>’https://github.com/cristipetra/MJCalendar’
   pod 'ElasticTransition', :git=>’https://github.com/ionutboanta/ElasticTransition’
   pod 'ScrollableGraphView'
-  pod 'M13ProgressSuite' 
+  pod 'M13ProgressSuite'
+  pod 'lottie-ios' 
   
 end

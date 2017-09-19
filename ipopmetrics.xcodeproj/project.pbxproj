@@ -39,6 +39,9 @@
 		085AA0D41F42ECAA0014D4CE /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085AA0D31F42ECAA0014D4CE /* Todo.swift */; };
 		085CB7B21F4ADCA200038C03 /* Notifications.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 085CB7B11F4ADCA200038C03 /* Notifications.storyboard */; };
 		085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085CB7B51F4ADD9C00038C03 /* NotificationsViewController.swift */; };
+		085F90F21F712660008A339A /* AnimationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F90F11F712660008A339A /* AnimationsViewController.swift */; };
+		085F90F41F71269E008A339A /* pop_swipey_illustration_0918.json in Resources */ = {isa = PBXBuildFile; fileRef = 085F90F31F71269E008A339A /* pop_swipey_illustration_0918.json */; };
+		085F90F71F71270E008A339A /* AnimationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085F90F61F71270E008A339A /* AnimationsViewController.xib */; };
 		0888C5BE1F4EECEC00E3DB04 /* RoundedCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */; };
 		088BBEA81F58212A00AD5414 /* TrafficEmptyCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */; };
 		088BBEAA1F58214300AD5414 /* TrafficEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */; };
@@ -247,6 +250,9 @@
 		085AA0D31F42ECAA0014D4CE /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		085CB7B11F4ADCA200038C03 /* Notifications.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notifications.storyboard; sourceTree = "<group>"; };
 		085CB7B51F4ADD9C00038C03 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		085F90F11F712660008A339A /* AnimationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationsViewController.swift; sourceTree = "<group>"; };
+		085F90F31F71269E008A339A /* pop_swipey_illustration_0918.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pop_swipey_illustration_0918.json; sourceTree = "<group>"; };
+		085F90F61F71270E008A339A /* AnimationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimationsViewController.xib; sourceTree = "<group>"; };
 		0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersButton.swift; sourceTree = "<group>"; };
 		088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrafficEmptyCard.xib; sourceTree = "<group>"; };
@@ -522,6 +528,23 @@
 			name = notifications;
 			sourceTree = "<group>";
 		};
+		085F90F01F712644008A339A /* animations */ = {
+			isa = PBXGroup;
+			children = (
+				085F90F31F71269E008A339A /* pop_swipey_illustration_0918.json */,
+				085F90F11F712660008A339A /* AnimationsViewController.swift */,
+			);
+			name = animations;
+			sourceTree = "<group>";
+		};
+		085F90F51F7126EC008A339A /* animations */ = {
+			isa = PBXGroup;
+			children = (
+				085F90F61F71270E008A339A /* AnimationsViewController.xib */,
+			);
+			name = animations;
+			sourceTree = "<group>";
+		};
 		0888C5BC1F4EECBF00E3DB04 /* buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -618,6 +641,7 @@
 		08C7B18E1F1CF41200E456C6 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				085F90F01F712644008A339A /* animations */,
 				08B4BCDF1F619D2400660F5B /* google */,
 				08FAE8421F541D5E0097DF3E /* statistics */,
 				080DCA7F1F4D6ED5000C73DC /* menu */,
@@ -875,6 +899,7 @@
 		11ACA9AD1E2CE0A80021E64A /* views */ = {
 			isa = PBXGroup;
 			children = (
+				085F90F51F7126EC008A339A /* animations */,
 				0855C0C71F6FFBC300ACBFA9 /* empty */,
 				08A533321F6BD8E80080BE64 /* home */,
 				08B4BCDA1F619BB200660F5B /* google */,
@@ -1072,6 +1097,7 @@
 				08B2803B1F5583CA00E36D19 /* sampleFeedStatistics.json in Resources */,
 				08B745931F1F6C0100EC3F8C /* OpenSans-Light.ttf in Resources */,
 				08AA6C6F1F56F3BA0022DE91 /* ChartStatistics.storyboard in Resources */,
+				085F90F41F71269E008A339A /* pop_swipey_illustration_0918.json in Resources */,
 				08953E6B1F4C269E003ABEFC /* ToDoCell.xib in Resources */,
 				08B745941F1F6C0100EC3F8C /* OpenSans-Bold.ttf in Resources */,
 				08FAE8411F541D060097DF3E /* Statistics.storyboard in Resources */,
@@ -1120,6 +1146,7 @@
 				08AF04981F46FB9B0040012B /* ToDoCardCell.xib in Resources */,
 				08FAE8471F541FF40097DF3E /* TrafficCard.xib in Resources */,
 				1119F6181ED56F34009997FF /* Boarding.storyboard in Resources */,
+				085F90F71F71270E008A339A /* AnimationsViewController.xib in Resources */,
 				D9D9378A1ECDEEE200CC3EC2 /* StatsSummaryCard.xib in Resources */,
 				D9EC7E351ECEE37A00A54B53 /* BestCourseCard.xib in Resources */,
 				08F368891F18D7C500819CDE /* ApprovalCard.xib in Resources */,
@@ -1257,6 +1284,7 @@
 				1128B3FD1ED2E01F00BDA58C /* ActionViewCell.swift in Sources */,
 				085282741F28D9DE0065A968 /* CalendarFooterViewCell.swift in Sources */,
 				08F3688B1F18DC4900819CDE /* ApprovalCardCell.swift in Sources */,
+				085F90F21F712660008A339A /* AnimationsViewController.swift in Sources */,
 				11A4823A1F5D58D9008D473C /* ApiModels.swift in Sources */,
 				08D1BC371F1DF4F900D377B2 /* ViewNames.swift in Sources */,
 				110A62D71ECEDE8B0052B478 /* FakeMessageSender.swift in Sources */,
