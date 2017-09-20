@@ -45,14 +45,14 @@ class AnimationsViewController: UIViewController, UIScrollViewDelegate {
             animationView.animationProgress = progress
             if progress == 1 {
                 let welcomeVC = WelcomeScreen()
-                self.present(welcomeVC, animated: true, completion: nil)
+                self.presentFromDirection(viewController: welcomeVC, direction: .right) 
             }
         }
     }
     
     @IBAction func skipAnimation(_ sender: UIButton) {
         let welcomeVC = WelcomeScreen()
-        self.present(welcomeVC, animated: true, completion: nil)
+        self.presentFromDirection(viewController: welcomeVC, direction: .right)
     }
     
 }

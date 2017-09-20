@@ -115,7 +115,8 @@ class LoginViewController: UIViewController {
                 
                 let codeVC = CodeViewController();
                 codeVC.phoneNo = phoneNumber;
-                self.present(codeVC, animated: true, completion: nil)
+                //self.present(codeVC, animated: true, completion: nil)
+                self.presentFromDirection(viewController: codeVC, direction: .right)
             }
         }
     }
@@ -123,7 +124,8 @@ class LoginViewController: UIViewController {
     internal func showViewControllerWithStoryboardID(_ sbID: String) {
         let vc = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: sbID)
         DispatchQueue.main.async(execute: {
-            self.present(vc, animated: true, completion: nil)
+            self.presentFromDirection(viewController: vc, direction: .right)
+            //self.present(vc, animated: true, completion: nil)
         })
     }
     
