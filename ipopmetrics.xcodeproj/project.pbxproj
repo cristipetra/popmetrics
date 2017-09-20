@@ -33,6 +33,7 @@
 		085530461F6CEE0A00D82A09 /* GoogleActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085530451F6CEE0A00D82A09 /* GoogleActivationView.swift */; };
 		085599A31F72750000E5BEA1 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085599A21F72750000E5BEA1 /* SplashScreen.swift */; };
 		085599A61F72751900E5BEA1 /* SplashScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085599A51F72751900E5BEA1 /* SplashScreen.xib */; };
+		085599AA1F72842100E5BEA1 /* animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 085599A91F72842100E5BEA1 /* animation.json */; };
 		0855C0C91F6FFBDB00ACBFA9 /* EmptyCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0855C0C81F6FFBDB00ACBFA9 /* EmptyCard.xib */; };
 		0855C0CB1F6FFBF000ACBFA9 /* EmptyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0855C0CA1F6FFBF000ACBFA9 /* EmptyCardView.swift */; };
 		0856F3581F272F020061DF7E /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0856F3571F272F020061DF7E /* Calendar.storyboard */; };
@@ -42,7 +43,6 @@
 		085CB7B21F4ADCA200038C03 /* Notifications.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 085CB7B11F4ADCA200038C03 /* Notifications.storyboard */; };
 		085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085CB7B51F4ADD9C00038C03 /* NotificationsViewController.swift */; };
 		085F90F21F712660008A339A /* AnimationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F90F11F712660008A339A /* AnimationsViewController.swift */; };
-		085F90F41F71269E008A339A /* pop_swipey_illustration_0918.json in Resources */ = {isa = PBXBuildFile; fileRef = 085F90F31F71269E008A339A /* pop_swipey_illustration_0918.json */; };
 		085F90F71F71270E008A339A /* AnimationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085F90F61F71270E008A339A /* AnimationsViewController.xib */; };
 		085F90FA1F7169FE008A339A /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085F90F91F7169FE008A339A /* OnboardingView.xib */; };
 		085F90FC1F716A57008A339A /* VerifySocialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085F90FB1F716A57008A339A /* VerifySocialViewController.xib */; };
@@ -252,6 +252,7 @@
 		085530451F6CEE0A00D82A09 /* GoogleActivationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleActivationView.swift; sourceTree = "<group>"; };
 		085599A21F72750000E5BEA1 /* SplashScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		085599A51F72751900E5BEA1 /* SplashScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashScreen.xib; sourceTree = "<group>"; };
+		085599A91F72842100E5BEA1 /* animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation.json; sourceTree = "<group>"; };
 		0855C0C81F6FFBDB00ACBFA9 /* EmptyCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyCard.xib; sourceTree = "<group>"; };
 		0855C0CA1F6FFBF000ACBFA9 /* EmptyCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCardView.swift; sourceTree = "<group>"; };
 		0856F3571F272F020061DF7E /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
@@ -261,7 +262,6 @@
 		085CB7B11F4ADCA200038C03 /* Notifications.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notifications.storyboard; sourceTree = "<group>"; };
 		085CB7B51F4ADD9C00038C03 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		085F90F11F712660008A339A /* AnimationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationsViewController.swift; sourceTree = "<group>"; };
-		085F90F31F71269E008A339A /* pop_swipey_illustration_0918.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pop_swipey_illustration_0918.json; sourceTree = "<group>"; };
 		085F90F61F71270E008A339A /* AnimationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimationsViewController.xib; sourceTree = "<group>"; };
 		085F90F91F7169FE008A339A /* OnboardingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
 		085F90FB1F716A57008A339A /* VerifySocialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerifySocialViewController.xib; sourceTree = "<group>"; };
@@ -563,7 +563,7 @@
 		085F90F01F712644008A339A /* animations */ = {
 			isa = PBXGroup;
 			children = (
-				085F90F31F71269E008A339A /* pop_swipey_illustration_0918.json */,
+				085599A91F72842100E5BEA1 /* animation.json */,
 				085F90F11F712660008A339A /* AnimationsViewController.swift */,
 			);
 			name = animations;
@@ -1147,6 +1147,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				085599AA1F72842100E5BEA1 /* animation.json in Resources */,
 				08B745921F1F6C0100EC3F8C /* OpenSans-Semibold.ttf in Resources */,
 				085599A61F72751900E5BEA1 /* SplashScreen.xib in Resources */,
 				082D36401F5D952C006B0985 /* RecommendedActionCard.xib in Resources */,
@@ -1154,7 +1155,6 @@
 				08B2803B1F5583CA00E36D19 /* sampleFeedStatistics.json in Resources */,
 				08B745931F1F6C0100EC3F8C /* OpenSans-Light.ttf in Resources */,
 				08AA6C6F1F56F3BA0022DE91 /* ChartStatistics.storyboard in Resources */,
-				085F90F41F71269E008A339A /* pop_swipey_illustration_0918.json in Resources */,
 				08953E6B1F4C269E003ABEFC /* ToDoCell.xib in Resources */,
 				08B745941F1F6C0100EC3F8C /* OpenSans-Bold.ttf in Resources */,
 				08FAE8411F541D060097DF3E /* Statistics.storyboard in Resources */,
