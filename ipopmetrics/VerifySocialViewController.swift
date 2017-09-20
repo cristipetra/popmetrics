@@ -8,6 +8,11 @@
 
 import UIKit
 import GTProgressBar
+import GoogleSignIn
+import TwitterKit
+import FacebookCore
+import FacebookLogin
+import EZAlertController
 
 class VerifySocialViewController: UIViewController {
     
@@ -22,8 +27,6 @@ class VerifySocialViewController: UIViewController {
     @IBOutlet weak var statusLabelStackView: UIStackView!
     @IBOutlet weak var onboardingFooter: OnboardingFooter!
     @IBOutlet var collectionOflabels: Array<UILabel>?
-    var i = 0
-    var timer : Timer?
     
     var actionsCompleted: Int = 0 {
         didSet {
@@ -32,20 +35,10 @@ class VerifySocialViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         addDivider(view: progressViewWrapper)
         setProgressBar(actionsCompleted: actionsCompleted)
         twitterConnectButton.imageButtonType = .twitter
-        timer =  Timer.scheduledTimer(timeInterval: 8.0, target: self, selector:#selector(VerifySocialViewController.delayedActionCompletion), userInfo: nil, repeats: true)
-        
-    }
-    func delayedActionCompletion(){
-        if i == 4 {
-            timer?.invalidate()
-        } else {
-            i += 1
-            actionsCompleted = i
-        }
+        progressBar.layer.cornerRadius = 5
     }
     
     func addDivider(view: UIView) {
@@ -58,28 +51,36 @@ class VerifySocialViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    private func setProgressBar(actionsCompleted: Int) {
+    @IBAction func facebookConnectButtonPressed(_ sender: UIButton) {
+        connectFacebook()
+    }
+    @IBAction func twitterConnectButtionPressed(_ sender: UIButton) {
+        connectTwitter()
+    }
+    @IBAction func linkedInConnectButtonPressed(_ sender: UIButton) {
+        actionsCompleted += 1
+        setActionDisabled(actionType: .linkedIn, actionsCompleted: actionsCompleted)
+    }
+    
+    internal func setProgressBar(actionsCompleted: Int) {
         switch actionsCompleted {
         case 0:
-            progressBar.progress = 0.05
             progressBar.barFillColor = PopmetricsColor.salmondColor
+            progressBar.animateTo(progress: 0.05)
         case 1:
-            progressBar.progress = 0.33
             progressBar.barFillColor = PopmetricsColor.yellowBGColor
             setStatusText(actionsCompleted: actionsCompleted)
             onboardingFooter.enableContinueButton()
-            setActionDisabled(actionType: .facebook, actionsCompleted: actionsCompleted)
+            progressBar.animateTo(progress: 0.33)
         case 2:
-            progressBar.progress = 0.66
             progressBar.barFillColor = PopmetricsColor.yellowBGColor
             setStatusText(actionsCompleted: actionsCompleted)
-            setActionDisabled(actionType: .twitter, actionsCompleted: actionsCompleted)
+            progressBar.animateTo(progress: 0.66)
         case 3:
-            progressBar.progress = 1
             progressBar.barFillColor = PopmetricsColor.yellowBGColor
             setStatusText(actionsCompleted: actionsCompleted)
-            setActionDisabled(actionType: .linkedIn, actionsCompleted: actionsCompleted)
-        //showBanner(bannerType: .completed)
+            //showBanner(bannerType: .completed)
+            progressBar.animateTo(progress: 1)
         default:
             break
         }
@@ -91,22 +92,16 @@ class VerifySocialViewController: UIViewController {
         }
     }
     
-    private func setActionDisabled(actionType: ActionType, actionsCompleted: Int) {
+    internal func setActionDisabled(actionType: ActionType, actionsCompleted: Int) {
         switch actionType {
         case .facebook:
             facebookConnectLabel.text = "Company Facebook Connected"
             facebookConnectLabel.alpha = 0.3
             facebookConnectButton.changeToDisabled()
-            if actionsCompleted < 3 {
-                // showBanner(title: "Facebook successfully connected!", subtitle: "Connect all 3 for best results. 👉")
-            }
         case .twitter:
             twitterConnectLabel.text = "Twitter Account Connected"
             twitterConnectLabel.alpha = 0.3
             twitterConnectButton.changeToDisabled()
-            if actionsCompleted < 3 {
-                //showBanner(title: "Twitter successfully connected!", subtitle: "Connect all 3 for best results. 👉")
-            }
         case .linkedIn:
             linkedInConnectLabel.text = "LinkedIn Account Connected"
             linkedInConnectLabel.alpha = 0.3
@@ -129,5 +124,89 @@ enum ActionType {
 extension VerifySocialViewController: ShowBanner {
     func showBanner(bannerType: BannerType) {
         
+    }
+
+    
+}
+
+extension VerifySocialViewController/*: GIDSignInUIDelegate, GIDSignInDelegate*/ {
+    func connectTwitter() {
+        
+        Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
+            if (session != nil) {
+                FeedApi().connectTwitter(userId: (session?.userID)!, brandId:"58fe437ac7631a139803757e", token: (session?.authToken)!,
+                                         tokenSecret: (session?.authTokenSecret)!) { responseDict, error in
+                                            if error != nil {
+                                                let nc = NotificationCenter.default
+                                                nc.post(name:Notification.Name(rawValue:"CardActionNotification"),
+                                                        object: nil,
+                                                        userInfo: ["success":false, "title":"Action error", "message":"Connection with Twitter has failed.", "date":Date()])
+                                                print("error: \(String(describing: error))")
+                                                return
+                                            } // error != nil
+                                            else {
+                                                UsersStore.isTwitterConnected = true
+                                                print("connected")
+                                                self.actionsCompleted += 1
+                                                if self.actionsCompleted < 3 {
+                                                    //self.showBanner(title: "Twitter successfully connected!", subtitle: "Connect all 3 for best results. 👉")
+                                                }
+                                                self.setActionDisabled(actionType: .twitter, actionsCompleted: self.actionsCompleted)
+                                            }
+                } // usersApi.logInWithGoogle()
+                
+            } else {
+                print("user cancelled")
+                let nc = NotificationCenter.default
+                nc.post(name:Notification.Name(rawValue:"CardActionNotification"),
+                        object: nil,
+                        userInfo: ["success":false, "title":"Action error", "message":"Connection with Twitter has failed... \(error!.localizedDescription)", "date":Date()])
+            }
+        }
+        
+    }
+    
+    // MARK: Facebook LogIn Process
+    func connectFacebook() {
+        let loginManager = LoginManager()
+        loginManager.logOut()
+        loginManager.loginBehavior = .browser
+        loginManager.logIn([.publicProfile, .email], viewController: nil) { loginResult in
+            switch loginResult {
+            case .failed(let error):
+                print(error)
+            case .cancelled:
+                print("User cancelled login.")
+            case .success( _, _, _):
+                print("Logged in!")
+                self.actionsCompleted += 1
+                if self.actionsCompleted < 3 {
+                    //self.showBanner(title: "Facebook successfully connected!", subtitle: "Connect all 3 for best results. 👉")
+                }
+                self.setActionDisabled(actionType: .facebook, actionsCompleted: self.actionsCompleted)
+                self.getFBUserData()
+            }
+        }
+    }
+    
+    func getFBUserData(){
+        let params = ["fields" : "email, name"]
+        let graphRequest = GraphRequest(graphPath: "me", parameters: params)
+        graphRequest.start {
+            (urlResponse, requestResult) in
+            
+            switch requestResult {
+            case .failed(let error):
+                print("error in graph request:", error)
+                break
+            case .success(let graphResponse):
+                if let responseDictionary = graphResponse.dictionaryValue {
+                    print(responseDictionary)
+                    
+                    print(responseDictionary["name"] as Any)
+                    print(responseDictionary["email"] as Any)
+                }
+            }
+        }
     }
 }
