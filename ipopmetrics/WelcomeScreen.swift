@@ -95,6 +95,9 @@ class WelcomeScreen: UIViewController {
     }
 
     @IBAction func handlerHeartButton(_ sender: UIButton) {
+        let onboardingVC = OnboardingViewController()
+        self.present(onboardingVC, animated: true, completion: nil)
+        return
         openURLInside(url: Config.appWebLink)
     }
     

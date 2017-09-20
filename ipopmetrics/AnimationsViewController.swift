@@ -13,7 +13,7 @@ class AnimationsViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     let animationView = LOTAnimationView(name: "pop_swipey_illustration_0918")
-    var numberOfTabs = 10 as CGFloat
+    var numberOfTabs = 9 as CGFloat
     override func viewDidLoad() {
         super.viewDidLoad()
         animationView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)

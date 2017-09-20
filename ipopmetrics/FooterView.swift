@@ -284,3 +284,12 @@ extension FooterView {
         gradientLayer.bottomAnchor.constraint(equalTo: self.bottomAnchor)
     }
 }
+
+extension UIButton {
+    func setShadow() {
+        self.layer.shadowColor = PopmetricsColor.textGrey.cgColor
+        self.layer.shadowOpacity = 0.3
+        self.layer.shadowRadius = 2
+        self.layer.shadowOffset = CGSize(width: 0, height: 2)
+        }
+    }

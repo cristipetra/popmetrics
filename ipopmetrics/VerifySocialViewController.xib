@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VerifySocialViewController" customModule="ipopmetrics" customModuleProvider="target">
+            <connections>
+                <outlet property="facebookConnectButton" destination="DjK-yF-kO8" id="EBt-fV-S1l"/>
+                <outlet property="facebookConnectLabel" destination="N4Y-1q-izt" id="lkk-gW-y1d"/>
+                <outlet property="linkedInConnectButton" destination="Ssn-wl-ESb" id="UBd-qa-SqO"/>
+                <outlet property="linkedInConnectLabel" destination="IfK-QK-To4" id="zO7-Mv-epW"/>
+                <outlet property="onboardingFooter" destination="b2o-qO-cW9" id="f2r-Q4-nMn"/>
+                <outlet property="progressBar" destination="mRg-iP-pyB" id="UYE-02-unj"/>
+                <outlet property="progressViewWrapper" destination="5Ri-bG-tv9" id="V6K-GU-LPc"/>
+                <outlet property="statusLabelStackView" destination="Pt3-mH-Ezg" id="q2F-4e-Sjx"/>
+                <outlet property="twitterConnectButton" destination="vJT-Nh-Sbq" id="uI6-w6-YBi"/>
+                <outlet property="twitterConnectLabel" destination="rYY-lh-kfU" id="xsr-0v-ILk"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outletCollection property="collectionOflabels" destination="TRp-Ui-E2O" collectionClass="NSMutableArray" id="quo-ML-sac"/>
+                <outletCollection property="collectionOflabels" destination="Nhv-9K-iLW" collectionClass="NSMutableArray" id="vKA-ND-G0O"/>
+                <outletCollection property="collectionOflabels" destination="CZb-eB-Dm5" collectionClass="NSMutableArray" id="Itz-eU-gFA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DL3-Ox-Bya">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUy-jY-lKS">
+                            <rect key="frame" x="25" y="38" width="17" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="0r0-Dy-n4y"/>
+                                <constraint firstAttribute="width" constant="17" id="PKO-fJ-UEF"/>
+                            </constraints>
+                            <color key="tintColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" image="iconCalLeft"/>
+                            <connections>
+                                <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="WMn-V3-6C0"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please verify through your business’ social media:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7h-0K-fhl">
+                            <rect key="frame" x="60" y="31" width="293" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="ycR-8y-MaX"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                            <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jxB-Yo-dqI">
+                            <rect key="frame" x="74" y="103" width="227" height="60"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect your company Facebook page" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4Y-1q-izt">
+                                    <rect key="frame" x="0.0" y="5" width="137" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="137" id="JOJ-3v-N4T"/>
+                                        <constraint firstAttribute="height" constant="50" id="kme-QQ-KOd"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
+                                    <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DjK-yF-kO8" customClass="TwoImagesButton" customModule="ipopmetrics" customModuleProvider="target">
+                                    <rect key="frame" x="137" y="7.5" width="90" height="45"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="45" id="Gfp-UX-DJw"/>
+                                        <constraint firstAttribute="width" constant="90" id="O4Q-5J-7dU"/>
+                                    </constraints>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="227" id="4Wj-DD-oFM"/>
+                                <constraint firstAttribute="trailing" secondItem="DjK-yF-kO8" secondAttribute="trailing" id="NXs-Tu-BPv"/>
+                                <constraint firstItem="DjK-yF-kO8" firstAttribute="centerY" secondItem="jxB-Yo-dqI" secondAttribute="centerY" id="Stj-91-wIf"/>
+                                <constraint firstItem="N4Y-1q-izt" firstAttribute="leading" secondItem="jxB-Yo-dqI" secondAttribute="leading" id="TIW-SY-Usg"/>
+                                <constraint firstAttribute="height" constant="60" id="odm-QT-mwo"/>
+                                <constraint firstItem="N4Y-1q-izt" firstAttribute="centerY" secondItem="jxB-Yo-dqI" secondAttribute="centerY" id="y3U-p8-qnw"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4GL-nf-SgO">
+                            <rect key="frame" x="74" y="192" width="227" height="60"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYY-lh-kfU">
+                                    <rect key="frame" x="0.0" y="5" width="137" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="137" id="g8k-b7-UDU"/>
+                                        <constraint firstAttribute="height" constant="50" id="hF3-TJ-7EN"/>
+                                    </constraints>
+                                    <string key="text">Verify using
+Twitter account</string>
+                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
+                                    <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vJT-Nh-Sbq" customClass="TwoImagesButton" customModule="ipopmetrics" customModuleProvider="target">
+                                    <rect key="frame" x="137" y="7.5" width="90" height="45"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="45" id="F0P-TA-3eI"/>
+                                        <constraint firstAttribute="width" constant="90" id="nKR-Ci-OzO"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="leftHandImage" value="iconCtaTwitter"/>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="rYY-lh-kfU" firstAttribute="leading" secondItem="4GL-nf-SgO" secondAttribute="leading" id="0Ac-YS-KJ0"/>
+                                <constraint firstItem="vJT-Nh-Sbq" firstAttribute="centerY" secondItem="4GL-nf-SgO" secondAttribute="centerY" id="9mI-2B-0zk"/>
+                                <constraint firstItem="rYY-lh-kfU" firstAttribute="centerY" secondItem="4GL-nf-SgO" secondAttribute="centerY" id="Olk-ME-yfd"/>
+                                <constraint firstAttribute="trailing" secondItem="vJT-Nh-Sbq" secondAttribute="trailing" id="gnQ-LC-I3i"/>
+                                <constraint firstAttribute="width" constant="227" id="lbK-tz-QgG"/>
+                                <constraint firstAttribute="height" constant="60" id="xzR-m4-Ks5"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gz-4v-3gk">
+                            <rect key="frame" x="74" y="281" width="227" height="60"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IfK-QK-To4">
+                                    <rect key="frame" x="0.0" y="5" width="137" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="137" id="CRi-Z1-OuF"/>
+                                        <constraint firstAttribute="height" constant="50" id="vAW-O9-qgf"/>
+                                    </constraints>
+                                    <string key="text">Verify using
+Linkedin account</string>
+                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
+                                    <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ssn-wl-ESb" customClass="TwoImagesButton" customModule="ipopmetrics" customModuleProvider="target">
+                                    <rect key="frame" x="137" y="7.5" width="90" height="45"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="90" id="cDT-H5-dFw"/>
+                                        <constraint firstAttribute="height" constant="45" id="uzb-QM-tts"/>
+                                    </constraints>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="227" id="95Z-5M-H5i"/>
+                                <constraint firstItem="Ssn-wl-ESb" firstAttribute="centerY" secondItem="4gz-4v-3gk" secondAttribute="centerY" id="CbF-sx-cAL"/>
+                                <constraint firstAttribute="height" constant="60" id="EIp-n0-kmy"/>
+                                <constraint firstItem="IfK-QK-To4" firstAttribute="leading" secondItem="4gz-4v-3gk" secondAttribute="leading" id="EK3-xA-q5b"/>
+                                <constraint firstAttribute="trailing" secondItem="Ssn-wl-ESb" secondAttribute="trailing" id="cWz-cD-RnR"/>
+                                <constraint firstItem="IfK-QK-To4" firstAttribute="centerY" secondItem="4gz-4v-3gk" secondAttribute="centerY" id="icG-Jv-i8p"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ri-bG-tv9">
+                            <rect key="frame" x="0.0" y="461" width="375" height="90"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mRg-iP-pyB" customClass="GTProgressBar" customModule="GTProgressBar">
+                                    <rect key="frame" x="20" y="45" width="335" height="19"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="19" id="OLh-hx-hHP"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="progressLabelInsetLeft">
+                                            <real key="value" value="0.0"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="barMaxHeightInt">
+                                            <integer key="value" value="19"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="barBorderColor">
+                                            <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="barBackgroundColor">
+                                            <color key="value" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="barBorderWidth">
+                                            <real key="value" value="0.0"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="barFillInset">
+                                            <real key="value" value="0.0"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="displayLabel" value="NO"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Pt3-mH-Ezg">
+                                    <rect key="frame" x="70" y="15" width="235" height="17"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Okay." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRp-Ui-E2O">
+                                            <rect key="frame" x="0.0" y="0.0" width="34.5" height="17"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
+                                            <color key="textColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nhv-9K-iLW">
+                                            <rect key="frame" x="99" y="0.0" width="35" height="17"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
+                                            <color key="textColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZb-eB-Dm5">
+                                            <rect key="frame" x="198" y="0.0" width="37" height="17"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
+                                            <color key="textColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="17" id="NGO-OK-Tbp"/>
+                                    </constraints>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Pt3-mH-Ezg" secondAttribute="trailing" constant="70" id="Knx-da-bfa"/>
+                                <constraint firstItem="mRg-iP-pyB" firstAttribute="leading" secondItem="5Ri-bG-tv9" secondAttribute="leading" constant="20" id="WgC-hB-9q7"/>
+                                <constraint firstAttribute="height" constant="90" id="ZkN-OH-qBo"/>
+                                <constraint firstAttribute="trailing" secondItem="mRg-iP-pyB" secondAttribute="trailing" constant="20" id="gaU-Nu-mKB"/>
+                                <constraint firstItem="mRg-iP-pyB" firstAttribute="top" secondItem="Pt3-mH-Ezg" secondAttribute="bottom" constant="13" id="giM-aR-jHU"/>
+                                <constraint firstAttribute="bottom" secondItem="mRg-iP-pyB" secondAttribute="bottom" constant="26" id="iNT-gN-Wjl"/>
+                                <constraint firstItem="Pt3-mH-Ezg" firstAttribute="leading" secondItem="5Ri-bG-tv9" secondAttribute="leading" constant="70" id="rS3-8b-VuP"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b2o-qO-cW9" customClass="OnboardingFooter" customModule="ipopmetrics" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="551" width="375" height="116"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="116" id="gHZ-OI-aLD"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="4GL-nf-SgO" firstAttribute="top" secondItem="jxB-Yo-dqI" secondAttribute="bottom" constant="29" id="0LO-hr-EQC"/>
+                        <constraint firstItem="z7h-0K-fhl" firstAttribute="leading" secondItem="cUy-jY-lKS" secondAttribute="trailing" constant="18" id="97P-pc-dTC"/>
+                        <constraint firstItem="cUy-jY-lKS" firstAttribute="leading" secondItem="DL3-Ox-Bya" secondAttribute="leading" constant="25" id="KKh-Bv-PR4"/>
+                        <constraint firstItem="b2o-qO-cW9" firstAttribute="top" secondItem="5Ri-bG-tv9" secondAttribute="bottom" id="MxA-k5-Xae"/>
+                        <constraint firstItem="4GL-nf-SgO" firstAttribute="centerX" secondItem="DL3-Ox-Bya" secondAttribute="centerX" id="Qtx-oR-5SE"/>
+                        <constraint firstItem="5Ri-bG-tv9" firstAttribute="leading" secondItem="DL3-Ox-Bya" secondAttribute="leading" id="SCy-AF-Xy3"/>
+                        <constraint firstAttribute="trailing" secondItem="b2o-qO-cW9" secondAttribute="trailing" id="TkG-VH-9pr"/>
+                        <constraint firstItem="4gz-4v-3gk" firstAttribute="top" secondItem="4GL-nf-SgO" secondAttribute="bottom" constant="29" id="Uic-Wj-Mif"/>
+                        <constraint firstAttribute="bottom" secondItem="b2o-qO-cW9" secondAttribute="bottom" id="XNT-sE-qYz"/>
+                        <constraint firstItem="cUy-jY-lKS" firstAttribute="top" secondItem="DL3-Ox-Bya" secondAttribute="top" constant="38" id="ZcY-wA-PwO"/>
+                        <constraint firstItem="jxB-Yo-dqI" firstAttribute="centerX" secondItem="DL3-Ox-Bya" secondAttribute="centerX" id="aad-zC-zu8"/>
+                        <constraint firstAttribute="trailing" secondItem="5Ri-bG-tv9" secondAttribute="trailing" id="bVh-9F-bCR"/>
+                        <constraint firstItem="z7h-0K-fhl" firstAttribute="top" secondItem="DL3-Ox-Bya" secondAttribute="top" constant="31" id="krN-wd-ObI"/>
+                        <constraint firstAttribute="trailing" secondItem="z7h-0K-fhl" secondAttribute="trailing" constant="22" id="la8-5f-KCn"/>
+                        <constraint firstItem="4gz-4v-3gk" firstAttribute="centerX" secondItem="DL3-Ox-Bya" secondAttribute="centerX" id="nUD-Bt-w6o"/>
+                        <constraint firstItem="jxB-Yo-dqI" firstAttribute="top" secondItem="z7h-0K-fhl" secondAttribute="bottom" constant="12" id="o2N-tt-IZW"/>
+                        <constraint firstItem="b2o-qO-cW9" firstAttribute="leading" secondItem="DL3-Ox-Bya" secondAttribute="leading" id="zrK-7g-Vh1"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="DL3-Ox-Bya" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6U7-AZ-AiK"/>
+                <constraint firstAttribute="trailing" secondItem="DL3-Ox-Bya" secondAttribute="trailing" id="Por-Fw-EaD"/>
+                <constraint firstAttribute="bottom" secondItem="DL3-Ox-Bya" secondAttribute="bottom" id="uil-cy-Grr"/>
+                <constraint firstItem="DL3-Ox-Bya" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="w4v-Vw-iEQ"/>
+            </constraints>
+            <point key="canvasLocation" x="32.5" y="77.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="iconCalLeft" width="12" height="24"/>
+        <image name="iconCtaTwitter" width="34" height="24"/>
+    </resources>
+</document>

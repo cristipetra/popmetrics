@@ -42,6 +42,12 @@
 		085F90F21F712660008A339A /* AnimationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F90F11F712660008A339A /* AnimationsViewController.swift */; };
 		085F90F41F71269E008A339A /* pop_swipey_illustration_0918.json in Resources */ = {isa = PBXBuildFile; fileRef = 085F90F31F71269E008A339A /* pop_swipey_illustration_0918.json */; };
 		085F90F71F71270E008A339A /* AnimationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085F90F61F71270E008A339A /* AnimationsViewController.xib */; };
+		085F90FA1F7169FE008A339A /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085F90F91F7169FE008A339A /* OnboardingView.xib */; };
+		085F90FC1F716A57008A339A /* VerifySocialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085F90FB1F716A57008A339A /* VerifySocialViewController.xib */; };
+		085F90FF1F716AAF008A339A /* VerifySocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F90FE1F716AAF008A339A /* VerifySocialViewController.swift */; };
+		085F91011F716AD2008A339A /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F91001F716AD2008A339A /* OnboardingViewController.swift */; };
+		085F91031F716CBC008A339A /* OnboardingFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085F91021F716CBC008A339A /* OnboardingFooter.xib */; };
+		085F91051F716CD4008A339A /* OnboardingFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F91041F716CD4008A339A /* OnboardingFooter.swift */; };
 		0888C5BE1F4EECEC00E3DB04 /* RoundedCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */; };
 		088BBEA81F58212A00AD5414 /* TrafficEmptyCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */; };
 		088BBEAA1F58214300AD5414 /* TrafficEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */; };
@@ -253,6 +259,12 @@
 		085F90F11F712660008A339A /* AnimationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationsViewController.swift; sourceTree = "<group>"; };
 		085F90F31F71269E008A339A /* pop_swipey_illustration_0918.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pop_swipey_illustration_0918.json; sourceTree = "<group>"; };
 		085F90F61F71270E008A339A /* AnimationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimationsViewController.xib; sourceTree = "<group>"; };
+		085F90F91F7169FE008A339A /* OnboardingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
+		085F90FB1F716A57008A339A /* VerifySocialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerifySocialViewController.xib; sourceTree = "<group>"; };
+		085F90FE1F716AAF008A339A /* VerifySocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifySocialViewController.swift; sourceTree = "<group>"; };
+		085F91001F716AD2008A339A /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		085F91021F716CBC008A339A /* OnboardingFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingFooter.xib; sourceTree = "<group>"; };
+		085F91041F716CD4008A339A /* OnboardingFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFooter.swift; sourceTree = "<group>"; };
 		0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersButton.swift; sourceTree = "<group>"; };
 		088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrafficEmptyCard.xib; sourceTree = "<group>"; };
@@ -545,6 +557,26 @@
 			name = animations;
 			sourceTree = "<group>";
 		};
+		085F90F81F7169E5008A339A /* onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				085F90F91F7169FE008A339A /* OnboardingView.xib */,
+				085F90FB1F716A57008A339A /* VerifySocialViewController.xib */,
+				085F91021F716CBC008A339A /* OnboardingFooter.xib */,
+				085F91041F716CD4008A339A /* OnboardingFooter.swift */,
+			);
+			name = onboarding;
+			sourceTree = "<group>";
+		};
+		085F90FD1F716A99008A339A /* onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				085F90FE1F716AAF008A339A /* VerifySocialViewController.swift */,
+				085F91001F716AD2008A339A /* OnboardingViewController.swift */,
+			);
+			name = onboarding;
+			sourceTree = "<group>";
+		};
 		0888C5BC1F4EECBF00E3DB04 /* buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -641,6 +673,7 @@
 		08C7B18E1F1CF41200E456C6 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				085F90FD1F716A99008A339A /* onboarding */,
 				085F90F01F712644008A339A /* animations */,
 				08B4BCDF1F619D2400660F5B /* google */,
 				08FAE8421F541D5E0097DF3E /* statistics */,
@@ -899,6 +932,7 @@
 		11ACA9AD1E2CE0A80021E64A /* views */ = {
 			isa = PBXGroup;
 			children = (
+				085F90F81F7169E5008A339A /* onboarding */,
 				085F90F51F7126EC008A339A /* animations */,
 				0855C0C71F6FFBC300ACBFA9 /* empty */,
 				08A533321F6BD8E80080BE64 /* home */,
@@ -1146,12 +1180,15 @@
 				08AF04981F46FB9B0040012B /* ToDoCardCell.xib in Resources */,
 				08FAE8471F541FF40097DF3E /* TrafficCard.xib in Resources */,
 				1119F6181ED56F34009997FF /* Boarding.storyboard in Resources */,
+				085F91031F716CBC008A339A /* OnboardingFooter.xib in Resources */,
 				085F90F71F71270E008A339A /* AnimationsViewController.xib in Resources */,
 				D9D9378A1ECDEEE200CC3EC2 /* StatsSummaryCard.xib in Resources */,
 				D9EC7E351ECEE37A00A54B53 /* BestCourseCard.xib in Resources */,
 				08F368891F18D7C500819CDE /* ApprovalCard.xib in Resources */,
 				11AAA5E61ECCD4200099B50E /* RequiredActionCard.xib in Resources */,
 				11F89F691EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist in Resources */,
+				085F90FA1F7169FE008A339A /* OnboardingView.xib in Resources */,
+				085F90FC1F716A57008A339A /* VerifySocialViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1322,6 +1359,7 @@
 				116431DF1E2D4E81009AA59E /* UsersApi.swift in Sources */,
 				08A4A5431F45B5D6001071E3 /* TwoImagesButton.swift in Sources */,
 				08953E741F4C359E003ABEFC /* FooterView.swift in Sources */,
+				085F91011F716AD2008A339A /* OnboardingViewController.swift in Sources */,
 				08A5333E1F6C2E910080BE64 /* ButtonWithContainer.swift in Sources */,
 				08F368911F18E6A000819CDE /* ApprovalCardInfoCell.swift in Sources */,
 				083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */,
@@ -1342,6 +1380,7 @@
 				11ACA9A21E2CD1B90021E64A /* ApiUrls.swift in Sources */,
 				110A62D41ECEDE8B0052B478 /* ChatItemsDemoDecorator.swift in Sources */,
 				085053FE1F2787A100FE8234 /* CalendarViewController.swift in Sources */,
+				085F91051F716CD4008A339A /* OnboardingFooter.swift in Sources */,
 				113976B41E97D31B00B535DF /* FeedStore.swift in Sources */,
 				113976AE1E97C83500B535DF /* TextFieldValidator.swift in Sources */,
 				11A4EEA81F62CADE00605F0D /* CalendarApi.swift in Sources */,
@@ -1367,6 +1406,7 @@
 				110A62E61ECEE6E60052B478 /* SendingStatusCollectionViewCell.swift in Sources */,
 				08AA6C731F56F8630022DE91 /* ChartViewController.swift in Sources */,
 				08B7459B1F1F996B00EC3F8C /* DigitCodeView.swift in Sources */,
+				085F90FF1F716AAF008A339A /* VerifySocialViewController.swift in Sources */,
 				110A62ED1ECEE6F30052B478 /* DemoTextMessageModel.swift in Sources */,
 				085054031F27A25B00FE8234 /* CalendarCardViewCell.swift in Sources */,
 				08A812761F1660A300672126 /* HeaderCardCell.swift in Sources */,

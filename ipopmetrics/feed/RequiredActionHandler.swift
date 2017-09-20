@@ -184,6 +184,10 @@ extension RequiredActionHandler: InfoButtonDelegate {
     }
 }
 
+protocol ShowBanner {
+    func showBanner(bannerType: BannerType)
+}
+
 extension RequiredActionHandler {    
     internal func showBanner(bannerType: BannerType) {
         let banner: NotificationBanner!

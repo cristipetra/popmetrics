@@ -46,6 +46,7 @@ target 'ipopmetrics' do
   pod 'ElasticTransition', :git=>’https://github.com/ionutboanta/ElasticTransition’
   pod 'ScrollableGraphView'
   pod 'M13ProgressSuite'
-  pod 'lottie-ios' 
+  pod 'lottie-ios'
+  pod 'GTProgressBar'
   
 end
