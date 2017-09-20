@@ -99,7 +99,6 @@ extension UILabel {
         style.maximumLineHeight = lineHeight
         attributedString.addAttribute(NSKernAttributeName, value: letterSpacing, range: NSRange(location: 0, length: (self.text?.characters.count)!))
         attributedString.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSRange(location: 0, length: (self.text?.characters.count)!))
-        self.numberOfLines = 2
         self.attributedText = attributedString
     }
 }

@@ -31,6 +31,8 @@
 		0854AF331F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0854AF321F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift */; };
 		0854AF351F3F2B18007B60F9 /* CalendarCardSimple.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0854AF341F3F2B18007B60F9 /* CalendarCardSimple.xib */; };
 		085530461F6CEE0A00D82A09 /* GoogleActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085530451F6CEE0A00D82A09 /* GoogleActivationView.swift */; };
+		085599A31F72750000E5BEA1 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085599A21F72750000E5BEA1 /* SplashScreen.swift */; };
+		085599A61F72751900E5BEA1 /* SplashScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085599A51F72751900E5BEA1 /* SplashScreen.xib */; };
 		0855C0C91F6FFBDB00ACBFA9 /* EmptyCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0855C0C81F6FFBDB00ACBFA9 /* EmptyCard.xib */; };
 		0855C0CB1F6FFBF000ACBFA9 /* EmptyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0855C0CA1F6FFBF000ACBFA9 /* EmptyCardView.swift */; };
 		0856F3581F272F020061DF7E /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0856F3571F272F020061DF7E /* Calendar.storyboard */; };
@@ -248,6 +250,8 @@
 		0854AF321F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCardSimpleViewCell.swift; sourceTree = "<group>"; };
 		0854AF341F3F2B18007B60F9 /* CalendarCardSimple.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCardSimple.xib; sourceTree = "<group>"; };
 		085530451F6CEE0A00D82A09 /* GoogleActivationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleActivationView.swift; sourceTree = "<group>"; };
+		085599A21F72750000E5BEA1 /* SplashScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		085599A51F72751900E5BEA1 /* SplashScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashScreen.xib; sourceTree = "<group>"; };
 		0855C0C81F6FFBDB00ACBFA9 /* EmptyCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyCard.xib; sourceTree = "<group>"; };
 		0855C0CA1F6FFBF000ACBFA9 /* EmptyCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCardView.swift; sourceTree = "<group>"; };
 		0856F3571F272F020061DF7E /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
@@ -515,6 +519,22 @@
 			name = calendar;
 			sourceTree = "<group>";
 		};
+		085599A11F7271BE00E5BEA1 /* splash */ = {
+			isa = PBXGroup;
+			children = (
+				085599A21F72750000E5BEA1 /* SplashScreen.swift */,
+			);
+			name = splash;
+			sourceTree = "<group>";
+		};
+		085599A41F72750B00E5BEA1 /* splash */ = {
+			isa = PBXGroup;
+			children = (
+				085599A51F72751900E5BEA1 /* SplashScreen.xib */,
+			);
+			name = splash;
+			sourceTree = "<group>";
+		};
 		0855C0C71F6FFBC300ACBFA9 /* empty */ = {
 			isa = PBXGroup;
 			children = (
@@ -673,6 +693,7 @@
 		08C7B18E1F1CF41200E456C6 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				085599A11F7271BE00E5BEA1 /* splash */,
 				085F90FD1F716A99008A339A /* onboarding */,
 				085F90F01F712644008A339A /* animations */,
 				08B4BCDF1F619D2400660F5B /* google */,
@@ -932,6 +953,7 @@
 		11ACA9AD1E2CE0A80021E64A /* views */ = {
 			isa = PBXGroup;
 			children = (
+				085599A41F72750B00E5BEA1 /* splash */,
 				085F90F81F7169E5008A339A /* onboarding */,
 				085F90F51F7126EC008A339A /* animations */,
 				0855C0C71F6FFBC300ACBFA9 /* empty */,
@@ -1126,6 +1148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08B745921F1F6C0100EC3F8C /* OpenSans-Semibold.ttf in Resources */,
+				085599A61F72751900E5BEA1 /* SplashScreen.xib in Resources */,
 				082D36401F5D952C006B0985 /* RecommendedActionCard.xib in Resources */,
 				085282761F28F2500065A968 /* sampleFeedCalendar.json in Resources */,
 				08B2803B1F5583CA00E36D19 /* sampleFeedStatistics.json in Resources */,
@@ -1320,6 +1343,7 @@
 				08AF049A1F46FBB60040012B /* ToDoCardCell.swift in Sources */,
 				1128B3FD1ED2E01F00BDA58C /* ActionViewCell.swift in Sources */,
 				085282741F28D9DE0065A968 /* CalendarFooterViewCell.swift in Sources */,
+				085599A31F72750000E5BEA1 /* SplashScreen.swift in Sources */,
 				08F3688B1F18DC4900819CDE /* ApprovalCardCell.swift in Sources */,
 				085F90F21F712660008A339A /* AnimationsViewController.swift in Sources */,
 				11A4823A1F5D58D9008D473C /* ApiModels.swift in Sources */,
