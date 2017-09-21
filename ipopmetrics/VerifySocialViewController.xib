@@ -21,6 +21,7 @@
             <connections>
                 <outlet property="facebookConnectButton" destination="DjK-yF-kO8" id="EBt-fV-S1l"/>
                 <outlet property="facebookConnectLabel" destination="N4Y-1q-izt" id="lkk-gW-y1d"/>
+                <outlet property="footerView" destination="b2o-qO-cW9" id="ti5-sN-eHC"/>
                 <outlet property="linkedInConnectButton" destination="Ssn-wl-ESb" id="UBd-qa-SqO"/>
                 <outlet property="linkedInConnectLabel" destination="IfK-QK-To4" id="zO7-Mv-epW"/>
                 <outlet property="onboardingFooter" destination="b2o-qO-cW9" id="f2r-Q4-nMn"/>

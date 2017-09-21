@@ -25,6 +25,7 @@ class VerifySocialViewController: UIViewController {
     @IBOutlet weak var facebookConnectButton: TwoImagesButton!
     @IBOutlet weak var progressViewWrapper: UIView!
     @IBOutlet weak var statusLabelStackView: UIStackView!
+    @IBOutlet weak var footerView: OnboardingFooter!
     @IBOutlet weak var onboardingFooter: OnboardingFooter!
     @IBOutlet var collectionOflabels: Array<UILabel>?
     
@@ -39,6 +40,7 @@ class VerifySocialViewController: UIViewController {
         setProgressBar(actionsCompleted: actionsCompleted)
         twitterConnectButton.imageButtonType = .twitter
         progressBar.layer.cornerRadius = 5
+        footerView.continueButton.addTarget(self, action: #selector(VerifySocialViewController.continueButtonPressed), for: .touchUpInside)
     }
     
     func addDivider(view: UIView) {
@@ -84,6 +86,17 @@ class VerifySocialViewController: UIViewController {
             progressBar.animateTo(progress: 1)
         default:
             break
+        }
+    }
+    
+    internal func continueButtonPressed() {
+        let notificationsVC = AppStoryboard.Notifications.instance.instantiateViewController(withIdentifier: ViewNames.SBID_PUSH_NOTIFICATIONS_VC)
+        let finalOnboardingVC = OnboardingFinalView()
+        let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
+        if notificationType == [] {
+            self.present(notificationsVC, animated: true, completion: nil)
+        } else {
+            self.present(finalOnboardingVC, animated: true, completion: nil)
         }
     }
     

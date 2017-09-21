@@ -10,15 +10,22 @@ import UIKit
 import SafariServices
 
 class NotificationsViewController: UIViewController {
-    @IBOutlet weak var confirmButton: RoundedCornersButton!
-    @IBOutlet weak var cancelButton: RoundedCornersButton!
     
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var confirmButton: RoundedCornersButton!
+    @IBOutlet weak var firstLabel: UILabel!
+    @IBOutlet weak var secondLabel: UILabel!
+    @IBOutlet weak var thirdLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        confirmButton.titleLabel?.numberOfLines = 1
-        confirmButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        cancelButton.titleLabel?.numberOfLines = 1
-        cancelButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        firstLabel.adjustLabelSpacing(spacing: 4, lineHeight: 15, letterSpacing: 0.4)
+        secondLabel.adjustLabelSpacing(spacing: 4, lineHeight: 15, letterSpacing: 0.4)
+        thirdLabel.adjustLabelSpacing(spacing: 4, lineHeight: 15, letterSpacing: 0.3)
+        firstLabel.textAlignment = .center
+        secondLabel.textAlignment = .center
+        thirdLabel.textAlignment = .center
+        confirmButton.backgroundColor = PopmetricsColor.blueURLColor
+        confirmButton.setShadow()
     }
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
@@ -50,8 +57,8 @@ class NotificationsViewController: UIViewController {
     }
     
     func applicationWillEnterForeground() {
-        let videoScreenVC = AppStoryboard.Signin.instance.instantiateViewController(withIdentifier: ViewNames.SBID_VIDEO_SCREEN)
-        self.present(videoScreenVC, animated: true, completion: nil)
+        let finalOnboardingVC = OnboardingFinalView()
+        self.present(finalOnboardingVC, animated: true, completion: nil)
     }
     
 }
