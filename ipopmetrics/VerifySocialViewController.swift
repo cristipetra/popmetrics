@@ -48,7 +48,8 @@ class VerifySocialViewController: UIViewController {
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
+        self.dismissToDirection(direction: .left)
     }
     
     @IBAction func facebookConnectButtonPressed(_ sender: UIButton) {
@@ -134,7 +135,7 @@ extension VerifySocialViewController/*: GIDSignInUIDelegate, GIDSignInDelegate*/
         
         Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
             if (session != nil) {
-                FeedApi().connectTwitter(userId: (session?.userID)!, brandId:"58fe437ac7631a139803757e", token: (session?.authToken)!,
+                FeedApi().connectTwitter(userId: (session?.userID)!, brandId: UsersStore.currentBrandId, token: (session?.authToken)!,
                                          tokenSecret: (session?.authTokenSecret)!) { responseDict, error in
                                             if error != nil {
                                                 let nc = NotificationCenter.default

@@ -91,8 +91,8 @@ class WelcomeScreen: UIViewController {
     
     @IBAction func handlerSpoken(_ sender: UIButton) {
         let loginVC = LoginViewController()
-        //self.present(loginVC, animated: true, completion: nil)
-        self.presentFromDirection(viewController: loginVC, direction: .right)
+        self.present(loginVC, animated: true, completion: nil)
+        //self.presentFromDirection(viewController: loginVC, direction: .right)
     }
 
     @IBAction func handlerHeartButton(_ sender: UIButton) {

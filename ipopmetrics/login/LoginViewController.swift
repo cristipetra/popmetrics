@@ -115,8 +115,8 @@ class LoginViewController: UIViewController {
                 
                 let codeVC = CodeViewController();
                 codeVC.phoneNo = phoneNumber;
-                //self.present(codeVC, animated: true, completion: nil)
-                self.presentFromDirection(viewController: codeVC, direction: .right)
+                self.present(codeVC, animated: true, completion: nil)
+                //self.presentFromDirection(viewController: codeVC, direction: .right)
             }
         }
     }

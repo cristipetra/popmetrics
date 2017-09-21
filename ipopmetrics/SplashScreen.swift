@@ -48,6 +48,22 @@ extension UIViewController {
         self.view.window!.layer.add(transition, forKey: kCATransition)
         self.present(newVC, animated: false, completion: nil)
     }
+    
+    func dismissToDirection(direction: TransitionDirection) {
+        let transition = CATransition()
+        transition.duration = 0.2
+        transition.type = kCATransitionPush
+        switch direction {
+        case .left:
+            transition.subtype = kCATransitionFromLeft
+        case .right:
+            transition.subtype = kCATransitionFromRight
+        default:
+            break
+        }
+        self.view.window!.layer.add(transition, forKey: kCATransition)
+        self.dismiss(animated: false, completion: nil)
+    }
 }
 
 enum TransitionDirection {

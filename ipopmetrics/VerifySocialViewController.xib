@@ -83,6 +83,9 @@
                                         <constraint firstAttribute="height" constant="45" id="Gfp-UX-DJw"/>
                                         <constraint firstAttribute="width" constant="90" id="O4Q-5J-7dU"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="facebookConnectButtonPressed:" destination="-1" eventType="touchUpInside" id="0FX-QV-PMy"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -119,6 +122,9 @@ Twitter account</string>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="image" keyPath="leftHandImage" value="iconCtaTwitter"/>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="twitterConnectButtionPressed:" destination="-1" eventType="touchUpInside" id="u6L-RH-DGz"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -152,6 +158,9 @@ Linkedin account</string>
                                         <constraint firstAttribute="width" constant="90" id="cDT-H5-dFw"/>
                                         <constraint firstAttribute="height" constant="45" id="uzb-QM-tts"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="linkedInConnectButtonPressed:" destination="-1" eventType="touchUpInside" id="1n0-iS-DTU"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
