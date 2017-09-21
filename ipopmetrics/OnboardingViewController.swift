@@ -26,8 +26,20 @@ class OnboardingViewController: UIViewController {
         credentialsButton.backgroundColor = UIColor.white
         credentialsButton.setShadow()
     }
+    
     @IBAction func verifySocialButtonPressed(_ sender: UIButton) {
         let verifySocialVC = VerifySocialViewController()
         self.present(verifySocialVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func handlerLaterButtonPressed(_ sender: Any) {
+        let notificationsVC = AppStoryboard.Notifications.instance.instantiateViewController(withIdentifier: ViewNames.SBID_PUSH_NOTIFICATIONS_VC)
+        let finalOnboardingVC = OnboardingFinalView()
+        let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
+        if notificationType == [] {
+            self.present(notificationsVC, animated: true, completion: nil)
+        } else {
+            self.present(finalOnboardingVC, animated: true, completion: nil)
+        }
     }
 }

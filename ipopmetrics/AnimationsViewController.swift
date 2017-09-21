@@ -45,9 +45,17 @@ class AnimationsViewController: UIViewController, UIScrollViewDelegate {
             animationView.animationProgress = progress
             if progress == 1 {
                 let welcomeVC = WelcomeScreen()
-                self.presentFromDirection(viewController: welcomeVC, direction: .right) 
+                //self.presentFromDirection(viewController: welcomeVC, direction: .right)
+                self.present(welcomeVC, animated: true, completion: {
+                    self.resetAnimation()
+                })
             }
         }
+    }
+    
+    internal func resetAnimation() {
+        animationView.animationProgress = 0
+        scrollView.contentOffset.x = 0
     }
     
     @IBAction func skipAnimation(_ sender: UIButton) {

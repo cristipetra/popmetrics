@@ -30,6 +30,7 @@ class LoginViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
         
         phoneView.sendCodeBtn.addTarget(self, action: #selector(didPressSendPhoneNumber), for: .touchUpInside)
+        phoneView.backBtn.addTarget(self, action: #selector(dismissPhoneView), for: .touchUpInside)
         addPhoneView();
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
@@ -140,6 +141,10 @@ class LoginViewController: UIViewController {
             phoneView.sendCodeBtn.setTitleColor(UIColor(red: 228/255, green: 185/255, blue: 39/255, alpha: 1.0), for: .normal)
         }
         phoneView.numberTextField.resignFirstResponder()
+    }
+    
+    internal func dismissPhoneView() {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

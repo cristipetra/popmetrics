@@ -18,6 +18,7 @@ class WelcomeScreen: UIViewController {
     @IBOutlet weak var btnNew: UIButton!
     @IBOutlet weak var heartButton: UIButton!
     @IBOutlet var containerView: UIView!
+    @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var topTextConstraint: NSLayoutConstraint!
     @IBOutlet weak var heightTextConstraint: NSLayoutConstraint!
@@ -104,6 +105,10 @@ class WelcomeScreen: UIViewController {
     
     @IBAction func handlerDidPressNewButton(_ sender: UIButton) {
         openURLInside(url: Config.appWebLink)
+    }
+    
+    @IBAction func handleBackPressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

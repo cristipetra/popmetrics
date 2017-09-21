@@ -31,7 +31,7 @@ class CodeViewController: UIViewController {
         digitCodeView.sendCodeBtn.addTarget(self, action: #selector(didPressSendSmsCode), for: .touchUpInside)
         digitCodeView.contactBtn.addTarget(self, action: #selector(didPressContact), for: .touchUpInside)
         digitCodeView.resendCodeBtn.addTarget(self, action: #selector(didPressResendCode), for: .touchUpInside)
-        
+        digitCodeView.closeBtn.addTarget(self, action: #selector(closeVC), for: .touchUpInside)
         
         view.addSubview(progressHUD)
         progressHUD.hide()
@@ -133,6 +133,10 @@ class CodeViewController: UIViewController {
         let notificationsVC = AppStoryboard.Notifications.instance.instantiateViewController(withIdentifier: ViewNames.SBID_PUSH_NOTIFICATIONS_VC)
         self.presentFromDirection(viewController: notificationsVC, direction: .right)
         //self.present(notificationsVC, animated: false, completion: nil)
+    }
+    
+    internal func closeVC() {
+        self.dismiss(animated: true, completion: nil)
     }
 
 }
