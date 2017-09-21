@@ -39,6 +39,8 @@ class VerifySocialViewController: UIViewController {
         addDivider(view: progressViewWrapper)
         setProgressBar(actionsCompleted: actionsCompleted)
         twitterConnectButton.imageButtonType = .twitter
+        facebookConnectButton.imageButtonType = .facebook
+        linkedInConnectButton.imageButtonType = .linkedin
         progressBar.layer.cornerRadius = 5
         footerView.continueButton.addTarget(self, action: #selector(VerifySocialViewController.continueButtonPressed), for: .touchUpInside)
     }

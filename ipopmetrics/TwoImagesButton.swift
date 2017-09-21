@@ -160,6 +160,14 @@ class TwoImagesButton: RoundButton {
             leftImageView.frame.origin.x = 24
             leftImageView.frame.size.width = 16
             rightImageView.frame.origin.x = 58
+        case .facebook:
+            leftHandImage = UIImage(named: "iconFacebook")
+            leftImageView.frame.size.width = 16
+            leftImageView.frame.origin.x = 26
+            leftImageView.frame.origin.y = 14
+        case .linkedin:
+            leftHandImage = UIImage(named: "iconLinkedin")
+            leftImageView.frame.origin.y = 14
         default:
             break
         }
@@ -190,4 +198,6 @@ enum ImageButtonType {
     case denied
     case lastCardTodo
     case lastCardCalendar
+    case facebook
+    case linkedin
 }
