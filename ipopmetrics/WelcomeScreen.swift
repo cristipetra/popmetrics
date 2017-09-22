@@ -98,14 +98,11 @@ class WelcomeScreen: UIViewController {
     }
 
     @IBAction func handlerHeartButton(_ sender: UIButton) {
-        let onboardingVC = OnboardingViewController()
-        self.present(onboardingVC, animated: true, completion: nil)
-        return
         openURLInside(url: Config.appWebLink)
     }
     
     @IBAction func handlerDidPressNewButton(_ sender: UIButton) {
-        openURLInside(url: Config.appWebLink)
+        openURLInside(url: Config.appWebAimeeLink)
     }
     
     @IBAction func handleBackPressed(_ sender: UIButton) {

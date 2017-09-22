@@ -177,7 +177,7 @@ extension LoginViewController {
         banner.show()
         
         banner.onTap = {
-            self.openURLInside(url: Config.appWebLink)
+            self.openURLInside(url: Config.appWebAimeeLink)
         }
     }
     
