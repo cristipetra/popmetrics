@@ -9,6 +9,7 @@
 import UIKit
 import ActiveLabel
 import SafariServices
+import Hero
 
 class WelcomeScreen: UIViewController {
     
@@ -39,6 +40,9 @@ class WelcomeScreen: UIViewController {
         self.logoSplash()
         
         self.welcomeLabel.text = "Hey, welcome to the \n Popmetrics beta!"
+        
+        isHeroEnabled = true
+        heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
     }
     override func viewDidLayoutSubviews() {
         updateConstraintValues()

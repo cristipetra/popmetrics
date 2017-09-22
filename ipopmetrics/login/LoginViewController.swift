@@ -13,6 +13,7 @@ import EZAlertController
 import SwiftRichString
 import NotificationBannerSwift
 import SafariServices
+import Hero
 
 class LoginViewController: UIViewController {
     
@@ -38,6 +39,9 @@ class LoginViewController: UIViewController {
         view.addSubview(progressHUD)
         progressHUD.hide()
         
+        
+        isHeroEnabled = true
+        heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
     }
     
     func rotated() {
@@ -125,8 +129,7 @@ class LoginViewController: UIViewController {
     internal func showViewControllerWithStoryboardID(_ sbID: String) {
         let vc = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: sbID)
         DispatchQueue.main.async(execute: {
-            self.presentFromDirection(viewController: vc, direction: .right)
-            //self.present(vc, animated: true, completion: nil)
+            self.present(vc, animated: true, completion: nil)
         })
     }
     

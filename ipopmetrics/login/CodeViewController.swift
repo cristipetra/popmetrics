@@ -10,6 +10,7 @@ import UIKit
 import Crashlytics
 import EZAlertController
 import SafariServices
+import Hero
 
 class CodeViewController: UIViewController {
     
@@ -35,6 +36,9 @@ class CodeViewController: UIViewController {
         
         view.addSubview(progressHUD)
         progressHUD.hide()
+        
+        isHeroEnabled = true
+        heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
     }
     
     
@@ -123,16 +127,14 @@ class CodeViewController: UIViewController {
     }
     
     internal func showVideoScreen() {
-        //let videoScreenVC = AppStoryboard.Signin.instance.instantiateViewController(withIdentifier: ViewNames.SBID_VIDEO_SCREEN)
-        //self.present(videoScreenVC, animated: true, completion: nil)
         let onboardingVC = OnboardingViewController()
-        self.presentFromDirection(viewController: onboardingVC, direction: .right)
+        self.present(onboardingVC, animated: true, completion: nil)
     }
     
     internal func showPushNotificationsScreen() {
         let notificationsVC = AppStoryboard.Notifications.instance.instantiateViewController(withIdentifier: ViewNames.SBID_PUSH_NOTIFICATIONS_VC)
-        self.presentFromDirection(viewController: notificationsVC, direction: .right)
-        //self.present(notificationsVC, animated: false, completion: nil)
+        //self.presentFromDirection(viewController: notificationsVC, direction: .right)
+        self.present(notificationsVC, animated: false, completion: nil)
     }
     
     internal func closeVC() {

@@ -8,6 +8,7 @@
 
 import UIKit
 import GTProgressBar
+import Hero
 
 class OnboardingViewController: UIViewController {
     
@@ -18,6 +19,8 @@ class OnboardingViewController: UIViewController {
         super.viewDidLoad()
         self.setup()
         
+        isHeroEnabled = true
+        heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
     }
     
     func setup() {
