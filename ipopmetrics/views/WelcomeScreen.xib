@@ -44,7 +44,7 @@
                         </constraint>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi and welcome to the Popmetrics beta! See how Marketing Automation &amp; A.I. can improve your business today." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xx9-yR-Zb0" customClass="ActiveLabel" customModule="ActiveLabel">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey,  welcome to the \nPopmetrics beta! " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xx9-yR-Zb0" customClass="ActiveLabel" customModule="ActiveLabel">
                     <rect key="frame" x="32" y="238" width="256" height="66"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="66" id="dOB-TC-ab2">

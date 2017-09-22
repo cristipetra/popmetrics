@@ -29,16 +29,16 @@ class WelcomeScreen: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        setUpColors()
  
+        setUpColors()
         setUpCornerRadious()
         addShadowToView(blueButton)
         addShadowToView(btnNew)
         addShadowToView(heartButton)
         
         self.logoSplash()
+        
+        self.welcomeLabel.text = "Hey, welcome to the \n Popmetrics beta!"
     }
     override func viewDidLayoutSubviews() {
         updateConstraintValues()
@@ -54,6 +54,14 @@ class WelcomeScreen: UIViewController {
     }
     
     private func setUpColors() {
+        containerView.backgroundColor = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1.0)
+        blueButton.layer.backgroundColor = UIColor(red: 65/255, green: 155/255, blue: 249/255, alpha: 1.0).cgColor
+        blueButton.setTitleColor(UIColor.white, for: .normal)
+        btnNew.backgroundColor = UIColor.white
+        heartButton.backgroundColor = UIColor.white
+    }
+    
+    internal func updateTextColor() {
         let customColor = ActiveType.custom(pattern: "\\sMarketing\\b")
         let customColor2 = ActiveType.custom(pattern: "\\sA.I. \\b")
         let customColor3 = ActiveType.custom(pattern: "\\sAutomation\\b")
@@ -68,13 +76,6 @@ class WelcomeScreen: UIViewController {
             welcome.customColor[customColor2] = UIColor(red: 68.0 / 255.0, green: 180.0 / 255.0, blue: 142.0 / 255.0, alpha: 1.0)
             welcome.customColor[customColor3] = UIColor(red: 68.0 / 255.0, green: 180.0 / 255.0, blue: 142.0 / 255.0, alpha: 1.0)
         }
-        
-        
-        containerView.backgroundColor = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1.0)
-        blueButton.layer.backgroundColor = UIColor(red: 65/255, green: 155/255, blue: 249/255, alpha: 1.0).cgColor
-        blueButton.setTitleColor(UIColor.white, for: .normal)
-        btnNew.backgroundColor = UIColor.white
-        heartButton.backgroundColor = UIColor.white
     }
     
     private func setUpCornerRadious() {
