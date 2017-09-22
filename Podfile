@@ -48,5 +48,6 @@ target 'ipopmetrics' do
   pod 'M13ProgressSuite'
   pod 'lottie-ios'
   pod 'GTProgressBar'
+  pod 'Hero', '1.0.0-alpha.4'
   
 end

@@ -188,7 +188,9 @@ protocol ShowBanner {
     func showBanner(bannerType: BannerType)
 }
 
-extension RequiredActionHandler {    
+extension RequiredActionHandler: ShowBanner {}
+
+extension ShowBanner {    
     internal func showBanner(bannerType: BannerType) {
         let banner: NotificationBanner!
         switch bannerType {
@@ -230,7 +232,25 @@ extension RequiredActionHandler {
             banner.dismiss()
         }
     }
+    
+    internal func showBanner(title: String, subtitle: String) {
+        let banner: NotificationBanner!
+        let titleAttribute = [
+            NSFontAttributeName: UIFont(name: "OpenSans-SemiBold", size: 12),
+            NSForegroundColorAttributeName: PopmetricsColor.bannerSuccessText]
+        let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [String : Any]))
+        let subtitleAttribute = [
+            NSFontAttributeName: UIFont(name: "OpenSans", size: 12),
+            NSForegroundColorAttributeName: UIColor.white]
+        let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [String : Any]))
+        banner = NotificationBanner(attributedTitle: attributedTitle, attributedSubtitle: attributedSubtitle, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
+        banner.backgroundColor = PopmetricsColor.greenMedium
+        banner.duration = TimeInterval(exactly: 7.0)!
+        banner.show()
+        
+        banner.onTap = {
+            banner.dismiss()
+        }
+    }
+    
 }
-
-
-
