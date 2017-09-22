@@ -61,6 +61,7 @@ class AnimationsViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func skipAnimation(_ sender: UIButton) {
         let welcomeVC = WelcomeScreen()
         self.presentFromDirection(viewController: welcomeVC, direction: .right)
+        resetAnimation()
     }
     
 }
