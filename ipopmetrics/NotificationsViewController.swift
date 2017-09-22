@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 import UserNotifications
-
+import Hero
 
 class NotificationsViewController: UIViewController {
     
@@ -28,6 +28,9 @@ class NotificationsViewController: UIViewController {
         thirdLabel.textAlignment = .center
         confirmButton.backgroundColor = PopmetricsColor.blueURLColor
         confirmButton.setShadow()
+        
+        isHeroEnabled = true
+        heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
     }
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
@@ -64,12 +67,16 @@ class NotificationsViewController: UIViewController {
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        openNextView()
     }
     
     func openNextView() {
         let finalOnboardingVC = OnboardingFinalView()
         self.present(finalOnboardingVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
     
     func applicationWillEnterForeground() {

@@ -56,7 +56,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In order to provide any results we need atleast 12 hours to run the first tests &amp; get back to you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEB-eQ-3D3">
-                                        <rect key="frame" x="8" y="79.5" width="260" height="61.5"/>
+                                        <rect key="frame" x="5.5" y="84" width="265.5" height="52.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="15"/>
                                         <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -98,12 +98,25 @@
                                     <action selector="cancelButtonPressed:" destination="pc6-cY-x62" eventType="touchUpInside" id="7ka-TG-Ar7"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BtW-ol-s7w">
+                                <rect key="frame" x="43" y="40" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="0ax-6x-rHN"/>
+                                    <constraint firstAttribute="width" constant="20" id="0dl-Ac-0Rw"/>
+                                </constraints>
+                                <state key="normal" image="iconCalLeftBold"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="pc6-cY-x62" eventType="touchUpInside" id="9Es-Zd-CUE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="JJZ-fZ-jYI" firstAttribute="centerX" secondItem="uOM-fC-49A" secondAttribute="centerX" id="12d-NJ-gm7"/>
                             <constraint firstAttribute="trailing" secondItem="dJh-BF-nlX" secondAttribute="trailing" constant="22" id="I61-UG-CFZ"/>
                             <constraint firstItem="JJZ-fZ-jYI" firstAttribute="top" secondItem="lov-KO-k4w" secondAttribute="bottom" constant="55" id="KTn-uI-F7o"/>
+                            <constraint firstItem="BtW-ol-s7w" firstAttribute="top" secondItem="uOM-fC-49A" secondAttribute="topMargin" constant="40" id="LMi-kC-aK7"/>
+                            <constraint firstItem="BtW-ol-s7w" firstAttribute="leading" secondItem="uOM-fC-49A" secondAttribute="leadingMargin" constant="27" id="PZM-he-gT9"/>
                             <constraint firstItem="dJh-BF-nlX" firstAttribute="leading" secondItem="uOM-fC-49A" secondAttribute="leading" constant="22" id="RBh-uy-f4D"/>
                             <constraint firstItem="U45-fT-EyQ" firstAttribute="top" secondItem="ZBQ-1s-JWi" secondAttribute="bottom" constant="28" id="UEN-ko-wR6"/>
                             <constraint firstItem="ZBQ-1s-JWi" firstAttribute="centerX" secondItem="uOM-fC-49A" secondAttribute="centerX" id="WZW-IT-7uq"/>
@@ -129,6 +142,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="iconCalLeftBold" width="14" height="24"/>
         <image name="iconNotification" width="88" height="66"/>
     </resources>
 </document>
