@@ -24,7 +24,7 @@
                             <view alpha="0.050000000000000003" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8e2-Wm-irX">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="SUO-v4-eGd">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoSplash" translatesAutoresizingMaskIntoConstraints="NO" id="SUO-v4-eGd">
                                 <rect key="frame" x="138.5" y="283" width="98" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="101" id="EOX-FD-pfO"/>
@@ -49,6 +49,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="143" height="142"/>
+        <image name="logoSplash" width="143" height="141"/>
     </resources>
 </document>

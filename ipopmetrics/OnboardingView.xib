@@ -45,7 +45,7 @@
                                         <color key="titleColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
-                                        <action selector="handlerLaterButtonPressed:" destination="-1" eventType="touchUpInside" id="IBs-fo-ouK"/>
+                                        <action selector="handlerButtonPressed:" destination="-1" eventType="touchUpInside" id="r0b-Ky-Lgf"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZmI-3R-vEE" customClass="RoundedCornersButton" customModule="ipopmetrics" customModuleProvider="target">
@@ -137,10 +137,23 @@
                                         <constraint firstItem="gtv-nh-GWB" firstAttribute="leading" secondItem="iv6-fR-8Mq" secondAttribute="leading" id="gKV-WP-Rjb"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tu5-ig-LnZ">
+                                    <rect key="frame" x="27" y="40" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="MA0-hC-J2u"/>
+                                        <constraint firstAttribute="height" constant="20" id="rkM-aI-jFj"/>
+                                    </constraints>
+                                    <state key="normal" image="iconCalLeftBold"/>
+                                    <connections>
+                                        <action selector="dismissButton:" destination="-1" eventType="touchUpInside" id="KUT-FM-fV6"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="Tu5-ig-LnZ" firstAttribute="top" secondItem="R9Z-gE-nWv" secondAttribute="top" constant="40" id="26Y-id-GqY"/>
                                 <constraint firstItem="u0b-KT-jdi" firstAttribute="top" secondItem="R9Z-gE-nWv" secondAttribute="top" constant="55" id="FQO-Ut-3VO"/>
+                                <constraint firstItem="Tu5-ig-LnZ" firstAttribute="leading" secondItem="R9Z-gE-nWv" secondAttribute="leading" constant="27" id="anC-D2-Onc"/>
                                 <constraint firstItem="u0b-KT-jdi" firstAttribute="leading" secondItem="R9Z-gE-nWv" secondAttribute="leading" constant="22" id="eUD-Ht-m56"/>
                                 <constraint firstItem="iv6-fR-8Mq" firstAttribute="top" secondItem="u0b-KT-jdi" secondAttribute="bottom" constant="14" id="eef-Lr-Bh4"/>
                                 <constraint firstItem="iv6-fR-8Mq" firstAttribute="centerX" secondItem="R9Z-gE-nWv" secondAttribute="centerX" id="iKa-0e-Ygb"/>
@@ -169,4 +182,7 @@
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="iconCalLeftBold" width="14" height="24"/>
+    </resources>
 </document>

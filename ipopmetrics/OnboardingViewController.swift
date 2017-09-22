@@ -31,8 +31,7 @@ class OnboardingViewController: UIViewController {
         let verifySocialVC = VerifySocialViewController()
         self.present(verifySocialVC, animated: true, completion: nil)
     }
-    
-    @IBAction func handlerLaterButtonPressed(_ sender: Any) {
+    @IBAction func handlerButtonPressed(_ sender: Any) {
         let notificationsVC = AppStoryboard.Notifications.instance.instantiateViewController(withIdentifier: ViewNames.SBID_PUSH_NOTIFICATIONS_VC)
         let finalOnboardingVC = OnboardingFinalView()
         let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
@@ -41,5 +40,9 @@ class OnboardingViewController: UIViewController {
         } else {
             self.present(finalOnboardingVC, animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func dismissButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
