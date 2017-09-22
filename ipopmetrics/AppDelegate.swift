@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.rootViewController = getInitialViewController()
         window.makeKeyAndVisible()
         
-        registerForPushNotifications()
+        //registerForPushNotifications()
         
         // Check if launched from notification
         if let notification = launchOptions?[.remoteNotification] as? [String: AnyObject] {
@@ -175,27 +175,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
     }
     
-    
-    
-    func registerForPushNotifications() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
-            (granted, error) in
-            
-            print("Permission granted: \(granted)")
-            guard granted else { return }
-            
-            self.getNotificationSettings()
-        }
-    }
-    
-    func getNotificationSettings() {
-        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-            print("Notification settings: \(settings)")
-            guard settings.authorizationStatus == .authorized else { return }
-            UIApplication.shared.registerForRemoteNotifications()
-        }
-    }
-    
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenParts = deviceToken.map { data -> String in
@@ -214,9 +193,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Failed to register: \(error)")
     }
-    
-    
-
 
 }
 

@@ -8,6 +8,8 @@
 
 import UIKit
 import SafariServices
+import UserNotifications
+
 
 class NotificationsViewController: UIViewController {
     
@@ -29,36 +31,49 @@ class NotificationsViewController: UIViewController {
     }
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
-        //openURLInside(url: UIApplicationOpenSettingsURLString)
-        UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(NotificationsViewController.applicationWillEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
-        
+        registerForPushNotifications()
         return
         
-        let alert = UIAlertController(title: "", message: "Popmetrics is requesting to enable push notifications.", preferredStyle: UIAlertControllerStyle.alert)
-        let backView = alert.view.subviews.last?.subviews.last
-        backView?.layer.cornerRadius = 10.0
-        backView?.backgroundColor = UIColor.white
-        let message  = "Popmetrics is requesting to enable push notifications."
-        var messageMutableString = NSMutableAttributedString()
-        messageMutableString = NSMutableAttributedString(string: message as String, attributes: [NSFontAttributeName:UIFont(name: "OpenSans", size: 15.0)!])
-        messageMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1), range: NSRange(location:0,length:message.characters.count))
-        alert.setValue(messageMutableString, forKey: "attributedMessage")
-        let actionCancel = UIAlertAction(title: "Maybe Later", style: UIAlertActionStyle.default, handler: nil)
-        actionCancel.setValue(UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1), forKey: "titleTextColor")
-        alert.addAction(actionCancel)
-        let actionConfirm = UIAlertAction(title: "Allow", style: UIAlertActionStyle.default, handler: nil)
-        actionConfirm.setValue(UIColor(red: 65/255, green: 155/255, blue: 249/255, alpha: 1), forKey: "titleTextColor")
-        alert.addAction(actionConfirm)
-        self.present(alert, animated: true, completion: nil)
+        /*
+        UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(NotificationsViewController.applicationWillEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+         */
     }
+    
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            
+            print("Permission granted: \(granted)")
+            
+            self.openNextView()
+            
+            guard granted else { return }
+            
+            self.getNotificationSettings()
+        }
+    }
+    
+    func getNotificationSettings() {
+        print("get notification settings")
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            print("Notification settings: \(settings)")
+            guard settings.authorizationStatus == .authorized else { return }
+            UIApplication.shared.registerForRemoteNotifications()
+        }
+    }
+    
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     
-    func applicationWillEnterForeground() {
+    func openNextView() {
         let finalOnboardingVC = OnboardingFinalView()
         self.present(finalOnboardingVC, animated: true, completion: nil)
+    }
+    
+    func applicationWillEnterForeground() {
+        openNextView()
     }
     
 }
