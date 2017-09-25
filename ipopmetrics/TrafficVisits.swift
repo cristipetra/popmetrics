@@ -122,6 +122,7 @@ class TrafficVisits: UIView {
     private func setProgress(firstValue: CGFloat, secondValue: CGFloat) {
         
         self.firstProgressView.widthAnchor.constraint(equalToConstant: firstValue).isActive = true
+
         self.secondProgressView.widthAnchor.constraint(equalToConstant: (secondValue + firstValue)).isActive = true
         
         self.firstProgressView.layer.masksToBounds = true
@@ -160,6 +161,8 @@ class TrafficVisits: UIView {
             }
             
         }
+        
+        setProgress(firstValue: CGFloat(firstValue), secondValue: CGFloat(secondValue))
         
         firstProgressView.layoutSubviews()
         secondProgressView.layoutSubviews()

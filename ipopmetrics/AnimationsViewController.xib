@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AnimationsViewController" customModule="ipopmetrics" customModuleProvider="target">
+            <connections>
+                <outlet property="scrollView" destination="gHw-ZH-m2R" id="B2l-Vr-fuU"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHw-ZH-m2R">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjW-fz-Bpy">
+                    <rect key="frame" x="320" y="633" width="34" height="23"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="34" id="714-Ge-kyP"/>
+                        <constraint firstAttribute="height" constant="23" id="dZz-qz-jpw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                    <state key="normal" title="skip">
+                        <color key="titleColor" red="0.13725490196078433" green="0.16862745098039217" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="skipAnimation:" destination="-1" eventType="touchUpInside" id="AlC-KY-mjS"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="gHw-ZH-m2R" secondAttribute="bottom" id="R2h-Nr-1kB"/>
+                <constraint firstAttribute="trailing" secondItem="zjW-fz-Bpy" secondAttribute="trailing" constant="21" id="SsR-aI-xJR"/>
+                <constraint firstAttribute="trailing" secondItem="gHw-ZH-m2R" secondAttribute="trailing" id="Z5N-1r-ORn"/>
+                <constraint firstAttribute="bottom" secondItem="zjW-fz-Bpy" secondAttribute="bottom" constant="11" id="csH-rU-fhI"/>
+                <constraint firstItem="gHw-ZH-m2R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="djb-yE-78r"/>
+                <constraint firstItem="gHw-ZH-m2R" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="sxY-P6-cgC"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

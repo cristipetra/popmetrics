@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AlfaSlabOne-Regular.ttf">
+            <string>AlfaSlabOne-Regular</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnboardingFinalView" customModule="ipopmetrics" customModuleProvider="target">
+            <connections>
+                <outlet property="greatJobLabel" destination="0ur-Co-kl7" id="d7B-H1-uEL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8op-2h-Eoc">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="345"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="2Id-99-XqE">
+                            <rect key="frame" x="25" y="138.5" width="325" height="68"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great Job!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ur-Co-kl7">
+                                    <rect key="frame" x="70.5" y="0.0" width="184.5" height="46"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="46" id="hOf-7Z-lYw"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="AlfaSlabOne-Regular" family="Alfa Slab One" pointSize="34"/>
+                                    <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now let’s jump in to the product." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wI7-op-HYC">
+                                    <rect key="frame" x="49" y="48" width="227.5" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="PS7-ie-xnY"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                    <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="68" id="Hoi-Kt-ZTA"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="2Id-99-XqE" secondAttribute="trailing" constant="25" id="A3C-be-AyE"/>
+                        <constraint firstItem="2Id-99-XqE" firstAttribute="leading" secondItem="8op-2h-Eoc" secondAttribute="leading" constant="25" id="Q2U-0e-Tu6"/>
+                        <constraint firstItem="2Id-99-XqE" firstAttribute="centerY" secondItem="8op-2h-Eoc" secondAttribute="centerY" id="Y6A-Od-mTT"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2C-io-Yn6">
+                    <rect key="frame" x="0.0" y="345" width="375" height="322"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="queuepostCopy" translatesAutoresizingMaskIntoConstraints="NO" id="Y6W-hd-e4P">
+                            <rect key="frame" x="137" y="120.5" width="100" height="81"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="TV6-d8-fOm"/>
+                                <constraint firstAttribute="height" constant="81" id="sf9-33-lZK"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.8666666666666667" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="Y6W-hd-e4P" firstAttribute="centerY" secondItem="T2C-io-Yn6" secondAttribute="centerY" id="07n-6Y-BMA"/>
+                        <constraint firstAttribute="height" constant="322" id="Ixb-3g-RPa"/>
+                        <constraint firstItem="Y6W-hd-e4P" firstAttribute="centerX" secondItem="T2C-io-Yn6" secondAttribute="centerX" id="x5Z-5f-B8o"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="T2C-io-Yn6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1Cv-Ju-daS"/>
+                <constraint firstItem="T2C-io-Yn6" firstAttribute="top" secondItem="8op-2h-Eoc" secondAttribute="bottom" id="4lp-H4-w4k"/>
+                <constraint firstAttribute="bottom" secondItem="T2C-io-Yn6" secondAttribute="bottom" id="Fyu-oG-ZOo"/>
+                <constraint firstAttribute="trailing" secondItem="T2C-io-Yn6" secondAttribute="trailing" id="Jel-vp-GgT"/>
+                <constraint firstItem="8op-2h-Eoc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Zur-Xj-xrf"/>
+                <constraint firstItem="8op-2h-Eoc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="z4z-k1-qX0"/>
+                <constraint firstAttribute="trailing" secondItem="8op-2h-Eoc" secondAttribute="trailing" id="zRq-GE-OkW"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="queuepostCopy" width="89" height="86"/>
+    </resources>
+</document>

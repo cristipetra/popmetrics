@@ -56,7 +56,6 @@ class StatsSlideViewController: UIViewController {
             self.statusView.uniqueVisitorsView.setProgressValues(doubleValue: false, firstValue: 89, doubleFirst: nil, secondValue: 17, doubleSecond: nil)
             self.statusView.newVisitsView.setProgressValues(doubleValue: false, firstValue: 31, doubleFirst: nil, secondValue: 12, doubleSecond: nil)
             
-            //self.statusView.popmetricVisitsView.isHidden = true
             self.statusView.pageControl.currentPage = indexOfPage
             self.statusView.topPageControl.currentPage = indexOfPage
             self.statusView.bottomLabel.text = "Engagement"
@@ -82,7 +81,6 @@ class StatsSlideViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         setUpProgressGradient()
     }
     
@@ -104,9 +102,8 @@ class StatsSlideViewController: UIViewController {
     }
     
     func setGradiendForProgressView(view: UIView,leftColor : UIColor , rightColor: UIColor) {
-        
-        let gradientLayer = CAGradientLayer()
-        
+        let gradientLayer  = CAGradientLayer()
+    
         gradientLayer.frame = view.bounds
         gradientLayer.colors = [leftColor.cgColor, rightColor.cgColor]
         gradientLayer.locations = [0.0, 1.0]
@@ -118,7 +115,7 @@ class StatsSlideViewController: UIViewController {
         // MARK: starting the animation
         
         let newBounds = view.bounds.width
-        animateLayer(view: view,newBounds: newBounds)
+        animateLayer(view: view, newBounds: newBounds)
         
     }
     

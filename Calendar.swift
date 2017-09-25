@@ -98,7 +98,7 @@ class CalendarCard:  Object, Mappable {
                 return "Completed"
             case StatusArticle.unapproved.rawValue:
                 return "Unapproved"
-            case StatusArticle.complete.rawValue:
+            case StatusArticle.completed.rawValue:
                 return "Completed"
             default:
                 return ""
@@ -130,7 +130,7 @@ class CalendarCard:  Object, Mappable {
                 return PopmetricsColor.salmondColor
             case StatusArticle.executed.rawValue:
                 return PopmetricsColor.greenSelectedDate
-            case StatusArticle.complete.rawValue:
+            case StatusArticle.completed.rawValue:
                 return PopmetricsColor.greenSelectedDate
             case StatusArticle.unapproved.rawValue:
                 return PopmetricsColor.yellowUnapproved
@@ -166,7 +166,7 @@ class CalendarCard:  Object, Mappable {
                 return "Scheduled Tweets"
             case StatusArticle.executed.rawValue:
                 return "Completed Tweets"
-            case StatusArticle.complete.rawValue:
+            case StatusArticle.completed.rawValue:
                 return "Completed Tweets"
             default:
                 return "Scheduled"
@@ -347,5 +347,5 @@ enum StatusArticle: String {
     case executed = "Executed"
     case unapproved = "Unapproved"
     case inProgress = "In-progress"
-    case complete = "Complete"
+    case completed = "Completed"
 }

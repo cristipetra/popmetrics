@@ -13,6 +13,7 @@ import EZAlertController
 import SwiftRichString
 import NotificationBannerSwift
 import SafariServices
+import Hero
 
 class LoginViewController: UIViewController {
     
@@ -30,6 +31,7 @@ class LoginViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
         
         phoneView.sendCodeBtn.addTarget(self, action: #selector(didPressSendPhoneNumber), for: .touchUpInside)
+        phoneView.backBtn.addTarget(self, action: #selector(dismissPhoneView), for: .touchUpInside)
         addPhoneView();
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
@@ -37,6 +39,9 @@ class LoginViewController: UIViewController {
         view.addSubview(progressHUD)
         progressHUD.hide()
         
+        
+        isHeroEnabled = true
+        heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
     }
     
     func rotated() {
@@ -116,6 +121,7 @@ class LoginViewController: UIViewController {
                 let codeVC = CodeViewController();
                 codeVC.phoneNo = phoneNumber;
                 self.present(codeVC, animated: true, completion: nil)
+                //self.presentFromDirection(viewController: codeVC, direction: .right)
             }
         }
     }
@@ -138,6 +144,10 @@ class LoginViewController: UIViewController {
             phoneView.sendCodeBtn.setTitleColor(UIColor(red: 228/255, green: 185/255, blue: 39/255, alpha: 1.0), for: .normal)
         }
         phoneView.numberTextField.resignFirstResponder()
+    }
+    
+    internal func dismissPhoneView() {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
@@ -170,7 +180,7 @@ extension LoginViewController {
         banner.show()
         
         banner.onTap = {
-            self.openURLInside(url: Config.appWebLink)
+            self.openURLInside(url: Config.appWebAimeeLink)
         }
     }
     

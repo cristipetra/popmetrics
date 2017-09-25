@@ -31,7 +31,7 @@ class TableFooterView: UITableViewHeaderFooterView {
     
     var section = 0
     
-    var typeSection: StatusArticle = .complete {
+    var typeSection: StatusArticle = .completed {
         didSet {
             changeTypeSection(typeSection: typeSection)
         }
@@ -386,4 +386,5 @@ enum FeedType {
     case home
     case todo
     case calendar
+    case statistics
 }

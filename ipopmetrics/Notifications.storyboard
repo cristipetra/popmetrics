@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="OpenSans-Italic.ttf">
+            <string>OpenSans-Italic</string>
+        </array>
         <array key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
         </array>
         <array key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
-        </array>
-        <array key="sf-san-francisco-ui-display-light.ttf">
-            <string>SFUIDisplay-Light</string>
         </array>
     </customFonts>
     <scenes>
@@ -29,98 +30,110 @@
                         <viewControllerLayoutGuide type="bottom" id="U45-fT-EyQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uOM-fC-49A">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="LHa-gz-y0P">
-                                <rect key="frame" x="26" y="180" width="324" height="97"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please allow us to send you push notifications!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2NN-Oa-kgM">
-                                        <rect key="frame" x="0.0" y="0.0" width="324" height="41"/>
-                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                        <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="This way we will be able to keep you up to date." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="NCp-nb-cDw">
-                                        <rect key="frame" x="0.0" y="56" width="324" height="41"/>
-                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                        <color key="textColor" red="0.65098039220000004" green="0.52941176469999995" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="popmetrics.io" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyx-ec-cQU">
-                                <rect key="frame" x="157.5" y="22" width="61.5" height="12"/>
-                                <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="10"/>
-                                <color key="textColor" red="0.1529411765" green="0.1529411765" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconNotification" translatesAutoresizingMaskIntoConstraints="NO" id="JJZ-fZ-jYI">
+                                <rect key="frame" x="117" y="75" width="86" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="86" id="FNJ-01-yuo"/>
+                                    <constraint firstAttribute="height" constant="62" id="aWT-kP-9Xk"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your experience matters to us." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sxk-4t-wrH">
+                                <rect key="frame" x="38" y="163" width="244" height="20.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glY-W5-PhM">
-                                <rect key="frame" x="0.0" y="277" width="375" height="390"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dJh-BF-nlX">
+                                <rect key="frame" x="22" y="217.5" width="276" height="220"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="xBm-zB-8b4" customClass="RoundedCornersButton" customModule="ipopmetrics" customModuleProvider="target">
-                                        <rect key="frame" x="66" y="178" width="242" height="60"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="9Zc-SC-n2i"/>
-                                            <constraint firstAttribute="width" constant="242" id="nVR-7w-j9s"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
-                                        <state key="normal" title="Maybe Next Time">
-                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="cancelButtonPressed:" destination="pc6-cY-x62" eventType="touchUpInside" id="X3i-FU-hzH"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="vHJ-Fc-uxr" customClass="RoundedCornersButton" customModule="ipopmetrics" customModuleProvider="target">
-                                        <rect key="frame" x="75" y="71" width="224" height="60"/>
-                                        <color key="backgroundColor" red="0.34509803919999998" green="0.60784313729999995" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="GVV-f9-PZk"/>
-                                            <constraint firstAttribute="width" constant="224" id="d7a-EN-aeX"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                        <state key="normal" title="Allow Push Notifications">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="confirmButtonPressed:" destination="pc6-cY-x62" eventType="touchUpInside" id="sxf-dw-fMm"/>
-                                        </connections>
-                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What makes this product special is that all insights &amp; feedback is based on your business’ data." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFr-8A-8sM">
+                                        <rect key="frame" x="0.0" y="0.0" width="276" height="61.5"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In order to provide any results we need atleast 12 hours to run the first tests &amp; get back to you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEB-eQ-3D3">
+                                        <rect key="frame" x="5.5" y="84" width="265.5" height="52.5"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="15"/>
+                                        <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For this reason, we ask that you allow notifications so that we can remind you when your results are ready. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhh-uy-Oxm">
+                                        <rect key="frame" x="0.0" y="158.5" width="276" height="61.5"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="vHJ-Fc-uxr" firstAttribute="centerX" secondItem="glY-W5-PhM" secondAttribute="centerX" id="2iJ-qG-89y"/>
-                                    <constraint firstItem="xBm-zB-8b4" firstAttribute="top" secondItem="vHJ-Fc-uxr" secondAttribute="bottom" constant="47" id="XkC-hg-oqQ">
-                                        <variation key="heightClass=compact-widthClass=compact" constant="20"/>
-                                    </constraint>
-                                    <constraint firstItem="xBm-zB-8b4" firstAttribute="centerX" secondItem="glY-W5-PhM" secondAttribute="centerX" id="d0c-x1-biY"/>
-                                    <constraint firstItem="vHJ-Fc-uxr" firstAttribute="top" secondItem="glY-W5-PhM" secondAttribute="top" constant="71" id="ehv-tc-HWF">
-                                        <variation key="heightClass=compact-widthClass=compact" constant="40"/>
-                                    </constraint>
+                                    <constraint firstAttribute="height" constant="220" id="lCK-cM-xYB"/>
                                 </constraints>
-                            </view>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZk-uz-d7o" customClass="RoundedCornersButton" customModule="ipopmetrics" customModuleProvider="target">
+                                <rect key="frame" x="43.5" y="470" width="233" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="Plw-XD-aTi"/>
+                                    <constraint firstAttribute="width" constant="233" id="U0q-br-xGH"/>
+                                </constraints>
+                                <state key="normal" title="Allow Notifications">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmButtonPressed:" destination="pc6-cY-x62" eventType="touchUpInside" id="DHb-zi-e7T"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZBQ-1s-JWi">
+                                <rect key="frame" x="125" y="523" width="70" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="2cQ-9R-Ssu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
+                                <state key="normal" title="Maybe later">
+                                    <color key="titleColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="pc6-cY-x62" eventType="touchUpInside" id="7ka-TG-Ar7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BtW-ol-s7w">
+                                <rect key="frame" x="43" y="40" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="0ax-6x-rHN"/>
+                                    <constraint firstAttribute="width" constant="20" id="0dl-Ac-0Rw"/>
+                                </constraints>
+                                <state key="normal" image="iconCalLeftBold"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="pc6-cY-x62" eventType="touchUpInside" id="9Es-Zd-CUE"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.86666666670000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LHa-gz-y0P" firstAttribute="centerY" secondItem="uOM-fC-49A" secondAttribute="centerY" constant="-105" id="89d-rx-4lv">
-                                <variation key="heightClass=compact-widthClass=compact" constant="-70"/>
-                                <variation key="heightClass=compact-widthClass=regular" constant="-95"/>
-                            </constraint>
-                            <constraint firstItem="glY-W5-PhM" firstAttribute="top" secondItem="LHa-gz-y0P" secondAttribute="bottom" id="AKi-b6-7ui"/>
-                            <constraint firstAttribute="bottom" secondItem="glY-W5-PhM" secondAttribute="bottom" id="DFw-Pn-2Uz"/>
-                            <constraint firstItem="yyx-ec-cQU" firstAttribute="top" secondItem="uOM-fC-49A" secondAttribute="top" constant="22" id="L2l-en-Ihn"/>
-                            <constraint firstItem="glY-W5-PhM" firstAttribute="leading" secondItem="uOM-fC-49A" secondAttribute="leading" id="LTb-sb-hFx"/>
-                            <constraint firstAttribute="trailing" secondItem="glY-W5-PhM" secondAttribute="trailing" id="j0g-0k-AxA"/>
-                            <constraint firstItem="yyx-ec-cQU" firstAttribute="centerX" secondItem="LHa-gz-y0P" secondAttribute="centerX" id="kT5-lm-hqT"/>
-                            <constraint firstItem="LHa-gz-y0P" firstAttribute="leading" secondItem="uOM-fC-49A" secondAttribute="leading" constant="26" id="vom-4a-yvz"/>
-                            <constraint firstAttribute="trailing" secondItem="LHa-gz-y0P" secondAttribute="trailing" constant="25" id="xa7-Mp-bWQ"/>
+                            <constraint firstItem="JJZ-fZ-jYI" firstAttribute="centerX" secondItem="uOM-fC-49A" secondAttribute="centerX" id="12d-NJ-gm7"/>
+                            <constraint firstAttribute="trailing" secondItem="dJh-BF-nlX" secondAttribute="trailing" constant="22" id="I61-UG-CFZ"/>
+                            <constraint firstItem="JJZ-fZ-jYI" firstAttribute="top" secondItem="lov-KO-k4w" secondAttribute="bottom" constant="55" id="KTn-uI-F7o"/>
+                            <constraint firstItem="BtW-ol-s7w" firstAttribute="top" secondItem="uOM-fC-49A" secondAttribute="topMargin" constant="40" id="LMi-kC-aK7"/>
+                            <constraint firstItem="BtW-ol-s7w" firstAttribute="leading" secondItem="uOM-fC-49A" secondAttribute="leadingMargin" constant="27" id="PZM-he-gT9"/>
+                            <constraint firstItem="dJh-BF-nlX" firstAttribute="leading" secondItem="uOM-fC-49A" secondAttribute="leading" constant="22" id="RBh-uy-f4D"/>
+                            <constraint firstItem="U45-fT-EyQ" firstAttribute="top" secondItem="ZBQ-1s-JWi" secondAttribute="bottom" constant="28" id="UEN-ko-wR6"/>
+                            <constraint firstItem="ZBQ-1s-JWi" firstAttribute="centerX" secondItem="uOM-fC-49A" secondAttribute="centerX" id="WZW-IT-7uq"/>
+                            <constraint firstItem="dJh-BF-nlX" firstAttribute="top" secondItem="sxk-4t-wrH" secondAttribute="bottom" constant="34" id="g2D-6o-Lu9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sxk-4t-wrH" secondAttribute="trailing" constant="22" id="i41-Ma-SyM"/>
+                            <constraint firstItem="sxk-4t-wrH" firstAttribute="leading" secondItem="uOM-fC-49A" secondAttribute="leadingMargin" constant="22" id="opW-dp-6Sr"/>
+                            <constraint firstItem="sxk-4t-wrH" firstAttribute="top" secondItem="JJZ-fZ-jYI" secondAttribute="bottom" constant="26" id="sl2-dF-3B5"/>
+                            <constraint firstItem="ZBQ-1s-JWi" firstAttribute="top" secondItem="QZk-uz-d7o" secondAttribute="bottom" constant="10" id="wEj-EE-BO6"/>
+                            <constraint firstItem="QZk-uz-d7o" firstAttribute="centerX" secondItem="uOM-fC-49A" secondAttribute="centerX" id="zHQ-4U-d8v"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cancelButton" destination="xBm-zB-8b4" id="Shw-Ln-u3C"/>
-                        <outlet property="confirmButton" destination="vHJ-Fc-uxr" id="GgJ-MW-xnE"/>
+                        <outlet property="cancelButton" destination="ZBQ-1s-JWi" id="mQt-rO-vez"/>
+                        <outlet property="confirmButton" destination="QZk-uz-d7o" id="yq2-UI-VtT"/>
+                        <outlet property="firstLabel" destination="WFr-8A-8sM" id="F0l-sY-Fst"/>
+                        <outlet property="secondLabel" destination="DEB-eQ-3D3" id="y7T-cJ-DzF"/>
+                        <outlet property="thirdLabel" destination="qhh-uy-Oxm" id="CqV-oG-fvs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uEP-ud-vnl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -128,4 +141,8 @@
             <point key="canvasLocation" x="42" y="151"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="iconCalLeftBold" width="14" height="24"/>
+        <image name="iconNotification" width="88" height="66"/>
+    </resources>
 </document>

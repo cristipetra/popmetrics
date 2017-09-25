@@ -10,6 +10,7 @@ import UIKit
 import Crashlytics
 import EZAlertController
 import SafariServices
+import Hero
 
 class CodeViewController: UIViewController {
     
@@ -31,10 +32,13 @@ class CodeViewController: UIViewController {
         digitCodeView.sendCodeBtn.addTarget(self, action: #selector(didPressSendSmsCode), for: .touchUpInside)
         digitCodeView.contactBtn.addTarget(self, action: #selector(didPressContact), for: .touchUpInside)
         digitCodeView.resendCodeBtn.addTarget(self, action: #selector(didPressResendCode), for: .touchUpInside)
-        
+        digitCodeView.closeBtn.addTarget(self, action: #selector(closeVC), for: .touchUpInside)
         
         view.addSubview(progressHUD)
         progressHUD.hide()
+        
+        isHeroEnabled = true
+        heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
     }
     
     
@@ -123,13 +127,18 @@ class CodeViewController: UIViewController {
     }
     
     internal func showVideoScreen() {
-        let videoScreenVC = AppStoryboard.Signin.instance.instantiateViewController(withIdentifier: ViewNames.SBID_VIDEO_SCREEN)
-        self.present(videoScreenVC, animated: true, completion: nil)
+        let onboardingVC = OnboardingViewController()
+        self.present(onboardingVC, animated: true, completion: nil)
     }
     
     internal func showPushNotificationsScreen() {
         let notificationsVC = AppStoryboard.Notifications.instance.instantiateViewController(withIdentifier: ViewNames.SBID_PUSH_NOTIFICATIONS_VC)
+        //self.presentFromDirection(viewController: notificationsVC, direction: .right)
         self.present(notificationsVC, animated: false, completion: nil)
+    }
+    
+    internal func closeVC() {
+        self.dismiss(animated: true, completion: nil)
     }
 
 }
