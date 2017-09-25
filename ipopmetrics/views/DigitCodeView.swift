@@ -44,44 +44,55 @@ class DigitCodeView: UIView {
         return contactButton
     }()
     
+    lazy var closeBtn : UIButton = {
+        let closeButton = UIButton()
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.setImage(UIImage(named: "iconCalLeftBold"), for: .normal)
+        
+        return closeButton
+    }()
+    
     func reloadSubViews() {
+        closeBtn.removeFromSuperview()
         digitextField.removeFromSuperview()
         sendCodeBtn.removeFromSuperview()
         resendCodeBtn.removeFromSuperview()
         contactBtn.removeFromSuperview()
+        self.addSubview(closeBtn)
         self.addSubview(digitextField)
         self.addSubview(sendCodeBtn)
         self.addSubview(resendCodeBtn)
         self.addSubview(contactBtn)
         setResendCodeButton(yAnchor: -130)
         /*
-        if UIDevice.current.orientation.isPortrait {
-            setNumberTextView(yAnchor: 122)
-            self.layoutIfNeeded()
-            print("portrait")
-        } else {
-            setNumberTextView(yAnchor: 65)
-            self.layoutIfNeeded()
-            print("landscape")
-        }
-        */
+         if UIDevice.current.orientation.isPortrait {
+         setNumberTextView(yAnchor: 122)
+         self.layoutIfNeeded()
+         print("portrait")
+         } else {
+         setNumberTextView(yAnchor: 65)
+         self.layoutIfNeeded()
+         print("landscape")
+         }
+         */
         setNumberTextView(yAnchor: 122)
         
         setSendCodeButton(yAnchor: 30)
         /*
-        if UIDevice.current.orientation.isPortrait {
-            setResendCodeButton(yAnchor: -130)
-        } else {
-            setResendCodeButton(yAnchor: -60)
-        }
- 
-        if UIDevice.current.orientation.isPortrait {
-            setContactButton(yAnchor: -90)
-        } else {
-            setContactButton(yAnchor: -30)
-        }
-        */
+         if UIDevice.current.orientation.isPortrait {
+         setResendCodeButton(yAnchor: -130)
+         } else {
+         setResendCodeButton(yAnchor: -60)
+         }
+         
+         if UIDevice.current.orientation.isPortrait {
+         setContactButton(yAnchor: -90)
+         } else {
+         setContactButton(yAnchor: -30)
+         }
+         */
         if UIScreen.main.bounds.height > 480 {
+            setCloseButton(yAnchor: 40)
             setNumberTextView(yAnchor: 122)
             setSendCodeButton(yAnchor: 30)
             setResendCodeButton(yAnchor: -130)
@@ -97,20 +108,22 @@ class DigitCodeView: UIView {
     func setup() {
         self.backgroundColor = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1.0)
         
+        self.addSubview(closeBtn)
+        setCloseButton(yAnchor: 40)
         
         // TextField for number
         self.addSubview(digitextField)
         /*
-        if UIDevice.current.orientation.isPortrait {
-            setNumberTextView(yAnchor: 122)
-            self.layoutIfNeeded()
-            print("portrait")
-        } else {
-            setNumberTextView(yAnchor: 65)
-            self.layoutIfNeeded()
-            print("landscape")
-        }
-        */
+         if UIDevice.current.orientation.isPortrait {
+         setNumberTextView(yAnchor: 122)
+         self.layoutIfNeeded()
+         print("portrait")
+         } else {
+         setNumberTextView(yAnchor: 65)
+         self.layoutIfNeeded()
+         print("landscape")
+         }
+         */
         setNumberTextView(yAnchor: 122)
         
         // Send code button
@@ -120,24 +133,32 @@ class DigitCodeView: UIView {
         //Resend code button
         self.addSubview(resendCodeBtn)
         /*
-        if UIDevice.current.orientation.isPortrait {
-            setResendCodeButton(yAnchor: -130)
-        } else {
-            setResendCodeButton(yAnchor: -60)
-        }
-        */
+         if UIDevice.current.orientation.isPortrait {
+         setResendCodeButton(yAnchor: -130)
+         } else {
+         setResendCodeButton(yAnchor: -60)
+         }
+         */
         setResendCodeButton(yAnchor: -130)
         
         //Contact button
         self.addSubview(contactBtn)
         /*
-        if UIDevice.current.orientation.isPortrait {
-            setContactButton(yAnchor: -90)
-        } else {
-            setContactButton(yAnchor: -30)
-        }
-        */
+         if UIDevice.current.orientation.isPortrait {
+         setContactButton(yAnchor: -90)
+         } else {
+         setContactButton(yAnchor: -30)
+         }
+         */
         setContactButton(yAnchor: -90)
+    }
+    
+    private func setCloseButton(yAnchor: CGFloat) {
+        closeBtn.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        closeBtn.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        closeBtn.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 27).isActive = true
+        closeBtn.topAnchor.constraint(equalTo: self.topAnchor, constant: yAnchor).isActive = true
+        
     }
     
     private func setNumberTextView(yAnchor: CGFloat) {

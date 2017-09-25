@@ -7,38 +7,51 @@
 //
 
 import Foundation
+import RealmSwift
 
 class StatisticsStore {
+    
+    public let realm = try! Realm()
     
     static func getInstance() -> StatisticsStore {
         return StatisticsStore()
     }
     
-    var sections:[StatisticsSection] = []
-    
-    public func getFeed() -> [StatisticsSection] {
-        return sections
+    public func getStatisticsCard() -> Results<StatisticCard> {
+        return realm.objects(StatisticCard.self).sorted(byKeyPath: "index")
     }
     
-    public func storeItem(item: StatisticsItem) {
-        if !existSection(item) {
-            var section: StatisticsSection = StatisticsSection()
-            section.status = item.status!
-            section.items.append(item)
-            sections.append(section)
-        }
+    public func countSections() -> Int {
+        let distinctTypes = Array(Set(self.getStatisticsCard().value(forKey: "section") as! [String]))
+        return distinctTypes.count
+    }
+    
+    public func updateStatistics(_ statisticsResponse: StatisticsResponse) {
         
-    }
-    
-    internal func existSection(_ item: StatisticsItem) -> Bool {
-        for section in sections{
-            if(section.status ==  item.status) {
-                print("fouund")
-                section.items.append(item)
-                return true
+        let realm = try! Realm()
+        let cards = realm.objects(StatisticCard.self).sorted(byKeyPath: "index")
+        
+        var cardsToDelete: [StatisticCard] = []
+        try! realm.write {
+            
+            for existingCard in cards {
+                let (exists, newCard) = statisticsResponse.matchCard(existingCard.cardId!)
+                if !exists {
+                    cardsToDelete.append(existingCard)
+                }
             }
-        }
-        return false
+            
+            for card in cardsToDelete {
+                
+                //TODO delete all related items first
+                realm.delete(card)
+            }
+            
+            for newCard in statisticsResponse.cards! {
+                realm.add(newCard, update:true)
+            }
+        }//try
+        
     }
     
 }

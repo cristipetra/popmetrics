@@ -118,18 +118,18 @@ class TwoImagesButton: RoundButton {
         switch imageButtonType {
         case .unapproved:
             leftHandImage = UIImage(named: "iconApprove")
-            rightHandImage = UIImage(named: "iconCalLeft")
+            rightHandImage = UIImage(named: "iconCalRightBold")
         case .failed:
             leftHandImage = UIImage(named: "icon_timescore")
-            rightHandImage = UIImage(named: "iconCalLeft")
+            rightHandImage = UIImage(named: "iconCalRightBold")
         case .complete:
             leftHandImage = UIImage(named: "icon_timescore")
-            rightHandImage = UIImage(named: "iconCalLeft")
+            rightHandImage = UIImage(named: "iconCalRightBold")
         case .twitter:
             leftHandImage = UIImage(named: "iconCtaTwitter")
             leftImageView.frame.size.height = 24
             leftImageView.frame.origin.y = 12
-            rightHandImage = UIImage(named: "iconCalLeft")
+            rightHandImage = UIImage(named: "iconCalRightBold")
         case .approved:
             leftHandImage = UIImage(named: "icon2CtaApprovepost")
             rightImageView.isHidden = true
@@ -160,6 +160,14 @@ class TwoImagesButton: RoundButton {
             leftImageView.frame.origin.x = 24
             leftImageView.frame.size.width = 16
             rightImageView.frame.origin.x = 58
+        case .facebook:
+            leftHandImage = UIImage(named: "iconFacebook")
+            leftImageView.frame.size.width = 16
+            leftImageView.frame.origin.x = 26
+            leftImageView.frame.origin.y = 14
+        case .linkedin:
+            leftHandImage = UIImage(named: "iconLinkedin")
+            leftImageView.frame.origin.y = 14
         default:
             break
         }
@@ -190,4 +198,6 @@ enum ImageButtonType {
     case denied
     case lastCardTodo
     case lastCardCalendar
+    case facebook
+    case linkedin
 }

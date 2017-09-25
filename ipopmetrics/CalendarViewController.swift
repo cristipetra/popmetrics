@@ -37,7 +37,7 @@ class CalendarViewController: BaseViewController {
     var scrollToRow: IndexPath = IndexPath(row: 0, section: 0)
     var reachedFooter = false
     var shouldMaximizeCell = false
-    
+    var isLastCell = false
     let noItemsLoadeInitial = 3
     
     var noItemsLoaded: [Int] = [3,3,3,3,3]
@@ -80,6 +80,9 @@ class CalendarViewController: BaseViewController {
         let extendedCardNib = UINib(nibName: "CalendarCardMaximized", bundle: nil)
         tableView.register(extendedCardNib, forCellReuseIdentifier: "extendedCell")
         
+        let emptyCard = UINib(nibName: "EmptyCard", bundle: nil)
+        tableView.register(emptyCard, forCellReuseIdentifier: "EmptyCard")
+        
         let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
         tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
         
@@ -106,19 +109,18 @@ class CalendarViewController: BaseViewController {
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = PopmetricsColor.darkGrey
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            self?.fetchItems(silent:false)  
+            self?.fetchItems(silent:false)
             self?.tableView.dg_stopLoading()
             self?.tableView.reloadData()
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
         tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
-    
+        
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
         transitionView.addSubview(calendarView)
         
-        
-        if(shouldReloadData) {
+        if shouldReloadData {
             fetchItems(silent: false)
         }
     }
@@ -145,12 +147,21 @@ class CalendarViewController: BaseViewController {
                 return
             }
             else {
+                
                 self.store.updateCalendars((responseWrapper?.data)!)
+                //self.createItemsLocally()
                 self.tableView.isHidden = false
                 self.tableView.reloadData()
             }
         }
     }
+    
+    func createItemsLocally() {
+        try! store.realm.write {
+
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         fetchItems(silent:false)
         tableView.reloadData()
@@ -166,7 +177,7 @@ class CalendarViewController: BaseViewController {
                           animations: {
                             self.transitionView.frame.origin.x = 0
                             self.transitionView.alpha = 1
-                        })
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -215,14 +226,16 @@ class CalendarViewController: BaseViewController {
         modalViewController.modalTransition.radiusFactor = 0.3
         self.present(modalViewController, animated: true, completion: nil)
     }
+    
 }
 
 extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, ChangeCellProtocol {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
-    
-        if sectionIdx == store.getCalendarCards().count {
+        isLastCell = false
+        if isLastSection(section: sectionIdx) {
+            isLastCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
             cell.changeTitleWithSpacing(title: "Thats it for now");
             cell.changeMessageWithSpacing(message: "Check back to see if there is anything more in the Home Feed")
@@ -234,8 +247,17 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         }
         
         let sectionCards = store.getCalendarSocialPostsForCard(store.getCalendarCards()[sectionIdx])
+
+        let card = store.getCalendarCards()[sectionIdx]
+        if sectionCards.isEmpty {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCard", for: indexPath) as! EmptyCardView
+            cell.setupView(type: .calendar, calendarStatus: StatusArticle(rawValue: (card.section))!)
+            cell.backgroundColor = UIColor.feedBackgroundColor()
+            cell.selectionStyle = .none
+            return cell
+        }
+        
         let item = sectionCards[rowIdx]
-        //print(item)
         
         if shouldMaximizeCell == false {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCardSimple", for: indexPath) as! CalendarCardSimpleViewCell
@@ -272,24 +294,17 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         //last section don't have an header view
-        if section == store.getCalendarCards().count {
+        if( isLastSection(section: section)) {
             return UIView()
         }
         
         let sectionCard = store.getCalendarCards()[section]
-        let posts = store.getCalendarSocialPostsForCard(sectionCard)
         
-        if(posts.count == 0) {
-            return UIView()
-        }
         
-
-        if shouldMaximizeCell {
+        if shouldMaximizeCell || store.getCalendarSocialPostsForCard(store.getCalendarCards()[section]).count == 0{
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
-            if posts.count > 0 {
-                headerCell.changeColor(color: sectionCard.getSectionColor)
-                headerCell.changeTitle(title: sectionCard.socialTextString)
-            }
+            headerCell.changeColor(color: sectionCard.getSectionColor)
+            headerCell.changeTitle(title: sectionCard.socialTextString)
             return headerCell
         }
         else {
@@ -303,21 +318,24 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return store.getCalendarCards().count + 1
-        return store.countSections() + 1
+        return getCountSection()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(section == store.getCalendarCards().count) {
+        if (isLastSection(section: section)) {
+            return 1
+        } else if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section]).isEmpty {
             return 1
         }
         return itemsToLoad(section: section)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //height for last card
-        if ( indexPath.section == (store.getCalendarCards().count) ) {
+        if ( isLastSection(section: indexPath.section) ) {
             return 261
+        }
+        if store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section]).isEmpty {
+            return 216
         }
         if shouldMaximizeCell == false {
             return 93
@@ -326,15 +344,9 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if section == store.getCalendarCards().endIndex {
+        if isLastSection(section: section) || store.getCalendarSocialPostsForCard(store.getCalendarCards()[section]).isEmpty {
             return UIView()
         }
-        
-        let posts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])
-        if(posts.count == 0) {
-            return UIView()
-        }
-        
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
         todoFooter.changeFeedType(feedType: FeedType.calendar)
         todoFooter.buttonActionHandler = self
@@ -346,13 +358,13 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         //last card
-        if section == store.getCalendarCards().count  {
+        if isLastSection(section: section){
             return 40
         }
         // when there it's no social posts
         let posts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])
         if(posts.count == 0) {
-            return 0
+            return 80
         }
         if shouldMaximizeCell == false {
             return 109
@@ -363,16 +375,26 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        
         //last card
-        if section == store.getCalendarCards().endIndex {
+        if isLastSection(section: section) {
             return 0
         }
-        // when there it's no social posts
-        let posts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])
-        if(posts.count == 0) {
+        if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section]).isEmpty {
             return 0
         }
         return 80
+    }
+    
+    func getCountSection() -> Int {
+        //check if we receive card that has empty social post
+        
+        if( store.getCalendarCards().count == 1) {
+            if( store.getCalendarSocialPostsForCard(store.getCalendarCards()[0]).count == 0) {
+                return 1
+            }
+        }
+        return store.getCalendarCards().count + 1 // adding the last card
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -428,11 +450,17 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     
     func changeTopHeaderTitle(section: Int) {
         if section < store.countSections() {
-            let item = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])[0]
-            topHeaderView.changeTitle(title: item.socialTextString)
-            topHeaderView.changeColorCircle(color: item.getSectionColor)
-            if (item.status == "unapproved") {
-                topHeaderView.changeColorCircle(color: PopmetricsColor.blueURLColor);
+            if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section]).count != 0 {
+                let item = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])[0]
+                topHeaderView.changeTitle(title: item.socialTextString)
+                topHeaderView.changeColorCircle(color: item.getSectionColor)
+                if (item.status == "unapproved") {
+                    topHeaderView.changeColorCircle(color: PopmetricsColor.blueURLColor);
+                }
+            } else {
+                let card = store.getCalendarCards()[section]
+                topHeaderView.changeTitle(title: card.section)
+                topHeaderView.changeColorCircle(color: card.getSectionColor)
             }
         }
     }
@@ -499,14 +527,18 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         noItemsLoaded[section] += value
     }
     
+    func isLastSection(section: Int) -> Bool {
+        if section == store.getCalendarCards().count {
+            return true
+        }
+        return false
+    }
     
     func itemsToLoad(section: Int) -> Int {
-        let posts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])
-        
-        if (posts.count > noItemsLoaded(section)) {
+        if (store.getCalendarSocialPostsForCard(store.getCalendarCards()[section]).count > noItemsLoaded(section)) {
             return noItemsLoaded(section)
         } else {
-            return posts.count
+            return store.getCalendarSocialPostsForCard(store.getCalendarCards()[section]).count
         }
         return noItemsLoadeInitial
     }

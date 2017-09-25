@@ -5,14 +5,14 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'ipopmetrics' do
-    
+
   pod 'Reachability'
   pod 'Whisper'
   pod 'Alamofire', '~> 4.0'
   pod 'AlamofireImage'
   pod 'ObjectMapper'
   pod 'AlamofireObjectMapper', '~> 4.0'
-  pod 'Fabric'  
+  pod 'Fabric'
   pod 'Crashlytics'
   pod 'JSONWebToken'
   pod 'MGSwipeTableCell'
@@ -20,7 +20,7 @@ target 'ipopmetrics' do
   pod 'RSKImageCropper'
   pod 'STPopup'
   pod 'RealmSwift'
-  
+
   # Auth
   pod 'Google/SignIn'
   pod 'TwitterCore', '~> 2.8.0'
@@ -38,13 +38,17 @@ target 'ipopmetrics' do
 #  pod 'FontAwesome.swift'
   pod 'ActiveLabel'
   pod 'EZAlertController'
-  pod 'SwiftRichString'
+  pod 'SwiftRichString', '~> 0.9.9'
   pod 'NotificationBannerSwift'
   pod 'BubbleTransition'
   pod 'SwiftyJSON'
   pod “MJCalendar”, :git=>’https://github.com/cristipetra/MJCalendar’
   pod 'ElasticTransition', :git=>’https://github.com/ionutboanta/ElasticTransition’
   pod 'ScrollableGraphView'
-  
-  
+  pod 'M13ProgressSuite'
+  pod 'lottie-ios'
+  pod 'GTProgressBar'
+  pod 'Hero', '1.0.0-alpha.4'
+  pod 'SnapKit', '~> 3.2.0'
+
 end

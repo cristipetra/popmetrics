@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
-    </dependencies>
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
@@ -45,7 +45,7 @@
                                 <constraint firstAttribute="width" constant="160" id="uDh-nt-gGa"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="15"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="5rP-xO-Nke">
@@ -98,10 +98,10 @@
                                 <constraint firstAttribute="width" constant="29" id="bG1-1v-GiV"/>
                                 <constraint firstAttribute="height" constant="29" id="rlB-dc-wsY"/>
                             </constraints>
-                            <state key="normal" image="iconCalLeft-1"/>
+                            <state key="normal" image="iconCalLeft"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8t-rj-iCT">
-                            <rect key="frame" x="234" y="87.5" width="29" height="29"/>
+                            <rect key="frame" x="234" y="88" width="29" height="29"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="29" id="5UJ-uU-tbT"/>
                                 <constraint firstAttribute="height" constant="29" id="RUh-MY-GfV"/>
@@ -165,7 +165,7 @@
         </view>
     </objects>
     <resources>
-        <image name="iconCalLeft-1" width="12" height="24"/>
+        <image name="iconCalLeft" width="12" height="24"/>
         <image name="iconCalRight" width="12" height="24"/>
     </resources>
 </document>

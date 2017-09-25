@@ -112,7 +112,11 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
   - Google/SignIn
+  - GTProgressBar
+  - Hero (= 1.0.0-alpha.4)
   - JSONWebToken
+  - lottie-ios
+  - M13ProgressSuite
   - MGSwipeTableCell
   - MJCalendar (from `https://github.com/cristipetra/MJCalendar`)
   - NotificationBannerSwift
@@ -121,8 +125,9 @@ DEPENDENCIES:
   - RealmSwift
   - RSKImageCropper
   - ScrollableGraphView
+  - SnapKit (~> 3.2.0)
   - STPopup
-  - SwiftRichString
+  - SwiftRichString (~> 0.9.9)
   - SwiftyJSON
   - TwitterCore (~> 2.8.0)
   - TwitterKit (~> 2.8.1)

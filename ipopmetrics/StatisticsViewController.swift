@@ -17,10 +17,11 @@ class StatisticsViewController: UIViewController {
     
     let transitionView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
+    let store = StatisticsStore.getInstance()
+    
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
     var insightIsDisplayed = false
     var cellHeight = 0 as CGFloat
-    fileprivate var sections: [StatisticsSection] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,7 @@ class StatisticsViewController: UIViewController {
         tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
-        fetchItemsLocally()
+        createItemsLocally()
         
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
@@ -86,28 +87,15 @@ class StatisticsViewController: UIViewController {
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     }
     
-    
-    internal func fetchItemsLocally() {
-        let path = Bundle.main.path(forResource: "sampleFeedStatistics", ofType: "json")
-        let jsonData: NSData = NSData(contentsOfFile: path!)!
-        let json = JSON(data: jsonData as Data)
-        let statisticsStore = StatisticsStore.getInstance()
-        for item in json["items"] {
-            let statisticsItem = StatisticsItem()
-            statisticsItem.status = item.1["status"].description
-            statisticsItem.articleTitle = item.1["article_title"].description
-            statisticsItem.statusDate = Date(timeIntervalSince1970: Double(item.1["status_date"].description)!)
-            statisticsItem.articleImage = item.1["article_image"].description
-            statisticsItem.articleText = item.1["article_text"].description
-            statisticsItem.type = item.1["type"].description
-            statisticsItem.articleUrl = item.1["article_url"].description
-            statisticsItem.articleCategory = item.1["article_category"].description
-            print(Double(item.1["status_date"].description));
-        
-            statisticsStore.storeItem(item: statisticsItem)
+    internal func createItemsLocally() {
+        try! store.realm.write {
+            let statsCard = StatisticCard()
+            statsCard.cardId = "dfas"
+            statsCard.section = "Traffic"
+            
+            store.realm.add(statsCard, update: true)
         }
-        
-        self.sections = statisticsStore.getFeed()
+        print(store.getStatisticsCard())
     }
     
     func handlerClickMenu() {
@@ -132,25 +120,34 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //empty card
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficEmptyCard", for: indexPath) as! TrafficEmptyView
-        cellHeight = 216
-        cell.selectionStyle = .none
-        cell.backgroundColor = UIColor.feedBackgroundColor()
-        return cell
+        if isLastSection(section: indexPath.section) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
+            cellHeight = 261
+            cell.changeTitleWithSpacing(title: "You're all caught up.")
+            cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
+            cell.selectionStyle = .none
+            cell.titleActionButton.text = "View Home Feed"
+            cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
+            return cell
+        }
+        
         
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
-        let section = sections[sectionIdx]
-        let item = section.items[rowIdx]
+        //let section = sections[sectionIdx]
+        let card = store.getStatisticsCard()[indexPath.section]
         
-        switch item.type {
-        case "traffic":
+        
+        
+        switch card.section {
+        case "Traffic":
             let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficCard", for: indexPath) as! TrafficCardViewCell
-            cellHeight = 424
-            setTrafficCard(cell: cell, item: item)
+            cellHeight = 414
+            //setTrafficCard(cell: cell, item: item)
             cell.selectionStyle = .none
             cell.backgroundColor = UIColor.feedBackgroundColor()
             cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_:)), for: .touchUpInside)
+            cell.connectionLine.isHidden = true
             return cell
         case "traffic_unconnected" :
             let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficEmptyCard", for: indexPath) as! TrafficEmptyView
@@ -195,11 +192,12 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.isHidden = true
             return cell
         }
+ 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-        return sections[section].items.count
+        return store.getStatisticsCard().count
+        //return sections[section].items.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -208,7 +206,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            if (section == sections.endIndex - 1) {
+            if( isLastSection(section: section)) {
                 return nil
             }
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
@@ -232,11 +230,18 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
         return 0
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-        return sections.count
+    func isLastSection(section: Int) -> Bool {
+        if section == store.countSections() {
+            return true
+        }
+        return false
     }
     
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return store.getStatisticsCard().count + 1
+    }
+    /*
     private func setTrafficCard(cell: TrafficCardViewCell, item: StatisticsItem) {
         if item.status == StatusArticle.unapproved.rawValue {
             insightIsDisplayed = true
@@ -246,4 +251,5 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.connectionLine.isHidden = true
         }
     }
+    */
 }

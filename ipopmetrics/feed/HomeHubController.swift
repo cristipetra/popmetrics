@@ -18,7 +18,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     fileprivate var sharingInProgress = false
     
     let sectionToIndex = ["Required Actions": 0,
-                           "Insights": 1]
+                           "Insights": 2]
     
     let indexToSection = [0:"Required Actions",
                           1:"Insights"]
@@ -33,10 +33,13 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     var toDoCellHeight = 50 as CGFloat
     var isToDoCellType = false
     var isTrafficCard = false
+    var isMoreInfoType = false
     
     let transition = BubbleTransition();
     var transitionButton:UIButton = UIButton();
+
     let transitionView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+
     
     var isAnimatingHeader = false
     
@@ -73,8 +76,14 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let recommendedNib = UINib(nibName: "RecommendedCell", bundle: nil)
         tableView.register(recommendedNib, forCellReuseIdentifier: "recommendedId")
         
+        let recommendedActionNib = UINib(nibName: "RecommendedActionCard", bundle: nil)
+        tableView.register(recommendedActionNib, forCellReuseIdentifier: "recommendedActionId")
+        
         let trafficNib = UINib(nibName: "TrafficCard", bundle: nil)
         tableView.register(trafficNib, forCellReuseIdentifier: "TrafficCard")
+        
+        let moreInfoNib = UINib(nibName: "MoreInfoViewCell", bundle: nil)
+        tableView.register(moreInfoNib, forCellReuseIdentifier: "moreInfoId")
         
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
@@ -97,9 +106,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             self.fetchItems(silent:false)
         }
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
+        createItemsLocally()
         
         
+        print(store.getFeedCards())
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -155,11 +165,41 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             }
             else {
                 self.store.updateFeed((responseWrapper?.data)!)
+                print(self.store.getFeedCards())
                 self.tableView.isHidden = false
                 self.tableView.reloadData()
             }
         }
         
+    }
+    
+    func createItemsLocally() {
+        try! store.realm.write {
+            let feedCard = FeedCard()
+            feedCard.section = "Insights"
+            feedCard.type = "recommended_action"
+            feedCard.cardId = "42314234"
+            store.realm.add(feedCard, update: true)
+            
+            /*
+            let feedCard1 = FeedCard()
+            feedCard1.section = "Insights"
+            feedCard1.type = "more_action"
+            feedCard1.cardId = "423114234"
+            store.realm.add(feedCard1, update: true)
+            */
+            
+            /*
+            let post1: CalendarSocialPost = CalendarSocialPost()
+            post1.calendarCard = calendarCard
+            post1.postId = "asdfasdfsa"
+            post1.status = "scheduled"
+            post1.scheduledDate = Date()
+            store.realm.add(post1, update:true)
+            */
+        }
+        
+        print(store.getFeedCards())
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -218,6 +258,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         if (section == sectionToIndex.count) {
             return 1
         }
+        print(section)
+        print(indexToSection[section])
         return store.getFeedCardsWithSection(indexToSection[section]!).count
     }
     
@@ -281,7 +323,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 toDoCellHeight = cell.toDoCountViewHeight.constant
                 cell.selectionStyle = .none
                 cell.setHeaderTitle(title: "Snapshot")
-                
+                //cell.footerView.informationBtn.shouldPulsate(true)
                 cell.footerView.informationBtn.addTarget(self, action: #selector(showTooltip(_:)), for: .touchUpInside)
                 return cell
 
@@ -295,20 +337,37 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.selectionStyle = .none
                 cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
                 return cell
-        case "traffic":
+            case "traffic":
                 isTrafficCard = true
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficCard", for: indexPath) as! TrafficCardViewCell
                 cell.selectionStyle = .none
                 cell.connectionLine.isHidden = true
                 cell.backgroundColor = UIColor.feedBackgroundColor()
+                
                 return cell
-
+            case "recommended_action":
+                shouldDisplayCell = true
+                isMoreInfoType = false
+                let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedActionId", for: indexPath) as! RecommendedActionViewCell
+                cell.footerView.actionButton.addTarget(self, action: #selector(openGoogleActionView), for: .touchUpInside)
+                return cell
+            case "more_action":
+                isMoreInfoType = true
+                let cell = tableView.dequeueReusableCell(withIdentifier: "moreInfoId", for: indexPath) as! MoreInfoViewCell
+                cell.setUpToolbar()
+                return cell
             default:
                 shouldDisplayCell = false
                 let cell = UITableViewCell()
                 return cell
-        }
+            }
         
+    }
+    
+    @objc func openGoogleActionView() {
+        print("open google")
+        let googleActionVc = GoogleActionViewController()
+        self.navigationController?.pushViewController(googleActionVc, animated: true)
     }
     
     func handlerInsightButton() {
@@ -417,6 +476,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if isMoreInfoType {
+            return 226
+        }
         if isToDoCellType {
             return toDoCellHeight
         } else if isTrafficCard {

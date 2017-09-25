@@ -12,22 +12,27 @@ class TrafficReportViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet var containerView: UIView!
-    
+
     let statsPageVC: StatsPageViewController = StatsPageViewController()
     let chartVC = UIStoryboard(name: "ChartStatistics", bundle: nil).instantiateViewController(withIdentifier: "ChartViewId") as! ChartViewController
+    
+    let insight = StatisticsInsight()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpNavigationBar()
-        
+
         addChartView()
         addPageView()
+        addInsight()
     }
     
     override func viewDidLayoutSubviews() {
         scrollView.contentSize = CGSize(width:self.scrollView.contentSize.width, height: self.containerView.frame.height)
     }
+    
+
     
     func addChartView() {
         addChildViewController(chartVC)
@@ -43,6 +48,15 @@ class TrafficReportViewController: UIViewController {
         chartVC.view.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
         chartVC.view.heightAnchor.constraint(equalToConstant: 360).isActive = true
         
+        chartVC.containerView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+        chartVC.barChart.backgroundFillColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+        
+        chartVC.view.translatesAutoresizingMaskIntoConstraints = false
+        chartVC.view.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 0).isActive = true
+        chartVC.view.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 0).isActive = true
+        chartVC.view.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        chartVC.view.heightAnchor.constraint(equalToConstant: 320).isActive = true
+        
     }
     
     func addPageView() {
@@ -56,24 +70,44 @@ class TrafficReportViewController: UIViewController {
         statsPageVC.view.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 0).isActive = true
         statsPageVC.view.topAnchor.constraint(equalTo: chartVC.view.bottomAnchor,constant: 1).isActive = true
         statsPageVC.view.heightAnchor.constraint(equalToConstant: 562).isActive = true
+        
+    }
+    
+    func addInsight() {
+        
+        self.containerView.addSubview(insight)
+        //insight.backgroundColor = UIColor.blue
+        insight.frame = self.containerView.bounds
+        print(containerView.frame.width)
+        
+        insight.setup()
+        insight.translatesAutoresizingMaskIntoConstraints = false
+        insight.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+        insight.topAnchor.constraint(equalTo: statsPageVC.view.bottomAnchor).isActive = true
+        insight.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
+        insight.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        insight.heightAnchor.constraint(equalToConstant: 389).isActive = true
+
         statsPageVC.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+
     }
     
     func setUpNavigationBar() {
-        
         let text = UIBarButtonItem(title: "Traffic Report", style: .plain, target: self, action: nil)
-        text.tintColor = UIColor(red: 67/255, green: 78/255, blue: 84/255, alpha: 1.0)
+        text.tintColor = PopmetricsColor.darkGrey
+
         let titleFont = UIFont(name: FontBook.bold, size: 18)
         text.setTitleTextAttributes([NSFontAttributeName: titleFont], for: .normal)
         
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = false
-        
+
         let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "iconCalLeftBold"), style: .plain, target: self, action: #selector(handlerClickBack))
         self.navigationItem.leftBarButtonItem = leftButtonItem
         self.navigationItem.leftBarButtonItems = [leftButtonItem, text]
         
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
+
         
     }
     

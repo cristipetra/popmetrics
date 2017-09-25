@@ -19,8 +19,6 @@ class StatsPageViewController: UIPageViewController {
         
     }()
     
-    var currentIndexOfPage = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
@@ -41,7 +39,7 @@ class StatsPageViewController: UIPageViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
