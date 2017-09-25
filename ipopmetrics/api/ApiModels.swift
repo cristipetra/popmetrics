@@ -225,5 +225,45 @@ class CalendarResponse: Mappable {
     
 }
 
+class StatisticsResponse: Mappable {
+    
+    var cards: [StatisticCard]?
+    var statisticsSummary: [StatisticSummaryItem]?
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map:Map) {
+        cards               <- map["cards"]
+        statisticsSummary   <- map["statistic_summary"]
+    }
+    
+    func matchCard(_ cardId:String) -> (Bool, StatisticCard?) {
+        if self.cards == nil {
+            return (false, nil)
+        }
+        if let i = self.cards?.index(where: {$0.cardId == cardId}) {
+            return (true, self.cards![i])
+        }
+        else {
+            return (false, nil)
+        }
+        
+    }
+    /*
+    func matchSocialPost(_ postId:String) -> (Bool, StatisticSummaryItem?) {
+        if self.statisticsSummary == nil {
+            return (false, nil)
+        }
+        if let i = self.statisticsSummary?.index(where: {$0.postId == postId}) {
+            return (true, self.statisticsSummary![i])
+        }
+        else {
+            return (false, nil)
+        }
+    }
+    */
+}
+
 
 

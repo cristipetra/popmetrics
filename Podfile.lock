@@ -76,10 +76,9 @@ PODS:
   - Hero (1.0.0-alpha.4)
   - JSONWebToken (2.1.1):
     - CryptoSwift (~> 0.6.1)
-  - MarqueeLabel/Swift (3.1.3)
   - lottie-ios (2.1.3)
   - M13ProgressSuite (1.2.9)
-  - MarqueeLabel/Swift (3.1.2)
+  - MarqueeLabel/Swift (3.1.3)
   - MGSwipeTableCell (1.6.1)
   - MJCalendar (0.4.0):
     - NSDate-Escort (~> 1.5)
@@ -191,10 +190,9 @@ SPEC CHECKSUMS:
   GTProgressBar: 5db7054f6069100d871cde5a3149eb708fc348c5
   Hero: 6ab58fdfb16c75ce9c6bfad48ef6abb54780b263
   JSONWebToken: 21a2c3ea5f034882e90f28c656ffce0396155907
-  MarqueeLabel: baa5753dcbd36dca080e1f5c589a665aa5c906f1
   lottie-ios: 8c150606598931621e927377f1426d2d3e99282d
   M13ProgressSuite: ea9f7263e73e9215e6849dfa54e29ee0ad6a145c
-  MarqueeLabel: fcd7057a779422d86589be759036f1510b08c6a0
+  MarqueeLabel: baa5753dcbd36dca080e1f5c589a665aa5c906f1
   MGSwipeTableCell: 19a1d65dcc1ceaea42eb44bb2adae32101904514
   MJCalendar: a529b085b0b988ae7b493ce7c000946cc186bf0e
   MotionAnimation: ff5c8fc2e429d7e10d46ae86819ba9759846c343
@@ -217,4 +215,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 9279067d56a74b278ec160f6d083dc02abf3ef6d
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.2.1

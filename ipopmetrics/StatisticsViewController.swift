@@ -17,10 +17,11 @@ class StatisticsViewController: UIViewController {
     
     let transitionView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
+    let store = StatisticsStore.getInstance()
+    
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
     var insightIsDisplayed = false
     var cellHeight = 0 as CGFloat
-    fileprivate var sections: [StatisticsSection] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +89,7 @@ class StatisticsViewController: UIViewController {
     
     
     internal func fetchItemsLocally() {
+        /*
         let path = Bundle.main.path(forResource: "sampleFeedStatistics", ofType: "json")
         let jsonData: NSData = NSData(contentsOfFile: path!)!
         let json = JSON(data: jsonData as Data)
@@ -108,6 +110,7 @@ class StatisticsViewController: UIViewController {
         }
         
         self.sections = statisticsStore.getFeed()
+        */
     }
     
     func handlerClickMenu() {
@@ -132,22 +135,25 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //empty card
+        /*
         let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficEmptyCard", for: indexPath) as! TrafficEmptyView
         cellHeight = 216
         cell.selectionStyle = .none
         cell.backgroundColor = UIColor.feedBackgroundColor()
         return cell
+        */
         
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
-        let section = sections[sectionIdx]
-        let item = section.items[rowIdx]
+        //let section = sections[sectionIdx]
+        let section = store.getStatisticsCard()[indexPath.section]
+        let item = section[""]
         
         switch item.type {
         case "traffic":
             let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficCard", for: indexPath) as! TrafficCardViewCell
             cellHeight = 424
-            setTrafficCard(cell: cell, item: item)
+            //setTrafficCard(cell: cell, item: item)
             cell.selectionStyle = .none
             cell.backgroundColor = UIColor.feedBackgroundColor()
             cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_:)), for: .touchUpInside)
@@ -198,8 +204,8 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-        return sections[section].items.count
+        return store.getStatisticsCard().count
+        //return sections[section].items.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -208,7 +214,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            if (section == sections.endIndex - 1) {
+            if (section == store.countSections() - 1) {
                 return nil
             }
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
@@ -233,10 +239,9 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-        return sections.count
+        return store.getStatisticsCard().count
     }
-    
+    /*
     private func setTrafficCard(cell: TrafficCardViewCell, item: StatisticsItem) {
         if item.status == StatusArticle.unapproved.rawValue {
             insightIsDisplayed = true
@@ -246,4 +251,5 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.connectionLine.isHidden = true
         }
     }
+    */
 }

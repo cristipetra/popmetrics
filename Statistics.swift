@@ -8,8 +8,9 @@
 
 import Foundation
 import RealmSwift
+import ObjectMapper
 
-
+/*
 class StatisticsItem: Object {
     dynamic var index = 0
     
@@ -31,4 +32,51 @@ class StatisticsSection: NSObject{
     dynamic var index = 0
     
     var items = [StatisticsItem]()
+}
+ */
+
+class StatisticSummaryItem: Object, Mappable {
+    
+    dynamic var statisticCard: StatisticCard? = nil
+    
+    dynamic var value: Float = 0
+    dynamic var label: String = ""
+    dynamic var delta: Float = 0
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        value <- map["value"]
+        label <- map["label"]
+        delta <- map["delta"]
+    }
+    
+}
+
+class StatisticCard: Object, Mappable {
+    dynamic var id = 0
+    
+    dynamic var cardId: String? = nil
+    
+    dynamic var index = 0
+    
+    dynamic var type = ""
+    dynamic var section = ""
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        cardId          <- map["id"]
+        index           <- map["index"]
+        type            <- map["type"]
+        section         <- map["section"]
+    }
 }
