@@ -32,10 +32,10 @@ target 'ipopmetrics' do
 
 #  pod 'Chatto',  :git => 'https://github.com/badoo/Chatto.git', :branch => 'master'
 #  pod 'ChattoAdditions',  :git => 'https://github.com/badoo/Chatto.git', :branch => 'master'
-  pod 'Chatto'
-  pod 'ChattoAdditions' # if you want to use the cells or the input component
+#  pod 'Chatto'
+#  pod 'ChattoAdditions' # if you want to use the cells or the input component
   
-  pod 'FontAwesome.swift'
+#  pod 'FontAwesome.swift'
   pod 'ActiveLabel'
   pod 'EZAlertController'
   pod 'SwiftRichString'
