@@ -67,16 +67,20 @@ PODS:
   - GTMSessionFetcher/Core (1.1.11)
   - GTMSessionFetcher/Full (1.1.11):
     - GTMSessionFetcher/Core (= 1.1.11)
+  - GTProgressBar (0.2.0)
+  - Hero (1.0.0-alpha.4)
   - JSONWebToken (2.2.0)
+  - lottie-ios (2.1.3)
+  - M13ProgressSuite (1.2.9)
   - MarqueeLabel/Swift (3.1.3)
   - MGSwipeTableCell (1.6.1)
   - MJCalendar (0.4.0):
     - NSDate-Escort (~> 1.5)
     - UIView+JMFrame
   - MotionAnimation (0.1.2)
-  - NotificationBannerSwift (1.5.1):
+  - NotificationBannerSwift (1.4.5):
     - MarqueeLabel/Swift
-    - SnapKit (~> 4.0)
+    - SnapKit (~> 3.2)
   - NSDate-Escort (1.8.2)
   - ObjectMapper (2.2.9)
   - Reachability (3.2)
@@ -87,9 +91,9 @@ PODS:
     - Realm (= 2.10.1)
   - RSKImageCropper (1.6.3)
   - ScrollableGraphView (4.0.4)
-  - SnapKit (4.0.0)
+  - SnapKit (3.2.0)
   - STPopup (1.8.3)
-  - SwiftRichString (1.0.1)
+  - SwiftRichString (0.9.10)
   - SwiftyJSON (3.1.4)
   - TwitterCore (2.8.0):
     - Fabric
@@ -171,12 +175,16 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: be83fd28d63ae3087e7d351b1f39c1a7e24ab6e7
   GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
+  GTProgressBar: 5db7054f6069100d871cde5a3149eb708fc348c5
+  Hero: 6ab58fdfb16c75ce9c6bfad48ef6abb54780b263
   JSONWebToken: 6fae32489632658d563dd6952a5c34020ea813e4
+  lottie-ios: 8c150606598931621e927377f1426d2d3e99282d
+  M13ProgressSuite: ea9f7263e73e9215e6849dfa54e29ee0ad6a145c
   MarqueeLabel: baa5753dcbd36dca080e1f5c589a665aa5c906f1
   MGSwipeTableCell: 19a1d65dcc1ceaea42eb44bb2adae32101904514
   MJCalendar: a529b085b0b988ae7b493ce7c000946cc186bf0e
   MotionAnimation: ff5c8fc2e429d7e10d46ae86819ba9759846c343
-  NotificationBannerSwift: 666e6c392238561c17a52db4c50e6f00d9942e0d
+  NotificationBannerSwift: 8e0d142c34406800e5a98d1535fbfca43da49f17
   NSDate-Escort: c79db277a401c0ad219acd295ec17c7b4f61266f
   ObjectMapper: 63cfe41bc6f8e7c8f44344c49901b8ae7de14c52
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
@@ -184,15 +192,15 @@ SPEC CHECKSUMS:
   RealmSwift: 505ed6c15942a2e76f5cfa78a8667cfa997ee75b
   RSKImageCropper: 356e36fc58c57c371b5d8b23d603936d6a73df6c
   ScrollableGraphView: 072ea302f4ca27779692656a49d51fe537b2b1e7
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   STPopup: da1167250a01584af7bcccb898653185f223ec46
-  SwiftRichString: 2111627a29af277094a9e5d4d1bf6bfe0b8212ac
+  SwiftRichString: 1e31aec5666feea03f802f41fc237160cf7119b6
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TwitterCore: e959987be23c767004d29eb7fab8d85d8585a2e5
   TwitterKit: 3b6044a7320340326a4098f3e37aa1dbaeb94942
   UIView+JMFrame: a907974c9d34b1c300aef85ae2a1a5af746f2b8a
   Whisper: 051f25e704bf8992641ffd28b20d5682ddc5f5d3
 
-PODFILE CHECKSUM: ea3125b18ec8089592086aeabd61a4cbdf72e314
+PODFILE CHECKSUM: 8a050c4ad63f3eece4cc993237d326cb48963932
 
 COCOAPODS: 1.4.0.beta.1
