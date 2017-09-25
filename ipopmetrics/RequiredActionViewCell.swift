@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import FontAwesome_swift
 import BubbleTransition
 
 class RequiredActionViewCell: UITableViewCell {
