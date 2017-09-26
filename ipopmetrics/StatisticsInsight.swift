@@ -31,7 +31,7 @@ class StatisticsInsight: UIView {
         
         let buttonImage = UIImage(named: "iconCalRightBold")!.withRenderingMode(.alwaysTemplate)
         maximizeButton.imageView?.contentMode = .scaleAspectFill
-        buttonImage.bma_tintWithColor(UIColor.white)
+        //buttonImage.bma_tintWithColor(UIColor.white)
         maximizeButton.transform = maximizeButton.transform.rotated(by: 3*CGFloat.pi/2)
         maximizeButton.setImage(buttonImage, for: .normal)
         divider.heightAnchor.constraint(equalToConstant: 0.5).isActive = true

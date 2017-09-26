@@ -98,6 +98,11 @@
 		08B745961F1F6C1D00EC3F8C /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08B745951F1F6C1D00EC3F8C /* OpenSans-Regular.ttf */; };
 		08B745981F1F718300EC3F8C /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B745971F1F718300EC3F8C /* CodeViewController.swift */; };
 		08B7459B1F1F996B00EC3F8C /* DigitCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7459A1F1F996B00EC3F8C /* DigitCodeView.swift */; };
+		08BD58001F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */; };
+		08BD58021F7A2F3700FFDCFD /* IndividualTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */; };
+		08BD58041F7A312900FFDCFD /* VerifySocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58031F7A312900FFDCFD /* VerifySocialViewController.swift */; };
+		08BD58061F7A327C00FFDCFD /* RecommendedActionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58051F7A327C00FFDCFD /* RecommendedActionViewCell.swift */; };
+		08BD58081F7A334D00FFDCFD /* StatisticsInsight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58071F7A334D00FFDCFD /* StatisticsInsight.swift */; };
 		08BF9D4E1F45F2EF00141206 /* TableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */; };
 		08C6FBFB1F41FFCB007D6101 /* Todo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C6FBFA1F41FFCB007D6101 /* Todo.storyboard */; };
 		08C6FBFD1F4205EF007D6101 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */; };
@@ -207,10 +212,8 @@
 		080DCA821F4D9586000C73DC /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		080DCA851F4D9707000C73DC /* RecommendedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendedCell.xib; sourceTree = "<group>"; };
 		080DCA871F4D9716000C73DC /* RecommendedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedCell.swift; sourceTree = "<group>"; };
-		082D363B1F5D7CF0006B0985 /* StatisticsInsight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsInsight.swift; sourceTree = "<group>"; };
 		082D363D1F5D7CFF006B0985 /* StatisticsInsight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticsInsight.xib; sourceTree = "<group>"; };
 		082D363F1F5D952C006B0985 /* RecommendedActionCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendedActionCard.xib; sourceTree = "<group>"; };
-		082D36411F5D9570006B0985 /* RecommendedActionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedActionViewCell.swift; sourceTree = "<group>"; };
 		083938FE1F63C334007DDA37 /* MainTabInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabInfo.swift; sourceTree = "<group>"; };
 		0848280E1F39F9200054B04C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		085053FD1F2787A100FE8234 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -240,7 +243,6 @@
 		085F90F61F71270E008A339A /* AnimationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimationsViewController.xib; sourceTree = "<group>"; };
 		085F90F91F7169FE008A339A /* OnboardingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
 		085F90FB1F716A57008A339A /* VerifySocialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerifySocialViewController.xib; sourceTree = "<group>"; };
-		085F90FE1F716AAF008A339A /* VerifySocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifySocialViewController.swift; sourceTree = "<group>"; };
 		085F91001F716AD2008A339A /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		085F91021F716CBC008A339A /* OnboardingFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingFooter.xib; sourceTree = "<group>"; };
 		085F91041F716CD4008A339A /* OnboardingFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFooter.swift; sourceTree = "<group>"; };
@@ -261,9 +263,7 @@
 		08A533331F6BD9060080BE64 /* MoreInfoViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreInfoViewCell.xib; sourceTree = "<group>"; };
 		08A533351F6BD9130080BE64 /* MoreInfoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewCell.swift; sourceTree = "<group>"; };
 		08A533371F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendedActionGoogleCitationView.xib; sourceTree = "<group>"; };
-		08A533391F6BF85B0080BE64 /* RecommendedActionGoogleCitationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedActionGoogleCitationView.swift; sourceTree = "<group>"; };
 		08A5333D1F6C2E910080BE64 /* ButtonWithContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithContainer.swift; sourceTree = "<group>"; };
-		08A5333F1F6C2ED50080BE64 /* IndividualTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualTaskView.swift; sourceTree = "<group>"; };
 		08A812731F16601A00672126 /* HeaderCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCardCell.xib; sourceTree = "<group>"; };
 		08A812751F1660A300672126 /* HeaderCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderCardCell.swift; path = feed/HeaderCardCell.swift; sourceTree = "<group>"; };
 		08A812781F1672D300672126 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -298,6 +298,11 @@
 		08B745951F1F6C1D00EC3F8C /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		08B745971F1F718300EC3F8C /* CodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeViewController.swift; path = login/CodeViewController.swift; sourceTree = "<group>"; };
 		08B7459A1F1F996B00EC3F8C /* DigitCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DigitCodeView.swift; path = views/DigitCodeView.swift; sourceTree = "<group>"; };
+		08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedActionGoogleCitationView.swift; sourceTree = "<group>"; };
+		08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualTaskView.swift; sourceTree = "<group>"; };
+		08BD58031F7A312900FFDCFD /* VerifySocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifySocialViewController.swift; sourceTree = "<group>"; };
+		08BD58051F7A327C00FFDCFD /* RecommendedActionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedActionViewCell.swift; sourceTree = "<group>"; };
+		08BD58071F7A334D00FFDCFD /* StatisticsInsight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsInsight.swift; sourceTree = "<group>"; };
 		08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableFooterView.swift; sourceTree = "<group>"; };
 		08C6FBFA1F41FFCB007D6101 /* Todo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Todo.storyboard; sourceTree = "<group>"; };
 		08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
@@ -445,7 +450,7 @@
 				080DCA851F4D9707000C73DC /* RecommendedCell.xib */,
 				080DCA871F4D9716000C73DC /* RecommendedCell.swift */,
 				082D363F1F5D952C006B0985 /* RecommendedActionCard.xib */,
-				082D36411F5D9570006B0985 /* RecommendedActionViewCell.swift */,
+				08BD58051F7A327C00FFDCFD /* RecommendedActionViewCell.swift */,
 			);
 			name = recommended;
 			sourceTree = "<group>";
@@ -550,9 +555,9 @@
 		085F90FD1F716A99008A339A /* onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				085F90FE1F716AAF008A339A /* VerifySocialViewController.swift */,
 				085F91001F716AD2008A339A /* OnboardingViewController.swift */,
 				08D409CD1F73C3A800C5BB54 /* OnboardingFinalView.swift */,
+				08BD58031F7A312900FFDCFD /* VerifySocialViewController.swift */,
 			);
 			name = onboarding;
 			sourceTree = "<group>";
@@ -627,9 +632,9 @@
 				08B4BCDB1F619BCF00660F5B /* TaskGoogleCitationView.xib */,
 				08B4BCDD1F619BEF00660F5B /* TaskGoogleCitationView.swift */,
 				08A533371F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib */,
-				08A533391F6BF85B0080BE64 /* RecommendedActionGoogleCitationView.swift */,
-				08A5333F1F6C2ED50080BE64 /* IndividualTaskView.swift */,
 				085530451F6CEE0A00D82A09 /* GoogleActivationView.swift */,
+				08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */,
+				08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */,
 			);
 			name = google;
 			sourceTree = "<group>";
@@ -721,8 +726,8 @@
 				08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */,
 				088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */,
 				088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */,
-				082D363B1F5D7CF0006B0985 /* StatisticsInsight.swift */,
 				082D363D1F5D7CFF006B0985 /* StatisticsInsight.xib */,
+				08BD58071F7A334D00FFDCFD /* StatisticsInsight.swift */,
 			);
 			name = statistics;
 			sourceTree = "<group>";
@@ -1217,7 +1222,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B5BA09B8049FECDC31573D3E /* [CP] Copy Pods Resources */ = {
@@ -1366,6 +1371,7 @@
 				11A4823A1F5D58D9008D473C /* ApiModels.swift in Sources */,
 				08D1BC371F1DF4F900D377B2 /* ViewNames.swift in Sources */,
 				1128B3FF1ED2E12300BDA58C /* InsightViewCell.swift in Sources */,
+				08BD58041F7A312900FFDCFD /* VerifySocialViewController.swift in Sources */,
 				08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */,
 				0855C0CB1F6FFBF000ACBFA9 /* EmptyCardView.swift in Sources */,
 				08B745911F1F638000EC3F8C /* LoginNavigationViewController.swift in Sources */,
@@ -1376,6 +1382,7 @@
 				1125ADAC1E96E7990004B4AC /* HomeHubController.swift in Sources */,
 				08D1BC3B1F1E568A00D377B2 /* PhoneView.swift in Sources */,
 				08DF9E621F261C8100C60C2D /* InfoCardViewController.swift in Sources */,
+				08BD58001F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift in Sources */,
 				0848280F1F39F9200054B04C /* HeaderView.swift in Sources */,
 				08B5D4BA1F29C28A00B79AD3 /* CalendarFeedStore.swift in Sources */,
 				08FAE84B1F54247B0097DF3E /* GradientView.swift in Sources */,
@@ -1384,6 +1391,7 @@
 				085282701F2881BD0065A968 /* Calendar.swift in Sources */,
 				08B2803D1F55855500E36D19 /* StatisticsStore.swift in Sources */,
 				1120F1FE1ECDF48F00576E39 /* CardActionHanlder.swift in Sources */,
+				08BD58021F7A2F3700FFDCFD /* IndividualTaskView.swift in Sources */,
 				08F368991F1903B100819CDE /* LastCardCell.swift in Sources */,
 				0809AEB41F22183400A13178 /* Constants.swift in Sources */,
 				08D409CE1F73C3A800C5BB54 /* OnboardingFinalView.swift in Sources */,
@@ -1420,6 +1428,8 @@
 				08B2803F1F55862100E36D19 /* Statistics.swift in Sources */,
 				085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */,
 				08B745981F1F718300EC3F8C /* CodeViewController.swift in Sources */,
+				08BD58081F7A334D00FFDCFD /* StatisticsInsight.swift in Sources */,
+				08BD58061F7A327C00FFDCFD /* RecommendedActionViewCell.swift in Sources */,
 				08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */,
 				11D8D9E91ECA37FC00CCDAC4 /* NavigationController.swift in Sources */,
 				1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */,

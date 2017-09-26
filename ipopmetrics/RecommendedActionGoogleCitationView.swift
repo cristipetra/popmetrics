@@ -88,4 +88,3 @@ class RecommendedActionGoogleCitationView: UIView {
     }
     
 }
-

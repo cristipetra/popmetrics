@@ -44,7 +44,8 @@ class MenuViewController: ElasticModalViewController {
         
         let closeButtonImage = UIImage(named: "iconCloseBlack")!.withRenderingMode(.alwaysTemplate)
         //let logo = UIImage(named: "logoCube")!.withRenderingMode(.alwaysTemplate)
-        closeButtonImage.bma_tintWithColor(UIColor.white)
+        //closeButtonImage.bma_tintWithColor(UIColor.white)
+        
         //logo.bma_tintWithColor(UIColor.white)
         closeButton.setImage(closeButtonImage, for: .normal)
         //logoImage.image = logo
