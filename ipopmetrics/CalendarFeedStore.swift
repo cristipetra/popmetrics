@@ -19,6 +19,12 @@ class CalendarFeedStore {
     
     public var selectedDate = Date()
     
+    public var selectedWeek = DateInterval(start: NSDate().atStartOfWeek(), end: NSDate().atEndOfWeek()) {
+        didSet {
+            print(selectedWeek)
+        }
+    }
+    
     public func getCalendarCards() -> Results<CalendarCard> {
         return realm.objects(CalendarCard.self).sorted(byKeyPath: "index")
     }
@@ -37,9 +43,14 @@ class CalendarFeedStore {
         return realm.objects(CalendarCard.self).filter(predicate)
     }
     
-    public func getCalendarSocialPostsForCard(_ calendarCard: CalendarCard) -> Results<CalendarSocialPost> {
-        let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@", calendarCard, selectedDate.startOfDay as CVarArg, selectedDate.endOfDay as CVarArg)
-        return realm.objects(CalendarSocialPost.self).filter(predicate)
+    public func getCalendarSocialPostsForCard(_ calendarCard: CalendarCard, isDateSelected: Bool) -> Results<CalendarSocialPost> {
+        if isDateSelected {
+            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@", calendarCard, selectedDate.startOfDay as CVarArg, selectedDate.endOfDay as CVarArg)
+            return realm.objects(CalendarSocialPost.self).filter(predicate)
+        } else {
+            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@", calendarCard, selectedWeek.start as CVarArg, selectedWeek.end as CVarArg)
+            return realm.objects(CalendarSocialPost.self).filter(predicate)
+        }
     }
     
     public func countSections() -> Int {
@@ -67,11 +78,12 @@ class CalendarFeedStore {
             }
             
             for card in cardsToDelete {
-                
+                /*
                 let socialPosts = self.getCalendarSocialPostsForCard(card)
                 for post in socialPosts {
                     realm.delete(post)
                 }
+                */
 
                 realm.delete(card)
             }
