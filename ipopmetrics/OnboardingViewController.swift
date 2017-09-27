@@ -15,12 +15,22 @@ class OnboardingViewController: UIViewController {
     @IBOutlet weak var verifySocialButton: TwoImagesButton!
     @IBOutlet weak var credentialsButton: RoundedCornersButton!
     @IBOutlet weak var maybeLaterButton: RoundedCornersButton!
+    
+    @IBOutlet weak var topLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
         
         isHeroEnabled = true
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
+        
+        let user = UsersStore.getInstance().getLocalUserAccount()
+        
+        guard let _ = user.name else {
+            return
+        }
+        topLabel.text = "Hey [" + user.name! + "] please verify your connection to [\(user.businessURL)] using social media:"
     }
     
     func setup() {
