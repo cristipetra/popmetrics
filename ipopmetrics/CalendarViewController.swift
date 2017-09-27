@@ -22,9 +22,10 @@ class CalendarViewController: BaseViewController {
     @IBOutlet weak var dateRangeLabel: UILabel!
     @IBOutlet weak var currentDateBtn: UIView!
     @IBOutlet weak var topPickerViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var rightArrow: UIButton!
     @IBOutlet weak var topPickerStackView: UIStackView!
     @IBOutlet weak var todayLabelView: UIView!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var previousButton: UIButton!
     
     @IBOutlet weak var topPickerStackViewWrapper: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -39,14 +40,14 @@ class CalendarViewController: BaseViewController {
     var shouldMaximizeCell = false
     var isLastCell = false
     let noItemsLoadeInitial = 3
-    
+    var isDateSelected = false
     var noItemsLoaded: [Int] = [3,3,3,3,3]
     
     @IBOutlet weak var calendarHeight: NSLayoutConstraint!
     internal var topHeaderView: HeaderView!
     internal var isAnimatingHeader: Bool = false
     
-    var selectedDate = Date()
+    var selectedDate : Date?
     
     var currentBrandId = UsersStore.currentBrandId
     
@@ -97,7 +98,7 @@ class CalendarViewController: BaseViewController {
         currentDateBtn.addGestureRecognizer(tap)
         DispatchQueue.main.async {
             self.animateToPeriod(.oneWeek)
-            self.rightArrow.transform = CGAffineTransform(scaleX: -1, y: 1)
+            self.nextButton.transform = CGAffineTransform(scaleX: -1, y: 1)
             self.todayLabelView.layer.borderColor = PopmetricsColor.textGrey.cgColor
             self.todayLabelView.layer.borderWidth = 2.0
             self.todayLabelView.layer.cornerRadius = self.todayLabelView.bounds.width / 2
@@ -119,7 +120,6 @@ class CalendarViewController: BaseViewController {
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
         transitionView.addSubview(calendarView)
-        
         if shouldReloadData {
             fetchItems(silent: false)
         }
@@ -158,15 +158,11 @@ class CalendarViewController: BaseViewController {
     
     func createItemsLocally() {
         try! store.realm.write {
-
+            
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        fetchItems(silent:false)
-        tableView.reloadData()
-
-        
         transitionView.alpha = 0.7
         let tabInfo = MainTabInfo.getInstance()
         let xValue = tabInfo.currentItemIndex >= tabInfo.lastItemIndex ? CGFloat(20) : CGFloat(-20)
@@ -245,9 +241,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             cell.selectionStyle = .none
             return cell
         }
-        
-        let sectionCards = store.getCalendarSocialPostsForCard(store.getCalendarCards()[sectionIdx])
-
+        let sectionCards = store.getCalendarSocialPostsForCard(store.getCalendarCards()[sectionIdx], isDateSelected: isDateSelected)
         let card = store.getCalendarCards()[sectionIdx]
         if sectionCards.isEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCard", for: indexPath) as! EmptyCardView
@@ -269,8 +263,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             tableView.allowsSelection = false
             maxCell.topImageButton.isHidden = true
             maxCell.setUpApprovedConnectionView()
-            
-            let itemsCount = store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section]).count
+            let itemsCount = store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section], isDateSelected: isDateSelected).count
             maxCell.configure(item)
             
             if indexPath.row == (itemsCount - 1) {
@@ -301,7 +294,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         let sectionCard = store.getCalendarCards()[section]
         
         
-        if shouldMaximizeCell || store.getCalendarSocialPostsForCard(store.getCalendarCards()[section]).count == 0{
+        if shouldMaximizeCell || store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], isDateSelected: isDateSelected).count == 0{
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
             headerCell.changeColor(color: sectionCard.getSectionColor)
             headerCell.changeTitle(title: sectionCard.socialTextString)
@@ -324,7 +317,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (isLastSection(section: section)) {
             return 1
-        } else if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section]).isEmpty {
+        } else if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], isDateSelected: isDateSelected).isEmpty {
             return 1
         }
         return itemsToLoad(section: section)
@@ -334,7 +327,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         if ( isLastSection(section: indexPath.section) ) {
             return 261
         }
-        if store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section]).isEmpty {
+        if store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section], isDateSelected: isDateSelected).isEmpty {
             return 216
         }
         if shouldMaximizeCell == false {
@@ -344,7 +337,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if isLastSection(section: section) || store.getCalendarSocialPostsForCard(store.getCalendarCards()[section]).isEmpty {
+        if isLastSection(section: section) || store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], isDateSelected: isDateSelected).isEmpty {
             return UIView()
         }
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
@@ -362,7 +355,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             return 40
         }
         // when there it's no social posts
-        let posts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])
+        let posts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], isDateSelected: isDateSelected)
         if(posts.count == 0) {
             return 80
         }
@@ -380,7 +373,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         if isLastSection(section: section) {
             return 0
         }
-        if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section]).isEmpty {
+        if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], isDateSelected: isDateSelected).isEmpty {
             return 0
         }
         return 80
@@ -390,7 +383,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         //check if we receive card that has empty social post
         
         if( store.getCalendarCards().count == 1) {
-            if( store.getCalendarSocialPostsForCard(store.getCalendarCards()[0]).count == 0) {
+            if( store.getCalendarSocialPostsForCard(store.getCalendarCards()[0], isDateSelected: isDateSelected).count == 0) {
                 return 1
             }
         }
@@ -450,8 +443,8 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     
     func changeTopHeaderTitle(section: Int) {
         if section < store.countSections() {
-            if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section]).count != 0 {
-                let item = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])[0]
+            if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], isDateSelected: isDateSelected).count != 0 {
+                let item = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], isDateSelected: isDateSelected)[0]
                 topHeaderView.changeTitle(title: item.socialTextString)
                 topHeaderView.changeColorCircle(color: item.getSectionColor)
                 if (item.status == "unapproved") {
@@ -507,7 +500,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func updateStateLoadMore(_ footerView: TableFooterView, section: Int) {
-        let posts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])
+        let posts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], isDateSelected: isDateSelected)
         if( posts.count <= noItemsLoaded[section]) {
             footerView.setUpLoadMoreDisabled()
         }
@@ -535,17 +528,17 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func itemsToLoad(section: Int) -> Int {
-        if (store.getCalendarSocialPostsForCard(store.getCalendarCards()[section]).count > noItemsLoaded(section)) {
+        if (store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], isDateSelected: isDateSelected).count > noItemsLoaded(section)) {
             return noItemsLoaded(section)
         } else {
-            return store.getCalendarSocialPostsForCard(store.getCalendarCards()[section]).count
+            return store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], isDateSelected: isDateSelected).count
         }
         return noItemsLoadeInitial
     }
     
     func loadMore(section: Int) {
         var addItem = noItemsLoadeInitial
-        let posts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section])
+        let posts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], isDateSelected: isDateSelected)
         if (posts.count > noItemsLoaded(section) + noItemsLoadeInitial) {
             addItem = noItemsLoadeInitial
         } else {
@@ -588,8 +581,8 @@ extension CalendarViewController: MJCalendarViewDelegate {
         self.calendarView.configuration.dayBackgroundColor = UIColor.white
         
         // Set selected day text color
-        self.calendarView.configuration.selectedDayTextColor = PopmetricsColor.greenSelectedDate
-        
+        self.calendarView.configuration.selectedDayTextColor = PopmetricsColor.textGrey
+        //self.calendarView.configuration.selectedBorderWidth = 0
         // Set selected day background color
         //self.calendarView.configuration.selectedDayBackgroundColor = UIColor(hexString: "2FBD8F")
         
@@ -636,17 +629,22 @@ extension CalendarViewController: MJCalendarViewDelegate {
     }
     
     func setTitleWithDate(_ date: NSDate) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM d"
-        let startDate = dateFormatter.string(from: date.atStartOfWeek())
-        let endDate = dateFormatter.string(from: date.atEndOfWeek())
-        self.dateRangeLabel.text = "\(startDate) - \(endDate)"
+        if calendarView.shouldChangePeriodsRange() {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM d"
+            let startDate = dateFormatter.string(from: date.atStartOfWeek())
+            let endDate = dateFormatter.string(from: date.atEndOfWeek())
+            self.dateRangeLabel.text = "\(startDate) - \(endDate)"
+        }
     }
     
     func calendar(_ calendarView: MJCalendarView, didChangePeriod periodDate: Date, bySwipe: Bool) {
         self.setTitleWithDate(periodDate as NSDate)
-        print(periodDate)
-        reloadTableByDate(date: periodDate)
+        let date = self.calendarView.visiblePeriodDate as NSDate
+        self.store.selectedWeek = DateInterval(start: date.atStartOfWeek(), end: date.atEndOfWeek())
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func calendar(_ calendarView: MJCalendarView, backgroundForDate date: Date) -> UIColor? {
@@ -659,7 +657,12 @@ extension CalendarViewController: MJCalendarViewDelegate {
     
     func calendar(_ calendarView: MJCalendarView, didSelectDate date: Date) {
         store.selectedDate = date
-        tableView.reloadData()
+        self.calendarView.configuration.selectedDayTextColor = PopmetricsColor.greenSelectedDate
+        self.calendarView.reloadView()
+        isDateSelected = true
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func animateTopPart(shouldCollapse: Bool, offset: CGFloat) {
@@ -699,15 +702,29 @@ extension CalendarViewController: MJCalendarViewDelegate {
     
     @IBAction func nextPeriodBtnPressed(_ sender: Any) {
         self.calendarView.moveToNextPeriod()
+        let date = self.calendarView.visiblePeriodDate as NSDate
+        self.store.selectedWeek = DateInterval(start: date.atStartOfWeek(), end: date.atEndOfWeek())
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
+    
     @IBAction func previousPeriodBtnPressed(_ sender: Any) {
         self.calendarView.moveToPreviousPeriod()
+        let date = self.calendarView.visiblePeriodDate as NSDate
+        self.store.selectedWeek = DateInterval(start: date.atStartOfWeek(), end: date.atEndOfWeek())
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func tapFunction(sender:UITapGestureRecognizer) {
+        self.calendarView.configuration.selectedDayTextColor = PopmetricsColor.greenSelectedDate
+        self.calendarView.reloadDayViews()
         self.calendarView.goToCurrentDay()
         selectedDate = Date()
-        self.store.selectedDate = selectedDate
+        self.store.selectedDate = selectedDate!
+        isDateSelected = true
         self.tableView.reloadData()
     }
     

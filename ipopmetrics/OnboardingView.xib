@@ -21,6 +21,7 @@
             <connections>
                 <outlet property="credentialsButton" destination="ZmI-3R-vEE" id="Fjz-Ql-sDN"/>
                 <outlet property="maybeLaterButton" destination="Tb1-0f-TNk" id="c5i-Xk-0Ex"/>
+                <outlet property="topLabel" destination="u0b-KT-jdi" id="sYK-29-5f7"/>
                 <outlet property="verifySocialButton" destination="wwF-qE-mAV" id="Bt2-C6-3Kg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="W18-aW-GQM"/>
             </connections>

@@ -102,6 +102,12 @@ class UserAccount: Mappable {
     var phone: String?
     var profileDetails: UserProfileDetails?
     
+    var businessURL: String {
+        get {
+            return "http//www.google.com"
+        }
+    }
+    
     required init?(map: Map) {
     }
     

@@ -157,7 +157,8 @@
                         <outlet property="calendarView" destination="sxt-Ax-gkm" id="AbD-pP-xKw"/>
                         <outlet property="currentDateBtn" destination="DBl-DD-3tA" id="bfL-jf-8DQ"/>
                         <outlet property="dateRangeLabel" destination="Uzy-AZ-fRG" id="ScR-Nx-rZg"/>
-                        <outlet property="rightArrow" destination="DAW-va-RMl" id="yg6-Vr-rLX"/>
+                        <outlet property="nextButton" destination="DAW-va-RMl" id="v42-Bk-iv6"/>
+                        <outlet property="previousButton" destination="sEF-kV-Dx9" id="Va9-RK-gbf"/>
                         <outlet property="tableView" destination="E6I-0J-yYW" id="XUu-zm-8jS"/>
                         <outlet property="todayLabelView" destination="DBl-DD-3tA" id="ctq-fC-bey"/>
                         <outlet property="topPickerStackView" destination="nqb-ha-4lf" id="YZj-dd-IHD"/>

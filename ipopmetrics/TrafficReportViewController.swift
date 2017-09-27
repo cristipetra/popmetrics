@@ -25,14 +25,12 @@ class TrafficReportViewController: UIViewController {
 
         addChartView()
         addPageView()
-        addInsight()
+
     }
     
     override func viewDidLayoutSubviews() {
         scrollView.contentSize = CGSize(width:self.scrollView.contentSize.width, height: self.containerView.frame.height)
     }
-    
-
     
     func addChartView() {
         addChildViewController(chartVC)
@@ -71,14 +69,13 @@ class TrafficReportViewController: UIViewController {
         statsPageVC.view.topAnchor.constraint(equalTo: chartVC.view.bottomAnchor,constant: 1).isActive = true
         statsPageVC.view.heightAnchor.constraint(equalToConstant: 562).isActive = true
         
+        statsPageVC.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        
     }
     
     func addInsight() {
-        
         self.containerView.addSubview(insight)
-        //insight.backgroundColor = UIColor.blue
         insight.frame = self.containerView.bounds
-        print(containerView.frame.width)
         
         insight.setup()
         insight.translatesAutoresizingMaskIntoConstraints = false
