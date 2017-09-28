@@ -196,7 +196,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("launched from notifications ... ")
         func loadCallback(success:Bool) {
             
-            /// mainTabViewController?.agentBuyerConfigurations()
+            self.syncService.syncAll(silent: false)
         }
         
     }
