@@ -51,14 +51,18 @@ class ToDoViewController: BaseViewController {
         setUpNavigationBar()
         
         self.toDoTopView.setActive(section: .unapproved)
+        
+        // NotificationCenter observers
+        let nc = NotificationCenter.default
         NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
+        
+        nc.addObserver(forName:Notification.Popmetrics.UiRefreshRequired, object:nil, queue:nil, using:catchUiRefreshRequiredNotification)
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = PopmetricsColor.darkGrey
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            self?.fetchItems(silent:false)
+            SyncService.getInstance().syncTodoItems(silent: false)
             self?.tableView.dg_stopLoading()
-            self?.tableView.reloadData()
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
         tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
@@ -66,21 +70,11 @@ class ToDoViewController: BaseViewController {
         setupTopHeaderView()
         setupTopViewItemCount()
         
-        //check for the first run 
-        if( store.getTodoCards().count == 0) {
-            self.tableView.isHidden = true
-            self.fetchItems(silent:false)
-        }
-        
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        fetchItems(silent:false)
-        tableView.reloadData()
-
-        
         transitionView.alpha = 0.7
         let tabInfo = MainTabInfo.getInstance()
         let xValue = tabInfo.currentItemIndex >= tabInfo.lastItemIndex ? CGFloat(20) : CGFloat(-20)
@@ -620,5 +614,13 @@ extension ToDoViewController:  TodoCardActionHandler {
         
     }
     
+}
+
+// MARK: Notification Handlers
+extension ToDoViewController {
+    
+    func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
+        self.tableView.reloadData()
+    }
 }
 

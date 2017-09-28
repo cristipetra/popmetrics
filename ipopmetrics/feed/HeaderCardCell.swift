@@ -13,6 +13,12 @@ class HeaderCardCell: UITableViewCell {
     @IBOutlet weak var roundConnectionView: UIView!
     @IBOutlet weak var sectionTitleLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
+    
+    lazy var toastView: ToastView = {
+        let toast = ToastView()
+        toast.translatesAutoresizingMaskIntoConstraints = false
+        return toast
+    }()
   
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -89,6 +95,17 @@ class HeaderCardCell: UITableViewCell {
     
     func changeTitle(title: String) {
         sectionTitleLabel.text = title
+    }
+    
+    func displayToastView() {
+        if !toastView.isDescendant(of: self.containerView) {
+            self.containerView.addSubview(toastView)
+        }
+        
+        toastView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+        toastView.widthAnchor.constraint(equalToConstant: 72).isActive = true
+        toastView.heightAnchor.constraint(equalToConstant: 31).isActive = true
+        toastView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
 
 }
