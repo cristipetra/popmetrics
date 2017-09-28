@@ -13,7 +13,7 @@ import ReachabilitySwift
 class SyncService: SessionDelegate {
     
     var manager: SessionManager!
-    var reachability: Reachability!
+    public var reachability: Reachability!
     var usersStore: UsersStore!
     var usersApi: UsersApi!
     
@@ -66,7 +66,9 @@ class SyncService: SessionDelegate {
         
         reachability?.whenReachable = { reachability in
             NotificationCenter.default.post(name: Notification.Popmetrics.ApiReachable, object: reachability)
+            self.syncAll(silent: false)
         }
+        
         reachability?.whenUnreachable = { reachability in
             NotificationCenter.default.post(name: Notification.Popmetrics.ApiNotReachable, object: reachability)
         }
@@ -90,7 +92,12 @@ class SyncService: SessionDelegate {
     }
     
     func syncHomeItems(silent:Bool) {
-
+        
+        if !self.reachability.isReachable {
+            return
+        }
+        
+        
         let currentBrandId = UsersStore.currentBrandId
         
         FeedApi().getItems(currentBrandId) { responseWrapper, error in
@@ -121,6 +128,10 @@ class SyncService: SessionDelegate {
     }
     
     func syncTodoItems(silent:Bool) {
+        
+        if !self.reachability.isReachable {
+            return
+        }
         
         let currentBrandId = UsersStore.currentBrandId
         
