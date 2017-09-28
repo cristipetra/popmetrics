@@ -8,6 +8,8 @@
 
 import UIKit
 import Crashlytics
+import SwiftRichString
+import NotificationBannerSwift
 
 class BaseViewController: UIViewController {
     
@@ -22,6 +24,7 @@ class BaseViewController: UIViewController {
         
         let nc = NotificationCenter.default
         nc.addObserver(forName:getMyNotification(), object:nil, queue:nil, using:catchNotification)
+        nc.addObserver(forName:Notification.Popmetrics.ApiNotReachable, object:nil, queue:nil, using:catchApiNotReachable)
         
         view.addSubview(progressHUD)
         progressHUD.hide()
@@ -92,5 +95,22 @@ class BaseViewController: UIViewController {
         toView.layer.shadowOpacity = 0.8;
         toView.layer.shadowRadius = 2
         toView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+    }
+}
+
+// Mark: notifications handler
+extension BaseViewController {
+    internal func catchApiNotReachable(notification: Notification) -> Void {
+        let first = Style.default {
+            $0.font = FontAttribute.init("OpenSans", size: 12)
+            $0.color = UIColor.white
+        }
+        
+        let fullStr = "Error connecting to API!".set(style: first)
+        
+        let banner = NotificationBanner(attributedTitle: NSAttributedString(string: "Error connecting to API!"), attributedSubtitle: NSAttributedString(string: ""), leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
+        banner.backgroundColor = PopmetricsColor.notificationBGColor
+        banner.duration = TimeInterval(exactly: 7.0)!
+        banner.show()
     }
 }
