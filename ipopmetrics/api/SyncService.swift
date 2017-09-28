@@ -121,7 +121,9 @@ class SyncService: SessionDelegate {
     }
     
     func syncAll(silent:Bool) {
-        self.syncHomeItems(silent: silent)
+        if usersStore.isUserDefined() {
+            self.syncHomeItems(silent: silent)
+        }
         
     }
   

@@ -23,6 +23,15 @@ class UsersStore {
         return appDelegate.usersStore
     }
     
+    func isUserDefined() -> Bool {
+        if let cbi = UserDefaults.standard.string(forKey: "currentBrandId") {
+            return true
+        }
+        else {
+            return false
+        }        
+    }
+    
     func getLocalUserAccount() -> UserAccount {
 
         let jsonString = UserDefaults.standard.string(forKey: "userAccountJson")
@@ -49,7 +58,12 @@ class UsersStore {
             defaults.set(newValue, forKey: "currentBrandId")
         }
         get {
-            return UserDefaults.standard.string(forKey: "currentBrandId")!
+            if let cbi = UserDefaults.standard.string(forKey: "currentBrandId") {
+                return cbi
+            }
+            else {
+                return ""
+            }
         }
     }
 
