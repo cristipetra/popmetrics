@@ -162,6 +162,39 @@ class SyncService: SessionDelegate {
         
     }
     
+    func syncCalendarItems(silent: Bool) {
+        if !self.reachability.isReachable {
+            return
+        }
+        
+        let currentBrandId = UsersStore.currentBrandId
+        
+        
+        CalendarApi().getItems(currentBrandId) { responseWrapper, error in
+            if error != nil {
+                if !silent {
+                    NotificationCenter.default.post(name: Notification.Popmetrics.ApiFailure, object: nil,
+                                                    userInfo: ["sucess":false])
+                }
+                return
+            }
+            if "success" != responseWrapper?.code {
+                if !silent {
+                    NotificationCenter.default.post(name: Notification.Popmetrics.ApiResponseUnsuccessfull, object: nil,
+                                                    userInfo: ["sucess":false,
+                                                               "message":responseWrapper?.message])
+                }
+            }
+            else {
+                self.calendarStore.updateCalendars((responseWrapper?.data)!)
+                if (!silent){
+                    NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
+                                                    userInfo: ["sucess":true])
+                }
+            }
+        }
+    }
+    
     
     func syncAll(silent:Bool) {
         if usersStore.isUserDefined() {

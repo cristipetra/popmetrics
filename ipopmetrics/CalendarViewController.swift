@@ -55,7 +55,6 @@ class CalendarViewController: BaseViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        addNotifications()
     }
     
     override func viewDidLoad() {
@@ -63,6 +62,55 @@ class CalendarViewController: BaseViewController {
         
         setUpNavigationBar()
         
+
+        registerCellsForTable()
+        
+        tableView.separatorStyle = .none
+        setupTopHeaderView()
+        self.setUpCalendarConfiguration()
+        addDivider()
+        
+        topHeaderView.displayElements(isHidden: true)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(CalendarViewController.tapFunction))
+        currentDateBtn.isUserInteractionEnabled = true
+        currentDateBtn.addGestureRecognizer(tap)
+        
+        DispatchQueue.main.async {
+            self.animateToPeriod(.oneWeek)
+            self.nextButton.transform = CGAffineTransform(scaleX: -1, y: 1)
+            self.todayLabelView.layer.borderColor = PopmetricsColor.textGrey.cgColor
+            self.todayLabelView.layer.borderWidth = 2.0
+            self.todayLabelView.layer.cornerRadius = self.todayLabelView.bounds.width / 2
+            self.todayLabelView.layer.masksToBounds = true
+        }
+        
+        addNotifications()
+        
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = PopmetricsColor.darkGrey
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            SyncService.getInstance().syncCalendarItems(silent: false)
+            self?.tableView.dg_stopLoading()
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
+        tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
+        
+        self.view.addSubview(transitionView)
+        transitionView.addSubview(tableView)
+        transitionView.addSubview(calendarView)
+        if shouldReloadData {
+            SyncService.getInstance().syncCalendarItems(silent: false)
+        }
+    }
+    
+    func addNotifications() {
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(didPostActionHandler), name: NSNotification.Name("didPostAction"), object: nil)
+        
+        nc.addObserver(forName:Notification.Popmetrics.UiRefreshRequired, object:nil, queue:nil, using:catchUiRefreshRequiredNotification)
+    }
+    
+    internal func registerCellsForTable() {
         let calendarCardNib = UINib(nibName: "CalendarCard", bundle: nil)
         tableView.register(calendarCardNib, forCellReuseIdentifier: "CalendarCard")
         
@@ -86,74 +134,10 @@ class CalendarViewController: BaseViewController {
         
         let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
         tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
-        
-        
-        tableView.separatorStyle = .none
-        setupTopHeaderView()
-        self.setUpCalendarConfiguration()
-        addDivider()
-        topHeaderView.displayElements(isHidden: true)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(CalendarViewController.tapFunction))
-        currentDateBtn.isUserInteractionEnabled = true
-        currentDateBtn.addGestureRecognizer(tap)
-        DispatchQueue.main.async {
-            self.animateToPeriod(.oneWeek)
-            self.nextButton.transform = CGAffineTransform(scaleX: -1, y: 1)
-            self.todayLabelView.layer.borderColor = PopmetricsColor.textGrey.cgColor
-            self.todayLabelView.layer.borderWidth = 2.0
-            self.todayLabelView.layer.cornerRadius = self.todayLabelView.bounds.width / 2
-            self.todayLabelView.layer.masksToBounds = true
-        }
-        
-        addNotifications()
-        
-        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = PopmetricsColor.darkGrey
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            self?.fetchItems(silent:false)
-            self?.tableView.dg_stopLoading()
-            self?.tableView.reloadData()
-            }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
-        tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
-        
-        self.view.addSubview(transitionView)
-        transitionView.addSubview(tableView)
-        transitionView.addSubview(calendarView)
-        if shouldReloadData {
-            fetchItems(silent: false)
-        }
-    }
-    
-    func addNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(didPostActionHandler), name: NSNotification.Name("didPostAction"), object: nil)
     }
     
     @objc func didPostActionHandler() {
         self.shouldReloadData = true
-    }
-    
-    func fetchItems(silent:Bool) {
-        //        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
-        //        let jsonData : NSData = NSData(contentsOfFile: path!)!
-        CalendarApi().getItems(currentBrandId) { responseWrapper, error in
-            if error != nil {
-                let message = "An error has occurred. Please try again later."
-                self.presentAlertWithTitle("Error", message: message)
-                return
-            }
-            if "success" != responseWrapper?.code {
-                self.presentAlertWithTitle("Error", message: (responseWrapper?.message)!)
-                return
-            }
-            else {
-                
-                self.store.updateCalendars((responseWrapper?.data)!)
-                //self.createItemsLocally()
-                self.tableView.isHidden = false
-                self.tableView.reloadData()
-            }
-        }
     }
     
     func createItemsLocally() {
@@ -557,6 +541,14 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
 extension CalendarViewController: FooterActionHandlerProtocol {
     func handlerAction(section: Int) {
         loadMore(section: section)
+    }
+}
+
+// MARK: Notification Handlers
+extension CalendarViewController {
+    
+    func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
+        self.tableView.reloadData()
     }
 }
 
