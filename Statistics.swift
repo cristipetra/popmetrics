@@ -67,7 +67,8 @@ class StatisticMetric: Object, Mappable {
     dynamic var label: String = ""
     dynamic var delta: Float = 0
     
-    dynamic var page: Int = 0
+    dynamic var pageName: String = "Card"
+    dynamic var pageIndex: Int = 0
     dynamic var indexInPage: Int = 0
     
     dynamic var currentPeriodLabel: String = ""
@@ -92,7 +93,8 @@ class StatisticMetric: Object, Mappable {
         label <- map["label"]
         delta <- map["delta"]
         
-        page <- map["page"]
+        pageName <- map["page_name"]
+        pageIndex <- map["page_index"]
         indexInPage <- map["index_in_page"]
         
         currentPeriodLabel <- map["current_period_label"]
