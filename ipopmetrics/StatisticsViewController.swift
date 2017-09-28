@@ -95,7 +95,6 @@ class StatisticsViewController: UIViewController {
             
             store.realm.add(statsCard, update: true)
         }
-        print(store.getStatisticsCard())
     }
     
     func handlerClickMenu() {
@@ -135,7 +134,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
         //let section = sections[sectionIdx]
-        let card = store.getStatisticsCard()[indexPath.section]
+        let card = store.getStatisticsCards()[indexPath.section]
         
         
         
@@ -196,7 +195,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return store.getStatisticsCard().count
+        return store.getStatisticsCards().count
         //return sections[section].items.count
     }
     
@@ -239,7 +238,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return store.getStatisticsCard().count + 1
+        return store.getStatisticsCards().count + 1
     }
     /*
     private func setTrafficCard(cell: TrafficCardViewCell, item: StatisticsItem) {

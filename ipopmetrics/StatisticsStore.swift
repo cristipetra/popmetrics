@@ -17,12 +17,22 @@ class StatisticsStore {
         return StatisticsStore()
     }
     
-    public func getStatisticsCard() -> Results<StatisticCard> {
+    public func getStatisticsCards() -> Results<StatisticCard> {
         return realm.objects(StatisticCard.self).sorted(byKeyPath: "index")
     }
     
+    public func getStatisticsCardWithId(_ cardId: String) -> StatisticCard? {
+        return realm.object(ofType: StatisticCard.self, forPrimaryKey: cardId)
+    }
+    
+    
+    public func getStatisticMetricsForCard(_ statisticCard: StatisticCard) -> Results<StatisticMetric> {
+        let predicate = NSPredicate(format: "statisticCard = %@", statisticCard)
+        return realm.objects(StatisticMetric.self).filter(predicate)
+    }
+    
     public func countSections() -> Int {
-        let distinctTypes = Array(Set(self.getStatisticsCard().value(forKey: "section") as! [String]))
+        let distinctTypes = Array(Set(self.getStatisticsCards().value(forKey: "section") as! [String]))
         return distinctTypes.count
     }
     
@@ -39,18 +49,50 @@ class StatisticsStore {
                 if !exists {
                     cardsToDelete.append(existingCard)
                 }
+                else {
+                    newCard?.cardId = existingCard.cardId!
+                    realm.add(newCard!, update:true)
+                }
             }
             
             for card in cardsToDelete {
+
+                let statsMetrics = self.getStatisticMetricsForCard(card)
+                for metric in statsMetrics {
+                    realm.delete(metric)
+                }
                 
-                //TODO delete all related items first
                 realm.delete(card)
             }
             
             for newCard in statisticsResponse.cards! {
+                if let exCard = self.getStatisticsCardWithId(newCard.cardId!) {
+                    if exCard.updateDate == newCard.updateDate {
+                        continue
+                    }
+                }
+                
                 realm.add(newCard, update:true)
             }
         }//try
+        
+        
+        // now update the metrics
+        let metrics = realm.objects(StatisticMetric.self)
+        var metricsToDelete: [StatisticMetric] = []
+        // update social postings
+        try! realm.write {
+            for existingMetric in metrics {
+                realm.delete(existingMetric)
+            }
+           
+            for newMetric in statisticsResponse.metrics! {
+                
+                newMetric.statisticCard = getStatisticsCardWithId(newMetric.statisticsCardId)
+                realm.add(newMetric, update:true)
+            }
+        }//try
+        
         
     }
     

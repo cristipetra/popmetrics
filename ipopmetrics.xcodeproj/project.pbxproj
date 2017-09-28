@@ -155,6 +155,7 @@
 		113976B01E97CCF700B535DF /* FeedApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976AF1E97CCF700B535DF /* FeedApi.swift */; };
 		113976B21E97CE5000B535DF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976B11E97CE5000B535DF /* MainTabBarController.swift */; };
 		113976B41E97D31B00B535DF /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976B31E97D31B00B535DF /* FeedStore.swift */; };
+		113E3F7F1F7D1023007448C6 /* StatisticsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E3F7E1F7D1023007448C6 /* StatisticsApi.swift */; };
 		116431DF1E2D4E81009AA59E /* UsersApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116431DE1E2D4E81009AA59E /* UsersApi.swift */; };
 		116540BD1EEAC3A600417D61 /* Signin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 116540BC1EEAC3A600417D61 /* Signin.storyboard */; };
 		116540BF1EEAC61E00417D61 /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116540BE1EEAC61E00417D61 /* AppStoryboard.swift */; };
@@ -359,6 +360,7 @@
 		113976AF1E97CCF700B535DF /* FeedApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedApi.swift; sourceTree = "<group>"; };
 		113976B11E97CE5000B535DF /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabBarController.swift; path = helpers/MainTabBarController.swift; sourceTree = "<group>"; };
 		113976B31E97D31B00B535DF /* FeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedStore.swift; path = stores/FeedStore.swift; sourceTree = "<group>"; };
+		113E3F7E1F7D1023007448C6 /* StatisticsApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatisticsApi.swift; path = api/StatisticsApi.swift; sourceTree = "<group>"; };
 		116431DE1E2D4E81009AA59E /* UsersApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersApi.swift; path = api/UsersApi.swift; sourceTree = "<group>"; };
 		116540BB1EEAA17A00417D61 /* ipopmetrics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ipopmetrics.entitlements; sourceTree = "<group>"; };
 		116540BC1EEAC3A600417D61 /* Signin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signin.storyboard; sourceTree = "<group>"; };
@@ -866,6 +868,7 @@
 				1100F6F41F5E0E6F000AF1D4 /* TodoApi.swift */,
 				11A4EEA71F62CADE00605F0D /* CalendarApi.swift */,
 				11D3B8091F7BC76A00B51C08 /* SyncService.swift */,
+				113E3F7E1F7D1023007448C6 /* StatisticsApi.swift */,
 			);
 			name = api;
 			sourceTree = "<group>";
@@ -1371,6 +1374,7 @@
 				0855C0CB1F6FFBF000ACBFA9 /* EmptyCardView.swift in Sources */,
 				08B745911F1F638000EC3F8C /* LoginNavigationViewController.swift in Sources */,
 				08AA6C6B1F56DD060022DE91 /* TrafficVisits.swift in Sources */,
+				113E3F7F1F7D1023007448C6 /* StatisticsApi.swift in Sources */,
 				0857D5571F41B4E800D218DA /* CompleteCardCell.swift in Sources */,
 				08A4A53D1F458423001071E3 /* ToolbarViewCell.swift in Sources */,
 				0852826E1F287DFB0065A968 /* CalendarHeaderViewCell.swift in Sources */,

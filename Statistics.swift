@@ -39,6 +39,7 @@ class StatisticSummaryItem: Object, Mappable {
     
     dynamic var statisticCard: StatisticCard? = nil
     
+    
     dynamic var value: Float = 0
     dynamic var label: String = ""
     dynamic var delta: Float = 0
@@ -51,14 +52,84 @@ class StatisticSummaryItem: Object, Mappable {
         value <- map["value"]
         label <- map["label"]
         delta <- map["delta"]
+        
     }
     
 }
 
+class StatisticMetric: Object, Mappable {
+    
+    dynamic var statisticCard: StatisticCard? = nil
+    
+    dynamic var statisticsCardId: String = ""
+    
+    dynamic var value: Float = 0
+    dynamic var label: String = ""
+    dynamic var delta: Float = 0
+    
+    dynamic var page: Int = 0
+    dynamic var indexInPage: Int = 0
+    
+    dynamic var currentPeriodLabel: String = ""
+    dynamic var currentPeriodValues: String = ""
+    dynamic var currentPeriodStartDate: Date = Date()
+    dynamic var currentPeriodEndDate: Date = Date()
+    
+    dynamic var prevPeriodLabel: String = ""
+    dynamic var prevPeriodValues: String = ""
+    dynamic var prevPeriodStartDate: Date = Date()
+    dynamic var prevPeriodEndDate: Date = Date()
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        
+        statisticsCardId <- map["statistics_card_id"]
+        
+        value <- map["value"]
+        label <- map["label"]
+        delta <- map["delta"]
+        
+        page <- map["page"]
+        indexInPage <- map["index_in_page"]
+        
+        currentPeriodLabel <- map["current_period_label"]
+        currentPeriodValues <- map["current_period_values"]
+        currentPeriodStartDate <- (map["current_period_start_date"], DateTransform())
+        currentPeriodEndDate <- (map["current_period_end_date"], DateTransform())
+        
+        prevPeriodLabel <- map["prev_period_label"]
+        prevPeriodValues <- map["prev_period_values"]
+        
+        prevPeriodStartDate <- (map["prev_period_start_date"], DateTransform())
+        prevPeriodEndDate <- (map["prev_period_end_date"], DateTransform())
+        
+    }
+    
+    
+    func getCurrentPeriodArray() -> [Double] {
+        let sarr = self.currentPeriodValues.components(separatedBy: " ")
+        return sarr.map{ Double($0)! }
+    }
+    
+    func getPrevPeriodArray() -> [Double] {
+        let sarr = self.prevPeriodValues.components(separatedBy: " ")
+        return sarr.map{ Double($0)! }
+    }
+    
+}
+
+
+
 class StatisticCard: Object, Mappable {
-    dynamic var id = 0
     
     dynamic var cardId: String? = nil
+    
+    dynamic var createDate: Date = Date()
+    dynamic var updateDate: Date = Date()
+    
     
     dynamic var index = 0
     
@@ -66,7 +137,7 @@ class StatisticCard: Object, Mappable {
     dynamic var section = ""
     
     override static func primaryKey() -> String? {
-        return "id"
+        return "cardId"
     }
     
     required convenience init?(map: Map) {
@@ -75,8 +146,13 @@ class StatisticCard: Object, Mappable {
     
     func mapping(map: Map) {
         cardId          <- map["id"]
+        
+        createDate      <- (map["create_dt"], DateTransform())
+        updateDate      <- (map["update_dt"], DateTransform())
+        
         index           <- map["index"]
         type            <- map["type"]
         section         <- map["section"]
     }
 }
+

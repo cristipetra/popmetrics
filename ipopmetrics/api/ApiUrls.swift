@@ -49,8 +49,13 @@ private let FEED_ACTION_PATH = "/api/feed/action/%@"
 private let USER_TODO_PATH = "/api/todo/brand/%@"
 private let USER_TODO_ACTION_PATH = "/api/todo/action/%@"
 
+private let USER_STATISTICS_PATH = "/api/statistics/brand/%@"
+private let USER_STATISTICS_ACTION_PATH = "/api/statistics/action/%@"
+
+
 private let USER_CALENDAR_PATH = "/api/calendar/brand/%@"
 private let USER_CALENDAR_ACTION_PATH = "/api/calendar/action/%@"
+
 
 
 private let USER_TEAMS_PATH = "/api/market/user/%@/teams"
@@ -162,7 +167,13 @@ class ApiUrls {
         return composedBaseUrl(String(format:USER_CALENDAR_ACTION_PATH, brandId))
     }
     
+    static func getMyBrandStatisticsUrl(_ brandId:String) -> String {
+        return composedBaseUrl(String(format:USER_STATISTICS_PATH, brandId))
+    }
     
+    static func getStatisticsActionUrl(_ brandId:String) -> String {
+        return composedBaseUrl(String(format:USER_STATISTICS_ACTION_PATH, brandId))
+    }
     
     
     static func getFeedRequiredActionUrl(_ brandId:String) -> String {

@@ -234,14 +234,14 @@ class CalendarResponse: Mappable {
 class StatisticsResponse: Mappable {
     
     var cards: [StatisticCard]?
-    var statisticsSummary: [StatisticSummaryItem]?
+    var metrics: [StatisticMetric]?
     
     required init?(map: Map) {
     }
     
     func mapping(map:Map) {
         cards               <- map["cards"]
-        statisticsSummary   <- map["statistic_summary"]
+        metrics   <- map["metrics"]
     }
     
     func matchCard(_ cardId:String) -> (Bool, StatisticCard?) {
@@ -256,19 +256,6 @@ class StatisticsResponse: Mappable {
         }
         
     }
-    /*
-    func matchSocialPost(_ postId:String) -> (Bool, StatisticSummaryItem?) {
-        if self.statisticsSummary == nil {
-            return (false, nil)
-        }
-        if let i = self.statisticsSummary?.index(where: {$0.postId == postId}) {
-            return (true, self.statisticsSummary![i])
-        }
-        else {
-            return (false, nil)
-        }
-    }
-    */
 }
 
 
