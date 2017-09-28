@@ -142,7 +142,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
         switch card.section {
         case "Traffic":
             let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficCard", for: indexPath) as! TrafficCardViewCell
-            cellHeight = 414
+            cellHeight = 424
             //setTrafficCard(cell: cell, item: item)
             cell.selectionStyle = .none
             cell.backgroundColor = UIColor.feedBackgroundColor()

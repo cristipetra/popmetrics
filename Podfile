@@ -6,7 +6,7 @@ use_frameworks!
 
 target 'ipopmetrics' do
 
-  pod 'Reachability'
+  pod 'ReachabilitySwift'
   pod 'Whisper'
   pod 'Alamofire', '~> 4.0'
   pod 'AlamofireImage'

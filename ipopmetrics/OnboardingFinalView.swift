@@ -18,7 +18,9 @@ class OnboardingFinalView: UIViewController {
         isHeroEnabled = true
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
         
-        greatJobLabel.adjustLabelSpacing(spacing: 0, lineHeight: 34, letterSpacing: 1)
+        if self.greatJobLabel != nil {
+            greatJobLabel.adjustLabelSpacing(spacing: 0, lineHeight: 34, letterSpacing: 1)
+        }
         let when = DispatchTime.now() + 3
         DispatchQueue.main.asyncAfter(deadline: when) {
             self.goToMainStoryboard()

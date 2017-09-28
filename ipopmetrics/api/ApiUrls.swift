@@ -69,6 +69,10 @@ class ApiUrls {
         return escapedUrl(String(format: "%@%@", getBaseUrl(), with))
     }
     
+    static func getHost() -> String {
+        return HOST
+    }
+    
     static func getBaseUrl() -> String {
         if (PORT == 80 || PORT == 443) {
             return escapedUrl(String(format: "%@://%@", PROTOCOL, HOST, PORT))

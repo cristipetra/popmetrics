@@ -58,8 +58,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         tableView.allowsSelection = false
         tabBarController?.delegate = self
         
+        // NotificationCenter observers
         let nc = NotificationCenter.default
         nc.addObserver(forName:NSNotification.Name(rawValue: "CardActionNotification"), object:nil, queue:nil, using:catchCardActionNotification)
+        nc.addObserver(forName:Notification.Popmetrics.UiRefreshRequired, object:nil, queue:nil, using:catchUiRefreshRequiredNotification)
       
         let requiredActionNib = UINib(nibName: "RequiredAction", bundle: nil)
         tableView.register(requiredActionNib, forCellReuseIdentifier: "requiredActionId")
@@ -90,9 +92,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         loadingView.tintColor = PopmetricsColor.darkGrey
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            self?.fetchItems(silent:false)
+            // old code: self?.fetchItems(silent:false)
+            SyncService.getInstance().syncHomeItems(silent: false)
             self?.tableView.dg_stopLoading()
-            self?.tableView.reloadData()
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
         tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
@@ -103,13 +105,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         if(store.getFeedCards().count == 0) {
             tableView.isHidden = true
-            self.fetchItems(silent:false)
         }
         
-        createItemsLocally()
-        
-        
-        print(store.getFeedCards())
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -119,8 +116,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchItems(silent:false)
-        tableView.reloadData()
         
         tableView.alpha = 1
         let tabInfo = MainTabInfo.getInstance()
@@ -148,60 +143,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         }
     }
 
-    
-    func fetchItems(silent:Bool) {
-//        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
-//        let jsonData : NSData = NSData(contentsOfFile: path!)!
-        FeedApi().getItems(currentBrandId) { responseWrapper, error in
-            
-            if error != nil {
-                let message = "An error has occurred. Please try again later."
-                self.presentAlertWithTitle("Error", message: message)
-                return
-            }
-            if "success" != responseWrapper?.code {
-                    self.presentAlertWithTitle("Error", message: (responseWrapper?.message)!)
-                    return
-            }
-            else {
-                self.store.updateFeed((responseWrapper?.data)!)
-                print(self.store.getFeedCards())
-                self.tableView.isHidden = false
-                self.tableView.reloadData()
-            }
-        }
-        
-    }
-    
-    func createItemsLocally() {
-        try! store.realm.write {
-            let feedCard = FeedCard()
-            feedCard.section = "Insights"
-            feedCard.type = "recommended_action"
-            feedCard.cardId = "42314234"
-            store.realm.add(feedCard, update: true)
-            
-            /*
-            let feedCard1 = FeedCard()
-            feedCard1.section = "Insights"
-            feedCard1.type = "more_action"
-            feedCard1.cardId = "423114234"
-            store.realm.add(feedCard1, update: true)
-            */
-            
-            /*
-            let post1: CalendarSocialPost = CalendarSocialPost()
-            post1.calendarCard = calendarCard
-            post1.postId = "asdfasdfsa"
-            post1.status = "scheduled"
-            post1.scheduledDate = Date()
-            store.realm.add(post1, update:true)
-            */
-        }
-        
-        print(store.getFeedCards())
-    }
-    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         NotificationCenter.default.removeObserver(self)
@@ -231,22 +172,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         self.present(modalViewController, animated: true, completion: nil)
     }
     
-    func catchCardActionNotification(notification:Notification) -> Void {
-        
-        self.hideProgressIndicator()
-        guard let userInfo = notification.userInfo,
-            let success    = userInfo["success"] as? Bool
-            else {
-                self.presentAlertWithTitle("Error", message: "Unexpected error!. Incomplete error recovery data.")
-                return
-            }
-        
-        if !success {
-            self.presentAlertWithTitle("Error", message: userInfo["message"] as! String ?? "Unknown error")
-        }
-        
-        
-    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         //return self.store.getFeedCards().count + 1
@@ -688,3 +613,37 @@ enum CardType: String {
     case insight = "insight"
     case scheduled = "scheduled"
 }
+
+
+// MARK: Notification Handlers 
+extension HomeHubViewController {
+    
+    
+    func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
+
+        self.tableView.reloadData()
+        
+    }
+    
+    
+    func catchCardActionNotification(notification:Notification) -> Void {
+        
+        self.hideProgressIndicator()
+        guard let userInfo = notification.userInfo,
+            let success    = userInfo["success"] as? Bool
+            else {
+                self.presentAlertWithTitle("Error", message: "Unexpected error!. Incomplete error recovery data.")
+                return
+        }
+        
+        if !success {
+            self.presentAlertWithTitle("Error", message: userInfo["message"] as! String ?? "Unknown error")
+        }
+        
+        
+    }
+
+}
+
+
+

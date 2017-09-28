@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0809AEB41F22183400A13178 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0809AEB31F22183400A13178 /* Constants.swift */; };
-		0809AEB71F223F3B00A13178 /* WelcomeVideo.mov in Resources */ = {isa = PBXBuildFile; fileRef = 0809AEB61F223F3B00A13178 /* WelcomeVideo.mov */; };
 		080DCA811F4D6EE6000C73DC /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DCA801F4D6EE6000C73DC /* MenuViewController.swift */; };
 		080DCA831F4D9586000C73DC /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 080DCA821F4D9586000C73DC /* OpenSans-ExtraBold.ttf */; };
 		080DCA861F4D9707000C73DC /* RecommendedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 080DCA851F4D9707000C73DC /* RecommendedCell.xib */; };
@@ -179,6 +178,7 @@
 		11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A91E2CE05D0021E64A /* CompletionView.swift */; };
 		11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */; };
 		11ACA9B01E2CE0FC0021E64A /* PopmetricsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9AF1E2CE0FC0021E64A /* PopmetricsColor.swift */; };
+		11D3B80A1F7BC76A00B51C08 /* SyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D3B8091F7BC76A00B51C08 /* SyncService.swift */; };
 		11D8D9E91ECA37FC00CCDAC4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D9E81ECA37FC00CCDAC4 /* NavigationController.swift */; };
 		11D8D9EF1ECB1B9800CCDAC4 /* sampleFeed.json in Resources */ = {isa = PBXBuildFile; fileRef = 11D8D9EE1ECB1B9800CCDAC4 /* sampleFeed.json */; };
 		11D8D9F11ECB58AB00CCDAC4 /* RequiredActionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */; };
@@ -210,7 +210,6 @@
 
 /* Begin PBXFileReference section */
 		0809AEB31F22183400A13178 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		0809AEB61F223F3B00A13178 /* WelcomeVideo.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = WelcomeVideo.mov; sourceTree = "<group>"; };
 		080DCA801F4D6EE6000C73DC /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		080DCA821F4D9586000C73DC /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		080DCA851F4D9707000C73DC /* RecommendedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendedCell.xib; sourceTree = "<group>"; };
@@ -391,6 +390,7 @@
 		11ACA9A91E2CE05D0021E64A /* CompletionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompletionView.swift; path = views/CompletionView.swift; sourceTree = "<group>"; };
 		11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressHUD.swift; path = views/ProgressHUD.swift; sourceTree = "<group>"; };
 		11ACA9AF1E2CE0FC0021E64A /* PopmetricsColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopmetricsColor.swift; path = helpers/PopmetricsColor.swift; sourceTree = "<group>"; };
+		11D3B8091F7BC76A00B51C08 /* SyncService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SyncService.swift; path = api/SyncService.swift; sourceTree = "<group>"; };
 		11D8D9E81ECA37FC00CCDAC4 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		11D8D9EE1ECB1B9800CCDAC4 /* sampleFeed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFeed.json; sourceTree = "<group>"; };
 		11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredActionViewCell.swift; sourceTree = "<group>"; };
@@ -432,14 +432,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0809AEB51F2238FE00A13178 /* videos */ = {
-			isa = PBXGroup;
-			children = (
-				0809AEB61F223F3B00A13178 /* WelcomeVideo.mov */,
-			);
-			name = videos;
-			sourceTree = "<group>";
-		};
 		080DCA7F1F4D6ED5000C73DC /* menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -807,7 +799,6 @@
 			isa = PBXGroup;
 			children = (
 				0894FBA31F595CC200ED251B /* oldies */,
-				0809AEB51F2238FE00A13178 /* videos */,
 				08D1BC351F1DF4D700D377B2 /* constants */,
 				08C7B18E1F1CF41200E456C6 /* controllers */,
 				08A812771F1672C000672126 /* fonts */,
@@ -884,6 +875,7 @@
 				11A482391F5D58D9008D473C /* ApiModels.swift */,
 				1100F6F41F5E0E6F000AF1D4 /* TodoApi.swift */,
 				11A4EEA71F62CADE00605F0D /* CalendarApi.swift */,
+				11D3B8091F7BC76A00B51C08 /* SyncService.swift */,
 			);
 			name = api;
 			sourceTree = "<group>";
@@ -1138,7 +1130,6 @@
 				08ADA30B1F42D3FA00060ECD /* sampleFeedTodo.json in Resources */,
 				08A533381F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib in Resources */,
 				1178D6821E1E5AD9005B96C3 /* Assets.xcassets in Resources */,
-				0809AEB71F223F3B00A13178 /* WelcomeVideo.mov in Resources */,
 				08C7B18D1F1CF40C00E456C6 /* WelcomeScreen.xib in Resources */,
 				08A4A5411F45B563001071E3 /* AlfaSlabOne-Regular.ttf in Resources */,
 				0855C0C91F6FFBDB00ACBFA9 /* EmptyCard.xib in Resources */,
@@ -1237,7 +1228,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B5BA09B8049FECDC31573D3E /* [CP] Copy Pods Resources */ = {
@@ -1294,7 +1285,7 @@
 				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/RSKImageCropper/RSKImageCropper.framework",
-				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/STPopup/STPopup.framework",
@@ -1336,7 +1327,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSKImageCropper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReachabilitySwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/STPopup.framework",
@@ -1462,6 +1453,7 @@
 				1100F6F91F5FEBCE000AF1D4 /* TodoActionHandler.swift in Sources */,
 				08B485E01F20EA23005918A1 /* Config.swift in Sources */,
 				113976B21E97CE5000B535DF /* MainTabBarController.swift in Sources */,
+				11D3B80A1F7BC76A00B51C08 /* SyncService.swift in Sources */,
 				085530461F6CEE0A00D82A09 /* GoogleActivationView.swift in Sources */,
 				08AA6C631F56C9560022DE91 /* TrafficReportViewController.swift in Sources */,
 				08FAE8441F541D790097DF3E /* StatisticsViewController.swift in Sources */,

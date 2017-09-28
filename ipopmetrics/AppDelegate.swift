@@ -16,6 +16,19 @@ import UserNotifications
 //import STPopup
 
 
+public extension Notification {
+    public class Popmetrics {
+        public static let ApiFailure = Notification.Name("Notification.Popmetrics.ApiFailure")
+        public static let ApiReachable = Notification.Name("Notification.Popmetrics.ApiReachable")
+        public static let ApiNotReachable = Notification.Name("Notification.Popmetrics.ApiNotReachable")
+        public static let ApiResponseUnsuccessfull = Notification.Name("Notification.Popmetrics.ApiResponseUnsuccessfull")
+        
+        
+        public static let UiRefreshRequired = Notification.Name("Notification.Popmetrics.UiRefreshRequired")
+        
+    }
+}
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,22 +39,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var usersStore: UsersStore!
     var feedStore: FeedStore!
     var storyBoard: UIStoryboard!
+    
+    var syncService: SyncService!
+    
+
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        feedStore = FeedStore()
-        usersStore = UsersStore()
-        
-        // Setup crashlytics
-        // Fabric.with([Crashlytics.self])
 
+        usersStore = UsersStore()
+        feedStore = FeedStore()
+        
+        syncService = SyncService()
+
+        storyBoard = UIStoryboard(name: "Main", bundle: nil)
+
+        
         Fabric.with([Twitter.self])
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-        
+
         var configureError: NSError?
         
         navigationController = NavigationController()
@@ -50,8 +67,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
         window.rootViewController = getInitialViewController()
         window.makeKeyAndVisible()
+
         
-        //registerForPushNotifications()
+        syncService.syncAll(silent: false)
         
         // Check if launched from notification
         if let notification = launchOptions?[.remoteNotification] as? [String: AnyObject] {
@@ -157,6 +175,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // PUSH NOTIFICATIONS
     
     
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            
+            print("Permission granted: \(granted)")
+            guard granted else { return }
+            
+            self.getNotificationSettings()
+        }
+    }
+    
     func application(
         _ application: UIApplication,
         didReceiveRemoteNotification userInfo: [AnyHashable : Any],
@@ -164,15 +193,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let aps = userInfo["aps"] as! [String: AnyObject]
         
-//        if aps["content-available"] as? Int == 1 {
-//            let podcastStore = PodcastStore.sharedStore
-//            podcastStore.refreshItems { didLoadNewItems in
-//                completionHandler(didLoadNewItems ? .newData : .noData)
-//            }
-//        } else  {
-//            _ = NewsItem.makeNewsItem(aps)
-//            completionHandler(.newData)
-//        }
+        print("launched from notifications ... ")
+        func loadCallback(success:Bool) {
+            
+            /// mainTabViewController?.agentBuyerConfigurations()
+        }
+        
+    }
+    
+    func getNotificationSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            print("Notification settings: \(settings)")
+            guard settings.authorizationStatus == .authorized else { return }
+            UIApplication.shared.registerForRemoteNotifications()
+        }
     }
     
     func application(_ application: UIApplication,
@@ -195,6 +229,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
+
+
+
 
 //extension AppDelegate: UNUserNotificationCenterDelegate {
 //    
