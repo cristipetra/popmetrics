@@ -76,6 +76,8 @@ class CodeViewController: UIViewController {
                 UsersStore.getInstance().storeLocalUserAccount(userAccount!)
                 UsersStore.currentBrandId = teams[0].brandId!
                 
+                SyncService.getInstance().syncAll(silent: false)
+                
                 let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
                 if notificationType == [] {
                     self.showPushNotificationsScreen()
