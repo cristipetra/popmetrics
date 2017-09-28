@@ -15,9 +15,9 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
     @IBOutlet weak var containerView: UIView!
     
     
-    var numberOfItems = 100
-    var plotOneData: [Double] = [0.0]
-    var plotTwoData: [Double] = [0.0]
+    var numberOfItems = 20
+    var plotOneData: [Double] = [0.0, 2.3, 2.2, 4.5, 6.7, 7.8, 3.2, 4.5, 3.3, 3.5, 7.8, 3.4, 6, 7, 5, 34, 4, 5, 3, 5]
+    var plotTwoData: [Double] = [0.0, 12.3, 12.2, 14.5, 16.7, 17.8, 13.2, 14.5, 13.3, 13.5, 17.8, 13.4, 16, 17, 15, 34, 14, 15, 13, 15]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +29,8 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
 
     
     func randomData() {
-        plotOneData = self.generateRandomData(self.numberOfItems, max: 50, shouldIncludeOutliers: true)
-        plotTwoData = self.generateRandomData(self.numberOfItems, max: 100, shouldIncludeOutliers: true)
+        //plotOneData = self.generateRandomData(self.numberOfItems, max: 50, shouldIncludeOutliers: true)
+        //plotTwoData = self.generateRandomData(self.numberOfItems, max: 100, shouldIncludeOutliers: true)
     }
     
     func setupGraph(graphView: ScrollableGraphView) {
@@ -46,6 +46,10 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
         
         grayPlot.adaptAnimationType = ScrollableGraphViewAnimationType.elastic
         
+        let dotPlot = DotPlot(identifier: "Dot")
+        	        dotPlot.dataPointSize = 2
+        	        dotPlot.dataPointFillColor = UIColor.black
+        
         // Setup the second line plot.
         let pinkPlot = LinePlot(identifier: "Pink")
         pinkPlot.lineWidth = 1
@@ -56,9 +60,14 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
         pinkPlot.fillType = ScrollableGraphViewFillType.solid
         pinkPlot.fillColor = UIColor(red: 252/255, green: 41/255, blue: 139/255, alpha: 0.7)
         
+        let referenceLine = ReferenceLines()
+        
+        referenceLine.shouldShowLabels = true
+        referenceLine.dataPointLabelColor = UIColor.black
+        
         // Setup the graph
         graphView.backgroundFillColor = UIColor.white
-        graphView.dataPointSpacing = 9
+        graphView.dataPointSpacing = 17
         graphView.rangeMax = Double(numberOfItems)
         graphView.rightmostPointPadding = CGFloat(numberOfItems)
         graphView.scrollsToTop = true
@@ -69,6 +78,8 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
         // Add everything to the graph.
         graphView.addPlot(plot: grayPlot)
         graphView.addPlot(plot: pinkPlot)
+        graphView.addReferenceLines(referenceLines: referenceLine)
+        graphView.addPlot(plot: dotPlot)
         
     }
     
@@ -79,13 +90,15 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
             return plotOneData[pointIndex]
         case "Pink":
             return plotTwoData[pointIndex]
+        case "Dot":
+            return plotTwoData[pointIndex]
         default:
             return 0
         }
     }
     
     func label(atIndex pointIndex: Int) -> String {
-        return ""
+        return "\(pointIndex)"
     }
     
     func numberOfPoints() -> Int {
