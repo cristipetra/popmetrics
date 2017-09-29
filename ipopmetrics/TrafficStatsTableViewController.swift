@@ -18,6 +18,8 @@ class TrafficStatsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      
+        self.tableView.alwaysBounceVertical = false
+        self.tableView.separatorInset = .zero
         self.automaticallyAdjustsScrollViewInsets = false
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
         
@@ -84,6 +86,9 @@ class TrafficStatsTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 8
+        }
         return 115
     }
 

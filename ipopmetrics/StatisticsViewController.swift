@@ -106,8 +106,9 @@ class StatisticsViewController: UIViewController {
             statsMet1.pageIndex = 0
             statsMet1.indexInPage = 0
             statsMet1.currentPeriodLabel = "Sep28-Aug27"
-            statsMet1.currentPeriodValues = "20 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5"
-            statsMet1.prevPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13";             store.realm.add(statsMet1, update: true)
+            statsMet1.currentPeriodValues = "20 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 3 7 3 6 7 35 34 34 33 35"
+            statsMet1.prevPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 14 13 13 17 13 16 17 15 34";
+            store.realm.add(statsMet1, update: true)
             
             let statsMet2 = StatisticMetric()
             statsMet2.statisticCard = statsCard
@@ -118,8 +119,8 @@ class StatisticsViewController: UIViewController {
             statsMet2.pageIndex = 0
             statsMet2.indexInPage = 0
             statsMet2.currentPeriodLabel = "Sep28-Aug27"
-            statsMet2.currentPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13"
-            statsMet2.prevPeriodValues = "0 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5"
+            statsMet2.currentPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 6 27 3 4 3 3 7 3 6 7 5"
+            statsMet2.prevPeriodValues = "0 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 14 16 17 13 14 13 13 17"
             store.realm.add(statsMet2, update: true)
             
             let statsMet3 = StatisticMetric()
@@ -131,9 +132,8 @@ class StatisticsViewController: UIViewController {
             statsMet3.pageIndex = 0
             statsMet3.indexInPage = 0
             statsMet3.currentPeriodLabel = "Sep28-Aug27"
-            statsMet3.currentPeriodValues = "2.0 22.3 12.2 14.5 6.7 27.8 3.2 4.5 3.3 3.5 7.8 3.4 6 7 5 34 4 3 5"
-            statsMet3
-                .prevPeriodValues = "0.0 12.3 12.2 14.6 16.7 17.8 13.2 14.5 13.3 13.5 17.8 13.4 16 17 15 34 14 15 13"
+            statsMet3.currentPeriodValues = "2 22 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 17 13 14 13 13 17 13 6 27 3 4"
+            statsMet3.prevPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 14 16 17 13 14 13 13 17"
             store.realm.add(statsMet3, update: true)
         }
         
