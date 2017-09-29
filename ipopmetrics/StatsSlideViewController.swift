@@ -10,12 +10,17 @@ import UIKit
 
 class StatsSlideViewController: UIViewController {
 
-    var statusView: TrafficStatusView = TrafficStatusView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
+    //var statusView: TrafficStatusView = TrafficStatusView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
+    
+    var statusView: TrafficStatus = TrafficStatus(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
+    var statistiscCard: StatisticsCard!
     
     var indexOfPage = 0 {
         didSet {
             self.statusView.pageControl.currentPage = indexOfPage
-            configure()
+            if(statistiscCard != nil) {
+                configure(card: statistiscCard)
+            }
         }
     }
     
@@ -28,12 +33,17 @@ class StatsSlideViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func configure() {
+    func configure(card: StatisticsCard) {
+        self.statistiscCard = card
+        
+        statusView.configure(card: statistiscCard)
         setUpStats()
     }
     
     func setUpStats() {
+        self.statusView.statusLabel.text = "Stats 1 of 3"
         
+        /*
         switch indexOfPage {
         case 0:
             self.statusView.statusLabel.text = "Stats 1 of 3"
@@ -76,7 +86,7 @@ class StatsSlideViewController: UIViewController {
         default:
             break
         }
-        
+        */
     }
     
     override func viewDidLayoutSubviews() {
@@ -85,10 +95,10 @@ class StatsSlideViewController: UIViewController {
     }
     
     private func setUpProgressGradient() {
-        
+    
         let firstProgressViewGradient : [UIColor] = [UIColor(red: 196/255, green: 13/255, blue: 72/255, alpha: 1), UIColor(red: 192/255, green: 21/255, blue: 46/255, alpha: 1) ]
         let secondProgressViewGradient : [UIColor] = [UIColor(red: 255/255, green: 34/255, blue: 105/255, alpha: 1), UIColor(red: 255/255, green: 27/255, blue: 192/255, alpha: 1) ]
-        
+        /*
         if indexOfPage == 0 {
             setGradiendForProgressView(view: self.statusView.popmetricVisitsView.firstProgressView, leftColor: firstProgressViewGradient[0], rightColor: firstProgressViewGradient[1])
             setGradiendForProgressView(view: self.statusView.popmetricVisitsView.secondProgressView, leftColor: secondProgressViewGradient[0], rightColor: secondProgressViewGradient[1])
@@ -99,6 +109,9 @@ class StatsSlideViewController: UIViewController {
         
         setGradiendForProgressView(view: self.statusView.uniqueVisitorsView.firstProgressView, leftColor: firstProgressViewGradient[0], rightColor: firstProgressViewGradient[1])
         setGradiendForProgressView(view: self.statusView.uniqueVisitorsView.secondProgressView, leftColor: secondProgressViewGradient[0], rightColor: secondProgressViewGradient[1])
+        */
+        //setGradiendForProgressView(view: self.statusView, leftColor: firstProgressViewGradient[0], rightColor: firstProgressViewGradient[1])
+        
     }
     
     func setGradiendForProgressView(view: UIView,leftColor : UIColor , rightColor: UIColor) {
@@ -135,4 +148,8 @@ class StatsSlideViewController: UIViewController {
     }
 
     
+}
+
+protocol ReloadGraphProtocol {
+    func reloadGraph(statisticMetric: StatisticMetric)
 }

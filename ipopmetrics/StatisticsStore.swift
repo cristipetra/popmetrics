@@ -17,16 +17,16 @@ class StatisticsStore {
         return StatisticsStore()
     }
     
-    public func getStatisticsCards() -> Results<StatisticCard> {
-        return realm.objects(StatisticCard.self).sorted(byKeyPath: "index")
+    public func getStatisticsCards() -> Results<StatisticsCard> {
+        return realm.objects(StatisticsCard.self).sorted(byKeyPath: "index")
     }
     
-    public func getStatisticsCardWithId(_ cardId: String) -> StatisticCard? {
-        return realm.object(ofType: StatisticCard.self, forPrimaryKey: cardId)
+    public func getStatisticsCardWithId(_ cardId: String) -> StatisticsCard? {
+        return realm.object(ofType: StatisticsCard.self, forPrimaryKey: cardId)
     }
     
     
-    public func getStatisticMetricsForCard(_ statisticCard: StatisticCard) -> Results<StatisticMetric> {
+    public func getStatisticMetricsForCard(_ statisticCard: StatisticsCard) -> Results<StatisticMetric> {
         let predicate = NSPredicate(format: "statisticCard = %@", statisticCard)
         return realm.objects(StatisticMetric.self).filter(predicate)
     }
@@ -39,9 +39,9 @@ class StatisticsStore {
     public func updateStatistics(_ statisticsResponse: StatisticsResponse) {
         
         let realm = try! Realm()
-        let cards = realm.objects(StatisticCard.self).sorted(byKeyPath: "index")
+        let cards = realm.objects(StatisticsCard.self).sorted(byKeyPath: "index")
         
-        var cardsToDelete: [StatisticCard] = []
+        var cardsToDelete: [StatisticsCard] = []
         try! realm.write {
             
             for existingCard in cards {

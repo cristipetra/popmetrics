@@ -233,7 +233,7 @@ class CalendarResponse: Mappable {
 
 class StatisticsResponse: Mappable {
     
-    var cards: [StatisticCard]?
+    var cards: [StatisticsCard]?
     var metrics: [StatisticMetric]?
     
     required init?(map: Map) {
@@ -244,7 +244,7 @@ class StatisticsResponse: Mappable {
         metrics   <- map["metrics"]
     }
     
-    func matchCard(_ cardId:String) -> (Bool, StatisticCard?) {
+    func matchCard(_ cardId:String) -> (Bool, StatisticsCard?) {
         if self.cards == nil {
             return (false, nil)
         }

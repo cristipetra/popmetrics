@@ -19,14 +19,18 @@ class StatsPageViewController: UIPageViewController {
         
     }()
     
+    var statisticsCard: StatisticsCard!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
         self.dataSource = self
         
+        
         if let firstVC = viewControllerList.first {
             self.setViewControllers([firstVC], direction: .forward, animated: true, completion: { (finished) in
-                firstVC.configure()
+                firstVC.configure(card: self.statisticsCard)
+                
             })
         }
         

@@ -33,16 +33,21 @@ class StatisticsSection: NSObject{
     
     var items = [StatisticsItem]()
 }
- */
+ 
 
 class StatisticSummaryItem: Object, Mappable {
     
-    dynamic var statisticCard: StatisticCard? = nil
+    dynamic var statisticCard: StatisticsCard? = nil
     
     
     dynamic var value: Float = 0
     dynamic var label: String = ""
     dynamic var delta: Float = 0
+    
+    
+    override static func primaryKey() -> String? {
+        return "label"
+    }
     
     required convenience init?(map: Map) {
         self.init()
@@ -56,10 +61,11 @@ class StatisticSummaryItem: Object, Mappable {
     }
     
 }
+*/
 
 class StatisticMetric: Object, Mappable {
     
-    dynamic var statisticCard: StatisticCard? = nil
+    dynamic var statisticCard: StatisticsCard? = nil
     
     dynamic var statisticsCardId: String = ""
     
@@ -85,8 +91,11 @@ class StatisticMetric: Object, Mappable {
         self.init()
     }
     
+    override static func primaryKey() -> String? {
+        return "statisticsCardId"
+    }
+    
     func mapping(map: Map) {
-        
         statisticsCardId <- map["statistics_card_id"]
         
         value <- map["value"]
@@ -110,7 +119,6 @@ class StatisticMetric: Object, Mappable {
         
     }
     
-    
     func getCurrentPeriodArray() -> [Double] {
         let sarr = self.currentPeriodValues.components(separatedBy: " ")
         return sarr.map{ Double($0)! }
@@ -120,12 +128,11 @@ class StatisticMetric: Object, Mappable {
         let sarr = self.prevPeriodValues.components(separatedBy: " ")
         return sarr.map{ Double($0)! }
     }
-    
 }
 
 
 
-class StatisticCard: Object, Mappable {
+class StatisticsCard: Object, Mappable {
     
     dynamic var cardId: String? = nil
     

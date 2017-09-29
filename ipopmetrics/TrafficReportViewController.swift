@@ -18,14 +18,18 @@ class TrafficReportViewController: UIViewController {
     
     let insight = StatisticsInsight()
     
+    var statisticsCard: StatisticsCard!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpNavigationBar()
 
+        statsPageVC.statisticsCard = statisticsCard
+        
         addChartView()
         addPageView()
-
+        
     }
     
     override func viewDidLayoutSubviews() {

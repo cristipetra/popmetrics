@@ -51,6 +51,9 @@
 		088BBEAA1F58214300AD5414 /* TrafficEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */; };
 		088BBEAC1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */; };
 		088E77A91F7CE99900774F13 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77A81F7CE99900774F13 /* ToastView.swift */; };
+		088E77AB1F7D441400774F13 /* TrafficStatus.xib in Resources */ = {isa = PBXBuildFile; fileRef = 088E77AA1F7D441400774F13 /* TrafficStatus.xib */; };
+		088E77AD1F7D499400774F13 /* TrafficStatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77AC1F7D499400774F13 /* TrafficStatsTableViewController.swift */; };
+		088E77AF1F7D4A8E00774F13 /* TrafficStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77AE1F7D4A8E00774F13 /* TrafficStatus.swift */; };
 		08953E6B1F4C269E003ABEFC /* ToDoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08953E6A1F4C269E003ABEFC /* ToDoCell.xib */; };
 		08953E6D1F4C275C003ABEFC /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E6C1F4C275C003ABEFC /* ToDoCell.swift */; };
 		08953E6F1F4C2790003ABEFC /* ToDoCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */; };
@@ -255,6 +258,9 @@
 		088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficEmptyView.swift; sourceTree = "<group>"; };
 		088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		088E77A81F7CE99900774F13 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		088E77AA1F7D441400774F13 /* TrafficStatus.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrafficStatus.xib; sourceTree = "<group>"; };
+		088E77AC1F7D499400774F13 /* TrafficStatsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficStatsTableViewController.swift; sourceTree = "<group>"; };
+		088E77AE1F7D4A8E00774F13 /* TrafficStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficStatus.swift; sourceTree = "<group>"; };
 		08953E6A1F4C269E003ABEFC /* ToDoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoCell.xib; sourceTree = "<group>"; };
 		08953E6C1F4C275C003ABEFC /* ToDoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCountView.swift; sourceTree = "<group>"; };
@@ -716,6 +722,7 @@
 				08AA6C641F56DAA10022DE91 /* StatsPageViewController.swift */,
 				08AA6C661F56DC8B0022DE91 /* StatsSlideViewController.swift */,
 				08AA6C721F56F8630022DE91 /* ChartViewController.swift */,
+				088E77AC1F7D499400774F13 /* TrafficStatsTableViewController.swift */,
 			);
 			name = statistics;
 			sourceTree = "<group>";
@@ -734,6 +741,8 @@
 				088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */,
 				082D363D1F5D7CFF006B0985 /* StatisticsInsight.xib */,
 				08BD58071F7A334D00FFDCFD /* StatisticsInsight.swift */,
+				088E77AA1F7D441400774F13 /* TrafficStatus.xib */,
+				088E77AE1F7D4A8E00774F13 /* TrafficStatus.swift */,
 			);
 			name = statistics;
 			sourceTree = "<group>";
@@ -1111,6 +1120,7 @@
 				D9D937881ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib in Resources */,
 				D9EC7E371ECF0D7E00A54B53 /* ActionCard.xib in Resources */,
 				08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */,
+				088E77AB1F7D441400774F13 /* TrafficStatus.xib in Resources */,
 				08F7A09B1F17AC2700A1B2C3 /* RecommendationCard.xib in Resources */,
 				08AD60D81F5FF5E0007095B9 /* TodoCardMaximized.xib in Resources */,
 				0852826C1F287DD70065A968 /* CalendarHeader.xib in Resources */,
@@ -1231,7 +1241,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B5BA09B8049FECDC31573D3E /* [CP] Copy Pods Resources */ = {
@@ -1383,6 +1393,7 @@
 				08BD58041F7A312900FFDCFD /* VerifySocialViewController.swift in Sources */,
 				08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */,
 				0855C0CB1F6FFBF000ACBFA9 /* EmptyCardView.swift in Sources */,
+				088E77AF1F7D4A8E00774F13 /* TrafficStatus.swift in Sources */,
 				08B745911F1F638000EC3F8C /* LoginNavigationViewController.swift in Sources */,
 				08AA6C6B1F56DD060022DE91 /* TrafficVisits.swift in Sources */,
 				113E3F7F1F7D1023007448C6 /* StatisticsApi.swift in Sources */,
@@ -1435,6 +1446,7 @@
 				1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */,
 				08AA6C691F56DCDA0022DE91 /* TrafficStatusView.swift in Sources */,
 				08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */,
+				088E77AD1F7D499400774F13 /* TrafficStatsTableViewController.swift in Sources */,
 				08F368951F18F93800819CDE /* DailyInsightsCardCell.swift in Sources */,
 				08B2803F1F55862100E36D19 /* Statistics.swift in Sources */,
 				085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */,

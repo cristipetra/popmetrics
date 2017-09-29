@@ -61,6 +61,18 @@ class TrafficVisits: UIView {
         
     }()
     
+    var statisticMetric: StatisticMetric!
+    
+    
+    func configure(statisticMetric: StatisticMetric) {
+        self.statisticMetric = statisticMetric
+        self.titleLabel.text = statisticMetric.label
+        self.firstValueLabel.text = "\(Int(statisticMetric.value))"
+        self.secondValueLabel.text = " +\(Int(statisticMetric.delta))"
+        
+        setProgress(firstValue: CGFloat(statisticMetric.value), secondValue: CGFloat(statisticMetric.delta + statisticMetric.value))
+    }
+    
     func setUpVisitsView() {
         
         self.backgroundColor = UIColor.white
@@ -109,10 +121,10 @@ class TrafficVisits: UIView {
     
     private func setDesign() {
         firstValueLabel.font = UIFont(name: FontBook.alfaRegular, size: 18)
-        firstValueLabel.textColor = UIColor(red: 160/255, green: 12/255, blue: 77/255, alpha: 1)
+        firstValueLabel.textColor = PopmetricsColor.visitFirstColor
         
         secondValueLabel.font = UIFont(name: FontBook.alfaRegular, size: 18)
-        secondValueLabel.textColor = UIColor(red: 255/255, green: 33/255, blue: 122/255, alpha: 1)
+        secondValueLabel.textColor = PopmetricsColor.visitSecondColor
         
         mainProgressView.layer.cornerRadius = 4
         firstProgressView.layer.cornerRadius = 4
@@ -130,6 +142,9 @@ class TrafficVisits: UIView {
         
         firstProgressView.layoutSubviews()
         secondProgressView.layoutSubviews()
+        
+        firstProgressView.backgroundColor = PopmetricsColor.visitFirstColor
+        secondProgressView.backgroundColor = PopmetricsColor.visitSecondColor
         
         DispatchQueue.main.async {
             self.firstProgressView.setNeedsLayout()
@@ -164,9 +179,14 @@ class TrafficVisits: UIView {
         
         setProgress(firstValue: CGFloat(firstValue), secondValue: CGFloat(secondValue))
         
+        firstProgressView.backgroundColor = PopmetricsColor.visitFirstColor
+        secondProgressView.backgroundColor = PopmetricsColor.visitSecondColor
+        
         firstProgressView.layoutSubviews()
         secondProgressView.layoutSubviews()
         
     }
+    
+
     
 }

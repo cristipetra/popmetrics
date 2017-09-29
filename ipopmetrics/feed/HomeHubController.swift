@@ -103,9 +103,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         addImageOnLastCard()
         
-        if(store.getFeedCards().count == 0) {
-            tableView.isHidden = true
-        }
         
     }
     

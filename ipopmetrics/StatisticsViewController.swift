@@ -89,12 +89,59 @@ class StatisticsViewController: UIViewController {
     
     internal func createItemsLocally() {
         try! store.realm.write {
-            let statsCard = StatisticCard()
+            store.realm.deleteAll()
+            
+            let statsCard = StatisticsCard()
             statsCard.cardId = "dfas"
             statsCard.section = "Traffic"
-            
+            statsCard.index = 0
             store.realm.add(statsCard, update: true)
+            
+            let statsMet1 = StatisticMetric()
+            statsMet1.statisticCard = statsCard
+            statsMet1.statisticsCardId = "sfdsaf"
+            statsMet1.value = 24
+            statsMet1.label = "Overral visits"
+            statsMet1.delta = 25
+            statsMet1.pageIndex = 0
+            statsMet1.indexInPage = 0
+            statsMet1.currentPeriodLabel = "Sep28-Aug27"
+            statsMet1.currentPeriodValues = "34 33"
+            statsMet1.prevPeriodValues = "34 23"
+            store.realm.add(statsMet1, update: true)
+            
+            let statsMet2 = StatisticMetric()
+            statsMet2.statisticCard = statsCard
+            statsMet2.statisticsCardId = "s3fdsaf"
+            statsMet2.value = 34
+            statsMet2.label = "Unique visits"
+            statsMet2.delta = 5
+            statsMet2.pageIndex = 0
+            statsMet2.indexInPage = 0
+            statsMet2.currentPeriodLabel = "Sep28-Aug27"
+            statsMet2.currentPeriodValues = "34 33"
+            statsMet2.prevPeriodValues = "34 23"
+            store.realm.add(statsMet2, update: true)
+            
+            let statsMet3 = StatisticMetric()
+            statsMet3.statisticCard = statsCard
+            statsMet3.statisticsCardId = "s3efdsaf"
+            statsMet3.value = 44
+            statsMet3.label = "New visits"
+            statsMet3.delta = 15
+            statsMet3.pageIndex = 0
+            statsMet3.indexInPage = 0
+            statsMet3.currentPeriodLabel = "Sep28-Aug27"
+            statsMet3.currentPeriodValues = "34 33"
+            statsMet3.prevPeriodValues = "34 23"
+            store.realm.add(statsMet3, update: true)
         }
+        
+        print(store.getStatisticsCards())
+        
+        print("stt:  \(store.getStatisticMetricsForCard(store.getStatisticsCards()[0])[0])")
+        let met1 = store.getStatisticMetricsForCard(store.getStatisticsCards()[0])[0]
+        print("stt:  \(met1.label)")
     }
     
     func handlerClickMenu() {
@@ -109,8 +156,9 @@ class StatisticsViewController: UIViewController {
         self.tabBarController?.selectedIndex = 0
     }
     
-    internal func openTrafficReport(_ sender: AnyObject) {
-        let trafficReportVC = AppStoryboard.Statistics.instance.instantiateViewController(withIdentifier: ViewNames.SBID_TRAFFIC_REPORT)
+    internal func openTrafficReport(_ sender: AnyObject, card: StatisticsCard) {
+        let trafficReportVC: TrafficReportViewController = AppStoryboard.Statistics.instance.instantiateViewController(withIdentifier: ViewNames.SBID_TRAFFIC_REPORT) as! TrafficReportViewController
+        trafficReportVC.statisticsCard = card
         self.navigationController?.pushViewController(trafficReportVC, animated: true)
     }
 }
@@ -143,9 +191,11 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficCard", for: indexPath) as! TrafficCardViewCell
             cellHeight = 424
             //setTrafficCard(cell: cell, item: item)
+            
+            
             cell.selectionStyle = .none
             cell.backgroundColor = UIColor.feedBackgroundColor()
-            cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_:)), for: .touchUpInside)
+            cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_:card:)), for: .touchUpInside)
             cell.connectionLine.isHidden = true
             return cell
         case "traffic_unconnected" :

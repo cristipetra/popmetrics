@@ -25,6 +25,18 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
         
         randomData()
         setupGraph(graphView: barChart)
+        
+
+        
+        let nc = NotificationCenter.default
+        nc.addObserver(forName:Notification.Popmetrics.ReloadGraph, object:nil, queue:nil, using: handerReloadData)
+    }
+    
+    func handerReloadData(notification:Notification) -> Void {
+        let index = notification.object!
+        print(index)
+        //print(notification.object as NSArray)
+        print("reload data")
     }
 
     
@@ -78,7 +90,7 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
         // Add everything to the graph.
         graphView.addPlot(plot: grayPlot)
         graphView.addPlot(plot: pinkPlot)
-        graphView.addReferenceLines(referenceLines: referenceLine)
+        //graphView.addReferenceLines(referenceLines: referenceLine)
         graphView.addPlot(plot: dotPlot)
         
     }
