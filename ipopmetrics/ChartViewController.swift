@@ -15,7 +15,7 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
     @IBOutlet weak var containerView: UIView!
     
     
-    var numberOfItems = 20
+    var numberOfItems = 19
     var plotOneData: [Double] = [0.0, 2.3, 2.2, 4.5, 6.7, 7.8, 3.2, 4.5, 3.3, 3.5, 7.8, 3.4, 6, 7, 5, 34, 4, 5, 3, 5]
     var plotTwoData: [Double] = [0.0, 12.3, 12.2, 14.5, 16.7, 17.8, 13.2, 14.5, 13.3, 13.5, 17.8, 13.4, 16, 17, 15, 34, 14, 15, 13, 15]
     
@@ -51,7 +51,7 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
         self.infoLabel.text = statisticMetric.label
         self.firstValue.text = "\(Int(statisticMetric.value))"
         self.secondValue.text = "+\(Int(statisticMetric.delta))"
-        //reloadGraph()
+        reloadGraph()
     }
     
     func reloadGraph() {
