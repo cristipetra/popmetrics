@@ -19,6 +19,11 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
     var plotOneData: [Double] = [0.0, 2.3, 2.2, 4.5, 6.7, 7.8, 3.2, 4.5, 3.3, 3.5, 7.8, 3.4, 6, 7, 5, 34, 4, 5, 3, 5]
     var plotTwoData: [Double] = [0.0, 12.3, 12.2, 14.5, 16.7, 17.8, 13.2, 14.5, 13.3, 13.5, 17.8, 13.4, 16, 17, 15, 34, 14, 15, 13, 15]
     
+    @IBOutlet weak var secondValue: UILabel!
+    @IBOutlet weak var firstValue: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
+    var statisticMetric: StatisticMetric!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         barChart.dataSource = self
@@ -33,10 +38,19 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
     }
     
     func handerReloadData(notification:Notification) -> Void {
-        let index = notification.object!
-        print(index)
-        //print(notification.object as NSArray)
+        let statisticMetric  = notification.object as! StatisticMetric
+        print(statisticMetric)
+        print(statisticMetric.label)
+        self.statisticMetric = statisticMetric
+        
         print("reload data")
+        reloadData()
+    }
+    
+    func reloadData() {
+        self.infoLabel.text = statisticMetric.label
+        self.firstValue.text = "\(Int(statisticMetric.value))"
+        self.secondValue.text = "+\(Int(statisticMetric.delta))"   
     }
 
     
