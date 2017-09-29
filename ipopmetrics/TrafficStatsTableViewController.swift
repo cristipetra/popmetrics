@@ -74,7 +74,7 @@ class TrafficStatsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("select")
         
-        NotificationCenter.default.post(name: Notification.Popmetrics.ReloadGraph, object: statisticsStore.getStatisticMetricsForCard(statisticsStore.getStatisticsCards()[0])[indexPath.row-1])
+        NotificationCenter.default.post(name: Notification.Popmetrics.ReloadGraph, object: statisticsStore.getStatisticMetricsForCard(statisticsStore.getStatisticsCards()[0])[indexPath.row])
         
         
         if reloadGraphDelegate != nil {

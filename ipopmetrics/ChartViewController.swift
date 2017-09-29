@@ -50,7 +50,16 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
     func reloadData() {
         self.infoLabel.text = statisticMetric.label
         self.firstValue.text = "\(Int(statisticMetric.value))"
-        self.secondValue.text = "+\(Int(statisticMetric.delta))"   
+        self.secondValue.text = "+\(Int(statisticMetric.delta))"
+        //reloadGraph()
+    }
+    
+    func reloadGraph() {
+        barChart.reload()
+        plotOneData = statisticMetric.getCurrentPeriodArray()
+        plotTwoData = statisticMetric.getPrevPeriodArray()
+        
+        barChart.setNeedsLayout()
     }
 
     
@@ -61,30 +70,42 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
     
     func setupGraph(graphView: ScrollableGraphView) {
         
-        let grayPlot = LinePlot(identifier: "Gray")
-        grayPlot.lineWidth = 1
-        grayPlot.lineColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 0.5)
-        grayPlot.lineStyle = ScrollableGraphViewLineStyle.smooth
-        
-        grayPlot.shouldFill = true
-        grayPlot.fillType = ScrollableGraphViewFillType.solid
-        grayPlot.fillColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 0.5)
+        let grayPlot = BarPlot(identifier: "Gray")
+        grayPlot.barWidth = 9
+        grayPlot.barLineWidth = 0
+        grayPlot.barLineColor = UIColor.white
+        grayPlot.barColor = UIColor(red: 122/255, green: 136/255, blue: 150/255, alpha: 0.6)
+        grayPlot.adaptAnimationType = ScrollableGraphViewAnimationType.elastic
+        grayPlot.animationDuration = 1.5
+        //        grayPlot.lineWidth = 1
+        //        grayPlot.lineColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 0.5)
+        //        grayPlot.lineStyle = ScrollableGraphViewLineStyle.smooth
+        //
+        //        grayPlot.shouldFill = true
+        //        grayPlot.fillType = ScrollableGraphViewFillType.solid
+        //        grayPlot.fillColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 0.5)
         
         grayPlot.adaptAnimationType = ScrollableGraphViewAnimationType.elastic
         
         let dotPlot = DotPlot(identifier: "Dot")
-        	        dotPlot.dataPointSize = 2
-        	        dotPlot.dataPointFillColor = UIColor.black
+        dotPlot.dataPointSize = 1.5
+        dotPlot.dataPointFillColor = PopmetricsColor.darkGrey
         
         // Setup the second line plot.
-        let pinkPlot = LinePlot(identifier: "Pink")
-        pinkPlot.lineWidth = 1
-        pinkPlot.lineColor = UIColor(red: 252/255, green: 41/255, blue: 139/255, alpha: 0.5)
-        pinkPlot.lineStyle = ScrollableGraphViewLineStyle.smooth
-        
-        pinkPlot.shouldFill = true
-        pinkPlot.fillType = ScrollableGraphViewFillType.solid
-        pinkPlot.fillColor = UIColor(red: 252/255, green: 41/255, blue: 139/255, alpha: 0.7)
+        let pinkPlot = BarPlot(identifier: "Pink")
+        pinkPlot.barWidth = 9
+        pinkPlot.barLineWidth = 0
+        pinkPlot.barLineColor = UIColor.white
+        pinkPlot.barColor = UIColor(red: 219/255, green: 14/255, blue: 95/255, alpha: 0.7)
+        pinkPlot.adaptAnimationType = ScrollableGraphViewAnimationType.elastic
+        pinkPlot.animationDuration = 1.5
+        //        pinkPlot.lineWidth = 1
+        //        pinkPlot.lineColor = UIColor(red: 252/255, green: 41/255, blue: 139/255, alpha: 0.5)
+        //        pinkPlot.lineStyle = ScrollableGraphViewLineStyle.smooth
+        //
+        //        pinkPlot.shouldFill = true
+        //        pinkPlot.fillType = ScrollableGraphViewFillType.solid
+        //        pinkPlot.fillColor = UIColor(red: 252/255, green: 41/255, blue: 139/255, alpha: 0.7)
         
         let referenceLine = ReferenceLines()
         
@@ -93,10 +114,10 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
         
         // Setup the graph
         graphView.backgroundFillColor = UIColor.white
-        graphView.dataPointSpacing = 17
+        graphView.dataPointSpacing = 9.5
         graphView.rangeMax = Double(numberOfItems)
         graphView.rightmostPointPadding = CGFloat(numberOfItems)
-        graphView.scrollsToTop = true
+        graphView.scrollsToTop = false
         graphView.shouldAnimateOnStartup = true
         graphView.shouldAdaptRange = true
         graphView.shouldRangeAlwaysStartAtZero = true
@@ -105,7 +126,7 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
         graphView.addPlot(plot: grayPlot)
         graphView.addPlot(plot: pinkPlot)
         //graphView.addReferenceLines(referenceLines: referenceLine)
-        graphView.addPlot(plot: dotPlot)
+        //graphView.addPlot(plot: dotPlot)
         
     }
     
