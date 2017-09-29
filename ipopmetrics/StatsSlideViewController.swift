@@ -27,6 +27,8 @@ class StatsSlideViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(statusView)
+        
+        statusView.tableView.didMove(toParentViewController: self)
     }
     
     override func didReceiveMemoryWarning() {
