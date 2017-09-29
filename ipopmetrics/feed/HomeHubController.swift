@@ -103,7 +103,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         addImageOnLastCard()
         
-        
+        createItemsLocally()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -123,7 +123,19 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                             self.tableView.alpha = 1
         })
     }
-
+    
+    func createItemsLocally() {
+        try! store.realm.write {
+            store.realm.deleteAll()
+            let insightCard = FeedCard()
+            insightCard.cardId = "fadsdf"
+            insightCard.section = "Insights"
+            insightCard.type = "recommended_action"
+            
+            store.realm.add(insightCard, update: true)
+        }
+        print(store.getFeedCards())
+    }
     
     
     func addImageOnLastCard() {
@@ -287,8 +299,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     @objc func openGoogleActionView() {
-        print("open google")
-        let googleActionVc = GoogleActionViewController()
+        let googleActionVc = UIStoryboard(name: "GoogleAction", bundle: nil).instantiateViewController(withIdentifier: "googleId")
+        googleActionVc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(googleActionVc, animated: true)
     }
     
