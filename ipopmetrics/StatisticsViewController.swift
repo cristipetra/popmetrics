@@ -189,9 +189,11 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
         switch card.section {
         case "Traffic":
             let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficCard", for: indexPath) as! TrafficCardViewCell
-            cellHeight = 424
-            //setTrafficCard(cell: cell, item: item)
-            
+            let results = store.getStatisticMetricsForCard(card)
+            cell.statisticsCountView.setupViews(data: Array(results))
+            let itemCellHeight: Int = 94
+            cell.statisticsCountViewHeightCounstraint.constant = CGFloat(results.count * itemCellHeight)
+            cellHeight = CGFloat((results.count * itemCellHeight) + (29 + 93 + 20))
             
             cell.selectionStyle = .none
             cell.backgroundColor = UIColor.feedBackgroundColor()
