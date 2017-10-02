@@ -195,11 +195,11 @@ class SyncService: SessionDelegate {
         }
     }
     
-    
     func syncAll(silent:Bool) {
         if usersStore.isUserDefined() {
             self.syncHomeItems(silent: silent)
             self.syncTodoItems(silent: silent)
+            self.syncCalendarItems(silent: silent)
         }
         
     }
