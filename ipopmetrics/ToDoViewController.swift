@@ -545,9 +545,20 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
     func changeTopHeaderTitle(section: Int) {
         if section < store.countSections() {
-            let item = store.getTodoSocialPostsForCard(store.getTodoCards()[section])[0]
-            topHeaderView.changeTitle(title: store.getTodoCards()[section].getCardSectionTitle)
-            topHeaderView.changeColorCircle(color: item.getSectionColor)
+            if store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count != 0 {
+                let item = store.getTodoSocialPostsForCard(store.getTodoCards()[section])[0]
+                //print(item.socialTextString)
+                topHeaderView.changeTitle(title: item.socialTextString)
+                topHeaderView.changeColorCircle(color: item.getSectionColor)
+                if (item.status == "unapproved") {
+                    topHeaderView.changeColorCircle(color: item.getSectionColor)
+                    topHeaderView.changeTitle(title: (item.status?.capitalized)!)
+                }
+            } else {
+                let card = store.getTodoCards()[section]
+                topHeaderView.changeTitle(title: card.getCardSectionTitle)
+                topHeaderView.changeColorCircle(color: card.getSectionColor)
+            }
         }
     }
     

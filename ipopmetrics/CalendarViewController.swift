@@ -28,9 +28,12 @@ class CalendarViewController: BaseViewController {
     @IBOutlet weak var previousButton: UIButton!
     
     @IBOutlet weak var topPickerStackViewWrapper: UIView!
+    @IBOutlet weak var divider: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var topPickerStackViewHeight: NSLayoutConstraint!
+    var calendarNoteView: NoteView!
     
+    @IBOutlet weak var topAnchorTableView: NSLayoutConstraint!
     let transitionView = UIView(frame: CGRect(x: 0, y: 40, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     let store = CalendarFeedStore.getInstance()
@@ -82,6 +85,9 @@ class CalendarViewController: BaseViewController {
             self.todayLabelView.layer.borderWidth = 2.0
             self.todayLabelView.layer.cornerRadius = self.todayLabelView.bounds.width / 2
             self.todayLabelView.layer.masksToBounds = true
+            
+            self.setNoteView()
+            self.transitionView.addSubview(self.calendarNoteView)
         }
         
         addNotifications()
@@ -108,6 +114,23 @@ class CalendarViewController: BaseViewController {
         nc.addObserver(self, selector: #selector(didPostActionHandler), name: NSNotification.Name("didPostAction"), object: nil)
         
         nc.addObserver(forName:Notification.Popmetrics.UiRefreshRequired, object:nil, queue:nil, using:catchUiRefreshRequiredNotification)
+    }
+    
+    func setNoteView() {
+        if calendarNoteView == nil {
+            calendarNoteView = NoteView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 93))
+            self.view.addSubview(calendarNoteView)
+            NSLayoutConstraint.activate([
+                calendarNoteView.topAnchor.constraint(equalTo: divider.bottomAnchor, constant: 0),
+                calendarNoteView.bottomAnchor.constraint(equalTo: tableView.topAnchor, constant: 0),
+                calendarNoteView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 2),
+                calendarNoteView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0)
+                ])
+            calendarNoteView.translatesAutoresizingMaskIntoConstraints = false
+            topAnchorTableView.constant = calendarNoteView.height()
+            calendarNoteView.setDescriptionText(type: .calendar)
+            //calendarNoteView.performActionButton.addTarget(self, action: #selector(goToHomeTab), for: .touchUpInside)
+        }
     }
     
     internal func registerCellsForTable() {

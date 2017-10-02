@@ -13,9 +13,11 @@ import SwiftyJSON
 class StatisticsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var topAnchorTableView: NSLayoutConstraint!
     @IBOutlet weak var leftAnchorTableView: NSLayoutConstraint!
     
     let transitionView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+    var statisticsNoteView: NoteView!
     
     let store = StatisticsStore.getInstance()
     
@@ -37,7 +39,13 @@ class StatisticsViewController: UIViewController {
         tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
-        createItemsLocally()
+        
+        DispatchQueue.main.async {
+            if( self.store.getStatisticsCards().count <= 0) {
+                self.setNoteView()
+                self.transitionView.addSubview(self.statisticsNoteView)
+            }
+        }
         
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
@@ -70,6 +78,18 @@ class StatisticsViewController: UIViewController {
         
         let recommendedNib = UINib(nibName: "RecommendedCell", bundle: nil)
         tableView.register(recommendedNib, forCellReuseIdentifier: "RecommendedCell")
+    }
+    
+    func setNoteView() {
+        if statisticsNoteView == nil {
+            statisticsNoteView = NoteView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 93))
+            self.view.addSubview(statisticsNoteView)
+            topAnchorTableView.constant = statisticsNoteView.height()
+            self.view.updateConstraints()
+            statisticsNoteView.setDescriptionText(type: .statistics)
+            statisticsNoteView.performActionButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
+            
+        }
     }
     
     internal func setUpNavigationBar() {
