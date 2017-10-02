@@ -30,12 +30,14 @@ class EmptyCardView: UITableViewCell {
         view.backgroundColor = PopmetricsColor.weekDaysGrey
         return view
     }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundColor = UIColor.feedBackgroundColor()
     }
     
     func setupView(type: FeedType, toDoStatus: ToDoStatus = .unapproved, calendarStatus: StatusArticle = .scheduled) {
-
+        
         switch type {
         case .statistics:
             self.toolbarView.setupGradient()
@@ -146,7 +148,7 @@ class EmptyCardView: UITableViewCell {
 }
 
 enum ToDoStatus: String {
-    case failed = "todo_failed"
-    case unapproved = "todo_unapproved"
-    case manual = "manual"
+    case failed = "Failed"
+    case unapproved = "Unapproved"
+    case manual = "Manual"
 }

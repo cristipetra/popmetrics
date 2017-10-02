@@ -345,6 +345,7 @@ enum StatusArticle: String {
     case scheduled = "Scheduled"
     case failed = "Failed"
     case executed = "Executed"
+    case manual = "Manual" 
     case unapproved = "Unapproved"
     case inProgress = "In-progress"
     case completed = "Completed"

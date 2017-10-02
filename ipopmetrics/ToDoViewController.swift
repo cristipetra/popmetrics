@@ -72,6 +72,40 @@ class ToDoViewController: BaseViewController {
         
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
+        
+        
+        //createItemsLocally()
+    }
+    
+    func createItemsLocally() {
+        try! store.realm.write {
+            store.realm.deleteAll()
+            
+            let todoCard = TodoCard()
+            todoCard.cardId = "12523fa5"
+            todoCard.type = "todo_unapproved"
+            todoCard.section = "Unapproved"
+            todoCard.headerTitle = "Unapproved Posts"
+            store.realm.add(todoCard, update: true)
+    
+            
+            let manualCard = TodoCard()
+            manualCard.cardId = "223344"
+            manualCard.type = "todo_manual"
+            manualCard.section = "Manual"
+            manualCard.headerTitle = "Doing Yourself"
+            store.realm.add(manualCard, update: true)
+            
+            let failedCard = TodoCard()
+            failedCard.cardId = "223355"
+            failedCard.type = "todo_failed"
+            failedCard.section = "Failed"
+            failedCard.headerTitle = "Failed Actions"
+            store.realm.add(failedCard, update: true)
+           
+            
+        }
+        print(store.getTodoCards())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -125,6 +159,9 @@ class ToDoViewController: BaseViewController {
         
         let maximizedCell = UINib(nibName: "TodoCardMaximized", bundle: nil)
         tableView.register(maximizedCell, forCellReuseIdentifier: "maxCellId")
+        
+        let emptyCard = UINib(nibName: "EmptyCard", bundle: nil)
+        tableView.register(emptyCard, forCellReuseIdentifier: "EmptyCard")
     }
     
     internal func setUpNavigationBar() {
@@ -237,8 +274,16 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             return cell
         }
         
-        
         let sectionCards = store.getTodoSocialPostsForCard(store.getTodoCards()[sectionIdx])
+        
+        let card = store.getTodoCards()[sectionIdx]
+        if sectionCards.isEmpty {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCard", for: indexPath) as! EmptyCardView
+            cell.setupView(type: .todo, toDoStatus: ToDoStatus(rawValue: (card.section))!)
+            cell.selectionStyle = .none
+            return cell
+        }
+        
         let item = sectionCards[rowIdx]
 
         if shouldMaximize {
@@ -290,11 +335,6 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func isLastSection(section: Int) -> Bool {
-        if( store.getTodoCards().count == 1) {
-            if( store.getTodoSocialPostsForCard(store.getTodoCards()[0]).count == 0) {
-                return true
-            }
-        }
         if section == store.getTodoCards().count {
             return true
         }
@@ -306,12 +346,15 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         if( isLastSection(section: section)) {
             return UIView()
         }
-        if section == store.getTodoCards().count {
-            return UIView()
-        }
 
-        let item: TodoSocialPost = store.getTodoSocialPostsForCard(store.getTodoCards()[section])[0]
         let card = store.getTodoCards()[section]
+        
+        if store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count == 0 {
+            let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
+            headerCell.changeColor(color: card.getSectionColor)
+            headerCell.changeTitle(title: card.getCardSectionTitle)
+            return headerCell
+        }
         
         if shouldMaximize == false {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
@@ -329,7 +372,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if( isLastSection(section: section)) {
+        if( isLastSection(section: section) || store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count == 0) {
             return UIView()
         }
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
@@ -364,6 +407,10 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         if isLastSection(section: section) {
             return 60
         }
+        let posts = store.getTodoSocialPostsForCard(store.getTodoCards()[section])
+        if(posts.count == 0) {
+            return 80
+        }
         if shouldMaximize {
             return 80
         }
@@ -372,17 +419,15 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
     func getCountSection() -> Int {
         //check if we receive card that has empty social post
-        if( store.getTodoCards().count == 1) {
-            if( store.getTodoSocialPostsForCard(store.getTodoCards()[0]).count == 0) {
-                return 1
-            }
-        }
         return store.getTodoCards().count + 1  // adding the last card
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         //height for footer for last card
         if isLastSection(section: section) {
+            return 0
+        }
+        if store.getTodoSocialPostsForCard(store.getTodoCards()[section]).isEmpty {
             return 0
         }
         return 80
@@ -394,6 +439,8 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if( isLastSection(section: section)) {
+            return 1
+        } else if store.getTodoSocialPostsForCard(store.getTodoCards()[section]).isEmpty {
             return 1
         }
     
@@ -425,6 +472,9 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         //height for last card
         if(isLastSection(section: indexPath.section)) {
             return 261
+        }
+        if store.getTodoSocialPostsForCard(store.getTodoCards()[indexPath.section]).isEmpty {
+            return 216
         }
         
         if shouldMaximize {
