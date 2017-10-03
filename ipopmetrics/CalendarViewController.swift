@@ -123,7 +123,7 @@ class CalendarViewController: BaseViewController {
             NSLayoutConstraint.activate([
                 calendarNoteView.topAnchor.constraint(equalTo: divider.bottomAnchor, constant: 0),
                 calendarNoteView.bottomAnchor.constraint(equalTo: tableView.topAnchor, constant: 0),
-                calendarNoteView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 2),
+                calendarNoteView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0),
                 calendarNoteView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0)
                 ])
             calendarNoteView.translatesAutoresizingMaskIntoConstraints = false

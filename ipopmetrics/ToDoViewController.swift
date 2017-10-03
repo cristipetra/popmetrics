@@ -23,6 +23,11 @@ class ToDoViewController: BaseViewController {
     let transitionView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     var topHeaderView: HeaderView!
+    var toDoNoteView: NoteView!
+    
+    @IBOutlet weak var topAnchorTableView: NSLayoutConstraint!
+    
+    
     let store = TodoStore.getInstance()
 
     var approveIndex = 3
@@ -70,11 +75,18 @@ class ToDoViewController: BaseViewController {
         setupTopHeaderView()
         setupTopViewItemCount()
         
+        DispatchQueue.main.async {
+            if(self.store.getTodoCards().count <= 3) {
+                self.setupNoteView()
+                self.transitionView.addSubview(self.toDoNoteView)
+            }
+        }
+        
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
         
         
-        //createItemsLocally()
+        createItemsLocally()
     }
     
     func createItemsLocally() {
@@ -124,6 +136,21 @@ class ToDoViewController: BaseViewController {
     
     func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
         
+    }
+    
+    internal func setupNoteView() {
+        if toDoNoteView == nil {
+            toDoNoteView = NoteView(frame: CGRect(x: 0, y: toDoTopView.height(), width: self.view.frame.width, height: 93))
+            self.view.addSubview(toDoNoteView)
+            topAnchorTableView.constant = toDoNoteView.height()
+            self.view.updateConstraints()
+            toDoNoteView.setDescriptionText(type: .todo)
+            toDoNoteView.performActionButton.addTarget(self, action: #selector(goToHomeTab), for: .touchUpInside)
+        }
+    }
+    
+    internal func goToHomeTab() {
+        self.tabBarController?.selectedIndex = 0
     }
     
     func setupTopHeaderView() {

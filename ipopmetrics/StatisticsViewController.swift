@@ -40,12 +40,7 @@ class StatisticsViewController: UIViewController {
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
         
-        DispatchQueue.main.async {
-            if( self.store.getStatisticsCards().count <= 0) {
-                self.setNoteView()
-                self.transitionView.addSubview(self.statisticsNoteView)
-            }
-        }
+        createItemsLocally()
         
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
@@ -155,13 +150,9 @@ class StatisticsViewController: UIViewController {
             statsMet3.currentPeriodValues = "2 22 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 17 13 14 13 13 17 13 6 27 3 4"
             statsMet3.prevPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 14 16 17 13 14 13 13 17"
             store.realm.add(statsMet3, update: true)
+         
         }
         
-        print(store.getStatisticsCards())
-        
-        print("stt:  \(store.getStatisticMetricsForCard(store.getStatisticsCards()[0])[0])")
-        let met1 = store.getStatisticMetricsForCard(store.getStatisticsCards()[0])[0]
-        print("stt:  \(met1.label)")
     }
     
     func handlerClickMenu() {
@@ -198,13 +189,21 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
         
-        
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
-        //let section = sections[sectionIdx]
+        
+        let sectionCards = store.getStatisticMetricsForCard(store.getStatisticsCards()[sectionIdx])
+        
+        if sectionCards.isEmpty {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficEmptyCard", for: indexPath) as! TrafficEmptyView
+            cellHeight = 216
+            cell.selectionStyle = .none
+            //cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_:)), for: .touchUpInside)
+            return cell
+        }
+        
         let card = store.getStatisticsCards()[indexPath.section]
-        
-        
         
         switch card.section {
         case "Traffic":
@@ -220,30 +219,6 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_:card:)), for: .touchUpInside)
             cell.connectionLine.isHidden = true
             return cell
-        case "traffic_unconnected" :
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficEmptyCard", for: indexPath) as! TrafficEmptyView
-            cellHeight = 216
-            cell.selectionStyle = .none
-            cell.backgroundColor = UIColor.feedBackgroundColor()
-            //cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_:)), for: .touchUpInside)
-            return cell
-        case "last_cell" :
-            if insightIsDisplayed {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
-                cellHeight = 261
-                cell.changeTitleWithSpacing(title: "You're all caught up.")
-                cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
-                cell.selectionStyle = .none
-                cell.titleActionButton.text = "View Home Feed"
-                cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
-                return cell
-            } else {
-                let cell = UITableViewCell()
-                cellHeight = 0
-                cell.isHidden = true
-                return cell
-            }
-            
         case "insight" :
             if insightIsDisplayed {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendedCell", for: indexPath) as! RecommendedCell
@@ -268,7 +243,6 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return store.getStatisticsCards().count
-        //return sections[section].items.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

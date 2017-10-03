@@ -18,12 +18,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     fileprivate var sharingInProgress = false
     
     let sectionToIndex = ["Required Actions": 0,
-                           "Insights": 2]
+                           "Insights": 1,
+                           "Analitycs": 2]
     
     let indexToSection = [0:"Required Actions",
-                          1:"Insights"]
-        
-    
+                          1:"Insights",
+                          2: "Analitycs"]
     
     var requiredActionHandler = RequiredActionHandler()
     let store = FeedStore.getInstance()
@@ -103,11 +103,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         addImageOnLastCard()
         
-        createItemsLocally()
+        //createItemsLocally()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
         tableView.contentOffset = CGPoint(x: 0, y: 50)
     }
     
@@ -128,13 +127,15 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         try! store.realm.write {
             store.realm.deleteAll()
             let insightCard = FeedCard()
-            insightCard.cardId = "fadsdf"
-            insightCard.section = "Insights"
+            insightCard.cardId = "fad456asgf2562sfgsdsdf"
+            insightCard.section = "Analitycs"
             insightCard.type = "recommended_action"
             
             store.realm.add(insightCard, update: true)
         }
         print(store.getFeedCards())
+        
+        print(store.getFeedCardsWithSection(indexToSection[2]!))
     }
     
     
@@ -192,8 +193,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         if (section == sectionToIndex.count) {
             return 1
         }
-        print(section)
-        print(indexToSection[section])
+        print("section: \(section)")
+        print("number: \(store.getFeedCardsWithSection(indexToSection[section]!).count)")
         return store.getFeedCardsWithSection(indexToSection[section]!).count
     }
     
@@ -201,7 +202,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
-        
         
         if(indexPath.section == sectionToIndex.count) {
             shouldDisplayCell = true
@@ -216,7 +216,21 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         }
         
         let sectionCards = store.getFeedCardsWithSection(indexToSection[sectionIdx]!)
+        
+        //let sectionCards = (store.getFeedCardsWithSection(indexToSection[0]!))
+        print("section index: \(sectionIdx)" )
+        print(indexToSection[sectionIdx]!)
+        print("cards: \(sectionCards)")
+        print(rowIdx)
+        
+        if(sectionCards.count == 0) {
+            return UITableViewCell()
+        }
+        
         let item = sectionCards[rowIdx]
+        
+        //return UITableViewCell()
+        
         
         isToDoCellType = false
         isInfoCellType = false
@@ -504,7 +518,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
         var fixedHeaderFrame = self.topHeaderView.frame
         fixedHeaderFrame.origin.y = 0 + scrollView.contentOffset.y
         topHeaderView.frame = fixedHeaderFrame
