@@ -79,13 +79,11 @@ class ToDoViewController: BaseViewController {
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
         
-        
-        createItemsLocally()
     }
     
     func createItemsLocally() {
         try! store.realm.write {
-            store.realm.deleteAll()
+            store.realm.delete(store.getTodoCards())
             
             let todoCard = TodoCard()
             todoCard.cardId = "12523fa5"

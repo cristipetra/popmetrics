@@ -104,7 +104,7 @@ class StatisticsViewController: UIViewController {
     
     internal func createItemsLocally() {
         try! store.realm.write {
-            store.realm.deleteAll()
+            store.realm.delete(store.getStatisticMetricsForCard(store.getStatisticsCards()[0])) 
             
             let statsCard = StatisticsCard()
             statsCard.cardId = "dfas"
