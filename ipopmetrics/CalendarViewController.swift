@@ -85,9 +85,6 @@ class CalendarViewController: BaseViewController {
             self.todayLabelView.layer.borderWidth = 2.0
             self.todayLabelView.layer.cornerRadius = self.todayLabelView.bounds.width / 2
             self.todayLabelView.layer.masksToBounds = true
-            
-            self.setNoteView()
-            self.transitionView.addSubview(self.calendarNoteView)
         }
         
         addNotifications()

@@ -75,12 +75,6 @@ class ToDoViewController: BaseViewController {
         setupTopHeaderView()
         setupTopViewItemCount()
         
-        DispatchQueue.main.async {
-            if(self.store.getTodoCards().count <= 3) {
-                self.setupNoteView()
-                self.transitionView.addSubview(self.toDoNoteView)
-            }
-        }
         
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)

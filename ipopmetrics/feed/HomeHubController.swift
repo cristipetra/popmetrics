@@ -103,7 +103,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         addImageOnLastCard()
         
-        //createItemsLocally()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -122,22 +121,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                             self.tableView.alpha = 1
         })
     }
-    
-    func createItemsLocally() {
-        try! store.realm.write {
-            store.realm.deleteAll()
-            let insightCard = FeedCard()
-            insightCard.cardId = "fad456asgf2562sfgsdsdf"
-            insightCard.section = "Analitycs"
-            insightCard.type = "recommended_action"
-            
-            store.realm.add(insightCard, update: true)
-        }
-        print(store.getFeedCards())
-        
-        print(store.getFeedCardsWithSection(indexToSection[2]!))
-    }
-    
     
     func addImageOnLastCard() {
         let image = UIImage(named: "end_of_feed")
@@ -184,8 +167,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        //return self.store.getFeedCards().count + 1
-        print("count \(sectionToIndex.count)");
         return sectionToIndex.count + 1
     }
     
@@ -193,8 +174,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         if (section == sectionToIndex.count) {
             return 1
         }
-        print("section: \(section)")
-        print("number: \(store.getFeedCardsWithSection(indexToSection[section]!).count)")
         return store.getFeedCardsWithSection(indexToSection[section]!).count
     }
     
@@ -217,20 +196,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         let sectionCards = store.getFeedCardsWithSection(indexToSection[sectionIdx]!)
         
-        //let sectionCards = (store.getFeedCardsWithSection(indexToSection[0]!))
-        print("section index: \(sectionIdx)" )
-        print(indexToSection[sectionIdx]!)
-        print("cards: \(sectionCards)")
-        print(rowIdx)
-        
         if(sectionCards.count == 0) {
             return UITableViewCell()
         }
         
         let item = sectionCards[rowIdx]
-        
-        //return UITableViewCell()
-        
         
         isToDoCellType = false
         isInfoCellType = false
@@ -342,40 +312,34 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         switch itemType {
         case "required_action" :
-            shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(cardType: .required)
             cell.sectionTitleLabel.text = "Required Actions";
             return cell
             
         case "todo":
-            shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(cardType: .todo)
             cell.sectionTitleLabel.text = "To Do"
             return cell
             
         case "recommended":
-            shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(cardType: .recommended)
             cell.sectionTitleLabel.text = "Recommended For You";
             return cell
             
         case "traffic":
-            shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(cardType: .traffic)
             cell.sectionTitleLabel.text = "Traffic Intelligence";
             return cell
         case "insight":
-            shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(cardType: .insight)
             cell.sectionTitleLabel.text = "Recommended For You";
             return cell
         default:
-            shouldDisplayHeaderCell = false
             let cell = UITableViewCell()
             return cell
         }
@@ -399,7 +363,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let sectionCards = store.getFeedCardsWithSection(indexToSection[section]!)
         if sectionCards.count > 0 {
             let item = sectionCards[0]
-            
             
             if( item.type == "required_action") {
                 height = (UsersStore.isTwitterConnected) ? 80 : 80
