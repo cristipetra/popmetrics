@@ -181,7 +181,6 @@ class StatisticsViewController: UIViewController {
             statsMet21.currentPeriodValues = "2 22 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 17 13 14 13 13 17 13 6 27 3 4"
             statsMet21.prevPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 14 16 17 13 14 13 13 17"
             store.realm.add(statsMet21, update: true)
-
         }
         
     }

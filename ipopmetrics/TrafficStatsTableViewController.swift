@@ -26,6 +26,7 @@ class TrafficStatsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerCellForTable()
      
         self.tableView.alwaysBounceVertical = false
         self.tableView.separatorInset = .zero
@@ -40,7 +41,7 @@ class TrafficStatsTableViewController: UITableViewController {
     }
     
     internal func registerCellForTable() {
-        tableView.register(TrafficVisits.self, forHeaderFooterViewReuseIdentifier: "trafficVisits")
+        tableView.register(TrafficVisits.self, forCellReuseIdentifier: "trafficVisits")
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +49,6 @@ class TrafficStatsTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -62,34 +62,19 @@ class TrafficStatsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        let traffic = TrafficVisits()
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "trafficVisits", for: indexPath) as! TrafficVisits
         let rowIdx = indexPath.row
-        
-        traffic.configure(statisticMetric: getStatisticMetricsForCardAtPageIndex()[rowIdx])
-        
-        cell.addSubview(traffic)
-        
-        traffic.translatesAutoresizingMaskIntoConstraints = false
-        traffic.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: 0).isActive = true
-        traffic.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 0).isActive = true
-        traffic.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: 0).isActive = true
- 
+        cell.configure(statisticMetric: getStatisticMetricsForCardAtPageIndex()[rowIdx])
         cell.selectionStyle = .none
-        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let metrics = getStatisticMetricsForCardAtPageIndex()[indexPath.row - 1]
+        let metrics = getStatisticMetricsForCardAtPageIndex()[indexPath.row]
         NotificationCenter.default.post(name: Notification.Popmetrics.ReloadGraph, object: metrics)
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 8
-        }
         return 115
     }
    

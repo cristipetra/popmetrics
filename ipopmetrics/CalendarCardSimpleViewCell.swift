@@ -107,7 +107,7 @@ class CalendarCardSimpleViewCell: UITableViewCell {
         return dateFormatter.string(from: date)
     }
     
-    internal func cancelPostHandler() {        
+    internal func cancelPostHandler() {
         cancelCardDelegate?.handleCardAction("cancel_one", calendarCard: self.calendarItem.calendarCard!, params: ["social_post": self.calendarItem])
     }
     
