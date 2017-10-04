@@ -119,69 +119,69 @@ class StatisticsViewController: UIViewController {
             statsMet1.label = "Overral visits"
             statsMet1.pageName = "Overral visits"
             statsMet1.delta = 25
-            statsMet1.pageIndex = 2
+            statsMet1.pageIndex = 1
             statsMet1.indexInPage = 0
             statsMet1.currentPeriodLabel = "Sep28-Aug27"
             statsMet1.currentPeriodValues = "20 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 3 7 3 6 7 35 34 34 33 35"
             statsMet1.prevPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 14 13 13 17 13 16 17 15 34";
             store.realm.add(statsMet1, update: true)
             
+            let statsMet11 = StatisticMetric()
+            statsMet11.statisticCard = statsCard
+            statsMet11.statisticsCardId = "s3fsadsaf"
+            statsMet11.value = 54
+            statsMet11.label = "ooo visits"
+            statsMet11.delta = 15
+            statsMet11.pageName = "qqq visits"
+            statsMet11.pageIndex = 1
+            statsMet11.indexInPage = 1
+            statsMet11.currentPeriodLabel = "Sep28-Aug27"
+            statsMet11.currentPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 6 27 3 4 3 3 7 3 6 7 5"
+            statsMet11.prevPeriodValues = "0 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 14 16 17 13 14 13 13 17"
+            store.realm.add(statsMet11, update: true)
+            
+            let statsMet12 = StatisticMetric()
+            statsMet12.statisticCard = statsCard
+            statsMet12.statisticsCardId = "s3fsa234dsaf"
+            statsMet12.value = 24
+            statsMet12.label = "qqq visits"
+            statsMet12.delta = 25
+            statsMet12.pageName = "qqq visits"
+            statsMet12.pageIndex = 1
+            statsMet12.indexInPage = 1
+            statsMet12.currentPeriodLabel = "Sep28-Aug27"
+            statsMet12.currentPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 6 27 3 4 3 3 7 3 6 7 5"
+            statsMet12.prevPeriodValues = "0 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 14 16 17 13 14 13 13 17"
+            store.realm.add(statsMet12, update: true)
+            
             let statsMet2 = StatisticMetric()
             statsMet2.statisticCard = statsCard
-            statsMet2.statisticsCardId = "s3fdsaf"
-            statsMet2.value = 34
-            statsMet2.label = "Unique visits"
-            statsMet2.delta = 5
+            statsMet2.statisticsCardId = "s3efdsaf"
+            statsMet2.value = 44
+            statsMet2.label = "New visits"
+            statsMet2.delta = 15
+            statsMet2.pageIndex = 2
             statsMet2.pageName = "Unique visits"
-            statsMet2.pageIndex = 1
             statsMet2.indexInPage = 0
             statsMet2.currentPeriodLabel = "Sep28-Aug27"
-            statsMet2.currentPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 6 27 3 4 3 3 7 3 6 7 5"
-            statsMet2.prevPeriodValues = "0 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 14 16 17 13 14 13 13 17"
+            statsMet2.currentPeriodValues = "2 22 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 17 13 14 13 13 17 13 6 27 3 4"
+            statsMet2.prevPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 14 16 17 13 14 13 13 17"
             store.realm.add(statsMet2, update: true)
             
-            let statsMet3 = StatisticMetric()
-            statsMet3.statisticCard = statsCard
-            statsMet3.statisticsCardId = "s3efdsaf"
-            statsMet3.value = 44
-            statsMet3.label = "New visits"
-            statsMet3.delta = 15
-            statsMet3.pageIndex = 2
-            statsMet3.pageName = "Unique visits"
-            statsMet3.indexInPage = 0
-            statsMet3.currentPeriodLabel = "Sep28-Aug27"
-            statsMet3.currentPeriodValues = "2 22 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 17 13 14 13 13 17 13 6 27 3 4"
-            statsMet3.prevPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 14 16 17 13 14 13 13 17"
-            store.realm.add(statsMet3, update: true)
-            
-            let statsMet4 = StatisticMetric()
-            statsMet4.statisticCard = statsCard
-            statsMet4.statisticsCardId = "s3efddsfafssaf"
-            statsMet4.value = 44
-            statsMet4.label = "New visits"
-            statsMet4.delta = 15
-            statsMet4.pageIndex = 3
-            statsMet4.indexInPage = 1
-            statsMet4.pageName = "new visits"
-            statsMet4.currentPeriodLabel = "Sep28-Aug27"
-            statsMet4.currentPeriodValues = "2 22 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 17 13 14 13 13 17 13 6 27 3 4"
-            statsMet4.prevPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 14 16 17 13 14 13 13 17"
-            store.realm.add(statsMet4, update: true)
-            
-            let statsMet5 = StatisticMetric()
-            statsMet5.statisticCard = statsCard
-            statsMet5.statisticsCardId = "s3efrweqrqdsaf"
-            statsMet5.value = 44
-            statsMet5.label = "New visit1s"
-            statsMet5.delta = 15
-            statsMet5.pageName = "new 1visits"
-            statsMet5.pageIndex = 4
-            statsMet5.indexInPage = 1
-            statsMet5.currentPeriodLabel = "Sep28-Aug27"
-            statsMet5.currentPeriodValues = "2 22 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 17 13 14 13 13 17 13 6 27 3 4"
-            statsMet5.prevPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 14 16 17 13 14 13 13 17"
-            store.realm.add(statsMet5, update: true)
-         
+            let statsMet21 = StatisticMetric()
+            statsMet21.statisticCard = statsCard
+            statsMet21.statisticsCardId = "safsfdhgs3efdsaf"
+            statsMet21.value = 44
+            statsMet21.label = "New old visits"
+            statsMet21.delta = 15
+            statsMet21.pageIndex = 2
+            statsMet21.pageName = "Unique visits"
+            statsMet21.indexInPage = 0
+            statsMet21.currentPeriodLabel = "Sep28-Aug27"
+            statsMet21.currentPeriodValues = "2 22 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 17 13 14 13 13 17 13 6 27 3 4"
+            statsMet21.prevPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 14 16 17 13 14 13 13 17"
+            store.realm.add(statsMet21, update: true)
+
         }
         
     }

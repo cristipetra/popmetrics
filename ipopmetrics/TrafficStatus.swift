@@ -46,8 +46,7 @@ class TrafficStatus: UIView {
     
     func configure(card: StatisticsCard, _ pageIndex: Int = 1) {
         statisticsCard = card
-        self.pageIndex = pageIndex
-        tableView.configure(card: statisticsCard)
+        tableView.configure(card: statisticsCard, pageIndex)
     }
     
     internal func updateInfo() {

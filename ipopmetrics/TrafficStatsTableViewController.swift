@@ -14,9 +14,11 @@ class TrafficStatsTableViewController: UITableViewController {
     
     var statisticsStore = StatisticsStore.getInstance()
     
+    internal var statisticCard: StatisticsCard!
+    
     var reloadGraphDelegate: ReloadGraphProtocol!
     
-    var pageIndex = 1 {
+    internal var pageIndex = 1 {
         didSet {
             tableView.reloadData()
         }
@@ -32,8 +34,9 @@ class TrafficStatsTableViewController: UITableViewController {
         
     }
     
-    func configure(card: StatisticsCard) {
-
+    func configure(card: StatisticsCard, _ pageIndex: Int) {
+        self.statisticCard = card
+        self.pageIndex = pageIndex
     }
     
     internal func registerCellForTable() {
@@ -55,11 +58,10 @@ class TrafficStatsTableViewController: UITableViewController {
     }
     
     internal func getStatisticMetricsForCardAtPageIndex() -> Results<StatisticMetric> {
-        return statisticsStore.getStatisticMetricsForCardAtPageIndex(statisticsStore.getStatisticsCards()[0], pageIndex)
+        return statisticsStore.getStatisticMetricsForCardAtPageIndex(statisticCard, pageIndex)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "trafficVisits", for: indexPath)
         let cell = UITableViewCell()
         let traffic = TrafficVisits()
         
@@ -80,21 +82,15 @@ class TrafficStatsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        NotificationCenter.default.post(name: Notification.Popmetrics.ReloadGraph, object: statisticsStore.getStatisticMetricsForCard(statisticsStore.getStatisticsCards()[0])[indexPath.row])
-        
-        
-        if reloadGraphDelegate != nil {
-            reloadGraphDelegate.reloadGraph(statisticMetric: statisticsStore.getStatisticMetricsForCard(statisticsStore.getStatisticsCards()[0])[indexPath.row])
-        }
+        let metrics = getStatisticMetricsForCardAtPageIndex()[indexPath.row - 1]
+        NotificationCenter.default.post(name: Notification.Popmetrics.ReloadGraph, object: metrics)
     }
 
-    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return 8
         }
         return 115
     }
-
    
 }
