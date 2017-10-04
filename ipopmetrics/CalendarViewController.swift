@@ -260,6 +260,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         if shouldMaximizeCell == false {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCardSimple", for: indexPath) as! CalendarCardSimpleViewCell
             cell.configure(item)
+            cell.cancelCardDelegate = self
             cell.maximizeDelegate = self
             return cell
         } else {
@@ -566,9 +567,15 @@ extension CalendarViewController: FooterActionHandlerProtocol {
 
 // MARK: Notification Handlers
 extension CalendarViewController {
-    
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
         self.tableView.reloadData()
+    }
+}
+
+//MARK: Calendar Card Action handler
+extension CalendarViewController:  CalendarCardActionHandler {
+    func handleCardAction(_ action: String, calendarCard: CalendarCard, params: [String : Any]) {
+        print(calendarCard)
     }
 }
 

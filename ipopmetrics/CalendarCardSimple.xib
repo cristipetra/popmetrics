@@ -163,6 +163,7 @@
             <connections>
                 <outlet property="backgroundImage" destination="pVR-xH-lFV" id="LhP-iJ-SaR"/>
                 <outlet property="circleView" destination="e4f-Fb-lzx" id="3Bm-tc-47v"/>
+                <outlet property="containerView" destination="xiv-X1-b6l" id="puc-Vq-x1H"/>
                 <outlet property="foregroundImage" destination="UN7-g1-M8b" id="xNv-yv-4zC"/>
                 <outlet property="messageLbl" destination="QbH-bN-BSW" id="hvt-50-YTI"/>
                 <outlet property="statusText" destination="CJ2-1B-pUd" id="v3R-6n-0KY"/>
