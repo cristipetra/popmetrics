@@ -85,7 +85,7 @@
                             <state key="normal" image="iconCalRight"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aS5-y8-0Jl">
-                            <rect key="frame" x="156.5" y="186" width="62.5" height="20"/>
+                            <rect key="frame" x="153.5" y="186" width="68" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="DVy-3x-hrR"/>
                             </constraints>

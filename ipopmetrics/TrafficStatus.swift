@@ -19,8 +19,19 @@ class TrafficStatus: UIView {
     @IBOutlet weak var topPageControl: UIPageControl!
     @IBOutlet weak var bottomLabel: UILabel!
     
-    var statisticsCard: StatisticsCard!
+    
     var tableView: TrafficStatsTableViewController = TrafficStatsTableViewController()
+    
+    
+    var statisticsCard: StatisticsCard!
+    let statisticStore = StatisticsStore.getInstance()
+    
+    var pageIndex: Int = 1{
+        didSet {
+            tableView.pageIndex = pageIndex
+            updateInfo()
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,10 +44,26 @@ class TrafficStatus: UIView {
         setup()
     }
     
-    func configure(card: StatisticsCard) {
+    func configure(card: StatisticsCard, _ pageIndex: Int = 1) {
         statisticsCard = card
-        //tableView.statisticsCard = card
+        self.pageIndex = pageIndex
         tableView.configure(card: statisticsCard)
+    }
+    
+    internal func updateInfo() {
+        updateStatusLabelText()
+        bottomLabel.text = statisticStore.getStatisticMetricsForCardAtPageIndex(statisticsCard, pageIndex)[0].pageName
+        
+        let numberOfPages = statisticStore.getNumberOfPages(statisticsCard)
+        pageControl.numberOfPages = numberOfPages
+        topPageControl.numberOfPages = numberOfPages
+        
+        pageControl.currentPage = pageIndex - 1
+        topPageControl.currentPage = pageIndex - 1
+    }
+    
+    internal func updateStatusLabelText() {
+        statusLabel.text = "Stats \(pageIndex) of \(statisticStore.getNumberOfPages(statisticsCard)) "
     }
     
     func setup() {

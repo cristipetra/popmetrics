@@ -117,8 +117,9 @@ class StatisticsViewController: UIViewController {
             statsMet1.statisticsCardId = "sfdsaf"
             statsMet1.value = 54
             statsMet1.label = "Overral visits"
+            statsMet1.pageName = "Overral visits"
             statsMet1.delta = 25
-            statsMet1.pageIndex = 0
+            statsMet1.pageIndex = 2
             statsMet1.indexInPage = 0
             statsMet1.currentPeriodLabel = "Sep28-Aug27"
             statsMet1.currentPeriodValues = "20 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 3 7 3 6 7 35 34 34 33 35"
@@ -131,7 +132,8 @@ class StatisticsViewController: UIViewController {
             statsMet2.value = 34
             statsMet2.label = "Unique visits"
             statsMet2.delta = 5
-            statsMet2.pageIndex = 0
+            statsMet2.pageName = "Unique visits"
+            statsMet2.pageIndex = 1
             statsMet2.indexInPage = 0
             statsMet2.currentPeriodLabel = "Sep28-Aug27"
             statsMet2.currentPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 6 27 3 4 3 3 7 3 6 7 5"
@@ -144,12 +146,41 @@ class StatisticsViewController: UIViewController {
             statsMet3.value = 44
             statsMet3.label = "New visits"
             statsMet3.delta = 15
-            statsMet3.pageIndex = 0
+            statsMet3.pageIndex = 2
+            statsMet3.pageName = "Unique visits"
             statsMet3.indexInPage = 0
             statsMet3.currentPeriodLabel = "Sep28-Aug27"
             statsMet3.currentPeriodValues = "2 22 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 17 13 14 13 13 17 13 6 27 3 4"
             statsMet3.prevPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 14 16 17 13 14 13 13 17"
             store.realm.add(statsMet3, update: true)
+            
+            let statsMet4 = StatisticMetric()
+            statsMet4.statisticCard = statsCard
+            statsMet4.statisticsCardId = "s3efddsfafssaf"
+            statsMet4.value = 44
+            statsMet4.label = "New visits"
+            statsMet4.delta = 15
+            statsMet4.pageIndex = 3
+            statsMet4.indexInPage = 1
+            statsMet4.pageName = "new visits"
+            statsMet4.currentPeriodLabel = "Sep28-Aug27"
+            statsMet4.currentPeriodValues = "2 22 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 17 13 14 13 13 17 13 6 27 3 4"
+            statsMet4.prevPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 14 16 17 13 14 13 13 17"
+            store.realm.add(statsMet4, update: true)
+            
+            let statsMet5 = StatisticMetric()
+            statsMet5.statisticCard = statsCard
+            statsMet5.statisticsCardId = "s3efrweqrqdsaf"
+            statsMet5.value = 44
+            statsMet5.label = "New visit1s"
+            statsMet5.delta = 15
+            statsMet5.pageName = "new 1visits"
+            statsMet5.pageIndex = 4
+            statsMet5.indexInPage = 1
+            statsMet5.currentPeriodLabel = "Sep28-Aug27"
+            statsMet5.currentPeriodValues = "2 22 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 17 13 14 13 13 17 13 6 27 3 4"
+            statsMet5.prevPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 14 16 17 13 14 13 13 17"
+            store.realm.add(statsMet5, update: true)
          
         }
         
@@ -167,9 +198,10 @@ class StatisticsViewController: UIViewController {
         self.tabBarController?.selectedIndex = 0
     }
     
-    internal func openTrafficReport(_ sender: AnyObject, card: StatisticsCard) {
+    func openTrafficReport(_ sender: AnyObject, card: StatisticsCard) {
+        let cardTmp  = StatisticsStore.getInstance().getStatisticsCards()[0]
         let trafficReportVC: TrafficReportViewController = AppStoryboard.Statistics.instance.instantiateViewController(withIdentifier: ViewNames.SBID_TRAFFIC_REPORT) as! TrafficReportViewController
-        trafficReportVC.statisticsCard = card
+        trafficReportVC.configure(statisticsCard: cardTmp)
         self.navigationController?.pushViewController(trafficReportVC, animated: true)
     }
 }
@@ -216,7 +248,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.selectionStyle = .none
             cell.backgroundColor = UIColor.feedBackgroundColor()
-            cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_:card:)), for: .touchUpInside)
+            cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_: card:)), for: .touchUpInside)
             cell.connectionLine.isHidden = true
             return cell
         case "insight" :

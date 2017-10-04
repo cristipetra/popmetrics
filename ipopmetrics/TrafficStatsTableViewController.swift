@@ -8,12 +8,19 @@
 
 import UIKit
 import EZAlertController
+import RealmSwift
 
 class TrafficStatsTableViewController: UITableViewController {
     
     var statisticsStore = StatisticsStore.getInstance()
     
     var reloadGraphDelegate: ReloadGraphProtocol!
+    
+    var pageIndex = 1 {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,13 +51,12 @@ class TrafficStatsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return statisticsStore.getStatisticMetricsForCard(statisticsStore.getStatisticsCards()[0]).count
+        return getStatisticMetricsForCardAtPageIndex().count
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
+    internal func getStatisticMetricsForCardAtPageIndex() -> Results<StatisticMetric> {
+        return statisticsStore.getStatisticMetricsForCardAtPageIndex(statisticsStore.getStatisticsCards()[0], pageIndex)
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let cell = tableView.dequeueReusableCell(withIdentifier: "trafficVisits", for: indexPath)
@@ -59,7 +65,7 @@ class TrafficStatsTableViewController: UITableViewController {
         
         let rowIdx = indexPath.row
         
-        traffic.configure(statisticMetric: statisticsStore.getStatisticMetricsForCard(statisticsStore.getStatisticsCards()[0])[rowIdx])
+        traffic.configure(statisticMetric: getStatisticMetricsForCardAtPageIndex()[rowIdx])
         
         cell.addSubview(traffic)
         
@@ -74,8 +80,6 @@ class TrafficStatsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("select")
-        
         NotificationCenter.default.post(name: Notification.Popmetrics.ReloadGraph, object: statisticsStore.getStatisticMetricsForCard(statisticsStore.getStatisticsCards()[0])[indexPath.row])
         
         
