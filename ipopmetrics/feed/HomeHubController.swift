@@ -165,19 +165,24 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     func isLastSection(section: Int) -> Bool {
-        if section == store.getFeedCards().count {
+        if section == indexToSection.count {
             return true
         }
         return false
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return store.getFeedCards().count + 1
+        return indexToSection.count+1
+        // return store.countSections() + 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-        return store.getFeedCardsWithSection(indexToSection[section]!).count
+        if isLastSection(section: section) {
+            return 1
+        }
+        else {
+            return store.getFeedCardsWithSection(indexToSection[section]!).count
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
