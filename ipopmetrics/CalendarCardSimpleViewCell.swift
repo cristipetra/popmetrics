@@ -43,7 +43,7 @@ class CalendarCardSimpleViewCell: UITableViewCell {
         self.isUserInteractionEnabled = true
         self.addGestureRecognizer(tapCard)
         
-        addStatusCardTypeView()
+        //addStatusCardTypeView()
         setupCorners()
     }
     
