@@ -19,11 +19,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     let sectionToIndex = ["Required Actions": 0,
                            "Insights": 1,
-                           "Analitycs": 2]
+                           "Recommended Actions": 2]
     
     let indexToSection = [0:"Required Actions",
                           1:"Insights",
-                          2: "Analitycs"]
+                          2: "Recommended Actions"]
     
     var requiredActionHandler = RequiredActionHandler()
     let store = FeedStore.getInstance()
@@ -102,7 +102,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         setupTopHeaderView()
         
         addImageOnLastCard()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -165,15 +164,19 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         self.present(modalViewController, animated: true, completion: nil)
     }
     
+    func isLastSection(section: Int) -> Bool {
+        if section == store.getFeedCards().count {
+            return true
+        }
+        return false
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionToIndex.count + 1
+        return store.getFeedCards().count + 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (section == sectionToIndex.count) {
-            return 1
-        }
+        return 1
         return store.getFeedCardsWithSection(indexToSection[section]!).count
     }
     
@@ -182,7 +185,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
         
-        if(indexPath.section == sectionToIndex.count) {
+        if isLastSection(section: indexPath.section) {
             shouldDisplayCell = true
             isInfoCellType = true
             isTrafficCard = false
@@ -387,6 +390,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if isLastSection(section: indexPath.section) {
+            return 261
+        }
         if isMoreInfoType {
             return 226
         }

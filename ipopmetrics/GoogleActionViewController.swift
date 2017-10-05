@@ -148,7 +148,7 @@ class GoogleActionViewController: UIViewController {
     
     func setFooterButton(isTaskSelected: Bool) {
         if isTaskSelected {
-            footerView.actionButton.leftHandImage = UIImage(named: "icon2CtaGoogleicon")
+            footerView.actionButton.leftHandImage = UIImage(named: "iconGoogle")
             footerView.actionButton.rightHandImage = UIImage(named: "")
             footerView.actionButton.backgroundColor = PopmetricsColor.yellowBGColor
             footerView.approveLbl.text = "Connect Google"
@@ -162,7 +162,7 @@ class GoogleActionViewController: UIViewController {
     
     func setUpNavigationBar() {
         
-        let text = UIBarButtonItem(title: "Google Citation Error", style: .plain, target: self, action: nil)
+        let text = UIBarButtonItem(title: "Connect Google Analytics", style: .plain, target: self, action: nil)
         text.tintColor = UIColor(red: 67/255, green: 78/255, blue: 84/255, alpha: 1.0)
         let titleFont = UIFont(name: FontBook.bold, size: 18)
         text.setTitleTextAttributes([NSFontAttributeName: titleFont], for: .normal)
