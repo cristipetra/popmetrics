@@ -22,7 +22,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     func  handleRequiredAction(_ sender : SimpleButton, item: FeedCard) {
     
         switch(item.actionHandler) {
-            case "connect_google_analytics":
+            case "required_actions.brand_not_connected_with_google_analytics":
                 connectGoogleAnalytics(sender, item:item)
             
             case "required_actions.brand_not_connected_with_twitter":
