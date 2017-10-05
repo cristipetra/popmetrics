@@ -62,16 +62,18 @@ class GoogleActionViewController: UIViewController {
         self.containerView.addSubview(footerView)
         footerView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor).isActive = true
         footerView.rightAnchor.constraint(equalTo: self.containerView.rightAnchor).isActive = true
+        
         footerBottomConstraint = footerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor,constant: 93)
         //footerTopConstraint = footerView.topAnchor.constraint(equalTo: self.containerView.bottomAnchor, constant: 0)
         //footerTopConstraint.isActive = true
         
         footerBottomConstraint.isActive = true
         footerView.heightAnchor.constraint(equalToConstant: 93).isActive = true
-        footerView.informationBtn.isHidden = true
+        //footerView.informationBtn.isHidden = true
         footerView.xButton.isHidden = true
         footerView.addShadow(radius: 2, opacity: 0.3, offset: CGSize(width: 0.0, height: -3.0))
         footerView.backgroundColor = UIColor.white
+    
     }
     
     func setTaskView() {
