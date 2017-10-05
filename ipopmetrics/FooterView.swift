@@ -107,6 +107,7 @@ class FooterView: UIView {
         label.text = "Connect Twitter"
         label.textAlignment = .center
         label.textColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
+        label.numberOfLines = 2
         return label
         
     }()
@@ -142,10 +143,9 @@ class FooterView: UIView {
         
         containerView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
         containerView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        containerView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
+        containerView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
         containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
-    
     
     func setUpApproveStackView() {
         approveStackView = UIStackView(arrangedSubviews: [actionButton, approveLbl])
@@ -171,43 +171,46 @@ class FooterView: UIView {
         horizontalStackView = UIStackView(arrangedSubviews: [xButton, informationBtn, loadMoreStackView])
         
         horizontalStackView.axis = .horizontal
-        //horizontalStackView.distribution = .equalCentering
         horizontalStackView.alignment = .top
-        horizontalStackView.spacing = 16
+        //horizontalStackView.spacing = 16
+        horizontalStackView.distribution = .equalSpacing
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        containerView.addSubview(horizontalStackView)
-        //horizontalStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 8).isActive = true
-        horizontalStackView.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 13).isActive = true
-        horizontalStackView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 10).isActive = true
-        
         containerView.addSubview(approveStackView)
-        approveStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-        approveStackView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
+        approveStackView.topAnchor.constraint(equalTo: containerView.topAnchor,constant: 14).isActive = true
+        approveStackView.rightAnchor.constraint(equalTo: containerView.rightAnchor,constant: 0).isActive = true
+        
+        containerView.addSubview(horizontalStackView)
+        horizontalStackView.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 14).isActive = true
+        horizontalStackView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 10).isActive = true
+        horizontalStackView.rightAnchor.constraint(equalTo: self.approveStackView.leftAnchor, constant: -12).isActive = true
+        
     }
     
     func setIsTrafficUnconnected() {
+        
         horizontalStackView = UIStackView(arrangedSubviews: [xButton, loadMoreStackView, informationBtn])
+        
         horizontalStackView.axis = .horizontal
-        loadMoreBtn.alpha = 0.0
-        xButton.alpha = 0.0
         horizontalStackView.alignment = .top
-        horizontalStackView.spacing = 16
+        horizontalStackView.distribution = .equalSpacing
+        //horizontalStackView.spacing = 16
         
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addSubview(horizontalStackView)
-        //horizontalStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 8).isActive = true
-        horizontalStackView.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 13).isActive = true
-        horizontalStackView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 10).isActive = true
         
         containerView.addSubview(approveStackView)
-        approveStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-        approveStackView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
+        approveStackView.topAnchor.constraint(equalTo: containerView.topAnchor,constant: 14).isActive = true
+        approveStackView.rightAnchor.constraint(equalTo: containerView.rightAnchor,constant: 0).isActive = true
+        
+        containerView.addSubview(horizontalStackView)
+        horizontalStackView.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 14).isActive = true
+        horizontalStackView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 10).isActive = true
+        horizontalStackView.rightAnchor.constraint(equalTo: self.approveStackView.leftAnchor, constant: -10).isActive = true
+        
     }
     
     func deleteHandler() {
         animateButtonBlink(button: xButton)
-        
     }
     
     func informationHandler() {
@@ -220,6 +223,7 @@ class FooterView: UIView {
         
         actionButton.widthAnchor.constraint(equalToConstant: 90).isActive = true
         actionButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
+        //approveLbl.widthAnchor.constraint(equalToConstant: 90).isActive = true
         actionButton.tintColor = PopmetricsColor.darkGrey
         actionButton.addTarget(self, action: #selector(approveHandler), for: .touchUpInside)
         actionButton.imageButtonType = .twitter
@@ -291,5 +295,5 @@ extension UIButton {
         self.layer.shadowOpacity = 0.3
         self.layer.shadowRadius = 2
         self.layer.shadowOffset = CGSize(width: 0, height: 2)
-        }
     }
+}
