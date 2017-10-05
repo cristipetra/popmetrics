@@ -13,6 +13,7 @@ class StatusCardTypeView: UIView {
     enum TypeStatusView {
         case approved
         case denied
+        case cancel
     }
     
     var typeStatusView: TypeStatusView = .approved {
@@ -82,7 +83,14 @@ class StatusCardTypeView: UIView {
     }
     
     internal func changeStatusTypeView() {
-        typeStatusView == .approved ? displayApproved() : displayDenied()
+        //typeStatusView == .approved ? displayApproved() : displayDenied()
+        if typeStatusView == .approved {
+            displayApproved()
+        } else if typeStatusView == .denied {
+            displayDenied()
+        } else if typeStatusView == .cancel {
+            displayCancel()
+        }
     }
     
     internal func displayApproved() {
@@ -92,6 +100,11 @@ class StatusCardTypeView: UIView {
     
     internal func displayDenied() {
         infoBtn.imageButtonType = .denied
+        infoBtn.backgroundColor = PopmetricsColor.salmondColor
+    }
+    
+    internal func displayCancel() {
+        infoBtn.imageButtonType = .cancel
         infoBtn.backgroundColor = PopmetricsColor.salmondColor
     }
     

@@ -139,6 +139,11 @@ class TwoImagesButton: RoundButton {
             rightImageView.isHidden = true
             approveButtonText = "Denied"
             rightTextLabel.font = UIFont(name: FontBook.semibold, size: 12)
+        case .cancel:
+            leftHandImage = UIImage(named: "iconDenyBtn")
+            rightImageView.isHidden = true
+            approveButtonText = "Cancel"
+            rightTextLabel.font = UIFont(name: FontBook.semibold, size: 12)
         case .rescheduled:
             leftHandImage = UIImage(named: "icon2CtaApprovepost")
             rightImageView.isHidden = true
@@ -200,4 +205,5 @@ enum ImageButtonType {
     case lastCardCalendar
     case facebook
     case linkedin
+    case cancel
 }

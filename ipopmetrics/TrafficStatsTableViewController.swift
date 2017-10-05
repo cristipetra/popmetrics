@@ -8,15 +8,25 @@
 
 import UIKit
 import EZAlertController
+import RealmSwift
 
 class TrafficStatsTableViewController: UITableViewController {
     
     var statisticsStore = StatisticsStore.getInstance()
     
+    internal var statisticCard: StatisticsCard!
+    
     var reloadGraphDelegate: ReloadGraphProtocol!
+    
+    internal var pageIndex = 1 {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerCellForTable()
      
         self.tableView.alwaysBounceVertical = false
         self.tableView.separatorInset = .zero
@@ -25,12 +35,13 @@ class TrafficStatsTableViewController: UITableViewController {
         
     }
     
-    func configure(card: StatisticsCard) {
-
+    func configure(card: StatisticsCard, _ pageIndex: Int) {
+        self.statisticCard = card
+        self.pageIndex = pageIndex
     }
     
     internal func registerCellForTable() {
-        tableView.register(TrafficVisits.self, forHeaderFooterViewReuseIdentifier: "trafficVisits")
+        tableView.register(TrafficVisits.self, forCellReuseIdentifier: "trafficVisits")
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,59 +49,33 @@ class TrafficStatsTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return statisticsStore.getStatisticMetricsForCard(statisticsStore.getStatisticsCards()[0]).count
+        return getStatisticMetricsForCardAtPageIndex().count
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
+    internal func getStatisticMetricsForCardAtPageIndex() -> Results<StatisticMetric> {
+        return statisticsStore.getStatisticMetricsForCardAtPageIndex(statisticCard, pageIndex)
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "trafficVisits", for: indexPath)
-        let cell = UITableViewCell()
-        let traffic = TrafficVisits()
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "trafficVisits", for: indexPath) as! TrafficVisits
         let rowIdx = indexPath.row
-        
-        traffic.configure(statisticMetric: statisticsStore.getStatisticMetricsForCard(statisticsStore.getStatisticsCards()[0])[rowIdx])
-        
-        cell.addSubview(traffic)
-        
-        traffic.translatesAutoresizingMaskIntoConstraints = false
-        traffic.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: 0).isActive = true
-        traffic.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 0).isActive = true
-        traffic.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: 0).isActive = true
- 
+        cell.configure(statisticMetric: getStatisticMetricsForCardAtPageIndex()[rowIdx])
         cell.selectionStyle = .none
-        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("select")
-        
-        NotificationCenter.default.post(name: Notification.Popmetrics.ReloadGraph, object: statisticsStore.getStatisticMetricsForCard(statisticsStore.getStatisticsCards()[0])[indexPath.row])
-        
-        
-        if reloadGraphDelegate != nil {
-            reloadGraphDelegate.reloadGraph(statisticMetric: statisticsStore.getStatisticMetricsForCard(statisticsStore.getStatisticsCards()[0])[indexPath.row])
-        }
+        let metrics = getStatisticMetricsForCardAtPageIndex()[indexPath.row]
+        NotificationCenter.default.post(name: Notification.Popmetrics.ReloadGraph, object: metrics)
     }
 
-    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 8
-        }
         return 115
     }
-
    
 }

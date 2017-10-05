@@ -16,8 +16,12 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
     
     
     var numberOfItems = 25
-    var plotOneData: [Double] = [0.0, 2.3, 2.2, 4.5, 6.7, 7.8, 3.2, 4.5, 3.3, 3.5, 7.8, 3.4, 6, 7, 5, 34, 4, 5, 3, 5, 4.5, 3.3, 3.5, 7.8, 3.4, 6, 7, 5, 34 ]
-    var plotTwoData: [Double] = [0.0, 12.3, 12.2, 14.5, 16.7, 17.8, 13.2, 14.5, 13.3, 13.5, 17.8, 13.4, 16, 17, 15, 34, 14, 15, 13, 15, 4.5, 3.3, 3.5, 7.8, 3.4, 6, 7, 5, 34]
+    var plotOneData: [Double] = [0.0, 2.3, 2.2, 4.5, 6.7, 7.8, 3.2, 4.5, 3.3, 3.5, 7.8, 3.4, 6, 7, 5, 34, 4, 5, 3, 5, 4.5, 3.3, 3.5, 7.8, 3.4, 6, 7, 5, 34, 14, 45, 45, 25, 43, 23]
+    var plotTwoData: [Double] = [0.0, 12.3, 12.2, 14.5, 16.7, 17.8, 13.2, 14.5, 13.3, 13.5, 17.8, 13.4, 16, 17, 15, 34, 14, 15, 13, 15, 4.5, 3.3, 3.5, 7.8, 3.4, 6, 7, 5, 34, 34, 14, 45, 45, 25, 43, 23]
+    
+    @IBOutlet weak var currentDateLabel: UILabel!
+    @IBOutlet weak var previousDateLabel: UILabel!
+    
     
     @IBOutlet weak var secondValue: UILabel!
     @IBOutlet weak var firstValue: UILabel!
@@ -28,11 +32,8 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
         super.viewDidLoad()
         barChart.dataSource = self
         
-        randomData()
         setupGraph(graphView: barChart)
-        
-
-        
+    
         let nc = NotificationCenter.default
         nc.addObserver(forName:Notification.Popmetrics.ReloadGraph, object:nil, queue:nil, using: handerReloadData)
     }
@@ -43,7 +44,6 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
         print(statisticMetric.label)
         self.statisticMetric = statisticMetric
         
-        print("reload data")
         reloadData()
     }
     
@@ -55,18 +55,21 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
     }
     
     func reloadGraph() {
-        barChart.reload()
+        
         plotOneData = statisticMetric.getCurrentPeriodArray()
         plotTwoData = statisticMetric.getPrevPeriodArray()
         
+        if(statisticMetric.prevPeriodLabel != "") {
+            previousDateLabel.text = statisticMetric.prevPeriodLabel
+        }
+        if statisticMetric.currentPeriodLabel != "" {
+            currentDateLabel.text = statisticMetric.currentPeriodLabel
+        }
+        
+        barChart.reload()
         barChart.setNeedsLayout()
     }
 
-    
-    func randomData() {
-        //plotOneData = self.generateRandomData(self.numberOfItems, max: 50, shouldIncludeOutliers: true)
-        //plotTwoData = self.generateRandomData(self.numberOfItems, max: 100, shouldIncludeOutliers: true)
-    }
     
     func setupGraph(graphView: ScrollableGraphView) {
         
@@ -123,8 +126,10 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
         graphView.shouldRangeAlwaysStartAtZero = true
         
         // Add everything to the graph.
+        
         graphView.addPlot(plot: grayPlot)
         graphView.addPlot(plot: pinkPlot)
+        
         //graphView.addReferenceLines(referenceLines: referenceLine)
         //graphView.addPlot(plot: dotPlot)
         
@@ -132,6 +137,7 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
     
     func value(forPlot plot: Plot, atIndex pointIndex: Int) -> Double {
         // Return the data for each plot.
+        print("ind: \(pointIndex)")
         switch(plot.identifier) {
         case "Gray":
             return plotOneData[pointIndex]

@@ -135,7 +135,7 @@ class TaskGoogleCitationView: UIView {
             style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
         }
         
-        costLbl.attributedText = "~".set(style: circaCharacterStyle) + "$".set(style: extraBoldStyle) + cost.set(style: extraBoldStyle)
+        costLbl.attributedText = "~".set(style: circaCharacterStyle) + "$\(cost)".set(style: extraBoldStyle)
         
     }
     
@@ -156,7 +156,7 @@ class TaskGoogleCitationView: UIView {
             style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
         }
         
-        effortLbl.attributedText = "~".set(style: circaCharacterStyle) + effort.set(style: extraBoldStyle) + " hours".set(style: extraBoldStyle)
+        effortLbl.attributedText = "~".set(style: circaCharacterStyle) + "\(effort) hours".set(style: extraBoldStyle)
     }
     
     private func setMultipleProgressViewConstaits() {

@@ -8,17 +8,7 @@
 
 import UIKit
 
-class TrafficVisits: UIView {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUpVisitsView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setUpVisitsView()
-    }
+class TrafficVisits: UITableViewCell {
     
     lazy var titleLabel : UILabel = {
         let label = UILabel()
@@ -63,6 +53,17 @@ class TrafficVisits: UIView {
     
     var statisticMetric: StatisticMetric!
     
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setUpVisitsView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setUpVisitsView()
+    }
+    
     
     func configure(statisticMetric: StatisticMetric) {
         self.statisticMetric = statisticMetric
@@ -83,7 +84,7 @@ class TrafficVisits: UIView {
         titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 26).isActive = true
         titleLabel.widthAnchor.constraint(equalToConstant: 170).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        titleLabel.text = "Unique Visits"
+        titleLabel.text = ""
         titleLabel.font = UIFont(name: FontBook.extraBold, size: 18)
         titleLabel.textColor = UIColor(red: 87/255, green: 93/255, blue: 99/255, alpha: 1)
         

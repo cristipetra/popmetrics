@@ -16,6 +16,7 @@
 		082D36401F5D952C006B0985 /* RecommendedActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082D363F1F5D952C006B0985 /* RecommendedActionCard.xib */; };
 		083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083938FE1F63C334007DDA37 /* MainTabInfo.swift */; };
 		0848280F1F39F9200054B04C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848280E1F39F9200054B04C /* HeaderView.swift */; };
+		084E54E11F827F7D007D6F4F /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E54E01F827F7D007D6F4F /* NoteView.swift */; };
 		085053FE1F2787A100FE8234 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085053FD1F2787A100FE8234 /* CalendarViewController.swift */; };
 		085054011F2793AE00FE8234 /* CalendarCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085054001F2793AE00FE8234 /* CalendarCard.xib */; };
 		085054031F27A25B00FE8234 /* CalendarCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085054021F27A25B00FE8234 /* CalendarCardViewCell.swift */; };
@@ -76,9 +77,7 @@
 		08AA6C631F56C9560022DE91 /* TrafficReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C621F56C9560022DE91 /* TrafficReportViewController.swift */; };
 		08AA6C651F56DAA10022DE91 /* StatsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C641F56DAA10022DE91 /* StatsPageViewController.swift */; };
 		08AA6C671F56DC8B0022DE91 /* StatsSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C661F56DC8B0022DE91 /* StatsSlideViewController.swift */; };
-		08AA6C691F56DCDA0022DE91 /* TrafficStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C681F56DCDA0022DE91 /* TrafficStatusView.swift */; };
 		08AA6C6B1F56DD060022DE91 /* TrafficVisits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C6A1F56DD060022DE91 /* TrafficVisits.swift */; };
-		08AA6C6D1F56E9D70022DE91 /* TrafficStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AA6C6C1F56E9D70022DE91 /* TrafficStatusView.xib */; };
 		08AA6C6F1F56F3BA0022DE91 /* ChartStatistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */; };
 		08AA6C731F56F8630022DE91 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C721F56F8630022DE91 /* ChartViewController.swift */; };
 		08AD60D81F5FF5E0007095B9 /* TodoCardMaximized.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AD60D71F5FF5E0007095B9 /* TodoCardMaximized.xib */; };
@@ -226,6 +225,7 @@
 		082D363F1F5D952C006B0985 /* RecommendedActionCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendedActionCard.xib; sourceTree = "<group>"; };
 		083938FE1F63C334007DDA37 /* MainTabInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabInfo.swift; sourceTree = "<group>"; };
 		0848280E1F39F9200054B04C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		084E54E01F827F7D007D6F4F /* NoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		085053FD1F2787A100FE8234 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		085054001F2793AE00FE8234 /* CalendarCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCard.xib; sourceTree = "<group>"; };
 		085054021F27A25B00FE8234 /* CalendarCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCardViewCell.swift; sourceTree = "<group>"; };
@@ -290,9 +290,7 @@
 		08AA6C621F56C9560022DE91 /* TrafficReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficReportViewController.swift; sourceTree = "<group>"; };
 		08AA6C641F56DAA10022DE91 /* StatsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsPageViewController.swift; sourceTree = "<group>"; };
 		08AA6C661F56DC8B0022DE91 /* StatsSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsSlideViewController.swift; sourceTree = "<group>"; };
-		08AA6C681F56DCDA0022DE91 /* TrafficStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficStatusView.swift; sourceTree = "<group>"; };
 		08AA6C6A1F56DD060022DE91 /* TrafficVisits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficVisits.swift; sourceTree = "<group>"; };
-		08AA6C6C1F56E9D70022DE91 /* TrafficStatusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrafficStatusView.xib; sourceTree = "<group>"; };
 		08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChartStatistics.storyboard; sourceTree = "<group>"; };
 		08AA6C721F56F8630022DE91 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		08AD60D71F5FF5E0007095B9 /* TodoCardMaximized.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodoCardMaximized.xib; sourceTree = "<group>"; };
@@ -515,6 +513,7 @@
 			children = (
 				0855C0C81F6FFBDB00ACBFA9 /* EmptyCard.xib */,
 				0855C0CA1F6FFBF000ACBFA9 /* EmptyCardView.swift */,
+				084E54E01F827F7D007D6F4F /* NoteView.swift */,
 			);
 			name = empty;
 			sourceTree = "<group>";
@@ -743,9 +742,7 @@
 				08FAE8461F541FF40097DF3E /* TrafficCard.xib */,
 				08FAE8401F541D060097DF3E /* Statistics.storyboard */,
 				08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */,
-				08AA6C681F56DCDA0022DE91 /* TrafficStatusView.swift */,
 				08AA6C6A1F56DD060022DE91 /* TrafficVisits.swift */,
-				08AA6C6C1F56E9D70022DE91 /* TrafficStatusView.xib */,
 				08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */,
 				088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */,
 				088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */,
@@ -1145,7 +1142,6 @@
 				080DCA861F4D9707000C73DC /* RecommendedCell.xib in Resources */,
 				08953E721F4C352B003ABEFC /* RequiredAction.xib in Resources */,
 				088BBEA81F58212A00AD5414 /* TrafficEmptyCard.xib in Resources */,
-				08AA6C6D1F56E9D70022DE91 /* TrafficStatusView.xib in Resources */,
 				D9AB86581ECED85A0050A7AB /* InsightCard.xib in Resources */,
 				11AAA5E81ECCD52A0099B50E /* ActionHistoryCard.xib in Resources */,
 				08F368931F18F87800819CDE /* DailyInsightsCardCell.xib in Resources */,
@@ -1436,6 +1432,7 @@
 				085F91011F716AD2008A339A /* OnboardingViewController.swift in Sources */,
 				08A5333E1F6C2E910080BE64 /* ButtonWithContainer.swift in Sources */,
 				08F368911F18E6A000819CDE /* ApprovalCardInfoCell.swift in Sources */,
+				084E54E11F827F7D007D6F4F /* NoteView.swift in Sources */,
 				088B282A1F7E5D130015A66E /* StatisticsCountView.swift in Sources */,
 				083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */,
 				08C6FBFD1F4205EF007D6101 /* ToDoViewController.swift in Sources */,
@@ -1460,7 +1457,6 @@
 				11A4EEA81F62CADE00605F0D /* CalendarApi.swift in Sources */,
 				110A62F61ECEF7AA0052B478 /* BestCourseViewCell.swift in Sources */,
 				1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */,
-				08AA6C691F56DCDA0022DE91 /* TrafficStatusView.swift in Sources */,
 				08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */,
 				088E77AD1F7D499400774F13 /* TrafficStatsTableViewController.swift in Sources */,
 				08F368951F18F93800819CDE /* DailyInsightsCardCell.swift in Sources */,
