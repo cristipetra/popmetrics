@@ -9,27 +9,47 @@
 import UIKit
 
 class StatsPageViewController: UIPageViewController {
+ 
+    var statisticsCard: StatisticsCard! {
+        didSet {
+            self.numberOfPages = (StatisticsStore.getInstance().getNumberOfPages(statisticsCard))
+        }
+    }
     
     fileprivate lazy var viewControllerList : [StatsSlideViewController] = {
         let overviewVC: StatsSlideViewController = StatsSlideViewController()
-        let engagementVC: StatsSlideViewController = StatsSlideViewController()
-        let typesVC: StatsSlideViewController = StatsSlideViewController()
         
-        return [overviewVC, engagementVC, typesVC]
-        
+        return [overviewVC]
     }()
+    
+    var numberOfPages: Int = 1 {
+        didSet {
+            updateViewControllerList()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.delegate = self
         self.dataSource = self
         
+        
         if let firstVC = viewControllerList.first {
             self.setViewControllers([firstVC], direction: .forward, animated: true, completion: { (finished) in
-                firstVC.configure()
+                //firstVC.configure(card: self.statisticsCard)
             })
         }
-        
+    }
+    
+    func updateViewControllerList() {
+        viewControllerList = []
+        for index in 1...self.numberOfPages {
+            let statsVC: StatsSlideViewController = StatsSlideViewController()
+            statsVC.statistiscCard = statisticsCard
+            statsVC.pageIndex = index
+            viewControllerList.append(statsVC)
+        }
     }
     
     override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
@@ -39,15 +59,13 @@ class StatsPageViewController: UIPageViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
 }
 
 extension StatsPageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
-    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
         guard let statsVC : StatsSlideViewController = viewController as? StatsSlideViewController else {
@@ -62,7 +80,7 @@ extension StatsPageViewController: UIPageViewControllerDelegate, UIPageViewContr
         let previousIndex = indexOfVC - 1
         
         if previousIndex < 0 {
-            statsVC.indexOfPage = indexOfVC
+            
             return nil
         }
         
@@ -70,9 +88,8 @@ extension StatsPageViewController: UIPageViewControllerDelegate, UIPageViewContr
             return nil
         }
         
-        statsVC.indexOfPage = indexOfVC
-        return viewControllerList[previousIndex]
         
+        return viewControllerList[previousIndex]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
@@ -88,15 +105,13 @@ extension StatsPageViewController: UIPageViewControllerDelegate, UIPageViewContr
         let nextIndex = currentVCIndex + 1
         
         guard viewControllerList.count != nextIndex else {
-            statsVC.indexOfPage = currentVCIndex
             return nil
         }
         
         guard viewControllerList.count > nextIndex else {
             return nil
         }
-        
-        statsVC.indexOfPage = currentVCIndex
+
         return viewControllerList[nextIndex]
     }
 }

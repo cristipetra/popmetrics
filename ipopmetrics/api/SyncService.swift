@@ -196,10 +196,45 @@ class SyncService: SessionDelegate {
     }
     
     
+    func syncStatisticsItems(silent: Bool) {
+        if !self.reachability.isReachable {
+            return
+        }
+        
+        let currentBrandId = UsersStore.currentBrandId
+        
+        StatisticsApi().getItems(currentBrandId) { responseWrapper, error in
+            if error != nil {
+                if !silent {
+                    NotificationCenter.default.post(name: Notification.Popmetrics.ApiFailure, object: nil,
+                                                    userInfo: ["sucess":false])
+                }
+                return
+            }
+            if "success" != responseWrapper?.code {
+                if !silent {
+                    NotificationCenter.default.post(name: Notification.Popmetrics.ApiResponseUnsuccessfull, object: nil,
+                                                    userInfo: ["sucess":false,
+                                                               "message":responseWrapper?.message])
+                }
+            }
+            else {
+                self.statsStore.updateStatistics((responseWrapper?.data)!)
+                if (!silent){
+                    NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
+                                                    userInfo: ["sucess":true])
+                }
+            }
+            
+        }
+    }
+    
     func syncAll(silent:Bool) {
         if usersStore.isUserDefined() {
             self.syncHomeItems(silent: silent)
             self.syncTodoItems(silent: silent)
+            self.syncCalendarItems(silent: silent)
+            self.syncStatisticsItems(silent: silent)
         }
         
     }

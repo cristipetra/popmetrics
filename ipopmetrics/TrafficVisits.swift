@@ -8,17 +8,7 @@
 
 import UIKit
 
-class TrafficVisits: UIView {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUpVisitsView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setUpVisitsView()
-    }
+class TrafficVisits: UITableViewCell {
     
     lazy var titleLabel : UILabel = {
         let label = UILabel()
@@ -61,6 +51,29 @@ class TrafficVisits: UIView {
         
     }()
     
+    var statisticMetric: StatisticMetric!
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setUpVisitsView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setUpVisitsView()
+    }
+    
+    
+    func configure(statisticMetric: StatisticMetric) {
+        self.statisticMetric = statisticMetric
+        self.titleLabel.text = statisticMetric.label
+        self.firstValueLabel.text = "\(Int(statisticMetric.value))"
+        self.secondValueLabel.text = " +\(Int(statisticMetric.delta))"
+        
+        setProgress(firstValue: CGFloat(statisticMetric.value), secondValue: CGFloat(statisticMetric.delta + statisticMetric.value))
+    }
+    
     func setUpVisitsView() {
         
         self.backgroundColor = UIColor.white
@@ -71,7 +84,7 @@ class TrafficVisits: UIView {
         titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 26).isActive = true
         titleLabel.widthAnchor.constraint(equalToConstant: 170).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        titleLabel.text = "Unique Visits"
+        titleLabel.text = ""
         titleLabel.font = UIFont(name: FontBook.extraBold, size: 18)
         titleLabel.textColor = UIColor(red: 87/255, green: 93/255, blue: 99/255, alpha: 1)
         
@@ -109,10 +122,10 @@ class TrafficVisits: UIView {
     
     private func setDesign() {
         firstValueLabel.font = UIFont(name: FontBook.alfaRegular, size: 18)
-        firstValueLabel.textColor = UIColor(red: 160/255, green: 12/255, blue: 77/255, alpha: 1)
+        firstValueLabel.textColor = PopmetricsColor.visitFirstColor
         
         secondValueLabel.font = UIFont(name: FontBook.alfaRegular, size: 18)
-        secondValueLabel.textColor = UIColor(red: 255/255, green: 33/255, blue: 122/255, alpha: 1)
+        secondValueLabel.textColor = PopmetricsColor.visitSecondColor
         
         mainProgressView.layer.cornerRadius = 4
         firstProgressView.layer.cornerRadius = 4
@@ -130,6 +143,9 @@ class TrafficVisits: UIView {
         
         firstProgressView.layoutSubviews()
         secondProgressView.layoutSubviews()
+        
+        firstProgressView.backgroundColor = PopmetricsColor.visitFirstColor
+        secondProgressView.backgroundColor = PopmetricsColor.visitSecondColor
         
         DispatchQueue.main.async {
             self.firstProgressView.setNeedsLayout()
@@ -164,9 +180,14 @@ class TrafficVisits: UIView {
         
         setProgress(firstValue: CGFloat(firstValue), secondValue: CGFloat(secondValue))
         
+        firstProgressView.backgroundColor = PopmetricsColor.visitFirstColor
+        secondProgressView.backgroundColor = PopmetricsColor.visitSecondColor
+        
         firstProgressView.layoutSubviews()
         secondProgressView.layoutSubviews()
         
     }
+    
+
     
 }

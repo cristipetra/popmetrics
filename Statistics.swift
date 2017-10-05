@@ -10,56 +10,9 @@ import Foundation
 import RealmSwift
 import ObjectMapper
 
-/*
-class StatisticsItem: Object {
-    dynamic var index = 0
-    
-    dynamic var type = ""
-    dynamic var status: String? = nil
-    dynamic var statusDate: Date? = nil
-    dynamic var articleCategory:String? = nil
-    dynamic var articleTitle:String? = nil
-    
-    dynamic var articleText = ""
-    dynamic var articleUrl = ""
-    var articleHastags: [Any?] = []
-    dynamic var articleImage:String? = nil
-}
-
-class StatisticsSection: NSObject{
-    dynamic var name = ""
-    dynamic var status: String = "";
-    dynamic var index = 0
-    
-    var items = [StatisticsItem]()
-}
- */
-
-class StatisticSummaryItem: Object, Mappable {
-    
-    dynamic var statisticCard: StatisticCard? = nil
-    
-    
-    dynamic var value: Float = 0
-    dynamic var label: String = ""
-    dynamic var delta: Float = 0
-    
-    required convenience init?(map: Map) {
-        self.init()
-    }
-    
-    func mapping(map: Map) {
-        value <- map["value"]
-        label <- map["label"]
-        delta <- map["delta"]
-        
-    }
-    
-}
-
 class StatisticMetric: Object, Mappable {
     
-    dynamic var statisticCard: StatisticCard? = nil
+    dynamic var statisticCard: StatisticsCard? = nil
     
     dynamic var statisticsCardId: String = ""
     
@@ -85,8 +38,11 @@ class StatisticMetric: Object, Mappable {
         self.init()
     }
     
+    override static func primaryKey() -> String? {
+        return "statisticsCardId"
+    }
+    
     func mapping(map: Map) {
-        
         statisticsCardId <- map["statistics_card_id"]
         
         value <- map["value"]
@@ -110,7 +66,6 @@ class StatisticMetric: Object, Mappable {
         
     }
     
-    
     func getCurrentPeriodArray() -> [Double] {
         let sarr = self.currentPeriodValues.components(separatedBy: " ")
         return sarr.map{ Double($0)! }
@@ -120,12 +75,11 @@ class StatisticMetric: Object, Mappable {
         let sarr = self.prevPeriodValues.components(separatedBy: " ")
         return sarr.map{ Double($0)! }
     }
-    
 }
 
 
 
-class StatisticCard: Object, Mappable {
+class StatisticsCard: Object, Mappable {
     
     dynamic var cardId: String? = nil
     

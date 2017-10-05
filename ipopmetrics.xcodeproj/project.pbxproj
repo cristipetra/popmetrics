@@ -16,6 +16,7 @@
 		082D36401F5D952C006B0985 /* RecommendedActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082D363F1F5D952C006B0985 /* RecommendedActionCard.xib */; };
 		083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083938FE1F63C334007DDA37 /* MainTabInfo.swift */; };
 		0848280F1F39F9200054B04C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848280E1F39F9200054B04C /* HeaderView.swift */; };
+		084E54E11F827F7D007D6F4F /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E54E01F827F7D007D6F4F /* NoteView.swift */; };
 		085053FE1F2787A100FE8234 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085053FD1F2787A100FE8234 /* CalendarViewController.swift */; };
 		085054011F2793AE00FE8234 /* CalendarCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085054001F2793AE00FE8234 /* CalendarCard.xib */; };
 		085054031F27A25B00FE8234 /* CalendarCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085054021F27A25B00FE8234 /* CalendarCardViewCell.swift */; };
@@ -47,10 +48,17 @@
 		085F91031F716CBC008A339A /* OnboardingFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085F91021F716CBC008A339A /* OnboardingFooter.xib */; };
 		085F91051F716CD4008A339A /* OnboardingFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F91041F716CD4008A339A /* OnboardingFooter.swift */; };
 		0888C5BE1F4EECEC00E3DB04 /* RoundedCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */; };
+		088B28281F7E43960015A66E /* TrafficVisitsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B28271F7E43960015A66E /* TrafficVisitsViewCell.swift */; };
+		088B282A1F7E5D130015A66E /* StatisticsCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B28291F7E5D130015A66E /* StatisticsCountView.swift */; };
+		088B282C1F7E7F150015A66E /* AimeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B282B1F7E7F150015A66E /* AimeeView.swift */; };
+		088B282E1F7E7FA10015A66E /* GoogleAction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 088B282D1F7E7FA10015A66E /* GoogleAction.storyboard */; };
 		088BBEA81F58212A00AD5414 /* TrafficEmptyCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */; };
 		088BBEAA1F58214300AD5414 /* TrafficEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */; };
 		088BBEAC1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */; };
 		088E77A91F7CE99900774F13 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77A81F7CE99900774F13 /* ToastView.swift */; };
+		088E77AB1F7D441400774F13 /* TrafficStatus.xib in Resources */ = {isa = PBXBuildFile; fileRef = 088E77AA1F7D441400774F13 /* TrafficStatus.xib */; };
+		088E77AD1F7D499400774F13 /* TrafficStatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77AC1F7D499400774F13 /* TrafficStatsTableViewController.swift */; };
+		088E77AF1F7D4A8E00774F13 /* TrafficStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77AE1F7D4A8E00774F13 /* TrafficStatus.swift */; };
 		08953E6B1F4C269E003ABEFC /* ToDoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08953E6A1F4C269E003ABEFC /* ToDoCell.xib */; };
 		08953E6D1F4C275C003ABEFC /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E6C1F4C275C003ABEFC /* ToDoCell.swift */; };
 		08953E6F1F4C2790003ABEFC /* ToDoCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */; };
@@ -69,9 +77,7 @@
 		08AA6C631F56C9560022DE91 /* TrafficReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C621F56C9560022DE91 /* TrafficReportViewController.swift */; };
 		08AA6C651F56DAA10022DE91 /* StatsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C641F56DAA10022DE91 /* StatsPageViewController.swift */; };
 		08AA6C671F56DC8B0022DE91 /* StatsSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C661F56DC8B0022DE91 /* StatsSlideViewController.swift */; };
-		08AA6C691F56DCDA0022DE91 /* TrafficStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C681F56DCDA0022DE91 /* TrafficStatusView.swift */; };
 		08AA6C6B1F56DD060022DE91 /* TrafficVisits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C6A1F56DD060022DE91 /* TrafficVisits.swift */; };
-		08AA6C6D1F56E9D70022DE91 /* TrafficStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AA6C6C1F56E9D70022DE91 /* TrafficStatusView.xib */; };
 		08AA6C6F1F56F3BA0022DE91 /* ChartStatistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */; };
 		08AA6C731F56F8630022DE91 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C721F56F8630022DE91 /* ChartViewController.swift */; };
 		08AD60D81F5FF5E0007095B9 /* TodoCardMaximized.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AD60D71F5FF5E0007095B9 /* TodoCardMaximized.xib */; };
@@ -219,6 +225,7 @@
 		082D363F1F5D952C006B0985 /* RecommendedActionCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendedActionCard.xib; sourceTree = "<group>"; };
 		083938FE1F63C334007DDA37 /* MainTabInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabInfo.swift; sourceTree = "<group>"; };
 		0848280E1F39F9200054B04C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		084E54E01F827F7D007D6F4F /* NoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		085053FD1F2787A100FE8234 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		085054001F2793AE00FE8234 /* CalendarCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCard.xib; sourceTree = "<group>"; };
 		085054021F27A25B00FE8234 /* CalendarCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCardViewCell.swift; sourceTree = "<group>"; };
@@ -251,10 +258,17 @@
 		085F91041F716CD4008A339A /* OnboardingFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFooter.swift; sourceTree = "<group>"; };
 		0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersButton.swift; sourceTree = "<group>"; };
+		088B28271F7E43960015A66E /* TrafficVisitsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficVisitsViewCell.swift; sourceTree = "<group>"; };
+		088B28291F7E5D130015A66E /* StatisticsCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsCountView.swift; sourceTree = "<group>"; };
+		088B282B1F7E7F150015A66E /* AimeeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimeeView.swift; sourceTree = "<group>"; };
+		088B282D1F7E7FA10015A66E /* GoogleAction.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GoogleAction.storyboard; sourceTree = "<group>"; };
 		088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrafficEmptyCard.xib; sourceTree = "<group>"; };
 		088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficEmptyView.swift; sourceTree = "<group>"; };
 		088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		088E77A81F7CE99900774F13 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		088E77AA1F7D441400774F13 /* TrafficStatus.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrafficStatus.xib; sourceTree = "<group>"; };
+		088E77AC1F7D499400774F13 /* TrafficStatsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficStatsTableViewController.swift; sourceTree = "<group>"; };
+		088E77AE1F7D4A8E00774F13 /* TrafficStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficStatus.swift; sourceTree = "<group>"; };
 		08953E6A1F4C269E003ABEFC /* ToDoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoCell.xib; sourceTree = "<group>"; };
 		08953E6C1F4C275C003ABEFC /* ToDoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCountView.swift; sourceTree = "<group>"; };
@@ -276,9 +290,7 @@
 		08AA6C621F56C9560022DE91 /* TrafficReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficReportViewController.swift; sourceTree = "<group>"; };
 		08AA6C641F56DAA10022DE91 /* StatsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsPageViewController.swift; sourceTree = "<group>"; };
 		08AA6C661F56DC8B0022DE91 /* StatsSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsSlideViewController.swift; sourceTree = "<group>"; };
-		08AA6C681F56DCDA0022DE91 /* TrafficStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficStatusView.swift; sourceTree = "<group>"; };
 		08AA6C6A1F56DD060022DE91 /* TrafficVisits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficVisits.swift; sourceTree = "<group>"; };
-		08AA6C6C1F56E9D70022DE91 /* TrafficStatusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrafficStatusView.xib; sourceTree = "<group>"; };
 		08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChartStatistics.storyboard; sourceTree = "<group>"; };
 		08AA6C721F56F8630022DE91 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		08AD60D71F5FF5E0007095B9 /* TodoCardMaximized.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodoCardMaximized.xib; sourceTree = "<group>"; };
@@ -501,6 +513,7 @@
 			children = (
 				0855C0C81F6FFBDB00ACBFA9 /* EmptyCard.xib */,
 				0855C0CA1F6FFBF000ACBFA9 /* EmptyCardView.swift */,
+				084E54E01F827F7D007D6F4F /* NoteView.swift */,
 			);
 			name = empty;
 			sourceTree = "<group>";
@@ -641,6 +654,8 @@
 				08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */,
 				08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */,
 				08BD580D1F7AA1B200FFDCFD /* TaskGoogleCitationView.xib */,
+				088B282B1F7E7F150015A66E /* AimeeView.swift */,
+				088B282D1F7E7FA10015A66E /* GoogleAction.storyboard */,
 			);
 			name = google;
 			sourceTree = "<group>";
@@ -716,6 +731,7 @@
 				08AA6C641F56DAA10022DE91 /* StatsPageViewController.swift */,
 				08AA6C661F56DC8B0022DE91 /* StatsSlideViewController.swift */,
 				08AA6C721F56F8630022DE91 /* ChartViewController.swift */,
+				088E77AC1F7D499400774F13 /* TrafficStatsTableViewController.swift */,
 			);
 			name = statistics;
 			sourceTree = "<group>";
@@ -726,14 +742,16 @@
 				08FAE8461F541FF40097DF3E /* TrafficCard.xib */,
 				08FAE8401F541D060097DF3E /* Statistics.storyboard */,
 				08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */,
-				08AA6C681F56DCDA0022DE91 /* TrafficStatusView.swift */,
 				08AA6C6A1F56DD060022DE91 /* TrafficVisits.swift */,
-				08AA6C6C1F56E9D70022DE91 /* TrafficStatusView.xib */,
 				08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */,
 				088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */,
 				088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */,
 				082D363D1F5D7CFF006B0985 /* StatisticsInsight.xib */,
 				08BD58071F7A334D00FFDCFD /* StatisticsInsight.swift */,
+				088E77AA1F7D441400774F13 /* TrafficStatus.xib */,
+				088E77AE1F7D4A8E00774F13 /* TrafficStatus.swift */,
+				088B28271F7E43960015A66E /* TrafficVisitsViewCell.swift */,
+				088B28291F7E5D130015A66E /* StatisticsCountView.swift */,
 			);
 			name = statistics;
 			sourceTree = "<group>";
@@ -1111,8 +1129,10 @@
 				D9D937881ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib in Resources */,
 				D9EC7E371ECF0D7E00A54B53 /* ActionCard.xib in Resources */,
 				08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */,
+				088E77AB1F7D441400774F13 /* TrafficStatus.xib in Resources */,
 				08F7A09B1F17AC2700A1B2C3 /* RecommendationCard.xib in Resources */,
 				08AD60D81F5FF5E0007095B9 /* TodoCardMaximized.xib in Resources */,
+				088B282E1F7E7FA10015A66E /* GoogleAction.storyboard in Resources */,
 				0852826C1F287DD70065A968 /* CalendarHeader.xib in Resources */,
 				08B745961F1F6C1D00EC3F8C /* OpenSans-Regular.ttf in Resources */,
 				1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */,
@@ -1122,7 +1142,6 @@
 				080DCA861F4D9707000C73DC /* RecommendedCell.xib in Resources */,
 				08953E721F4C352B003ABEFC /* RequiredAction.xib in Resources */,
 				088BBEA81F58212A00AD5414 /* TrafficEmptyCard.xib in Resources */,
-				08AA6C6D1F56E9D70022DE91 /* TrafficStatusView.xib in Resources */,
 				D9AB86581ECED85A0050A7AB /* InsightCard.xib in Resources */,
 				11AAA5E81ECCD52A0099B50E /* ActionHistoryCard.xib in Resources */,
 				08F368931F18F87800819CDE /* DailyInsightsCardCell.xib in Resources */,
@@ -1231,7 +1250,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B5BA09B8049FECDC31573D3E /* [CP] Copy Pods Resources */ = {
@@ -1368,6 +1387,7 @@
 				1100F6F51F5E0E6F000AF1D4 /* TodoApi.swift in Sources */,
 				08BF9D4E1F45F2EF00141206 /* TableFooterView.swift in Sources */,
 				11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */,
+				088B28281F7E43960015A66E /* TrafficVisitsViewCell.swift in Sources */,
 				116540C11EEACD4000417D61 /* UsersStore.swift in Sources */,
 				08B4BCDE1F619BEF00660F5B /* TaskGoogleCitationView.swift in Sources */,
 				08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */,
@@ -1383,6 +1403,7 @@
 				08BD58041F7A312900FFDCFD /* VerifySocialViewController.swift in Sources */,
 				08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */,
 				0855C0CB1F6FFBF000ACBFA9 /* EmptyCardView.swift in Sources */,
+				088E77AF1F7D4A8E00774F13 /* TrafficStatus.swift in Sources */,
 				08B745911F1F638000EC3F8C /* LoginNavigationViewController.swift in Sources */,
 				08AA6C6B1F56DD060022DE91 /* TrafficVisits.swift in Sources */,
 				113E3F7F1F7D1023007448C6 /* StatisticsApi.swift in Sources */,
@@ -1411,6 +1432,8 @@
 				085F91011F716AD2008A339A /* OnboardingViewController.swift in Sources */,
 				08A5333E1F6C2E910080BE64 /* ButtonWithContainer.swift in Sources */,
 				08F368911F18E6A000819CDE /* ApprovalCardInfoCell.swift in Sources */,
+				084E54E11F827F7D007D6F4F /* NoteView.swift in Sources */,
+				088B282A1F7E5D130015A66E /* StatisticsCountView.swift in Sources */,
 				083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */,
 				08C6FBFD1F4205EF007D6101 /* ToDoViewController.swift in Sources */,
 				11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */,
@@ -1421,6 +1444,7 @@
 				1128B3FB1ECF26D800BDA58C /* UIColorExtensions.swift in Sources */,
 				11AAA5EA1ECCD7040099B50E /* ActionHistoryViewCell.swift in Sources */,
 				08AA6C651F56DAA10022DE91 /* StatsPageViewController.swift in Sources */,
+				088B282C1F7E7F150015A66E /* AimeeView.swift in Sources */,
 				088E77A91F7CE99900774F13 /* ToastView.swift in Sources */,
 				08F7A0971F17AB0C00A1B2C3 /* RecommendationCardCell.swift in Sources */,
 				088BBEAA1F58214300AD5414 /* TrafficEmptyView.swift in Sources */,
@@ -1433,8 +1457,8 @@
 				11A4EEA81F62CADE00605F0D /* CalendarApi.swift in Sources */,
 				110A62F61ECEF7AA0052B478 /* BestCourseViewCell.swift in Sources */,
 				1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */,
-				08AA6C691F56DCDA0022DE91 /* TrafficStatusView.swift in Sources */,
 				08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */,
+				088E77AD1F7D499400774F13 /* TrafficStatsTableViewController.swift in Sources */,
 				08F368951F18F93800819CDE /* DailyInsightsCardCell.swift in Sources */,
 				08B2803F1F55862100E36D19 /* Statistics.swift in Sources */,
 				085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */,

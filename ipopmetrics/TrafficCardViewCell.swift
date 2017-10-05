@@ -11,10 +11,10 @@ import UIKit
 class TrafficCardViewCell: UITableViewCell {
     
     @IBOutlet weak var toolbarView: ToolbarViewCell!
-    @IBOutlet weak var uniqueVisitsView: UIView!
+    @IBOutlet weak var statisticsCountView: StatisticsCountView!
     @IBOutlet weak var connectionLine: UIView!
+    @IBOutlet weak var statisticsCountViewHeightCounstraint: NSLayoutConstraint!
     @IBOutlet weak var contentWrapperView: UIView!
-    @IBOutlet weak var overallVisitsView: UIView!
     @IBOutlet weak var footerView: FooterView!
     @IBOutlet weak var wrapperView: UIView!
     
@@ -37,10 +37,9 @@ class TrafficCardViewCell: UITableViewCell {
         self.toolbarView.isLeftImageHidden = false
         self.toolbarView.leftImage.widthAnchor.constraint(equalToConstant: 10).isActive = true
         self.footerView.approveLbl.text = "View Traffic Report"
+        self.footerView.setIsTrafficUnconnected()
         self.footerView.actionButton.imageButtonType = .traffic
         DispatchQueue.main.async {
-            self.setDivider(view: self.overallVisitsView)
-            self.setDivider(view: self.uniqueVisitsView)
             self.toolbarView.setupGradient()
             self.footerView.setupGradient()
         }
@@ -63,11 +62,4 @@ class TrafficCardViewCell: UITableViewCell {
         
         shadowLayer.layer.cornerRadius = 12
     }
-    
-    func setDivider(view : AnyObject) {
-        let divider  = UIView(frame: CGRect(x: 0, y: view.frame.height - 0.5, width: view.frame.width, height: CGFloat(0.5)))
-        divider.backgroundColor = UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1)
-        view.addSubview(divider)
-    }
-    
 }

@@ -63,6 +63,7 @@ class CalendarCardViewCell: UITableViewCell {
         self.backgroundImage.image = UIImage(named: item.image!)
         self.foregroundImage.image = UIImage(named: item.socialIcon)
         
+        
         changeColor()
     }
     

@@ -25,6 +25,7 @@ public extension Notification {
         
         
         public static let UiRefreshRequired = Notification.Name("Notification.Popmetrics.UiRefreshRequired")
+        public static let ReloadGraph = Notification.Name("Notification.Popmetrics.ReloadGraph")
         
     }
 }

@@ -16,7 +16,14 @@ class TrafficReportViewController: UIViewController {
     let statsPageVC: StatsPageViewController = StatsPageViewController()
     let chartVC = UIStoryboard(name: "ChartStatistics", bundle: nil).instantiateViewController(withIdentifier: "ChartViewId") as! ChartViewController
     
-    let insight = StatisticsInsight()
+    internal let insight = StatisticsInsight()
+    
+    internal var statisticsCard: StatisticsCard! {
+        didSet {
+            self.statsPageVC.statisticsCard = statisticsCard
+            self.statsPageVC.numberOfPages = StatisticsStore.getInstance().getNumberOfPages(statisticsCard)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +32,10 @@ class TrafficReportViewController: UIViewController {
 
         addChartView()
         addPageView()
-
+    }
+    
+    func configure(statisticsCard: StatisticsCard) {
+        self.statisticsCard = statisticsCard;
     }
     
     override func viewDidLayoutSubviews() {

@@ -37,6 +37,7 @@
                     <connections>
                         <outlet property="leftAnchorTableView" destination="dl9-UC-ZnL" id="guN-RI-yZe"/>
                         <outlet property="tableView" destination="peS-3X-5Qv" id="3py-Lx-RON"/>
+                        <outlet property="topAnchorTableView" destination="3Ga-67-HvF" id="u5p-Lh-T1a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b52-DG-tfh" userLabel="First Responder" sceneMemberID="firstResponder"/>

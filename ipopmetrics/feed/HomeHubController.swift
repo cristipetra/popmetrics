@@ -18,12 +18,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     fileprivate var sharingInProgress = false
     
     let sectionToIndex = ["Required Actions": 0,
-                           "Insights": 2]
+                           "Insights": 1,
+                           "Analitycs": 2]
     
     let indexToSection = [0:"Required Actions",
-                          1:"Insights"]
-        
-    
+                          1:"Insights",
+                          2: "Analitycs"]
     
     var requiredActionHandler = RequiredActionHandler()
     let store = FeedStore.getInstance()
@@ -103,14 +103,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         addImageOnLastCard()
         
-        if(store.getFeedCards().count == 0) {
-            tableView.isHidden = true
-        }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
         tableView.contentOffset = CGPoint(x: 0, y: 50)
     }
     
@@ -126,8 +121,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                             self.tableView.alpha = 1
         })
     }
-
-    
     
     func addImageOnLastCard() {
         let image = UIImage(named: "end_of_feed")
@@ -174,8 +167,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        //return self.store.getFeedCards().count + 1
-        print("count \(sectionToIndex.count)");
         return sectionToIndex.count + 1
     }
     
@@ -183,8 +174,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         if (section == sectionToIndex.count) {
             return 1
         }
-        print(section)
-        print(indexToSection[section])
         return store.getFeedCardsWithSection(indexToSection[section]!).count
     }
     
@@ -192,7 +181,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
-        
         
         if(indexPath.section == sectionToIndex.count) {
             shouldDisplayCell = true
@@ -207,6 +195,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         }
         
         let sectionCards = store.getFeedCardsWithSection(indexToSection[sectionIdx]!)
+        
+        if(sectionCards.count == 0) {
+            return UITableViewCell()
+        }
+        
         let item = sectionCards[rowIdx]
         
         isToDoCellType = false
@@ -290,8 +283,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     @objc func openGoogleActionView() {
-        print("open google")
-        let googleActionVc = GoogleActionViewController()
+        let googleActionVc = UIStoryboard(name: "GoogleAction", bundle: nil).instantiateViewController(withIdentifier: "googleId")
+        googleActionVc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(googleActionVc, animated: true)
     }
     
@@ -319,40 +312,34 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         switch itemType {
         case "required_action" :
-            shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(cardType: .required)
             cell.sectionTitleLabel.text = "Required Actions";
             return cell
             
         case "todo":
-            shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(cardType: .todo)
             cell.sectionTitleLabel.text = "To Do"
             return cell
             
         case "recommended":
-            shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(cardType: .recommended)
             cell.sectionTitleLabel.text = "Recommended For You";
             return cell
             
         case "traffic":
-            shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(cardType: .traffic)
             cell.sectionTitleLabel.text = "Traffic Intelligence";
             return cell
         case "insight":
-            shouldDisplayHeaderCell = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(cardType: .insight)
             cell.sectionTitleLabel.text = "Recommended For You";
             return cell
         default:
-            shouldDisplayHeaderCell = false
             let cell = UITableViewCell()
             return cell
         }
@@ -376,7 +363,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let sectionCards = store.getFeedCardsWithSection(indexToSection[section]!)
         if sectionCards.count > 0 {
             let item = sectionCards[0]
-            
             
             if( item.type == "required_action") {
                 height = (UsersStore.isTwitterConnected) ? 80 : 80
@@ -495,7 +481,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
         var fixedHeaderFrame = self.topHeaderView.frame
         fixedHeaderFrame.origin.y = 0 + scrollView.contentOffset.y
         topHeaderView.frame = fixedHeaderFrame

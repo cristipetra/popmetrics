@@ -13,3 +13,7 @@ protocol TodoCardActionHandler: class {
     func handleCardAction(_ action:String, todoCard: TodoCard, params:[String:Any])
 
 }
+
+protocol CalendarCardActionHandler: class {
+    func handleCardAction(_ action: String, calendarCard: CalendarCard, params: [String:Any])
+}

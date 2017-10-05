@@ -65,6 +65,9 @@ class PopmetricsColor {
     static let yellowUnapproved = UIColor(red: 255/255, green: 189/255, blue: 80/255, alpha: 1.0)
     
     static let separatorColor = UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 1.0)
-    static let unselectedTabBarItemTint = UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1.0) 
+    static let unselectedTabBarItemTint = UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1.0)
+    
+    static let visitFirstColor = UIColor(red: 160/255, green: 12/255, blue: 77/255, alpha: 1)
+    static let visitSecondColor = UIColor(red: 255/255, green: 33/255, blue: 122/255, alpha: 1)
     
 }

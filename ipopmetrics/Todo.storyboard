@@ -51,6 +51,7 @@
                     <connections>
                         <outlet property="tableView" destination="Pfm-1K-JVL" id="kbh-sT-Dha"/>
                         <outlet property="toDoTopView" destination="Keg-D7-jEA" id="YLB-Uy-uFf"/>
+                        <outlet property="topAnchorTableView" destination="GRe-B1-tfU" id="zew-04-7tX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lcQ-uD-6vZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

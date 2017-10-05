@@ -19,11 +19,9 @@ class CalendarFeedStore {
     
     public var selectedDate = Date()
     
-    public var selectedWeek = DateInterval(start: NSDate().atStartOfWeek(), end: NSDate().atEndOfWeek()) {
-        didSet {
-            print(selectedWeek)
-        }
-    }
+    public var selectedWeek = DateInterval(start: NSDate().atStartOfWeek(), end: NSDate().atEndOfWeek())
+    
+    public var selectedRange = DateInterval(start: NSDate().atStartOfWeek(), end: NSDate().atEndOfWeek())
     
     public func getCalendarCards() -> Results<CalendarCard> {
         return realm.objects(CalendarCard.self).sorted(byKeyPath: "index")
@@ -43,14 +41,21 @@ class CalendarFeedStore {
         return realm.objects(CalendarCard.self).filter(predicate)
     }
     
-    public func getCalendarSocialPostsForCard(_ calendarCard: CalendarCard, isDateSelected: Bool) -> Results<CalendarSocialPost> {
-        if isDateSelected {
-            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@", calendarCard, selectedDate.startOfDay as CVarArg, selectedDate.endOfDay as CVarArg)
-            return realm.objects(CalendarSocialPost.self).filter(predicate)
-        } else {
+    public func getCalendarSocialPostsForCard(_ calendarCard: CalendarCard, datesSelected: Int) -> Results<CalendarSocialPost> {
+        switch datesSelected {
+        case 0:
             let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@", calendarCard, selectedWeek.start as CVarArg, selectedWeek.end as CVarArg)
             return realm.objects(CalendarSocialPost.self).filter(predicate)
+        case 1:
+            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@", calendarCard, selectedDate.startOfDay as CVarArg, selectedDate.endOfDay as CVarArg)
+            return realm.objects(CalendarSocialPost.self).filter(predicate)
+        case 2:
+            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@", calendarCard, selectedRange.start as CVarArg, selectedRange.end as CVarArg)
+            return realm.objects(CalendarSocialPost.self).filter(predicate)
+        default:
+            break
         }
+        return realm.objects(CalendarSocialPost.self)
     }
     
     public func countSections() -> Int {
