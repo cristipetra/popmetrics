@@ -109,7 +109,7 @@
                                         </constraints>
                                         <color key="tintColor" red="0.93168885865721207" green="0.94091350082213498" blue="0.94091350082213498" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="iconCtaClose"/>
-                                        <state key="highlighted" image="iconClosecard"/>
+                                        <state key="highlighted" image="iconCloseCard"/>
                                         <connections>
                                             <action selector="closeCard:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wzU-83-IOi"/>
                                         </connections>
@@ -178,7 +178,7 @@
     <resources>
         <image name="iconCalRightBold" width="15" height="24"/>
         <image name="iconCheck" width="26" height="26"/>
-        <image name="iconClosecard" width="53" height="53"/>
+        <image name="iconCloseCard" width="53" height="53"/>
         <image name="iconCtaClose" width="19" height="19"/>
         <image name="iconCtaTodo" width="27" height="19"/>
     </resources>

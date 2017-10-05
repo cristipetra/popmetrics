@@ -13,6 +13,24 @@ import DGElasticPullToRefresh
 import BubbleTransition
 import EZAlertController
 
+
+struct HomeSectionCard {
+    //let title: String = ""
+    //let index: Int = 0
+    var sectionName: HomeSectionName = .requiredAction
+    var indexInSectionTable: Int = 0
+    var heightFooter: Int = 0
+    var heightHeader: Int = 0
+    var heightCell: CGFloat = 0
+    
+}
+
+enum HomeSectionName: String {
+    case requiredAction = "Required Actions"
+    case insights = "Insights"
+    case recommendedAction  = "Recommended Actions"
+}
+
 class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     fileprivate var sharingInProgress = false
@@ -25,8 +43,16 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                           1:"Insights",
                           2: "Analitycs"]
     
+    private let homeSectionCards: [HomeSectionCard] = [
+        HomeSectionCard(sectionName: .requiredAction, indexInSectionTable: 0, heightFooter: 0, heightHeader: 0, heightCell: 479),
+        HomeSectionCard(sectionName: .insights, indexInSectionTable: 0, heightFooter: 0, heightHeader: 0, heightCell: 479),
+        HomeSectionCard(sectionName: .recommendedAction, indexInSectionTable: 0, heightFooter: 0, heightHeader: 0, heightCell: 479),
+    ]
+    
     var requiredActionHandler = RequiredActionHandler()
     let store = FeedStore.getInstance()
+    
+    
     
     var shouldDisplayCell = true
     var isInfoCellType = false;
@@ -102,7 +128,24 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         setupTopHeaderView()
         
         addImageOnLastCard()
+        createItemsLocally()
         
+    }
+    
+    
+    internal func createItemsLocally() {
+        try! store.realm.write {
+            //store.realm.delete(store.getFeedCards())
+            //store.realm.deleteAll()
+            let todoCard = FeedCard()
+            todoCard.section = "Recommended Actions"
+            todoCard.type = "recommended_action"
+            todoCard.cardId = "12523dadfsgfa5"
+            store.realm.add(todoCard, update: true)
+        }
+        
+        tableView.reloadData()
+        print(store.getFeedCards())
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -167,14 +210,16 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
+        return store.getFeedCards().count + 1
         return sectionToIndex.count + 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (section == sectionToIndex.count) {
+        if (section == (store.getFeedCards().count + 1)) {
             return 1
         }
-        return store.getFeedCardsWithSection(indexToSection[section]!).count
+        return 1
+        //return store.getFeedCardsWithSection(indexToSection[section]!).count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -182,10 +227,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
         
-        if(indexPath.section == sectionToIndex.count) {
-            shouldDisplayCell = true
-            isInfoCellType = true
-            isTrafficCard = false
+        if (isLastSection(section: sectionIdx)) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
             cell.changeTitleWithSpacing(title: "More on it's way!")
             cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
@@ -194,7 +236,17 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             return cell
         }
         
-        let sectionCards = store.getFeedCardsWithSection(indexToSection[sectionIdx]!)
+        //let sectionCards = store.getFeedCardsWithSection(indexToSection[sectionIdx]!)
+        //print(homeSectionCards[])
+        
+        if( sectionIdx == 3) {
+            return UITableViewCell()
+        }
+        print(sectionIdx)
+        print(homeSectionCards[sectionIdx])
+        
+        let sectionCards = store.getFeedCardsWithSection(homeSectionCards[sectionIdx].sectionName.rawValue)
+        
         
         if(sectionCards.count == 0) {
             return UITableViewCell()
@@ -202,12 +254,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         let item = sectionCards[rowIdx]
         
-        isToDoCellType = false
-        isInfoCellType = false
-        isTrafficCard = false
+        print(item)
+        
         switch(item.type) {    
             case "required_action":
-                shouldDisplayCell = true
                 let cell = tableView.dequeueReusableCell(withIdentifier: "requiredActionId", for: indexPath) as! RequiredAction
                 cell.selectionStyle = .none
         
@@ -220,9 +270,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                     cell.connectionLineView.isHidden = true;
                 }
                 return cell
+            
             case "insight":
-                shouldDisplayCell = true
-                isTrafficCard = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedId", for: indexPath) as! RecommendedCell
                 cell.setUpCell(type: "Popmetrics Insight")
                 if(sectionCards.count-1 == indexPath.row) {
@@ -232,10 +281,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.footerVIew.informationBtn.addTarget(self, action: #selector(showTooltip(_:)), for: .touchUpInside)
                 return cell
             case "todo":
-                shouldDisplayCell = true
-                isToDoCellType = true
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath) as!
-                ToDoCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath) as! ToDoCell
                 cell.toDoCountView.numberOfRows = 2
                 cell.toDoCountViewHeight.constant = CGFloat(cell.toDoCountView.numberOfRows * 60 + 122)
                 toDoCellHeight = cell.toDoCountViewHeight.constant
@@ -244,42 +290,33 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 //cell.footerView.informationBtn.shouldPulsate(true)
                 cell.footerView.informationBtn.addTarget(self, action: #selector(showTooltip(_:)), for: .touchUpInside)
                 return cell
-
-            case "info":
-                shouldDisplayCell = true
-                isInfoCellType = true
-                isTrafficCard = false
-                let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
-                cell.changeTitleWithSpacing(title: "You're all caught up.")
-                cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
-                cell.selectionStyle = .none
-                cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
-                return cell
             case "traffic":
                 isTrafficCard = true
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficCard", for: indexPath) as! TrafficCardViewCell
                 cell.selectionStyle = .none
                 cell.connectionLine.isHidden = true
                 cell.backgroundColor = UIColor.feedBackgroundColor()
-                
                 return cell
             case "recommended_action":
-                shouldDisplayCell = true
-                isMoreInfoType = false
                 let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedActionId", for: indexPath) as! RecommendedActionViewCell
                 cell.footerView.actionButton.addTarget(self, action: #selector(openGoogleActionView), for: .touchUpInside)
                 return cell
             case "more_action":
-                isMoreInfoType = true
                 let cell = tableView.dequeueReusableCell(withIdentifier: "moreInfoId", for: indexPath) as! MoreInfoViewCell
                 cell.setUpToolbar()
                 return cell
             default:
-                shouldDisplayCell = false
                 let cell = UITableViewCell()
                 return cell
             }
         
+    }
+    
+    func isLastSection(section: Int) -> Bool {
+        if section == store.getFeedCards().count {
+            return true
+        }
+        return false
     }
     
     @objc func openGoogleActionView() {
@@ -387,6 +424,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        
         if isMoreInfoType {
             return 226
         }
@@ -395,7 +434,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         } else if isTrafficCard {
             return 424
         }
-        
+        return 479
         return shouldDisplayCell ? getCellHeight() : 0
     }
     
