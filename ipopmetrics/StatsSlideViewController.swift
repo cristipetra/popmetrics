@@ -10,8 +10,6 @@ import UIKit
 import EZAlertController
 
 class StatsSlideViewController: UIViewController {
-
-    //var statusView: TrafficStatusView = TrafficStatusView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
     
     var statusView: TrafficStatus = TrafficStatus(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
     

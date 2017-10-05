@@ -170,8 +170,10 @@
                     <connections>
                         <outlet property="barChart" destination="urV-zd-Yra" id="pRH-7g-Ck1"/>
                         <outlet property="containerView" destination="ULF-Db-1Hh" id="3RY-kt-jKn"/>
+                        <outlet property="currentDateLabel" destination="yzx-4r-LVT" id="znC-rJ-zbC"/>
                         <outlet property="firstValue" destination="ucC-xt-vpY" id="eRa-ob-FqM"/>
                         <outlet property="infoLabel" destination="mdE-8N-2cf" id="1Hw-6q-Zcu"/>
+                        <outlet property="previousDateLabel" destination="YMz-6J-lCO" id="kgA-iE-U9l"/>
                         <outlet property="secondValue" destination="A7u-l2-1Uo" id="Vhc-gX-xl3"/>
                     </connections>
                 </viewController>
