@@ -20,13 +20,13 @@ class StatisticsApi: BaseApi {
         Alamofire.request(ApiUrls.getMyBrandStatisticsUrl(brandId), method: .get, parameters: params,
                           headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperOne<StatisticsResponse>>) in
                             
-                            if let err = self.createErrorWithHttpResponse(response: response.response) {
-                                callback(nil, err)
-                                return
-                            }
-                            else {
-                                callback(response.result.value, nil)
-                            }
+            if let err = self.createErrorWithHttpResponse(response: response.response) {
+                callback(nil, err)
+                return
+            }
+            else {
+                callback(response.result.value, nil)
+            }
                             
         }
     }
