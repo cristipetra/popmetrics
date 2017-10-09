@@ -55,7 +55,6 @@ class RequiredAction: UITableViewCell {
         self.titleLabel.text  = item.headerTitle
         messageLabel.text = item.message
         
-        
         //Todo move from here addTarget
         if(item.actionLabel == "Notifications") {
             footerView.actionButton.imageButtonType = .allowNotification

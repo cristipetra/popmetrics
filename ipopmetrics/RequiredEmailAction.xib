@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AlfaSlabOne-Regular.ttf">
+            <string>AlfaSlabOne-Regular</string>
+        </array>
+        <array key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="RequiredEmailAction" customModule="ipopmetrics" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="479"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="478.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lNY-tl-Vpb" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
+                        <rect key="frame" x="10" y="0.0" width="300" height="29"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="29" id="eVe-9A-h2t"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5JC-Dz-aWT">
+                        <rect key="frame" x="10" y="29" width="300" height="412.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Double check your email!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bF-Jv-JyI">
+                                <rect key="frame" x="20" y="24" width="270" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="ewi-cY-p7H"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AlfaSlabOne-Regular" family="Alfa Slab One" pointSize="23"/>
+                                <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1al-w3-4k5">
+                                <rect key="frame" x="11" y="104" width="279" height="49"/>
+                                <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="O48-Jk-A25"/>
+                                </constraints>
+                                <color key="textColor" red="0.56795924900000005" green="0.56794816260000003" blue="0.56795567270000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We’ll use your email to send your updates and reports on your businesses performance." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeX-7o-5Cy">
+                                <rect key="frame" x="11" y="165" width="279" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="Q6S-0M-uPk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_card_twitter" translatesAutoresizingMaskIntoConstraints="NO" id="qUh-mO-LtV">
+                                <rect key="frame" x="0.0" y="272.5" width="300" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="FOa-zG-dYB"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5t9-mx-dC2" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="319.5" width="300" height="93"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="93" id="rLY-Sd-Po8"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zeX-7o-5Cy" firstAttribute="top" secondItem="1al-w3-4k5" secondAttribute="bottom" constant="12" id="5z5-TW-boj"/>
+                            <constraint firstAttribute="trailing" secondItem="2bF-Jv-JyI" secondAttribute="trailing" constant="10" id="6Kx-Aa-AWH"/>
+                            <constraint firstItem="2bF-Jv-JyI" firstAttribute="leading" secondItem="5JC-Dz-aWT" secondAttribute="leading" constant="20" id="6kA-TL-5Zd"/>
+                            <constraint firstAttribute="trailing" secondItem="1al-w3-4k5" secondAttribute="trailing" constant="10" id="7l8-wp-OoP"/>
+                            <constraint firstItem="qUh-mO-LtV" firstAttribute="leading" secondItem="5JC-Dz-aWT" secondAttribute="leading" id="Chb-1o-A9j"/>
+                            <constraint firstItem="zeX-7o-5Cy" firstAttribute="leading" secondItem="5JC-Dz-aWT" secondAttribute="leading" constant="11" id="GNr-BB-4AU"/>
+                            <constraint firstAttribute="trailing" secondItem="5t9-mx-dC2" secondAttribute="trailing" id="GxD-oz-x4G"/>
+                            <constraint firstAttribute="trailing" secondItem="qUh-mO-LtV" secondAttribute="trailing" id="PnJ-uJ-rZc"/>
+                            <constraint firstAttribute="bottom" secondItem="qUh-mO-LtV" secondAttribute="bottom" id="RYI-pW-vfq"/>
+                            <constraint firstAttribute="bottom" secondItem="5t9-mx-dC2" secondAttribute="bottom" id="UuE-Fh-sMF"/>
+                            <constraint firstItem="2bF-Jv-JyI" firstAttribute="top" secondItem="5JC-Dz-aWT" secondAttribute="top" constant="24" id="W81-RD-eYT"/>
+                            <constraint firstItem="1al-w3-4k5" firstAttribute="leading" secondItem="5JC-Dz-aWT" secondAttribute="leading" constant="11" id="Y0l-XY-8dw"/>
+                            <constraint firstItem="5t9-mx-dC2" firstAttribute="leading" secondItem="5JC-Dz-aWT" secondAttribute="leading" id="eMn-ro-TCA"/>
+                            <constraint firstAttribute="trailing" secondItem="zeX-7o-5Cy" secondAttribute="trailing" constant="10" id="gFf-Q3-UE2"/>
+                            <constraint firstItem="1al-w3-4k5" firstAttribute="top" secondItem="2bF-Jv-JyI" secondAttribute="bottom" constant="16" id="y9W-0N-BQO"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UxG-0J-jrV">
+                        <rect key="frame" x="37" y="442" width="3" height="37"/>
+                        <color key="backgroundColor" red="1" green="0.12941176469999999" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="37" id="mRg-rW-tGj"/>
+                            <constraint firstAttribute="width" constant="3" id="rde-ME-fqy"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="UxG-0J-jrV" secondAttribute="bottom" id="5Zb-0d-Q1R"/>
+                    <constraint firstItem="UxG-0J-jrV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="37" id="8ZS-cU-or7"/>
+                    <constraint firstItem="lNY-tl-Vpb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Plt-IM-xbQ"/>
+                    <constraint firstItem="lNY-tl-Vpb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="STt-gO-MVH"/>
+                    <constraint firstAttribute="bottom" secondItem="5JC-Dz-aWT" secondAttribute="bottom" constant="37" id="cJB-vc-TrP"/>
+                    <constraint firstAttribute="trailing" secondItem="lNY-tl-Vpb" secondAttribute="trailing" constant="10" id="hN0-cO-Y22"/>
+                    <constraint firstItem="5JC-Dz-aWT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="hme-cu-85o"/>
+                    <constraint firstItem="5JC-Dz-aWT" firstAttribute="top" secondItem="lNY-tl-Vpb" secondAttribute="bottom" id="pA8-Zz-Y3L"/>
+                    <constraint firstAttribute="trailing" secondItem="5JC-Dz-aWT" secondAttribute="trailing" constant="10" id="vk1-px-W3T"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="connectionView" destination="UxG-0J-jrV" id="jtB-8X-DwR"/>
+                <outlet property="containerView" destination="5JC-Dz-aWT" id="8i7-KB-VZ7"/>
+                <outlet property="emailTextField" destination="1al-w3-4k5" id="ldo-9e-NOP"/>
+                <outlet property="footerView" destination="5t9-mx-dC2" id="uhh-yG-vbG"/>
+                <outlet property="messageLbl" destination="zeX-7o-5Cy" id="7xO-OQ-kBG"/>
+                <outlet property="titleLbl" destination="2bF-Jv-JyI" id="LVV-Lf-yHf"/>
+                <outlet property="toolbarView" destination="lNY-tl-Vpb" id="sWM-pn-SgR"/>
+            </connections>
+            <point key="canvasLocation" x="33" y="55.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="image_card_twitter" width="375" height="125"/>
+    </resources>
+</document>

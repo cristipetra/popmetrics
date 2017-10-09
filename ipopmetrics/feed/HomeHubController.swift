@@ -87,6 +87,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let moreInfoNib = UINib(nibName: "MoreInfoViewCell", bundle: nil)
         tableView.register(moreInfoNib, forCellReuseIdentifier: "moreInfoId")
         
+        let emailNib = UINib(nibName: "RequiredEmailAction", bundle: nil)
+        tableView.register(emailNib, forCellReuseIdentifier: "emailId")
+        
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         
@@ -102,6 +105,21 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         setupTopHeaderView()
         
         addImageOnLastCard()
+        
+        createItemsLocally()
+    }
+    
+    func createItemsLocally() {
+        try! store.realm.write {
+            
+            let tmpIns = FeedCard()
+            tmpIns.cardId = "fasfasfassafasafdfadfsaf"
+            tmpIns.type = "Insights"
+            tmpIns.section = "insight"
+            store.realm.add(tmpIns, update: true)
+        }
+        
+        print(store.getFeedCards())
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -231,6 +249,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             case "insight":
                 shouldDisplayCell = true
                 isTrafficCard = false
+                /*
                 let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedId", for: indexPath) as! RecommendedCell
                 cell.setUpCell(type: "Popmetrics Insight")
                 if(sectionCards.count-1 == indexPath.row) {
@@ -239,6 +258,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.footerVIew.actionButton.addTarget(self, action: #selector(handlerInsightButton), for: .touchUpInside)
                 cell.footerVIew.informationBtn.addTarget(self, action: #selector(showTooltip(_:)), for: .touchUpInside)
                 return cell
+                 */
+                let cell = tableView.dequeueReusableCell(withIdentifier: "emailId", for: indexPath) as! RequiredEmailAction
+                cell.setTitle(title: "Double check your email!")
+                
+                return cell
+            
             case "todo":
                 shouldDisplayCell = true
                 isToDoCellType = true
@@ -274,9 +299,20 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             case "recommended_action":
                 shouldDisplayCell = true
                 isMoreInfoType = false
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "emailId", for: indexPath) as! RequiredEmailAction
+                cell.setTitle(title: "Double check your email!")
+                
+                
+                
+                cell.connectionView.isHidden = true
+                
+                return cell
+                /*
                 let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedActionId", for: indexPath) as! RecommendedActionViewCell
                 cell.footerView.actionButton.addTarget(self, action: #selector(openGoogleActionView), for: .touchUpInside)
                 return cell
+                */
             case "more_action":
                 isMoreInfoType = true
                 let cell = tableView.dequeueReusableCell(withIdentifier: "moreInfoId", for: indexPath) as! MoreInfoViewCell
