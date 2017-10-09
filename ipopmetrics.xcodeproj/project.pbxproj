@@ -55,6 +55,7 @@
 		088BBEA81F58212A00AD5414 /* TrafficEmptyCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */; };
 		088BBEAA1F58214300AD5414 /* TrafficEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */; };
 		088BBEAC1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */; };
+		088CB18B1F8B658900809A51 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088CB18A1F8B658900809A51 /* ReachabilityManager.swift */; };
 		088E77A91F7CE99900774F13 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77A81F7CE99900774F13 /* ToastView.swift */; };
 		088E77AB1F7D441400774F13 /* TrafficStatus.xib in Resources */ = {isa = PBXBuildFile; fileRef = 088E77AA1F7D441400774F13 /* TrafficStatus.xib */; };
 		088E77AD1F7D499400774F13 /* TrafficStatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77AC1F7D499400774F13 /* TrafficStatsTableViewController.swift */; };
@@ -266,6 +267,7 @@
 		088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrafficEmptyCard.xib; sourceTree = "<group>"; };
 		088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficEmptyView.swift; sourceTree = "<group>"; };
 		088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		088CB18A1F8B658900809A51 /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		088E77A81F7CE99900774F13 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		088E77AA1F7D441400774F13 /* TrafficStatus.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrafficStatus.xib; sourceTree = "<group>"; };
 		088E77AC1F7D499400774F13 /* TrafficStatsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficStatsTableViewController.swift; sourceTree = "<group>"; };
@@ -961,6 +963,7 @@
 				113976B11E97CE5000B535DF /* MainTabBarController.swift */,
 				08A4A5421F45B5D6001071E3 /* TwoImagesButton.swift */,
 				08FAE84A1F54247B0097DF3E /* GradientView.swift */,
+				088CB18A1F8B658900809A51 /* ReachabilityManager.swift */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -1466,6 +1469,7 @@
 				08F368951F18F93800819CDE /* DailyInsightsCardCell.swift in Sources */,
 				08B2803F1F55862100E36D19 /* Statistics.swift in Sources */,
 				085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */,
+				088CB18B1F8B658900809A51 /* ReachabilityManager.swift in Sources */,
 				08B745981F1F718300EC3F8C /* CodeViewController.swift in Sources */,
 				08BD58081F7A334D00FFDCFD /* StatisticsInsight.swift in Sources */,
 				08BD58061F7A327C00FFDCFD /* RecommendedActionViewCell.swift in Sources */,

@@ -7,16 +7,21 @@
 //
 
 import UIKit
+import ReachabilitySwift
 
 class BaseTableViewController: UITableViewController {
     
     fileprivate let progressHUD = ProgressHUD(text: "Loading...")
     internal var topHeaderView: HeaderView!
+    internal var offlineBanner: OfflineBanner!
+    internal var reachability: Reachability!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(progressHUD)
         progressHUD.hide()
+        setupOfflineBanner()
+        ReachabilityManager.shared.addListener(listener: self)
     }
     
     internal func setProgressIndicatorText(_ text: String?) {
@@ -58,5 +63,31 @@ class BaseTableViewController: UITableViewController {
         DispatchQueue.main.async(execute: {
             self.present(alertController, animated: true, completion: nil)
         })
+    }
+    
+    func setupOfflineBanner() {
+        if offlineBanner == nil {
+            offlineBanner = OfflineBanner(frame: CGRect(x: 0, y: 64, width: self.view.frame.width, height: 45))
+            self.navigationController?.view.addSubview(offlineBanner)
+            print("network status \(ReachabilityManager.shared.isNetworkAvailable)")
+            offlineBanner.isHidden = ReachabilityManager.shared.isNetworkAvailable
+        }
+    }
+}
+
+
+//MARK: - NetworkStatusListener
+extension BaseTableViewController: NetworkStatusListener {
+    
+    func networkStatusDidChange(status: Reachability.NetworkStatus) {
+        
+        switch status {
+        case .notReachable:
+            offlineBanner.isHidden = false
+        case .reachableViaWiFi:
+            offlineBanner.isHidden = true
+        case .reachableViaWWAN:
+            offlineBanner.isHidden = true
+        }
     }
 }
