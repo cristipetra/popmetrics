@@ -10,7 +10,7 @@ import UIKit
 import DGElasticPullToRefresh
 import SwiftyJSON
 
-class StatisticsViewController: UIViewController {
+class StatisticsViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topAnchorTableView: NSLayoutConstraint!
