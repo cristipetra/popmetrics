@@ -56,8 +56,6 @@
 		088BBEAA1F58214300AD5414 /* TrafficEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */; };
 		088BBEAC1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */; };
 		088CB18B1F8B658900809A51 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088CB18A1F8B658900809A51 /* ReachabilityManager.swift */; };
-		088CB18D1F8BC0AD00809A51 /* RequiredEmailAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = 088CB18C1F8BC0AD00809A51 /* RequiredEmailAction.xib */; };
-		088CB1911F8BC13400809A51 /* RequiredEmailAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088CB1901F8BC13400809A51 /* RequiredEmailAction.swift */; };
 		088E77A91F7CE99900774F13 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77A81F7CE99900774F13 /* ToastView.swift */; };
 		088E77AB1F7D441400774F13 /* TrafficStatus.xib in Resources */ = {isa = PBXBuildFile; fileRef = 088E77AA1F7D441400774F13 /* TrafficStatus.xib */; };
 		088E77AD1F7D499400774F13 /* TrafficStatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77AC1F7D499400774F13 /* TrafficStatsTableViewController.swift */; };
@@ -270,8 +268,6 @@
 		088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficEmptyView.swift; sourceTree = "<group>"; };
 		088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		088CB18A1F8B658900809A51 /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
-		088CB18C1F8BC0AD00809A51 /* RequiredEmailAction.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequiredEmailAction.xib; sourceTree = "<group>"; };
-		088CB1901F8BC13400809A51 /* RequiredEmailAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredEmailAction.swift; sourceTree = "<group>"; };
 		088E77A81F7CE99900774F13 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		088E77AA1F7D441400774F13 /* TrafficStatus.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrafficStatus.xib; sourceTree = "<group>"; };
 		088E77AC1F7D499400774F13 /* TrafficStatsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficStatsTableViewController.swift; sourceTree = "<group>"; };
@@ -625,8 +621,6 @@
 				08953E711F4C352B003ABEFC /* RequiredAction.xib */,
 				08953E731F4C359E003ABEFC /* FooterView.swift */,
 				08953E751F4C35AC003ABEFC /* RequiredAction.swift */,
-				088CB18C1F8BC0AD00809A51 /* RequiredEmailAction.xib */,
-				088CB1901F8BC13400809A51 /* RequiredEmailAction.swift */,
 			);
 			name = required;
 			sourceTree = "<group>";
@@ -1188,7 +1182,6 @@
 				11F89F691EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist in Resources */,
 				085F90FA1F7169FE008A339A /* OnboardingView.xib in Resources */,
 				085F90FC1F716A57008A339A /* VerifySocialViewController.xib in Resources */,
-				088CB18D1F8BC0AD00809A51 /* RequiredEmailAction.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1426,7 +1419,6 @@
 				1125ADAC1E96E7990004B4AC /* HomeHubController.swift in Sources */,
 				08D1BC3B1F1E568A00D377B2 /* PhoneView.swift in Sources */,
 				08DF9E621F261C8100C60C2D /* InfoCardViewController.swift in Sources */,
-				088CB1911F8BC13400809A51 /* RequiredEmailAction.swift in Sources */,
 				08BD58001F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift in Sources */,
 				0848280F1F39F9200054B04C /* HeaderView.swift in Sources */,
 				08B5D4BA1F29C28A00B79AD3 /* CalendarFeedStore.swift in Sources */,

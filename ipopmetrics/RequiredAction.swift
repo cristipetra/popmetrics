@@ -23,11 +23,21 @@ class RequiredAction: UITableViewCell {
     @IBOutlet weak var bottomImageView: UIImageView!
     @IBOutlet weak var connectionLineView: UIView!
     
+    @IBOutlet weak var messageHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var messageTopConstraint: NSLayoutConstraint!
     
     var item: FeedCard?
     var actionHandler: CardActionHandler?
     var indexPath: IndexPath?
     var infoDelegate: InfoButtonDelegate?
+    
+    // Extend view
+    lazy var emailTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
     
     lazy var shadowLayer : UIView  = {
         let view = UIView()
@@ -35,6 +45,7 @@ class RequiredAction: UITableViewCell {
         view.backgroundColor = UIColor.white
         return view
     }()
+    // End extend view
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -66,6 +77,44 @@ class RequiredAction: UITableViewCell {
         
         titleLabel.textColor = PopmetricsColor.darkGrey
         messageLabel.textColor = PopmetricsColor.darkGrey
+        
+        if(item.actionHandler == RequiredActionHandler.RequiredActionType.email.rawValue) {
+            displayEmailView()
+        }
+    }
+    
+    private func displayEmailView() {
+        setEmailFieldPlaceholder()
+    }
+    
+    private func setEmailFieldPlaceholder() {
+        
+        self.containerView.addSubview(emailTextField)
+        emailTextField.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 11).isActive = true
+        emailTextField.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: -10).isActive = true
+        emailTextField.heightAnchor.constraint(equalToConstant: 49).isActive = true
+        emailTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12).isActive = true
+        
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.emailTextField.frame.height))
+        emailTextField.leftView = paddingView
+        emailTextField.leftViewMode = UITextFieldViewMode.always
+        
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "youremail@email.com", attributes: [NSForegroundColorAttributeName: UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1), NSFontAttributeName: UIFont(name: FontBook.semibold, size: 15)!])
+        emailTextField.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
+        emailTextField.layer.cornerRadius = 4
+        
+        messageHeightConstraint.constant = 70
+        messageHeightConstraint.isActive = true
+        
+        messageTopConstraint.constant = 73
+        messageTopConstraint.isActive = true
+        
+        titleLabel.numberOfLines = 2
+        setUpFooterViewForEmail()
+    }
+    
+    private func setUpFooterViewForEmail() {
+        footerView.setEmailViewType()
     }
     
     internal func setupCorners() {

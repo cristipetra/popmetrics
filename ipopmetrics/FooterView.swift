@@ -276,6 +276,17 @@ class FooterView: UIView {
         button.isUserInteractionEnabled = false
     }
     
+    internal func setEmailViewType() {
+        self.backgroundColor = UIColor.clear
+        self.isOpaque = false
+        self.setIsTrafficUnconnected()
+        self.xButton.alpha = 1
+        self.hideButton(button: self.loadMoreBtn)
+        self.approveLbl.text = "Send confirmation \nemail"
+        self.approveLbl.textColor = UIColor.white
+        self.actionButton.leftImageView.image = UIImage(named: "iconLetter")?.withRenderingMode(.alwaysOriginal)
+    }
+    
 }
 
 extension FooterView {

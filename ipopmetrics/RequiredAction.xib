@@ -37,16 +37,16 @@
                         <rect key="frame" x="16" y="29" width="288" height="439.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect your Twitter and optimize your content for maximum growth." lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbm-nZ-v6I">
-                                <rect key="frame" x="20" y="29" width="258" height="124"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="124" id="UeM-3W-Bqc"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="29" width="258" height="120.5"/>
                                 <fontDescription key="fontDescription" name="AlfaSlabOne-Regular" family="Alfa Slab One" pointSize="22"/>
                                 <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter is a key access point to increase your social following." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8T-o8-GTy">
-                                <rect key="frame" x="20" y="163" width="258" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter is a key access point to increase your social following." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8T-o8-GTy">
+                                <rect key="frame" x="20" y="170.5" width="258" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="LPV-kd-nCO"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -86,8 +86,8 @@
                             <constraint firstAttribute="trailing" secondItem="sbm-nZ-v6I" secondAttribute="trailing" constant="10" id="cqz-3Z-VHx"/>
                             <constraint firstAttribute="trailing" secondItem="MNg-Ep-OYH" secondAttribute="trailing" id="fsc-bb-UZW"/>
                             <constraint firstItem="MNg-Ep-OYH" firstAttribute="leading" secondItem="gkh-M4-e7L" secondAttribute="leading" id="gXB-Mw-vB2"/>
-                            <constraint firstItem="r8T-o8-GTy" firstAttribute="top" secondItem="sbm-nZ-v6I" secondAttribute="bottom" constant="10" id="mg2-D7-bPG"/>
                             <constraint firstItem="sbm-nZ-v6I" firstAttribute="leading" secondItem="gkh-M4-e7L" secondAttribute="leading" constant="20" id="tgQ-u6-b7a"/>
+                            <constraint firstItem="r8T-o8-GTy" firstAttribute="top" secondItem="sbm-nZ-v6I" secondAttribute="bottom" constant="21" id="vm1-56-rIy"/>
                             <constraint firstItem="r8T-o8-GTy" firstAttribute="leading" secondItem="gkh-M4-e7L" secondAttribute="leading" constant="20" id="zX6-2r-tuJ"/>
                         </constraints>
                     </view>
@@ -117,7 +117,9 @@
                 <outlet property="connectionLineView" destination="Voy-rD-hh5" id="qkz-GM-r0z"/>
                 <outlet property="containerView" destination="gkh-M4-e7L" id="mgL-H3-S9x"/>
                 <outlet property="footerView" destination="j8x-Kb-iAY" id="lDU-sh-PIO"/>
+                <outlet property="messageHeightConstraint" destination="LPV-kd-nCO" id="sKm-BE-6MN"/>
                 <outlet property="messageLabel" destination="r8T-o8-GTy" id="gIL-Fn-p98"/>
+                <outlet property="messageTopConstraint" destination="vm1-56-rIy" id="DQQ-Zh-jtb"/>
                 <outlet property="titleLabel" destination="sbm-nZ-v6I" id="UdK-Tf-vFv"/>
                 <outlet property="toolbarView" destination="J6P-3S-jCJ" id="rNq-y6-Crn"/>
             </connections>

@@ -16,6 +16,12 @@ import NotificationBannerSwift
 import EZAlertController
 
 class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, GIDSignInDelegate {
+    
+   enum RequiredActionType: String {
+        case googleAnalytics = "required_actions.brand_not_connected_with_google_analytics"
+        case twitter = "required_actions.brand_not_connected_with_twitter"
+        case email =  "required_actions.brand_not_connected_with_email"
+    }
 
     var actionButtonSaved : SimpleButton?
     
