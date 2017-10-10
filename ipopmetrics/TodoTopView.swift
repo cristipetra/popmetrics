@@ -45,14 +45,14 @@ class TodoTopView: UIView {
     lazy var clockImageView : UIImageView = {
         let imageview = UIImageView()
         imageview.translatesAutoresizingMaskIntoConstraints = false
-        imageview.image = UIImage(named: "iconClock")!.withRenderingMode(.alwaysTemplate)
+        imageview.image = UIImage(named: "blackIconClock")!
         return imageview
     }()
     
     lazy var keyImageView : UIImageView = {
         let imageview = UIImageView()
         imageview.translatesAutoresizingMaskIntoConstraints = false
-        imageview.image = UIImage(named: "icon_DIY_DifferentSection")!.withRenderingMode(.alwaysTemplate)
+        imageview.image = UIImage(named: "iconDiy")!.withRenderingMode(.alwaysTemplate)
         return imageview
         
     }()
@@ -60,7 +60,7 @@ class TodoTopView: UIView {
     lazy var notificationImageView : UIImageView = {
         let imageview = UIImageView()
         imageview.translatesAutoresizingMaskIntoConstraints = false
-        imageview.image = UIImage(named: "icon_Failed_DifferentSection")!.withRenderingMode(.alwaysTemplate)
+        imageview.image = UIImage(named: "iconFailedDifferentSection")!.withRenderingMode(.alwaysTemplate)
         return imageview
         
     }()
@@ -127,9 +127,9 @@ class TodoTopView: UIView {
         clockView.widthAnchor.constraint(equalToConstant: 72).isActive = true
         clockView.layer.cornerRadius = 4
         if selected {
-            clockView.backgroundColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
-        } else {
             clockView.backgroundColor = UIColor.white
+        } else {
+            clockView.backgroundColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
         }
         //clockView.addSubview(clockImageView)
         setUpClockImageView(selected: selected)
@@ -199,10 +199,10 @@ class TodoTopView: UIView {
     
     func setUpKeyImageView(selected: Bool) {
         /*
-        keyImageView.centerYAnchor.constraint(equalTo: keyView.centerYAnchor).isActive = true
-        keyImageView.heightAnchor.constraint(equalToConstant: 18).isActive = true
-        keyImageView.widthAnchor.constraint(equalToConstant: 18).isActive = true
-        keyImageView.leftAnchor.constraint(equalTo: keyView.leftAnchor, constant: 9).isActive = true
+         keyImageView.centerYAnchor.constraint(equalTo: keyView.centerYAnchor).isActive = true
+         keyImageView.heightAnchor.constraint(equalToConstant: 18).isActive = true
+         keyImageView.widthAnchor.constraint(equalToConstant: 18).isActive = true
+         keyImageView.leftAnchor.constraint(equalTo: keyView.leftAnchor, constant: 9).isActive = true
          */
         if selected {
             keyImageView.tintColor = UIColor.white
@@ -219,9 +219,9 @@ class TodoTopView: UIView {
         //clockLabel.text = "(10)"
         clockLabel.font = UIFont(name: FontBook.semibold, size: 15)
         if selected {
-            clockLabel.textColor = UIColor.white
-        } else {
             clockLabel.textColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 1)
+        } else {
+            clockLabel.textColor = UIColor.white
         }
         clockLabel.textAlignment = .center
         
