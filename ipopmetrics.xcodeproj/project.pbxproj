@@ -74,6 +74,7 @@
 		08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A533351F6BD9130080BE64 /* MoreInfoViewCell.swift */; };
 		08A533381F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A533371F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib */; };
 		08A5333E1F6C2E910080BE64 /* ButtonWithContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A5333D1F6C2E910080BE64 /* ButtonWithContainer.swift */; };
+		08A62CB21F8E4DCF0072E6A5 /* TwoColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A62CB11F8E4DCF0072E6A5 /* TwoColorButton.swift */; };
 		08A812741F16601A00672126 /* HeaderCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A812731F16601A00672126 /* HeaderCardCell.xib */; };
 		08A812761F1660A300672126 /* HeaderCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A812751F1660A300672126 /* HeaderCardCell.swift */; };
 		08AA6C631F56C9560022DE91 /* TrafficReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C621F56C9560022DE91 /* TrafficReportViewController.swift */; };
@@ -286,6 +287,7 @@
 		08A533351F6BD9130080BE64 /* MoreInfoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewCell.swift; sourceTree = "<group>"; };
 		08A533371F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendedActionGoogleCitationView.xib; sourceTree = "<group>"; };
 		08A5333D1F6C2E910080BE64 /* ButtonWithContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithContainer.swift; sourceTree = "<group>"; };
+		08A62CB11F8E4DCF0072E6A5 /* TwoColorButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoColorButton.swift; sourceTree = "<group>"; };
 		08A812731F16601A00672126 /* HeaderCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCardCell.xib; sourceTree = "<group>"; };
 		08A812751F1660A300672126 /* HeaderCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderCardCell.swift; path = feed/HeaderCardCell.swift; sourceTree = "<group>"; };
 		08A812781F1672D300672126 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 				0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */,
 				08B485E51F210A61005918A1 /* RoundButton.swift */,
 				08A5333D1F6C2E910080BE64 /* ButtonWithContainer.swift */,
+				08A62CB11F8E4DCF0072E6A5 /* TwoColorButton.swift */,
 			);
 			name = buttons;
 			sourceTree = "<group>";
@@ -1496,6 +1499,7 @@
 				08B485E61F210A61005918A1 /* RoundButton.swift in Sources */,
 				08AA6C671F56DC8B0022DE91 /* StatsSlideViewController.swift in Sources */,
 				11ACA9A11E2CD1B90021E64A /* BaseApi.swift in Sources */,
+				08A62CB21F8E4DCF0072E6A5 /* TwoColorButton.swift in Sources */,
 				08B5D4BE1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift in Sources */,
 				1120F2001ECDF4F200576E39 /* RequiredActionHandler.swift in Sources */,
 				116540BF1EEAC61E00417D61 /* AppStoryboard.swift in Sources */,

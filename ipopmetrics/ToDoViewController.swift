@@ -79,6 +79,7 @@ class ToDoViewController: BaseViewController {
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
         
+        createItemsLocally()
     }
     
     func createItemsLocally() {
@@ -91,7 +92,7 @@ class ToDoViewController: BaseViewController {
             todoCard.section = "Unapproved"
             todoCard.headerTitle = "Unapproved Posts"
             store.realm.add(todoCard, update: true)
-    
+            
             
             let manualCard = TodoCard()
             manualCard.cardId = "223344"
@@ -106,8 +107,30 @@ class ToDoViewController: BaseViewController {
             failedCard.section = "Failed"
             failedCard.headerTitle = "Failed Actions"
             store.realm.add(failedCard, update: true)
-           
             
+            let todoPost1 = TodoSocialPost()
+            todoPost1.isApproved = false
+            todoPost1.postId = "2342134"
+            todoPost1.todoCard = todoCard
+            todoPost1.status = "Unapproved"
+            todoPost1.articleText = "Popmetrics recommends highly customized marketing insights to help your business grow. #Popmetrics #GrowYourBusiness"
+            store.realm.add(todoPost1, update: true)
+            
+            let todoPost2 = TodoSocialPost()
+            todoPost2.isApproved = false
+            todoPost2.postId = "1234424"
+            todoPost2.todoCard = todoCard
+            todoPost2.status = "Unapproved"
+            todoPost2.articleText = "OG tags it knows what photo is your logo, what photo is of your business and what yourbusiness. #Popmetrics #GrowYourBusiness"
+            store.realm.add(todoPost2, update: true)
+            
+            let todoPost3 = TodoSocialPost()
+            todoPost3.isApproved = false
+            todoPost3.postId = "5152525"
+            todoPost3.todoCard = todoCard
+            todoPost3.status = "Unapproved"
+            todoPost3.articleText = "Popmetrics recommends highly customized marketing insights to help your business grow. #Popmetrics #GrowYourBusiness"
+            store.realm.add(todoPost3, update: true)
         }
         print(store.getTodoCards())
     }
@@ -378,7 +401,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         if shouldMaximize == false {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
             headerCell.changeColor(color: card.getSectionColor)
-            headerCell.changeTitleToolbar(title: card.getCardToolbarTitle)
+            headerCell.toolbarView.backgroundColor = .white
             headerCell.changeTitleSection(title: card.getCardSectionTitle)
             headerCell.setUpHeaderShadowView()
             return headerCell
@@ -499,7 +522,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         if shouldMaximize {
             return 459
         }
-        return 93
+        return 148
     }
     
     

@@ -13,6 +13,7 @@ protocol ChangeCellProtocol: class {
 }
 
 class CalendarHeaderViewCell: UITableViewCell {
+    @IBOutlet weak var leftConstraintLabel: NSLayoutConstraint!
     
     @IBOutlet weak var connectionView: UIView!
     @IBOutlet weak var roundConnectionView: UIView!
@@ -31,6 +32,10 @@ class CalendarHeaderViewCell: UITableViewCell {
         containerView.backgroundColor = UIColor.feedBackgroundColor()
         
         setUpCornerRadious()
+        
+        connectionView.isHidden = true
+        roundConnectionView.isHidden = true
+        leftConstraintLabel.constant = 19
     }
     
     func setUpCornerRadious() {

@@ -69,7 +69,7 @@ class TodoCard:  Object, Mappable {
             case StatusArticle.executed.rawValue:
                 return PopmetricsColor.greenSelectedDate
             case StatusArticle.unapproved.rawValue:
-                return PopmetricsColor.yellowUnapproved
+                return PopmetricsColor.darkGrey
             case StatusArticle.manual.rawValue:
                 return PopmetricsColor.purpleToDo
             default:
@@ -93,7 +93,7 @@ class TodoCard:  Object, Mappable {
         get {
             switch section {
             case StatusArticle.unapproved.rawValue:
-                return "Recommended Tweets"
+                return "Posts for Your Approval"
             case StatusArticle.manual.rawValue:
                 return "Doing Yourself"
             case StatusArticle.failed.rawValue:

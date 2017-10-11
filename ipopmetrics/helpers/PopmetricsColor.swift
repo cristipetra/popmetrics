@@ -39,11 +39,15 @@ class PopmetricsColor {
     static let orange = UIColor(red: 227/255.0, green: 135/255.0, blue: 58/255.0, alpha: 1.0)
     static let bannerSuccessText = UIColor(red: 13/255, green: 88/255, blue: 63/255, alpha: 1.0)
     
+    static let todoBrown = UIColor(red: 166/255, green: 135/255, blue: 28/255, alpha: 1)
     static let greenLight = UIColor(red: 176/255.0, green: 247/255.0, blue: 222/255.0, alpha: 1.0)
     static let greenMedium = UIColor(red: 73/255.0, green: 196/255.0, blue: 153/255.0, alpha: 1.0)
     static let greenDark = UIColor(red: 0/255.0, green: 127/255.0, blue: 120/255.0, alpha: 1.0)
     static let greenSelectedDate = UIColor(red: 68/255.0, green: 180/255.0, blue: 142/255.0, alpha: 1.0)
     static let greenBtn = UIColor(red: 54/255.0, green: 172/255.0, blue: 130/255.0, alpha: 1.0)
+    
+    static let todoTopColor = UIColor(red: 250.255, green: 189/255, blue: 63/255, alpha: 1)
+    static let todoBottomColor = UIColor(red: 252/255, green: 205/255, blue: 87/255, alpha: 1)
     
     static let transparentGrayDark = UIColor(red: 80/255.0, green: 80/255.0, blue: 80/255.0, alpha: 0.7)
     

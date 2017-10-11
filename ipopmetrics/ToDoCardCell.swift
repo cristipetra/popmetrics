@@ -10,14 +10,15 @@ import UIKit
 
 class ToDoCardCell: UITableViewCell {
     
+    @IBOutlet weak var denyPostBtn: UIButton!
     @IBOutlet weak var containerStackView: UIStackView!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var foregroundImage: UIImageView!
-    @IBOutlet weak var titleLbl: UILabel!
-    
+    @IBOutlet weak var aproveButton: TwoColorButton!
+    @IBOutlet weak var circleView: UIView!
     @IBOutlet weak var messageLbl: UILabel!
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var circleView: UIView!
+    
     
     var todoItem: TodoSocialPost!;
     
@@ -35,19 +36,24 @@ class ToDoCardCell: UITableViewCell {
         self.backgroundColor = UIColor.feedBackgroundColor()
         addStatusCardTypeView()
         setupCorners()
+        //        DispatchQueue.main.async {
+        //            self.approveBtn.layer.masksToBounds = false
+        //            self.approveBtn.layer.cornerRadius = self.approveBtn.frame.height / 2
+        //            self.addShadowToViewBtn(self.approveBtn)
+        //        }
     }
     
     func configure(item: TodoSocialPost) {
         todoItem = item
-        titleLbl.text = todoItem.articleTitle
-        messageLbl.text = todoItem.articleText
         
+        messageLbl.text = todoItem.articleText
+        messageLbl.adjustLabelSpacing(spacing: 0, lineHeight: 18, letterSpacing: 0.4)
         setupStatusCardView( approved: (item.status == "approved" || item.status == "denied"))
     }
     
     func setupCorners() {
         DispatchQueue.main.async {
-            self.circleView.roundCorners(corners: .allCorners, radius: self.circleView.frame.size.width/2)
+            self.circleView.roundCorners(corners: .allCorners, radius: self.circleView.frame.size.width / 2)
         }
     }
     
