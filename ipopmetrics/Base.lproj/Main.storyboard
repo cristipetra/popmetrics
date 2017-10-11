@@ -307,7 +307,7 @@
         <scene sceneID="BgY-0i-GYY">
             <objects>
                 <navigationController storyboardIdentifier="HomeNavigationID" automaticallyAdjustsScrollViewInsets="NO" id="NdU-Vz-erg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="tabBarItem:g6b-nh-pyf:image" id="g6b-nh-pyf"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabBarItem:g6b-nh-pyf:image" id="g6b-nh-pyf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="z2a-iC-IPh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
