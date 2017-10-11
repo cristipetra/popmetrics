@@ -17,7 +17,7 @@ import EZAlertController
 struct HomeSectionCard {
     //let title: String = ""
     //let index: Int = 0
-    var sectionName: HomeSectionName = .requiredAction
+    //var sectionName: HomeSectionName = .requiredAction
     var indexInSectionTable: Int = 0
     var heightFooter: Int = 0
     var heightHeader: Int = 0
@@ -25,10 +25,64 @@ struct HomeSectionCard {
     
 }
 
-enum HomeSectionName: String {
+
+enum HomeSection: String {
+    case RequiredAction = "RequiredAction"
+    case RecommendedAction =  "Recommended Actions"
+    case Insight = "Insights"
+    
+    static let sectionTitles = [
+        RequiredAction: "Required Actions",
+        Insight: "Insights",
+        RecommendedAction: "fdasf"
+    ]
+    
+    static let sectionHeaderHeight = [
+        RequiredAction: 80,
+        Insight: 80,
+        RecommendedAction: 80
+    ]
+    
+    static let sectionHeight = [
+        RequiredAction: 479,
+        Insight: 479,
+        RecommendedAction: 479
+    ]
+    
+    func sectionTitle() -> String {
+        if let sectionTitle = HomeSection.sectionTitles[self] {
+            return sectionTitle
+        } else {
+            return ""
+        }
+    }
+    
+    func getSectionHeaderHeight() -> CGFloat {
+        return 0
+        if let sectionHeaderHeight = HomeSection.sectionHeaderHeight[self] {
+            return CGFloat(sectionHeaderHeight)
+        } else {
+            return 0
+        }
+    }
+    
+    func getSectionHeight() -> CGFloat {
+        if let sectionHeight = HomeSection.sectionHeight[self] {
+            return CGFloat(sectionHeight)
+        } else {
+            return 0
+        }
+    }
+    
+    
+
+}
+
+enum HomeSectionType: String {
     case requiredAction = "Required Actions"
-    case insights = "Insights"
-    case recommendedAction  = "Recommended Actions"
+    case recommendedAction = "Recommended Actions"
+    case insight = "Insights"
+    case lastCard = "lastCard"
 }
 
 class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
@@ -36,17 +90,20 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     fileprivate var sharingInProgress = false
     
     let sectionToIndex = ["Required Actions": 0,
-                           "Insights": 1,
-                           "Analitycs": 2]
+                          "Insights": 1,
+                          "Analitycs": 2]
     
-    let indexToSection = [0:"Required Actions",
-                          1:"Insights",
+    let indexToSection = [0: HomeSectionType.requiredAction.rawValue,
+                          1: "Insights",
                           2: "Analitycs"]
     
     private let homeSectionCards: [HomeSectionCard] = [
+        /*
         HomeSectionCard(sectionName: .requiredAction, indexInSectionTable: 0, heightFooter: 0, heightHeader: 0, heightCell: 479),
         HomeSectionCard(sectionName: .insights, indexInSectionTable: 0, heightFooter: 0, heightHeader: 0, heightCell: 479),
-        HomeSectionCard(sectionName: .recommendedAction, indexInSectionTable: 0, heightFooter: 0, heightHeader: 0, heightCell: 479),
+        HomeSectionCard(sectionName: .recommendedAction, indexInSectionTable: 0, heightFooter: 0, heightHeader: 0, heightCell: 479)
+ */
+        // HomeSectionCard(sectionName: HomeSectionName(rawValue: "")!, indexInSectionTable: 3, heightFooter: 0, heightHeader: 0, heightCell: 200)
     ]
     
     var requiredActionHandler = RequiredActionHandler()
@@ -129,23 +186,32 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         addImageOnLastCard()
         createItemsLocally()
-        
     }
     
     
     internal func createItemsLocally() {
         try! store.realm.write {
-            //store.realm.delete(store.getFeedCards())
-            //store.realm.deleteAll()
+            store.realm.delete(store.getFeedCards())
+            
             let todoCard = FeedCard()
-            todoCard.section = "Recommended Actions"
-            todoCard.type = "recommended_action"
+            todoCard.section = "Required Actions"
+            todoCard.type = "required_action"
             todoCard.cardId = "12523dadfsgfa5"
             store.realm.add(todoCard, update: true)
         }
         
-        tableView.reloadData()
+        
         print(store.getFeedCards())
+        
+        
+        let sectionString = indexToSection[0]
+        print(sectionString!)
+        
+        let homeSection = HomeSection(rawValue: sectionString!)
+        
+        print(homeSection)
+        print(homeSection?.getSectionHeight())
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -243,9 +309,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             return UITableViewCell()
         }
         print(sectionIdx)
-        print(homeSectionCards[sectionIdx])
         
-        let sectionCards = store.getFeedCardsWithSection(homeSectionCards[sectionIdx].sectionName.rawValue)
+        return UITableViewCell()
+        
+        //let sectionCards = store.getFeedCardsWithSection(homeSectionCards[sectionIdx].sectionName.rawValue)
+        let sectionCards = store.getFeedCardsWithSection(indexToSection[sectionIdx]!)
         
         
         if(sectionCards.count == 0) {
@@ -391,12 +459,22 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        let sectionString = indexToSection[section]
+        
+        
+        guard let homeSection = HomeSection(rawValue: sectionString!) else { return 0 }
+        
+        print(homeSection.getSectionHeaderHeight())
+        return homeSection.getSectionHeaderHeight()
+        
+        
         print(shouldDisplayHeaderCell)
         var height: CGFloat = 0;
         if( section == indexToSection.count) {
             return 0
         }
-        
+        return 80
         let sectionCards = store.getFeedCardsWithSection(indexToSection[section]!)
         if sectionCards.count > 0 {
             let item = sectionCards[0]
@@ -424,7 +502,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
+        let sectionString = indexToSection[indexPath.section]
+        guard let homeSection = HomeSection(rawValue: sectionString!) else { return 0 }
+        return homeSection.getSectionHeight()
         
         if isMoreInfoType {
             return 226
@@ -644,7 +724,7 @@ extension HomeHubViewController {
     
     
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
-
+        print(store.getFeedCards())
         self.tableView.reloadData()
         
     }
