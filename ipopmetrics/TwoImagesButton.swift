@@ -173,6 +173,11 @@ class TwoImagesButton: RoundButton {
         case .linkedin:
             leftHandImage = UIImage(named: "iconLinkedin")
             leftImageView.frame.origin.y = 14
+        case .loadAll:
+            leftHandImage = UIImage(named:"icon2CtaShowItems")
+            rightHandImage = UIImage(named: "iconDown")
+            leftImageView.frame.origin.y = 14
+            rightImageView.frame.origin.x = 58
         default:
             break
         }
@@ -206,4 +211,5 @@ enum ImageButtonType {
     case facebook
     case linkedin
     case cancel
+    case loadAll
 }

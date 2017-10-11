@@ -30,8 +30,6 @@ class  MoreInfoViewCell: UITableViewCell {
         toolbarView.backgroundColor = UIColor(red: 101/255, green: 108/255, blue: 114/255, alpha: 1)
         setUpFooter()
         setUpShadowLayer()
-        
-        messageLbl.setLineSpacingAndTitle(text: "Dive deeper and go further Here are (2) extra cards for you to get even better.", spacing: 2.3,letterSpacing: 0.5)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -57,10 +55,10 @@ class  MoreInfoViewCell: UITableViewCell {
     }
     
     private func setUpFooter() {
-        
-        footerView.actionButton.leftHandImage = UIImage(named:"icon2CtaShowItems")
-        footerView.informationBtn.isHidden = true
-        footerView.approveLbl.text = "Show Items"
+        footerView.hideButton(button: footerView.informationBtn)
+        footerView.hideButton(button: footerView.loadMoreBtn)
+        footerView.xButton.alpha = 1
+        footerView.approveLbl.text = "Show Additional Items"
     }
     
     private func setUpShadowLayer() {
@@ -77,6 +75,11 @@ class  MoreInfoViewCell: UITableViewCell {
         shadowLayer.layer.cornerRadius = 12
         self.containerView.layer.cornerRadius = 12
         
+    }
+    
+    func setActionCardCount(numberOfActionCards: Int) {
+        print("set up more info card message and count")
+        messageLbl.setLineSpacingAndTitle(text: "Dive deeper and go further Here are (\(numberOfActionCards)) extra cards for you to get even better.", spacing: 2.3,letterSpacing: 0.5)
     }
     
 }
