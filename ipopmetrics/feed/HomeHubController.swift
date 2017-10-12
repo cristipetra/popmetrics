@@ -264,7 +264,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             return 1
         }
         
-        return store.getFeedCardsWithSection(indexToSection[section]!).count
+        return getSectionCards(section).count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
