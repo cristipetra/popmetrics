@@ -265,29 +265,6 @@ class ToDoViewController: BaseViewController {
         self.present(modalViewController, animated: true, completion: nil)
     }
     
-    func fetchItems(silent:Bool) {
-        //        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
-        //        let jsonData : NSData = NSData(contentsOfFile: path!)!
-        TodoApi().getItems(currentBrandId) { responseWrapper, error in
-            if error != nil {
-                let message = "An error has occurred. Please try again later."
-                self.presentAlertWithTitle("Error", message: message)
-                return
-            }
-            if "success" != responseWrapper?.code {
-                self.presentAlertWithTitle("Error", message: (responseWrapper?.message)!)
-                return
-            }
-            else {
-                self.store.updateTodos((responseWrapper?.data)!)
-                self.tableView.isHidden = false
-                self.tableView.reloadData()
-                self.setupTopViewItemCount()
-            }
-        }
-        
-    }
-    
 }
 
 extension ToDoViewController: ChangeCellProtocol {
@@ -350,13 +327,17 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
+        cell.aproveButton.addTarget(self, action: #selector(handlerApproveCard), for: .touchUpInside)
         cell.configure(item: item)
         DispatchQueue.main.async {
             self.sideShadow(view: cell.containerView)
         }
         cell.selectionStyle = .none
         return cell
-        
+    }
+    
+    func handlerApproveCard() {
+        print("approve card")
     }
     
     func sideShadow(view: UIView) {

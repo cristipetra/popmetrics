@@ -51,6 +51,10 @@ class TwoColorButton: UIButton {
     }
     
     func setupView() {
+        topView.isUserInteractionEnabled = false
+        bottomView.isUserInteractionEnabled = false
+        imgView.isUserInteractionEnabled = false
+        label.isUserInteractionEnabled = false
         self.layer.masksToBounds = false
         DispatchQueue.main.async {
             self.addShadowForRoundedButton()
