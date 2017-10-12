@@ -84,6 +84,12 @@ class TwoColorButton: UIButton {
             imgView.heightAnchor.constraint(equalToConstant: 23)
             ]
         )
+        
+        self.addTarget(self, action: #selector(animationHandler), for: .touchUpInside)
+    }
+    
+    internal func animationHandler() {
+       
     }
     
     func addShadowForRoundedButton() {
@@ -114,6 +120,12 @@ class TwoColorButton: UIButton {
         self.bringSubview(toFront: imgView)
         imgView.contentMode = .scaleAspectFill
         imgView.tintColor = PopmetricsColor.todoBrown
+    }
+    
+    func changeImgConstrain(value: Int) {
+        label.removeFromSuperview()
+        
+        imgView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: CGFloat(value)).isActive = true
     }
 }
 

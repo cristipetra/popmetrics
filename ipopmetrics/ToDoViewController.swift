@@ -24,6 +24,7 @@ class ToDoViewController: BaseViewController {
     
     var topHeaderView: HeaderView!
     var toDoNoteView: NoteView!
+    let approvedView = ToDoApprovedView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
     
     @IBOutlet weak var topAnchorTableView: NSLayoutConstraint!
     
@@ -80,7 +81,7 @@ class ToDoViewController: BaseViewController {
         transitionView.addSubview(tableView)
         
         createItemsLocally()
-        
+        addApprovedView()
         
         topHeaderView.changeVisibilityExpandView(visible: false)
     }
@@ -336,8 +337,41 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         return cell
     }
     
+    func addApprovedView() {
+        self.approvedView.isHidden = true
+        self.view.insertSubview(approvedView, aboveSubview: tableView)
+        approvedView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 50).isActive = true
+        approvedView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
+        
+    }
+    
     func handlerApproveCard() {
         print("approve card")
+        
+        self.approvedView.isHidden = false
+        
+        self.approvedView.transform = CGAffineTransform(translationX: 0, y: 0)
+        
+        if approvedView.transform == .identity {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.approvedView.transform = CGAffineTransform(translationX: 0, y: -120)
+                Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
+                    self.hideView()
+                })
+                
+            })
+        } else {
+            UIView.animate(withDuration: 1, animations: {
+                self.approvedView.transform = .identity
+            })
+            
+        }
+    }
+    
+    func hideView() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.approvedView.transform = CGAffineTransform(translationX: 0, y: 50)
+        })
     }
     
     func sideShadow(view: UIView) {
@@ -507,6 +541,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             return 459
         }
         return 148
+        
     }
     
     

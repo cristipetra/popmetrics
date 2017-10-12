@@ -19,6 +19,7 @@ class ToDoCardCell: UITableViewCell {
     @IBOutlet weak var messageLbl: UILabel!
     @IBOutlet weak var containerView: UIView!
     
+    @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
     
     var todoItem: TodoSocialPost!;
     
@@ -36,6 +37,9 @@ class ToDoCardCell: UITableViewCell {
         self.backgroundColor = UIColor.feedBackgroundColor()
         addStatusCardTypeView()
         setupCorners()
+        
+        
+        
         //        DispatchQueue.main.async {
         //            self.approveBtn.layer.masksToBounds = false
         //            self.approveBtn.layer.cornerRadius = self.approveBtn.frame.height / 2
@@ -49,6 +53,26 @@ class ToDoCardCell: UITableViewCell {
         messageLbl.text = todoItem.articleText
         messageLbl.adjustLabelSpacing(spacing: 0, lineHeight: 18, letterSpacing: 0.4)
         setupStatusCardView( approved: (item.status == "approved" || item.status == "denied"))
+        
+        aproveButton.addTarget(self, action: #selector(animationHandler), for: .touchUpInside)
+    }
+    
+    func animationHandler() {
+        animateButton(button: aproveButton)
+    }
+    
+    internal func animateButton(button: TwoColorButton) {
+        self.buttonWidthConstraint.constant += -115
+        //   self.buttonLeadingConstraint.constant += 95
+        //        button.label.text = ""
+        //        button.label.isHidden = true
+        button.image = UIImage(named: "iconCheck")
+        button.changeImgConstrain(value: 10)
+        UIView.animate(withDuration: 0.2, delay: 0.0, animations: {
+            self.layoutIfNeeded()
+        }) { (completion) in
+            button.alpha = 1.0
+        }
     }
     
     func setupCorners() {

@@ -161,6 +161,7 @@
             <connections>
                 <outlet property="aproveButton" destination="eOw-MG-0y9" id="44E-gz-hcq"/>
                 <outlet property="backgroundImage" destination="WUH-7z-lCh" id="G7Z-uP-MBV"/>
+                <outlet property="buttonWidthConstraint" destination="hNc-Q5-C5l" id="G0z-W5-7VQ"/>
                 <outlet property="circleView" destination="uUR-ad-KNx" id="O4k-Im-SOX"/>
                 <outlet property="containerStackView" destination="a4i-HK-UL6" id="bJk-GG-uaQ"/>
                 <outlet property="containerView" destination="5HZ-Nj-Ugw" id="DT5-22-C4z"/>

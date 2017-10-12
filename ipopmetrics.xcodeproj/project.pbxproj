@@ -92,6 +92,7 @@
 		08B2803B1F5583CA00E36D19 /* sampleFeedStatistics.json in Resources */ = {isa = PBXBuildFile; fileRef = 08B2803A1F5583CA00E36D19 /* sampleFeedStatistics.json */; };
 		08B2803D1F55855500E36D19 /* StatisticsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B2803C1F55855500E36D19 /* StatisticsStore.swift */; };
 		08B2803F1F55862100E36D19 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B2803E1F55862100E36D19 /* Statistics.swift */; };
+		08B3AA9E1F8FA748008D0503 /* ToDoApprovedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3AA9D1F8FA748008D0503 /* ToDoApprovedView.swift */; };
 		08B485E01F20EA23005918A1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485DF1F20EA23005918A1 /* Config.swift */; };
 		08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485E31F210992005918A1 /* VideoScreenViewController.swift */; };
 		08B485E61F210A61005918A1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485E51F210A61005918A1 /* RoundButton.swift */; };
@@ -307,6 +308,7 @@
 		08B2803A1F5583CA00E36D19 /* sampleFeedStatistics.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFeedStatistics.json; sourceTree = "<group>"; };
 		08B2803C1F55855500E36D19 /* StatisticsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsStore.swift; sourceTree = "<group>"; };
 		08B2803E1F55862100E36D19 /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		08B3AA9D1F8FA748008D0503 /* ToDoApprovedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoApprovedView.swift; sourceTree = "<group>"; };
 		08B485DF1F20EA23005918A1 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		08B485E31F210992005918A1 /* VideoScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoScreenViewController.swift; sourceTree = "<group>"; };
 		08B485E51F210A61005918A1 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
@@ -727,6 +729,7 @@
 				08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */,
 				08AD60D71F5FF5E0007095B9 /* TodoCardMaximized.xib */,
 				08AD60D91F5FF63D007095B9 /* TodoCardMaximizedViewCell.swift */,
+				08B3AA9D1F8FA748008D0503 /* ToDoApprovedView.swift */,
 			);
 			name = todo;
 			sourceTree = "<group>";
@@ -1433,6 +1436,7 @@
 				1120F1FE1ECDF48F00576E39 /* CardActionHanlder.swift in Sources */,
 				08BD58021F7A2F3700FFDCFD /* IndividualTaskView.swift in Sources */,
 				08F368991F1903B100819CDE /* LastCardCell.swift in Sources */,
+				08B3AA9E1F8FA748008D0503 /* ToDoApprovedView.swift in Sources */,
 				0809AEB41F22183400A13178 /* Constants.swift in Sources */,
 				08D409CE1F73C3A800C5BB54 /* OnboardingFinalView.swift in Sources */,
 				116431DF1E2D4E81009AA59E /* UsersApi.swift in Sources */,
