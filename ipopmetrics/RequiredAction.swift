@@ -41,6 +41,8 @@ class RequiredAction: UITableViewCell {
         setUpTopView()
         setupCorners()
         setUpShadowLayer()
+        
+        selectionStyle = .none
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -67,6 +69,14 @@ class RequiredAction: UITableViewCell {
         
         titleLabel.textColor = PopmetricsColor.darkGrey
         messageLabel.textColor = PopmetricsColor.darkGrey
+        
+        configureFooterView()
+    }
+    
+    internal func configureFooterView() {
+        footerView.layer.backgroundColor = UIColor.clear.cgColor
+        footerView.approveLbl.textColor = UIColor.white
+        footerView.xButton.isHidden = true
     }
     
     internal func setupCorners() {

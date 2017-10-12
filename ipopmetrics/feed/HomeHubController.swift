@@ -19,7 +19,7 @@ enum HomeSection: String {
     case RequiredAction = "Required Actions"
     case RecommendedAction =  "Recommended Actions"
     case Insight = "Insights"
-    case Traffic = "traffic"
+    case Traffic = "Traffic"
     
     static let sectionTitles = [
         RequiredAction: "Required Actions",
@@ -63,16 +63,12 @@ enum HomeSection: String {
             return 0
         }
     }
-    
-    
-
 }
 
 enum HomeSectionType: String {
     case requiredAction = "Required Actions"
     case recommendedAction = "Recommended Actions"
     case insight = "Insights"
-    case lastCard = "lastCard"
 }
 
 class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
@@ -81,20 +77,17 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     let sectionToIndex = [HomeSectionType.requiredAction.rawValue: 0,
                           HomeSectionType.recommendedAction.rawValue: 1,
-                          "Insights": 2,
+                          HomeSectionType.insight.rawValue: 2,
                           "Analitycs": 3]
     
     let indexToSection = [0: HomeSectionType.requiredAction.rawValue,
                           1: HomeSectionType.recommendedAction.rawValue,
-                          2: "Insights",
+                          2: HomeSectionType.insight.rawValue,
                           3: "Analitycs"]
     
     var requiredActionHandler = RequiredActionHandler()
     let store = FeedStore.getInstance()
     
-    
-    
-
     var toDoCellHeight = 50 as CGFloat
 
     var isMoreInfoType = false
@@ -166,7 +159,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         setupTopHeaderView()
         
         addImageOnLastCard()
-        createItemsLocally()
+        //createItemsLocally()
     }
     
     
@@ -263,23 +256,13 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        print("numberOfSections \(store.countSections())")
-        
-        return store.countSections() + 1
-        return store.getFeedCards().count + 1
-        return sectionToIndex.count + 1
+        return store.countSections() + 1  // adding +1 for the last card
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isLastSection(section: section) {
             return 1
         }
-        print("number of rows in section: \(section)  \(getSectionCards(section).count)")
-        
-        return getSectionCards(section).count
-        
-        print(getSectionCards(section))
-        
         return store.getFeedCardsWithSection(indexToSection[section]!).count
     }
     
@@ -304,11 +287,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         switch(item.type) {    
             case "required_action":
                 let cell = tableView.dequeueReusableCell(withIdentifier: "requiredActionId", for: indexPath) as! RequiredAction
-                cell.selectionStyle = .none
-        
-                cell.footerView.layer.backgroundColor = UIColor.clear.cgColor
-                cell.footerView.approveLbl.textColor = UIColor.white
-                cell.footerView.xButton.isHidden = true
                 cell.configure(item, handler: self.requiredActionHandler)
                 cell.infoDelegate = self
                 if(sectionCards.count-1 == indexPath.row) {
@@ -357,7 +335,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     func isLastSection(section: Int) -> Bool {
-        if section == store.getFeedCards().count {
+        if section == store.countSections() {
             return true
         }
         return false
@@ -378,20 +356,18 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         self.tabBarController?.selectedIndex += 1
     }
     
+    /*
+     * Return cards for a specific section
+     */
     func getSectionCards(_ sectionIdx: Int) -> Results<FeedCard> {
-        
-        //print(store.getSectionCards())
-        
-        print(store.getFeedCards()[sectionIdx].section)
-        return store.getFeedCardsWithSection(store.getFeedCards()[sectionIdx].section)
+        return store.getFeedCardsWithSection(store.getSections()[sectionIdx])
     }
     
-    var shouldDisplayHeaderCell = false
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if isLastSection(section: section) {
+        if (isLastSection(section: section)) {
             return nil
         }
-
+        
         let sectionCards = getSectionCards(section)
         
         var itemType = "unknown"
@@ -441,16 +417,20 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         return homeSection.getSectionHeaderHeight()
     }
     
-    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let sectionString = indexToSection[indexPath.section]
-        guard let _ = sectionString else { return 0 }
-        guard let homeSection = HomeSection(rawValue: sectionString!) else { return 0 }
-        return homeSection.getSectionHeight()
+        if isLastSection(section: indexPath.section) {
+            return 261
+        }
         
         if isMoreInfoType {
             return 226
         }
+
+        let sectionString = indexToSection[indexPath.section]
+        guard let _ = sectionString else { return 0 }
+        guard let homeSection = HomeSection(rawValue: sectionString!) else { return 0 }
+        
+        return homeSection.getSectionHeight()
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -510,8 +490,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     @objc func handleRequiredAction(_ sender : UIButton){
         print("handling required action")
     }
-    
-    
     
 }
 
@@ -601,6 +579,3 @@ extension HomeHubViewController {
     }
 
 }
-
-
-

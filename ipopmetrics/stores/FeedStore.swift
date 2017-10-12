@@ -31,6 +31,11 @@ class FeedStore {
         return realm.objects(FeedCard.self).filter(predicate)
     }
     
+    public func getSections() -> [String] {
+        let distinctTypes = Array(Set(self.getFeedCards().value(forKey: "section") as! [String]))
+        return distinctTypes
+    }
+    
     public func countSections() -> Int {
         let distinctTypes = Array(Set(self.getFeedCards().value(forKey: "section") as! [String]))
         return distinctTypes.count
