@@ -12,24 +12,14 @@ import MGSwipeTableCell
 import DGElasticPullToRefresh
 import BubbleTransition
 import EZAlertController
-
-
-struct HomeSectionCard {
-    //let title: String = ""
-    //let index: Int = 0
-    //var sectionName: HomeSectionName = .requiredAction
-    var indexInSectionTable: Int = 0
-    var heightFooter: Int = 0
-    var heightHeader: Int = 0
-    var heightCell: CGFloat = 0
-    
-}
+import RealmSwift
 
 
 enum HomeSection: String {
-    case RequiredAction = "RequiredAction"
+    case RequiredAction = "Required Actions"
     case RecommendedAction =  "Recommended Actions"
     case Insight = "Insights"
+    case Traffic = "traffic"
     
     static let sectionTitles = [
         RequiredAction: "Required Actions",
@@ -46,7 +36,8 @@ enum HomeSection: String {
     static let sectionHeight = [
         RequiredAction: 479,
         Insight: 479,
-        RecommendedAction: 479
+        RecommendedAction: 479,
+        Traffic: 424
     ]
     
     func sectionTitle() -> String {
@@ -58,7 +49,6 @@ enum HomeSection: String {
     }
     
     func getSectionHeaderHeight() -> CGFloat {
-        return 0
         if let sectionHeaderHeight = HomeSection.sectionHeaderHeight[self] {
             return CGFloat(sectionHeaderHeight)
         } else {
@@ -89,33 +79,24 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     fileprivate var sharingInProgress = false
     
-    let sectionToIndex = ["Required Actions": 0,
-                          "Insights": 1,
-                          "Analitycs": 2]
+    let sectionToIndex = [HomeSectionType.requiredAction.rawValue: 0,
+                          HomeSectionType.recommendedAction.rawValue: 1,
+                          "Insights": 2,
+                          "Analitycs": 3]
     
     let indexToSection = [0: HomeSectionType.requiredAction.rawValue,
-                          1: "Insights",
-                          2: "Analitycs"]
-    
-    private let homeSectionCards: [HomeSectionCard] = [
-        /*
-        HomeSectionCard(sectionName: .requiredAction, indexInSectionTable: 0, heightFooter: 0, heightHeader: 0, heightCell: 479),
-        HomeSectionCard(sectionName: .insights, indexInSectionTable: 0, heightFooter: 0, heightHeader: 0, heightCell: 479),
-        HomeSectionCard(sectionName: .recommendedAction, indexInSectionTable: 0, heightFooter: 0, heightHeader: 0, heightCell: 479)
- */
-        // HomeSectionCard(sectionName: HomeSectionName(rawValue: "")!, indexInSectionTable: 3, heightFooter: 0, heightHeader: 0, heightCell: 200)
-    ]
+                          1: HomeSectionType.recommendedAction.rawValue,
+                          2: "Insights",
+                          3: "Analitycs"]
     
     var requiredActionHandler = RequiredActionHandler()
     let store = FeedStore.getInstance()
     
     
     
-    var shouldDisplayCell = true
-    var isInfoCellType = false;
+
     var toDoCellHeight = 50 as CGFloat
-    var isToDoCellType = false
-    var isTrafficCard = false
+
     var isMoreInfoType = false
     
     let transition = BubbleTransition();
@@ -198,19 +179,25 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             todoCard.type = "required_action"
             todoCard.cardId = "12523dadfsgfa5"
             store.realm.add(todoCard, update: true)
+            
+            let todoCard1 = FeedCard()
+            todoCard1.section = "Required Actions"
+            todoCard1.type = "required_action"
+            todoCard1.cardId = "12523dafsdasfddfsgfa5"
+            store.realm.add(todoCard1, update: true)
+            
+            let todoCard2 = FeedCard()
+            todoCard2.section = "Required Actions"
+            todoCard2.type = "required_action"
+            todoCard2.cardId = "12523dafsdfsdafasfddfsgfa5"
+            store.realm.add(todoCard2, update: true)
+ 
+            let tmpCard = FeedCard()
+            tmpCard.section = HomeSectionType.recommendedAction.rawValue
+            tmpCard.type = "recommended_action"
+            tmpCard.cardId = "adsfaasfq24521"
+            store.realm.add(tmpCard, update: true)
         }
-        
-        
-        print(store.getFeedCards())
-        
-        
-        let sectionString = indexToSection[0]
-        print(sectionString!)
-        
-        let homeSection = HomeSection(rawValue: sectionString!)
-        
-        print(homeSection)
-        print(homeSection?.getSectionHeight())
         
     }
     
@@ -276,16 +263,24 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
+        print("numberOfSections \(store.countSections())")
+        
+        return store.countSections() + 1
         return store.getFeedCards().count + 1
         return sectionToIndex.count + 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (section == (store.getFeedCards().count + 1)) {
+        if isLastSection(section: section) {
             return 1
         }
-        return 1
-        //return store.getFeedCardsWithSection(indexToSection[section]!).count
+        print("number of rows in section: \(section)  \(getSectionCards(section).count)")
+        
+        return getSectionCards(section).count
+        
+        print(getSectionCards(section))
+        
+        return store.getFeedCardsWithSection(indexToSection[section]!).count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -302,27 +297,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             return cell
         }
         
-        //let sectionCards = store.getFeedCardsWithSection(indexToSection[sectionIdx]!)
-        //print(homeSectionCards[])
-        
-        if( sectionIdx == 3) {
-            return UITableViewCell()
-        }
-        print(sectionIdx)
-        
-        return UITableViewCell()
-        
-        //let sectionCards = store.getFeedCardsWithSection(homeSectionCards[sectionIdx].sectionName.rawValue)
-        let sectionCards = store.getFeedCardsWithSection(indexToSection[sectionIdx]!)
-        
-        
-        if(sectionCards.count == 0) {
-            return UITableViewCell()
-        }
-        
+        let sectionCards = getSectionCards(sectionIdx)
+
         let item = sectionCards[rowIdx]
-        
-        print(item)
         
         switch(item.type) {    
             case "required_action":
@@ -359,7 +336,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.footerView.informationBtn.addTarget(self, action: #selector(showTooltip(_:)), for: .touchUpInside)
                 return cell
             case "traffic":
-                isTrafficCard = true
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficCard", for: indexPath) as! TrafficCardViewCell
                 cell.selectionStyle = .none
                 cell.connectionLine.isHidden = true
@@ -402,45 +378,50 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         self.tabBarController?.selectedIndex += 1
     }
     
+    func getSectionCards(_ sectionIdx: Int) -> Results<FeedCard> {
+        
+        //print(store.getSectionCards())
+        
+        print(store.getFeedCards()[sectionIdx].section)
+        return store.getFeedCardsWithSection(store.getFeedCards()[sectionIdx].section)
+    }
+    
     var shouldDisplayHeaderCell = false
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if(section == sectionToIndex.count) {
-            let cell = UITableViewCell()
-            return cell
+        if isLastSection(section: section) {
+            return nil
         }
-        let sectionCards = store.getFeedCardsWithSection(indexToSection[section]!)
+
+        let sectionCards = getSectionCards(section)
+        
         var itemType = "unknown"
         if sectionCards.count > 0 {
             itemType = sectionCards[0].type
         }
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
         
         switch itemType {
         case "required_action" :
-            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(cardType: .required)
             cell.sectionTitleLabel.text = "Required Actions";
             return cell
             
         case "todo":
-            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(cardType: .todo)
             cell.sectionTitleLabel.text = "To Do"
             return cell
             
-        case "recommended":
-            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+        case "recommended_action":
             cell.changeColor(cardType: .recommended)
             cell.sectionTitleLabel.text = "Recommended For You";
             return cell
             
         case "traffic":
-            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(cardType: .traffic)
             cell.sectionTitleLabel.text = "Traffic Intelligence";
             return cell
         case "insight":
-            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
             cell.changeColor(cardType: .insight)
             cell.sectionTitleLabel.text = "Recommended For You";
             return cell
@@ -449,154 +430,27 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             return cell
         }
     }
-
-    
-    /*
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return getCellHeight()
-    }
-     */
-    
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         let sectionString = indexToSection[section]
         
-        
+        guard let _  = sectionString else { return 0 }
         guard let homeSection = HomeSection(rawValue: sectionString!) else { return 0 }
         
-        print(homeSection.getSectionHeaderHeight())
         return homeSection.getSectionHeaderHeight()
-        
-        
-        print(shouldDisplayHeaderCell)
-        var height: CGFloat = 0;
-        if( section == indexToSection.count) {
-            return 0
-        }
-        return 80
-        let sectionCards = store.getFeedCardsWithSection(indexToSection[section]!)
-        if sectionCards.count > 0 {
-            let item = sectionCards[0]
-            
-            if( item.type == "required_action") {
-                height = (UsersStore.isTwitterConnected) ? 80 : 80
-            }
-            
-            if( item.type == "todo") {
-                height = 80;
-            }
-            if( item.type == "recommended") {
-                height = 80
-            }
-            if (item.type == "traffic") {
-                height = 80
-            }
-            if (item.type == "insight") {
-                height = 80
-            }
-        }
-        
-        return height
     }
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let sectionString = indexToSection[indexPath.section]
+        guard let _ = sectionString else { return 0 }
         guard let homeSection = HomeSection(rawValue: sectionString!) else { return 0 }
         return homeSection.getSectionHeight()
         
         if isMoreInfoType {
             return 226
         }
-        if isToDoCellType {
-            return toDoCellHeight
-        } else if isTrafficCard {
-            return 424
-        }
-        return 479
-        return shouldDisplayCell ? getCellHeight() : 0
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if SID_DETAILS_NAV_VC == segue.identifier {
-//            let dest = segue.destination as! PropertyDetailsNavigationController
-//            dest.property = getPropertyForIndexPath(selectedIndexPath!)
-//        }
-    }
-
-    
-    fileprivate func getCellHeight() -> CGFloat {
-        let a =  CGFloat(((tableView.frame.width * 9.0) / 16.0) + 16) // 16 is the padding
-        var heightCell: CGFloat = 479
-        if(isInfoCellType) {
-            heightCell = 261
-        }
-        return heightCell
-        // return a
-    }
-    
-    
-    fileprivate func createSwipeButtons() -> [MGSwipeButton] {
-        let deleteBtn = MGSwipeButton(
-            title: "Action",
-            icon: UIImage(named: "ic_delete_white"),
-            backgroundColor: PopmetricsColor.redMedium,
-            callback: { (sender: MGSwipeTableCell!) -> Bool in
-                
-                let alert = UIAlertController(title: "Action 1?",
-                                              message: "Are you sure ? ... ", preferredStyle: .alert)
-                let yesAction = UIAlertAction(title: "Yes", style: .destructive) { (alert: UIAlertAction!) -> Void in
-                    
-//                    let cell =  sender as! FeedTableViewCell
-//                    cell.property.deletedAt = NSDate()
-//                    PropertiesStore.getInstance().saveState()
-                }
-                let noAction = UIAlertAction(title: "No", style: .default) { (alert: UIAlertAction!) -> Void in
-                    //print("You pressed Cancel")
-                }
-                
-                alert.addAction(yesAction)
-                alert.addAction(noAction)
-                
-                self.present(alert, animated: true, completion:nil)
-                
-                return true
-        }
-        )
-        deleteBtn.centerIconOverText()
-        deleteBtn.setPadding(8)
-        
-        let shareBtn = MGSwipeButton(
-            title: "Action2",
-            icon: UIImage(named: "ic_share_white"),
-            backgroundColor: PopmetricsColor.blueMedium,
-            callback: { (sender: MGSwipeTableCell!) -> Bool in
-                print("Pressed Share")
-                return true
-                
-        }
-        )
-        shareBtn.centerIconOverText()
-        shareBtn.setPadding(8)
-        
-        //        let reviewBtn = MGSwipeButton(
-        //            title: "Review",
-        //            icon: UIImage(named: "ic_favorite_white"),
-        //            backgroundColor: HomzenColor.grayMedium,
-        //            callback: { (sender: MGSwipeTableCell!) -> Bool in
-        //                print("Pressed Review")
-        //                return true
-        //        }
-        //        )
-        //        reviewBtn.centerIconOverText()
-        //        reviewBtn.setPadding(8)
-        
-        return [deleteBtn, shareBtn]
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -724,7 +578,6 @@ extension HomeHubViewController {
     
     
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
-        print(store.getFeedCards())
         self.tableView.reloadData()
         
     }
