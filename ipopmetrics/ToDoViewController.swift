@@ -80,6 +80,9 @@ class ToDoViewController: BaseViewController {
         transitionView.addSubview(tableView)
         
         createItemsLocally()
+        
+        
+        topHeaderView.changeVisibilityExpandView(visible: false)
     }
     
     func createItemsLocally() {
