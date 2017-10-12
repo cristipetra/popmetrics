@@ -191,8 +191,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             tmpCard.cardId = "adsfaasfq24521"
             store.realm.add(tmpCard, update: true)
         }
-        
-        createItemsLocally()
     }
     
     override func viewDidAppear(_ animated: Bool) {
