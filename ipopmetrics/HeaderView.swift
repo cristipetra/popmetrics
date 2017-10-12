@@ -86,10 +86,6 @@ class HeaderView: UIView {
         statusLbl.text = "Attention required"
         statusLbl.textColor = PopmetricsColor.darkGrey
         
-        let rightContainer: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 30))
-        rightContainer.translatesAutoresizingMaskIntoConstraints = false
-        rightContainer.backgroundColor = UIColor.red
-        
         //stackView
         stackView.axis = .horizontal
         stackView.alignment = .center
@@ -168,6 +164,16 @@ class HeaderView: UIView {
         self.stackView.isHidden = isHidden
     }
     
+    
+    internal func changeVisibilityExpandView(visible: Bool) {
+        if visible {
+            
+        } else {
+            iconView.isHidden = true
+            btnIcon.isHidden = true
+            iconLbl.isHidden = true
+        }
+    }
 }
 
 enum  HeaderViewType {

@@ -59,7 +59,6 @@
                             <constraint firstItem="2nx-Bd-phr" firstAttribute="leading" secondItem="nGq-H7-3Ig" secondAttribute="leading" constant="16" id="BA9-Lq-pCc"/>
                             <constraint firstItem="eM7-9m-LX5" firstAttribute="leading" secondItem="nGq-H7-3Ig" secondAttribute="leading" constant="11" id="C0R-pr-8Oy"/>
                             <constraint firstAttribute="bottom" secondItem="2nx-Bd-phr" secondAttribute="bottom" id="QlC-oh-E1t"/>
-                            <constraint firstItem="KUX-ot-Mkw" firstAttribute="leading" secondItem="eM7-9m-LX5" secondAttribute="trailing" constant="19" id="Wc4-fk-8qr"/>
                             <constraint firstAttribute="bottom" secondItem="eM7-9m-LX5" secondAttribute="bottom" constant="59" id="gY9-9b-83E"/>
                         </constraints>
                     </view>
@@ -77,6 +76,7 @@
                     <constraint firstAttribute="trailing" secondItem="nGq-H7-3Ig" secondAttribute="trailing" constant="16" id="Vlc-Xj-lcG"/>
                     <constraint firstItem="o5w-nM-Gu8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ZGu-PB-B5E"/>
                     <constraint firstItem="nGq-H7-3Ig" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="bPH-z5-WMR"/>
+                    <constraint firstItem="KUX-ot-Mkw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="50" id="bV8-UV-hPV"/>
                     <constraint firstAttribute="bottom" secondItem="nGq-H7-3Ig" secondAttribute="bottom" id="iyy-L6-tYY"/>
                     <constraint firstItem="nGq-H7-3Ig" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="mig-8T-DJT"/>
                 </constraints>
@@ -87,6 +87,7 @@
             <connections>
                 <outlet property="connectionView" destination="2nx-Bd-phr" id="sI9-y3-9S5"/>
                 <outlet property="containerView" destination="H2p-sc-9uM" id="fvb-In-qre"/>
+                <outlet property="leftConstraintLabel" destination="bV8-UV-hPV" id="iAF-LO-8pm"/>
                 <outlet property="roundConnectionView" destination="eM7-9m-LX5" id="lcA-fh-fR1"/>
                 <outlet property="sectionTitleLabel" destination="KUX-ot-Mkw" id="5bf-Z8-10v"/>
                 <outlet property="toolbarView" destination="o5w-nM-Gu8" id="WVD-P7-9Am"/>

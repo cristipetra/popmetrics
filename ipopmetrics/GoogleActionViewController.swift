@@ -62,16 +62,18 @@ class GoogleActionViewController: UIViewController {
         self.containerView.addSubview(footerView)
         footerView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor).isActive = true
         footerView.rightAnchor.constraint(equalTo: self.containerView.rightAnchor).isActive = true
+        
         footerBottomConstraint = footerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor,constant: 93)
         //footerTopConstraint = footerView.topAnchor.constraint(equalTo: self.containerView.bottomAnchor, constant: 0)
         //footerTopConstraint.isActive = true
         
         footerBottomConstraint.isActive = true
         footerView.heightAnchor.constraint(equalToConstant: 93).isActive = true
-        footerView.informationBtn.isHidden = true
+        //footerView.informationBtn.isHidden = true
         footerView.xButton.isHidden = true
         footerView.addShadow(radius: 2, opacity: 0.3, offset: CGSize(width: 0.0, height: -3.0))
         footerView.backgroundColor = UIColor.white
+    
     }
     
     func setTaskView() {
@@ -148,7 +150,7 @@ class GoogleActionViewController: UIViewController {
     
     func setFooterButton(isTaskSelected: Bool) {
         if isTaskSelected {
-            footerView.actionButton.leftHandImage = UIImage(named: "icon2CtaGoogleicon")
+            footerView.actionButton.leftHandImage = UIImage(named: "iconGoogle")
             footerView.actionButton.rightHandImage = UIImage(named: "")
             footerView.actionButton.backgroundColor = PopmetricsColor.yellowBGColor
             footerView.approveLbl.text = "Connect Google"
@@ -162,7 +164,7 @@ class GoogleActionViewController: UIViewController {
     
     func setUpNavigationBar() {
         
-        let text = UIBarButtonItem(title: "Google Citation Error", style: .plain, target: self, action: nil)
+        let text = UIBarButtonItem(title: "Connect Google Analytics", style: .plain, target: self, action: nil)
         text.tintColor = UIColor(red: 67/255, green: 78/255, blue: 84/255, alpha: 1.0)
         let titleFont = UIFont(name: FontBook.bold, size: 18)
         text.setTitleTextAttributes([NSFontAttributeName: titleFont], for: .normal)

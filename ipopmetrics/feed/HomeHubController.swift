@@ -84,6 +84,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                           1: HomeSectionType.recommendedAction.rawValue,
                           2: HomeSectionType.insight.rawValue,
                           3: "Analitycs"]
+
     
     var requiredActionHandler = RequiredActionHandler()
     let store = FeedStore.getInstance()
@@ -144,7 +145,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let moreInfoNib = UINib(nibName: "MoreInfoViewCell", bundle: nil)
         tableView.register(moreInfoNib, forCellReuseIdentifier: "moreInfoId")
         
-        
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         
         loadingView.tintColor = PopmetricsColor.darkGrey
@@ -192,6 +192,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             store.realm.add(tmpCard, update: true)
         }
         
+        createItemsLocally()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -254,7 +255,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         self.present(modalViewController, animated: true, completion: nil)
     }
     
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return store.countSections() + 1  // adding +1 for the last card
     }
@@ -263,6 +263,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         if isLastSection(section: section) {
             return 1
         }
+        
         return store.getFeedCardsWithSection(indexToSection[section]!).count
     }
     
@@ -421,7 +422,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         if isLastSection(section: indexPath.section) {
             return 261
         }
-        
+
         if isMoreInfoType {
             return 226
         }

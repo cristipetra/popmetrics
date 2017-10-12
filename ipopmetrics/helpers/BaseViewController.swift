@@ -10,10 +10,13 @@ import UIKit
 import Crashlytics
 import SwiftRichString
 import NotificationBannerSwift
+import ReachabilitySwift
 
 class BaseViewController: UIViewController {
     
     fileprivate let progressHUD = ProgressHUD(text: "Loading...")
+    internal var offlineBanner: OfflineBanner!
+    internal var reachability: Reachability!
     
     func getMyNotification() -> Notification.Name {
         return Notification.Name(rawValue:"HomzenNotification")
@@ -24,10 +27,21 @@ class BaseViewController: UIViewController {
         
         let nc = NotificationCenter.default
         nc.addObserver(forName:getMyNotification(), object:nil, queue:nil, using:catchNotification)
-        nc.addObserver(forName:Notification.Popmetrics.ApiNotReachable, object:nil, queue:nil, using:catchApiNotReachable)
         
         view.addSubview(progressHUD)
         progressHUD.hide()
+        
+        
+        setupOfflineBanner()
+        ReachabilityManager.shared.addListener(listener: self)
+    }
+    
+    func setupOfflineBanner() {
+        if offlineBanner == nil {
+            offlineBanner = OfflineBanner(frame: CGRect(x: 0, y: 64, width: self.view.frame.width, height: 45))
+            self.navigationController?.view.addSubview(offlineBanner)
+            offlineBanner.isHidden = ReachabilityManager.shared.isNetworkAvailable
+        }
     }
     
     internal func setProgressIndicatorText(_ text: String?) {
@@ -99,18 +113,17 @@ class BaseViewController: UIViewController {
 }
 
 // Mark: notifications handler
-extension BaseViewController {
-    internal func catchApiNotReachable(notification: Notification) -> Void {
-        let first = Style.default {
-            $0.font = FontAttribute.init("OpenSans", size: 12)
-            $0.color = UIColor.white
+extension BaseViewController: NetworkStatusListener {
+    
+    func networkStatusDidChange(status: Reachability.NetworkStatus) {
+        
+        switch status {
+        case .notReachable:
+            offlineBanner.isHidden = false
+        case .reachableViaWiFi:
+            offlineBanner.isHidden = true
+        case .reachableViaWWAN:
+            offlineBanner.isHidden = true
         }
-        
-        let fullStr = "Error connecting to API!".set(style: first)
-        
-        let banner = NotificationBanner(attributedTitle: NSAttributedString(string: "Error connecting to API!"), attributedSubtitle: NSAttributedString(string: ""), leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
-        banner.backgroundColor = PopmetricsColor.notificationBGColor
-        banner.duration = TimeInterval(exactly: 7.0)!
-        banner.show()
     }
 }

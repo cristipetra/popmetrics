@@ -10,7 +10,7 @@ import UIKit
 import DGElasticPullToRefresh
 import SwiftyJSON
 
-class StatisticsViewController: UIViewController {
+class StatisticsViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topAnchorTableView: NSLayoutConstraint!
@@ -104,7 +104,6 @@ class StatisticsViewController: UIViewController {
     
     internal func createItemsLocally() {
         try! store.realm.write {
-            store.realm.delete(store.getStatisticMetricsForCard(store.getStatisticsCards()[0])) 
             
             let statsCard = StatisticsCard()
             statsCard.cardId = "dfas"
@@ -122,8 +121,8 @@ class StatisticsViewController: UIViewController {
             statsMet1.pageIndex = 1
             statsMet1.indexInPage = 0
             statsMet1.currentPeriodLabel = "Sep28-Aug27"
-            statsMet1.currentPeriodValues = "20 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 3 7 3 6 7 35 34 34 33 35"
-            statsMet1.prevPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 14 13 13 17 13 16 17 15 34";
+            statsMet1.currentPeriodValues = "20 23 12 14 1 1 1 1 1 1 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 3 7 3 6 7 35 34 34 33 35"
+            statsMet1.prevPeriodValues = "0 12 12 14 16 17 1 1 1 1 1 1 1 13 14 13 13 17 13 16 17 15 34 14 15 13 14 13 13 17 13 16 17 15 34";
             store.realm.add(statsMet1, update: true)
             
             let statsMet11 = StatisticMetric()
@@ -135,8 +134,9 @@ class StatisticsViewController: UIViewController {
             statsMet11.pageName = "qqq visits"
             statsMet11.pageIndex = 1
             statsMet11.indexInPage = 1
+            statsMet1.prevPeriodLabel = "fdsa"
             statsMet11.currentPeriodLabel = "Sep28-Aug27"
-            statsMet11.currentPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 6 27 3 4 3 3 7 3 6 7 5"
+            statsMet11.currentPeriodValues = "0 12 12 16 14 13 13 17 13 16 17 15 34 14 15 13 6 27 3 4 3 3 7 3 6 7 5"
             statsMet11.prevPeriodValues = "0 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 14 16 17 13 14 13 13 17"
             store.realm.add(statsMet11, update: true)
             
@@ -182,6 +182,7 @@ class StatisticsViewController: UIViewController {
             statsMet21.prevPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 14 16 17 13 14 13 13 17"
             store.realm.add(statsMet21, update: true)
         }
+        
         
     }
     
@@ -248,6 +249,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.selectionStyle = .none
             cell.backgroundColor = UIColor.feedBackgroundColor()
             cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_: card:)), for: .touchUpInside)
+            cell.footerView.hideButton(button: cell.footerView.xButton)
             cell.connectionLine.isHidden = true
             return cell
         case "insight" :
