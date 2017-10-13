@@ -340,11 +340,12 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func addApprovedView() {
-        self.approvedView.isHidden = true
         self.view.insertSubview(approvedView, aboveSubview: tableView)
+        
         approvedView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 50).isActive = true
         approvedView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
-        
+        approvedView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        approvedView.widthAnchor.constraint(equalToConstant: 234).isActive = true
     }
     
     func handlerApproveCard(_ button : TwoColorButton) {
@@ -354,23 +355,14 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
         removeCell(indexPath: indexPath!)
         
-        self.approvedView.isHidden = false
-        self.approvedView.transform = CGAffineTransform(translationX: 0, y: 0)
-        
         if approvedView.transform == .identity {
             UIView.animate(withDuration: 0.5, animations: {
                 self.approvedView.transform = CGAffineTransform(translationX: 0, y: -120)
                 Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
-                    self.hideView()
-                    
+                    self.hideApprovedView()
                 })
                 
             })
-        } else {
-            UIView.animate(withDuration: 1, animations: {
-                self.approvedView.transform = .identity
-            })
-            
         }
     }
     
@@ -394,9 +386,9 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         }
     }
     
-    func hideView() {
+    func hideApprovedView() {
         UIView.animate(withDuration: 0.5, animations: {
-            self.approvedView.transform = CGAffineTransform(translationX: 0, y: 50)
+            self.approvedView.transform = .identity //CGAffineTransform(translationX: 0, y: 50)
         })
     }
     

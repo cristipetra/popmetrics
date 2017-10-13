@@ -12,17 +12,24 @@ class ToDoApprovedView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setUpVew()
+        setupView()
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setUpVew()
+        setupView()
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
     // View
+    lazy var shadowLayer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.white
+        return view
+    }()
+    
     lazy var mainView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -32,7 +39,9 @@ class ToDoApprovedView: UIView {
     lazy var approvedLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Post approved!"
+        label.text = "Post approved! 🎉"
+        label.font = UIFont(name: FontBook.semibold, size: 15)
+        label.textColor = PopmetricsColor.darkGrey
         return label
     }()
     
@@ -40,39 +49,41 @@ class ToDoApprovedView: UIView {
         let button = UIButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Undo", for: .normal)
-        button.setTitleColor(PopmetricsColor.orange, for: .normal)
+        button.setTitleColor(UIColor(red: 255/255, green: 119/255, blue: 106/255, alpha: 1), for: .normal)
+        button.titleLabel?.font = UIFont(name: FontBook.semibold, size: 15)
         return button
         
     }()
     //End View
     
-    func setUpVew() {
-        self.addSubview(mainView)
+    func setupView() {
         
-        mainView.widthAnchor.constraint(equalToConstant: 270).isActive = true
-        mainView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        mainView.topAnchor.constraint(equalTo: self.topAnchor, constant: -40).isActive = true
-        mainView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 20).isActive = true
+        self.backgroundColor = UIColor.white
+        self.layer.cornerRadius = 10
+        self.insertSubview(shadowLayer, at: 0)
         
-        mainView.layer.cornerRadius = 5
-        
-        mainView.backgroundColor = .white
+        shadowLayer.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        shadowLayer.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        shadowLayer.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        shadowLayer.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         
         self.addSubview(approvedLabel)
-        approvedLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 5).isActive = true
-        approvedLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        approvedLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-        approvedLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        approvedLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
+        approvedLabel.widthAnchor.constraint(equalToConstant: 139).isActive = true
+        approvedLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
+        approvedLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
         
         self.addSubview(undoBtn)
-        undoBtn.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -5).isActive = true
-        undoBtn.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        undoBtn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-        undoBtn.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        undoBtn.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -22).isActive = true
+        undoBtn.widthAnchor.constraint(equalToConstant: 41).isActive = true
+        undoBtn.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
+        undoBtn.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
+        shadowLayer.layer.masksToBounds = false
+        addShadowToView(shadowLayer, radius: 3, opacity: 0.6)
         
+        shadowLayer.layer.cornerRadius = 10
         
-        self.backgroundColor = .red
     }
     
 }
