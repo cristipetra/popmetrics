@@ -58,21 +58,8 @@ class ToDoCardCell: UITableViewCell {
     }
     
     func animationHandler() {
-        animateButton(button: aproveButton)
-    }
-    
-    internal func animateButton(button: TwoColorButton) {
-        self.buttonWidthConstraint.constant += -115
-        //   self.buttonLeadingConstraint.constant += 95
-        //        button.label.text = ""
-        //        button.label.isHidden = true
-        button.image = UIImage(named: "iconCheck")
-        button.changeImgConstrain(value: 10)
-        UIView.animate(withDuration: 0.2, delay: 0.0, animations: {
-            self.layoutIfNeeded()
-        }) { (completion) in
-            button.alpha = 1.0
-        }
+        aproveButton.animateButton(button: aproveButton, decreaseWidth: 120, increaseWidth: 10, imgLeftSpace: 10)
+        aproveButton.removeTarget(self, action: #selector(animationHandler), for: .touchUpInside)
     }
     
     func setupCorners() {
