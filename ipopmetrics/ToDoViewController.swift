@@ -328,7 +328,9 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
-        cell.aproveButton.addTarget(self, action: #selector(handlerApproveCard), for: .touchUpInside)
+        
+        cell.aproveButton.indexPath = indexPath
+        cell.aproveButton.addTarget(self, action: #selector(handlerApproveCard(_:)), for: .touchUpInside)
         cell.configure(item: item)
         DispatchQueue.main.async {
             self.sideShadow(view: cell.containerView)
@@ -345,11 +347,14 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
     }
     
-    func handlerApproveCard() {
+    func handlerApproveCard(_ button : TwoColorButton) {
         print("approve card")
         
-        self.approvedView.isHidden = false
+        let indexPath = button.indexPath
         
+        removeCell(indexPath: indexPath!)
+        
+        self.approvedView.isHidden = false
         self.approvedView.transform = CGAffineTransform(translationX: 0, y: 0)
         
         if approvedView.transform == .identity {
@@ -357,6 +362,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
                 self.approvedView.transform = CGAffineTransform(translationX: 0, y: -120)
                 Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
                     self.hideView()
+                    
                 })
                 
             })
@@ -364,6 +370,26 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             UIView.animate(withDuration: 1, animations: {
                 self.approvedView.transform = .identity
             })
+            
+        }
+    }
+    
+    func removeCellWithAnimation(indexPath: IndexPath) {
+        //remove social post card from store
+        try! store.realm.write {
+            store.realm.delete( store.getTodoSocialPostsForCard(store.getTodoCards()[indexPath.section])[indexPath.row] )
+        }
+        tableView.deleteRows(at: [indexPath], with: .middle)
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
+            self.tableView.reloadData()
+        }
+    }
+    
+    func removeCell(indexPath: IndexPath) {
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { (timer) in
+            DispatchQueue.main.async {
+                self.removeCellWithAnimation(indexPath: indexPath)
+            }
             
         }
     }

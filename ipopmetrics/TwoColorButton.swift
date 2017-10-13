@@ -10,6 +10,9 @@ import UIKit
 
 @IBDesignable
 class TwoColorButton: UIButton {
+    
+    var indexPath: IndexPath!
+    
     @IBInspectable var topColor : UIColor = UIColor.white{
         didSet {
             setupTwoColorView(colors: [topColor, bottomColor])
