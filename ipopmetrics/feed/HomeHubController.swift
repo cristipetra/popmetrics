@@ -24,13 +24,7 @@ enum HomeSection: String {
     static let sectionTitles = [
         RequiredAction: "Required Actions",
         Insight: "Insights",
-        RecommendedAction: "fdasf"
-    ]
-    
-    static let sectionHeaderHeight = [
-        RequiredAction: 80,
-        Insight: 80,
-        RecommendedAction: 80
+        RecommendedAction: "Recommended Action"
     ]
     
     static let sectionHeight = [
@@ -39,6 +33,15 @@ enum HomeSection: String {
         RecommendedAction: 479,
         Traffic: 424
     ]
+    
+    
+    // position in table
+    static let sectionPosition = [
+        RequiredAction: 0,
+        RecommendedAction: 1,
+        Insight: 2
+    ]
+    
     
     func sectionTitle() -> String {
         if let sectionTitle = HomeSection.sectionTitles[self] {
@@ -49,11 +52,7 @@ enum HomeSection: String {
     }
     
     func getSectionHeaderHeight() -> CGFloat {
-        if let sectionHeaderHeight = HomeSection.sectionHeaderHeight[self] {
-            return CGFloat(sectionHeaderHeight)
-        } else {
-            return 0
-        }
+        return CGFloat(80)
     }
     
     func getSectionHeight() -> CGFloat {
@@ -63,28 +62,27 @@ enum HomeSection: String {
             return 0
         }
     }
+    
+    func getSectionPosition() -> Int {
+        return HomeSection.sectionPosition[self]!
+    }
 }
 
 enum HomeSectionType: String {
     case requiredAction = "Required Actions"
     case recommendedAction = "Recommended Actions"
     case insight = "Insights"
+    case analytics = "Analitycs"
 }
 
 class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     fileprivate var sharingInProgress = false
     
-    let sectionToIndex = [HomeSectionType.requiredAction.rawValue: 0,
-                          HomeSectionType.recommendedAction.rawValue: 1,
-                          HomeSectionType.insight.rawValue: 2,
-                          "Analitycs": 3]
-    
     let indexToSection = [0: HomeSectionType.requiredAction.rawValue,
                           1: HomeSectionType.recommendedAction.rawValue,
                           2: HomeSectionType.insight.rawValue,
-                          3: "Analitycs"]
-
+                          3: HomeSectionType.analytics.rawValue]
     
     var requiredActionHandler = RequiredActionHandler()
     let store = FeedStore.getInstance()
@@ -359,7 +357,28 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
      * Return cards for a specific section
      */
     func getSectionCards(_ sectionIdx: Int) -> Results<FeedCard> {
-        return store.getFeedCardsWithSection(store.getSections()[sectionIdx])
+        return store.getFeedCardsWithSection(getOrderedSections()[sectionIdx])
+    }
+
+    /*
+     * Order sections by section index and
+     */
+    func getOrderedSections() -> [String] {
+        let sections: [String] = store.getSections()
+
+        var orderedSections = Array(repeating: "", count: store.countSections())
+        
+        for section in sections {
+            guard let homeSection = HomeSection(rawValue: section) else { return [] }
+            var position = homeSection.getSectionPosition()
+            if(sections.count < homeSection.getSectionPosition()) {
+               position = sections.count - homeSection.getSectionPosition()
+            }
+            
+            orderedSections[position] = section
+        }
+        return orderedSections
+        
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -555,6 +574,7 @@ extension HomeHubViewController {
     
     
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
+        print(store.getFeedCards())
         self.tableView.reloadData()
         
     }
