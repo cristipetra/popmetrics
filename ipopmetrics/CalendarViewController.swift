@@ -26,14 +26,17 @@ class CalendarViewController: BaseViewController {
     @IBOutlet weak var todayLabelView: UIView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
-    
     @IBOutlet weak var topPickerStackViewWrapper: UIView!
     @IBOutlet weak var divider: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var topPickerStackViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var topAnchorTableView: NSLayoutConstraint!
+    @IBOutlet weak var calendarHeight: NSLayoutConstraint!
+    
+    internal var topHeaderView: HeaderView!
     var calendarNoteView: NoteView!
     
-    @IBOutlet weak var topAnchorTableView: NSLayoutConstraint!
     let transitionView = UIView(frame: CGRect(x: 0, y: 40, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     let store = CalendarFeedStore.getInstance()
@@ -47,15 +50,12 @@ class CalendarViewController: BaseViewController {
     var noItemsLoaded: [Int] = [3,3,3,3,3]
     var dayColors = Dictionary<Date, UIColor>()
     
-    @IBOutlet weak var calendarHeight: NSLayoutConstraint!
-    internal var topHeaderView: HeaderView!
     internal var isAnimatingHeader: Bool = false
-    
     
     var currentBrandId = UsersStore.currentBrandId
     
     var shouldReloadData: Bool = false
-    fileprivate var animateCard = false
+    fileprivate var didAnimateCardFirstTime = false
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -121,7 +121,7 @@ class CalendarViewController: BaseViewController {
     }
     
     internal func handlerAnimateCardAppearance() {
-        animateCard = true
+        didAnimateCardFirstTime = true
     }
     
     func setNoteView() {
@@ -196,7 +196,10 @@ class CalendarViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        /*
+        animateTransitionView()
+    }
+    
+    private func animateTransitionView() {
         transitionView.alpha = 0.7
         let tabInfo = MainTabInfo.getInstance()
         let xValue = tabInfo.currentItemIndex >= tabInfo.lastItemIndex ? CGFloat(20) : CGFloat(-20)
@@ -207,8 +210,8 @@ class CalendarViewController: BaseViewController {
                           animations: {
                             self.transitionView.frame.origin.x = 0
                             self.transitionView.alpha = 1
-        })
-        */
+                          }
+        )
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -216,9 +219,6 @@ class CalendarViewController: BaseViewController {
         createItemsLocally()
         
         tableView.isHidden = false
-    }
-    
-    func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
     }
     
     func setupTopHeaderView() {
@@ -297,13 +297,14 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             cell.cancelCardDelegate = self
             cell.maximizeDelegate = self
             
-            cell.layer.transform = CATransform3DMakeScale(1, 0.0, 1)
             
-            
-            if animateCard {
+            //if animateCard {
                 cell.layer.transform = CATransform3DMakeScale(1,0.0,1)
+            
+                self.animateCellAppearance(cell: cell)
+            
                 //animateCellAppearance(cell: cell)
-            }
+            //}
             return cell
         } else {
             let maxCell = tableView.dequeueReusableCell(withIdentifier: "extendedCell", for: indexPath) as! CalendarCardMaximizedViewCell
@@ -325,13 +326,12 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     }
     
     func animateCellAppearance(cell: CalendarCardSimpleViewCell) {
-        Timer.init(timeInterval: 2, repeats: false) { (timer) in
-            UIView.animate(withDuration: 2) {
-                cell.layer.transform = CATransform3DMakeScale(1,1,1)
-            }
-            
-            self.animateCard = false
+        print("animate cell appearance")
+        UIView.animate(withDuration: 0.5) {
+            cell.layer.transform = CATransform3DMakeScale(1,1,1)
         }
+        
+        self.didAnimateCardFirstTime = true
         
     }
     

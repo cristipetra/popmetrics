@@ -99,9 +99,10 @@ class TwoColorButton: UIButton {
         imgView.tintColor = PopmetricsColor.textGrey
     }
     
-    internal func animateButton(button: TwoColorButton, decreaseWidth: Float, increaseWidth: Float, imgLeftSpace: Float) {
+    internal func animateButton(decreaseWidth: Float, increaseWidth: Float, imgLeftSpace: Float) {
         label.removeFromSuperview()
         self.image = nil
+        let button = self
         UIView.animate(withDuration: 0.3, delay: 0.0, animations: {
             button.frame = CGRect(x: button.frame.origin.x + CGFloat(decreaseWidth), y: button.frame.origin.y, width: button.frame.size.width - CGFloat(decreaseWidth), height: button.frame.size.height)
         }) { (completion) in

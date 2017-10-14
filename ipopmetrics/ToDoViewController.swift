@@ -374,6 +374,8 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         tableView.deleteRows(at: [indexPath], with: .middle)
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
             self.tableView.reloadData()
+            
+            self.tabBarController?.selectedIndex += 1
         }
     }
     
