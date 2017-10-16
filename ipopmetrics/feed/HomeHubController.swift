@@ -418,10 +418,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         for section in sections {
             guard let homeSection = HomeSection(rawValue: section) else { return [] }
             var position = homeSection.getSectionPosition()
-            if(sections.count < homeSection.getSectionPosition()) {
+            if(sections.count <= homeSection.getSectionPosition()) {
                position = sections.count - homeSection.getSectionPosition()
             }
-            
             orderedSections[position] = section
         }
         return orderedSections
