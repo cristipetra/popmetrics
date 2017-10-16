@@ -90,6 +90,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     var toDoCellHeight = 50 as CGFloat
 
     var isMoreInfoType = false
+    var shouldDisplayCell = true
+    private var isLoadedAllRequiredCards = false
     
     let transition = BubbleTransition();
     var transitionButton:UIButton = UIButton();
@@ -175,6 +177,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             todoCard1.section = "Required Actions"
             todoCard1.type = "required_action"
             todoCard1.cardId = "12523dafsdasfddfsgfa5"
+            todoCard1.actionHandler = RequiredActionHandler.RequiredActionType.email.rawValue
+            todoCard1.headerTitle = "Double check your email!"
+            todoCard1.message = "We'll use your email to send your updates and reports on your business performance."
             store.realm.add(todoCard1, update: true)
             
             let todoCard2 = FeedCard()
@@ -263,10 +268,14 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         return getSectionCards(section).count
     }
     
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
+        
+        isMoreInfoType = false
+        shouldDisplayCell = true
         
         if (isLastSection(section: sectionIdx)) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
@@ -283,6 +292,30 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         switch(item.type) {    
             case "required_action":
+                
+                if isLoadedAllRequiredCards {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "requiredActionId", for: indexPath) as! RequiredAction
+                    cell.configure(item, handler: self.requiredActionHandler)
+                    cell.infoDelegate = self
+                    if(sectionCards.count-1 == indexPath.row) {
+                        cell.connectionLineView.isHidden = true
+                    } else {
+                        cell.connectionLineView.isHidden = false
+                    }
+                    return cell
+                }
+                
+                if(indexPath.row == 1) {
+                    isMoreInfoType = true
+                    let moreInfoCell = tableView.dequeueReusableCell(withIdentifier: "moreInfoId", for: indexPath) as! MoreInfoViewCell
+                    moreInfoCell.setActionCardCount(numberOfActionCards: sectionCards.count - 1)
+                    moreInfoCell.footerView.actionButton.addTarget(self, action: #selector(loadAllActionCards), for: .touchUpInside)
+                    return moreInfoCell
+                } else if (indexPath.row > 1) {
+                    shouldDisplayCell = false
+                    return UITableViewCell()
+                }
+            
                 let cell = tableView.dequeueReusableCell(withIdentifier: "requiredActionId", for: indexPath) as! RequiredAction
                 cell.configure(item, handler: self.requiredActionHandler)
                 cell.infoDelegate = self
@@ -328,6 +361,20 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 let cell = UITableViewCell()
                 return cell
             }
+        
+    }
+    
+    func loadAllActionCards() {
+        
+        self.isLoadedAllRequiredCards = true
+        //self.showActionAnimation = true
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .middle, animated: false)
+        }, completion: { (_) in
+            
+            self.tableView.reloadData()
+        })
         
     }
     
@@ -442,6 +489,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
 
         if isMoreInfoType {
             return 226
+        }
+        
+        if !shouldDisplayCell {
+            return 0
         }
 
         let sectionString = indexToSection[indexPath.section]

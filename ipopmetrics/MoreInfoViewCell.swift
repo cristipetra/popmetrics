@@ -30,6 +30,9 @@ class  MoreInfoViewCell: UITableViewCell {
         toolbarView.backgroundColor = UIColor(red: 101/255, green: 108/255, blue: 114/255, alpha: 1)
         setUpFooter()
         setUpShadowLayer()
+        
+        setUpToolbar()
+        footerView.actionButton.imageButtonType = .loadAll
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
