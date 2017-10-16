@@ -10,6 +10,9 @@ import UIKit
 
 @IBDesignable
 class TwoColorButton: UIButton {
+    
+    var indexPath: IndexPath!
+    
     @IBInspectable var topColor : UIColor = UIColor.white{
         didSet {
             setupTwoColorView(colors: [topColor, bottomColor])
@@ -52,17 +55,23 @@ class TwoColorButton: UIButton {
     
     func setupView() {
         self.layer.masksToBounds = false
+        self.isUserInteractionEnabled = true
         DispatchQueue.main.async {
             self.addShadowForRoundedButton()
         }
+        
         topView.translatesAutoresizingMaskIntoConstraints = false
         bottomView.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
         imgView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(topView)
+        topView.isUserInteractionEnabled = false
         self.addSubview(bottomView)
+        bottomView.isUserInteractionEnabled = false
         self.addSubview(label)
+        label.isUserInteractionEnabled = false
         self.addSubview(imgView)
+        imgView.isUserInteractionEnabled = false
         NSLayoutConstraint.activate([
             topView.topAnchor.constraint(equalTo: self.topAnchor),
             topView.leftAnchor.constraint(equalTo: self.leftAnchor),
@@ -72,14 +81,34 @@ class TwoColorButton: UIButton {
             bottomView.leftAnchor.constraint(equalTo: self.leftAnchor),
             bottomView.rightAnchor.constraint(equalTo: self.rightAnchor),
             bottomView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            label.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 17),
+            label.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 21),
             label.topAnchor.constraint(equalTo: self.topAnchor, constant: 9),
             label.heightAnchor.constraint(equalToConstant: 14),
-            imgView.leftAnchor.constraint(equalTo: label.rightAnchor, constant: 8),
-            imgView.topAnchor.constraint(equalTo: self.topAnchor, constant: 6),
-            imgView.heightAnchor.constraint(equalToConstant: 23)
+            imgView.leftAnchor.constraint(equalTo: label.rightAnchor, constant: 10),
+            imgView.topAnchor.constraint(equalTo: self.topAnchor, constant: 9),
+            imgView.heightAnchor.constraint(equalToConstant: 18)
             ]
         )
+    }
+    
+    func changeImgConstraint(value: Int) {
+        imgView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: CGFloat(value)).isActive = true
+        self.image = UIImage(named: "iconCheck")
+        self.layoutIfNeeded()
+        imgView.contentMode = .scaleAspectFit
+        imgView.tintColor = PopmetricsColor.textGrey
+    }
+    
+    internal func animateButton(decreaseWidth: Float, increaseWidth: Float, imgLeftSpace: Float) {
+        label.removeFromSuperview()
+        self.image = nil
+        let button = self
+        UIView.animate(withDuration: 0.3, delay: 0.0, animations: {
+            button.frame = CGRect(x: button.frame.origin.x + CGFloat(decreaseWidth), y: button.frame.origin.y, width: button.frame.size.width - CGFloat(decreaseWidth), height: button.frame.size.height)
+        }) { (completion) in
+            button.changeImgConstraint(value: Int(imgLeftSpace))
+            button.frame = CGRect(x: button.frame.origin.x - CGFloat(increaseWidth), y: button.frame.origin.y, width: button.frame.size.width + CGFloat(increaseWidth), height: button.frame.size.height)
+        }
     }
     
     func addShadowForRoundedButton() {
@@ -97,7 +126,7 @@ class TwoColorButton: UIButton {
     func changeLabelText() {
         print("change text")
         let attribute = [
-            NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 14),
+            NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 15),
             NSForegroundColorAttributeName: PopmetricsColor.todoBrown
         ]
         let attrString = NSAttributedString(string: labelText!, attributes: attribute)

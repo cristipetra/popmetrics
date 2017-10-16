@@ -19,6 +19,7 @@ class ToDoCardCell: UITableViewCell {
     @IBOutlet weak var messageLbl: UILabel!
     @IBOutlet weak var containerView: UIView!
     
+    @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
     
     var todoItem: TodoSocialPost!;
     
@@ -36,6 +37,9 @@ class ToDoCardCell: UITableViewCell {
         self.backgroundColor = UIColor.feedBackgroundColor()
         addStatusCardTypeView()
         setupCorners()
+        
+        
+        
         //        DispatchQueue.main.async {
         //            self.approveBtn.layer.masksToBounds = false
         //            self.approveBtn.layer.cornerRadius = self.approveBtn.frame.height / 2
@@ -49,6 +53,13 @@ class ToDoCardCell: UITableViewCell {
         messageLbl.text = todoItem.articleText
         messageLbl.adjustLabelSpacing(spacing: 0, lineHeight: 18, letterSpacing: 0.4)
         setupStatusCardView( approved: (item.status == "approved" || item.status == "denied"))
+        
+        aproveButton.addTarget(self, action: #selector(animationHandler), for: .touchUpInside)
+    }
+    
+    func animationHandler() {
+        aproveButton.animateButton(decreaseWidth: 120, increaseWidth: 10, imgLeftSpace: 10)
+        aproveButton.removeTarget(self, action: #selector(animationHandler), for: .touchUpInside)
     }
     
     func setupCorners() {

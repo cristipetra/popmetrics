@@ -111,7 +111,7 @@
                                                     <color key="value" red="0.98431372549999996" green="0.75294117650000003" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="Approve Post"/>
-                                                <userDefinedRuntimeAttribute type="image" keyPath="image" value="iconCalRightBold"/>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="image" value="iconRightYellow"/>
                                             </userDefinedRuntimeAttributes>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhb-xh-eNa">
@@ -161,6 +161,7 @@
             <connections>
                 <outlet property="aproveButton" destination="eOw-MG-0y9" id="44E-gz-hcq"/>
                 <outlet property="backgroundImage" destination="WUH-7z-lCh" id="G7Z-uP-MBV"/>
+                <outlet property="buttonWidthConstraint" destination="hNc-Q5-C5l" id="G0z-W5-7VQ"/>
                 <outlet property="circleView" destination="uUR-ad-KNx" id="O4k-Im-SOX"/>
                 <outlet property="containerStackView" destination="a4i-HK-UL6" id="bJk-GG-uaQ"/>
                 <outlet property="containerView" destination="5HZ-Nj-Ugw" id="DT5-22-C4z"/>
@@ -172,7 +173,7 @@
         </view>
     </objects>
     <resources>
-        <image name="iconCalRightBold" width="15" height="24"/>
+        <image name="iconRightYellow" width="11" height="25"/>
         <image name="icon_twitter" width="47" height="38"/>
         <image name="image_card_approval" width="375" height="225"/>
     </resources>

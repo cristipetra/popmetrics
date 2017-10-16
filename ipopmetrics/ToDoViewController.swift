@@ -24,6 +24,7 @@ class ToDoViewController: BaseViewController {
     
     var topHeaderView: HeaderView!
     var toDoNoteView: NoteView!
+    let approvedView = ToDoApprovedView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
     
     @IBOutlet weak var topAnchorTableView: NSLayoutConstraint!
     
@@ -80,7 +81,7 @@ class ToDoViewController: BaseViewController {
         transitionView.addSubview(tableView)
         
         createItemsLocally()
-        
+        addApprovedView()
         
         topHeaderView.changeVisibilityExpandView(visible: false)
     }
@@ -265,29 +266,6 @@ class ToDoViewController: BaseViewController {
         self.present(modalViewController, animated: true, completion: nil)
     }
     
-    func fetchItems(silent:Bool) {
-        //        let path = Bundle.main.path(forResource: "sampleFeed", ofType: "json")
-        //        let jsonData : NSData = NSData(contentsOfFile: path!)!
-        TodoApi().getItems(currentBrandId) { responseWrapper, error in
-            if error != nil {
-                let message = "An error has occurred. Please try again later."
-                self.presentAlertWithTitle("Error", message: message)
-                return
-            }
-            if "success" != responseWrapper?.code {
-                self.presentAlertWithTitle("Error", message: (responseWrapper?.message)!)
-                return
-            }
-            else {
-                self.store.updateTodos((responseWrapper?.data)!)
-                self.tableView.isHidden = false
-                self.tableView.reloadData()
-                self.setupTopViewItemCount()
-            }
-        }
-        
-    }
-    
 }
 
 extension ToDoViewController: ChangeCellProtocol {
@@ -350,13 +328,70 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
+        
+        cell.aproveButton.indexPath = indexPath
+        cell.aproveButton.addTarget(self, action: #selector(handlerApproveCard(_:)), for: .touchUpInside)
         cell.configure(item: item)
         DispatchQueue.main.async {
             self.sideShadow(view: cell.containerView)
         }
         cell.selectionStyle = .none
         return cell
+    }
+    
+    func addApprovedView() {
+        self.view.insertSubview(approvedView, aboveSubview: tableView)
         
+        approvedView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 50).isActive = true
+        approvedView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
+        approvedView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        approvedView.widthAnchor.constraint(equalToConstant: 234).isActive = true
+    }
+    
+    func handlerApproveCard(_ button : TwoColorButton) {
+        print("approve card")
+        
+        let indexPath = button.indexPath
+        
+        removeCell(indexPath: indexPath!)
+        
+        if approvedView.transform == .identity {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.approvedView.transform = CGAffineTransform(translationX: 0, y: -120)
+                Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
+                    self.hideApprovedView()
+                })
+                
+            })
+        }
+    }
+    
+    func removeCellWithAnimation(indexPath: IndexPath) {
+        //remove social post card from store
+        try! store.realm.write {
+            store.realm.delete( store.getTodoSocialPostsForCard(store.getTodoCards()[indexPath.section])[indexPath.row] )
+        }
+        tableView.deleteRows(at: [indexPath], with: .middle)
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
+            self.tableView.reloadData()
+            
+            self.tabBarController?.selectedIndex += 1
+        }
+    }
+    
+    func removeCell(indexPath: IndexPath) {
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { (timer) in
+            DispatchQueue.main.async {
+                self.removeCellWithAnimation(indexPath: indexPath)
+            }
+            
+        }
+    }
+    
+    func hideApprovedView() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.approvedView.transform = .identity //CGAffineTransform(translationX: 0, y: 50)
+        })
     }
     
     func sideShadow(view: UIView) {
@@ -526,6 +561,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             return 459
         }
         return 148
+        
     }
     
     

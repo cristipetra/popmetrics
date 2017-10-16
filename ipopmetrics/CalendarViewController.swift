@@ -26,14 +26,17 @@ class CalendarViewController: BaseViewController {
     @IBOutlet weak var todayLabelView: UIView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
-    
     @IBOutlet weak var topPickerStackViewWrapper: UIView!
     @IBOutlet weak var divider: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var topPickerStackViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var topAnchorTableView: NSLayoutConstraint!
+    @IBOutlet weak var calendarHeight: NSLayoutConstraint!
+    
+    internal var topHeaderView: HeaderView!
     var calendarNoteView: NoteView!
     
-    @IBOutlet weak var topAnchorTableView: NSLayoutConstraint!
     let transitionView = UIView(frame: CGRect(x: 0, y: 40, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     let store = CalendarFeedStore.getInstance()
@@ -47,14 +50,12 @@ class CalendarViewController: BaseViewController {
     var noItemsLoaded: [Int] = [3,3,3,3,3]
     var dayColors = Dictionary<Date, UIColor>()
     
-    @IBOutlet weak var calendarHeight: NSLayoutConstraint!
-    internal var topHeaderView: HeaderView!
     internal var isAnimatingHeader: Bool = false
-    
     
     var currentBrandId = UsersStore.currentBrandId
     
     var shouldReloadData: Bool = false
+    fileprivate var didAnimateCardFirstTime = false
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -98,12 +99,15 @@ class CalendarViewController: BaseViewController {
         tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
         tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
         
+        tableView.isHidden = true
+        
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
         transitionView.addSubview(calendarView)
         if shouldReloadData {
             SyncService.getInstance().syncCalendarItems(silent: false)
         }
+        
     }
     
     func addNotifications() {
@@ -111,6 +115,13 @@ class CalendarViewController: BaseViewController {
         nc.addObserver(self, selector: #selector(didPostActionHandler), name: NSNotification.Name("didPostAction"), object: nil)
         
         nc.addObserver(forName:Notification.Popmetrics.UiRefreshRequired, object:nil, queue:nil, using:catchUiRefreshRequiredNotification)
+        
+        nc.addObserver(self, selector: #selector(handlerAnimateCardAppearance), name: Notification.Name("animateRow"), object: nil)
+        
+    }
+    
+    internal func handlerAnimateCardAppearance() {
+        didAnimateCardFirstTime = true
     }
     
     func setNoteView() {
@@ -163,10 +174,32 @@ class CalendarViewController: BaseViewController {
     func createItemsLocally() {
         try! store.realm.write {
             
+            let calendarItem = CalendarCard()
+            calendarItem.cardId = "calendarID"
+            calendarItem.message = "Calendar card for animation testing"
+            calendarItem.section = "Scheduled"
+            calendarItem.status = "Scheduled"
+            
+            let calendarPost = CalendarSocialPost()
+            calendarPost.section = "Scheduled"
+            calendarPost.calendarCard = calendarItem
+            calendarPost.calendarCardId = "calendarID"
+            calendarPost.postId = "post_one"
+            calendarPost.status = "Scheduled"
+            calendarPost.scheduledDate = Date()
+            
+            store.realm.add(calendarItem, update: true)
+            
+            store.realm.add(calendarPost, update: true)
+            //store.realm.delete(calendarPost)
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        animateTransitionView()
+    }
+    
+    private func animateTransitionView() {
         transitionView.alpha = 0.7
         let tabInfo = MainTabInfo.getInstance()
         let xValue = tabInfo.currentItemIndex >= tabInfo.lastItemIndex ? CGFloat(20) : CGFloat(-20)
@@ -177,14 +210,15 @@ class CalendarViewController: BaseViewController {
                           animations: {
                             self.transitionView.frame.origin.x = 0
                             self.transitionView.alpha = 1
-        })
+                          }
+        )
     }
     
     override func viewDidAppear(_ animated: Bool) {
         calendarView.reloadView()
-    }
-    
-    func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
+        createItemsLocally()
+        
+        tableView.isHidden = false
     }
     
     func setupTopHeaderView() {
@@ -262,6 +296,15 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             cell.configure(item)
             cell.cancelCardDelegate = self
             cell.maximizeDelegate = self
+            
+            
+            //if animateCard {
+                cell.layer.transform = CATransform3DMakeScale(1,0.0,1)
+            
+                self.animateCellAppearance(cell: cell)
+            
+                //animateCellAppearance(cell: cell)
+            //}
             return cell
         } else {
             let maxCell = tableView.dequeueReusableCell(withIdentifier: "extendedCell", for: indexPath) as! CalendarCardMaximizedViewCell
@@ -280,6 +323,16 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             
             return maxCell
         }
+    }
+    
+    func animateCellAppearance(cell: CalendarCardSimpleViewCell) {
+        print("animate cell appearance")
+        UIView.animate(withDuration: 0.5) {
+            cell.layer.transform = CATransform3DMakeScale(1,1,1)
+        }
+        
+        self.didAnimateCardFirstTime = true
+        
     }
     
     func getCalendarPosts() {
