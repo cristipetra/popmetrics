@@ -110,6 +110,7 @@
 		08B745961F1F6C1D00EC3F8C /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08B745951F1F6C1D00EC3F8C /* OpenSans-Regular.ttf */; };
 		08B745981F1F718300EC3F8C /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B745971F1F718300EC3F8C /* CodeViewController.swift */; };
 		08B7459B1F1F996B00EC3F8C /* DigitCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7459A1F1F996B00EC3F8C /* DigitCodeView.swift */; };
+		08BAD73E1F960A70008BC88F /* MJCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */; };
 		08BD58001F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */; };
 		08BD58021F7A2F3700FFDCFD /* IndividualTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */; };
 		08BD58041F7A312900FFDCFD /* VerifySocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58031F7A312900FFDCFD /* VerifySocialViewController.swift */; };
@@ -325,6 +326,7 @@
 		08B745951F1F6C1D00EC3F8C /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		08B745971F1F718300EC3F8C /* CodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeViewController.swift; path = login/CodeViewController.swift; sourceTree = "<group>"; };
 		08B7459A1F1F996B00EC3F8C /* DigitCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DigitCodeView.swift; path = views/DigitCodeView.swift; sourceTree = "<group>"; };
+		08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJCalendarViewController.swift; sourceTree = "<group>"; };
 		08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedActionGoogleCitationView.swift; sourceTree = "<group>"; };
 		08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualTaskView.swift; sourceTree = "<group>"; };
 		08BD58031F7A312900FFDCFD /* VerifySocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifySocialViewController.swift; sourceTree = "<group>"; };
@@ -490,6 +492,7 @@
 			isa = PBXGroup;
 			children = (
 				085053FD1F2787A100FE8234 /* CalendarViewController.swift */,
+				08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */,
 			);
 			name = calendar;
 			sourceTree = "<group>";
@@ -1491,6 +1494,7 @@
 				088E77AD1F7D499400774F13 /* TrafficStatsTableViewController.swift in Sources */,
 				08F368951F18F93800819CDE /* DailyInsightsCardCell.swift in Sources */,
 				08B2803F1F55862100E36D19 /* Statistics.swift in Sources */,
+				08BAD73E1F960A70008BC88F /* MJCalendarViewController.swift in Sources */,
 				085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */,
 				088CB18B1F8B658900809A51 /* ReachabilityManager.swift in Sources */,
 				08B745981F1F718300EC3F8C /* CodeViewController.swift in Sources */,
