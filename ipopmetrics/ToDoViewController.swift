@@ -345,6 +345,15 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let transform = CATransform3DMakeScale(1,0.2,1)
+        cell.layer.transform = transform
+        UIView.animate(withDuration: 0.5) {
+            cell.alpha = 1
+            cell.layer.transform = CATransform3DIdentity
+        }
+    }
+    
     func addApprovedView() {
         self.view.insertSubview(approvedView, aboveSubview: tableView)
         
