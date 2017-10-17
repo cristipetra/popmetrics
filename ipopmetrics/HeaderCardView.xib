@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderCardViewCell" customModule="ipopmetrics" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="LJU-Z2-jZH" customClass="HeaderCardViewCell" customModule="ipopmetrics" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bs7-TO-ba7">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Cs-4w-7FJ">
+                    <rect key="frame" x="16" y="26" width="343" height="54"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KHP-bP-Emu">
+                            <rect key="frame" x="16" y="19" width="2" height="35"/>
+                            <color key="backgroundColor" red="1" green="0.73725490199999999" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="2" id="hTJ-Rq-UvR"/>
+                                <constraint firstAttribute="height" constant="35" id="tO8-j9-m2A"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMq-K1-K4Q">
+                            <rect key="frame" x="11" y="7" width="12" height="12"/>
+                            <color key="backgroundColor" red="1" green="0.73725490199999999" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="12" id="Bf1-DD-zox"/>
+                                <constraint firstAttribute="height" constant="12" id="dMW-vT-jS8"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attention required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUh-7h-lEF">
+                            <rect key="frame" x="42" y="3" width="210" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="yU9-Vm-5BU"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                            <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="KHP-bP-Emu" firstAttribute="leading" secondItem="7Cs-4w-7FJ" secondAttribute="leading" constant="16" id="TRv-QE-vYz"/>
+                        <constraint firstItem="KHP-bP-Emu" firstAttribute="top" secondItem="7Cs-4w-7FJ" secondAttribute="top" constant="19" id="fFi-7b-GZN"/>
+                        <constraint firstItem="dUh-7h-lEF" firstAttribute="top" secondItem="7Cs-4w-7FJ" secondAttribute="top" constant="3" id="gf5-iB-0r7"/>
+                        <constraint firstItem="uMq-K1-K4Q" firstAttribute="leading" secondItem="7Cs-4w-7FJ" secondAttribute="leading" constant="11" id="lBk-eK-hmu"/>
+                        <constraint firstItem="uMq-K1-K4Q" firstAttribute="top" secondItem="7Cs-4w-7FJ" secondAttribute="top" constant="7" id="oar-13-nOg"/>
+                        <constraint firstItem="dUh-7h-lEF" firstAttribute="leading" secondItem="uMq-K1-K4Q" secondAttribute="trailing" constant="19" id="riV-RH-hkz"/>
+                        <constraint firstAttribute="trailing" secondItem="dUh-7h-lEF" secondAttribute="trailing" constant="91" id="wtH-7Y-gZb"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DWf-QV-UMT" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
+                    <rect key="frame" x="8" y="51" width="359" height="29"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="29" id="OYs-ib-Uy2"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="7Cs-4w-7FJ" secondAttribute="trailing" constant="16" id="Af4-dO-iYA"/>
+                <constraint firstAttribute="trailing" secondItem="DWf-QV-UMT" secondAttribute="trailing" constant="8" id="Bwp-EG-ysL"/>
+                <constraint firstItem="bs7-TO-ba7" firstAttribute="top" secondItem="LJU-Z2-jZH" secondAttribute="top" id="C9x-ci-rRG"/>
+                <constraint firstItem="7Cs-4w-7FJ" firstAttribute="top" secondItem="LJU-Z2-jZH" secondAttribute="top" constant="26" id="Ct9-iU-tZ4"/>
+                <constraint firstAttribute="bottom" secondItem="bs7-TO-ba7" secondAttribute="bottom" id="DIM-f6-spU"/>
+                <constraint firstItem="7Cs-4w-7FJ" firstAttribute="leading" secondItem="LJU-Z2-jZH" secondAttribute="leading" constant="16" id="DeC-Sr-vb7"/>
+                <constraint firstAttribute="bottom" secondItem="DWf-QV-UMT" secondAttribute="bottom" id="F6t-8X-tsB"/>
+                <constraint firstAttribute="bottom" secondItem="7Cs-4w-7FJ" secondAttribute="bottom" id="IO4-3n-OD8"/>
+                <constraint firstItem="bs7-TO-ba7" firstAttribute="leading" secondItem="LJU-Z2-jZH" secondAttribute="leading" id="ZGw-lb-vSo"/>
+                <constraint firstAttribute="trailing" secondItem="bs7-TO-ba7" secondAttribute="trailing" id="omK-ss-N5j"/>
+                <constraint firstItem="DWf-QV-UMT" firstAttribute="leading" secondItem="LJU-Z2-jZH" secondAttribute="leading" constant="8" id="weW-a1-tuk"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="connectionView" destination="KHP-bP-Emu" id="yKP-fJ-v18"/>
+                <outlet property="containerView" destination="bs7-TO-ba7" id="fe1-tZ-zQQ"/>
+                <outlet property="roundConnectionView" destination="uMq-K1-K4Q" id="KSf-rW-yhM"/>
+                <outlet property="titleLbl" destination="dUh-7h-lEF" id="vNz-EZ-8gS"/>
+                <outlet property="toolbarView" destination="DWf-QV-UMT" id="GUu-N3-g77"/>
+            </connections>
+            <point key="canvasLocation" x="91" y="45"/>
+        </view>
+    </objects>
+</document>

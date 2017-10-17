@@ -45,6 +45,9 @@ class ToDoViewController: BaseViewController {
     
     var isAllApproved : Bool = false
     var currentBrandId = UsersStore.currentBrandId
+    
+    // display transition for opening card in calendar
+    internal var didTransitionDisplayed = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +94,7 @@ class ToDoViewController: BaseViewController {
             store.realm.delete(store.getTodoCards())
             
             let todoCard = TodoCard()
-            todoCard.cardId = "12523fa5"
+            todoCard.cardId = "1252asdf3fa5"
             todoCard.type = "todo_unapproved"
             todoCard.section = "Unapproved"
             todoCard.headerTitle = "Unapproved Posts"
@@ -114,7 +117,7 @@ class ToDoViewController: BaseViewController {
             
             let todoPost1 = TodoSocialPost()
             todoPost1.isApproved = false
-            todoPost1.postId = "2342134"
+            todoPost1.postId = "2342sadf134"
             todoPost1.todoCard = todoCard
             todoPost1.status = "Unapproved"
             todoPost1.articleText = "Popmetrics recommends highly customized marketing insights to help your business grow. #Popmetrics #GrowYourBusiness"
@@ -205,6 +208,9 @@ class ToDoViewController: BaseViewController {
         
         let maximizedCell = UINib(nibName: "TodoCardMaximized", bundle: nil)
         tableView.register(maximizedCell, forCellReuseIdentifier: "maxCellId")
+        
+        let todoHeader = UINib(nibName: "HeaderCardView", bundle: nil)
+        tableView.register(todoHeader, forHeaderFooterViewReuseIdentifier: "headerViewID")
         
         let emptyCard = UINib(nibName: "EmptyCard", bundle: nil)
         tableView.register(emptyCard, forCellReuseIdentifier: "EmptyCard")
@@ -371,11 +377,19 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         try! store.realm.write {
             store.realm.delete( store.getTodoSocialPostsForCard(store.getTodoCards()[indexPath.section])[indexPath.row] )
         }
-        tableView.deleteRows(at: [indexPath], with: .middle)
+        
+        if !self.store.getTodoSocialPostsForCard(self.store.getTodoCards()[indexPath.section]).isEmpty {
+            tableView.deleteRows(at: [indexPath], with: .middle)
+        }
+        
+        
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
             self.tableView.reloadData()
             
-            self.tabBarController?.selectedIndex += 1
+            if !self.didTransitionDisplayed {
+                self.tabBarController?.selectedIndex += 1
+                self.didTransitionDisplayed = true
+            }
         }
     }
     
@@ -437,12 +451,13 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         }
         
         if shouldMaximize == false {
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
+            let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "headerViewID") as! HeaderCardViewCell
             headerCell.changeColor(color: card.getSectionColor)
             headerCell.toolbarView.backgroundColor = .white
             headerCell.changeTitleSection(title: card.getCardSectionTitle)
             headerCell.setUpHeaderShadowView()
             return headerCell
+    
         } else {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
             headerCell.changeColor(cardType: .todo)
@@ -525,18 +540,6 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         }
     
         return itemsToLoad(section: section)
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        shouldMaximize = !shouldMaximize
-        scrollToRow = indexPath
-        DispatchQueue.main.async {
-            self.tableView.scrollToRow(at: self.scrollToRow, at: .none, animated: false)
-        }
-        tableView.reloadData()
-        
-        let type = shouldMaximize ? HeaderViewType.expand : HeaderViewType.minimize
-        topHeaderView.changeStatus(type: type)
     }
     
     func reloadDataTable() {
