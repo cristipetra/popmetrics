@@ -68,6 +68,7 @@ PODS:
   - GTMSessionFetcher/Full (1.1.11):
     - GTMSessionFetcher/Core (= 1.1.11)
   - GTProgressBar (0.2.0)
+  - Haptica (1.0.3)
   - Hero (1.0.0-alpha.4)
   - JSONWebToken (2.2.0)
   - lottie-ios (2.1.3)
@@ -117,6 +118,7 @@ DEPENDENCIES:
   - FacebookLogin
   - Google/SignIn
   - GTProgressBar
+  - Haptica (from `https://github.com/efremidze/Haptica.git`, commit `1bc13bd8fe64c9681cc97dbc7ade384073267de8`)
   - Hero (= 1.0.0-alpha.4)
   - JSONWebToken
   - lottie-ios
@@ -140,6 +142,9 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   ElasticTransition:
     :git: https://github.com/ionutboanta/ElasticTransition
+  Haptica:
+    :commit: 1bc13bd8fe64c9681cc97dbc7ade384073267de8
+    :git: https://github.com/efremidze/Haptica.git
   MJCalendar:
     :git: https://github.com/cristipetra/MJCalendar
 
@@ -147,6 +152,9 @@ CHECKOUT OPTIONS:
   ElasticTransition:
     :commit: f74997bc1520b017f3e6ca986c618bf54ab9befb
     :git: https://github.com/ionutboanta/ElasticTransition
+  Haptica:
+    :commit: 1bc13bd8fe64c9681cc97dbc7ade384073267de8
+    :git: https://github.com/efremidze/Haptica.git
   MJCalendar:
     :commit: 0bc54b374d5f68ab749002991bd71efa33867eef
     :git: https://github.com/cristipetra/MJCalendar
@@ -176,6 +184,7 @@ SPEC CHECKSUMS:
   GTMOAuth2: be83fd28d63ae3087e7d351b1f39c1a7e24ab6e7
   GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
   GTProgressBar: 5db7054f6069100d871cde5a3149eb708fc348c5
+  Haptica: 8021512fd2de1dbbbcc896855eb3784213797b67
   Hero: 6ab58fdfb16c75ce9c6bfad48ef6abb54780b263
   JSONWebToken: 6fae32489632658d563dd6952a5c34020ea813e4
   lottie-ios: 8c150606598931621e927377f1426d2d3e99282d
@@ -201,6 +210,6 @@ SPEC CHECKSUMS:
   UIView+JMFrame: a907974c9d34b1c300aef85ae2a1a5af746f2b8a
   Whisper: 051f25e704bf8992641ffd28b20d5682ddc5f5d3
 
-PODFILE CHECKSUM: 4a44b21909063d2fd17263d7a05bde11b07dc1a4
+PODFILE CHECKSUM: ec7b94d1fa50d1cd55d4618f9f6fd61c542b6400
 
 COCOAPODS: 1.2.1

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haptica
 
 class GoogleActionViewController: UIViewController {
     
@@ -15,6 +16,8 @@ class GoogleActionViewController: UIViewController {
     
     lazy var footerView: FooterView = {
         let view = FooterView()
+        view.actionButton.isHaptic = true
+        view.actionButton.hapticType = .impact(.heavy)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -73,7 +76,7 @@ class GoogleActionViewController: UIViewController {
         footerView.xButton.isHidden = true
         footerView.addShadow(radius: 2, opacity: 0.3, offset: CGSize(width: 0.0, height: -3.0))
         footerView.backgroundColor = UIColor.white
-    
+        
     }
     
     func setTaskView() {

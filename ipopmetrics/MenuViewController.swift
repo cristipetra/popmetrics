@@ -12,7 +12,12 @@ import SafariServices
 
 class MenuViewController: ElasticModalViewController {
     
-    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton! {
+        didSet {
+            closeButton.isHaptic = true
+            closeButton.hapticType = .notification(.success)
+        }
+    }
     @IBOutlet weak var logoImage: UIImageView!
     
     var transition = ElasticTransition()
