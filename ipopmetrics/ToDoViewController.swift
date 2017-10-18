@@ -346,12 +346,16 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if UsersStore.didShowedTransitionAddToTask {
+            return
+        }
         let transform = CATransform3DMakeScale(1,0.2,1)
         cell.layer.transform = transform
         UIView.animate(withDuration: 0.5) {
             cell.alpha = 1
             cell.layer.transform = CATransform3DIdentity
         }
+        UsersStore.didShowedTransitionAddToTask = true
     }
     
     func addApprovedView() {

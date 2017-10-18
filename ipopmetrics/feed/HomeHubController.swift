@@ -392,7 +392,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     func handlerInsightButton() {
-        UsersStore.isInsightShowed = true
         goToNextTab()
     }
     
@@ -624,7 +623,7 @@ extension HomeHubViewController {
     
     
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
-        print(store.getFeedCards())
+        //print(store.getFeedCards())
         self.tableView.reloadData()
         
     }

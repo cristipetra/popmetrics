@@ -80,15 +80,18 @@ class UsersStore {
         }
     }
     
-    static var isInsightShowed: Bool {
+    /*
+     * On first time when user press add to task action should displayed transition
+     * to Todo tab
+     */
+    static var didShowedTransitionAddToTask: Bool {
         set {
             let defaults = UserDefaults.standard
-            defaults.set(newValue, forKey: "isDisplayedInsight")
+            defaults.set(newValue, forKey: "didShowedTransitionAddToTask")
             
         }
         get {
-            //return false
-            return UserDefaults.standard.bool(forKey: "isDisplayedInsight")
+            return UserDefaults.standard.bool(forKey: "didShowedTransitionAddToTask")
         }
     }
  
