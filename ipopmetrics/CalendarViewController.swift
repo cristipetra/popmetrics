@@ -407,7 +407,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             return 216
         }
         if shouldMaximizeCell == false {
-            return 93
+            return 148
         }
         return 459
     }

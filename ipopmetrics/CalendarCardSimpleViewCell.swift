@@ -12,14 +12,17 @@ class CalendarCardSimpleViewCell: UITableViewCell {
     
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var foregroundImage: UIImageView!
-    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var messageLbl: UILabel!
-    @IBOutlet weak var topStackView: UIStackView!
     @IBOutlet weak var circleView: UIView!
-    @IBOutlet weak var topToolbar: UIView!
     @IBOutlet weak var statusText: UILabel!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var textStackView: UIStackView!
+    @IBOutlet weak var messageLblTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var textStackViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var messageLblHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var cancelPostButton: UIButton!
+    @IBOutlet weak var textStackViewTopConstraint: NSLayoutConstraint!
     
     // Extend view
     lazy var statusCardTypeView: StatusCardTypeView = {
@@ -63,12 +66,18 @@ class CalendarCardSimpleViewCell: UITableViewCell {
     
     func configure(_ item: CalendarSocialPost) {
         calendarItem = item;
-        self.titleLbl.text = item.title
+        
         let formatedDate = self.formatDate((item.scheduledDate)!)
         self.statusText.text = item.socialTextTime
         self.timeLbl.text = formatedDate
         
-        self.messageLbl.text = item.text
+        if item.text != "" {
+            self.messageLbl.text = item.text
+        }
+        
+        DispatchQueue.main.async {
+            self.setMessageLabel()
+        }
         
         //self.backgroundImage.image = UIImage(named: item.articleImage!)
         //self.foregroundImage.image = UIImage(named: item.socialIcon)
@@ -78,6 +87,26 @@ class CalendarCardSimpleViewCell: UITableViewCell {
         statusCardTypeView.infoBtn.addTarget(self, action: #selector(cancelPostHandler), for: .touchUpInside)
         
         changeColor()
+    }
+    
+    private func setMessageLabel() {
+        messageLbl.adjustLabelSpacing(spacing: 0, lineHeight: 18, letterSpacing: 0.3)
+        if messageLbl.frame.width < 250 {
+            if messageLbl.frame.width < 200 {
+                messageLblTopConstraint.constant = 5
+                messageLblHeightConstraint.constant = 90
+                textStackViewTopConstraint.constant = 12
+                messageLbl.adjustLabelSpacing(spacing: 0, lineHeight: 15, letterSpacing: 0.2)
+                messageLbl.font = messageLbl.font.withSize(12)
+                textStackView.axis = .vertical
+                textStackView.alignment = .trailing
+                textStackViewHeightConstraint.constant = 28
+            } else {
+                messageLblHeightConstraint.constant = 90
+                messageLblTopConstraint.constant = 3
+                textStackViewTopConstraint.constant = 22
+            }
+        }
     }
     
     internal func addStatusCardTypeView() {
