@@ -11,8 +11,10 @@ import Haptica
 
 class GoogleActionViewController: UIViewController {
     
+    
+    //Extend View
     let recommendedActionView = RecommendedActionGoogleCitationView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 355))
-    let taskView = TaskGoogleCitationView(frame: CGRect(x: 0, y: 355, width: UIScreen.main.bounds.width, height: 608))
+    let taskView = IceExtendView(frame: CGRect(x: 0, y: 355, width: UIScreen.main.bounds.width, height: 608))
     
     lazy var footerView: FooterView = {
         let view = FooterView()
@@ -24,6 +26,7 @@ class GoogleActionViewController: UIViewController {
     
     let aimeeView = IndividualTaskView()
     let instructionsView = IndividualTaskView()
+    //End extend view
     
     var footerTopConstraint: NSLayoutConstraint!
     var footerBottomConstraint: NSLayoutConstraint!
@@ -43,9 +46,19 @@ class GoogleActionViewController: UIViewController {
         addAimeeView()
         addInstructionView()
         setUpFooterView()
-        //footerView.setCorners = false
-        setFooterButton(isTaskSelected: true)
+        
+        setFooterButton(isTaskSelected: false)
+        
+        
+        configure()
     }
+    
+    func configure() {
+        self.navigationController?.navigationBar.backItem?.title = "fdasfa"
+        recommendedActionView.titleLabel.text = "We recommend you improve your social posts."
+        recommendedActionView.messageLbl.text = "Popmetrics will increase your digital footprint and help drive traffic to your site"
+    }
+    
     func addRecommendedActionView() {
         
         self.containerView.addSubview(recommendedActionView)
@@ -158,16 +171,16 @@ class GoogleActionViewController: UIViewController {
             footerView.actionButton.backgroundColor = PopmetricsColor.yellowBGColor
             footerView.approveLbl.text = "Connect Google"
         } else {
-            footerView.actionButton.leftHandImage = UIImage(named: "icon2CtaTaskcard")
+            footerView.actionButton.leftHandImage = UIImage(named: "iconCtaTaskCard")
             footerView.actionButton.rightHandImage = UIImage(named: "")
             footerView.actionButton.backgroundColor = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
-            footerView.approveLbl.text = "Add to Task"
+            footerView.approveLbl.text = "Add to Tasks"
         }
     }
     
     func setUpNavigationBar() {
         
-        let text = UIBarButtonItem(title: "Connect Google Analytics", style: .plain, target: self, action: nil)
+        let text = UIBarButtonItem(title: "Social Posting", style: .plain, target: self, action: nil)
         text.tintColor = UIColor(red: 67/255, green: 78/255, blue: 84/255, alpha: 1.0)
         let titleFont = UIFont(name: FontBook.bold, size: 18)
         text.setTitleTextAttributes([NSFontAttributeName: titleFont], for: .normal)

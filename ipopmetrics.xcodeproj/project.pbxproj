@@ -94,11 +94,12 @@
 		08B2803B1F5583CA00E36D19 /* sampleFeedStatistics.json in Resources */ = {isa = PBXBuildFile; fileRef = 08B2803A1F5583CA00E36D19 /* sampleFeedStatistics.json */; };
 		08B2803D1F55855500E36D19 /* StatisticsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B2803C1F55855500E36D19 /* StatisticsStore.swift */; };
 		08B2803F1F55862100E36D19 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B2803E1F55862100E36D19 /* Statistics.swift */; };
+		08B324D81F98C65A00BB4905 /* IceExtendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B324D71F98C65A00BB4905 /* IceExtendView.xib */; };
+		08B324DA1F98C6AE00BB4905 /* IceExtendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B324D91F98C6AE00BB4905 /* IceExtendView.swift */; };
 		08B3AA9E1F8FA748008D0503 /* ToDoApprovedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3AA9D1F8FA748008D0503 /* ToDoApprovedView.swift */; };
 		08B485E01F20EA23005918A1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485DF1F20EA23005918A1 /* Config.swift */; };
 		08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485E31F210992005918A1 /* VideoScreenViewController.swift */; };
 		08B485E61F210A61005918A1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485E51F210A61005918A1 /* RoundButton.swift */; };
-		08B4BCDE1F619BEF00660F5B /* TaskGoogleCitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4BCDD1F619BEF00660F5B /* TaskGoogleCitationView.swift */; };
 		08B4BCE11F619D4200660F5B /* GoogleActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4BCE01F619D4200660F5B /* GoogleActionViewController.swift */; };
 		08B5D4BA1F29C28A00B79AD3 /* CalendarFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5D4B91F29C28A00B79AD3 /* CalendarFeedStore.swift */; };
 		08B5D4BC1F29CD5000B79AD3 /* CalendarCardMaximized.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B5D4BB1F29CD5000B79AD3 /* CalendarCardMaximized.xib */; };
@@ -117,7 +118,6 @@
 		08BD58061F7A327C00FFDCFD /* RecommendedActionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58051F7A327C00FFDCFD /* RecommendedActionViewCell.swift */; };
 		08BD58081F7A334D00FFDCFD /* StatisticsInsight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58071F7A334D00FFDCFD /* StatisticsInsight.swift */; };
 		08BD580C1F7A6AD500FFDCFD /* OnboardingFinalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */; };
-		08BD580E1F7AA1B200FFDCFD /* TaskGoogleCitationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08BD580D1F7AA1B200FFDCFD /* TaskGoogleCitationView.xib */; };
 		08BF9D4E1F45F2EF00141206 /* TableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */; };
 		08C6FBFB1F41FFCB007D6101 /* Todo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C6FBFA1F41FFCB007D6101 /* Todo.storyboard */; };
 		08C6FBFD1F4205EF007D6101 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */; };
@@ -313,11 +313,12 @@
 		08B2803A1F5583CA00E36D19 /* sampleFeedStatistics.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFeedStatistics.json; sourceTree = "<group>"; };
 		08B2803C1F55855500E36D19 /* StatisticsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsStore.swift; sourceTree = "<group>"; };
 		08B2803E1F55862100E36D19 /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		08B324D71F98C65A00BB4905 /* IceExtendView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IceExtendView.xib; sourceTree = "<group>"; };
+		08B324D91F98C6AE00BB4905 /* IceExtendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IceExtendView.swift; sourceTree = "<group>"; };
 		08B3AA9D1F8FA748008D0503 /* ToDoApprovedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoApprovedView.swift; sourceTree = "<group>"; };
 		08B485DF1F20EA23005918A1 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		08B485E31F210992005918A1 /* VideoScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoScreenViewController.swift; sourceTree = "<group>"; };
 		08B485E51F210A61005918A1 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
-		08B4BCDD1F619BEF00660F5B /* TaskGoogleCitationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskGoogleCitationView.swift; sourceTree = "<group>"; };
 		08B4BCE01F619D4200660F5B /* GoogleActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleActionViewController.swift; sourceTree = "<group>"; };
 		08B5D4B91F29C28A00B79AD3 /* CalendarFeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarFeedStore.swift; sourceTree = "<group>"; };
 		08B5D4BB1F29CD5000B79AD3 /* CalendarCardMaximized.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCardMaximized.xib; sourceTree = "<group>"; };
@@ -333,7 +334,6 @@
 		08BD58051F7A327C00FFDCFD /* RecommendedActionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedActionViewCell.swift; sourceTree = "<group>"; };
 		08BD58071F7A334D00FFDCFD /* StatisticsInsight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsInsight.swift; sourceTree = "<group>"; };
 		08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingFinalView.xib; sourceTree = "<group>"; };
-		08BD580D1F7AA1B200FFDCFD /* TaskGoogleCitationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskGoogleCitationView.xib; sourceTree = "<group>"; };
 		08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableFooterView.swift; sourceTree = "<group>"; };
 		08C6FBFA1F41FFCB007D6101 /* Todo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Todo.storyboard; sourceTree = "<group>"; };
 		08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
@@ -671,15 +671,22 @@
 			name = fonts;
 			sourceTree = "<group>";
 		};
+		08B324D61F98C61B00BB4905 /* ice */ = {
+			isa = PBXGroup;
+			children = (
+				08B324D71F98C65A00BB4905 /* IceExtendView.xib */,
+				08B324D91F98C6AE00BB4905 /* IceExtendView.swift */,
+			);
+			name = ice;
+			sourceTree = "<group>";
+		};
 		08B4BCDA1F619BB200660F5B /* google */ = {
 			isa = PBXGroup;
 			children = (
-				08B4BCDD1F619BEF00660F5B /* TaskGoogleCitationView.swift */,
 				08A533371F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib */,
 				085530451F6CEE0A00D82A09 /* GoogleActivationView.swift */,
 				08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */,
 				08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */,
-				08BD580D1F7AA1B200FFDCFD /* TaskGoogleCitationView.xib */,
 				088B282B1F7E7F150015A66E /* AimeeView.swift */,
 				088B282D1F7E7FA10015A66E /* GoogleAction.storyboard */,
 			);
@@ -943,6 +950,7 @@
 		11ACA9AD1E2CE0A80021E64A /* views */ = {
 			isa = PBXGroup;
 			children = (
+				08B324D61F98C61B00BB4905 /* ice */,
 				081D5DC21F94F90200BB7352 /* header */,
 				088E77A71F7CE97D00774F13 /* toast */,
 				085599A41F72750B00E5BEA1 /* splash */,
@@ -1157,6 +1165,7 @@
 				085CB7B21F4ADCA200038C03 /* Notifications.storyboard in Resources */,
 				116540BD1EEAC3A600417D61 /* Signin.storyboard in Resources */,
 				D9D937881ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib in Resources */,
+				08B324D81F98C65A00BB4905 /* IceExtendView.xib in Resources */,
 				D9EC7E371ECF0D7E00A54B53 /* ActionCard.xib in Resources */,
 				08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */,
 				088E77AB1F7D441400774F13 /* TrafficStatus.xib in Resources */,
@@ -1200,7 +1209,6 @@
 				085F90F71F71270E008A339A /* AnimationsViewController.xib in Resources */,
 				D9D9378A1ECDEEE200CC3EC2 /* StatsSummaryCard.xib in Resources */,
 				D9EC7E351ECEE37A00A54B53 /* BestCourseCard.xib in Resources */,
-				08BD580E1F7AA1B200FFDCFD /* TaskGoogleCitationView.xib in Resources */,
 				08F368891F18D7C500819CDE /* ApprovalCard.xib in Resources */,
 				11AAA5E61ECCD4200099B50E /* RequiredActionCard.xib in Resources */,
 				11F89F691EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist in Resources */,
@@ -1419,7 +1427,6 @@
 				11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */,
 				088B28281F7E43960015A66E /* TrafficVisitsViewCell.swift in Sources */,
 				116540C11EEACD4000417D61 /* UsersStore.swift in Sources */,
-				08B4BCDE1F619BEF00660F5B /* TaskGoogleCitationView.swift in Sources */,
 				08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */,
 				08AF049A1F46FBB60040012B /* ToDoCardCell.swift in Sources */,
 				1128B3FD1ED2E01F00BDA58C /* ActionViewCell.swift in Sources */,
@@ -1466,6 +1473,7 @@
 				084E54E11F827F7D007D6F4F /* NoteView.swift in Sources */,
 				088B282A1F7E5D130015A66E /* StatisticsCountView.swift in Sources */,
 				083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */,
+				08B324DA1F98C6AE00BB4905 /* IceExtendView.swift in Sources */,
 				08C6FBFD1F4205EF007D6101 /* ToDoViewController.swift in Sources */,
 				11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */,
 				113976AB1E97C74B00B535DF /* BaseViewController.swift in Sources */,

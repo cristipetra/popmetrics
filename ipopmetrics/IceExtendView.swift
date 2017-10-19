@@ -1,8 +1,8 @@
 //
-//  TaskGoogleCitationView.swift
+//  IceExtendView.swift
 //  ipopmetrics
 //
-//  Created by Cristian Petra on 07/09/2017.
+//  Created by Cristian Petra on 19/10/2017.
 //  Copyright © 2017 Popmetrics. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import UIKit
 import SwiftRichString
 import M13ProgressSuite
 
-class TaskGoogleCitationView: UIView {
+class IceExtendView: UIView {
     
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var topLbl: UILabel!
@@ -38,7 +38,7 @@ class TaskGoogleCitationView: UIView {
     
     func setup() {
         
-        Bundle.main.loadNibNamed("TaskGoogleCitationView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("IceExtendView", owner: self, options: nil)
         addSubview(containerView)
         containerView.frame = self.bounds
         containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
@@ -211,26 +211,26 @@ class TaskGoogleCitationView: UIView {
     //        childView.roundCorners(corners: [.topLeft, .bottomLeft], radius: 4)
     //      }
     //    } else {
-    //      
+    //
     //    DispatchQueue.main.async {
     //      childView.roundCorners(corners: [.topLeft, .bottomLeft], radius: 4)
     //    }
     //  }
-    //    
+    //
     //}
     
     //  override func draw(_ rect: CGRect) {
-    //    
+    //
     //      let firstContext = UIGraphicsGetCurrentContext()
     //      firstContext?.setLineWidth(2)
     //      firstContext?.setStrokeColor(UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1).cgColor)
-    //    
+    //
     //      let startingPoint = CGPoint(x: drawView.bounds.origin.x, y: drawView.bounds.origin.y)
-    //      
+    //
     //      firstContext?.move(to: startingPoint)
     //      firstContext?.addLine(to: CGPoint(x: drawView.bounds.origin.x + 20, y: drawView.bounds.origin.y + 30))
     //      firstContext?.strokePath()
     //  }
-    //  
+    //
     
 }

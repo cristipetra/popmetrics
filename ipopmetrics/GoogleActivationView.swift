@@ -16,8 +16,8 @@ class GoogleActivationView: UIView {
         return view
     }()
     
-    lazy var taskView: TaskGoogleCitationView = {
-        let view = TaskGoogleCitationView(frame: CGRect(x: 0, y: 355, width: UIScreen.main.bounds.width, height: 608))
+    lazy var taskView: IceExtendView = {
+        let view = IceExtendView(frame: CGRect(x: 0, y: 355, width: UIScreen.main.bounds.width, height: 608))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -50,6 +50,12 @@ class GoogleActivationView: UIView {
     let instructionsView = IndividualTaskView()
     //End View
     
+    var recommendedActionType: RecommendedActionType = .socialPost {
+        didSet {
+            setup()
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame);
         setup();
@@ -74,6 +80,11 @@ class GoogleActivationView: UIView {
         addInstructionView()
         
         setFooterButton(isTaskSelected: false)
+        configure()
+    }
+    
+    func configure() {
+        
     }
     
     
