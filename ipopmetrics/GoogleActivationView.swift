@@ -50,12 +50,6 @@ class GoogleActivationView: UIView {
     let instructionsView = IndividualTaskView()
     //End View
     
-    var recommendedActionType: RecommendedActionType = .socialPost {
-        didSet {
-            setup()
-        }
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame);
         setup();
