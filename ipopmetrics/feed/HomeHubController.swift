@@ -192,7 +192,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             tmpCard.section = HomeSectionType.recommendedAction.rawValue
             tmpCard.type = "recommended_action"
             tmpCard.cardId = "adsfaasfq24521"
+            tmpCard.iceImpactPercentage = 70
+            tmpCard.iceCostLabel = "included"
+            tmpCard.iceEffortLabel = "10 mins"
+            tmpCard.iceImpactPercentage = 10
             store.realm.add(tmpCard, update: true)
+            
         }
     }
     
@@ -388,6 +393,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     @objc func openGoogleActionView() {
         let googleActionVc = UIStoryboard(name: "GoogleAction", bundle: nil).instantiateViewController(withIdentifier: "googleId")
         googleActionVc.hidesBottomBarWhenPushed = true
+        
         self.navigationController?.pushViewController(googleActionVc, animated: true)
     }
     

@@ -55,6 +55,16 @@ class FeedCard: Object, Mappable {
     dynamic var tooltipTitle: String? = nil
     dynamic var tooltipContent: String? = nil
     
+    dynamic var iceImpactPercentage: Int = 0
+    dynamic var iceImpactSplit: String? = nil // "[{'name': "Website Traffice", 'percentage': 10}]"
+    
+    dynamic var iceCostLabel: String? = nil
+    dynamic var iceCostPercentage: Int = 0
+    dynamic var iceEffortLabel: String? = nil
+    dynamic var iceEffortPercentage: Int = 0
+    
+    dynamic var iceAimee: String? = nil
+    
     override static func primaryKey() -> String? {
         return "cardId"
     }
@@ -80,6 +90,14 @@ class FeedCard: Object, Mappable {
         
         createDate      <- (map["create_dt"], DateTransform())
         updateDate      <- (map["update_dt"], DateTransform())
+        
+        iceImpactPercentage <- map["ice_impact_percentage"]
+        iceImpactSplit <- map["ice_impact_split"]
+        iceCostLabel <- map["ice_cost_label"]
+        iceCostPercentage <- map["ice_cost_percentage"]
+        iceEffortLabel <- map["ice_effort_label"]
+        iceCostPercentage <- map["ice_effort_percentage"]
+        iceAimee <- map["ice_aimme"]
         
     }
     
