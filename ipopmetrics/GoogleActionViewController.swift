@@ -14,7 +14,7 @@ class GoogleActionViewController: UIViewController {
     
     //Extend View
     let recommendedActionView = RecommendedActionGoogleCitationView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 355))
-    let taskView = IceExtendView(frame: CGRect(x: 0, y: 355, width: UIScreen.main.bounds.width, height: 608))
+    let iceView = IceExtendView(frame: CGRect(x: 0, y: 355, width: UIScreen.main.bounds.width, height: 608))
     
     lazy var footerView: FooterView = {
         let view = FooterView()
@@ -30,6 +30,9 @@ class GoogleActionViewController: UIViewController {
     
     var footerTopConstraint: NSLayoutConstraint!
     var footerBottomConstraint: NSLayoutConstraint!
+    
+    private var feedCard: FeedCard!
+    
     var isFooterVisible = false
     
     @IBOutlet weak var containerView: UIView!
@@ -49,11 +52,12 @@ class GoogleActionViewController: UIViewController {
         
         setFooterButton(isTaskSelected: false)
         
-        
-        configure()
     }
     
-    func configure() {
+    public func configure(_ feedCard: FeedCard) {
+        self.feedCard = feedCard
+        
+        
         self.navigationController?.navigationBar.backItem?.title = "fdasfa"
         recommendedActionView.titleLabel.text = "We recommend you improve your social posts."
         recommendedActionView.messageLbl.text = "Popmetrics will increase your digital footprint and help drive traffic to your site"
@@ -66,10 +70,10 @@ class GoogleActionViewController: UIViewController {
         recommendedActionView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor).isActive = true
         recommendedActionView.rightAnchor.constraint(equalTo: self.containerView.rightAnchor).isActive = true
         recommendedActionView.topAnchor.constraint(equalTo: self.containerView.topAnchor).isActive = true
-        self.containerView.addSubview(taskView)
-        taskView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor).isActive = true
-        taskView.rightAnchor.constraint(equalTo: self.containerView.rightAnchor).isActive = true
-        taskView.topAnchor.constraint(equalTo: recommendedActionView.bottomAnchor).isActive = true
+        self.containerView.addSubview(iceView)
+        iceView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor).isActive = true
+        iceView.rightAnchor.constraint(equalTo: self.containerView.rightAnchor).isActive = true
+        iceView.topAnchor.constraint(equalTo: recommendedActionView.bottomAnchor).isActive = true
         
     }
     
@@ -93,10 +97,10 @@ class GoogleActionViewController: UIViewController {
     }
     
     func setTaskView() {
-        taskView.setUpLabel(impactLevel: "medium impact", cost: "30", effort: "3 hours")
-        taskView.setCostStyle(cost: "30")
-        taskView.setEffortStyle(effort: "3")
-        taskView.setImpactLevel(impact: "Medium")
+        iceView.setUpLabel(impactLevel: "medium impact", cost: "30", effort: "3 hours")
+        iceView.setCostStyle(cost: "30")
+        iceView.setEffortStyle(effort: "3")
+        iceView.setImpactLevel(impact: "Medium")
     }
     
     
@@ -110,7 +114,7 @@ class GoogleActionViewController: UIViewController {
         aimeeView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor).isActive = true
         aimeeView.rightAnchor.constraint(equalTo: self.containerView.rightAnchor).isActive = true
         
-        aimeeView.topAnchor.constraint(equalTo:taskView.bottomAnchor).isActive = true
+        aimeeView.topAnchor.constraint(equalTo: iceView.bottomAnchor).isActive = true
         aimeeView.titleLabel.text = "Aimee's View"
         aimeeView.taskContainerView.addSubview(aimeeContentView)
         aimeeView.containerView.backgroundColor = UIColor.white

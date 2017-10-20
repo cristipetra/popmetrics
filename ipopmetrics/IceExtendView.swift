@@ -26,6 +26,9 @@ class IceExtendView: UIView {
     @IBOutlet weak var yellowSquareLbl: UILabel!
     @IBOutlet weak var blueSquareLbl: UILabel!
     
+    
+    private var feedCard: FeedCard!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -45,8 +48,10 @@ class IceExtendView: UIView {
         
         setMultipleProgressViewConstaits()
         setCornerRadious()
-        
-        
+    }
+    
+    func configure(_ feedCard: FeedCard) {
+        self.feedCard = feedCard
     }
     
     private func setCornerRadious() {

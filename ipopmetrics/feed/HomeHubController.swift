@@ -356,7 +356,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 return cell
             case "recommended_action":
                 let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedActionId", for: indexPath) as! RecommendedActionViewCell
-                cell.footerView.actionButton.addTarget(self, action: #selector(openGoogleActionView), for: .touchUpInside)
+                cell.configure(item)
+                cell.delegate = self
+                
                 return cell
             case "more_action":
                 let cell = tableView.dequeueReusableCell(withIdentifier: "moreInfoId", for: indexPath) as! MoreInfoViewCell
@@ -390,9 +392,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         return false
     }
     
-    @objc func openGoogleActionView() {
-        let googleActionVc = UIStoryboard(name: "GoogleAction", bundle: nil).instantiateViewController(withIdentifier: "googleId")
+    @objc func openGoogleActionView(_ feedCard: FeedCard) {
+        let googleActionVc: GoogleActionViewController = UIStoryboard(name: "GoogleAction", bundle: nil).instantiateViewController(withIdentifier: "googleId") as! GoogleActionViewController
         googleActionVc.hidesBottomBarWhenPushed = true
+        googleActionVc.configure(feedCard)
         
         self.navigationController?.pushViewController(googleActionVc, animated: true)
     }
@@ -564,6 +567,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         print("handling required action")
     }
     
+}
+
+extension HomeHubViewController: RecommendedActionViewCellDelegate {
+    func recommendedActionViewCellDidTapAction(_ feedCard: FeedCard) {
+        openGoogleActionView(feedCard)
+    }
 }
 
 // MARK: UIViewControllerTransitioningDelegate

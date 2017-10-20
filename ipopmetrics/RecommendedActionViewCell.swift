@@ -9,6 +9,11 @@
 import UIKit
 import M13ProgressSuite
 
+
+protocol RecommendedActionViewCellDelegate: class {
+    func recommendedActionViewCellDidTapAction(_ feedCard: FeedCard)
+}
+
 class RecommendedActionViewCell: UITableViewCell {
     
     @IBOutlet weak var containerView: UIView!
@@ -22,7 +27,7 @@ class RecommendedActionViewCell: UITableViewCell {
     @IBOutlet weak var costMainProgressView: UIView!
     @IBOutlet weak var effortMainProgressView: UIView!
     @IBOutlet weak var connectionView: UIView!
-    
+        
     
     // Extend View
     lazy var impactProgress: UIView = {
@@ -57,6 +62,9 @@ class RecommendedActionViewCell: UITableViewCell {
     }()
     // end extend view
     
+    private var feedCard: FeedCard!
+    weak var delegate: RecommendedActionViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -75,6 +83,19 @@ class RecommendedActionViewCell: UITableViewCell {
         }
         
         self.connectionView.isHidden = true
+        
+        //add target
+        footerView.actionButton.addTarget(self, action: #selector(handlerActionButton(_:)), for: .touchUpInside)
+    }
+    
+    
+    func configure(_ card: FeedCard) {
+        feedCard = card
+    }
+    
+    internal func handlerActionButton(_ sender: TwoImagesButton) {
+        guard let _ = feedCard else { return }
+        delegate?.recommendedActionViewCellDidTapAction(feedCard)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -133,4 +154,10 @@ class RecommendedActionViewCell: UITableViewCell {
         footerView.approveLbl.text = "View Action"
     }
     
+}
+
+
+enum RecommendedActionType {
+    case socialPost
+    case connectGoogle
 }
