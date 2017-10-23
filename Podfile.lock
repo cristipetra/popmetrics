@@ -73,6 +73,7 @@ PODS:
   - JSONWebToken (2.2.0)
   - lottie-ios (2.1.3)
   - M13ProgressSuite (1.2.9)
+  - markymark (3.0.2)
   - MarqueeLabel/Swift (3.1.3)
   - MGSwipeTableCell (1.6.1)
   - MJCalendar (0.4.0):
@@ -123,6 +124,7 @@ DEPENDENCIES:
   - JSONWebToken
   - lottie-ios
   - M13ProgressSuite
+  - markymark (= 3.0.2)
   - MGSwipeTableCell
   - MJCalendar (from `https://github.com/cristipetra/MJCalendar`)
   - NotificationBannerSwift
@@ -189,6 +191,7 @@ SPEC CHECKSUMS:
   JSONWebToken: 6fae32489632658d563dd6952a5c34020ea813e4
   lottie-ios: 8c150606598931621e927377f1426d2d3e99282d
   M13ProgressSuite: ea9f7263e73e9215e6849dfa54e29ee0ad6a145c
+  markymark: 5d40bacda3f5c401c9aa7f662ab8d764fa865792
   MarqueeLabel: baa5753dcbd36dca080e1f5c589a665aa5c906f1
   MGSwipeTableCell: 19a1d65dcc1ceaea42eb44bb2adae32101904514
   MJCalendar: a529b085b0b988ae7b493ce7c000946cc186bf0e
@@ -210,6 +213,6 @@ SPEC CHECKSUMS:
   UIView+JMFrame: a907974c9d34b1c300aef85ae2a1a5af746f2b8a
   Whisper: 051f25e704bf8992641ffd28b20d5682ddc5f5d3
 
-PODFILE CHECKSUM: ec7b94d1fa50d1cd55d4618f9f6fd61c542b6400
+PODFILE CHECKSUM: 2059009dcf6f4bb866ec191deb1fcc64451cd359
 
 COCOAPODS: 1.2.1

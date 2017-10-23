@@ -53,4 +53,6 @@ target 'ipopmetrics' do
   
   #todo: change to #pod 'Haptica' when updating to swift 4
   pod 'Haptica', :git => 'https://github.com/efremidze/Haptica.git', :commit => '1bc13bd8fe64c9681cc97dbc7ade384073267de8'
+  pod 'markymark', '3.0.2'
+  
 end
