@@ -8,6 +8,7 @@
 
 import UIKit
 import Haptica
+import BubbleTransition
 
 class GoogleActionViewController: UIViewController {
     
@@ -26,6 +27,9 @@ class GoogleActionViewController: UIViewController {
     
     let aimeeView = IndividualTaskView()
     let instructionsView = IndividualTaskView()
+    
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     //End extend view
     
     var footerTopConstraint: NSLayoutConstraint!
@@ -40,8 +44,8 @@ class GoogleActionViewController: UIViewController {
     
     var isFooterVisible = false
     
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var scrollView: UIScrollView!
+    let transition = BubbleTransition();
+    var transitionButton:UIButton = UIButton();
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +61,8 @@ class GoogleActionViewController: UIViewController {
         
         setFooterButton(isTaskSelected: false)
         
+        recommendedActionView.infoBtn.addTarget(self, action: #selector(showTooltip(_:)), for: .touchUpInside)
+        
     }
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
@@ -65,6 +71,18 @@ class GoogleActionViewController: UIViewController {
         recommendActionHandler = handler
         recommendedActionView.titleLabel.text = "We recommend you improve your social posts."
         recommendedActionView.messageLbl.text = "Popmetrics will increase your digital footprint and help drive traffic to your site"
+    }
+    
+    func showTooltip(_ sender: RoundButton) {
+        let infoCardVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "InfoCardViewID") as! InfoCardViewController;
+        infoCardVC.changeCardType(type: "insight")
+        infoCardVC.transitioningDelegate = self
+        infoCardVC.modalPresentationStyle = .custom
+        
+        transitionButton = sender
+        infoCardVC.modalPresentationStyle = .overCurrentContext
+        
+        self.present(infoCardVC, animated: true, completion: nil)
     }
     
     func addRecommendedActionView() {
@@ -231,6 +249,25 @@ extension GoogleActionViewController: UIScrollViewDelegate {
                 self.containerView.layoutIfNeeded()
             })
         }
+    }
+    
+}
+
+// MARK: UIViewControllerTransitioningDelegate
+
+extension GoogleActionViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
+        transition.startingPoint = transitionButton.center
+        transition.bubbleColor = PopmetricsColor.yellowBGColor
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .dismiss
+        transition.startingPoint = transitionButton.center
+        transition.bubbleColor = PopmetricsColor.yellowBGColor
+        return transition
     }
     
 }
