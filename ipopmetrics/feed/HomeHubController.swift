@@ -195,9 +195,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             tmpCard.type = "recommended_action"
             tmpCard.cardId = "adsfaasfq24521"
             tmpCard.iceImpactPercentage = 70
-            tmpCard.iceCostLabel = "included"
+            tmpCard.iceCostLabel = "30"
+            tmpCard.iceCostPercentage = 60
             tmpCard.iceEffortLabel = "10 mins"
-            tmpCard.iceImpactPercentage = 10
+            tmpCard.iceEffortPercentage = 40
+            
             store.realm.add(tmpCard, update: true)
             
         }

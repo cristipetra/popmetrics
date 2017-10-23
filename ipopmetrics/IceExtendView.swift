@@ -27,7 +27,11 @@ class IceExtendView: UIView {
     @IBOutlet weak var blueSquareLbl: UILabel!
     
     
-    private var feedCard: FeedCard!
+    private var feedCard: FeedCard! {
+        didSet {
+            updateView()
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -54,6 +58,14 @@ class IceExtendView: UIView {
         self.feedCard = feedCard
     }
     
+    private func updateView() {
+        setUpLabel()
+        
+        setImpactLevel()
+        setCostStyle()
+        setEffortStyle()
+    }
+    
     private func setCornerRadious() {
         
         impactSimpleMainProgressView.layer.cornerRadius = 4
@@ -69,7 +81,21 @@ class IceExtendView: UIView {
         blueSquareLbl.layer.masksToBounds = true
     }
     
-    func setUpLabel(impactLevel: String, cost: String, effort: String) {
+    private func getIceImpactLabel() -> String {
+        if( feedCard.iceImpactPercentage < 30) {
+            return "low"
+        } else if(feedCard.iceImpactPercentage > 30 && feedCard.iceImpactPercentage<70) {
+            return "medium"
+        } else {
+            return "high"
+        }
+    }
+    
+    private func setUpLabel() {
+        let impactLevel: String = (getIceImpactLabel() + " impact")
+        
+        guard let cost = feedCard.iceCostLabel else { return }
+        guard let effort = feedCard.iceEffortLabel else { return }
         
         let impactStyle = Style("impactStyle", { (style) -> (Void) in
             style.font = FontAttribute(FontBook.bold, size: 15)
@@ -113,22 +139,24 @@ class IceExtendView: UIView {
         topLbl.attributedText = attrString
     }
     
-    func setImpactLevel(impact: String) {
-        impactLevelLbl.text = impact
-        
-        //here i need the value for the progress
+    private func setImpactLevel() {
+        impactLevelLbl.text = getIceImpactLabel()
+        let value = String(feedCard.iceImpactPercentage)
         
         impactSimpleMainProgressView.clipsToBounds = true
         
-        setProgress(animationBounds: impactSimpleMainProgressView.bounds, value: "70", childOff: impactSimpleMainProgressView, animationColor: UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1), animationDuration: nil)
+        setProgress(animationBounds: impactSimpleMainProgressView.bounds, value: value, childOff: impactSimpleMainProgressView, animationColor: UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1), animationDuration: 0.2)
         
     }
     
-    func setCostStyle(cost: String) {
-        
+    private func setCostStyle() {
         costMainProgressView.clipsToBounds = true
+        let value = String(feedCard.iceCostPercentage)
+        guard let label = feedCard.iceCostLabel else {
+            return
+        }
         
-        setProgress(animationBounds: costMainProgressView.bounds, value: cost, childOff: costMainProgressView, animationColor: UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1), animationDuration: nil)
+        setProgress(animationBounds: costMainProgressView.bounds, value: value, childOff: costMainProgressView, animationColor: UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1), animationDuration: nil)
         
         let circaCharacterStyle = Style.default { (style) -> (Void) in
             style.font = FontAttribute(FontBook.regular, size: 18)
@@ -140,15 +168,17 @@ class IceExtendView: UIView {
             style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
         }
         
-        costLbl.attributedText = "~".set(style: circaCharacterStyle) + "$\(cost)".set(style: extraBoldStyle)
+        costLbl.attributedText = "~".set(style: circaCharacterStyle) + "$\(label)".set(style: extraBoldStyle)
         
     }
     
-    func setEffortStyle(effort: String) {
+    private func setEffortStyle() {
+        guard let effort: String = feedCard.iceEffortLabel else { return }
+        let value = String(feedCard.iceEffortPercentage)
         
         effortMainProgressView.clipsToBounds = true
         
-        setProgress(animationBounds: effortMainProgressView.bounds, value: effort, childOff: effortMainProgressView, animationColor: UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1), animationDuration: 15)
+        setProgress(animationBounds: effortMainProgressView.bounds, value: value, childOff: effortMainProgressView, animationColor: UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1), animationDuration: 15)
         
         
         let circaCharacterStyle = Style.default { (style) -> (Void) in
@@ -161,7 +191,7 @@ class IceExtendView: UIView {
             style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
         }
         
-        effortLbl.attributedText = "~".set(style: circaCharacterStyle) + "\(effort) hours".set(style: extraBoldStyle)
+        effortLbl.attributedText = "~".set(style: circaCharacterStyle) + "\(effort)".set(style: extraBoldStyle)
     }
     
     private func setMultipleProgressViewConstaits() {

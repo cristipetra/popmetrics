@@ -31,7 +31,11 @@ class GoogleActionViewController: UIViewController {
     var footerTopConstraint: NSLayoutConstraint!
     var footerBottomConstraint: NSLayoutConstraint!
     
-    private var feedCard: FeedCard!
+    private var feedCard: FeedCard! {
+        didSet {
+            setTaskView()
+        }
+    }
     private var recommendActionHandler: RecommendActionHandler?
     
     var isFooterVisible = false
@@ -46,7 +50,7 @@ class GoogleActionViewController: UIViewController {
         self.containerView.backgroundColor = UIColor(patternImage: backgroundImage!)
         setUpNavigationBar()
         addRecommendedActionView()
-        setTaskView()
+        
         addAimeeView()
         addInstructionView()
         setUpFooterView()
@@ -104,13 +108,8 @@ class GoogleActionViewController: UIViewController {
     }
     
     func setTaskView() {
-        iceView.setUpLabel(impactLevel: "medium impact", cost: "30", effort: "3 hours")
-        iceView.setCostStyle(cost: "30")
-        iceView.setEffortStyle(effort: "3")
-        iceView.setImpactLevel(impact: "Medium")
+        iceView.configure(feedCard)
     }
-    
-    
     
     func addAimeeView() {
         
