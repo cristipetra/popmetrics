@@ -111,6 +111,7 @@
 		08B745961F1F6C1D00EC3F8C /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08B745951F1F6C1D00EC3F8C /* OpenSans-Regular.ttf */; };
 		08B745981F1F718300EC3F8C /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B745971F1F718300EC3F8C /* CodeViewController.swift */; };
 		08B7459B1F1F996B00EC3F8C /* DigitCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7459A1F1F996B00EC3F8C /* DigitCodeView.swift */; };
+		08B8D9711F9A4443004E7781 /* RecommendActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B8D9701F9A4443004E7781 /* RecommendActionHandler.swift */; };
 		08BAD73E1F960A70008BC88F /* MJCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */; };
 		08BD58001F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */; };
 		08BD58021F7A2F3700FFDCFD /* IndividualTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */; };
@@ -327,6 +328,7 @@
 		08B745951F1F6C1D00EC3F8C /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		08B745971F1F718300EC3F8C /* CodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeViewController.swift; path = login/CodeViewController.swift; sourceTree = "<group>"; };
 		08B7459A1F1F996B00EC3F8C /* DigitCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DigitCodeView.swift; path = views/DigitCodeView.swift; sourceTree = "<group>"; };
+		08B8D9701F9A4443004E7781 /* RecommendActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendActionHandler.swift; sourceTree = "<group>"; };
 		08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJCalendarViewController.swift; sourceTree = "<group>"; };
 		08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedActionGoogleCitationView.swift; sourceTree = "<group>"; };
 		08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualTaskView.swift; sourceTree = "<group>"; };
@@ -710,6 +712,15 @@
 			name = login;
 			sourceTree = "<group>";
 		};
+		08B8D9721F9A4970004E7781 /* actionHandler */ = {
+			isa = PBXGroup;
+			children = (
+				08B8D9701F9A4443004E7781 /* RecommendActionHandler.swift */,
+				1120F1FF1ECDF4F200576E39 /* RequiredActionHandler.swift */,
+			);
+			name = actionHandler;
+			sourceTree = "<group>";
+		};
 		08C7B18E1F1CF41200E456C6 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -793,7 +804,6 @@
 		1125ADA81E96E47A0004B4AC /* feed */ = {
 			isa = PBXGroup;
 			children = (
-				1120F1FF1ECDF4F200576E39 /* RequiredActionHandler.swift */,
 				1125ADAB1E96E7990004B4AC /* HomeHubController.swift */,
 				11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */,
 				110A62C91ECEDADC0052B478 /* StatsSummaryViewCell.swift */,
@@ -852,6 +862,7 @@
 		1178D6771E1E5AD9005B96C3 /* ipopmetrics */ = {
 			isa = PBXGroup;
 			children = (
+				08B8D9721F9A4970004E7781 /* actionHandler */,
 				0894FBA31F595CC200ED251B /* oldies */,
 				08D1BC351F1DF4D700D377B2 /* constants */,
 				08C7B18E1F1CF41200E456C6 /* controllers */,
@@ -1512,6 +1523,7 @@
 				11D8D9E91ECA37FC00CCDAC4 /* NavigationController.swift in Sources */,
 				1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */,
 				08953E6F1F4C2790003ABEFC /* ToDoCountView.swift in Sources */,
+				08B8D9711F9A4443004E7781 /* RecommendActionHandler.swift in Sources */,
 				11ACA9B01E2CE0FC0021E64A /* PopmetricsColor.swift in Sources */,
 				11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */,
 				085AA0D21F42E45A0014D4CE /* TodoStore.swift in Sources */,

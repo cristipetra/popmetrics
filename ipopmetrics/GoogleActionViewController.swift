@@ -32,6 +32,7 @@ class GoogleActionViewController: UIViewController {
     var footerBottomConstraint: NSLayoutConstraint!
     
     private var feedCard: FeedCard!
+    private var recommendActionHandler: RecommendActionHandler?
     
     var isFooterVisible = false
     
@@ -54,11 +55,10 @@ class GoogleActionViewController: UIViewController {
         
     }
     
-    public func configure(_ feedCard: FeedCard) {
+    public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
         self.feedCard = feedCard
         
-        
-        self.navigationController?.navigationBar.backItem?.title = "fdasfa"
+        recommendActionHandler = handler
         recommendedActionView.titleLabel.text = "We recommend you improve your social posts."
         recommendedActionView.messageLbl.text = "Popmetrics will increase your digital footprint and help drive traffic to your site"
     }
@@ -94,6 +94,13 @@ class GoogleActionViewController: UIViewController {
         footerView.addShadow(radius: 2, opacity: 0.3, offset: CGSize(width: 0.0, height: -3.0))
         footerView.backgroundColor = UIColor.white
         
+        footerView.actionButton.addTarget(self, action: #selector(handlerActionButton(_:)), for: .touchUpInside)
+    }
+    
+    func handlerActionButton(_ sender: TwoImagesButton) {
+        recommendActionHandler?.handleRecommendAction(item: feedCard)
+        self.tabBarController?.selectedIndex += 1
+        self.navigationController?.popViewController(animated: false)
     }
     
     func setTaskView() {

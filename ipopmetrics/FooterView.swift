@@ -287,6 +287,10 @@ class FooterView: UIView {
         self.actionButton.leftImageView.image = UIImage(named: "iconLetter")?.withRenderingMode(.alwaysOriginal)
     }
     
+    internal func setGoogleViewType() {
+        self.approveLbl.text = "Connect Google"
+    }
+    
 }
 
 extension FooterView {

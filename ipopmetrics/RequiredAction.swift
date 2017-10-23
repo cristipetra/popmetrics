@@ -12,6 +12,7 @@ import SwiftRichString
 import TwitterKit
 import NotificationBannerSwift
 import SafariServices
+import EZAlertController
 
 class RequiredAction: UITableViewCell {
     
@@ -84,6 +85,8 @@ class RequiredAction: UITableViewCell {
         
         if(item.actionHandler == RequiredActionHandler.RequiredActionType.email.rawValue) {
             displayEmailView()
+        } else if (item.actionHandler == RequiredActionHandler.RequiredActionType.googleAnalytics.rawValue) {
+            displayGoogleAnalytics()
         }
     }
     
@@ -92,6 +95,12 @@ class RequiredAction: UITableViewCell {
         footerView.approveLbl.textColor = UIColor.white
         footerView.xButton.isHidden = true
 
+    }
+    
+    private func displayGoogleAnalytics() {
+        messageLabel.numberOfLines = 4
+        messageHeightConstraint.constant = 80
+        footerView.setGoogleViewType()
     }
     
     private func displayEmailView() {

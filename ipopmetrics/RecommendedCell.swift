@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol RecommendeCellDelegate: class {
+    func recommendedCellDidTapAction(_ feedCard: FeedCard)
+}
+
 class RecommendedCell: UITableViewCell {
     
     @IBOutlet weak var toolBarView: ToolbarViewCell!
@@ -20,6 +24,9 @@ class RecommendedCell: UITableViewCell {
     @IBOutlet weak var secondMessageLabel: UILabel!
     
     @IBOutlet weak var titleHeightConstraint: NSLayoutConstraint!
+    
+    private var feedCard: FeedCard!
+    weak var delegate: RecommendeCellDelegate?
     
     lazy var shadowLayer : UIView  = {
         let view = UIView()
@@ -34,6 +41,21 @@ class RecommendedCell: UITableViewCell {
         self.backgroundImageView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         setupCorners()
         setUpShadowLayer()
+        
+        footerVIew.actionButton.addTarget(self, action: #selector(handlerActionButton), for: .touchUpInside)
+    }
+    
+    public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
+        self.feedCard = feedCard
+        setUpCell(type: "Popmetrics Insight")
+        
+        
+        footerVIew.approveLbl.text = "View Recommendation"
+    }
+    
+    func handlerActionButton() {
+        guard let _ = feedCard else { return }
+        delegate?.recommendedCellDidTapAction(feedCard)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

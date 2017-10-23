@@ -67,7 +67,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
         if let error = error {
-            self.actionButtonSaved!.isLoading = false
+            //self.actionButtonSaved!.isLoading = false
             let nc = NotificationCenter.default
             nc.post(name:Notification.Name(rawValue:"CardActionNotification"),
                     object: nil,

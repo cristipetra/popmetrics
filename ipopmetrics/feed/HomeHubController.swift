@@ -85,6 +85,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                           3: HomeSectionType.analytics.rawValue]
     
     var requiredActionHandler = RequiredActionHandler()
+    
+    var recommendActionHandler = RecommendActionHandler()
     let store = FeedStore.getInstance()
     
     var toDoCellHeight = 50 as CGFloat
@@ -199,10 +201,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             store.realm.add(tmpCard, update: true)
             
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        tableView.contentOffset = CGPoint(x: 0, y: 50)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -355,14 +353,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.backgroundColor = UIColor.feedBackgroundColor()
                 return cell
             case "recommended_action":
-                let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedActionId", for: indexPath) as! RecommendedActionViewCell
-                cell.configure(item)
+                let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedId", for: indexPath) as! RecommendedCell
+                cell.configure(item, handler: recommendActionHandler)
                 cell.delegate = self
-                
-                return cell
-            case "more_action":
-                let cell = tableView.dequeueReusableCell(withIdentifier: "moreInfoId", for: indexPath) as! MoreInfoViewCell
-                cell.setUpToolbar()
                 return cell
             default:
                 let cell = UITableViewCell()
@@ -395,7 +388,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     @objc func openGoogleActionView(_ feedCard: FeedCard) {
         let googleActionVc: GoogleActionViewController = UIStoryboard(name: "GoogleAction", bundle: nil).instantiateViewController(withIdentifier: "googleId") as! GoogleActionViewController
         googleActionVc.hidesBottomBarWhenPushed = true
-        googleActionVc.configure(feedCard)
+        googleActionVc.configure(feedCard, handler: recommendActionHandler)
         
         self.navigationController?.pushViewController(googleActionVc, animated: true)
     }
@@ -575,6 +568,12 @@ extension HomeHubViewController: RecommendedActionViewCellDelegate {
     }
 }
 
+extension HomeHubViewController: RecommendeCellDelegate {
+    func recommendedCellDidTapAction(_ feedCard: FeedCard) {
+        openGoogleActionView(feedCard)
+    }
+}
+
 // MARK: UIViewControllerTransitioningDelegate
 
 extension HomeHubViewController: UIViewControllerTransitioningDelegate {
@@ -638,11 +637,9 @@ extension HomeHubViewController {
     
     
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
-        //print(store.getFeedCards())
         self.tableView.reloadData()
         
     }
-    
     
     func catchCardActionNotification(notification:Notification) -> Void {
         
