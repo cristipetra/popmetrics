@@ -138,7 +138,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let recommendedNib = UINib(nibName: "RecommendedCell", bundle: nil)
         tableView.register(recommendedNib, forCellReuseIdentifier: "recommendedId")
         
-        let recommendedActionNib = UINib(nibName: "RecommendedActionCard", bundle: nil)
+        let recommendedActionNib = UINib(nibName: "IceCardView", bundle: nil)
         tableView.register(recommendedActionNib, forCellReuseIdentifier: "recommendedActionId")
         
         let trafficNib = UINib(nibName: "TrafficCard", bundle: nil)

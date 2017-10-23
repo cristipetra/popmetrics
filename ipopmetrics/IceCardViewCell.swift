@@ -1,20 +1,19 @@
 //
-//  RecommendedActionViewCell.swift
+//  IceCardViewCell.swift
 //  ipopmetrics
 //
-//  Created by Cristian Petra on 04/09/2017.
+//  Created by Cristian Petra on 23/10/2017.
 //  Copyright © 2017 Popmetrics. All rights reserved.
 //
 
 import UIKit
 import M13ProgressSuite
 
-
 protocol RecommendedActionViewCellDelegate: class {
     func recommendedActionViewCellDidTapAction(_ feedCard: FeedCard)
 }
 
-class RecommendedActionViewCell: UITableViewCell {
+class IceCardViewCell: UITableViewCell {
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var toolBar: ToolbarViewCell!
@@ -27,7 +26,7 @@ class RecommendedActionViewCell: UITableViewCell {
     @IBOutlet weak var costMainProgressView: UIView!
     @IBOutlet weak var effortMainProgressView: UIView!
     @IBOutlet weak var connectionView: UIView!
-        
+    
     
     // Extend View
     lazy var impactProgress: UIView = {
@@ -154,10 +153,4 @@ class RecommendedActionViewCell: UITableViewCell {
         footerView.approveLbl.text = "View Action"
     }
     
-}
-
-
-enum RecommendedActionType {
-    case socialPost
-    case connectGoogle
 }
