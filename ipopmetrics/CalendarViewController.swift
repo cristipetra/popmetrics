@@ -192,7 +192,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
             calendarPost.status = "Scheduled"
             calendarPost.scheduledDate = Date()
             
-            //store.realm.add(calendarPost, update: true)
+            store.realm.add(calendarPost, update: true)
             //store.realm.delete(calendarPost)
             
             let calendarComplete = CalendarCard()
@@ -351,6 +351,25 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
     
     @objc private func goToNextTab() {
         self.tabBarController?.selectedIndex = 0
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if(store.getCalendarCards().count < 3) {
+            return
+        }
+        
+        let delay = 0.1 + Double(indexPath.row) * 0.2
+        
+        if indexPath.section == 0 {
+            let transform = CATransform3DTranslate(CATransform3DIdentity, 0, -148, 10)
+            cell.layer.transform = transform
+            cell.alpha = 0
+            
+            UIView.animate(withDuration: 0.3, delay: delay, options: .beginFromCurrentState, animations: {
+                cell.alpha = 1
+                cell.layer.transform = CATransform3DIdentity
+            }, completion: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
