@@ -194,15 +194,9 @@ class GoogleActionViewController: UIViewController {
     
     func setFooterButton(isTaskSelected: Bool) {
         if isTaskSelected {
-            footerView.actionButton.leftHandImage = UIImage(named: "iconGoogle")
-            footerView.actionButton.rightHandImage = UIImage(named: "")
-            footerView.actionButton.backgroundColor = PopmetricsColor.yellowBGColor
-            footerView.approveLbl.text = "Connect Google"
+            footerView.configure(ImageButtonType.google)
         } else {
-            footerView.actionButton.leftHandImage = UIImage(named: "iconCtaTaskCard")
-            footerView.actionButton.rightHandImage = UIImage(named: "")
-            footerView.actionButton.backgroundColor = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
-            footerView.approveLbl.text = "Add to Tasks"
+            footerView.configure(ImageButtonType.addToTask)
         }
     }
     

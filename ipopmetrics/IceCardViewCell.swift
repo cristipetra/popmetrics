@@ -149,8 +149,7 @@ class IceCardViewCell: UITableViewCell {
     }
     
     private func setUpFooter() {
-        footerView.actionButton.leftHandImage = UIImage(named: "iconCtaTaskCard")
-        footerView.approveLbl.text = "View Action"
+        footerView.configure(.action)
     }
     
 }

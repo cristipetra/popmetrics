@@ -11,37 +11,49 @@ import UIKit
 @IBDesignable
 class TwoColorButton: UIButton {
     
-    var indexPath: IndexPath!
+    //View
+    private var topView: UIView = UIView()
+    private var bottomView: UIView =  UIView()
+    private var imgView: UIImageView = UIImageView()
+    private var label: UILabel = UILabel()
+    //End view
     
-    @IBInspectable var topColor : UIColor = UIColor.white{
+    @IBInspectable
+    var topColor : UIColor = UIColor.white{
         didSet {
             setupTwoColorView(colors: [topColor, bottomColor])
         }
     }
     
-    @IBInspectable var bottomColor : UIColor = UIColor.white{
+    @IBInspectable
+    var bottomColor : UIColor = UIColor.white{
         didSet {
             setupTwoColorView(colors: [topColor, bottomColor])
         }
     }
     
-    @IBInspectable var labelText : String? {
+    @IBInspectable
+    var labelText : String? {
         didSet {
             self.changeLabelText()
         }
     }
     
-    @IBInspectable var image : UIImage? {
+    @IBInspectable
+    var image : UIImage? {
         didSet {
             image = image?.withRenderingMode(.alwaysTemplate)
             self.changeImage()
         }
     }
     
-    var topView: UIView = UIView()
-    var bottomView: UIView =  UIView()
-    var imgView: UIImageView = UIImageView()
-    var label: UILabel = UILabel()
+    var indexPath: IndexPath!
+    
+    var imageButtonType: ImageButtonType = .unapproved {
+        didSet {
+            changeImageButtonType()
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -57,8 +69,16 @@ class TwoColorButton: UIButton {
         self.layer.masksToBounds = false
         self.isUserInteractionEnabled = true
         DispatchQueue.main.async {
-            self.addShadowForRoundedButton()
+            //self.addShadowForRoundedButton()
         }
+        
+        self.image = UIImage(named: "iconRightYellow")
+        self.labelText = "Connect Twitter"
+        self.topColor = UIColor.red
+        self.bottomColor = PopmetricsColor.yellowBGColor
+        
+        topView.backgroundColor = PopmetricsColor.topButtonColor
+        bottomView.backgroundColor = PopmetricsColor.bottomButtonColor
         
         topView.translatesAutoresizingMaskIntoConstraints = false
         bottomView.translatesAutoresizingMaskIntoConstraints = false
@@ -70,6 +90,7 @@ class TwoColorButton: UIButton {
         bottomView.isUserInteractionEnabled = false
         self.addSubview(label)
         label.isUserInteractionEnabled = false
+        label.numberOfLines = 2
         self.addSubview(imgView)
         imgView.isUserInteractionEnabled = false
         NSLayoutConstraint.activate([
@@ -81,14 +102,24 @@ class TwoColorButton: UIButton {
             bottomView.leftAnchor.constraint(equalTo: self.leftAnchor),
             bottomView.rightAnchor.constraint(equalTo: self.rightAnchor),
             bottomView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            label.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 21),
-            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 9),
-            label.heightAnchor.constraint(equalToConstant: 14),
-            imgView.leftAnchor.constraint(equalTo: label.rightAnchor, constant: 10),
+            label.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 19),
+            label.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0),
+            label.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -34),
+            label.heightAnchor.constraint(equalTo: self.heightAnchor, constant: 0),
+            imgView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -18),
             imgView.topAnchor.constraint(equalTo: self.topAnchor, constant: 9),
+            imgView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0),
             imgView.heightAnchor.constraint(equalToConstant: 18)
             ]
         )
+        
+        
+        label.textAlignment = .center
+        self.layer.cornerRadius = 18
+    }
+    
+    internal func changeTitle(_ title: String) {
+        self.labelText = title
     }
     
     func changeImgConstraint(value: Int) {
@@ -124,9 +155,9 @@ class TwoColorButton: UIButton {
     }
     
     func changeLabelText() {
-        print("change text")
+        
         let attribute = [
-            NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 15),
+            NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 12),
             NSForegroundColorAttributeName: PopmetricsColor.todoBrown
         ]
         let attrString = NSAttributedString(string: labelText!, attributes: attribute)
@@ -140,6 +171,15 @@ class TwoColorButton: UIButton {
         imgView.contentMode = .scaleAspectFill
         imgView.tintColor = PopmetricsColor.todoBrown
     }
+    
+    func changeImageButtonType() {
+        switch imageButtonType {
+        
+        default:
+            break
+        }
+    }
+    
 }
 
 extension UIView {
@@ -160,7 +200,7 @@ extension UIView {
         gradientLayer.colors = colorsArray
         gradientLayer.locations = locationsArray
         
-        self.backgroundColor = UIColor.blue
+        
         self.layer.addSublayer(gradientLayer)
         
         // This can be done outside of this funciton

@@ -30,15 +30,10 @@ class TrafficCardViewCell: UITableViewCell {
         self.setCornerRadius()
         setUpShadowLayer()
         
-        self.footerView.approveLbl.textColor = UIColor.white
-        self.footerView.actionButton.leftHandImage = UIImage(named: "iconTrafficReport")
         self.toolbarView.title.text = "Traffic stats: hutcheson.io"
-        self.toolbarView.leftImage.image = UIImage(named: "iconHeaderTrafficStats")
-        self.toolbarView.isLeftImageHidden = false
         self.toolbarView.leftImage.widthAnchor.constraint(equalToConstant: 10).isActive = true
-        self.footerView.approveLbl.text = "View Traffic Report"
-        self.footerView.setIsTrafficUnconnected()
-        self.footerView.actionButton.imageButtonType = .traffic
+        self.footerView.configure(.traffic)
+        
         DispatchQueue.main.async {
             self.toolbarView.setupGradient()
             self.footerView.setupGradient()

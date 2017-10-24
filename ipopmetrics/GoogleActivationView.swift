@@ -74,10 +74,10 @@ class GoogleActivationView: UIView {
         addInstructionView()
         
         setFooterButton(isTaskSelected: false)
-        configure()
+        
     }
     
-    func configure() {
+    func configure(_ imageButtonType: ImageButtonType) {
         
     }
     
@@ -259,16 +259,10 @@ class GoogleActivationView: UIView {
     
     func setFooterButton(isTaskSelected: Bool) {
         if isTaskSelected {
-            footerView.actionButton.leftHandImage = UIImage(named: "icon2CtaTaskcard")
-            footerView.actionButton.rightHandImage = UIImage(named: "")
-            footerView.actionButton.backgroundColor = UIColor(red: 238/255, green: 127/255, blue: 111/255, alpha: 1)
-            footerView.approveLbl.text = "Remove From Task"
+            footerView.actionButton.changeTitle("Remove From Task")
             
         } else {
-            footerView.actionButton.leftHandImage = UIImage(named: "icon2CtaTaskcard")
-            footerView.actionButton.rightHandImage = UIImage(named: "")
-            footerView.actionButton.backgroundColor = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
-            footerView.approveLbl.text = "Add to Task"
+            footerView.configure(.addToTask)
         }
         
     }

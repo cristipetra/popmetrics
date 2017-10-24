@@ -91,16 +91,13 @@ class RequiredAction: UITableViewCell {
     }
     
     internal func configureFooterView() {
-        footerView.layer.backgroundColor = UIColor.clear.cgColor
-        footerView.approveLbl.textColor = UIColor.white
         footerView.xButton.isHidden = true
-
     }
     
     private func displayGoogleAnalytics() {
         messageLabel.numberOfLines = 4
         messageHeightConstraint.constant = 80
-        footerView.setGoogleViewType()
+        footerView.configure(.google)
     }
     
     private func displayEmailView() {

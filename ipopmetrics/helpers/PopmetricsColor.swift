@@ -74,4 +74,7 @@ class PopmetricsColor {
     static let visitFirstColor = UIColor(red: 160/255, green: 12/255, blue: 77/255, alpha: 1)
     static let visitSecondColor = UIColor(red: 255/255, green: 33/255, blue: 122/255, alpha: 1)
     
+    static let topButtonColor = UIColor(red: 252/255, green: 221/255, blue: 105/255, alpha: 1)
+    static let bottomButtonColor = UIColor(red: 251/255, green: 192/255, blue: 46/255, alpha: 1)
+    
 }

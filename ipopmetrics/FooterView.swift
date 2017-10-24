@@ -77,12 +77,18 @@ class FooterView: UIView {
         return button
     }()
     
+    /*
     lazy var actionButton : TwoImagesButton = {
         
         let button = TwoImagesButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
-        
+    }()
+    */
+    lazy var actionButton: TwoColorButton = {
+        let button = TwoColorButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     lazy var xButton : RoundButton = {
@@ -104,7 +110,7 @@ class FooterView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: FontBook.semibold, size: 10)
-        label.text = "Connect Twitter"
+        label.text = ""
         label.textAlignment = .center
         label.textColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
         label.numberOfLines = 2
@@ -137,6 +143,8 @@ class FooterView: UIView {
         setUpDoubleButton()
         setUpLoadMoreStackView()
         setUpHorizontalStackView()
+        
+        xButton.isHidden = true
     }
     
     func setContainerView() {
@@ -221,9 +229,8 @@ class FooterView: UIView {
     
     func setUpDoubleButton() {
         
-        actionButton.widthAnchor.constraint(equalToConstant: 90).isActive = true
-        actionButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
-        //approveLbl.widthAnchor.constraint(equalToConstant: 90).isActive = true
+        actionButton.widthAnchor.constraint(equalToConstant: 160).isActive = true
+        actionButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         actionButton.tintColor = PopmetricsColor.darkGrey
         actionButton.addTarget(self, action: #selector(approveHandler), for: .touchUpInside)
         actionButton.imageButtonType = .twitter
@@ -282,13 +289,25 @@ class FooterView: UIView {
         self.setIsTrafficUnconnected()
         self.xButton.alpha = 1
         self.hideButton(button: self.loadMoreBtn)
-        self.approveLbl.text = "Send confirmation \nemail"
-        self.approveLbl.textColor = UIColor.white
-        self.actionButton.leftImageView.image = UIImage(named: "iconLetter")?.withRenderingMode(.alwaysOriginal)
+        actionButton.changeTitle("Connect Email")
     }
     
-    internal func setGoogleViewType() {
-        self.approveLbl.text = "Connect Google"
+    internal func configure(_ imageButtonType: ImageButtonType) {
+        switch imageButtonType {
+        case .google:
+            actionButton.changeTitle("Connect Google")
+        case .addToTask:
+            actionButton.changeTitle("Add to Tasks")
+        case .traffic:
+            actionButton.changeTitle("View Traffic \nReport")
+            setIsTrafficUnconnected()
+        default:
+            return
+        }
+    }
+    
+    internal func setTitleActionBtn(_ title: String) {
+        
     }
     
 }

@@ -50,7 +50,7 @@ class RecommendedCell: UITableViewCell {
         setUpCell(type: "Popmetrics Insight")
         
         
-        footerVIew.approveLbl.text = "View Recommendation"
+        //footerVIew.approveLbl.text = "View Recommendation"
     }
     
     func handlerActionButton() {
@@ -108,9 +108,8 @@ class RecommendedCell: UITableViewCell {
             self.messageLabel.textColor = UIColor(red: 189/255, green: 197/255, blue: 203/255, alpha: 1)
             self.messageLabel.font = UIFont(name: FontBook.semibold, size: 15)
             self.secondMessageLabel.isHidden = true
-            self.footerVIew.actionButton.leftHandImage = UIImage(named: "icon2CtaViewarticle")
-            self.footerVIew.approveLbl.text = "View Article"
-            self.footerVIew.approveLbl.textColor = UIColor.black
+            
+            self.footerVIew.actionButton.changeTitle("View Article")
             
             break
         case "Popmetrics Insight":
@@ -126,12 +125,10 @@ class RecommendedCell: UITableViewCell {
             self.secondMessageLabel.textColor = UIColor.white
             self.secondMessageLabel.font = UIFont(name: FontBook.regular, size: 18)
             
-            //self.footerVIew.informationBtn.isHidden = true
-            self.footerVIew.actionButton.imageButtonType = .todo
-            self.footerVIew.approveLbl.text = "View Tweets"
-            self.footerVIew.approveLbl.textColor = UIColor.black
+            footerVIew.actionButton.changeTitle("View \nRecommendation")
+            
             self.connectionLine.isHidden = true
-            self.footerVIew.xButton.isHidden = true
+            
             break
         default:
             break

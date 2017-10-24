@@ -212,4 +212,7 @@ enum ImageButtonType {
     case linkedin
     case cancel
     case loadAll
+    case google
+    case addToTask
+    case action
 }
