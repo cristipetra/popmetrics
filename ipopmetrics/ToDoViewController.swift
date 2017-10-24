@@ -48,6 +48,8 @@ class ToDoViewController: BaseViewController {
     
     // display transition for opening card in calendar
     internal var didTransitionDisplayed = false
+    
+    internal var didAnimateOpeningCells = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -347,16 +349,41 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if UsersStore.didShowedTransitionAddToTask {
+        if store.getTodoCards().count <= 1 {
             return
         }
-        let transform = CATransform3DMakeScale(1,0.2,1)
-        cell.layer.transform = transform
-        UIView.animate(withDuration: 0.5) {
-            cell.alpha = 1
-            cell.layer.transform = CATransform3DIdentity
+        let duration = 0.3
+        
+        if !UsersStore.didShowedTransitionAddToTask {
+            if indexPath.section == 0 {
+                
+                let transform = CATransform3DMakeScale(1, 0.2, 1)
+                cell.layer.transform = transform
+                UIView.animate(withDuration: 0.5) {
+                    cell.alpha = 1
+                    cell.layer.transform = CATransform3DIdentity
+                }
+                didAnimateOpeningCells = true
+                UsersStore.didShowedTransitionAddToTask = true
+            }
+        } else if didAnimateOpeningCells == false {
+            
+            let delay = 0.1 + Double(indexPath.row) * 0.1
+            
+            let transformTop = CATransform3DTranslate(CATransform3DIdentity, 0, -148, 10)
+            cell.layer.transform = transformTop
+            cell.alpha = 0
+            
+            UIView.animate(withDuration: duration, delay: delay, options: .beginFromCurrentState, animations: {
+                cell.alpha = 1
+                cell.layer.transform = CATransform3DIdentity
+            }, completion: nil)
         }
-        UsersStore.didShowedTransitionAddToTask = true
+        
+        
+        if store.getTodoCards().count - 1 == indexPath.row  {
+            didAnimateOpeningCells = true
+        }
     }
     
     func addApprovedView() {
