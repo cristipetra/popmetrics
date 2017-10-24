@@ -178,7 +178,7 @@ class IceExtendView: UIView {
         
         effortMainProgressView.clipsToBounds = true
         
-        setProgress(animationBounds: effortMainProgressView.bounds, value: value, childOff: effortMainProgressView, animationColor: UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1), animationDuration: 15)
+        setProgress(animationBounds: effortMainProgressView.bounds, value: value, childOff: effortMainProgressView, animationColor: UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1), animationDuration: 2)
         
         
         let circaCharacterStyle = Style.default { (style) -> (Void) in
@@ -227,7 +227,7 @@ class IceExtendView: UIView {
         let progressValue = CGFloat(progress) / 100
         
         impactProgressView.primaryColor = animationColor//UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1)
-        impactProgressView.animationDuration = animationDuration == nil ? 6 : animationDuration!
+        impactProgressView.animationDuration = animationDuration == nil ? 2 : animationDuration!
         impactProgressView.borderWidth = 0
         impactProgressView.cornerRadius = 0
         
