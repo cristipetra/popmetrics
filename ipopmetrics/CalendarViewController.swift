@@ -90,6 +90,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
             SyncService.getInstance().syncCalendarItems(silent: false)
         }
         
+        //createItemsLocally()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -176,10 +177,12 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
         try! store.realm.write {
             
             let calendarItem = CalendarCard()
-            calendarItem.cardId = "calendarID"
-            calendarItem.message = "Calendar card for animation testing"
+            calendarItem.cardId = "fdsafsda8fsd9afsd98"
+            //calendarItem.message = "Calendar card for animation testing"
             calendarItem.section = "Scheduled"
             calendarItem.status = "Scheduled"
+            store.realm.add(calendarItem, update: true)
+            
             
             let calendarPost = CalendarSocialPost()
             calendarPost.section = "Scheduled"
@@ -189,11 +192,18 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
             calendarPost.status = "Scheduled"
             calendarPost.scheduledDate = Date()
             
-            store.realm.add(calendarItem, update: true)
-            
-            store.realm.add(calendarPost, update: true)
+            //store.realm.add(calendarPost, update: true)
             //store.realm.delete(calendarPost)
+            
+            let calendarComplete = CalendarCard()
+            calendarComplete.section = StatusArticle.completed.rawValue
+            calendarComplete.cardId = "dsfasdfasf2252525r"
+            calendarComplete.status = "completed"
+            
+            store.realm.add(calendarComplete, update: true)
+    
         }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -217,7 +227,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        createItemsLocally()
+        //createItemsLocally()
         
         tableView.isHidden = false
     }
@@ -274,8 +284,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
             cell.changeTitleWithSpacing(title: "Thats it for now");
             cell.changeMessageWithSpacing(message: "Check back to see if there is anything more in the Home Feed")
-            cell.titleActionButton.text = "View Home Feed"
-            cell.goToButton.imageButtonType = .lastCardCalendar
+            cell.goToButton.changeTitle("View Home Feed")
             cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
             cell.selectionStyle = .none
             return cell
@@ -463,6 +472,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
                 return 1
             }
         }
+        
         return store.getCalendarCards().count + 1 // adding the last card
     }
     

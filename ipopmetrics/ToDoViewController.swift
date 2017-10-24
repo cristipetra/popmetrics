@@ -296,9 +296,10 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
             cell.changeTitleWithSpacing(title: "Finished with the actions?");
             cell.changeMessageWithSpacing(message: "Check out the things you've scheduled in the calendar hub")
-            cell.titleActionButton.text = "View Calendar"
+            cell.goToButton.changeTitle("View Calendar")
+            
             cell.selectionStyle = .none
-            cell.goToButton.imageButtonType = .lastCardTodo
+            
             cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
             return cell
         }
