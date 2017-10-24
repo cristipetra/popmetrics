@@ -115,7 +115,10 @@ class TwoColorButton: UIButton {
         
         
         label.textAlignment = .center
-        self.layer.cornerRadius = 18
+        
+        DispatchQueue.main.async {
+            self.layer.cornerRadius = self.frame.height / 2
+        }
     }
     
     internal func changeTitle(_ title: String) {

@@ -287,6 +287,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             cell.changeTitleWithSpacing(title: "More on it's way!")
             cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
             cell.selectionStyle = .none
+            cell.goToButton.changeTitle("View To Do List")
             cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
             return cell
         }
@@ -639,6 +640,7 @@ extension HomeHubViewController {
     
     
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
+        print(store.getFeedCards())
         self.tableView.reloadData()
         
     }

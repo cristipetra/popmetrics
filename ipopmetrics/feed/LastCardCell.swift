@@ -12,11 +12,10 @@ class LastCardCell: UITableViewCell {
     @IBOutlet weak var secondContainerView: UIView!
     @IBOutlet weak var imageTitle: UIImageView!
     @IBOutlet weak var xbutton: RoundButton!
-    @IBOutlet weak var goToButton: TwoImagesButton!
+    @IBOutlet weak var goToButton: TwoColorButton!
     @IBOutlet weak var messageLbl: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var titleActionButton: UILabel!
     
     internal var shadowView: UIView!;
     
@@ -30,7 +29,7 @@ class LastCardCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.feedBackgroundColor()
-        self.goToButton.backgroundColor = PopmetricsColor.yellowBGColor
+        
         setCornerRadiou()
         setShadows(view: goToButton)
         setUpShadowLayer()
@@ -45,9 +44,9 @@ class LastCardCell: UITableViewCell {
     func setCornerRadiou() {
         secondContainerView.layer.cornerRadius = 12
         secondContainerView.layer.masksToBounds = true
-        self.goToButton.layer.borderWidth = 2.0
-        self.goToButton.layer.borderColor = PopmetricsColor.darkGrey.cgColor
-        self.goToButton.layer.cornerRadius = self.goToButton.frame.height / 2
+        
+        
+        //self.goToButton.layer.cornerRadius = self.goToButton.frame.height / 2
     }
     
     private func setShadows(view: AnyObject) {

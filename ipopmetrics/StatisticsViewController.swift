@@ -216,7 +216,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.changeTitleWithSpacing(title: "You're all caught up.")
             cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
             cell.selectionStyle = .none
-            cell.titleActionButton.text = "View Home Feed"
+            cell.goToButton.changeTitle("View Home Feed")
             cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
             return cell
         }
