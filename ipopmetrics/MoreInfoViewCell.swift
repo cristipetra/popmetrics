@@ -61,7 +61,7 @@ class  MoreInfoViewCell: UITableViewCell {
         footerView.hideButton(button: footerView.informationBtn)
         footerView.hideButton(button: footerView.loadMoreBtn)
         footerView.xButton.alpha = 1
-        footerView.approveLbl.text = "Show Additional Items"
+        footerView.actionButton.changeTitle("Show Additional \nItems")
     }
     
     private func setUpShadowLayer() {
