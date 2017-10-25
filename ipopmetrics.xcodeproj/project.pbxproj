@@ -26,7 +26,6 @@
 		085282701F2881BD0065A968 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0852826F1F2881BD0065A968 /* Calendar.swift */; };
 		085282721F28D9C50065A968 /* CalendarFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085282711F28D9C50065A968 /* CalendarFooter.xib */; };
 		085282741F28D9DE0065A968 /* CalendarFooterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085282731F28D9DE0065A968 /* CalendarFooterViewCell.swift */; };
-		085282761F28F2500065A968 /* sampleFeedCalendar.json in Resources */ = {isa = PBXBuildFile; fileRef = 085282751F28F2500065A968 /* sampleFeedCalendar.json */; };
 		0854AF331F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0854AF321F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift */; };
 		0854AF351F3F2B18007B60F9 /* CalendarCardSimple.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0854AF341F3F2B18007B60F9 /* CalendarCardSimple.xib */; };
 		085530461F6CEE0A00D82A09 /* GoogleActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085530451F6CEE0A00D82A09 /* GoogleActivationView.swift */; };
@@ -87,10 +86,8 @@
 		08AD60D81F5FF5E0007095B9 /* TodoCardMaximized.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AD60D71F5FF5E0007095B9 /* TodoCardMaximized.xib */; };
 		08AD60DA1F5FF63D007095B9 /* TodoCardMaximizedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AD60D91F5FF63D007095B9 /* TodoCardMaximizedViewCell.swift */; };
 		08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */; };
-		08ADA30B1F42D3FA00060ECD /* sampleFeedTodo.json in Resources */ = {isa = PBXBuildFile; fileRef = 08ADA30A1F42D3FA00060ECD /* sampleFeedTodo.json */; };
 		08AF04981F46FB9B0040012B /* ToDoCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AF04971F46FB9B0040012B /* ToDoCardCell.xib */; };
 		08AF049A1F46FBB60040012B /* ToDoCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AF04991F46FBB60040012B /* ToDoCardCell.swift */; };
-		08B2803B1F5583CA00E36D19 /* sampleFeedStatistics.json in Resources */ = {isa = PBXBuildFile; fileRef = 08B2803A1F5583CA00E36D19 /* sampleFeedStatistics.json */; };
 		08B2803D1F55855500E36D19 /* StatisticsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B2803C1F55855500E36D19 /* StatisticsStore.swift */; };
 		08B2803F1F55862100E36D19 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B2803E1F55862100E36D19 /* Statistics.swift */; };
 		08B324D81F98C65A00BB4905 /* IceExtendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B324D71F98C65A00BB4905 /* IceExtendView.xib */; };
@@ -195,7 +192,6 @@
 		11ACA9B01E2CE0FC0021E64A /* PopmetricsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9AF1E2CE0FC0021E64A /* PopmetricsColor.swift */; };
 		11D3B80A1F7BC76A00B51C08 /* SyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D3B8091F7BC76A00B51C08 /* SyncService.swift */; };
 		11D8D9E91ECA37FC00CCDAC4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D9E81ECA37FC00CCDAC4 /* NavigationController.swift */; };
-		11D8D9EF1ECB1B9800CCDAC4 /* sampleFeed.json in Resources */ = {isa = PBXBuildFile; fileRef = 11D8D9EE1ECB1B9800CCDAC4 /* sampleFeed.json */; };
 		11D8D9F11ECB58AB00CCDAC4 /* RequiredActionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */; };
 		11F89F691EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */; };
 		631BDFACE57815E87C781181 /* Pods_ipopmetrics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */; };
@@ -243,7 +239,6 @@
 		0852826F1F2881BD0065A968 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		085282711F28D9C50065A968 /* CalendarFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarFooter.xib; sourceTree = "<group>"; };
 		085282731F28D9DE0065A968 /* CalendarFooterViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarFooterViewCell.swift; sourceTree = "<group>"; };
-		085282751F28F2500065A968 /* sampleFeedCalendar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFeedCalendar.json; sourceTree = "<group>"; };
 		0854AF321F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCardSimpleViewCell.swift; sourceTree = "<group>"; };
 		0854AF341F3F2B18007B60F9 /* CalendarCardSimple.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCardSimple.xib; sourceTree = "<group>"; };
 		085530451F6CEE0A00D82A09 /* GoogleActivationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleActivationView.swift; sourceTree = "<group>"; };
@@ -307,10 +302,8 @@
 		08AA6C721F56F8630022DE91 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		08AD60D71F5FF5E0007095B9 /* TodoCardMaximized.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodoCardMaximized.xib; sourceTree = "<group>"; };
 		08AD60D91F5FF63D007095B9 /* TodoCardMaximizedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoCardMaximizedViewCell.swift; sourceTree = "<group>"; };
-		08ADA30A1F42D3FA00060ECD /* sampleFeedTodo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFeedTodo.json; sourceTree = "<group>"; };
 		08AF04971F46FB9B0040012B /* ToDoCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoCardCell.xib; sourceTree = "<group>"; };
 		08AF04991F46FBB60040012B /* ToDoCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCardCell.swift; sourceTree = "<group>"; };
-		08B2803A1F5583CA00E36D19 /* sampleFeedStatistics.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFeedStatistics.json; sourceTree = "<group>"; };
 		08B2803C1F55855500E36D19 /* StatisticsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsStore.swift; sourceTree = "<group>"; };
 		08B2803E1F55862100E36D19 /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 		08B324D71F98C65A00BB4905 /* IceExtendView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IceExtendView.xib; sourceTree = "<group>"; };
@@ -422,7 +415,6 @@
 		11ACA9AF1E2CE0FC0021E64A /* PopmetricsColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopmetricsColor.swift; path = helpers/PopmetricsColor.swift; sourceTree = "<group>"; };
 		11D3B8091F7BC76A00B51C08 /* SyncService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SyncService.swift; path = api/SyncService.swift; sourceTree = "<group>"; };
 		11D8D9E81ECA37FC00CCDAC4 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		11D8D9EE1ECB1B9800CCDAC4 /* sampleFeed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFeed.json; sourceTree = "<group>"; };
 		11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredActionViewCell.swift; sourceTree = "<group>"; };
 		11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release.xcconfig"; sourceTree = "<group>"; };
@@ -883,10 +875,6 @@
 				1178D6811E1E5AD9005B96C3 /* Assets.xcassets */,
 				1178D6831E1E5AD9005B96C3 /* LaunchScreen.storyboard */,
 				1178D6861E1E5AD9005B96C3 /* Info.plist */,
-				085282751F28F2500065A968 /* sampleFeedCalendar.json */,
-				08ADA30A1F42D3FA00060ECD /* sampleFeedTodo.json */,
-				08B2803A1F5583CA00E36D19 /* sampleFeedStatistics.json */,
-				11D8D9EE1ECB1B9800CCDAC4 /* sampleFeed.json */,
 				08D1BC381F1E3D6200D377B2 /* LDSplashView.swift */,
 				08A812731F16601A00672126 /* HeaderCardCell.xib */,
 				08F7A09A1F17AC2700A1B2C3 /* RecommendationCard.xib */,
@@ -1162,9 +1150,7 @@
 				085599AA1F72842100E5BEA1 /* animation.json in Resources */,
 				08B745921F1F6C0100EC3F8C /* OpenSans-Semibold.ttf in Resources */,
 				085599A61F72751900E5BEA1 /* SplashScreen.xib in Resources */,
-				085282761F28F2500065A968 /* sampleFeedCalendar.json in Resources */,
 				081D5DC41F94F93300BB7352 /* HeaderCardView.xib in Resources */,
-				08B2803B1F5583CA00E36D19 /* sampleFeedStatistics.json in Resources */,
 				08B745931F1F6C0100EC3F8C /* OpenSans-Light.ttf in Resources */,
 				08AA6C6F1F56F3BA0022DE91 /* ChartStatistics.storyboard in Resources */,
 				08953E6B1F4C269E003ABEFC /* ToDoCell.xib in Resources */,
@@ -1186,7 +1172,6 @@
 				08B745961F1F6C1D00EC3F8C /* OpenSans-Regular.ttf in Resources */,
 				1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */,
 				082D363E1F5D7CFF006B0985 /* StatisticsInsight.xib in Resources */,
-				11D8D9EF1ECB1B9800CCDAC4 /* sampleFeed.json in Resources */,
 				085282721F28D9C50065A968 /* CalendarFooter.xib in Resources */,
 				080DCA861F4D9707000C73DC /* RecommendedCell.xib in Resources */,
 				08953E721F4C352B003ABEFC /* RequiredAction.xib in Resources */,
@@ -1198,7 +1183,6 @@
 				08A812741F16601A00672126 /* HeaderCardCell.xib in Resources */,
 				080DCA831F4D9586000C73DC /* OpenSans-ExtraBold.ttf in Resources */,
 				085054011F2793AE00FE8234 /* CalendarCard.xib in Resources */,
-				08ADA30B1F42D3FA00060ECD /* sampleFeedTodo.json in Resources */,
 				08A533381F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib in Resources */,
 				1178D6821E1E5AD9005B96C3 /* Assets.xcassets in Resources */,
 				08C7B18D1F1CF40C00E456C6 /* WelcomeScreen.xib in Resources */,
