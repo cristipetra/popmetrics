@@ -76,15 +76,7 @@ class FooterView: UIView {
         button.layer.cornerRadius = 23
         return button
     }()
-    
-    /*
-    lazy var actionButton : TwoImagesButton = {
-        
-        let button = TwoImagesButton(type: UIButtonType.system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    */
+
     lazy var actionButton: TwoColorButton = {
         let button = TwoColorButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -185,11 +177,12 @@ class FooterView: UIView {
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
         
         containerView.addSubview(approveStackView)
-        approveStackView.topAnchor.constraint(equalTo: containerView.topAnchor,constant: 14).isActive = true
+        //approveStackView.topAnchor.constraint(equalTo: containerView.topAnchor,constant: 14).isActive = true
+        approveStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: 0).isActive = true
         approveStackView.rightAnchor.constraint(equalTo: containerView.rightAnchor,constant: 0).isActive = true
         
         containerView.addSubview(horizontalStackView)
-        horizontalStackView.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 14).isActive = true
+        horizontalStackView.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 24).isActive = true
         horizontalStackView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 10).isActive = true
         horizontalStackView.rightAnchor.constraint(equalTo: self.approveStackView.leftAnchor, constant: -12).isActive = true
         
@@ -264,6 +257,10 @@ class FooterView: UIView {
     
     func hideInformationButton() {
         informationBtn.isHidden = true
+    }
+    
+    func displayOnlyActionButton() {
+        horizontalStackView.isHidden = true
     }
     
     func setShadow(button: UIButton) {

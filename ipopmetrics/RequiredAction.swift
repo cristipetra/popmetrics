@@ -91,7 +91,7 @@ class RequiredAction: UITableViewCell {
     }
     
     internal func configureFooterView() {
-        footerView.xButton.isHidden = true
+        footerView.displayOnlyActionButton()
     }
     
     private func displayGoogleAnalytics() {

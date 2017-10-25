@@ -333,6 +333,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             case "insight":
                 let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedId", for: indexPath) as! RecommendedCell
                 cell.setUpCell(type: "Popmetrics Insight")
+                cell.configure(item)
                 if(sectionCards.count-1 == indexPath.row) {
                     cell.connectionLine.isHidden = true;
                 }

@@ -249,7 +249,8 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.selectionStyle = .none
             cell.backgroundColor = UIColor.feedBackgroundColor()
             cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_: card:)), for: .touchUpInside)
-            cell.footerView.hideButton(button: cell.footerView.xButton)
+            //cell.footerView.hideButton(button: cell.footerView.xButton)
+            cell.footerView.displayOnlyActionButton()
             cell.connectionLine.isHidden = true
             return cell
         case "insight" :

@@ -49,8 +49,7 @@ class RecommendedCell: UITableViewCell {
         self.feedCard = feedCard
         setUpCell(type: "Popmetrics Insight")
         
-        
-        //footerVIew.approveLbl.text = "View Recommendation"
+        footerVIew.displayOnlyActionButton()
     }
     
     func handlerActionButton() {
