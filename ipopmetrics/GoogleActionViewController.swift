@@ -120,9 +120,10 @@ class GoogleActionViewController: UIViewController {
     }
     
     func handlerActionButton(_ sender: TwoImagesButton) {
+        footerView.actionButton.animateButton(decreaseWidth: 120, increaseWidth: 10, imgLeftSpace: 10)
         recommendActionHandler?.handleRecommendAction(item: feedCard)
-        self.tabBarController?.selectedIndex += 1
-        self.navigationController?.popViewController(animated: false)
+        //self.tabBarController?.selectedIndex += 1
+        //self.navigationController?.popViewController(animated: false)
     }
     
     func setTaskView() {

@@ -57,7 +57,7 @@ class TodoPostDetailsViewController: UIViewController {
         
     }()
     
-    let postDetailsView = TodoPostDetailsView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 650))
+    let postDetailsView = TodoPostDetailsView()
     
     weak var socialDelegate: ActionSocialPostProtocoll?
     var indexPath: IndexPath!
@@ -92,10 +92,11 @@ class TodoPostDetailsViewController: UIViewController {
     func addPostDetails() {
         
         containerView.addSubview(postDetailsView)
+        postDetailsView.translatesAutoresizingMaskIntoConstraints = false
         postDetailsView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0).isActive = true
         postDetailsView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
         postDetailsView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
-        postDetailsView.heightAnchor.constraint(equalToConstant: 650).isActive = true
+        postDetailsView.heightAnchor.constraint(equalToConstant: 550).isActive = true
         
     }
     
@@ -134,19 +135,13 @@ class TodoPostDetailsViewController: UIViewController {
     }
     
     func denyPost(sender: UIButton) {
-        
         socialDelegate?.denyPostFromSocial(post: self.toDoPost, indexPath: self.indexPath)
         self.navigationController?.popViewController(animated: true)
-        
-        
-        
     }
     
     func approvePost(sender: TwoColorButton) {
-        
         socialDelegate?.approvePostFromSocial(post: self.toDoPost, indexPath: self.indexPath)
         self.navigationController?.popViewController(animated: true)
-        
     }
     
     func setUpNavigationBar() {
@@ -166,8 +161,7 @@ class TodoPostDetailsViewController: UIViewController {
     }
     
     func handlerClickBack() {
-        self.navigationController?.popViewController(animated: true)
-        
+        self.navigationController?.popViewController(animated: true)   
     }
     
     
