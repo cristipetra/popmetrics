@@ -128,7 +128,7 @@ class TodoSocialPost: Object, Mappable {
     dynamic var articleUrl = ""
     dynamic var articleHashtags = ""
     dynamic var articleImage:String? = nil
-    
+    dynamic var articleSummary: String? = nil
     
     override static func primaryKey() -> String? {
         return "postId"
@@ -151,7 +151,7 @@ class TodoSocialPost: Object, Mappable {
         articleUrl      <- map["article_url"]
         articleHashtags <- map["article_hashtags"]
         articleImage    <- map["article_image"]
-        
+        articleSummary  <- map["article_summary"]
         
         createDate      <- (map["create_dt"], DateTransform())
         updateDate      <- (map["update_dt"], DateTransform())

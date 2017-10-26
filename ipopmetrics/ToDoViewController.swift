@@ -386,6 +386,19 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let detailsViewController = UIStoryboard(name: "TodoPostDetails", bundle: nil).instantiateViewController(withIdentifier: "postDetailsId") as! TodoPostDetailsViewController
+        detailsViewController.hidesBottomBarWhenPushed = true
+        
+        let socialPost = store.getTodoSocialPostsForCard(store.getTodoCards()[indexPath.section])[indexPath.row] //store.getTodoCards()[indexPath.section]
+        
+        detailsViewController.socialDelegate = self
+        detailsViewController.configure(todoItem: socialPost,indexPath: indexPath)
+        self.navigationController?.pushViewController(detailsViewController, animated: true)
+        
+    }
+    
     func addApprovedView() {
         self.view.insertSubview(approvedView, aboveSubview: tableView)
         
@@ -809,4 +822,30 @@ extension ToDoViewController {
         self.tableView.reloadData()
     }
 }
+
+extension ToDoViewController: ActionSocialPostProtocoll {
+    
+    func denyPostFromSocial(post: TodoSocialPost, indexPath: IndexPath) {
+        print("deny social post ") // need work from other branch
+        
+    }
+    
+    func approvePostFromSocial(post: TodoSocialPost, indexPath: IndexPath) {
+        print("approve social post")
+        removeCell(indexPath: indexPath)
+        
+        if approvedView.transform == .identity {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.approvedView.transform = CGAffineTransform(translationX: 0, y: -120)
+                Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
+                    self.hideApprovedView()
+                })
+                
+            })
+        }
+        
+    }
+    
+}
+
 
