@@ -85,7 +85,7 @@ class TrafficVisits: UITableViewCell {
         titleLabel.widthAnchor.constraint(equalToConstant: 170).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         titleLabel.text = ""
-        titleLabel.font = UIFont(name: FontBook.extraBold, size: 18)
+        titleLabel.font = UIFont(name: FontBook.semibold, size: 18)
         titleLabel.textColor = UIColor(red: 87/255, green: 93/255, blue: 99/255, alpha: 1)
         
         self.addSubview(firstValueLabel)

@@ -18,10 +18,11 @@ class TrafficStatus: UIView {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var topPageControl: UIPageControl!
     @IBOutlet weak var bottomLabel: UILabel!
+    @IBOutlet weak var bottomPageControllView: UIView! 
     
     
     var tableView: TrafficStatsTableViewController = TrafficStatsTableViewController()
-    
+    let chartVC = UIStoryboard(name: "ChartStatistics", bundle: nil).instantiateViewController(withIdentifier: "ChartViewId") as! ChartViewController
     
     var statisticsCard: StatisticsCard!
     let statisticStore = StatisticsStore.getInstance()
@@ -76,12 +77,15 @@ class TrafficStatus: UIView {
         bottomLabel.font = UIFont(name: FontBook.semibold, size: 15)
         bottomLabel.textAlignment = .center
         
+        self.backgroundColor = UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 0.5)
+        
         topPageControl.tintColor = UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1)
         topPageControl.currentPageIndicatorTintColor = UIColor(red: 87/255, green: 93/255, blue: 99/255, alpha: 1)
         
         pageControl.tintColor = UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1)
         pageControl.currentPageIndicatorTintColor = UIColor(red: 87/255, green: 93/255, blue: 99/255, alpha: 1)
      
+        addChartView()
         addTableView()
     }
     
@@ -93,10 +97,27 @@ class TrafficStatus: UIView {
         tableView.view.translatesAutoresizingMaskIntoConstraints = false
         tableView.view.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         tableView.view.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        tableView.view.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
+        //tableView.view.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
+        tableView.view.topAnchor.constraint(equalTo: chartVC.view.bottomAnchor, constant: 1).isActive = true
         tableView.view.heightAnchor.constraint(equalToConstant: 345).isActive = true
    
         tableView.automaticallyAdjustsScrollViewInsets = false
+    }
+    
+    internal func addChartView() {
+        
+        self.addSubview(chartVC.view)
+        chartVC.didMove(toParentViewController: self.parentViewController)
+        
+        chartVC.containerView.backgroundColor = UIColor.white//UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+        chartVC.barChart.backgroundFillColor = UIColor.white//UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+        
+        chartVC.view.translatesAutoresizingMaskIntoConstraints = false
+        chartVC.view.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
+        chartVC.view.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        chartVC.view.topAnchor.constraint(equalTo: self.topAnchor,constant: 33).isActive = true
+        chartVC.view.heightAnchor.constraint(equalToConstant: 320).isActive = true
+        
     }
     
 }
