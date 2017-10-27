@@ -388,7 +388,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let detailsViewController = UIStoryboard(name: "TodoPostDetails", bundle: nil).instantiateViewController(withIdentifier: "postDetailsId") as! TodoPostDetailsViewController
+        let detailsViewController = UIStoryboard(name: "TodoPostDetails", bundle: nil).instantiateViewController(withIdentifier: "postDetailsId") as! SocialPostDetailsViewController
         detailsViewController.hidesBottomBarWhenPushed = true
         
         let socialPost = store.getTodoSocialPostsForCard(store.getTodoCards()[indexPath.section])[indexPath.row] //store.getTodoCards()[indexPath.section]
@@ -762,7 +762,6 @@ extension ToDoViewController: FooterButtonHandlerProtocol {
 extension ToDoViewController:  TodoCardActionHandler {
     
     func handleCardAction(_ action:String, todoCard: TodoCard, params:[String:Any]) {
-        
         switch (todoCard.type) {
         case "articles_posting":
             if action == "approve_one" || action == "deny_one" {
@@ -832,6 +831,7 @@ extension ToDoViewController: ActionSocialPostProtocoll {
     
     func approvePostFromSocial(post: TodoSocialPost, indexPath: IndexPath) {
         print("approve social post")
+        
         removeCell(indexPath: indexPath)
         
         if approvedView.transform == .identity {

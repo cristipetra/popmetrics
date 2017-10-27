@@ -305,16 +305,11 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCardSimple", for: indexPath) as! CalendarCardSimpleViewCell
             cell.configure(item)
             cell.cancelCardDelegate = self
-            cell.maximizeDelegate = self
+            cell.selectionStyle = .none
             
+            cell.layer.transform = CATransform3DMakeScale(1, 0.0, 1)
+            self.animateCellAppearance(cell: cell)
             
-            //if animateCard {
-                cell.layer.transform = CATransform3DMakeScale(1,0.0,1)
-            
-                self.animateCellAppearance(cell: cell)
-            
-                //animateCellAppearance(cell: cell)
-            //}
             return cell
         } else {
             let maxCell = tableView.dequeueReusableCell(withIdentifier: "extendedCell", for: indexPath) as! CalendarCardMaximizedViewCell
@@ -333,6 +328,19 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
             
             return maxCell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let detailsViewController = UIStoryboard(name: "TodoPostDetails", bundle: nil).instantiateViewController(withIdentifier: "postDetailsId") as! SocialPostDetailsViewController
+        detailsViewController.hidesBottomBarWhenPushed = true
+        
+        let socialPost = store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section], datesSelected: 0)[indexPath.row]
+        
+        detailsViewController.socialDelegate = self
+        detailsViewController.configureCalendar(calendarItem: socialPost, indexPath: indexPath)
+        self.navigationController?.pushViewController(detailsViewController, animated: true)
+        
     }
     
     func animateCellAppearance(cell: CalendarCardSimpleViewCell) {
@@ -662,4 +670,8 @@ extension CalendarViewController:  CalendarCardActionHandler {
     }
 }
 
-
+extension CalendarViewController: ActionSocialPostProtocoll {
+    func cancelPostFromSocial(post: CalendarSocialPost, indexPath: IndexPath) {
+        print("Calendar post canceled")
+    }
+}

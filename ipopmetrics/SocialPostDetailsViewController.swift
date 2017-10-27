@@ -1,14 +1,14 @@
 //
-//  TodoPostDetailsViewController.swift
+//  SocialPostDetailsViewController.swift
 //  ipopmetrics
 //
-//  Created by Cristian Petra on 26/10/2017.
+//  Created by Cristian Petra on 27/10/2017.
 //  Copyright © 2017 Popmetrics. All rights reserved.
 //
 
 import UIKit
 
-class TodoPostDetailsViewController: UIViewController {
+class SocialPostDetailsViewController: UIViewController {
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -57,7 +57,7 @@ class TodoPostDetailsViewController: UIViewController {
         
     }()
     
-    let postDetailsView = TodoPostDetailsView()
+    let postDetailsView = SocialPostDetailsView()
     
     weak var socialDelegate: ActionSocialPostProtocoll?
     var indexPath: IndexPath!
@@ -66,6 +66,15 @@ class TodoPostDetailsViewController: UIViewController {
         didSet {
             postDetailsView.configureView(socialPost: toDoPost)
             messageLabel.text = toDoPost.articleText
+        }
+    }
+    
+    private var calendarSocialPost: CalendarSocialPost! {
+        didSet {
+            postDetailsView.configureCalendarView(socialPost: calendarSocialPost)
+            messageLabel.text = calendarSocialPost.articleSummary
+            self.denyPostBtn.setTitle("Cancel Post", for: .normal)
+            approvePostBtn.isHidden = true
         }
     }
     
@@ -86,6 +95,11 @@ class TodoPostDetailsViewController: UIViewController {
     
     func configure(todoItem: TodoSocialPost,indexPath: IndexPath) {
         self.toDoPost = todoItem
+        self.indexPath = indexPath
+    }
+    
+    func configureCalendar(calendarItem: CalendarSocialPost, indexPath: IndexPath) {
+        self.calendarSocialPost = calendarItem
         self.indexPath = indexPath
     }
     
@@ -115,7 +129,7 @@ class TodoPostDetailsViewController: UIViewController {
         
         denyPostBtn.leftAnchor.constraint(equalTo: buttonContainerView.leftAnchor, constant: 30).isActive = true
         denyPostBtn.topAnchor.constraint(equalTo: buttonContainerView.topAnchor, constant: 18).isActive = true
-        denyPostBtn.widthAnchor.constraint(equalToConstant: 79).isActive = true
+        denyPostBtn.widthAnchor.constraint(equalToConstant: 90).isActive = true
         denyPostBtn.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         approvePostBtn.rightAnchor.constraint(equalTo: buttonContainerView.rightAnchor, constant: -24).isActive = true
@@ -135,12 +149,17 @@ class TodoPostDetailsViewController: UIViewController {
     }
     
     func denyPost(sender: UIButton) {
-        socialDelegate?.denyPostFromSocial(post: self.toDoPost, indexPath: self.indexPath)
+        if calendarSocialPost != nil {
+            socialDelegate?.cancelPostFromSocial!(post: self.calendarSocialPost, indexPath: indexPath)
+        } else {
+            socialDelegate?.denyPostFromSocial!(post: self.toDoPost, indexPath: self.indexPath)
+        }
+        
         self.navigationController?.popViewController(animated: true)
     }
     
     func approvePost(sender: TwoColorButton) {
-        socialDelegate?.approvePostFromSocial(post: self.toDoPost, indexPath: self.indexPath)
+        socialDelegate?.approvePostFromSocial!(post: self.toDoPost, indexPath: self.indexPath)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -161,7 +180,7 @@ class TodoPostDetailsViewController: UIViewController {
     }
     
     func handlerClickBack() {
-        self.navigationController?.popViewController(animated: true)   
+        self.navigationController?.popViewController(animated: true)
     }
     
     
@@ -214,9 +233,10 @@ class TodoPostDetailsViewController: UIViewController {
     }
 }
 
-protocol ActionSocialPostProtocoll: class {
-    func denyPostFromSocial(post: TodoSocialPost,indexPath: IndexPath)
+@objc protocol ActionSocialPostProtocoll: class {
     
-    func approvePostFromSocial(post: TodoSocialPost,indexPath: IndexPath)
+    @objc optional func denyPostFromSocial(post: TodoSocialPost,indexPath: IndexPath)
+    @objc optional func cancelPostFromSocial(post: CalendarSocialPost,indexPath: IndexPath)
+    @objc optional func approvePostFromSocial(post: TodoSocialPost,indexPath: IndexPath)
     
 }

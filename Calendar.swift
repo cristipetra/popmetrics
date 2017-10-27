@@ -202,7 +202,7 @@ class CalendarSocialPost: Object, Mappable {
     dynamic var url = ""
     dynamic var hashtags = ""
     dynamic var image:String? = nil
-    
+    dynamic var articleSummary: String? = ""
     
     override static func primaryKey() -> String? {
         return "postId"

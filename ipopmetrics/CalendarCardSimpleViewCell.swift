@@ -35,25 +35,17 @@ class CalendarCardSimpleViewCell: UITableViewCell {
     
     internal var calendarItem: CalendarSocialPost!
     
-    weak var maximizeDelegate: ChangeCellProtocol?
     weak var cancelCardDelegate : CalendarCardActionHandler?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.feedBackgroundColor()
         
-        let tapCard = UITapGestureRecognizer(target: self, action: #selector(handlerClickCard))
         self.isUserInteractionEnabled = true
-        self.addGestureRecognizer(tapCard)
         
-        //addStatusCardTypeView()
         setupCorners()
     }
-    
-    func handlerClickCard() {
-        maximizeDelegate?.maximizeCell()
-    }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

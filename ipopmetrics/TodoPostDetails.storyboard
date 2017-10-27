@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Todo Post Details View Controller-->
+        <!--Social Post Details View Controller-->
         <scene sceneID="ZQ0-OK-Yj8">
             <objects>
-                <viewController storyboardIdentifier="postDetailsId" id="NvP-iy-bmj" customClass="TodoPostDetailsViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="postDetailsId" id="NvP-iy-bmj" customClass="SocialPostDetailsViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MyU-Iz-f9a"/>
                         <viewControllerLayoutGuide type="bottom" id="GI8-M9-W8H"/>
