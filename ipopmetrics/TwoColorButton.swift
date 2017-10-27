@@ -109,14 +109,13 @@ class TwoColorButton: UIButton {
             label.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0),
             label.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -34),
             label.heightAnchor.constraint(equalTo: self.heightAnchor, constant: 0),
+            imgView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0),
             imgView.leftAnchor.constraint(equalTo: label.rightAnchor, constant: 8)
             ]
         )
         
         imgHeight = imgView.heightAnchor.constraint(equalToConstant: 23)
         imgHeight?.isActive = true
-        imgTop = imgView.topAnchor.constraint(equalTo: self.topAnchor, constant: 6)
-        imgTop?.isActive = true
         
         label.textAlignment = .center
         
