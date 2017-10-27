@@ -610,7 +610,6 @@
 		0862C4D41FA1F50E00BEF0BC /* todo */ = {
 			isa = PBXGroup;
 			children = (
-				1100F6F81F5FEBCE000AF1D4 /* TodoActionHandler.swift */,
 				08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */,
 				0862C4D51FA1F52B00BEF0BC /* TodoPostDetailsViewController.swift */,
 			);
@@ -648,8 +647,10 @@
 				11AAA5E91ECCD7040099B50E /* ActionHistoryViewCell.swift */,
 				1128B3FC1ED2E01F00BDA58C /* ActionViewCell.swift */,
 				1128B3FE1ED2E12300BDA58C /* InsightViewCell.swift */,
+				08F368881F18D7C500819CDE /* ApprovalCard.xib */,
 				D9EC7E341ECEE37A00A54B53 /* BestCourseCard.xib */,
 				D9AB86571ECED85A0050A7AB /* InsightCard.xib */,
+				08F3688E1F18E43100819CDE /* ApprovalCardInfo.xib */,
 				110A62F51ECEF7AA0052B478 /* BestCourseViewCell.swift */,
 				D9EC7E361ECF0D7E00A54B53 /* ActionCard.xib */,
 			);
@@ -736,6 +737,7 @@
 			isa = PBXGroup;
 			children = (
 				08B8D9701F9A4443004E7781 /* RecommendActionHandler.swift */,
+				1100F6F81F5FEBCE000AF1D4 /* TodoActionHandler.swift */,
 				1120F1FF1ECDF4F200576E39 /* RequiredActionHandler.swift */,
 			);
 			name = actionHandler;
@@ -906,8 +908,6 @@
 				08D1BC381F1E3D6200D377B2 /* LDSplashView.swift */,
 				08A812731F16601A00672126 /* HeaderCardCell.xib */,
 				08F7A09A1F17AC2700A1B2C3 /* RecommendationCard.xib */,
-				08F368881F18D7C500819CDE /* ApprovalCard.xib */,
-				08F3688E1F18E43100819CDE /* ApprovalCardInfo.xib */,
 				08F368921F18F87800819CDE /* DailyInsightsCardCell.xib */,
 				08F368961F19029100819CDE /* LastCard.xib */,
 				08B485DF1F20EA23005918A1 /* Config.swift */,

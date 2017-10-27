@@ -16,6 +16,9 @@ class TwoColorButton: UIButton {
     private var bottomView: UIView =  UIView()
     private var imgView: UIImageView = UIImageView()
     private var label: UILabel = UILabel()
+    
+    var imgHeight : NSLayoutConstraint?
+    var imgTop : NSLayoutConstraint?
     //End view
     
     @IBInspectable
@@ -106,13 +109,14 @@ class TwoColorButton: UIButton {
             label.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0),
             label.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -34),
             label.heightAnchor.constraint(equalTo: self.heightAnchor, constant: 0),
-            imgView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -18),
-            imgView.topAnchor.constraint(equalTo: self.topAnchor, constant: 9),
-            imgView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0),
-            imgView.heightAnchor.constraint(equalToConstant: 18)
+            imgView.leftAnchor.constraint(equalTo: label.rightAnchor, constant: 8)
             ]
         )
         
+        imgHeight = imgView.heightAnchor.constraint(equalToConstant: 23)
+        imgHeight?.isActive = true
+        imgTop = imgView.topAnchor.constraint(equalTo: self.topAnchor, constant: 6)
+        imgTop?.isActive = true
         
         label.textAlignment = .center
         
@@ -134,14 +138,19 @@ class TwoColorButton: UIButton {
     }
     
     internal func animateButton(decreaseWidth: Float, increaseWidth: Float, imgLeftSpace: Float) {
-        label.removeFromSuperview()
-        self.image = nil
         let button = self
-        UIView.animate(withDuration: 0.3, delay: 0.0, animations: {
+        label.removeFromSuperview()
+        self.imgView.image = UIImage(named: "iconCheck")
+        imgHeight?.constant = 18
+        imgTop?.constant = 10
+        imgView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: CGFloat(imgLeftSpace)).isActive = true
+        UIView.animate(withDuration: 0.2, delay: 0.0, animations: {
             button.frame = CGRect(x: button.frame.origin.x + CGFloat(decreaseWidth), y: button.frame.origin.y, width: button.frame.size.width - CGFloat(decreaseWidth), height: button.frame.size.height)
         }) { (completion) in
-            button.changeImgConstraint(value: Int(imgLeftSpace))
-            button.frame = CGRect(x: button.frame.origin.x - CGFloat(increaseWidth), y: button.frame.origin.y, width: button.frame.size.width + CGFloat(increaseWidth), height: button.frame.size.height)
+            UIView.animate(withDuration: 0.2, animations: {
+                button.frame = CGRect(x: button.frame.origin.x - CGFloat(increaseWidth), y: button.frame.origin.y, width: button.frame.size.width + CGFloat(increaseWidth), height: button.frame.size.height)
+            }) {  (completion) in
+            }
         }
     }
     
