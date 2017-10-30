@@ -8,7 +8,7 @@
 
 import Foundation
 import Alamofire
-import ReachabilitySwift
+import Reachability
 
 class SyncService: SessionDelegate {
     

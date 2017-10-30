@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ReachabilitySwift
+import Reachability
 
 class BaseTableViewController: UITableViewController {
     
@@ -79,14 +79,14 @@ class BaseTableViewController: UITableViewController {
 //MARK: - NetworkStatusListener
 extension BaseTableViewController: NetworkStatusListener {
     
-    func networkStatusDidChange(status: Reachability.NetworkStatus) {
+    func networkStatusDidChange(status: Reachability.Connection) {
         
         switch status {
-        case .notReachable:
+        case .none:
             offlineBanner.isHidden = false
-        case .reachableViaWiFi:
+        case .wifi:
             offlineBanner.isHidden = true
-        case .reachableViaWWAN:
+        case .cellular:
             offlineBanner.isHidden = true
         }
     }

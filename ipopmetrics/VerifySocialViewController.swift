@@ -186,7 +186,8 @@ extension VerifySocialViewController/*: GIDSignInUIDelegate, GIDSignInDelegate*/
         let loginManager = LoginManager()
         loginManager.logOut()
         loginManager.loginBehavior = .browser
-        loginManager.logIn([.publicProfile, .email], viewController: nil) { loginResult in
+        
+        loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: nil) { (loginResult) in
             switch loginResult {
             case .failed(let error):
                 print(error)

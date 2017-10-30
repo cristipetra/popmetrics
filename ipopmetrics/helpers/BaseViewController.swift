@@ -10,7 +10,7 @@ import UIKit
 import Crashlytics
 import SwiftRichString
 import NotificationBannerSwift
-import ReachabilitySwift
+import Reachability
 
 class BaseViewController: UIViewController {
     
@@ -115,14 +115,14 @@ class BaseViewController: UIViewController {
 // Mark: notifications handler
 extension BaseViewController: NetworkStatusListener {
     
-    func networkStatusDidChange(status: Reachability.NetworkStatus) {
+    func networkStatusDidChange(status: Reachability.Connection) {
         
         switch status {
-        case .notReachable:
+        case .none:
             offlineBanner.isHidden = false
-        case .reachableViaWiFi:
+        case .wifi:
             offlineBanner.isHidden = true
-        case .reachableViaWWAN:
+        case .cellular:
             offlineBanner.isHidden = true
         }
     }
