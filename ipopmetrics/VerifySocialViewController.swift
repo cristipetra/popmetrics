@@ -94,7 +94,7 @@ class VerifySocialViewController: UIViewController {
         }
     }
     
-    internal func continueButtonPressed() {
+    @objc internal func continueButtonPressed() {
         let notificationsVC = AppStoryboard.Notifications.instance.instantiateViewController(withIdentifier: ViewNames.SBID_PUSH_NOTIFICATIONS_VC)
         let finalOnboardingVC = OnboardingFinalView()
         let notificationType = UIApplication.shared.currentUserNotificationSettings!.types

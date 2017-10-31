@@ -57,7 +57,7 @@ class DailyInsightsCardCell: UITableViewCell {
             let style = NSMutableParagraphStyle()
             style.lineSpacing = 5
             style.maximumLineHeight = 23
-            attributedString.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSRange(location: 0, length: (firstMessage.characters.count)))
+            attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: style, range: NSRange(location: 0, length: (firstMessage.characters.count)))
             firstMessageLabel.attributedText = attributedString
         }
         
@@ -66,7 +66,7 @@ class DailyInsightsCardCell: UITableViewCell {
             let style = NSMutableParagraphStyle()
             style.lineSpacing = 5
             style.maximumLineHeight = 23
-            attributedString.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSRange(location: 0, length: (secondMessage.characters.count)))
+            attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: style, range: NSRange(location: 0, length: (secondMessage.characters.count)))
             secondMessageLabel.attributedText = attributedString
         }
         

@@ -12,25 +12,25 @@ import ObjectMapper
 
 class TodoCard:  Object, Mappable {
 
-    dynamic var cardId: String? = nil
+    @objc dynamic var cardId: String? = nil
     
-    dynamic var createDate: Date = Date()
-    dynamic var updateDate: Date = Date()
+    @objc dynamic var createDate: Date = Date()
+    @objc dynamic var updateDate: Date = Date()
 
     
-    dynamic var index = 0
+    @objc dynamic var index = 0
     
-    dynamic var type = ""
-    dynamic var section = ""
-    dynamic var headerTitle: String? = nil
-    dynamic var headerSubtitle: String? = nil
-    dynamic var headerIconUri:String? = nil
-    dynamic var message:String? = nil
+    @objc dynamic var type = ""
+    @objc dynamic var section = ""
+    @objc dynamic var headerTitle: String? = nil
+    @objc dynamic var headerSubtitle: String? = nil
+    @objc dynamic var headerIconUri:String? = nil
+    @objc dynamic var message:String? = nil
     
-    dynamic var actionLabel = ""
-    dynamic var imageUri:String? = nil
-    dynamic var tooltipTitle: String? = nil
-    dynamic var tooltipContent: String? = nil
+    @objc dynamic var actionLabel = ""
+    @objc dynamic var imageUri:String? = nil
+    @objc dynamic var tooltipTitle: String? = nil
+    @objc dynamic var tooltipContent: String? = nil
     
     override static func primaryKey() -> String? {
         return "cardId"
@@ -107,28 +107,28 @@ class TodoCard:  Object, Mappable {
 
 class TodoSocialPost: Object, Mappable {
     
-    dynamic var postId:  String? = nil
+    @objc dynamic var postId:  String? = nil
     
-    dynamic var todoCardId: String? = nil
-    dynamic var todoCard: TodoCard? = nil
+    @objc dynamic var todoCardId: String? = nil
+    @objc dynamic var todoCard: TodoCard? = nil
 
-    dynamic var createDate: Date = Date()
-    dynamic var updateDate: Date = Date()
+    @objc dynamic var createDate: Date = Date()
+    @objc dynamic var updateDate: Date = Date()
     
-    dynamic var index = 0
-    dynamic var isApproved = false
+    @objc dynamic var index = 0
+    @objc dynamic var isApproved = false
     
-    dynamic var type = ""
-    dynamic var status: String? = nil
+    @objc dynamic var type = ""
+    @objc dynamic var status: String? = nil
     
-    dynamic var articleCategory:String? = nil
-    dynamic var articleTitle:String? = nil
+    @objc dynamic var articleCategory:String? = nil
+    @objc dynamic var articleTitle:String? = nil
     
-    dynamic var articleText = ""
-    dynamic var articleUrl = ""
-    dynamic var articleHashtags = ""
-    dynamic var articleImage:String? = nil
-    dynamic var articleSummary: String? = nil
+    @objc dynamic var articleText = ""
+    @objc dynamic var articleUrl = ""
+    @objc dynamic var articleHashtags = ""
+    @objc dynamic var articleImage:String? = nil
+    @objc dynamic var articleSummary: String? = nil
     
     override static func primaryKey() -> String? {
         return "postId"

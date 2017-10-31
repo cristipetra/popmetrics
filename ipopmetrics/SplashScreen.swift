@@ -23,7 +23,7 @@ class SplashScreen: UIViewController {
         self.view.addGestureRecognizer(swipeLeft)
     }
     
-    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.left {
             let animationVC = AnimationsViewController()
             self.presentFromDirection(viewController: animationVC, direction: .right)

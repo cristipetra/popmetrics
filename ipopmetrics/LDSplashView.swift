@@ -169,7 +169,7 @@ import UIKit
         Timer.scheduledTimer(timeInterval: Double(bounceDuration), target: self, selector: #selector(LDSplashView.pingGrowAnimation), userInfo: nil, repeats: false)
     }
     
-    func pingGrowAnimation() {
+    @objc func pingGrowAnimation() {
         let growDuration = self.animationDuration * 0.2
         UIView.animate(withDuration: Double(growDuration), animations: { () -> Void in
             let scaleTransform = CGAffineTransform(scaleX: 20, y: 20)
@@ -233,7 +233,7 @@ import UIKit
         Timer.scheduledTimer(timeInterval: Double(self.animationDuration), target: self, selector: #selector(LDSplashView.removeSplashView), userInfo: nil, repeats: true)
     }
     
-    func removeSplashView() {
+    @objc func removeSplashView() {
         self.removeFromSuperview()
         self.endAnimating()
     }
@@ -314,7 +314,7 @@ import UIKit
         NotificationCenter.default.addObserver(self, selector: #selector(LDSplashIcon.receiveNotification(_:)), name: NSNotification.Name(rawValue: "startAnimation"), object: nil)
     }
     
-    func receiveNotification(_ notification: Notification) {
+    @objc func receiveNotification(_ notification: Notification) {
         if notification.userInfo!["animationDuration"] != nil {
             let duration = Double(notification.userInfo!["animationDuration"] as! String)
             self.animationDuration = duration!
@@ -429,7 +429,7 @@ import UIKit
         }
     }
     
-    func removeAnimations() {
+    @objc func removeAnimations() {
         self.layer.removeAllAnimations()
         NotificationCenter.default.removeObserver(self)
         self.removeFromSuperview()

@@ -167,13 +167,13 @@ class TodoCardMaximizedViewCell: UITableViewCell {
         denyButton.addTarget(self, action: #selector(denyPosHandler), for: .touchUpInside);
     }
     
-    func approvePostHandler() {
+    @objc func approvePostHandler() {
         approveDenyDelegate?.handleCardAction("approve_one", todoCard: self.todoItem.todoCard!,
                                              params:["social_post":self.todoItem])
         setupStatusCardView()
     }
     
-    func denyPosHandler() {
+    @objc func denyPosHandler() {
         approveDenyDelegate?.handleCardAction("deny_one", todoCard: self.todoItem.todoCard!, params: ["social_post": self.todoItem])
         setupStatusCardView()
     }

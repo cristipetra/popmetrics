@@ -184,8 +184,8 @@ class PhoneView: UIView {
     private func setPlaceholder() {
         let mutableAttrString = NSMutableAttributedString()
         let regularAttribute = [
-            NSFontAttributeName: UIFont(name: FontBook.regular, size: 23),
-            NSForegroundColorAttributeName: UIColor(red: 68/255, green: 180/255, blue: 142/255, alpha: 1.0)
+            NSAttributedStringKey.font: UIFont(name: FontBook.regular, size: 23),
+            NSAttributedStringKey.foregroundColor: UIColor(red: 68/255, green: 180/255, blue: 142/255, alpha: 1.0)
         ]
         let regularAttributedString = NSAttributedString(string: "Enter your cell #", attributes: regularAttribute)
         mutableAttrString.append(regularAttributedString)

@@ -73,7 +73,7 @@ class GoogleActionViewController: UIViewController {
         recommendedActionView.messageLbl.text = "Popmetrics will increase your digital footprint and help drive traffic to your site"
     }
     
-    func showTooltip(_ sender: RoundButton) {
+    @objc func showTooltip(_ sender: RoundButton) {
         let infoCardVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "InfoCardViewID") as! InfoCardViewController;
         infoCardVC.changeCardType(type: "insight")
         infoCardVC.transitioningDelegate = self
@@ -119,7 +119,7 @@ class GoogleActionViewController: UIViewController {
         footerView.actionButton.addTarget(self, action: #selector(handlerActionButton(_:)), for: .touchUpInside)
     }
     
-    func handlerActionButton(_ sender: TwoImagesButton) {
+    @objc func handlerActionButton(_ sender: TwoImagesButton) {
         footerView.actionButton.animateButton(decreaseWidth: 120, increaseWidth: 10, imgLeftSpace: 10)
         recommendActionHandler?.handleRecommendAction(item: feedCard)
         //self.tabBarController?.selectedIndex += 1
@@ -174,7 +174,7 @@ class GoogleActionViewController: UIViewController {
         instructionsView.addShadow(radius: 2, opacity: 0.3, offset: CGSize(width: 0.0, height: 3.0))
     }
     
-    func showHideContent(sender: ButtonWithContainer) {
+    @objc func showHideContent(sender: ButtonWithContainer) {
         var rotateDirection :CGFloat = 0
         if sender.parentView.isContentHidden == true {
             rotateDirection = -(CGFloat.pi)
@@ -206,7 +206,7 @@ class GoogleActionViewController: UIViewController {
         let text = UIBarButtonItem(title: "Social Posting", style: .plain, target: self, action: nil)
         text.tintColor = UIColor(red: 67/255, green: 78/255, blue: 84/255, alpha: 1.0)
         let titleFont = UIFont(name: FontBook.bold, size: 18)
-        text.setTitleTextAttributes([NSFontAttributeName: titleFont], for: .normal)
+        text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
         
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = false
@@ -217,7 +217,7 @@ class GoogleActionViewController: UIViewController {
         
     }
     
-    func handlerClickBack() {
+    @objc func handlerClickBack() {
         self.navigationController?.popViewController(animated: true)
     }
 }

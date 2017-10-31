@@ -42,7 +42,7 @@ class CodeViewController: UIViewController {
     }
     
     
-    internal func dismissKeyboard() {
+    @objc internal func dismissKeyboard() {
         if digitCodeView.digitextField.text?.characters.count == 0 {
             digitCodeView.sendCodeBtn.isUserInteractionEnabled = false
             digitCodeView.sendCodeBtn.layer.backgroundColor = UIColor(red: 255/255, green: 210/255, blue: 55/255, alpha: 1.0).cgColor
@@ -52,7 +52,7 @@ class CodeViewController: UIViewController {
     }
     
     
-    func didPressSendSmsCode(_ sender: Any) {
+    @objc func didPressSendSmsCode(_ sender: Any) {
         
         let smsCode = digitCodeView.digitextField.text!
         let phoneNumber = phoneNo!
@@ -96,7 +96,7 @@ class CodeViewController: UIViewController {
         
     }
     
-    internal func didPressResendCode() {
+    @objc internal func didPressResendCode() {
         let phoneNumber = phoneNo!
         showProgressIndicator()
         UsersApi().sendCodeBySms(phoneNumber: phoneNumber) {userDict, error in
@@ -109,7 +109,7 @@ class CodeViewController: UIViewController {
         }
     }
     
-    func didPressContact() {
+    @objc func didPressContact() {
         let message = "mailto:" + Config.mailContact
         UIApplication.shared.open(URL(string: message)!, options: [:], completionHandler: nil)
     }
@@ -139,7 +139,7 @@ class CodeViewController: UIViewController {
         self.present(notificationsVC, animated: false, completion: nil)
     }
     
-    internal func closeVC() {
+    @objc internal func closeVC() {
         self.dismiss(animated: true, completion: nil)
     }
 

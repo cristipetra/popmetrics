@@ -96,8 +96,8 @@ extension UILabel {
         let style = NSMutableParagraphStyle()
         style.lineSpacing = spacing
         style.maximumLineHeight = lineHeight
-        attributedString.addAttribute(NSKernAttributeName, value: letterSpacing, range: NSRange(location: 0, length: (self.text?.characters.count)!))
-        attributedString.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSRange(location: 0, length: (self.text?.characters.count)!))
+        attributedString.addAttribute(NSAttributedStringKey.kern, value: letterSpacing, range: NSRange(location: 0, length: (self.text?.characters.count)!))
+        attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: style, range: NSRange(location: 0, length: (self.text?.characters.count)!))
         self.attributedText = attributedString
     }
 }

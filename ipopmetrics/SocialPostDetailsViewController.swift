@@ -148,7 +148,7 @@ class SocialPostDetailsViewController: UIViewController {
         
     }
     
-    func denyPost(sender: UIButton) {
+    @objc func denyPost(sender: UIButton) {
         if calendarSocialPost != nil {
             socialDelegate?.cancelPostFromSocial!(post: self.calendarSocialPost, indexPath: indexPath)
         } else {
@@ -158,7 +158,7 @@ class SocialPostDetailsViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func approvePost(sender: TwoColorButton) {
+    @objc func approvePost(sender: TwoColorButton) {
         socialDelegate?.approvePostFromSocial!(post: self.toDoPost, indexPath: self.indexPath)
         self.navigationController?.popViewController(animated: true)
     }
@@ -168,7 +168,7 @@ class SocialPostDetailsViewController: UIViewController {
         let text = UIBarButtonItem(title: "Social Post", style: .plain, target: self, action: nil)
         text.tintColor = PopmetricsColor.darkGrey
         let titleFont = UIFont(name: FontBook.bold, size: 18)
-        text.setTitleTextAttributes([NSFontAttributeName: titleFont], for: .normal)
+        text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
         
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = false
@@ -179,7 +179,7 @@ class SocialPostDetailsViewController: UIViewController {
         
     }
     
-    func handlerClickBack() {
+    @objc func handlerClickBack() {
         self.navigationController?.popViewController(animated: true)
     }
     

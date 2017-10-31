@@ -156,7 +156,7 @@ class IndividualTaskView: UIView {
         subtitleLabel.configureLinkAttribute = { (type, attribute, isSelected) in
             
             var attr = attribute
-            attr[NSFontAttributeName] = UIFont(name: FontBook.bold, size: 12)
+            attr[NSAttributedStringKey.font] = UIFont(name: FontBook.bold, size: 12)
             
             return attr
         }

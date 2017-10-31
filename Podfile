@@ -11,12 +11,13 @@ target 'ipopmetrics' do
   pod 'Alamofire', '~> 4.0'
   pod 'AlamofireImage'
   pod 'ObjectMapper'
-  pod 'AlamofireObjectMapper', '~> 4.0'
+  pod 'AlamofireObjectMapper'
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'JSONWebToken'
   pod 'MGSwipeTableCell'
-  pod 'DGElasticPullToRefresh'
+  #pod 'DGElasticPullToRefresh'
+  pod 'DGElasticPullToRefresh', :git=>'https://github.com/cristipetra/DGElasticPullToRefresh.git'
   pod 'RSKImageCropper'
   pod 'STPopup'
   pod 'RealmSwift'
@@ -34,25 +35,23 @@ target 'ipopmetrics' do
 #  pod 'ChattoAdditions',  :git => 'https://github.com/badoo/Chatto.git', :branch => 'master'
 #  pod 'Chatto'
 #  pod 'ChattoAdditions' # if you want to use the cells or the input component
-  
-#  pod 'FontAwesome.swift'
-  pod 'ActiveLabel'
+
+  pod 'ActiveLabel', :git => 'https://github.com/sherwinzadeh/ActiveLabel.swift', :commit => '4bec2dae617cca42263b9b6efc84e8f4822cc4ad'
   pod 'EZAlertController'
-  pod 'SwiftRichString', '~> 0.9.9'
+  pod 'SwiftRichString'
   pod 'NotificationBannerSwift'
   pod 'BubbleTransition'
   pod 'SwiftyJSON'
-  pod “MJCalendar”, :git=>’https://github.com/cristipetra/MJCalendar’
-  pod 'ElasticTransition', :git=>’https://github.com/ionutboanta/ElasticTransition’
-  pod 'ScrollableGraphView'
+  pod 'MJCalendar', :git=>’https://github.com/cristipetra/MJCalendar’
+  #pod 'ElasticTransition', :git=>’https://github.com/cristipetra/ElasticTransition’
+  pod 'ScrollableGraphView', :git => 'https://github.com/cristipetra/ScrollableGraphView'
   pod 'M13ProgressSuite'
   pod 'lottie-ios'
   pod 'GTProgressBar'
-  pod 'Hero', '1.0.0-alpha.4'
-  pod 'SnapKit', '~> 3.2.0'
+  pod 'Hero'
+  pod 'SnapKit'
   
-  #todo: change to #pod 'Haptica' when updating to swift 4
-  pod 'Haptica', :git => 'https://github.com/efremidze/Haptica.git', :commit => '1bc13bd8fe64c9681cc97dbc7ade384073267de8'
-  pod 'markymark', '3.0.2'
+  pod 'Haptica'
+  pod 'markymark'
   
 end

@@ -98,8 +98,8 @@ extension UILabel {
         
         let attrString = NSMutableAttributedString(string: text)
         
-        attrString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSRange(location: 0, length: attrString.length))
-        attrString.addAttribute(NSKernAttributeName, value: letterSpacing, range: NSRange(location: 0, length: attrString.length))
+        attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attrString.length))
+        attrString.addAttribute(NSAttributedStringKey.kern, value: letterSpacing, range: NSRange(location: 0, length: attrString.length))
         
         self.attributedText = attrString
     }

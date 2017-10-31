@@ -52,7 +52,7 @@ class RecommendedCell: UITableViewCell {
         footerVIew.displayOnlyActionButton()
     }
     
-    func handlerActionButton() {
+    @objc func handlerActionButton() {
         guard let _ = feedCard else { return }
         delegate?.recommendedCellDidTapAction(feedCard)
     }

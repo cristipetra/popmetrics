@@ -168,8 +168,8 @@ class TwoColorButton: UIButton {
     func changeLabelText() {
         
         let attribute = [
-            NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 12),
-            NSForegroundColorAttributeName: PopmetricsColor.todoBrown
+            NSAttributedStringKey.font: UIFont(name: "OpenSans-Bold", size: 12),
+            NSAttributedStringKey.foregroundColor: PopmetricsColor.todoBrown
         ]
         let attrString = NSAttributedString(string: labelText!, attributes: attribute)
         label.attributedText = attrString

@@ -39,7 +39,7 @@ class VideoScreenViewController: UIViewController {
         }
     }
     
-    func playerDidFinishPlaying(note: NSNotification) {
+    @objc func playerDidFinishPlaying(note: NSNotification) {
         btnStarted.isUserInteractionEnabled = true
         btnStarted.layer.backgroundColor = UIColor(red: 65/255, green: 155/255, blue: 249/255, alpha: 1.0).cgColor
         btnStarted.setTitleColor(UIColor.white, for: .normal)
@@ -67,7 +67,7 @@ class VideoScreenViewController: UIViewController {
 
     }
     
-    func rotated() {
+    @objc func rotated() {
         setVideoInContainer()
     }
     
@@ -93,7 +93,7 @@ class VideoScreenViewController: UIViewController {
         }
     }
     
-    func getStartedHandler() {
+    @objc func getStartedHandler() {
         let mainTabVC = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC)
         self.present(mainTabVC, animated: false, completion: nil)
     }

@@ -57,7 +57,7 @@ class ToDoCardCell: UITableViewCell {
         aproveButton.addTarget(self, action: #selector(animationHandler), for: .touchUpInside)
     }
     
-    func animationHandler() {
+    @objc func animationHandler() {
         aproveButton.animateButton(decreaseWidth: 120, increaseWidth: 10, imgLeftSpace: 10)
         aproveButton.removeTarget(self, action: #selector(animationHandler), for: .touchUpInside)
     }

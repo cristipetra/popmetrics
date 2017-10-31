@@ -92,7 +92,7 @@ class IceCardViewCell: UITableViewCell {
         feedCard = card
     }
     
-    internal func handlerActionButton(_ sender: TwoImagesButton) {
+    @objc internal func handlerActionButton(_ sender: TwoImagesButton) {
         guard let _ = feedCard else { return }
         delegate?.recommendedActionViewCellDidTapAction(feedCard)
     }

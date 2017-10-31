@@ -158,7 +158,7 @@ class ToDoViewController: BaseViewController {
                         })
     }
     
-    func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
+    @objc func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
         
     }
     
@@ -173,7 +173,7 @@ class ToDoViewController: BaseViewController {
         }
     }
     
-    internal func goToHomeTab() {
+    @objc internal func goToHomeTab() {
         self.tabBarController?.selectedIndex = 0
     }
     
@@ -186,7 +186,7 @@ class ToDoViewController: BaseViewController {
         }
     }
     
-    func handlerExpand() {
+    @objc func handlerExpand() {
         maximizeCell()
     }
     
@@ -222,7 +222,7 @@ class ToDoViewController: BaseViewController {
         let text = UIBarButtonItem(title: "To Do", style: .plain, target: self, action: nil)
         text.tintColor = UIColor(red: 67/255, green: 78/255, blue: 84/255, alpha: 1.0)
         let titleFont = UIFont(name: FontBook.regular, size: 18)
-        text.setTitleTextAttributes([NSFontAttributeName: titleFont], for: .normal)
+        text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
         
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = false
@@ -266,11 +266,11 @@ class ToDoViewController: BaseViewController {
     }
     
     
-    func handlerClickMenu() {
+    @objc func handlerClickMenu() {
         let modalViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MENU_VC") as! MenuViewController
         // customization:
-        modalViewController.modalTransition.edge = .left
-        modalViewController.modalTransition.radiusFactor = 0.3
+        //modalViewController.modalTransition.edge = .left
+        //modalViewController.modalTransition.radiusFactor = 0.3
         self.present(modalViewController, animated: true, completion: nil)
     }
     
@@ -408,7 +408,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         approvedView.widthAnchor.constraint(equalToConstant: 234).isActive = true
     }
     
-    func handlerApproveCard(_ button : TwoColorButton) {
+    @objc func handlerApproveCard(_ button : TwoColorButton) {
         print("approve card")
         
         let indexPath = button.indexPath

@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import ElasticTransition
+//import ElasticTransition
 import SafariServices
 
-class MenuViewController: ElasticModalViewController {
+class MenuViewController: UIViewController {
     
     @IBOutlet weak var closeButton: UIButton! {
         didSet {
@@ -20,19 +20,20 @@ class MenuViewController: ElasticModalViewController {
     }
     @IBOutlet weak var logoImage: UIImageView!
     
-    var transition = ElasticTransition()
+    //var transition = ElasticTransition()
+    
     var dismissByBackgroundTouch = false
     var dismissByBackgroundDrag = true
     //var dismissByForegroundDrag = true
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        transition.edge = .right
-        transition.sticky = false
+        //transition.edge = .right
+        //transition.sticky = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        segue.destination.transitioningDelegate = transition as UIViewControllerTransitioningDelegate
+        //segue.destination.transitioningDelegate = transition as UIViewControllerTransitioningDelegate
         segue.destination.modalPresentationStyle = .custom
     }
     
@@ -57,8 +58,8 @@ class MenuViewController: ElasticModalViewController {
         
     }
     @IBAction func closeButtonPressed(_ sender: UIButton) {
-        self.dismissAnimated(self.view)
-        //self.dismiss(animated: true, completion: nil)
+        //self.dismissAnimated(self.view)
+        self.dismiss(animated: true, completion: nil)
     }
     @IBAction func contactButtonPressed(_ sender: UIButton) {
         let message = "mailto:" + Config.mailContact
@@ -92,7 +93,7 @@ extension UIViewController {
         self.present(safari, animated: true)
     }
 }
-
+/*
 extension ElasticModalViewController {
     func dismissAnimated(_ sender: UIView?) {
         modalTransition.transformType = dragRightTransformType
@@ -101,3 +102,4 @@ extension ElasticModalViewController {
         dismiss(animated: true, completion: nil)
     }
 }
+*/

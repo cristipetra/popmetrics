@@ -60,7 +60,7 @@ class TrafficReportViewController: UIViewController {
         text.tintColor = PopmetricsColor.darkGrey
 
         let titleFont = UIFont(name: FontBook.bold, size: 18)
-        text.setTitleTextAttributes([NSFontAttributeName: titleFont], for: .normal)
+        text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
         
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = false
@@ -74,7 +74,7 @@ class TrafficReportViewController: UIViewController {
         
     }
     
-    func handlerClickBack() {
+    @objc func handlerClickBack() {
         self.navigationController?.popViewController(animated: true)
     }
     

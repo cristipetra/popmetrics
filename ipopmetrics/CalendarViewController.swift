@@ -122,7 +122,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
         
     }
     
-    internal func handlerAnimateCardAppearance() {
+    @objc internal func handlerAnimateCardAppearance() {
         didAnimateCardFirstTime = true
     }
     
@@ -245,7 +245,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
         }
     }
     
-    func handlerExpand() {
+    @objc func handlerExpand() {
         maximizeCell()
     }
     
@@ -253,7 +253,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
         let text = UIBarButtonItem(title: "Calendar", style: .plain, target: self, action: nil)
         text.tintColor = UIColor(red: 67/255, green: 78/255, blue: 84/255, alpha: 1.0)
         let titleFont = UIFont(name: FontBook.regular, size: 18)
-        text.setTitleTextAttributes([NSFontAttributeName: titleFont], for: .normal)
+        text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
         
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = false
@@ -264,11 +264,11 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     }
     
-    func handlerClickMenu() {
+    @objc func handlerClickMenu() {
         let modalViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MENU_VC") as! MenuViewController
         // customization:
-        modalViewController.modalTransition.edge = .left
-        modalViewController.modalTransition.radiusFactor = 0.3
+        //modalViewController.modalTransition.edge = .left
+        //modalViewController.modalTransition.radiusFactor = 0.3
         self.present(modalViewController, animated: true, completion: nil)
     }
     

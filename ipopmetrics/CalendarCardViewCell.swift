@@ -36,7 +36,7 @@ class CalendarCardViewCell: UITableViewCell {
         setupCorners()
     }
     
-    func handlerClickCard() {
+    @objc func handlerClickCard() {
         maximizeDelegate?.maximizeCell()
     }
     

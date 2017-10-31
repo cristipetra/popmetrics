@@ -91,7 +91,7 @@ class StatisticsViewController: BaseViewController {
         let text = UIBarButtonItem(title: "Statistics", style: .plain, target: self, action: nil)
         text.tintColor = UIColor(red: 67/255, green: 78/255, blue: 84/255, alpha: 1.0)
         let titleFont = UIFont(name: FontBook.regular, size: 18)
-        text.setTitleTextAttributes([NSFontAttributeName: titleFont], for: .normal)
+        text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
         
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = false
@@ -186,11 +186,11 @@ class StatisticsViewController: BaseViewController {
         
     }
     
-    func handlerClickMenu() {
+    @objc func handlerClickMenu() {
         let modalViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ViewNames.SBID_MENU_VC) as! MenuViewController
         // customization:
-        modalViewController.modalTransition.edge = .left
-        modalViewController.modalTransition.radiusFactor = 0.3
+        //modalViewController.modalTransition.edge = .left
+        //modalViewController.modalTransition.radiusFactor = 0.3
         self.present(modalViewController, animated: true, completion: nil)
     }
     
@@ -198,7 +198,7 @@ class StatisticsViewController: BaseViewController {
         self.tabBarController?.selectedIndex = 0
     }
     
-    func openTrafficReport(_ sender: AnyObject, card: StatisticsCard) {
+    @objc func openTrafficReport(_ sender: AnyObject, card: StatisticsCard) {
         let cardTmp  = StatisticsStore.getInstance().getStatisticsCards()[0]
         let trafficReportVC: TrafficReportViewController = AppStoryboard.Statistics.instance.instantiateViewController(withIdentifier: ViewNames.SBID_TRAFFIC_REPORT) as! TrafficReportViewController
         trafficReportVC.configure(statisticsCard: cardTmp)

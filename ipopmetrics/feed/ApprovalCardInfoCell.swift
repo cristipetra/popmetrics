@@ -57,7 +57,7 @@ class ApprovalCardInfoCell: UITableViewCell {
             let style = NSMutableParagraphStyle()
             style.lineSpacing = 3
             style.maximumLineHeight = 20
-            attributedString.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSRange(location: 0, length: (messageText.characters.count)))
+            attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: style, range: NSRange(location: 0, length: (messageText.characters.count)))
             messageLabel.attributedText = attributedString
         }
     }

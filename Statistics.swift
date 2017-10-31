@@ -12,27 +12,27 @@ import ObjectMapper
 
 class StatisticMetric: Object, Mappable {
     
-    dynamic var statisticCard: StatisticsCard? = nil
+    @objc dynamic var statisticCard: StatisticsCard? = nil
     
-    dynamic var statisticsCardId: String = ""
+    @objc dynamic var statisticsCardId: String = ""
     
-    dynamic var value: Float = 0
-    dynamic var label: String = ""
-    dynamic var delta: Float = 0
+    @objc dynamic var value: Float = 0
+    @objc dynamic var label: String = ""
+    @objc dynamic var delta: Float = 0
     
-    dynamic var pageName: String = "Card"
-    dynamic var pageIndex: Int = 0
-    dynamic var indexInPage: Int = 0
+    @objc dynamic var pageName: String = "Card"
+    @objc dynamic var pageIndex: Int = 0
+    @objc dynamic var indexInPage: Int = 0
     
-    dynamic var currentPeriodLabel: String = ""
-    dynamic var currentPeriodValues: String = ""
-    dynamic var currentPeriodStartDate: Date = Date()
-    dynamic var currentPeriodEndDate: Date = Date()
+    @objc dynamic var currentPeriodLabel: String = ""
+    @objc dynamic var currentPeriodValues: String = ""
+    @objc dynamic var currentPeriodStartDate: Date = Date()
+    @objc dynamic var currentPeriodEndDate: Date = Date()
     
-    dynamic var prevPeriodLabel: String = ""
-    dynamic var prevPeriodValues: String = ""
-    dynamic var prevPeriodStartDate: Date = Date()
-    dynamic var prevPeriodEndDate: Date = Date()
+    @objc dynamic var prevPeriodLabel: String = ""
+    @objc dynamic var prevPeriodValues: String = ""
+    @objc dynamic var prevPeriodStartDate: Date = Date()
+    @objc dynamic var prevPeriodEndDate: Date = Date()
     
     required convenience init?(map: Map) {
         self.init()
@@ -81,16 +81,16 @@ class StatisticMetric: Object, Mappable {
 
 class StatisticsCard: Object, Mappable {
     
-    dynamic var cardId: String? = nil
+    @objc dynamic var cardId: String? = nil
     
-    dynamic var createDate: Date = Date()
-    dynamic var updateDate: Date = Date()
+    @objc dynamic var createDate: Date = Date()
+    @objc dynamic var updateDate: Date = Date()
     
     
-    dynamic var index = 0
+    @objc dynamic var index = 0
     
-    dynamic var type = ""
-    dynamic var section = ""
+    @objc dynamic var type = ""
+    @objc dynamic var section = ""
     
     override static func primaryKey() -> String? {
         return "cardId"

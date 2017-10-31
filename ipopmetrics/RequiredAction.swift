@@ -116,7 +116,7 @@ class RequiredAction: UITableViewCell {
         emailTextField.leftView = paddingView
         emailTextField.leftViewMode = UITextFieldViewMode.always
         
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "youremail@email.com", attributes: [NSForegroundColorAttributeName: UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1), NSFontAttributeName: UIFont(name: FontBook.semibold, size: 15)!])
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "youremail@email.com", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1), NSAttributedStringKey.font: UIFont(name: FontBook.semibold, size: 15)!])
         emailTextField.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
         emailTextField.layer.cornerRadius = 4
         
@@ -178,7 +178,7 @@ class RequiredAction: UITableViewCell {
         toolbarView.title.attributedText = headerTitle
     }
     
-    func handleActionNotifications(_ sender: SimpleButton) {
+    @objc func handleActionNotifications(_ sender: SimpleButton) {
         openUrl(string: Config.howToTurnNotificationLink)
     }
     

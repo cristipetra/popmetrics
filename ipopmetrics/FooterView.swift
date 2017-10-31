@@ -210,11 +210,11 @@ class FooterView: UIView {
         
     }
     
-    func deleteHandler() {
+    @objc func deleteHandler() {
         animateButtonBlink(button: xButton)
     }
     
-    func informationHandler() {
+    @objc func informationHandler() {
         print("information button pressed")
         animateButtonBlink(button: informationBtn)
     }
@@ -229,7 +229,7 @@ class FooterView: UIView {
         actionButton.imageButtonType = .twitter
     }
     
-    func approveHandler() {
+    @objc func approveHandler() {
         animateButtonBlink(button: actionButton)
     }
     

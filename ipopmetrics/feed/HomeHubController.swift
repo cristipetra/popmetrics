@@ -241,7 +241,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let text = UIBarButtonItem(title: "Home Feed", style: .plain, target: self, action: nil)
         text.tintColor = UIColor(red: 67/255, green: 78/255, blue: 84/255, alpha: 1.0)
         let titleFont = UIFont(name: FontBook.regular, size: 18)
-        text.setTitleTextAttributes([NSFontAttributeName: titleFont], for: .normal)
+        text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
         
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = false
@@ -253,11 +253,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     
-    func handlerClickMenu() {
+    @objc func handlerClickMenu() {
         let modalViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MENU_VC") as! MenuViewController
         // customization:
-        modalViewController.modalTransition.edge = .left
-        modalViewController.modalTransition.radiusFactor = 0.3
+        //modalViewController.modalTransition.edge = .left
+        //modalViewController.modalTransition.radiusFactor = 0.3
         self.present(modalViewController, animated: true, completion: nil)
     }
     
@@ -368,7 +368,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
     }
     
-    func loadAllActionCards() {
+    @objc func loadAllActionCards() {
         
         self.isLoadedAllRequiredCards = true
         //self.showActionAnimation = true
@@ -397,7 +397,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         self.navigationController?.pushViewController(googleActionVc, animated: true)
     }
     
-    func handlerInsightButton() {
+    @objc func handlerInsightButton() {
         goToNextTab()
     }
     
@@ -605,7 +605,7 @@ extension HomeHubViewController: InfoButtonDelegate {
         //showTooltip(sender)
     }
     
-    func showTooltip(_ sender: UIButton) {
+    @objc func showTooltip(_ sender: UIButton) {
         let infoCardVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "InfoCardViewID") as! InfoCardViewController;
         infoCardVC.changeCardType(type: "insight")
         infoCardVC.transitioningDelegate = self

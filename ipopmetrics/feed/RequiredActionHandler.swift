@@ -203,28 +203,28 @@ extension ShowBanner {
         case .success:
             let title = "Authentication Success!"
             let titleAttribute = [
-                NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 12),
-                NSForegroundColorAttributeName: PopmetricsColor.darkGrey]
-            let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [String : Any]))
+                NSAttributedStringKey.font: UIFont(name: "OpenSans-Bold", size: 12),
+                NSAttributedStringKey.foregroundColor: PopmetricsColor.darkGrey]
+            let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [NSAttributedStringKey : Any]))
             let subtitle = "Twitter Connected"
             let subtitleAttribute = [
-                NSFontAttributeName: UIFont(name: "OpenSans-SemiBold", size: 12),
-                NSForegroundColorAttributeName: UIColor.white]
-            let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [String : Any]))
+                NSAttributedStringKey.font: UIFont(name: "OpenSans-SemiBold", size: 12),
+                NSAttributedStringKey.foregroundColor: UIColor.white]
+            let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [NSAttributedStringKey : Any]))
             banner = NotificationBanner(attributedTitle: attributedTitle, attributedSubtitle: attributedSubtitle, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
             banner.backgroundColor = PopmetricsColor.greenMedium
             break
         case .failed:
             let title = "Authentication Failed"
             let titleAttribute = [
-                NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 12),
-                NSForegroundColorAttributeName: PopmetricsColor.notificationBGColor]
-            let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [String : Any]))
+                NSAttributedStringKey.font: UIFont(name: "OpenSans-Bold", size: 12),
+                NSAttributedStringKey.foregroundColor: PopmetricsColor.notificationBGColor]
+            let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [NSAttributedStringKey : Any]))
             let subtitle = "Twitter failed to connect! Try again"
             let subtitleAttribute = [
-                NSFontAttributeName: UIFont(name: "OpenSans-SemiBold", size: 12),
-                NSForegroundColorAttributeName: UIColor.white]
-            let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [String : Any]))
+                NSAttributedStringKey.font: UIFont(name: "OpenSans-SemiBold", size: 12),
+                NSAttributedStringKey.foregroundColor: UIColor.white]
+            let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [NSAttributedStringKey : Any]))
             banner = NotificationBanner(attributedTitle: attributedTitle, attributedSubtitle: attributedSubtitle, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
             banner.backgroundColor = PopmetricsColor.salmondColor
             break
@@ -242,13 +242,13 @@ extension ShowBanner {
     internal func showBanner(title: String, subtitle: String) {
         let banner: NotificationBanner!
         let titleAttribute = [
-            NSFontAttributeName: UIFont(name: "OpenSans-SemiBold", size: 12),
-            NSForegroundColorAttributeName: PopmetricsColor.bannerSuccessText]
-        let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [String : Any]))
+            NSAttributedStringKey.font: UIFont(name: "OpenSans-SemiBold", size: 12),
+            NSAttributedStringKey.foregroundColor: PopmetricsColor.bannerSuccessText]
+        let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [NSAttributedStringKey : Any]))
         let subtitleAttribute = [
-            NSFontAttributeName: UIFont(name: "OpenSans", size: 12),
-            NSForegroundColorAttributeName: UIColor.white]
-        let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [String : Any]))
+            NSAttributedStringKey.font: UIFont(name: "OpenSans", size: 12),
+            NSAttributedStringKey.foregroundColor: UIColor.white]
+        let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [NSAttributedStringKey : Any]))
         banner = NotificationBanner(attributedTitle: attributedTitle, attributedSubtitle: attributedSubtitle, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
         banner.backgroundColor = PopmetricsColor.greenMedium
         banner.duration = TimeInterval(exactly: 7.0)!

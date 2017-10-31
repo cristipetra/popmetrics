@@ -44,7 +44,7 @@ class LoginViewController: UIViewController {
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
     }
     
-    func rotated() {
+    @objc func rotated() {
         if self.digitCodeView.isDescendant(of: self.view) {
             self.digitCodeView.reloadSubViews()
         } else {
@@ -98,7 +98,7 @@ class LoginViewController: UIViewController {
         })
     }
     
-    internal func didPressSendPhoneNumber() {
+    @objc internal func didPressSendPhoneNumber() {
         let phoneNumber = phoneView.numberTextField.text!
         showProgressIndicator()
         UsersApi().sendCodeBySms(phoneNumber: phoneNumber) {userDict, error in
@@ -137,7 +137,7 @@ class LoginViewController: UIViewController {
         showViewControllerWithStoryboardID("FEED_VC")
     }
     
-    internal func dismissKeyboard() {
+    @objc internal func dismissKeyboard() {
         if phoneView.numberTextField.text?.characters.count == 0 {
             phoneView.sendCodeBtn.isUserInteractionEnabled = false
             phoneView.sendCodeBtn.layer.backgroundColor = UIColor(red: 255/255, green: 210/255, blue: 55/255, alpha: 1.0).cgColor
@@ -146,7 +146,7 @@ class LoginViewController: UIViewController {
         phoneView.numberTextField.resignFirstResponder()
     }
     
-    internal func dismissPhoneView() {
+    @objc internal func dismissPhoneView() {
         self.dismiss(animated: true, completion: nil)
     }
     

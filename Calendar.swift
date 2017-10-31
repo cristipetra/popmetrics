@@ -13,26 +13,26 @@ import ObjectMapper
 
 class CalendarCard:  Object, Mappable {
     
-    dynamic var cardId: String? = nil
+    @objc dynamic var cardId: String? = nil
     
-    dynamic var createDate: Date = Date()
-    dynamic var updateDate: Date = Date()
+    @objc dynamic var createDate: Date = Date()
+    @objc dynamic var updateDate: Date = Date()
     
-    dynamic var index = 0
+    @objc dynamic var index = 0
     
-    dynamic var type = ""
-    dynamic var section = ""
-    dynamic var status = ""
+    @objc dynamic var type = ""
+    @objc dynamic var section = ""
+    @objc dynamic var status = ""
     
-    dynamic var headerTitle: String? = nil
-    dynamic var headerSubtitle: String? = nil
-    dynamic var headerIconUri:String? = nil
-    dynamic var message:String? = nil
+    @objc dynamic var headerTitle: String? = nil
+    @objc dynamic var headerSubtitle: String? = nil
+    @objc dynamic var headerIconUri:String? = nil
+    @objc dynamic var message:String? = nil
     
-    dynamic var actionLabel = ""
-    dynamic var imageUri:String? = nil
-    dynamic var tooltipTitle: String? = nil
-    dynamic var tooltipContent: String? = nil
+    @objc dynamic var actionLabel = ""
+    @objc dynamic var imageUri:String? = nil
+    @objc dynamic var tooltipTitle: String? = nil
+    @objc dynamic var tooltipContent: String? = nil
     
     override static func primaryKey() -> String? {
         return "cardId"
@@ -180,29 +180,29 @@ class CalendarCard:  Object, Mappable {
 
 class CalendarSocialPost: Object, Mappable {
     
-    dynamic var postId:  String? = nil
-    dynamic var calendarCard: CalendarCard? = nil
-    dynamic var calendarCardId = ""
+    @objc dynamic var postId:  String? = nil
+    @objc dynamic var calendarCard: CalendarCard? = nil
+    @objc dynamic var calendarCardId = ""
     
-    dynamic var createDate: Date = Date()
-    dynamic var updateDate: Date = Date()
+    @objc dynamic var createDate: Date = Date()
+    @objc dynamic var updateDate: Date = Date()
 
     
-    dynamic var index = 0
-    dynamic var isApproved = false
+    @objc dynamic var index = 0
+    @objc dynamic var isApproved = false
     
-    dynamic var scheduledDate: Date? = nil
+    @objc dynamic var scheduledDate: Date? = nil
     
-    dynamic var type = ""
-    dynamic var section = ""
-    dynamic var status = ""
-    dynamic var title:String? = nil
+    @objc dynamic var type = ""
+    @objc dynamic var section = ""
+    @objc dynamic var status = ""
+    @objc dynamic var title:String? = nil
     
-    dynamic var text = ""
-    dynamic var url = ""
-    dynamic var hashtags = ""
-    dynamic var image:String? = nil
-    dynamic var articleSummary: String? = ""
+    @objc dynamic var text = ""
+    @objc dynamic var url = ""
+    @objc dynamic var hashtags = ""
+    @objc dynamic var image:String? = nil
+    @objc dynamic var articleSummary: String? = ""
     
     override static func primaryKey() -> String? {
         return "postId"

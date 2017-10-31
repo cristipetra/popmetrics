@@ -231,7 +231,7 @@ class TableFooterView: UITableViewHeaderFooterView {
         xButton.setImage(UIImage(named: "iconCtaClose"), for: .normal)
     }
     
-    func deleteHandler() {
+    @objc func deleteHandler() {
         animateButtonBlink(button: xButton)
     }
     
@@ -253,7 +253,7 @@ class TableFooterView: UITableViewHeaderFooterView {
         informationBtn.layer.cornerRadius = 23
     }
     
-    func informationHandler() {
+    @objc func informationHandler() {
         animateButtonBlink(button: informationBtn)
     }
     
@@ -266,7 +266,7 @@ class TableFooterView: UITableViewHeaderFooterView {
         
     }
     
-    func loadMoreHandler() {
+    @objc func loadMoreHandler() {
         animateButtonBlink(button: loadMoreBtn)
         buttonHandlerDelegate?.loadMorePressed(section: section)
         buttonActionHandler?.handlerAction(section: section)
@@ -280,7 +280,7 @@ class TableFooterView: UITableViewHeaderFooterView {
         actionButton.addTarget(self, action: #selector(approveHandler), for: .touchUpInside)
     }
     
-    func approveHandler() {
+    @objc func approveHandler() {
         animateButtonBlink(button: actionButton)
         buttonHandlerDelegate?.approvalButtonPressed(section: self.section)
     }

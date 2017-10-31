@@ -233,7 +233,7 @@ extension UILabel {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 130 // Whatever line spacing you want in points
         let attrString = NSMutableAttributedString(string: self.text!)
-        attrString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSRange(location: 0, length: (self.text?.characters.count)!))
+        attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: (self.text?.characters.count)!))
         
         self.attributedText = attrString;
     }

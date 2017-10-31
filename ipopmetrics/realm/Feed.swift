@@ -13,11 +13,11 @@ import ObjectMapper
 
 class StatsSummaryItem: Object, Mappable {
     
-    dynamic var feedCard: FeedCard? = nil
+    @objc dynamic var feedCard: FeedCard? = nil
     
-    dynamic var value: Float = 0
-    dynamic var label: String = ""
-    dynamic var delta: Float = 0
+    @objc dynamic var value: Float = 0
+    @objc dynamic var label: String = ""
+    @objc dynamic var delta: Float = 0
     
     required convenience init?(map: Map) {
         self.init()
@@ -33,37 +33,37 @@ class StatsSummaryItem: Object, Mappable {
 
 class FeedCard: Object, Mappable {
 
-    dynamic var cardId: String? = nil
+    @objc dynamic var cardId: String? = nil
     
-    dynamic var createDate: Date = Date()
-    dynamic var updateDate: Date = Date()
+    @objc dynamic var createDate: Date = Date()
+    @objc dynamic var updateDate: Date = Date()
 
-    dynamic var index = 0
+    @objc dynamic var index = 0
     
-    dynamic var type = ""
-    dynamic var section = ""
+    @objc dynamic var type = ""
+    @objc dynamic var section = ""
     
-    dynamic var headerTitle: String? = nil
-    dynamic var headerSubtitle: String? = nil
-    dynamic var headerIconUri:String? = nil
-    dynamic var message:String? = nil
+    @objc dynamic var headerTitle: String? = nil
+    @objc dynamic var headerSubtitle: String? = nil
+    @objc dynamic var headerIconUri:String? = nil
+    @objc dynamic var message:String? = nil
     
-    dynamic var actionLabel = ""
-    dynamic var actionHandler = ""
-    dynamic var imageUri:String? = nil
+    @objc dynamic var actionLabel = ""
+    @objc dynamic var actionHandler = ""
+    @objc dynamic var imageUri:String? = nil
     
-    dynamic var tooltipTitle: String? = nil
-    dynamic var tooltipContent: String? = nil
+    @objc dynamic var tooltipTitle: String? = nil
+    @objc dynamic var tooltipContent: String? = nil
     
-    dynamic var iceImpactPercentage: Int = 0
-    dynamic var iceImpactSplit: String? = nil // "[{'name': "Website Traffice", 'percentage': 10}]"
+    @objc dynamic var iceImpactPercentage: Int = 0
+    @objc dynamic var iceImpactSplit: String? = nil // "[{'name': "Website Traffice", 'percentage': 10}]"
     
-    dynamic var iceCostLabel: String? = nil
-    dynamic var iceCostPercentage: Int = 0
-    dynamic var iceEffortLabel: String? = nil
-    dynamic var iceEffortPercentage: Int = 0
+    @objc dynamic var iceCostLabel: String? = nil
+    @objc dynamic var iceCostPercentage: Int = 0
+    @objc dynamic var iceEffortLabel: String? = nil
+    @objc dynamic var iceEffortPercentage: Int = 0
     
-    dynamic var iceAimee: String? = nil
+    @objc dynamic var iceAimee: String? = nil
     
     override static func primaryKey() -> String? {
         return "cardId"

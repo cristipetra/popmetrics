@@ -68,7 +68,7 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
         }
     }
     
-    func tapFunction(sender: UIButton) {
+    @objc func tapFunction(sender: UIButton) {
         self.calendarView.configuration.selectedDayTextColor = PopmetricsColor.greenSelectedDate
         self.calendarView.reloadDayViews()
         self.calendarView.goToCurrentDay()

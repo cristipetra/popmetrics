@@ -53,7 +53,7 @@ class RecommendationCardCell: UITableViewCell {
         self.addGestureRecognizer(tapGesture)
     }
     
-    func handlerClickCard() {
+    @objc func handlerClickCard() {
         openUrl(string: Config.socialAutomationLink)
     }
 
@@ -75,7 +75,7 @@ class RecommendationCardCell: UITableViewCell {
             let style = NSMutableParagraphStyle()
             style.lineSpacing = 5
             style.maximumLineHeight = 26
-            attributedString.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSRange(location: 0, length: (titleText.characters.count)))
+            attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: style, range: NSRange(location: 0, length: (titleText.characters.count)))
             titleLabel.attributedText = attributedString
         }
 
@@ -84,7 +84,7 @@ class RecommendationCardCell: UITableViewCell {
             let style = NSMutableParagraphStyle()
             style.lineSpacing = 5
             style.maximumLineHeight = 26
-            attributedString.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSRange(location: 0, length: (messageText.characters.count)))
+            attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: style, range: NSRange(location: 0, length: (messageText.characters.count)))
             messageLabel.attributedText = attributedString
         }
     }
