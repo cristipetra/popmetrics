@@ -9,7 +9,7 @@
 import UIKit
 
 class StatsPageViewController: UIPageViewController {
- 
+    
     var statisticsCard: StatisticsCard! {
         didSet {
             self.numberOfPages = (StatisticsStore.getInstance().getNumberOfPages(statisticsCard))
@@ -25,6 +25,14 @@ class StatsPageViewController: UIPageViewController {
     var numberOfPages: Int = 1 {
         didSet {
             updateViewControllerList()
+        }
+    }
+    
+    weak var indexDelegate: IndexPageProtocol?
+    
+    var currentPageIndex: Int = 0 {
+        didSet {
+            indexDelegate?.indexOfPage(index: currentPageIndex - 1)
         }
     }
     
@@ -111,7 +119,19 @@ extension StatsPageViewController: UIPageViewControllerDelegate, UIPageViewContr
         guard viewControllerList.count > nextIndex else {
             return nil
         }
-
+        
         return viewControllerList[nextIndex]
     }
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if completed {
+            if let currentViewController = pageViewController.viewControllers![0] as? StatsSlideViewController {
+                currentPageIndex = currentViewController.pageIndex
+            }
+        }
+    }
 }
+
+protocol IndexPageProtocol: class {
+    func indexOfPage(index: Int)
+}
+

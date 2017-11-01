@@ -121,9 +121,8 @@
                                                         <state key="normal" image="calendarArrowIcon"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LzI-JC-DnC">
-                                                        <rect key="frame" x="152.5" y="49" width="70" height="20"/>
+                                                        <rect key="frame" x="156.5" y="49" width="62.5" height="20"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="70" id="Tti-sQ-5S5"/>
                                                             <constraint firstAttribute="height" constant="20" id="WBV-en-GLO"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
@@ -182,8 +181,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomLbl" destination="LzI-JC-DnC" id="1qd-Qp-Hzj"/>
+                        <outlet property="bottomPageControl" destination="iqQ-ii-WPR" id="rbg-EJ-ehd"/>
                         <outlet property="containerView" destination="u9Z-3W-6VU" id="WeQ-yi-Eem"/>
                         <outlet property="scrollView" destination="KpF-GZ-SRX" id="xaF-2m-tAR"/>
+                        <outlet property="statusLbl" destination="GMV-LR-6bo" id="01a-0s-Idl"/>
+                        <outlet property="topPageControl" destination="KhC-bk-1tg" id="zOC-VL-tHk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FpP-vP-U0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
