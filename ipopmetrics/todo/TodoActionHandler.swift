@@ -8,12 +8,18 @@
 
 import Foundation
 
-protocol TodoCardActionHandler: class {
-    
+protocol TodoCardActionProtocol: class {
     func handleCardAction(_ action:String, todoCard: TodoCard, params:[String:Any])
-
 }
 
 protocol CalendarCardActionHandler: class {
     func handleCardAction(_ action: String, calendarCard: CalendarCard, params: [String:Any])
 }
+
+/*
+class TodoCardActionHandler: TodoCardActionProtocol {
+    func handleCardAction(_ action:String, todoCard: TodoCard, params:[String:Any]) {
+        
+    }
+}
+*/

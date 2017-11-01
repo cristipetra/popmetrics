@@ -59,7 +59,7 @@ class SocialPostDetailsViewController: UIViewController {
     
     let postDetailsView = SocialPostDetailsView()
     
-    weak var socialDelegate: ActionSocialPostProtocoll?
+    weak var socialDelegate: ActionSocialPostProtocol?
     var indexPath: IndexPath!
     
     private var toDoPost: TodoSocialPost! {
@@ -233,10 +233,9 @@ class SocialPostDetailsViewController: UIViewController {
     }
 }
 
-@objc protocol ActionSocialPostProtocoll: class {
-    
-    @objc optional func denyPostFromSocial(post: TodoSocialPost,indexPath: IndexPath)
-    @objc optional func cancelPostFromSocial(post: CalendarSocialPost,indexPath: IndexPath)
-    @objc optional func approvePostFromSocial(post: TodoSocialPost,indexPath: IndexPath)
+@objc protocol ActionSocialPostProtocol: class {
+    @objc optional func denyPostFromSocial(post: TodoSocialPost, indexPath: IndexPath)
+    @objc optional func cancelPostFromSocial(post: CalendarSocialPost, indexPath: IndexPath)
+    @objc optional func approvePostFromSocial(post: TodoSocialPost, indexPath: IndexPath)
     
 }

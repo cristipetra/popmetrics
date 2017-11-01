@@ -86,4 +86,19 @@ class ToDoApprovedView: UIView {
         
     }
     
+    func displayDeny() {
+        approvedLabel.text = "Post denied"
+    }
+    
+    func displayApproved() {
+        
+    }
+    
+    private func changeText(type: String) {
+        if type == "approve" {
+            
+        }
+    }
+    
+    
 }

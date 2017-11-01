@@ -227,7 +227,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        //createItemsLocally()
+        createItemsLocally()
         
         tableView.isHidden = false
     }
@@ -648,6 +648,14 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         
     }
     
+    func removeCell(indexPath: IndexPath) {
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { (timer) in
+            DispatchQueue.main.async {
+                //self.removeCellWithAnimation(indexPath: indexPath)
+            }
+        }
+    }
+    
 }
 
 extension CalendarViewController: FooterActionHandlerProtocol {
@@ -670,8 +678,9 @@ extension CalendarViewController:  CalendarCardActionHandler {
     }
 }
 
-extension CalendarViewController: ActionSocialPostProtocoll {
+extension CalendarViewController: ActionSocialPostProtocol {
     func cancelPostFromSocial(post: CalendarSocialPost, indexPath: IndexPath) {
         print("Calendar post canceled")
+        removeCell(indexPath: indexPath)
     }
 }
