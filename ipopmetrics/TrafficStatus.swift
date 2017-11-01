@@ -87,6 +87,8 @@ class TrafficStatus: UIView {
      
         addChartView()
         addTableView()
+        
+        bottomPageControllView.isHidden = true
     }
     
     internal func addTableView() {
