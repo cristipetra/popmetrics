@@ -94,6 +94,20 @@ class UsersStore {
             return UserDefaults.standard.bool(forKey: "didShowedTransitionAddToTask")
         }
     }
+    
+    /*
+     * On first time when user approved a post from todo will show
+     * that it goes to calendar
+     */
+    static var didShowedTransitionFromTodo: Bool {
+        set {
+            let defaults = UserDefaults.standard
+            defaults.set(newValue, forKey: "didShowedTransitionFromTodo")
+        }
+        get {
+            return UserDefaults.standard.bool(forKey: "didShowedTransitionFromTodo")
+        }
+    }
  
     
     static var isNotificationsAllowed: Bool {

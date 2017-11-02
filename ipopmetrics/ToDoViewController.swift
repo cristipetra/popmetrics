@@ -45,9 +45,6 @@ class ToDoViewController: BaseViewController {
     var isAllApproved : Bool = false
     var currentBrandId = UsersStore.currentBrandId
     
-    // display transition for opening card in calendar
-    internal var didTransitionDisplayed = false
-    
     internal var didAnimateOpeningCells = false
 
     override func viewDidLoad() {
@@ -371,15 +368,15 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
             self.tableView.reloadData()
             
-            if !self.didTransitionDisplayed {
+            if !UsersStore.didShowedTransitionFromTodo {
                 self.tabBarController?.selectedIndex += 1
-                self.didTransitionDisplayed = true
+                UsersStore.didShowedTransitionFromTodo = true
             }
         }
     }
     
     func removeCell(indexPath: IndexPath) {
-        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { (timer) in
             DispatchQueue.main.async {
                 self.removeCellWithAnimation(indexPath: indexPath)
             }
@@ -735,18 +732,18 @@ extension ToDoViewController {
 extension ToDoViewController: ActionSocialPostProtocol {
     
     func denyPostFromSocial(post: TodoSocialPost, indexPath: IndexPath) {
-        
         removeCell(indexPath: indexPath)
-        //approvedView.displayDeny()
-        
+        approvedView.displayDeny()
+       
         if approvedView.transform == .identity {
             UIView.animate(withDuration: 0.5, animations: {
                 self.approvedView.transform = CGAffineTransform(translationX: 0, y: -120)
-                Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
+                Timer.scheduledTimer(withTimeInterval: 4, repeats: false, block: { (timer) in
                     self.hideApprovedView()
                 })
                 
             })
+
         }
     }
     
@@ -754,7 +751,7 @@ extension ToDoViewController: ActionSocialPostProtocol {
         print("approve social post")
         
         removeCell(indexPath: indexPath)
-        
+        approvedView.displayApproved()
         if approvedView.transform == .identity {
             UIView.animate(withDuration: 0.5, animations: {
                 self.approvedView.transform = CGAffineTransform(translationX: 0, y: -120)

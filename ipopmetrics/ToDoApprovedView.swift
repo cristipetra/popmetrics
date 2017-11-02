@@ -91,7 +91,7 @@ class ToDoApprovedView: UIView {
     }
     
     func displayApproved() {
-        
+     approvedLabel.text = "Post approved! 🎉"
     }
     
     private func changeText(type: String) {
