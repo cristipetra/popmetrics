@@ -42,6 +42,7 @@ class ToDoApprovedView: UIView {
         label.text = "Post approved! 🎉"
         label.font = UIFont(name: FontBook.semibold, size: 15)
         label.textColor = PopmetricsColor.darkGrey
+        label.textAlignment = .center
         return label
     }()
     
@@ -91,14 +92,7 @@ class ToDoApprovedView: UIView {
     }
     
     func displayApproved() {
-     approvedLabel.text = "Post approved! 🎉"
+        approvedLabel.text = "Post approved! 🎉"
     }
-    
-    private func changeText(type: String) {
-        if type == "approve" {
-            
-        }
-    }
-    
     
 }

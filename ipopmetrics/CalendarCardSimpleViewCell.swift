@@ -78,7 +78,7 @@ class CalendarCardSimpleViewCell: UITableViewCell {
         
         statusCardTypeView.typeStatusView = .cancel
         
-        statusCardTypeView.infoBtn.addTarget(self, action: #selector(cancelPostHandler), for: .touchUpInside)
+        cancelPostButton.addTarget(self, action: #selector(cancelPostHandler), for: .touchUpInside)
         
         changeColor()
     }
@@ -132,7 +132,6 @@ class CalendarCardSimpleViewCell: UITableViewCell {
     
     @objc internal func cancelPostHandler() {
         actionSociaDelegate?.cancelPostFromSocial!(post: calendarItem, indexPath: indexPath)
-        //cancelCardDelegate?.handleCardAction("cancel_one", calendarCard: self.calendarItem.calendarCard!, params: ["social_post": self.calendarItem])
     }
     
 }

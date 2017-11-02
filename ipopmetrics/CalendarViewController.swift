@@ -119,7 +119,6 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
         nc.addObserver(forName:Notification.Popmetrics.UiRefreshRequired, object:nil, queue:nil, using:catchUiRefreshRequiredNotification)
         
         nc.addObserver(self, selector: #selector(handlerAnimateCardAppearance), name: Notification.Name("animateRow"), object: nil)
-        
     }
     
     @objc internal func handlerAnimateCardAppearance() {
@@ -187,13 +186,20 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
             let calendarPost = CalendarSocialPost()
             calendarPost.section = "Scheduled"
             calendarPost.calendarCard = calendarItem
-            calendarPost.calendarCardId = "calendarID"
-            calendarPost.postId = "post_one"
+            calendarPost.calendarCardId = "adsfasf42551dsag"
+            calendarPost.postId = "fdsafdsa254sdagasg"
             calendarPost.status = "Scheduled"
             calendarPost.scheduledDate = Date()
-            
             store.realm.add(calendarPost, update: true)
-            //store.realm.delete(calendarPost)
+            
+            let calendarPost1 = CalendarSocialPost()
+            calendarPost1.section = "Scheduled"
+            calendarPost1.calendarCard = calendarItem
+            calendarPost1.calendarCardId = "asdfsadf942423afa"
+            calendarPost1.postId = "sagsag2sagsag"
+            calendarPost1.status = "Scheduled"
+            calendarPost1.scheduledDate = Date()
+            store.realm.add(calendarPost1, update: true)
             
             let calendarComplete = CalendarCard()
             calendarComplete.section = StatusArticle.completed.rawValue
@@ -226,9 +232,6 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        createItemsLocally()
-        
         tableView.isHidden = false
     }
     
@@ -237,16 +240,9 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
             topHeaderView = HeaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 0))
             tableView.addSubview(topHeaderView)
             topHeaderView.displayIcon(display: true)
-            topHeaderView.btn.addTarget(self, action: #selector(handlerExpand), for: .touchUpInside)
-            
-            let labelTap = UITapGestureRecognizer(target: self, action: #selector(handlerExpand))
-            topHeaderView.iconLbl.isUserInteractionEnabled = true
-            topHeaderView.iconLbl.addGestureRecognizer(labelTap)
-        }
-    }
     
-    @objc func handlerExpand() {
-        maximizeCell()
+            topHeaderView.iconLbl.isUserInteractionEnabled = true
+        }
     }
     
     internal func setUpNavigationBar() {
@@ -274,7 +270,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
     
 }
 
-extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, ChangeCellProtocol {
+extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
@@ -301,33 +297,18 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         
         let item = sectionCards[rowIdx]
         
-        if shouldMaximizeCell == false {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCardSimple", for: indexPath) as! CalendarCardSimpleViewCell
-            cell.configure(item)
-            cell.cancelCardDelegate = self
-            cell.selectionStyle = .none
-            
-            cell.layer.transform = CATransform3DMakeScale(1, 0.0, 1)
-            self.animateCellAppearance(cell: cell)
-            
-            return cell
-        } else {
-            let maxCell = tableView.dequeueReusableCell(withIdentifier: "extendedCell", for: indexPath) as! CalendarCardMaximizedViewCell
-            tableView.allowsSelection = false
-            maxCell.topImageButton.isHidden = true
-            maxCell.setUpApprovedConnectionView()
-            let itemsCount = store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section], datesSelected: datesSelected).count
-            maxCell.configure(item)
-            
-            if indexPath.row == (itemsCount - 1) {
-                maxCell.connectionStackView.isHidden = true
-                maxCell.isLastCell = true
-            } else {
-                maxCell.connectionStackView.isHidden = false
-            }
-            
-            return maxCell
-        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCardSimple", for: indexPath) as! CalendarCardSimpleViewCell
+        cell.configure(item)
+        cell.indexPath = indexPath
+        cell.cancelCardDelegate = self
+        cell.actionSociaDelegate = self
+        cell.selectionStyle = .none
+        
+        cell.layer.transform = CATransform3DMakeScale(1, 0.0, 1)
+        self.animateCellAppearance(cell: cell)
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -388,8 +369,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         
         let sectionCard = store.getCalendarCards()[section]
         
-        
-        if shouldMaximizeCell || store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected).count == 0 {
+        if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected).count == 0 {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
             headerCell.changeColor(color: sectionCard.getSectionColor)
             headerCell.changeTitle(title: sectionCard.socialTextString)
@@ -442,10 +422,8 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         if store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section], datesSelected: datesSelected).isEmpty {
             return 216
         }
-        if shouldMaximizeCell == false {
-            return 148
-        }
-        return 459
+
+        return 148
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -471,12 +449,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         if(posts.count == 0) {
             return 80
         }
-        if shouldMaximizeCell == false {
-            return 109
-        } else {
-            return 80
-        }
-        
+        return 109
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -583,18 +556,6 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         })
     }
     
-    func maximizeCell() {
-        shouldMaximizeCell = !shouldMaximizeCell
-        
-        tableView.reloadData()
-        DispatchQueue.main.async {
-            self.tableView.scrollToRow(at: self.scrollToRow, at: .none, animated: false)
-        }
-        
-        let type = shouldMaximizeCell ? HeaderViewType.expand : HeaderViewType.minimize
-        topHeaderView.changeStatus(type: type)
-    }
-    
     func updateStateLoadMore(_ footerView: TableFooterView, section: Int) {
         let posts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected)
         if( posts.count <= noItemsLoaded[section]) {
@@ -648,10 +609,22 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, Ch
         
     }
     
+    func removeCellFromTable(indexPath: IndexPath) {
+        try! store.realm.write {
+              store.realm.delete(store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section], datesSelected: datesSelected)[indexPath.row])
+            }
+            
+            if !store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section], datesSelected: datesSelected).isEmpty {
+                self.tableView.deleteRows(at: [indexPath], with: .middle)
+            } else {
+                self.tableView.reloadData()
+        }
+    }
+    
     func removeCell(indexPath: IndexPath) {
-        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
             DispatchQueue.main.async {
-                //self.removeCellWithAnimation(indexPath: indexPath)
+                self.removeCellFromTable(indexPath: indexPath)
             }
         }
     }
@@ -680,7 +653,6 @@ extension CalendarViewController:  CalendarCardActionHandler {
 
 extension CalendarViewController: ActionSocialPostProtocol {
     func cancelPostFromSocial(post: CalendarSocialPost, indexPath: IndexPath) {
-        print("Calendar post canceled")
         removeCell(indexPath: indexPath)
     }
 }
