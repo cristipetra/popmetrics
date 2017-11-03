@@ -16,6 +16,7 @@ class TrafficReportViewController: UIViewController {
     @IBOutlet weak var statusLbl: UILabel!
     @IBOutlet weak var bottomPageControl: UIPageControl!
     @IBOutlet weak var bottomLbl: UILabel!
+    @IBOutlet weak var bottomContainerView: UIView!
     
     let statsPageVC: StatsPageViewController = StatsPageViewController()
     let statisticStore = StatisticsStore.getInstance()
@@ -47,6 +48,7 @@ class TrafficReportViewController: UIViewController {
     }
     
     func setUpPageControlViews() {
+        statusLbl.text = "Stats \(pageIndex) of \(statisticStore.getNumberOfPages(statisticsCard))"
         
         bottomLbl.textColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
         bottomLbl.font = UIFont(name: FontBook.semibold, size: 15)
@@ -73,9 +75,10 @@ class TrafficReportViewController: UIViewController {
         statsPageVC.view.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 0).isActive = true
         //statsPageVC.view.topAnchor.constraint(equalTo: chartVC.view.bottomAnchor,constant: 1).isActive = true
         statsPageVC.view.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0).isActive = true
-        statsPageVC.view.heightAnchor.constraint(equalToConstant: 778).isActive = true
+        statsPageVC.view.heightAnchor.constraint(equalToConstant: 758).isActive = true
         
-        statsPageVC.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        //statsPageVC.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        statsPageVC.view.bottomAnchor.constraint(equalTo: bottomContainerView.topAnchor).isActive = true
         
     }
     
@@ -94,6 +97,17 @@ class TrafficReportViewController: UIViewController {
         self.navigationItem.leftBarButtonItems = [leftButtonItem, text]
         
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
+    }
+    
+    @IBAction func handlerPrevPage(_ sender: Any) {
+        print("hello")
+        
+        statsPageVC.previousViewController()
+    }
+    
+    @IBAction func handlerNextPage(_ sender: Any) {
+        print("next page")
+        statsPageVC.nextViewController()
     }
     
     @objc func handlerClickBack() {

@@ -111,6 +111,9 @@
                                                             <constraint firstAttribute="height" constant="23" id="EmY-cC-N07"/>
                                                         </constraints>
                                                         <state key="normal" image="calendarIconLeftArrow"/>
+                                                        <connections>
+                                                            <action selector="handlerPrevPage:" destination="knl-Jz-nFz" eventType="touchUpInside" id="z5s-N3-SQg"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNc-UB-xpi">
                                                         <rect key="frame" x="273" y="20.5" width="9" height="23"/>
@@ -119,9 +122,12 @@
                                                             <constraint firstAttribute="height" constant="23" id="tA3-WQ-tTe"/>
                                                         </constraints>
                                                         <state key="normal" image="calendarArrowIcon"/>
+                                                        <connections>
+                                                            <action selector="handlerNextPage:" destination="knl-Jz-nFz" eventType="touchUpInside" id="xse-vh-Ppx"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LzI-JC-DnC">
-                                                        <rect key="frame" x="157" y="49" width="62.5" height="20"/>
+                                                        <rect key="frame" x="156.5" y="49" width="62.5" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="WBV-en-GLO"/>
                                                         </constraints>
@@ -181,6 +187,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomContainerView" destination="SZj-eE-COS" id="Cf5-E0-aK6"/>
                         <outlet property="bottomLbl" destination="LzI-JC-DnC" id="1qd-Qp-Hzj"/>
                         <outlet property="bottomPageControl" destination="iqQ-ii-WPR" id="rbg-EJ-ehd"/>
                         <outlet property="containerView" destination="u9Z-3W-6VU" id="WeQ-yi-Eem"/>

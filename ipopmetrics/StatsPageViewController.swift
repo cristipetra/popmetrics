@@ -71,6 +71,22 @@ class StatsPageViewController: UIPageViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    func nextViewController() {
+        guard let currentVC = self.viewControllers?.first as? StatsSlideViewController else { return }
+        guard let nextVC = dataSource?.pageViewController(self, viewControllerAfter: currentVC) as? StatsSlideViewController else { return }
+        
+        setViewControllers([nextVC], direction: .forward, animated: true, completion: nil)
+        currentPageIndex = nextVC.pageIndex
+    }
+    
+    func previousViewController() {
+        guard let currentVC = self.viewControllers?.first as? StatsSlideViewController else { return }
+        guard let previousVC = dataSource?.pageViewController(self, viewControllerBefore: currentVC) as? StatsSlideViewController else { return }
+        
+        setViewControllers([previousVC], direction: .forward, animated: true, completion: nil)
+        currentPageIndex = previousVC.pageIndex    
+    }
 }
 
 extension StatsPageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
