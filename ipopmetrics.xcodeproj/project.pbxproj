@@ -15,6 +15,7 @@
 		081D5DC41F94F93300BB7352 /* HeaderCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 081D5DC31F94F93300BB7352 /* HeaderCardView.xib */; };
 		081D5DC61F94F95A00BB7352 /* HeaderCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081D5DC51F94F95A00BB7352 /* HeaderCardViewCell.swift */; };
 		083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083938FE1F63C334007DDA37 /* MainTabInfo.swift */; };
+		0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */; };
 		0848280F1F39F9200054B04C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848280E1F39F9200054B04C /* HeaderView.swift */; };
 		084E54E11F827F7D007D6F4F /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E54E01F827F7D007D6F4F /* NoteView.swift */; };
 		085053FE1F2787A100FE8234 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085053FD1F2787A100FE8234 /* CalendarViewController.swift */; };
@@ -230,6 +231,7 @@
 		081D5DC31F94F93300BB7352 /* HeaderCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCardView.xib; sourceTree = "<group>"; };
 		081D5DC51F94F95A00BB7352 /* HeaderCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCardViewCell.swift; sourceTree = "<group>"; };
 		083938FE1F63C334007DDA37 /* MainTabInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabInfo.swift; sourceTree = "<group>"; };
+		0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellTransition.swift; sourceTree = "<group>"; };
 		0848280E1F39F9200054B04C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		084E54E01F827F7D007D6F4F /* NoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		085053FD1F2787A100FE8234 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -482,6 +484,14 @@
 				081D5DC51F94F95A00BB7352 /* HeaderCardViewCell.swift */,
 			);
 			name = header;
+			sourceTree = "<group>";
+		};
+		0844FBD51FACB19C00335073 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */,
+			);
+			name = cell;
 			sourceTree = "<group>";
 		};
 		085053FC1F27876100FE8234 /* calendar */ = {
@@ -751,6 +761,7 @@
 		08C7B18E1F1CF41200E456C6 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0844FBD51FACB19C00335073 /* cell */,
 				0899DA1F1FA33AF600C3696C /* social */,
 				0862C4D41FA1F50E00BEF0BC /* todo */,
 				085599A11F7271BE00E5BEA1 /* splash */,
@@ -1535,6 +1546,7 @@
 				085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */,
 				088CB18B1F8B658900809A51 /* ReachabilityManager.swift in Sources */,
 				08B745981F1F718300EC3F8C /* CodeViewController.swift in Sources */,
+				0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */,
 				08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */,
 				11D8D9E91ECA37FC00CCDAC4 /* NavigationController.swift in Sources */,
 				1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */,

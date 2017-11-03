@@ -47,7 +47,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
     internal var masterToContainer:MasterToContainer?
     internal var topHeaderView: HeaderView!
     internal var isAnimatingHeader: Bool = false
-    
+    var stopAnimatingAfterScroll = false
     
     var currentBrandId = UsersStore.currentBrandId
     
@@ -297,16 +297,12 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         
         let item = sectionCards[rowIdx]
         
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCardSimple", for: indexPath) as! CalendarCardSimpleViewCell
         cell.configure(item)
         cell.indexPath = indexPath
         cell.cancelCardDelegate = self
         cell.actionSociaDelegate = self
         cell.selectionStyle = .none
-        
-        cell.layer.transform = CATransform3DMakeScale(1, 0.0, 1)
-        self.animateCellAppearance(cell: cell)
         
         return cell
     }
@@ -324,16 +320,6 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         
     }
     
-    func animateCellAppearance(cell: CalendarCardSimpleViewCell) {
-        print("animate cell appearance")
-        UIView.animate(withDuration: 0.5) {
-            cell.layer.transform = CATransform3DMakeScale(1,1,1)
-        }
-        
-        self.didAnimateCardFirstTime = true
-        
-    }
-    
     func getCalendarPosts() {
         
     }
@@ -343,21 +329,24 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let tableViewCellTransition = TableViewCellTransition()
+        
         if(store.getCalendarCards().count < 3) {
-            return
+            //return
         }
         
-        let delay = 0.1 + Double(indexPath.row) * 0.2
-        
-        if indexPath.section == 0 {
-            let transform = CATransform3DTranslate(CATransform3DIdentity, 0, -148, 10)
-            cell.layer.transform = transform
-            cell.alpha = 0
-            
-            UIView.animate(withDuration: 0.3, delay: delay, options: .beginFromCurrentState, animations: {
-                cell.alpha = 1
-                cell.layer.transform = CATransform3DIdentity
-            }, completion: nil)
+        if !UsersStore.didShowedTransitionFromTodo {
+           tableViewCellTransition.animateDisplayLoadindFirstTimeCell(indexPath, cell: cell)
+            return
+        }
+ 
+        if UsersStore.didShowedTransitionFromTodo {
+            if !stopAnimatingAfterScroll {
+                tableViewCellTransition.animateDisplayLoadindCell(indexPath, cell: cell, completion: {
+                    self.stopAnimatingAfterScroll = true
+                })
+                
+            }
         }
     }
     
