@@ -11,21 +11,23 @@ import ScrollableGraphView
 
 class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
     
-    @IBOutlet weak var barChart: ScrollableGraphView!
-    @IBOutlet weak var containerView: UIView!
+    lazy var barChart: ScrollableGraphView = {
+        let chart = ScrollableGraphView(frame: CGRect(x: 16, y: 70, width: UIScreen.main.bounds.width - 35, height: 137))
+        chart.translatesAutoresizingMaskIntoConstraints = false
+        return chart
+    }()
     
+    @IBOutlet var mainView: UIView!
+    @IBOutlet weak var currentDateLabel: UILabel!
+    @IBOutlet weak var previousDateLabel: UILabel!
+    @IBOutlet weak var secondValue: UILabel!
+    @IBOutlet weak var firstValue: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
     
     var numberOfItems = 25
     var plotOneData: [Double] = [0.0, 2.3, 2.2, 4.5, 6.7, 7.8, 3.2, 4.5, 3.3, 3.5, 7.8, 3.4, 6, 7, 5, 34, 4, 5, 3, 5, 4.5, 3.3, 3.5, 7.8, 3.4, 6, 7, 5, 34, 14, 45, 45, 25, 43, 23]
     var plotTwoData: [Double] = [0.0, 12.3, 12.2, 14.5, 16.7, 17.8, 13.2, 14.5, 13.3, 13.5, 17.8, 13.4, 16, 17, 15, 34, 14, 15, 13, 15, 4.5, 3.3, 3.5, 7.8, 3.4, 6, 7, 5, 34, 34, 14, 45, 45, 25, 43, 23]
     
-    @IBOutlet weak var currentDateLabel: UILabel!
-    @IBOutlet weak var previousDateLabel: UILabel!
-    
-    
-    @IBOutlet weak var secondValue: UILabel!
-    @IBOutlet weak var firstValue: UILabel!
-    @IBOutlet weak var infoLabel: UILabel!
     var statisticMetric: StatisticMetric!
     
     override func viewDidLoad() {
@@ -33,6 +35,7 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
         barChart.dataSource = self
         
         setupGraph(graphView: barChart)
+        self.view.addSubview(barChart)
     
         let nc = NotificationCenter.default
         nc.addObserver(forName:Notification.Popmetrics.ReloadGraph, object:nil, queue:nil, using: handerReloadData)
@@ -72,12 +75,13 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
 
     
     func setupGraph(graphView: ScrollableGraphView) {
-        let barWidth: CGFloat = 12
+        
+        let barWidth: CGFloat = (barChart.bounds.width - 16) / CGFloat(numberOfItems)
         let animationDuration: Double = 1
         
         let grayPlot = BarPlot(identifier: "Gray")
         grayPlot.barWidth = barWidth
-        grayPlot.barLineWidth = 0
+        grayPlot.barLineWidth = 1
         grayPlot.barLineColor = UIColor.white
         grayPlot.barColor = UIColor(red: 122/255, green: 136/255, blue: 150/255, alpha: 0.6)
         grayPlot.adaptAnimationType = ScrollableGraphViewAnimationType.elastic
@@ -99,7 +103,7 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
         // Setup the second line plot.
         let pinkPlot = BarPlot(identifier: "Pink")
         pinkPlot.barWidth = barWidth
-        pinkPlot.barLineWidth = 0
+        pinkPlot.barLineWidth = 1
         pinkPlot.barLineColor = UIColor.white
         pinkPlot.barColor = UIColor(red: 219/255, green: 14/255, blue: 95/255, alpha: 0.7)
         pinkPlot.adaptAnimationType = ScrollableGraphViewAnimationType.elastic
@@ -120,14 +124,14 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
         
         // Setup the graph
         graphView.backgroundFillColor = UIColor.white
-        graphView.dataPointSpacing = 13
-        graphView.rangeMax = Double(numberOfItems)
-        //graphView.rightmostPointPadding = CGFloat(numberOfItems)
+        graphView.dataPointSpacing = barWidth
+        graphView.rightmostPointPadding = 0
+        //graphView.rangeMax = Double(numberOfItems)
         graphView.scrollsToTop = false
         graphView.shouldAnimateOnStartup = true
         graphView.shouldAdaptRange = true
         graphView.shouldRangeAlwaysStartAtZero = true
-        
+        graphView.leftmostPointPadding = 10
         // Add everything to the graph.
         
         graphView.addPlot(plot: grayPlot)
@@ -159,22 +163,6 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
     
     func numberOfPoints() -> Int {
         return numberOfItems
-    }
-    
-    private func generateRandomData(_ numberOfItems: Int, max: Double, shouldIncludeOutliers: Bool = true) -> [Double] {
-        var data = [Double]()
-        for _ in 0 ..< numberOfItems {
-            var randomNumber = Double(arc4random()).truncatingRemainder(dividingBy: max)
-            
-            if(shouldIncludeOutliers) {
-                if(arc4random() % 100 < 10) {
-                    randomNumber *= 3
-                }
-            }
-            
-            data.append(randomNumber)
-        }
-        return data
     }
     
 }

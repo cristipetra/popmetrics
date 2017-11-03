@@ -71,7 +71,6 @@ class TrafficStatus: UIView {
         self.addSubview(chartVC.view)
         chartVC.didMove(toParentViewController: self.parentViewController)
         
-        chartVC.containerView.backgroundColor = UIColor.white//UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
         chartVC.barChart.backgroundFillColor = UIColor.white//UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
         
         chartVC.view.translatesAutoresizingMaskIntoConstraints = false
