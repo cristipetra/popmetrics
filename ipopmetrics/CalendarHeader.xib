@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,7 +44,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attention required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUX-ot-Mkw">
-                                <rect key="frame" x="42" y="3" width="210" height="21"/>
+                                <rect key="frame" x="50" y="3" width="210" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="210" id="lPr-FQ-xlF"/>
                                     <constraint firstAttribute="height" constant="21" id="pG1-8g-1HU"/>
@@ -63,7 +63,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o5w-nM-Gu8" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
-                        <rect key="frame" x="2" y="80" width="371" height="29"/>
+                        <rect key="frame" x="10" y="80" width="355" height="29"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="29" id="DrW-vu-dT9"/>
@@ -72,6 +72,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="o5w-nM-Gu8" secondAttribute="bottom" id="JhF-PP-Sib"/>
                     <constraint firstAttribute="trailingMargin" secondItem="o5w-nM-Gu8" secondAttribute="trailing" constant="-6" id="Md5-MU-tq6"/>
                     <constraint firstAttribute="trailing" secondItem="nGq-H7-3Ig" secondAttribute="trailing" constant="16" id="Vlc-Xj-lcG"/>
                     <constraint firstItem="o5w-nM-Gu8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-6" id="ZGu-PB-B5E"/>
@@ -81,9 +82,6 @@
                     <constraint firstItem="nGq-H7-3Ig" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="mig-8T-DJT"/>
                 </constraints>
             </tableViewCellContentView>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="o5w-nM-Gu8" secondAttribute="bottom" id="fn6-Lb-7RK"/>
-            </constraints>
             <connections>
                 <outlet property="connectionView" destination="2nx-Bd-phr" id="sI9-y3-9S5"/>
                 <outlet property="containerView" destination="H2p-sc-9uM" id="fvb-In-qre"/>

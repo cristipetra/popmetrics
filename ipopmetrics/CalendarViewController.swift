@@ -201,6 +201,15 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
             calendarPost1.scheduledDate = Date()
             store.realm.add(calendarPost1, update: true)
             
+            let calendarPost2 = CalendarSocialPost()
+            calendarPost2.section = "Scheduled"
+            calendarPost2.calendarCard = calendarItem
+            
+            calendarPost2.postId = "asdfasdfsaf"
+            calendarPost2.status = "Scheduled"
+            calendarPost2.scheduledDate = Date()
+            store.realm.add(calendarPost2, update: true)
+            
             let calendarComplete = CalendarCard()
             calendarComplete.section = StatusArticle.completed.rawValue
             calendarComplete.cardId = "dsfasdfasf2252525r"
@@ -362,14 +371,14 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
             headerCell.changeColor(color: sectionCard.getSectionColor)
             headerCell.changeTitle(title: sectionCard.socialTextString)
-            return headerCell
+            return headerCell.containerView
         }
         else {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
             headerCell.changeColor(color: sectionCard.getSectionColor)
             headerCell.changeTitleToolbar(title: "")
             headerCell.changeTitleSection(title: sectionCard.getCardSectionTitle)
-            return headerCell
+            return headerCell.containerView
         }
         
     }
