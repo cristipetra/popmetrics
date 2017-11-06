@@ -249,7 +249,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
             topHeaderView = HeaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 0))
             tableView.addSubview(topHeaderView)
             topHeaderView.displayIcon(display: true)
-    
+            topHeaderView.layer.zPosition = 1
             topHeaderView.iconLbl.isUserInteractionEnabled = true
         }
     }

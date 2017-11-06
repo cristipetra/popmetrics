@@ -171,6 +171,7 @@ class ToDoViewController: BaseViewController {
         if topHeaderView == nil {
             topHeaderView = HeaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 0))
             self.tableView.addSubview(topHeaderView)
+            topHeaderView.layer.zPosition = 1
             topHeaderView.displayElements(isHidden: true)
         }
     }
