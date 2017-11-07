@@ -25,7 +25,6 @@ class RequiredAction: UITableViewCell {
     @IBOutlet weak var connectionLineView: UIView!
     
     @IBOutlet weak var messageHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var messageTopConstraint: NSLayoutConstraint!
     
     var item: FeedCard?
@@ -37,6 +36,7 @@ class RequiredAction: UITableViewCell {
     lazy var emailTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.isHidden = true
         return textField
     }()
     
@@ -50,7 +50,9 @@ class RequiredAction: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setUpTopView()
+        self.backgroundColor = UIColor.feedBackgroundColor()
+        self.containerView.backgroundColor = PopmetricsColor.salmondColor
+        setupToolbarView()
         setupCorners()
         setUpShadowLayer()
         
@@ -65,21 +67,17 @@ class RequiredAction: UITableViewCell {
         self.item = item
         self.actionHandler = handler
         
-        self.backgroundColor = UIColor.feedBackgroundColor()
         self.titleLabel.text  = item.headerTitle
         messageLabel.text = item.message
         
         //Todo move from here addTarget
         if(item.actionLabel == "Notifications") {
-            footerView.actionButton.imageButtonType = .allowNotification
-            self.footerView.actionButton.addTarget(self, action:#selector(handleActionNotifications(_:)), for: .touchDown)
+            //footerView.actionButton.imageButtonType = .allowNotification
+            //self.footerView.actionButton.addTarget(self, action:#selector(handleActionNotifications(_:)), for: .touchDown)
         } else {
             self.footerView.actionButton.addTarget(self, action:#selector(handleActionTwitter(_:)), for: .touchDown)
             self.footerView.informationBtn.addTarget(self, action: #selector(handleInfoButtonPressed(_:)), for: .touchDown)
         }
-        
-        titleLabel.textColor = PopmetricsColor.darkGrey
-        messageLabel.textColor = PopmetricsColor.darkGrey
         
         configureFooterView()
         
@@ -91,48 +89,49 @@ class RequiredAction: UITableViewCell {
     }
     
     internal func configureFooterView() {
-        footerView.displayOnlyActionButton()
+        let footerViewStateController: FooterViewStateController = FooterViewStateController()
+        if (item != nil) {
+            footerViewStateController.configureCard(item: item!, view: footerView)
+        }
     }
     
     private func displayGoogleAnalytics() {
         messageLabel.numberOfLines = 4
-        messageHeightConstraint.constant = 80
-        footerView.configure(.google)
     }
     
     private func displayEmailView() {
-        setEmailFieldPlaceholder()
+         setEmailFieldPlaceholder()
     }
     
     private func setEmailFieldPlaceholder() {
-        
+
         self.containerView.addSubview(emailTextField)
         emailTextField.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 11).isActive = true
         emailTextField.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: -10).isActive = true
         emailTextField.heightAnchor.constraint(equalToConstant: 49).isActive = true
         emailTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12).isActive = true
-        
+
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.emailTextField.frame.height))
         emailTextField.leftView = paddingView
         emailTextField.leftViewMode = UITextFieldViewMode.always
-        
+
         emailTextField.attributedPlaceholder = NSAttributedString(string: "youremail@email.com", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1), NSAttributedStringKey.font: UIFont(name: FontBook.semibold, size: 15)!])
         emailTextField.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
         emailTextField.layer.cornerRadius = 4
-        
+
         messageHeightConstraint.constant = 70
         messageHeightConstraint.isActive = true
-        
+
         messageTopConstraint.constant = 73
         messageTopConstraint.isActive = true
-        
+
         titleLabel.numberOfLines = 2
         setUpFooterViewForEmail()
     }
     
     private func setUpFooterViewForEmail() {
         footerView.setEmailViewType()
-    }
+   }
     
     internal func setupCorners() {
         DispatchQueue.main.async {
@@ -143,42 +142,24 @@ class RequiredAction: UITableViewCell {
     
     func setTitle(title: String) {
         titleLabel.text = title
-        titleLabel.font = UIFont(name: FontBook.alfaRegular, size: 20)
+        //titleLabel.font = UIFont(name: FontBook.alfaRegular, size: 20)
         
-        titleLabel.textColor = PopmetricsColor.darkGrey
+        //titleLabel.textColor = PopmetricsColor.darkGrey
     }
     
     func setMessage(message: String) {
         titleLabel.text = message
-        titleLabel.font = UIFont(name: FontBook.semibold, size: 15)
-        titleLabel.textColor = PopmetricsColor.darkGrey
+        //titleLabel.font = UIFont(name: FontBook.semibold, size: 15)
+        //titleLabel.textColor = PopmetricsColor.darkGrey
         
     }
     
-    func setUpTopView() {
-        
-        toolbarView.isLeftImageHidden = false
-        toolbarView.leftImage.image = UIImage(named: "iconAlertMessage")
-        toolbarView.leftImage.contentMode = .scaleAspectFit
-        toolbarView.backgroundColor = UIColor(red: 255/255, green: 119/255, blue: 106/255, alpha: 1)
-        
-        let headsUpStyle = Style.default { (style) -> (Void) in
-            
-            style.font = FontAttribute(FontBook.bold, size: 15)
-            style.color = UIColor.white
-        }
-        
-        let requiredAction = Style.default {
-            
-            $0.font = FontAttribute(FontBook.regular, size: 15)
-            $0.color = UIColor.white
-        }
-        
-        let headerTitle = "Heads Up: ".set(style: headsUpStyle) + "Required Action".set(style: requiredAction)
-        toolbarView.title.attributedText = headerTitle
+    func setupToolbarView() {
+        let toolbarController: CardToolbarController  = CardToolbarController()
+        toolbarController.setUpTopView(toolbarView: toolbarView)
     }
     
-    @objc func handleActionNotifications(_ sender: SimpleButton) {
+    func handleActionNotifications(_ sender: SimpleButton) {
         openUrl(string: Config.howToTurnNotificationLink)
     }
     
@@ -225,5 +206,3 @@ enum BannerType {
     case success
     case failed
 }
-
-

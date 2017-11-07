@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -36,59 +36,41 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkh-M4-e7L">
                         <rect key="frame" x="16" y="29" width="288" height="439.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect your Twitter and optimize your content for maximum growth." lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbm-nZ-v6I">
-                                <rect key="frame" x="20" y="29" width="258" height="120.5"/>
-                                <fontDescription key="fontDescription" name="AlfaSlabOne-Regular" family="Alfa Slab One" pointSize="22"/>
-                                <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter is a key access point to increase your social following." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8T-o8-GTy">
-                                <rect key="frame" x="20" y="170.5" width="258" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8T-o8-GTy">
+                                <rect key="frame" x="15" y="244" width="266" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="LPV-kd-nCO"/>
+                                    <constraint firstAttribute="height" constant="80" id="LPV-kd-nCO"/>
                                 </constraints>
+                                <string key="text">Our A.I. has noticed your brand’s social performance could be enhanced through sharing better content tailored to your audience.</string>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNg-Ep-OYH">
-                                <rect key="frame" x="0.0" y="269.5" width="288" height="170"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_twitter" translatesAutoresizingMaskIntoConstraints="NO" id="5yn-K7-RP9">
-                                        <rect key="frame" x="0.0" y="-0.5" width="288" height="170"/>
-                                    </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8x-Kb-iAY" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="70" width="288" height="100"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="n9X-lk-Tpd"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8x-Kb-iAY" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="339" width="288" height="100"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="j8x-Kb-iAY" secondAttribute="bottom" id="3Cd-xj-zbp"/>
-                                    <constraint firstItem="j8x-Kb-iAY" firstAttribute="leading" secondItem="MNg-Ep-OYH" secondAttribute="leading" id="F77-wv-fhI"/>
-                                    <constraint firstItem="5yn-K7-RP9" firstAttribute="leading" secondItem="MNg-Ep-OYH" secondAttribute="leading" id="FMn-7b-8JX"/>
-                                    <constraint firstAttribute="trailing" secondItem="5yn-K7-RP9" secondAttribute="trailing" id="Hgd-gT-aRt"/>
-                                    <constraint firstItem="5yn-K7-RP9" firstAttribute="top" secondItem="MNg-Ep-OYH" secondAttribute="top" id="IrW-3T-gaM"/>
-                                    <constraint firstAttribute="height" constant="170" id="JJm-yF-xmh"/>
-                                    <constraint firstAttribute="trailing" secondItem="j8x-Kb-iAY" secondAttribute="trailing" id="MCY-95-Gzi"/>
-                                    <constraint firstAttribute="bottom" secondItem="5yn-K7-RP9" secondAttribute="bottom" id="Zhx-IR-65r"/>
+                                    <constraint firstAttribute="height" constant="100" id="9me-1b-xjW"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect your Twitter account for better social engagement!" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbm-nZ-v6I">
+                                <rect key="frame" x="15" y="8" width="266" height="233"/>
+                                <fontDescription key="fontDescription" name="AlfaSlabOne-Regular" family="Alfa Slab One" pointSize="34"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.46666666666666667" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="r8T-o8-GTy" secondAttribute="trailing" constant="10" id="Miu-JT-1X4"/>
-                            <constraint firstItem="sbm-nZ-v6I" firstAttribute="top" secondItem="gkh-M4-e7L" secondAttribute="top" constant="29" id="NsF-UA-KlY"/>
-                            <constraint firstAttribute="bottom" secondItem="MNg-Ep-OYH" secondAttribute="bottom" id="am8-eh-A2s"/>
-                            <constraint firstAttribute="trailing" secondItem="sbm-nZ-v6I" secondAttribute="trailing" constant="10" id="cqz-3Z-VHx"/>
-                            <constraint firstAttribute="trailing" secondItem="MNg-Ep-OYH" secondAttribute="trailing" id="fsc-bb-UZW"/>
-                            <constraint firstItem="MNg-Ep-OYH" firstAttribute="leading" secondItem="gkh-M4-e7L" secondAttribute="leading" id="gXB-Mw-vB2"/>
-                            <constraint firstItem="sbm-nZ-v6I" firstAttribute="leading" secondItem="gkh-M4-e7L" secondAttribute="leading" constant="20" id="tgQ-u6-b7a"/>
-                            <constraint firstItem="r8T-o8-GTy" firstAttribute="top" secondItem="sbm-nZ-v6I" secondAttribute="bottom" constant="21" id="vm1-56-rIy"/>
-                            <constraint firstItem="r8T-o8-GTy" firstAttribute="leading" secondItem="gkh-M4-e7L" secondAttribute="leading" constant="20" id="zX6-2r-tuJ"/>
+                            <constraint firstAttribute="trailing" secondItem="r8T-o8-GTy" secondAttribute="trailing" constant="7" id="Miu-JT-1X4"/>
+                            <constraint firstItem="j8x-Kb-iAY" firstAttribute="top" secondItem="r8T-o8-GTy" secondAttribute="bottom" constant="15" id="Msy-jt-Sna"/>
+                            <constraint firstItem="sbm-nZ-v6I" firstAttribute="top" secondItem="gkh-M4-e7L" secondAttribute="top" constant="8" id="NsF-UA-KlY"/>
+                            <constraint firstAttribute="trailing" secondItem="sbm-nZ-v6I" secondAttribute="trailing" constant="7" id="cqz-3Z-VHx"/>
+                            <constraint firstItem="j8x-Kb-iAY" firstAttribute="leading" secondItem="gkh-M4-e7L" secondAttribute="leading" id="iN1-EV-gGu"/>
+                            <constraint firstAttribute="bottom" secondItem="j8x-Kb-iAY" secondAttribute="bottom" id="rYT-Dl-JIe"/>
+                            <constraint firstAttribute="trailing" secondItem="j8x-Kb-iAY" secondAttribute="trailing" id="rmE-J2-odC"/>
+                            <constraint firstItem="sbm-nZ-v6I" firstAttribute="leading" secondItem="gkh-M4-e7L" secondAttribute="leading" constant="15" id="tgQ-u6-b7a"/>
+                            <constraint firstItem="r8T-o8-GTy" firstAttribute="leading" secondItem="gkh-M4-e7L" secondAttribute="leading" constant="15" id="zX6-2r-tuJ"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Voy-rD-hh5">
@@ -113,20 +95,15 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="bottomImageView" destination="5yn-K7-RP9" id="nMw-Nm-gQr"/>
                 <outlet property="connectionLineView" destination="Voy-rD-hh5" id="qkz-GM-r0z"/>
                 <outlet property="containerView" destination="gkh-M4-e7L" id="mgL-H3-S9x"/>
                 <outlet property="footerView" destination="j8x-Kb-iAY" id="lDU-sh-PIO"/>
                 <outlet property="messageHeightConstraint" destination="LPV-kd-nCO" id="sKm-BE-6MN"/>
                 <outlet property="messageLabel" destination="r8T-o8-GTy" id="gIL-Fn-p98"/>
-                <outlet property="messageTopConstraint" destination="vm1-56-rIy" id="DQQ-Zh-jtb"/>
                 <outlet property="titleLabel" destination="sbm-nZ-v6I" id="UdK-Tf-vFv"/>
                 <outlet property="toolbarView" destination="J6P-3S-jCJ" id="rNq-y6-Crn"/>
             </connections>
             <point key="canvasLocation" x="25" y="51"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="back_twitter" width="375" height="250"/>
-    </resources>
 </document>

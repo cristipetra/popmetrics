@@ -113,6 +113,8 @@
 		08B745961F1F6C1D00EC3F8C /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08B745951F1F6C1D00EC3F8C /* OpenSans-Regular.ttf */; };
 		08B745981F1F718300EC3F8C /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B745971F1F718300EC3F8C /* CodeViewController.swift */; };
 		08B7459B1F1F996B00EC3F8C /* DigitCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7459A1F1F996B00EC3F8C /* DigitCodeView.swift */; };
+		08B7ADE41FB1C41900C56688 /* RequiredActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7ADE31FB1C41900C56688 /* RequiredActionController.swift */; };
+		08B7ADE81FB1D18F00C56688 /* CardToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7ADE71FB1D18F00C56688 /* CardToolbarController.swift */; };
 		08B8D9711F9A4443004E7781 /* RecommendActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B8D9701F9A4443004E7781 /* RecommendActionHandler.swift */; };
 		08BAD73E1F960A70008BC88F /* MJCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */; };
 		08BD58001F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */; };
@@ -120,6 +122,7 @@
 		08BD58041F7A312900FFDCFD /* VerifySocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58031F7A312900FFDCFD /* VerifySocialViewController.swift */; };
 		08BD580C1F7A6AD500FFDCFD /* OnboardingFinalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */; };
 		08BF9D4E1F45F2EF00141206 /* TableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */; };
+		08C583021FB1AFA500A7DD3D /* FooterViewStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */; };
 		08C6FBFB1F41FFCB007D6101 /* Todo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C6FBFA1F41FFCB007D6101 /* Todo.storyboard */; };
 		08C6FBFD1F4205EF007D6101 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */; };
 		08C7B18D1F1CF40C00E456C6 /* WelcomeScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C7B18C1F1CF40C00E456C6 /* WelcomeScreen.xib */; };
@@ -329,6 +332,8 @@
 		08B745951F1F6C1D00EC3F8C /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		08B745971F1F718300EC3F8C /* CodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeViewController.swift; path = login/CodeViewController.swift; sourceTree = "<group>"; };
 		08B7459A1F1F996B00EC3F8C /* DigitCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DigitCodeView.swift; path = views/DigitCodeView.swift; sourceTree = "<group>"; };
+		08B7ADE31FB1C41900C56688 /* RequiredActionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequiredActionController.swift; sourceTree = "<group>"; };
+		08B7ADE71FB1D18F00C56688 /* CardToolbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardToolbarController.swift; sourceTree = "<group>"; };
 		08B8D9701F9A4443004E7781 /* RecommendActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendActionHandler.swift; sourceTree = "<group>"; };
 		08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJCalendarViewController.swift; sourceTree = "<group>"; };
 		08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedActionGoogleCitationView.swift; sourceTree = "<group>"; };
@@ -336,6 +341,7 @@
 		08BD58031F7A312900FFDCFD /* VerifySocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifySocialViewController.swift; sourceTree = "<group>"; };
 		08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingFinalView.xib; sourceTree = "<group>"; };
 		08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableFooterView.swift; sourceTree = "<group>"; };
+		08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterViewStateController.swift; sourceTree = "<group>"; };
 		08C6FBFA1F41FFCB007D6101 /* Todo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Todo.storyboard; sourceTree = "<group>"; };
 		08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
 		08C7B18C1F1CF40C00E456C6 /* WelcomeScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WelcomeScreen.xib; path = views/WelcomeScreen.xib; sourceTree = "<group>"; };
@@ -748,6 +754,15 @@
 			name = login;
 			sourceTree = "<group>";
 		};
+		08B7ADE21FB1C40000C56688 /* cards */ = {
+			isa = PBXGroup;
+			children = (
+				08B7ADE31FB1C41900C56688 /* RequiredActionController.swift */,
+				08B7ADE71FB1D18F00C56688 /* CardToolbarController.swift */,
+			);
+			name = cards;
+			sourceTree = "<group>";
+		};
 		08B8D9721F9A4970004E7781 /* actionHandler */ = {
 			isa = PBXGroup;
 			children = (
@@ -761,6 +776,7 @@
 		08C7B18E1F1CF41200E456C6 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				08B7ADE21FB1C40000C56688 /* cards */,
 				0844FBD51FACB19C00335073 /* cell */,
 				0899DA1F1FA33AF600C3696C /* social */,
 				0862C4D41FA1F50E00BEF0BC /* todo */,
@@ -776,6 +792,7 @@
 				08B485E31F210992005918A1 /* VideoScreenViewController.swift */,
 				08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */,
 				083938FE1F63C334007DDA37 /* MainTabInfo.swift */,
+				08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -1449,6 +1466,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08EE385D1F447C0E005D1D7C /* TodoTopView.swift in Sources */,
+				08C583021FB1AFA500A7DD3D /* FooterViewStateController.swift in Sources */,
 				08D1BC391F1E3D6200D377B2 /* LDSplashView.swift in Sources */,
 				0854AF331F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift in Sources */,
 				110A62CA1ECEDADC0052B478 /* StatsSummaryViewCell.swift in Sources */,
@@ -1515,6 +1533,7 @@
 				083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */,
 				08B324DA1F98C6AE00BB4905 /* IceExtendView.swift in Sources */,
 				08C6FBFD1F4205EF007D6101 /* ToDoViewController.swift in Sources */,
+				08B7ADE81FB1D18F00C56688 /* CardToolbarController.swift in Sources */,
 				11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */,
 				113976AB1E97C74B00B535DF /* BaseViewController.swift in Sources */,
 				080DCA881F4D9716000C73DC /* RecommendedCell.swift in Sources */,
@@ -1573,6 +1592,7 @@
 				11ACA9A11E2CD1B90021E64A /* BaseApi.swift in Sources */,
 				08A62CB21F8E4DCF0072E6A5 /* TwoColorButton.swift in Sources */,
 				08B5D4BE1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift in Sources */,
+				08B7ADE41FB1C41900C56688 /* RequiredActionController.swift in Sources */,
 				1120F2001ECDF4F200576E39 /* RequiredActionHandler.swift in Sources */,
 				116540BF1EEAC61E00417D61 /* AppStoryboard.swift in Sources */,
 				0888C5BE1F4EECEC00E3DB04 /* RoundedCornersButton.swift in Sources */,

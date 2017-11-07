@@ -13,6 +13,7 @@ class HeaderCardCell: UITableViewCell {
     @IBOutlet weak var roundConnectionView: UIView!
     @IBOutlet weak var sectionTitleLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var titleLeftAnchor: NSLayoutConstraint!
     
     lazy var toastView: ToastView = {
         let toast = ToastView()
@@ -69,6 +70,11 @@ class HeaderCardCell: UITableViewCell {
         case .required:
             connectionView.backgroundColor = PopmetricsColor.salmondColor
             roundConnectionView.backgroundColor = PopmetricsColor.salmondColor
+            connectionView.isHidden = true
+            roundConnectionView.isHidden = true
+            sectionTitleLabel.font =  UIFont(name: FontBook.extraBold, size: 18)
+            sectionTitleLabel.textColor = PopmetricsColor.weekDaysGrey
+            titleLeftAnchor.constant = 0
         case .traffic:
             connectionView.backgroundColor = PopmetricsColor.trafficHeaderColor
             roundConnectionView.backgroundColor = PopmetricsColor.trafficHeaderColor

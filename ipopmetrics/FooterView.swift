@@ -12,7 +12,6 @@ import SwiftRichString
 
 class FooterView: UIView {
     
-    var loadMoreCount: Int = 0
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpFooter()
@@ -117,12 +116,19 @@ class FooterView: UIView {
         view.endColor = PopmetricsColor.statisticsGradientEndColor
         return view
     }()
-    
-    
     // END VIEW
+    
     var loadMoreStackView: UIStackView!
     internal var horizontalStackView: UIStackView!
     var approveStackView: UIStackView!
+    
+    var loadMoreCount: Int = 0
+    
+    var cardType: CardType? {
+        didSet {
+            changedCardType()
+        }
+    }
     
     func setUpFooter() {
         self.addSubview(containerView)
@@ -226,7 +232,6 @@ class FooterView: UIView {
         actionButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         actionButton.tintColor = PopmetricsColor.darkGrey
         actionButton.addTarget(self, action: #selector(approveHandler), for: .touchUpInside)
-        actionButton.imageButtonType = .twitter
     }
     
     @objc func approveHandler() {
@@ -305,6 +310,21 @@ class FooterView: UIView {
     
     internal func setTitleActionBtn(_ title: String) {
         
+    }
+    
+    private func changedCardType() {
+        switch cardType! {
+        case .required:
+            print("required")
+            actionButton.buttonCardType = cardType!
+            
+            
+            //footerView.actionButton.setUpTopBottomColors(topColor: PopmetricsColor.salmondColor, bottomColor: PopmetricsColor.salmondBottomColor)
+            //footerView.actionButton.changeLabelPosition()
+            
+        default:
+            break
+        }
     }
     
 }

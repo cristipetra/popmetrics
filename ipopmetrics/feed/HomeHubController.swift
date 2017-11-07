@@ -28,7 +28,7 @@ enum HomeSection: String {
     ]
     
     static let sectionHeight = [
-        RequiredAction: 479,
+        RequiredAction: 505,
         Insight: 479,
         RecommendedAction: 479,
         Traffic: 424
@@ -161,6 +161,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         setupTopHeaderView()
         
         addImageOnLastCard()
+        
         //createItemsLocally()
     }
     
@@ -639,9 +640,8 @@ enum CardType: String {
 // MARK: Notification Handlers 
 extension HomeHubViewController {
     
-    
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
-        print(store.getFeedCards())
+        //print(store.getFeedCards())
         self.tableView.reloadData()
         
     }
