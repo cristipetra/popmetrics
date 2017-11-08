@@ -32,8 +32,6 @@ class FooterViewController: UIViewController {
         //view.displayOnlyActionButton()
         view.cardType = .required
         
-        view.buttonHandler = self
-        
         changetActionButton(item)
         changeDisplayInfoButton(item)
         
