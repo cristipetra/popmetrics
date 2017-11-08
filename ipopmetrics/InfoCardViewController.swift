@@ -89,7 +89,7 @@ class InfoCardViewController: UIViewController {
         
         
         markDownView.translatesAutoresizingMaskIntoConstraints = false
-        markDownView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 10).isActive = true
+        markDownView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20).isActive = true
         markDownView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -10).isActive = true
         markDownView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 90).isActive = true
         markDownView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true

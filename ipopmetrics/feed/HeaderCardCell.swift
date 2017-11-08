@@ -15,6 +15,7 @@ class HeaderCardCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleLeftAnchor: NSLayoutConstraint!
     
+    @IBOutlet weak var roundCircleLeftAnchor: NSLayoutConstraint!
     lazy var toastView: ToastView = {
         let toast = ToastView()
         toast.translatesAutoresizingMaskIntoConstraints = false
@@ -26,6 +27,9 @@ class HeaderCardCell: UITableViewCell {
         self.backgroundColor = UIColor.cloudsColor()
         containerView.backgroundColor = UIColor.cloudsColor()
         roundConnectionView.layer.cornerRadius = 6
+        
+        roundCircleLeftAnchor.constant = 0
+        titleLeftAnchor.constant = 0
     }
   
     override func setSelected(_ selected: Bool, animated: Bool) {
