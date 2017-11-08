@@ -36,6 +36,8 @@ class CalendarCardSimpleViewCell: UITableViewCell {
     internal var calendarItem: CalendarSocialPost!
     
     weak var cancelCardDelegate : CalendarCardActionHandler?
+    weak var actionSociaDelegate: ActionSocialPostProtocol?
+    var indexPath: IndexPath!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -76,7 +78,7 @@ class CalendarCardSimpleViewCell: UITableViewCell {
         
         statusCardTypeView.typeStatusView = .cancel
         
-        statusCardTypeView.infoBtn.addTarget(self, action: #selector(cancelPostHandler), for: .touchUpInside)
+        cancelPostButton.addTarget(self, action: #selector(cancelPostHandler), for: .touchUpInside)
         
         changeColor()
     }
@@ -129,7 +131,7 @@ class CalendarCardSimpleViewCell: UITableViewCell {
     }
     
     @objc internal func cancelPostHandler() {
-        cancelCardDelegate?.handleCardAction("cancel_one", calendarCard: self.calendarItem.calendarCard!, params: ["social_post": self.calendarItem])
+        actionSociaDelegate?.cancelPostFromSocial!(post: calendarItem, indexPath: indexPath)
     }
     
 }

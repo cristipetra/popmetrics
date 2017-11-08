@@ -22,7 +22,9 @@ class ToDoCardCell: UITableViewCell {
     @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
     
     var todoItem: TodoSocialPost!;
+    var indexPath: IndexPath!
     
+    weak var actionSocialDelegate: ActionSocialPostProtocol!
     
     // Extend view
     lazy var statusCardTypeView: StatusCardTypeView = {
@@ -37,14 +39,6 @@ class ToDoCardCell: UITableViewCell {
         self.backgroundColor = UIColor.feedBackgroundColor()
         addStatusCardTypeView()
         setupCorners()
-        
-        
-        
-        //        DispatchQueue.main.async {
-        //            self.approveBtn.layer.masksToBounds = false
-        //            self.approveBtn.layer.cornerRadius = self.approveBtn.frame.height / 2
-        //            self.addShadowToViewBtn(self.approveBtn)
-        //        }
     }
     
     func configure(item: TodoSocialPost) {
@@ -55,11 +49,19 @@ class ToDoCardCell: UITableViewCell {
         setupStatusCardView( approved: (item.status == "approved" || item.status == "denied"))
         
         aproveButton.addTarget(self, action: #selector(animationHandler), for: .touchUpInside)
+        denyPostBtn.addTarget(self, action: #selector(denyPostHandler), for: .touchUpInside)
     }
     
     @objc func animationHandler() {
         aproveButton.animateButton(decreaseWidth: 120, increaseWidth: 10, imgLeftSpace: 10)
         aproveButton.removeTarget(self, action: #selector(animationHandler), for: .touchUpInside)
+        actionSocialDelegate.approvePostFromSocial!(post: todoItem, indexPath: indexPath)
+    }
+    
+    @objc func denyPostHandler() {
+        print("deny post handler")
+        actionSocialDelegate.denyPostFromSocial!(post: todoItem, indexPath: indexPath)
+        
     }
     
     func setupCorners() {
@@ -70,7 +72,6 @@ class ToDoCardCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
     }
     
     func setupStatusCardView(approved: Bool) {

@@ -36,7 +36,7 @@ class ToDoCell: UITableViewCell {
         
         setUpShadowLayer()
         footerView.approveLbl.text = "View To Do List"
-        footerView.actionButton.imageButtonType = .todo
+        //footerView.actionButton.imageButtonType = .todo
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

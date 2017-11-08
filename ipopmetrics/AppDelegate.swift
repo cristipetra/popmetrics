@@ -33,7 +33,7 @@ public extension Notification {
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+ 
     var navigationController: NavigationController?
     
     var window: UIWindow?
@@ -42,9 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var storyBoard: UIStoryboard!
     
     var syncService: SyncService!
-    
-
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

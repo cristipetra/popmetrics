@@ -34,7 +34,7 @@ class TodoCardMaximizedViewCell: UITableViewCell {
     @IBOutlet weak var connectionLineWidth: NSLayoutConstraint!
     
     var postIndex = 0
-    var approveDenyDelegate : TodoCardActionHandler?
+    var approveDenyDelegate : TodoCardActionProtocol?
     var toDoStackView : UIStackView!
     
     private var todoItem: TodoSocialPost!

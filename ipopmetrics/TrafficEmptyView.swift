@@ -34,7 +34,7 @@ class TrafficEmptyView: UITableViewCell {
         self.toolbarView.isLeftImageHidden = false
         self.toolbarView.leftImage.widthAnchor.constraint(equalToConstant: 10).isActive = true
         self.footerView.approveLbl.text = "View Traffic Report"
-        self.footerView.actionButton.imageButtonType = .traffic
+        //self.footerView.actionButton.imageButtonType = .traffic
         //self.footerView.actionButton.changeToDisabled()
         self.footerView.setIsTrafficUnconnected()
     }

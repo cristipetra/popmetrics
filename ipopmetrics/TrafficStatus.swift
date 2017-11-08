@@ -11,15 +11,6 @@ import UIKit
 class TrafficStatus: UIView {
     
     @IBOutlet var contentView: UIView!
-
-    @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var leftArrowBtn: UIButton!
-    @IBOutlet weak var rightArrowBtn: UIButton!
-    @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var topPageControl: UIPageControl!
-    @IBOutlet weak var bottomLabel: UILabel!
-    @IBOutlet weak var bottomPageControllView: UIView! 
-    
     
     var tableView: TrafficStatsTableViewController = TrafficStatsTableViewController()
     let chartVC = UIStoryboard(name: "ChartStatistics", bundle: nil).instantiateViewController(withIdentifier: "ChartViewId") as! ChartViewController
@@ -30,7 +21,6 @@ class TrafficStatus: UIView {
     var pageIndex: Int = 1{
         didSet {
             tableView.pageIndex = pageIndex
-            updateInfo()
         }
     }
     
@@ -50,22 +40,6 @@ class TrafficStatus: UIView {
         tableView.configure(card: statisticsCard, pageIndex)
     }
     
-    internal func updateInfo() {
-        updateStatusLabelText()
-        bottomLabel.text = statisticStore.getStatisticMetricsForCardAtPageIndex(statisticsCard, pageIndex)[0].pageName
-        
-        let numberOfPages = statisticStore.getNumberOfPages(statisticsCard)
-        pageControl.numberOfPages = numberOfPages
-        topPageControl.numberOfPages = numberOfPages
-        
-        pageControl.currentPage = pageIndex - 1
-        topPageControl.currentPage = pageIndex - 1
-    }
-    
-    internal func updateStatusLabelText() {
-        statusLabel.text = "Stats \(pageIndex) of \(statisticStore.getNumberOfPages(statisticsCard)) "
-    }
-    
     func setup() {
         
         Bundle.main.loadNibNamed("TrafficStatus", owner: self, options: nil)
@@ -73,18 +47,6 @@ class TrafficStatus: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        bottomLabel.textColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
-        bottomLabel.font = UIFont(name: FontBook.semibold, size: 15)
-        bottomLabel.textAlignment = .center
-        
-        self.backgroundColor = UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 0.5)
-        
-        topPageControl.tintColor = UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1)
-        topPageControl.currentPageIndicatorTintColor = UIColor(red: 87/255, green: 93/255, blue: 99/255, alpha: 1)
-        
-        pageControl.tintColor = UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1)
-        pageControl.currentPageIndicatorTintColor = UIColor(red: 87/255, green: 93/255, blue: 99/255, alpha: 1)
-     
         addChartView()
         addTableView()
     }
@@ -100,7 +62,7 @@ class TrafficStatus: UIView {
         //tableView.view.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         tableView.view.topAnchor.constraint(equalTo: chartVC.view.bottomAnchor, constant: 1).isActive = true
         tableView.view.heightAnchor.constraint(equalToConstant: 345).isActive = true
-   
+        
         tableView.automaticallyAdjustsScrollViewInsets = false
     }
     
@@ -109,7 +71,6 @@ class TrafficStatus: UIView {
         self.addSubview(chartVC.view)
         chartVC.didMove(toParentViewController: self.parentViewController)
         
-        chartVC.containerView.backgroundColor = UIColor.white//UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
         chartVC.barChart.backgroundFillColor = UIColor.white//UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
         
         chartVC.view.translatesAutoresizingMaskIntoConstraints = false

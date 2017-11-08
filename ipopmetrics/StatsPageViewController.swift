@@ -9,7 +9,7 @@
 import UIKit
 
 class StatsPageViewController: UIPageViewController {
- 
+    
     var statisticsCard: StatisticsCard! {
         didSet {
             self.numberOfPages = (StatisticsStore.getInstance().getNumberOfPages(statisticsCard))
@@ -25,6 +25,14 @@ class StatsPageViewController: UIPageViewController {
     var numberOfPages: Int = 1 {
         didSet {
             updateViewControllerList()
+        }
+    }
+    
+    weak var indexDelegate: IndexPageProtocol?
+    
+    var currentPageIndex: Int = 0 {
+        didSet {
+            indexDelegate?.indexOfPage(index: currentPageIndex - 1)
         }
     }
     
@@ -62,6 +70,22 @@ class StatsPageViewController: UIPageViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func nextViewController() {
+        guard let currentVC = self.viewControllers?.first as? StatsSlideViewController else { return }
+        guard let nextVC = dataSource?.pageViewController(self, viewControllerAfter: currentVC) as? StatsSlideViewController else { return }
+        
+        setViewControllers([nextVC], direction: .forward, animated: true, completion: nil)
+        currentPageIndex = nextVC.pageIndex
+    }
+    
+    func previousViewController() {
+        guard let currentVC = self.viewControllers?.first as? StatsSlideViewController else { return }
+        guard let previousVC = dataSource?.pageViewController(self, viewControllerBefore: currentVC) as? StatsSlideViewController else { return }
+        
+        setViewControllers([previousVC], direction: .forward, animated: true, completion: nil)
+        currentPageIndex = previousVC.pageIndex    
     }
 }
 
@@ -111,7 +135,19 @@ extension StatsPageViewController: UIPageViewControllerDelegate, UIPageViewContr
         guard viewControllerList.count > nextIndex else {
             return nil
         }
-
+        
         return viewControllerList[nextIndex]
     }
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if completed {
+            if let currentViewController = pageViewController.viewControllers![0] as? StatsSlideViewController {
+                currentPageIndex = currentViewController.pageIndex
+            }
+        }
+    }
 }
+
+protocol IndexPageProtocol: class {
+    func indexOfPage(index: Int)
+}
+

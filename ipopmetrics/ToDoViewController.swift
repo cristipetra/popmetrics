@@ -24,7 +24,7 @@ class ToDoViewController: BaseViewController {
     
     var topHeaderView: HeaderView!
     var toDoNoteView: NoteView!
-    let approvedView = ToDoApprovedView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
+    let bannerMessageView = ToDoApprovedView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
     
     @IBOutlet weak var topAnchorTableView: NSLayoutConstraint!
     
@@ -38,16 +38,12 @@ class ToDoViewController: BaseViewController {
     let indexToSection = [0: "Unapproved",
                           1: "Insights"]
     
-    internal var shouldMaximize = false
     var scrollToRow: IndexPath = IndexPath(row: 0, section: 0)
     
     internal var isAnimatingHeader: Bool = false
     
     var isAllApproved : Bool = false
     var currentBrandId = UsersStore.currentBrandId
-    
-    // display transition for opening card in calendar
-    internal var didTransitionDisplayed = false
     
     internal var didAnimateOpeningCells = false
 
@@ -65,8 +61,6 @@ class ToDoViewController: BaseViewController {
         
         // NotificationCenter observers
         let nc = NotificationCenter.default
-        NotificationCenter.default.addObserver(self, selector: #selector(handlerDidChangeTwitterConnected(_:)), name: Notification.Name("didChangeTwitterConnected"), object: nil);
-        
         nc.addObserver(forName:Notification.Popmetrics.UiRefreshRequired, object:nil, queue:nil, using:catchUiRefreshRequiredNotification)
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
@@ -158,10 +152,6 @@ class ToDoViewController: BaseViewController {
                         })
     }
     
-    @objc func handlerDidChangeTwitterConnected(_ sender: AnyObject) {
-        
-    }
-    
     internal func setupNoteView() {
         if toDoNoteView == nil {
             toDoNoteView = NoteView(frame: CGRect(x: 0, y: toDoTopView.height(), width: self.view.frame.width, height: 93))
@@ -181,19 +171,12 @@ class ToDoViewController: BaseViewController {
         if topHeaderView == nil {
             topHeaderView = HeaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 0))
             self.tableView.addSubview(topHeaderView)
+            topHeaderView.layer.zPosition = 1
             topHeaderView.displayElements(isHidden: true)
-            topHeaderView.btn.addTarget(self, action: #selector(handlerExpand), for: .touchUpInside)
         }
     }
     
-    @objc func handlerExpand() {
-        maximizeCell()
-    }
-    
     internal func registerCellsForTable() {
-        let calendarCardNib = UINib(nibName: "CalendarCard", bundle: nil)
-        tableView.register(calendarCardNib, forCellReuseIdentifier: "CalendarCard")
-        
         let toDoCardCell = UINib(nibName: "ToDoCardCell", bundle: nil)
         tableView.register(toDoCardCell, forCellReuseIdentifier: "toDoCardCellId")
         
@@ -253,14 +236,6 @@ class ToDoViewController: BaseViewController {
     }
     
     func checkApprovedAll() -> Bool {
-        /*
-        sections[0].items.forEach { (item) in
-            if item.isApproved == true {
-                isAllApproved = true
-            } else {
-                isAllApproved = false
-            }
-        }*/
         isAllApproved = false
         return isAllApproved
     }
@@ -274,17 +249,6 @@ class ToDoViewController: BaseViewController {
         self.present(modalViewController, animated: true, completion: nil)
     }
     
-}
-
-extension ToDoViewController: ChangeCellProtocol {
-    func maximizeCell() {
-        shouldMaximize = !shouldMaximize
-        
-        tableView.reloadData()
-        
-        let type = shouldMaximize ? HeaderViewType.expand : HeaderViewType.minimize
-        topHeaderView.changeStatus(type: type)
-    }
 }
 
 extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, ApproveDenySinglePostProtocol {
@@ -317,30 +281,12 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         }
         
         let item = sectionCards[rowIdx]
-
-        if shouldMaximize {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "maxCellId", for: indexPath) as! TodoCardMaximizedViewCell
-            cell.configure(item)
-            cell.articleDate.isHidden = true
-            cell.approveDenyDelegate = self
-            cell.postIndex = indexPath.row
-            
-            cell.connectionStackView.isHidden = true
-            if (noItemsLoaded(indexPath.section) - 1 ==  indexPath.row) {
-                cell.connectionStackView.isHidden = true
-                cell.isLastCell = true
-            } else {
-                cell.connectionStackView.isHidden = false
-            }
- 
-            return cell
-        }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
-        
-        cell.aproveButton.indexPath = indexPath
-        cell.aproveButton.addTarget(self, action: #selector(handlerApproveCard(_:)), for: .touchUpInside)
+        cell.indexPath = indexPath
+        cell.actionSocialDelegate = self
         cell.configure(item: item)
+        
         DispatchQueue.main.async {
             self.sideShadow(view: cell.containerView)
         }
@@ -400,32 +346,14 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     }
     
     func addApprovedView() {
-        self.view.insertSubview(approvedView, aboveSubview: tableView)
+        self.view.insertSubview(bannerMessageView, aboveSubview: tableView)
         
-        approvedView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 50).isActive = true
-        approvedView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
-        approvedView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        approvedView.widthAnchor.constraint(equalToConstant: 234).isActive = true
+        bannerMessageView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 50).isActive = true
+        bannerMessageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
+        bannerMessageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        bannerMessageView.widthAnchor.constraint(equalToConstant: 234).isActive = true
     }
-    
-    @objc func handlerApproveCard(_ button : TwoColorButton) {
-        print("approve card")
-        
-        let indexPath = button.indexPath
-        
-        removeCell(indexPath: indexPath!)
-        
-        if approvedView.transform == .identity {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.approvedView.transform = CGAffineTransform(translationX: 0, y: -120)
-                Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
-                    self.hideApprovedView()
-                })
-                
-            })
-        }
-    }
-    
+
     func removeCellWithAnimation(indexPath: IndexPath) {
         //remove social post card from store
         try! store.realm.write {
@@ -436,29 +364,34 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             tableView.deleteRows(at: [indexPath], with: .middle)
         }
         
-        
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
             self.tableView.reloadData()
             
-            if !self.didTransitionDisplayed {
+            if !UsersStore.didShowedTransitionFromTodo {
                 self.tabBarController?.selectedIndex += 1
-                self.didTransitionDisplayed = true
+                UsersStore.didShowedTransitionFromTodo = true
             }
         }
     }
     
     func removeCell(indexPath: IndexPath) {
-        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { (timer) in
+        /*
+        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { (timer) in
             DispatchQueue.main.async {
                 self.removeCellWithAnimation(indexPath: indexPath)
             }
-            
+        }
+         */
+        self.removeCellWithAnimation(indexPath: indexPath)
+        
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
+            self.displayBannerInfo()
         }
     }
     
     func hideApprovedView() {
         UIView.animate(withDuration: 0.5, animations: {
-            self.approvedView.transform = .identity //CGAffineTransform(translationX: 0, y: 50)
+            self.bannerMessageView.transform = .identity //CGAffineTransform(translationX: 0, y: 50)
         })
     }
     
@@ -501,23 +434,15 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
             headerCell.changeColor(color: card.getSectionColor)
             headerCell.changeTitle(title: card.getCardSectionTitle)
-            return headerCell
+            return headerCell.containerView
         }
         
-        if shouldMaximize == false {
-            let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "headerViewID") as! HeaderCardViewCell
-            headerCell.changeColor(color: card.getSectionColor)
-            headerCell.toolbarView.backgroundColor = .white
-            headerCell.changeTitleSection(title: card.getCardSectionTitle)
-            headerCell.setUpHeaderShadowView()
-            return headerCell
-    
-        } else {
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
-            headerCell.changeColor(cardType: .todo)
-            headerCell.changeTitle(title: card.getCardSectionTitle)
-            return headerCell
-        }
+        let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "headerViewID") as! HeaderCardViewCell
+        headerCell.changeColor(color: card.getSectionColor)
+        headerCell.toolbarView.backgroundColor = .white
+        headerCell.changeTitleSection(title: card.getCardSectionTitle)
+        headerCell.setUpHeaderShadowView()
+        return headerCell
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -531,7 +456,6 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         //todoFooter.actionButton.addTarget(self, action: #selector(approveCard(_:section:)), for: .touchUpInside)
         
         todoFooter.section = section
-        todoFooter.buttonHandlerDelegate = self
         todoFooter.changeTypeSection(typeSection: .unapproved)
         
         /*
@@ -552,15 +476,11 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         // height for header for last card
-        //if section == store.getTodoCards().count  {
         if isLastSection(section: section) {
             return 60
         }
         let posts = store.getTodoSocialPostsForCard(store.getTodoCards()[section])
         if(posts.count == 0) {
-            return 80
-        }
-        if shouldMaximize {
             return 80
         }
         return 109
@@ -604,7 +524,6 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         })
     }
     
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //height for last card
         if(isLastSection(section: indexPath.section)) {
@@ -613,14 +532,9 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         if store.getTodoSocialPostsForCard(store.getTodoCards()[indexPath.section]).isEmpty {
             return 216
         }
-        
-        if shouldMaximize {
-            return 459
-        }
+
         return 148
-        
     }
-    
     
     func noItemsLoaded(_ section: Int) -> Int {
         if( noItemsLoaded.isEmpty || noItemsLoaded.count <= section) {
@@ -685,7 +599,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         if section < store.countSections() {
             if store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count != 0 {
                 let item = store.getTodoSocialPostsForCard(store.getTodoCards()[section])[0]
-                //print(item.socialTextString)
+                
                 topHeaderView.changeTitle(title: item.socialTextString)
                 topHeaderView.changeColorCircle(color: item.getSectionColor)
                 if (item.status == "unapproved") {
@@ -721,47 +635,10 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
 }
 
-extension ToDoViewController: FooterButtonHandlerProtocol {
-    func loadMorePressed(section: Int) {
-        var addItem = noItemsLoadeInitial
-        let posts = store.getTodoSocialPostsForCard(store.getTodoCards()[section])
-        if (posts.count > noItemsLoaded(section) + noItemsLoadeInitial) {
-            addItem = noItemsLoadeInitial
-        } else {
-            addItem = posts.count - noItemsLoaded(section)
-        }
-    
-        changeNoItemsLoaded(section, value: addItem)
-        tableView.reloadData()
-    }
-    
-    func approvalButtonPressed(section : Int) {
-        print("section \(section)")
-        /*
-        for item in sections[section].items {
-            if sections[section].items.index(of: item)! < approveIndex {
-                item.isApproved = true
-            }
-        }
-        */
-        approveIndex += 3
-        //sections[section].allApproved = true
-        tableView.reloadData()
-    }
-    
-    func closeButtonPressed() {
-        
-    }
-    
-    func informationButtonPressed() {
-        
-    }
-}
-
-
-extension ToDoViewController:  TodoCardActionHandler {
+extension ToDoViewController:  TodoCardActionProtocol {
     
     func handleCardAction(_ action:String, todoCard: TodoCard, params:[String:Any]) {
+        
         switch (todoCard.type) {
         case "articles_posting":
             if action == "approve_one" || action == "deny_one" {
@@ -793,13 +670,11 @@ extension ToDoViewController:  TodoCardActionHandler {
                 socialPost = params["social_post"]  as! TodoSocialPost
                 try! store.realm.write {
                     socialPost.status = "denied"
-                    self.shouldMaximize = false
                     self.tableView.reloadData()
                     DispatchQueue.main.async {
                         self.tableView.scrollToRow(at: self.scrollToRow, at: .none, animated: false)
                     }
                 }
-                self.shouldMaximize = false
                 self.tableView.reloadData()
                 DispatchQueue.main.async {
                     self.tableView.scrollToRow(at: self.scrollToRow, at: .none, animated: false)
@@ -822,27 +697,34 @@ extension ToDoViewController {
     }
 }
 
-extension ToDoViewController: ActionSocialPostProtocoll {
+extension ToDoViewController: ActionSocialPostProtocol {
+    
+    func displayBannerInfo() {
+        if bannerMessageView.transform == .identity {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.bannerMessageView.transform = CGAffineTransform(translationX: 0, y: -120)
+                Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (timer) in
+                    self.hideApprovedView()
+                })
+                
+            })
+        }
+    }
     
     func denyPostFromSocial(post: TodoSocialPost, indexPath: IndexPath) {
-        print("deny social post ") // need work from other branch
-        
+        removeCell(indexPath: indexPath)
+        bannerMessageView.displayDeny()
+       
+        //displayBannerInfo()
     }
     
     func approvePostFromSocial(post: TodoSocialPost, indexPath: IndexPath) {
         print("approve social post")
         
         removeCell(indexPath: indexPath)
+        bannerMessageView.displayApproved()
         
-        if approvedView.transform == .identity {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.approvedView.transform = CGAffineTransform(translationX: 0, y: -120)
-                Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
-                    self.hideApprovedView()
-                })
-                
-            })
-        }
+        //displayBannerInfo()
         
     }
     

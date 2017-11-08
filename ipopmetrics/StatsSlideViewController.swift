@@ -15,7 +15,7 @@ class StatsSlideViewController: UIViewController {
     
     internal var statistiscCard: StatisticsCard! {
         didSet {
-            statusView.configure(card: statistiscCard)
+            statusView.configure(card: statistiscCard, pageIndex)
         }
     }
     

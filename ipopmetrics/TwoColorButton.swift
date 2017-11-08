@@ -8,6 +8,11 @@
 
 import UIKit
 
+
+class TwoColorButtonController: NSObject {
+    
+}
+
 @IBDesignable
 class TwoColorButton: UIButton {
     
@@ -20,6 +25,13 @@ class TwoColorButton: UIButton {
     var imgHeight : NSLayoutConstraint?
     var imgTop : NSLayoutConstraint?
     //End view
+    
+    
+    var rightImageView: UIImageView {
+        get {
+            return imgView
+        }
+    }
     
     @IBInspectable
     var topColor : UIColor = UIColor.white{
@@ -52,9 +64,9 @@ class TwoColorButton: UIButton {
     
     var indexPath: IndexPath!
     
-    var imageButtonType: ImageButtonType = .unapproved {
+    var buttonCardType: CardType = .recommended{
         didSet {
-            changeImageButtonType()
+            changeImageButtonCardType()
         }
     }
     
@@ -69,6 +81,7 @@ class TwoColorButton: UIButton {
     }
     
     func setupView() {
+        label.textColor = PopmetricsColor.todoBrown
         self.layer.masksToBounds = false
         self.isUserInteractionEnabled = true
         DispatchQueue.main.async {
@@ -122,6 +135,7 @@ class TwoColorButton: UIButton {
         DispatchQueue.main.async {
             self.layer.cornerRadius = self.frame.height / 2
         }
+        
     }
     
     internal func changeTitle(_ title: String) {
@@ -166,11 +180,10 @@ class TwoColorButton: UIButton {
     }
     
     func changeLabelText() {
-        
         let attribute = [
-            NSAttributedStringKey.font: UIFont(name: "OpenSans-Bold", size: 12),
-            NSAttributedStringKey.foregroundColor: PopmetricsColor.todoBrown
+            NSAttributedStringKey.font: UIFont(name: "OpenSans-Bold", size: 12)
         ]
+        
         let attrString = NSAttributedString(string: labelText!, attributes: attribute)
         label.attributedText = attrString
         self.bringSubview(toFront: label)
@@ -183,10 +196,20 @@ class TwoColorButton: UIButton {
         imgView.tintColor = PopmetricsColor.todoBrown
     }
     
-    func changeImageButtonType() {
-        switch imageButtonType {
-        
+    func changeImageButtonCardType() {
+        switch buttonCardType {
+        case .required:
+            rightImageView.isHidden = true
+            topColor = PopmetricsColor.salmondColor
+            bottomColor = PopmetricsColor.salmondBottomColor
+
+            label.textColor = .white
+            
         default:
+            topColor = PopmetricsColor.topButtonColor
+            bottomColor = PopmetricsColor.bottomButtonColor
+    
+            label.textColor = PopmetricsColor.todoBrown
             break
         }
     }

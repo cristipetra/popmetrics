@@ -38,7 +38,23 @@ class ToolbarViewCell: UIView {
         view.endColor = PopmetricsColor.statisticsGradientEndColor
         return view
     }()
-    //
+    
+    lazy var circleTopView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.white
+        return view
+        
+    }()
+    
+    lazy var circleBottomView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.white
+        return view
+        
+    }()
+    // End View
     
     var isLeftImageHidden: Bool = true {
         didSet {
@@ -83,12 +99,32 @@ class ToolbarViewCell: UIView {
     
     internal func setupCircleView() {
         self.addSubview(circleView)
-        circleView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 22).isActive = true
+        circleView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 17).isActive = true
         circleView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
-        circleView.widthAnchor.constraint(equalToConstant: 15).isActive = true
-        circleView.heightAnchor.constraint(equalToConstant: 15).isActive = true
-        circleView.layer.cornerRadius = 7.5
+        circleView.widthAnchor.constraint(equalToConstant: 12).isActive = true
+        circleView.heightAnchor.constraint(equalToConstant: 12).isActive = true
+        circleView.layer.cornerRadius = 6
         circleView.backgroundColor = UIColor.red
+    }
+    
+    func setUpCircleBackground(topColor: UIColor , bottomColor: UIColor) {
+        
+        circleView.addSubview(circleTopView)
+        circleView.addSubview(circleBottomView)
+        circleView.clipsToBounds = true
+        
+        circleTopView.topAnchor.constraint(equalTo: circleView.topAnchor).isActive = true
+        circleTopView.leftAnchor.constraint(equalTo: circleView.leftAnchor).isActive = true
+        circleTopView.rightAnchor.constraint(equalTo: circleView.rightAnchor).isActive = true
+        circleTopView.bottomAnchor.constraint(equalTo: circleView.centerYAnchor).isActive = true
+        circleTopView.backgroundColor = topColor
+        
+        circleBottomView.topAnchor.constraint(equalTo: circleView.centerYAnchor).isActive = true
+        circleBottomView.leftAnchor.constraint(equalTo: circleView.leftAnchor).isActive = true
+        circleBottomView.rightAnchor.constraint(equalTo: circleView.rightAnchor).isActive = true
+        circleBottomView.bottomAnchor.constraint(equalTo: circleView.bottomAnchor).isActive = true
+        circleBottomView.backgroundColor = bottomColor
+        
     }
     
     internal func setupLeftImageView() {
@@ -115,7 +151,7 @@ class ToolbarViewCell: UIView {
     func changeColorCircle(color: UIColor) {
         circleView.backgroundColor = color
     }
-
+    
 }
 
 extension ToolbarViewCell {
@@ -128,3 +164,4 @@ extension ToolbarViewCell {
         gradientLayer.bottomAnchor.constraint(equalTo: self.bottomAnchor)
     }
 }
+
