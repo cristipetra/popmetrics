@@ -97,7 +97,7 @@ class FeedCard: Object, Mappable {
         
         tooltipEnabled  <- map["tooltip_enabled"]
         tooltipTitle    <- map["tooltip_title"]
-        tooltipContent  <- map["tooltip_conent"]
+        tooltipContent  <- map["tooltip_content"]
         
         createDate      <- (map["create_dt"], DateTransform())
         updateDate      <- (map["update_dt"], DateTransform())

@@ -27,17 +27,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J6P-3S-jCJ" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
-                        <rect key="frame" x="16" y="0.0" width="288" height="29"/>
+                        <rect key="frame" x="10" y="0.0" width="300" height="29"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="29" id="nZe-pb-LZ9"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkh-M4-e7L">
-                        <rect key="frame" x="16" y="29" width="288" height="439.5"/>
+                        <rect key="frame" x="10" y="29" width="300" height="439.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8T-o8-GTy">
-                                <rect key="frame" x="15" y="244" width="266" height="80"/>
+                                <rect key="frame" x="15" y="244" width="278" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="LPV-kd-nCO"/>
                                 </constraints>
@@ -47,14 +47,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8x-Kb-iAY" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="339" width="288" height="100"/>
+                                <rect key="frame" x="0.0" y="339" width="300" height="100"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="9me-1b-xjW"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect your Twitter account for better social engagement!" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbm-nZ-v6I">
-                                <rect key="frame" x="15" y="8" width="266" height="233"/>
+                                <rect key="frame" x="15" y="8" width="278" height="233"/>
                                 <fontDescription key="fontDescription" name="AlfaSlabOne-Regular" family="Alfa Slab One" pointSize="34"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -83,15 +83,15 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Voy-rD-hh5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="37" id="3py-Hv-YsV"/>
-                    <constraint firstItem="J6P-3S-jCJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="3tx-ba-FxW"/>
+                    <constraint firstItem="J6P-3S-jCJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="3tx-ba-FxW"/>
                     <constraint firstAttribute="bottom" secondItem="gkh-M4-e7L" secondAttribute="bottom" constant="37" id="Qi9-RJ-aZI"/>
                     <constraint firstItem="Voy-rD-hh5" firstAttribute="top" secondItem="gkh-M4-e7L" secondAttribute="bottom" id="UNC-b5-rFY"/>
                     <constraint firstItem="gkh-M4-e7L" firstAttribute="top" secondItem="J6P-3S-jCJ" secondAttribute="bottom" id="Uln-Kr-div"/>
                     <constraint firstAttribute="bottom" secondItem="Voy-rD-hh5" secondAttribute="bottom" id="cLN-Rn-11u"/>
                     <constraint firstItem="J6P-3S-jCJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="e6o-A1-GLi"/>
-                    <constraint firstItem="gkh-M4-e7L" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="kUf-PM-dmn"/>
-                    <constraint firstAttribute="trailing" secondItem="gkh-M4-e7L" secondAttribute="trailing" constant="16" id="kc4-JP-r3f"/>
-                    <constraint firstAttribute="trailing" secondItem="J6P-3S-jCJ" secondAttribute="trailing" constant="16" id="qA4-iz-ME9"/>
+                    <constraint firstItem="gkh-M4-e7L" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="kUf-PM-dmn"/>
+                    <constraint firstAttribute="trailing" secondItem="gkh-M4-e7L" secondAttribute="trailing" constant="10" id="kc4-JP-r3f"/>
+                    <constraint firstAttribute="trailing" secondItem="J6P-3S-jCJ" secondAttribute="trailing" constant="10" id="qA4-iz-ME9"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

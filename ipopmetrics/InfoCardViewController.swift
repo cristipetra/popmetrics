@@ -72,7 +72,7 @@ class InfoCardViewController: UIViewController {
         
         let markDownItems = markyMark.parseMarkDown(getMarkDownString())
         
-        let converterConfiguration = ConverterConfiguration.view
+        let converterConfiguration = ConverterConfiguration.attributedString
         
         let markDownView: UIView
         
@@ -91,7 +91,7 @@ class InfoCardViewController: UIViewController {
         markDownView.translatesAutoresizingMaskIntoConstraints = false
         markDownView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 10).isActive = true
         markDownView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -10).isActive = true
-        markDownView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50).isActive = true
+        markDownView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 90).isActive = true
         markDownView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
     }
     
@@ -124,6 +124,7 @@ extension InfoCardViewController {
         textView.tintColor = styling.linkStyling.textColor
         textView.contentInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
         
+        textView.backgroundColor = UIColor.clear
         return textView
     }
     

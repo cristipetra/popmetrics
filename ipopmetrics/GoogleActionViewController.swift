@@ -73,6 +73,10 @@ class GoogleActionViewController: UIViewController {
         recommendedActionView.messageLbl.text = "Popmetrics will increase your digital footprint and help drive traffic to your site"
     }
     
+    @objc func openLink(_ sender: RoundButton) {
+        //openURLInside(url: "")
+    }
+    
     @objc func showTooltip(_ sender: RoundButton) {
         let infoCardVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "InfoCardViewID") as! InfoCardViewController;
         infoCardVC.changeCardType(type: "insight")

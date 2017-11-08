@@ -65,6 +65,8 @@ class FooterViewController: UIViewController {
             footerView.actionButton.changeTitle("Connect")
             break
         }
+        
+        self.footerView.actionButton.changeTitle(item.actionLabel)
     }
     
     @objc func deleteHandler() {
