@@ -51,6 +51,7 @@ class FeedCard: Object, Mappable {
     @objc dynamic var actionLabel = ""
     @objc dynamic var actionHandler = ""
     @objc dynamic var imageUri:String? = nil
+    @objc dynamic var blogUrl:String? = nil
     @objc dynamic var detailsMarkdown:String? = ""
     
     
@@ -90,6 +91,7 @@ class FeedCard: Object, Mappable {
         headerTitle     <- map["header_title"]
         headerSubtitle  <- map["header_subtitle"]
         headerIconUri   <- map["header_icon"]
+        blogUrl         <- map["blog_url"]
         message         <- map["message"]
         actionLabel     <- map["action_label"]
         actionHandler   <- map["handler"]
