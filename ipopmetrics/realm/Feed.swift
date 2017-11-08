@@ -58,8 +58,9 @@ class FeedCard: Object, Mappable {
     @objc dynamic var tooltipTitle: String? = nil
     @objc dynamic var tooltipContent: String? = nil
     
+    @objc dynamic var iceEnabled: Int = 0
     @objc dynamic var iceImpactPercentage: Int = 0
-    @objc dynamic var iceImpactSplit: String? = nil // "[{'name': "Website Traffice", 'percentage': 10}]"
+    @objc dynamic var iceImpactSplit: String? = nil // "[{'label': "Website Traffice", 'percentage': 10}]"
     
     @objc dynamic var iceCostLabel: String? = nil
     @objc dynamic var iceCostPercentage: Int = 0
@@ -94,24 +95,22 @@ class FeedCard: Object, Mappable {
         actionHandler   <- map["handler"]
         detailsMarkdown <- map["details_markdown"]
         
-        
-        
-        tooltipEnabled  <- map["tooltip_title"]
+        tooltipEnabled  <- map["tooltip_enabled"]
         tooltipTitle    <- map["tooltip_title"]
         tooltipContent  <- map["tooltip_conent"]
         
         createDate      <- (map["create_dt"], DateTransform())
         updateDate      <- (map["update_dt"], DateTransform())
         
+        iceEnabled      <- map["ice_enabled"]
         iceImpactPercentage <- map["ice_impact_percentage"]
         iceImpactSplit <- map["ice_impact_split"]
         iceCostLabel <- map["ice_cost_label"]
         iceCostPercentage <- map["ice_cost_percentage"]
         iceEffortLabel <- map["ice_effort_label"]
-        iceCostPercentage <- map["ice_effort_percentage"]
-        iceAimee <- map["ice_aimme"]
+        iceEffortPercentage <- map["ice_effort_percentage"]
         
-        diyInstructions     <- map["diy_instrutions"]
+        diyInstructions     <- map["diy_instructions"]
         insightArguments    <- map["insight_arguments"]
     }
     
