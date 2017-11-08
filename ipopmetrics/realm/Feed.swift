@@ -68,6 +68,10 @@ class FeedCard: Object, Mappable {
     
     @objc dynamic var iceAimee: String? = nil
     
+    @objc dynamic var diyInstructions: String? = nil // ['## markdown1', '### markdown 2 *b']
+    @objc dynamic var insightArguments: String? = nil // ['## markdown1', '### amrkdown 2']
+    
+    
     override static func primaryKey() -> String? {
         return "cardId"
     }
@@ -107,6 +111,8 @@ class FeedCard: Object, Mappable {
         iceCostPercentage <- map["ice_effort_percentage"]
         iceAimee <- map["ice_aimme"]
         
+        diyInstructions     <- map["diy_instrutions"]
+        insightArguments    <- map["insight_arguments"]
     }
     
     
