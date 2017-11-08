@@ -61,7 +61,7 @@ class GoogleActionViewController: UIViewController {
         
         setFooterButton(isTaskSelected: false)
         
-        recommendedActionView.infoBtn.addTarget(self, action: #selector(showTooltip(_:)), for: .touchUpInside)
+        recommendedActionView.infoBtn.addTarget(self, action: #selector(openLink(_:)), for: .touchUpInside)
         
     }
     
@@ -74,7 +74,7 @@ class GoogleActionViewController: UIViewController {
     }
     
     @objc func openLink(_ sender: RoundButton) {
-        //openURLInside(url: "")
+        openURLInside(url: Config.appWebAimeeLink)
     }
     
     @objc func showTooltip(_ sender: RoundButton) {
