@@ -27,7 +27,7 @@ class InfoCardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        hideViewElements()
         updateView()
     }
     
@@ -51,9 +51,15 @@ class InfoCardViewController: UIViewController {
         }
     }
     
-    internal func displayMarkInfo(text: String) {
+    internal func displayMarkInfo(text: String, _ title: String? = nil) {
         markdownString = text
         hideViewElements()
+        
+        if(title != nil) {
+            titleTooltip.isHidden = false
+            titleTooltip.text = title
+        }
+        
         displayMark()
     }
     

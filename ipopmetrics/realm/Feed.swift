@@ -114,5 +114,12 @@ class FeedCard: Object, Mappable {
         insightArguments    <- map["insight_arguments"]
     }
     
-    
+    func getInsightArgumentsArra() -> [String]{
+        
+        if insightArguments != nil {
+            let sarr = self.insightArguments?.components(separatedBy: ",")
+            return sarr.map{ ($0) }!
+        }
+        return []
+    }
 }

@@ -65,7 +65,6 @@ class FooterView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.widthAnchor.constraint(equalToConstant: 46).isActive = true
         button.heightAnchor.constraint(equalToConstant: 46).isActive = true
-        button.addTarget(self, action: #selector(informationHandler), for: .touchUpInside)
         let attrTitle = Style.default {
             $0.font = FontAttribute(FontBook.regular, size: 30)
             $0.color = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
@@ -88,8 +87,14 @@ class FooterView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.widthAnchor.constraint(equalToConstant: 46).isActive = true
         button.heightAnchor.constraint(equalToConstant: 46).isActive = true
-        button.addTarget(self, action: #selector(deleteHandler), for: .touchUpInside)
-        button.setImage(UIImage(named: "iconCtaClose"), for: .normal)
+        //button.setImage(UIImage(named: "iconCtaClose"), for: .normal)
+        
+        let attrTitle = Style.default {
+            $0.font = FontAttribute(FontBook.regular, size: 30)
+            $0.color = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
+        }
+        button.setAttributedTitle("i".set(style: attrTitle), for: .normal)
+        button.addTarget(self, action: #selector(handlerT), for: .touchUpInside)
         button.tintColor = PopmetricsColor.textGrey
         button.backgroundColor = UIColor.white
         button.layer.cornerRadius = 23
@@ -124,6 +129,10 @@ class FooterView: UIView {
     
     var loadMoreCount: Int = 0
     
+    var buttonHandler: ButtonHandler?
+    
+    var feedCard: FeedCard?
+    
     var cardType: CardType? {
         didSet {
             changedCardType()
@@ -142,7 +151,8 @@ class FooterView: UIView {
         setUpLoadMoreStackView()
         setUpHorizontalStackView()
         
-        xButton.isHidden = true
+        //xButton.isHidden = true
+        informationBtn.isHidden = true
     }
     
     func setContainerView() {
@@ -151,6 +161,24 @@ class FooterView: UIView {
         containerView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         containerView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
         containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+    }
+    
+    @objc func handlerT() {
+        let infoCardVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "InfoCardViewID") as! InfoCardViewController;
+        
+        self.parentViewController?.present(infoCardVC, animated: true, completion: {
+            guard let _ = self.feedCard else { return }
+            var tooltipContent = ""
+            if let content = self.feedCard!.tooltipContent {
+                tooltipContent = content
+            }
+            var title = ""
+            if let titleT = self.feedCard?.tooltipTitle {
+                title = titleT
+            }
+            infoCardVC.displayMarkInfo(text: tooltipContent, title)
+            
+        })
     }
     
     func setUpApproveStackView() {
@@ -213,29 +241,12 @@ class FooterView: UIView {
         horizontalStackView.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 14).isActive = true
         horizontalStackView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 10).isActive = true
         horizontalStackView.rightAnchor.constraint(equalTo: self.approveStackView.leftAnchor, constant: -10).isActive = true
-        
     }
-    
-    @objc func deleteHandler() {
-        animateButtonBlink(button: xButton)
-    }
-    
-    @objc func informationHandler() {
-        print("information button pressed")
-        animateButtonBlink(button: informationBtn)
-    }
-    
     
     func setUpDoubleButton() {
-        
         actionButton.widthAnchor.constraint(equalToConstant: 160).isActive = true
         actionButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         actionButton.tintColor = PopmetricsColor.darkGrey
-        actionButton.addTarget(self, action: #selector(approveHandler), for: .touchUpInside)
-    }
-    
-    @objc func approveHandler() {
-        animateButtonBlink(button: actionButton)
     }
     
     override public func layoutSubviews() {
@@ -251,17 +262,8 @@ class FooterView: UIView {
         }
     }
     
-    func animateButtonBlink(button: UIButton) {
-        
-        UIView.animate(withDuration: 0.1, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
-            button.alpha = 0.0
-        }) { (completion) in
-            button.alpha = 1.0
-        }
-    }
-    
-    func hideInformationButton() {
-        informationBtn.isHidden = true
+    func changeVisibilityInformationButton(isVisible: Bool) {
+        informationBtn.isHidden = isVisible
     }
     
     func displayOnlyActionButton() {

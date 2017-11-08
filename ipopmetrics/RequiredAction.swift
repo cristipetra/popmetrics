@@ -85,6 +85,8 @@ class RequiredAction: UITableViewCell {
             displayEmailView()
         } else if (item.actionHandler == RequiredActionHandler.RequiredActionType.googleAnalytics.rawValue) {
             displayGoogleAnalytics()
+        } else if (item.actionHandler == RequiredActionHandler.RequiredActionType.linkedin.rawValue) {
+            //displayLinkedin()
         }
     }
     

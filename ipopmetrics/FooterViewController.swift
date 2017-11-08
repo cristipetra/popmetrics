@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol ButtonHandler {
+    func handler()
+}
+
 class FooterViewController: UIViewController {
 
     var footerView: FooterView!
+    var feedCard: FeedCard?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,21 +27,31 @@ class FooterViewController: UIViewController {
     
     func configureCard(item: FeedCard, view: FooterView) {
         self.footerView = view
-        
-        view.displayOnlyActionButton()
+        self.feedCard  = item
+        view.feedCard = item
+        //view.displayOnlyActionButton()
         view.cardType = .required
         
+        view.buttonHandler = self
         
         changetActionButton(item)
+        changeDisplayInfoButton(item)
         
         addEventsTarget()
     }
     
     private func addEventsTarget() {
-        footerView.xButton.addTarget(self, action: #selector(deleteHandler), for: .touchUpInside)
+        footerView.xButton.addTarget(self, action: #selector(informationHandler), for: .touchUpInside)
         footerView.actionButton.addTarget(self, action: #selector(approveHandler), for: .touchUpInside)
         footerView.informationBtn.addTarget(self, action: #selector(informationHandler(_:)), for: .touchUpInside)
     }
+    
+    private func changeDisplayInfoButton(_ item: FeedCard) {
+        if Bool(item.tooltipEnabled) {
+            footerView.changeVisibilityInformationButton(isVisible: Bool(item.tooltipEnabled))
+        }
+    }
+
     
     private func changetActionButton(_ item: FeedCard) {
         
@@ -59,6 +74,7 @@ class FooterViewController: UIViewController {
     }
     
     @objc func informationHandler(_ btn: UIButton) {
+        print("information handler")
         animateButtonBlink(button: btn)
     }
     
@@ -75,4 +91,10 @@ class FooterViewController: UIViewController {
         }
     }
 
+}
+
+extension Bool {
+    init<T: BinaryInteger>(_ num: T) {
+        self.init(num != 0)
+    }
 }
