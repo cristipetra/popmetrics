@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -27,18 +27,18 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRn-Q6-ZHi">
-                    <rect key="frame" x="16" y="0.0" width="343" height="460"/>
+                    <rect key="frame" x="16" y="0.0" width="375" height="460"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wC8-va-urZ">
-                    <rect key="frame" x="16" y="0.0" width="343" height="460"/>
+                    <rect key="frame" x="16" y="0.0" width="375" height="460"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SoU-Cv-kIW">
-                            <rect key="frame" x="0.0" y="0.0" width="343" height="10"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="10"/>
                             <color key="backgroundColor" red="1" green="0.46666666666666667" blue="0.41568627450980389" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LcP-dg-dbz">
-                            <rect key="frame" x="0.0" y="10" width="343" height="50"/>
+                            <rect key="frame" x="0.0" y="10" width="375" height="50"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconAlertMessage" translatesAutoresizingMaskIntoConstraints="NO" id="eBC-Hx-dmI">
                                     <rect key="frame" x="14" y="8" width="34" height="34"/>
@@ -68,22 +68,22 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="WxD-kw-y0O">
-                            <rect key="frame" x="21" y="160" width="301" height="140"/>
+                            <rect key="frame" x="21" y="164" width="375" height="132"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google analytics is our most " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRQ-E1-jZ7">
-                                    <rect key="frame" x="0.0" y="0.0" width="301" height="25"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow us to connect your GA " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnR-pM-Tol">
-                                    <rect key="frame" x="0.0" y="47" width="301" height="25"/>
+                                    <rect key="frame" x="0.0" y="43" width="375" height="21"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
                                     <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <stackView opaque="NO" contentMode="left" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iAn-gv-DO0">
-                                    <rect key="frame" x="0.0" y="94" width="301" height="46"/>
+                                    <rect key="frame" x="0.0" y="86" width="375" height="46"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="google.png" translatesAutoresizingMaskIntoConstraints="NO" id="X8k-2g-SxI">
                                             <rect key="frame" x="0.0" y="0.0" width="48" height="46"/>
@@ -93,7 +93,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Analytics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1VB-QN-nCN">
-                                            <rect key="frame" x="58" y="0.0" width="243" height="46"/>
+                                            <rect key="frame" x="58" y="0.0" width="375" height="46"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -103,7 +103,7 @@
                             </subviews>
                         </stackView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="firefighter" translatesAutoresizingMaskIntoConstraints="NO" id="sNA-x1-bFd">
-                            <rect key="frame" x="0.0" y="370" width="343" height="90"/>
+                            <rect key="frame" x="0.0" y="370" width="375" height="90"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="90" id="kuw-UH-JHG"/>
                             </constraints>
@@ -121,7 +121,7 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ol8-51-P7I" customClass="SimpleButton" customModule="ipopmetrics" customModuleProvider="target">
-                            <rect key="frame" x="162" y="385" width="160" height="60"/>
+                            <rect key="frame" x="359" y="385" width="160" height="60"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="1AD-fb-Q0b"/>
@@ -196,6 +196,6 @@
     <resources>
         <image name="firefighter" width="404" height="102"/>
         <image name="google.png" width="18" height="18"/>
-        <image name="iconAlertMessage" width="23" height="24"/>
+        <image name="iconAlertMessage" width="17" height="17"/>
     </resources>
 </document>

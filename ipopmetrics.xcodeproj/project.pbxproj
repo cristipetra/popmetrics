@@ -113,8 +113,8 @@
 		08B745961F1F6C1D00EC3F8C /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08B745951F1F6C1D00EC3F8C /* OpenSans-Regular.ttf */; };
 		08B745981F1F718300EC3F8C /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B745971F1F718300EC3F8C /* CodeViewController.swift */; };
 		08B7459B1F1F996B00EC3F8C /* DigitCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7459A1F1F996B00EC3F8C /* DigitCodeView.swift */; };
-		08B7ADE41FB1C41900C56688 /* RequiredActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7ADE31FB1C41900C56688 /* RequiredActionController.swift */; };
 		08B7ADE81FB1D18F00C56688 /* CardToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7ADE71FB1D18F00C56688 /* CardToolbarController.swift */; };
+		08B7ADEA1FB22B8300C56688 /* FooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7ADE91FB22B8300C56688 /* FooterViewController.swift */; };
 		08B8D9711F9A4443004E7781 /* RecommendActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B8D9701F9A4443004E7781 /* RecommendActionHandler.swift */; };
 		08BAD73E1F960A70008BC88F /* MJCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */; };
 		08BD58001F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */; };
@@ -332,8 +332,8 @@
 		08B745951F1F6C1D00EC3F8C /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		08B745971F1F718300EC3F8C /* CodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeViewController.swift; path = login/CodeViewController.swift; sourceTree = "<group>"; };
 		08B7459A1F1F996B00EC3F8C /* DigitCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DigitCodeView.swift; path = views/DigitCodeView.swift; sourceTree = "<group>"; };
-		08B7ADE31FB1C41900C56688 /* RequiredActionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequiredActionController.swift; sourceTree = "<group>"; };
 		08B7ADE71FB1D18F00C56688 /* CardToolbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardToolbarController.swift; sourceTree = "<group>"; };
+		08B7ADE91FB22B8300C56688 /* FooterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterViewController.swift; sourceTree = "<group>"; };
 		08B8D9701F9A4443004E7781 /* RecommendActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendActionHandler.swift; sourceTree = "<group>"; };
 		08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJCalendarViewController.swift; sourceTree = "<group>"; };
 		08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedActionGoogleCitationView.swift; sourceTree = "<group>"; };
@@ -650,6 +650,7 @@
 		0894FBA31F595CC200ED251B /* oldies */ = {
 			isa = PBXGroup;
 			children = (
+				11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */,
 				D9D937871ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib */,
 				11AAA5E51ECCD4200099B50E /* RequiredActionCard.xib */,
 				11AAA5E71ECCD52A0099B50E /* ActionHistoryCard.xib */,
@@ -757,7 +758,6 @@
 		08B7ADE21FB1C40000C56688 /* cards */ = {
 			isa = PBXGroup;
 			children = (
-				08B7ADE31FB1C41900C56688 /* RequiredActionController.swift */,
 				08B7ADE71FB1D18F00C56688 /* CardToolbarController.swift */,
 			);
 			name = cards;
@@ -793,6 +793,7 @@
 				08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */,
 				083938FE1F63C334007DDA37 /* MainTabInfo.swift */,
 				08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */,
+				08B7ADE91FB22B8300C56688 /* FooterViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -857,7 +858,6 @@
 			isa = PBXGroup;
 			children = (
 				1125ADAB1E96E7990004B4AC /* HomeHubController.swift */,
-				11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */,
 				110A62C91ECEDADC0052B478 /* StatsSummaryViewCell.swift */,
 				08A812751F1660A300672126 /* HeaderCardCell.swift */,
 				08F7A0961F17AB0C00A1B2C3 /* RecommendationCardCell.swift */,
@@ -1568,6 +1568,7 @@
 				0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */,
 				08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */,
 				11D8D9E91ECA37FC00CCDAC4 /* NavigationController.swift in Sources */,
+				08B7ADEA1FB22B8300C56688 /* FooterViewController.swift in Sources */,
 				1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */,
 				08953E6F1F4C2790003ABEFC /* ToDoCountView.swift in Sources */,
 				08B8D9711F9A4443004E7781 /* RecommendActionHandler.swift in Sources */,
@@ -1592,7 +1593,6 @@
 				11ACA9A11E2CD1B90021E64A /* BaseApi.swift in Sources */,
 				08A62CB21F8E4DCF0072E6A5 /* TwoColorButton.swift in Sources */,
 				08B5D4BE1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift in Sources */,
-				08B7ADE41FB1C41900C56688 /* RequiredActionController.swift in Sources */,
 				1120F2001ECDF4F200576E39 /* RequiredActionHandler.swift in Sources */,
 				116540BF1EEAC61E00417D61 /* AppStoryboard.swift in Sources */,
 				0888C5BE1F4EECEC00E3DB04 /* RoundedCornersButton.swift in Sources */,

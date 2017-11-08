@@ -89,9 +89,9 @@ class RequiredAction: UITableViewCell {
     }
     
     internal func configureFooterView() {
-        let footerViewStateController: FooterViewStateController = FooterViewStateController()
+        let footerViewController: FooterViewController = FooterViewController()
         if (item != nil) {
-            footerViewStateController.configureCard(item: item!, view: footerView)
+            footerViewController.configureCard(item: item!, view: footerView)
         }
     }
     

@@ -32,7 +32,7 @@ class  MoreInfoViewCell: UITableViewCell {
         setUpShadowLayer()
         
         setUpToolbar()
-        footerView.actionButton.imageButtonType = .loadAll
+        //footerView.actionButton.imageButtonType = .loadAll
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
