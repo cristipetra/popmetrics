@@ -74,7 +74,12 @@ class GoogleActionViewController: UIViewController {
     }
     
     @objc func openLink(_ sender: RoundButton) {
-        openURLInside(url: Config.appWebAimeeLink)
+        
+        if feedCard.blogUrl != "" {
+            openURLInside(url:  feedCard.blogUrl!)
+        } else {
+            openURLInside(url: Config.appWebAimeeLink)
+        }
     }
     
     @objc func showTooltip(_ sender: RoundButton) {
