@@ -93,7 +93,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
 
     var isMoreInfoType = false
     var shouldDisplayCell = true
-    private var isLoadedAllRequiredCards = false
+    private var isLoadedAllRequiredCards = true
     
     let transition = BubbleTransition();
     var transitionButton:UIButton = UIButton();
