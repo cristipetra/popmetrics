@@ -83,7 +83,7 @@ class FeedCard: Object, Mappable {
     }
     
     func mapping(map: Map) {
-        
+        print(map["ice_impact_split"].currentValue)
         cardId          <- map["id"]
         index           <- map["index"]
         type            <- map["type"]
@@ -123,5 +123,18 @@ class FeedCard: Object, Mappable {
             return sarr.map{ ($0) }!
         }
         return []
+    }
+    
+    func getDiyInstructions() -> [String] {
+        return ["## markdown1", "##### markdown 2 *b"]
+    }
+
+}
+
+
+extension String {
+    func toJSON() -> Any? {
+        guard let data = self.data(using: .utf8, allowLossyConversion: false) else { return nil }
+        return try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
     }
 }

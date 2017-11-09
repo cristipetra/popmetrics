@@ -69,23 +69,48 @@ class IndividualTaskView: UIView {
         return view
     }()
     
+    lazy var aimeeTableview: UITableView = {
+        
+        let tableview = UITableView()
+        tableview.translatesAutoresizingMaskIntoConstraints = false
+        return tableview
+    }()
+    
+    lazy var separatorView : UIView = {
+        
+        let view = UIView(frame: CGRect(x: 0, y: 65, width: UIScreen.main.bounds.width, height: 1))
+        view.backgroundColor = UIColor(red: 189/255, green: 197/255, blue: 203/255, alpha: 1)
+        return view
+    }()
+    
+    
     var containerStackView: UIStackView!
     var isSelected: Bool = false
     
     var isContentHidden: Bool = false {
         didSet{
-            taskContainerView.isHidden = !isContentHidden
+            aimeeTableview.isHidden = !isContentHidden
         }
     }
+    
+    let store = FeedStore.getInstance()
     
     func setup() {
         self.translatesAutoresizingMaskIntoConstraints = false
         setUpcontainerStackView()
         setUpContainerView()
-        setUpTaskContainerView()
+        setUpTableView()
         setUpTitleLabel()
         setUpButton()
         
+        aimeeTableview.register(AimeeCell.self, forCellReuseIdentifier: "aimeeCellId")
+        aimeeTableview.delegate = self
+        aimeeTableview.dataSource = self
+    }
+    
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        aimeeTableview.separatorStyle = UITableViewCellSeparatorStyle.none
     }
     
     private func setUpContainerView() {
@@ -95,20 +120,30 @@ class IndividualTaskView: UIView {
         containerView.rightAnchor.constraint(equalTo: containerStackView.rightAnchor).isActive = true
         containerView.heightAnchor.constraint(equalToConstant: 66).isActive = true
         
+        containerView.addSubview(separatorView)
     }
     
-    private func setUpTaskContainerView() {
+    private func setUpTableView() {
         
-        taskContainerView.leftAnchor.constraint(equalTo: containerStackView.leftAnchor).isActive = true
-        taskContainerView.bottomAnchor.constraint(equalTo: containerStackView.bottomAnchor).isActive = true
-        taskContainerView.rightAnchor.constraint(equalTo: containerStackView.rightAnchor).isActive = true
-        taskContainerView.topAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        aimeeTableview.leftAnchor.constraint(equalTo: containerStackView.leftAnchor).isActive = true
+        aimeeTableview.bottomAnchor.constraint(equalTo: containerStackView.bottomAnchor).isActive = true
+        aimeeTableview.rightAnchor.constraint(equalTo: containerStackView.rightAnchor).isActive = true
+        aimeeTableview.topAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        
+        let rowCount = store.getFeedCards()[0].getDiyInstructions().count
+        
+        if rowCount > 4 {
+            aimeeTableview.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        } else {
+            aimeeTableview.heightAnchor.constraint(equalToConstant: CGFloat(rowCount) * 60).isActive = true
+        }
+        
         
     }
     
     func setUpcontainerStackView() {
         
-        containerStackView = UIStackView(arrangedSubviews: [containerView,taskContainerView])
+        containerStackView = UIStackView(arrangedSubviews: [containerView,aimeeTableview])
         containerStackView.axis = .vertical
         containerStackView.distribution = .equalSpacing
         containerStackView.alignment = .center
@@ -162,5 +197,26 @@ class IndividualTaskView: UIView {
         }
         
     }
+}
+
+extension IndividualTaskView: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return store.getFeedCards()[section].getDiyInstructions().count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "aimeeCellId", for: indexPath) as! AimeeCell
+        cell.selectionStyle = .none
+        cell.configureCell(instruction: store.getFeedCards()[indexPath.section].getDiyInstructions()[indexPath.row])
+        return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
     
 }
+

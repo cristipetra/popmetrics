@@ -94,6 +94,7 @@
 		08AF049A1F46FBB60040012B /* ToDoCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AF04991F46FBB60040012B /* ToDoCardCell.swift */; };
 		08B2803D1F55855500E36D19 /* StatisticsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B2803C1F55855500E36D19 /* StatisticsStore.swift */; };
 		08B2803F1F55862100E36D19 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B2803E1F55862100E36D19 /* Statistics.swift */; };
+		08B2DB971FB47522009E45F8 /* AimeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B2DB961FB47522009E45F8 /* AimeeCell.swift */; };
 		08B324D81F98C65A00BB4905 /* IceExtendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B324D71F98C65A00BB4905 /* IceExtendView.xib */; };
 		08B324DA1F98C6AE00BB4905 /* IceExtendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B324D91F98C6AE00BB4905 /* IceExtendView.swift */; };
 		08B3AA9E1F8FA748008D0503 /* ToDoApprovedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3AA9D1F8FA748008D0503 /* ToDoApprovedView.swift */; };
@@ -316,6 +317,7 @@
 		08AF04991F46FBB60040012B /* ToDoCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCardCell.swift; sourceTree = "<group>"; };
 		08B2803C1F55855500E36D19 /* StatisticsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsStore.swift; sourceTree = "<group>"; };
 		08B2803E1F55862100E36D19 /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		08B2DB961FB47522009E45F8 /* AimeeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AimeeCell.swift; sourceTree = "<group>"; };
 		08B324D71F98C65A00BB4905 /* IceExtendView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IceExtendView.xib; sourceTree = "<group>"; };
 		08B324D91F98C6AE00BB4905 /* IceExtendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IceExtendView.swift; sourceTree = "<group>"; };
 		08B3AA9D1F8FA748008D0503 /* ToDoApprovedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoApprovedView.swift; sourceTree = "<group>"; };
@@ -734,6 +736,7 @@
 				08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */,
 				088B282B1F7E7F150015A66E /* AimeeView.swift */,
 				088B282D1F7E7FA10015A66E /* GoogleAction.storyboard */,
+				08B2DB961FB47522009E45F8 /* AimeeCell.swift */,
 			);
 			name = google;
 			sourceTree = "<group>";
@@ -1471,6 +1474,7 @@
 				0854AF331F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift in Sources */,
 				110A62CA1ECEDADC0052B478 /* StatsSummaryViewCell.swift in Sources */,
 				1128B3F71ECF256600BDA58C /* SimpleButton.swift in Sources */,
+				08B2DB971FB47522009E45F8 /* AimeeCell.swift in Sources */,
 				1128B3F91ECF256600BDA58C /* SimpleButtonStateChangeValue.swift in Sources */,
 				11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */,
 				085AA0D41F42ECAA0014D4CE /* Todo.swift in Sources */,

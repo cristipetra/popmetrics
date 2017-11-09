@@ -140,23 +140,16 @@ class GoogleActionViewController: UIViewController {
     }
     
     func addAimeeView() {
-        
-        let numberOfRows = 6
-        let aimeeContentView = AimeeView(frame: CGRect(x: 0, y: 0, width: Int(UIScreen.main.bounds.width), height: numberOfRows * 60 + 32))
-        aimeeContentView.numberOfRows = numberOfRows
         self.containerView.addSubview(aimeeView)
         aimeeView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor).isActive = true
         aimeeView.rightAnchor.constraint(equalTo: self.containerView.rightAnchor).isActive = true
         
         aimeeView.topAnchor.constraint(equalTo: iceView.bottomAnchor).isActive = true
         aimeeView.titleLabel.text = "Aimee's View"
-        aimeeView.taskContainerView.addSubview(aimeeContentView)
         aimeeView.containerView.backgroundColor = UIColor.white
         aimeeView.backgroundColor = UIColor.white
-        aimeeView.taskContainerView.isHidden = true
+        aimeeView.aimeeTableview.isHidden = true
         aimeeView.subtitleLabel.isHidden = true
-        aimeeContentView.bottomAnchor.constraint(equalTo: aimeeView.taskContainerView.bottomAnchor).isActive = true
-        aimeeContentView.topAnchor.constraint(equalTo: aimeeView.taskContainerView.topAnchor).isActive = true
         aimeeView.expandButton.parentView = aimeeView
         aimeeView.expandButton.addTarget(self, action: #selector(showHideContent(sender:)), for: .touchUpInside)
     }
@@ -172,11 +165,11 @@ class GoogleActionViewController: UIViewController {
         instructionsView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor).isActive = true
         instructionsView.rightAnchor.constraint(equalTo: self.containerView.rightAnchor).isActive = true
         instructionsView.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor, constant: -114).isActive = true
-        instructionsView.topAnchor.constraint(equalTo:aimeeView.bottomAnchor,constant: 1).isActive = true
+        instructionsView.topAnchor.constraint(equalTo:aimeeView.bottomAnchor,constant: 0).isActive = true
         instructionsView.titleLabel.text = "View Instructions"
         instructionsView.setUpSubtitleview()
         instructionsView.containerView.backgroundColor = UIColor.white
-        instructionsView.taskContainerView.isHidden = true
+        instructionsView.aimeeTableview.isHidden = true
         instructionsView.titleLabel.font = UIFont(name: FontBook.bold, size: 15)
         instructionsView.subtitleLabel.isHidden = true
         instructionsView.expandButton.transform = instructionsView.expandButton.transform.rotated(by: (3 * .pi / 2))
@@ -195,9 +188,11 @@ class GoogleActionViewController: UIViewController {
             sender.transform = sender.transform.rotated(by: rotateDirection)
             sender.parentView.isContentHidden = !sender.parentView.isContentHidden
             if sender.parentView.isContentHidden == true {
-                sender.parentView.taskContainerView.alpha = 1
+                sender.parentView.separatorView.isHidden = false
+                sender.parentView.aimeeTableview.alpha = 1
             } else {
-                sender.parentView.taskContainerView.alpha = 0
+                sender.parentView.separatorView.isHidden = true
+                sender.parentView.aimeeTableview.alpha = 0
             }
         }
     }

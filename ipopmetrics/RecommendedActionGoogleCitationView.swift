@@ -43,13 +43,11 @@ class RecommendedActionGoogleCitationView: UIView {
     }
     
     func setup() {
-        
         Bundle.main.loadNibNamed("RecommendedActionGoogleCitationView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight , .flexibleWidth ]
         setUpToolBar()
-        
     }
     
     private func setUpTitle() {
@@ -57,7 +55,6 @@ class RecommendedActionGoogleCitationView: UIView {
         title.leftAnchor.constraint(equalTo: self.toolbarView.leftAnchor, constant: 50).isActive = true
         title.centerYAnchor.constraint(equalTo: self.toolbarView.centerYAnchor, constant: 0).isActive = true
         title.textColor = UIColor.white
-        
     }
     
     func changeColorCircle(color: UIColor) {

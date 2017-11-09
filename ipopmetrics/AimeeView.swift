@@ -9,13 +9,9 @@
 import UIKit
 
 class AimeeView: UIView {
-    var numberOfRows: Int = 2{
-        didSet
-        {
+    var numberOfRows: Int = 2 {
+        didSet {
             self.setupViews(numberOfRows: self.numberOfRows)
-            //            DispatchQueue.main.async {
-            //
-            //            }
         }
     }
     
