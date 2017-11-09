@@ -38,8 +38,7 @@ class LoginViewController: UIViewController {
         
         view.addSubview(progressHUD)
         progressHUD.hide()
-        
-        
+
         isHeroEnabled = true
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
     }

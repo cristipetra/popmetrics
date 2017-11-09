@@ -30,16 +30,8 @@ class WelcomeScreen: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
- 
-        setUpColors()
-        setUpCornerRadious()
-        addShadowToView(blueButton)
-        addShadowToView(btnNew)
-        addShadowToView(heartButton)
         
         self.logoSplash()
-        
-        self.welcomeLabel.text = "Hey, welcome to the \n Popmetrics beta!"
         
         isHeroEnabled = true
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
@@ -55,14 +47,6 @@ class WelcomeScreen: UIViewController {
             heightTextConstraint.constant = 100
             topTextConstraint.constant = 20
         }
-    }
-    
-    private func setUpColors() {
-        containerView.backgroundColor = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1.0)
-        blueButton.layer.backgroundColor = UIColor(red: 65/255, green: 155/255, blue: 249/255, alpha: 1.0).cgColor
-        blueButton.setTitleColor(UIColor.white, for: .normal)
-        btnNew.backgroundColor = UIColor.white
-        heartButton.backgroundColor = UIColor.white
     }
     
     internal func updateTextColor() {
@@ -82,27 +66,10 @@ class WelcomeScreen: UIViewController {
         }
     }
     
-    private func setUpCornerRadious() {
-        blueButton.layer.cornerRadius = blueButton.frame.height / 2
-        btnNew.layer.cornerRadius = btnNew.frame.height / 2
-        heartButton.layer.cornerRadius = heartButton.frame.width / 2
-    }
-    
-    internal func addShadowToView(_ toView: UIView) {
-        toView.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor
-        toView.layer.shadowOpacity = 0.3;
-        toView.layer.shadowRadius = 2
-        toView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-    }
-    
     @IBAction func handlerSpoken(_ sender: UIButton) {
         let loginVC = LoginViewController()
         self.present(loginVC, animated: true, completion: nil)
         //self.presentFromDirection(viewController: loginVC, direction: .right)
-    }
-
-    @IBAction func handlerHeartButton(_ sender: UIButton) {
-        openURLInside(url: Config.appWebLink)
     }
     
     @IBAction func handlerDidPressNewButton(_ sender: UIButton) {
