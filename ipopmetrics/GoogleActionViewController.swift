@@ -71,6 +71,10 @@ class GoogleActionViewController: UIViewController {
         recommendActionHandler = handler
         recommendedActionView.titleLabel.text = "We recommend you improve your social posts."
         recommendedActionView.messageLbl.text = "Popmetrics will increase your digital footprint and help drive traffic to your site"
+        
+        recommendedActionView.showDetailsMarkdown(feedCard.detailsMarkdown!)
+        
+        
     }
     
     @objc func openLink(_ sender: RoundButton) {

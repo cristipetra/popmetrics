@@ -83,7 +83,6 @@ class FeedCard: Object, Mappable {
     }
     
     func mapping(map: Map) {
-        
         cardId          <- map["id"]
         index           <- map["index"]
         type            <- map["type"]

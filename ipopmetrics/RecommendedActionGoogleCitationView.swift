@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import markymark
 
 class RecommendedActionGoogleCitationView: UIView {
     
@@ -72,6 +73,41 @@ class RecommendedActionGoogleCitationView: UIView {
         circleView.backgroundColor = UIColor.red
     }
     
+    internal func showDetailsMarkdown(_ text: String) {
+        hideComponents()
+        styleWithMark(marks: text)
+    }
+    
+    func hideComponents() {
+        messageLbl.isHidden = true
+        titleLabel.isHidden = true
+    }
+    
+    private func styleWithMark(marks: String) {
+        let markyMark = MarkyMark { (mark) in
+            mark.setFlavor(ContentfulFlavor())
+        }
+        
+        let markItems = markyMark.parseMarkDown(marks)
+        let styling = DefaultStyling()
+        let configuration = MarkDownToAttributedStringConverterConfiguration(styling : styling)
+        let converter = MarkDownConverter(configuration:configuration)
+
+        var textMark = UITextView()
+        textMark.font = UIFont(name: FontBook.regular, size: 17)
+        textMark.textColor = PopmetricsColor.darkGrey
+        textMark.backgroundColor = UIColor.clear
+        textMark.attributedText = converter.convert(markItems)
+        
+        self.contentView.addSubview(textMark)
+        
+        textMark.translatesAutoresizingMaskIntoConstraints = false
+        textMark.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 10).isActive = true
+        textMark.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -10).isActive = true
+        textMark.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 40).isActive = true
+        textMark.heightAnchor.constraint(equalToConstant: 240).isActive = true
+        
+    }
     
     
     private func setUpToolBar() {
