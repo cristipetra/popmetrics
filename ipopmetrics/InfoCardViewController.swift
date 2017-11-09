@@ -75,6 +75,7 @@ class InfoCardViewController: UIViewController {
         let converterConfiguration = ConverterConfiguration.attributedString
         
         let markDownView: UIView
+        let scrollView: UIScrollView = UIScrollView()
         
         switch converterConfiguration {
         case .view:
@@ -84,15 +85,22 @@ class InfoCardViewController: UIViewController {
         }
         
         /// Layout
-        view.addSubview(markDownView)
+        view.addSubview(scrollView)
+        scrollView.addSubview(markDownView)
         view.bringSubview(toFront: closeButton)
         
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        scrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 30).isActive = true
+        scrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -30).isActive = true
+        scrollView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 90).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20).isActive = true
         
         markDownView.translatesAutoresizingMaskIntoConstraints = false
-        markDownView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20).isActive = true
-        markDownView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -10).isActive = true
-        markDownView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 90).isActive = true
-        markDownView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
+        markDownView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 0).isActive = true
+        NSLayoutConstraint(item: markDownView, attribute: .width, relatedBy: .equal, toItem: scrollView, attribute: .width, multiplier: 1, constant: 0).isActive = true
+        markDownView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0).isActive = true
+        markDownView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0).isActive = true
     }
     
     @IBAction func closeAction(_ sender: UIButton) {
