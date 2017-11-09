@@ -83,7 +83,7 @@ class FeedCard: Object, Mappable {
     }
     
     func mapping(map: Map) {
-        print(map["ice_impact_split"].currentValue)
+        
         cardId          <- map["id"]
         index           <- map["index"]
         type            <- map["type"]
@@ -116,13 +116,8 @@ class FeedCard: Object, Mappable {
         insightArguments    <- map["insight_arguments"]
     }
     
-    func getInsightArgumentsArra() -> [String]{
-        
-        if insightArguments != nil {
-            let sarr = self.insightArguments?.components(separatedBy: ",")
-            return sarr.map{ ($0) }!
-        }
-        return []
+    func getInsightArgumentsArray() -> [String] {
+        return self.insightArguments?.toJSON() as! [String]
     }
     
     func getDiyInstructions() -> [String] {
