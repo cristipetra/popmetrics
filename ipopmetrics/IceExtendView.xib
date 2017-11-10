@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -29,8 +29,11 @@
                 <outlet property="impactLevelLbl" destination="A3s-5X-oi6" id="L90-pJ-RRv"/>
                 <outlet property="impactMultipleMainProgressView" destination="r1k-GZ-1hj" id="mA7-gB-9jh"/>
                 <outlet property="impactSimpleMainProgressView" destination="Tsn-t1-ztU" id="O71-2k-hYo"/>
+                <outlet property="onlineSplitLabel" destination="JNZ-5Z-Cag" id="Qso-TT-3ic"/>
                 <outlet property="redSquareLbl" destination="g6b-ca-QX1" id="9hB-Fn-yXp"/>
+                <outlet property="stasSplitLabel" destination="LRR-d2-gkS" id="lbb-pE-Gga"/>
                 <outlet property="topLbl" destination="pr9-TJ-dLE" id="yI3-8M-HYh"/>
+                <outlet property="websiteSplitLabel" destination="zUS-Qv-A1Y" id="Qm2-96-Kvb"/>
                 <outlet property="yellowSquareLbl" destination="jT6-zi-Cqe" id="XVv-E0-IBl"/>
             </connections>
         </placeholder>

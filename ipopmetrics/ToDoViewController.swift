@@ -79,7 +79,7 @@ class ToDoViewController: BaseViewController {
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
         
-        createItemsLocally()
+        //createItemsLocally()
         addApprovedView()
         
         topHeaderView.changeVisibilityExpandView(visible: false)

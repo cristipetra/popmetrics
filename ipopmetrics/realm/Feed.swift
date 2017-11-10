@@ -122,7 +122,33 @@ class FeedCard: Object, Mappable {
     func getDiyInstructions() -> [String] {
         return ["## markdown1", "##### markdown 2 *b"]
     }
+    
+    func getIceImpactSplit() -> [ImpactSplit] {
+        let values = iceImpactSplit!
+        let splitImpactArray = values.toJSON() as! NSMutableArray
+        
+        var dict: [ImpactSplit] = []
+        dict.removeAll()
+        for index in 0..<splitImpactArray.count {
+            if let obj = splitImpactArray.object(at: index) as? [String: Any] {
+                var impact = ImpactSplit()
+                impact.initParam(param: obj)
+                dict.append(impact)
+            }
+        }
+        return dict
+    }
 
+}
+
+struct ImpactSplit {
+    var label: String = ""
+    var percentage: Int = 0
+    
+    mutating func initParam(param: [String: Any]) {
+        label = param["label"] as! String
+        percentage = param["percentage"] as! Int
+    }
 }
 
 

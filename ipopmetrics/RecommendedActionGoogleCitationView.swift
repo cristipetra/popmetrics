@@ -48,7 +48,13 @@ class RecommendedActionGoogleCitationView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight , .flexibleWidth ]
+        clearTexts()
         setUpToolBar()
+    }
+    
+    private func clearTexts() {
+        titleLabel.text = ""
+        messageLbl.text = ""
     }
     
     private func setUpTitle() {
@@ -74,6 +80,7 @@ class RecommendedActionGoogleCitationView: UIView {
     }
     
     internal func showDetailsMarkdown(_ text: String) {
+        let text1 = "## We ![abc(https://dncache-mauganscorp.netdna-ssl.com/thumbseg/33/33140-bigthumbnail.jpg)](https://dncache-mauganscorp.netdna-ssl.com/thumbseg/33/33140-bigthumbnail.jpg) recommend you improve your \n ###### **ocial posts** soc\n \n \n \n \n\nial posts sadf /\na asfsadfsa safasf asdfasf dsaf asdfafsadf asf\n sasg \nas sasafsadf a\nas asfsadf   \n \n  will .. \n  #!http://www.a.c"
         hideComponents()
         styleWithMark(marks: text)
     }

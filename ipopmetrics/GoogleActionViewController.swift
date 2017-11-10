@@ -69,11 +69,11 @@ class GoogleActionViewController: UIViewController {
         self.feedCard = feedCard
         
         recommendActionHandler = handler
-        recommendedActionView.titleLabel.text = "We recommend you improve your social posts."
-        recommendedActionView.messageLbl.text = "Popmetrics will increase your digital footprint and help drive traffic to your site"
         
-        recommendedActionView.showDetailsMarkdown(feedCard.detailsMarkdown!)
-        
+        if(feedCard.detailsMarkdown !=  nil) {
+            recommendedActionView.showDetailsMarkdown(feedCard.detailsMarkdown!)
+        }
+        iceView.configure(feedCard)
         
     }
     
@@ -149,7 +149,7 @@ class GoogleActionViewController: UIViewController {
         aimeeView.rightAnchor.constraint(equalTo: self.containerView.rightAnchor).isActive = true
         
         aimeeView.topAnchor.constraint(equalTo: iceView.bottomAnchor).isActive = true
-        aimeeView.titleLabel.text = "Aimee's View"
+        aimeeView.titleLabel.text = "Findings"
         aimeeView.containerView.backgroundColor = UIColor.white
         aimeeView.backgroundColor = UIColor.white
         aimeeView.aimeeTableview.isHidden = true

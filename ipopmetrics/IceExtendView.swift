@@ -26,6 +26,9 @@ class IceExtendView: UIView {
     @IBOutlet weak var yellowSquareLbl: UILabel!
     @IBOutlet weak var blueSquareLbl: UILabel!
     
+    @IBOutlet weak var websiteSplitLabel: UILabel!
+    @IBOutlet weak var onlineSplitLabel: UILabel!
+    @IBOutlet weak var stasSplitLabel: UILabel!
     
     private var feedCard: FeedCard! {
         didSet {
@@ -50,7 +53,7 @@ class IceExtendView: UIView {
         containerView.frame = self.bounds
         containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        setMultipleProgressViewConstaits()
+        
         setCornerRadious()
     }
     
@@ -64,6 +67,7 @@ class IceExtendView: UIView {
         setImpactLevel()
         setCostStyle()
         setEffortStyle()
+        setSplitValues()
     }
     
     private func setCornerRadious() {
@@ -89,6 +93,18 @@ class IceExtendView: UIView {
         } else {
             return "high"
         }
+    }
+    
+    private func setSplitValues() {
+        print("set split value:")
+        let splitValues = feedCard.getIceImpactSplit()
+        websiteSplitLabel.text = splitValues[0].label
+        onlineSplitLabel.text = splitValues[1].label
+        stasSplitLabel.text = splitValues[2].label
+        
+        
+        
+        setMultipleProgressViewConstaits()
     }
     
     private func setUpLabel() {
@@ -195,27 +211,35 @@ class IceExtendView: UIView {
     }
     
     private func setMultipleProgressViewConstaits() {
-        
+        let splitValues = feedCard.getIceImpactSplit()
         impactMultipleMainProgressView.clipsToBounds = true
         
-        setProgress(animationBounds: impactMultipleMainProgressView.bounds, value: "30", childOff: impactMultipleMainProgressView, animationColor:  UIColor(red: 255/255, green: 34/255, blue: 105/255, alpha: 1), animationDuration: nil)
         
-        // insetend if 30 will be the value we get from parameter
+        print(splitValues[0].percentage)
+        print(splitValues[1].percentage)
+        print(splitValues[2].percentage)
         
-        let onlineFootprintBounds = CGRect(x: impactMultipleMainProgressView.bounds.origin.x + 30, y: impactMultipleMainProgressView.bounds.origin.y, width: impactMultipleMainProgressView.bounds.width - 30 , height: impactMultipleMainProgressView.bounds.height)
+        let when = DispatchTime.now() + 2
         
-        let when = DispatchTime.now() + 6
-        //DispatchQueue.main.asyncAfter(deadline: when) {
-        self.setProgress(animationBounds: onlineFootprintBounds, value: "60", childOff: self.impactMultipleMainProgressView, animationColor:  UIColor(red: 255/255, green: 157/255, blue: 103/255, alpha: 1), animationDuration: nil)
-        // }
+        self.setProgress(animationBounds: self.impactMultipleMainProgressView.bounds, value: String(splitValues[0].percentage), childOff: self.impactMultipleMainProgressView, animationColor:  UIColor(red: 255/255, green: 34/255, blue: 105/255, alpha: 1), animationDuration: nil)
         
-        let customersBounds = CGRect(x: onlineFootprintBounds.origin.x + 60, y: impactMultipleMainProgressView.bounds.origin.y, width: impactMultipleMainProgressView.bounds.width - 60, height: impactMultipleMainProgressView.bounds.height)
+        let onlineFootprintBounds = CGRect(x: impactMultipleMainProgressView.bounds.origin.x + calcMainWidth(value: CGFloat(splitValues[0].percentage)), y: impactMultipleMainProgressView.bounds.origin.y, width: impactMultipleMainProgressView.bounds.width , height: impactMultipleMainProgressView.bounds.height)
         
-        // DispatchQueue.main.asyncAfter(deadline: when) {
-        self.setProgress(animationBounds: customersBounds, value: "90", childOff: self.impactMultipleMainProgressView, animationColor:   UIColor(red: 78/255, green: 198/255, blue: 255/255, alpha: 1), animationDuration: nil)
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            self.setProgress(animationBounds: onlineFootprintBounds, value: String(splitValues[1].percentage), childOff: self.impactMultipleMainProgressView, animationColor:  UIColor(red: 255/255, green: 157/255, blue: 103/255, alpha: 1), animationDuration: nil)
+        }
         
-        // }
+        let customersBounds = CGRect(x: onlineFootprintBounds.origin.x + calcMainWidth(value: CGFloat(splitValues[1].percentage)), y: impactMultipleMainProgressView.bounds.origin.y, width: impactMultipleMainProgressView.bounds.width, height: impactMultipleMainProgressView.bounds.height)
         
+        DispatchQueue.main.asyncAfter(deadline: when + 2) {
+            self.setProgress(animationBounds: customersBounds, value: String(splitValues[2].percentage), childOff: self.impactMultipleMainProgressView, animationColor:   UIColor(red: 78/255, green: 198/255, blue: 255/255, alpha: 1), animationDuration: nil)
+        }
+
+        
+    }
+    
+    func calcMainWidth(value: CGFloat) -> CGFloat {
+        return (value * impactMultipleMainProgressView.bounds.width) / 100
     }
     
     func setProgress(animationBounds: CGRect, value: String, childOff: UIView, animationColor: UIColor?, animationDuration: CGFloat?) {
