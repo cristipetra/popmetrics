@@ -15,6 +15,8 @@ import NotificationBannerSwift
 import SafariServices
 import Hero
 
+private let phoneNumberLength = 12
+
 class LoginViewController: UIViewController {
     
     fileprivate let progressHUD = ProgressHUD(text: "Loading...")
@@ -43,6 +45,8 @@ class LoginViewController: UIViewController {
 
         isHeroEnabled = true
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
+        updatePhoneFieldNumber(textField: phoneView.numberTextField, phoneNumberMask: editablePhoneNumberMask)
+        phoneView.sendCodeBtn.isEnabled = false
     }
     
     @objc func rotated() {
@@ -100,7 +104,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc internal func didPressSendPhoneNumber() {
-        let phoneNumber = phoneView.numberTextField.text!
+        let phoneNumber = extractPhoneNumber(text: extractPhoneNumber(text: editablePhoneNumberMask))
         showProgressIndicator()
         UsersApi().sendCodeBySms(phoneNumber: phoneNumber) {userDict, error in
             self.hideProgressIndicator()
@@ -136,6 +140,20 @@ class LoginViewController: UIViewController {
     
     internal func showMainNavigationController() {
         showViewControllerWithStoryboardID("FEED_VC")
+    }
+    
+    func updatePhoneFieldNumber(textField: UITextField, phoneNumberMask: String) {
+        let threshold = phoneNumberMask.range(for: "#")?.lowerBound ?? phoneNumberMask.range!.upperBound
+        let boldRange = Range(uncheckedBounds: (lower: phoneNumberMask.range!.lowerBound, upper: threshold))
+        textField.attributedText = phoneNumberMask.replacingOccurrences(of: "#", with: "3").attributed
+            .font(UIFont(name: FontBook.regular, size: 24)!)
+            .color(.lightGray)
+            .font(UIFont(name: FontBook.bold, size: 24)!, range: boldRange)
+            .color(Color.buttonTitle, range: boldRange)
+    }
+    
+    func extractPhoneNumber(text: String) -> String {
+        return "+\(text.components(separatedBy: CharacterSet.decimalDigits.inverted).joined())"
     }
     
     @objc internal func dismissKeyboard() {
@@ -200,7 +218,6 @@ extension LoginViewController: UITextFieldDelegate {
     
     internal func textFieldDidBeginEditing(_ textField: UITextField) {
         phoneView.sendCodeBtn.isUserInteractionEnabled = true
-        phoneView.sendCodeBtn.setTitleColor(UIColor.white, for: .normal)
         if phoneView.numberTextField.text == "" {
             phoneView.numberTextField.text = "+1"
         }
@@ -230,14 +247,9 @@ extension LoginViewController: UITextFieldDelegate {
             guard let slot = editablePhoneNumberMask.range(for: "#") else { return false }
             editablePhoneNumberMask = editablePhoneNumberMask.replacingCharacters(in: slot, with: string)
         }
-        let threshold = editablePhoneNumberMask.range(for: "#")?.lowerBound ?? editablePhoneNumberMask.range!.upperBound
-        let boldRange = Range(uncheckedBounds: (lower: editablePhoneNumberMask.range!.lowerBound, upper: threshold))
-        textField.attributedText = editablePhoneNumberMask.replacingOccurrences(of: "#", with: "3").attributed
-                                                    .font(UIFont(name: FontBook.regular, size: 24)!)
-                                                    .color(.lightGray)
-                                                    .font(UIFont(name: FontBook.bold, size: 24)!, range: boldRange)
-                                                    .color(.black, range: boldRange)
+        updatePhoneFieldNumber(textField: textField, phoneNumberMask: editablePhoneNumberMask)
         updateCursorPosition(textField: textField)
+        phoneView.sendCodeBtn.isEnabled = extractPhoneNumber(text: editablePhoneNumberMask).count == phoneNumberLength
         return false
     }
     

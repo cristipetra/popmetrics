@@ -30,6 +30,13 @@ class PhoneView: UIView {
         return msgLbl
     }()
     
+    lazy var logoView : UIImageView = {
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "logoPop"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     lazy var sendCodeBtn : UIButton = {
         let sendCodeButton = UIButton()
         sendCodeButton.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +48,7 @@ class PhoneView: UIView {
     lazy var backBtn : UIButton = {
         let backButton = UIButton()
         backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.setImage(UIImage(named: "iconCalLeftBold"), for: .normal)
+        backButton.setImage(#imageLiteral(resourceName: "ic_back"), for: .normal)
         
         return backButton
     }()
@@ -53,15 +60,18 @@ class PhoneView: UIView {
         numberTextField.removeFromSuperview()
         messageLbl.removeFromSuperview()
         sendCodeBtn.removeFromSuperview()
+        logoView.removeFromSuperview()
         self.addSubview(backBtn)
         self.addSubview(numberTextField)
         self.addSubview(messageLbl)
         self.addSubview(sendCodeBtn)
+        self.addSubview(logoView)
         if UIScreen.main.bounds.height > 480 {
             setBackButton(yAnchor: 40)
             setNumberTextField(yAnchor: 122)
             setMessageLbl(yAnchor: -66)
             setSendCodeButton(yAnchor: -136)
+            setLogoView(yAnchor: 20)
         } else {
             setNumberTextField(yAnchor: 70)
             setMessageLbl(yAnchor: 0)
@@ -109,6 +119,7 @@ class PhoneView: UIView {
         
         // Message Label
         self.addSubview(messageLbl)
+        self.addSubview(logoView)
         
         /*
          if UIDevice.current.orientation.isPortrait {
@@ -121,10 +132,11 @@ class PhoneView: UIView {
         // Send code button
         self.addSubview(sendCodeBtn)
         if UIScreen.main.bounds.height > 480 {
-            setBackButton(yAnchor: 40)
+            setBackButton(yAnchor: 20)
             setNumberTextField(yAnchor: 122)
             setMessageLbl(yAnchor: -66)
             setSendCodeButton(yAnchor: -136)
+            setLogoView(yAnchor: 20)
         } else {
             setNumberTextField(yAnchor: 70)
             setMessageLbl(yAnchor: 0)
@@ -140,6 +152,7 @@ class PhoneView: UIView {
          */
         
     }
+    
     private func setBackButton(yAnchor: CGFloat) {
         backBtn.widthAnchor.constraint(equalToConstant: 20).isActive = true
         backBtn.heightAnchor.constraint(equalToConstant: 20).isActive = true
@@ -147,19 +160,22 @@ class PhoneView: UIView {
         backBtn.topAnchor.constraint(equalTo: self.topAnchor, constant: yAnchor).isActive = true
     }
     
+    private func setLogoView(yAnchor: CGFloat) {
+        logoView.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        logoView.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        logoView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        logoView.topAnchor.constraint(equalTo: self.topAnchor, constant: yAnchor).isActive = true
+    }
+    
     private func setNumberTextField(yAnchor: CGFloat) {
         numberTextField.widthAnchor.constraint(equalToConstant: 264).isActive = true
         numberTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: yAnchor).isActive = true
         numberTextField.heightAnchor.constraint(equalToConstant: 60).isActive = true
         numberTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        numberTextField.borderStyle = .roundedRect
+        numberTextField.borderStyle = .none
+        numberTextField.backgroundColor = Color.phoneNumberField
+        numberTextField.cornerRadius = 5
         numberTextField.keyboardType = .phonePad
-        numberTextField.font = UIFont(name: FontBook.regular, size: 23)
-        numberTextField.attributedText = phoneNumberMask.replacingOccurrences(of: "#", with: "3").attributed
-            .font(UIFont(name: FontBook.regular, size: 24)!)
-            .color(.lightGray)
-            .font(UIFont(name: FontBook.bold, size: 24)!, mention: "+1")
-            .color(.black, mention: "+1")
         setPlaceholder()
     }
     
@@ -182,6 +198,7 @@ class PhoneView: UIView {
         sendCodeBtn.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         sendCodeBtn.borderWidth = 3
         sendCodeBtn.setTitleColor(Color.buttonTitle, for: .normal)
+        sendCodeBtn.setTitleColor(.lightGray, for: .disabled)
         sendCodeBtn.cornerRadius = 22.5
         
     }
