@@ -6,8 +6,7 @@
 //  Copyright © 2017 Popmetrics. All rights reserved.
 //
 
-import Foundation
-
+import UIKit
 
 struct FontBook {
     static let regular = "OpenSans"
@@ -16,5 +15,9 @@ struct FontBook {
     static let bold = "OpenSans-Bold"
     static let extraBold = "OpenSans-ExtraBold"
     static let alfaRegular = "AlfaSlabOne-Regular"
+}
+
+struct Color {
+    static let buttonTitle = #colorLiteral(red: 0.262745098, green: 0.2980392157, blue: 0.3294117647, alpha: 1)
 }
 

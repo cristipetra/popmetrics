@@ -8,6 +8,8 @@
 
 import UIKit
 
+let phoneNumberMask = "+1 (###) ###-####"
+
 class PhoneView: UIView {
     
     lazy var numberTextField : UITextField = {
@@ -22,7 +24,7 @@ class PhoneView: UIView {
     lazy var messageLbl : UILabel = {
         let msgLbl = UILabel()
         msgLbl.translatesAutoresizingMaskIntoConstraints = false
-        msgLbl.text = "We’ll send you a magic code that you can use to login."
+        msgLbl.text = "Enter your cell number and we’ll send you\na magic code that you can use to login."
         msgLbl.font = UIFont(name: FontBook.regular, size: 15)
         
         return msgLbl
@@ -31,7 +33,7 @@ class PhoneView: UIView {
     lazy var sendCodeBtn : UIButton = {
         let sendCodeButton = UIButton()
         sendCodeButton.translatesAutoresizingMaskIntoConstraints = false
-        sendCodeButton.setTitle("Send The Magic Code", for: .normal)
+        sendCodeButton.setTitle("Send Magic Code", for: .normal)
         
         return sendCodeButton
     }()
@@ -89,7 +91,7 @@ class PhoneView: UIView {
     }
     
     func setup() {
-        self.backgroundColor = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1.0)
+        self.backgroundColor = .white
         
         self.addSubview(backBtn)
         
@@ -153,15 +155,17 @@ class PhoneView: UIView {
         numberTextField.borderStyle = .roundedRect
         numberTextField.keyboardType = .phonePad
         numberTextField.font = UIFont(name: FontBook.regular, size: 23)
-        let textNumberColor = UIColor(red: 68/255, green: 180/255, blue: 142/255, alpha: 1.0)
-        numberTextField.textColor = textNumberColor;
-        numberTextField.backgroundColor = UIColor(red: 255/255, green: 233/255, blue: 156/255, alpha: 1.0)
+        numberTextField.attributedText = phoneNumberMask.replacingOccurrences(of: "#", with: "3").attributed
+            .font(UIFont(name: FontBook.regular, size: 24)!)
+            .color(.lightGray)
+            .font(UIFont(name: FontBook.bold, size: 24)!, mention: "+1")
+            .color(.black, mention: "+1")
         setPlaceholder()
     }
     
     private func setMessageLbl(yAnchor: CGFloat) {
-        messageLbl.widthAnchor.constraint(equalToConstant: 276).isActive = true
-        messageLbl.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        messageLbl.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        messageLbl.heightAnchor.constraint(equalToConstant: 60).isActive = true
         messageLbl.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         messageLbl.centerYAnchor.constraint(equalTo: centerYAnchor, constant: yAnchor).isActive = true
         messageLbl.numberOfLines = 2
@@ -173,12 +177,12 @@ class PhoneView: UIView {
         buttonBottomConstraint = sendCodeBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: yAnchor)
         buttonBottomConstraint?.isActive = true
         sendCodeBtn.widthAnchor.constraint(equalToConstant: 233).isActive = true
-        sendCodeBtn.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        sendCodeBtn.heightAnchor.constraint(equalToConstant: 45).isActive = true
         //sendCodeBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: yAnchor).isActive = true
         sendCodeBtn.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        sendCodeBtn.layer.backgroundColor = UIColor(red: 255/255, green: 210/255, blue: 55/255, alpha: 1.0).cgColor
-        sendCodeBtn.setTitleColor(UIColor(red: 228/255, green: 185/255, blue: 39/255, alpha: 1.0), for: .normal)
-        sendCodeBtn.layer.cornerRadius = 30
+        sendCodeBtn.borderWidth = 3
+        sendCodeBtn.setTitleColor(Color.buttonTitle, for: .normal)
+        sendCodeBtn.cornerRadius = 22.5
         
     }
     private func setPlaceholder() {

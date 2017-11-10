@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		05B7A2731FB46B6400C60A0B /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B7A2721FB46B6400C60A0B /* UIViewExtension.swift */; };
+		05B7A2751FB47FD800C60A0B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B7A2741FB47FD800C60A0B /* StringExtensions.swift */; };
 		0809AEB41F22183400A13178 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0809AEB31F22183400A13178 /* Constants.swift */; };
 		080DCA811F4D6EE6000C73DC /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DCA801F4D6EE6000C73DC /* MenuViewController.swift */; };
 		080DCA831F4D9586000C73DC /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 080DCA821F4D9586000C73DC /* OpenSans-ExtraBold.ttf */; };
@@ -226,6 +227,7 @@
 
 /* Begin PBXFileReference section */
 		05B7A2721FB46B6400C60A0B /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		05B7A2741FB47FD800C60A0B /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		0809AEB31F22183400A13178 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		080DCA801F4D6EE6000C73DC /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		080DCA821F4D9586000C73DC /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				05B7A2721FB46B6400C60A0B /* UIViewExtension.swift */,
+				05B7A2741FB47FD800C60A0B /* StringExtensions.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -1502,6 +1505,7 @@
 				08B5D4BA1F29C28A00B79AD3 /* CalendarFeedStore.swift in Sources */,
 				08FAE84B1F54247B0097DF3E /* GradientView.swift in Sources */,
 				11D8D9F11ECB58AB00CCDAC4 /* RequiredActionViewCell.swift in Sources */,
+				05B7A2751FB47FD800C60A0B /* StringExtensions.swift in Sources */,
 				1120F2021ECDF93F00576E39 /* ArticleOfInterestViewCell.swift in Sources */,
 				085282701F2881BD0065A968 /* Calendar.swift in Sources */,
 				08B2803D1F55855500E36D19 /* StatisticsStore.swift in Sources */,

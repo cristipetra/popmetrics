@@ -17,14 +17,12 @@ class WelcomeScreen: UIViewController {
     @IBOutlet weak var welcomeLabel: ActiveLabel!
     @IBOutlet weak var blueButton: UIButton!
     @IBOutlet weak var btnNew: UIButton!
-    @IBOutlet weak var heartButton: UIButton!
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var topTextConstraint: NSLayoutConstraint!
     @IBOutlet weak var heightTextConstraint: NSLayoutConstraint!
     @IBOutlet weak var topImageConstraint: NSLayoutConstraint!
-    @IBOutlet weak var bottomButtonsConstraint: NSLayoutConstraint!
     var splashView: LDSplashView?
     var indicatorView: UIActivityIndicatorView?
     
@@ -43,7 +41,6 @@ class WelcomeScreen: UIViewController {
     private func updateConstraintValues() {
         if UIScreen.main.bounds.height <= CGFloat(480) {
             topImageConstraint.constant = 20
-            bottomButtonsConstraint.constant = 20
             heightTextConstraint.constant = 100
             topTextConstraint.constant = 20
         }

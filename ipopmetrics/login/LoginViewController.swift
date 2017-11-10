@@ -18,6 +18,8 @@ import Hero
 class LoginViewController: UIViewController {
     
     fileprivate let progressHUD = ProgressHUD(text: "Loading...")
+    fileprivate var editablePhoneNumberMask = phoneNumberMask
+    fileprivate var lastEnteredDigitIndex = 0
     
     var phoneView: PhoneView = PhoneView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
@@ -32,7 +34,7 @@ class LoginViewController: UIViewController {
         
         phoneView.sendCodeBtn.addTarget(self, action: #selector(didPressSendPhoneNumber), for: .touchUpInside)
         phoneView.backBtn.addTarget(self, action: #selector(dismissPhoneView), for: .touchUpInside)
-        addPhoneView();
+        addPhoneView()
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
@@ -110,12 +112,12 @@ class LoginViewController: UIViewController {
                 EZAlertController.alert("Error", message: message)
                 return
             } else {
-                if let code = userDict?["code"] as? String {
-                    if code == "invalid_input" {
-                        self.sendInAppNotification()
-                        return
-                    }
-                }
+//                if let code = userDict?["code"] as? String { IH Mark
+//                    if code == "invalid_input" {
+//                        self.sendInAppNotification()
+//                        return
+//                    }
+//                }
                 
                 let codeVC = CodeViewController();
                 codeVC.phoneNo = phoneNumber;
@@ -139,8 +141,6 @@ class LoginViewController: UIViewController {
     @objc internal func dismissKeyboard() {
         if phoneView.numberTextField.text?.characters.count == 0 {
             phoneView.sendCodeBtn.isUserInteractionEnabled = false
-            phoneView.sendCodeBtn.layer.backgroundColor = UIColor(red: 255/255, green: 210/255, blue: 55/255, alpha: 1.0).cgColor
-            phoneView.sendCodeBtn.setTitleColor(UIColor(red: 228/255, green: 185/255, blue: 39/255, alpha: 1.0), for: .normal)
         }
         phoneView.numberTextField.resignFirstResponder()
     }
@@ -200,7 +200,6 @@ extension LoginViewController: UITextFieldDelegate {
     
     internal func textFieldDidBeginEditing(_ textField: UITextField) {
         phoneView.sendCodeBtn.isUserInteractionEnabled = true
-        phoneView.sendCodeBtn.layer.backgroundColor = UIColor(red: 65/255, green: 155/255, blue: 249/255, alpha: 1.0).cgColor
         phoneView.sendCodeBtn.setTitleColor(UIColor.white, for: .normal)
         if phoneView.numberTextField.text == "" {
             phoneView.numberTextField.text = "+1"
@@ -208,16 +207,45 @@ extension LoginViewController: UITextFieldDelegate {
         if UIScreen.main.bounds.height > 480 {
             moveButton(moveValue: -240)
         }
+        updateCursorPosition(textField: textField)
     }
     
     internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if phoneView.numberTextField.text?.characters.count == 0 {
+        if phoneView.numberTextField.text?.count == 0 {
             phoneView.sendCodeBtn.isUserInteractionEnabled = false
             phoneView.sendCodeBtn.layer.backgroundColor = UIColor(red: 255/255, green: 210/255, blue: 55/255, alpha: 1.0).cgColor
-            phoneView.sendCodeBtn.setTitleColor(UIColor(red: 228/255, green: 185/255, blue: 39/255, alpha: 1.0), for: .normal)
         }
         phoneView.numberTextField.resignFirstResponder()
         return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string.isEmpty {
+            let matches = editablePhoneNumberMask.findMatches(for: "[0-9]")
+            guard matches.count >= 2,
+                let lastDigitRange = matches.last?.range else { return false }
+            editablePhoneNumberMask = editablePhoneNumberMask
+                .replacingCharacters(in: Range(lastDigitRange, in: editablePhoneNumberMask)!, with: "#")
+        } else {
+            guard let slot = editablePhoneNumberMask.range(for: "#") else { return false }
+            editablePhoneNumberMask = editablePhoneNumberMask.replacingCharacters(in: slot, with: string)
+        }
+        let threshold = editablePhoneNumberMask.range(for: "#")?.lowerBound ?? editablePhoneNumberMask.range!.upperBound
+        let boldRange = Range(uncheckedBounds: (lower: editablePhoneNumberMask.range!.lowerBound, upper: threshold))
+        textField.attributedText = editablePhoneNumberMask.replacingOccurrences(of: "#", with: "3").attributed
+                                                    .font(UIFont(name: FontBook.regular, size: 24)!)
+                                                    .color(.lightGray)
+                                                    .font(UIFont(name: FontBook.bold, size: 24)!, range: boldRange)
+                                                    .color(.black, range: boldRange)
+        updateCursorPosition(textField: textField)
+        return false
+    }
+    
+    private func updateCursorPosition(textField: UITextField) {
+        let slotPosition = editablePhoneNumberMask.range(for: "#")?.lowerBound.encodedOffset ?? phoneNumberMask.count
+        
+        let cursorPosition = textField.position(from: textField.beginningOfDocument, offset: slotPosition)!
+        textField.selectedTextRange = textField.textRange(from: cursorPosition, to: cursorPosition)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
