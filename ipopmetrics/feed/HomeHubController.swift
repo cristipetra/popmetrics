@@ -257,8 +257,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     @objc func handlerClickMenu() {
         let modalViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MENU_VC") as! MenuViewController
         // customization:
-        //modalViewController.modalTransition.edge = .left
-        //modalViewController.modalTransition.radiusFactor = 0.3
+        modalViewController.modalTransition.edge = .left
+        modalViewController.modalTransition.radiusFactor = 0.3
         self.present(modalViewController, animated: true, completion: nil)
     }
     

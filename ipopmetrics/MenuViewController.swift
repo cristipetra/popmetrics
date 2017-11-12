@@ -7,10 +7,11 @@
 //
 
 import UIKit
-//import ElasticTransition
+import ElasticTransition
 import SafariServices
 
-class MenuViewController: UIViewController {
+class MenuViewController: ElasticModalViewController {
+    
     
     @IBOutlet weak var closeButton: UIButton! {
         didSet {
@@ -20,25 +21,24 @@ class MenuViewController: UIViewController {
     }
     @IBOutlet weak var logoImage: UIImageView!
     
-    //var transition = ElasticTransition()
+    var transition = ElasticTransition()
     
     var dismissByBackgroundTouch = false
     var dismissByBackgroundDrag = true
     //var dismissByForegroundDrag = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        //transition.edge = .right
-        //transition.sticky = false
+        transition.edge = .right
+        transition.sticky = false
+        
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //segue.destination.transitioningDelegate = transition as UIViewControllerTransitioningDelegate
-        segue.destination.modalPresentationStyle = .custom
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        UIApplication.shared.statusBarStyle = .lightContent
+        segue.destination.transitioningDelegate = transition as UIViewControllerTransitioningDelegate
+        //segue.destination.modalPresentationStyle = .custom
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -47,19 +47,14 @@ class MenuViewController: UIViewController {
     }
     
     private func setup() {
-        
         let closeButtonImage = UIImage(named: "iconCloseBlack")!.withRenderingMode(.alwaysTemplate)
-        //let logo = UIImage(named: "logoCube")!.withRenderingMode(.alwaysTemplate)
-        //closeButtonImage.bma_tintWithColor(UIColor.white)
         
-        //logo.bma_tintWithColor(UIColor.white)
         closeButton.setImage(closeButtonImage, for: .normal)
-        //logoImage.image = logo
         
     }
     @IBAction func closeButtonPressed(_ sender: UIButton) {
-        //self.dismissAnimated(self.view)
-        self.dismiss(animated: true, completion: nil)
+        self.dismissAnimated(self.view)
+        //self.dismiss(animated: true, completion: nil)
     }
     @IBAction func contactButtonPressed(_ sender: UIButton) {
         let message = "mailto:" + Config.mailContact
@@ -76,6 +71,13 @@ class MenuViewController: UIViewController {
         appDelegate.setInitialViewController()
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
     }
+    
+    @IBAction func handlerClickSetttings(_ sender: UIButton) {
+        let settingsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "settings") as! SettingsViewController
+        self.present(settingsVC, animated: false, completion: nil)
+    }
+    
+    
 }
 
 
@@ -93,7 +95,7 @@ extension UIViewController {
         self.present(safari, animated: true)
     }
 }
-/*
+
 extension ElasticModalViewController {
     func dismissAnimated(_ sender: UIView?) {
         modalTransition.transformType = dragRightTransformType
@@ -102,4 +104,4 @@ extension ElasticModalViewController {
         dismiss(animated: true, completion: nil)
     }
 }
-*/
+
