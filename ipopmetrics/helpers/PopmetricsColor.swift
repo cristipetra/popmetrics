@@ -77,4 +77,7 @@ class PopmetricsColor {
     static let topButtonColor = UIColor(red: 252/255, green: 221/255, blue: 105/255, alpha: 1)
     static let bottomButtonColor = UIColor(red: 251/255, green: 192/255, blue: 46/255, alpha: 1)
     static let salmondBottomColor = UIColor(red: 246/255, green: 101/255, blue: 87/255, alpha: 1)
+    
+    static let tableBackground = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
+    static let textGraySettings = UIColor(red: 109/255, green: 109/255, blue: 114/255, alpha: 1)
 }

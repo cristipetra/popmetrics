@@ -73,8 +73,13 @@ class MenuViewController: ElasticModalViewController {
     }
     
     @IBAction func handlerClickSetttings(_ sender: UIButton) {
-        let settingsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "settings") as! SettingsViewController
-        self.present(settingsVC, animated: false, completion: nil)
+        let settingsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "staticSettings") as! StaticSettingsViewController
+        //self.present(settingsVC, animated: false, completion: nil)
+        
+        let navigationController = UINavigationController()
+        navigationController.pushViewController(settingsVC, animated: false)
+        
+        self.present(navigationController, animated: true, completion: nil)
     }
     
     
