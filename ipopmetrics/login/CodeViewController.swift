@@ -16,6 +16,7 @@ class CodeViewController: UIViewController {
     
     fileprivate let progressHUD = ProgressHUD(text: "Loading...")
     var phoneNo: String?
+    fileprivate var editableCodeMask = codeMask
     
     let digitCodeView = DigitCodeView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height));
 
@@ -36,7 +37,7 @@ class CodeViewController: UIViewController {
         
         view.addSubview(progressHUD)
         progressHUD.hide()
-        
+        updateDigitFieldNumber(textField: digitCodeView.digitextField, mask: editableCodeMask)
         isHeroEnabled = true
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
     }
@@ -54,7 +55,7 @@ class CodeViewController: UIViewController {
     
     @objc func didPressSendSmsCode(_ sender: Any) {
         
-        let smsCode = digitCodeView.digitextField.text!
+        let smsCode = extractCode(text: editableCodeMask)
         let phoneNumber = phoneNo!
         showProgressIndicator()
         UsersApi().logInWithSmsCode(phoneNumber, smsCode: smsCode) {responseWrapper, error in
@@ -114,6 +115,23 @@ class CodeViewController: UIViewController {
         UIApplication.shared.open(URL(string: message)!, options: [:], completionHandler: nil)
     }
     
+    func updateDigitFieldNumber(textField: UITextField, mask: String) {
+        let threshold = mask.range(for: "#")?.lowerBound ?? mask.range!.upperBound
+        let boldRange = Range(uncheckedBounds: (lower: mask.range!.lowerBound, upper: threshold))
+        textField.attributedText = mask.replacingOccurrences(of: "#", with: "3").attributed
+            .font(UIFont(name: FontBook.regular, size: 24)!)
+            .color(.lightGray)
+            .font(UIFont(name: FontBook.bold, size: 24)!, range: boldRange)
+            .color(Color.buttonTitle, range: boldRange)
+    }
+    
+    fileprivate func updateCursorPosition(textField: UITextField) {
+        let slotPosition = editableCodeMask.range(for: "#")?.lowerBound.encodedOffset ?? codeMask.count
+        
+        let cursorPosition = textField.position(from: textField.beginningOfDocument, offset: slotPosition)!
+        textField.selectedTextRange = textField.textRange(from: cursorPosition, to: cursorPosition)
+    }
+    
     internal func showProgressIndicator() {
         DispatchQueue.main.async(execute: {
             self.view.isUserInteractionEnabled = false
@@ -143,6 +161,9 @@ class CodeViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
+    func extractCode(text: String) -> String {
+        return text.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+    }
 }
 
 // MARK: - api
@@ -165,14 +186,27 @@ extension CodeViewController {
 
 extension CodeViewController: UITextFieldDelegate {
     internal func textFieldDidBeginEditing(_ textField: UITextField) {
-        digitCodeView.changeColorToEdit();
+        updateCursorPosition(textField: textField)
     }
     
     internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        digitCodeView.changeColorButton()
         return true
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string.isEmpty {
+            guard let lastDigitRange = editableCodeMask.findMatches(for: "[0-9]").last?.range else { return false }
+            editableCodeMask = editableCodeMask
+                .replacingCharacters(in: Range(lastDigitRange, in: editableCodeMask)!, with: "#")
+        } else {
+            guard let slot = editableCodeMask.range(for: "#") else { return false }
+            editableCodeMask = editableCodeMask.replacingCharacters(in: slot, with: string)
+        }
+        updateDigitFieldNumber(textField: textField, mask: editableCodeMask)
+        updateCursorPosition(textField: textField)
+        digitCodeView.sendCodeBtn.isEnabled = extractCode(text: editableCodeMask).count == 6
+        return false
+    }
 }
 
 extension CodeViewController {

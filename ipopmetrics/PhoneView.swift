@@ -192,16 +192,17 @@ class PhoneView: UIView {
     private func setSendCodeButton(yAnchor: CGFloat) {
         buttonBottomConstraint = sendCodeBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: yAnchor)
         buttonBottomConstraint?.isActive = true
-        sendCodeBtn.widthAnchor.constraint(equalToConstant: 233).isActive = true
         sendCodeBtn.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        //sendCodeBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: yAnchor).isActive = true
-        sendCodeBtn.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        sendCodeBtn.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 60).isActive = true
+        sendCodeBtn.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -60).isActive = true
+        
         sendCodeBtn.borderWidth = 3
         sendCodeBtn.setTitleColor(Color.buttonTitle, for: .normal)
         sendCodeBtn.setTitleColor(.lightGray, for: .disabled)
         sendCodeBtn.cornerRadius = 22.5
         
     }
+    
     private func setPlaceholder() {
         let mutableAttrString = NSMutableAttributedString()
         let regularAttribute = [
