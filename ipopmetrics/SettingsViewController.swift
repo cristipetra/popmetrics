@@ -22,6 +22,8 @@ class SettingsViewController: UIViewController {
         
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
+        
+        self.title = "Settings"
     }
 
     override func didReceiveMemoryWarning() {

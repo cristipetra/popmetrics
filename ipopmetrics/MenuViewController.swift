@@ -12,6 +12,8 @@ import SafariServices
 
 class MenuViewController: ElasticModalViewController {
     
+    @IBOutlet weak var changeBrandBtn: UIButton!
+    @IBOutlet weak var checkBtn: UIButton!
     
     @IBOutlet weak var closeButton: UIButton! {
         didSet {
@@ -32,8 +34,6 @@ class MenuViewController: ElasticModalViewController {
         setup()
         transition.edge = .right
         transition.sticky = false
-        
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,11 +47,9 @@ class MenuViewController: ElasticModalViewController {
     }
     
     private func setup() {
-        let closeButtonImage = UIImage(named: "iconCloseBlack")!.withRenderingMode(.alwaysTemplate)
-        
-        closeButton.setImage(closeButtonImage, for: .normal)
-        
+        changeBrandBtn.contentHorizontalAlignment = .left
     }
+    
     @IBAction func closeButtonPressed(_ sender: UIButton) {
         self.dismissAnimated(self.view)
         //self.dismiss(animated: true, completion: nil)
@@ -74,13 +72,15 @@ class MenuViewController: ElasticModalViewController {
     
     @IBAction func handlerClickSetttings(_ sender: UIButton) {
         let settingsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "staticSettings") as! StaticSettingsViewController
-        //self.present(settingsVC, animated: false, completion: nil)
         
         let navigationController = UINavigationController()
         navigationController.pushViewController(settingsVC, animated: false)
+
+        self.presentFromDirection(viewController: navigationController, direction: .right)
         
-        self.present(navigationController, animated: true, completion: nil)
     }
+    
+    
     
     
 }

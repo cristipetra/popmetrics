@@ -16,8 +16,30 @@ class StaticSettingsViewController: UITableViewController {
 
         self.tableView.backgroundColor = PopmetricsColor.tableBackground
         tableView.allowsSelection = false
+        
+        setUpNavigationBar()
+    }
+    
+    func setUpNavigationBar() {
+        
+        let text = UIBarButtonItem(title: "SETTINGS", style: .plain, target: self, action: nil)
+        text.tintColor = PopmetricsColor.darkGrey
+        let titleFont = UIFont(name: FontBook.extraBold, size: 18)
+        text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
+        
+        self.navigationController?.navigationBar.backgroundColor = UIColor.white
+        navigationController?.navigationBar.isTranslucent = false
+        
+        let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "calendarIconLeftArrow"), style: .plain, target: self, action: #selector(handlerClickBack))
+        self.navigationItem.leftBarButtonItems = [leftButtonItem, text]
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
+        
     }
 
+    @objc func handlerClickBack() {
+        self.navigationController?.dismissToDirection(direction: .left)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
