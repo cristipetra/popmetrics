@@ -71,6 +71,9 @@
 		08953E741F4C359E003ABEFC /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E731F4C359E003ABEFC /* FooterView.swift */; };
 		08953E761F4C35AC003ABEFC /* RequiredAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E751F4C35AC003ABEFC /* RequiredAction.swift */; };
 		0899DA211FA33B1F00C3696C /* SocialPostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0899DA201FA33B1F00C3696C /* SocialPostDetailsViewController.swift */; };
+		089F93AB1FB5FE1E00155674 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089F93AA1FB5FE1E00155674 /* Settings.storyboard */; };
+		089F93AD1FB5FE3900155674 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089F93AC1FB5FE3900155674 /* SettingsViewController.swift */; };
+		089F93AF1FB602D700155674 /* SettingsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089F93AE1FB602D700155674 /* SettingsTableCell.xib */; };
 		08A4A53D1F458423001071E3 /* ToolbarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */; };
 		08A4A5411F45B563001071E3 /* AlfaSlabOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */; };
 		08A4A5431F45B5D6001071E3 /* TwoImagesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4A5421F45B5D6001071E3 /* TwoImagesButton.swift */; };
@@ -292,6 +295,9 @@
 		08953E731F4C359E003ABEFC /* FooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		08953E751F4C35AC003ABEFC /* RequiredAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredAction.swift; sourceTree = "<group>"; };
 		0899DA201FA33B1F00C3696C /* SocialPostDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialPostDetailsViewController.swift; sourceTree = "<group>"; };
+		089F93AA1FB5FE1E00155674 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		089F93AC1FB5FE3900155674 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		089F93AE1FB602D700155674 /* SettingsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableCell.xib; sourceTree = "<group>"; };
 		08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarViewCell.swift; sourceTree = "<group>"; };
 		08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AlfaSlabOne-Regular.ttf"; sourceTree = "<group>"; };
 		08A4A5421F45B5D6001071E3 /* TwoImagesButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoImagesButton.swift; sourceTree = "<group>"; };
@@ -691,6 +697,15 @@
 			name = social;
 			sourceTree = "<group>";
 		};
+		089F93A91FB5FE0D00155674 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				089F93AA1FB5FE1E00155674 /* Settings.storyboard */,
+				089F93AE1FB602D700155674 /* SettingsTableCell.xib */,
+			);
+			name = settings;
+			sourceTree = "<group>";
+		};
 		08A533321F6BD8E80080BE64 /* home */ = {
 			isa = PBXGroup;
 			children = (
@@ -797,6 +812,7 @@
 				083938FE1F63C334007DDA37 /* MainTabInfo.swift */,
 				08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */,
 				08B7ADE91FB22B8300C56688 /* FooterViewController.swift */,
+				089F93AC1FB5FE3900155674 /* SettingsViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -1010,6 +1026,7 @@
 		11ACA9AD1E2CE0A80021E64A /* views */ = {
 			isa = PBXGroup;
 			children = (
+				089F93A91FB5FE0D00155674 /* settings */,
 				08B324D61F98C61B00BB4905 /* ice */,
 				081D5DC21F94F90200BB7352 /* header */,
 				088E77A71F7CE97D00774F13 /* toast */,
@@ -1235,6 +1252,7 @@
 				1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */,
 				085282721F28D9C50065A968 /* CalendarFooter.xib in Resources */,
 				080DCA861F4D9707000C73DC /* RecommendedCell.xib in Resources */,
+				089F93AB1FB5FE1E00155674 /* Settings.storyboard in Resources */,
 				08953E721F4C352B003ABEFC /* RequiredAction.xib in Resources */,
 				088BBEA81F58212A00AD5414 /* TrafficEmptyCard.xib in Resources */,
 				D9AB86581ECED85A0050A7AB /* InsightCard.xib in Resources */,
@@ -1256,6 +1274,7 @@
 				088BBEAC1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				08BD580C1F7A6AD500FFDCFD /* OnboardingFinalView.xib in Resources */,
 				1128B3F61ECF256600BDA58C /* Info.plist in Resources */,
+				089F93AF1FB602D700155674 /* SettingsTableCell.xib in Resources */,
 				08C6FBFB1F41FFCB007D6101 /* Todo.storyboard in Resources */,
 				08F368971F19029100819CDE /* LastCard.xib in Resources */,
 				08AF04981F46FB9B0040012B /* ToDoCardCell.xib in Resources */,
@@ -1382,6 +1401,7 @@
 				"${BUILT_PRODUCTS_DIR}/BubbleTransition/BubbleTransition.framework",
 				"${BUILT_PRODUCTS_DIR}/DGElasticPullToRefresh/DGElasticPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/EZAlertController/EZAlertController.framework",
+				"${BUILT_PRODUCTS_DIR}/ElasticTransition/ElasticTransition.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
@@ -1397,6 +1417,7 @@
 				"${BUILT_PRODUCTS_DIR}/MGSwipeTableCell/MGSwipeTableCell.framework",
 				"${BUILT_PRODUCTS_DIR}/MJCalendar/MJCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionAnimation/MotionAnimation.framework",
 				"${BUILT_PRODUCTS_DIR}/NSDate-Escort/NSDate_Escort.framework",
 				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
@@ -1424,6 +1445,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BubbleTransition.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DGElasticPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EZAlertController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ElasticTransition.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
@@ -1439,6 +1461,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MGSwipeTableCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSDate_Escort.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
@@ -1487,6 +1510,7 @@
 				088B28281F7E43960015A66E /* TrafficVisitsViewCell.swift in Sources */,
 				116540C11EEACD4000417D61 /* UsersStore.swift in Sources */,
 				08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */,
+				089F93AD1FB5FE3900155674 /* SettingsViewController.swift in Sources */,
 				08AF049A1F46FBB60040012B /* ToDoCardCell.swift in Sources */,
 				1128B3FD1ED2E01F00BDA58C /* ActionViewCell.swift in Sources */,
 				085282741F28D9DE0065A968 /* CalendarFooterViewCell.swift in Sources */,

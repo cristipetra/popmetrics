@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,8 +13,8 @@
         <array key="OpenSans-Bold.ttf">
             <string>OpenSans-Bold</string>
         </array>
-        <array key="OpenSans-Regular.ttf">
-            <string>OpenSans</string>
+        <array key="OpenSans-ExtraBold.ttf">
+            <string>OpenSans-Extrabold</string>
         </array>
     </customFonts>
     <scenes>
@@ -23,7 +23,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="FEED_VC" title="My Homes Table View Controller" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="pageSheet" id="KcM-MX-1lY" userLabel="Feed Table View Controller" customClass="HomeHubViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="2" rowHeight="182" sectionHeaderHeight="18" sectionFooterHeight="18" id="IDh-YP-3oO">
-                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <inset key="scrollIndicatorInsets" minX="0.0" minY="32" maxX="0.0" maxY="48"/>
@@ -57,98 +57,91 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vqp-bm-yP8">
-                                <rect key="frame" x="29" y="28" width="24" height="23"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="Idd-IR-TzK"/>
-                                    <constraint firstAttribute="height" constant="23" id="p7s-yY-pQX"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vqp-bm-yP8">
+                                <rect key="frame" x="29" y="28" width="20" height="23"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="iconX"/>
                                 <connections>
                                     <action selector="closeButtonPressed:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="0I6-yB-2Ag"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="VHs-si-dMo">
-                                <rect key="frame" x="48" y="93" width="218" height="132"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dA-tg-zu2">
-                                        <rect key="frame" x="0.0" y="0.0" width="218" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="r1b-N7-uoe"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
-                                        <state key="normal" title="Contact Marketing Concierge">
-                                            <color key="titleColor" red="0.74117647058823533" green="0.77254901960784317" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="contactButtonPressed:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="euV-yq-zF4"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2u3-HH-eog">
-                                        <rect key="frame" x="0.0" y="56" width="218" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="4ff-tx-lga"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
-                                        <state key="normal" title="About Popmetrics">
-                                            <color key="titleColor" red="0.74117647058823533" green="0.77254901960784317" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="aboutButtonPressed:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="6R9-WR-iF6"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybe-Us-fFL">
-                                        <rect key="frame" x="0.0" y="112" width="218" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="XX8-aI-aSF"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                        <state key="normal" title="Logout">
-                                            <color key="titleColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="logoutButtonPressed:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="4Xq-Kd-Q0I"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't worry! More settings are coming." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V64-sc-33c">
-                                <rect key="frame" x="63" y="363" width="249" height="41"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuL-Ym-nrt">
-                                <rect key="frame" x="306.5" y="29" width="40.5" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="xyI-zF-V3d"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoCube" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-wi-QSE">
-                                <rect key="frame" x="74" y="23" width="32" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoPop" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-wi-QSE">
+                                <rect key="frame" x="127.5" y="619" width="120" height="28"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="OHx-Qg-zGb"/>
-                                    <constraint firstAttribute="height" constant="30" id="t0O-cX-BsY"/>
+                                    <constraint firstAttribute="height" constant="28" id="P2W-yq-FLh"/>
+                                    <constraint firstAttribute="width" constant="120" id="dQ9-t9-iAi"/>
                                 </constraints>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MTa-KH-EBT">
+                                <rect key="frame" x="36" y="190" width="151.5" height="140"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCx-hh-YS8">
+                                        <rect key="frame" x="0.0" y="0.0" width="151.5" height="30"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="SETTINGS">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="handlerClickSetttings:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="UDu-Qp-wHi"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ABOUT POPMETRICS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQZ-JW-qop">
+                                        <rect key="frame" x="0.0" y="40" width="151.5" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEGAL BITS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epe-Zk-aty">
+                                        <rect key="frame" x="0.0" y="67.5" width="151.5" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTACT US" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acI-zR-0rS">
+                                        <rect key="frame" x="0.0" y="95" width="151.5" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HELP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAe-9e-oio">
+                                        <rect key="frame" x="0.0" y="122.5" width="151.5" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MENU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuL-Ym-nrt">
+                                <rect key="frame" x="63" y="29" width="53" height="21"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybe-Us-fFL">
+                                <rect key="frame" x="36" y="393" width="73" height="33"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="LOGOUT">
+                                    <color key="titleColor" red="1" green="0.46666666670000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutButtonPressed:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="4Xq-Kd-Q0I"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.27058823529411763" green="0.29803921568627451" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="V64-sc-33c" secondAttribute="trailing" constant="63" id="2Lz-eO-5Bu"/>
-                            <constraint firstAttribute="trailing" secondItem="tuL-Ym-nrt" secondAttribute="trailing" constant="28" id="2Xz-aU-hWl"/>
-                            <constraint firstItem="VHs-si-dMo" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leadingMargin" constant="32" id="B7w-v9-eEC"/>
-                            <constraint firstItem="VHs-si-dMo" firstAttribute="top" secondItem="Vqp-bm-yP8" secondAttribute="bottom" constant="42" id="EMD-tO-dEv"/>
-                            <constraint firstItem="eP9-wi-QSE" firstAttribute="leading" secondItem="Vqp-bm-yP8" secondAttribute="trailing" constant="21" id="Lyv-R0-oa5"/>
-                            <constraint firstItem="V64-sc-33c" firstAttribute="top" secondItem="VHs-si-dMo" secondAttribute="bottom" constant="138" id="Vp8-FV-LNc"/>
-                            <constraint firstItem="V64-sc-33c" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leading" constant="63" id="dQM-PC-xA6"/>
+                            <constraint firstItem="Ybe-Us-fFL" firstAttribute="top" secondItem="MTa-KH-EBT" secondAttribute="bottom" constant="60" id="2Di-99-vcD"/>
+                            <constraint firstItem="Ybe-Us-fFL" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leadingMargin" constant="20" id="6y7-uf-fwA"/>
+                            <constraint firstItem="tuL-Ym-nrt" firstAttribute="leading" secondItem="Vqp-bm-yP8" secondAttribute="trailing" constant="14" id="EhZ-Rt-YJi"/>
+                            <constraint firstItem="MTa-KH-EBT" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leadingMargin" constant="20" id="GjK-CR-yfi"/>
+                            <constraint firstItem="eP9-wi-QSE" firstAttribute="centerX" secondItem="A0N-Un-MwM" secondAttribute="centerX" id="JCK-qR-OoA"/>
+                            <constraint firstItem="Pfw-ZC-4fg" firstAttribute="top" secondItem="eP9-wi-QSE" secondAttribute="bottom" constant="20" id="OCO-Sv-Mj7"/>
                             <constraint firstItem="Vqp-bm-yP8" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leading" constant="29" id="erw-yw-FCk"/>
+                            <constraint firstItem="tuL-Ym-nrt" firstAttribute="centerY" secondItem="Vqp-bm-yP8" secondAttribute="centerY" id="gSD-dO-PLt"/>
                             <constraint firstItem="Vqp-bm-yP8" firstAttribute="top" secondItem="rSp-0Z-2F3" secondAttribute="bottom" constant="8" id="ohT-iy-TeE"/>
+                            <constraint firstItem="MTa-KH-EBT" firstAttribute="top" secondItem="rSp-0Z-2F3" secondAttribute="bottom" constant="170" id="rns-29-Evy"/>
                             <constraint firstItem="tuL-Ym-nrt" firstAttribute="top" secondItem="rSp-0Z-2F3" secondAttribute="bottom" constant="9" id="uPF-Q1-bfU"/>
-                            <constraint firstItem="eP9-wi-QSE" firstAttribute="top" secondItem="rSp-0Z-2F3" secondAttribute="bottom" constant="3" id="wDB-6W-CHh"/>
                         </constraints>
                     </view>
                     <connections>
@@ -303,14 +296,14 @@
             </objects>
             <point key="canvasLocation" x="-473" y="1632"/>
         </scene>
-        <!--Home-->
+        <!--Navigation Controller-->
         <scene sceneID="BgY-0i-GYY">
             <objects>
                 <navigationController storyboardIdentifier="HomeNavigationID" automaticallyAdjustsScrollViewInsets="NO" id="NdU-Vz-erg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="tabBarItem:g6b-nh-pyf:image" id="g6b-nh-pyf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="z2a-iC-IPh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -325,7 +318,8 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
-        <image name="logoCube" width="67" height="77"/>
+        <image name="iconX" width="20" height="20"/>
+        <image name="logoPop" width="310" height="77"/>
         <image name="second" width="30" height="30"/>
         <image name="tabBarItem:g6b-nh-pyf:image" width="23" height="20">
             <mutableData key="keyedArchiveRepresentation">
