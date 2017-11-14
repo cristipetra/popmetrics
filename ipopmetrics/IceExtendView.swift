@@ -22,13 +22,10 @@ class IceExtendView: UIView {
     @IBOutlet weak var costMainProgressView: UIView!
     @IBOutlet weak var effortMainProgressView: UIView!
     @IBOutlet weak var drawView: UIView!
-    @IBOutlet weak var redSquareLbl: UILabel!
-    @IBOutlet weak var yellowSquareLbl: UILabel!
-    @IBOutlet weak var blueSquareLbl: UILabel!
     
-    @IBOutlet weak var websiteSplitLabel: UILabel!
-    @IBOutlet weak var onlineSplitLabel: UILabel!
-    @IBOutlet weak var stasSplitLabel: UILabel!
+    @IBOutlet var splitSquare: [UILabel]!
+    @IBOutlet var splitLabels: [UILabel]!
+    
     
     private var feedCard: FeedCard! {
         didSet {
@@ -77,12 +74,10 @@ class IceExtendView: UIView {
         costMainProgressView.layer.cornerRadius = 4
         effortMainProgressView.layer.cornerRadius = 4
         
-        redSquareLbl.layer.cornerRadius = 2
-        yellowSquareLbl.layer.cornerRadius = 2
-        blueSquareLbl.layer.cornerRadius = 2
-        redSquareLbl.layer.masksToBounds = true
-        yellowSquareLbl.layer.masksToBounds = true
-        blueSquareLbl.layer.masksToBounds = true
+        splitSquare.forEach { (label) in
+            label.layer.cornerRadius = 2
+            label.layer.masksToBounds = true
+        }
     }
     
     private func getIceImpactLabel() -> String {
@@ -96,14 +91,14 @@ class IceExtendView: UIView {
     }
     
     private func setSplitValues() {
-        print("set split value:")
-        let splitValues = feedCard.getIceImpactSplit()
-        websiteSplitLabel.text = splitValues[0].label
-        onlineSplitLabel.text = splitValues[1].label
-        stasSplitLabel.text = splitValues[2].label
         
-        
-        
+        var splitValues = feedCard.getIceImpactSplit()
+
+        for index in 0..<splitValues.count {
+            splitLabels[index].text = splitValues[index].label
+            splitLabels[index].isHidden = false
+            splitSquare[index].isHidden = false
+        }
         setMultipleProgressViewConstaits()
     }
     
@@ -211,31 +206,50 @@ class IceExtendView: UIView {
     }
     
     private func setMultipleProgressViewConstaits() {
-        let splitValues = feedCard.getIceImpactSplit()
+        var splitValues = feedCard.getIceImpactSplit()
         impactMultipleMainProgressView.clipsToBounds = true
         
+        var bounds: CGRect!
+        let progressColor: [UIColor] = [UIColor(red: 255/255, green: 34/255, blue: 105/255, alpha: 1),UIColor(red: 255/255, green: 157/255, blue: 103/255, alpha: 1), UIColor(red: 78/255, green: 198/255, blue: 255/255, alpha: 1), UIColor.green]
         
-        print(splitValues[0].percentage)
-        print(splitValues[1].percentage)
-        print(splitValues[2].percentage)
-        
-        let when = DispatchTime.now() + 2
-        
-        self.setProgress(animationBounds: self.impactMultipleMainProgressView.bounds, value: String(splitValues[0].percentage), childOff: self.impactMultipleMainProgressView, animationColor:  UIColor(red: 255/255, green: 34/255, blue: 105/255, alpha: 1), animationDuration: nil)
-        
-        let onlineFootprintBounds = CGRect(x: impactMultipleMainProgressView.bounds.origin.x + calcMainWidth(value: CGFloat(splitValues[0].percentage)), y: impactMultipleMainProgressView.bounds.origin.y, width: impactMultipleMainProgressView.bounds.width , height: impactMultipleMainProgressView.bounds.height)
-        
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            self.setProgress(animationBounds: onlineFootprintBounds, value: String(splitValues[1].percentage), childOff: self.impactMultipleMainProgressView, animationColor:  UIColor(red: 255/255, green: 157/255, blue: 103/255, alpha: 1), animationDuration: nil)
+        if splitValues.count == 0 {
+            impactMultipleMainProgressView.isHidden = true
+            splitSquare.forEach({ (label) in
+                label.isHidden = true
+            })
+            
+            splitLabels.forEach({ (label) in
+                label.isHidden = true
+            })
+            return
         }
         
-        let customersBounds = CGRect(x: onlineFootprintBounds.origin.x + calcMainWidth(value: CGFloat(splitValues[1].percentage)), y: impactMultipleMainProgressView.bounds.origin.y, width: impactMultipleMainProgressView.bounds.width, height: impactMultipleMainProgressView.bounds.height)
-        
-        DispatchQueue.main.asyncAfter(deadline: when + 2) {
-            self.setProgress(animationBounds: customersBounds, value: String(splitValues[2].percentage), childOff: self.impactMultipleMainProgressView, animationColor:   UIColor(red: 78/255, green: 198/255, blue: 255/255, alpha: 1), animationDuration: nil)
+        for index in 0..<splitValues.count {
+            
+            delay(time: index * 2, closure: {
+                if index == 0 {
+                    bounds = self.calcProgressBounds(startingPos: 0)
+                } else {
+                    bounds = self.calcProgressBounds(startingPos: splitValues[index - 1].percentage,previousBounds: bounds)
+                }
+                self.setProgress(animationBounds: bounds, value: String(splitValues[index].percentage), childOff: self.impactMultipleMainProgressView, animationColor: progressColor[index], animationDuration: nil)
+            })
         }
-
+    }
+    
+    func delay(time: Int, closure: @escaping ()->()) {
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(time)) {
+            closure()
+        }
+        
+    }
+    
+    func calcProgressBounds(startingPos: Int,previousBounds : CGRect? = CGRect.zero) -> CGRect {
+        
+        let bounds = CGRect(x: impactMultipleMainProgressView.bounds.origin.x + calcMainWidth(value: CGFloat(startingPos)) + (previousBounds?.origin.x)!, y: impactMultipleMainProgressView.bounds.origin.y, width: impactMultipleMainProgressView.bounds.width , height: impactMultipleMainProgressView.bounds.height)
+        
+        return bounds
     }
     
     func calcMainWidth(value: CGFloat) -> CGFloat {
@@ -250,7 +264,7 @@ class IceExtendView: UIView {
         
         let progressValue = CGFloat(progress) / 100
         
-        impactProgressView.primaryColor = animationColor//UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1)
+        impactProgressView.primaryColor = animationColor ?? UIColor.red//(red: 255/255, green: 227/255, blue: 130/255, alpha: 1)
         impactProgressView.animationDuration = animationDuration == nil ? 2 : animationDuration!
         impactProgressView.borderWidth = 0
         impactProgressView.cornerRadius = 0
@@ -262,34 +276,5 @@ class IceExtendView: UIView {
         }
         
     }
-    
-    //  func setCornerRadiousOneSide(mainView: UIView, childView: UIView) {
-    //
-    //    if mainView.frame.width == childView.frame.width {
-    //      DispatchQueue.main.async {
-    //        childView.roundCorners(corners: [.topLeft, .bottomLeft], radius: 4)
-    //      }
-    //    } else {
-    //
-    //    DispatchQueue.main.async {
-    //      childView.roundCorners(corners: [.topLeft, .bottomLeft], radius: 4)
-    //    }
-    //  }
-    //
-    //}
-    
-    //  override func draw(_ rect: CGRect) {
-    //
-    //      let firstContext = UIGraphicsGetCurrentContext()
-    //      firstContext?.setLineWidth(2)
-    //      firstContext?.setStrokeColor(UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1).cgColor)
-    //
-    //      let startingPoint = CGPoint(x: drawView.bounds.origin.x, y: drawView.bounds.origin.y)
-    //
-    //      firstContext?.move(to: startingPoint)
-    //      firstContext?.addLine(to: CGPoint(x: drawView.bounds.origin.x + 20, y: drawView.bounds.origin.y + 30))
-    //      firstContext?.strokePath()
-    //  }
-    //
-    
 }
+
