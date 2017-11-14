@@ -121,6 +121,7 @@ class FeedCard: Object, Mappable {
     
     func getDiyInstructions() -> [String] {
         return ["## markdown1", "##### markdown 2 *b"]
+        return self.diyInstructions?.toJSON() as! [String]
     }
     
     func getIceImpactSplit() -> [ImpactSplit] {

@@ -12,12 +12,13 @@ import markymark
 class AimeeCell: UITableViewCell {
     
     lazy var roundView: UIView = {
-        
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = PopmetricsColor.yellowBGColor
         return view
     }()
+    
+    let label = UILabel()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -46,7 +47,14 @@ class AimeeCell: UITableViewCell {
         roundView.heightAnchor.constraint(equalToConstant: 16).isActive = true
         roundView.widthAnchor.constraint(equalToConstant: 16).isActive = true
         roundView.layer.cornerRadius = 8//roundView.frame.width / 2
-        
+    
+        setupLabel()
+    }
+    
+    func setupLabel() {
+        label.font = UIFont(name: FontBook.regular, size: 15)
+        label.textColor = PopmetricsColor.darkGrey
+        label.numberOfLines = 2
     }
     
     func configureCell(instruction: String) {
@@ -64,10 +72,7 @@ class AimeeCell: UITableViewCell {
         let configuration = MarkDownToAttributedStringConverterConfiguration(styling : styling)
         let converter = MarkDownConverter(configuration:configuration)
         
-        let label = UILabel()
-        label.font = UIFont(name: FontBook.regular, size: 15)
-        label.textColor = PopmetricsColor.darkGrey
-        label.numberOfLines = 2
+        label.attributedText = nil
         label.attributedText = converter.convert(markItems)
         
         self.addSubview(label)

@@ -71,7 +71,7 @@ class GoogleActionViewController: UIViewController {
         recommendActionHandler = handler
         
         if(feedCard.detailsMarkdown !=  nil) {
-            recommendedActionView.showDetailsMarkdown(feedCard.detailsMarkdown!)
+            //recommendedActionView.showDetailsMarkdown(feedCard.detailsMarkdown!)
         }
         iceView.configure(feedCard)
         
@@ -153,8 +153,10 @@ class GoogleActionViewController: UIViewController {
         aimeeView.containerView.backgroundColor = UIColor.white
         aimeeView.backgroundColor = UIColor.white
         aimeeView.aimeeTableview.isHidden = true
+        aimeeView.separatorView.isHidden = true
         aimeeView.subtitleLabel.isHidden = true
         aimeeView.expandButton.parentView = aimeeView
+        aimeeView.expandButton.viewType = .aimeeView
         aimeeView.expandButton.addTarget(self, action: #selector(showHideContent(sender:)), for: .touchUpInside)
     }
     
@@ -176,8 +178,11 @@ class GoogleActionViewController: UIViewController {
         instructionsView.aimeeTableview.isHidden = true
         instructionsView.titleLabel.font = UIFont(name: FontBook.bold, size: 15)
         instructionsView.subtitleLabel.isHidden = true
-        instructionsView.expandButton.transform = instructionsView.expandButton.transform.rotated(by: (3 * .pi / 2))
+        //instructionsView.expandButton.transform = instructionsView.expandButton.transform.rotated(by: (3 * .pi / 2))
         instructionsView.addShadow(radius: 2, opacity: 0.3, offset: CGSize(width: 0.0, height: 3.0))
+        instructionsView.expandButton.parentView = instructionsView
+        instructionsView.expandButton.viewType = .instructionView
+        instructionsView.expandButton.addTarget(self, action: #selector(showHideContent(sender:)), for: .touchUpInside)
     }
     
     @objc func showHideContent(sender: ButtonWithContainer) {

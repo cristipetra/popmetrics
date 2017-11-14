@@ -201,14 +201,28 @@ class IndividualTaskView: UIView {
 
 extension IndividualTaskView: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return store.getFeedCards()[section].getInsightArgumentsArray().count
+        switch expandButton.viewType {
+        case .instructionView:
+            return store.getFeedCards()[section].getDiyInstructions().count
+        case .aimeeView:
+            return store.getFeedCards()[section].getInsightArgumentsArray().count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "aimeeCellId", for: indexPath) as! AimeeCell
         cell.selectionStyle = .none
-        cell.configureCell(instruction: store.getFeedCards()[indexPath.section].getInsightArgumentsArray()[indexPath.row])
+        switch expandButton.viewType {
+        case .instructionView:
+            cell.configureCell(instruction: store.getFeedCards()[indexPath.section].getDiyInstructions()[indexPath.row])
+        case .aimeeView:
+            cell.configureCell(instruction: store.getFeedCards()[indexPath.section].getInsightArgumentsArray()[indexPath.row])
+        }
         return cell
     }
     

@@ -11,10 +11,17 @@ import UIKit
 class ButtonWithContainer: UIButton {
 
     var parentView: IndividualTaskView!
+    var viewType: ParentView = .aimeeView
     
-    convenience init(view: IndividualTaskView) {
+    convenience init(view: IndividualTaskView, type: ParentView) {
         self.init(frame: CGRect.zero)
         parentView = view
+        viewType = type
     }
 
+}
+
+enum ParentView {
+    case aimeeView
+    case instructionView
 }
