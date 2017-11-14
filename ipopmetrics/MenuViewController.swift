@@ -77,12 +77,15 @@ class MenuViewController: ElasticModalViewController {
         navigationController.pushViewController(settingsVC, animated: false)
 
         self.presentFromDirection(viewController: navigationController, direction: .right)
-        
     }
     
-    
-    
-    
+    @IBAction func handlerChangeBrand(_ sender: Any) {
+        let changeBrandVC = ChangeBrandViewController()
+        let navController =  UINavigationController(rootViewController: changeBrandVC)
+        changeBrandVC.brandDelegate = self
+        
+        self.presentFromDirection(viewController: navController, direction: .right)
+    }
 }
 
 
@@ -110,3 +113,8 @@ extension ElasticModalViewController {
     }
 }
 
+extension MenuViewController: Brand {
+    func changeBrandName(name: String) {
+        
+    }
+}

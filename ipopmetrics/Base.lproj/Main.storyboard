@@ -162,7 +162,7 @@
                                 <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gav-CH-di9">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gav-CH-di9">
                                 <rect key="frame" x="29" y="124" width="120" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="p3S-lF-wJJ"/>
@@ -172,6 +172,9 @@
                                 <state key="normal" title="Change Brand">
                                     <color key="titleColor" red="0.25490196078431371" green="0.60784313725490191" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="handlerChangeBrand:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="xhh-0b-T5o"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HcS-fh-OPC">
                                 <rect key="frame" x="322" y="81" width="28" height="28"/>

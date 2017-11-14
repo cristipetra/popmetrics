@@ -73,7 +73,6 @@
 		08953E761F4C35AC003ABEFC /* RequiredAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E751F4C35AC003ABEFC /* RequiredAction.swift */; };
 		0899DA211FA33B1F00C3696C /* SocialPostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0899DA201FA33B1F00C3696C /* SocialPostDetailsViewController.swift */; };
 		089F93AB1FB5FE1E00155674 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089F93AA1FB5FE1E00155674 /* Settings.storyboard */; };
-		089F93AD1FB5FE3900155674 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089F93AC1FB5FE3900155674 /* SettingsViewController.swift */; };
 		089F93AF1FB602D700155674 /* SettingsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089F93AE1FB602D700155674 /* SettingsTableCell.xib */; };
 		08A4A53D1F458423001071E3 /* ToolbarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */; };
 		08A4A5411F45B563001071E3 /* AlfaSlabOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */; };
@@ -121,6 +120,8 @@
 		08B7ADE81FB1D18F00C56688 /* CardToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7ADE71FB1D18F00C56688 /* CardToolbarController.swift */; };
 		08B7ADEA1FB22B8300C56688 /* FooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7ADE91FB22B8300C56688 /* FooterViewController.swift */; };
 		08B8D9711F9A4443004E7781 /* RecommendActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B8D9701F9A4443004E7781 /* RecommendActionHandler.swift */; };
+		08B968AA1FBB141400482CDE /* ChangeBrandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B968A91FBB141400482CDE /* ChangeBrandViewController.swift */; };
+		08B968AC1FBB17FE00482CDE /* BrandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B968AB1FBB17FE00482CDE /* BrandTableViewCell.swift */; };
 		08BAD73E1F960A70008BC88F /* MJCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */; };
 		08BD58001F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */; };
 		08BD58021F7A2F3700FFDCFD /* IndividualTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */; };
@@ -298,7 +299,6 @@
 		08953E751F4C35AC003ABEFC /* RequiredAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredAction.swift; sourceTree = "<group>"; };
 		0899DA201FA33B1F00C3696C /* SocialPostDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialPostDetailsViewController.swift; sourceTree = "<group>"; };
 		089F93AA1FB5FE1E00155674 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
-		089F93AC1FB5FE3900155674 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		089F93AE1FB602D700155674 /* SettingsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableCell.xib; sourceTree = "<group>"; };
 		08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarViewCell.swift; sourceTree = "<group>"; };
 		08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AlfaSlabOne-Regular.ttf"; sourceTree = "<group>"; };
@@ -345,6 +345,8 @@
 		08B7ADE71FB1D18F00C56688 /* CardToolbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardToolbarController.swift; sourceTree = "<group>"; };
 		08B7ADE91FB22B8300C56688 /* FooterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterViewController.swift; sourceTree = "<group>"; };
 		08B8D9701F9A4443004E7781 /* RecommendActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendActionHandler.swift; sourceTree = "<group>"; };
+		08B968A91FBB141400482CDE /* ChangeBrandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeBrandViewController.swift; sourceTree = "<group>"; };
+		08B968AB1FBB17FE00482CDE /* BrandTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandTableViewCell.swift; sourceTree = "<group>"; };
 		08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJCalendarViewController.swift; sourceTree = "<group>"; };
 		08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedActionGoogleCitationView.swift; sourceTree = "<group>"; };
 		08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualTaskView.swift; sourceTree = "<group>"; };
@@ -661,6 +663,7 @@
 			isa = PBXGroup;
 			children = (
 				088F14F91FB9C6080004F925 /* StaticSettingsViewController.swift */,
+				08B968A91FBB141400482CDE /* ChangeBrandViewController.swift */,
 			);
 			name = settings;
 			sourceTree = "<group>";
@@ -712,6 +715,7 @@
 			children = (
 				089F93AA1FB5FE1E00155674 /* Settings.storyboard */,
 				089F93AE1FB602D700155674 /* SettingsTableCell.xib */,
+				08B968AB1FBB17FE00482CDE /* BrandTableViewCell.swift */,
 			);
 			name = settings;
 			sourceTree = "<group>";
@@ -823,7 +827,6 @@
 				083938FE1F63C334007DDA37 /* MainTabInfo.swift */,
 				08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */,
 				08B7ADE91FB22B8300C56688 /* FooterViewController.swift */,
-				089F93AC1FB5FE3900155674 /* SettingsViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -1521,7 +1524,6 @@
 				088B28281F7E43960015A66E /* TrafficVisitsViewCell.swift in Sources */,
 				116540C11EEACD4000417D61 /* UsersStore.swift in Sources */,
 				08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */,
-				089F93AD1FB5FE3900155674 /* SettingsViewController.swift in Sources */,
 				08AF049A1F46FBB60040012B /* ToDoCardCell.swift in Sources */,
 				1128B3FD1ED2E01F00BDA58C /* ActionViewCell.swift in Sources */,
 				085282741F28D9DE0065A968 /* CalendarFooterViewCell.swift in Sources */,
@@ -1552,6 +1554,7 @@
 				08B5D4BA1F29C28A00B79AD3 /* CalendarFeedStore.swift in Sources */,
 				08FAE84B1F54247B0097DF3E /* GradientView.swift in Sources */,
 				11D8D9F11ECB58AB00CCDAC4 /* RequiredActionViewCell.swift in Sources */,
+				08B968AA1FBB141400482CDE /* ChangeBrandViewController.swift in Sources */,
 				1120F2021ECDF93F00576E39 /* ArticleOfInterestViewCell.swift in Sources */,
 				085282701F2881BD0065A968 /* Calendar.swift in Sources */,
 				08B2803D1F55855500E36D19 /* StatisticsStore.swift in Sources */,
@@ -1563,6 +1566,7 @@
 				08D409CE1F73C3A800C5BB54 /* OnboardingFinalView.swift in Sources */,
 				116431DF1E2D4E81009AA59E /* UsersApi.swift in Sources */,
 				08A4A5431F45B5D6001071E3 /* TwoImagesButton.swift in Sources */,
+				08B968AC1FBB17FE00482CDE /* BrandTableViewCell.swift in Sources */,
 				08953E741F4C359E003ABEFC /* FooterView.swift in Sources */,
 				085F91011F716AD2008A339A /* OnboardingViewController.swift in Sources */,
 				08A5333E1F6C2E910080BE64 /* ButtonWithContainer.swift in Sources */,
