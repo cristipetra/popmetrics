@@ -84,7 +84,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="daL-Ie-esv">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="email" selectionStyle="default" indentationWidth="10" id="daL-Ie-esv">
                                         <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="daL-Ie-esv" id="Vi1-MV-dkp">
@@ -97,7 +97,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="usernamee@brand.com" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NeA-D3-zr2">
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="usernamee@brand.com" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NeA-D3-zr2">
                                                     <rect key="frame" x="163.5" y="10" width="191.5" height="24"/>
                                                     <color key="textColor" red="0.56078431370000004" green="0.56078431370000004" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
@@ -475,6 +475,11 @@
                             <outlet property="delegate" destination="F0u-YJ-867" id="yct-AV-Ten"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="name" destination="Ls9-G3-JL0" id="7d3-eR-BAq"/>
+                        <outlet property="phone" destination="Xl7-UJ-KaW" id="lH6-zD-ilf"/>
+                        <outlet property="professionalEmail" destination="NeA-D3-zr2" id="AQD-0i-XHV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sHW-Qa-f9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

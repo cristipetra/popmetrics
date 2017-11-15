@@ -10,14 +10,27 @@ import UIKit
 
 class StaticSettingsViewController: UITableViewController {
 
+    @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var phone: UITextField!
+    @IBOutlet weak var professionalEmail: UITextField!
+    
     let sectionTitles = ["USER IDENTITY", "NOTIFICATIONS", "BRAND IDENTITY", "SOCIAL ACCOUNTS", "DATA ACCOUNTS", "WEB OVERLAY"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView.backgroundColor = PopmetricsColor.tableBackground
-        tableView.allowsSelection = false
+        //tableView.allowsSelection = false
+        
         
         setUpNavigationBar()
+        updateView()
+    }
+    
+    private func updateView() {
+        let user = UsersStore.getInstance().getLocalUserAccount()
+        name.text = user.name
+        phone.text = user.phone
+        professionalEmail.text = user.email
     }
     
     func setUpNavigationBar() {
@@ -43,13 +56,14 @@ class StaticSettingsViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+    /*
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 61
     }
+     */
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let contentView: UIView  = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 61))
+        let contentView: UIView  = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 60))
         var title: UILabel = UILabel()
         title.font = UIFont(name: FontBook.regular, size: 12)
         title.textColor = PopmetricsColor.textGraySettings
@@ -61,5 +75,21 @@ class StaticSettingsViewController: UITableViewController {
         
         return contentView
     }
+ 
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(indexPath.row == 2) {
+            displaySettingsEmail()
+        }
+    }
+    
+    private func displaySettingsEmail() {
+        let emailVC = SettingsEmailViewController(nibName: "SettingsEmailView", bundle: nil)
+        self.navigationController?.pushViewController(emailVC, animated: true)
+    }
+    
 
 }

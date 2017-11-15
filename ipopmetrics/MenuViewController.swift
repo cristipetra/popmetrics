@@ -14,6 +14,7 @@ class MenuViewController: ElasticModalViewController {
     
     @IBOutlet weak var changeBrandBtn: UIButton!
     @IBOutlet weak var checkBtn: UIButton!
+    @IBOutlet weak var brandNameLabel: UILabel!
     
     @IBOutlet weak var closeButton: UIButton! {
         didSet {
@@ -115,6 +116,6 @@ extension ElasticModalViewController {
 
 extension MenuViewController: Brand {
     func changeBrandName(name: String) {
-        
+        brandNameLabel.text = name.uppercased()
     }
 }

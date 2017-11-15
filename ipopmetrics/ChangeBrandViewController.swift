@@ -17,6 +17,7 @@ class ChangeBrandViewController: UITableViewController {
     var previousIndex: IndexPath?
     var brandDelegate: Brand?
     var selectedBrand: String = ""
+    var didChangedBrand: Bool = false
     
     let tmpBrands = ["Brand Name 1", "Brand Name 2", "Brand Name 3", "Brand Name 4", "Brand Name 5",]
     
@@ -53,7 +54,10 @@ class ChangeBrandViewController: UITableViewController {
     }
     
     @objc func handlerClickBack() {
-        brandDelegate?.changeBrandName(name: selectedBrand)
+        if didChangedBrand {
+            UsersStore.brandIndex = (previousIndex?.row)!
+            brandDelegate?.changeBrandName(name: selectedBrand)
+        }
         self.navigationController?.dismissToDirection(direction: .left)
     }
     
@@ -74,7 +78,7 @@ class ChangeBrandViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "brandId", for: indexPath) as! BrandTableViewCell
         cell.brandName.text = tmpBrands[indexPath.row]
-        if indexPath.row == 0 {
+        if indexPath.row == UsersStore.brandIndex {
             cell.setupSelectedCell()
             previousIndex = indexPath
             selectedBrand = cell.brandName.text!
@@ -93,6 +97,7 @@ class ChangeBrandViewController: UITableViewController {
             let prevCell = tableView.cellForRow(at: previousIndex!) as! BrandTableViewCell
             prevCell.setDefault()
         }
+        didChangedBrand = true
         previousIndex = indexPath
         guard let cell = tableView.cellForRow(at: indexPath) as? BrandTableViewCell else {
             return

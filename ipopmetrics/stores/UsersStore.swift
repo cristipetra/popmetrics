@@ -117,5 +117,9 @@ class UsersStore {
         }
     }
     
+    
+    static var brandIndex: Int  = 0
+       
+    
 }
 

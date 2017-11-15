@@ -25,6 +25,7 @@ class GoogleActionViewController: UIViewController {
         return view
     }()
     
+    let store = FeedStore.getInstance()
     let aimeeView = IndividualTaskView()
     let instructionsView = IndividualTaskView()
     
@@ -157,7 +158,11 @@ class GoogleActionViewController: UIViewController {
         aimeeView.subtitleLabel.isHidden = true
         aimeeView.expandButton.parentView = aimeeView
         aimeeView.expandButton.viewType = .aimeeView
-        aimeeView.expandButton.addTarget(self, action: #selector(showHideContent(sender:)), for: .touchUpInside)
+        if !store.getFeedCards()[0].getInsightArgumentsArray().isEmpty {
+            aimeeView.expandButton.addTarget(self, action: #selector(showHideContent(sender:)), for: .touchUpInside)
+        } else {
+            aimeeView.expandButton.isHidden = true
+        }
     }
     
     func addInstructionView() {
@@ -182,7 +187,11 @@ class GoogleActionViewController: UIViewController {
         instructionsView.addShadow(radius: 2, opacity: 0.3, offset: CGSize(width: 0.0, height: 3.0))
         instructionsView.expandButton.parentView = instructionsView
         instructionsView.expandButton.viewType = .instructionView
-        instructionsView.expandButton.addTarget(self, action: #selector(showHideContent(sender:)), for: .touchUpInside)
+        if !store.getFeedCards()[0].getDiyInstructions().isEmpty {
+            instructionsView.expandButton.addTarget(self, action: #selector(showHideContent(sender:)), for: .touchUpInside)
+        } else {
+            instructionsView.expandButton.isHidden = true
+        }
     }
     
     @objc func showHideContent(sender: ButtonWithContainer) {

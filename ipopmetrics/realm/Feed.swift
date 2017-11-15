@@ -116,11 +116,16 @@ class FeedCard: Object, Mappable {
     }
     
     func getInsightArgumentsArray() -> [String] {
+        if self.insightArguments == nil {
+            return []
+        }
         return self.insightArguments?.toJSON() as! [String]
     }
     
     func getDiyInstructions() -> [String] {
-        return ["## markdown1", "##### markdown 2 *b"]
+        if self.diyInstructions == nil {
+            return []
+        }
         return self.diyInstructions?.toJSON() as! [String]
     }
     

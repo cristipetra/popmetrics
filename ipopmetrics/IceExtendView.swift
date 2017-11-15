@@ -49,7 +49,7 @@ class IceExtendView: UIView {
         addSubview(containerView)
         containerView.frame = self.bounds
         containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
+        containerView.layoutIfNeeded()
         
         setCornerRadious()
     }
@@ -209,7 +209,7 @@ class IceExtendView: UIView {
         var splitValues = feedCard.getIceImpactSplit()
         impactMultipleMainProgressView.clipsToBounds = true
         
-        var bounds: CGRect!
+        var bounds: CGRect! = CGRect.zero
         let progressColor: [UIColor] = [UIColor(red: 255/255, green: 34/255, blue: 105/255, alpha: 1),UIColor(red: 255/255, green: 157/255, blue: 103/255, alpha: 1), UIColor(red: 78/255, green: 198/255, blue: 255/255, alpha: 1), UIColor.green]
         
         if splitValues.count == 0 {
@@ -226,7 +226,7 @@ class IceExtendView: UIView {
         
         for index in 0..<splitValues.count {
             
-            delay(time: index * 2, closure: {
+            delay(time: index * 1, closure: {
                 if index == 0 {
                     bounds = self.calcProgressBounds(startingPos: 0)
                 } else {
@@ -262,10 +262,10 @@ class IceExtendView: UIView {
         
         guard let progress = NumberFormatter().number(from: value) else {return}
         
-        let progressValue = CGFloat(progress) / 100
+        let progressValue = CGFloat(truncating: progress) / 100
         
         impactProgressView.primaryColor = animationColor ?? UIColor.red//(red: 255/255, green: 227/255, blue: 130/255, alpha: 1)
-        impactProgressView.animationDuration = animationDuration == nil ? 2 : animationDuration!
+        impactProgressView.animationDuration = animationDuration == nil ? 0.8 : animationDuration!
         impactProgressView.borderWidth = 0
         impactProgressView.cornerRadius = 0
         

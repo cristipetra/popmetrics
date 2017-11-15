@@ -36,6 +36,8 @@
 		0855C0CB1F6FFBF000ACBFA9 /* EmptyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0855C0CA1F6FFBF000ACBFA9 /* EmptyCardView.swift */; };
 		0856F3581F272F020061DF7E /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0856F3571F272F020061DF7E /* Calendar.storyboard */; };
 		0857D5571F41B4E800D218DA /* CompleteCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0857D5561F41B4E800D218DA /* CompleteCardCell.swift */; };
+		08593DEE1FBB3B7600077A65 /* SettingsEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08593DED1FBB3B7600077A65 /* SettingsEmailViewController.swift */; };
+		08593DF01FBB440A00077A65 /* SettingsEmailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08593DEF1FBB440A00077A65 /* SettingsEmailView.xib */; };
 		085AA0D21F42E45A0014D4CE /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085AA0D11F42E45A0014D4CE /* TodoStore.swift */; };
 		085AA0D41F42ECAA0014D4CE /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085AA0D31F42ECAA0014D4CE /* Todo.swift */; };
 		085CB7B21F4ADCA200038C03 /* Notifications.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 085CB7B11F4ADCA200038C03 /* Notifications.storyboard */; };
@@ -73,7 +75,6 @@
 		08953E761F4C35AC003ABEFC /* RequiredAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E751F4C35AC003ABEFC /* RequiredAction.swift */; };
 		0899DA211FA33B1F00C3696C /* SocialPostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0899DA201FA33B1F00C3696C /* SocialPostDetailsViewController.swift */; };
 		089F93AB1FB5FE1E00155674 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089F93AA1FB5FE1E00155674 /* Settings.storyboard */; };
-		089F93AF1FB602D700155674 /* SettingsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089F93AE1FB602D700155674 /* SettingsTableCell.xib */; };
 		08A4A53D1F458423001071E3 /* ToolbarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */; };
 		08A4A5411F45B563001071E3 /* AlfaSlabOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */; };
 		08A4A5431F45B5D6001071E3 /* TwoImagesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4A5421F45B5D6001071E3 /* TwoImagesButton.swift */; };
@@ -261,6 +262,8 @@
 		0855C0CA1F6FFBF000ACBFA9 /* EmptyCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCardView.swift; sourceTree = "<group>"; };
 		0856F3571F272F020061DF7E /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		0857D5561F41B4E800D218DA /* CompleteCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteCardCell.swift; sourceTree = "<group>"; };
+		08593DED1FBB3B7600077A65 /* SettingsEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEmailViewController.swift; sourceTree = "<group>"; };
+		08593DEF1FBB440A00077A65 /* SettingsEmailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsEmailView.xib; sourceTree = "<group>"; };
 		085AA0D11F42E45A0014D4CE /* TodoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
 		085AA0D31F42ECAA0014D4CE /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		085CB7B11F4ADCA200038C03 /* Notifications.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notifications.storyboard; sourceTree = "<group>"; };
@@ -299,7 +302,6 @@
 		08953E751F4C35AC003ABEFC /* RequiredAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredAction.swift; sourceTree = "<group>"; };
 		0899DA201FA33B1F00C3696C /* SocialPostDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialPostDetailsViewController.swift; sourceTree = "<group>"; };
 		089F93AA1FB5FE1E00155674 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
-		089F93AE1FB602D700155674 /* SettingsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableCell.xib; sourceTree = "<group>"; };
 		08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarViewCell.swift; sourceTree = "<group>"; };
 		08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AlfaSlabOne-Regular.ttf"; sourceTree = "<group>"; };
 		08A4A5421F45B5D6001071E3 /* TwoImagesButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoImagesButton.swift; sourceTree = "<group>"; };
@@ -664,6 +666,7 @@
 			children = (
 				088F14F91FB9C6080004F925 /* StaticSettingsViewController.swift */,
 				08B968A91FBB141400482CDE /* ChangeBrandViewController.swift */,
+				08593DED1FBB3B7600077A65 /* SettingsEmailViewController.swift */,
 			);
 			name = settings;
 			sourceTree = "<group>";
@@ -714,8 +717,8 @@
 			isa = PBXGroup;
 			children = (
 				089F93AA1FB5FE1E00155674 /* Settings.storyboard */,
-				089F93AE1FB602D700155674 /* SettingsTableCell.xib */,
 				08B968AB1FBB17FE00482CDE /* BrandTableViewCell.swift */,
+				08593DEF1FBB440A00077A65 /* SettingsEmailView.xib */,
 			);
 			name = settings;
 			sourceTree = "<group>";
@@ -1272,6 +1275,7 @@
 				D9AB86581ECED85A0050A7AB /* InsightCard.xib in Resources */,
 				11AAA5E81ECCD52A0099B50E /* ActionHistoryCard.xib in Resources */,
 				08F368931F18F87800819CDE /* DailyInsightsCardCell.xib in Resources */,
+				08593DF01FBB440A00077A65 /* SettingsEmailView.xib in Resources */,
 				08A533341F6BD9060080BE64 /* MoreInfoViewCell.xib in Resources */,
 				08A812741F16601A00672126 /* HeaderCardCell.xib in Resources */,
 				080DCA831F4D9586000C73DC /* OpenSans-ExtraBold.ttf in Resources */,
@@ -1288,7 +1292,6 @@
 				088BBEAC1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				08BD580C1F7A6AD500FFDCFD /* OnboardingFinalView.xib in Resources */,
 				1128B3F61ECF256600BDA58C /* Info.plist in Resources */,
-				089F93AF1FB602D700155674 /* SettingsTableCell.xib in Resources */,
 				08C6FBFB1F41FFCB007D6101 /* Todo.storyboard in Resources */,
 				08F368971F19029100819CDE /* LastCard.xib in Resources */,
 				08AF04981F46FB9B0040012B /* ToDoCardCell.xib in Resources */,
@@ -1604,6 +1607,7 @@
 				08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */,
 				088E77AD1F7D499400774F13 /* TrafficStatsTableViewController.swift in Sources */,
 				08F368951F18F93800819CDE /* DailyInsightsCardCell.swift in Sources */,
+				08593DEE1FBB3B7600077A65 /* SettingsEmailViewController.swift in Sources */,
 				08B2803F1F55862100E36D19 /* Statistics.swift in Sources */,
 				08BAD73E1F960A70008BC88F /* MJCalendarViewController.swift in Sources */,
 				085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */,

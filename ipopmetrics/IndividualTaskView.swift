@@ -130,15 +130,7 @@ class IndividualTaskView: UIView {
         aimeeTableview.rightAnchor.constraint(equalTo: containerStackView.rightAnchor).isActive = true
         aimeeTableview.topAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
         
-        let rowCount = store.getFeedCards()[0].getDiyInstructions().count
-        
-        if rowCount > 4 {
-            aimeeTableview.heightAnchor.constraint(equalToConstant: 300).isActive = true
-        } else {
-            aimeeTableview.heightAnchor.constraint(equalToConstant: CGFloat(rowCount) * 60).isActive = true
-        }
-        
-        
+       aimeeTableview.heightAnchor.constraint(equalToConstant: 120).isActive = true
     }
     
     func setUpcontainerStackView() {
