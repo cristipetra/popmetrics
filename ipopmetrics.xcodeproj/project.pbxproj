@@ -10,6 +10,8 @@
 		08078F391FBDA92600A4399D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08078F381FBDA92600A4399D /* Alert.swift */; };
 		08078F3B1FBDB4F500A4399D /* SettingsFacebookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08078F3A1FBDB4F500A4399D /* SettingsFacebookView.xib */; };
 		08078F3D1FBDB58D00A4399D /* SettingsFacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08078F3C1FBDB58D00A4399D /* SettingsFacebookViewController.swift */; };
+		08078F3F1FBDE45200A4399D /* SettingsOverlayActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08078F3E1FBDE45200A4399D /* SettingsOverlayActionView.xib */; };
+		08078F421FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08078F411FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift */; };
 		0809AEB41F22183400A13178 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0809AEB31F22183400A13178 /* Constants.swift */; };
 		080DCA811F4D6EE6000C73DC /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DCA801F4D6EE6000C73DC /* MenuViewController.swift */; };
 		080DCA831F4D9586000C73DC /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 080DCA821F4D9586000C73DC /* OpenSans-ExtraBold.ttf */; };
@@ -243,6 +245,8 @@
 		08078F381FBDA92600A4399D /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		08078F3A1FBDB4F500A4399D /* SettingsFacebookView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsFacebookView.xib; sourceTree = "<group>"; };
 		08078F3C1FBDB58D00A4399D /* SettingsFacebookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFacebookViewController.swift; sourceTree = "<group>"; };
+		08078F3E1FBDE45200A4399D /* SettingsOverlayActionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsOverlayActionView.xib; sourceTree = "<group>"; };
+		08078F411FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOverlayActionViewController.swift; sourceTree = "<group>"; };
 		0809AEB31F22183400A13178 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		080DCA801F4D6EE6000C73DC /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		080DCA821F4D9586000C73DC /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -494,6 +498,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08078F401FBDE6EC00A4399D /* overlay */ = {
+			isa = PBXGroup;
+			children = (
+				08078F411FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift */,
+			);
+			name = overlay;
+			sourceTree = "<group>";
+		};
 		080DCA7F1F4D6ED5000C73DC /* menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -678,6 +690,7 @@
 		088F14F81FB9C5EF0004F925 /* settings */ = {
 			isa = PBXGroup;
 			children = (
+				08078F401FBDE6EC00A4399D /* overlay */,
 				088F14F91FB9C6080004F925 /* StaticSettingsViewController.swift */,
 				08B968A91FBB141400482CDE /* ChangeBrandViewController.swift */,
 				08593DED1FBB3B7600077A65 /* SettingsEmailViewController.swift */,
@@ -739,6 +752,7 @@
 				08593DEF1FBB440A00077A65 /* SettingsEmailView.xib */,
 				08CC6EC11FBC7FBA00A6521E /* SettingsLogoView.xib */,
 				08078F3A1FBDB4F500A4399D /* SettingsFacebookView.xib */,
+				08078F3E1FBDE45200A4399D /* SettingsOverlayActionView.xib */,
 			);
 			name = settings;
 			sourceTree = "<group>";
@@ -1305,6 +1319,7 @@
 				085054011F2793AE00FE8234 /* CalendarCard.xib in Resources */,
 				08A533381F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib in Resources */,
 				1178D6821E1E5AD9005B96C3 /* Assets.xcassets in Resources */,
+				08078F3F1FBDE45200A4399D /* SettingsOverlayActionView.xib in Resources */,
 				08C7B18D1F1CF40C00E456C6 /* WelcomeScreen.xib in Resources */,
 				08A4A5411F45B563001071E3 /* AlfaSlabOne-Regular.ttf in Resources */,
 				0855C0C91F6FFBDB00ACBFA9 /* EmptyCard.xib in Resources */,
@@ -1553,6 +1568,7 @@
 				08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */,
 				08AF049A1F46FBB60040012B /* ToDoCardCell.swift in Sources */,
 				1128B3FD1ED2E01F00BDA58C /* ActionViewCell.swift in Sources */,
+				08078F421FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift in Sources */,
 				085282741F28D9DE0065A968 /* CalendarFooterViewCell.swift in Sources */,
 				085599A31F72750000E5BEA1 /* SplashScreen.swift in Sources */,
 				08F3688B1F18DC4900819CDE /* ApprovalCardCell.swift in Sources */,

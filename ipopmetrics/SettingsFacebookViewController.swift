@@ -10,11 +10,21 @@ import UIKit
 
 class SettingsFacebookViewController: SettingsBaseViewController {
 
+    @IBOutlet weak var brandURLLabel: UILabel!
+    @IBOutlet weak var brandNameLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        titleWindow = "FACEBOOK ACCOUNT"
+        //titleWindow = "FACEBOOK ACCOUNT"
         setupNavigationWithBackButton()
+    }
+    
+    func displayTwitter() {
+        titleWindow = "TWITTER ACCOUNT"
+    }
+    
+    func displayLinkedin() {
+        titleWindow = "LINKEDIN ACCOUNT"
     }
 
 }

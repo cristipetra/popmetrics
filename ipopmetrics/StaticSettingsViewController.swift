@@ -21,13 +21,13 @@ class StaticSettingsViewController: UITableViewController {
         self.tableView.backgroundColor = PopmetricsColor.tableBackground
         //tableView.allowsSelection = false
         
-        
         setUpNavigationBar()
         updateView()
     }
     
     private func updateView() {
         let user = UsersStore.getInstance().getLocalUserAccount()
+        
         name.text = user.name
         phone.text = user.phone
         professionalEmail.text = user.email
@@ -82,15 +82,33 @@ class StaticSettingsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath)
-        if(indexPath.row == 2) {
+        if(indexPath.section == 0 && indexPath.row == 2) {
             displaySettingsEmail()
         } else if (indexPath.section == 2 && indexPath.row == 1) {
             displaySettingsLogo()
         } else if (indexPath.section == 3 && indexPath.row == 0) {
             displayFacebook()
+        } else if (indexPath.section == 3 && indexPath.row == 1) {
+            displayTwitter()
+        } else if (indexPath.section == 3 && indexPath.row == 2) {
+            displayLinkedin()
         } else if (indexPath.section == 4 && indexPath.row == 0) {
             displayGASettings()
+        } else if (indexPath.section == 5 && indexPath.row == 0) {
+            displayOverlay()
         }
+    }
+    
+    private func displayTwitter() {
+        let twitterVC = SettingsFacebookViewController(nibName: "SettingsFacebookView", bundle: nil)
+        twitterVC.displayTwitter()
+        self.navigationController?.pushViewController(twitterVC, animated: true)
+    }
+    
+    private func displayLinkedin() {
+        let linkedinVC = SettingsFacebookViewController(nibName: "SettingsFacebookView", bundle: nil)
+        linkedinVC.displayLinkedin()
+        self.navigationController?.pushViewController(linkedinVC, animated: true)
     }
     
     private func displaySettingsEmail() {
@@ -111,6 +129,11 @@ class StaticSettingsViewController: UITableViewController {
     private func displayGASettings() {
         let gaVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "settingsGA") as! SettingsGAViewController
         self.navigationController?.pushViewController(gaVC, animated: true)
+    }
+    
+    private func displayOverlay() {
+        let overlayVC = SettingsOverlayActionViewController(nibName: "SettingsOverlayActionView", bundle: nil)
+        self.navigationController?.pushViewController(overlayVC, animated: true)
     }
 
 }

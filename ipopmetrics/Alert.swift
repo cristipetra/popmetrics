@@ -37,4 +37,30 @@ class Alert {
         parent?.present(alertController, animated: true, completion: nil)
         //UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
+    
+    static func showActionSheet(parent: UIViewController?) {
+        // create an actionSheet
+        let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        // create an action
+        let firstAction: UIAlertAction = UIAlertAction(title: "Take Photo", style: .default) { action -> Void in
+            
+            print("First Action pressed")
+        }
+        
+        let secondAction: UIAlertAction = UIAlertAction(title: "Choose From Library", style: .default) { action -> Void in
+            
+            print("Second Action pressed")
+        }
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in }
+        
+        // add actions
+        actionSheetController.addAction(firstAction)
+        actionSheetController.addAction(secondAction)
+        actionSheetController.addAction(cancelAction)
+        
+        // present an actionSheet...
+        parent?.present(actionSheetController, animated: true, completion: nil)
+    }
 }

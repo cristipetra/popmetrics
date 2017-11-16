@@ -56,7 +56,8 @@ class SettingsLogoViewController: SettingsBaseViewController, UINavigationContro
     }
     
     func showAlertDialog() {
-        Alert.showAlertDialog(parent: self)
+        //Alert.showAlertDialog(parent: self)
+        Alert.showActionSheet(parent: self)
     }
     
 }

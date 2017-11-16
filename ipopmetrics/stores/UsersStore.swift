@@ -119,7 +119,7 @@ class UsersStore {
     
     
     static var brandIndex: Int  = 0
-       
+    static var overlayIndex: Int = 0
     
 }
 
