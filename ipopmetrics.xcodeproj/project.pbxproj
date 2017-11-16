@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08078F391FBDA92600A4399D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08078F381FBDA92600A4399D /* Alert.swift */; };
 		0809AEB41F22183400A13178 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0809AEB31F22183400A13178 /* Constants.swift */; };
 		080DCA811F4D6EE6000C73DC /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DCA801F4D6EE6000C73DC /* MenuViewController.swift */; };
 		080DCA831F4D9586000C73DC /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 080DCA821F4D9586000C73DC /* OpenSans-ExtraBold.ttf */; };
@@ -237,6 +238,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08078F381FBDA92600A4399D /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		0809AEB31F22183400A13178 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		080DCA801F4D6EE6000C73DC /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		080DCA821F4D9586000C73DC /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -677,6 +679,7 @@
 				08593DED1FBB3B7600077A65 /* SettingsEmailViewController.swift */,
 				08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */,
 				0857AB641FBC98D1002B9F53 /* SettingsGAViewController.swift */,
+				08078F381FBDA92600A4399D /* Alert.swift */,
 			);
 			name = settings;
 			sourceTree = "<group>";
@@ -1572,6 +1575,7 @@
 				08FAE84B1F54247B0097DF3E /* GradientView.swift in Sources */,
 				11D8D9F11ECB58AB00CCDAC4 /* RequiredActionViewCell.swift in Sources */,
 				08B968AA1FBB141400482CDE /* ChangeBrandViewController.swift in Sources */,
+				08078F391FBDA92600A4399D /* Alert.swift in Sources */,
 				1120F2021ECDF93F00576E39 /* ArticleOfInterestViewCell.swift in Sources */,
 				085282701F2881BD0065A968 /* Calendar.swift in Sources */,
 				08B2803D1F55855500E36D19 /* StatisticsStore.swift in Sources */,

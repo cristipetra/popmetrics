@@ -10,17 +10,16 @@ import UIKit
 
 class SettingsBaseViewController: UIViewController {
 
-    private let titleLabel: UILabel = UILabel()
-    internal var cancelButton: UIBarButtonItem = UIBarButtonItem()
+    internal let titleLabel: UILabel = UILabel()
+    internal var cancelButton: UIBarButtonItem!
     internal var doneButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    internal func setUpNavigationBar() {
-        
-        titleLabel.text  = ""
+    internal func setupNavigationBar() {
+        titleLabel.textAlignment = .center
         let sideBtnFont: UIFont!
         
         titleLabel.textColor = UIColor.black
@@ -42,21 +41,24 @@ class SettingsBaseViewController: UIViewController {
         
         self.navigationItem.titleView = titleView
         
-        //cancelButton = UIBarButtonItem(title: "Cancel", style: .done, target: self)
-        //cancelButton = UIBarButtonItem()
-        cancelButton.title = "Cancel"
-        cancelButton.style = .done
+        cancelButton = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(cancelHandler))
         cancelButton.tintColor = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1)
         cancelButton.setTitleTextAttributes([NSAttributedStringKey.font: sideBtnFont], for: .normal)
         
-        doneButton = UIBarButtonItem()
-        doneButton.title = "Done"
-        doneButton.style = .done
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneHandler))
         doneButton.tintColor = UIColor(red: 65/255, green: 155/255, blue: 249/255, alpha: 1)
         doneButton.setTitleTextAttributes([NSAttributedStringKey.font: sideBtnFont], for: .normal)
         
         self.navigationItem.leftBarButtonItem = cancelButton
         self.navigationItem.rightBarButtonItem = doneButton
+    }
+    
+    @objc func doneHandler() {
+        
+    }
+    
+    @objc func cancelHandler() {
+        
     }
 
 }
