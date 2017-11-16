@@ -86,6 +86,8 @@ class StaticSettingsViewController: UITableViewController {
             displaySettingsEmail()
         } else if (indexPath.section == 2 && indexPath.row == 1) {
             displaySettingsLogo()
+        } else if (indexPath.section == 3 && indexPath.row == 0) {
+            displayFacebook()
         } else if (indexPath.section == 4 && indexPath.row == 0) {
             displayGASettings()
         }
@@ -99,6 +101,11 @@ class StaticSettingsViewController: UITableViewController {
     private func displaySettingsLogo() {
         let logoVC = SettingsLogoViewController(nibName: "SettingsLogoView", bundle: nil)
         self.navigationController?.pushViewController(logoVC, animated: true)
+    }
+    
+    private func displayFacebook() {
+        let facebookVC = SettingsFacebookViewController(nibName: "SettingsFacebookView", bundle: nil)
+        self.navigationController?.pushViewController(facebookVC, animated: true)
     }
     
     private func displayGASettings() {

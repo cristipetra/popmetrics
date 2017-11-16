@@ -21,7 +21,7 @@ class SettingsLogoViewController: SettingsBaseViewController, UINavigationContro
         logoImageView.addGestureRecognizer(imageViewTap)
         
         
-        titleLabel.text = "Brand Logo"
+        titleWindow = "Brand Logo"
         setupNavigationBar()
         
     }

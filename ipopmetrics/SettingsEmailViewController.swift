@@ -18,7 +18,7 @@ class SettingsEmailViewController: SettingsBaseViewController {
 
         updateView()
         
-        titleLabel.text = "Professional Email"
+        titleWindow = "Professional Email"
         setupNavigationBar()
     }
     

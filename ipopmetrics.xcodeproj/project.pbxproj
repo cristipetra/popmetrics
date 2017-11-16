@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		08078F391FBDA92600A4399D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08078F381FBDA92600A4399D /* Alert.swift */; };
+		08078F3B1FBDB4F500A4399D /* SettingsFacebookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08078F3A1FBDB4F500A4399D /* SettingsFacebookView.xib */; };
+		08078F3D1FBDB58D00A4399D /* SettingsFacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08078F3C1FBDB58D00A4399D /* SettingsFacebookViewController.swift */; };
 		0809AEB41F22183400A13178 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0809AEB31F22183400A13178 /* Constants.swift */; };
 		080DCA811F4D6EE6000C73DC /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DCA801F4D6EE6000C73DC /* MenuViewController.swift */; };
 		080DCA831F4D9586000C73DC /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 080DCA821F4D9586000C73DC /* OpenSans-ExtraBold.ttf */; };
@@ -239,6 +241,8 @@
 
 /* Begin PBXFileReference section */
 		08078F381FBDA92600A4399D /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		08078F3A1FBDB4F500A4399D /* SettingsFacebookView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsFacebookView.xib; sourceTree = "<group>"; };
+		08078F3C1FBDB58D00A4399D /* SettingsFacebookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFacebookViewController.swift; sourceTree = "<group>"; };
 		0809AEB31F22183400A13178 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		080DCA801F4D6EE6000C73DC /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		080DCA821F4D9586000C73DC /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -680,6 +684,7 @@
 				08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */,
 				0857AB641FBC98D1002B9F53 /* SettingsGAViewController.swift */,
 				08078F381FBDA92600A4399D /* Alert.swift */,
+				08078F3C1FBDB58D00A4399D /* SettingsFacebookViewController.swift */,
 			);
 			name = settings;
 			sourceTree = "<group>";
@@ -733,6 +738,7 @@
 				08B968AB1FBB17FE00482CDE /* BrandTableViewCell.swift */,
 				08593DEF1FBB440A00077A65 /* SettingsEmailView.xib */,
 				08CC6EC11FBC7FBA00A6521E /* SettingsLogoView.xib */,
+				08078F3A1FBDB4F500A4399D /* SettingsFacebookView.xib */,
 			);
 			name = settings;
 			sourceTree = "<group>";
@@ -1266,6 +1272,7 @@
 				08953E6B1F4C269E003ABEFC /* ToDoCell.xib in Resources */,
 				08B745941F1F6C0100EC3F8C /* OpenSans-Bold.ttf in Resources */,
 				08FAE8411F541D060097DF3E /* Statistics.storyboard in Resources */,
+				08078F3B1FBDB4F500A4399D /* SettingsFacebookView.xib in Resources */,
 				0856F3581F272F020061DF7E /* Calendar.storyboard in Resources */,
 				0854AF351F3F2B18007B60F9 /* CalendarCardSimple.xib in Resources */,
 				085CB7B21F4ADCA200038C03 /* Notifications.storyboard in Resources */,
@@ -1557,6 +1564,7 @@
 				1128B3FF1ED2E12300BDA58C /* InsightViewCell.swift in Sources */,
 				08BD58041F7A312900FFDCFD /* VerifySocialViewController.swift in Sources */,
 				08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */,
+				08078F3D1FBDB58D00A4399D /* SettingsFacebookViewController.swift in Sources */,
 				0862C4D81FA1F5C300BEF0BC /* SocialPostDetailsView.swift in Sources */,
 				0855C0CB1F6FFBF000ACBFA9 /* EmptyCardView.swift in Sources */,
 				088E77AF1F7D4A8E00774F13 /* TrafficStatus.swift in Sources */,
