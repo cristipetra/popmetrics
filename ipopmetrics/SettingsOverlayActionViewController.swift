@@ -70,5 +70,9 @@ class SettingsOverlayActionViewController: SettingsBaseViewController, UITableVi
         cell.setupSelectedCell()
     }
     
+    override func cancelHandler() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
 
