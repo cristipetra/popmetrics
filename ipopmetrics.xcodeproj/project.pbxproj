@@ -35,6 +35,8 @@
 		0855C0C91F6FFBDB00ACBFA9 /* EmptyCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0855C0C81F6FFBDB00ACBFA9 /* EmptyCard.xib */; };
 		0855C0CB1F6FFBF000ACBFA9 /* EmptyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0855C0CA1F6FFBF000ACBFA9 /* EmptyCardView.swift */; };
 		0856F3581F272F020061DF7E /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0856F3571F272F020061DF7E /* Calendar.storyboard */; };
+		0857AB631FBC91B3002B9F53 /* SettingsBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0857AB621FBC91B3002B9F53 /* SettingsBaseViewController.swift */; };
+		0857AB651FBC98D1002B9F53 /* SettingsGAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0857AB641FBC98D1002B9F53 /* SettingsGAViewController.swift */; };
 		0857D5571F41B4E800D218DA /* CompleteCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0857D5561F41B4E800D218DA /* CompleteCardCell.swift */; };
 		08593DEE1FBB3B7600077A65 /* SettingsEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08593DED1FBB3B7600077A65 /* SettingsEmailViewController.swift */; };
 		08593DF01FBB440A00077A65 /* SettingsEmailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08593DEF1FBB440A00077A65 /* SettingsEmailView.xib */; };
@@ -134,6 +136,8 @@
 		08C6FBFD1F4205EF007D6101 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */; };
 		08C7B18D1F1CF40C00E456C6 /* WelcomeScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C7B18C1F1CF40C00E456C6 /* WelcomeScreen.xib */; };
 		08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */; };
+		08CC6EC01FBC7F9C00A6521E /* SettingsLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */; };
+		08CC6EC21FBC7FBA00A6521E /* SettingsLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08CC6EC11FBC7FBA00A6521E /* SettingsLogoView.xib */; };
 		08D1BC371F1DF4F900D377B2 /* ViewNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC361F1DF4F900D377B2 /* ViewNames.swift */; };
 		08D1BC391F1E3D6200D377B2 /* LDSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC381F1E3D6200D377B2 /* LDSplashView.swift */; };
 		08D1BC3B1F1E568A00D377B2 /* PhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC3A1F1E568A00D377B2 /* PhoneView.swift */; };
@@ -261,6 +265,8 @@
 		0855C0C81F6FFBDB00ACBFA9 /* EmptyCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyCard.xib; sourceTree = "<group>"; };
 		0855C0CA1F6FFBF000ACBFA9 /* EmptyCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCardView.swift; sourceTree = "<group>"; };
 		0856F3571F272F020061DF7E /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
+		0857AB621FBC91B3002B9F53 /* SettingsBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBaseViewController.swift; sourceTree = "<group>"; };
+		0857AB641FBC98D1002B9F53 /* SettingsGAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGAViewController.swift; sourceTree = "<group>"; };
 		0857D5561F41B4E800D218DA /* CompleteCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteCardCell.swift; sourceTree = "<group>"; };
 		08593DED1FBB3B7600077A65 /* SettingsEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEmailViewController.swift; sourceTree = "<group>"; };
 		08593DEF1FBB440A00077A65 /* SettingsEmailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsEmailView.xib; sourceTree = "<group>"; };
@@ -360,6 +366,8 @@
 		08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
 		08C7B18C1F1CF40C00E456C6 /* WelcomeScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WelcomeScreen.xib; path = views/WelcomeScreen.xib; sourceTree = "<group>"; };
 		08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
+		08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLogoViewController.swift; sourceTree = "<group>"; };
+		08CC6EC11FBC7FBA00A6521E /* SettingsLogoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsLogoView.xib; sourceTree = "<group>"; };
 		08D1BC361F1DF4F900D377B2 /* ViewNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewNames.swift; sourceTree = "<group>"; };
 		08D1BC381F1E3D6200D377B2 /* LDSplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDSplashView.swift; sourceTree = "<group>"; };
 		08D1BC3A1F1E568A00D377B2 /* PhoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneView.swift; sourceTree = "<group>"; };
@@ -667,6 +675,8 @@
 				088F14F91FB9C6080004F925 /* StaticSettingsViewController.swift */,
 				08B968A91FBB141400482CDE /* ChangeBrandViewController.swift */,
 				08593DED1FBB3B7600077A65 /* SettingsEmailViewController.swift */,
+				08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */,
+				0857AB641FBC98D1002B9F53 /* SettingsGAViewController.swift */,
 			);
 			name = settings;
 			sourceTree = "<group>";
@@ -719,6 +729,7 @@
 				089F93AA1FB5FE1E00155674 /* Settings.storyboard */,
 				08B968AB1FBB17FE00482CDE /* BrandTableViewCell.swift */,
 				08593DEF1FBB440A00077A65 /* SettingsEmailView.xib */,
+				08CC6EC11FBC7FBA00A6521E /* SettingsLogoView.xib */,
 			);
 			name = settings;
 			sourceTree = "<group>";
@@ -1089,6 +1100,7 @@
 				08A4A5421F45B5D6001071E3 /* TwoImagesButton.swift */,
 				08FAE84A1F54247B0097DF3E /* GradientView.swift */,
 				088CB18A1F8B658900809A51 /* ReachabilityManager.swift */,
+				0857AB621FBC91B3002B9F53 /* SettingsBaseViewController.swift */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -1256,6 +1268,7 @@
 				085CB7B21F4ADCA200038C03 /* Notifications.storyboard in Resources */,
 				116540BD1EEAC3A600417D61 /* Signin.storyboard in Resources */,
 				D9D937881ECDDF4C00CC3EC2 /* ArticleOfInterestCard.xib in Resources */,
+				08CC6EC21FBC7FBA00A6521E /* SettingsLogoView.xib in Resources */,
 				08B324D81F98C65A00BB4905 /* IceExtendView.xib in Resources */,
 				D9EC7E371ECF0D7E00A54B53 /* ActionCard.xib in Resources */,
 				08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */,
@@ -1520,6 +1533,7 @@
 				085AA0D41F42ECAA0014D4CE /* Todo.swift in Sources */,
 				113976A91E97C71300B535DF /* AccountViewController.swift in Sources */,
 				08953E761F4C35AC003ABEFC /* RequiredAction.swift in Sources */,
+				08CC6EC01FBC7F9C00A6521E /* SettingsLogoViewController.swift in Sources */,
 				08B4BCE11F619D4200660F5B /* GoogleActionViewController.swift in Sources */,
 				1100F6F51F5E0E6F000AF1D4 /* TodoApi.swift in Sources */,
 				08BF9D4E1F45F2EF00141206 /* TableFooterView.swift in Sources */,
@@ -1580,6 +1594,7 @@
 				08B324DA1F98C6AE00BB4905 /* IceExtendView.swift in Sources */,
 				08C6FBFD1F4205EF007D6101 /* ToDoViewController.swift in Sources */,
 				08B7ADE81FB1D18F00C56688 /* CardToolbarController.swift in Sources */,
+				0857AB651FBC98D1002B9F53 /* SettingsGAViewController.swift in Sources */,
 				11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */,
 				113976AB1E97C74B00B535DF /* BaseViewController.swift in Sources */,
 				080DCA881F4D9716000C73DC /* RecommendedCell.swift in Sources */,
@@ -1643,6 +1658,7 @@
 				08B5D4BE1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift in Sources */,
 				1120F2001ECDF4F200576E39 /* RequiredActionHandler.swift in Sources */,
 				116540BF1EEAC61E00417D61 /* AppStoryboard.swift in Sources */,
+				0857AB631FBC91B3002B9F53 /* SettingsBaseViewController.swift in Sources */,
 				0888C5BE1F4EECEC00E3DB04 /* RoundedCornersButton.swift in Sources */,
 				08AD60DA1F5FF63D007095B9 /* TodoCardMaximizedViewCell.swift in Sources */,
 			);

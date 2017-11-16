@@ -81,8 +81,13 @@ class StaticSettingsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath)
         if(indexPath.row == 2) {
             displaySettingsEmail()
+        } else if (indexPath.section == 2 && indexPath.row == 1) {
+            displaySettingsLogo()
+        } else if (indexPath.section == 4 && indexPath.row == 0) {
+            displayGASettings()
         }
     }
     
@@ -91,5 +96,14 @@ class StaticSettingsViewController: UITableViewController {
         self.navigationController?.pushViewController(emailVC, animated: true)
     }
     
+    private func displaySettingsLogo() {
+        let logoVC = SettingsLogoViewController(nibName: "SettingsLogoView", bundle: nil)
+        self.navigationController?.pushViewController(logoVC, animated: true)
+    }
+    
+    private func displayGASettings() {
+        let gaVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "settingsGA") as! SettingsGAViewController
+        self.navigationController?.pushViewController(gaVC, animated: true)
+    }
 
 }
