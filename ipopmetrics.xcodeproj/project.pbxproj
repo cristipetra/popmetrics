@@ -12,6 +12,7 @@
 		08078F3D1FBDB58D00A4399D /* SettingsFacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08078F3C1FBDB58D00A4399D /* SettingsFacebookViewController.swift */; };
 		08078F3F1FBDE45200A4399D /* SettingsOverlayActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08078F3E1FBDE45200A4399D /* SettingsOverlayActionView.xib */; };
 		08078F421FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08078F411FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift */; };
+		08078F441FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08078F431FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift */; };
 		0809AEB41F22183400A13178 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0809AEB31F22183400A13178 /* Constants.swift */; };
 		080DCA811F4D6EE6000C73DC /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DCA801F4D6EE6000C73DC /* MenuViewController.swift */; };
 		080DCA831F4D9586000C73DC /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 080DCA821F4D9586000C73DC /* OpenSans-ExtraBold.ttf */; };
@@ -247,6 +248,7 @@
 		08078F3C1FBDB58D00A4399D /* SettingsFacebookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFacebookViewController.swift; sourceTree = "<group>"; };
 		08078F3E1FBDE45200A4399D /* SettingsOverlayActionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsOverlayActionView.xib; sourceTree = "<group>"; };
 		08078F411FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOverlayActionViewController.swift; sourceTree = "<group>"; };
+		08078F431FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOverlayDescriptionViewController.swift; sourceTree = "<group>"; };
 		0809AEB31F22183400A13178 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		080DCA801F4D6EE6000C73DC /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		080DCA821F4D9586000C73DC /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 			isa = PBXGroup;
 			children = (
 				08078F411FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift */,
+				08078F431FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift */,
 			);
 			name = overlay;
 			sourceTree = "<group>";
@@ -1657,6 +1660,7 @@
 				088CB18B1F8B658900809A51 /* ReachabilityManager.swift in Sources */,
 				08B745981F1F718300EC3F8C /* CodeViewController.swift in Sources */,
 				0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */,
+				08078F441FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift in Sources */,
 				08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */,
 				11D8D9E91ECA37FC00CCDAC4 /* NavigationController.swift in Sources */,
 				08B7ADEA1FB22B8300C56688 /* FooterViewController.swift in Sources */,

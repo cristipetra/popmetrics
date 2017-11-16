@@ -505,7 +505,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="129831294R1HF9HG9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyP-Fu-qTu">
-                                                    <rect key="frame" x="8" y="12.5" width="172.5" height="20"/>
+                                                    <rect key="frame" x="8" y="10.5" width="173.5" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -530,7 +530,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://www.brandname.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGm-sL-aGB">
-                                                    <rect key="frame" x="8" y="12.5" width="213.5" height="20"/>
+                                                    <rect key="frame" x="8" y="10.5" width="225" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -555,7 +555,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lj-6p-4Rm">
-                                                    <rect key="frame" x="8" y="6" width="250" height="32"/>
+                                                    <rect key="frame" x="8" y="4" width="250" height="36"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="250" id="Gum-EK-bld"/>
                                                     </constraints>
@@ -589,16 +589,16 @@
             </objects>
             <point key="canvasLocation" x="1620" y="88"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings Overlay Description View Controller-->
         <scene sceneID="etg-LT-U62">
             <objects>
-                <viewController id="1wU-hs-Bq6" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="overlayDescription" id="1wU-hs-Bq6" customClass="SettingsOverlayDescriptionViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I2M-bi-kMo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OVERLAY ACTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oab-rk-mc8">
-                                <rect key="frame" x="20" y="40" width="109.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OVERLAY DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oab-rk-mc8">
+                                <rect key="frame" x="20" y="40" width="140.5" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Ztg-k1-91b"/>
                                 </constraints>
@@ -612,6 +612,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="qSO-3a-MeS"/>
                                 </constraints>
+                                <inset key="scrollIndicatorInsets" minX="25" minY="0.0" maxX="25" maxY="0.0"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  </string>
@@ -624,11 +625,21 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="overlayDescription" translatesAutoresizingMaskIntoConstraints="NO" id="8WJ-9r-yvz">
-                                <rect key="frame" x="10" y="251" width="355" height="110"/>
+                                <rect key="frame" x="10" y="230" width="355" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="iPf-9R-UGK"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cko-38-PVS">
+                                <rect key="frame" x="20" y="360" width="335" height="184"/>
+                                <string key="text">The Overlay is a popup banner that will appear above the content you share on your social media channel. This way you can automatically advertise your company and route traffic to your website. 
+
+You can adjust your overlay to better match the look and feel of your brand.
+</string>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -636,8 +647,11 @@
                             <constraint firstItem="Abj-Yo-X7A" firstAttribute="top" secondItem="QqX-6a-jBP" secondAttribute="bottom" constant="-170" id="I7k-kS-FV4"/>
                             <constraint firstItem="Abj-Yo-X7A" firstAttribute="trailing" secondItem="8WJ-9r-yvz" secondAttribute="trailing" constant="10" id="QhZ-mA-iaU"/>
                             <constraint firstItem="QqX-6a-jBP" firstAttribute="leading" secondItem="Abj-Yo-X7A" secondAttribute="leading" id="TUH-gZ-9mg"/>
-                            <constraint firstItem="8WJ-9r-yvz" firstAttribute="top" secondItem="QqX-6a-jBP" secondAttribute="bottom" constant="61" id="Y1z-X7-ajt"/>
+                            <constraint firstItem="Cko-38-PVS" firstAttribute="top" secondItem="8WJ-9r-yvz" secondAttribute="bottom" constant="20" id="VhV-8C-KMw"/>
+                            <constraint firstItem="8WJ-9r-yvz" firstAttribute="top" secondItem="QqX-6a-jBP" secondAttribute="bottom" constant="40" id="Y1z-X7-ajt"/>
+                            <constraint firstItem="Abj-Yo-X7A" firstAttribute="trailing" secondItem="Cko-38-PVS" secondAttribute="trailing" constant="20" id="aHr-Vy-55d"/>
                             <constraint firstItem="Oab-rk-mc8" firstAttribute="leading" secondItem="Abj-Yo-X7A" secondAttribute="leading" constant="20" id="eEh-Mb-R1H"/>
+                            <constraint firstItem="Cko-38-PVS" firstAttribute="leading" secondItem="Abj-Yo-X7A" secondAttribute="leading" constant="20" id="gsk-im-bQ8"/>
                             <constraint firstItem="8WJ-9r-yvz" firstAttribute="leading" secondItem="Abj-Yo-X7A" secondAttribute="leading" constant="10" id="wf9-A8-wKg"/>
                             <constraint firstItem="Abj-Yo-X7A" firstAttribute="trailing" secondItem="QqX-6a-jBP" secondAttribute="trailing" id="zQw-PL-sIg"/>
                         </constraints>

@@ -96,6 +96,8 @@ class StaticSettingsViewController: UITableViewController {
             displayGASettings()
         } else if (indexPath.section == 5 && indexPath.row == 0) {
             displayOverlay()
+        } else if (indexPath.section == 5 && indexPath.row == 1) {
+            displayOverlayDescription()
         }
     }
     
@@ -134,6 +136,11 @@ class StaticSettingsViewController: UITableViewController {
     private func displayOverlay() {
         let overlayVC = SettingsOverlayActionViewController(nibName: "SettingsOverlayActionView", bundle: nil)
         self.navigationController?.pushViewController(overlayVC, animated: true)
+    }
+    
+    private func displayOverlayDescription() {
+        let overlayDescription = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "overlayDescription") as! SettingsOverlayDescriptionViewController
+        self.navigationController?.pushViewController(overlayDescription, animated: true)
     }
 
 }
