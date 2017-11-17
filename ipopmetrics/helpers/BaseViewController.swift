@@ -98,7 +98,7 @@ class BaseViewController: UIViewController {
     
     internal func presentAlertWithTitle(_ title: String, message: String, useWhisper: Bool = false) {
         if useWhisper {
-            
+            displayWhisper(message: message)
             return 
         }
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
