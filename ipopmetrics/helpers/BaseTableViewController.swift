@@ -72,7 +72,7 @@ class BaseTableViewController: UITableViewController {
     
     internal func displayWhisper(message: String) {
         let murmur = Murmur(title: message)
-        Whisper.show(whistle: murmur, action: .show(0.5))
+        Whisper.show(whistle: murmur, action: .show(2.5))
     }
     
     func setupOfflineBanner() {
