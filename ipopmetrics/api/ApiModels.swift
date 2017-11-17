@@ -141,6 +141,22 @@ class UserProfileDetails: Mappable{
     
 }
 
+class UserSettings: Mappable {
+    var userAccount: UserAccount?
+    var currentBrand: Brand?
+    
+    var allowSounds: Bool = false
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map:Map) {
+        userAccount    <- map["user_account"]
+        currentBrand   <- map["brand"]
+        allowSounds    <- map["allow_sounds"]
+    }
+}
+
 class UserAccount: Mappable {
     var name: String?
     var email: String?
