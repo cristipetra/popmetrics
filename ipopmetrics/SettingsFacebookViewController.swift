@@ -26,5 +26,8 @@ class SettingsFacebookViewController: SettingsBaseViewController {
     func displayLinkedin() {
         titleWindow = "LINKEDIN ACCOUNT"
     }
-
+    
+    func displayFacebook() {
+        titleWindow = "FACEBOOK ACCOUNT"
+    }
 }

@@ -65,7 +65,7 @@ class BaseTableViewController: UITableViewController {
     
     internal func presentAlertWithTitle(_ title: String, message: String, useWhisper: Bool = false) {
         if useWhisper {
-            displayWhisper(message: message)
+            displayWhisper(title, message: message)
             return
         }
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -76,9 +76,9 @@ class BaseTableViewController: UITableViewController {
         })
     }
     
-    internal func displayWhisper(message: String) {
-        let murmur = Murmur(title: message)
-        Whisper.show(whistle: murmur, action: .show(2.5))
+    internal func displayWhisper(_ title: String, message: String) {
+        let announcement = Announcement(title: title, subtitle: message, image: UIImage(named: "avatar"))
+        Whisper.show(shout: announcement, to: self.navigationController!)
     }
     
     func setupOfflineBanner() {

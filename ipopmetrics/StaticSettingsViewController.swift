@@ -8,11 +8,12 @@
 
 import UIKit
 
-class StaticSettingsViewController: UITableViewController {
+class StaticSettingsViewController: BaseTableViewController {
 
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var phone: UITextField!
     @IBOutlet weak var professionalEmail: UITextField!
+    @IBOutlet weak var brandName: UITextField!
     
     let sectionTitles = ["USER IDENTITY", "NOTIFICATIONS", "BRAND IDENTITY", "SOCIAL ACCOUNTS", "DATA ACCOUNTS", "WEB OVERLAY"]
     override func viewDidLoad() {
@@ -31,6 +32,8 @@ class StaticSettingsViewController: UITableViewController {
         name.text = user.name
         phone.text = user.phone
         professionalEmail.text = user.email
+        
+        brandName.text = UsersStore.currentBrandName
     }
     
     func setUpNavigationBar() {
@@ -98,6 +101,8 @@ class StaticSettingsViewController: UITableViewController {
             displayOverlay()
         } else if (indexPath.section == 5 && indexPath.row == 1) {
             displayOverlayDescription()
+        } else if (indexPath.section == 5 && indexPath.row == 2) {
+            displayOverlayUrl()
         }
     }
     
@@ -125,6 +130,7 @@ class StaticSettingsViewController: UITableViewController {
     
     private func displayFacebook() {
         let facebookVC = SettingsFacebookViewController(nibName: "SettingsFacebookView", bundle: nil)
+        facebookVC.displayFacebook()
         self.navigationController?.pushViewController(facebookVC, animated: true)
     }
     
@@ -141,6 +147,11 @@ class StaticSettingsViewController: UITableViewController {
     private func displayOverlayDescription() {
         let overlayDescription = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "overlayDescription") as! SettingsOverlayDescriptionViewController
         self.navigationController?.pushViewController(overlayDescription, animated: true)
+    }
+    
+    private func displayOverlayUrl() {
+        let overlayURL = SettingsOverlayUrlViewController(nibName: "SettingsOverlayUrlView", bundle: nil)
+        self.navigationController?.pushViewController(overlayURL, animated: true)
     }
 
 }

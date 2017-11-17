@@ -137,6 +137,8 @@
 		08BD58041F7A312900FFDCFD /* VerifySocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58031F7A312900FFDCFD /* VerifySocialViewController.swift */; };
 		08BD580C1F7A6AD500FFDCFD /* OnboardingFinalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */; };
 		08BF9D4E1F45F2EF00141206 /* TableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */; };
+		08C580FD1FBF21440013B03F /* SettingsOverlayUrlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C580FC1FBF21440013B03F /* SettingsOverlayUrlView.xib */; };
+		08C580FF1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C580FE1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift */; };
 		08C583021FB1AFA500A7DD3D /* FooterViewStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */; };
 		08C6FBFB1F41FFCB007D6101 /* Todo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C6FBFA1F41FFCB007D6101 /* Todo.storyboard */; };
 		08C6FBFD1F4205EF007D6101 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */; };
@@ -373,6 +375,8 @@
 		08BD58031F7A312900FFDCFD /* VerifySocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifySocialViewController.swift; sourceTree = "<group>"; };
 		08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingFinalView.xib; sourceTree = "<group>"; };
 		08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableFooterView.swift; sourceTree = "<group>"; };
+		08C580FC1FBF21440013B03F /* SettingsOverlayUrlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsOverlayUrlView.xib; sourceTree = "<group>"; };
+		08C580FE1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOverlayUrlViewController.swift; sourceTree = "<group>"; };
 		08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterViewStateController.swift; sourceTree = "<group>"; };
 		08C6FBFA1F41FFCB007D6101 /* Todo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Todo.storyboard; sourceTree = "<group>"; };
 		08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
@@ -505,6 +509,7 @@
 			children = (
 				08078F411FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift */,
 				08078F431FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift */,
+				08C580FE1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift */,
 			);
 			name = overlay;
 			sourceTree = "<group>";
@@ -756,6 +761,7 @@
 				08CC6EC11FBC7FBA00A6521E /* SettingsLogoView.xib */,
 				08078F3A1FBDB4F500A4399D /* SettingsFacebookView.xib */,
 				08078F3E1FBDE45200A4399D /* SettingsOverlayActionView.xib */,
+				08C580FC1FBF21440013B03F /* SettingsOverlayUrlView.xib */,
 			);
 			name = settings;
 			sourceTree = "<group>";
@@ -1285,6 +1291,7 @@
 				085599A61F72751900E5BEA1 /* SplashScreen.xib in Resources */,
 				081D5DC41F94F93300BB7352 /* HeaderCardView.xib in Resources */,
 				08B745931F1F6C0100EC3F8C /* OpenSans-Light.ttf in Resources */,
+				08C580FD1FBF21440013B03F /* SettingsOverlayUrlView.xib in Resources */,
 				08AA6C6F1F56F3BA0022DE91 /* ChartStatistics.storyboard in Resources */,
 				08953E6B1F4C269E003ABEFC /* ToDoCell.xib in Resources */,
 				08B745941F1F6C0100EC3F8C /* OpenSans-Bold.ttf in Resources */,
@@ -1646,6 +1653,7 @@
 				089267741F86617600D7B99E /* OfflineBanner.swift in Sources */,
 				088F14FA1FB9C6080004F925 /* StaticSettingsViewController.swift in Sources */,
 				085F91051F716CD4008A339A /* OnboardingFooter.swift in Sources */,
+				08C580FF1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift in Sources */,
 				081D5DC61F94F95A00BB7352 /* HeaderCardViewCell.swift in Sources */,
 				113976B41E97D31B00B535DF /* FeedStore.swift in Sources */,
 				113976AE1E97C83500B535DF /* TextFieldValidator.swift in Sources */,
