@@ -13,6 +13,7 @@ import GoogleSignIn
 import TwitterKit
 import FBSDKCoreKit
 import UserNotifications
+import URLNavigator
 //import STPopup
 
 
@@ -33,11 +34,11 @@ public extension Notification {
 }
 
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
  
-    var navigationController: NavigationController?
-    
+    private var navigator: NavigatorType?
     var window: UIWindow?
     var usersStore: UsersStore!
     var feedStore: FeedStore!
@@ -63,8 +64,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         var configureError: NSError?
         
-        navigationController = NavigationController()
-
+        let navigator = Navigator()
+        // Initialize navigation map
+        NavigationMap.initialize(navigator: navigator)
+        
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
         window.rootViewController = getInitialViewController()
@@ -140,6 +143,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool {
         let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String
         let annotation = options[UIApplicationOpenURLOptionsKey.annotation]
+        
+        // Try presenting the URL first
+        if self.navigator?.present(url, wrap: UINavigationController.self) != nil {
+            print("[Navigator] present: \(url)")
+            return true
+        }
+        
+        // Try opening the URL
+        if self.navigator?.open(url) == true {
+            print("[Navigator] open: \(url)")
+            return true
+        }
+        
         return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
             || FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
 //            || PDKClient.sharedInstance().handleCallbackURL(url)
@@ -154,27 +170,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              
     }
     
-    
-    
-    
-    @discardableResult private func open(viewURI: URL, animated: Bool) -> Bool {
-        guard let viewController = createViewController(viewURI: viewURI) else {
-            print("No view controller for URI \(viewURI)")
-            return false
-        }
-        
-        prepareAndPush(viewController: viewController, animated: animated)
-        
-        return true
-    }
-    
-    // MARK: - View controller handling
-    
-    private func prepareAndPush(viewController: UIViewController, animated: Bool) {
-        
-       
-        navigationController?.pushViewController(viewController, animated: animated)
-    }
     
     // PUSH NOTIFICATIONS
     
