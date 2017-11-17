@@ -16,7 +16,7 @@ private let PORT = 443
 
 
 // private let PROTOCOL = "http"
-// private let HOST = "192.168.7.100"
+// private let HOST = "192.168.1.21"
 // private let PORT = 5030
 
 // private let HOST = "10.0.1.50"
@@ -150,6 +150,10 @@ class ApiUrls {
     
     static func getMyBrandTodoUrl(_ brandId:String) -> String {
         return composedBaseUrl(String(format:USER_TODO_PATH, brandId))
+    }
+    
+    static func getMyBrandsUrl() -> String {
+        return composedBaseUrl("/api/market/me/brands")
     }
 
     static func getTodoActionUrl(_ brandId:String) -> String {
