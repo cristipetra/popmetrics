@@ -100,29 +100,13 @@ class SyncService: SessionDelegate {
         
         let currentBrandId = UsersStore.currentBrandId
         
-        FeedApi().getItems(currentBrandId) { responseWrapper, error in
+        FeedApi().getItems(currentBrandId) { feedResponse in
             
-            if error != nil {
-                if !silent {
-                    NotificationCenter.default.post(name: Notification.Popmetrics.ApiFailure, object: nil,
-                                                userInfo: ["sucess":false])
-                }
-                return
-            }
-            if "success" != responseWrapper?.code {
-                if !silent {
-                    NotificationCenter.default.post(name: Notification.Popmetrics.ApiResponseUnsuccessfull, object: nil,
-                                                    userInfo: ["sucess":false,
-                                                               "message":responseWrapper?.message])
-                }
-            }
-            else {
-                self.feedStore.updateFeed((responseWrapper?.data)!)
-                if (!silent){
+            self.feedStore.updateFeed(feedResponse!)
+            if (!silent){
                     NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
                                                 userInfo: ["sucess":true])
                 }
-            }
         }
         
     }
