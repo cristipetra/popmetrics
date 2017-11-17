@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class StaticSettingsViewController: BaseTableViewController {
 
@@ -20,11 +21,11 @@ class StaticSettingsViewController: BaseTableViewController {
         super.viewDidLoad()
 
         self.tableView.backgroundColor = PopmetricsColor.tableBackground
-        //tableView.allowsSelection = false
         
         setUpNavigationBar()
         updateView()
     }
+    
     
     private func updateView() {
         let user = UsersStore.getInstance().getLocalUserAccount()
@@ -85,7 +86,9 @@ class StaticSettingsViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath)
-        if(indexPath.section == 0 && indexPath.row == 2) {
+        if(indexPath.section == 0 && indexPath.row == 1) {
+            sendEmail()
+        } else if(indexPath.section == 0 && indexPath.row == 2) {
             displaySettingsEmail()
         } else if (indexPath.section == 2 && indexPath.row == 1) {
             displaySettingsLogo()
@@ -154,4 +157,32 @@ class StaticSettingsViewController: BaseTableViewController {
         self.navigationController?.pushViewController(overlayURL, animated: true)
     }
 
+}
+
+extension StaticSettingsViewController: MFMailComposeViewControllerDelegate {
+    
+    private func sendEmail() {
+        
+        let mailComposerVC = configuredMailComposeVC()
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposerVC, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func configuredMailComposeVC() -> MFMailComposeViewController {
+        
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        //mailComposerVC.setSubject("Test mail")
+        if let myNumber = UsersStore.getInstance().getLocalUserAccount().phone {
+            mailComposerVC.setMessageBody("Hey, I’d like to change my phone number from \(myNumber) to", isHTML: false)
+        }
+        //mailComposerVC.setToRecipients([""])
+        return mailComposerVC
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

@@ -34,6 +34,7 @@ class SettingsEmailViewController: SettingsBaseViewController {
             Alert.showAlertDialog(parent: self, action: { (action) -> (Void) in
                 switch action {
                 case .cancel:
+                    self.navigationController?.popViewController(animated: true)
                     break
                 case .save:
                     self.changeEmail()
