@@ -30,11 +30,27 @@ class SettingsEmailViewController: SettingsBaseViewController {
     }    
 
     @objc override func cancelHandler() {
-        self.navigationController?.popViewController(animated: true)
+        if emailTextfield.text != user.email {
+            Alert.showAlertDialog(parent: self, action: { (action) -> (Void) in
+                switch action {
+                case .cancel:
+                    break
+                case .save:
+                    self.changeEmail()
+                    break
+                }
+            })
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     @objc override func doneHandler() {
-        
+        changeEmail()
+    }
+    
+    private func changeEmail() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

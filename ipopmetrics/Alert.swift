@@ -11,7 +11,10 @@ import UIKit
 
 class Alert {
     
-    static func showAlertDialog(parent: UIViewController?) {
+    typealias Action = (AlertAction) -> (Void)
+    
+    static func showAlertDialog(parent: UIViewController?, action: Action?) {
+        let actionSelected: Action? = action
         
         let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
         
@@ -25,10 +28,12 @@ class Alert {
         let messageAttrString = NSMutableAttributedString(string: "Are you sure you would like to leave them?", attributes: messageAttributes)
         alertController.setValue(messageAttrString, forKey: "attributedMessage")
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive){ (cancel) in
+            actionSelected!(.cancel)
+        }
         
         let saveAction = UIAlertAction(title: "Save Changes", style: .default) { (save) in
-            //self.navigationController?.popViewController(animated: true)
+            actionSelected!(.save) 
         }
         
         alertController.addAction(cancelAction)
@@ -63,4 +68,9 @@ class Alert {
         // present an actionSheet...
         parent?.present(actionSheetController, animated: true, completion: nil)
     }
+}
+
+enum AlertAction {
+    case cancel
+    case save
 }

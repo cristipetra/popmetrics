@@ -77,6 +77,7 @@ class TeamMembership: Mappable{
     }
     
     func mapping(map:Map) {
+        print(map.JSON)
         brandId      <- map["brand_id"]
         brandName    <- map["brand_name"]
         roles        <- map["roles"]
@@ -136,6 +137,7 @@ class Brand: Mappable {
         name        <- map["name"]
         id          <- map["id"]
         logoURL     <- map["logo_url"]
+        
     }
 }
 
