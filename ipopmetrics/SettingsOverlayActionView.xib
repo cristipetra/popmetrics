@@ -30,10 +30,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="658"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ca8-gX-oe7">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="658"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="637.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OVERLAY ACTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nb6-dG-dHk">
-                                    <rect key="frame" x="25" y="17" width="105" height="21"/>
+                                    <rect key="frame" x="25" y="17" width="109.5" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="XRa-FK-BTZ"/>
                                     </constraints>
@@ -45,7 +45,7 @@
                                     <rect key="frame" x="0.0" y="305" width="320" height="60"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzN-e7-y4B">
-                                            <rect key="frame" x="25" y="9" width="98" height="42"/>
+                                            <rect key="frame" x="25" y="9" width="100" height="42"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="42" id="mKN-w1-URC"/>
                                             </constraints>
@@ -86,7 +86,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0k-5k-n7i">
-                                    <rect key="frame" x="25" y="505" width="285" height="143"/>
+                                    <rect key="frame" x="25" y="505" width="285" height="122.5"/>
                                     <string key="text">The Overlay Action is a button that will take visitors to your website. You can adjust the link to go to a specific page within your website that you would like visitors to see first. Popmetrics recommends to have your homepage as your Overlay Action.</string>
                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                     <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>

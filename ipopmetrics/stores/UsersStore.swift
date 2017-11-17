@@ -81,7 +81,21 @@ class UsersStore {
             }
         }
     }
-
+    
+    static var currentBrandURL: String {
+        set {
+            let defaults = UserDefaults.standard
+            defaults.set(newValue, forKey: "currentBrandURL")
+        }
+        get {
+            if let cbi = UserDefaults.standard.string(forKey: "currentBrandURL") {
+                return cbi
+            } else {
+                return "Unset"
+            }
+            
+        }
+    }
     
     
     static var isTwitterConnected: Bool {
