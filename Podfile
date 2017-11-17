@@ -21,6 +21,7 @@ target 'ipopmetrics' do
   pod 'RSKImageCropper'
   pod 'STPopup'
   pod 'RealmSwift'
+  pod 'URLNavigator'
 
   # Auth
   pod 'Google/SignIn'

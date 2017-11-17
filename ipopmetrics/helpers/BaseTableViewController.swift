@@ -23,6 +23,12 @@ class BaseTableViewController: UITableViewController {
         progressHUD.hide()
         setupOfflineBanner()
         ReachabilityManager.shared.addListener(listener: self)
+        
+        let nc = NotificationCenter.default
+        nc.addObserver(forName:Notification.Popmetrics.ApiNotReachable, object:nil, queue:nil, using:catchNotification)
+        nc.addObserver(forName:Notification.Popmetrics.ApiFailure, object:nil, queue:nil, using:catchNotification)
+        nc.addObserver(forName:Notification.Popmetrics.ApiResponseUnsuccessfull, object:nil, queue:nil, using:catchNotification)
+        
     }
     
     internal func setProgressIndicatorText(_ text: String?) {
@@ -83,6 +89,22 @@ class BaseTableViewController: UITableViewController {
             offlineBanner.isHidden = ReachabilityManager.shared.isNetworkAvailable
         }
     }
+    
+    func catchNotification(notification:Notification) -> Void {
+        print("Catch notification")
+        self.hideProgressIndicator()
+        
+        guard let userInfo = notification.userInfo,
+            let title    = userInfo["title"] as? String,
+            let message  = userInfo["message"] as? String
+            else {
+                presentAlertWithTitle("Unexpected error", message: "Error within the error handler itself.")
+                return
+            }
+        presentAlertWithTitle(title, message: message, useWhisper: true)
+        
+    }
+    
 }
 
 

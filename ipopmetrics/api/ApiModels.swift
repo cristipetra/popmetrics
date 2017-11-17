@@ -9,16 +9,21 @@
 import Foundation
 import ObjectMapper
 
+protocol ResponseWrap: class {
+    
+    func getCode() -> String
+    func getMessage() -> String
+}
 
-class ResponseWrapperEmpty: Mappable {
+class ResponseWrapper<T:Mappable>: Mappable {
     
     var code:String?
     var message: String?
     
-    
     required init?(map:Map) {
         
     }
+    
     
     func mapping(map:Map) {
         code    <- map["code"]
@@ -27,41 +32,80 @@ class ResponseWrapperEmpty: Mappable {
     
 }
 
+class ResponseWrapperEmpty: Mappable, ResponseWrap {
+    
+    var code:String?
+    var message: String?
+    
+    func getCode() -> String {
+        return self.code ?? "unsuccessfull"
+    }
+    func getMessage() -> String {
+        return self.message ?? "Unspecified error message"
+    }
+    
+    required init?(map:Map) {
+        
+    }
+    
+    
+    func mapping(map:Map) {
+        code    <- map["code"]
+        message <- map["message"]
 
-class ResponseWrapperOne<T:Mappable>: Mappable {
+    }
+    
+}
+
+
+class ResponseWrapperOne<T:Mappable>: Mappable, ResponseWrap {
     
     var code:String?
     var message: String?
     var data: T?
     
+    func getCode() -> String {
+        return self.code ?? "unsuccessfull"
+    }
+    func getMessage() -> String {
+        return self.message ?? "Unspecified error message"
+    }
     
     required init?(map:Map) {
         
     }
     
+    
     func mapping(map:Map) {
         code    <- map["code"]
-        data    <- map["data"]
         message <- map["message"]
+        data    <- map["data"]
     }
     
 }
 
-class ResponseWrapperArray<T:Mappable>: Mappable {
+class ResponseWrapperArray<T:Mappable>: Mappable, ResponseWrap {
     
     var code:String?
-    var message:String?
+    var message: String?
     var data: [T]?
     
+    func getCode() -> String {
+        return self.code ?? "unsuccessfull"
+    }
+    func getMessage() -> String {
+        return self.message ?? "Unspecified error message"
+    }
     
     required init?(map:Map) {
         
     }
     
+    
     func mapping(map:Map) {
-        code  <- map["code"]
-        data  <- map["data"]
+        code    <- map["code"]
         message <- map["message"]
+        data    <- map["data"]
     }
     
 }

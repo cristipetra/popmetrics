@@ -12,7 +12,7 @@ protocol BrandProtocol: class {
     func changeBrandName(name: String)
 }
 
-class ChangeBrandViewController: UITableViewController {
+class ChangeBrandViewController: BaseTableViewController {
     
     var previousIndex: IndexPath?
     var brandDelegate: BrandProtocol?
@@ -29,11 +29,13 @@ class ChangeBrandViewController: UITableViewController {
         registerCell()
     }
     override func viewWillAppear(_ animated: Bool) {
+        self.showProgressIndicator()
         self.fetchBrands()
     }
     
     func fetchBrands() {
         UsersApi().getMyBrands(){ brandsArray in
+            self.hideProgressIndicator()
             self.myBrands = brandsArray!
             self.tableView.reloadData()
         }
