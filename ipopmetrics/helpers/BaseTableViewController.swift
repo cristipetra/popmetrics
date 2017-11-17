@@ -8,6 +8,7 @@
 
 import UIKit
 import Reachability
+import  Whisper
 
 class BaseTableViewController: UITableViewController {
     
@@ -56,13 +57,18 @@ class BaseTableViewController: UITableViewController {
         }
     }
     
-    internal func presentAlertWithTitle(_ title: String, message: String) {
+    internal func presentAlertWithTitle(_ title: String, message: String, useWhisper: Bool = false) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(OKAction)
         DispatchQueue.main.async(execute: {
             self.present(alertController, animated: true, completion: nil)
         })
+    }
+    
+    internal func displayWhisper(message: String) {
+        let murmur = Murmur(title: message)
+        Whisper.show(whistle: murmur, action: .show(0.5))
     }
     
     func setupOfflineBanner() {
