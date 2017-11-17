@@ -505,7 +505,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="129831294R1HF9HG9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyP-Fu-qTu">
-                                                    <rect key="frame" x="8" y="10.5" width="173.5" height="23.5"/>
+                                                    <rect key="frame" x="8" y="12.5" width="172.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -530,7 +530,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://www.brandname.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGm-sL-aGB">
-                                                    <rect key="frame" x="8" y="10.5" width="225" height="23.5"/>
+                                                    <rect key="frame" x="8" y="12.5" width="213.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -555,7 +555,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lj-6p-4Rm">
-                                                    <rect key="frame" x="8" y="4" width="250" height="36"/>
+                                                    <rect key="frame" x="8" y="6" width="250" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="250" id="Gum-EK-bld"/>
                                                     </constraints>
@@ -598,7 +598,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OVERLAY DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oab-rk-mc8">
-                                <rect key="frame" x="20" y="40" width="140.5" height="21"/>
+                                <rect key="frame" x="20" y="40" width="147.5" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Ztg-k1-91b"/>
                                 </constraints>
@@ -631,7 +631,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cko-38-PVS">
-                                <rect key="frame" x="20" y="360" width="335" height="184"/>
+                                <rect key="frame" x="20" y="360" width="335" height="157.5"/>
                                 <string key="text">The Overlay is a popup banner that will appear above the content you share on your social media channel. This way you can automatically advertise your company and route traffic to your website. 
 
 You can adjust your overlay to better match the look and feel of your brand.

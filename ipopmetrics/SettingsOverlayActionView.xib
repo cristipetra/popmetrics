@@ -15,7 +15,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsOverlayActionViewController" customModule="ipopmetrics" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OverlayActionViewController" customModule="ipopmetrics" customModuleProvider="target">
             <connections>
                 <outlet property="tableView" destination="cuS-P8-vdH" id="DPv-Kr-Luw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -23,17 +23,17 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="660"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="658"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4mw-jn-dfT">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="660"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="658"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ca8-gX-oe7">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="639.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="658"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OVERLAY ACTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nb6-dG-dHk">
-                                    <rect key="frame" x="25" y="17" width="109.5" height="21"/>
+                                    <rect key="frame" x="25" y="17" width="105" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="XRa-FK-BTZ"/>
                                     </constraints>
@@ -45,9 +45,9 @@
                                     <rect key="frame" x="0.0" y="305" width="320" height="60"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzN-e7-y4B">
-                                            <rect key="frame" x="25" y="19" width="100" height="22"/>
+                                            <rect key="frame" x="25" y="9" width="98" height="42"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="22" id="mKN-w1-URC"/>
+                                                <constraint firstAttribute="height" constant="42" id="mKN-w1-URC"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                             <state key="normal" title="Suggest a CTA">
@@ -85,10 +85,9 @@
                                         <constraint firstAttribute="height" constant="110" id="BVx-Vr-Je0"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0k-5k-n7i">
-                                    <rect key="frame" x="25" y="505" width="285" height="122.5"/>
-                                    <string key="text">The Overlay Action is a button that will take visitors to your website. You can adjust the link to go to a specific page within your website that you would like visitors to see first. Popmetrics recommends to have your homepage as your Overlay Action.
-</string>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0k-5k-n7i">
+                                    <rect key="frame" x="25" y="505" width="285" height="143"/>
+                                    <string key="text">The Overlay Action is a button that will take visitors to your website. You can adjust the link to go to a specific page within your website that you would like visitors to see first. Popmetrics recommends to have your homepage as your Overlay Action.</string>
                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                     <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -97,7 +96,7 @@
                             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstItem="3cf-4X-4cl" firstAttribute="leading" secondItem="Ca8-gX-oe7" secondAttribute="leading" id="2o0-ew-ksB"/>
-                                <constraint firstAttribute="bottom" secondItem="f0k-5k-n7i" secondAttribute="bottom" constant="12" id="DQX-wM-ls1"/>
+                                <constraint firstAttribute="bottom" secondItem="f0k-5k-n7i" secondAttribute="bottom" constant="10" id="DQX-wM-ls1"/>
                                 <constraint firstItem="vSB-VM-VBn" firstAttribute="leading" secondItem="Ca8-gX-oe7" secondAttribute="leading" constant="10" id="DWT-8C-5wx"/>
                                 <constraint firstAttribute="trailing" secondItem="vSB-VM-VBn" secondAttribute="trailing" constant="10" id="FmW-4T-OJF"/>
                                 <constraint firstItem="cuS-P8-vdH" firstAttribute="leading" secondItem="Ca8-gX-oe7" secondAttribute="leading" id="TC5-A0-Fzj"/>
@@ -126,8 +125,8 @@
             <constraints>
                 <constraint firstItem="Ca8-gX-oe7" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" priority="250" id="5JR-wm-esV"/>
                 <constraint firstItem="4mw-jn-dfT" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="73P-8I-d93"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="4mw-jn-dfT" secondAttribute="bottom" id="VQk-oe-SCM"/>
                 <constraint firstItem="Ca8-gX-oe7" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Yaa-oC-q43"/>
-                <constraint firstItem="4mw-jn-dfT" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="b99-eR-Mpr"/>
                 <constraint firstItem="4mw-jn-dfT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="dzh-6S-btg"/>
                 <constraint firstItem="4mw-jn-dfT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tum-jE-YxO"/>
             </constraints>

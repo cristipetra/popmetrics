@@ -14,9 +14,9 @@ class SettingsOverlayActionViewController: SettingsBaseViewController, UITableVi
     
     private var dataSource: [String] = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"]
     
-    var previousIndex: IndexPath?
     var selectedBrand: String = ""
-    var didChangedBrand: Bool = false
+    var didChangedOverlay: Bool = false
+    var firstTimeSetOverlay = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,11 @@ class SettingsOverlayActionViewController: SettingsBaseViewController, UITableVi
         registerCell()
         setupNavigationBar()
         titleWindow = "Overlay Action"
+        
+    }
+    
+    override func cancelHandler() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,9 +51,8 @@ class SettingsOverlayActionViewController: SettingsBaseViewController, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "brandId", for: indexPath) as! BrandTableViewCell
         cell.brandName.text = dataSource[indexPath.row]
-        if indexPath.row == UsersStore.overlayIndex {
+        if indexPath == UsersStore.overlayIndex {
             cell.setupSelectedCell()
-            previousIndex = indexPath
             selectedBrand = cell.brandName.text!
         }
         
@@ -57,22 +61,26 @@ class SettingsOverlayActionViewController: SettingsBaseViewController, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if previousIndex != nil {
-            let prevCell = tableView.cellForRow(at: previousIndex!) as! BrandTableViewCell
-            prevCell.setDefault()
+        didChangedOverlay = true
+        if firstTimeSetOverlay {
+            guard let cell = tableView.cellForRow(at: UsersStore.overlayIndex) as? BrandTableViewCell else {
+                return
+            }
+            cell.setDefault()
+            firstTimeSetOverlay = false
         }
-        didChangedBrand = true
-        previousIndex = indexPath
+        
         guard let cell = tableView.cellForRow(at: indexPath) as? BrandTableViewCell else {
             return
         }
+        UsersStore.overlayIndex = indexPath
         selectedBrand = cell.brandName.text!
         cell.setupSelectedCell()
     }
     
-    override func cancelHandler() {
-        self.navigationController?.popViewController(animated: true)
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let prevCell = tableView.cellForRow(at: indexPath) as! BrandTableViewCell
+        prevCell.setDefault()
     }
     
 }
-
