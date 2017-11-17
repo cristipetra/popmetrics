@@ -43,7 +43,7 @@ private let ACCOUNT_INFO_PATH = "/api/caas/me"
 private let ACCOUNT_EDIT_PATH = "/api/caas/me"
 private let ACCOUNT_THUMBNAIL_PATH_FORMAT = "/api/caas/user/%@/image/thumbnail"
 
-private let USER_FEED_PATH = "/api/feed/brand/%@"
+private let USER_FEED_PATH = "/api/feed/me/brand/%@"
 private let FEED_ACTION_PATH = "/api/feed/action/%@"
 
 private let USER_TODO_PATH = "/api/todo/brand/%@"

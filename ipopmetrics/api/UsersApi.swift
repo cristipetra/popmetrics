@@ -269,24 +269,15 @@ class UsersApi: BaseApi {
         
         Alamofire.request(ApiUrls.getMyBrandsUrl(),
                           headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperArray<Brand>>) in
-                            
-                            if let err = self.createErrorWithHttpResponse(response: response.response) {
-                                NotificationCenter.default.post(name: Notification.Popmetrics.ApiFailure, object: nil,
-                                                                userInfo: ["sucess":false])
-                            }
-                            else {
-                                if response.result.value?.code != "success" {
-                                    NotificationCenter.default.post(name: Notification.Popmetrics.ApiResponseUnsuccessfull, object: nil,
-                                                                    userInfo: ["sucess":false,
-                                                                                "message":response.result.value?.message ?? "Could not retrieve the available brands"])
-                                }
-                                else {
+                            let levelOneHandled = super.handleNotOkCodes(response: response.response)
+                            if !levelOneHandled {
+                                let handled = super.handleResponseWrap(response.value!)
+                                if !handled {
                                     callback(response.result.value?.data)
                                 }
                             }
-                            
         }
-    }
+   }
     
     
 }

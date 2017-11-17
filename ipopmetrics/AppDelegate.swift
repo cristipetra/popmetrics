@@ -18,6 +18,8 @@ import UserNotifications
 
 public extension Notification {
     public class Popmetrics {
+        public static let ApiClientNeedsUpdating = Notification.Name("Notification.Popmetrics.ApiClientNeedsUpdating")
+        public static let ApiClientNotAuthenticated = Notification.Name("Notification.Popmetrics.ApiClientNotAuthenticated")
         public static let ApiFailure = Notification.Name("Notification.Popmetrics.ApiFailure")
         public static let ApiReachable = Notification.Name("Notification.Popmetrics.ApiReachable")
         public static let ApiNotReachable = Notification.Name("Notification.Popmetrics.ApiNotReachable")

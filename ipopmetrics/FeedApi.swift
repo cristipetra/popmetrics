@@ -13,7 +13,7 @@ import GoogleSignIn
 class FeedApi: BaseApi {
     
     func getItems(_ brandId: String,
-                  callback: @escaping (_ response: ResponseWrapperOne<FeedResponse>?, _ error: ApiError?) -> Void) {
+                  callback: @escaping (_ response: FeedResponse?) -> Void) {
         
         let params = [
             "a": 0
@@ -22,12 +22,12 @@ class FeedApi: BaseApi {
         Alamofire.request(ApiUrls.getMyBrandFeedUrl(brandId), method: .get, parameters: params,
                           headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperOne<FeedResponse>>) in
                             
-                            if let err = self.createErrorWithHttpResponse(response: response.response) {
-                                callback(nil, err)
-                                return
-                            }
-                            else {
-                                callback(response.result.value, nil)
+                            let levelOneHandled = super.handleNotOkCodes(response: response.response)
+                            if !levelOneHandled {
+                                let handled = super.handleResponseWrap(response.value!)
+                                if !handled {
+                                    callback(response.result.value?.data!)
+                                }
                             }
                             
         }
