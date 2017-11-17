@@ -69,6 +69,7 @@ class ResponseWrapperArray<T:Mappable>: Mappable {
 
 class TeamMembership: Mappable{
     var brandId: String?
+    var brandName: String?
     var roles: [String]?
     
     required init?(map: Map) {
@@ -77,6 +78,7 @@ class TeamMembership: Mappable{
     
     func mapping(map:Map) {
         brandId      <- map["brand_id"]
+        brandName    <- map["brand_name"]
         roles        <- map["roles"]
     }
 }
@@ -120,6 +122,23 @@ class UserAccount: Mappable {
         profileDetails <- map["profile_details"]
     }
 }
+
+class Brand: Mappable {
+
+    var id: String?
+    var name: String?
+    var logoURL: String?
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map:Map) {
+        name        <- map["name"]
+        id          <- map["id"]
+        logoURL     <- map["logo_url"]
+    }
+}
+
 
 class FeedResponse: Mappable {
     

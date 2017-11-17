@@ -66,6 +66,21 @@ class UsersStore {
             }
         }
     }
+    
+    static var currentBrandName: String {
+        set {
+            let defaults = UserDefaults.standard
+            defaults.set(newValue, forKey: "currentBrandName")
+        }
+        get {
+            if let cbi = UserDefaults.standard.string(forKey: "currentBrandName") {
+                return cbi
+            }
+            else {
+                return "Unset"
+            }
+        }
+    }
 
     
     

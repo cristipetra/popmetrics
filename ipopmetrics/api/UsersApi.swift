@@ -264,4 +264,29 @@ class UsersApi: BaseApi {
         }
         )
     }
+    
+    func getMyBrands( callback: @escaping (_ response: [Brand]?) -> Void) {
+        
+        Alamofire.request(ApiUrls.getMyBrandsUrl(),
+                          headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperArray<Brand>>) in
+                            
+                            if let err = self.createErrorWithHttpResponse(response: response.response) {
+                                NotificationCenter.default.post(name: Notification.Popmetrics.ApiFailure, object: nil,
+                                                                userInfo: ["sucess":false])
+                            }
+                            else {
+                                if response.result.value?.code != "success" {
+                                    NotificationCenter.default.post(name: Notification.Popmetrics.ApiResponseUnsuccessfull, object: nil,
+                                                                    userInfo: ["sucess":false,
+                                                                                "message":response.result.value?.message ?? "Could not retrieve the available brands"])
+                                }
+                                else {
+                                    callback(response.result.value?.data)
+                                }
+                            }
+                            
+        }
+    }
+    
+    
 }

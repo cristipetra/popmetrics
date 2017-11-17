@@ -32,6 +32,9 @@ class MenuViewController: ElasticModalViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.brandNameLabel.text = UsersStore.currentBrandName
+        
         setup()
         transition.edge = .right
         transition.sticky = false
@@ -114,7 +117,7 @@ extension ElasticModalViewController {
     }
 }
 
-extension MenuViewController: Brand {
+extension MenuViewController: BrandProtocol {
     func changeBrandName(name: String) {
         brandNameLabel.text = name.uppercased()
     }

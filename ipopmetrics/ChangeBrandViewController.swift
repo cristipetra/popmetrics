@@ -8,18 +8,18 @@
 
 import UIKit
 
-protocol Brand: class {
+protocol BrandProtocol: class {
     func changeBrandName(name: String)
 }
 
 class ChangeBrandViewController: UITableViewController {
     
     var previousIndex: IndexPath?
-    var brandDelegate: Brand?
+    var brandDelegate: BrandProtocol?
     var selectedBrand: String = ""
     var didChangedBrand: Bool = false
     
-    let tmpBrands = ["Brand Name 1", "Brand Name 2", "Brand Name 3", "Brand Name 4", "Brand Name 5",]
+    var myBrands : [Brand] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +27,16 @@ class ChangeBrandViewController: UITableViewController {
         setUpNavigationBar()
         
         registerCell()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.fetchBrands()
+    }
+    
+    func fetchBrands() {
+        UsersApi().getMyBrands(){ brandsArray in
+            self.myBrands = brandsArray!
+            self.tableView.reloadData()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,7 +77,7 @@ class ChangeBrandViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tmpBrands.count
+        return myBrands.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -77,7 +87,7 @@ class ChangeBrandViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "brandId", for: indexPath) as! BrandTableViewCell
-        cell.brandName.text = tmpBrands[indexPath.row]
+        cell.brandName.text = myBrands[indexPath.row].name
         if indexPath.row == UsersStore.brandIndex {
             cell.setupSelectedCell()
             previousIndex = indexPath

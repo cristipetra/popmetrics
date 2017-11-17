@@ -75,6 +75,7 @@ class CodeViewController: UIViewController {
             if let teams = userAccount?.profileDetails?.brandTeams {
                 UsersStore.getInstance().storeLocalUserAccount(userAccount!)
                 UsersStore.currentBrandId = teams[0].brandId!
+                UsersStore.currentBrandName = teams[0].brandName!
                 
                 SyncService.getInstance().syncAll(silent: false)
                 
