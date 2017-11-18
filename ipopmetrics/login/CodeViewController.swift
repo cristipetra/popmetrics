@@ -11,6 +11,8 @@ import Crashlytics
 import EZAlertController
 import SafariServices
 import Hero
+import SwiftyJSON
+import ObjectMapper
 
 class CodeViewController: UIViewController {
     
@@ -79,6 +81,20 @@ class CodeViewController: UIViewController {
                 if let _ = teams[0].brandName {
                     UsersStore.currentBrandName = teams[0].brandName!
                 }
+                
+                //Fixme: This is tmp json until it will be received data
+                let tmpUserSettingsJson = [
+                    "user_account": userAccount?.toJSONString(),
+                    "current_brand": teams[0],
+                    "allow_sounds": true,
+                    "overlay_description": "Overlay description",
+                    "overlay_actions": "action 1, action 2, action 3",
+                    "overlay_action_url": "http://www.actionURL.com"
+                    ] as [String : Any]
+                
+                let userSettings = Mapper<UserSettings>().map(JSONObject: tmpUserSettingsJson)
+                
+                UsersStore.getInstance().storeLocalUserSettings(userSettings!)
                 
                 SyncService.getInstance().syncAll(silent: false)
                 

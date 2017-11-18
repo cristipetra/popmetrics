@@ -45,6 +45,16 @@ class UsersStore {
         defaults.set(user.toJSONString(), forKey:"userAccountJson")
     }
     
+    func getLocalUserSettings() -> UserSettings {
+        let jsonString = UserDefaults.standard.string(forKey: "userSettingsJson")
+        let userSettings = UserSettings(JSONString: jsonString!)
+        return userSettings!
+    }
+    
+    func storeLocalUserSettings(_ userSettings: UserSettings) {
+        let defaults = UserDefaults.standard
+        defaults.set(userSettings.toJSON(), forKey: "userSettingsJson")
+    }
     
     func clearCredentials() {
         let defaults = UserDefaults.standard
