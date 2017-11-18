@@ -22,6 +22,7 @@
 		081D5DC61F94F95A00BB7352 /* HeaderCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081D5DC51F94F95A00BB7352 /* HeaderCardViewCell.swift */; };
 		083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083938FE1F63C334007DDA37 /* MainTabInfo.swift */; };
 		0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */; };
+		0846C9231FC0523E00BFDC07 /* NavigationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0846C9221FC0523E00BFDC07 /* NavigationMap.swift */; };
 		0848280F1F39F9200054B04C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848280E1F39F9200054B04C /* HeaderView.swift */; };
 		084E54E11F827F7D007D6F4F /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E54E01F827F7D007D6F4F /* NoteView.swift */; };
 		085053FE1F2787A100FE8234 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085053FD1F2787A100FE8234 /* CalendarViewController.swift */; };
@@ -216,7 +217,6 @@
 		11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */; };
 		11ACA9B01E2CE0FC0021E64A /* PopmetricsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9AF1E2CE0FC0021E64A /* PopmetricsColor.swift */; };
 		11D3B80A1F7BC76A00B51C08 /* SyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D3B8091F7BC76A00B51C08 /* SyncService.swift */; };
-		11D8D9E91ECA37FC00CCDAC4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D9E81ECA37FC00CCDAC4 /* NavigationController.swift */; };
 		11D8D9F11ECB58AB00CCDAC4 /* RequiredActionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */; };
 		11F89F691EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */; };
 		631BDFACE57815E87C781181 /* Pods_ipopmetrics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */; };
@@ -260,6 +260,7 @@
 		081D5DC51F94F95A00BB7352 /* HeaderCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCardViewCell.swift; sourceTree = "<group>"; };
 		083938FE1F63C334007DDA37 /* MainTabInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabInfo.swift; sourceTree = "<group>"; };
 		0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellTransition.swift; sourceTree = "<group>"; };
+		0846C9221FC0523E00BFDC07 /* NavigationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMap.swift; sourceTree = "<group>"; };
 		0848280E1F39F9200054B04C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		084E54E01F827F7D007D6F4F /* NoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		085053FD1F2787A100FE8234 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -464,7 +465,6 @@
 		11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressHUD.swift; path = views/ProgressHUD.swift; sourceTree = "<group>"; };
 		11ACA9AF1E2CE0FC0021E64A /* PopmetricsColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopmetricsColor.swift; path = helpers/PopmetricsColor.swift; sourceTree = "<group>"; };
 		11D3B8091F7BC76A00B51C08 /* SyncService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SyncService.swift; path = api/SyncService.swift; sourceTree = "<group>"; };
-		11D8D9E81ECA37FC00CCDAC4 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredActionViewCell.swift; sourceTree = "<group>"; };
 		11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release.xcconfig"; sourceTree = "<group>"; };
@@ -1010,7 +1010,6 @@
 				11ACA98A1E2CCD600021E64A /* stores */,
 				11ACA9811E2CCCB40021E64A /* api */,
 				1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */,
-				11D8D9E81ECA37FC00CCDAC4 /* NavigationController.swift */,
 				1178D6811E1E5AD9005B96C3 /* Assets.xcassets */,
 				1178D6831E1E5AD9005B96C3 /* LaunchScreen.storyboard */,
 				1178D6861E1E5AD9005B96C3 /* Info.plist */,
@@ -1020,6 +1019,7 @@
 				08F368921F18F87800819CDE /* DailyInsightsCardCell.xib */,
 				08F368961F19029100819CDE /* LastCard.xib */,
 				08B485DF1F20EA23005918A1 /* Config.swift */,
+				0846C9221FC0523E00BFDC07 /* NavigationMap.swift */,
 			);
 			path = ipopmetrics;
 			sourceTree = "<group>";
@@ -1662,6 +1662,7 @@
 				1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */,
 				08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */,
 				088E77AD1F7D499400774F13 /* TrafficStatsTableViewController.swift in Sources */,
+				0846C9231FC0523E00BFDC07 /* NavigationMap.swift in Sources */,
 				08F368951F18F93800819CDE /* DailyInsightsCardCell.swift in Sources */,
 				08593DEE1FBB3B7600077A65 /* SettingsEmailViewController.swift in Sources */,
 				08B2803F1F55862100E36D19 /* Statistics.swift in Sources */,
@@ -1672,7 +1673,6 @@
 				0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */,
 				08078F441FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift in Sources */,
 				08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */,
-				11D8D9E91ECA37FC00CCDAC4 /* NavigationController.swift in Sources */,
 				08B7ADEA1FB22B8300C56688 /* FooterViewController.swift in Sources */,
 				1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */,
 				08953E6F1F4C2790003ABEFC /* ToDoCountView.swift in Sources */,
