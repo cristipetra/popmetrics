@@ -53,7 +53,7 @@ class UsersStore {
     
     func storeLocalUserSettings(_ userSettings: UserSettings) {
         let defaults = UserDefaults.standard
-        defaults.set(userSettings.toJSON(), forKey: "userSettingsJson")
+        defaults.set(userSettings.toJSONString(), forKey: "userSettingsJson")
     }
     
     func clearCredentials() {

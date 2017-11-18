@@ -477,6 +477,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="allowSounds" destination="X8L-tp-9wi" id="WXu-UT-HzU"/>
                         <outlet property="brandName" destination="c88-T6-6L2" id="X36-DC-dKC"/>
                         <outlet property="name" destination="Ls9-G3-JL0" id="7d3-eR-BAq"/>
                         <outlet property="phone" destination="Xl7-UJ-KaW" id="lH6-zD-ilf"/>
@@ -506,7 +507,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="129831294R1HF9HG9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyP-Fu-qTu">
-                                                    <rect key="frame" x="8" y="12" width="172.5" height="20"/>
+                                                    <rect key="frame" x="8" y="12.5" width="172.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -531,7 +532,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://www.brandname.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGm-sL-aGB">
-                                                    <rect key="frame" x="8" y="12" width="213.5" height="20"/>
+                                                    <rect key="frame" x="8" y="12.5" width="213.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

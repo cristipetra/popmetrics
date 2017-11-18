@@ -8,6 +8,9 @@
 
 import UIKit
 import MessageUI
+import ObjectMapper
+import SwiftyJSON
+
 
 class StaticSettingsViewController: BaseTableViewController {
 
@@ -15,6 +18,7 @@ class StaticSettingsViewController: BaseTableViewController {
     @IBOutlet weak var phone: UITextField!
     @IBOutlet weak var professionalEmail: UITextField!
     @IBOutlet weak var brandName: UITextField!
+    @IBOutlet weak var allowSounds: UISwitch!
     
     let sectionTitles = ["USER IDENTITY", "NOTIFICATIONS", "BRAND IDENTITY", "SOCIAL ACCOUNTS", "DATA ACCOUNTS", "WEB OVERLAY"]
     override func viewDidLoad() {
@@ -29,12 +33,16 @@ class StaticSettingsViewController: BaseTableViewController {
     
     private func updateView() {
         let user = UsersStore.getInstance().getLocalUserAccount()
+        let userSettings: UserSettings = UsersStore.getInstance().getLocalUserSettings()
         
         name.text = user.name
         phone.text = user.phone
         professionalEmail.text = user.email
         
         brandName.text = UsersStore.currentBrandName
+        
+        allowSounds.isOn = userSettings.allowSounds
+        
     }
     
     func setUpNavigationBar() {
