@@ -109,9 +109,9 @@ class StaticSettingsViewController: BaseTableViewController {
         } else if (indexPath.section == 4 && indexPath.row == 0) {
             displayGASettings()
         } else if (indexPath.section == 5 && indexPath.row == 0) {
-            displayOverlay()
-        } else if (indexPath.section == 5 && indexPath.row == 1) {
             displayOverlayDescription()
+        } else if (indexPath.section == 5 && indexPath.row == 1) {
+            displayOverlay()
         } else if (indexPath.section == 5 && indexPath.row == 2) {
             displayOverlayUrl()
         }
