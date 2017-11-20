@@ -164,6 +164,11 @@ class UserSettings: Mappable {
         overlayActions      <- map["overlay_actions"]
         overlayActionUrl    <- map["overlay_action_url"]
     }
+    
+    func getOverlayActions() -> [String] {
+        let actions =  overlayActions?.components(separatedBy: ",")
+        return actions!
+    }
 }
 
 class UserAccount: Mappable {

@@ -12,19 +12,29 @@ class SettingsOverlayActionViewController: SettingsBaseViewController, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var dataSource: [String] = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"]
+    private var dataSource: [String] = []
     
     var selectedBrand: String = ""
     var didChangedOverlay: Bool = false
     var firstTimeSetOverlay = true
     
+    private let userSettings: UserSettings = UsersStore.getInstance().getLocalUserSettings()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dataSource = userSettings.getOverlayActions()
         tableView.delegate = self
         tableView.dataSource = self
+        
         registerCell()
         setupNavigationBar()
         titleWindow = "Overlay Action"
+        
+        updateView()
+    }
+    
+    private func updateView() {
         
     }
     
