@@ -18,6 +18,7 @@
 		080DCA881F4D9716000C73DC /* RecommendedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DCA871F4D9716000C73DC /* RecommendedCell.swift */; };
 		0813A0571FC2F102003E6478 /* SettingsSocialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0813A0561FC2F102003E6478 /* SettingsSocialView.xib */; };
 		0813A0591FC2F1C4003E6478 /* SettingsSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0813A0581FC2F1C4003E6478 /* SettingsSocialViewController.swift */; };
+		0819928E1FC2FDD200641193 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0819928D1FC2FDD200641193 /* Validator.swift */; };
 		081D5DC41F94F93300BB7352 /* HeaderCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 081D5DC31F94F93300BB7352 /* HeaderCardView.xib */; };
 		081D5DC61F94F95A00BB7352 /* HeaderCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081D5DC51F94F95A00BB7352 /* HeaderCardViewCell.swift */; };
 		083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083938FE1F63C334007DDA37 /* MainTabInfo.swift */; };
@@ -256,6 +257,7 @@
 		080DCA871F4D9716000C73DC /* RecommendedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedCell.swift; sourceTree = "<group>"; };
 		0813A0561FC2F102003E6478 /* SettingsSocialView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsSocialView.xib; sourceTree = "<group>"; };
 		0813A0581FC2F1C4003E6478 /* SettingsSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSocialViewController.swift; sourceTree = "<group>"; };
+		0819928D1FC2FDD200641193 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		081D5DC31F94F93300BB7352 /* HeaderCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCardView.xib; sourceTree = "<group>"; };
 		081D5DC51F94F95A00BB7352 /* HeaderCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCardViewCell.swift; sourceTree = "<group>"; };
 		083938FE1F63C334007DDA37 /* MainTabInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabInfo.swift; sourceTree = "<group>"; };
@@ -1133,6 +1135,7 @@
 				08FAE84A1F54247B0097DF3E /* GradientView.swift */,
 				088CB18A1F8B658900809A51 /* ReachabilityManager.swift */,
 				0857AB621FBC91B3002B9F53 /* SettingsBaseViewController.swift */,
+				0819928D1FC2FDD200641193 /* Validator.swift */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -1610,6 +1613,7 @@
 				08B5D4BA1F29C28A00B79AD3 /* CalendarFeedStore.swift in Sources */,
 				08FAE84B1F54247B0097DF3E /* GradientView.swift in Sources */,
 				11D8D9F11ECB58AB00CCDAC4 /* RequiredActionViewCell.swift in Sources */,
+				0819928E1FC2FDD200641193 /* Validator.swift in Sources */,
 				08B968AA1FBB141400482CDE /* ChangeBrandViewController.swift in Sources */,
 				08078F391FBDA92600A4399D /* Alert.swift in Sources */,
 				1120F2021ECDF93F00576E39 /* ArticleOfInterestViewCell.swift in Sources */,
