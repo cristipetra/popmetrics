@@ -118,13 +118,13 @@ class StaticSettingsViewController: BaseTableViewController {
     }
     
     private func displayTwitter() {
-        let twitterVC = SettingsFacebookViewController(nibName: "SettingsFacebookView", bundle: nil)
+        let twitterVC = SettingsSocialViewController(nibName: "SettingsSocialView", bundle: nil)
         twitterVC.displayTwitter()
         self.navigationController?.pushViewController(twitterVC, animated: true)
     }
     
     private func displayLinkedin() {
-        let linkedinVC = SettingsFacebookViewController(nibName: "SettingsFacebookView", bundle: nil)
+        let linkedinVC = SettingsSocialViewController(nibName: "SettingsSocialView", bundle: nil)
         linkedinVC.displayLinkedin()
         self.navigationController?.pushViewController(linkedinVC, animated: true)
     }
@@ -140,7 +140,7 @@ class StaticSettingsViewController: BaseTableViewController {
     }
     
     private func displayFacebook() {
-        let facebookVC = SettingsFacebookViewController(nibName: "SettingsFacebookView", bundle: nil)
+        let facebookVC = SettingsSocialViewController(nibName: "SettingsSocialView", bundle: nil)
         facebookVC.displayFacebook()
         self.navigationController?.pushViewController(facebookVC, animated: true)
     }
