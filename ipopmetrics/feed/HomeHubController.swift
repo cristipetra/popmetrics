@@ -16,32 +16,32 @@ import RealmSwift
 
 
 enum HomeSection: String {
-    case RequiredAction = "Required Actions"
-    case RecommendedAction =  "Recommended Actions"
-    case Insight = "Insights"
-    case Traffic = "Traffic"
+    
+    case RequiredActions = "Required Actions"
+    case Insights = "Insights"
+    case RecommendedForYou = "Recommended For You"
+    case RecommendedActions =  "Recommended Actions"
+    case Summaries = "Summaries"
+    case MoreOnTheWay = "More On The Way"
     
     static let sectionTitles = [
-        RequiredAction: "Required Actions",
-        Insight: "Insights",
-        RecommendedAction: "Recommended Action"
+        RequiredActions: "Required Actions",
+        Insights: "Insights",
+        RecommendedForYou: "Recommended For You",
+        RecommendedActions: "Recommended Action",
+        Summaries: "Summaries",
+        MoreOnTheWay: "More On The Way"
     ]
-    
-    static let sectionHeight = [
-        RequiredAction: 505,
-        Insight: 479,
-        RecommendedAction: 479,
-        Traffic: 424
-    ]
-    
     
     // position in table
     static let sectionPosition = [
-        RequiredAction: 0,
-        RecommendedAction: 1,
-        Insight: 2
+        RequiredActions: 0,
+        Insights: 1,
+        RecommendedForYou: 2,
+        RecommendedActions: 3,
+        Summaries: 4,
+        MoreOnTheWay: 5
     ]
-    
     
     func sectionTitle() -> String {
         if let sectionTitle = HomeSection.sectionTitles[self] {
@@ -55,34 +55,52 @@ enum HomeSection: String {
         return CGFloat(80)
     }
     
-    func getSectionHeight() -> CGFloat {
-        if let sectionHeight = HomeSection.sectionHeight[self] {
-            return CGFloat(sectionHeight)
-        } else {
-            return 0
-        }
-    }
-    
     func getSectionPosition() -> Int {
         return HomeSection.sectionPosition[self]!
     }
 }
 
 enum HomeSectionType: String {
-    case requiredAction = "Required Actions"
-    case recommendedAction = "Recommended Actions"
-    case insight = "Insights"
-    case analytics = "Analitycs"
+    case requiredActions = "Required Actions"
+    case insights = "Insights"
+    case recommendedForYou = "Recommended For You"
+    case recommendedActions = "Recommended Actions"
+    case summaries = "Summaries"
+    case moreOnTheWay = "More On The Way"
+}
+
+enum HomeCardType: String {
+    case requiredAction = "required_action"
+    case insight = "insight"
+    case recommendedAction = "recommended_action"
+    case emptyState = "empty_state"
+    
+    static let cardHeight = [
+        requiredAction: 505,
+        insight: 479,
+        recommendedAction: 479,
+        emptyState: 150,
+    ]
+    
+    func getCardHeight() -> CGFloat {
+        if let cardHeight = HomeCardType.cardHeight[self] {
+            return CGFloat(cardHeight)
+        } else {
+            return 0
+        }
+    }
 }
 
 class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     fileprivate var sharingInProgress = false
     
-    let indexToSection = [0: HomeSectionType.requiredAction.rawValue,
-                          1: HomeSectionType.recommendedAction.rawValue,
-                          2: HomeSectionType.insight.rawValue,
-                          3: HomeSectionType.analytics.rawValue]
+    let indexToSection = [0: HomeSectionType.requiredActions.rawValue,
+                          1: HomeSectionType.insights.rawValue,
+                          2: HomeSectionType.recommendedForYou.rawValue,
+                          3: HomeSectionType.recommendedActions.rawValue,
+                          4: HomeSectionType.summaries.rawValue,
+                          5: HomeSectionType.moreOnTheWay.rawValue]
     
     var requiredActionHandler = RequiredActionHandler()
     
@@ -192,7 +210,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             store.realm.add(todoCard2, update: true)
  
             let tmpCard = FeedCard()
-            tmpCard.section = HomeSectionType.recommendedAction.rawValue
+            tmpCard.section = HomeSectionType.recommendedActions.rawValue
             tmpCard.type = "recommended_action"
             tmpCard.cardId = "adsfaasfq24521"
             tmpCard.iceImpactPercentage = 70
@@ -263,6 +281,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
+        return store.countSections()
         return store.countSections() + 1  // adding +1 for the last card
     }
     
@@ -298,8 +317,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let item = sectionCards[rowIdx]
         
         switch(item.type) {    
-            case "required_action":
-                
+            case HomeCardType.requiredAction.rawValue:
                 if isLoadedAllRequiredCards {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "requiredActionId", for: indexPath) as! RequiredAction
                     cell.configure(item, handler: self.requiredActionHandler)
@@ -331,36 +349,30 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 }
                 return cell
             
-            case "insight":
+            case HomeCardType.insight.rawValue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedId", for: indexPath) as! RecommendedCell
                 cell.setUpCell(type: "Popmetrics Insight")
                 cell.configure(item)
                 if(sectionCards.count-1 == indexPath.row) {
                     cell.connectionLine.isHidden = true;
                 }
-                cell.footerVIew.actionButton.addTarget(self, action: #selector(handlerInsightButton), for: .touchUpInside)
+                cell.delegate = self
+                //cell.footerVIew.actionButton.addTarget(self, action: #selector(handlerInsightButton),
                 cell.footerVIew.informationBtn.addTarget(self, action: #selector(showTooltip(_:)), for: .touchUpInside)
                 return cell
-            case "todo":
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath) as! ToDoCell
-                cell.toDoCountView.numberOfRows = 2
-                cell.toDoCountViewHeight.constant = CGFloat(cell.toDoCountView.numberOfRows * 60 + 122)
-                toDoCellHeight = cell.toDoCountViewHeight.constant
-                cell.selectionStyle = .none
-                cell.setHeaderTitle(title: "Snapshot")
-                //cell.footerView.informationBtn.shouldPulsate(true)
-                cell.footerView.informationBtn.addTarget(self, action: #selector(showTooltip(_:)), for: .touchUpInside)
-                return cell
-            case "traffic":
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficCard", for: indexPath) as! TrafficCardViewCell
-                cell.selectionStyle = .none
-                cell.connectionLine.isHidden = true
-                cell.backgroundColor = UIColor.feedBackgroundColor()
-                return cell
-            case "recommended_action":
-                let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedId", for: indexPath) as! RecommendedCell
-                cell.configure(item, handler: recommendActionHandler)
+
+            case HomeCardType.recommendedAction.rawValue:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedActionId", for: indexPath) as! IceCardViewCell
                 cell.delegate = self
+                cell.configure(item)
+                return cell
+            case HomeCardType.emptyState.rawValue:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
+                cell.changeTitleWithSpacing(title: "More on it's way!")
+                cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
+                cell.selectionStyle = .none
+                cell.goToButton.changeTitle("View To Do List")
+                cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
                 return cell
             default:
                 let cell = UITableViewCell()
@@ -384,6 +396,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     func isLastSection(section: Int) -> Bool {
+        return false
         if section == store.countSections() {
             return true
         }
@@ -418,9 +431,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
      */
     func getOrderedSections() -> [String] {
         let sections: [String] = store.getSections()
-
         var orderedSections = Array(repeating: "", count: store.countSections())
-        
         for section in sections {
             guard let homeSection = HomeSection(rawValue: section) else { return [] }
             var position = homeSection.getSectionPosition()
@@ -440,36 +451,26 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         let sectionCards = getSectionCards(section)
         
-        var itemType = "unknown"
+        var itemSection = "unknown"
         if sectionCards.count > 0 {
-            itemType = sectionCards[0].type
+            //itemType = sectionCards[0].type
+            itemSection = sectionCards[0].section
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
         
-        switch itemType {
+        switch itemSection {
         case "required_action" :
             cell.changeColor(cardType: .required)
             cell.sectionTitleLabel.text = "Required Actions";
             return cell
-            
-        case "todo":
-            cell.changeColor(cardType: .todo)
-            cell.sectionTitleLabel.text = "To Do"
-            return cell
-            
         case "recommended_action":
             cell.changeColor(cardType: .recommended)
             cell.sectionTitleLabel.text = "Recommended For You";
             return cell
-            
-        case "traffic":
-            cell.changeColor(cardType: .traffic)
-            cell.sectionTitleLabel.text = "Traffic Intelligence";
-            return cell
-        case "insight":
+        case "Insights":
             cell.changeColor(cardType: .insight)
-            cell.sectionTitleLabel.text = "Recommended For You";
+            cell.sectionTitleLabel.text = "Insights";
             return cell
         default:
             let cell = UITableViewCell()
@@ -499,12 +500,20 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         if !shouldDisplayCell {
             return 0
         }
+        
+        
+        let cards = getSectionCards(indexPath.section)
+        let card: FeedCard  = cards[indexPath.row]
+        
+        guard let cardType = HomeCardType(rawValue: card.type) else { return 0}
+        return cardType.getCardHeight()
+        
 
         let sectionString = indexToSection[indexPath.section]
         guard let _ = sectionString else { return 0 }
         guard let homeSection = HomeSection(rawValue: sectionString!) else { return 0 }
         
-        return homeSection.getSectionHeight()
+        //return homeSection.getSectionHeight()
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -641,7 +650,7 @@ enum CardType: String {
 extension HomeHubViewController {
     
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
-        //print(store.getFeedCards())
+        print(store.getFeedCards())
         self.tableView.reloadData()
         
     }

@@ -137,6 +137,7 @@ class FeedCard: Object, Mappable {
     }
     
     func getIceImpactSplit() -> [ImpactSplit] {
+        guard let _  = iceImpactSplit else { return [] }
         let values = iceImpactSplit!
         let splitImpactArray = values.toJSON() as! NSMutableArray
         
