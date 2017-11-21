@@ -15,6 +15,12 @@ import FacebookLogin
 import NotificationBannerSwift
 import EZAlertController
 
+
+protocol InfoButtonDelegate {
+    func sendInfo(_ sender: UIButton)
+}
+
+
 class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, GIDSignInDelegate {
     
    enum RequiredActionType: String {

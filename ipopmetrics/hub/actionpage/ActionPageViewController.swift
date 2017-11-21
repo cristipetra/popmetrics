@@ -11,7 +11,7 @@ import Haptica
 import BubbleTransition
 import EZAlertController
 
-class GoogleActionViewController: UIViewController {
+class ActionPageViewController: UIViewController {
     
     
     //Extend View
@@ -242,7 +242,7 @@ class GoogleActionViewController: UIViewController {
     }
 }
 
-extension GoogleActionViewController: UIScrollViewDelegate {
+extension ActionPageViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
@@ -270,7 +270,7 @@ extension GoogleActionViewController: UIScrollViewDelegate {
 
 // MARK: UIViewControllerTransitioningDelegate
 
-extension GoogleActionViewController: UIViewControllerTransitioningDelegate {
+extension ActionPageViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .present
         transition.startingPoint = transitionButton.center
