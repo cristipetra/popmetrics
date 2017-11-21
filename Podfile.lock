@@ -67,7 +67,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.12)
   - GTMSessionFetcher/Full (1.1.12):
     - GTMSessionFetcher/Core (= 1.1.12)
-  - GTProgressBar (0.2.1)
+  - GTProgressBar (0.2.3)
   - Haptica (2.0.0)
   - Hero (1.0.0)
   - JSONWebToken (2.2.0)
@@ -75,7 +75,7 @@ PODS:
   - M13ProgressSuite (1.2.9)
   - markymark (4.0.1)
   - MarqueeLabel/Swift (3.1.3)
-  - MGSwipeTableCell (1.6.4)
+  - MGSwipeTableCell (1.6.6)
   - MJCalendar (0.4.0):
     - NSDate-Escort (~> 1.5)
     - UIView+JMFrame
@@ -103,7 +103,7 @@ PODS:
     - TwitterCore (>= 2.8)
   - UIView+JMFrame (0.1.2)
   - URLNavigator (2.0.2)
-  - Whisper (6.0.0)
+  - Whisper (6.0.1)
 
 DEPENDENCIES:
   - ActiveLabel (from `https://github.com/sherwinzadeh/ActiveLabel.swift`, commit `4bec2dae617cca42263b9b6efc84e8f4822cc4ad`)
@@ -203,7 +203,7 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   GTMOAuth2: be83fd28d63ae3087e7d351b1f39c1a7e24ab6e7
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
-  GTProgressBar: 36acc68b34a2b8c0dc14fdeefdbbad64049a6966
+  GTProgressBar: ecfa9f2dfaca1b9b35811925f5bd53516ee591ae
   Haptica: ed63c31f32f2aa17ecb479c110dd50904497bf5d
   Hero: 18e7cf8af41c04c8532d1430ac174004a9365c87
   JSONWebToken: 6fae32489632658d563dd6952a5c34020ea813e4
@@ -211,7 +211,7 @@ SPEC CHECKSUMS:
   M13ProgressSuite: ea9f7263e73e9215e6849dfa54e29ee0ad6a145c
   markymark: c2d2d2b8ddfb09acf5153e5c86291f2624350b58
   MarqueeLabel: baa5753dcbd36dca080e1f5c589a665aa5c906f1
-  MGSwipeTableCell: 8b422e0c1c0b6f1adb49265be86bf4a474b6b516
+  MGSwipeTableCell: c3bc6e261e7bc06c112909fe3fb8205de286082c
   MJCalendar: a529b085b0b988ae7b493ce7c000946cc186bf0e
   MotionAnimation: 0257eb90f766f6d58c70524f956faf8d56c5e7bf
   NotificationBannerSwift: 666e6c392238561c17a52db4c50e6f00d9942e0d
@@ -230,7 +230,7 @@ SPEC CHECKSUMS:
   TwitterKit: 3b6044a7320340326a4098f3e37aa1dbaeb94942
   UIView+JMFrame: a907974c9d34b1c300aef85ae2a1a5af746f2b8a
   URLNavigator: 91f4f1b52f5e8117baca758ba642b26069d72056
-  Whisper: 2d2c7cf64ed0563cd4ce03306555edf9b7ddc5c3
+  Whisper: 775a726ca40cb6499be6415b35692b8e0f2c1129
 
 PODFILE CHECKSUM: 95b830e177574056352b284b8539f2ed37eea952
 
