@@ -70,6 +70,9 @@ class FeedCard: Object, Mappable {
     
     @objc dynamic var iceAimee: String? = nil
     
+    @objc dynamic var impactPercentage: Int = 0
+    @objc dynamic var impactSplit: String? = nil // "[{'label': "Website Traffice", 'percentage': 10}]"
+    
     @objc dynamic var diyInstructions: String? = nil // ['## markdown1', '### markdown 2 *b']
     @objc dynamic var insightArguments: String? = nil // ['## markdown1', '### amrkdown 2']
     
@@ -110,6 +113,10 @@ class FeedCard: Object, Mappable {
         iceCostPercentage <- map["ice_cost_percentage"]
         iceEffortLabel <- map["ice_effort_label"]
         iceEffortPercentage <- map["ice_effort_percentage"]
+        
+        impactPercentage <- map["impact_percentage"]
+        impactSplit <- map["impact_split"]
+        
         
         diyInstructions     <- map["diy_instructions"]
         insightArguments    <- map["insight_arguments"]
