@@ -58,17 +58,20 @@ class SettingsBaseViewController: UIViewController {
         titleLabel.textAlignment = .center
         let sideBtnFont: UIFont!
         
-       addTitleView()
+        var cancelInsets = UIEdgeInsetsMake(0, 5, 0, 0)
+        
+        addTitleView()
         
         if UIScreen.main.bounds.width < 375 {
             sideBtnFont = UIFont(name: FontBook.semibold, size: 14)
+            cancelInsets = UIEdgeInsetsMake(0, -4, 0, 0)
         } else {
             sideBtnFont = UIFont(name: FontBook.semibold, size: 17)
         }
         
-        cancelButton = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(cancelHandler))
+        cancelButton = UIBarButtonItem.buttonWithSpacing(title: "Cancel", target: self, action: #selector(cancelHandler), font: sideBtnFont, insets: cancelInsets)
         cancelButton.tintColor = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1)
-        cancelButton.setTitleTextAttributes([NSAttributedStringKey.font: sideBtnFont], for: .normal)
+        //cancelButton.setTitleTextAttributes([NSAttributedStringKey.font: sideBtnFont], for: .normal)
         
         let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneHandler))
         doneButton.tintColor = UIColor(red: 65/255, green: 155/255, blue: 249/255, alpha: 1)
@@ -102,4 +105,20 @@ class SettingsBaseViewController: UIViewController {
         
     }
 
+}
+
+extension UIBarButtonItem {
+    
+    static func buttonWithSpacing(title: String, target: Any, action: Selector,font: UIFont, insets: UIEdgeInsets) -> UIBarButtonItem {
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: 0, y: 0, width: 60, height: 20)
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
+        button.titleLabel?.font = font
+        button.titleEdgeInsets = insets
+        button.addTarget(target, action: action, for: .touchUpInside)
+        let barButtonItem = UIBarButtonItem(customView: button)
+        return barButtonItem
+    }
+    
 }

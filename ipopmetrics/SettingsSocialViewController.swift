@@ -1,20 +1,20 @@
 //
-//  SettingsFacebookViewController.swift
+//  SettingsSocialViewController.swift
 //  ipopmetrics
 //
-//  Created by Cristian Petra on 16/11/2017.
+//  Created by Cristian Petra on 20/11/2017.
 //  Copyright © 2017 Popmetrics. All rights reserved.
 //
 
 import UIKit
 
-class SettingsFacebookViewController: SettingsBaseViewController {
-
+class SettingsSocialViewController: SettingsBaseViewController {
+    
     @IBOutlet weak var brandURLLabel: UILabel!
     @IBOutlet weak var brandNameLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //titleWindow = "FACEBOOK ACCOUNT"
         setupNavigationWithBackButton()
     }
@@ -31,3 +31,4 @@ class SettingsFacebookViewController: SettingsBaseViewController {
         titleWindow = "FACEBOOK ACCOUNT"
     }
 }
+

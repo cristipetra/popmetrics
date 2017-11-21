@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import MessageUI
+import ObjectMapper
+import SwiftyJSON
+
 
 class StaticSettingsViewController: BaseTableViewController {
 
@@ -14,26 +18,31 @@ class StaticSettingsViewController: BaseTableViewController {
     @IBOutlet weak var phone: UITextField!
     @IBOutlet weak var professionalEmail: UITextField!
     @IBOutlet weak var brandName: UITextField!
+    @IBOutlet weak var allowSounds: UISwitch!
     
     let sectionTitles = ["USER IDENTITY", "NOTIFICATIONS", "BRAND IDENTITY", "SOCIAL ACCOUNTS", "DATA ACCOUNTS", "WEB OVERLAY"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView.backgroundColor = PopmetricsColor.tableBackground
-        //tableView.allowsSelection = false
         
         setUpNavigationBar()
         updateView()
     }
     
+    
     private func updateView() {
         let user = UsersStore.getInstance().getLocalUserAccount()
+        let userSettings: UserSettings = UsersStore.getInstance().getLocalUserSettings()
         
         name.text = user.name
         phone.text = user.phone
         professionalEmail.text = user.email
         
         brandName.text = UsersStore.currentBrandName
+        
+        allowSounds.isOn = userSettings.allowSounds
+        
     }
     
     func setUpNavigationBar() {
@@ -85,7 +94,9 @@ class StaticSettingsViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath)
-        if(indexPath.section == 0 && indexPath.row == 2) {
+        if(indexPath.section == 0 && indexPath.row == 1) {
+            sendEmail()
+        } else if(indexPath.section == 0 && indexPath.row == 2) {
             displaySettingsEmail()
         } else if (indexPath.section == 2 && indexPath.row == 1) {
             displaySettingsLogo()
@@ -98,22 +109,22 @@ class StaticSettingsViewController: BaseTableViewController {
         } else if (indexPath.section == 4 && indexPath.row == 0) {
             displayGASettings()
         } else if (indexPath.section == 5 && indexPath.row == 0) {
-            displayOverlay()
-        } else if (indexPath.section == 5 && indexPath.row == 1) {
             displayOverlayDescription()
+        } else if (indexPath.section == 5 && indexPath.row == 1) {
+            displayOverlay()
         } else if (indexPath.section == 5 && indexPath.row == 2) {
             displayOverlayUrl()
         }
     }
     
     private func displayTwitter() {
-        let twitterVC = SettingsFacebookViewController(nibName: "SettingsFacebookView", bundle: nil)
+        let twitterVC = SettingsSocialViewController(nibName: "SettingsSocialView", bundle: nil)
         twitterVC.displayTwitter()
         self.navigationController?.pushViewController(twitterVC, animated: true)
     }
     
     private func displayLinkedin() {
-        let linkedinVC = SettingsFacebookViewController(nibName: "SettingsFacebookView", bundle: nil)
+        let linkedinVC = SettingsSocialViewController(nibName: "SettingsSocialView", bundle: nil)
         linkedinVC.displayLinkedin()
         self.navigationController?.pushViewController(linkedinVC, animated: true)
     }
@@ -129,7 +140,7 @@ class StaticSettingsViewController: BaseTableViewController {
     }
     
     private func displayFacebook() {
-        let facebookVC = SettingsFacebookViewController(nibName: "SettingsFacebookView", bundle: nil)
+        let facebookVC = SettingsSocialViewController(nibName: "SettingsSocialView", bundle: nil)
         facebookVC.displayFacebook()
         self.navigationController?.pushViewController(facebookVC, animated: true)
     }
@@ -154,4 +165,32 @@ class StaticSettingsViewController: BaseTableViewController {
         self.navigationController?.pushViewController(overlayURL, animated: true)
     }
 
+}
+
+extension StaticSettingsViewController: MFMailComposeViewControllerDelegate {
+    
+    private func sendEmail() {
+        
+        let mailComposerVC = configuredMailComposeVC()
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposerVC, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func configuredMailComposeVC() -> MFMailComposeViewController {
+        
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        //mailComposerVC.setSubject("Test mail")
+        if let myNumber = UsersStore.getInstance().getLocalUserAccount().phone {
+            mailComposerVC.setMessageBody("Hey, I’d like to change my phone number from \(myNumber) to", isHTML: false)
+        }
+        //mailComposerVC.setToRecipients([""])
+        return mailComposerVC
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

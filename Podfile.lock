@@ -67,7 +67,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.12)
   - GTMSessionFetcher/Full (1.1.12):
     - GTMSessionFetcher/Core (= 1.1.12)
-  - GTProgressBar (0.2.2)
+  - GTProgressBar (0.2.1)
   - Haptica (2.0.0)
   - Hero (1.0.0)
   - JSONWebToken (2.2.0)
@@ -203,7 +203,7 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   GTMOAuth2: be83fd28d63ae3087e7d351b1f39c1a7e24ab6e7
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
-  GTProgressBar: 7be32c8660b877ccaeb1c709f7638baa053cebd5
+  GTProgressBar: 36acc68b34a2b8c0dc14fdeefdbbad64049a6966
   Haptica: ed63c31f32f2aa17ecb479c110dd50904497bf5d
   Hero: 18e7cf8af41c04c8532d1430ac174004a9365c87
   JSONWebToken: 6fae32489632658d563dd6952a5c34020ea813e4

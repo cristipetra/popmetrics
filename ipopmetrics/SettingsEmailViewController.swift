@@ -7,11 +7,19 @@
 //
 
 import UIKit
+import EZAlertController
 
 class SettingsEmailViewController: SettingsBaseViewController {
     
     @IBOutlet weak var emailTextfield: UITextField!
     let user = UsersStore.getInstance().getLocalUserAccount()
+    
+    private var didDisplayAlert: Bool = false
+    private var didChangedEmail: Bool {
+        get {
+            return emailTextfield.text != user.email
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +38,12 @@ class SettingsEmailViewController: SettingsBaseViewController {
     }    
 
     @objc override func cancelHandler() {
-        if emailTextfield.text != user.email {
+        if shouldDisplayAlert() {
+            didDisplayAlert = true
             Alert.showAlertDialog(parent: self, action: { (action) -> (Void) in
                 switch action {
                 case .cancel:
+                    //self.navigationController?.popViewController(animated: true)
                     break
                 case .save:
                     self.changeEmail()
@@ -45,11 +55,24 @@ class SettingsEmailViewController: SettingsBaseViewController {
         }
     }
     
+    private func shouldDisplayAlert() -> Bool {
+        if !didDisplayAlert && didChangedEmail {
+            return true
+        } else {
+            return false
+        }
+        return true
+    }
+    
     @objc override func doneHandler() {
         changeEmail()
     }
     
     private func changeEmail() {
+        if !Validator.isValidEmail(emailTextfield.text!) {
+            EZAlertController.alert("Error", message: "Your email address is invalid. Please enter a valid address.")
+            return
+        }
         self.navigationController?.popViewController(animated: true)
     }
 }

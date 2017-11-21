@@ -141,6 +141,36 @@ class UserProfileDetails: Mappable{
     
 }
 
+class UserSettings: Mappable {
+    var userAccount: UserAccount?
+    var currentBrand: Brand?
+    
+    var overlayActions: String?
+    var overlayDescription: String?
+    var overlayActionUrl: String?
+    
+    var allowSounds: Bool = true
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        userAccount         <- map["user_account"]
+        currentBrand        <- map["brand"]
+        allowSounds         <- map["allow_sounds"]
+        
+        overlayDescription  <- map["overlay_description"]
+        overlayActions      <- map["overlay_actions"]
+        overlayActionUrl    <- map["overlay_action_url"]
+    }
+    
+    func getOverlayActions() -> [String] {
+        let actions =  overlayActions?.components(separatedBy: ",")
+        return actions!
+    }
+}
+
 class UserAccount: Mappable {
     var name: String?
     var email: String?

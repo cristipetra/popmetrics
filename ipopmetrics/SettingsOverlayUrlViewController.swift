@@ -10,10 +10,23 @@ import UIKit
 
 class SettingsOverlayUrlViewController: SettingsBaseViewController {
     
+    @IBOutlet weak var textUrl: UITextField!
+    
+    let userSettings: UserSettings = UsersStore.getInstance().getLocalUserSettings()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         titleWindow = "Overlay Action URL"
+        
+        updateView()
+    }
+    
+    private func updateView() {
+        if let url = userSettings.overlayActionUrl {
+            textUrl.text = url
+        }
     }
     
     override func cancelHandler() {
