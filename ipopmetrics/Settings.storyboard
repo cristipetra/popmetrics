@@ -477,6 +477,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="allowNotifications" destination="GGY-ce-eCk" id="SGX-cU-RJ1"/>
                         <outlet property="allowSounds" destination="X8L-tp-9wi" id="WXu-UT-HzU"/>
                         <outlet property="brandName" destination="c88-T6-6L2" id="X36-DC-dKC"/>
                         <outlet property="name" destination="Ls9-G3-JL0" id="7d3-eR-BAq"/>

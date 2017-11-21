@@ -10,7 +10,7 @@ import UIKit
 import MessageUI
 import ObjectMapper
 import SwiftyJSON
-
+import UserNotifications
 
 class StaticSettingsViewController: BaseTableViewController {
 
@@ -19,6 +19,7 @@ class StaticSettingsViewController: BaseTableViewController {
     @IBOutlet weak var professionalEmail: UITextField!
     @IBOutlet weak var brandName: UITextField!
     @IBOutlet weak var allowSounds: UISwitch!
+    @IBOutlet weak var allowNotifications: UISwitch!
     
     let sectionTitles = ["USER IDENTITY", "NOTIFICATIONS", "BRAND IDENTITY", "SOCIAL ACCOUNTS", "DATA ACCOUNTS", "WEB OVERLAY"]
     override func viewDidLoad() {
@@ -26,6 +27,7 @@ class StaticSettingsViewController: BaseTableViewController {
 
         self.tableView.backgroundColor = PopmetricsColor.tableBackground
         
+        allowNotifications.addTarget(self, action: #selector(changeNotifications(_:)), for: .valueChanged)
         setUpNavigationBar()
         updateView()
     }
@@ -41,6 +43,7 @@ class StaticSettingsViewController: BaseTableViewController {
         
         brandName.text = UsersStore.currentBrandName
         
+        allowNotifications.isOn = UIApplication.shared.isRegisteredForRemoteNotifications
         allowSounds.isOn = userSettings.allowSounds
         
     }
@@ -163,6 +166,34 @@ class StaticSettingsViewController: BaseTableViewController {
     private func displayOverlayUrl() {
         let overlayURL = SettingsOverlayUrlViewController(nibName: "SettingsOverlayUrlView", bundle: nil)
         self.navigationController?.pushViewController(overlayURL, animated: true)
+    }
+    
+    @objc func changeNotifications(_ sender: UISwitch) {
+        if sender.isOn == true {
+            registerForNotification()
+        }
+        
+        if sender.isOn == false {
+            UIApplication.shared.unregisterForRemoteNotifications()
+        }
+    }
+    
+    private func registerForNotification() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            self.getNotificationSettings()
+        }
+    }
+    
+    func getNotificationSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            guard settings.authorizationStatus == .authorized else {return }
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+                
+            }
+        }
+        
     }
 
 }

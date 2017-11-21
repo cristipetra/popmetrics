@@ -15,7 +15,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsFacebookViewController" customModule="ipopmetrics" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsSocialViewController" customModule="ipopmetrics" customModuleProvider="target">
             <connections>
                 <outlet property="brandNameLabel" destination="fle-Af-FIh" id="GCD-Zk-WDL"/>
                 <outlet property="brandURLLabel" destination="lS2-GT-rZ2" id="P7f-bP-Mqa"/>

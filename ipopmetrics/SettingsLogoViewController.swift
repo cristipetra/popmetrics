@@ -13,6 +13,8 @@ class SettingsLogoViewController: SettingsBaseViewController, UINavigationContro
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var imagePlaceholderLbl: UILabel!
     
+    private var imageChanged: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +39,7 @@ class SettingsLogoViewController: SettingsBaseViewController, UINavigationContro
             imagePicker.sourceType = .photoLibrary
             imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true, completion: nil)
+            imageChanged = true
         }
     }
     
@@ -48,7 +51,24 @@ class SettingsLogoViewController: SettingsBaseViewController, UINavigationContro
     }
     
     @objc override func cancelHandler() {
+        if shouldDisplayAlert() {
+            Alert.showAlertDialog(parent: self, action: { (action) -> (Void) in
+                switch action {
+                case .cancel:
+                    self.navigationController?.popViewController(animated: true)
+                    break
+                case .save:
+                    
+                    break
+                }
+            })
+            return
+        }
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    private func shouldDisplayAlert() -> Bool {
+        return imageChanged
     }
     
     @objc override func doneHandler() {
