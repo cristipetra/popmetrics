@@ -90,6 +90,10 @@ class IceCardViewCell: UITableViewCell {
     
     func configure(_ card: FeedCard) {
         feedCard = card
+        
+        self.titleLbl.text = feedCard.headerTitle
+        self.messageLbl.text = feedCard.message!
+        self.footerView.actionButton.changeTitle(feedCard.actionLabel)
     }
     
     @objc internal func handlerActionButton(_ sender: TwoImagesButton) {
