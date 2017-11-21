@@ -79,7 +79,7 @@ enum HomeCardType: String {
         requiredAction: 505,
         insight: 479,
         recommendedAction: 479,
-        emptyState: 150,
+        emptyState: 261,
     ]
     
     func getCardHeight() -> CGFloat {
@@ -150,17 +150,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
         tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
         
-        let toDoCardNib = UINib(nibName: "ToDoCell", bundle: nil)
-        tableView.register(toDoCardNib, forCellReuseIdentifier: "ToDoCell")
-        
         let recommendedNib = UINib(nibName: "RecommendedCell", bundle: nil)
         tableView.register(recommendedNib, forCellReuseIdentifier: "recommendedId")
         
         let recommendedActionNib = UINib(nibName: "IceCardView", bundle: nil)
         tableView.register(recommendedActionNib, forCellReuseIdentifier: "recommendedActionId")
-        
-        let trafficNib = UINib(nibName: "TrafficCard", bundle: nil)
-        tableView.register(trafficNib, forCellReuseIdentifier: "TrafficCard")
         
         let moreInfoNib = UINib(nibName: "MoreInfoViewCell", bundle: nil)
         tableView.register(moreInfoNib, forCellReuseIdentifier: "moreInfoId")
@@ -179,50 +173,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         setupTopHeaderView()
         
         addImageOnLastCard()
-        
-        //createItemsLocally()
     }
     
-    
-    internal func createItemsLocally() {
-        try! store.realm.write {
-            store.realm.delete(store.getFeedCards())
-            
-            let todoCard = FeedCard()
-            todoCard.section = "Required Actions"
-            todoCard.type = "required_action"
-            todoCard.cardId = "12523dadfsgfa5"
-            store.realm.add(todoCard, update: true)
-            
-            let todoCard1 = FeedCard()
-            todoCard1.section = "Required Actions"
-            todoCard1.type = "required_action"
-            todoCard1.cardId = "12523dafsdasfddfsgfa5"
-            todoCard1.actionHandler = RequiredActionHandler.RequiredActionType.email.rawValue
-            todoCard1.headerTitle = "Double check your email!"
-            todoCard1.message = "We'll use your email to send your updates and reports on your business performance."
-            store.realm.add(todoCard1, update: true)
-            
-            let todoCard2 = FeedCard()
-            todoCard2.section = "Required Actions"
-            todoCard2.type = "required_action"
-            todoCard2.cardId = "12523dafsdfsdafasfddfsgfa5"
-            store.realm.add(todoCard2, update: true)
- 
-            let tmpCard = FeedCard()
-            tmpCard.section = HomeSectionType.recommendedActions.rawValue
-            tmpCard.type = "recommended_action"
-            tmpCard.cardId = "adsfaasfq24521"
-            tmpCard.iceImpactPercentage = 70
-            tmpCard.iceCostLabel = "30"
-            tmpCard.iceCostPercentage = 60
-            tmpCard.iceEffortLabel = "10 mins"
-            tmpCard.iceEffortPercentage = 40
-            
-            store.realm.add(tmpCard, update: true)
-            
-        }
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -282,35 +234,18 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return store.countSections()
-        return store.countSections() + 1  // adding +1 for the last card
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isLastSection(section: section) {
-            return 1
-        }
-        
         return getSectionCards(section).count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
         
-        isMoreInfoType = false
         shouldDisplayCell = true
-        
-        if (isLastSection(section: sectionIdx)) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
-            cell.changeTitleWithSpacing(title: "More on it's way!")
-            cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
-            cell.selectionStyle = .none
-            cell.goToButton.changeTitle("View To Do List")
-            cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
-            return cell
-        }
         
         let sectionCards = getSectionCards(sectionIdx)
 
@@ -351,13 +286,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             case HomeCardType.insight.rawValue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedId", for: indexPath) as! RecommendedCell
-                cell.setUpCell(type: "Popmetrics Insight")
-                cell.configure(item)
+                cell.configure(item, handler: recommendActionHandler)
                 if(sectionCards.count-1 == indexPath.row) {
                     cell.connectionLine.isHidden = true;
                 }
                 cell.delegate = self
-                //cell.footerVIew.actionButton.addTarget(self, action: #selector(handlerInsightButton),
                 cell.footerVIew.informationBtn.addTarget(self, action: #selector(showTooltip(_:)), for: .touchUpInside)
                 return cell
 
@@ -378,7 +311,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 let cell = UITableViewCell()
                 return cell
             }
-        
     }
     
     @objc func loadAllActionCards() {
@@ -395,14 +327,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
     }
     
-    func isLastSection(section: Int) -> Bool {
-        return false
-        if section == store.countSections() {
-            return true
-        }
-        return false
-    }
-    
     @objc func openGoogleActionView(_ feedCard: FeedCard) {
         let googleActionVc: GoogleActionViewController = UIStoryboard(name: "GoogleAction", bundle: nil).instantiateViewController(withIdentifier: "googleId") as! GoogleActionViewController
         googleActionVc.hidesBottomBarWhenPushed = true
@@ -410,11 +334,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         self.navigationController?.pushViewController(googleActionVc, animated: true)
     }
-    
-    @objc func handlerInsightButton() {
-        goToNextTab()
-    }
-    
+
     @objc private func goToNextTab() {
         self.tabBarController?.selectedIndex += 1
     }
@@ -445,9 +365,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if (isLastSection(section: section)) {
-            return nil
-        }
         
         let sectionCards = getSectionCards(section)
         
@@ -489,10 +406,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if isLastSection(section: indexPath.section) {
-            return 261
-        }
-
         if isMoreInfoType {
             return 226
         }
@@ -501,19 +414,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             return 0
         }
         
-        
         let cards = getSectionCards(indexPath.section)
         let card: FeedCard  = cards[indexPath.row]
         
         guard let cardType = HomeCardType(rawValue: card.type) else { return 0}
         return cardType.getCardHeight()
-        
-
-        let sectionString = indexToSection[indexPath.section]
-        guard let _ = sectionString else { return 0 }
-        guard let homeSection = HomeSection(rawValue: sectionString!) else { return 0 }
-        
-        //return homeSection.getSectionHeight()
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {

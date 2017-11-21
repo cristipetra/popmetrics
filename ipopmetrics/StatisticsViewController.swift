@@ -258,7 +258,6 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendedCell", for: indexPath) as! RecommendedCell
                 cellHeight = 469
                 cell.selectionStyle = .none
-                cell.setUpCell(type: "Popmetrics Insight")
                 return cell
             } else {
                 let cell = UITableViewCell()

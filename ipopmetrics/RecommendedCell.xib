@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -36,7 +36,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xmp-ns-pr3">
                         <rect key="frame" x="10" y="29" width="300" height="439.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eYK-Rm-n8D">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePyramid" translatesAutoresizingMaskIntoConstraints="NO" id="eYK-Rm-n8D">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="345"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is an article for you to read" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="404-LX-Lbg">
@@ -64,18 +64,10 @@
                                     <constraint firstAttribute="height" constant="94" id="ABK-Fm-RIs"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter is a key access point to increase your social following." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aui-QH-5um">
-                                <rect key="frame" x="20" y="238" width="270" height="97"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                <color key="textColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="aui-QH-5um" firstAttribute="top" secondItem="YEd-JZ-7L4" secondAttribute="bottom" constant="14" id="7ez-bP-BvZ"/>
                             <constraint firstItem="YEd-JZ-7L4" firstAttribute="leading" secondItem="xmp-ns-pr3" secondAttribute="leading" constant="20" id="B2m-s6-ngN"/>
-                            <constraint firstAttribute="trailing" secondItem="aui-QH-5um" secondAttribute="trailing" constant="10" id="B6U-VH-ZkR"/>
                             <constraint firstAttribute="trailing" secondItem="aL3-tc-p25" secondAttribute="trailing" id="DHS-kU-Ccz"/>
                             <constraint firstItem="aL3-tc-p25" firstAttribute="top" secondItem="eYK-Rm-n8D" secondAttribute="bottom" id="F6D-uN-qwD"/>
                             <constraint firstItem="aL3-tc-p25" firstAttribute="leading" secondItem="xmp-ns-pr3" secondAttribute="leading" id="F81-T9-LO3"/>
@@ -83,10 +75,8 @@
                             <constraint firstAttribute="trailing" secondItem="404-LX-Lbg" secondAttribute="trailing" constant="10" id="Rrw-Mo-vcA"/>
                             <constraint firstItem="404-LX-Lbg" firstAttribute="top" secondItem="xmp-ns-pr3" secondAttribute="top" constant="16" id="SXE-qf-2bb"/>
                             <constraint firstItem="eYK-Rm-n8D" firstAttribute="top" secondItem="xmp-ns-pr3" secondAttribute="top" id="WSu-8k-VYd"/>
-                            <constraint firstItem="aL3-tc-p25" firstAttribute="top" secondItem="aui-QH-5um" secondAttribute="bottom" constant="10" id="Zlh-VJ-aho"/>
                             <constraint firstItem="404-LX-Lbg" firstAttribute="leading" secondItem="xmp-ns-pr3" secondAttribute="leading" constant="20" id="fLK-31-SS1"/>
                             <constraint firstAttribute="trailing" secondItem="eYK-Rm-n8D" secondAttribute="trailing" id="l8D-gm-3LT"/>
-                            <constraint firstItem="aui-QH-5um" firstAttribute="leading" secondItem="xmp-ns-pr3" secondAttribute="leading" constant="20" id="mGL-YM-nlJ"/>
                             <constraint firstItem="YEd-JZ-7L4" firstAttribute="top" secondItem="404-LX-Lbg" secondAttribute="bottom" constant="16" id="phr-sD-EzI"/>
                             <constraint firstItem="eYK-Rm-n8D" firstAttribute="leading" secondItem="xmp-ns-pr3" secondAttribute="leading" id="puW-OB-2j2"/>
                             <constraint firstAttribute="trailing" secondItem="YEd-JZ-7L4" secondAttribute="trailing" constant="10" id="yj6-44-Vyr"/>
@@ -119,7 +109,6 @@
                 <outlet property="containerView" destination="xmp-ns-pr3" id="wmC-SX-gjn"/>
                 <outlet property="footerVIew" destination="aL3-tc-p25" id="wBZ-Bv-RFJ"/>
                 <outlet property="messageLabel" destination="YEd-JZ-7L4" id="hZm-2p-cpQ"/>
-                <outlet property="secondMessageLabel" destination="aui-QH-5um" id="i3E-Fj-1LS"/>
                 <outlet property="titleHeightConstraint" destination="Dq1-j8-EWF" id="QSK-l7-ZjZ"/>
                 <outlet property="titleLabel" destination="404-LX-Lbg" id="A3z-oJ-cbb"/>
                 <outlet property="toolBarView" destination="OVB-Nz-PDL" id="xWd-mv-oCz"/>
@@ -127,4 +116,7 @@
             <point key="canvasLocation" x="25" y="51"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="imagePyramid" width="179" height="179"/>
+    </resources>
 </document>

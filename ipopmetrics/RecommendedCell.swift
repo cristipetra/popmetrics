@@ -21,7 +21,7 @@ class RecommendedCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var footerVIew: FooterView!
-    @IBOutlet weak var secondMessageLabel: UILabel!
+    
     
     @IBOutlet weak var titleHeightConstraint: NSLayoutConstraint!
     
@@ -42,12 +42,26 @@ class RecommendedCell: UITableViewCell {
         setupCorners()
         setUpShadowLayer()
         
+        setUpToolbar(imageName: "iconHeaderBranding", titleName: "Popmetrics Insight")
+        titleHeightConstraint.constant = 150
+        titleLabel.numberOfLines = 4
+        self.titleLabel.font = UIFont(name: FontBook.alfaRegular, size: 26)
+        self.backgroundImageView.image = UIImage(named: "imagePyramid")
+        self.messageLabel.textColor = UIColor.white
+        self.messageLabel.font = UIFont(name: FontBook.regular, size: 18)
+        self.messageLabel.numberOfLines = 5
+            
         footerVIew.actionButton.addTarget(self, action: #selector(handlerActionButton), for: .touchUpInside)
     }
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
         self.feedCard = feedCard
-        setUpCell(type: "Popmetrics Insight")
+        
+        print(feedCard)
+        
+        titleLabel.text = feedCard.headerTitle!
+        messageLabel.text = feedCard.message!
+        
         
         //footerVIew.displayOnlyActionButton()
     }
@@ -84,7 +98,6 @@ class RecommendedCell: UITableViewCell {
     private func setMessage(message: String) {
         messageLabel.text = message
         messageLabel.numberOfLines = 5
-        secondMessageLabel.numberOfLines = 2
     }
     
     private func setUpToolbar(imageName: String, titleName: String) {
@@ -94,45 +107,6 @@ class RecommendedCell: UITableViewCell {
         self.toolBarView.title.text = titleName
         self.toolBarView.leftImage.contentMode = UIViewContentMode.scaleAspectFit
         self.toolBarView.title.font = UIFont(name: FontBook.bold, size: 15)
-    }
-    
-    func setUpCell(type: String) {
-        
-        switch type {
-        case "Recommended Reading":
-            setUpToolbar(imageName: "iconHeaderArticle", titleName: "Recommended Reading")
-            self.backgroundImageView.image = UIImage(named: "image_pattern")
-            self.setTitleRecommended(title : "This Is An Article For You To Read (Title)")
-            self.setMessage(message: "Short explanation of what the story is here leading to a blog post about what the user should be doing in their best course of action and how it relates to their business.")
-            self.messageLabel.textColor = UIColor(red: 189/255, green: 197/255, blue: 203/255, alpha: 1)
-            self.messageLabel.font = UIFont(name: FontBook.semibold, size: 15)
-            self.secondMessageLabel.isHidden = true
-            
-            self.footerVIew.actionButton.changeTitle("View Article")
-            
-            break
-        case "Popmetrics Insight":
-            setUpToolbar(imageName: "iconHeaderBranding", titleName: "Popmetrics Insight")
-            self.backgroundImageView.image = UIImage(named: "imagePyramid")
-            titleHeightConstraint.constant = 150
-            self.setTitleInsight(title : "We've had a look and your brand's Twitter could do with some love!")
-            self.titleLabel.font = UIFont(name: FontBook.alfaRegular, size: 26)
-            self.setMessage(message: "We've looked at your industry and prepared some brand-boosting tweets to post on your behalf!")
-            self.messageLabel.textColor = UIColor.white
-            self.messageLabel.font = UIFont(name: FontBook.regular, size: 18)
-            self.secondMessageLabel.text = ""
-            self.secondMessageLabel.textColor = UIColor.white
-            self.secondMessageLabel.font = UIFont(name: FontBook.regular, size: 18)
-            
-            footerVIew.actionButton.changeTitle("View \nRecommendation")
-            
-            self.connectionLine.isHidden = true
-            
-            break
-        default:
-            break
-        }
-        
     }
     
     func setUpShadowLayer() {

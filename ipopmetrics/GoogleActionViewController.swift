@@ -9,6 +9,7 @@
 import UIKit
 import Haptica
 import BubbleTransition
+import EZAlertController
 
 class GoogleActionViewController: UIViewController {
     
@@ -71,11 +72,8 @@ class GoogleActionViewController: UIViewController {
         
         recommendActionHandler = handler
         
-        if(feedCard.detailsMarkdown !=  nil) {
-            //recommendedActionView.showDetailsMarkdown(feedCard.detailsMarkdown!)
-        }
         iceView.configure(feedCard)
-        
+        recommendedActionView.configure(feedCard)
     }
     
     @objc func openLink(_ sender: RoundButton) {
@@ -141,7 +139,7 @@ class GoogleActionViewController: UIViewController {
     }
     
     func setTaskView() {
-        iceView.configure(feedCard)
+        
     }
     
     func addAimeeView() {
