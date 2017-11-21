@@ -180,11 +180,11 @@ class ToDoViewController: BaseViewController {
         let toDoCardCell = UINib(nibName: "ToDoCardCell", bundle: nil)
         tableView.register(toDoCardCell, forCellReuseIdentifier: "toDoCardCellId")
         
-        let toDoHeaderCardNib = UINib(nibName: "HeaderCardCell", bundle: nil)
-        tableView.register(toDoHeaderCardNib, forCellReuseIdentifier: "headerCardCell")
+        let toDoHeaderCardNib = UINib(nibName: "CardHeaderCell", bundle: nil)
+        tableView.register(toDoHeaderCardNib, forCellReuseIdentifier: "CardHeaderCell")
         
         let sectionHeaderNib = UINib(nibName: "CalendarHeader", bundle: nil)
-        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CardHeaderView")
+        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CalendarHeader")
         
         tableView.register(TableFooterView.self, forHeaderFooterViewReuseIdentifier: "footerId")
         
@@ -194,8 +194,8 @@ class ToDoViewController: BaseViewController {
         let maximizedCell = UINib(nibName: "TodoCardMaximized", bundle: nil)
         tableView.register(maximizedCell, forCellReuseIdentifier: "maxCellId")
         
-        let todoHeader = UINib(nibName: "HeaderCardView", bundle: nil)
-        tableView.register(todoHeader, forHeaderFooterViewReuseIdentifier: "headerViewID")
+        let todoHeader = UINib(nibName: "CardHeaderView", bundle: nil)
+        tableView.register(todoHeader, forHeaderFooterViewReuseIdentifier: "CardHeaderView")
         
         let emptyCard = UINib(nibName: "EmptyCard", bundle: nil)
         tableView.register(emptyCard, forCellReuseIdentifier: "EmptyCard")
@@ -431,13 +431,13 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         let card = store.getTodoCards()[section]
         
         if store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count == 0 {
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
+            let headerCell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
             headerCell.changeColor(color: card.getSectionColor)
             headerCell.changeTitle(title: card.getCardSectionTitle)
             return headerCell.containerView
         }
         
-        let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "headerViewID") as! CardHeaderView
+        let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CardHeaderView") as! CardHeaderView
         headerCell.changeColor(color: card.getSectionColor)
         headerCell.toolbarView.backgroundColor = .white
         headerCell.changeTitleSection(title: card.getCardSectionTitle)

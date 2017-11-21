@@ -150,10 +150,10 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
         tableView.register(calendarCardSimpleNib, forCellReuseIdentifier: "CalendarCardSimple")
         
         let sectionHeaderNib = UINib(nibName: "CalendarHeader", bundle: nil)
-        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CardHeaderView")
+        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CalendarHeader")
         
-        let sectionHeaderCardNib = UINib(nibName: "HeaderCardCell", bundle: nil)
-        tableView.register(sectionHeaderCardNib, forCellReuseIdentifier: "headerCardCell")
+        let sectionHeaderCardNib = UINib(nibName: "CardHeader", bundle: nil)
+        tableView.register(sectionHeaderCardNib, forCellReuseIdentifier: "CardHeader")
         
         
         tableView.register(TableFooterView.self, forHeaderFooterViewReuseIdentifier: "footerId")
@@ -368,13 +368,13 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         let sectionCard = store.getCalendarCards()[section]
         
         if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected).count == 0 {
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCardCell") as! HeaderCardCell
+            let headerCell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
             headerCell.changeColor(color: sectionCard.getSectionColor)
             headerCell.changeTitle(title: sectionCard.socialTextString)
             return headerCell.containerView
         }
         else {
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderView") as! CalendarHeaderViewCell
+            let headerCell = tableView.dequeueReusableCell(withIdentifier: "CalendarHeader") as! CalendarHeaderViewCell
             headerCell.changeColor(color: sectionCard.getSectionColor)
             headerCell.changeTitleToolbar(title: "")
             headerCell.changeTitleSection(title: sectionCard.getCardSectionTitle)

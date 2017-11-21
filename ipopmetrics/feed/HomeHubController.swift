@@ -146,6 +146,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let sectionHeaderNib = UINib(nibName: "CardHeaderView", bundle: nil)
         tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CardHeaderView")
         
+        let cardHeaderCellNib = UINib(nibName: "CardHeaderCell", bundle: nil)
+        tableView.register(cardHeaderCellNib, forCellReuseIdentifier: "CardHeaderCell")
+        
+        
         let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
         tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
         
@@ -374,7 +378,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let homeSection = HomeSection.init(rawValue: self.indexToSection[section]!)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderView") as! HeaderCardCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
         cell.sectionTitleLabel.text = homeSection?.sectionTitle()
         
         return cell

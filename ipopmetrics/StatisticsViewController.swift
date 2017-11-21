@@ -65,8 +65,11 @@ class StatisticsViewController: BaseViewController {
         let trafficUnconnectedNib = UINib(nibName: "TrafficEmptyCard", bundle: nil)
         tableView.register(trafficUnconnectedNib, forCellReuseIdentifier: "TrafficEmptyCard")
         
-        let sectionHeaderNib = UINib(nibName: "HeaderCardCell", bundle: nil)
+        let sectionHeaderNib = UINib(nibName: "CardHeaderView", bundle: nil)
         tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CardHeaderView")
+        
+        let cardHeaderCellNib = UINib(nibName: "CardHeaderCell", bundle: nil)
+        tableView.register(cardHeaderCellNib, forCellReuseIdentifier: "CardHeaderCell")
         
         let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
         tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
@@ -287,7 +290,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             if( isLastSection(section: section)) {
                 return nil
             }
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderView") as! HeaderCardCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
             cell.changeColor(cardType: .traffic)
             cell.sectionTitleLabel.text = "Traffic";
             return cell
