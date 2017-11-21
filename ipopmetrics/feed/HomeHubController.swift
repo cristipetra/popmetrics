@@ -237,7 +237,16 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return getSectionCards(section).count
+        
+        let cards = getSectionCards(section)
+        
+        if cards.count == 0 {
+            return 0
+        } else if cards.count == 1 {
+            return 1
+        }
+        
+        return getSectionCards(section).count - 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -257,7 +266,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "requiredActionId", for: indexPath) as! RequiredAction
                     cell.configure(item, handler: self.requiredActionHandler)
                     cell.infoDelegate = self
-                    if(sectionCards.count-1 == indexPath.row) {
+                    if(sectionCards.count - 2 == indexPath.row) {
                         cell.connectionLineView.isHidden = true
                     } else {
                         cell.connectionLineView.isHidden = false
@@ -279,7 +288,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "requiredActionId", for: indexPath) as! RequiredAction
                 cell.configure(item, handler: self.requiredActionHandler)
                 cell.infoDelegate = self
-                if(sectionCards.count-1 == indexPath.row) {
+                if(sectionCards.count - 2 == indexPath.row) {
                     cell.connectionLineView.isHidden = true;
                 }
                 return cell
@@ -287,7 +296,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             case HomeCardType.insight.rawValue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedId", for: indexPath) as! RecommendedCell
                 cell.configure(item, handler: recommendActionHandler)
-                if(sectionCards.count-1 == indexPath.row) {
+                if(sectionCards.count - 2 == indexPath.row) {
                     cell.connectionLine.isHidden = true;
                 }
                 cell.delegate = self
