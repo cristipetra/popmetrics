@@ -193,6 +193,7 @@
 		113976B21E97CE5000B535DF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976B11E97CE5000B535DF /* MainTabBarController.swift */; };
 		113976B41E97D31B00B535DF /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976B31E97D31B00B535DF /* FeedStore.swift */; };
 		113E3F7F1F7D1023007448C6 /* StatisticsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E3F7E1F7D1023007448C6 /* StatisticsApi.swift */; };
+		1148D73D1FBF39AE006EB5BB /* NavigationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1148D73C1FBF39AE006EB5BB /* NavigationMap.swift */; };
 		116431DF1E2D4E81009AA59E /* UsersApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116431DE1E2D4E81009AA59E /* UsersApi.swift */; };
 		116540BD1EEAC3A600417D61 /* Signin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 116540BC1EEAC3A600417D61 /* Signin.storyboard */; };
 		116540BF1EEAC61E00417D61 /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116540BE1EEAC61E00417D61 /* AppStoryboard.swift */; };
@@ -216,7 +217,6 @@
 		11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */; };
 		11ACA9B01E2CE0FC0021E64A /* PopmetricsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9AF1E2CE0FC0021E64A /* PopmetricsColor.swift */; };
 		11D3B80A1F7BC76A00B51C08 /* SyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D3B8091F7BC76A00B51C08 /* SyncService.swift */; };
-		11D8D9E91ECA37FC00CCDAC4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D9E81ECA37FC00CCDAC4 /* NavigationController.swift */; };
 		11D8D9F11ECB58AB00CCDAC4 /* RequiredActionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */; };
 		11F89F691EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */; };
 		631BDFACE57815E87C781181 /* Pods_ipopmetrics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */; };
@@ -434,6 +434,7 @@
 		113976B11E97CE5000B535DF /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabBarController.swift; path = helpers/MainTabBarController.swift; sourceTree = "<group>"; };
 		113976B31E97D31B00B535DF /* FeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedStore.swift; path = stores/FeedStore.swift; sourceTree = "<group>"; };
 		113E3F7E1F7D1023007448C6 /* StatisticsApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatisticsApi.swift; path = api/StatisticsApi.swift; sourceTree = "<group>"; };
+		1148D73C1FBF39AE006EB5BB /* NavigationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMap.swift; sourceTree = "<group>"; };
 		116431DE1E2D4E81009AA59E /* UsersApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersApi.swift; path = api/UsersApi.swift; sourceTree = "<group>"; };
 		116540BB1EEAA17A00417D61 /* ipopmetrics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ipopmetrics.entitlements; sourceTree = "<group>"; };
 		116540BC1EEAC3A600417D61 /* Signin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signin.storyboard; sourceTree = "<group>"; };
@@ -464,7 +465,6 @@
 		11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressHUD.swift; path = views/ProgressHUD.swift; sourceTree = "<group>"; };
 		11ACA9AF1E2CE0FC0021E64A /* PopmetricsColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopmetricsColor.swift; path = helpers/PopmetricsColor.swift; sourceTree = "<group>"; };
 		11D3B8091F7BC76A00B51C08 /* SyncService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SyncService.swift; path = api/SyncService.swift; sourceTree = "<group>"; };
-		11D8D9E81ECA37FC00CCDAC4 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		11D8D9F01ECB58AB00CCDAC4 /* RequiredActionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredActionViewCell.swift; sourceTree = "<group>"; };
 		11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release.xcconfig"; sourceTree = "<group>"; };
@@ -1010,7 +1010,6 @@
 				11ACA98A1E2CCD600021E64A /* stores */,
 				11ACA9811E2CCCB40021E64A /* api */,
 				1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */,
-				11D8D9E81ECA37FC00CCDAC4 /* NavigationController.swift */,
 				1178D6811E1E5AD9005B96C3 /* Assets.xcassets */,
 				1178D6831E1E5AD9005B96C3 /* LaunchScreen.storyboard */,
 				1178D6861E1E5AD9005B96C3 /* Info.plist */,
@@ -1020,6 +1019,7 @@
 				08F368921F18F87800819CDE /* DailyInsightsCardCell.xib */,
 				08F368961F19029100819CDE /* LastCard.xib */,
 				08B485DF1F20EA23005918A1 /* Config.swift */,
+				1148D73C1FBF39AE006EB5BB /* NavigationMap.swift */,
 			);
 			path = ipopmetrics;
 			sourceTree = "<group>";
@@ -1662,6 +1662,7 @@
 				1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */,
 				08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */,
 				088E77AD1F7D499400774F13 /* TrafficStatsTableViewController.swift in Sources */,
+				1148D73D1FBF39AE006EB5BB /* NavigationMap.swift in Sources */,
 				08F368951F18F93800819CDE /* DailyInsightsCardCell.swift in Sources */,
 				08593DEE1FBB3B7600077A65 /* SettingsEmailViewController.swift in Sources */,
 				08B2803F1F55862100E36D19 /* Statistics.swift in Sources */,
@@ -1672,7 +1673,6 @@
 				0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */,
 				08078F441FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift in Sources */,
 				08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */,
-				11D8D9E91ECA37FC00CCDAC4 /* NavigationController.swift in Sources */,
 				08B7ADEA1FB22B8300C56688 /* FooterViewController.swift in Sources */,
 				1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */,
 				08953E6F1F4C2790003ABEFC /* ToDoCountView.swift in Sources */,
