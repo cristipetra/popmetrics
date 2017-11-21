@@ -125,7 +125,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         GIDSignIn.sharedInstance().uiDelegate = self
       
         // Style elements
@@ -233,20 +233,16 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return store.countSections()
+        return self.indexToSection.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let cards = getSectionCards(section)
+        guard let homeSection = HomeSection.init(rawValue: self.indexToSection[section]!)
+            else { return 0 }
         
-        if cards.count == 0 {
-            return 0
-        } else if cards.count == 1 {
-            return 1
-        }
+        return countCardsInSection(homeSection.rawValue)
         
-        return getSectionCards(section).count - 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -255,10 +251,16 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let rowIdx = (indexPath as NSIndexPath).row
         
         shouldDisplayCell = true
-        
-        let sectionCards = getSectionCards(sectionIdx)
 
-        let item = sectionCards[rowIdx]
+        guard let homeSection = HomeSection.init(rawValue: self.indexToSection[sectionIdx]!)
+            else {
+                return UITableViewCell()
+            }
+        
+        let card = getCardInSection(homeSection.rawValue, atIndex: rowIdx)
+        let cardsCount = countCardsInSection(homeSection.rawValue)
+        
+        let item = card
         
         switch(item.type) {    
             case HomeCardType.requiredAction.rawValue:
@@ -266,7 +268,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "requiredActionId", for: indexPath) as! RequiredAction
                     cell.configure(item, handler: self.requiredActionHandler)
                     cell.infoDelegate = self
-                    if(sectionCards.count - 2 == indexPath.row) {
+                    if(cardsCount - 2 == indexPath.row) {
                         cell.connectionLineView.isHidden = true
                     } else {
                         cell.connectionLineView.isHidden = false
@@ -277,7 +279,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 if(indexPath.row == 1) {
                     isMoreInfoType = true
                     let moreInfoCell = tableView.dequeueReusableCell(withIdentifier: "moreInfoId", for: indexPath) as! MoreInfoViewCell
-                    moreInfoCell.setActionCardCount(numberOfActionCards: sectionCards.count - 1)
+                    moreInfoCell.setActionCardCount(numberOfActionCards: cardsCount - 1)
                     moreInfoCell.footerView.actionButton.addTarget(self, action: #selector(loadAllActionCards), for: .touchUpInside)
                     return moreInfoCell
                 } else if (indexPath.row > 1) {
@@ -288,7 +290,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "requiredActionId", for: indexPath) as! RequiredAction
                 cell.configure(item, handler: self.requiredActionHandler)
                 cell.infoDelegate = self
-                if(sectionCards.count - 2 == indexPath.row) {
+                if(cardsCount - 2 == indexPath.row) {
                     cell.connectionLineView.isHidden = true;
                 }
                 return cell
@@ -296,7 +298,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             case HomeCardType.insight.rawValue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedId", for: indexPath) as! RecommendedCell
                 cell.configure(item, handler: recommendActionHandler)
-                if(sectionCards.count - 2 == indexPath.row) {
+                if(cardsCount - 2 == indexPath.row) {
                     cell.connectionLine.isHidden = true;
                 }
                 cell.delegate = self
@@ -315,6 +317,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.selectionStyle = .none
                 cell.goToButton.changeTitle("View To Do List")
                 cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
+                
                 return cell
             default:
                 let cell = UITableViewCell()
@@ -348,42 +351,32 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         self.tabBarController?.selectedIndex += 1
     }
     
-    /*
-     * Return cards for a specific section
-     */
-    func getSectionCards(_ sectionIdx: Int) -> Results<FeedCard> {
-        return store.getFeedCardsWithSection(getOrderedSections()[sectionIdx])
-    }
-
-    /*
-     * Order sections by section index and
-     */
-    func getOrderedSections() -> [String] {
-        let sections: [String] = store.getSections()
-        var orderedSections = Array(repeating: "", count: store.countSections())
-        for section in sections {
-            guard let homeSection = HomeSection(rawValue: section) else { return [] }
-            var position = homeSection.getSectionPosition()
-            if(sections.count <= homeSection.getSectionPosition()) {
-               position = sections.count - homeSection.getSectionPosition()
-            }
-            orderedSections[position] = section
+    func getCardInSection( _ section: String, atIndex:Int) -> FeedCard {
+        let nonEmptyCards = store.getNonEmptyFeedCardsWithSection(section)
+        if nonEmptyCards.count == 0 {
+            let emptyCards = store.getEmptyFeedCardsWithSection(section)
+            return emptyCards[atIndex]
         }
-        return orderedSections
-        
+        else {
+            return nonEmptyCards[atIndex]
+        }
     }
     
+    func countCardsInSection( _ section: String) -> Int {
+        let nonEmptyCards = store.getNonEmptyFeedCardsWithSection(section)
+        if nonEmptyCards.count == 0 {
+            let emptyCards = store.getEmptyFeedCardsWithSection(section)
+            return emptyCards.count
+        }
+        else {
+            return nonEmptyCards.count
+        }
+    }
+
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let sectionCards = getSectionCards(section)
-        
-        var itemSection = "unknown"
-        if sectionCards.count > 0 {
-            itemSection = sectionCards[0].section
-        }
-        
+        let homeSection = HomeSection.init(rawValue: self.indexToSection[section]!)
         let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
-        let homeSection = HomeSection(rawValue: itemSection)
         cell.sectionTitleLabel.text = homeSection?.sectionTitle()
         
         return cell
@@ -391,11 +384,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        let sectionString = indexToSection[section]
-        
-        guard let _  = sectionString else { return 0 }
-        guard let homeSection = HomeSection(rawValue: sectionString!) else { return 0 }
-        
+        guard let homeSection = HomeSection.init(rawValue: self.indexToSection[section]!)
+            else { return 0 }
+        let sectionCards = store.getFeedCardsWithSection(homeSection.rawValue)
+        if sectionCards.count == 0 {
+            return 0
+        }
         return homeSection.getSectionHeaderHeight()
     }
     
@@ -404,12 +398,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             return 226
         }
         
-        if !shouldDisplayCell {
-            return 0
-        }
+        guard let homeSection = HomeSection.init(rawValue: self.indexToSection[indexPath.section]!)
+            else { return 0 }
         
-        let cards = getSectionCards(indexPath.section)
-        let card: FeedCard  = cards[indexPath.row]
+        let card = getCardInSection(homeSection.rawValue, atIndex:indexPath.row)
         
         guard let cardType = HomeCardType(rawValue: card.type) else { return 0}
         return cardType.getCardHeight()

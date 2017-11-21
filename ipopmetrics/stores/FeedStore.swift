@@ -31,6 +31,17 @@ class FeedStore {
         return realm.objects(FeedCard.self).filter(predicate)
     }
     
+    public func getNonEmptyFeedCardsWithSection(_ section: String) -> Results<FeedCard> {
+        let predicate = NSPredicate(format: "section = %@ && type != %@", section, "empty_state")
+        return realm.objects(FeedCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
+    }
+    
+    public func getEmptyFeedCardsWithSection(_ section: String) -> Results<FeedCard> {
+        let predicate = NSPredicate(format: "section = %@ && type == %@", section, "empty_state")
+        return realm.objects(FeedCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
+    }
+    
+    
     public func getSections() -> [String] {
         let distinctTypes = Array(Set(self.getFeedCards().value(forKey: "section") as! [String]))
         return distinctTypes
