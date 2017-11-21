@@ -150,7 +150,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
         tableView.register(calendarCardSimpleNib, forCellReuseIdentifier: "CalendarCardSimple")
         
         let sectionHeaderNib = UINib(nibName: "CalendarHeader", bundle: nil)
-        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "headerCell")
+        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CardHeaderView")
         
         let sectionHeaderCardNib = UINib(nibName: "HeaderCardCell", bundle: nil)
         tableView.register(sectionHeaderCardNib, forCellReuseIdentifier: "headerCardCell")
@@ -286,7 +286,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         isLastCell = false
         if isLastSection(section: sectionIdx) {
             isLastCell = true
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! EmptyStateCardCell
             cell.changeTitleWithSpacing(title: "Thats it for now");
             cell.changeMessageWithSpacing(message: "Check back to see if there is anything more in the Home Feed")
             cell.goToButton.changeTitle("View Home Feed")
@@ -374,7 +374,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
             return headerCell.containerView
         }
         else {
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CalendarHeaderViewCell
+            let headerCell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderView") as! CalendarHeaderViewCell
             headerCell.changeColor(color: sectionCard.getSectionColor)
             headerCell.changeTitleToolbar(title: "")
             headerCell.changeTitleSection(title: sectionCard.getCardSectionTitle)

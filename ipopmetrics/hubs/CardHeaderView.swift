@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HeaderCardViewCell: UITableViewHeaderFooterView {
+class CardHeaderView: UITableViewHeaderFooterView {
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var connectionView: UIView!

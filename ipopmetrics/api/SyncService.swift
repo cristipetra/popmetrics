@@ -181,6 +181,8 @@ class SyncService: SessionDelegate {
     
     
     func syncStatisticsItems(silent: Bool) {
+        return
+        
         if !self.reachability.isReachable {
             return
         }

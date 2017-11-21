@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LastCardCell: UITableViewCell {
+class EmptyStateCardCell: UITableViewCell {
     @IBOutlet weak var secondContainerView: UIView!
     @IBOutlet weak var imageTitle: UIImageView!
     @IBOutlet weak var xbutton: RoundButton!

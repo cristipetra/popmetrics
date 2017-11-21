@@ -109,9 +109,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     var toDoCellHeight = 50 as CGFloat
 
-    var isMoreInfoType = false
     var shouldDisplayCell = true
-    private var isLoadedAllRequiredCards = true
+    private var isShowAllRequiredCards = false
     
     let transition = BubbleTransition();
     var transitionButton:UIButton = UIButton();
@@ -141,17 +140,17 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         nc.addObserver(forName:NSNotification.Name(rawValue: "CardActionNotification"), object:nil, queue:nil, using:catchCardActionNotification)
         nc.addObserver(forName:Notification.Popmetrics.UiRefreshRequired, object:nil, queue:nil, using:catchUiRefreshRequiredNotification)
       
-        let requiredActionNib = UINib(nibName: "RequiredAction", bundle: nil)
-        tableView.register(requiredActionNib, forCellReuseIdentifier: "requiredActionId")
+        let requiredActionNib = UINib(nibName: "RequiredActionCard", bundle: nil)
+        tableView.register(requiredActionNib, forCellReuseIdentifier: "RequriedActionCard")
         
-        let sectionHeaderNib = UINib(nibName: "HeaderCardCell", bundle: nil)
-        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "headerCell")
+        let sectionHeaderNib = UINib(nibName: "CardHeaderView", bundle: nil)
+        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CardHeaderView")
         
         let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
         tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
         
-        let recommendedNib = UINib(nibName: "RecommendedCell", bundle: nil)
-        tableView.register(recommendedNib, forCellReuseIdentifier: "recommendedId")
+        let recommendedNib = UINib(nibName: "InsightCard", bundle: nil)
+        tableView.register(recommendedNib, forCellReuseIdentifier: "InsightCard")
         
         let recommendedActionNib = UINib(nibName: "IceCardView", bundle: nil)
         tableView.register(recommendedActionNib, forCellReuseIdentifier: "recommendedActionId")
@@ -264,11 +263,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         switch(item.type) {    
             case HomeCardType.requiredAction.rawValue:
-                if isLoadedAllRequiredCards {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "requiredActionId", for: indexPath) as! RequiredAction
+                if isShowAllRequiredCards {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "RequriedActionCard", for: indexPath) as! RequiredActionCard
                     cell.configure(item, handler: self.requiredActionHandler)
                     cell.infoDelegate = self
-                    if(cardsCount - 2 == indexPath.row) {
+                    if(cardsCount - 1 == indexPath.row) {
                         cell.connectionLineView.isHidden = true
                     } else {
                         cell.connectionLineView.isHidden = false
@@ -277,7 +276,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 }
                 
                 if(indexPath.row == 1) {
-                    isMoreInfoType = true
                     let moreInfoCell = tableView.dequeueReusableCell(withIdentifier: "moreInfoId", for: indexPath) as! MoreInfoViewCell
                     moreInfoCell.setActionCardCount(numberOfActionCards: cardsCount - 1)
                     moreInfoCell.footerView.actionButton.addTarget(self, action: #selector(loadAllActionCards), for: .touchUpInside)
@@ -287,18 +285,18 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                     return UITableViewCell()
                 }
             
-                let cell = tableView.dequeueReusableCell(withIdentifier: "requiredActionId", for: indexPath) as! RequiredAction
+                let cell = tableView.dequeueReusableCell(withIdentifier: "RequriedActionCard", for: indexPath) as! RequiredActionCard
                 cell.configure(item, handler: self.requiredActionHandler)
                 cell.infoDelegate = self
-                if(cardsCount - 2 == indexPath.row) {
+                if(cardsCount - 1 == indexPath.row) {
                     cell.connectionLineView.isHidden = true;
                 }
                 return cell
             
             case HomeCardType.insight.rawValue:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedId", for: indexPath) as! RecommendedCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "InsightCard", for: indexPath) as! InsightCard
                 cell.configure(item, handler: recommendActionHandler)
-                if(cardsCount - 2 == indexPath.row) {
+                if(cardsCount - 1 == indexPath.row) {
                     cell.connectionLine.isHidden = true;
                 }
                 cell.delegate = self
@@ -311,7 +309,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.configure(item)
                 return cell
             case HomeCardType.emptyState.rawValue:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! EmptyStateCardCell
                 cell.changeTitleWithSpacing(title: "More on it's way!")
                 cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
                 cell.selectionStyle = .none
@@ -327,7 +325,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     @objc func loadAllActionCards() {
         
-        self.isLoadedAllRequiredCards = true
+        self.isShowAllRequiredCards = true
         //self.showActionAnimation = true
         
         UIView.animate(withDuration: 0.5, animations: {
@@ -376,7 +374,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let homeSection = HomeSection.init(rawValue: self.indexToSection[section]!)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderView") as! HeaderCardCell
         cell.sectionTitleLabel.text = homeSection?.sectionTitle()
         
         return cell
@@ -394,14 +392,15 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if isMoreInfoType {
-            return 226
-        }
         
         guard let homeSection = HomeSection.init(rawValue: self.indexToSection[indexPath.section]!)
             else { return 0 }
         
         let card = getCardInSection(homeSection.rawValue, atIndex:indexPath.row)
+        if indexPath.row > 0  && homeSection == HomeSection.RequiredActions && !self.isShowAllRequiredCards {
+            // moreInfo card
+            return 226
+        }
         
         guard let cardType = HomeCardType(rawValue: card.type) else { return 0}
         return cardType.getCardHeight()

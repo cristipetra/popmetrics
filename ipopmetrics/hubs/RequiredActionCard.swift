@@ -14,7 +14,7 @@ import NotificationBannerSwift
 import SafariServices
 import EZAlertController
 
-class RequiredAction: UITableViewCell {
+class RequiredActionCard: UITableViewCell {
     
     @IBOutlet weak var toolbarView: ToolbarViewCell!
     @IBOutlet weak var footerView: FooterView!
@@ -194,7 +194,7 @@ class RequiredAction: UITableViewCell {
     
 }
 
-extension RequiredAction {
+extension RequiredActionCard {
     func openUrl(string: String) {
         let url = URL(string: string)
         let safari = SFSafariViewController(url: url!)

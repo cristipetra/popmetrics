@@ -184,7 +184,7 @@ class ToDoViewController: BaseViewController {
         tableView.register(toDoHeaderCardNib, forCellReuseIdentifier: "headerCardCell")
         
         let sectionHeaderNib = UINib(nibName: "CalendarHeader", bundle: nil)
-        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "headerCell")
+        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CardHeaderView")
         
         tableView.register(TableFooterView.self, forHeaderFooterViewReuseIdentifier: "footerId")
         
@@ -259,7 +259,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         let rowIdx = (indexPath as NSIndexPath).row
         
         if( isLastSection(section: sectionIdx)) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! EmptyStateCardCell
             cell.changeTitleWithSpacing(title: "Finished with the actions?");
             cell.changeMessageWithSpacing(message: "Check out the things you've scheduled in the calendar hub")
             cell.goToButton.changeTitle("View Calendar")
@@ -437,7 +437,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
             return headerCell.containerView
         }
         
-        let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "headerViewID") as! HeaderCardViewCell
+        let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "headerViewID") as! CardHeaderView
         headerCell.changeColor(color: card.getSectionColor)
         headerCell.toolbarView.backgroundColor = .white
         headerCell.changeTitleSection(title: card.getCardSectionTitle)

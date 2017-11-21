@@ -12,7 +12,7 @@ protocol RecommendeCellDelegate: class {
     func recommendedCellDidTapAction(_ feedCard: FeedCard)
 }
 
-class RecommendedCell: UITableViewCell {
+class InsightCard: UITableViewCell {
     
     @IBOutlet weak var toolBarView: ToolbarViewCell!
     @IBOutlet weak var containerView: UIView!

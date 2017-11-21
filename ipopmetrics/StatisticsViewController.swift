@@ -66,7 +66,7 @@ class StatisticsViewController: BaseViewController {
         tableView.register(trafficUnconnectedNib, forCellReuseIdentifier: "TrafficEmptyCard")
         
         let sectionHeaderNib = UINib(nibName: "HeaderCardCell", bundle: nil)
-        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "headerCell")
+        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CardHeaderView")
         
         let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
         tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
@@ -211,7 +211,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
         
         //empty card
         if isLastSection(section: indexPath.section) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! LastCardCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! EmptyStateCardCell
             cellHeight = 261
             cell.changeTitleWithSpacing(title: "You're all caught up.")
             cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
@@ -255,7 +255,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         case "insight" :
             if insightIsDisplayed {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendedCell", for: indexPath) as! RecommendedCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendedCell", for: indexPath) as! InsightCard
                 cellHeight = 469
                 cell.selectionStyle = .none
                 return cell
@@ -287,7 +287,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             if( isLastSection(section: section)) {
                 return nil
             }
-            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderView") as! HeaderCardCell
             cell.changeColor(cardType: .traffic)
             cell.sectionTitleLabel.text = "Traffic";
             return cell
