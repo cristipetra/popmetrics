@@ -28,7 +28,16 @@ class HeaderCardCell: UITableViewCell {
         containerView.backgroundColor = UIColor.cloudsColor()
         roundConnectionView.layer.cornerRadius = 6
         
-        roundCircleLeftAnchor.constant = 0
+        //roundCircleLeftAnchor.constant = 0
+        //titleLeftAnchor.constant = 0
+        
+        
+        connectionView.backgroundColor = PopmetricsColor.salmondColor
+        roundConnectionView.backgroundColor = PopmetricsColor.salmondColor
+        connectionView.isHidden = true
+        roundConnectionView.isHidden = true
+        sectionTitleLabel.font =  UIFont(name: FontBook.extraBold, size: 18)
+        sectionTitleLabel.textColor = PopmetricsColor.weekDaysGrey
         titleLeftAnchor.constant = 0
     }
   

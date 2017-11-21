@@ -88,6 +88,8 @@ class RequiredAction: UITableViewCell {
         } else if (item.actionHandler == RequiredActionHandler.RequiredActionType.linkedin.rawValue) {
             //displayLinkedin()
         }
+        
+        self.footerView.actionButton.changeTitle(item.actionLabel)
     }
     
     internal func configureFooterView() {
