@@ -370,29 +370,14 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         var itemSection = "unknown"
         if sectionCards.count > 0 {
-            //itemType = sectionCards[0].type
             itemSection = sectionCards[0].section
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCardCell
+        let homeSection = HomeSection(rawValue: itemSection)
+        cell.sectionTitleLabel.text = homeSection?.sectionTitle()
         
-        switch itemSection {
-        case "required_action" :
-            cell.changeColor(cardType: .required)
-            cell.sectionTitleLabel.text = "Required Actions";
-            return cell
-        case "recommended_action":
-            cell.changeColor(cardType: .recommended)
-            cell.sectionTitleLabel.text = "Recommended For You";
-            return cell
-        case "Insights":
-            cell.changeColor(cardType: .insight)
-            cell.sectionTitleLabel.text = "Insights";
-            return cell
-        default:
-            let cell = UITableViewCell()
-            return cell
-        }
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
