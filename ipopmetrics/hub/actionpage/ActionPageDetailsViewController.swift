@@ -17,6 +17,7 @@ class ActionPageDetailsViewController: UIViewController {
     @IBOutlet weak var blogSummary: UILabel!
     
     
+    @IBOutlet weak var containerIceView: UIView!
     @IBOutlet weak var containerDetailsMarkdown: UIView!
     @IBOutlet weak var containerInsightArguments: UIView!
     
@@ -24,9 +25,12 @@ class ActionPageDetailsViewController: UIViewController {
     private var recommendActionHandler: RecommendActionHandler?
     
     let statsView = IndividualTaskView()
+    let iceView = IceExtendView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addIceView()
         
         setupNavigationWithBackButton()
         updateView()
@@ -36,10 +40,22 @@ class ActionPageDetailsViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    private func addIceView() {
+        self.containerIceView.addSubview(iceView)
+        
+        iceView.translatesAutoresizingMaskIntoConstraints = false
+        iceView.topAnchor.constraint(equalTo: self.containerIceView.topAnchor, constant: 0).isActive = true
+        iceView.rightAnchor.constraint(equalTo: self.containerIceView.rightAnchor, constant: 0).isActive = true
+        iceView.bottomAnchor.constraint(equalTo: self.containerIceView.bottomAnchor, constant: 0).isActive = true
+        iceView.leftAnchor.constraint(equalTo: self.containerIceView.leftAnchor, constant: 0).isActive = true
+        
+    }
+    
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
         self.feedCard = feedCard
         print(feedCard)
         recommendActionHandler = handler
+        iceView.configure(feedCard)
     }
     
     private func updateView() {
@@ -49,8 +65,8 @@ class ActionPageDetailsViewController: UIViewController {
             cardImage.af_setImage(withURL: URL(string: imageUrl)!)
         }
         
-        blogTitle.text = feedCard.blogTitle
-        blogSummary.text = feedCard.blogSummary
+        
+        
         
         displayMark()
     }
