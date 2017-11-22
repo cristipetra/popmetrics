@@ -472,6 +472,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     func openInsightDetails(_ feedCard: FeedCard) {
         let insightDetails = InsightPageDetailsViewController(nibName: "InsightPage", bundle: nil)
         
+        
+        insightDetails.configure(feedCard)
         self.navigationController?.pushViewController(insightDetails, animated: true)
     }
 }
