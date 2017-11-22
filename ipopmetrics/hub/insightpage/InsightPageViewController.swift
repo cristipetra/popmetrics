@@ -27,7 +27,6 @@ class InsightPageViewController: UIViewController {
         return view
     }()
     
-    let store = FeedStore.getInstance()
     let aimeeView = IndividualTaskView()
     let instructionsView = IndividualTaskView()
     
@@ -59,7 +58,6 @@ class InsightPageViewController: UIViewController {
         addRecommendedActionView()
         
         addAimeeView()
-        addInstructionView()
         setUpFooterView()
         
         setFooterButton(isTaskSelected: false)
@@ -157,39 +155,10 @@ class InsightPageViewController: UIViewController {
         aimeeView.subtitleLabel.isHidden = true
         aimeeView.expandButton.parentView = aimeeView
         aimeeView.expandButton.viewType = .aimeeView
-        if !store.getFeedCards()[0].getInsightArgumentsArray().isEmpty {
+        if !self.feedCard.getInsightArgumentsArray().isEmpty {
             aimeeView.expandButton.addTarget(self, action: #selector(showHideContent(sender:)), for: .touchUpInside)
         } else {
             aimeeView.expandButton.isHidden = true
-        }
-    }
-    
-    func addInstructionView() {
-        
-        let separatorView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 1))
-        separatorView.backgroundColor = UIColor(red: 189/255, green: 197/255, blue: 203/255, alpha: 1)
-        
-        self.containerView.addSubview(instructionsView)
-        
-        instructionsView.containerView.addSubview(separatorView)
-        instructionsView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor).isActive = true
-        instructionsView.rightAnchor.constraint(equalTo: self.containerView.rightAnchor).isActive = true
-        instructionsView.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor, constant: -114).isActive = true
-        instructionsView.topAnchor.constraint(equalTo:aimeeView.bottomAnchor,constant: 0).isActive = true
-        instructionsView.titleLabel.text = "View Instructions"
-        instructionsView.setUpSubtitleview()
-        instructionsView.containerView.backgroundColor = UIColor.white
-        instructionsView.aimeeTableview.isHidden = true
-        instructionsView.titleLabel.font = UIFont(name: FontBook.bold, size: 15)
-        instructionsView.subtitleLabel.isHidden = true
-        //instructionsView.expandButton.transform = instructionsView.expandButton.transform.rotated(by: (3 * .pi / 2))
-        instructionsView.addShadow(radius: 2, opacity: 0.3, offset: CGSize(width: 0.0, height: 3.0))
-        instructionsView.expandButton.parentView = instructionsView
-        instructionsView.expandButton.viewType = .instructionView
-        if !store.getFeedCards()[0].getDiyInstructions().isEmpty {
-            instructionsView.expandButton.addTarget(self, action: #selector(showHideContent(sender:)), for: .touchUpInside)
-        } else {
-            instructionsView.expandButton.isHidden = true
         }
     }
     
