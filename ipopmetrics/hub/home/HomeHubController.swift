@@ -343,7 +343,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     @objc func openInsightPage(_ feedCard: FeedCard) {
-        let googleActionVc: ActionPageViewController = UIStoryboard(name: "GoogleAction", bundle: nil).instantiateViewController(withIdentifier: "googleId") as! ActionPageViewController
+        let googleActionVc: ActionPageViewController = ActionPageViewController()
         googleActionVc.hidesBottomBarWhenPushed = true
         googleActionVc.configure(feedCard, handler: recommendActionHandler)
         

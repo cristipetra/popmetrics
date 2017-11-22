@@ -30,8 +30,8 @@ class ActionPageViewController: UIViewController {
     let aimeeView = IndividualTaskView()
     let instructionsView = IndividualTaskView()
     
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var scrollView: UIScrollView!
+    var scrollView: UIScrollView = UIScrollView()
+    var containerView: UIView = UIView()
     //End extend view
     
     var footerTopConstraint: NSLayoutConstraint!
@@ -51,6 +51,12 @@ class ActionPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addSubview(scrollView)
+        scrollView.addSubview(containerView)
+        
+        addConstraints()
+        
         scrollView.delegate = self
         let backgroundImage = UIImage(named: "end_of_feed")?.withRenderingMode(.alwaysTemplate)
         self.containerView.backgroundColor = UIColor(patternImage: backgroundImage!)
@@ -65,6 +71,22 @@ class ActionPageViewController: UIViewController {
         
         recommendedActionView.infoBtn.addTarget(self, action: #selector(openLink(_:)), for: .touchUpInside)
         
+    }
+    
+    private func addConstraints() {
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        scrollView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
+        scrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
+        scrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
+        
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        containerView.topAnchor.constraint(equalTo: self.scrollView.topAnchor, constant: 0).isActive = true
+        containerView.leftAnchor.constraint(equalTo: self.scrollView.leftAnchor, constant: 0).isActive = true
+        containerView.rightAnchor.constraint(equalTo: self.scrollView.rightAnchor, constant: 0).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor, constant: 0).isActive = true
     }
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {

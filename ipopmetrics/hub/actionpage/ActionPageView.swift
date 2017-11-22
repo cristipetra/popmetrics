@@ -44,7 +44,7 @@ class ActionPageView: UIView {
     }
     
     func setup() {
-        Bundle.main.loadNibNamed("RecommendedActionGoogleCitationView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("ActionPage", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight , .flexibleWidth ]
