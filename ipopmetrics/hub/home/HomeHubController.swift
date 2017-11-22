@@ -341,7 +341,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
     }
     
-    @objc func openGoogleActionView(_ feedCard: FeedCard) {
+    @objc func openInsightPage(_ feedCard: FeedCard) {
         let googleActionVc: ActionPageViewController = UIStoryboard(name: "GoogleAction", bundle: nil).instantiateViewController(withIdentifier: "googleId") as! ActionPageViewController
         googleActionVc.hidesBottomBarWhenPushed = true
         googleActionVc.configure(feedCard, handler: recommendActionHandler)
@@ -472,13 +472,13 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
 
 extension HomeHubViewController: RecommendedActionViewCellDelegate {
     func recommendedActionViewCellDidTapAction(_ feedCard: FeedCard) {
-        openGoogleActionView(feedCard)
+        openInsightPage(feedCard)
     }
 }
 
 extension HomeHubViewController: RecommendeCellDelegate {
     func recommendedCellDidTapAction(_ feedCard: FeedCard) {
-        openGoogleActionView(feedCard)
+        openInsightPage(feedCard)
     }
 }
 
