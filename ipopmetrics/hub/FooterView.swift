@@ -81,6 +81,7 @@ class FooterView: UIView {
         return button
     }()
     
+    /*
     lazy var xButton : RoundButton = {
         
         let button = RoundButton(type: UIButtonType.system)
@@ -98,6 +99,24 @@ class FooterView: UIView {
         button.tintColor = PopmetricsColor.textGrey
         button.backgroundColor = UIColor.white
         button.layer.cornerRadius = 23
+        return button
+    }()
+     */
+    lazy var xButton : UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.widthAnchor.constraint(equalToConstant: 85).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 46).isActive = true
+        //button.setImage(UIImage(named: "iconCtaClose"), for: .normal)
+        
+        let attrTitle = Style.default {
+            $0.font = FontAttribute(FontBook.regular, size: 15)
+            $0.color = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1)
+        }
+        button.setAttributedTitle("More Info".set(style: attrTitle), for: .normal)
+        
+        button.tintColor = PopmetricsColor.textGrey
+        button.backgroundColor = .clear
         return button
     }()
     
