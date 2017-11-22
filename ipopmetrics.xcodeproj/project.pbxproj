@@ -106,6 +106,24 @@
 		08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485E31F210992005918A1 /* VideoScreenViewController.swift */; };
 		08B485E61F210A61005918A1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485E51F210A61005918A1 /* RoundButton.swift */; };
 		08B4BCE11F619D4200660F5B /* ActionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4BCE01F619D4200660F5B /* ActionPageViewController.swift */; };
+		08B4EB971FC569EC00BFC5A1 /* CalendarFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB961FC569EC00BFC5A1 /* CalendarFeedStore.swift */; };
+		08B4EB991FC569F700BFC5A1 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB981FC569F600BFC5A1 /* FeedStore.swift */; };
+		08B4EB9B1FC569FE00BFC5A1 /* StatisticsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB9A1FC569FE00BFC5A1 /* StatisticsStore.swift */; };
+		08B4EB9D1FC56A0400BFC5A1 /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB9C1FC56A0400BFC5A1 /* TodoStore.swift */; };
+		08B4EB9F1FC56A0C00BFC5A1 /* UsersStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB9E1FC56A0C00BFC5A1 /* UsersStore.swift */; };
+		08B4EBAF1FC56ACE00BFC5A1 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA21FC56ACD00BFC5A1 /* Validator.swift */; };
+		08B4EBB01FC56ACE00BFC5A1 /* PopmetricsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA31FC56ACD00BFC5A1 /* PopmetricsColor.swift */; };
+		08B4EBB11FC56ACE00BFC5A1 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA41FC56ACD00BFC5A1 /* BaseTableViewController.swift */; };
+		08B4EBB21FC56ACE00BFC5A1 /* SettingsBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA51FC56ACD00BFC5A1 /* SettingsBaseViewController.swift */; };
+		08B4EBB31FC56ACE00BFC5A1 /* TextFieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA61FC56ACD00BFC5A1 /* TextFieldValidator.swift */; };
+		08B4EBB41FC56ACE00BFC5A1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA71FC56ACD00BFC5A1 /* BaseViewController.swift */; };
+		08B4EBB51FC56ACE00BFC5A1 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA81FC56ACD00BFC5A1 /* UIColorExtensions.swift */; };
+		08B4EBB61FC56ACE00BFC5A1 /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA91FC56ACD00BFC5A1 /* AppStoryboard.swift */; };
+		08B4EBB71FC56ACE00BFC5A1 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAA1FC56ACE00BFC5A1 /* ReachabilityManager.swift */; };
+		08B4EBB81FC56ACE00BFC5A1 /* CardActionHanlder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAB1FC56ACE00BFC5A1 /* CardActionHanlder.swift */; };
+		08B4EBB91FC56ACE00BFC5A1 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAC1FC56ACE00BFC5A1 /* GradientView.swift */; };
+		08B4EBBA1FC56ACE00BFC5A1 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAD1FC56ACE00BFC5A1 /* MainTabBarController.swift */; };
+		08B4EBBB1FC56ACE00BFC5A1 /* TwoImagesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAE1FC56ACE00BFC5A1 /* TwoImagesButton.swift */; };
 		08B5D4BC1F29CD5000B79AD3 /* CalendarCardMaximized.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B5D4BB1F29CD5000B79AD3 /* CalendarCardMaximized.xib */; };
 		08B5D4BE1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5D4BD1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift */; };
 		08B6AFAA1F9DC813005E3049 /* IceCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B6AFA91F9DC813005E3049 /* IceCardView.xib */; };
@@ -173,24 +191,6 @@
 		1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1178D6831E1E5AD9005B96C3 /* LaunchScreen.storyboard */; };
 		1178D6901E1E5AD9005B96C3 /* ipopmetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D68F1E1E5AD9005B96C3 /* ipopmetricsTests.swift */; };
 		1178D69B1E1E5AD9005B96C3 /* ipopmetricsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */; };
-		1183A8531FC4FF8B00ED8EF6 /* TextFieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96851FC4FA9000386F1E /* TextFieldValidator.swift */; };
-		1183A8541FC4FF8B00ED8EF6 /* TwoImagesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96861FC4FA9000386F1E /* TwoImagesButton.swift */; };
-		1183A8551FC4FF8B00ED8EF6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96871FC4FA9000386F1E /* BaseViewController.swift */; };
-		1183A8561FC4FF8B00ED8EF6 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96881FC4FA9000386F1E /* ReachabilityManager.swift */; };
-		1183A8571FC4FF8B00ED8EF6 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96891FC4FA9000386F1E /* BaseTableViewController.swift */; };
-		1183A8581FC4FF8B00ED8EF6 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD968A1FC4FA9000386F1E /* Validator.swift */; };
-		1183A8591FC4FF8B00ED8EF6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD968B1FC4FA9000386F1E /* MainTabBarController.swift */; };
-		1183A85A1FC4FF8B00ED8EF6 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD968C1FC4FA9000386F1E /* GradientView.swift */; };
-		1183A85B1FC4FF8B00ED8EF6 /* CardActionHanlder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD968D1FC4FA9000386F1E /* CardActionHanlder.swift */; };
-		1183A85C1FC4FF8B00ED8EF6 /* SettingsBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD968E1FC4FA9000386F1E /* SettingsBaseViewController.swift */; };
-		1183A85D1FC4FF8B00ED8EF6 /* PopmetricsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD968F1FC4FA9000386F1E /* PopmetricsColor.swift */; };
-		1183A85E1FC4FF8B00ED8EF6 /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96901FC4FA9000386F1E /* AppStoryboard.swift */; };
-		1183A85F1FC4FF8B00ED8EF6 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96911FC4FA9000386F1E /* UIColorExtensions.swift */; };
-		1183A8601FC4FFB500ED8EF6 /* StatisticsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD967F1FC4FA8400386F1E /* StatisticsStore.swift */; };
-		1183A8611FC4FFB500ED8EF6 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96801FC4FA8400386F1E /* FeedStore.swift */; };
-		1183A8621FC4FFB500ED8EF6 /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96811FC4FA8400386F1E /* TodoStore.swift */; };
-		1183A8631FC4FFB500ED8EF6 /* UsersStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96821FC4FA8400386F1E /* UsersStore.swift */; };
-		1183A8641FC4FFB500ED8EF6 /* CalendarFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96831FC4FA8400386F1E /* CalendarFeedStore.swift */; };
 		1183A8661FC5064B00ED8EF6 /* InsightPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1183A8651FC5064B00ED8EF6 /* InsightPage.xib */; };
 		1183A8681FC5071700ED8EF6 /* InsightPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1183A8671FC5071700ED8EF6 /* InsightPageViewController.swift */; };
 		11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAA5E31ECC8BFA0099B50E /* Feed.swift */; };
@@ -330,6 +330,24 @@
 		08B485E31F210992005918A1 /* VideoScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoScreenViewController.swift; sourceTree = "<group>"; };
 		08B485E51F210A61005918A1 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		08B4BCE01F619D4200660F5B /* ActionPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionPageViewController.swift; sourceTree = "<group>"; };
+		08B4EB961FC569EC00BFC5A1 /* CalendarFeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarFeedStore.swift; sourceTree = "<group>"; };
+		08B4EB981FC569F600BFC5A1 /* FeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
+		08B4EB9A1FC569FE00BFC5A1 /* StatisticsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsStore.swift; sourceTree = "<group>"; };
+		08B4EB9C1FC56A0400BFC5A1 /* TodoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
+		08B4EB9E1FC56A0C00BFC5A1 /* UsersStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersStore.swift; sourceTree = "<group>"; };
+		08B4EBA21FC56ACD00BFC5A1 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		08B4EBA31FC56ACD00BFC5A1 /* PopmetricsColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopmetricsColor.swift; sourceTree = "<group>"; };
+		08B4EBA41FC56ACD00BFC5A1 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		08B4EBA51FC56ACD00BFC5A1 /* SettingsBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBaseViewController.swift; sourceTree = "<group>"; };
+		08B4EBA61FC56ACD00BFC5A1 /* TextFieldValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldValidator.swift; sourceTree = "<group>"; };
+		08B4EBA71FC56ACD00BFC5A1 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		08B4EBA81FC56ACD00BFC5A1 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		08B4EBA91FC56ACD00BFC5A1 /* AppStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoryboard.swift; sourceTree = "<group>"; };
+		08B4EBAA1FC56ACE00BFC5A1 /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
+		08B4EBAB1FC56ACE00BFC5A1 /* CardActionHanlder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardActionHanlder.swift; sourceTree = "<group>"; };
+		08B4EBAC1FC56ACE00BFC5A1 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		08B4EBAD1FC56ACE00BFC5A1 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		08B4EBAE1FC56ACE00BFC5A1 /* TwoImagesButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoImagesButton.swift; sourceTree = "<group>"; };
 		08B5D4BB1F29CD5000B79AD3 /* CalendarCardMaximized.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCardMaximized.xib; sourceTree = "<group>"; };
 		08B5D4BD1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCardMaximizedViewCell.swift; sourceTree = "<group>"; };
 		08B6AFA91F9DC813005E3049 /* IceCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IceCardView.xib; sourceTree = "<group>"; };
@@ -419,24 +437,6 @@
 		11DD96731FC4FA5400386F1E /* BaseApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
 		11DD96741FC4FA5400386F1E /* ApiUrls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiUrls.swift; sourceTree = "<group>"; };
 		11DD96751FC4FA5400386F1E /* FeedApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedApi.swift; sourceTree = "<group>"; };
-		11DD967F1FC4FA8400386F1E /* StatisticsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsStore.swift; sourceTree = "<group>"; };
-		11DD96801FC4FA8400386F1E /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
-		11DD96811FC4FA8400386F1E /* TodoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
-		11DD96821FC4FA8400386F1E /* UsersStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersStore.swift; sourceTree = "<group>"; };
-		11DD96831FC4FA8400386F1E /* CalendarFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFeedStore.swift; sourceTree = "<group>"; };
-		11DD96851FC4FA9000386F1E /* TextFieldValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidator.swift; sourceTree = "<group>"; };
-		11DD96861FC4FA9000386F1E /* TwoImagesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoImagesButton.swift; sourceTree = "<group>"; };
-		11DD96871FC4FA9000386F1E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		11DD96881FC4FA9000386F1E /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
-		11DD96891FC4FA9000386F1E /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
-		11DD968A1FC4FA9000386F1E /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
-		11DD968B1FC4FA9000386F1E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		11DD968C1FC4FA9000386F1E /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
-		11DD968D1FC4FA9000386F1E /* CardActionHanlder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardActionHanlder.swift; sourceTree = "<group>"; };
-		11DD968E1FC4FA9000386F1E /* SettingsBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBaseViewController.swift; sourceTree = "<group>"; };
-		11DD968F1FC4FA9000386F1E /* PopmetricsColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopmetricsColor.swift; sourceTree = "<group>"; };
-		11DD96901FC4FA9000386F1E /* AppStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoryboard.swift; sourceTree = "<group>"; };
-		11DD96911FC4FA9000386F1E /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release.xcconfig"; sourceTree = "<group>"; };
 		8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ipopmetrics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -486,6 +486,38 @@
 			name = fonts;
 			sourceTree = "<group>";
 		};
+		08B4EB951FC569DC00BFC5A1 /* store */ = {
+			isa = PBXGroup;
+			children = (
+				08B4EB981FC569F600BFC5A1 /* FeedStore.swift */,
+				08B4EB9A1FC569FE00BFC5A1 /* StatisticsStore.swift */,
+				08B4EB9E1FC56A0C00BFC5A1 /* UsersStore.swift */,
+				08B4EB9C1FC56A0400BFC5A1 /* TodoStore.swift */,
+				08B4EB961FC569EC00BFC5A1 /* CalendarFeedStore.swift */,
+			);
+			path = store;
+			sourceTree = "<group>";
+		};
+		08B4EBA11FC56ABC00BFC5A1 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				08B4EBA91FC56ACD00BFC5A1 /* AppStoryboard.swift */,
+				08B4EBA41FC56ACD00BFC5A1 /* BaseTableViewController.swift */,
+				08B4EBA71FC56ACD00BFC5A1 /* BaseViewController.swift */,
+				08B4EBAB1FC56ACE00BFC5A1 /* CardActionHanlder.swift */,
+				08B4EBAC1FC56ACE00BFC5A1 /* GradientView.swift */,
+				08B4EBAD1FC56ACE00BFC5A1 /* MainTabBarController.swift */,
+				08B4EBA31FC56ACD00BFC5A1 /* PopmetricsColor.swift */,
+				08B4EBAA1FC56ACE00BFC5A1 /* ReachabilityManager.swift */,
+				08B4EBA51FC56ACD00BFC5A1 /* SettingsBaseViewController.swift */,
+				08B4EBA61FC56ACD00BFC5A1 /* TextFieldValidator.swift */,
+				08B4EBAE1FC56ACE00BFC5A1 /* TwoImagesButton.swift */,
+				08B4EBA81FC56ACD00BFC5A1 /* UIColorExtensions.swift */,
+				08B4EBA21FC56ACD00BFC5A1 /* Validator.swift */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
 		08D1BC351F1DF4D700D377B2 /* constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -533,17 +565,17 @@
 		1178D6771E1E5AD9005B96C3 /* ipopmetrics */ = {
 			isa = PBXGroup;
 			children = (
+				08B4EBA11FC56ABC00BFC5A1 /* helpers */,
+				08B4EB951FC569DC00BFC5A1 /* store */,
 				11DD966B1FC4FA5400386F1E /* api */,
 				11DD96671FC4F6B900386F1E /* archived */,
 				08D1BC351F1DF4D700D377B2 /* constants */,
 				11DD96641FC4F3BD00386F1E /* effects */,
 				08A812771F1672C000672126 /* fonts */,
-				11DD96921FC4FA9000386F1E /* helpers */,
 				11DD96591FC4ECD600386F1E /* hub */,
 				11DD965E1FC4F20400386F1E /* menu */,
 				11AAA5E21ECC8BEB0099B50E /* realm */,
 				11DD96661FC4F62700386F1E /* signin */,
-				11DD96841FC4FA8400386F1E /* store */,
 				1128B3F01ECF256600BDA58C /* SimpleButton */,
 				11DD96631FC4F32800386F1E /* usersettings */,
 				11DD96651FC4F41600386F1E /* welcome */,
@@ -847,40 +879,6 @@
 			);
 			path = api;
 			sourceTree = "<group>";
-		};
-		11DD96841FC4FA8400386F1E /* store */ = {
-			isa = PBXGroup;
-			children = (
-				11DD967F1FC4FA8400386F1E /* StatisticsStore.swift */,
-				11DD96801FC4FA8400386F1E /* FeedStore.swift */,
-				11DD96811FC4FA8400386F1E /* TodoStore.swift */,
-				11DD96821FC4FA8400386F1E /* UsersStore.swift */,
-				11DD96831FC4FA8400386F1E /* CalendarFeedStore.swift */,
-			);
-			name = store;
-			path = /Users/ra/code/popmetrics/mobile/ipopmetrics/ipopmetrics/store;
-			sourceTree = "<absolute>";
-		};
-		11DD96921FC4FA9000386F1E /* helpers */ = {
-			isa = PBXGroup;
-			children = (
-				11DD96851FC4FA9000386F1E /* TextFieldValidator.swift */,
-				11DD96861FC4FA9000386F1E /* TwoImagesButton.swift */,
-				11DD96871FC4FA9000386F1E /* BaseViewController.swift */,
-				11DD96881FC4FA9000386F1E /* ReachabilityManager.swift */,
-				11DD96891FC4FA9000386F1E /* BaseTableViewController.swift */,
-				11DD968A1FC4FA9000386F1E /* Validator.swift */,
-				11DD968B1FC4FA9000386F1E /* MainTabBarController.swift */,
-				11DD968C1FC4FA9000386F1E /* GradientView.swift */,
-				11DD968D1FC4FA9000386F1E /* CardActionHanlder.swift */,
-				11DD968E1FC4FA9000386F1E /* SettingsBaseViewController.swift */,
-				11DD968F1FC4FA9000386F1E /* PopmetricsColor.swift */,
-				11DD96901FC4FA9000386F1E /* AppStoryboard.swift */,
-				11DD96911FC4FA9000386F1E /* UIColorExtensions.swift */,
-			);
-			name = helpers;
-			path = /Users/ra/code/popmetrics/mobile/ipopmetrics/ipopmetrics/helpers;
-			sourceTree = "<absolute>";
 		};
 		3370F07CEEDAD25A735B8558 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -1281,32 +1279,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1183A8601FC4FFB500ED8EF6 /* StatisticsStore.swift in Sources */,
-				1183A8611FC4FFB500ED8EF6 /* FeedStore.swift in Sources */,
-				1183A8621FC4FFB500ED8EF6 /* TodoStore.swift in Sources */,
-				1183A8631FC4FFB500ED8EF6 /* UsersStore.swift in Sources */,
-				1183A8641FC4FFB500ED8EF6 /* CalendarFeedStore.swift in Sources */,
-				1183A8531FC4FF8B00ED8EF6 /* TextFieldValidator.swift in Sources */,
-				1183A8541FC4FF8B00ED8EF6 /* TwoImagesButton.swift in Sources */,
-				1183A8551FC4FF8B00ED8EF6 /* BaseViewController.swift in Sources */,
-				1183A8561FC4FF8B00ED8EF6 /* ReachabilityManager.swift in Sources */,
-				1183A8571FC4FF8B00ED8EF6 /* BaseTableViewController.swift in Sources */,
-				1183A8581FC4FF8B00ED8EF6 /* Validator.swift in Sources */,
-				1183A8591FC4FF8B00ED8EF6 /* MainTabBarController.swift in Sources */,
-				1183A85A1FC4FF8B00ED8EF6 /* GradientView.swift in Sources */,
-				1183A85B1FC4FF8B00ED8EF6 /* CardActionHanlder.swift in Sources */,
-				1183A85C1FC4FF8B00ED8EF6 /* SettingsBaseViewController.swift in Sources */,
-				1183A85D1FC4FF8B00ED8EF6 /* PopmetricsColor.swift in Sources */,
-				1183A85E1FC4FF8B00ED8EF6 /* AppStoryboard.swift in Sources */,
-				1183A85F1FC4FF8B00ED8EF6 /* UIColorExtensions.swift in Sources */,
 				08EE385D1F447C0E005D1D7C /* TodoTopView.swift in Sources */,
 				08C583021FB1AFA500A7DD3D /* FooterViewStateController.swift in Sources */,
+				08B4EBB11FC56ACE00BFC5A1 /* BaseTableViewController.swift in Sources */,
+				08B4EBB51FC56ACE00BFC5A1 /* UIColorExtensions.swift in Sources */,
 				08D1BC391F1E3D6200D377B2 /* LDSplashView.swift in Sources */,
 				0854AF331F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift in Sources */,
 				11DD967A1FC4FA5400386F1E /* UsersApi.swift in Sources */,
 				110A62CA1ECEDADC0052B478 /* StatsSummaryViewCell.swift in Sources */,
 				1128B3F71ECF256600BDA58C /* SimpleButton.swift in Sources */,
 				08B2DB971FB47522009E45F8 /* InstructionCell.swift in Sources */,
+				08B4EBB61FC56ACE00BFC5A1 /* AppStoryboard.swift in Sources */,
 				1128B3F91ECF256600BDA58C /* SimpleButtonStateChangeValue.swift in Sources */,
 				11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */,
 				085AA0D41F42ECAA0014D4CE /* Todo.swift in Sources */,
@@ -1315,10 +1298,12 @@
 				08CC6EC01FBC7F9C00A6521E /* SettingsLogoViewController.swift in Sources */,
 				08B4BCE11F619D4200660F5B /* ActionPageViewController.swift in Sources */,
 				08BF9D4E1F45F2EF00141206 /* TableFooterView.swift in Sources */,
+				08B4EBAF1FC56ACE00BFC5A1 /* Validator.swift in Sources */,
 				11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */,
 				088B28281F7E43960015A66E /* TrafficVisitsViewCell.swift in Sources */,
 				1183A8681FC5071700ED8EF6 /* InsightPageViewController.swift in Sources */,
 				08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */,
+				08B4EBB31FC56ACE00BFC5A1 /* TextFieldValidator.swift in Sources */,
 				08AF049A1F46FBB60040012B /* ToDoCardCell.swift in Sources */,
 				11DD967E1FC4FA5400386F1E /* FeedApi.swift in Sources */,
 				08078F421FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift in Sources */,
@@ -1330,17 +1315,21 @@
 				08B6AFAC1F9DC843005E3049 /* IceCardViewCell.swift in Sources */,
 				085F90F21F712660008A339A /* AnimationsViewController.swift in Sources */,
 				08D1BC371F1DF4F900D377B2 /* ViewNames.swift in Sources */,
+				08B4EBB21FC56ACE00BFC5A1 /* SettingsBaseViewController.swift in Sources */,
 				08BD58041F7A312900FFDCFD /* VerifySocialViewController.swift in Sources */,
+				08B4EB991FC569F700BFC5A1 /* FeedStore.swift in Sources */,
 				08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */,
 				0862C4D81FA1F5C300BEF0BC /* SocialPostDetailsView.swift in Sources */,
 				0855C0CB1F6FFBF000ACBFA9 /* EmptyCardView.swift in Sources */,
 				088E77AF1F7D4A8E00774F13 /* TrafficStatus.swift in Sources */,
 				08B745911F1F638000EC3F8C /* LoginNavigationViewController.swift in Sources */,
+				08B4EBBB1FC56ACE00BFC5A1 /* TwoImagesButton.swift in Sources */,
 				08AA6C6B1F56DD060022DE91 /* TrafficVisits.swift in Sources */,
 				0857D5571F41B4E800D218DA /* CompleteCardCell.swift in Sources */,
 				08A4A53D1F458423001071E3 /* ToolbarViewCell.swift in Sources */,
 				0852826E1F287DFB0065A968 /* CalendarHeaderViewCell.swift in Sources */,
 				1125ADAC1E96E7990004B4AC /* HomeHubController.swift in Sources */,
+				08B4EBB01FC56ACE00BFC5A1 /* PopmetricsColor.swift in Sources */,
 				08D1BC3B1F1E568A00D377B2 /* PhoneView.swift in Sources */,
 				08DF9E621F261C8100C60C2D /* InfoCardViewController.swift in Sources */,
 				08BD58001F7A2DCC00FFDCFD /* ActionPageView.swift in Sources */,
@@ -1354,6 +1343,7 @@
 				08B3AA9E1F8FA748008D0503 /* ToDoApprovedView.swift in Sources */,
 				0809AEB41F22183400A13178 /* Constants.swift in Sources */,
 				08D409CE1F73C3A800C5BB54 /* OnboardingFinalView.swift in Sources */,
+				08B4EBB41FC56ACE00BFC5A1 /* BaseViewController.swift in Sources */,
 				11DD96791FC4FA5400386F1E /* SyncService.swift in Sources */,
 				08B968AC1FBB17FE00482CDE /* BrandTableViewCell.swift in Sources */,
 				08953E741F4C359E003ABEFC /* FooterView.swift in Sources */,
@@ -1377,8 +1367,10 @@
 				11DD967B1FC4FA5400386F1E /* ApiModels.swift in Sources */,
 				08AA6C651F56DAA10022DE91 /* StatsPageViewController.swift in Sources */,
 				088B282C1F7E7F150015A66E /* AimeeView.swift in Sources */,
+				08B4EB9B1FC569FE00BFC5A1 /* StatisticsStore.swift in Sources */,
 				088E77A91F7CE99900774F13 /* ToastView.swift in Sources */,
 				08F7A0971F17AB0C00A1B2C3 /* RecommendationCardCell.swift in Sources */,
+				08B4EB971FC569EC00BFC5A1 /* CalendarFeedStore.swift in Sources */,
 				088BBEAA1F58214300AD5414 /* TrafficEmptyView.swift in Sources */,
 				085053FE1F2787A100FE8234 /* CalendarViewController.swift in Sources */,
 				089267741F86617600D7B99E /* OfflineBanner.swift in Sources */,
@@ -1392,6 +1384,9 @@
 				1148D73D1FBF39AE006EB5BB /* NavigationMap.swift in Sources */,
 				08F368951F18F93800819CDE /* DailyInsightsCardCell.swift in Sources */,
 				08593DEE1FBB3B7600077A65 /* SettingsEmailViewController.swift in Sources */,
+				08B4EBB81FC56ACE00BFC5A1 /* CardActionHanlder.swift in Sources */,
+				08B4EB9D1FC56A0400BFC5A1 /* TodoStore.swift in Sources */,
+				08B4EB9F1FC56A0C00BFC5A1 /* UsersStore.swift in Sources */,
 				08B2803F1F55862100E36D19 /* Statistics.swift in Sources */,
 				08BAD73E1F960A70008BC88F /* MJCalendarViewController.swift in Sources */,
 				085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */,
@@ -1401,11 +1396,14 @@
 				08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */,
 				08B7ADEA1FB22B8300C56688 /* FooterViewController.swift in Sources */,
 				1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */,
+				08B4EBBA1FC56ACE00BFC5A1 /* MainTabBarController.swift in Sources */,
+				08B4EBB91FC56ACE00BFC5A1 /* GradientView.swift in Sources */,
 				11DD967D1FC4FA5400386F1E /* ApiUrls.swift in Sources */,
 				08953E6F1F4C2790003ABEFC /* ToDoCountView.swift in Sources */,
 				08B8D9711F9A4443004E7781 /* RecommendActionHandler.swift in Sources */,
 				11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */,
 				08AA6C731F56F8630022DE91 /* ChartViewController.swift in Sources */,
+				08B4EBB71FC56ACE00BFC5A1 /* ReachabilityManager.swift in Sources */,
 				08B7459B1F1F996B00EC3F8C /* DigitCodeView.swift in Sources */,
 				085054031F27A25B00FE8234 /* CalendarCardViewCell.swift in Sources */,
 				08A812761F1660A300672126 /* CardHeaderCell.swift in Sources */,
