@@ -468,45 +468,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		08078F401FBDE6EC00A4399D /* overlay */ = {
-			isa = PBXGroup;
-			children = (
-				08078F411FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift */,
-				08078F431FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift */,
-				08C580FE1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift */,
-			);
-			name = overlay;
-			sourceTree = "<group>";
-		};
-		0844FBD51FACB19C00335073 /* cell */ = {
-			isa = PBXGroup;
-			children = (
-				0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */,
-			);
-			name = cell;
-			sourceTree = "<group>";
-		};
 		085053FF1F27938500FE8234 /* calendar */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = calendar;
-			sourceTree = "<group>";
-		};
-		085599A11F7271BE00E5BEA1 /* splash */ = {
-			isa = PBXGroup;
-			children = (
-				085599A21F72750000E5BEA1 /* SplashScreen.swift */,
-			);
-			name = splash;
-			sourceTree = "<group>";
-		};
-		085599A41F72750B00E5BEA1 /* splash */ = {
-			isa = PBXGroup;
-			children = (
-				085599A51F72751900E5BEA1 /* SplashScreen.xib */,
-			);
-			name = splash;
 			sourceTree = "<group>";
 		};
 		085CB7B31F4ADD1500038C03 /* notifications */ = {
@@ -517,51 +483,11 @@
 			name = notifications;
 			sourceTree = "<group>";
 		};
-		085CB7B41F4ADD8000038C03 /* notifications */ = {
-			isa = PBXGroup;
-			children = (
-				085CB7B51F4ADD9C00038C03 /* NotificationsViewController.swift */,
-			);
-			name = notifications;
-			sourceTree = "<group>";
-		};
-		085F90F01F712644008A339A /* animations */ = {
-			isa = PBXGroup;
-			children = (
-				085599A91F72842100E5BEA1 /* animation.json */,
-				085F90F11F712660008A339A /* AnimationsViewController.swift */,
-			);
-			name = animations;
-			sourceTree = "<group>";
-		};
 		085F90F51F7126EC008A339A /* animations */ = {
 			isa = PBXGroup;
 			children = (
-				085F90F61F71270E008A339A /* AnimationsViewController.xib */,
 			);
 			name = animations;
-			sourceTree = "<group>";
-		};
-		085F90F81F7169E5008A339A /* onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				085F90F91F7169FE008A339A /* OnboardingView.xib */,
-				085F90FB1F716A57008A339A /* VerifySocialViewController.xib */,
-				085F91021F716CBC008A339A /* OnboardingFooter.xib */,
-				085F91041F716CD4008A339A /* OnboardingFooter.swift */,
-				08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */,
-			);
-			name = onboarding;
-			sourceTree = "<group>";
-		};
-		085F90FD1F716A99008A339A /* onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				085F91001F716AD2008A339A /* OnboardingViewController.swift */,
-				08D409CD1F73C3A800C5BB54 /* OnboardingFinalView.swift */,
-				08BD58031F7A312900FFDCFD /* VerifySocialViewController.swift */,
-			);
-			name = onboarding;
 			sourceTree = "<group>";
 		};
 		0888C5BC1F4EECBF00E3DB04 /* buttons */ = {
@@ -575,58 +501,12 @@
 			name = buttons;
 			sourceTree = "<group>";
 		};
-		088E77A71F7CE97D00774F13 /* toast */ = {
-			isa = PBXGroup;
-			children = (
-				088E77A81F7CE99900774F13 /* ToastView.swift */,
-				089267731F86617600D7B99E /* OfflineBanner.swift */,
-			);
-			name = toast;
-			sourceTree = "<group>";
-		};
-		088F14F81FB9C5EF0004F925 /* settings */ = {
-			isa = PBXGroup;
-			children = (
-				08078F401FBDE6EC00A4399D /* overlay */,
-				088F14F91FB9C6080004F925 /* StaticSettingsViewController.swift */,
-				08B968A91FBB141400482CDE /* ChangeBrandViewController.swift */,
-				08593DED1FBB3B7600077A65 /* SettingsEmailViewController.swift */,
-				08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */,
-				0857AB641FBC98D1002B9F53 /* SettingsGAViewController.swift */,
-				08078F381FBDA92600A4399D /* Alert.swift */,
-				0813A0581FC2F1C4003E6478 /* SettingsSocialViewController.swift */,
-			);
-			name = settings;
-			sourceTree = "<group>";
-		};
 		0894FBA31F595CC200ED251B /* oldies */ = {
 			isa = PBXGroup;
 			children = (
 				08F368941F18F93800819CDE /* DailyInsightsCardCell.swift */,
 			);
 			name = oldies;
-			sourceTree = "<group>";
-		};
-		0899DA1F1FA33AF600C3696C /* social */ = {
-			isa = PBXGroup;
-			children = (
-				0899DA201FA33B1F00C3696C /* SocialPostDetailsViewController.swift */,
-			);
-			name = social;
-			sourceTree = "<group>";
-		};
-		089F93A91FB5FE0D00155674 /* settings */ = {
-			isa = PBXGroup;
-			children = (
-				089F93AA1FB5FE1E00155674 /* Settings.storyboard */,
-				08B968AB1FBB17FE00482CDE /* BrandTableViewCell.swift */,
-				08593DEF1FBB440A00077A65 /* SettingsEmailView.xib */,
-				08CC6EC11FBC7FBA00A6521E /* SettingsLogoView.xib */,
-				08078F3E1FBDE45200A4399D /* SettingsOverlayActionView.xib */,
-				08C580FC1FBF21440013B03F /* SettingsOverlayUrlView.xib */,
-				0813A0561FC2F102003E6478 /* SettingsSocialView.xib */,
-			);
-			name = settings;
 			sourceTree = "<group>";
 		};
 		08A812771F1672C000672126 /* fonts */ = {
@@ -648,13 +528,6 @@
 		08B4BCDA1F619BB200660F5B /* actionDetails */ = {
 			isa = PBXGroup;
 			children = (
-				08A533371F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib */,
-				085530451F6CEE0A00D82A09 /* GoogleActivationView.swift */,
-				08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */,
-				08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */,
-				088B282B1F7E7F150015A66E /* AimeeView.swift */,
-				088B282D1F7E7FA10015A66E /* GoogleAction.storyboard */,
-				08B2DB961FB47522009E45F8 /* AimeeCell.swift */,
 			);
 			name = actionDetails;
 			sourceTree = "<group>";
@@ -677,26 +550,6 @@
 			name = actionHandler;
 			sourceTree = "<group>";
 		};
-		08C7B18E1F1CF41200E456C6 /* controllers */ = {
-			isa = PBXGroup;
-			children = (
-				088F14F81FB9C5EF0004F925 /* settings */,
-				0844FBD51FACB19C00335073 /* cell */,
-				0899DA1F1FA33AF600C3696C /* social */,
-				085599A11F7271BE00E5BEA1 /* splash */,
-				085F90FD1F716A99008A339A /* onboarding */,
-				085F90F01F712644008A339A /* animations */,
-				085CB7B41F4ADD8000038C03 /* notifications */,
-				08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */,
-				08B485E31F210992005918A1 /* VideoScreenViewController.swift */,
-				08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */,
-				083938FE1F63C334007DDA37 /* MainTabInfo.swift */,
-				08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */,
-				08B7ADE91FB22B8300C56688 /* FooterViewController.swift */,
-			);
-			name = controllers;
-			sourceTree = "<group>";
-		};
 		08D1BC351F1DF4D700D377B2 /* constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -709,17 +562,6 @@
 		08FAE8451F541FC90097DF3E /* statistics */ = {
 			isa = PBXGroup;
 			children = (
-				08FAE8461F541FF40097DF3E /* TrafficCard.xib */,
-				08FAE8401F541D060097DF3E /* Statistics.storyboard */,
-				08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */,
-				08AA6C6A1F56DD060022DE91 /* TrafficVisits.swift */,
-				08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */,
-				088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */,
-				088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */,
-				088E77AA1F7D441400774F13 /* TrafficStatus.xib */,
-				088E77AE1F7D4A8E00774F13 /* TrafficStatus.swift */,
-				088B28271F7E43960015A66E /* TrafficVisitsViewCell.swift */,
-				088B28291F7E5D130015A66E /* StatisticsCountView.swift */,
 			);
 			name = statistics;
 			sourceTree = "<group>";
@@ -769,13 +611,14 @@
 		1178D6771E1E5AD9005B96C3 /* ipopmetrics */ = {
 			isa = PBXGroup;
 			children = (
+				11DD96651FC4F41600386F1E /* welcome */,
+				11DD96641FC4F3BD00386F1E /* effects */,
+				11DD96631FC4F32800386F1E /* usersettings */,
 				11DD965E1FC4F20400386F1E /* menu */,
 				11DD96591FC4ECD600386F1E /* hub */,
-				11DD96581FC4EBE000386F1E /* hubs */,
 				08B8D9721F9A4970004E7781 /* actionHandler */,
 				0894FBA31F595CC200ED251B /* oldies */,
 				08D1BC351F1DF4D700D377B2 /* constants */,
-				08C7B18E1F1CF41200E456C6 /* controllers */,
 				08A812771F1672C000672126 /* fonts */,
 				11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */,
 				116540BB1EEAA17A00417D61 /* ipopmetrics.entitlements */,
@@ -860,11 +703,6 @@
 		11ACA9AD1E2CE0A80021E64A /* views */ = {
 			isa = PBXGroup;
 			children = (
-				11F549641FC4D5D7005C2FD6 /* hubs */,
-				089F93A91FB5FE0D00155674 /* settings */,
-				088E77A71F7CE97D00774F13 /* toast */,
-				085599A41F72750B00E5BEA1 /* splash */,
-				085F90F81F7169E5008A339A /* onboarding */,
 				085F90F51F7126EC008A339A /* animations */,
 				08B4BCDA1F619BB200660F5B /* actionDetails */,
 				08FAE8451F541FC90097DF3E /* statistics */,
@@ -916,14 +754,6 @@
 			name = login;
 			sourceTree = "<group>";
 		};
-		11DD96581FC4EBE000386F1E /* hubs */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = hubs;
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		11DD96591FC4ECD600386F1E /* hub */ = {
 			isa = PBXGroup;
 			children = (
@@ -932,6 +762,10 @@
 				11DD965D1FC4F1D700386F1E /* stats */,
 				11DD965C1FC4F0EA00386F1E /* actionpage */,
 				11DD965B1FC4F0AF00386F1E /* insightpage */,
+				08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */,
+				083938FE1F63C334007DDA37 /* MainTabInfo.swift */,
+				08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */,
+				08B7ADE91FB22B8300C56688 /* FooterViewController.swift */,
 				08F368961F19029100819CDE /* LastCard.xib */,
 				08A812731F16601A00672126 /* CardHeaderCell.xib */,
 				08A812751F1660A300672126 /* CardHeaderCell.swift */,
@@ -981,6 +815,13 @@
 		11DD965C1FC4F0EA00386F1E /* actionpage */ = {
 			isa = PBXGroup;
 			children = (
+				08A533371F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib */,
+				085530451F6CEE0A00D82A09 /* GoogleActivationView.swift */,
+				08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */,
+				08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */,
+				088B282B1F7E7F150015A66E /* AimeeView.swift */,
+				088B282D1F7E7FA10015A66E /* GoogleAction.storyboard */,
+				08B2DB961FB47522009E45F8 /* AimeeCell.swift */,
 				08B4BCE01F619D4200660F5B /* ActionPageViewController.swift */,
 			);
 			path = actionpage;
@@ -989,6 +830,17 @@
 		11DD965D1FC4F1D700386F1E /* stats */ = {
 			isa = PBXGroup;
 			children = (
+				08FAE8461F541FF40097DF3E /* TrafficCard.xib */,
+				08FAE8401F541D060097DF3E /* Statistics.storyboard */,
+				08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */,
+				08AA6C6A1F56DD060022DE91 /* TrafficVisits.swift */,
+				08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */,
+				088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */,
+				088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */,
+				088E77AA1F7D441400774F13 /* TrafficStatus.xib */,
+				088E77AE1F7D4A8E00774F13 /* TrafficStatus.swift */,
+				088B28271F7E43960015A66E /* TrafficVisitsViewCell.swift */,
+				088B28291F7E5D130015A66E /* StatisticsCountView.swift */,
 				08FAE8431F541D790097DF3E /* StatisticsViewController.swift */,
 				08AA6C621F56C9560022DE91 /* TrafficReportViewController.swift */,
 				08AA6C641F56DAA10022DE91 /* StatsPageViewController.swift */,
@@ -1043,15 +895,66 @@
 				08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */,
 				08B3AA9D1F8FA748008D0503 /* ToDoApprovedView.swift */,
 				08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */,
+				0899DA201FA33B1F00C3696C /* SocialPostDetailsViewController.swift */,
 			);
 			path = todo;
 			sourceTree = "<group>";
 		};
-		11F549641FC4D5D7005C2FD6 /* hubs */ = {
+		11DD96631FC4F32800386F1E /* usersettings */ = {
 			isa = PBXGroup;
 			children = (
+				089F93AA1FB5FE1E00155674 /* Settings.storyboard */,
+				08B968AB1FBB17FE00482CDE /* BrandTableViewCell.swift */,
+				08593DEF1FBB440A00077A65 /* SettingsEmailView.xib */,
+				08CC6EC11FBC7FBA00A6521E /* SettingsLogoView.xib */,
+				08078F3E1FBDE45200A4399D /* SettingsOverlayActionView.xib */,
+				08C580FC1FBF21440013B03F /* SettingsOverlayUrlView.xib */,
+				0813A0561FC2F102003E6478 /* SettingsSocialView.xib */,
+				088F14F91FB9C6080004F925 /* StaticSettingsViewController.swift */,
+				08B968A91FBB141400482CDE /* ChangeBrandViewController.swift */,
+				08593DED1FBB3B7600077A65 /* SettingsEmailViewController.swift */,
+				08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */,
+				0857AB641FBC98D1002B9F53 /* SettingsGAViewController.swift */,
+				08078F381FBDA92600A4399D /* Alert.swift */,
+				0813A0581FC2F1C4003E6478 /* SettingsSocialViewController.swift */,
+				08078F411FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift */,
+				08078F431FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift */,
+				08C580FE1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift */,
 			);
-			path = hubs;
+			path = usersettings;
+			sourceTree = "<group>";
+		};
+		11DD96641FC4F3BD00386F1E /* effects */ = {
+			isa = PBXGroup;
+			children = (
+				085599A91F72842100E5BEA1 /* animation.json */,
+				085F90F61F71270E008A339A /* AnimationsViewController.xib */,
+				085F90F11F712660008A339A /* AnimationsViewController.swift */,
+				0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */,
+				088E77A81F7CE99900774F13 /* ToastView.swift */,
+				089267731F86617600D7B99E /* OfflineBanner.swift */,
+				085CB7B51F4ADD9C00038C03 /* NotificationsViewController.swift */,
+			);
+			path = effects;
+			sourceTree = "<group>";
+		};
+		11DD96651FC4F41600386F1E /* welcome */ = {
+			isa = PBXGroup;
+			children = (
+				085599A51F72751900E5BEA1 /* SplashScreen.xib */,
+				085599A21F72750000E5BEA1 /* SplashScreen.swift */,
+				085F90F91F7169FE008A339A /* OnboardingView.xib */,
+				085F90FB1F716A57008A339A /* VerifySocialViewController.xib */,
+				085F91021F716CBC008A339A /* OnboardingFooter.xib */,
+				085F91041F716CD4008A339A /* OnboardingFooter.swift */,
+				08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */,
+				085F91001F716AD2008A339A /* OnboardingViewController.swift */,
+				08D409CD1F73C3A800C5BB54 /* OnboardingFinalView.swift */,
+				08BD58031F7A312900FFDCFD /* VerifySocialViewController.swift */,
+				08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */,
+				08B485E31F210992005918A1 /* VideoScreenViewController.swift */,
+			);
+			path = welcome;
 			sourceTree = "<group>";
 		};
 		3370F07CEEDAD25A735B8558 /* Frameworks */ = {
