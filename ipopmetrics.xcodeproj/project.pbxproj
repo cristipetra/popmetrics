@@ -174,6 +174,24 @@
 		1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1178D6831E1E5AD9005B96C3 /* LaunchScreen.storyboard */; };
 		1178D6901E1E5AD9005B96C3 /* ipopmetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D68F1E1E5AD9005B96C3 /* ipopmetricsTests.swift */; };
 		1178D69B1E1E5AD9005B96C3 /* ipopmetricsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */; };
+		1183A8531FC4FF8B00ED8EF6 /* TextFieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96851FC4FA9000386F1E /* TextFieldValidator.swift */; };
+		1183A8541FC4FF8B00ED8EF6 /* TwoImagesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96861FC4FA9000386F1E /* TwoImagesButton.swift */; };
+		1183A8551FC4FF8B00ED8EF6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96871FC4FA9000386F1E /* BaseViewController.swift */; };
+		1183A8561FC4FF8B00ED8EF6 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96881FC4FA9000386F1E /* ReachabilityManager.swift */; };
+		1183A8571FC4FF8B00ED8EF6 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96891FC4FA9000386F1E /* BaseTableViewController.swift */; };
+		1183A8581FC4FF8B00ED8EF6 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD968A1FC4FA9000386F1E /* Validator.swift */; };
+		1183A8591FC4FF8B00ED8EF6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD968B1FC4FA9000386F1E /* MainTabBarController.swift */; };
+		1183A85A1FC4FF8B00ED8EF6 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD968C1FC4FA9000386F1E /* GradientView.swift */; };
+		1183A85B1FC4FF8B00ED8EF6 /* CardActionHanlder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD968D1FC4FA9000386F1E /* CardActionHanlder.swift */; };
+		1183A85C1FC4FF8B00ED8EF6 /* SettingsBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD968E1FC4FA9000386F1E /* SettingsBaseViewController.swift */; };
+		1183A85D1FC4FF8B00ED8EF6 /* PopmetricsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD968F1FC4FA9000386F1E /* PopmetricsColor.swift */; };
+		1183A85E1FC4FF8B00ED8EF6 /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96901FC4FA9000386F1E /* AppStoryboard.swift */; };
+		1183A85F1FC4FF8B00ED8EF6 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96911FC4FA9000386F1E /* UIColorExtensions.swift */; };
+		1183A8601FC4FFB500ED8EF6 /* StatisticsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD967F1FC4FA8400386F1E /* StatisticsStore.swift */; };
+		1183A8611FC4FFB500ED8EF6 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96801FC4FA8400386F1E /* FeedStore.swift */; };
+		1183A8621FC4FFB500ED8EF6 /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96811FC4FA8400386F1E /* TodoStore.swift */; };
+		1183A8631FC4FFB500ED8EF6 /* UsersStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96821FC4FA8400386F1E /* UsersStore.swift */; };
+		1183A8641FC4FFB500ED8EF6 /* CalendarFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96831FC4FA8400386F1E /* CalendarFeedStore.swift */; };
 		11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAA5E31ECC8BFA0099B50E /* Feed.swift */; };
 		11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */; };
 		11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A91E2CE05D0021E64A /* CompletionView.swift */; };
@@ -1260,6 +1278,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1183A8601FC4FFB500ED8EF6 /* StatisticsStore.swift in Sources */,
+				1183A8611FC4FFB500ED8EF6 /* FeedStore.swift in Sources */,
+				1183A8621FC4FFB500ED8EF6 /* TodoStore.swift in Sources */,
+				1183A8631FC4FFB500ED8EF6 /* UsersStore.swift in Sources */,
+				1183A8641FC4FFB500ED8EF6 /* CalendarFeedStore.swift in Sources */,
+				1183A8531FC4FF8B00ED8EF6 /* TextFieldValidator.swift in Sources */,
+				1183A8541FC4FF8B00ED8EF6 /* TwoImagesButton.swift in Sources */,
+				1183A8551FC4FF8B00ED8EF6 /* BaseViewController.swift in Sources */,
+				1183A8561FC4FF8B00ED8EF6 /* ReachabilityManager.swift in Sources */,
+				1183A8571FC4FF8B00ED8EF6 /* BaseTableViewController.swift in Sources */,
+				1183A8581FC4FF8B00ED8EF6 /* Validator.swift in Sources */,
+				1183A8591FC4FF8B00ED8EF6 /* MainTabBarController.swift in Sources */,
+				1183A85A1FC4FF8B00ED8EF6 /* GradientView.swift in Sources */,
+				1183A85B1FC4FF8B00ED8EF6 /* CardActionHanlder.swift in Sources */,
+				1183A85C1FC4FF8B00ED8EF6 /* SettingsBaseViewController.swift in Sources */,
+				1183A85D1FC4FF8B00ED8EF6 /* PopmetricsColor.swift in Sources */,
+				1183A85E1FC4FF8B00ED8EF6 /* AppStoryboard.swift in Sources */,
+				1183A85F1FC4FF8B00ED8EF6 /* UIColorExtensions.swift in Sources */,
 				08EE385D1F447C0E005D1D7C /* TodoTopView.swift in Sources */,
 				08C583021FB1AFA500A7DD3D /* FooterViewStateController.swift in Sources */,
 				08D1BC391F1E3D6200D377B2 /* LDSplashView.swift in Sources */,
