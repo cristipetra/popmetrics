@@ -342,10 +342,23 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
     }
     
-    @objc func openInsightPage(_ feedCard: FeedCard) {
+    @objc func openActionPage(_ feedCard: FeedCard) {
+        
+        if feedCard.recommendedAction == "" {
+            self.presentAlertWithTitle("Error", message: "This insight has no recommended action!", useWhisper: true);
+            return
+        }
+        guard let actionCard = self.store.getFeedCardWithName(feedCard.recommendedAction)
+            else {
+                self.presentAlertWithTitle("Error", message: "No card to show with name: "+feedCard.recommendedAction, useWhisper: true);
+                return
+        }
+    
+        
+        
         let actionPageVc: ActionPageDetailsViewController = ActionPageDetailsViewController(nibName: "ActionPage", bundle: nil)
         //actionPageVc.hidesBottomBarWhenPushed = true
-        actionPageVc.configure(feedCard, handler: recommendActionHandler)
+        actionPageVc.configure(actionCard, handler: recommendActionHandler)
         
         self.navigationController?.pushViewController(actionPageVc, animated: true)
     }
@@ -478,7 +491,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
 
 extension HomeHubViewController: RecommendedActionViewCellDelegate {
     func recommendedActionViewCellDidTapAction(_ feedCard: FeedCard) {
-        openInsightPage(feedCard)
+        openActionPage(feedCard)
     }
 }
 
@@ -488,7 +501,7 @@ extension HomeHubViewController: RecommendeCellDelegate {
     }
     
     func recommendedCellDidTapAction(_ feedCard: FeedCard) {
-        openInsightPage(feedCard)
+        openActionPage(feedCard)
     }
 }
 
