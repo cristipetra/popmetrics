@@ -11,6 +11,7 @@ import markymark
 
 class InsightPageDetailsViewController: UIViewController {
 
+    @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var titleArticle: UILabel!
     @IBOutlet weak var blogTitle: UILabel!
     @IBOutlet weak var blogSummary: UILabel!
@@ -44,13 +45,16 @@ class InsightPageDetailsViewController: UIViewController {
     private func updateView() {
         titleArticle.text = feedCard.headerTitle
         
+        if let imageUrl = feedCard.blogImageUrl {
+            cardImage.af_setImage(withURL: URL(string: imageUrl)!)
+        }
+        
         blogTitle.text = feedCard.blogTitle
         blogSummary.text = feedCard.blogSummary
         
         displayMark()
     }
     
-
     private func setupNavigationWithBackButton() {
         let titleWindow = "Insight Page"
         let titleButton = UIBarButtonItem(title: titleWindow, style: .plain, target: self, action: nil)

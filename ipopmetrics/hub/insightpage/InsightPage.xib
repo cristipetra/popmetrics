@@ -25,6 +25,7 @@
             <connections>
                 <outlet property="blogSummary" destination="2lc-Xd-sg6" id="6Z9-gU-Ncs"/>
                 <outlet property="blogTitle" destination="mkY-xN-C2h" id="gIZ-hf-url"/>
+                <outlet property="cardImage" destination="U1O-y9-Lc9" id="aV6-Lo-4f7"/>
                 <outlet property="containerDetailsMarkdown" destination="SyP-Vc-Dxu" id="dmX-Fw-Xjy"/>
                 <outlet property="containerInsightArguments" destination="PuX-zk-tOu" id="RNZ-hU-B6W"/>
                 <outlet property="titleArticle" destination="iXN-EG-5jT" id="tsc-ZI-9Il"/>
