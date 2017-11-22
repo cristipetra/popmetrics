@@ -399,24 +399,24 @@
 		11DD96731FC4FA5400386F1E /* BaseApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
 		11DD96741FC4FA5400386F1E /* ApiUrls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiUrls.swift; sourceTree = "<group>"; };
 		11DD96751FC4FA5400386F1E /* FeedApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedApi.swift; sourceTree = "<group>"; };
-		11DD967F1FC4FA8400386F1E /* StatisticsStore.swift */ = {isa = PBXFileReference; path = StatisticsStore.swift; sourceTree = "<group>"; };
-		11DD96801FC4FA8400386F1E /* FeedStore.swift */ = {isa = PBXFileReference; path = FeedStore.swift; sourceTree = "<group>"; };
-		11DD96811FC4FA8400386F1E /* TodoStore.swift */ = {isa = PBXFileReference; path = TodoStore.swift; sourceTree = "<group>"; };
-		11DD96821FC4FA8400386F1E /* UsersStore.swift */ = {isa = PBXFileReference; path = UsersStore.swift; sourceTree = "<group>"; };
-		11DD96831FC4FA8400386F1E /* CalendarFeedStore.swift */ = {isa = PBXFileReference; path = CalendarFeedStore.swift; sourceTree = "<group>"; };
-		11DD96851FC4FA9000386F1E /* TextFieldValidator.swift */ = {isa = PBXFileReference; path = TextFieldValidator.swift; sourceTree = "<group>"; };
-		11DD96861FC4FA9000386F1E /* TwoImagesButton.swift */ = {isa = PBXFileReference; path = TwoImagesButton.swift; sourceTree = "<group>"; };
-		11DD96871FC4FA9000386F1E /* BaseViewController.swift */ = {isa = PBXFileReference; path = BaseViewController.swift; sourceTree = "<group>"; };
-		11DD96881FC4FA9000386F1E /* ReachabilityManager.swift */ = {isa = PBXFileReference; path = ReachabilityManager.swift; sourceTree = "<group>"; };
-		11DD96891FC4FA9000386F1E /* BaseTableViewController.swift */ = {isa = PBXFileReference; path = BaseTableViewController.swift; sourceTree = "<group>"; };
-		11DD968A1FC4FA9000386F1E /* Validator.swift */ = {isa = PBXFileReference; path = Validator.swift; sourceTree = "<group>"; };
-		11DD968B1FC4FA9000386F1E /* MainTabBarController.swift */ = {isa = PBXFileReference; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		11DD968C1FC4FA9000386F1E /* GradientView.swift */ = {isa = PBXFileReference; path = GradientView.swift; sourceTree = "<group>"; };
-		11DD968D1FC4FA9000386F1E /* CardActionHanlder.swift */ = {isa = PBXFileReference; path = CardActionHanlder.swift; sourceTree = "<group>"; };
-		11DD968E1FC4FA9000386F1E /* SettingsBaseViewController.swift */ = {isa = PBXFileReference; path = SettingsBaseViewController.swift; sourceTree = "<group>"; };
-		11DD968F1FC4FA9000386F1E /* PopmetricsColor.swift */ = {isa = PBXFileReference; path = PopmetricsColor.swift; sourceTree = "<group>"; };
-		11DD96901FC4FA9000386F1E /* AppStoryboard.swift */ = {isa = PBXFileReference; path = AppStoryboard.swift; sourceTree = "<group>"; };
-		11DD96911FC4FA9000386F1E /* UIColorExtensions.swift */ = {isa = PBXFileReference; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		11DD967F1FC4FA8400386F1E /* StatisticsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsStore.swift; sourceTree = "<group>"; };
+		11DD96801FC4FA8400386F1E /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
+		11DD96811FC4FA8400386F1E /* TodoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
+		11DD96821FC4FA8400386F1E /* UsersStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersStore.swift; sourceTree = "<group>"; };
+		11DD96831FC4FA8400386F1E /* CalendarFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFeedStore.swift; sourceTree = "<group>"; };
+		11DD96851FC4FA9000386F1E /* TextFieldValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidator.swift; sourceTree = "<group>"; };
+		11DD96861FC4FA9000386F1E /* TwoImagesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoImagesButton.swift; sourceTree = "<group>"; };
+		11DD96871FC4FA9000386F1E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		11DD96881FC4FA9000386F1E /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
+		11DD96891FC4FA9000386F1E /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		11DD968A1FC4FA9000386F1E /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		11DD968B1FC4FA9000386F1E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		11DD968C1FC4FA9000386F1E /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		11DD968D1FC4FA9000386F1E /* CardActionHanlder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardActionHanlder.swift; sourceTree = "<group>"; };
+		11DD968E1FC4FA9000386F1E /* SettingsBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBaseViewController.swift; sourceTree = "<group>"; };
+		11DD968F1FC4FA9000386F1E /* PopmetricsColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopmetricsColor.swift; sourceTree = "<group>"; };
+		11DD96901FC4FA9000386F1E /* AppStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoryboard.swift; sourceTree = "<group>"; };
+		11DD96911FC4FA9000386F1E /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release.xcconfig"; sourceTree = "<group>"; };
 		8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ipopmetrics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -573,15 +573,16 @@
 		11DD96591FC4ECD600386F1E /* hub */ = {
 			isa = PBXGroup;
 			children = (
+				11DD965C1FC4F0EA00386F1E /* actionpage */,
+				11DD965B1FC4F0AF00386F1E /* insightpage */,
+				11DD965A1FC4ECEE00386F1E /* home */,
+				11DD965F1FC4F22500386F1E /* calendar */,
+				11DD965D1FC4F1D700386F1E /* stats */,
+				11DD96601FC4F24E00386F1E /* todo */,
 				08B8D9701F9A4443004E7781 /* RecommendActionHandler.swift */,
 				1100F6F81F5FEBCE000AF1D4 /* TodoActionHandler.swift */,
 				08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */,
 				08D579F81F62E6ED00FDD744 /* StatusCardTypeView.swift */,
-				11DD96601FC4F24E00386F1E /* todo */,
-				11DD965F1FC4F22500386F1E /* calendar */,
-				11DD965D1FC4F1D700386F1E /* stats */,
-				11DD965C1FC4F0EA00386F1E /* actionpage */,
-				11DD965B1FC4F0AF00386F1E /* insightpage */,
 				08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */,
 				083938FE1F63C334007DDA37 /* MainTabInfo.swift */,
 				08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */,
@@ -602,7 +603,6 @@
 				0855C0C81F6FFBDB00ACBFA9 /* EmptyCard.xib */,
 				0855C0CA1F6FFBF000ACBFA9 /* EmptyCardView.swift */,
 				084E54E01F827F7D007D6F4F /* NoteView.swift */,
-				11DD965A1FC4ECEE00386F1E /* home */,
 			);
 			path = hub;
 			sourceTree = "<group>";
