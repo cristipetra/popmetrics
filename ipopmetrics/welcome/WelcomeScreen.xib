@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WelcomeScreen" customModule="ipopmetrics" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="gXt-zf-hHB" id="QXI-SX-daf"/>
+                <outlet property="blueButton" destination="ZWP-6v-Dou" id="cgk-Pb-WnX"/>
+                <outlet property="bottomButtonsConstraint" destination="H0w-2C-XzA" id="9XH-zl-gDj"/>
+                <outlet property="btnNew" destination="kAj-GT-EHI" id="hFC-nI-h14"/>
+                <outlet property="containerView" destination="i5M-Pr-FkT" id="pzL-cc-Jcm"/>
+                <outlet property="heartButton" destination="ZY0-lM-8bn" id="QNP-d4-lrG"/>
+                <outlet property="heightTextConstraint" destination="dOB-TC-ab2" id="YSn-La-FxW"/>
+                <outlet property="topImageConstraint" destination="L8m-M4-ncG" id="4Sj-Lx-MmA"/>
+                <outlet property="topImageView" destination="Ya5-DM-MeA" id="lCS-zz-nIN"/>
+                <outlet property="topTextConstraint" destination="XhA-HJ-Q9E" id="WlZ-M0-Oic"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="welcomeLabel" destination="Xx9-yR-Zb0" id="ENU-LX-3z0"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoPop" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-DM-MeA">
+                    <rect key="frame" x="68" y="70" width="184" height="98"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="98" id="UpL-Wc-BYP">
+                            <variation key="heightClass=compact-widthClass=compact" constant="70"/>
+                            <variation key="heightClass=compact-widthClass=regular" constant="85"/>
+                        </constraint>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey,  welcome to the \nPopmetrics beta! " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xx9-yR-Zb0" customClass="ActiveLabel" customModule="ActiveLabel">
+                    <rect key="frame" x="32" y="238" width="256" height="66"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="66" id="dOB-TC-ab2">
+                            <variation key="heightClass=compact-widthClass=compact" constant="82"/>
+                        </constraint>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                    <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="lineSpacing">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="dOB-TC-ab2"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="dOB-TC-ab2"/>
+                        </mask>
+                    </variation>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWP-6v-Dou">
+                    <rect key="frame" x="43.5" y="358" width="233" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="233" id="CHO-T2-UCP"/>
+                        <constraint firstAttribute="height" constant="60" id="nPW-iw-GG8">
+                            <variation key="heightClass=compact-widthClass=compact" constant="40"/>
+                            <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                        </constraint>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                    <state key="normal" title="I've Spoken With Aimee"/>
+                    <connections>
+                        <action selector="handlerSpoken:" destination="-1" eventType="touchUpInside" id="gIu-ea-d6X"/>
+                    </connections>
+                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="JIV-ap-ci7">
+                    <rect key="frame" x="43" y="458" width="234" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZY0-lM-8bn">
+                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="30j-ut-txk"/>
+                                <constraint firstAttribute="height" constant="60" id="Hi0-lg-4yl">
+                                    <variation key="heightClass=compact-widthClass=compact" constant="40"/>
+                                    <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                </constraint>
+                            </constraints>
+                            <state key="normal" image="blackHeart"/>
+                            <connections>
+                                <action selector="handlerHeartButton:" destination="-1" eventType="touchUpInside" id="iFR-W7-3mF"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAj-GT-EHI">
+                            <rect key="frame" x="74" y="0.0" width="160" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="160" id="DcF-lq-Ia1"/>
+                                <constraint firstAttribute="height" constant="60" id="LCx-Rj-S05">
+                                    <variation key="heightClass=compact-widthClass=compact" constant="40"/>
+                                    <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                </constraint>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                            <state key="normal" title="I'm New">
+                                <color key="titleColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="handlerDidPressNewButton:" destination="-1" eventType="touchUpInside" id="C89-rj-aZf"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="sMk-rG-RXn">
+                            <variation key="heightClass=compact-widthClass=compact" constant="40"/>
+                            <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                        </constraint>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXt-zf-hHB">
+                    <rect key="frame" x="27" y="40" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="92c-NS-bXO"/>
+                        <constraint firstAttribute="width" constant="20" id="sV9-bD-We5"/>
+                    </constraints>
+                    <state key="normal" image="iconCalLeftBold"/>
+                    <connections>
+                        <action selector="handleBackPressed:" destination="-1" eventType="touchUpInside" id="2XC-wn-veS"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Ya5-DM-MeA" secondAttribute="trailing" constant="68" id="10c-wu-lH2"/>
+                <constraint firstAttribute="trailing" secondItem="Xx9-yR-Zb0" secondAttribute="trailing" constant="32" id="5Uq-44-lqf"/>
+                <constraint firstItem="Ya5-DM-MeA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="68" id="6qW-2L-ZDJ"/>
+                <constraint firstItem="JIV-ap-ci7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Bva-hU-3ZU"/>
+                <constraint firstAttribute="bottom" secondItem="JIV-ap-ci7" secondAttribute="bottom" constant="50" id="H0w-2C-XzA">
+                    <variation key="heightClass=compact-widthClass=compact" constant="25"/>
+                    <variation key="heightClass=compact-widthClass=regular" constant="30"/>
+                </constraint>
+                <constraint firstItem="Ya5-DM-MeA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="L8m-M4-ncG">
+                    <variation key="heightClass=compact-widthClass=compact" constant="35"/>
+                    <variation key="heightClass=compact-widthClass=regular" constant="60"/>
+                </constraint>
+                <constraint firstItem="ZWP-6v-Dou" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="PLj-bt-eWh"/>
+                <constraint firstItem="Xx9-yR-Zb0" firstAttribute="top" secondItem="Ya5-DM-MeA" secondAttribute="bottom" constant="70" id="XhA-HJ-Q9E">
+                    <variation key="heightClass=compact-widthClass=compact" constant="30"/>
+                    <variation key="heightClass=compact-widthClass=regular" constant="40"/>
+                </constraint>
+                <constraint firstItem="gXt-zf-hHB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="gYE-FD-Fwe"/>
+                <constraint firstItem="Xx9-yR-Zb0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="32" id="lGi-s6-fbN"/>
+                <constraint firstItem="JIV-ap-ci7" firstAttribute="top" secondItem="ZWP-6v-Dou" secondAttribute="bottom" constant="40" id="llA-Cf-6j9">
+                    <variation key="heightClass=compact-widthClass=compact" constant="20"/>
+                    <variation key="heightClass=compact-widthClass=regular" constant="20"/>
+                </constraint>
+                <constraint firstItem="gXt-zf-hHB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="27" id="mWn-65-fVD"/>
+            </constraints>
+            <point key="canvasLocation" x="24" y="51"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="blackHeart" width="29" height="28"/>
+        <image name="iconCalLeftBold" width="14" height="24"/>
+        <image name="logoPop" width="310" height="77"/>
+    </resources>
+</document>
