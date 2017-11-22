@@ -8,11 +8,11 @@
 
 import UIKit
 
-class GoogleActivationView: UIView {
+class ActionActivationView: UIView {
     
     //View
-    lazy var recommendedActionView: RecommendedActionGoogleCitationView = {
-        let view = RecommendedActionGoogleCitationView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 355))
+    lazy var recommendedActionView: ActionPageView = {
+        let view = ActionPageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 355))
         return view
     }()
     

@@ -23,7 +23,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecommendedActionGoogleCitationView" customModule="ipopmetrics" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActionPageView" customModule="ipopmetrics" customModuleProvider="target">
             <connections>
                 <outlet property="backgroundImageVIew" destination="J1c-bY-eZ0" id="5Y1-YF-9Gy"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="MWm-Yn-6Hq"/>
@@ -46,6 +46,10 @@
                         <constraint firstAttribute="height" constant="30" id="nWL-0p-PxM"/>
                     </constraints>
                 </view>
+                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aFm-gi-zA3">
+                    <rect key="frame" x="132" y="77" width="110" height="200"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLR-iL-E47">
                     <rect key="frame" x="0.0" y="295" width="375" height="60"/>
                     <subviews>

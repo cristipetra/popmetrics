@@ -34,7 +34,7 @@
 		085282741F28D9DE0065A968 /* CalendarFooterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085282731F28D9DE0065A968 /* CalendarFooterViewCell.swift */; };
 		0854AF331F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0854AF321F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift */; };
 		0854AF351F3F2B18007B60F9 /* CalendarCardSimple.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0854AF341F3F2B18007B60F9 /* CalendarCardSimple.xib */; };
-		085530461F6CEE0A00D82A09 /* GoogleActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085530451F6CEE0A00D82A09 /* GoogleActivationView.swift */; };
+		085530461F6CEE0A00D82A09 /* ActionActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085530451F6CEE0A00D82A09 /* ActionActivationView.swift */; };
 		085599A31F72750000E5BEA1 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085599A21F72750000E5BEA1 /* SplashScreen.swift */; };
 		085599A61F72751900E5BEA1 /* SplashScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085599A51F72751900E5BEA1 /* SplashScreen.xib */; };
 		085599AA1F72842100E5BEA1 /* animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 085599A91F72842100E5BEA1 /* animation.json */; };
@@ -62,7 +62,6 @@
 		088B28281F7E43960015A66E /* TrafficVisitsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B28271F7E43960015A66E /* TrafficVisitsViewCell.swift */; };
 		088B282A1F7E5D130015A66E /* StatisticsCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B28291F7E5D130015A66E /* StatisticsCountView.swift */; };
 		088B282C1F7E7F150015A66E /* AimeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B282B1F7E7F150015A66E /* AimeeView.swift */; };
-		088B282E1F7E7FA10015A66E /* GoogleAction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 088B282D1F7E7FA10015A66E /* GoogleAction.storyboard */; };
 		088BBEA81F58212A00AD5414 /* TrafficEmptyCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */; };
 		088BBEAA1F58214300AD5414 /* TrafficEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */; };
 		088BBEAC1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */; };
@@ -84,7 +83,7 @@
 		08A4A5411F45B563001071E3 /* AlfaSlabOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */; };
 		08A533341F6BD9060080BE64 /* MoreInfoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A533331F6BD9060080BE64 /* MoreInfoViewCell.xib */; };
 		08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A533351F6BD9130080BE64 /* MoreInfoViewCell.swift */; };
-		08A533381F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A533371F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib */; };
+		08A533381F6BF7FC0080BE64 /* ActionPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A533371F6BF7FC0080BE64 /* ActionPage.xib */; };
 		08A5333E1F6C2E910080BE64 /* ButtonWithContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A5333D1F6C2E910080BE64 /* ButtonWithContainer.swift */; };
 		08A62CB21F8E4DCF0072E6A5 /* TwoColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A62CB11F8E4DCF0072E6A5 /* TwoColorButton.swift */; };
 		08A812741F16601A00672126 /* CardHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A812731F16601A00672126 /* CardHeaderCell.xib */; };
@@ -99,7 +98,7 @@
 		08AF04981F46FB9B0040012B /* ToDoCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AF04971F46FB9B0040012B /* ToDoCardCell.xib */; };
 		08AF049A1F46FBB60040012B /* ToDoCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AF04991F46FBB60040012B /* ToDoCardCell.swift */; };
 		08B2803F1F55862100E36D19 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B2803E1F55862100E36D19 /* Statistics.swift */; };
-		08B2DB971FB47522009E45F8 /* AimeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B2DB961FB47522009E45F8 /* AimeeCell.swift */; };
+		08B2DB971FB47522009E45F8 /* InstructionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B2DB961FB47522009E45F8 /* InstructionCell.swift */; };
 		08B324D81F98C65A00BB4905 /* IceExtendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B324D71F98C65A00BB4905 /* IceExtendView.xib */; };
 		08B324DA1F98C6AE00BB4905 /* IceExtendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B324D91F98C6AE00BB4905 /* IceExtendView.swift */; };
 		08B3AA9E1F8FA748008D0503 /* ToDoApprovedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3AA9D1F8FA748008D0503 /* ToDoApprovedView.swift */; };
@@ -124,7 +123,7 @@
 		08B968AA1FBB141400482CDE /* ChangeBrandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B968A91FBB141400482CDE /* ChangeBrandViewController.swift */; };
 		08B968AC1FBB17FE00482CDE /* BrandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B968AB1FBB17FE00482CDE /* BrandTableViewCell.swift */; };
 		08BAD73E1F960A70008BC88F /* MJCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */; };
-		08BD58001F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */; };
+		08BD58001F7A2DCC00FFDCFD /* ActionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD57FF1F7A2DCC00FFDCFD /* ActionPageView.swift */; };
 		08BD58021F7A2F3700FFDCFD /* IndividualTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */; };
 		08BD58041F7A312900FFDCFD /* VerifySocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58031F7A312900FFDCFD /* VerifySocialViewController.swift */; };
 		08BD580C1F7A6AD500FFDCFD /* OnboardingFinalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */; };
@@ -192,6 +191,8 @@
 		1183A8621FC4FFB500ED8EF6 /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96811FC4FA8400386F1E /* TodoStore.swift */; };
 		1183A8631FC4FFB500ED8EF6 /* UsersStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96821FC4FA8400386F1E /* UsersStore.swift */; };
 		1183A8641FC4FFB500ED8EF6 /* CalendarFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96831FC4FA8400386F1E /* CalendarFeedStore.swift */; };
+		1183A8661FC5064B00ED8EF6 /* InsightPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1183A8651FC5064B00ED8EF6 /* InsightPage.xib */; };
+		1183A8681FC5071700ED8EF6 /* InsightPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1183A8671FC5071700ED8EF6 /* InsightPageViewController.swift */; };
 		11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAA5E31ECC8BFA0099B50E /* Feed.swift */; };
 		11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */; };
 		11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A91E2CE05D0021E64A /* CompletionView.swift */; };
@@ -254,7 +255,7 @@
 		085282731F28D9DE0065A968 /* CalendarFooterViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarFooterViewCell.swift; sourceTree = "<group>"; };
 		0854AF321F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCardSimpleViewCell.swift; sourceTree = "<group>"; };
 		0854AF341F3F2B18007B60F9 /* CalendarCardSimple.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCardSimple.xib; sourceTree = "<group>"; };
-		085530451F6CEE0A00D82A09 /* GoogleActivationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleActivationView.swift; sourceTree = "<group>"; };
+		085530451F6CEE0A00D82A09 /* ActionActivationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionActivationView.swift; sourceTree = "<group>"; };
 		085599A21F72750000E5BEA1 /* SplashScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		085599A51F72751900E5BEA1 /* SplashScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashScreen.xib; sourceTree = "<group>"; };
 		085599A91F72842100E5BEA1 /* animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation.json; sourceTree = "<group>"; };
@@ -283,7 +284,6 @@
 		088B28271F7E43960015A66E /* TrafficVisitsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficVisitsViewCell.swift; sourceTree = "<group>"; };
 		088B28291F7E5D130015A66E /* StatisticsCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsCountView.swift; sourceTree = "<group>"; };
 		088B282B1F7E7F150015A66E /* AimeeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimeeView.swift; sourceTree = "<group>"; };
-		088B282D1F7E7FA10015A66E /* GoogleAction.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GoogleAction.storyboard; sourceTree = "<group>"; };
 		088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrafficEmptyCard.xib; sourceTree = "<group>"; };
 		088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficEmptyView.swift; sourceTree = "<group>"; };
 		088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
@@ -305,7 +305,7 @@
 		08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AlfaSlabOne-Regular.ttf"; sourceTree = "<group>"; };
 		08A533331F6BD9060080BE64 /* MoreInfoViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreInfoViewCell.xib; sourceTree = "<group>"; };
 		08A533351F6BD9130080BE64 /* MoreInfoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewCell.swift; sourceTree = "<group>"; };
-		08A533371F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendedActionGoogleCitationView.xib; sourceTree = "<group>"; };
+		08A533371F6BF7FC0080BE64 /* ActionPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionPage.xib; sourceTree = "<group>"; };
 		08A5333D1F6C2E910080BE64 /* ButtonWithContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithContainer.swift; sourceTree = "<group>"; };
 		08A62CB11F8E4DCF0072E6A5 /* TwoColorButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoColorButton.swift; sourceTree = "<group>"; };
 		08A812731F16601A00672126 /* CardHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardHeaderCell.xib; sourceTree = "<group>"; };
@@ -322,7 +322,7 @@
 		08AF04971F46FB9B0040012B /* ToDoCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoCardCell.xib; sourceTree = "<group>"; };
 		08AF04991F46FBB60040012B /* ToDoCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCardCell.swift; sourceTree = "<group>"; };
 		08B2803E1F55862100E36D19 /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
-		08B2DB961FB47522009E45F8 /* AimeeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AimeeCell.swift; sourceTree = "<group>"; };
+		08B2DB961FB47522009E45F8 /* InstructionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCell.swift; sourceTree = "<group>"; };
 		08B324D71F98C65A00BB4905 /* IceExtendView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IceExtendView.xib; sourceTree = "<group>"; };
 		08B324D91F98C6AE00BB4905 /* IceExtendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IceExtendView.swift; sourceTree = "<group>"; };
 		08B3AA9D1F8FA748008D0503 /* ToDoApprovedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoApprovedView.swift; sourceTree = "<group>"; };
@@ -344,7 +344,7 @@
 		08B968A91FBB141400482CDE /* ChangeBrandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeBrandViewController.swift; sourceTree = "<group>"; };
 		08B968AB1FBB17FE00482CDE /* BrandTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandTableViewCell.swift; sourceTree = "<group>"; };
 		08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJCalendarViewController.swift; sourceTree = "<group>"; };
-		08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedActionGoogleCitationView.swift; sourceTree = "<group>"; };
+		08BD57FF1F7A2DCC00FFDCFD /* ActionPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionPageView.swift; sourceTree = "<group>"; };
 		08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualTaskView.swift; sourceTree = "<group>"; };
 		08BD58031F7A312900FFDCFD /* VerifySocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifySocialViewController.swift; sourceTree = "<group>"; };
 		08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingFinalView.xib; sourceTree = "<group>"; };
@@ -403,6 +403,8 @@
 		1178D6961E1E5AD9005B96C3 /* ipopmetricsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ipopmetricsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ipopmetricsUITests.swift; sourceTree = "<group>"; };
 		1178D69C1E1E5AD9005B96C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1183A8651FC5064B00ED8EF6 /* InsightPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InsightPage.xib; sourceTree = "<group>"; };
+		1183A8671FC5071700ED8EF6 /* InsightPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPageViewController.swift; sourceTree = "<group>"; };
 		11AAA5E31ECC8BFA0099B50E /* Feed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Feed.swift; path = ipopmetrics/realm/Feed.swift; sourceTree = "<group>"; };
 		11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		11ACA9A91E2CE05D0021E64A /* CompletionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionView.swift; sourceTree = "<group>"; };
@@ -646,6 +648,8 @@
 		11DD965B1FC4F0AF00386F1E /* insightpage */ = {
 			isa = PBXGroup;
 			children = (
+				1183A8651FC5064B00ED8EF6 /* InsightPage.xib */,
+				1183A8671FC5071700ED8EF6 /* InsightPageViewController.swift */,
 			);
 			path = insightpage;
 			sourceTree = "<group>";
@@ -653,13 +657,12 @@
 		11DD965C1FC4F0EA00386F1E /* actionpage */ = {
 			isa = PBXGroup;
 			children = (
-				08A533371F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib */,
-				085530451F6CEE0A00D82A09 /* GoogleActivationView.swift */,
-				08BD57FF1F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift */,
+				08A533371F6BF7FC0080BE64 /* ActionPage.xib */,
+				085530451F6CEE0A00D82A09 /* ActionActivationView.swift */,
+				08BD57FF1F7A2DCC00FFDCFD /* ActionPageView.swift */,
 				08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */,
 				088B282B1F7E7F150015A66E /* AimeeView.swift */,
-				088B282D1F7E7FA10015A66E /* GoogleAction.storyboard */,
-				08B2DB961FB47522009E45F8 /* AimeeCell.swift */,
+				08B2DB961FB47522009E45F8 /* InstructionCell.swift */,
 				08B4BCE01F619D4200660F5B /* ActionPageViewController.swift */,
 			);
 			path = actionpage;
@@ -1037,7 +1040,6 @@
 				08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */,
 				088E77AB1F7D441400774F13 /* TrafficStatus.xib in Resources */,
 				0862C4D31FA1F4E300BEF0BC /* TodoPostDetails.storyboard in Resources */,
-				088B282E1F7E7FA10015A66E /* GoogleAction.storyboard in Resources */,
 				0852826C1F287DD70065A968 /* CalendarHeaderViewCell.xib in Resources */,
 				08B745961F1F6C1D00EC3F8C /* OpenSans-Regular.ttf in Resources */,
 				1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */,
@@ -1047,12 +1049,13 @@
 				08953E721F4C352B003ABEFC /* RequiredActionCard.xib in Resources */,
 				0813A0571FC2F102003E6478 /* SettingsSocialView.xib in Resources */,
 				088BBEA81F58212A00AD5414 /* TrafficEmptyCard.xib in Resources */,
+				1183A8661FC5064B00ED8EF6 /* InsightPage.xib in Resources */,
 				08593DF01FBB440A00077A65 /* SettingsEmailView.xib in Resources */,
 				08A533341F6BD9060080BE64 /* MoreInfoViewCell.xib in Resources */,
 				08A812741F16601A00672126 /* CardHeaderCell.xib in Resources */,
 				080DCA831F4D9586000C73DC /* OpenSans-ExtraBold.ttf in Resources */,
 				085054011F2793AE00FE8234 /* CalendarCard.xib in Resources */,
-				08A533381F6BF7FC0080BE64 /* RecommendedActionGoogleCitationView.xib in Resources */,
+				08A533381F6BF7FC0080BE64 /* ActionPage.xib in Resources */,
 				1178D6821E1E5AD9005B96C3 /* Assets.xcassets in Resources */,
 				08078F3F1FBDE45200A4399D /* SettingsOverlayActionView.xib in Resources */,
 				08C7B18D1F1CF40C00E456C6 /* WelcomeScreen.xib in Resources */,
@@ -1303,7 +1306,7 @@
 				11DD967A1FC4FA5400386F1E /* UsersApi.swift in Sources */,
 				110A62CA1ECEDADC0052B478 /* StatsSummaryViewCell.swift in Sources */,
 				1128B3F71ECF256600BDA58C /* SimpleButton.swift in Sources */,
-				08B2DB971FB47522009E45F8 /* AimeeCell.swift in Sources */,
+				08B2DB971FB47522009E45F8 /* InstructionCell.swift in Sources */,
 				1128B3F91ECF256600BDA58C /* SimpleButtonStateChangeValue.swift in Sources */,
 				11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */,
 				085AA0D41F42ECAA0014D4CE /* Todo.swift in Sources */,
@@ -1314,6 +1317,7 @@
 				08BF9D4E1F45F2EF00141206 /* TableFooterView.swift in Sources */,
 				11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */,
 				088B28281F7E43960015A66E /* TrafficVisitsViewCell.swift in Sources */,
+				1183A8681FC5071700ED8EF6 /* InsightPageViewController.swift in Sources */,
 				08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */,
 				08AF049A1F46FBB60040012B /* ToDoCardCell.swift in Sources */,
 				11DD967E1FC4FA5400386F1E /* FeedApi.swift in Sources */,
@@ -1339,7 +1343,7 @@
 				1125ADAC1E96E7990004B4AC /* HomeHubController.swift in Sources */,
 				08D1BC3B1F1E568A00D377B2 /* PhoneView.swift in Sources */,
 				08DF9E621F261C8100C60C2D /* InfoCardViewController.swift in Sources */,
-				08BD58001F7A2DCC00FFDCFD /* RecommendedActionGoogleCitationView.swift in Sources */,
+				08BD58001F7A2DCC00FFDCFD /* ActionPageView.swift in Sources */,
 				11DD96761FC4FA5400386F1E /* CalendarApi.swift in Sources */,
 				0848280F1F39F9200054B04C /* HeaderView.swift in Sources */,
 				08B968AA1FBB141400482CDE /* ChangeBrandViewController.swift in Sources */,
@@ -1408,7 +1412,7 @@
 				08953E6D1F4C275C003ABEFC /* ToDoCell.swift in Sources */,
 				1100F6F91F5FEBCE000AF1D4 /* TodoActionHandler.swift in Sources */,
 				08B485E01F20EA23005918A1 /* Config.swift in Sources */,
-				085530461F6CEE0A00D82A09 /* GoogleActivationView.swift in Sources */,
+				085530461F6CEE0A00D82A09 /* ActionActivationView.swift in Sources */,
 				08AA6C631F56C9560022DE91 /* TrafficReportViewController.swift in Sources */,
 				08FAE8441F541D790097DF3E /* StatisticsViewController.swift in Sources */,
 				08B485E61F210A61005918A1 /* RoundButton.swift in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 import markymark
 
-class RecommendedActionGoogleCitationView: UIView {
+class ActionPageView: UIView {
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var toolbarView: UIView!

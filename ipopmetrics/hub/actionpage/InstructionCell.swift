@@ -9,7 +9,7 @@
 import UIKit
 import markymark
 
-class AimeeCell: UITableViewCell {
+class InstructionCell: UITableViewCell {
     
     lazy var roundView: UIView = {
         let view = UIView()

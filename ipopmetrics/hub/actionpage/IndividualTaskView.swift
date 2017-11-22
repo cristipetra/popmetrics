@@ -103,7 +103,7 @@ class IndividualTaskView: UIView {
         setUpTitleLabel()
         setUpButton()
         
-        aimeeTableview.register(AimeeCell.self, forCellReuseIdentifier: "aimeeCellId")
+        aimeeTableview.register(InstructionCell.self, forCellReuseIdentifier: "aimeeCellId")
         aimeeTableview.delegate = self
         aimeeTableview.dataSource = self
     }
@@ -207,7 +207,7 @@ extension IndividualTaskView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "aimeeCellId", for: indexPath) as! AimeeCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "aimeeCellId", for: indexPath) as! InstructionCell
         cell.selectionStyle = .none
         switch expandButton.viewType {
         case .instructionView:

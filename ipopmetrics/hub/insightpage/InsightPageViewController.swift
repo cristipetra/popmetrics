@@ -1,8 +1,8 @@
 //
-//  GoogleActionViewController.swift
+//  InsightPageViewController.swift
 //  ipopmetrics
 //
-//  Created by Cristian Petra on 07/09/2017.
+//  Created by Rares Pop on 21/11/2017.
 //  Copyright © 2017 Popmetrics. All rights reserved.
 //
 
@@ -11,7 +11,7 @@ import Haptica
 import BubbleTransition
 import EZAlertController
 
-class ActionPageViewController: UIViewController {
+class InsightPageViewController: UIViewController {
     
     
     //Extend View
@@ -242,7 +242,7 @@ class ActionPageViewController: UIViewController {
     }
 }
 
-extension ActionPageViewController: UIScrollViewDelegate {
+extension InsightPageViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
@@ -270,7 +270,7 @@ extension ActionPageViewController: UIScrollViewDelegate {
 
 // MARK: UIViewControllerTransitioningDelegate
 
-extension ActionPageViewController: UIViewControllerTransitioningDelegate {
+extension InsightPageViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .present
         transition.startingPoint = transitionButton.center
@@ -284,14 +284,15 @@ extension ActionPageViewController: UIViewControllerTransitioningDelegate {
         transition.bubbleColor = PopmetricsColor.yellowBGColor
         return transition
     }
-    
+    W
 }
 
-extension UIView {
-    func addShadow(radius: CGFloat,opacity: Float, offset: CGSize = CGSize(width: 0.0, height: 0.0)) {
-        self.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor
-        self.layer.shadowOpacity = opacity;
-        self.layer.shadowRadius = radius
-        self.layer.shadowOffset = offset
-    }
-}
+//extension UIView {
+//    func addShadow(radius: CGFloat,opacity: Float, offset: CGSize = CGSize(width: 0.0, height: 0.0)) {
+//        self.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor
+//        self.layer.shadowOpacity = opacity;
+//        self.layer.shadowRadius = radius
+//        self.layer.shadowOffset = offset
+//    }
+//}
+
