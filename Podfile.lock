@@ -103,7 +103,7 @@ PODS:
     - TwitterCore (>= 2.8)
   - UIView+JMFrame (0.1.2)
   - URLNavigator (2.0.2)
-  - Whisper (6.0.1)
+  - Whisper (6.0.2)
 
 DEPENDENCIES:
   - ActiveLabel (from `https://github.com/sherwinzadeh/ActiveLabel.swift`, commit `4bec2dae617cca42263b9b6efc84e8f4822cc4ad`)
@@ -230,7 +230,7 @@ SPEC CHECKSUMS:
   TwitterKit: 3b6044a7320340326a4098f3e37aa1dbaeb94942
   UIView+JMFrame: a907974c9d34b1c300aef85ae2a1a5af746f2b8a
   URLNavigator: 91f4f1b52f5e8117baca758ba642b26069d72056
-  Whisper: 775a726ca40cb6499be6415b35692b8e0f2c1129
+  Whisper: 169760fc4bab0abf24d5529f9276f95c25cf1025
 
 PODFILE CHECKSUM: 95b830e177574056352b284b8539f2ed37eea952
 
