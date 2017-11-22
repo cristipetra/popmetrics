@@ -343,11 +343,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     @objc func openInsightPage(_ feedCard: FeedCard) {
-        let googleActionVc: ActionPageViewController = ActionPageViewController()
-        googleActionVc.hidesBottomBarWhenPushed = true
-        googleActionVc.configure(feedCard, handler: recommendActionHandler)
+        let actionPageVc: ActionPageDetailsViewController = ActionPageDetailsViewController(nibName: "ActionPage", bundle: nil)
+        //actionPageVc.hidesBottomBarWhenPushed = true
+        actionPageVc.configure(feedCard, handler: recommendActionHandler)
         
-        self.navigationController?.pushViewController(googleActionVc, animated: true)
+        self.navigationController?.pushViewController(actionPageVc, animated: true)
     }
 
     @objc private func goToNextTab() {
@@ -471,8 +471,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     func openInsightDetails(_ feedCard: FeedCard) {
         let insightDetails = InsightPageDetailsViewController(nibName: "InsightPage", bundle: nil)
-        
-        
         insightDetails.configure(feedCard)
         self.navigationController?.pushViewController(insightDetails, animated: true)
     }
