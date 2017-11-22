@@ -94,7 +94,7 @@ class FooterView: UIView {
             $0.color = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
         }
         button.setAttributedTitle("i".set(style: attrTitle), for: .normal)
-        button.addTarget(self, action: #selector(handlerT), for: .touchUpInside)
+        
         button.tintColor = PopmetricsColor.textGrey
         button.backgroundColor = UIColor.white
         button.layer.cornerRadius = 23

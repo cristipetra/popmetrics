@@ -11,6 +11,7 @@ import Haptica
 import BubbleTransition
 import EZAlertController
 
+
 class InsightPageViewController: UIViewController {
     
     

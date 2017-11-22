@@ -124,6 +124,7 @@
 		08B4EBB91FC56ACE00BFC5A1 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAC1FC56ACE00BFC5A1 /* GradientView.swift */; };
 		08B4EBBA1FC56ACE00BFC5A1 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAD1FC56ACE00BFC5A1 /* MainTabBarController.swift */; };
 		08B4EBBB1FC56ACE00BFC5A1 /* TwoImagesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAE1FC56ACE00BFC5A1 /* TwoImagesButton.swift */; };
+		08B4EBBF1FC58FF100BFC5A1 /* InsightPageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBBE1FC58FF100BFC5A1 /* InsightPageDetailsViewController.swift */; };
 		08B5D4BC1F29CD5000B79AD3 /* CalendarCardMaximized.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B5D4BB1F29CD5000B79AD3 /* CalendarCardMaximized.xib */; };
 		08B5D4BE1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5D4BD1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift */; };
 		08B6AFAA1F9DC813005E3049 /* IceCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B6AFA91F9DC813005E3049 /* IceCardView.xib */; };
@@ -348,6 +349,7 @@
 		08B4EBAC1FC56ACE00BFC5A1 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		08B4EBAD1FC56ACE00BFC5A1 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		08B4EBAE1FC56ACE00BFC5A1 /* TwoImagesButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoImagesButton.swift; sourceTree = "<group>"; };
+		08B4EBBE1FC58FF100BFC5A1 /* InsightPageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPageDetailsViewController.swift; sourceTree = "<group>"; };
 		08B5D4BB1F29CD5000B79AD3 /* CalendarCardMaximized.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCardMaximized.xib; sourceTree = "<group>"; };
 		08B5D4BD1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCardMaximizedViewCell.swift; sourceTree = "<group>"; };
 		08B6AFA91F9DC813005E3049 /* IceCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IceCardView.xib; sourceTree = "<group>"; };
@@ -682,6 +684,7 @@
 			children = (
 				1183A8651FC5064B00ED8EF6 /* InsightPage.xib */,
 				1183A8671FC5071700ED8EF6 /* InsightPageViewController.swift */,
+				08B4EBBE1FC58FF100BFC5A1 /* InsightPageDetailsViewController.swift */,
 			);
 			path = insightpage;
 			sourceTree = "<group>";
@@ -1392,6 +1395,7 @@
 				085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */,
 				08B745981F1F718300EC3F8C /* CodeViewController.swift in Sources */,
 				0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */,
+				08B4EBBF1FC58FF100BFC5A1 /* InsightPageDetailsViewController.swift in Sources */,
 				08078F441FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift in Sources */,
 				08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */,
 				08B7ADEA1FB22B8300C56688 /* FooterViewController.swift in Sources */,

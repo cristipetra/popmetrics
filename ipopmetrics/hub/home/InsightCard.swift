@@ -8,8 +8,9 @@
 
 import UIKit
 
-protocol RecommendeCellDelegate: class {
-    func recommendedCellDidTapAction(_ feedCard: FeedCard)
+@objc protocol RecommendeCellDelegate: class {
+    @objc func recommendedCellDidTapAction(_ feedCard: FeedCard)
+    @objc func cellDidTapMoreInfo(_ feedCard: FeedCard)
 }
 
 class InsightCard: UITableViewCell {
@@ -52,6 +53,8 @@ class InsightCard: UITableViewCell {
         self.messageLabel.numberOfLines = 5
             
         footerVIew.actionButton.addTarget(self, action: #selector(handlerActionButton), for: .touchUpInside)
+        
+        footerVIew.xButton.addTarget(self, action: #selector(handlerMoreInfo), for: .touchUpInside)
     }
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
@@ -70,6 +73,11 @@ class InsightCard: UITableViewCell {
     @objc func handlerActionButton() {
         guard let _ = feedCard else { return }
         delegate?.recommendedCellDidTapAction(feedCard)
+    }
+    
+    @objc func handlerMoreInfo() {
+        guard let _ = feedCard else { return }
+        delegate?.cellDidTapMoreInfo(feedCard)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

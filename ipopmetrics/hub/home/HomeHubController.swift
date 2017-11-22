@@ -304,7 +304,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                     cell.connectionLine.isHidden = true;
                 }
                 cell.delegate = self
-                cell.footerVIew.informationBtn.addTarget(self, action: #selector(showTooltip(_:)), for: .touchUpInside)
+                
+                
                 return cell
 
             case HomeCardType.recommendedAction.rawValue:
@@ -468,6 +469,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         print("handling required action")
     }
     
+    func openInsightDetails(_ feedCard: FeedCard) {
+        let insightDetails = InsightPageDetailsViewController(nibName: "InsightPage", bundle: nil)
+        
+        self.navigationController?.pushViewController(insightDetails, animated: true)
+    }
 }
 
 extension HomeHubViewController: RecommendedActionViewCellDelegate {
@@ -477,6 +483,10 @@ extension HomeHubViewController: RecommendedActionViewCellDelegate {
 }
 
 extension HomeHubViewController: RecommendeCellDelegate {
+    func cellDidTapMoreInfo(_ feedCard: FeedCard) {
+        openInsightDetails(feedCard)
+    }
+    
     func recommendedCellDidTapAction(_ feedCard: FeedCard) {
         openInsightPage(feedCard)
     }
