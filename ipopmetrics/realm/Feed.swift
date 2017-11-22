@@ -42,6 +42,7 @@ class FeedCard: Object, Mappable {
     
     @objc dynamic var type = ""
     @objc dynamic var section = ""
+    @objc dynamic var name = ""
     
     @objc dynamic var headerTitle: String? = nil
     @objc dynamic var headerSubtitle: String? = nil
@@ -50,10 +51,13 @@ class FeedCard: Object, Mappable {
     
     @objc dynamic var actionLabel = ""
     @objc dynamic var actionHandler = ""
+    @objc dynamic var recommendedAction = ""
+    
     @objc dynamic var imageUri:String? = nil
     @objc dynamic var blogUrl:String? = nil
     @objc dynamic var detailsMarkdown:String? = ""
-    
+    @objc dynamic var closingMarkdown:String? = ""
+   
     
     @objc dynamic var tooltipEnabled = 0
     @objc dynamic var tooltipTitle: String? = nil
@@ -90,6 +94,7 @@ class FeedCard: Object, Mappable {
         index           <- map["index"]
         type            <- map["type"]
         section         <- map["section"]
+        name            <- map["name"]
         headerTitle     <- map["header_title"]
         headerSubtitle  <- map["header_subtitle"]
         headerIconUri   <- map["header_icon"]
@@ -97,7 +102,10 @@ class FeedCard: Object, Mappable {
         message         <- map["message"]
         actionLabel     <- map["action_label"]
         actionHandler   <- map["handler"]
+        recommendedAction   <- map["recommended_action"]
+        
         detailsMarkdown <- map["details_markdown"]
+        closingMarkdown <- map["closing_markdown"]
         
         tooltipEnabled  <- map["tooltip_enabled"]
         tooltipTitle    <- map["tooltip_title"]

@@ -284,7 +284,7 @@ extension InsightPageViewController: UIViewControllerTransitioningDelegate {
         transition.bubbleColor = PopmetricsColor.yellowBGColor
         return transition
     }
-    W
+    
 }
 
 //extension UIView {
