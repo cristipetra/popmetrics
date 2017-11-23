@@ -102,6 +102,8 @@ class FeedCard: Object, Mappable {
         headerTitle     <- map["header_title"]
         headerSubtitle  <- map["header_subtitle"]
         headerIconUri   <- map["header_icon"]
+        imageUri        <- map["image_url"]
+        
         blogUrl         <- map["blog_url"]
         blogTitle       <- map["blog_title"]
         blogImageUrl    <- map["blog_image_url"]
