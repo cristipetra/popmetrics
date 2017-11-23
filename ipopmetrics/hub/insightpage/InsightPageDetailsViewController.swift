@@ -18,6 +18,7 @@ class InsightPageDetailsViewController: UIViewController {
     @IBOutlet weak var blogSummary: UILabel!
     @IBOutlet weak var blogImage: UIImageView!
     
+    @IBOutlet weak var labelInsightArguments: UILabel!
     
     @IBOutlet weak var containerClosingMarkdown: UIView!
     @IBOutlet weak var containerDetailsMarkdown: UIView!
@@ -55,6 +56,7 @@ class InsightPageDetailsViewController: UIViewController {
         blogTitle.text = feedCard.blogTitle
         blogSummary.text = feedCard.blogSummary
         
+        displayInsightArguments()
         displayMarkDetails()
         displayMarkClosing()
     }
@@ -72,6 +74,14 @@ class InsightPageDetailsViewController: UIViewController {
         
     }
     
+    internal func displayInsightArguments() {
+        let insightsArguments = feedCard.getInsightArgumentsArray()
+        var textString = ""
+        for argument in insightsArguments {
+            textString += "\(argument) \n\n"
+        }
+        labelInsightArguments.text = textString
+    }
     
     func getMarkDownString() -> String {
         return feedCard.detailsMarkdown!
