@@ -27,6 +27,7 @@
                 <outlet property="blogSummary" destination="2lc-Xd-sg6" id="6Z9-gU-Ncs"/>
                 <outlet property="blogTitle" destination="mkY-xN-C2h" id="gIZ-hf-url"/>
                 <outlet property="cardImage" destination="U1O-y9-Lc9" id="aV6-Lo-4f7"/>
+                <outlet property="containerClosingMarkdown" destination="g3d-wh-WNj" id="ZHS-p0-Imm"/>
                 <outlet property="containerDetailsMarkdown" destination="SyP-Vc-Dxu" id="dmX-Fw-Xjy"/>
                 <outlet property="containerInsightArguments" destination="PuX-zk-tOu" id="RNZ-hU-B6W"/>
                 <outlet property="titleArticle" destination="iXN-EG-5jT" id="tsc-ZI-9Il"/>
@@ -42,7 +43,7 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="1676"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="CMJ-3S-pPM">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="1631"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1638"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DtL-7f-lTr">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="316"/>
@@ -51,7 +52,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="316"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your web traffic is being severely held back &amp; limiting your conversions." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXN-EG-5jT">
-                                            <rect key="frame" x="25" y="25" width="340" height="174.5"/>
+                                            <rect key="frame" x="25" y="25" width="340" height="149.5"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="32"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -73,7 +74,7 @@
                                     <rect key="frame" x="0.0" y="317" width="375" height="60"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Impact Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zja-ii-rmQ">
-                                            <rect key="frame" x="25" y="20.5" width="91" height="20.5"/>
+                                            <rect key="frame" x="25" y="22" width="90" height="17.5"/>
                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                             <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -104,22 +105,22 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D9a-9X-GT2">
-                                    <rect key="frame" x="0.0" y="599" width="375" height="360"/>
+                                    <rect key="frame" x="0.0" y="599" width="375" height="367"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Article Title Here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkY-xN-C2h">
-                                            <rect key="frame" x="25" y="20" width="333" height="25"/>
+                                            <rect key="frame" x="25" y="20" width="333" height="37"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                             <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zdy-H8-hgv">
-                                            <rect key="frame" x="25" y="65" width="333" height="200"/>
+                                            <rect key="frame" x="25" y="77" width="333" height="200"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="200" id="yyo-Nc-Vxv"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lc-Xd-sg6">
-                                            <rect key="frame" x="25" y="275" width="333" height="82"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lc-Xd-sg6">
+                                            <rect key="frame" x="25" y="287" width="333" height="70"/>
                                             <string key="text">Article excerpt? This is what happens when the
 article has some meta thing telling the computer that it’s magically got to choose the first 40 words of the article to be useful…</string>
                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
@@ -129,6 +130,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="2lc-Xd-sg6" secondAttribute="bottom" constant="10" id="8qe-hV-OE1"/>
                                         <constraint firstItem="zdy-H8-hgv" firstAttribute="top" secondItem="mkY-xN-C2h" secondAttribute="bottom" constant="20" id="Dqk-Z5-iCw"/>
                                         <constraint firstItem="mkY-xN-C2h" firstAttribute="top" secondItem="D9a-9X-GT2" secondAttribute="top" constant="20" id="G2W-hM-gM7"/>
                                         <constraint firstItem="zdy-H8-hgv" firstAttribute="leading" secondItem="D9a-9X-GT2" secondAttribute="leading" constant="25" id="HVT-kc-DR8"/>
@@ -136,13 +138,12 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         <constraint firstItem="2lc-Xd-sg6" firstAttribute="leading" secondItem="D9a-9X-GT2" secondAttribute="leading" constant="25" id="KaW-3i-UUr"/>
                                         <constraint firstAttribute="trailing" secondItem="zdy-H8-hgv" secondAttribute="trailing" constant="17" id="c4I-os-rAr"/>
                                         <constraint firstItem="mkY-xN-C2h" firstAttribute="leading" secondItem="D9a-9X-GT2" secondAttribute="leading" constant="25" id="df6-QJ-392"/>
-                                        <constraint firstAttribute="height" constant="360" id="igX-Pm-Ig8"/>
                                         <constraint firstItem="2lc-Xd-sg6" firstAttribute="top" secondItem="zdy-H8-hgv" secondAttribute="bottom" constant="10" id="q8B-aJ-aZy"/>
                                         <constraint firstAttribute="trailing" secondItem="mkY-xN-C2h" secondAttribute="trailing" constant="17" id="ql7-gQ-bQB"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ey0-rJ-Y0q">
-                                    <rect key="frame" x="0.0" y="960" width="375" height="64"/>
+                                    <rect key="frame" x="0.0" y="967" width="375" height="64"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tez-UQ-foi">
                                             <rect key="frame" x="25" y="0.0" width="350" height="64"/>
@@ -171,10 +172,10 @@ article has some meta thing telling the computer that it’s magically got to ch
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="80U-VB-cci">
-                                    <rect key="frame" x="0.0" y="1025" width="375" height="365"/>
+                                    <rect key="frame" x="0.0" y="1032" width="375" height="365"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why you failed the test:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIx-RD-2DL">
-                                            <rect key="frame" x="25" y="20" width="222" height="25"/>
+                                            <rect key="frame" x="25" y="20" width="189" height="21"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                             <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -196,20 +197,28 @@ article has some meta thing telling the computer that it’s magically got to ch
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvN-nL-tZe">
-                                    <rect key="frame" x="0.0" y="1391" width="375" height="240"/>
+                                    <rect key="frame" x="0.0" y="1398" width="375" height="240"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What are your options?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxA-h7-UB9">
-                                            <rect key="frame" x="25" y="22" width="217.5" height="25"/>
+                                            <rect key="frame" x="25" y="22" width="187.5" height="21"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                             <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g3d-wh-WNj">
+                                            <rect key="frame" x="25" y="53" width="333" height="187"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
+                                        <constraint firstItem="g3d-wh-WNj" firstAttribute="leading" secondItem="qvN-nL-tZe" secondAttribute="leading" constant="25" id="1aT-Ua-vSh"/>
                                         <constraint firstItem="zxA-h7-UB9" firstAttribute="top" secondItem="qvN-nL-tZe" secondAttribute="top" constant="22" id="IsQ-x8-GUI"/>
+                                        <constraint firstAttribute="bottom" secondItem="g3d-wh-WNj" secondAttribute="bottom" id="L8q-7S-GGc"/>
                                         <constraint firstAttribute="height" constant="240" id="MS2-3l-h7f"/>
+                                        <constraint firstAttribute="trailing" secondItem="g3d-wh-WNj" secondAttribute="trailing" constant="17" id="MjI-Kh-BfX"/>
                                         <constraint firstItem="zxA-h7-UB9" firstAttribute="leading" secondItem="qvN-nL-tZe" secondAttribute="leading" constant="25" id="TJu-Xz-IEL"/>
+                                        <constraint firstItem="g3d-wh-WNj" firstAttribute="top" secondItem="zxA-h7-UB9" secondAttribute="bottom" constant="10" id="ZPb-1K-4LR"/>
                                     </constraints>
                                 </view>
                             </subviews>

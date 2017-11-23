@@ -567,7 +567,7 @@ enum CardType: String {
 extension HomeHubViewController {
     
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
-        print(store.getFeedCards())
+        //print(store.getFeedCards())
         self.tableView.reloadData()
         
     }

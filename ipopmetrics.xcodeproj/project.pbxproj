@@ -81,6 +81,7 @@
 		089F93AB1FB5FE1E00155674 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089F93AA1FB5FE1E00155674 /* Settings.storyboard */; };
 		08A4A53D1F458423001071E3 /* ToolbarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */; };
 		08A4A5411F45B563001071E3 /* AlfaSlabOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */; };
+		08A51D2F1FC6DBBE0097B334 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A51D2E1FC6DBBE0097B334 /* Markdown.swift */; };
 		08A533341F6BD9060080BE64 /* MoreInfoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A533331F6BD9060080BE64 /* MoreInfoViewCell.xib */; };
 		08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A533351F6BD9130080BE64 /* MoreInfoViewCell.swift */; };
 		08A533381F6BF7FC0080BE64 /* ActionPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A533371F6BF7FC0080BE64 /* ActionPage.xib */; };
@@ -305,6 +306,7 @@
 		089F93AA1FB5FE1E00155674 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarViewCell.swift; sourceTree = "<group>"; };
 		08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AlfaSlabOne-Regular.ttf"; sourceTree = "<group>"; };
+		08A51D2E1FC6DBBE0097B334 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
 		08A533331F6BD9060080BE64 /* MoreInfoViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreInfoViewCell.xib; sourceTree = "<group>"; };
 		08A533351F6BD9130080BE64 /* MoreInfoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewCell.swift; sourceTree = "<group>"; };
 		08A533371F6BF7FC0080BE64 /* ActionPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionPage.xib; sourceTree = "<group>"; };
@@ -518,6 +520,7 @@
 				08B4EBAE1FC56ACE00BFC5A1 /* TwoImagesButton.swift */,
 				08B4EBA81FC56ACD00BFC5A1 /* UIColorExtensions.swift */,
 				08B4EBA21FC56ACD00BFC5A1 /* Validator.swift */,
+				08A51D2E1FC6DBBE0097B334 /* Markdown.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -1350,6 +1353,7 @@
 				08B3AA9E1F8FA748008D0503 /* ToDoApprovedView.swift in Sources */,
 				0809AEB41F22183400A13178 /* Constants.swift in Sources */,
 				08D409CE1F73C3A800C5BB54 /* OnboardingFinalView.swift in Sources */,
+				08A51D2F1FC6DBBE0097B334 /* Markdown.swift in Sources */,
 				08B4EBB41FC56ACE00BFC5A1 /* BaseViewController.swift in Sources */,
 				11DD96791FC4FA5400386F1E /* SyncService.swift in Sources */,
 				08B968AC1FBB17FE00482CDE /* BrandTableViewCell.swift in Sources */,
