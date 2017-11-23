@@ -1,5 +1,5 @@
 //
-//  TodoHubController.swift
+//  TodoHubViewController.swift
 //  ipopmetrics
 //
 //  Created by Rares Pop on 07/04/2017.
@@ -15,7 +15,7 @@ import EZAlertController
 import RealmSwift
 
 
-enum HomeSection: String {
+enum TodoSection: String {
     
     case RequiredActions = "Required Actions"
     case Insights = "Insights"
@@ -44,7 +44,7 @@ enum HomeSection: String {
     ]
     
     func sectionTitle() -> String {
-        if let sectionTitle = HomeSection.sectionTitles[self] {
+        if let sectionTitle = TodoSection.sectionTitles[self] {
             return sectionTitle
         } else {
             return ""
@@ -56,11 +56,11 @@ enum HomeSection: String {
     }
     
     func getSectionPosition() -> Int {
-        return HomeSection.sectionPosition[self]!
+        return TodoSection.sectionPosition[self]!
     }
 }
 
-enum HomeSectionType: String {
+enum TodoSectionType: String {
     case requiredActions = "Required Actions"
     case insights = "Insights"
     case recommendedForYou = "Recommended For You"
@@ -69,7 +69,7 @@ enum HomeSectionType: String {
     case moreOnTheWay = "More On The Way"
 }
 
-enum HomeCardType: String {
+enum TodoCardType: String {
     case requiredAction = "required_action"
     case insight = "insight"
     case recommendedAction = "recommended_action"
@@ -83,7 +83,7 @@ enum HomeCardType: String {
         ]
     
     func getCardHeight() -> CGFloat {
-        if let cardHeight = HomeCardType.cardHeight[self] {
+        if let cardHeight = TodoCardType.cardHeight[self] {
             return CGFloat(cardHeight)
         } else {
             return 0
@@ -91,16 +91,16 @@ enum HomeCardType: String {
     }
 }
 
-class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
+class TodoHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     fileprivate var sharingInProgress = false
     
-    let indexToSection = [0: HomeSectionType.requiredActions.rawValue,
-                          1: HomeSectionType.insights.rawValue,
-                          2: HomeSectionType.recommendedForYou.rawValue,
-                          3: HomeSectionType.recommendedActions.rawValue,
-                          4: HomeSectionType.summaries.rawValue,
-                          5: HomeSectionType.moreOnTheWay.rawValue]
+    let indexToSection = [0: TodoSectionType.requiredActions.rawValue,
+                          1: TodoSectionType.insights.rawValue,
+                          2: TodoSectionType.recommendedForYou.rawValue,
+                          3: TodoSectionType.recommendedActions.rawValue,
+                          4: TodoSectionType.summaries.rawValue,
+                          5: TodoSectionType.moreOnTheWay.rawValue]
     
     var requiredActionHandler = RequiredActionHandler()
     
@@ -241,10 +241,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let homeSection = HomeSection.init(rawValue: self.indexToSection[section]!)
+        guard let TodoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
             else { return 0 }
         
-        return countCardsInSection(homeSection.rawValue)
+        return countCardsInSection(TodoSection.rawValue)
         
     }
     
@@ -255,18 +255,18 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         shouldDisplayCell = true
         
-        guard let homeSection = HomeSection.init(rawValue: self.indexToSection[sectionIdx]!)
+        guard let TodoSection = TodoSection.init(rawValue: self.indexToSection[sectionIdx]!)
             else {
                 return UITableViewCell()
         }
         
-        let card = getCardInSection(homeSection.rawValue, atIndex: rowIdx)
-        let cardsCount = countCardsInSection(homeSection.rawValue)
+        let card = getCardInSection(TodoSection.rawValue, atIndex: rowIdx)
+        let cardsCount = countCardsInSection(TodoSection.rawValue)
         
         let item = card
         
         switch(item.type) {
-        case HomeCardType.requiredAction.rawValue:
+        case TodoCardType.requiredAction.rawValue:
             if isShowAllRequiredCards {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RequriedActionCard", for: indexPath) as! RequiredActionCard
                 cell.configure(item, handler: self.requiredActionHandler)
@@ -297,7 +297,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             }
             return cell
             
-        case HomeCardType.insight.rawValue:
+        case TodoCardType.insight.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "InsightCard", for: indexPath) as! InsightCard
             cell.configure(item, handler: recommendActionHandler)
             if(cardsCount - 1 == indexPath.row) {
@@ -308,12 +308,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             return cell
             
-        case HomeCardType.recommendedAction.rawValue:
+        case TodoCardType.recommendedAction.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedActionId", for: indexPath) as! IceCardViewCell
             cell.delegate = self
             cell.configure(item)
             return cell
-        case HomeCardType.emptyState.rawValue:
+        case TodoCardType.emptyState.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! EmptyStateCardCell
             cell.changeTitleWithSpacing(title: "More on it's way!")
             cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
@@ -391,36 +391,36 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let homeSection = HomeSection.init(rawValue: self.indexToSection[section]!)
+        let TodoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
         let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
-        cell.sectionTitleLabel.text = homeSection?.sectionTitle()
+        cell.sectionTitleLabel.text = TodoSection?.sectionTitle()
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        guard let homeSection = HomeSection.init(rawValue: self.indexToSection[section]!)
+        guard let TodoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
             else { return 0 }
-        let sectionCards = store.getFeedCardsWithSection(homeSection.rawValue)
+        let sectionCards = store.getFeedCardsWithSection(TodoSection.rawValue)
         if sectionCards.count == 0 {
             return 0
         }
-        return homeSection.getSectionHeaderHeight()
+        return TodoSection.getSectionHeaderHeight()
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        guard let homeSection = HomeSection.init(rawValue: self.indexToSection[indexPath.section]!)
+        guard let TodoSection = TodoSection.init(rawValue: self.indexToSection[indexPath.section]!)
             else { return 0 }
         
-        let card = getCardInSection(homeSection.rawValue, atIndex:indexPath.row)
-        if indexPath.row > 0  && homeSection == HomeSection.RequiredActions && !self.isShowAllRequiredCards {
+        let card = getCardInSection(TodoSection.rawValue, atIndex:indexPath.row)
+        if indexPath.row > 0  && TodoSection == TodoSection.RequiredActions && !self.isShowAllRequiredCards {
             // moreInfo card
             return 226
         }
         
-        guard let cardType = HomeCardType(rawValue: card.type) else { return 0}
+        guard let cardType = TodoCardType(rawValue: card.type) else { return 0}
         return cardType.getCardHeight()
     }
     
@@ -489,13 +489,13 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
 }
 
-extension HomeHubViewController: RecommendedActionViewCellDelegate {
+extension TodoHubViewController: RecommendedActionViewCellDelegate {
     func recommendedActionViewCellDidTapAction(_ feedCard: FeedCard) {
         openActionPage(feedCard)
     }
 }
 
-extension HomeHubViewController: RecommendeCellDelegate {
+extension TodoHubViewController: RecommendeCellDelegate {
     func cellDidTapMoreInfo(_ feedCard: FeedCard) {
         openInsightDetails(feedCard)
     }
@@ -507,7 +507,7 @@ extension HomeHubViewController: RecommendeCellDelegate {
 
 // MARK: UIViewControllerTransitioningDelegate
 
-extension HomeHubViewController: UIViewControllerTransitioningDelegate {
+extension TodoHubViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .present
         transition.startingPoint = transitionButton.center
@@ -524,7 +524,7 @@ extension HomeHubViewController: UIViewControllerTransitioningDelegate {
     
 }
 
-extension HomeHubViewController: InfoButtonDelegate {
+extension TodoHubViewController: InfoButtonDelegate {
     
     //
     func sendInfo(_ sender: UIButton) {
@@ -547,7 +547,7 @@ extension HomeHubViewController: InfoButtonDelegate {
 
 
 // MARK: UITabBarControllerDelegate
-extension HomeHubViewController: UITabBarControllerDelegate {
+extension TodoHubViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let selectedIndex = tabBarController.selectedIndex
     }
@@ -564,7 +564,7 @@ enum CardType: String {
 
 
 // MARK: Notification Handlers
-extension HomeHubViewController {
+extension TodoHubViewController {
     
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
         //print(store.getFeedCards())
@@ -590,7 +590,4 @@ extension HomeHubViewController {
     }
     
 }
-
-
-
 

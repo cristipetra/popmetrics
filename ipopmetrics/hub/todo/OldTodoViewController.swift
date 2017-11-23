@@ -15,7 +15,7 @@ import DGElasticPullToRefresh
 import BubbleTransition
 import EZAlertController
 
-class ToDoViewController: BaseViewController {
+class OldTodoViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var toDoTopView: TodoTopView!
@@ -251,7 +251,7 @@ class ToDoViewController: BaseViewController {
     
 }
 
-extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, ApproveDenySinglePostProtocol {
+extension OldTodoViewController: UITableViewDelegate, UITableViewDataSource, ApproveDenySinglePostProtocol {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -635,7 +635,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
 }
 
-extension ToDoViewController:  TodoCardActionProtocol {
+extension OldTodoViewController:  TodoCardActionProtocol {
     
     func handleCardAction(_ action:String, todoCard: TodoCard, params:[String:Any]) {
         
@@ -690,14 +690,14 @@ extension ToDoViewController:  TodoCardActionProtocol {
 }
 
 // MARK: Notification Handlers
-extension ToDoViewController {
+extension OldTodoViewController {
     
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
         self.tableView.reloadData()
     }
 }
 
-extension ToDoViewController: ActionSocialPostProtocol {
+extension OldTodoViewController: ActionSocialPostProtocol {
     
     func displayBannerInfo() {
         if bannerMessageView.transform == .identity {

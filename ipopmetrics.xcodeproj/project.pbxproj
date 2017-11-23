@@ -155,7 +155,7 @@
 		08C583021FB1AFA500A7DD3D /* FooterViewStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */; };
 		08C5CF361FC5EA9C001851A5 /* ActionPageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */; };
 		08C6FBFB1F41FFCB007D6101 /* Todo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C6FBFA1F41FFCB007D6101 /* Todo.storyboard */; };
-		08C6FBFD1F4205EF007D6101 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */; };
+		08C6FBFD1F4205EF007D6101 /* OldTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6FBFC1F4205EF007D6101 /* OldTodoViewController.swift */; };
 		08C7B18D1F1CF40C00E456C6 /* WelcomeScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C7B18C1F1CF40C00E456C6 /* WelcomeScreen.xib */; };
 		08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */; };
 		08CC6EC01FBC7F9C00A6521E /* SettingsLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */; };
@@ -202,6 +202,7 @@
 		11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */; };
 		11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A91E2CE05D0021E64A /* CompletionView.swift */; };
 		11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */; };
+		11B91D331FC77495005CFE87 /* TodoHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B91D321FC77495005CFE87 /* TodoHubController.swift */; };
 		11DD96761FC4FA5400386F1E /* CalendarApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD966D1FC4FA5400386F1E /* CalendarApi.swift */; };
 		11DD96771FC4FA5400386F1E /* StatisticsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD966E1FC4FA5400386F1E /* StatisticsApi.swift */; };
 		11DD96781FC4FA5400386F1E /* TodoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD966F1FC4FA5400386F1E /* TodoApi.swift */; };
@@ -381,7 +382,7 @@
 		08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterViewStateController.swift; sourceTree = "<group>"; };
 		08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPageDetailsViewController.swift; sourceTree = "<group>"; };
 		08C6FBFA1F41FFCB007D6101 /* Todo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Todo.storyboard; sourceTree = "<group>"; };
-		08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
+		08C6FBFC1F4205EF007D6101 /* OldTodoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OldTodoViewController.swift; sourceTree = "<group>"; };
 		08C7B18C1F1CF40C00E456C6 /* WelcomeScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeScreen.xib; sourceTree = "<group>"; };
 		08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLogoViewController.swift; sourceTree = "<group>"; };
@@ -437,6 +438,7 @@
 		11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		11ACA9A91E2CE05D0021E64A /* CompletionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionView.swift; sourceTree = "<group>"; };
 		11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		11B91D321FC77495005CFE87 /* TodoHubController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoHubController.swift; sourceTree = "<group>"; };
 		11DD966C1FC4FA5400386F1E /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		11DD966D1FC4FA5400386F1E /* CalendarApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarApi.swift; sourceTree = "<group>"; };
 		11DD966E1FC4FA5400386F1E /* StatisticsApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsApi.swift; sourceTree = "<group>"; };
@@ -784,8 +786,9 @@
 				08953E6C1F4C275C003ABEFC /* ToDoCell.swift */,
 				08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */,
 				08B3AA9D1F8FA748008D0503 /* ToDoApprovedView.swift */,
-				08C6FBFC1F4205EF007D6101 /* ToDoViewController.swift */,
+				08C6FBFC1F4205EF007D6101 /* OldTodoViewController.swift */,
 				0899DA201FA33B1F00C3696C /* SocialPostDetailsViewController.swift */,
+				11B91D321FC77495005CFE87 /* TodoHubController.swift */,
 			);
 			path = todo;
 			sourceTree = "<group>";
@@ -1355,6 +1358,7 @@
 				0848280F1F39F9200054B04C /* HeaderView.swift in Sources */,
 				08B968AA1FBB141400482CDE /* ChangeBrandViewController.swift in Sources */,
 				08078F391FBDA92600A4399D /* Alert.swift in Sources */,
+				11B91D331FC77495005CFE87 /* TodoHubController.swift in Sources */,
 				085282701F2881BD0065A968 /* Calendar.swift in Sources */,
 				08BD58021F7A2F3700FFDCFD /* IndividualTaskView.swift in Sources */,
 				08F368991F1903B100819CDE /* EmptyStateCardCell.swift in Sources */,
@@ -1374,7 +1378,7 @@
 				083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */,
 				11DD96771FC4FA5400386F1E /* StatisticsApi.swift in Sources */,
 				08B324DA1F98C6AE00BB4905 /* IceExtendView.swift in Sources */,
-				08C6FBFD1F4205EF007D6101 /* ToDoViewController.swift in Sources */,
+				08C6FBFD1F4205EF007D6101 /* OldTodoViewController.swift in Sources */,
 				08B7ADE81FB1D18F00C56688 /* CardToolbarController.swift in Sources */,
 				0857AB651FBC98D1002B9F53 /* SettingsGAViewController.swift in Sources */,
 				11DD967C1FC4FA5400386F1E /* BaseApi.swift in Sources */,
