@@ -56,4 +56,6 @@ target 'ipopmetrics' do
   pod 'Haptica'
   pod 'markymark'
   
+  pod 'GTProgressBar'
+  
 end
