@@ -17,13 +17,16 @@ class ActionPageDetailsViewController: UIViewController {
     @IBOutlet weak var blogSummary: UILabel!
     
     
+    @IBOutlet weak var constraintHeightDetailsMarkdown: NSLayoutConstraint!
     @IBOutlet weak var containerIceView: UIView!
     @IBOutlet weak var containerDetailsMarkdown: UIView!
     @IBOutlet weak var containerInsightArguments: UIView!
     
     private var feedCard: FeedCard!
+    @IBOutlet weak var constraintHeightClosingMarkdown: NSLayoutConstraint!
     private var recommendActionHandler: RecommendActionHandler?
     
+    @IBOutlet weak var containerClosingMarkdown: UIView!
     let statsView = IndividualTaskView()
     let iceView = IceExtendView()
     
@@ -65,10 +68,8 @@ class ActionPageDetailsViewController: UIViewController {
             cardImage.af_setImage(withURL: URL(string: imageUrl)!)
         }
         
-        
-        
-        
-        displayMark()
+        displayMarkdownDetails()
+        displayMarkdownClosing()
     }
     
     private func setupNavigationWithBackButton() {
@@ -84,14 +85,22 @@ class ActionPageDetailsViewController: UIViewController {
         
     }
 
-    func getMarkDownString() -> String {
+    private func getDetailsMarkdownString() -> String {
         return feedCard.detailsMarkdown!
     }
     
-    internal func displayMark() {
+    private func getClosingMarkdownString() -> String {
+        return feedCard.closingMarkdown!
+    }
+    
+    internal func displayMarkdownDetails() {
         let mark = Markdown()
-        mark.addMarkInScrollView(containerMark: containerDetailsMarkdown, markdownString: getMarkDownString())
-
+        mark.addMarkInExtendedView(containerMark: containerDetailsMarkdown, containerHeightConstraint: constraintHeightDetailsMarkdown, markdownString: getDetailsMarkdownString())
+    }
+    
+    internal func displayMarkdownClosing() {
+        let mark = Markdown()
+        mark.addMarkInExtendedView(containerMark: containerClosingMarkdown, containerHeightConstraint: constraintHeightClosingMarkdown, markdownString: getClosingMarkdownString())
     }
 
     @IBAction func handlerViewArticleBtn(_ sender: Any) {

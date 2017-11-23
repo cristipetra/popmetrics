@@ -24,6 +24,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActionPageDetailsViewController" customModule="ipopmetrics" customModuleProvider="target">
             <connections>
                 <outlet property="cardImage" destination="U1O-y9-Lc9" id="aV6-Lo-4f7"/>
+                <outlet property="constraintHeightClosingMarkdown" destination="MS2-3l-h7f" id="0ea-NC-EOU"/>
+                <outlet property="constraintHeightDetailsMarkdown" destination="LrX-Dx-yxw" id="7jR-RK-ddG"/>
+                <outlet property="containerClosingMarkdown" destination="H9S-LN-qse" id="03R-M9-Nxg"/>
                 <outlet property="containerDetailsMarkdown" destination="SyP-Vc-Dxu" id="dmX-Fw-Xjy"/>
                 <outlet property="containerIceView" destination="D9a-9X-GT2" id="Azq-h5-D6u"/>
                 <outlet property="titleArticle" destination="iXN-EG-5jT" id="tsc-ZI-9Il"/>
@@ -48,7 +51,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="316"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your web traffic is being severely held back &amp; limiting your conversions." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXN-EG-5jT">
-                                            <rect key="frame" x="25" y="25" width="340" height="149.5"/>
+                                            <rect key="frame" x="25" y="25" width="340" height="174.5"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="32"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -70,7 +73,7 @@
                                     <rect key="frame" x="0.0" y="317" width="375" height="60"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Impact Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zja-ii-rmQ">
-                                            <rect key="frame" x="25" y="22" width="90" height="17.5"/>
+                                            <rect key="frame" x="25" y="20.5" width="91" height="20.5"/>
                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                             <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -139,18 +142,18 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvN-nL-tZe">
                                     <rect key="frame" x="0.0" y="1305" width="375" height="240"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="closing markdown here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxA-h7-UB9">
-                                            <rect key="frame" x="25" y="22" width="187.5" height="21"/>
-                                            <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
-                                            <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H9S-LN-qse">
+                                            <rect key="frame" x="25" y="0.0" width="340" height="240"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="zxA-h7-UB9" firstAttribute="top" secondItem="qvN-nL-tZe" secondAttribute="top" constant="22" id="IsQ-x8-GUI"/>
+                                        <constraint firstAttribute="trailing" secondItem="H9S-LN-qse" secondAttribute="trailing" constant="10" id="FWd-po-ObJ"/>
                                         <constraint firstAttribute="height" constant="240" id="MS2-3l-h7f"/>
-                                        <constraint firstItem="zxA-h7-UB9" firstAttribute="leading" secondItem="qvN-nL-tZe" secondAttribute="leading" constant="25" id="TJu-Xz-IEL"/>
+                                        <constraint firstItem="H9S-LN-qse" firstAttribute="leading" secondItem="qvN-nL-tZe" secondAttribute="leading" constant="25" id="fuh-eP-SmP"/>
+                                        <constraint firstItem="H9S-LN-qse" firstAttribute="top" secondItem="qvN-nL-tZe" secondAttribute="top" id="oXL-0Y-9ZC"/>
+                                        <constraint firstAttribute="bottom" secondItem="H9S-LN-qse" secondAttribute="bottom" id="zbg-eL-X4U"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X0I-Ot-Br1">
