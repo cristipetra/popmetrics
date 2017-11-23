@@ -13,15 +13,13 @@ import M13ProgressSuite
 class IceExtendView: UIView {
     
     @IBOutlet var containerView: UIView!
-    @IBOutlet weak var topLbl: UILabel!
-    @IBOutlet weak var impactLevelLbl: UILabel!
+    @IBOutlet weak var messageLbl: UILabel!
     @IBOutlet weak var costLbl: UILabel!
     @IBOutlet weak var effortLbl: UILabel!
-    @IBOutlet weak var impactSimpleMainProgressView: UIView!
     @IBOutlet weak var impactMultipleMainProgressView: UIView!
     @IBOutlet weak var costMainProgressView: UIView!
     @IBOutlet weak var effortMainProgressView: UIView!
-    @IBOutlet weak var drawView: UIView!
+    @IBOutlet weak var titleLbl: UILabel!
     
     @IBOutlet var splitSquare: [UILabel]!
     @IBOutlet var splitLabels: [UILabel]!
@@ -58,10 +56,16 @@ class IceExtendView: UIView {
         self.feedCard = feedCard
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        splitLabels[0].sizeToFit()
+        splitLabels[1].sizeToFit()
+        splitLabels[2].sizeToFit()
+    }
+    
     private func updateView() {
         setUpLabel()
         
-        setImpactLevel()
         setCostStyle()
         setEffortStyle()
         setSplitValues()
@@ -69,7 +73,6 @@ class IceExtendView: UIView {
     
     private func setCornerRadious() {
         
-        impactSimpleMainProgressView.layer.cornerRadius = 4
         impactMultipleMainProgressView.layer.cornerRadius = 4
         costMainProgressView.layer.cornerRadius = 4
         effortMainProgressView.layer.cornerRadius = 4
@@ -93,12 +96,16 @@ class IceExtendView: UIView {
     private func setSplitValues() {
         
         var splitValues = feedCard.getIceImpactSplit()
-
+        
+        print(splitValues)
+        
         for index in 0..<splitValues.count {
             splitLabels[index].text = splitValues[index].label
+            
             splitLabels[index].isHidden = false
             splitSquare[index].isHidden = false
         }
+        
         setMultipleProgressViewConstaits()
     }
     
@@ -145,19 +152,9 @@ class IceExtendView: UIView {
         let costAttr = cost.set(style: costStyle)
         let effortAttr = effort.set(style: effortStyle)
         
-        let attrString: NSMutableAttributedString = "This is a " + impactLvlAttr + " task that we can complete for " + circaChar + "" + dollarChar + "" + costAttr + " or you can do it in " +  circaChar2 + "" + effortAttr + "."
+        let attrString: NSMutableAttributedString = "This is a " + impactLvlAttr + " task that we can complete for " + circaChar + "" + dollarChar + "" + costAttr + " or you can do it in " +  circaChar2 + "" + effortAttr + " that will help your website traffic most"
         
-        topLbl.attributedText = attrString
-    }
-    
-    private func setImpactLevel() {
-        impactLevelLbl.text = getIceImpactLabel()
-        let value = String(feedCard.iceImpactPercentage)
-        
-        impactSimpleMainProgressView.clipsToBounds = true
-        
-        setProgress(animationBounds: impactSimpleMainProgressView.bounds, value: value, childOff: impactSimpleMainProgressView, animationColor: UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1), animationDuration: 0.2)
-        
+        messageLbl.attributedText = attrString
     }
     
     private func setCostStyle() {
@@ -210,7 +207,7 @@ class IceExtendView: UIView {
         impactMultipleMainProgressView.clipsToBounds = true
         
         var bounds: CGRect! = CGRect.zero
-        let progressColor: [UIColor] = [UIColor(red: 255/255, green: 34/255, blue: 105/255, alpha: 1),UIColor(red: 255/255, green: 157/255, blue: 103/255, alpha: 1), UIColor(red: 78/255, green: 198/255, blue: 255/255, alpha: 1), UIColor.green]
+        let progressColor: [UIColor] = [UIColor(red: 255/255, green: 34/255, blue: 105/255, alpha: 1), UIColor(red: 255/255, green: 157/255, blue: 103/255, alpha: 1), UIColor(red: 78/255, green: 198/255, blue: 255/255, alpha: 1), UIColor.green]
         
         if splitValues.count == 0 {
             impactMultipleMainProgressView.isHidden = true
@@ -277,4 +274,3 @@ class IceExtendView: UIView {
         
     }
 }
-
