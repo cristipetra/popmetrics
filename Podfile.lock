@@ -69,7 +69,7 @@ PODS:
     - GTMSessionFetcher/Core (= 1.1.12)
   - GTProgressBar (0.2.3)
   - Haptica (2.0.0)
-  - Hero (1.0.0)
+  - Hero (1.0.1)
   - JSONWebToken (2.2.0)
   - lottie-ios (2.1.4)
   - M13ProgressSuite (1.2.9)
@@ -205,7 +205,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   GTProgressBar: ecfa9f2dfaca1b9b35811925f5bd53516ee591ae
   Haptica: ed63c31f32f2aa17ecb479c110dd50904497bf5d
-  Hero: 18e7cf8af41c04c8532d1430ac174004a9365c87
+  Hero: cee286821578e170d8c0c9c9cda7897357401112
   JSONWebToken: 6fae32489632658d563dd6952a5c34020ea813e4
   lottie-ios: 94fa2d82547ce3adf1e61157653ba99999fd279f
   M13ProgressSuite: ea9f7263e73e9215e6849dfa54e29ee0ad6a145c

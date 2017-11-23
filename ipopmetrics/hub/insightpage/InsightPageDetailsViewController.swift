@@ -13,8 +13,10 @@ class InsightPageDetailsViewController: UIViewController {
 
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var titleArticle: UILabel!
+    
     @IBOutlet weak var blogTitle: UILabel!
     @IBOutlet weak var blogSummary: UILabel!
+    @IBOutlet weak var blogImage: UIImageView!
     
     
     @IBOutlet weak var containerDetailsMarkdown: UIView!
@@ -46,7 +48,7 @@ class InsightPageDetailsViewController: UIViewController {
         titleArticle.text = feedCard.headerTitle
         
         if let imageUrl = feedCard.blogImageUrl {
-            cardImage.af_setImage(withURL: URL(string: imageUrl)!)
+            blogImage.af_setImage(withURL: URL(string: imageUrl)!)
         }
         
         blogTitle.text = feedCard.blogTitle
