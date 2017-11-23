@@ -20,9 +20,11 @@ class InsightPageDetailsViewController: UIViewController {
     
     @IBOutlet weak var labelInsightArguments: UILabel!
     
+    @IBOutlet weak var constraintHeightDetailsMarkdown: NSLayoutConstraint!
     @IBOutlet weak var containerClosingMarkdown: UIView!
     @IBOutlet weak var containerDetailsMarkdown: UIView!
     @IBOutlet weak var containerInsightArguments: UIView!
+    @IBOutlet weak var constraintHeightClosingMarkdown: NSLayoutConstraint!
     
     private var feedCard: FeedCard!
     private var recommendActionHandler: RecommendActionHandler?
@@ -93,12 +95,14 @@ class InsightPageDetailsViewController: UIViewController {
     
     internal func displayMarkDetails() {
         let mark = Markdown()
-        mark.addMarkInScrollView(containerMark: containerDetailsMarkdown, markdownString: getMarkDownString())
+        
+        mark.addMarkInExtendedView(containerMark: containerDetailsMarkdown, containerHeightConstraint: constraintHeightDetailsMarkdown, markdownString: getMarkDownString())
     }
     
     internal func displayMarkClosing() {
         let mark = Markdown()
-        mark.addMarkInScrollView(containerMark: containerClosingMarkdown, markdownString: getMarkClosingString())
+        
+        mark.addMarkInExtendedView(containerMark: containerClosingMarkdown, containerHeightConstraint: constraintHeightClosingMarkdown, markdownString: getMarkClosingString())
     }
     
     @IBAction func handlerViewArticleBtn(_ sender: Any) {
