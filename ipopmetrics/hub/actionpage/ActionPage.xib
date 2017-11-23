@@ -51,7 +51,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="316"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your web traffic is being severely held back &amp; limiting your conversions." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXN-EG-5jT">
-                                            <rect key="frame" x="25" y="25" width="340" height="174.5"/>
+                                            <rect key="frame" x="25" y="25" width="340" height="149.5"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="32"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -73,7 +73,7 @@
                                     <rect key="frame" x="0.0" y="317" width="375" height="60"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Impact Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zja-ii-rmQ">
-                                            <rect key="frame" x="25" y="20.5" width="91" height="20.5"/>
+                                            <rect key="frame" x="25" y="22" width="90" height="17.5"/>
                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                             <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -166,7 +166,7 @@
                                                 <color key="titleColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
-                                                <action selector="handlerViewArticleBtn:" destination="-1" eventType="touchUpInside" id="yfn-eA-hhs"/>
+                                                <action selector="handlerViewInstructions:" destination="-1" eventType="touchUpInside" id="Jqd-K2-03t"/>
                                             </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="24C-Hf-uga">

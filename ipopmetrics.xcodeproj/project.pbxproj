@@ -82,6 +82,8 @@
 		08A4A53D1F458423001071E3 /* ToolbarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */; };
 		08A4A5411F45B563001071E3 /* AlfaSlabOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */; };
 		08A51D2F1FC6DBBE0097B334 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A51D2E1FC6DBBE0097B334 /* Markdown.swift */; };
+		08A51D311FC6EF520097B334 /* ActionInstructionsPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A51D301FC6EF520097B334 /* ActionInstructionsPage.xib */; };
+		08A51D331FC6EF6D0097B334 /* ActionInstructionsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A51D321FC6EF6D0097B334 /* ActionInstructionsPageViewController.swift */; };
 		08A533341F6BD9060080BE64 /* MoreInfoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A533331F6BD9060080BE64 /* MoreInfoViewCell.xib */; };
 		08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A533351F6BD9130080BE64 /* MoreInfoViewCell.swift */; };
 		08A533381F6BF7FC0080BE64 /* ActionPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A533371F6BF7FC0080BE64 /* ActionPage.xib */; };
@@ -307,6 +309,8 @@
 		08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarViewCell.swift; sourceTree = "<group>"; };
 		08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AlfaSlabOne-Regular.ttf"; sourceTree = "<group>"; };
 		08A51D2E1FC6DBBE0097B334 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
+		08A51D301FC6EF520097B334 /* ActionInstructionsPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionInstructionsPage.xib; sourceTree = "<group>"; };
+		08A51D321FC6EF6D0097B334 /* ActionInstructionsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionInstructionsPageViewController.swift; sourceTree = "<group>"; };
 		08A533331F6BD9060080BE64 /* MoreInfoViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreInfoViewCell.xib; sourceTree = "<group>"; };
 		08A533351F6BD9130080BE64 /* MoreInfoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewCell.swift; sourceTree = "<group>"; };
 		08A533371F6BF7FC0080BE64 /* ActionPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionPage.xib; sourceTree = "<group>"; };
@@ -705,6 +709,8 @@
 				08B2DB961FB47522009E45F8 /* InstructionCell.swift */,
 				08B4BCE01F619D4200660F5B /* ActionPageViewController.swift */,
 				08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */,
+				08A51D301FC6EF520097B334 /* ActionInstructionsPage.xib */,
+				08A51D321FC6EF6D0097B334 /* ActionInstructionsPageViewController.swift */,
 			);
 			path = actionpage;
 			sourceTree = "<group>";
@@ -1031,6 +1037,7 @@
 				085599AA1F72842100E5BEA1 /* animation.json in Resources */,
 				08B745921F1F6C0100EC3F8C /* OpenSans-Semibold.ttf in Resources */,
 				085599A61F72751900E5BEA1 /* SplashScreen.xib in Resources */,
+				08A51D311FC6EF520097B334 /* ActionInstructionsPage.xib in Resources */,
 				081D5DC41F94F93300BB7352 /* CardHeaderView.xib in Resources */,
 				08B745931F1F6C0100EC3F8C /* OpenSans-Light.ttf in Resources */,
 				08C580FD1FBF21440013B03F /* SettingsOverlayUrlView.xib in Resources */,
@@ -1324,6 +1331,7 @@
 				08B6AFAC1F9DC843005E3049 /* IceCardViewCell.swift in Sources */,
 				085F90F21F712660008A339A /* AnimationsViewController.swift in Sources */,
 				08D1BC371F1DF4F900D377B2 /* ViewNames.swift in Sources */,
+				08A51D331FC6EF6D0097B334 /* ActionInstructionsPageViewController.swift in Sources */,
 				08B4EBB21FC56ACE00BFC5A1 /* SettingsBaseViewController.swift in Sources */,
 				08BD58041F7A312900FFDCFD /* VerifySocialViewController.swift in Sources */,
 				08B4EB991FC569F700BFC5A1 /* FeedStore.swift in Sources */,

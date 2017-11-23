@@ -72,7 +72,13 @@ class Markdown {
         
         containerMark.addSubview(markDownView)
         
-        containerHeightConstraint.constant = viewHeight.rounded() + 10
+        print("height: \(viewHeight)")
+        if( viewHeight < 20) {
+            containerHeightConstraint.constant = 0
+        } else {
+            containerHeightConstraint.constant = viewHeight.rounded()
+        }
+        
         containerHeightConstraint.isActive = true
         
         markDownView.translatesAutoresizingMaskIntoConstraints = false

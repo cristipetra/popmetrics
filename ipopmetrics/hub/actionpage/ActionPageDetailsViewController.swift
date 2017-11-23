@@ -82,7 +82,6 @@ class ActionPageDetailsViewController: UIViewController {
         let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "calendarIconLeftArrow"), style: .plain, target: self, action: #selector(handlerClickBack))
         self.navigationItem.leftBarButtonItems = [leftButtonItem, titleButton]
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
-        
     }
 
     private func getDetailsMarkdownString() -> String {
@@ -107,6 +106,13 @@ class ActionPageDetailsViewController: UIViewController {
         if let url = feedCard.blogUrl {
             self.openURLInside(url: url)
         }
+    }
+    
+    @IBAction func handlerViewInstructions(_ sender: Any) {
+        let instructionsPageVc: ActionInstructionsPageViewController = ActionInstructionsPageViewController(nibName: "ActionInstructionsPage", bundle: nil)
+        
+        instructionsPageVc.configure(feedCard)
+        self.navigationController?.pushViewController(instructionsPageVc, animated: true)
     }
     
     @objc func handlerClickBack() {
