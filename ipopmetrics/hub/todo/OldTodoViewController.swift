@@ -15,7 +15,86 @@ import DGElasticPullToRefresh
 import BubbleTransition
 import EZAlertController
 
-class OldTodoViewController: BaseViewController {
+
+enum TodoSection: String {
+    
+    case RequiredActions = "Required Actions"
+    case Insights = "Insights"
+    case RecommendedForYou = "Recommended For You"
+    case RecommendedActions =  "Recommended Actions"
+    case Summaries = "Summaries"
+    case MoreOnTheWay = "More On The Way"
+    
+    static let sectionTitles = [
+        RequiredActions: "Required Actions",
+        Insights: "Insights",
+        RecommendedForYou: "Recommended For You",
+        RecommendedActions: "Recommended Action",
+        Summaries: "Summaries",
+        MoreOnTheWay: "More On The Way"
+    ]
+    
+    // position in table
+    static let sectionPosition = [
+        RequiredActions: 0,
+        Insights: 1,
+        RecommendedForYou: 2,
+        RecommendedActions: 3,
+        Summaries: 4,
+        MoreOnTheWay: 5
+    ]
+    
+    func sectionTitle() -> String {
+        if let sectionTitle = TodoSection.sectionTitles[self] {
+            return sectionTitle
+        } else {
+            return ""
+        }
+    }
+    
+    func getSectionHeaderHeight() -> CGFloat {
+        return CGFloat(80)
+    }
+    
+    func getSectionPosition() -> Int {
+        return TodoSection.sectionPosition[self]!
+    }
+}
+
+enum TodoSectionType: String {
+    case requiredActions = "Required Actions"
+    case insights = "Insights"
+    case recommendedForYou = "Recommended For You"
+    case recommendedActions = "Recommended Actions"
+    case summaries = "Summaries"
+    case moreOnTheWay = "More On The Way"
+}
+
+enum TodoCardType: String {
+    case requiredAction = "required_action"
+    case insight = "insight"
+    case recommendedAction = "recommended_action"
+    case emptyState = "empty_state"
+    
+    static let cardHeight = [
+        requiredAction: 505,
+        insight: 479,
+        recommendedAction: 479,
+        emptyState: 261,
+        ]
+    
+    func getCardHeight() -> CGFloat {
+        if let cardHeight = TodoCardType.cardHeight[self] {
+            return CGFloat(cardHeight)
+        } else {
+            return 0
+        }
+    }
+}
+
+
+
+class TodoHubController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var toDoTopView: TodoTopView!
@@ -251,7 +330,7 @@ class OldTodoViewController: BaseViewController {
     
 }
 
-extension OldTodoViewController: UITableViewDelegate, UITableViewDataSource, ApproveDenySinglePostProtocol {
+extension TodoHubController: UITableViewDelegate, UITableViewDataSource, ApproveDenySinglePostProtocol {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -432,16 +511,16 @@ extension OldTodoViewController: UITableViewDelegate, UITableViewDataSource, App
         
         if store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count == 0 {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
-            headerCell.changeColor(color: card.getSectionColor)
-            headerCell.changeTitle(title: card.getCardSectionTitle)
+//            headerCell.changeColor(color: card.getSectionColor)
+//            headerCell.changeTitle(title: card.getCardSectionTitle)
             return headerCell.containerView
         }
         
         let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CardHeaderView") as! CardHeaderView
-        headerCell.changeColor(color: card.getSectionColor)
+//        headerCell.changeColor(color: card.getSectionColor)
         headerCell.toolbarView.backgroundColor = .white
-        headerCell.changeTitleSection(title: card.getCardSectionTitle)
-        headerCell.setUpHeaderShadowView()
+//        headerCell.changeTitleSection(title: card.getCardSectionTitle)
+//        headerCell.setUpHeaderShadowView()
         return headerCell
     }
     
@@ -608,8 +687,8 @@ extension OldTodoViewController: UITableViewDelegate, UITableViewDataSource, App
                 }
             } else {
                 let card = store.getTodoCards()[section]
-                topHeaderView.changeTitle(title: card.getCardSectionTitle)
-                topHeaderView.changeColorCircle(color: card.getSectionColor)
+//                topHeaderView.changeTitle(title: card.getCardSectionTitle)
+//                topHeaderView.changeColorCircle(color: card.getSectionColor)
             }
         }
     }
@@ -635,7 +714,7 @@ extension OldTodoViewController: UITableViewDelegate, UITableViewDataSource, App
     
 }
 
-extension OldTodoViewController:  TodoCardActionProtocol {
+extension TodoHubController:  TodoCardActionProtocol {
     
     func handleCardAction(_ action:String, todoCard: TodoCard, params:[String:Any]) {
         
@@ -690,14 +769,14 @@ extension OldTodoViewController:  TodoCardActionProtocol {
 }
 
 // MARK: Notification Handlers
-extension OldTodoViewController {
+extension TodoHubController {
     
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
         self.tableView.reloadData()
     }
 }
 
-extension OldTodoViewController: ActionSocialPostProtocol {
+extension TodoHubController: ActionSocialPostProtocol {
     
     func displayBannerInfo() {
         if bannerMessageView.transform == .identity {
