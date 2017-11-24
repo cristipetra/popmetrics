@@ -154,7 +154,6 @@
 		08C580FF1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C580FE1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift */; };
 		08C583021FB1AFA500A7DD3D /* FooterViewStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */; };
 		08C5CF361FC5EA9C001851A5 /* ActionPageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */; };
-		08C6FBFD1F4205EF007D6101 /* TodoHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6FBFC1F4205EF007D6101 /* TodoHubController.swift */; };
 		08C7B18D1F1CF40C00E456C6 /* WelcomeScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C7B18C1F1CF40C00E456C6 /* WelcomeScreen.xib */; };
 		08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */; };
 		08CC6EC01FBC7F9C00A6521E /* SettingsLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */; };
@@ -211,6 +210,7 @@
 		11DD967D1FC4FA5400386F1E /* ApiUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96741FC4FA5400386F1E /* ApiUrls.swift */; };
 		11DD967E1FC4FA5400386F1E /* FeedApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96751FC4FA5400386F1E /* FeedApi.swift */; };
 		11F89F691EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */; };
+		11FB84EB1FC79E8800FE937D /* TodoHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FB84EA1FC79E8800FE937D /* TodoHubController.swift */; };
 		631BDFACE57815E87C781181 /* Pods_ipopmetrics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */; };
 /* End PBXBuildFile section */
 
@@ -379,7 +379,6 @@
 		08C580FE1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOverlayUrlViewController.swift; sourceTree = "<group>"; };
 		08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterViewStateController.swift; sourceTree = "<group>"; };
 		08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPageDetailsViewController.swift; sourceTree = "<group>"; };
-		08C6FBFC1F4205EF007D6101 /* TodoHubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoHubController.swift; sourceTree = "<group>"; };
 		08C7B18C1F1CF40C00E456C6 /* WelcomeScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeScreen.xib; sourceTree = "<group>"; };
 		08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLogoViewController.swift; sourceTree = "<group>"; };
@@ -446,6 +445,7 @@
 		11DD96741FC4FA5400386F1E /* ApiUrls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiUrls.swift; sourceTree = "<group>"; };
 		11DD96751FC4FA5400386F1E /* FeedApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedApi.swift; sourceTree = "<group>"; };
 		11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
+		11FB84EA1FC79E8800FE937D /* TodoHubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoHubController.swift; sourceTree = "<group>"; };
 		4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release.xcconfig"; sourceTree = "<group>"; };
 		8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ipopmetrics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D5ECCAEA66BCED2B0405D78 /* Pods-ipopmetrics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.debug.xcconfig"; sourceTree = "<group>"; };
@@ -770,6 +770,7 @@
 		11DD96601FC4F24E00386F1E /* todo */ = {
 			isa = PBXGroup;
 			children = (
+				11FB84EA1FC79E8800FE937D /* TodoHubController.swift */,
 				0862C4CE1FA1F42500BEF0BC /* SocialPostDetailsView.xib */,
 				0862C4D21FA1F4E300BEF0BC /* TodoPostDetails.storyboard */,
 				0862C4D71FA1F5C300BEF0BC /* SocialPostDetailsView.swift */,
@@ -781,7 +782,6 @@
 				08953E6C1F4C275C003ABEFC /* ToDoCell.swift */,
 				08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */,
 				08B3AA9D1F8FA748008D0503 /* ToDoApprovedView.swift */,
-				08C6FBFC1F4205EF007D6101 /* TodoHubController.swift */,
 				0899DA201FA33B1F00C3696C /* SocialPostDetailsViewController.swift */,
 			);
 			path = todo;
@@ -1370,7 +1370,6 @@
 				083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */,
 				11DD96771FC4FA5400386F1E /* StatisticsApi.swift in Sources */,
 				08B324DA1F98C6AE00BB4905 /* IceExtendView.swift in Sources */,
-				08C6FBFD1F4205EF007D6101 /* TodoHubController.swift in Sources */,
 				08B7ADE81FB1D18F00C56688 /* CardToolbarController.swift in Sources */,
 				0857AB651FBC98D1002B9F53 /* SettingsGAViewController.swift in Sources */,
 				11DD967C1FC4FA5400386F1E /* BaseApi.swift in Sources */,
@@ -1398,6 +1397,7 @@
 				088E77AD1F7D499400774F13 /* TrafficStatsTableViewController.swift in Sources */,
 				1148D73D1FBF39AE006EB5BB /* NavigationMap.swift in Sources */,
 				08F368951F18F93800819CDE /* DailyInsightsCardCell.swift in Sources */,
+				11FB84EB1FC79E8800FE937D /* TodoHubController.swift in Sources */,
 				08593DEE1FBB3B7600077A65 /* SettingsEmailViewController.swift in Sources */,
 				08B4EBB81FC56ACE00BFC5A1 /* CardActionHanlder.swift in Sources */,
 				08B4EB9D1FC56A0400BFC5A1 /* TodoStore.swift in Sources */,
