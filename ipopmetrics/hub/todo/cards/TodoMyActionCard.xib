@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
         <array key="OpenSans-ExtraBold.ttf">
             <string>OpenSans-Extrabold</string>
         </array>
@@ -67,9 +70,38 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Xk-jo-k0B">
                                 <rect key="frame" x="0.0" y="179" width="634" height="51"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udn-BV-gDU">
+                                        <rect key="frame" x="428" y="8" width="191" height="35"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="191" id="0mv-vx-wZn"/>
+                                            <constraint firstAttribute="height" constant="35" id="jwq-zV-8bL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="Mark As Complete">
+                                            <color key="titleColor" red="0.25098039215686274" green="0.23529411764705882" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="Xzh-xs-A8C"/>
+                                    <constraint firstItem="udn-BV-gDU" firstAttribute="centerY" secondItem="5Xk-jo-k0B" secondAttribute="centerY" id="Za1-Fd-FkB"/>
+                                    <constraint firstAttribute="trailing" secondItem="udn-BV-gDU" secondAttribute="trailing" constant="15" id="jim-KE-QB2"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -78,17 +110,32 @@
                             <constraint firstAttribute="trailing" secondItem="98a-Qz-UOJ" secondAttribute="trailing" id="KvN-8R-2ps"/>
                             <constraint firstAttribute="bottom" secondItem="MXV-vd-4Ph" secondAttribute="bottom" id="TGx-Bi-07X"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.94117647059999998" green="0.36078431370000003" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </stackView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="BWl-x9-5uP" firstAttribute="top" secondItem="Dj0-fH-iEj" secondAttribute="topMargin" id="5q9-gy-9Jw"/>
                     <constraint firstAttribute="trailingMargin" secondItem="BWl-x9-5uP" secondAttribute="trailing" id="H7b-ky-NfV"/>
                     <constraint firstItem="BWl-x9-5uP" firstAttribute="leading" secondItem="Dj0-fH-iEj" secondAttribute="leadingMargin" id="cXp-sK-6Ua"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="BWl-x9-5uP" secondAttribute="bottom" constant="15" id="lxD-Pj-2Cu"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <connections>
                 <outlet property="cardImageView" destination="MXV-vd-4Ph" id="fJ5-hu-DAr"/>
                 <outlet property="cardTitle" destination="FR7-RV-auc" id="aVU-qQ-56Q"/>
+                <outlet property="wrapperView" destination="BWl-x9-5uP" id="HhZ-7e-9OH"/>
             </connections>
             <point key="canvasLocation" x="84" y="-138"/>
         </tableViewCell>

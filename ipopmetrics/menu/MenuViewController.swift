@@ -9,6 +9,7 @@
 import UIKit
 import ElasticTransition
 import SafariServices
+import Haptica
 
 class MenuViewController: ElasticModalViewController {
     

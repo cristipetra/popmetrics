@@ -10,6 +10,8 @@ import UIKit
 
 class TodoMyActionCardCell: UITableViewCell {
     
+    @IBOutlet weak var wrapperView: UIStackView!
+    
     @IBOutlet weak var cardTitle: UILabel!
     @IBOutlet weak var cardImageView: UIImageView!
     var todoCard: TodoCard!
@@ -18,15 +20,20 @@ class TodoMyActionCardCell: UITableViewCell {
         super.awakeFromNib()
      
         self.backgroundColor = .clear
-        updateView()
+        
+        wrapperView.cornerRadius = 15
     }
     
     private func updateView() {
         
+        
+        if let url = todoCard.imageUri {
+            cardImageView.af_setImage(withURL: URL(string: url)!)
+        }
+        
         let url = "http://blog.popmetrics.io/wp-content/uploads/sites/13/2017/07/shutterstock_397574752-1600x1015.jpg"
         cardImageView.af_setImage(withURL: URL(string: url)!)
         
-        return
         if let title = todoCard.headerTitle {
             cardTitle.text = title
         }
@@ -34,10 +41,17 @@ class TodoMyActionCardCell: UITableViewCell {
     
     internal func configure(_ todoCard: TodoCard) {
         self.todoCard = todoCard
+        
+        updateView()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    private func setCornerRadius() {
+        wrapperView.layer.cornerRadius = 14
+        wrapperView.layer.masksToBounds = true
     }
 
 }

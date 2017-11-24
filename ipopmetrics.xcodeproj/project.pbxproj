@@ -61,6 +61,7 @@
 		086EDE3D1FC82D11002F4140 /* TodoMyActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086EDE3C1FC82D11002F4140 /* TodoMyActionCard.xib */; };
 		086EDE3F1FC830F1002F4140 /* TodoMyActionCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE3E1FC830F1002F4140 /* TodoMyActionCardCell.swift */; };
 		086EDE431FC8449A002F4140 /* ImpactScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE421FC8449A002F4140 /* ImpactScoreView.swift */; };
+		086EDE461FC8651B002F4140 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE451FC8651B002F4140 /* UIViewExtensions.swift */; };
 		0888C5BE1F4EECEC00E3DB04 /* RoundedCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */; };
 		088B28281F7E43960015A66E /* TrafficVisitsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B28271F7E43960015A66E /* TrafficVisitsViewCell.swift */; };
 		088B282A1F7E5D130015A66E /* StatisticsCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B28291F7E5D130015A66E /* StatisticsCountView.swift */; };
@@ -111,7 +112,6 @@
 		08B485E01F20EA23005918A1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485DF1F20EA23005918A1 /* Config.swift */; };
 		08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485E31F210992005918A1 /* VideoScreenViewController.swift */; };
 		08B485E61F210A61005918A1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485E51F210A61005918A1 /* RoundButton.swift */; };
-		08B4BCE11F619D4200660F5B /* ActionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4BCE01F619D4200660F5B /* ActionPageViewController.swift */; };
 		08B4EB971FC569EC00BFC5A1 /* CalendarFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB961FC569EC00BFC5A1 /* CalendarFeedStore.swift */; };
 		08B4EB991FC569F700BFC5A1 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB981FC569F600BFC5A1 /* FeedStore.swift */; };
 		08B4EB9B1FC569FE00BFC5A1 /* StatisticsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB9A1FC569FE00BFC5A1 /* StatisticsStore.swift */; };
@@ -198,7 +198,6 @@
 		1178D6901E1E5AD9005B96C3 /* ipopmetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D68F1E1E5AD9005B96C3 /* ipopmetricsTests.swift */; };
 		1178D69B1E1E5AD9005B96C3 /* ipopmetricsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */; };
 		1183A8661FC5064B00ED8EF6 /* InsightPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1183A8651FC5064B00ED8EF6 /* InsightPage.xib */; };
-		1183A8681FC5071700ED8EF6 /* InsightPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1183A8671FC5071700ED8EF6 /* InsightPageViewController.swift */; };
 		11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAA5E31ECC8BFA0099B50E /* Feed.swift */; };
 		11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */; };
 		11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A91E2CE05D0021E64A /* CompletionView.swift */; };
@@ -289,6 +288,7 @@
 		086EDE3C1FC82D11002F4140 /* TodoMyActionCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoMyActionCard.xib; sourceTree = "<group>"; };
 		086EDE3E1FC830F1002F4140 /* TodoMyActionCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMyActionCardCell.swift; sourceTree = "<group>"; };
 		086EDE421FC8449A002F4140 /* ImpactScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactScoreView.swift; sourceTree = "<group>"; };
+		086EDE451FC8651B002F4140 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersButton.swift; sourceTree = "<group>"; };
 		088B28271F7E43960015A66E /* TrafficVisitsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficVisitsViewCell.swift; sourceTree = "<group>"; };
@@ -342,7 +342,6 @@
 		08B485DF1F20EA23005918A1 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		08B485E31F210992005918A1 /* VideoScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoScreenViewController.swift; sourceTree = "<group>"; };
 		08B485E51F210A61005918A1 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
-		08B4BCE01F619D4200660F5B /* ActionPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionPageViewController.swift; sourceTree = "<group>"; };
 		08B4EB961FC569EC00BFC5A1 /* CalendarFeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarFeedStore.swift; sourceTree = "<group>"; };
 		08B4EB981FC569F600BFC5A1 /* FeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		08B4EB9A1FC569FE00BFC5A1 /* StatisticsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsStore.swift; sourceTree = "<group>"; };
@@ -435,7 +434,6 @@
 		1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ipopmetricsUITests.swift; sourceTree = "<group>"; };
 		1178D69C1E1E5AD9005B96C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1183A8651FC5064B00ED8EF6 /* InsightPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InsightPage.xib; sourceTree = "<group>"; };
-		1183A8671FC5071700ED8EF6 /* InsightPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPageViewController.swift; sourceTree = "<group>"; };
 		11AAA5E31ECC8BFA0099B50E /* Feed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Feed.swift; path = ipopmetrics/realm/Feed.swift; sourceTree = "<group>"; };
 		11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		11ACA9A91E2CE05D0021E64A /* CompletionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionView.swift; sourceTree = "<group>"; };
@@ -491,6 +489,14 @@
 				086EDE3E1FC830F1002F4140 /* TodoMyActionCardCell.swift */,
 			);
 			path = cards;
+			sourceTree = "<group>";
+		};
+		086EDE441FC864E7002F4140 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				086EDE451FC8651B002F4140 /* UIViewExtensions.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 		08A812771F1672C000672126 /* fonts */ = {
@@ -589,6 +595,7 @@
 		1178D6771E1E5AD9005B96C3 /* ipopmetrics */ = {
 			isa = PBXGroup;
 			children = (
+				086EDE441FC864E7002F4140 /* extensions */,
 				08B4EBA11FC56ABC00BFC5A1 /* helpers */,
 				11DD966B1FC4FA5400386F1E /* api */,
 				11AAA5E21ECC8BEB0099B50E /* realm */,
@@ -706,7 +713,6 @@
 			isa = PBXGroup;
 			children = (
 				1183A8651FC5064B00ED8EF6 /* InsightPage.xib */,
-				1183A8671FC5071700ED8EF6 /* InsightPageViewController.swift */,
 				08B4EBBE1FC58FF100BFC5A1 /* InsightPageDetailsViewController.swift */,
 			);
 			path = insightpage;
@@ -721,7 +727,6 @@
 				08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */,
 				088B282B1F7E7F150015A66E /* AimeeView.swift */,
 				08B2DB961FB47522009E45F8 /* InstructionCell.swift */,
-				08B4BCE01F619D4200660F5B /* ActionPageViewController.swift */,
 				08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */,
 				08A51D301FC6EF520097B334 /* ActionInstructionsPage.xib */,
 				08A51D321FC6EF6D0097B334 /* ActionInstructionsPageViewController.swift */,
@@ -1326,12 +1331,10 @@
 				113976A91E97C71300B535DF /* AccountViewController.swift in Sources */,
 				08953E761F4C35AC003ABEFC /* RequiredActionCard.swift in Sources */,
 				08CC6EC01FBC7F9C00A6521E /* SettingsLogoViewController.swift in Sources */,
-				08B4BCE11F619D4200660F5B /* ActionPageViewController.swift in Sources */,
 				08BF9D4E1F45F2EF00141206 /* TableFooterView.swift in Sources */,
 				08B4EBAF1FC56ACE00BFC5A1 /* Validator.swift in Sources */,
 				11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */,
 				088B28281F7E43960015A66E /* TrafficVisitsViewCell.swift in Sources */,
-				1183A8681FC5071700ED8EF6 /* InsightPageViewController.swift in Sources */,
 				08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */,
 				08B4EBB31FC56ACE00BFC5A1 /* TextFieldValidator.swift in Sources */,
 				08AF049A1F46FBB60040012B /* ToDoCardCell.swift in Sources */,
@@ -1436,6 +1439,7 @@
 				08B4EBB91FC56ACE00BFC5A1 /* GradientView.swift in Sources */,
 				11DD967D1FC4FA5400386F1E /* ApiUrls.swift in Sources */,
 				08953E6F1F4C2790003ABEFC /* ToDoCountView.swift in Sources */,
+				086EDE461FC8651B002F4140 /* UIViewExtensions.swift in Sources */,
 				08B8D9711F9A4443004E7781 /* RecommendActionHandler.swift in Sources */,
 				11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */,
 				08AA6C731F56F8630022DE91 /* ChartViewController.swift in Sources */,

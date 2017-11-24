@@ -137,6 +137,10 @@ class TodoHubController: BaseViewController {
         
         self.toDoTopView.setActive(section: .unapproved)
         
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 400
+        
         // NotificationCenter observers
         let nc = NotificationCenter.default
         nc.addObserver(forName:Notification.Popmetrics.UiRefreshRequired, object:nil, queue:nil, using:catchUiRefreshRequiredNotification)
@@ -565,6 +569,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         })
     }
     
+    /*
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         guard let todoSection = TodoSection.init(rawValue: self.indexToSection[indexPath.section]!)
@@ -579,6 +584,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         guard let cardType = TodoCardType(rawValue: card.type) else { return 0}
         return cardType.getCardHeight()
     }
+     */
     
     func noItemsLoaded(_ section: Int) -> Int {
         if( noItemsLoaded.isEmpty || noItemsLoaded.count <= section) {
