@@ -107,14 +107,16 @@ class TodoHubController: BaseViewController {
     @IBOutlet weak var topAnchorTableView: NSLayoutConstraint!
     
     
+    let indexToSection = [0: TodoSectionType.unapprovedPosts.rawValue,
+                          1: TodoSectionType.myActions.rawValue,
+                          2: TodoSectionType.paidActions.rawValue,
+                          3: HomeSectionType.moreOnTheWay.rawValue]
+    
     let store = TodoStore.getInstance()
 
     var approveIndex = 3
     var noItemsLoaded: [Int] = []
     let noItemsLoadeInitial = 3
-    
-    let indexToSection = [0: "Unapproved",
-                          1: "My Actions"]
     
     var scrollToRow: IndexPath = IndexPath(row: 0, section: 0)
     
@@ -242,8 +244,11 @@ class TodoHubController: BaseViewController {
         let emptyCard = UINib(nibName: "EmptyCard", bundle: nil)
         tableView.register(emptyCard, forCellReuseIdentifier: "EmptyCard")
         
-        let todoMyActionCardNib = UINib(nibName: "TodoMyActionCard", bundle: nil)
-        tableView.register(todoMyActionCardNib, forCellReuseIdentifier: "TodoActionCard")
+        let todoMyActionCardNib = UINib(nibName: "MyActionCard", bundle: nil)
+        tableView.register(todoMyActionCardNib, forCellReuseIdentifier: "MyActionCard")
+        
+        let paidActionCardNib = UINib(nibName: "PaidActionCard", bundle: nil)
+        tableView.register(paidActionCardNib, forCellReuseIdentifier: "PaidActionCard")
     }
     
     internal func setUpNavigationBar() {
@@ -350,13 +355,15 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
                 return cell
             
             case TodoCardType.myAction.rawValue:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TodoActionCard", for: indexPath) as! TodoMyActionCardCell
-
-//                cell.delegate = self
-//                cell.configure(item)
-                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "MyActionCard", for: indexPath) as! MyActionCardCell
 
                 return cell
+            
+            case TodoCardType.paidAction.rawValue:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "PaidActionCard", for: indexPath) as! PaidActionCardCell
+            
+                return cell
+            
             case TodoCardType.emptyState.rawValue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! EmptyStateCardCell
                 cell.changeTitleWithSpacing(title: "More on it's way!")

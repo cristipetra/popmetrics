@@ -58,8 +58,8 @@
 		0862C4CF1FA1F42500BEF0BC /* SocialPostDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0862C4CE1FA1F42500BEF0BC /* SocialPostDetailsView.xib */; };
 		0862C4D31FA1F4E300BEF0BC /* TodoPostDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0862C4D21FA1F4E300BEF0BC /* TodoPostDetails.storyboard */; };
 		0862C4D81FA1F5C300BEF0BC /* SocialPostDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0862C4D71FA1F5C300BEF0BC /* SocialPostDetailsView.swift */; };
-		086EDE3D1FC82D11002F4140 /* TodoMyActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086EDE3C1FC82D11002F4140 /* TodoMyActionCard.xib */; };
-		086EDE3F1FC830F1002F4140 /* TodoMyActionCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE3E1FC830F1002F4140 /* TodoMyActionCardCell.swift */; };
+		086EDE3D1FC82D11002F4140 /* MyActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086EDE3C1FC82D11002F4140 /* MyActionCard.xib */; };
+		086EDE3F1FC830F1002F4140 /* MyActionCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE3E1FC830F1002F4140 /* MyActionCardCell.swift */; };
 		086EDE431FC8449A002F4140 /* ImpactScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE421FC8449A002F4140 /* ImpactScoreView.swift */; };
 		086EDE461FC8651B002F4140 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE451FC8651B002F4140 /* UIViewExtensions.swift */; };
 		0888C5BE1F4EECEC00E3DB04 /* RoundedCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */; };
@@ -189,6 +189,8 @@
 		1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128B3F41ECF256600BDA58C /* SimpleButtonControlState.swift */; };
 		1128B3F91ECF256600BDA58C /* SimpleButtonStateChangeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128B3F51ECF256600BDA58C /* SimpleButtonStateChangeValue.swift */; };
 		113976A91E97C71300B535DF /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976A81E97C71300B535DF /* AccountViewController.swift */; };
+		113DE2FE1FC8ACD100AE6DE9 /* PaidActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113DE2FD1FC8ACD100AE6DE9 /* PaidActionCard.xib */; };
+		113DE3021FC8AEE800AE6DE9 /* PaidActionCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113DE3011FC8AEE800AE6DE9 /* PaidActionCardCell.swift */; };
 		1148D73D1FBF39AE006EB5BB /* NavigationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1148D73C1FBF39AE006EB5BB /* NavigationMap.swift */; };
 		116540BD1EEAC3A600417D61 /* Signin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 116540BC1EEAC3A600417D61 /* Signin.storyboard */; };
 		1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */; };
@@ -285,8 +287,8 @@
 		0862C4CE1FA1F42500BEF0BC /* SocialPostDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocialPostDetailsView.xib; sourceTree = "<group>"; };
 		0862C4D21FA1F4E300BEF0BC /* TodoPostDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TodoPostDetails.storyboard; sourceTree = "<group>"; };
 		0862C4D71FA1F5C300BEF0BC /* SocialPostDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialPostDetailsView.swift; sourceTree = "<group>"; };
-		086EDE3C1FC82D11002F4140 /* TodoMyActionCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoMyActionCard.xib; sourceTree = "<group>"; };
-		086EDE3E1FC830F1002F4140 /* TodoMyActionCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMyActionCardCell.swift; sourceTree = "<group>"; };
+		086EDE3C1FC82D11002F4140 /* MyActionCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyActionCard.xib; sourceTree = "<group>"; };
+		086EDE3E1FC830F1002F4140 /* MyActionCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActionCardCell.swift; sourceTree = "<group>"; };
 		086EDE421FC8449A002F4140 /* ImpactScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactScoreView.swift; sourceTree = "<group>"; };
 		086EDE451FC8651B002F4140 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -418,6 +420,8 @@
 		1128B3F41ECF256600BDA58C /* SimpleButtonControlState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleButtonControlState.swift; sourceTree = "<group>"; };
 		1128B3F51ECF256600BDA58C /* SimpleButtonStateChangeValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleButtonStateChangeValue.swift; sourceTree = "<group>"; };
 		113976A81E97C71300B535DF /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		113DE2FD1FC8ACD100AE6DE9 /* PaidActionCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaidActionCard.xib; sourceTree = "<group>"; };
+		113DE3011FC8AEE800AE6DE9 /* PaidActionCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaidActionCardCell.swift; sourceTree = "<group>"; };
 		1148D73C1FBF39AE006EB5BB /* NavigationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMap.swift; sourceTree = "<group>"; };
 		116540BB1EEAA17A00417D61 /* ipopmetrics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ipopmetrics.entitlements; sourceTree = "<group>"; };
 		116540BC1EEAC3A600417D61 /* Signin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signin.storyboard; sourceTree = "<group>"; };
@@ -482,15 +486,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		086EDE3B1FC82CFA002F4140 /* cards */ = {
-			isa = PBXGroup;
-			children = (
-				086EDE3C1FC82D11002F4140 /* TodoMyActionCard.xib */,
-				086EDE3E1FC830F1002F4140 /* TodoMyActionCardCell.swift */,
-			);
-			path = cards;
-			sourceTree = "<group>";
-		};
 		086EDE441FC864E7002F4140 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -791,7 +786,8 @@
 		11DD96601FC4F24E00386F1E /* todo */ = {
 			isa = PBXGroup;
 			children = (
-				086EDE3B1FC82CFA002F4140 /* cards */,
+				086EDE3C1FC82D11002F4140 /* MyActionCard.xib */,
+				086EDE3E1FC830F1002F4140 /* MyActionCardCell.swift */,
 				11FB84EA1FC79E8800FE937D /* TodoHubController.swift */,
 				0862C4CE1FA1F42500BEF0BC /* SocialPostDetailsView.xib */,
 				0862C4D21FA1F4E300BEF0BC /* TodoPostDetails.storyboard */,
@@ -805,6 +801,8 @@
 				08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */,
 				08B3AA9D1F8FA748008D0503 /* ToDoApprovedView.swift */,
 				0899DA201FA33B1F00C3696C /* SocialPostDetailsViewController.swift */,
+				113DE2FD1FC8ACD100AE6DE9 /* PaidActionCard.xib */,
+				113DE3011FC8AEE800AE6DE9 /* PaidActionCardCell.swift */,
 			);
 			path = todo;
 			sourceTree = "<group>";
@@ -1056,7 +1054,7 @@
 				085599AA1F72842100E5BEA1 /* animation.json in Resources */,
 				08B745921F1F6C0100EC3F8C /* OpenSans-Semibold.ttf in Resources */,
 				085599A61F72751900E5BEA1 /* SplashScreen.xib in Resources */,
-				086EDE3D1FC82D11002F4140 /* TodoMyActionCard.xib in Resources */,
+				086EDE3D1FC82D11002F4140 /* MyActionCard.xib in Resources */,
 				08A51D311FC6EF520097B334 /* ActionInstructionsPage.xib in Resources */,
 				081D5DC41F94F93300BB7352 /* CardHeaderView.xib in Resources */,
 				08B745931F1F6C0100EC3F8C /* OpenSans-Light.ttf in Resources */,
@@ -1072,6 +1070,7 @@
 				08CC6EC21FBC7FBA00A6521E /* SettingsLogoView.xib in Resources */,
 				08B324D81F98C65A00BB4905 /* IceExtendView.xib in Resources */,
 				08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */,
+				113DE2FE1FC8ACD100AE6DE9 /* PaidActionCard.xib in Resources */,
 				088E77AB1F7D441400774F13 /* TrafficStatus.xib in Resources */,
 				0862C4D31FA1F4E300BEF0BC /* TodoPostDetails.storyboard in Resources */,
 				0852826C1F287DD70065A968 /* CalendarHeaderViewCell.xib in Resources */,
@@ -1344,9 +1343,10 @@
 				085599A31F72750000E5BEA1 /* SplashScreen.swift in Sources */,
 				08F3688B1F18DC4900819CDE /* ApprovalCardCell.swift in Sources */,
 				0899DA211FA33B1F00C3696C /* SocialPostDetailsViewController.swift in Sources */,
-				086EDE3F1FC830F1002F4140 /* TodoMyActionCardCell.swift in Sources */,
+				086EDE3F1FC830F1002F4140 /* MyActionCardCell.swift in Sources */,
 				0813A0591FC2F1C4003E6478 /* SettingsSocialViewController.swift in Sources */,
 				08B6AFAC1F9DC843005E3049 /* IceCardViewCell.swift in Sources */,
+				113DE3021FC8AEE800AE6DE9 /* PaidActionCardCell.swift in Sources */,
 				085F90F21F712660008A339A /* AnimationsViewController.swift in Sources */,
 				08D1BC371F1DF4F900D377B2 /* ViewNames.swift in Sources */,
 				08A51D331FC6EF6D0097B334 /* ActionInstructionsPageViewController.swift in Sources */,
