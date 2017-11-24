@@ -115,5 +115,3 @@ class InsightPageDetailsViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 }
-
-

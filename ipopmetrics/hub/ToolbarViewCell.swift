@@ -80,7 +80,7 @@ class ToolbarViewCell: UIView {
     
     func setupView() {
         
-        self.backgroundColor = UIColor.darkGray
+        self.backgroundColor = UIColor.white
         
         setupCircleView()
         setupLeftImageView()
@@ -104,7 +104,7 @@ class ToolbarViewCell: UIView {
         circleView.widthAnchor.constraint(equalToConstant: 12).isActive = true
         circleView.heightAnchor.constraint(equalToConstant: 12).isActive = true
         circleView.layer.cornerRadius = 6
-        circleView.backgroundColor = UIColor.red
+        circleView.backgroundColor = PopmetricsColor.myActionCircle
     }
     
     func setUpCircleBackground(topColor: UIColor , bottomColor: UIColor) {
