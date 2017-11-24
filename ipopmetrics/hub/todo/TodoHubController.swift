@@ -70,7 +70,7 @@ enum TodoSectionType: String {
 }
 
 enum TodoCardType: String {
-    case socialPosts = "social_post"
+    case socialPosts = "social_posts"
     case myAction = "my_action"
     case paidAction = "paid_action"
     case emptyState = "empty_state"
