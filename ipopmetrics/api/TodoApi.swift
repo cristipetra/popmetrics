@@ -11,26 +11,21 @@ import Alamofire
 
 class TodoApi: BaseApi {
     
-    
-    
     func getItems(_ brandId: String,
-                  callback: @escaping (_ response: ResponseWrapperOne<TodoResponse>?, _ error: ApiError?) -> Void) {
+                  callback: @escaping (_ response: TodoResponse?)  -> Void) {
         
-        let params = [
-            "a": 0
-        ]
+        let url = ApiUrls.composedBaseUrl(String(format:"/api/todo/me/brand/%@", brandId))
+        let params = ["a":0]
         
-        Alamofire.request(ApiUrls.getMyBrandTodoUrl(brandId), method: .get, parameters: params,
+        Alamofire.request(url, method: .get, parameters: params,
                           headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperOne<TodoResponse>>) in
-                            
-                            if let err = self.createErrorWithHttpResponse(response: response.response) {
-                                callback(nil, err)
-                                return
+                            let levelOneHandled = super.handleNotOkCodes(response: response.response)
+                            if !levelOneHandled {
+                                let handled = super.handleResponseWrap(response.value!)
+                                if !handled {
+                                    callback(response.result.value?.data)
+                                }
                             }
-                            else {
-                                callback(response.result.value, nil)
-                            }
-                            
         }
     }
     

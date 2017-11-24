@@ -18,8 +18,6 @@
 		080DCA881F4D9716000C73DC /* InsightCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DCA871F4D9716000C73DC /* InsightCard.swift */; };
 		0813A0571FC2F102003E6478 /* SettingsSocialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0813A0561FC2F102003E6478 /* SettingsSocialView.xib */; };
 		0813A0591FC2F1C4003E6478 /* SettingsSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0813A0581FC2F1C4003E6478 /* SettingsSocialViewController.swift */; };
-		081D5DC41F94F93300BB7352 /* CardHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 081D5DC31F94F93300BB7352 /* CardHeaderView.xib */; };
-		081D5DC61F94F95A00BB7352 /* CardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081D5DC51F94F95A00BB7352 /* CardHeaderView.swift */; };
 		083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083938FE1F63C334007DDA37 /* MainTabInfo.swift */; };
 		0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */; };
 		0848280F1F39F9200054B04C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848280E1F39F9200054B04C /* HeaderView.swift */; };
@@ -56,7 +54,6 @@
 		085F91031F716CBC008A339A /* OnboardingFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085F91021F716CBC008A339A /* OnboardingFooter.xib */; };
 		085F91051F716CD4008A339A /* OnboardingFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F91041F716CD4008A339A /* OnboardingFooter.swift */; };
 		0862C4CF1FA1F42500BEF0BC /* SocialPostDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0862C4CE1FA1F42500BEF0BC /* SocialPostDetailsView.xib */; };
-		0862C4D31FA1F4E300BEF0BC /* TodoPostDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0862C4D21FA1F4E300BEF0BC /* TodoPostDetails.storyboard */; };
 		0862C4D81FA1F5C300BEF0BC /* SocialPostDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0862C4D71FA1F5C300BEF0BC /* SocialPostDetailsView.swift */; };
 		086EDE3D1FC82D11002F4140 /* MyActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086EDE3C1FC82D11002F4140 /* MyActionCard.xib */; };
 		086EDE3F1FC830F1002F4140 /* MyActionCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE3E1FC830F1002F4140 /* MyActionCardCell.swift */; };
@@ -75,8 +72,6 @@
 		088E77AF1F7D4A8E00774F13 /* TrafficStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77AE1F7D4A8E00774F13 /* TrafficStatus.swift */; };
 		088F14FA1FB9C6080004F925 /* StaticSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F14F91FB9C6080004F925 /* StaticSettingsViewController.swift */; };
 		089267741F86617600D7B99E /* OfflineBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089267731F86617600D7B99E /* OfflineBanner.swift */; };
-		08953E6B1F4C269E003ABEFC /* ToDoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08953E6A1F4C269E003ABEFC /* ToDoCell.xib */; };
-		08953E6D1F4C275C003ABEFC /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E6C1F4C275C003ABEFC /* ToDoCell.swift */; };
 		08953E6F1F4C2790003ABEFC /* ToDoCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */; };
 		08953E721F4C352B003ABEFC /* RequiredActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08953E711F4C352B003ABEFC /* RequiredActionCard.xib */; };
 		08953E741F4C359E003ABEFC /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E731F4C359E003ABEFC /* FooterView.swift */; };
@@ -247,8 +242,6 @@
 		080DCA871F4D9716000C73DC /* InsightCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsightCard.swift; sourceTree = "<group>"; };
 		0813A0561FC2F102003E6478 /* SettingsSocialView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsSocialView.xib; sourceTree = "<group>"; };
 		0813A0581FC2F1C4003E6478 /* SettingsSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSocialViewController.swift; sourceTree = "<group>"; };
-		081D5DC31F94F93300BB7352 /* CardHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardHeaderView.xib; sourceTree = "<group>"; };
-		081D5DC51F94F95A00BB7352 /* CardHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHeaderView.swift; sourceTree = "<group>"; };
 		083938FE1F63C334007DDA37 /* MainTabInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabInfo.swift; sourceTree = "<group>"; };
 		0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellTransition.swift; sourceTree = "<group>"; };
 		0848280E1F39F9200054B04C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -285,7 +278,6 @@
 		085F91021F716CBC008A339A /* OnboardingFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingFooter.xib; sourceTree = "<group>"; };
 		085F91041F716CD4008A339A /* OnboardingFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFooter.swift; sourceTree = "<group>"; };
 		0862C4CE1FA1F42500BEF0BC /* SocialPostDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocialPostDetailsView.xib; sourceTree = "<group>"; };
-		0862C4D21FA1F4E300BEF0BC /* TodoPostDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TodoPostDetails.storyboard; sourceTree = "<group>"; };
 		0862C4D71FA1F5C300BEF0BC /* SocialPostDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialPostDetailsView.swift; sourceTree = "<group>"; };
 		086EDE3C1FC82D11002F4140 /* MyActionCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyActionCard.xib; sourceTree = "<group>"; };
 		086EDE3E1FC830F1002F4140 /* MyActionCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActionCardCell.swift; sourceTree = "<group>"; };
@@ -305,8 +297,6 @@
 		088E77AE1F7D4A8E00774F13 /* TrafficStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficStatus.swift; sourceTree = "<group>"; };
 		088F14F91FB9C6080004F925 /* StaticSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticSettingsViewController.swift; sourceTree = "<group>"; };
 		089267731F86617600D7B99E /* OfflineBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineBanner.swift; sourceTree = "<group>"; };
-		08953E6A1F4C269E003ABEFC /* ToDoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoCell.xib; sourceTree = "<group>"; };
-		08953E6C1F4C275C003ABEFC /* ToDoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCountView.swift; sourceTree = "<group>"; };
 		08953E711F4C352B003ABEFC /* RequiredActionCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequiredActionCard.xib; sourceTree = "<group>"; };
 		08953E731F4C359E003ABEFC /* FooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
@@ -669,8 +659,6 @@
 				08A812731F16601A00672126 /* CardHeaderCell.xib */,
 				08A812751F1660A300672126 /* CardHeaderCell.swift */,
 				08B7ADE71FB1D18F00C56688 /* CardToolbarController.swift */,
-				081D5DC31F94F93300BB7352 /* CardHeaderView.xib */,
-				081D5DC51F94F95A00BB7352 /* CardHeaderView.swift */,
 				08A533331F6BD9060080BE64 /* MoreInfoViewCell.xib */,
 				08A533351F6BD9130080BE64 /* MoreInfoViewCell.swift */,
 				08953E731F4C359E003ABEFC /* FooterView.swift */,
@@ -790,14 +778,11 @@
 				086EDE3E1FC830F1002F4140 /* MyActionCardCell.swift */,
 				11FB84EA1FC79E8800FE937D /* TodoHubController.swift */,
 				0862C4CE1FA1F42500BEF0BC /* SocialPostDetailsView.xib */,
-				0862C4D21FA1F4E300BEF0BC /* TodoPostDetails.storyboard */,
 				0862C4D71FA1F5C300BEF0BC /* SocialPostDetailsView.swift */,
 				08EE385C1F447C0E005D1D7C /* TodoTopView.swift */,
 				08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */,
 				08AF04971F46FB9B0040012B /* ToDoCardCell.xib */,
 				08AF04991F46FBB60040012B /* ToDoCardCell.swift */,
-				08953E6A1F4C269E003ABEFC /* ToDoCell.xib */,
-				08953E6C1F4C275C003ABEFC /* ToDoCell.swift */,
 				08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */,
 				08B3AA9D1F8FA748008D0503 /* ToDoApprovedView.swift */,
 				0899DA201FA33B1F00C3696C /* SocialPostDetailsViewController.swift */,
@@ -1056,11 +1041,9 @@
 				085599A61F72751900E5BEA1 /* SplashScreen.xib in Resources */,
 				086EDE3D1FC82D11002F4140 /* MyActionCard.xib in Resources */,
 				08A51D311FC6EF520097B334 /* ActionInstructionsPage.xib in Resources */,
-				081D5DC41F94F93300BB7352 /* CardHeaderView.xib in Resources */,
 				08B745931F1F6C0100EC3F8C /* OpenSans-Light.ttf in Resources */,
 				08C580FD1FBF21440013B03F /* SettingsOverlayUrlView.xib in Resources */,
 				08AA6C6F1F56F3BA0022DE91 /* ChartStatistics.storyboard in Resources */,
-				08953E6B1F4C269E003ABEFC /* ToDoCell.xib in Resources */,
 				08B745941F1F6C0100EC3F8C /* OpenSans-Bold.ttf in Resources */,
 				08FAE8411F541D060097DF3E /* Statistics.storyboard in Resources */,
 				0856F3581F272F020061DF7E /* Calendar.storyboard in Resources */,
@@ -1072,7 +1055,6 @@
 				08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */,
 				113DE2FE1FC8ACD100AE6DE9 /* PaidActionCard.xib in Resources */,
 				088E77AB1F7D441400774F13 /* TrafficStatus.xib in Resources */,
-				0862C4D31FA1F4E300BEF0BC /* TodoPostDetails.storyboard in Resources */,
 				0852826C1F287DD70065A968 /* CalendarHeaderViewCell.xib in Resources */,
 				08B745961F1F6C1D00EC3F8C /* OpenSans-Regular.ttf in Resources */,
 				1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */,
@@ -1414,7 +1396,6 @@
 				088F14FA1FB9C6080004F925 /* StaticSettingsViewController.swift in Sources */,
 				085F91051F716CD4008A339A /* OnboardingFooter.swift in Sources */,
 				08C580FF1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift in Sources */,
-				081D5DC61F94F95A00BB7352 /* CardHeaderView.swift in Sources */,
 				1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */,
 				08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */,
 				088E77AD1F7D499400774F13 /* TrafficStatsTableViewController.swift in Sources */,
@@ -1447,7 +1428,6 @@
 				08B7459B1F1F996B00EC3F8C /* DigitCodeView.swift in Sources */,
 				085054031F27A25B00FE8234 /* CalendarCardViewCell.swift in Sources */,
 				08A812761F1660A300672126 /* CardHeaderCell.swift in Sources */,
-				08953E6D1F4C275C003ABEFC /* ToDoCell.swift in Sources */,
 				1100F6F91F5FEBCE000AF1D4 /* TodoActionHandler.swift in Sources */,
 				08B485E01F20EA23005918A1 /* Config.swift in Sources */,
 				085530461F6CEE0A00D82A09 /* ActionActivationView.swift in Sources */,

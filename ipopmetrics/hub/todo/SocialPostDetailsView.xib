@@ -211,6 +211,6 @@
     <resources>
         <image name="icon_twitter" width="47" height="38"/>
         <image name="image_card_approval" width="375" height="225"/>
-        <image name="logo" width="143" height="142"/>
+        <image name="logo" width="298" height="298"/>
     </resources>
 </document>

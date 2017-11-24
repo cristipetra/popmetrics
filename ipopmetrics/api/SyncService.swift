@@ -119,30 +119,14 @@ class SyncService: SessionDelegate {
         
         let currentBrandId = UsersStore.currentBrandId
         
-        TodoApi().getItems(currentBrandId) { responseWrapper, error in
+        TodoApi().getItems(currentBrandId) { todoResponse in
             
-            if error != nil {
-                if !silent {
-                    NotificationCenter.default.post(name: Notification.Popmetrics.ApiFailure, object: nil,
-                                                    userInfo: ["sucess":false])
-                }
-                return
-            }
-            if "success" != responseWrapper?.code {
-                if !silent {
-                    NotificationCenter.default.post(name: Notification.Popmetrics.ApiResponseUnsuccessfull, object: nil,
-                                                    userInfo: ["sucess":false,
-                                                               "message":responseWrapper?.message])
-                }
-            }
-            else {
-                self.todoStore.updateTodos((responseWrapper?.data)!)
-                if (!silent){
+            self.todoStore.updateTodos(todoResponse!)
+            if (!silent){
                     NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
                                                     userInfo: ["sucess":true])
                 }
             }
-        }
         
     }
     
