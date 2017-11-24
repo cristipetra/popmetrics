@@ -12,6 +12,7 @@ class TodoMyActionCardCell: UITableViewCell {
     
     @IBOutlet weak var wrapperView: UIStackView!
     
+    @IBOutlet weak var impactView: ImpactScoreView!
     @IBOutlet weak var cardTitle: UILabel!
     @IBOutlet weak var cardImageView: UIImageView!
     var todoCard: TodoCard!
@@ -20,12 +21,12 @@ class TodoMyActionCardCell: UITableViewCell {
         super.awakeFromNib()
      
         self.backgroundColor = .clear
+        self.selectionStyle = .none
         
         wrapperView.cornerRadius = 15
     }
     
     private func updateView() {
-        
         
         if let url = todoCard.imageUri {
             cardImageView.af_setImage(withURL: URL(string: url)!)
@@ -37,6 +38,10 @@ class TodoMyActionCardCell: UITableViewCell {
         if let title = todoCard.headerTitle {
             cardTitle.text = title
         }
+        
+        let valueProgress = Double(todoCard.impactPercentage) / Double(100)
+        impactView.setProgress(CGFloat(valueProgress))
+        
     }
     
     internal func configure(_ todoCard: TodoCard) {

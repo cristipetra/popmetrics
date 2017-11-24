@@ -12,7 +12,7 @@ import GTProgressBar
 @IBDesignable
 class ImpactScoreView: UIView {
     
-    lazy var titleView : UILabel = {
+    private lazy var titleView : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Impact"
@@ -23,7 +23,7 @@ class ImpactScoreView: UIView {
         
     }()
     
-    lazy var impactScoreLbl : UILabel = {
+    private lazy var impactScoreLbl : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "+13"
@@ -33,7 +33,7 @@ class ImpactScoreView: UIView {
         return label
     }()
     
-    lazy var progress: GTProgressBar = {
+    private lazy var progress: GTProgressBar = {
         let progressBar = GTProgressBar()
         progressBar.translatesAutoresizingMaskIntoConstraints = false
         progressBar.barBackgroundColor = PopmetricsColor.barBackground
@@ -81,7 +81,10 @@ class ImpactScoreView: UIView {
         progress.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         progress.heightAnchor.constraint(equalToConstant: 10).isActive = true
         progress.widthAnchor.constraint(equalToConstant: 179).isActive = true
-        
-        self.progress.animateTo(progress: 0.7)
+    
+    }
+    
+    internal func setProgress(_ value: CGFloat) {
+        self.progress.animateTo(progress: value)
     }
 }

@@ -167,6 +167,19 @@ class TodoHubController: BaseViewController {
         topHeaderView.changeVisibilityExpandView(visible: false)
     }
     
+    private func createItemsLocally() {
+        try! store.realm.write {
+            let todoCard = TodoCard()
+            todoCard.cardId = "sadfasfasa1321525"
+            todoCard.type = "my_action"
+            todoCard.section = "My Actions"
+            todoCard.headerTitle = "Fix your facebook"
+            
+            store.realm.add(todoCard, update: true)
+            
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         transitionView.alpha = 0.7
         let tabInfo = MainTabInfo.getInstance()
@@ -400,6 +413,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
 //        }
 //    }
     
+    /*
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let detailsViewController = UIStoryboard(name: "TodoPostDetails", bundle: nil).instantiateViewController(withIdentifier: "postDetailsId") as! SocialPostDetailsViewController
@@ -412,6 +426,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         self.navigationController?.pushViewController(detailsViewController, animated: true)
         
     }
+    */
     
     func addApprovedView() {
         self.view.insertSubview(bannerMessageView, aboveSubview: tableView)
@@ -497,7 +512,6 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
             else{
                 return UIView()
         }
-        
         
         switch todoSection {
             case TodoSection.UnapprovedPosts:

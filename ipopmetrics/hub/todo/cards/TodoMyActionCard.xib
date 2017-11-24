@@ -10,11 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue</string>
-        </array>
         <array key="OpenSans-ExtraBold.ttf">
             <string>OpenSans-Extrabold</string>
+        </array>
+        <array key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
         </array>
     </customFonts>
     <objects>
@@ -78,7 +78,7 @@
                                             <constraint firstAttribute="width" constant="191" id="0mv-vx-wZn"/>
                                             <constraint firstAttribute="height" constant="35" id="jwq-zV-8bL"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="Mark As Complete">
                                             <color key="titleColor" red="0.25098039215686274" green="0.23529411764705882" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -135,6 +135,7 @@
             <connections>
                 <outlet property="cardImageView" destination="MXV-vd-4Ph" id="fJ5-hu-DAr"/>
                 <outlet property="cardTitle" destination="FR7-RV-auc" id="aVU-qQ-56Q"/>
+                <outlet property="impactView" destination="WSW-hN-hAP" id="xUN-AR-0dX"/>
                 <outlet property="wrapperView" destination="BWl-x9-5uP" id="HhZ-7e-9OH"/>
             </connections>
             <point key="canvasLocation" x="84" y="-138"/>
