@@ -58,6 +58,9 @@
 		0862C4CF1FA1F42500BEF0BC /* SocialPostDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0862C4CE1FA1F42500BEF0BC /* SocialPostDetailsView.xib */; };
 		0862C4D31FA1F4E300BEF0BC /* TodoPostDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0862C4D21FA1F4E300BEF0BC /* TodoPostDetails.storyboard */; };
 		0862C4D81FA1F5C300BEF0BC /* SocialPostDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0862C4D71FA1F5C300BEF0BC /* SocialPostDetailsView.swift */; };
+		086EDE3D1FC82D11002F4140 /* TodoMyActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086EDE3C1FC82D11002F4140 /* TodoMyActionCard.xib */; };
+		086EDE3F1FC830F1002F4140 /* TodoMyActionCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE3E1FC830F1002F4140 /* TodoMyActionCardCell.swift */; };
+		086EDE431FC8449A002F4140 /* ImpactScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE421FC8449A002F4140 /* ImpactScoreView.swift */; };
 		0888C5BE1F4EECEC00E3DB04 /* RoundedCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */; };
 		088B28281F7E43960015A66E /* TrafficVisitsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B28271F7E43960015A66E /* TrafficVisitsViewCell.swift */; };
 		088B282A1F7E5D130015A66E /* StatisticsCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B28291F7E5D130015A66E /* StatisticsCountView.swift */; };
@@ -283,6 +286,9 @@
 		0862C4CE1FA1F42500BEF0BC /* SocialPostDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocialPostDetailsView.xib; sourceTree = "<group>"; };
 		0862C4D21FA1F4E300BEF0BC /* TodoPostDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TodoPostDetails.storyboard; sourceTree = "<group>"; };
 		0862C4D71FA1F5C300BEF0BC /* SocialPostDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialPostDetailsView.swift; sourceTree = "<group>"; };
+		086EDE3C1FC82D11002F4140 /* TodoMyActionCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoMyActionCard.xib; sourceTree = "<group>"; };
+		086EDE3E1FC830F1002F4140 /* TodoMyActionCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMyActionCardCell.swift; sourceTree = "<group>"; };
+		086EDE421FC8449A002F4140 /* ImpactScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactScoreView.swift; sourceTree = "<group>"; };
 		0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersButton.swift; sourceTree = "<group>"; };
 		088B28271F7E43960015A66E /* TrafficVisitsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficVisitsViewCell.swift; sourceTree = "<group>"; };
@@ -478,6 +484,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		086EDE3B1FC82CFA002F4140 /* cards */ = {
+			isa = PBXGroup;
+			children = (
+				086EDE3C1FC82D11002F4140 /* TodoMyActionCard.xib */,
+				086EDE3E1FC830F1002F4140 /* TodoMyActionCardCell.swift */,
+			);
+			path = cards;
+			sourceTree = "<group>";
+		};
 		08A812771F1672C000672126 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -664,6 +679,7 @@
 				0855C0C81F6FFBDB00ACBFA9 /* EmptyCard.xib */,
 				0855C0CA1F6FFBF000ACBFA9 /* EmptyCardView.swift */,
 				084E54E01F827F7D007D6F4F /* NoteView.swift */,
+				086EDE421FC8449A002F4140 /* ImpactScoreView.swift */,
 			);
 			path = hub;
 			sourceTree = "<group>";
@@ -770,6 +786,7 @@
 		11DD96601FC4F24E00386F1E /* todo */ = {
 			isa = PBXGroup;
 			children = (
+				086EDE3B1FC82CFA002F4140 /* cards */,
 				11FB84EA1FC79E8800FE937D /* TodoHubController.swift */,
 				0862C4CE1FA1F42500BEF0BC /* SocialPostDetailsView.xib */,
 				0862C4D21FA1F4E300BEF0BC /* TodoPostDetails.storyboard */,
@@ -1034,6 +1051,7 @@
 				085599AA1F72842100E5BEA1 /* animation.json in Resources */,
 				08B745921F1F6C0100EC3F8C /* OpenSans-Semibold.ttf in Resources */,
 				085599A61F72751900E5BEA1 /* SplashScreen.xib in Resources */,
+				086EDE3D1FC82D11002F4140 /* TodoMyActionCard.xib in Resources */,
 				08A51D311FC6EF520097B334 /* ActionInstructionsPage.xib in Resources */,
 				081D5DC41F94F93300BB7352 /* CardHeaderView.xib in Resources */,
 				08B745931F1F6C0100EC3F8C /* OpenSans-Light.ttf in Resources */,
@@ -1323,6 +1341,7 @@
 				085599A31F72750000E5BEA1 /* SplashScreen.swift in Sources */,
 				08F3688B1F18DC4900819CDE /* ApprovalCardCell.swift in Sources */,
 				0899DA211FA33B1F00C3696C /* SocialPostDetailsViewController.swift in Sources */,
+				086EDE3F1FC830F1002F4140 /* TodoMyActionCardCell.swift in Sources */,
 				0813A0591FC2F1C4003E6478 /* SettingsSocialViewController.swift in Sources */,
 				08B6AFAC1F9DC843005E3049 /* IceCardViewCell.swift in Sources */,
 				085F90F21F712660008A339A /* AnimationsViewController.swift in Sources */,
@@ -1379,6 +1398,7 @@
 				08FAE8491F5420050097DF3E /* TrafficCardViewCell.swift in Sources */,
 				080DCA811F4D6EE6000C73DC /* MenuViewController.swift in Sources */,
 				11DD967B1FC4FA5400386F1E /* ApiModels.swift in Sources */,
+				086EDE431FC8449A002F4140 /* ImpactScoreView.swift in Sources */,
 				08AA6C651F56DAA10022DE91 /* StatsPageViewController.swift in Sources */,
 				088B282C1F7E7F150015A66E /* AimeeView.swift in Sources */,
 				08B4EB9B1FC569FE00BFC5A1 /* StatisticsStore.swift in Sources */,

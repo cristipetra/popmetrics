@@ -77,7 +77,7 @@ enum TodoCardType: String {
     
     static let cardHeight = [
         socialPosts: 505,
-        myAction: 479,
+        myAction: 229,
         paidAction: 261,
         emptyState: 261,
         ]
@@ -114,7 +114,7 @@ class TodoHubController: BaseViewController {
     let noItemsLoadeInitial = 3
     
     let indexToSection = [0: "Unapproved",
-                          1: "MyActions"]
+                          1: "My Actions"]
     
     var scrollToRow: IndexPath = IndexPath(row: 0, section: 0)
     
@@ -224,6 +224,9 @@ class TodoHubController: BaseViewController {
         
         let emptyCard = UINib(nibName: "EmptyCard", bundle: nil)
         tableView.register(emptyCard, forCellReuseIdentifier: "EmptyCard")
+        
+        let todoMyActionCardNib = UINib(nibName: "TodoMyActionCard", bundle: nil)
+        tableView.register(todoMyActionCardNib, forCellReuseIdentifier: "TodoActionCard")
     }
     
     internal func setUpNavigationBar() {
@@ -262,10 +265,6 @@ class TodoHubController: BaseViewController {
             return nonEmptyCards.count
         }
     }
-    
-    
-    
-    
     
     internal func setupTopViewItemCount() {
         let todoCards = store.getTodoCards()
@@ -334,11 +333,12 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
                 return cell
             
             case TodoCardType.myAction.rawValue:
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedActionId", for: indexPath) as! IceCardViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TodoActionCard", for: indexPath) as! TodoMyActionCardCell
+
 //                cell.delegate = self
 //                cell.configure(item)
                 
-                let cell = UITableViewCell()
+
                 return cell
             case TodoCardType.emptyState.rawValue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! EmptyStateCardCell
@@ -552,12 +552,9 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         guard let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
             else { return 0 }
-        
         return countCardsInSection(todoSection.rawValue)
-        
     }
     
     func reloadDataTable() {
@@ -740,6 +737,7 @@ extension TodoHubController:  TodoCardActionProtocol {
 extension TodoHubController {
     
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
+        print(store.getTodoCards())
         self.tableView.reloadData()
     }
 }

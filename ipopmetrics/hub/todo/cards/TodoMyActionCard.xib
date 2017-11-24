@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-ExtraBold.ttf">
+            <string>OpenSans-Extrabold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="322" id="Zb4-Zh-Zky" customClass="TodoMyActionCardCell" customModule="ipopmetrics" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="650" height="322"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zb4-Zh-Zky" id="Dj0-fH-iEj">
+                <rect key="frame" x="0.0" y="0.0" width="650" height="321.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BWl-x9-5uP">
+                        <rect key="frame" x="8" y="8" width="634" height="230"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gkb-sc-ncD" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="634" height="29"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="Ty2-aa-5Qg"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="98a-Qz-UOJ">
+                                <rect key="frame" x="0.0" y="29" width="634" height="95"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_card_notifications" translatesAutoresizingMaskIntoConstraints="NO" id="MXV-vd-4Ph">
+                                        <rect key="frame" x="0.0" y="0.0" width="634" height="201"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Google Tracker to your wordpress site." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FR7-RV-auc">
+                                        <rect key="frame" x="15" y="5" width="609" height="28"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.46666666670000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="MXV-vd-4Ph" secondAttribute="trailing" id="GXI-nI-sFG"/>
+                                    <constraint firstItem="FR7-RV-auc" firstAttribute="leading" secondItem="98a-Qz-UOJ" secondAttribute="leading" constant="15" id="Iah-qL-m86"/>
+                                    <constraint firstAttribute="trailing" secondItem="FR7-RV-auc" secondAttribute="trailing" constant="10" id="N3h-vq-DwP"/>
+                                    <constraint firstAttribute="height" constant="95" id="YQJ-ag-b24"/>
+                                    <constraint firstItem="MXV-vd-4Ph" firstAttribute="leading" secondItem="98a-Qz-UOJ" secondAttribute="leading" id="aGv-zy-mBV"/>
+                                    <constraint firstItem="MXV-vd-4Ph" firstAttribute="top" secondItem="98a-Qz-UOJ" secondAttribute="top" id="eFD-PQ-H73"/>
+                                    <constraint firstItem="FR7-RV-auc" firstAttribute="top" secondItem="98a-Qz-UOJ" secondAttribute="top" constant="5" id="kiO-dn-0gT"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WSW-hN-hAP" customClass="ImpactScoreView" customModule="ipopmetrics" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="124" width="634" height="55"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="Ajt-5p-RBV"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Xk-jo-k0B">
+                                <rect key="frame" x="0.0" y="179" width="634" height="51"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="Xzh-xs-A8C"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="98a-Qz-UOJ" firstAttribute="leading" secondItem="BWl-x9-5uP" secondAttribute="leading" id="5SY-ht-daz"/>
+                            <constraint firstAttribute="trailing" secondItem="98a-Qz-UOJ" secondAttribute="trailing" id="KvN-8R-2ps"/>
+                            <constraint firstAttribute="bottom" secondItem="MXV-vd-4Ph" secondAttribute="bottom" id="TGx-Bi-07X"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="BWl-x9-5uP" firstAttribute="top" secondItem="Dj0-fH-iEj" secondAttribute="topMargin" id="5q9-gy-9Jw"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="BWl-x9-5uP" secondAttribute="trailing" id="H7b-ky-NfV"/>
+                    <constraint firstItem="BWl-x9-5uP" firstAttribute="leading" secondItem="Dj0-fH-iEj" secondAttribute="leadingMargin" id="cXp-sK-6Ua"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cardImageView" destination="MXV-vd-4Ph" id="fJ5-hu-DAr"/>
+                <outlet property="cardTitle" destination="FR7-RV-auc" id="aVU-qQ-56Q"/>
+            </connections>
+            <point key="canvasLocation" x="84" y="-138"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="image_card_notifications" width="375" height="125"/>
+    </resources>
+</document>

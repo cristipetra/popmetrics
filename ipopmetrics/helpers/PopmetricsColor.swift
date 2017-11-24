@@ -80,4 +80,8 @@ class PopmetricsColor {
     
     static let tableBackground = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
     static let textGraySettings = UIColor(red: 109/255, green: 109/255, blue: 114/255, alpha: 1)
+    
+    static let barBackground = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
+    
+    static let myActionCircle = UIColor(red: 87/255, green: 93/255, blue: 99/255, alpha: 1)
 }
