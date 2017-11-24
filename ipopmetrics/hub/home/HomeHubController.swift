@@ -1,5 +1,5 @@
 //
-//  FeedTableViewController.swift
+//  TodoHubController.swift
 //  ipopmetrics
 //
 //  Created by Rares Pop on 07/04/2017.
@@ -80,7 +80,7 @@ enum HomeCardType: String {
         insight: 479,
         recommendedAction: 479,
         emptyState: 261,
-    ]
+        ]
     
     func getCardHeight() -> CGFloat {
         if let cardHeight = HomeCardType.cardHeight[self] {
@@ -108,15 +108,15 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     let store = FeedStore.getInstance()
     
     var toDoCellHeight = 50 as CGFloat
-
+    
     var shouldDisplayCell = true
     private var isShowAllRequiredCards = false
     
     let transition = BubbleTransition();
     var transitionButton:UIButton = UIButton();
-
+    
     let transitionView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-
+    
     
     var isAnimatingHeader = false
     
@@ -124,9 +124,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         GIDSignIn.sharedInstance().uiDelegate = self
-      
+        
         // Style elements
         self.view.backgroundColor = UIColor.feedBackgroundColor()
         setUpNavigationBar()
@@ -139,7 +139,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let nc = NotificationCenter.default
         nc.addObserver(forName:NSNotification.Name(rawValue: "CardActionNotification"), object:nil, queue:nil, using:catchCardActionNotification)
         nc.addObserver(forName:Notification.Popmetrics.UiRefreshRequired, object:nil, queue:nil, using:catchUiRefreshRequiredNotification)
-      
+        
         let requiredActionNib = UINib(nibName: "RequiredActionCard", bundle: nil)
         tableView.register(requiredActionNib, forCellReuseIdentifier: "RequriedActionCard")
         
@@ -205,7 +205,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             self.view.addSubview(topHeaderView)
         }
     }
-
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         NotificationCenter.default.removeObserver(self)
@@ -254,78 +254,78 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let rowIdx = (indexPath as NSIndexPath).row
         
         shouldDisplayCell = true
-
+        
         guard let homeSection = HomeSection.init(rawValue: self.indexToSection[sectionIdx]!)
             else {
                 return UITableViewCell()
-            }
+        }
         
         let card = getCardInSection(homeSection.rawValue, atIndex: rowIdx)
         let cardsCount = countCardsInSection(homeSection.rawValue)
         
         let item = card
         
-        switch(item.type) {    
-            case HomeCardType.requiredAction.rawValue:
-                if isShowAllRequiredCards {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "RequriedActionCard", for: indexPath) as! RequiredActionCard
-                    cell.configure(item, handler: self.requiredActionHandler)
-                    cell.infoDelegate = self
-                    if(cardsCount - 1 == indexPath.row) {
-                        cell.connectionLineView.isHidden = true
-                    } else {
-                        cell.connectionLineView.isHidden = false
-                    }
-                    return cell
-                }
-                
-                if(indexPath.row == 1) {
-                    let moreInfoCell = tableView.dequeueReusableCell(withIdentifier: "moreInfoId", for: indexPath) as! MoreInfoViewCell
-                    moreInfoCell.setActionCardCount(numberOfActionCards: cardsCount - 1)
-                    moreInfoCell.footerView.actionButton.addTarget(self, action: #selector(loadAllActionCards), for: .touchUpInside)
-                    return moreInfoCell
-                } else if (indexPath.row > 1) {
-                    shouldDisplayCell = false
-                    return UITableViewCell()
-                }
-            
+        switch(item.type) {
+        case HomeCardType.requiredAction.rawValue:
+            if isShowAllRequiredCards {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RequriedActionCard", for: indexPath) as! RequiredActionCard
                 cell.configure(item, handler: self.requiredActionHandler)
                 cell.infoDelegate = self
                 if(cardsCount - 1 == indexPath.row) {
-                    cell.connectionLineView.isHidden = true;
+                    cell.connectionLineView.isHidden = true
+                } else {
+                    cell.connectionLineView.isHidden = false
                 }
-                return cell
-            
-            case HomeCardType.insight.rawValue:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "InsightCard", for: indexPath) as! InsightCard
-                cell.configure(item, handler: recommendActionHandler)
-                if(cardsCount - 1 == indexPath.row) {
-                    cell.connectionLine.isHidden = true;
-                }
-                cell.delegate = self
-                
-                
-                return cell
-
-            case HomeCardType.recommendedAction.rawValue:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedActionId", for: indexPath) as! IceCardViewCell
-                cell.delegate = self
-                cell.configure(item)
-                return cell
-            case HomeCardType.emptyState.rawValue:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! EmptyStateCardCell
-                cell.changeTitleWithSpacing(title: "More on it's way!")
-                cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
-                cell.selectionStyle = .none
-                cell.goToButton.changeTitle("View To Do List")
-                cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
-                
-                return cell
-            default:
-                let cell = UITableViewCell()
                 return cell
             }
+            
+            if(indexPath.row == 1) {
+                let moreInfoCell = tableView.dequeueReusableCell(withIdentifier: "moreInfoId", for: indexPath) as! MoreInfoViewCell
+                moreInfoCell.setActionCardCount(numberOfActionCards: cardsCount - 1)
+                moreInfoCell.footerView.actionButton.addTarget(self, action: #selector(loadAllActionCards), for: .touchUpInside)
+                return moreInfoCell
+            } else if (indexPath.row > 1) {
+                shouldDisplayCell = false
+                return UITableViewCell()
+            }
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RequriedActionCard", for: indexPath) as! RequiredActionCard
+            cell.configure(item, handler: self.requiredActionHandler)
+            cell.infoDelegate = self
+            if(cardsCount - 1 == indexPath.row) {
+                cell.connectionLineView.isHidden = true;
+            }
+            return cell
+            
+        case HomeCardType.insight.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "InsightCard", for: indexPath) as! InsightCard
+            cell.configure(item, handler: recommendActionHandler)
+            if(cardsCount - 1 == indexPath.row) {
+                cell.connectionLine.isHidden = true;
+            }
+            cell.delegate = self
+            
+            
+            return cell
+            
+        case HomeCardType.recommendedAction.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedActionId", for: indexPath) as! IceCardViewCell
+            cell.delegate = self
+            cell.configure(item)
+            return cell
+        case HomeCardType.emptyState.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! EmptyStateCardCell
+            cell.changeTitleWithSpacing(title: "More on it's way!")
+            cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
+            cell.selectionStyle = .none
+            cell.goToButton.changeTitle("View To Do List")
+            cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
+            
+            return cell
+        default:
+            let cell = UITableViewCell()
+            return cell
+        }
     }
     
     @objc func loadAllActionCards() {
@@ -353,7 +353,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 self.presentAlertWithTitle("Error", message: "No card to show with name: "+feedCard.recommendedAction, useWhisper: true);
                 return
         }
-    
+        
         
         
         let actionPageVc: ActionPageDetailsViewController = ActionPageDetailsViewController(nibName: "ActionPage", bundle: nil)
@@ -362,7 +362,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         self.navigationController?.pushViewController(actionPageVc, animated: true)
     }
-
+    
     @objc private func goToNextTab() {
         self.tabBarController?.selectedIndex += 1
     }
@@ -388,7 +388,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             return nonEmptyCards.count
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let homeSection = HomeSection.init(rawValue: self.indexToSection[section]!)
@@ -563,7 +563,7 @@ enum CardType: String {
 }
 
 
-// MARK: Notification Handlers 
+// MARK: Notification Handlers
 extension HomeHubViewController {
     
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
@@ -588,5 +588,9 @@ extension HomeHubViewController {
         
         
     }
-
+    
 }
+
+
+
+

@@ -9,6 +9,7 @@
 import UIKit
 import SwiftRichString
 import M13ProgressSuite
+import GTProgressBar
 
 class IceExtendView: UIView {
     
@@ -24,6 +25,13 @@ class IceExtendView: UIView {
     @IBOutlet var splitSquare: [UILabel]!
     @IBOutlet var splitLabels: [UILabel]!
     
+    @IBOutlet weak var progressCost: GTProgressBar!
+    @IBOutlet weak var progressEffort: GTProgressBar!
+    
+    
+    private let colorCost = UIColor(red: 177/255, green: 154/255, blue: 219/255, alpha: 1)
+    private let colorEffort = UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1)
+    private let colorBackgroundBar = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
     
     private var feedCard: FeedCard! {
         didSet {
@@ -58,25 +66,76 @@ class IceExtendView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        splitLabels[0].sizeToFit()
-        splitLabels[1].sizeToFit()
-        splitLabels[2].sizeToFit()
     }
     
     private func updateView() {
         setUpLabel()
         
-        setCostStyle()
-        setEffortStyle()
         setSplitValues()
+        
+        setProgressEffortStyle()
+        setProgressCostStyle()
+        
+        updateValues()
     }
+    
+    private func updateValues() {
+    
+        updateProgressCost()
+        updateProgressEffort()
+    }
+    
+    private func updateProgressCost() {
+        let value = Double(feedCard.iceCostPercentage) / Double(100)
+        progressCost.animateTo(progress: CGFloat(value))
+        
+
+        let aproxCharacterStyle = Style.default { (style) -> (Void) in
+            style.font = FontAttribute(FontBook.regular, size: 18)
+            style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
+        }
+        
+        let extraBoldStyle = Style.default { (style) -> (Void) in
+            style.font = FontAttribute(FontBook.extraBold, size: 18)
+            style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
+        }
+        
+        guard let label = feedCard.iceCostLabel else { return }
+        costLbl.attributedText = "~".set(style: aproxCharacterStyle) + "$\(label)".set(style: extraBoldStyle)
+    }
+    
+    private func updateProgressEffort() {
+        let value = Double(feedCard.iceEffortPercentage) / Double(100)
+        progressEffort.animateTo(progress: CGFloat(value))
+    }
+    
+    private func setProgressEffortStyle() {
+        progressEffort.barBackgroundColor = colorBackgroundBar
+        progressEffort.barFillColor = colorEffort
+        progressEffort.barBorderWidth = 0
+        progressEffort.barFillInset = 0
+        progressEffort.barBorderColor = colorEffort
+        progressEffort.displayLabel = false
+        progressEffort.cornerRadius = 5
+        
+    }
+    
+    private func setProgressCostStyle() {
+        progressCost.barBackgroundColor = colorBackgroundBar
+        progressCost.barFillColor = colorCost
+        progressCost.barBorderWidth = 0
+        progressCost.barFillInset = 0
+        progressCost.barBorderColor = colorCost
+        progressCost.displayLabel = false
+        progressCost.cornerRadius = 5
+        
+    }
+
     
     private func setCornerRadious() {
         
         impactMultipleMainProgressView.layer.cornerRadius = 4
-        costMainProgressView.layer.cornerRadius = 4
-        effortMainProgressView.layer.cornerRadius = 4
-        
+    
         splitSquare.forEach { (label) in
             label.layer.cornerRadius = 2
             label.layer.masksToBounds = true
@@ -180,28 +239,6 @@ class IceExtendView: UIView {
         
     }
     
-    private func setEffortStyle() {
-        guard let effort: String = feedCard.iceEffortLabel else { return }
-        let value = String(feedCard.iceEffortPercentage)
-        
-        effortMainProgressView.clipsToBounds = true
-        
-        setProgress(animationBounds: effortMainProgressView.bounds, value: value, childOff: effortMainProgressView, animationColor: UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1), animationDuration: 2)
-        
-        
-        let circaCharacterStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.regular, size: 18)
-            style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
-        }
-        
-        let extraBoldStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.extraBold, size: 18)
-            style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
-        }
-        
-        effortLbl.attributedText = "~".set(style: circaCharacterStyle) + "\(effort)".set(style: extraBoldStyle)
-    }
-    
     private func setMultipleProgressViewConstaits() {
         var splitValues = feedCard.getIceImpactSplit()
         impactMultipleMainProgressView.clipsToBounds = true
@@ -254,14 +291,15 @@ class IceExtendView: UIView {
     }
     
     func setProgress(animationBounds: CGRect, value: String, childOff: UIView, animationColor: UIColor?, animationDuration: CGFloat?) {
-        
-        let impactProgressView = M13ProgressViewBorderedBar(frame: animationBounds)
+        let impactProgressView = M13ProgressViewBorderedBar(frame: childOff.bounds)
         
         guard let progress = NumberFormatter().number(from: value) else {return}
         
-        let progressValue = CGFloat(truncating: progress) / 100
         
-        impactProgressView.primaryColor = animationColor ?? UIColor.red//(red: 255/255, green: 227/255, blue: 130/255, alpha: 1)
+        var progressValue = CGFloat(truncating: progress) / 100
+        
+        impactProgressView.primaryColor = animationColor ?? UIColor.red
+        
         impactProgressView.animationDuration = animationDuration == nil ? 0.8 : animationDuration!
         impactProgressView.borderWidth = 0
         impactProgressView.cornerRadius = 0

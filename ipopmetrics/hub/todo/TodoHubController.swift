@@ -15,7 +15,81 @@ import DGElasticPullToRefresh
 import BubbleTransition
 import EZAlertController
 
-class ToDoViewController: BaseViewController {
+//    types = ['social_posts', 'my_action', 'paid_action', 'empty_state'];
+//    sections = ['Unapproved Posts', 'My Actions', 'Paid Actions', 'More On The Way'];
+
+
+enum TodoSection: String {
+    
+    case UnapprovedPosts = "Unapproved Posts"
+    case MyActions = "My Actions"
+    case PaidActions = "Paid Actions"
+    case MoreOnTheWay = "More On The Way"
+    
+    static let sectionTitles = [
+        UnapprovedPosts: "Unapproved Posts",
+        MyActions: "My Actions",
+        PaidActions: "Paid Actions",
+        MoreOnTheWay: "More On The Way"
+    ]
+    
+    // position in table
+    static let sectionPosition = [
+        UnapprovedPosts: 0,
+        MyActions: 1,
+        PaidActions: 2,
+        MoreOnTheWay: 3
+    ]
+    
+    func sectionTitle() -> String {
+        if let sectionTitle = TodoSection.sectionTitles[self] {
+            return sectionTitle
+        } else {
+            return ""
+        }
+    }
+    
+    func getSectionHeaderHeight() -> CGFloat {
+        return CGFloat(80)
+    }
+    
+    func getSectionPosition() -> Int {
+        return TodoSection.sectionPosition[self]!
+    }
+}
+
+enum TodoSectionType: String {
+    case unapprovedPosts = "Unapproved Posts"
+    case myActions = "MyActions"
+    case paidActions = "Paid Actions"
+    case moreOnTheWay = "More On The Way"
+}
+
+enum TodoCardType: String {
+    case socialPosts = "social_post"
+    case myAction = "my_action"
+    case paidAction = "paid_action"
+    case emptyState = "empty_state"
+    
+    static let cardHeight = [
+        socialPosts: 505,
+        myAction: 479,
+        paidAction: 261,
+        emptyState: 261,
+        ]
+    
+    func getCardHeight() -> CGFloat {
+        if let cardHeight = TodoCardType.cardHeight[self] {
+            return CGFloat(cardHeight)
+        } else {
+            return 0
+        }
+    }
+}
+
+
+
+class TodoHubController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var toDoTopView: TodoTopView!
@@ -36,7 +110,7 @@ class ToDoViewController: BaseViewController {
     let noItemsLoadeInitial = 3
     
     let indexToSection = [0: "Unapproved",
-                          1: "Insights"]
+                          1: "MyActions"]
     
     var scrollToRow: IndexPath = IndexPath(row: 0, section: 0)
     
@@ -83,59 +157,6 @@ class ToDoViewController: BaseViewController {
         addApprovedView()
         
         topHeaderView.changeVisibilityExpandView(visible: false)
-    }
-    
-    func createItemsLocally() {
-        try! store.realm.write {
-            store.realm.delete(store.getTodoCards())
-            
-            let todoCard = TodoCard()
-            todoCard.cardId = "1252asdf3fa5"
-            todoCard.type = "todo_unapproved"
-            todoCard.section = "Unapproved"
-            todoCard.headerTitle = "Unapproved Posts"
-            store.realm.add(todoCard, update: true)
-            
-            
-            let manualCard = TodoCard()
-            manualCard.cardId = "223344"
-            manualCard.type = "todo_manual"
-            manualCard.section = "Manual"
-            manualCard.headerTitle = "Doing Yourself"
-            store.realm.add(manualCard, update: true)
-            
-            let failedCard = TodoCard()
-            failedCard.cardId = "223355"
-            failedCard.type = "todo_failed"
-            failedCard.section = "Failed"
-            failedCard.headerTitle = "Failed Actions"
-            store.realm.add(failedCard, update: true)
-            
-            let todoPost1 = TodoSocialPost()
-            todoPost1.isApproved = false
-            todoPost1.postId = "2342sadf134"
-            todoPost1.todoCard = todoCard
-            todoPost1.status = "Unapproved"
-            todoPost1.articleText = "Popmetrics recommends highly customized marketing insights to help your business grow. #Popmetrics #GrowYourBusiness"
-            store.realm.add(todoPost1, update: true)
-            
-            let todoPost2 = TodoSocialPost()
-            todoPost2.isApproved = false
-            todoPost2.postId = "1234424"
-            todoPost2.todoCard = todoCard
-            todoPost2.status = "Unapproved"
-            todoPost2.articleText = "OG tags it knows what photo is your logo, what photo is of your business and what yourbusiness. #Popmetrics #GrowYourBusiness"
-            store.realm.add(todoPost2, update: true)
-            
-            let todoPost3 = TodoSocialPost()
-            todoPost3.isApproved = false
-            todoPost3.postId = "5152525"
-            todoPost3.todoCard = todoCard
-            todoPost3.status = "Unapproved"
-            todoPost3.articleText = "Popmetrics recommends highly customized marketing insights to help your business grow. #Popmetrics #GrowYourBusiness"
-            store.realm.add(todoPost3, update: true)
-        }
-        print(store.getTodoCards())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -251,7 +272,7 @@ class ToDoViewController: BaseViewController {
     
 }
 
-extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, ApproveDenySinglePostProtocol {
+extension TodoHubController: UITableViewDelegate, UITableViewDataSource, ApproveDenySinglePostProtocol {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -432,16 +453,16 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
         
         if store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count == 0 {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
-            headerCell.changeColor(color: card.getSectionColor)
-            headerCell.changeTitle(title: card.getCardSectionTitle)
+//            headerCell.changeColor(color: card.getSectionColor)
+//            headerCell.changeTitle(title: card.getCardSectionTitle)
             return headerCell.containerView
         }
         
         let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CardHeaderView") as! CardHeaderView
-        headerCell.changeColor(color: card.getSectionColor)
+//        headerCell.changeColor(color: card.getSectionColor)
         headerCell.toolbarView.backgroundColor = .white
-        headerCell.changeTitleSection(title: card.getCardSectionTitle)
-        headerCell.setUpHeaderShadowView()
+//        headerCell.changeTitleSection(title: card.getCardSectionTitle)
+//        headerCell.setUpHeaderShadowView()
         return headerCell
     }
     
@@ -608,8 +629,8 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
                 }
             } else {
                 let card = store.getTodoCards()[section]
-                topHeaderView.changeTitle(title: card.getCardSectionTitle)
-                topHeaderView.changeColorCircle(color: card.getSectionColor)
+//                topHeaderView.changeTitle(title: card.getCardSectionTitle)
+//                topHeaderView.changeColorCircle(color: card.getSectionColor)
             }
         }
     }
@@ -635,7 +656,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource, Approv
     
 }
 
-extension ToDoViewController:  TodoCardActionProtocol {
+extension TodoHubController:  TodoCardActionProtocol {
     
     func handleCardAction(_ action:String, todoCard: TodoCard, params:[String:Any]) {
         
@@ -690,14 +711,14 @@ extension ToDoViewController:  TodoCardActionProtocol {
 }
 
 // MARK: Notification Handlers
-extension ToDoViewController {
+extension TodoHubController {
     
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
         self.tableView.reloadData()
     }
 }
 
-extension ToDoViewController: ActionSocialPostProtocol {
+extension TodoHubController: ActionSocialPostProtocol {
     
     func displayBannerInfo() {
         if bannerMessageView.transform == .identity {
