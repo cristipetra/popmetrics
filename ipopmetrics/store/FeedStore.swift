@@ -62,7 +62,11 @@ class FeedStore {
         let distinctTypes = Array(Set(self.getFeedCards().value(forKey: "section") as! [String]))
         return distinctTypes.count
     }
-    
+    public func removeCard(_ feedCard: FeedCard) {
+        try! realm.write {
+            realm.delete(feedCard)
+        }
+    }
     public func updateFeed(_ feedResponse: FeedResponse) {
     
         let realm = try! Realm()

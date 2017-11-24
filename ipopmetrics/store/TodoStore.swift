@@ -39,7 +39,34 @@ class TodoStore {
         let predicate = NSPredicate(format: "todoCard = %@", todoCard)
         return realm.objects(TodoSocialPost.self).filter(predicate)
     }
+    
+    public func addTodoCard(_ todoCard: TodoCard) {
+        try! realm.write {
+            realm.add(todoCard, update:true)
+        }
+    }
 
+    public func getTodoCardWithName(_ name: String) -> TodoCard? {
+        let predicate = NSPredicate(format: "name = %@", name)
+        let rset = realm.objects(TodoCard.self).filter(predicate)
+        if rset.count > 0 {
+            return rset[0]
+        }
+        else {
+            return nil
+        }
+    }
+    
+    
+    public func getNonEmptyTodoCardsWithSection(_ section: String) -> Results<TodoCard> {
+        let predicate = NSPredicate(format: "section = %@ && type != %@", section, "empty_state")
+        return realm.objects(TodoCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
+    }
+    
+    public func getEmptyTodoCardsWithSection(_ section: String) -> Results<TodoCard> {
+        let predicate = NSPredicate(format: "section = %@ && type == %@", section, "empty_state")
+        return realm.objects(TodoCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
+    }
     
     
     public func countSections() -> Int {

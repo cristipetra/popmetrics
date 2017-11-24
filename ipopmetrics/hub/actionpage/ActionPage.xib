@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -110,37 +110,8 @@
                                         <constraint firstAttribute="height" constant="440" id="igX-Pm-Ig8"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ey0-rJ-Y0q">
-                                    <rect key="frame" x="0.0" y="1040" width="375" height="64"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tez-UQ-foi">
-                                            <rect key="frame" x="25" y="0.0" width="350" height="64"/>
-                                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
-                                            <state key="normal" title="View Article">
-                                                <color key="titleColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="handlerViewArticleBtn:" destination="-1" eventType="touchUpInside" id="NDw-jx-Qyg"/>
-                                            </connections>
-                                        </button>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Q3I-JQ-YMS">
-                                            <rect key="frame" x="342" y="19.5" width="11" height="25"/>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Q3I-JQ-YMS" secondAttribute="trailing" constant="22" id="IdR-sU-XQ1"/>
-                                        <constraint firstItem="Tez-UQ-foi" firstAttribute="leading" secondItem="ey0-rJ-Y0q" secondAttribute="leading" constant="25" id="K5h-8x-25K"/>
-                                        <constraint firstItem="Tez-UQ-foi" firstAttribute="top" secondItem="ey0-rJ-Y0q" secondAttribute="top" id="bOA-fP-Tv4"/>
-                                        <constraint firstItem="Tez-UQ-foi" firstAttribute="centerY" secondItem="ey0-rJ-Y0q" secondAttribute="centerY" id="dAW-1C-Gnu"/>
-                                        <constraint firstAttribute="trailing" secondItem="Tez-UQ-foi" secondAttribute="trailing" id="ieI-FP-gvL"/>
-                                        <constraint firstAttribute="bottom" secondItem="Tez-UQ-foi" secondAttribute="bottom" id="lAX-EE-4Xi"/>
-                                        <constraint firstAttribute="height" constant="64" id="oFS-bF-zpF"/>
-                                        <constraint firstItem="Q3I-JQ-YMS" firstAttribute="centerY" secondItem="ey0-rJ-Y0q" secondAttribute="centerY" id="w75-8v-fcU"/>
-                                    </constraints>
-                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvN-nL-tZe">
-                                    <rect key="frame" x="0.0" y="1105" width="375" height="240"/>
+                                    <rect key="frame" x="0.0" y="1040" width="375" height="240"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H9S-LN-qse">
                                             <rect key="frame" x="25" y="0.0" width="340" height="240"/>
@@ -157,7 +128,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X0I-Ot-Br1">
-                                    <rect key="frame" x="0.0" y="1346" width="375" height="64"/>
+                                    <rect key="frame" x="0.0" y="1281" width="375" height="64"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dK6-jM-gca">
                                             <rect key="frame" x="25" y="0.0" width="350" height="64"/>
@@ -183,6 +154,35 @@
                                         <constraint firstAttribute="height" constant="64" id="i1T-5o-5F6"/>
                                         <constraint firstAttribute="trailing" secondItem="24C-Hf-uga" secondAttribute="trailing" constant="22" id="o8a-s2-2Sp"/>
                                         <constraint firstItem="dK6-jM-gca" firstAttribute="top" secondItem="X0I-Ot-Br1" secondAttribute="top" id="pc3-oN-LX4"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6YW-AJ-2Mf">
+                                    <rect key="frame" x="0.0" y="1346" width="375" height="64"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYa-Kt-Pqs">
+                                            <rect key="frame" x="25" y="0.0" width="350" height="64"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                            <state key="normal" title="Will fix it myself!">
+                                                <color key="titleColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="handlerAddToMyActions:" destination="-1" eventType="touchUpInside" id="exg-rp-9fF"/>
+                                            </connections>
+                                        </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="yuG-va-HvS">
+                                            <rect key="frame" x="342" y="19.5" width="11" height="25"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="qYa-Kt-Pqs" firstAttribute="top" secondItem="6YW-AJ-2Mf" secondAttribute="top" id="0L8-zx-GV7"/>
+                                        <constraint firstAttribute="trailing" secondItem="yuG-va-HvS" secondAttribute="trailing" constant="22" id="50K-Yk-B0X"/>
+                                        <constraint firstAttribute="height" constant="64" id="OZO-5i-cgg"/>
+                                        <constraint firstItem="yuG-va-HvS" firstAttribute="centerY" secondItem="6YW-AJ-2Mf" secondAttribute="centerY" id="lgL-lo-EGi"/>
+                                        <constraint firstAttribute="bottom" secondItem="qYa-Kt-Pqs" secondAttribute="bottom" id="lxt-zh-XUO"/>
+                                        <constraint firstItem="qYa-Kt-Pqs" firstAttribute="leading" secondItem="6YW-AJ-2Mf" secondAttribute="leading" constant="25" id="mYS-TV-lGP"/>
+                                        <constraint firstItem="qYa-Kt-Pqs" firstAttribute="centerY" secondItem="6YW-AJ-2Mf" secondAttribute="centerY" id="nIL-7S-cbt"/>
+                                        <constraint firstAttribute="trailing" secondItem="qYa-Kt-Pqs" secondAttribute="trailing" id="pBr-hx-iym"/>
                                     </constraints>
                                 </view>
                             </subviews>

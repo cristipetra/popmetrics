@@ -53,6 +53,10 @@ enum TodoSection: String {
         return CGFloat(80)
     }
     
+    func getSectionFooterHeight() -> CGFloat {
+        return CGFloat(80)
+    }
+    
     func getSectionPosition() -> Int {
         return TodoSection.sectionPosition[self]!
     }
@@ -237,6 +241,32 @@ class TodoHubController: BaseViewController {
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     }
     
+    func getCardInSection( _ section: String, atIndex:Int) -> TodoCard {
+        let nonEmptyCards = store.getNonEmptyTodoCardsWithSection(section)
+        if nonEmptyCards.count == 0 {
+            let emptyCards = store.getEmptyTodoCardsWithSection(section)
+            return emptyCards[atIndex]
+        }
+        else {
+            return nonEmptyCards[atIndex]
+        }
+    }
+    
+    func countCardsInSection( _ section: String) -> Int {
+        let nonEmptyCards = store.getNonEmptyTodoCardsWithSection(section)
+        if nonEmptyCards.count == 0 {
+            let emptyCards = store.getEmptyTodoCardsWithSection(section)
+            return emptyCards.count
+        }
+        else {
+            return nonEmptyCards.count
+        }
+    }
+    
+    
+    
+    
+    
     internal func setupTopViewItemCount() {
         let todoCards = store.getTodoCards()
         for  todoCard in todoCards {
@@ -279,79 +309,92 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
         
-        if( isLastSection(section: sectionIdx)) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! EmptyStateCardCell
-            cell.changeTitleWithSpacing(title: "Finished with the actions?");
-            cell.changeMessageWithSpacing(message: "Check out the things you've scheduled in the calendar hub")
-            cell.goToButton.changeTitle("View Calendar")
-            
-            cell.selectionStyle = .none
-            
-            cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
-            return cell
+        guard let todoSection = TodoSection.init(rawValue: self.indexToSection[sectionIdx]!)
+            else {
+                return UITableViewCell()
         }
         
-        let sectionCards = store.getTodoSocialPostsForCard(store.getTodoCards()[sectionIdx])
+        let card = getCardInSection(todoSection.rawValue, atIndex: rowIdx)
+        let cardsCount = countCardsInSection(todoSection.rawValue)
         
-        let card = store.getTodoCards()[sectionIdx]
-        if sectionCards.isEmpty {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCard", for: indexPath) as! EmptyCardView
-            cell.setupView(type: .todo, toDoStatus: ToDoStatus(rawValue: (card.section))!)
-            cell.selectionStyle = .none
-            return cell
-        }
+        let item = card
         
-        let item = sectionCards[rowIdx]
+        switch(item.type) {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
-        cell.indexPath = indexPath
-        cell.actionSocialDelegate = self
-        cell.configure(item: item)
-        
-        DispatchQueue.main.async {
-            self.sideShadow(view: cell.containerView)
-        }
-        cell.selectionStyle = .none
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if store.getTodoCards().count <= 1 {
-            return
-        }
-        let duration = 0.3
-        
-        if !UsersStore.didShowedTransitionAddToTask {
-            if indexPath.section == 0 {
+            case TodoCardType.socialPosts.rawValue:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
+                cell.indexPath = indexPath
+                cell.actionSocialDelegate = self
+                //cell.configure(item: item)
                 
-                let transform = CATransform3DMakeScale(1, 0.2, 1)
-                cell.layer.transform = transform
-                UIView.animate(withDuration: 0.5) {
-                    cell.alpha = 1
-                    cell.layer.transform = CATransform3DIdentity
+                DispatchQueue.main.async {
+                    self.sideShadow(view: cell.containerView)
                 }
-                didAnimateOpeningCells = true
-                UsersStore.didShowedTransitionAddToTask = true
-            }
-        } else if didAnimateOpeningCells == false {
+                cell.selectionStyle = .none
+                return cell
             
-            let delay = 0.1 + Double(indexPath.row) * 0.1
-            
-            let transformTop = CATransform3DTranslate(CATransform3DIdentity, 0, -148, 10)
-            cell.layer.transform = transformTop
-            cell.alpha = 0
-            
-            UIView.animate(withDuration: duration, delay: delay, options: .beginFromCurrentState, animations: {
-                cell.alpha = 1
-                cell.layer.transform = CATransform3DIdentity
-            }, completion: nil)
+            case TodoCardType.myAction.rawValue:
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedActionId", for: indexPath) as! IceCardViewCell
+//                cell.delegate = self
+//                cell.configure(item)
+                
+                let cell = UITableViewCell()
+                return cell
+            case TodoCardType.emptyState.rawValue:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! EmptyStateCardCell
+                cell.changeTitleWithSpacing(title: "More on it's way!")
+                cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
+                cell.selectionStyle = .none
+                cell.goToButton.changeTitle("View To Do List")
+                cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
+                
+                return cell
+            default:
+                let cell = UITableViewCell()
+                return cell
         }
         
         
-        if store.getTodoCards().count - 1 == indexPath.row  {
-            didAnimateOpeningCells = true
-        }
     }
+
+// no visual effects yet
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        if store.getTodoCards().count <= 1 {
+//            return
+//        }
+//        let duration = 0.3
+//
+//        if !UsersStore.didShowedTransitionAddToTask {
+//            if indexPath.section == 0 {
+//
+//                let transform = CATransform3DMakeScale(1, 0.2, 1)
+//                cell.layer.transform = transform
+//                UIView.animate(withDuration: 0.5) {
+//                    cell.alpha = 1
+//                    cell.layer.transform = CATransform3DIdentity
+//                }
+//                didAnimateOpeningCells = true
+//                UsersStore.didShowedTransitionAddToTask = true
+//            }
+//        } else if didAnimateOpeningCells == false {
+//
+//            let delay = 0.1 + Double(indexPath.row) * 0.1
+//
+//            let transformTop = CATransform3DTranslate(CATransform3DIdentity, 0, -148, 10)
+//            cell.layer.transform = transformTop
+//            cell.alpha = 0
+//
+//            UIView.animate(withDuration: duration, delay: delay, options: .beginFromCurrentState, animations: {
+//                cell.alpha = 1
+//                cell.layer.transform = CATransform3DIdentity
+//            }, completion: nil)
+//        }
+//
+//
+//        if store.getTodoCards().count - 1 == indexPath.row  {
+//            didAnimateOpeningCells = true
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -436,105 +479,85 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
     }
     
-    func isLastSection(section: Int) -> Bool {
-        if section == store.getTodoCards().count {
-            return true
-        }
-        return false
-    }
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        //last section doesn't have a header view
-        if( isLastSection(section: section)) {
-            return UIView()
-        }
-
-        let card = store.getTodoCards()[section]
+        let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
+        cell.sectionTitleLabel.text = todoSection?.sectionTitle()
         
-        if store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count == 0 {
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
-//            headerCell.changeColor(color: card.getSectionColor)
-//            headerCell.changeTitle(title: card.getCardSectionTitle)
-            return headerCell.containerView
-        }
-        
-        let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CardHeaderView") as! CardHeaderView
-//        headerCell.changeColor(color: card.getSectionColor)
-        headerCell.toolbarView.backgroundColor = .white
-//        headerCell.changeTitleSection(title: card.getCardSectionTitle)
-//        headerCell.setUpHeaderShadowView()
-        return headerCell
+        return cell
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if( isLastSection(section: section) || store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count == 0) {
-            return UIView()
-        }
-        let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
-        todoFooter.setUpFooterShadowView()
-        todoFooter.xButton.isHidden = true
-        //todoFooter.changeTypeSection(typeSection: StatusArticle(rawValue: sections[section].status)!)
-        //todoFooter.actionButton.addTarget(self, action: #selector(approveCard(_:section:)), for: .touchUpInside)
         
-        todoFooter.section = section
-        todoFooter.changeTypeSection(typeSection: .unapproved)
-        
-        /*
-        if(sections[section].allApproved) {
-            todoFooter.actionButton.changeToDisabled()
-            todoFooter.setUpDisabledLabels()
-            todoFooter.setUpLoadMoreDisabled()
-        }
-         */
-        if(noItemsLoaded(section) ==  store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count) {
-            DispatchQueue.main.async {
-                todoFooter.setUpLoadMoreDisabled()
-            }
+        guard let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
+            else{
+                return UIView()
         }
         
-        return todoFooter
+        
+        switch todoSection {
+            case TodoSection.UnapprovedPosts:
+                let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
+                todoFooter.setUpFooterShadowView()
+                todoFooter.xButton.isHidden = true
+                //todoFooter.changeTypeSection(typeSection: StatusArticle(rawValue: sections[section].status)!)
+                //todoFooter.actionButton.addTarget(self, action: #selector(approveCard(_:section:)), for: .touchUpInside)
+                
+                todoFooter.section = section
+                todoFooter.changeTypeSection(typeSection: .unapproved)
+                
+                /*
+                 if(sections[section].allApproved) {
+                 todoFooter.actionButton.changeToDisabled()
+                 todoFooter.setUpDisabledLabels()
+                 todoFooter.setUpLoadMoreDisabled()
+                 }
+                 */
+                if(noItemsLoaded(section) ==  store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count) {
+                    DispatchQueue.main.async {
+                        todoFooter.setUpLoadMoreDisabled()
+                    }
+                }
+                
+                return todoFooter
+            default:
+                return  UIView()
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        // height for header for last card
-        if isLastSection(section: section) {
-            return 60
+        
+        guard let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
+            else { return 0 }
+        let sectionCards = store.getTodoCardsWithSection(todoSection.rawValue)
+        if sectionCards.count == 0 {
+            return 0
         }
-        let posts = store.getTodoSocialPostsForCard(store.getTodoCards()[section])
-        if(posts.count == 0) {
-            return 80
-        }
-        return 109
-    }
-    
-    func getCountSection() -> Int {
-        //check if we receive card that has empty social post
-        return store.getTodoCards().count + 1  // adding the last card
+        return todoSection.getSectionHeaderHeight()
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        //height for footer for last card
-        if isLastSection(section: section) {
+        guard let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
+            else { return 0 }
+        let sectionCards = store.getTodoCardsWithSection(todoSection.rawValue)
+        if sectionCards.count == 0 {
             return 0
         }
-        if store.getTodoSocialPostsForCard(store.getTodoCards()[section]).isEmpty {
-            return 0
-        }
-        return 80
+        return todoSection.getSectionFooterHeight()
     }
     
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return getCountSection()
+        return self.indexToSection.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if( isLastSection(section: section)) {
-            return 1
-        } else if store.getTodoSocialPostsForCard(store.getTodoCards()[section]).isEmpty {
-            return 1
-        }
-    
-        return itemsToLoad(section: section)
+        
+        guard let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
+            else { return 0 }
+        
+        return countCardsInSection(todoSection.rawValue)
+        
     }
     
     func reloadDataTable() {
@@ -546,15 +569,18 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //height for last card
-        if(isLastSection(section: indexPath.section)) {
-            return 261
+        
+        guard let todoSection = TodoSection.init(rawValue: self.indexToSection[indexPath.section]!)
+            else { return 0 }
+        
+        let card = getCardInSection(todoSection.rawValue, atIndex:indexPath.row)
+        if indexPath.row > 0  && todoSection == TodoSection.MyActions {
+            // moreInfo card
+            return 226
         }
-        if store.getTodoSocialPostsForCard(store.getTodoCards()[indexPath.section]).isEmpty {
-            return 216
-        }
-
-        return 148
+        
+        guard let cardType = TodoCardType(rawValue: card.type) else { return 0}
+        return cardType.getCardHeight()
     }
     
     func noItemsLoaded(_ section: Int) -> Int {

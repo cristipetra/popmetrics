@@ -85,11 +85,11 @@ class ActionPageDetailsViewController: UIViewController {
     }
 
     private func getDetailsMarkdownString() -> String {
-        return feedCard.detailsMarkdown!
+        return feedCard.detailsMarkdown ?? ""
     }
     
     private func getClosingMarkdownString() -> String {
-        return feedCard.closingMarkdown!
+        return feedCard.closingMarkdown ?? ""
     }
     
     internal func displayMarkdownDetails() {
@@ -114,6 +114,16 @@ class ActionPageDetailsViewController: UIViewController {
         instructionsPageVc.configure(feedCard)
         self.navigationController?.pushViewController(instructionsPageVc, animated: true)
     }
+    
+    @IBAction func handlerAddToMyActions(_ sender: Any) {
+        FeedApi().postAddToMyActions(feedCardId: self.feedCard.cardId!, brandId: UsersStore.currentBrandId) { todoCard in
+            TodoStore.getInstance().addTodoCard(todoCard!)
+            FeedStore.getInstance().removeCard(self.feedCard)
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    
     
     @objc func handlerClickBack() {
         self.navigationController?.popViewController(animated: true)
