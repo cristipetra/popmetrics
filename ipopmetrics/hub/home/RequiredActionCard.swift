@@ -18,7 +18,7 @@ class RequiredActionCard: UITableViewCell {
     
     @IBOutlet weak var toolbarView: ToolbarViewCell!
     @IBOutlet weak var footerView: FooterView!
-    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var containerView: UIStackView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var bottomImageView: UIImageView!
@@ -51,7 +51,7 @@ class RequiredActionCard: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.feedBackgroundColor()
-        self.containerView.backgroundColor = PopmetricsColor.salmondColor
+        //self.containerView.backgroundColor = PopmetricsColor.salmondColor
         setupToolbarView()
         setupCorners()
         setUpShadowLayer()

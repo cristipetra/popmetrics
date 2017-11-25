@@ -214,14 +214,15 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
         
         //empty card
         if isLastSection(section: indexPath.section) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! EmptyStateCardCell
-            cellHeight = 261
-            cell.changeTitleWithSpacing(title: "You're all caught up.")
-            cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
-            cell.selectionStyle = .none
-            cell.goToButton.changeTitle("View Home Feed")
-            cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
-            return cell
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! EmptyStateCardCell
+//            cellHeight = 261
+//            cell.changeTitleWithSpacing(title: "You're all caught up.")
+//            cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
+//            cell.selectionStyle = .none
+//            cell.goToButton.changeTitle("View Home Feed")
+//            cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
+//            return cell
+            return UITableViewCell()
         }
         
         let sectionIdx = (indexPath as NSIndexPath).section

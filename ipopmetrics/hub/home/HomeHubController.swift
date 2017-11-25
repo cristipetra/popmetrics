@@ -51,10 +51,6 @@ enum HomeSection: String {
         }
     }
     
-    func getSectionHeaderHeight() -> CGFloat {
-        return CGFloat(80)
-    }
-    
     func getSectionPosition() -> Int {
         return HomeSection.sectionPosition[self]!
     }
@@ -75,20 +71,6 @@ enum HomeCardType: String {
     case recommendedAction = "recommended_action"
     case emptyState = "empty_state"
     
-    static let cardHeight = [
-        requiredAction: 505,
-        insight: 479,
-        recommendedAction: 479,
-        emptyState: 261,
-        ]
-    
-    func getCardHeight() -> CGFloat {
-        if let cardHeight = HomeCardType.cardHeight[self] {
-            return CGFloat(cardHeight)
-        } else {
-            return 0
-        }
-    }
 }
 
 class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
@@ -106,8 +88,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     var recommendActionHandler = RecommendActionHandler()
     let store = FeedStore.getInstance()
-    
-    var toDoCellHeight = 50 as CGFloat
     
     var shouldDisplayCell = true
     private var isShowAllRequiredCards = false
@@ -134,6 +114,16 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
         tabBarController?.delegate = self
+        
+        self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedSectionHeaderHeight = 80
+        
+        self.tableView.sectionFooterHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedSectionFooterHeight = 60
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.tableView.estimatedRowHeight = 460
         
         // NotificationCenter observers
         let nc = NotificationCenter.default
@@ -175,7 +165,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         setupTopHeaderView()
         
-        addImageOnLastCard()
     }
     
     
@@ -190,13 +179,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                           animations: {
                             self.tableView.alpha = 1
         })
-    }
-    
-    func addImageOnLastCard() {
-        let image = UIImage(named: "end_of_feed")
-        let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.frame = CGRect(x: 0, y: self.view.frame.height - 350, width: self.view.frame.width, height: 300)
     }
     
     func setupTopHeaderView() {
@@ -314,12 +296,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             cell.configure(item)
             return cell
         case HomeCardType.emptyState.rawValue:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! EmptyStateCardCell
-            cell.changeTitleWithSpacing(title: "More on it's way!")
-            cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptStateCard", for: indexPath) as! EmptyStateCard
             cell.selectionStyle = .none
-            cell.goToButton.changeTitle("View To Do List")
-            cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
             
             return cell
         default:
@@ -397,33 +375,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        guard let homeSection = HomeSection.init(rawValue: self.indexToSection[section]!)
-            else { return 0 }
-        let sectionCards = store.getFeedCardsWithSection(homeSection.rawValue)
-        if sectionCards.count == 0 {
-            return 0
-        }
-        return homeSection.getSectionHeaderHeight()
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        guard let homeSection = HomeSection.init(rawValue: self.indexToSection[indexPath.section]!)
-            else { return 0 }
-        
-        let card = getCardInSection(homeSection.rawValue, atIndex:indexPath.row)
-        if indexPath.row > 0  && homeSection == HomeSection.RequiredActions && !self.isShowAllRequiredCards {
-            // moreInfo card
-            return 226
-        }
-        
-        guard let cardType = HomeCardType(rawValue: card.type) else { return 0}
-        return cardType.getCardHeight()
-    }
-    
+
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         var fixedHeaderFrame = self.topHeaderView.frame
         fixedHeaderFrame.origin.y = 0 + scrollView.contentOffset.y

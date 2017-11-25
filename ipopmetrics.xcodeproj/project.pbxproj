@@ -36,8 +36,8 @@
 		085599A31F72750000E5BEA1 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085599A21F72750000E5BEA1 /* SplashScreen.swift */; };
 		085599A61F72751900E5BEA1 /* SplashScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085599A51F72751900E5BEA1 /* SplashScreen.xib */; };
 		085599AA1F72842100E5BEA1 /* animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 085599A91F72842100E5BEA1 /* animation.json */; };
-		0855C0C91F6FFBDB00ACBFA9 /* EmptyCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0855C0C81F6FFBDB00ACBFA9 /* EmptyCard.xib */; };
-		0855C0CB1F6FFBF000ACBFA9 /* EmptyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0855C0CA1F6FFBF000ACBFA9 /* EmptyCardView.swift */; };
+		0855C0C91F6FFBDB00ACBFA9 /* EmptyStateCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0855C0C81F6FFBDB00ACBFA9 /* EmptyStateCard.xib */; };
+		0855C0CB1F6FFBF000ACBFA9 /* EmptyStateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0855C0CA1F6FFBF000ACBFA9 /* EmptyStateCard.swift */; };
 		0856F3581F272F020061DF7E /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0856F3571F272F020061DF7E /* Calendar.storyboard */; };
 		0857AB651FBC98D1002B9F53 /* SettingsGAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0857AB641FBC98D1002B9F53 /* SettingsGAViewController.swift */; };
 		0857D5571F41B4E800D218DA /* CompleteCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0857D5561F41B4E800D218DA /* CompleteCardCell.swift */; };
@@ -97,8 +97,8 @@
 		08AA6C6F1F56F3BA0022DE91 /* ChartStatistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */; };
 		08AA6C731F56F8630022DE91 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C721F56F8630022DE91 /* ChartViewController.swift */; };
 		08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */; };
-		08AF04981F46FB9B0040012B /* ToDoCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AF04971F46FB9B0040012B /* ToDoCardCell.xib */; };
-		08AF049A1F46FBB60040012B /* ToDoCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AF04991F46FBB60040012B /* ToDoCardCell.swift */; };
+		08AF04981F46FB9B0040012B /* SocialPostInCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AF04971F46FB9B0040012B /* SocialPostInCardCell.xib */; };
+		08AF049A1F46FBB60040012B /* SocialPostInCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AF04991F46FBB60040012B /* SocialPostInCardCell.swift */; };
 		08B2803F1F55862100E36D19 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B2803E1F55862100E36D19 /* Statistics.swift */; };
 		08B2DB971FB47522009E45F8 /* InstructionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B2DB961FB47522009E45F8 /* InstructionCell.swift */; };
 		08B324D81F98C65A00BB4905 /* IceExtendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B324D71F98C65A00BB4905 /* IceExtendView.xib */; };
@@ -167,7 +167,6 @@
 		08F368911F18E6A000819CDE /* ApprovalCardInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F368901F18E6A000819CDE /* ApprovalCardInfoCell.swift */; };
 		08F368951F18F93800819CDE /* DailyInsightsCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F368941F18F93800819CDE /* DailyInsightsCardCell.swift */; };
 		08F368971F19029100819CDE /* LastCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08F368961F19029100819CDE /* LastCard.xib */; };
-		08F368991F1903B100819CDE /* EmptyStateCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F368981F1903B100819CDE /* EmptyStateCardCell.swift */; };
 		08F7A0971F17AB0C00A1B2C3 /* RecommendationCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F7A0961F17AB0C00A1B2C3 /* RecommendationCardCell.swift */; };
 		08FAE8411F541D060097DF3E /* Statistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08FAE8401F541D060097DF3E /* Statistics.storyboard */; };
 		08FAE8441F541D790097DF3E /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE8431F541D790097DF3E /* StatisticsViewController.swift */; };
@@ -195,6 +194,7 @@
 		1178D6901E1E5AD9005B96C3 /* ipopmetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D68F1E1E5AD9005B96C3 /* ipopmetricsTests.swift */; };
 		1178D69B1E1E5AD9005B96C3 /* ipopmetricsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */; };
 		1183A8661FC5064B00ED8EF6 /* InsightPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1183A8651FC5064B00ED8EF6 /* InsightPage.xib */; };
+		11A675A91FC8E1A900EE0A15 /* EmptyStateCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A675A81FC8E1A900EE0A15 /* EmptyStateCardCell.swift */; };
 		11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAA5E31ECC8BFA0099B50E /* Feed.swift */; };
 		11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */; };
 		11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A91E2CE05D0021E64A /* CompletionView.swift */; };
@@ -260,8 +260,8 @@
 		085599A21F72750000E5BEA1 /* SplashScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		085599A51F72751900E5BEA1 /* SplashScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashScreen.xib; sourceTree = "<group>"; };
 		085599A91F72842100E5BEA1 /* animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation.json; sourceTree = "<group>"; };
-		0855C0C81F6FFBDB00ACBFA9 /* EmptyCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyCard.xib; sourceTree = "<group>"; };
-		0855C0CA1F6FFBF000ACBFA9 /* EmptyCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCardView.swift; sourceTree = "<group>"; };
+		0855C0C81F6FFBDB00ACBFA9 /* EmptyStateCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyStateCard.xib; sourceTree = "<group>"; };
+		0855C0CA1F6FFBF000ACBFA9 /* EmptyStateCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateCard.swift; sourceTree = "<group>"; };
 		0856F3571F272F020061DF7E /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		0857AB641FBC98D1002B9F53 /* SettingsGAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGAViewController.swift; sourceTree = "<group>"; };
 		0857D5561F41B4E800D218DA /* CompleteCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteCardCell.swift; sourceTree = "<group>"; };
@@ -324,8 +324,8 @@
 		08AA6C6A1F56DD060022DE91 /* TrafficVisits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficVisits.swift; sourceTree = "<group>"; };
 		08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChartStatistics.storyboard; sourceTree = "<group>"; };
 		08AA6C721F56F8630022DE91 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
-		08AF04971F46FB9B0040012B /* ToDoCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoCardCell.xib; sourceTree = "<group>"; };
-		08AF04991F46FBB60040012B /* ToDoCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCardCell.swift; sourceTree = "<group>"; };
+		08AF04971F46FB9B0040012B /* SocialPostInCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocialPostInCardCell.xib; sourceTree = "<group>"; };
+		08AF04991F46FBB60040012B /* SocialPostInCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialPostInCardCell.swift; sourceTree = "<group>"; };
 		08B2803E1F55862100E36D19 /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 		08B2DB961FB47522009E45F8 /* InstructionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCell.swift; sourceTree = "<group>"; };
 		08B324D71F98C65A00BB4905 /* IceExtendView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IceExtendView.xib; sourceTree = "<group>"; };
@@ -392,7 +392,6 @@
 		08F368901F18E6A000819CDE /* ApprovalCardInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApprovalCardInfoCell.swift; sourceTree = "<group>"; };
 		08F368941F18F93800819CDE /* DailyInsightsCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyInsightsCardCell.swift; sourceTree = "<group>"; };
 		08F368961F19029100819CDE /* LastCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LastCard.xib; sourceTree = "<group>"; };
-		08F368981F1903B100819CDE /* EmptyStateCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateCardCell.swift; sourceTree = "<group>"; };
 		08F7A0961F17AB0C00A1B2C3 /* RecommendationCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationCardCell.swift; sourceTree = "<group>"; };
 		08FAE8401F541D060097DF3E /* Statistics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Statistics.storyboard; sourceTree = "<group>"; };
 		08FAE8431F541D790097DF3E /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
@@ -428,6 +427,7 @@
 		1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ipopmetricsUITests.swift; sourceTree = "<group>"; };
 		1178D69C1E1E5AD9005B96C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1183A8651FC5064B00ED8EF6 /* InsightPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InsightPage.xib; sourceTree = "<group>"; };
+		11A675A81FC8E1A900EE0A15 /* EmptyStateCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateCardCell.swift; sourceTree = "<group>"; };
 		11AAA5E31ECC8BFA0099B50E /* Feed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Feed.swift; path = ipopmetrics/realm/Feed.swift; sourceTree = "<group>"; };
 		11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		11ACA9A91E2CE05D0021E64A /* CompletionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionView.swift; sourceTree = "<group>"; };
@@ -666,10 +666,11 @@
 				08B324D91F98C6AE00BB4905 /* IceExtendView.swift */,
 				08B6AFA91F9DC813005E3049 /* IceCardView.xib */,
 				08B6AFAB1F9DC843005E3049 /* IceCardViewCell.swift */,
-				0855C0C81F6FFBDB00ACBFA9 /* EmptyCard.xib */,
-				0855C0CA1F6FFBF000ACBFA9 /* EmptyCardView.swift */,
+				0855C0C81F6FFBDB00ACBFA9 /* EmptyStateCard.xib */,
+				0855C0CA1F6FFBF000ACBFA9 /* EmptyStateCard.swift */,
 				084E54E01F827F7D007D6F4F /* NoteView.swift */,
 				086EDE421FC8449A002F4140 /* ImpactScoreView.swift */,
+				11A675A81FC8E1A900EE0A15 /* EmptyStateCardCell.swift */,
 			);
 			path = hub;
 			sourceTree = "<group>";
@@ -687,7 +688,6 @@
 				08F7A0961F17AB0C00A1B2C3 /* RecommendationCardCell.swift */,
 				08F3688A1F18DC4900819CDE /* ApprovalCardCell.swift */,
 				08F368901F18E6A000819CDE /* ApprovalCardInfoCell.swift */,
-				08F368981F1903B100819CDE /* EmptyStateCardCell.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -781,8 +781,8 @@
 				0862C4D71FA1F5C300BEF0BC /* SocialPostDetailsView.swift */,
 				08EE385C1F447C0E005D1D7C /* TodoTopView.swift */,
 				08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */,
-				08AF04971F46FB9B0040012B /* ToDoCardCell.xib */,
-				08AF04991F46FBB60040012B /* ToDoCardCell.swift */,
+				08AF04971F46FB9B0040012B /* SocialPostInCardCell.xib */,
+				08AF04991F46FBB60040012B /* SocialPostInCardCell.swift */,
 				08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */,
 				08B3AA9D1F8FA748008D0503 /* ToDoApprovedView.swift */,
 				0899DA201FA33B1F00C3696C /* SocialPostDetailsViewController.swift */,
@@ -1075,7 +1075,7 @@
 				08078F3F1FBDE45200A4399D /* SettingsOverlayActionView.xib in Resources */,
 				08C7B18D1F1CF40C00E456C6 /* WelcomeScreen.xib in Resources */,
 				08A4A5411F45B563001071E3 /* AlfaSlabOne-Regular.ttf in Resources */,
-				0855C0C91F6FFBDB00ACBFA9 /* EmptyCard.xib in Resources */,
+				0855C0C91F6FFBDB00ACBFA9 /* EmptyStateCard.xib in Resources */,
 				0862C4CF1FA1F42500BEF0BC /* SocialPostDetailsView.xib in Resources */,
 				1178D6801E1E5AD9005B96C3 /* Main.storyboard in Resources */,
 				08B5D4BC1F29CD5000B79AD3 /* CalendarCardMaximized.xib in Resources */,
@@ -1083,7 +1083,7 @@
 				08BD580C1F7A6AD500FFDCFD /* OnboardingFinalView.xib in Resources */,
 				1128B3F61ECF256600BDA58C /* Info.plist in Resources */,
 				08F368971F19029100819CDE /* LastCard.xib in Resources */,
-				08AF04981F46FB9B0040012B /* ToDoCardCell.xib in Resources */,
+				08AF04981F46FB9B0040012B /* SocialPostInCardCell.xib in Resources */,
 				08FAE8471F541FF40097DF3E /* TrafficCard.xib in Resources */,
 				1119F6181ED56F34009997FF /* Boarding.storyboard in Resources */,
 				085F91031F716CBC008A339A /* OnboardingFooter.xib in Resources */,
@@ -1318,7 +1318,7 @@
 				088B28281F7E43960015A66E /* TrafficVisitsViewCell.swift in Sources */,
 				08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */,
 				08B4EBB31FC56ACE00BFC5A1 /* TextFieldValidator.swift in Sources */,
-				08AF049A1F46FBB60040012B /* ToDoCardCell.swift in Sources */,
+				08AF049A1F46FBB60040012B /* SocialPostInCardCell.swift in Sources */,
 				11DD967E1FC4FA5400386F1E /* FeedApi.swift in Sources */,
 				08078F421FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift in Sources */,
 				085282741F28D9DE0065A968 /* CalendarFooterViewCell.swift in Sources */,
@@ -1337,7 +1337,7 @@
 				08B4EB991FC569F700BFC5A1 /* FeedStore.swift in Sources */,
 				08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */,
 				0862C4D81FA1F5C300BEF0BC /* SocialPostDetailsView.swift in Sources */,
-				0855C0CB1F6FFBF000ACBFA9 /* EmptyCardView.swift in Sources */,
+				0855C0CB1F6FFBF000ACBFA9 /* EmptyStateCard.swift in Sources */,
 				08C5CF361FC5EA9C001851A5 /* ActionPageDetailsViewController.swift in Sources */,
 				088E77AF1F7D4A8E00774F13 /* TrafficStatus.swift in Sources */,
 				08B745911F1F638000EC3F8C /* LoginNavigationViewController.swift in Sources */,
@@ -1357,7 +1357,6 @@
 				08078F391FBDA92600A4399D /* Alert.swift in Sources */,
 				085282701F2881BD0065A968 /* Calendar.swift in Sources */,
 				08BD58021F7A2F3700FFDCFD /* IndividualTaskView.swift in Sources */,
-				08F368991F1903B100819CDE /* EmptyStateCardCell.swift in Sources */,
 				08B3AA9E1F8FA748008D0503 /* ToDoApprovedView.swift in Sources */,
 				0809AEB41F22183400A13178 /* Constants.swift in Sources */,
 				08D409CE1F73C3A800C5BB54 /* OnboardingFinalView.swift in Sources */,
@@ -1389,6 +1388,7 @@
 				08B4EB9B1FC569FE00BFC5A1 /* StatisticsStore.swift in Sources */,
 				088E77A91F7CE99900774F13 /* ToastView.swift in Sources */,
 				08F7A0971F17AB0C00A1B2C3 /* RecommendationCardCell.swift in Sources */,
+				11A675A91FC8E1A900EE0A15 /* EmptyStateCardCell.swift in Sources */,
 				08B4EB971FC569EC00BFC5A1 /* CalendarFeedStore.swift in Sources */,
 				088BBEAA1F58214300AD5414 /* TrafficEmptyView.swift in Sources */,
 				085053FE1F2787A100FE8234 /* CalendarViewController.swift in Sources */,

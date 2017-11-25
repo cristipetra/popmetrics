@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ToDoCardCell: UITableViewCell {
+class SocialPostInCardCell: UITableViewCell {
     
     @IBOutlet weak var denyPostBtn: UIButton!
     @IBOutlet weak var containerStackView: UIStackView!
@@ -37,7 +37,7 @@ class ToDoCardCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.feedBackgroundColor()
-        addStatusCardTypeView()
+//        addStatusCardTypeView()
         setupCorners()
     }
     
@@ -92,14 +92,14 @@ class ToDoCardCell: UITableViewCell {
         }
     }
     
-    func addStatusCardTypeView() {
-        self.addSubview(statusCardTypeView)
-        statusCardTypeView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        statusCardTypeView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-        statusCardTypeView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
-        statusCardTypeView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
-        statusCardTypeView.layer.cornerRadius = 6
-    }
+//    func addStatusCardTypeView() {
+//        self.addSubview(statusCardTypeView)
+//        statusCardTypeView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+//        statusCardTypeView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+//        statusCardTypeView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+//        statusCardTypeView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
+//        statusCardTypeView.layer.cornerRadius = 6
+//    }
     
     func sideShadow(view: UIView) {
         view.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor

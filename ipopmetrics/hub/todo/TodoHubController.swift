@@ -148,7 +148,7 @@ class TodoHubController: BaseViewController {
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
-        self.tableView.estimatedRowHeight = 400
+        self.tableView.estimatedRowHeight = 450
         
         // NotificationCenter observers
         let nc = NotificationCenter.default
@@ -228,8 +228,8 @@ class TodoHubController: BaseViewController {
     }
     
     internal func registerCellsForTable() {
-        let toDoCardCell = UINib(nibName: "ToDoCardCell", bundle: nil)
-        tableView.register(toDoCardCell, forCellReuseIdentifier: "toDoCardCellId")
+        let toDoCardCell = UINib(nibName: "SocialPostInCardCell", bundle: nil)
+        tableView.register(toDoCardCell, forCellReuseIdentifier: "SocialPostInCardCell")
         
         let toDoHeaderCardNib = UINib(nibName: "CardHeaderCell", bundle: nil)
         tableView.register(toDoHeaderCardNib, forCellReuseIdentifier: "CardHeaderCell")
@@ -248,8 +248,8 @@ class TodoHubController: BaseViewController {
         let todoHeader = UINib(nibName: "CardHeaderView", bundle: nil)
         tableView.register(todoHeader, forHeaderFooterViewReuseIdentifier: "CardHeaderView")
         
-        let emptyCard = UINib(nibName: "EmptyCard", bundle: nil)
-        tableView.register(emptyCard, forCellReuseIdentifier: "EmptyCard")
+        let emptyCard = UINib(nibName: "EmptyStateCard", bundle: nil)
+        tableView.register(emptyCard, forCellReuseIdentifier: "EmptyStateCard")
         
         let todoMyActionCardNib = UINib(nibName: "MyActionCard", bundle: nil)
         tableView.register(todoMyActionCardNib, forCellReuseIdentifier: "MyActionCard")
@@ -373,7 +373,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         switch(item.type) {
         
             case TodoCardType.socialPosts.rawValue:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "SocialPostInCardCell", for: indexPath) as! SocialPostInCardCell
                 cell.indexPath = indexPath
                 cell.actionSocialDelegate = self
                 //cell.configure(item: item)
@@ -395,12 +395,8 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
                 return cell
             
             case TodoCardType.emptyState.rawValue:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! EmptyStateCardCell
-                cell.changeTitleWithSpacing(title: "More on it's way!")
-                cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
+                let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for: indexPath) as! EmptyStateCard
                 cell.selectionStyle = .none
-                cell.goToButton.changeTitle("View To Do List")
-                cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
                 
                 return cell
             default:
