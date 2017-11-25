@@ -290,15 +290,14 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             return cell
             
-        case HomeCardType.recommendedAction.rawValue:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedActionId", for: indexPath) as! IceCardViewCell
-            cell.delegate = self
-            cell.configure(item)
-            return cell
+//        case HomeCardType.recommendedAction.rawValue:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedActionId", for: indexPath) as! IceCardViewCell
+//            cell.delegate = self
+//            cell.configure(item)
+//            return cell
         case HomeCardType.emptyState.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmptStateCard", for: indexPath) as! EmptyStateCard
             cell.selectionStyle = .none
-            
             return cell
         default:
             let cell = UITableViewCell()
@@ -370,6 +369,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let homeSection = HomeSection.init(rawValue: self.indexToSection[section]!)
+        let count = countCardsInSection((homeSection?.rawValue)!)
+        if count < 1 {
+            return UIView()
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
         cell.sectionTitleLabel.text = homeSection?.sectionTitle()
         
