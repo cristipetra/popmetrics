@@ -22,24 +22,24 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Szb-A8-lTX" customClass="InsightCard" customModule="ipopmetrics" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="506"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Szb-A8-lTX" id="Iw2-KH-qXD">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="Szb-A8-lTX" id="Iw2-KH-qXD">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="505.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OVB-Nz-PDL" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OVB-Nz-PDL" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
                         <rect key="frame" x="10" y="0.0" width="300" height="29"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="29" id="iT6-Od-Dhn"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xmp-ns-pr3">
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xmp-ns-pr3">
                         <rect key="frame" x="10" y="29" width="300" height="439.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePyramid" translatesAutoresizingMaskIntoConstraints="NO" id="eYK-Rm-n8D">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="imagePyramid" translatesAutoresizingMaskIntoConstraints="NO" id="eYK-Rm-n8D">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="345"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is an article for you to read" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="404-LX-Lbg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="This is an article for you to read" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="404-LX-Lbg">
                                 <rect key="frame" x="20" y="16" width="270" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Dq1-j8-EWF"/>
@@ -48,7 +48,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter is a key access point to increase your social following." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEd-JZ-7L4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Twitter is a key access point to increase your social following." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEd-JZ-7L4">
                                 <rect key="frame" x="20" y="112" width="270" height="112"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="112" id="d06-5n-cXh"/>
@@ -57,7 +57,7 @@
                                 <color key="textColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aL3-tc-p25" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aL3-tc-p25" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="345" width="300" height="94"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -76,13 +76,14 @@
                             <constraint firstItem="404-LX-Lbg" firstAttribute="top" secondItem="xmp-ns-pr3" secondAttribute="top" constant="16" id="SXE-qf-2bb"/>
                             <constraint firstItem="eYK-Rm-n8D" firstAttribute="top" secondItem="xmp-ns-pr3" secondAttribute="top" id="WSu-8k-VYd"/>
                             <constraint firstItem="404-LX-Lbg" firstAttribute="leading" secondItem="xmp-ns-pr3" secondAttribute="leading" constant="20" id="fLK-31-SS1"/>
+                            <constraint firstAttribute="height" constant="450" id="ibJ-zl-XQ3"/>
                             <constraint firstAttribute="trailing" secondItem="eYK-Rm-n8D" secondAttribute="trailing" id="l8D-gm-3LT"/>
                             <constraint firstItem="YEd-JZ-7L4" firstAttribute="top" secondItem="404-LX-Lbg" secondAttribute="bottom" constant="16" id="phr-sD-EzI"/>
                             <constraint firstItem="eYK-Rm-n8D" firstAttribute="leading" secondItem="xmp-ns-pr3" secondAttribute="leading" id="puW-OB-2j2"/>
                             <constraint firstAttribute="trailing" secondItem="YEd-JZ-7L4" secondAttribute="trailing" constant="10" id="yj6-44-Vyr"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKF-7W-goR">
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aKF-7W-goR">
                         <rect key="frame" x="37" y="468" width="2" height="37"/>
                         <color key="backgroundColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>

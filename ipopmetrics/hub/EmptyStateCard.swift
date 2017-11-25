@@ -39,13 +39,7 @@ class EmptyStateCard: UITableViewCell {
         setUpShadowLayer()
         
         setUpToolbar(imageName: "iconHeaderBranding", titleName: "Popmetrics Insight")
-        titleHeightConstraint.constant = 150
-        titleLabel.numberOfLines = 4
-        self.titleLabel.font = UIFont(name: FontBook.alfaRegular, size: 26)
         self.backgroundImageView.image = UIImage(named: "imagePyramid")
-        self.messageLabel.textColor = UIColor.white
-        self.messageLabel.font = UIFont(name: FontBook.regular, size: 18)
-        self.messageLabel.numberOfLines = 5
         
         footerVIew.actionButton.addTarget(self, action: #selector(handlerActionButton), for: .touchUpInside)
         
@@ -90,28 +84,26 @@ class EmptyStateCard: UITableViewCell {
     
     private func setTitleRecommended(title: String) {
         titleLabel.text = title
-        titleLabel.textColor = UIColor.white
-        self.titleLabel.font = UIFont(name: FontBook.bold, size: 23)
     }
     
     private func setTitleInsight(title: String) {
         titleLabel.text = title
-        titleLabel.textColor = UIColor.white
-        self.titleLabel.font = UIFont(name: FontBook.bold, size: 18)
     }
     
     private func setMessage(message: String) {
         messageLabel.text = message
-        messageLabel.numberOfLines = 5
     }
     
     private func setUpToolbar(imageName: String, titleName: String) {
+
+        let toolbarController: CardToolbarController  = CardToolbarController()
+        toolbarController.setUpTopView(toolbarView: self.toolBarView)
         
-        self.toolBarView.isLeftImageHidden = false
-        self.toolBarView.leftImage.image = UIImage(named: imageName)
-        self.toolBarView.title.text = titleName
-        self.toolBarView.leftImage.contentMode = UIViewContentMode.scaleAspectFit
-        self.toolBarView.title.font = UIFont(name: FontBook.bold, size: 15)
+//        self.toolBarView.isLeftImageHidden = false
+//        self.toolBarView.leftImage.image = UIImage(named: imageName)
+//        self.toolBarView.title.text = titleName
+//        self.toolBarView.leftImage.contentMode = UIViewContentMode.scaleAspectFit
+//        self.toolBarView.title.font = UIFont(name: FontBook.bold, size: 15)
     }
     
     func setUpShadowLayer() {
