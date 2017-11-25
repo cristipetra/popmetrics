@@ -298,7 +298,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
 //            cell.configure(item)
 //            return cell
         case HomeCardType.emptyState.rawValue:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptStateCard", for: indexPath) as! EmptyStateCard
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for: indexPath) as! EmptyStateCard
             cell.selectionStyle = .none
             return cell
         default:
