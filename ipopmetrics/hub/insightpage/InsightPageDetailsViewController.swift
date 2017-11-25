@@ -44,7 +44,6 @@ class InsightPageDetailsViewController: UIViewController {
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
         self.feedCard = feedCard
-        print(feedCard)
         recommendActionHandler = handler
     }
     

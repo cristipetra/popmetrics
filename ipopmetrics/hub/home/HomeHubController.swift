@@ -139,6 +139,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let cardHeaderCellNib = UINib(nibName: "CardHeaderCell", bundle: nil)
         tableView.register(cardHeaderCellNib, forCellReuseIdentifier: "CardHeaderCell")
         
+        let emptyCard = UINib(nibName: "EmptyStateCard", bundle: nil)
+        tableView.register(emptyCard, forCellReuseIdentifier: "EmptyStateCard")
         
         let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
         tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")

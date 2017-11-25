@@ -96,8 +96,8 @@ class EmptyStateCard: UITableViewCell {
     
     private func setUpToolbar(imageName: String, titleName: String) {
 
-        let toolbarController: CardToolbarController  = CardToolbarController()
-        toolbarController.setUpTopView(toolbarView: self.toolBarView)
+//        let toolbarController: CardToolbarController  = CardToolbarController()
+//        toolbarController.setUpTopView(toolbarView: self.toolBarView)
         
 //        self.toolBarView.isLeftImageHidden = false
 //        self.toolBarView.leftImage.image = UIImage(named: imageName)
