@@ -12,6 +12,8 @@ class MyActionCardCell: UITableViewCell {
     
     @IBOutlet weak var wrapperView: UIStackView!
     
+    @IBOutlet weak var containerBtn: UIView!
+    @IBOutlet weak var containerShadow: UIView!
     @IBOutlet weak var impactView: ImpactScoreView!
     @IBOutlet weak var cardTitle: UILabel!
     @IBOutlet weak var cardImageView: UIImageView!
@@ -23,7 +25,13 @@ class MyActionCardCell: UITableViewCell {
         self.backgroundColor = .clear
         self.selectionStyle = .none
         
-        wrapperView.cornerRadius = 15
+        addShadowToView(containerShadow, radius: 4, opacity: 0.5)
+        setCornerRadius()
+    }
+    
+    private func setCornerRadius() {
+        self.containerShadow.layer.cornerRadius = 14
+        self.containerBtn.layer.cornerRadius = 14
     }
     
     private func updateView() {
@@ -31,9 +39,6 @@ class MyActionCardCell: UITableViewCell {
         if let url = todoCard.imageUri {
             cardImageView.af_setImage(withURL: URL(string: url)!)
         }
-        
-        let url = "http://blog.popmetrics.io/wp-content/uploads/sites/13/2017/07/shutterstock_397574752-1600x1015.jpg"
-        cardImageView.af_setImage(withURL: URL(string: url)!)
         
         if let title = todoCard.headerTitle {
             cardTitle.text = title
@@ -52,11 +57,6 @@ class MyActionCardCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-    }
-    
-    private func setCornerRadius() {
-        wrapperView.layer.cornerRadius = 14
-        wrapperView.layer.masksToBounds = true
     }
 
 }
