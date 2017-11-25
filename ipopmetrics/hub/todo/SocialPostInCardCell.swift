@@ -11,13 +11,16 @@ import UIKit
 class SocialPostInCardCell: UITableViewCell {
     
     @IBOutlet weak var denyPostBtn: UIButton!
-    @IBOutlet weak var containerStackView: UIStackView!
+    @IBOutlet weak var stackView: UIStackView!
+    
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var foregroundImage: UIImageView!
     @IBOutlet weak var aproveButton: TwoColorButton!
     @IBOutlet weak var circleView: UIView!
+    
     @IBOutlet weak var messageLbl: UILabel!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var shadowView: UIView!
     
     @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
     
@@ -36,8 +39,12 @@ class SocialPostInCardCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.feedBackgroundColor()
-//        addStatusCardTypeView()
+        self.backgroundColor = .clear
+        
+        self.selectionStyle = .none
+        self.circleView.roundCorners(corners: .allCorners, radius: self.circleView.frame.size.width / 2)
+        addShadowToView(shadowView, radius: 4, opacity: 0.5)
+        
         setupCorners()
     }
     
@@ -66,7 +73,7 @@ class SocialPostInCardCell: UITableViewCell {
     
     func setupCorners() {
         DispatchQueue.main.async {
-            self.circleView.roundCorners(corners: .allCorners, radius: self.circleView.frame.size.width / 2)
+            
         }
     }
     

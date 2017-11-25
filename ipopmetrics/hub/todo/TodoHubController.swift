@@ -373,18 +373,17 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         switch(item.type) {
         
             case TodoCardType.socialPosts.rawValue:
+    
                 let cell = tableView.dequeueReusableCell(withIdentifier: "SocialPostInCardCell", for: indexPath) as! SocialPostInCardCell
                 cell.indexPath = indexPath
                 cell.actionSocialDelegate = self
                 //cell.configure(item: item)
+
                 
-                DispatchQueue.main.async {
-                    self.sideShadow(view: cell.containerView)
-                }
-                cell.selectionStyle = .none
                 return cell
             
             case TodoCardType.myAction.rawValue:
+                
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MyActionCard", for: indexPath) as! MyActionCardCell
 
                 return cell
