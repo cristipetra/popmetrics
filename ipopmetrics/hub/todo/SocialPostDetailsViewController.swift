@@ -152,7 +152,7 @@ class SocialPostDetailsViewController: UIViewController {
         if calendarSocialPost != nil {
             socialDelegate?.cancelPostFromSocial!(post: self.calendarSocialPost, indexPath: indexPath)
         } else {
-            socialDelegate?.denyPostFromSocial!(post: self.toDoPost, indexPath: self.indexPath)
+            //socialDelegate?.denyPostFromSocial!(post: self.toDoPost, indexPath: self.indexPath)
         }
         
         self.navigationController?.popViewController(animated: true)
@@ -234,7 +234,7 @@ class SocialPostDetailsViewController: UIViewController {
 }
 
 @objc protocol ActionSocialPostProtocol: class {
-    @objc optional func denyPostFromSocial(post: TodoSocialPost, indexPath: IndexPath)
+    @objc optional func denyPostFromSocial(post: TodoCard, indexPath: IndexPath)
     @objc optional func cancelPostFromSocial(post: CalendarSocialPost, indexPath: IndexPath)
     @objc optional func approvePostFromSocial(post: TodoSocialPost, indexPath: IndexPath)
     
