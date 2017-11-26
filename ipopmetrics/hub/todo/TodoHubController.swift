@@ -48,15 +48,7 @@ enum TodoSection: String {
             return ""
         }
     }
-    
-    func getSectionHeaderHeight() -> CGFloat {
-        return CGFloat(80)
-    }
-    
-    func getSectionFooterHeight() -> CGFloat {
-        return CGFloat(80)
-    }
-    
+
     func getSectionPosition() -> Int {
         return TodoSection.sectionPosition[self]!
     }
@@ -366,24 +358,20 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         
         let card = getCardInSection(todoSection.rawValue, atIndex: rowIdx)
         let cardsCount = countCardsInSection(todoSection.rawValue)
-            
         
         let item = card
         
         switch(item.type) {
         
             case TodoCardType.socialPosts.rawValue:
-    
                 let cell = tableView.dequeueReusableCell(withIdentifier: "SocialPostInCardCell", for: indexPath) as! SocialPostInCardCell
                 cell.setIndexPath(indexPath: indexPath, numberOfCellsInSection: cardsCount)
                 cell.actionSocialDelegate = self
                 //cell.configure(item: item)
 
-                
                 return cell
             
             case TodoCardType.myAction.rawValue:
-                
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MyActionCard", for: indexPath) as! MyActionCardCell
 
                 return cell
@@ -402,7 +390,6 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
                 let cell = UITableViewCell()
                 return cell
         }
-        
         
     }
 
@@ -533,11 +520,11 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
         let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
-        cell.sectionTitleLabel.text = todoSection?.sectionTitle()
+        cell.sectionTitleLabel.text = todoSection?.sectionTitle().uppercased()
         
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
         guard let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
@@ -721,7 +708,7 @@ extension TodoHubController:  TodoCardActionProtocol {
 extension TodoHubController {
     
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
-        print(store.getTodoCards())
+        //print(store.getTodoCards())
         self.tableView.reloadData()
     }
 }
