@@ -22,6 +22,11 @@ class SocialPostInCardCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var shadowView: UIView!
     
+    
+    @IBOutlet weak var containerCornerBottom: UIView!
+    @IBOutlet weak var containerBottom: UIView!
+    @IBOutlet weak var constraintContainerBottom: NSLayoutConstraint!
+    @IBOutlet weak var constraintToolbarHeight: NSLayoutConstraint!
     @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
     
     var todoItem: TodoSocialPost!;
@@ -44,7 +49,7 @@ class SocialPostInCardCell: UITableViewCell {
         self.selectionStyle = .none
         self.circleView.roundCorners(corners: .allCorners, radius: self.circleView.frame.size.width / 2)
         addShadowToView(shadowView, radius: 4, opacity: 0.5)
-        
+
         setupCorners()
     }
     
@@ -57,6 +62,16 @@ class SocialPostInCardCell: UITableViewCell {
         
         aproveButton.addTarget(self, action: #selector(animationHandler), for: .touchUpInside)
         denyPostBtn.addTarget(self, action: #selector(denyPostHandler), for: .touchUpInside)
+    }
+    
+    func setIndexPath(indexPath: IndexPath, numberOfCellsInSection: Int) {
+        if( indexPath.row != 0 ) {
+            constraintToolbarHeight.constant = 0
+        }
+        
+        if( indexPath.row != (numberOfCellsInSection - 1) ) {
+            constraintContainerBottom.constant = 0
+        }
     }
     
     @objc func animationHandler() {
@@ -72,9 +87,7 @@ class SocialPostInCardCell: UITableViewCell {
     }
     
     func setupCorners() {
-        DispatchQueue.main.async {
-            
-        }
+        self.containerCornerBottom.cornerRadius = 14
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -375,7 +375,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
             case TodoCardType.socialPosts.rawValue:
     
                 let cell = tableView.dequeueReusableCell(withIdentifier: "SocialPostInCardCell", for: indexPath) as! SocialPostInCardCell
-                cell.indexPath = indexPath
+                cell.setIndexPath(indexPath: indexPath, numberOfCellsInSection: cardsCount)
                 cell.actionSocialDelegate = self
                 //cell.configure(item: item)
 
@@ -547,29 +547,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         
         switch todoSection {
             case TodoSection.UnapprovedPosts:
-                let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
-                todoFooter.setUpFooterShadowView()
-                todoFooter.xButton.isHidden = true
-                //todoFooter.changeTypeSection(typeSection: StatusArticle(rawValue: sections[section].status)!)
-                //todoFooter.actionButton.addTarget(self, action: #selector(approveCard(_:section:)), for: .touchUpInside)
-                
-                todoFooter.section = section
-                todoFooter.changeTypeSection(typeSection: .unapproved)
-                
-                /*
-                 if(sections[section].allApproved) {
-                 todoFooter.actionButton.changeToDisabled()
-                 todoFooter.setUpDisabledLabels()
-                 todoFooter.setUpLoadMoreDisabled()
-                 }
-                 */
-                if(noItemsLoaded(section) ==  store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count) {
-                    DispatchQueue.main.async {
-                        todoFooter.setUpLoadMoreDisabled()
-                    }
-                }
-                
-                return todoFooter
+                return UITableViewHeaderFooterView()
             default:
                 return  UIView()
         }
