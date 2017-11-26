@@ -60,8 +60,6 @@ class InsightCard: UITableViewCell {
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
         self.feedCard = feedCard
         
-        print(feedCard)
-        
         titleLabel.text = feedCard.headerTitle!
         messageLabel.text = feedCard.message!
         footerVIew.actionButton.changeTitle(feedCard.actionLabel)
