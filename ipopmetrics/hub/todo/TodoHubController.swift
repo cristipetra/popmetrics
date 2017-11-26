@@ -131,12 +131,11 @@ class TodoHubController: BaseViewController {
         
         self.toDoTopView.setActive(section: .unapproved)
         
-        
         self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         self.tableView.estimatedSectionHeaderHeight = 60
         
         self.tableView.sectionFooterHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedSectionFooterHeight = 60
+        self.tableView.estimatedSectionFooterHeight = 0
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
@@ -321,8 +320,7 @@ class TodoHubController: BaseViewController {
         isAllApproved = false
         return isAllApproved
     }
-    
-    
+
     @objc func handlerClickMenu() {
         let modalViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MENU_VC") as! MenuViewController
         // customization:
@@ -345,7 +343,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
 
         return countCardsInSection(todoSection.rawValue)
     }
-    
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionIdx = (indexPath as NSIndexPath).section
@@ -367,7 +365,8 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
                 let cell = tableView.dequeueReusableCell(withIdentifier: "SocialPostInCardCell", for: indexPath) as! SocialPostInCardCell
                 cell.setIndexPath(indexPath: indexPath, numberOfCellsInSection: cardsCount)
                 cell.actionSocialDelegate = self
-                //cell.configure(item: item)
+                
+                cell.configure(item: item)
 
                 return cell
             
@@ -380,7 +379,6 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
                 let cell = tableView.dequeueReusableCell(withIdentifier: "PaidActionCard", for: indexPath) as! PaidActionCardCell
             
                 return cell
-            
             case TodoCardType.emptyState.rawValue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for: indexPath) as! EmptyStateCard
                 cell.selectionStyle = .none
@@ -524,23 +522,6 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         
         return cell
     }
-
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        
-        guard let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
-            else{
-                return UIView()
-        }
-        
-        switch todoSection {
-            case TodoSection.UnapprovedPosts:
-                return UITableViewHeaderFooterView()
-            default:
-                return  UIView()
-        }
-    }
-    
-    
     
     func reloadDataTable() {
         UIView.transition(with: tableView,
