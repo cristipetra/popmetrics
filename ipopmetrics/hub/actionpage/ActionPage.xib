@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,9 +15,6 @@
         </array>
         <array key="OpenSans-ExtraBold.ttf">
             <string>OpenSans-Extrabold</string>
-        </array>
-        <array key="OpenSans-Regular.ttf">
-            <string>OpenSans</string>
         </array>
     </customFonts>
     <objects>
@@ -42,7 +39,7 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="1676"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="CMJ-3S-pPM">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="1410"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1390"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DtL-7f-lTr">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="316"/>
@@ -72,18 +69,18 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oBl-qj-zb7">
                                     <rect key="frame" x="0.0" y="317" width="375" height="60"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Impact Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zja-ii-rmQ">
-                                            <rect key="frame" x="25" y="22" width="90" height="17.5"/>
-                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                            <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ExX-DN-ReU" customClass="ImpactScoreView" customModule="ipopmetrics" customModuleProvider="target">
+                                            <rect key="frame" x="10" y="0.0" width="365" height="60"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="Zja-ii-rmQ" firstAttribute="leading" secondItem="oBl-qj-zb7" secondAttribute="leading" constant="25" id="ksk-X1-sPm"/>
-                                        <constraint firstItem="Zja-ii-rmQ" firstAttribute="centerY" secondItem="oBl-qj-zb7" secondAttribute="centerY" id="p9B-4X-NKU"/>
+                                        <constraint firstItem="ExX-DN-ReU" firstAttribute="top" secondItem="oBl-qj-zb7" secondAttribute="top" id="Ccf-S9-SZG"/>
+                                        <constraint firstAttribute="bottom" secondItem="ExX-DN-ReU" secondAttribute="bottom" id="f3D-vb-Ila"/>
                                         <constraint firstAttribute="height" constant="60" id="pez-Av-kGk"/>
+                                        <constraint firstAttribute="trailing" secondItem="ExX-DN-ReU" secondAttribute="trailing" id="t2t-sd-8xp"/>
+                                        <constraint firstItem="ExX-DN-ReU" firstAttribute="leading" secondItem="oBl-qj-zb7" secondAttribute="leading" constant="10" id="zrm-lA-WE8"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDt-WF-9g5">
@@ -104,14 +101,14 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D9a-9X-GT2">
-                                    <rect key="frame" x="0.0" y="599" width="375" height="440"/>
+                                    <rect key="frame" x="0.0" y="599" width="375" height="420"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="440" id="igX-Pm-Ig8"/>
+                                        <constraint firstAttribute="height" constant="420" id="igX-Pm-Ig8"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvN-nL-tZe">
-                                    <rect key="frame" x="0.0" y="1040" width="375" height="240"/>
+                                    <rect key="frame" x="0.0" y="1020" width="375" height="240"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H9S-LN-qse">
                                             <rect key="frame" x="25" y="0.0" width="340" height="240"/>
@@ -128,7 +125,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X0I-Ot-Br1">
-                                    <rect key="frame" x="0.0" y="1281" width="375" height="64"/>
+                                    <rect key="frame" x="0.0" y="1261" width="375" height="64"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dK6-jM-gca">
                                             <rect key="frame" x="25" y="0.0" width="350" height="64"/>
@@ -157,7 +154,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6YW-AJ-2Mf">
-                                    <rect key="frame" x="0.0" y="1346" width="375" height="64"/>
+                                    <rect key="frame" x="0.0" y="1326" width="375" height="64"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYa-Kt-Pqs">
                                             <rect key="frame" x="25" y="0.0" width="350" height="64"/>

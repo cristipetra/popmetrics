@@ -10,18 +10,19 @@ import UIKit
 
 class SocialPostInCardCell: UITableViewCell {
     
+    
+    @IBOutlet weak var aproveButton: TwoColorButton!
     @IBOutlet weak var denyPostBtn: UIButton!
     @IBOutlet weak var stackView: UIStackView!
     
-    @IBOutlet weak var backgroundImage: UIImageView!
-    @IBOutlet weak var foregroundImage: UIImageView!
-    @IBOutlet weak var aproveButton: TwoColorButton!
+    @IBOutlet weak var cardImage: UIImageView!
+    
     @IBOutlet weak var circleView: UIView!
     
     @IBOutlet weak var messageLbl: UILabel!
+    
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var shadowView: UIView!
-    
     
     @IBOutlet weak var containerCornerBottom: UIView!
     @IBOutlet weak var containerBottom: UIView!
@@ -29,7 +30,7 @@ class SocialPostInCardCell: UITableViewCell {
     @IBOutlet weak var constraintToolbarHeight: NSLayoutConstraint!
     @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
     
-    var todoItem: TodoSocialPost!;
+    private var todoItem: TodoCard!;
     var indexPath: IndexPath!
     
     weak var actionSocialDelegate: ActionSocialPostProtocol!
@@ -53,12 +54,17 @@ class SocialPostInCardCell: UITableViewCell {
         setupCorners()
     }
     
-    func configure(item: TodoSocialPost) {
+    func configure(item: TodoCard) {
         todoItem = item
         
-        messageLbl.text = todoItem.articleText
-        messageLbl.adjustLabelSpacing(spacing: 0, lineHeight: 18, letterSpacing: 0.4)
-        setupStatusCardView( approved: (item.status == "approved" || item.status == "denied"))
+        messageLbl.text = todoItem.message
+        
+        if let imageUri = todoItem.imageUri {
+            let url = URL(string: imageUri)
+            if let _ = url {
+                cardImage.af_setImage(withURL: url!)
+            }
+        }
         
         aproveButton.addTarget(self, action: #selector(animationHandler), for: .touchUpInside)
         denyPostBtn.addTarget(self, action: #selector(denyPostHandler), for: .touchUpInside)
@@ -77,13 +83,12 @@ class SocialPostInCardCell: UITableViewCell {
     @objc func animationHandler() {
         aproveButton.animateButton(decreaseWidth: 120, increaseWidth: 10, imgLeftSpace: 10)
         aproveButton.removeTarget(self, action: #selector(animationHandler), for: .touchUpInside)
-        actionSocialDelegate.approvePostFromSocial!(post: todoItem, indexPath: indexPath)
+        //actionSocialDelegate.approvePostFromSocial!(post: todoItem, indexPath: indexPath)
     }
     
     @objc func denyPostHandler() {
         print("deny post handler")
-        actionSocialDelegate.denyPostFromSocial!(post: todoItem, indexPath: indexPath)
-        
+        //actionSocialDelegate.denyPostFromSocial!(post: todoItem, indexPath: indexPath)
     }
     
     func setupCorners() {
@@ -105,11 +110,13 @@ class SocialPostInCardCell: UITableViewCell {
     }
     
     func setStatusCardViewType() {
+        /*
         if(todoItem.status == "approved") {
             statusCardTypeView.typeStatusView = .approved
         } else if(todoItem.status == "denied") {
             statusCardTypeView.typeStatusView = .denied
         }
+         */
     }
     
 //    func addStatusCardTypeView() {

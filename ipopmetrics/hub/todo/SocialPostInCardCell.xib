@@ -186,11 +186,15 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="aproveButton" destination="eOw-MG-0y9" id="MBd-Cd-APf"/>
+                <outlet property="cardImage" destination="WUH-7z-lCh" id="evS-q5-eIF"/>
                 <outlet property="circleView" destination="uUR-ad-KNx" id="mQT-TA-rFQ"/>
                 <outlet property="constraintContainerBottom" destination="uxa-wD-9ya" id="SG7-K7-uON"/>
                 <outlet property="constraintToolbarHeight" destination="yyp-16-1yb" id="iWQ-hp-0Ip"/>
                 <outlet property="containerBottom" destination="qrH-lG-Erw" id="jt4-Ap-fzn"/>
                 <outlet property="containerCornerBottom" destination="2VX-zs-rFl" id="oAk-wC-mjj"/>
+                <outlet property="denyPostBtn" destination="yhb-xh-eNa" id="7OH-aT-o4A"/>
+                <outlet property="messageLbl" destination="zRH-G2-gC6" id="4qU-k2-Svx"/>
                 <outlet property="shadowView" destination="Zel-Qq-zWo" id="GT3-YJ-VtT"/>
                 <outlet property="stackView" destination="WiB-fl-y5c" id="f5H-ZT-ORM"/>
             </connections>

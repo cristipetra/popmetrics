@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -27,14 +27,21 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RHK-Wo-rDa" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
-                        <rect key="frame" x="10" y="-10.5" width="300" height="29"/>
+                        <rect key="frame" x="10" y="26.5" width="300" height="29"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="29" id="OBr-s7-hMd"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2qy-Km-f1n">
-                        <rect key="frame" x="10" y="18.5" width="300" height="450"/>
+                        <rect key="frame" x="10" y="55.5" width="300" height="450"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ET2-4F-t9a">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="2"/>
+                                <color key="backgroundColor" red="0.74117647058823533" green="0.77254901960784317" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="qKx-3J-5wJ"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is an article for you to read" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWm-YO-eOH">
                                 <rect key="frame" x="20" y="16" width="270" height="54"/>
                                 <constraints>
@@ -49,9 +56,21 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ac9-8F-2bQ" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="355.5" width="300" height="94"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5K-rC-Lev">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="2"/>
+                                        <color key="backgroundColor" red="0.74117647060000003" green="0.7725490196" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="Dtc-3t-Y6u"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="U5K-rC-Lev" firstAttribute="top" secondItem="ac9-8F-2bQ" secondAttribute="top" id="1ea-qH-Yvz"/>
                                     <constraint firstAttribute="height" constant="94" id="1lS-2x-2le"/>
+                                    <constraint firstAttribute="trailing" secondItem="U5K-rC-Lev" secondAttribute="trailing" id="UP3-bA-wMa"/>
+                                    <constraint firstItem="U5K-rC-Lev" firstAttribute="leading" secondItem="ac9-8F-2bQ" secondAttribute="leading" id="sjn-h1-35N"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter is a key access point to increase your social following." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ViH-mX-DwS">
@@ -72,8 +91,11 @@
                             <constraint firstItem="ViH-mX-DwS" firstAttribute="leading" secondItem="rWm-YO-eOH" secondAttribute="leading" id="AQg-nS-36g"/>
                             <constraint firstAttribute="trailing" secondItem="rWm-YO-eOH" secondAttribute="trailing" constant="10" id="EDF-0p-Xgn"/>
                             <constraint firstItem="aNv-If-Qw8" firstAttribute="leading" secondItem="2qy-Km-f1n" secondAttribute="leading" priority="750" constant="5" id="Ied-NF-2VO"/>
+                            <constraint firstItem="ET2-4F-t9a" firstAttribute="leading" secondItem="2qy-Km-f1n" secondAttribute="leading" id="PKV-Mu-gb5"/>
                             <constraint firstAttribute="trailing" secondItem="ac9-8F-2bQ" secondAttribute="trailing" id="RUX-NO-kmV"/>
+                            <constraint firstAttribute="trailing" secondItem="ET2-4F-t9a" secondAttribute="trailing" id="U2F-U2-IQl"/>
                             <constraint firstItem="rWm-YO-eOH" firstAttribute="leading" secondItem="2qy-Km-f1n" secondAttribute="leading" constant="20" id="Uf7-Ns-eKC"/>
+                            <constraint firstItem="ET2-4F-t9a" firstAttribute="top" secondItem="2qy-Km-f1n" secondAttribute="top" id="VyX-NU-iyO"/>
                             <constraint firstAttribute="trailing" secondItem="aNv-If-Qw8" secondAttribute="trailing" priority="750" constant="5" id="WBY-Xe-h7l"/>
                             <constraint firstItem="rWm-YO-eOH" firstAttribute="top" secondItem="2qy-Km-f1n" secondAttribute="top" constant="16" id="Ye8-hk-x4G"/>
                             <constraint firstItem="ac9-8F-2bQ" firstAttribute="leading" secondItem="2qy-Km-f1n" secondAttribute="leading" id="imJ-b8-pFy"/>
@@ -82,7 +104,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1oH-BX-P4L">
-                        <rect key="frame" x="37" y="468" width="2" height="37"/>
+                        <rect key="frame" x="37" y="505" width="2" height="0.0"/>
                         <color key="backgroundColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="2" id="9zD-fR-fDY"/>
@@ -98,7 +120,7 @@
                     <constraint firstAttribute="bottom" secondItem="1oH-BX-P4L" secondAttribute="bottom" id="PRX-xM-KWo"/>
                     <constraint firstAttribute="trailing" secondItem="2qy-Km-f1n" secondAttribute="trailing" constant="10" id="ReJ-9a-kQw"/>
                     <constraint firstItem="1oH-BX-P4L" firstAttribute="top" secondItem="2qy-Km-f1n" secondAttribute="bottom" id="TBg-aM-16y"/>
-                    <constraint firstAttribute="bottom" secondItem="2qy-Km-f1n" secondAttribute="bottom" constant="37" id="guv-sZ-QGd"/>
+                    <constraint firstAttribute="bottom" secondItem="2qy-Km-f1n" secondAttribute="bottom" id="guv-sZ-QGd"/>
                     <constraint firstItem="2qy-Km-f1n" firstAttribute="leading" secondItem="wtH-WR-53d" secondAttribute="leading" constant="10" id="rgf-Yh-ffy"/>
                     <constraint firstItem="RHK-Wo-rDa" firstAttribute="leading" secondItem="wtH-WR-53d" secondAttribute="leading" priority="750" constant="10" id="ryS-FC-yAw"/>
                 </constraints>

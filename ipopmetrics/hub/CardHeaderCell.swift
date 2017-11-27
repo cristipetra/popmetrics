@@ -11,6 +11,7 @@ import UIKit
 class CardHeaderCell: UITableViewCell {
     @IBOutlet weak var connectionView: UIView!
     @IBOutlet weak var roundConnectionView: UIView!
+    
     @IBOutlet weak var sectionTitleLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleLeftAnchor: NSLayoutConstraint!
@@ -24,21 +25,7 @@ class CardHeaderCell: UITableViewCell {
   
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.cloudsColor()
-        containerView.backgroundColor = UIColor.cloudsColor()
-        roundConnectionView.layer.cornerRadius = 6
-        
-        //roundCircleLeftAnchor.constant = 0
-        //titleLeftAnchor.constant = 0
-        
-        
-        connectionView.backgroundColor = PopmetricsColor.salmondColor
-        roundConnectionView.backgroundColor = PopmetricsColor.salmondColor
-        connectionView.isHidden = true
-        roundConnectionView.isHidden = true
-        sectionTitleLabel.font =  UIFont(name: FontBook.extraBold, size: 18)
-        sectionTitleLabel.textColor = PopmetricsColor.weekDaysGrey
-        titleLeftAnchor.constant = 0
+
     }
   
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -103,8 +90,8 @@ class CardHeaderCell: UITableViewCell {
     }
     
     func changeColor(color: UIColor) {
-        connectionView.backgroundColor = color
-        roundConnectionView.backgroundColor = color
+        
+        
         //containerView.backgroundColor = color
         //toolbarView.backgroundColor = color
         //toolbarView.changeColorCircle(color: color)

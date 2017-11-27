@@ -33,13 +33,13 @@ class EmptyStateCard: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         self.backgroundColor = UIColor.feedBackgroundColor()
         self.backgroundImageView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         setupCorners()
         setUpShadowLayer()
         
-        setUpToolbar(imageName: "iconHeaderBranding", titleName: "Popmetrics Insight")
-        self.backgroundImageView.image = UIImage(named: "imagePyramid")
+
         
         footerVIew.actionButton.addTarget(self, action: #selector(handlerActionButton), for: .touchUpInside)
         
@@ -57,7 +57,21 @@ class EmptyStateCard: UITableViewCell {
             backgroundImageView.af_setImage(withURL: URL(string: imageUrl)!)
         }
         
-        //footerVIew.displayOnlyActionButton()
+        self.footerVIew.actionButton.isHidden = true
+    }
+    
+    internal func configure(todoCard: TodoCard) {
+        
+        titleLabel.text = todoCard.headerTitle
+        messageLabel.text = todoCard.message!
+        
+        if let imageUrl = todoCard.imageUri {
+            if let url = URL(string: imageUrl) {
+              backgroundImageView.af_setImage(withURL: url)
+            }
+        }
+        
+        self.footerVIew.actionButton.isHidden = true
     }
     
     @objc func handlerActionButton() {
