@@ -15,7 +15,7 @@ class IceExtendView: UIView {
     
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var messageLbl: UILabel!
-    @IBOutlet weak var costLbl: UILabel!
+    
     @IBOutlet weak var effortLbl: UILabel!
     @IBOutlet weak var impactMultipleMainProgressView: UIView!
     @IBOutlet weak var costMainProgressView: UIView!
@@ -24,6 +24,7 @@ class IceExtendView: UIView {
     
     @IBOutlet var splitSquare: [UIView]!
     @IBOutlet var splitLabels: [UILabel]!
+    @IBOutlet weak var costLbl: UILabel!
     
     @IBOutlet weak var progressCost: GTProgressBar!
     @IBOutlet weak var progressEffort: GTProgressBar!
@@ -93,36 +94,31 @@ class IceExtendView: UIView {
         setProgressEffortStyle()
         setProgressCostStyle()
         
-        //updateValues()
+        updateValues()
     }
     
     func updateValues() {
-        
-        self.updateProgressCost()
-        self.updateProgressEffort()
+        updateProgressCost()
+        updateProgressEffort()
     }
     
     private func updateProgressCost() {
-        let value = CGFloat(80) / CGFloat(100) //Double(feedCard.iceCostPercentage) / Double(100)
+        
+        let value = CGFloat(feedCard.iceCostPercentage) / CGFloat(100)
         self.progressCost.animateTo(progress: value)
         
-        let aproxCharacterStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.regular, size: 18)
-            style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
-        }
-        
-        let extraBoldStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.extraBold, size: 18)
-            style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
-        }
-        
         guard let label = feedCard.iceCostLabel else { return }
-        costLbl.attributedText = "~".set(style: aproxCharacterStyle) + "$\(label)".set(style: extraBoldStyle)
+        
+        costLbl.text = label
     }
     
     private func updateProgressEffort() {
-        let value = CGFloat(50) / CGFloat(100) //Double(feedCard.iceEffortPercentage) / Double(100)
+        let value = CGFloat(feedCard.iceEffortPercentage) / CGFloat(100)
         progressEffort.animateTo(progress: CGFloat(value))
+        
+        if let effort = feedCard.iceEffortLabel {
+            effortLbl.text = effort
+        }
     }
     
     private func setProgressEffortStyle() {
@@ -134,8 +130,6 @@ class IceExtendView: UIView {
         progressEffort.barBorderColor = colorEffort
         progressEffort.displayLabel = false
         progressEffort.cornerRadius = 5
-        
-        
     }
     
     private func setProgressCostStyle() {
@@ -147,7 +141,6 @@ class IceExtendView: UIView {
         progressCost.barBorderColor = colorCost
         progressCost.displayLabel = false
         progressCost.cornerRadius = 5
-        
     }
     
     
@@ -195,10 +188,10 @@ class IceExtendView: UIView {
         
         let impactStyle = Style("impactStyle", { (style) -> (Void) in
             style.font = FontAttribute(FontBook.bold, size: 15)
-            style.color = UIColor(red: 255/255, green: 229/255, blue: 136/255, alpha: 1)
+            style.color = UIColor(red: 255/255, green: 34/255, blue: 108/255, alpha: 1)
         })
         
-        let circaCharacterStyle = Style.default { (style) -> (Void) in
+        let aproxCharacterStyle = Style.default { (style) -> (Void) in
             style.font = FontAttribute(FontBook.regular, size: 15)
             style.color = UIColor(red: 255/255, green: 229/255, blue: 135/255, alpha: 1)
         }
@@ -210,7 +203,7 @@ class IceExtendView: UIView {
         
         let costStyle = Style.default { (style) -> (Void) in
             style.font = FontAttribute(FontBook.extraBold, size: 15)
-            style.color = UIColor(red: 255/255, green: 229/255, blue: 135/255, alpha: 1)
+            style.color = UIColor(red: 177/255, green: 154/255, blue: 219/255, alpha: 1)
         }
         
         let effortStyle = Style.default { (style) -> (Void) in
@@ -218,19 +211,19 @@ class IceExtendView: UIView {
             style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
         }
         
-        let circaCharacterStyle2 = Style.default { (style) -> (Void) in
+        let aproxCharacterStyle2 = Style.default { (style) -> (Void) in
             style.font = FontAttribute(FontBook.regular, size: 15)
             style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
         }
         
-        let circaChar = "~".set(style: circaCharacterStyle)
-        let circaChar2 = "~".set(style: circaCharacterStyle2)
+        let aproxChar = "~".set(style: aproxCharacterStyle)
+        let aproxChar2 = "~".set(style: aproxCharacterStyle2)
         let dollarChar =  "$".set(style: dollarSignStyle)
         let impactLvlAttr = impactLevel.set(style: impactStyle)
         let costAttr = cost.set(style: costStyle)
         let effortAttr = effort.set(style: effortStyle)
         
-        let attrString: NSMutableAttributedString = "This is a " + impactLvlAttr + " task that we can complete for " + circaChar + "" + dollarChar + "" + costAttr + " or you can do it in " +  circaChar2 + "" + effortAttr + " that will help your website traffic most"
+        let attrString: NSMutableAttributedString = "This is a " + impactLvlAttr + " task that we can complete for " + aproxChar + "" + "" + costAttr + " or you can do it in " +  aproxChar2 + "" + effortAttr + " that will help your website traffic most"
         
         messageLbl.attributedText = attrString
     }

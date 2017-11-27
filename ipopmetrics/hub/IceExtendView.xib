@@ -26,8 +26,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IceExtendView" customModule="ipopmetrics" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="zl7-Wu-eHT" id="msg-F3-wP8"/>
-                <outlet property="costLbl" destination="L5C-MA-HmF" id="4GI-pk-M5i"/>
-                <outlet property="effortLbl" destination="xFv-Rm-0en" id="srp-Qy-Tg9"/>
+                <outlet property="costLbl" destination="4tG-xA-Rjh" id="eKV-9l-Qdo"/>
+                <outlet property="effortLbl" destination="lhV-Ll-oIN" id="2cJ-Pz-7cv"/>
                 <outlet property="impactMultipleMainProgressView" destination="7Eh-sX-IVc" id="7bN-E4-LUi"/>
                 <outlet property="messageLbl" destination="OBq-o9-0vf" id="fBu-Tk-ORe"/>
                 <outlet property="progressCost" destination="LmF-2L-j1m" id="gXL-hc-Xj4"/>
