@@ -35,8 +35,15 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2qy-Km-f1n">
                         <rect key="frame" x="10" y="55.5" width="300" height="450"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ET2-4F-t9a">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="2"/>
+                                <color key="backgroundColor" red="0.74117647058823533" green="0.77254901960784317" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="qKx-3J-5wJ"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is an article for you to read" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWm-YO-eOH">
-                                <rect key="frame" x="20" y="16" width="270" height="54"/>
+                                <rect key="frame" x="20" y="16" width="270" height="63"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="80" id="1wy-wF-K0u"/>
                                 </constraints>
@@ -45,17 +52,29 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePyramid" translatesAutoresizingMaskIntoConstraints="NO" id="aNv-If-Qw8">
-                                <rect key="frame" x="5" y="100" width="290" height="179"/>
+                                <rect key="frame" x="5" y="109" width="290" height="179"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ac9-8F-2bQ" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="355.5" width="300" height="94"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5K-rC-Lev">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="2"/>
+                                        <color key="backgroundColor" red="0.74117647060000003" green="0.7725490196" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="Dtc-3t-Y6u"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="U5K-rC-Lev" firstAttribute="top" secondItem="ac9-8F-2bQ" secondAttribute="top" id="1ea-qH-Yvz"/>
                                     <constraint firstAttribute="height" constant="94" id="1lS-2x-2le"/>
+                                    <constraint firstAttribute="trailing" secondItem="U5K-rC-Lev" secondAttribute="trailing" id="UP3-bA-wMa"/>
+                                    <constraint firstItem="U5K-rC-Lev" firstAttribute="leading" secondItem="ac9-8F-2bQ" secondAttribute="leading" id="sjn-h1-35N"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter is a key access point to increase your social following." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ViH-mX-DwS">
-                                <rect key="frame" x="20" y="289" width="270" height="35"/>
+                                <rect key="frame" x="20" y="298" width="270" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="112" id="HfM-9b-kgi"/>
                                 </constraints>
@@ -72,8 +91,11 @@
                             <constraint firstItem="ViH-mX-DwS" firstAttribute="leading" secondItem="rWm-YO-eOH" secondAttribute="leading" id="AQg-nS-36g"/>
                             <constraint firstAttribute="trailing" secondItem="rWm-YO-eOH" secondAttribute="trailing" constant="10" id="EDF-0p-Xgn"/>
                             <constraint firstItem="aNv-If-Qw8" firstAttribute="leading" secondItem="2qy-Km-f1n" secondAttribute="leading" priority="750" constant="5" id="Ied-NF-2VO"/>
+                            <constraint firstItem="ET2-4F-t9a" firstAttribute="leading" secondItem="2qy-Km-f1n" secondAttribute="leading" id="PKV-Mu-gb5"/>
                             <constraint firstAttribute="trailing" secondItem="ac9-8F-2bQ" secondAttribute="trailing" id="RUX-NO-kmV"/>
+                            <constraint firstAttribute="trailing" secondItem="ET2-4F-t9a" secondAttribute="trailing" id="U2F-U2-IQl"/>
                             <constraint firstItem="rWm-YO-eOH" firstAttribute="leading" secondItem="2qy-Km-f1n" secondAttribute="leading" constant="20" id="Uf7-Ns-eKC"/>
+                            <constraint firstItem="ET2-4F-t9a" firstAttribute="top" secondItem="2qy-Km-f1n" secondAttribute="top" id="VyX-NU-iyO"/>
                             <constraint firstAttribute="trailing" secondItem="aNv-If-Qw8" secondAttribute="trailing" priority="750" constant="5" id="WBY-Xe-h7l"/>
                             <constraint firstItem="rWm-YO-eOH" firstAttribute="top" secondItem="2qy-Km-f1n" secondAttribute="top" constant="16" id="Ye8-hk-x4G"/>
                             <constraint firstItem="ac9-8F-2bQ" firstAttribute="leading" secondItem="2qy-Km-f1n" secondAttribute="leading" id="imJ-b8-pFy"/>

@@ -58,7 +58,7 @@ class EmptyStateCard: UITableViewCell {
             backgroundImageView.af_setImage(withURL: URL(string: imageUrl)!)
         }
         
-        //footerVIew.displayOnlyActionButton()
+        self.footerVIew.actionButton.isHidden = true
     }
     
     internal func configure(todoCard: TodoCard) {
