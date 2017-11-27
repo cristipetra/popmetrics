@@ -8,20 +8,29 @@
 
 import UIKit
 
-class ToDoCardCell: UITableViewCell {
+class SocialPostInCardCell: UITableViewCell {
     
-    @IBOutlet weak var denyPostBtn: UIButton!
-    @IBOutlet weak var containerStackView: UIStackView!
-    @IBOutlet weak var backgroundImage: UIImageView!
-    @IBOutlet weak var foregroundImage: UIImageView!
+    
     @IBOutlet weak var aproveButton: TwoColorButton!
-    @IBOutlet weak var circleView: UIView!
-    @IBOutlet weak var messageLbl: UILabel!
-    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var denyPostBtn: UIButton!
+    @IBOutlet weak var stackView: UIStackView!
     
+    @IBOutlet weak var cardImage: UIImageView!
+    
+    @IBOutlet weak var circleView: UIView!
+    
+    @IBOutlet weak var messageLbl: UILabel!
+    
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var shadowView: UIView!
+    
+    @IBOutlet weak var containerCornerBottom: UIView!
+    @IBOutlet weak var containerBottom: UIView!
+    @IBOutlet weak var constraintContainerBottom: NSLayoutConstraint!
+    @IBOutlet weak var constraintToolbarHeight: NSLayoutConstraint!
     @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
     
-    var todoItem: TodoSocialPost!;
+    private var todoItem: TodoCard!;
     var indexPath: IndexPath!
     
     weak var actionSocialDelegate: ActionSocialPostProtocol!
@@ -36,38 +45,54 @@ class ToDoCardCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.feedBackgroundColor()
-        addStatusCardTypeView()
+        self.backgroundColor = .clear
+        
+        self.selectionStyle = .none
+        self.circleView.roundCorners(corners: .allCorners, radius: self.circleView.frame.size.width / 2)
+        addShadowToView(shadowView, radius: 4, opacity: 0.5)
+
         setupCorners()
     }
     
-    func configure(item: TodoSocialPost) {
+    func configure(item: TodoCard) {
         todoItem = item
         
-        messageLbl.text = todoItem.articleText
-        messageLbl.adjustLabelSpacing(spacing: 0, lineHeight: 18, letterSpacing: 0.4)
-        setupStatusCardView( approved: (item.status == "approved" || item.status == "denied"))
+        messageLbl.text = todoItem.message
+        
+        if let imageUri = todoItem.imageUri {
+            let url = URL(string: imageUri)
+            if let _ = url {
+                cardImage.af_setImage(withURL: url!)
+            }
+        }
         
         aproveButton.addTarget(self, action: #selector(animationHandler), for: .touchUpInside)
         denyPostBtn.addTarget(self, action: #selector(denyPostHandler), for: .touchUpInside)
     }
     
+    func setIndexPath(indexPath: IndexPath, numberOfCellsInSection: Int) {
+        if( indexPath.row != 0 ) {
+            constraintToolbarHeight.constant = 0
+        }
+        
+        if( indexPath.row != (numberOfCellsInSection - 1) ) {
+            constraintContainerBottom.constant = 0
+        }
+    }
+    
     @objc func animationHandler() {
         aproveButton.animateButton(decreaseWidth: 120, increaseWidth: 10, imgLeftSpace: 10)
         aproveButton.removeTarget(self, action: #selector(animationHandler), for: .touchUpInside)
-        actionSocialDelegate.approvePostFromSocial!(post: todoItem, indexPath: indexPath)
+        //actionSocialDelegate.approvePostFromSocial!(post: todoItem, indexPath: indexPath)
     }
     
     @objc func denyPostHandler() {
         print("deny post handler")
-        actionSocialDelegate.denyPostFromSocial!(post: todoItem, indexPath: indexPath)
-        
+        //actionSocialDelegate.denyPostFromSocial!(post: todoItem, indexPath: indexPath)
     }
     
     func setupCorners() {
-        DispatchQueue.main.async {
-            self.circleView.roundCorners(corners: .allCorners, radius: self.circleView.frame.size.width / 2)
-        }
+        self.containerCornerBottom.cornerRadius = 14
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -85,21 +110,23 @@ class ToDoCardCell: UITableViewCell {
     }
     
     func setStatusCardViewType() {
+        /*
         if(todoItem.status == "approved") {
             statusCardTypeView.typeStatusView = .approved
         } else if(todoItem.status == "denied") {
             statusCardTypeView.typeStatusView = .denied
         }
+         */
     }
     
-    func addStatusCardTypeView() {
-        self.addSubview(statusCardTypeView)
-        statusCardTypeView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        statusCardTypeView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-        statusCardTypeView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
-        statusCardTypeView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
-        statusCardTypeView.layer.cornerRadius = 6
-    }
+//    func addStatusCardTypeView() {
+//        self.addSubview(statusCardTypeView)
+//        statusCardTypeView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+//        statusCardTypeView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+//        statusCardTypeView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+//        statusCardTypeView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
+//        statusCardTypeView.layer.cornerRadius = 6
+//    }
     
     func sideShadow(view: UIView) {
         view.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor

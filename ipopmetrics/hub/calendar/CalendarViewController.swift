@@ -297,8 +297,8 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         let sectionCards = store.getCalendarSocialPostsForCard(store.getCalendarCards()[sectionIdx], datesSelected: datesSelected)
         let card = store.getCalendarCards()[sectionIdx]
         if sectionCards.isEmpty {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCard", for: indexPath) as! EmptyCardView
-            cell.setupView(type: .calendar, calendarStatus: StatusArticle(rawValue: (card.section))!)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for: indexPath) as! EmptyStateCard
+//            cell.setupView(type: .calendar, calendarStatus: StatusArticle(rawValue: (card.section))!)
             cell.backgroundColor = UIColor.feedBackgroundColor()
             cell.selectionStyle = .none
             return cell
@@ -315,7 +315,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-    
+    /*
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let detailsViewController = UIStoryboard(name: "TodoPostDetails", bundle: nil).instantiateViewController(withIdentifier: "postDetailsId") as! SocialPostDetailsViewController
@@ -328,7 +328,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         self.navigationController?.pushViewController(detailsViewController, animated: true)
         
     }
-    
+    */
     func getCalendarPosts() {
         
     }

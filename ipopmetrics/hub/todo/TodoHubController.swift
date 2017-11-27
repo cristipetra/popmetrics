@@ -48,15 +48,7 @@ enum TodoSection: String {
             return ""
         }
     }
-    
-    func getSectionHeaderHeight() -> CGFloat {
-        return CGFloat(80)
-    }
-    
-    func getSectionFooterHeight() -> CGFloat {
-        return CGFloat(80)
-    }
-    
+
     func getSectionPosition() -> Int {
         return TodoSection.sectionPosition[self]!
     }
@@ -64,13 +56,13 @@ enum TodoSection: String {
 
 enum TodoSectionType: String {
     case unapprovedPosts = "Unapproved Posts"
-    case myActions = "MyActions"
+    case myActions = "My Actions"
     case paidActions = "Paid Actions"
     case moreOnTheWay = "More On The Way"
 }
 
 enum TodoCardType: String {
-    case socialPosts = "social_post"
+    case socialPosts = "social_posts"
     case myAction = "my_action"
     case paidAction = "paid_action"
     case emptyState = "empty_state"
@@ -107,14 +99,16 @@ class TodoHubController: BaseViewController {
     @IBOutlet weak var topAnchorTableView: NSLayoutConstraint!
     
     
+    let indexToSection = [0: TodoSectionType.unapprovedPosts.rawValue,
+                          1: TodoSectionType.myActions.rawValue,
+                          2: TodoSectionType.paidActions.rawValue,
+                          3: HomeSectionType.moreOnTheWay.rawValue]
+    
     let store = TodoStore.getInstance()
 
     var approveIndex = 3
     var noItemsLoaded: [Int] = []
     let noItemsLoadeInitial = 3
-    
-    let indexToSection = [0: "Unapproved",
-                          1: "My Actions"]
     
     var scrollToRow: IndexPath = IndexPath(row: 0, section: 0)
     
@@ -137,9 +131,15 @@ class TodoHubController: BaseViewController {
         
         self.toDoTopView.setActive(section: .unapproved)
         
+        self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedSectionHeaderHeight = 60
+        
+        self.tableView.sectionFooterHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedSectionFooterHeight = 0
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 400
+        
+        self.tableView.estimatedRowHeight = 450
         
         // NotificationCenter observers
         let nc = NotificationCenter.default
@@ -219,8 +219,8 @@ class TodoHubController: BaseViewController {
     }
     
     internal func registerCellsForTable() {
-        let toDoCardCell = UINib(nibName: "ToDoCardCell", bundle: nil)
-        tableView.register(toDoCardCell, forCellReuseIdentifier: "toDoCardCellId")
+        let toDoCardCell = UINib(nibName: "SocialPostInCardCell", bundle: nil)
+        tableView.register(toDoCardCell, forCellReuseIdentifier: "SocialPostInCardCell")
         
         let toDoHeaderCardNib = UINib(nibName: "CardHeaderCell", bundle: nil)
         tableView.register(toDoHeaderCardNib, forCellReuseIdentifier: "CardHeaderCell")
@@ -239,11 +239,14 @@ class TodoHubController: BaseViewController {
         let todoHeader = UINib(nibName: "CardHeaderView", bundle: nil)
         tableView.register(todoHeader, forHeaderFooterViewReuseIdentifier: "CardHeaderView")
         
-        let emptyCard = UINib(nibName: "EmptyCard", bundle: nil)
-        tableView.register(emptyCard, forCellReuseIdentifier: "EmptyCard")
+        let emptyCard = UINib(nibName: "EmptyStateCard", bundle: nil)
+        tableView.register(emptyCard, forCellReuseIdentifier: "EmptyStateCard")
         
-        let todoMyActionCardNib = UINib(nibName: "TodoMyActionCard", bundle: nil)
-        tableView.register(todoMyActionCardNib, forCellReuseIdentifier: "TodoActionCard")
+        let todoMyActionCardNib = UINib(nibName: "MyActionCard", bundle: nil)
+        tableView.register(todoMyActionCardNib, forCellReuseIdentifier: "MyActionCard")
+        
+        let paidActionCardNib = UINib(nibName: "PaidActionCard", bundle: nil)
+        tableView.register(paidActionCardNib, forCellReuseIdentifier: "PaidActionCard")
     }
     
     internal func setUpNavigationBar() {
@@ -262,13 +265,19 @@ class TodoHubController: BaseViewController {
     }
     
     func getCardInSection( _ section: String, atIndex:Int) -> TodoCard {
+        
         let nonEmptyCards = store.getNonEmptyTodoCardsWithSection(section)
         if nonEmptyCards.count == 0 {
             let emptyCards = store.getEmptyTodoCardsWithSection(section)
             return emptyCards[atIndex]
         }
         else {
-            return nonEmptyCards[atIndex]
+            if section == TodoSection.UnapprovedPosts.rawValue {
+                return nonEmptyCards[0]  // There is always the same card
+            }
+            else {
+                return nonEmptyCards[atIndex]
+            }
         }
     }
     
@@ -279,7 +288,12 @@ class TodoHubController: BaseViewController {
             return emptyCards.count
         }
         else {
-            return nonEmptyCards.count
+            if section == TodoSection.UnapprovedPosts.rawValue {
+                return 3 // TODO - for now
+            }
+            else {
+                return nonEmptyCards.count
+            }
         }
     }
     
@@ -306,8 +320,7 @@ class TodoHubController: BaseViewController {
         isAllApproved = false
         return isAllApproved
     }
-    
-    
+
     @objc func handlerClickMenu() {
         let modalViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MENU_VC") as! MenuViewController
         // customization:
@@ -320,6 +333,17 @@ class TodoHubController: BaseViewController {
 
 extension TodoHubController: UITableViewDelegate, UITableViewDataSource, ApproveDenySinglePostProtocol {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.indexToSection.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
+            else { return 0 }
+
+        return countCardsInSection(todoSection.rawValue)
+    }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionIdx = (indexPath as NSIndexPath).section
@@ -338,39 +362,32 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         switch(item.type) {
         
             case TodoCardType.socialPosts.rawValue:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCardCellId", for: indexPath) as! ToDoCardCell
-                cell.indexPath = indexPath
+                let cell = tableView.dequeueReusableCell(withIdentifier: "SocialPostInCardCell", for: indexPath) as! SocialPostInCardCell
+                cell.setIndexPath(indexPath: indexPath, numberOfCellsInSection: cardsCount)
                 cell.actionSocialDelegate = self
-                //cell.configure(item: item)
                 
-                DispatchQueue.main.async {
-                    self.sideShadow(view: cell.containerView)
-                }
-                cell.selectionStyle = .none
+                cell.configure(item: item)
+
                 return cell
             
             case TodoCardType.myAction.rawValue:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TodoActionCard", for: indexPath) as! TodoMyActionCardCell
-
-//                cell.delegate = self
-//                cell.configure(item)
-                
-
+                let cell = tableView.dequeueReusableCell(withIdentifier: "MyActionCard", for: indexPath) as! MyActionCardCell
+                cell.configure(item)
+                return cell
+            
+            case TodoCardType.paidAction.rawValue:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "PaidActionCard", for: indexPath) as! PaidActionCardCell
+                cell.configure(item)
                 return cell
             case TodoCardType.emptyState.rawValue:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! EmptyStateCardCell
-                cell.changeTitleWithSpacing(title: "More on it's way!")
-                cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
-                cell.selectionStyle = .none
-                cell.goToButton.changeTitle("View To Do List")
-                cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
+                let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for: indexPath) as! EmptyStateCard
+                cell.configure(todoCard: item)
                 
                 return cell
             default:
                 let cell = UITableViewCell()
                 return cell
         }
-        
         
     }
 
@@ -413,20 +430,27 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
 //        }
 //    }
     
-    /*
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let detailsViewController = UIStoryboard(name: "TodoPostDetails", bundle: nil).instantiateViewController(withIdentifier: "postDetailsId") as! SocialPostDetailsViewController
-        detailsViewController.hidesBottomBarWhenPushed = true
-        
+        /*
         let socialPost = store.getTodoSocialPostsForCard(store.getTodoCards()[indexPath.section])[indexPath.row] //store.getTodoCards()[indexPath.section]
         
         detailsViewController.socialDelegate = self
         detailsViewController.configure(todoItem: socialPost,indexPath: indexPath)
-        self.navigationController?.pushViewController(detailsViewController, animated: true)
+         */
+        
+        if (indexPath.section != 0) { return }
+ 
+    
+        let todoSection = TodoSection.init(rawValue: self.indexToSection[indexPath.section]!)
+        let card = getCardInSection((todoSection?.rawValue)!, atIndex: indexPath.row)
+        
+        let detailsVC = SocialPostDetailsViewController(nibName: "SocialPostDetails", bundle: nil)
+        detailsVC.configure(todoCard: card)
+        self.navigationController?.pushViewController(detailsVC, animated: true)
         
     }
-    */
+    
     
     func addApprovedView() {
         self.view.insertSubview(bannerMessageView, aboveSubview: tableView)
@@ -501,78 +525,9 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
         let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
-        cell.sectionTitleLabel.text = todoSection?.sectionTitle()
+        cell.sectionTitleLabel.text = todoSection?.sectionTitle().uppercased()
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        
-        guard let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
-            else{
-                return UIView()
-        }
-        
-        switch todoSection {
-            case TodoSection.UnapprovedPosts:
-                let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
-                todoFooter.setUpFooterShadowView()
-                todoFooter.xButton.isHidden = true
-                //todoFooter.changeTypeSection(typeSection: StatusArticle(rawValue: sections[section].status)!)
-                //todoFooter.actionButton.addTarget(self, action: #selector(approveCard(_:section:)), for: .touchUpInside)
-                
-                todoFooter.section = section
-                todoFooter.changeTypeSection(typeSection: .unapproved)
-                
-                /*
-                 if(sections[section].allApproved) {
-                 todoFooter.actionButton.changeToDisabled()
-                 todoFooter.setUpDisabledLabels()
-                 todoFooter.setUpLoadMoreDisabled()
-                 }
-                 */
-                if(noItemsLoaded(section) ==  store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count) {
-                    DispatchQueue.main.async {
-                        todoFooter.setUpLoadMoreDisabled()
-                    }
-                }
-                
-                return todoFooter
-            default:
-                return  UIView()
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        guard let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
-            else { return 0 }
-        let sectionCards = store.getTodoCardsWithSection(todoSection.rawValue)
-        if sectionCards.count == 0 {
-            return 0
-        }
-        return todoSection.getSectionHeaderHeight()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        guard let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
-            else { return 0 }
-        let sectionCards = store.getTodoCardsWithSection(todoSection.rawValue)
-        if sectionCards.count == 0 {
-            return 0
-        }
-        return todoSection.getSectionFooterHeight()
-    }
-    
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return self.indexToSection.count
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
-            else { return 0 }
-        return countCardsInSection(todoSection.rawValue)
     }
     
     func reloadDataTable() {
@@ -583,22 +538,6 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         })
     }
     
-    /*
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        guard let todoSection = TodoSection.init(rawValue: self.indexToSection[indexPath.section]!)
-            else { return 0 }
-        
-        let card = getCardInSection(todoSection.rawValue, atIndex:indexPath.row)
-        if indexPath.row > 0  && todoSection == TodoSection.MyActions {
-            // moreInfo card
-            return 226
-        }
-        
-        guard let cardType = TodoCardType(rawValue: card.type) else { return 0}
-        return cardType.getCardHeight()
-    }
-     */
     
     func noItemsLoaded(_ section: Int) -> Int {
         if( noItemsLoaded.isEmpty || noItemsLoaded.count <= section) {
@@ -757,7 +696,7 @@ extension TodoHubController:  TodoCardActionProtocol {
 extension TodoHubController {
     
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
-        print(store.getTodoCards())
+        //print(store.getTodoCards())
         self.tableView.reloadData()
     }
 }

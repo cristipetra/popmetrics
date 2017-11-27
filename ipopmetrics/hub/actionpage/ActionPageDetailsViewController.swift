@@ -56,7 +56,6 @@ class ActionPageDetailsViewController: UIViewController {
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
         self.feedCard = feedCard
-        print(feedCard)
         recommendActionHandler = handler
         iceView.configure(feedCard)
     }
@@ -64,7 +63,7 @@ class ActionPageDetailsViewController: UIViewController {
     private func updateView() {
         titleArticle.text = feedCard.headerTitle
         
-        if let imageUrl = feedCard.blogImageUrl {
+        if let imageUrl = feedCard.imageUri {
             cardImage.af_setImage(withURL: URL(string: imageUrl)!)
         }
         

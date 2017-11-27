@@ -135,3 +135,16 @@ class CalendarCardSimpleViewCell: UITableViewCell {
     }
     
 }
+
+extension UILabel {
+    func adjustLabelSpacing(spacing: CGFloat, lineHeight: CGFloat, letterSpacing: CGFloat) {
+        let attributedString = NSMutableAttributedString(string: self.text!)
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = spacing
+        style.maximumLineHeight = lineHeight
+        attributedString.addAttribute(NSAttributedStringKey.kern, value: letterSpacing, range: NSRange(location: 0, length: (self.text?.characters.count)!))
+        attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: style, range: NSRange(location: 0, length: (self.text?.characters.count)!))
+        self.attributedText = attributedString
+    }
+}
+

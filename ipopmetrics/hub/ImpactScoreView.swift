@@ -58,30 +58,34 @@ class ImpactScoreView: UIView {
     }
     
     private func setup() {
-        
-        addTitle()
-        addImpactScores()
+        addElements()
     }
     
-    private func addTitle() {
+    private func addElements() {
+        //text left
         self.addSubview(titleView)
         
         titleView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15).isActive = true
         self.titleView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
-    }
-    
-    private func addImpactScores() {
+        
+        //impact score lbl
         self.addSubview(impactScoreLbl)
         
-        impactScoreLbl.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 105).isActive = true
+        let constraintScoreLbl = impactScoreLbl.leftAnchor.constraint(equalTo: self.titleView.rightAnchor, constant: 10)
+        constraintScoreLbl.isActive = true
         impactScoreLbl.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         
+        //progress bar
         self.addSubview(progress)
         progress.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         progress.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         progress.heightAnchor.constraint(equalToConstant: 10).isActive = true
-        progress.widthAnchor.constraint(equalToConstant: 179).isActive = true
-    
+        
+        let constraintProgressWidthAnchor: NSLayoutConstraint = progress.widthAnchor.constraint(equalToConstant: 179)
+        constraintProgressWidthAnchor.isActive = true
+        constraintProgressWidthAnchor.priority = UILayoutPriority.defaultLow
+        
+        impactScoreLbl.rightAnchor.constraint(equalTo: progress.leftAnchor, constant: -10).isActive = true
     }
     
     internal func setProgress(_ value: CGFloat) {

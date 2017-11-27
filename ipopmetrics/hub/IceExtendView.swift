@@ -15,18 +15,20 @@ class IceExtendView: UIView {
     
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var messageLbl: UILabel!
-    @IBOutlet weak var costLbl: UILabel!
+    
     @IBOutlet weak var effortLbl: UILabel!
     @IBOutlet weak var impactMultipleMainProgressView: UIView!
     @IBOutlet weak var costMainProgressView: UIView!
     @IBOutlet weak var effortMainProgressView: UIView!
     @IBOutlet weak var titleLbl: UILabel!
     
-    @IBOutlet var splitSquare: [UILabel]!
+    @IBOutlet var splitSquare: [UIView]!
     @IBOutlet var splitLabels: [UILabel]!
+    @IBOutlet weak var costLbl: UILabel!
     
     @IBOutlet weak var progressCost: GTProgressBar!
     @IBOutlet weak var progressEffort: GTProgressBar!
+    @IBOutlet var splitLabelsLeadingAnchor: [NSLayoutConstraint]!
     
     
     private let colorCost = UIColor(red: 177/255, green: 154/255, blue: 219/255, alpha: 1)
@@ -56,7 +58,7 @@ class IceExtendView: UIView {
         containerView.frame = self.bounds
         containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         containerView.layoutIfNeeded()
-        
+        adjustSplitLabelToScreen()
         setCornerRadious()
     }
     
@@ -66,6 +68,22 @@ class IceExtendView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+    }
+    
+    func adjustSplitLabelToScreen() {
+        
+        if UIScreen.main.bounds.width > 320 && UIScreen.main.bounds.width < 414 {
+            splitLabelsLeadingAnchor.forEach({ (leadingAnchor) in
+                leadingAnchor.constant = 12
+                leadingAnchor.isActive = true
+            })
+        } else if UIScreen.main.bounds.width > 375 {
+            splitLabelsLeadingAnchor.forEach({ (leadingAnchor) in
+                leadingAnchor.constant = 28
+                leadingAnchor.isActive = true
+            })
+        }
+        
     }
     
     private func updateView() {
@@ -79,37 +97,32 @@ class IceExtendView: UIView {
         updateValues()
     }
     
-    private func updateValues() {
-    
+    func updateValues() {
         updateProgressCost()
         updateProgressEffort()
     }
     
     private func updateProgressCost() {
-        let value = Double(feedCard.iceCostPercentage) / Double(100)
-        progressCost.animateTo(progress: CGFloat(value))
         
-
-        let aproxCharacterStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.regular, size: 18)
-            style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
-        }
-        
-        let extraBoldStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.extraBold, size: 18)
-            style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
-        }
+        let value = CGFloat(feedCard.iceCostPercentage) / CGFloat(100)
+        self.progressCost.animateTo(progress: value)
         
         guard let label = feedCard.iceCostLabel else { return }
-        costLbl.attributedText = "~".set(style: aproxCharacterStyle) + "$\(label)".set(style: extraBoldStyle)
+        
+        costLbl.text = label
     }
     
     private func updateProgressEffort() {
-        let value = Double(feedCard.iceEffortPercentage) / Double(100)
+        let value = CGFloat(feedCard.iceEffortPercentage) / CGFloat(100)
         progressEffort.animateTo(progress: CGFloat(value))
+        
+        if let effort = feedCard.iceEffortLabel {
+            effortLbl.text = effort
+        }
     }
     
     private func setProgressEffortStyle() {
+        progressEffort.progress = 0
         progressEffort.barBackgroundColor = colorBackgroundBar
         progressEffort.barFillColor = colorEffort
         progressEffort.barBorderWidth = 0
@@ -117,10 +130,10 @@ class IceExtendView: UIView {
         progressEffort.barBorderColor = colorEffort
         progressEffort.displayLabel = false
         progressEffort.cornerRadius = 5
-        
     }
     
     private func setProgressCostStyle() {
+        progressCost.progress = 0
         progressCost.barBackgroundColor = colorBackgroundBar
         progressCost.barFillColor = colorCost
         progressCost.barBorderWidth = 0
@@ -128,14 +141,13 @@ class IceExtendView: UIView {
         progressCost.barBorderColor = colorCost
         progressCost.displayLabel = false
         progressCost.cornerRadius = 5
-        
     }
-
+    
     
     private func setCornerRadious() {
         
         impactMultipleMainProgressView.layer.cornerRadius = 4
-    
+        
         splitSquare.forEach { (label) in
             label.layer.cornerRadius = 2
             label.layer.masksToBounds = true
@@ -176,10 +188,10 @@ class IceExtendView: UIView {
         
         let impactStyle = Style("impactStyle", { (style) -> (Void) in
             style.font = FontAttribute(FontBook.bold, size: 15)
-            style.color = UIColor(red: 255/255, green: 229/255, blue: 136/255, alpha: 1)
+            style.color = UIColor(red: 255/255, green: 34/255, blue: 108/255, alpha: 1)
         })
         
-        let circaCharacterStyle = Style.default { (style) -> (Void) in
+        let aproxCharacterStyle = Style.default { (style) -> (Void) in
             style.font = FontAttribute(FontBook.regular, size: 15)
             style.color = UIColor(red: 255/255, green: 229/255, blue: 135/255, alpha: 1)
         }
@@ -191,7 +203,7 @@ class IceExtendView: UIView {
         
         let costStyle = Style.default { (style) -> (Void) in
             style.font = FontAttribute(FontBook.extraBold, size: 15)
-            style.color = UIColor(red: 255/255, green: 229/255, blue: 135/255, alpha: 1)
+            style.color = UIColor(red: 177/255, green: 154/255, blue: 219/255, alpha: 1)
         }
         
         let effortStyle = Style.default { (style) -> (Void) in
@@ -199,19 +211,19 @@ class IceExtendView: UIView {
             style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
         }
         
-        let circaCharacterStyle2 = Style.default { (style) -> (Void) in
+        let aproxCharacterStyle2 = Style.default { (style) -> (Void) in
             style.font = FontAttribute(FontBook.regular, size: 15)
             style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
         }
         
-        let circaChar = "~".set(style: circaCharacterStyle)
-        let circaChar2 = "~".set(style: circaCharacterStyle2)
+        let aproxChar = "~".set(style: aproxCharacterStyle)
+        let aproxChar2 = "~".set(style: aproxCharacterStyle2)
         let dollarChar =  "$".set(style: dollarSignStyle)
         let impactLvlAttr = impactLevel.set(style: impactStyle)
         let costAttr = cost.set(style: costStyle)
         let effortAttr = effort.set(style: effortStyle)
         
-        let attrString: NSMutableAttributedString = "This is a " + impactLvlAttr + " task that we can complete for " + circaChar + "" + dollarChar + "" + costAttr + " or you can do it in " +  circaChar2 + "" + effortAttr + " that will help your website traffic most"
+        let attrString: NSMutableAttributedString = "This is a " + impactLvlAttr + " task that we can complete for " + aproxChar + "" + "" + costAttr + " or you can do it in " +  aproxChar2 + "" + effortAttr + " that will help your website traffic most"
         
         messageLbl.attributedText = attrString
     }
@@ -291,12 +303,12 @@ class IceExtendView: UIView {
     }
     
     func setProgress(animationBounds: CGRect, value: String, childOff: UIView, animationColor: UIColor?, animationDuration: CGFloat?) {
-        let impactProgressView = M13ProgressViewBorderedBar(frame: childOff.bounds)
+        let impactProgressView = M13ProgressViewBorderedBar(frame: animationBounds)
         
         guard let progress = NumberFormatter().number(from: value) else {return}
         
         
-        var progressValue = CGFloat(truncating: progress) / 100
+        let progressValue = CGFloat(truncating: progress) / 100
         
         impactProgressView.primaryColor = animationColor ?? UIColor.red
         
@@ -312,3 +324,4 @@ class IceExtendView: UIView {
         
     }
 }
+

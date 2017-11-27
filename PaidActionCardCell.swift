@@ -1,5 +1,5 @@
 //
-//  TodoMyActionCardCell.swift
+//  PaidActionCardCell.swift
 //  ipopmetrics
 //
 //  Created by Cristian Petra on 24/11/2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodoMyActionCardCell: UITableViewCell {
+class PaidActionCardCell: UITableViewCell {
     
     @IBOutlet weak var wrapperView: UIStackView!
     
@@ -16,10 +16,10 @@ class TodoMyActionCardCell: UITableViewCell {
     @IBOutlet weak var cardTitle: UILabel!
     @IBOutlet weak var cardImageView: UIImageView!
     var todoCard: TodoCard!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-     
+        
         self.backgroundColor = .clear
         self.selectionStyle = .none
         
@@ -49,7 +49,7 @@ class TodoMyActionCardCell: UITableViewCell {
         
         updateView()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -58,5 +58,6 @@ class TodoMyActionCardCell: UITableViewCell {
         wrapperView.layer.cornerRadius = 14
         wrapperView.layer.masksToBounds = true
     }
-
+    
 }
+

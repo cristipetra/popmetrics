@@ -8,12 +8,7 @@
 
 import UIKit
 
-@objc protocol RecommendeCellDelegate: class {
-    @objc func recommendedCellDidTapAction(_ feedCard: FeedCard)
-    @objc func cellDidTapMoreInfo(_ feedCard: FeedCard)
-}
-
-class InsightCard: UITableViewCell {
+class EmptyStateCard: UITableViewCell {
     
     @IBOutlet weak var toolBarView: ToolbarViewCell!
     @IBOutlet weak var containerView: UIView!
@@ -38,20 +33,14 @@ class InsightCard: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         self.backgroundColor = UIColor.feedBackgroundColor()
         self.backgroundImageView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         setupCorners()
         setUpShadowLayer()
         
-        setUpToolbar(imageName: "iconHeaderBranding", titleName: "Popmetrics Insight")
-        titleHeightConstraint.constant = 150
-        titleLabel.numberOfLines = 4
-        self.titleLabel.font = UIFont(name: FontBook.alfaRegular, size: 26)
-        self.backgroundImageView.image = UIImage(named: "imagePyramid")
-        self.messageLabel.textColor = UIColor.white
-        self.messageLabel.font = UIFont(name: FontBook.regular, size: 18)
-        self.messageLabel.numberOfLines = 5
-            
+
+        
         footerVIew.actionButton.addTarget(self, action: #selector(handlerActionButton), for: .touchUpInside)
         
         footerVIew.xButton.addTarget(self, action: #selector(handlerMoreInfo), for: .touchUpInside)
@@ -68,7 +57,21 @@ class InsightCard: UITableViewCell {
             backgroundImageView.af_setImage(withURL: URL(string: imageUrl)!)
         }
         
-        //footerVIew.displayOnlyActionButton()
+        self.footerVIew.actionButton.isHidden = true
+    }
+    
+    internal func configure(todoCard: TodoCard) {
+        
+        titleLabel.text = todoCard.headerTitle
+        messageLabel.text = todoCard.message!
+        
+        if let imageUrl = todoCard.imageUri {
+            if let url = URL(string: imageUrl) {
+              backgroundImageView.af_setImage(withURL: url)
+            }
+        }
+        
+        self.footerVIew.actionButton.isHidden = true
     }
     
     @objc func handlerActionButton() {
@@ -95,28 +98,26 @@ class InsightCard: UITableViewCell {
     
     private func setTitleRecommended(title: String) {
         titleLabel.text = title
-        titleLabel.textColor = UIColor.white
-        self.titleLabel.font = UIFont(name: FontBook.bold, size: 23)
     }
     
     private func setTitleInsight(title: String) {
         titleLabel.text = title
-        titleLabel.textColor = UIColor.white
-        self.titleLabel.font = UIFont(name: FontBook.bold, size: 18)
     }
     
     private func setMessage(message: String) {
         messageLabel.text = message
-        messageLabel.numberOfLines = 5
     }
     
     private func setUpToolbar(imageName: String, titleName: String) {
+
+//        let toolbarController: CardToolbarController  = CardToolbarController()
+//        toolbarController.setUpTopView(toolbarView: self.toolBarView)
         
-        self.toolBarView.isLeftImageHidden = false
-        self.toolBarView.leftImage.image = UIImage(named: imageName)
-        self.toolBarView.title.text = titleName
-        self.toolBarView.leftImage.contentMode = UIViewContentMode.scaleAspectFit
-        self.toolBarView.title.font = UIFont(name: FontBook.bold, size: 15)
+//        self.toolBarView.isLeftImageHidden = false
+//        self.toolBarView.leftImage.image = UIImage(named: imageName)
+//        self.toolBarView.title.text = titleName
+//        self.toolBarView.leftImage.contentMode = UIViewContentMode.scaleAspectFit
+//        self.toolBarView.title.font = UIFont(name: FontBook.bold, size: 15)
     }
     
     func setUpShadowLayer() {
@@ -133,3 +134,4 @@ class InsightCard: UITableViewCell {
     }
     
 }
+

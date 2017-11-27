@@ -44,18 +44,20 @@ class InsightPageDetailsViewController: UIViewController {
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
         self.feedCard = feedCard
-        print(feedCard)
         recommendActionHandler = handler
     }
     
     private func updateView() {
         titleArticle.text = feedCard.headerTitle
         
-        if let imageUrl = feedCard.blogImageUrl {
-            blogImage.af_setImage(withURL: URL(string: imageUrl)!)
+        if let cardImageUrl = feedCard.imageUri {
+            cardImage.af_setImage(withURL: URL(string: cardImageUrl)!)
         }
         
         blogTitle.text = feedCard.blogTitle
+        if let blogImageUrl = feedCard.blogImageUrl {
+            blogImage.af_setImage(withURL: URL(string: blogImageUrl)!)
+        }
         blogSummary.text = feedCard.blogSummary
         
         displayInsightArguments()
