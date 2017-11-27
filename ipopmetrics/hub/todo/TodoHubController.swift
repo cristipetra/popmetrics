@@ -439,8 +439,16 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         detailsViewController.configure(todoItem: socialPost,indexPath: indexPath)
          */
         
+        if (indexPath.section != 0) { return }
+ 
+    
+        let todoSection = TodoSection.init(rawValue: self.indexToSection[indexPath.section]!)
+        let card = getCardInSection((todoSection?.rawValue)!, atIndex: indexPath.row)
+        
         let detailsVC = SocialPostDetailsViewController(nibName: "SocialPostDetails", bundle: nil)
+        detailsVC.configure(todoCard: card)
         self.navigationController?.pushViewController(detailsVC, animated: true)
+        
     }
     
     

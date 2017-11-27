@@ -33,14 +33,13 @@ class EmptyStateCard: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.selectionStyle = .none
         self.backgroundColor = UIColor.feedBackgroundColor()
         self.backgroundImageView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         setupCorners()
         setUpShadowLayer()
         
-        setUpToolbar(imageName: "iconHeaderBranding", titleName: "Popmetrics Insight")
-        self.backgroundImageView.image = UIImage(named: "imagePyramid")
+
         
         footerVIew.actionButton.addTarget(self, action: #selector(handlerActionButton), for: .touchUpInside)
         

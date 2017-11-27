@@ -11,6 +11,12 @@ import UIKit
 class SocialPostDetailsViewController: UIViewController {
     
     @IBOutlet var containerView: UIView!
+    @IBOutlet weak var recommendedLabel: UILabel!
+    @IBOutlet weak var titleBlogLabel: UILabel!
+    @IBOutlet weak var blogUrl: UILabel!
+    @IBOutlet weak var blogMessage: UILabel!
+    @IBOutlet weak var scheduleLabel: UILabel!
+    @IBOutlet weak var cardImage: UIImageView!
     
     lazy var buttonContainerView: UIView = {
         let view = UIView()
@@ -40,29 +46,50 @@ class SocialPostDetailsViewController: UIViewController {
         return button
     }()
     
+    private var todoCard: TodoCard!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationWithBackButton()
         
         addBottomButtons()
+        updateView()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    /*
-    func configure(socialPost: TodoSocialPost) {
-        recommendedLabel.text = socialPost.articleText
-        if let title = socialPost.articleTitle {
-            titleLabel.text = title
-        }
-        postUrl.text = socialPost.articleUrl
-        
-        scheduleTimeLabel.text = formatDate(date: socialPost.updateDate)
-        
+    
+    func configure(todoCard: TodoCard) {
+        self.todoCard = todoCard
     }
-     */
+    
+    private func updateView() {
+        if let imageUri = todoCard.imageUri {
+            if let url = URL(string: imageUri) {
+                cardImage.af_setImage(withURL: url)
+            }
+        }
+    
+        if let message = todoCard.message {
+            recommendedLabel.text = message
+        }
+    
+        scheduleLabel.text = formatDate(date: todoCard.updateDate)
+    
+        if let url = todoCard.blogUrl {
+            blogUrl.text = url
+        }
+    
+        if let title = todoCard.blogTitle {
+            titleBlogLabel.text = title
+        }
+    
+        if let message = todoCard.message {
+            blogMessage.text = message
+        }
+    }
     
     private func setupNavigationWithBackButton() {
         let titleWindow = "Social Post"
