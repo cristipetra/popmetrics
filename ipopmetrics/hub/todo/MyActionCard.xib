@@ -28,27 +28,27 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCB-xj-owl">
-                        <rect key="frame" x="8" y="8" width="634" height="230"/>
+                        <rect key="frame" x="10" y="10" width="630" height="230"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BWl-x9-5uP">
-                        <rect key="frame" x="8" y="8" width="634" height="230"/>
+                        <rect key="frame" x="10" y="10" width="630" height="230"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gkb-sc-ncD" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="634" height="29"/>
+                                <rect key="frame" x="0.0" y="0.0" width="630" height="29"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="Ty2-aa-5Qg"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="98a-Qz-UOJ">
-                                <rect key="frame" x="0.0" y="29" width="634" height="95"/>
+                                <rect key="frame" x="0.0" y="29" width="630" height="95"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_card_notifications" translatesAutoresizingMaskIntoConstraints="NO" id="MXV-vd-4Ph">
-                                        <rect key="frame" x="0.0" y="0.0" width="634" height="186"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="630" height="186"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Google Tracker to your wordpress site." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FR7-RV-auc">
-                                        <rect key="frame" x="15" y="5" width="609" height="28"/>
+                                        <rect key="frame" x="15" y="5" width="605" height="28"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -66,24 +66,24 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WSW-hN-hAP" customClass="ImpactScoreView" customModule="ipopmetrics" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="124" width="634" height="55"/>
+                                <rect key="frame" x="0.0" y="124" width="630" height="55"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="Ajt-5p-RBV"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Xk-jo-k0B">
-                                <rect key="frame" x="0.0" y="179" width="634" height="51"/>
+                                <rect key="frame" x="0.0" y="179" width="630" height="51"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tYC-OR-1yr">
-                                        <rect key="frame" x="0.0" y="0.0" width="634" height="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="630" height="20"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="K8q-rK-L8v"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udn-BV-gDU">
-                                        <rect key="frame" x="428" y="8" width="191" height="35"/>
+                                        <rect key="frame" x="424" y="8" width="191" height="35"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="191" id="0mv-vx-wZn"/>
@@ -137,18 +137,15 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="BWl-x9-5uP" firstAttribute="top" secondItem="Dj0-fH-iEj" secondAttribute="topMargin" id="5q9-gy-9Jw"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="BWl-x9-5uP" secondAttribute="trailing" id="H7b-ky-NfV"/>
-                    <constraint firstItem="qCB-xj-owl" firstAttribute="leading" secondItem="Dj0-fH-iEj" secondAttribute="leadingMargin" id="PBy-jL-HZT"/>
+                    <constraint firstItem="BWl-x9-5uP" firstAttribute="top" secondItem="Dj0-fH-iEj" secondAttribute="topMargin" constant="2" id="5q9-gy-9Jw"/>
                     <constraint firstItem="BWl-x9-5uP" firstAttribute="height" secondItem="qCB-xj-owl" secondAttribute="height" id="Sv5-vr-d5p"/>
-                    <constraint firstItem="qCB-xj-owl" firstAttribute="top" secondItem="Dj0-fH-iEj" secondAttribute="topMargin" id="ToE-d7-VuB"/>
-                    <constraint firstItem="BWl-x9-5uP" firstAttribute="width" secondItem="qCB-xj-owl" secondAttribute="width" id="a3h-it-EBn"/>
-                    <constraint firstItem="BWl-x9-5uP" firstAttribute="leading" secondItem="Dj0-fH-iEj" secondAttribute="leadingMargin" id="cXp-sK-6Ua"/>
+                    <constraint firstItem="BWl-x9-5uP" firstAttribute="leading" secondItem="Dj0-fH-iEj" secondAttribute="leading" constant="10" id="WrF-j7-hD6"/>
+                    <constraint firstItem="qCB-xj-owl" firstAttribute="top" secondItem="BWl-x9-5uP" secondAttribute="top" id="XEN-O4-QJx"/>
+                    <constraint firstItem="BWl-x9-5uP" firstAttribute="width" secondItem="qCB-xj-owl" secondAttribute="width" priority="250" id="Z92-zT-ypV"/>
+                    <constraint firstItem="qCB-xj-owl" firstAttribute="leading" secondItem="BWl-x9-5uP" secondAttribute="leading" id="dSb-aV-Iye"/>
+                    <constraint firstAttribute="trailing" secondItem="BWl-x9-5uP" secondAttribute="trailing" constant="10" id="jqg-df-fLY"/>
                     <constraint firstAttribute="bottomMargin" secondItem="BWl-x9-5uP" secondAttribute="bottom" constant="15" id="lxD-Pj-2Cu"/>
                 </constraints>
-                <userDefinedRuntimeAttributes>
-                    <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
-                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <connections>
                 <outlet property="cardImageView" destination="MXV-vd-4Ph" id="fJ5-hu-DAr"/>
