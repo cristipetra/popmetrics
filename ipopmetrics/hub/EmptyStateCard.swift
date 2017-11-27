@@ -33,6 +33,7 @@ class EmptyStateCard: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         self.backgroundColor = UIColor.feedBackgroundColor()
         self.backgroundImageView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         setupCorners()
@@ -58,6 +59,20 @@ class EmptyStateCard: UITableViewCell {
         }
         
         //footerVIew.displayOnlyActionButton()
+    }
+    
+    internal func configure(todoCard: TodoCard) {
+        
+        titleLabel.text = todoCard.headerTitle
+        messageLabel.text = todoCard.message!
+        
+        if let imageUrl = todoCard.imageUri {
+            if let url = URL(string: imageUrl) {
+              backgroundImageView.af_setImage(withURL: url)
+            }
+        }
+        
+        self.footerVIew.actionButton.isHidden = true
     }
     
     @objc func handlerActionButton() {

@@ -372,16 +372,16 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
             
             case TodoCardType.myAction.rawValue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MyActionCard", for: indexPath) as! MyActionCardCell
-
+                cell.configure(item)
                 return cell
             
             case TodoCardType.paidAction.rawValue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "PaidActionCard", for: indexPath) as! PaidActionCardCell
-            
+                cell.configure(item)
                 return cell
             case TodoCardType.emptyState.rawValue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for: indexPath) as! EmptyStateCard
-                cell.selectionStyle = .none
+                cell.configure(todoCard: item)
                 
                 return cell
             default:

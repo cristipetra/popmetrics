@@ -22,11 +22,12 @@ class IceExtendView: UIView {
     @IBOutlet weak var effortMainProgressView: UIView!
     @IBOutlet weak var titleLbl: UILabel!
     
-    @IBOutlet var splitSquare: [UILabel]!
+    @IBOutlet var splitSquare: [UIView]!
     @IBOutlet var splitLabels: [UILabel]!
     
     @IBOutlet weak var progressCost: GTProgressBar!
     @IBOutlet weak var progressEffort: GTProgressBar!
+    @IBOutlet var splitLabelsLeadingAnchor: [NSLayoutConstraint]!
     
     
     private let colorCost = UIColor(red: 177/255, green: 154/255, blue: 219/255, alpha: 1)
@@ -56,7 +57,7 @@ class IceExtendView: UIView {
         containerView.frame = self.bounds
         containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         containerView.layoutIfNeeded()
-        
+        adjustSplitLabelToScreen()
         setCornerRadious()
     }
     
@@ -68,6 +69,22 @@ class IceExtendView: UIView {
         super.layoutSubviews()
     }
     
+    func adjustSplitLabelToScreen() {
+        
+        if UIScreen.main.bounds.width > 320 && UIScreen.main.bounds.width < 414 {
+            splitLabelsLeadingAnchor.forEach({ (leadingAnchor) in
+                leadingAnchor.constant = 12
+                leadingAnchor.isActive = true
+            })
+        } else if UIScreen.main.bounds.width > 375 {
+            splitLabelsLeadingAnchor.forEach({ (leadingAnchor) in
+                leadingAnchor.constant = 28
+                leadingAnchor.isActive = true
+            })
+        }
+        
+    }
+    
     private func updateView() {
         setUpLabel()
         
@@ -76,20 +93,19 @@ class IceExtendView: UIView {
         setProgressEffortStyle()
         setProgressCostStyle()
         
-        updateValues()
+        //updateValues()
     }
     
-    private func updateValues() {
-    
-        updateProgressCost()
-        updateProgressEffort()
+    func updateValues() {
+        
+        self.updateProgressCost()
+        self.updateProgressEffort()
     }
     
     private func updateProgressCost() {
-        let value = Double(feedCard.iceCostPercentage) / Double(100)
-        progressCost.animateTo(progress: CGFloat(value))
+        let value = CGFloat(80) / CGFloat(100) //Double(feedCard.iceCostPercentage) / Double(100)
+        self.progressCost.animateTo(progress: value)
         
-
         let aproxCharacterStyle = Style.default { (style) -> (Void) in
             style.font = FontAttribute(FontBook.regular, size: 18)
             style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
@@ -105,11 +121,12 @@ class IceExtendView: UIView {
     }
     
     private func updateProgressEffort() {
-        let value = Double(feedCard.iceEffortPercentage) / Double(100)
+        let value = CGFloat(50) / CGFloat(100) //Double(feedCard.iceEffortPercentage) / Double(100)
         progressEffort.animateTo(progress: CGFloat(value))
     }
     
     private func setProgressEffortStyle() {
+        progressEffort.progress = 0
         progressEffort.barBackgroundColor = colorBackgroundBar
         progressEffort.barFillColor = colorEffort
         progressEffort.barBorderWidth = 0
@@ -118,9 +135,11 @@ class IceExtendView: UIView {
         progressEffort.displayLabel = false
         progressEffort.cornerRadius = 5
         
+        
     }
     
     private func setProgressCostStyle() {
+        progressCost.progress = 0
         progressCost.barBackgroundColor = colorBackgroundBar
         progressCost.barFillColor = colorCost
         progressCost.barBorderWidth = 0
@@ -130,12 +149,12 @@ class IceExtendView: UIView {
         progressCost.cornerRadius = 5
         
     }
-
+    
     
     private func setCornerRadious() {
         
         impactMultipleMainProgressView.layer.cornerRadius = 4
-    
+        
         splitSquare.forEach { (label) in
             label.layer.cornerRadius = 2
             label.layer.masksToBounds = true
@@ -291,12 +310,12 @@ class IceExtendView: UIView {
     }
     
     func setProgress(animationBounds: CGRect, value: String, childOff: UIView, animationColor: UIColor?, animationDuration: CGFloat?) {
-        let impactProgressView = M13ProgressViewBorderedBar(frame: childOff.bounds)
+        let impactProgressView = M13ProgressViewBorderedBar(frame: animationBounds)
         
         guard let progress = NumberFormatter().number(from: value) else {return}
         
         
-        var progressValue = CGFloat(truncating: progress) / 100
+        let progressValue = CGFloat(truncating: progress) / 100
         
         impactProgressView.primaryColor = animationColor ?? UIColor.red
         
@@ -312,3 +331,4 @@ class IceExtendView: UIView {
         
     }
 }
+
