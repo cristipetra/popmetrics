@@ -73,7 +73,7 @@ PODS:
   - JSONWebToken (2.2.0)
   - lottie-ios (2.1.4)
   - M13ProgressSuite (1.2.9)
-  - markymark (4.0.1)
+  - markymark (4.0.2)
   - MarqueeLabel/Swift (3.1.3)
   - MGSwipeTableCell (1.6.6)
   - MJCalendar (0.4.0):
@@ -209,7 +209,7 @@ SPEC CHECKSUMS:
   JSONWebToken: 6fae32489632658d563dd6952a5c34020ea813e4
   lottie-ios: 94fa2d82547ce3adf1e61157653ba99999fd279f
   M13ProgressSuite: ea9f7263e73e9215e6849dfa54e29ee0ad6a145c
-  markymark: c2d2d2b8ddfb09acf5153e5c86291f2624350b58
+  markymark: 0415d62ff86424bb1193f995aaf46a246510ac38
   MarqueeLabel: baa5753dcbd36dca080e1f5c589a665aa5c906f1
   MGSwipeTableCell: c3bc6e261e7bc06c112909fe3fb8205de286082c
   MJCalendar: a529b085b0b988ae7b493ce7c000946cc186bf0e
