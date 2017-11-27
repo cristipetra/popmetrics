@@ -315,7 +315,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-    
+    /*
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let detailsViewController = UIStoryboard(name: "TodoPostDetails", bundle: nil).instantiateViewController(withIdentifier: "postDetailsId") as! SocialPostDetailsViewController
@@ -328,7 +328,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         self.navigationController?.pushViewController(detailsViewController, animated: true)
         
     }
-    
+    */
     func getCalendarPosts() {
         
     }

@@ -2,7 +2,7 @@
 //  SocialPostDetailsViewController.swift
 //  ipopmetrics
 //
-//  Created by Cristian Petra on 27/10/2017.
+//  Created by Cristian Petra on 27/11/2017.
 //  Copyright © 2017 Popmetrics. All rights reserved.
 //
 
@@ -10,30 +10,16 @@ import UIKit
 
 class SocialPostDetailsViewController: UIViewController {
     
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var scrollView: UIScrollView!
-    
-    lazy var messageLabel: UITextView = {
-        
-        let textView = UITextView()
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.isScrollEnabled = false
-        textView.isEditable = false
-        textView.font = UIFont(name: FontBook.regular, size: 15)
-        textView.textAlignment = .left
-        textView.textColor = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1)
-        return textView
-    }()
+    @IBOutlet var containerView: UIView!
     
     lazy var buttonContainerView: UIView = {
-        
         let view = UIView()
+        view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     lazy var separatorView: UIView = {
-        
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(red: 189/255, green: 197/255, blue: 203/255, alpha: 1)
@@ -41,7 +27,6 @@ class SocialPostDetailsViewController: UIViewController {
     }()
     
     lazy var denyPostBtn: UIButton = {
-        
         let button = UIButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(PopmetricsColor.salmondColor, for: .normal)
@@ -50,68 +35,51 @@ class SocialPostDetailsViewController: UIViewController {
     }()
     
     lazy var approvePostBtn: TwoColorButton = {
-        
         let button = TwoColorButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
-        
     }()
-    
-    let postDetailsView = SocialPostDetailsView()
-    
-    weak var socialDelegate: ActionSocialPostProtocol?
-    var indexPath: IndexPath!
-    
-    private var toDoPost: TodoSocialPost! {
-        didSet {
-            postDetailsView.configureView(socialPost: toDoPost)
-            messageLabel.text = toDoPost.articleText
-        }
-    }
-    
-    private var calendarSocialPost: CalendarSocialPost! {
-        didSet {
-            postDetailsView.configureCalendarView(socialPost: calendarSocialPost)
-            messageLabel.text = calendarSocialPost.articleSummary
-            self.denyPostBtn.setTitle("Cancel Post", for: .normal)
-            approvePostBtn.isHidden = true
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addPostDetails()
-        addBottomButtons()
-        addTextView()
+        setupNavigationWithBackButton()
         
-        addStyleToButtons()
-        setUpNavigationBar()
+        addBottomButtons()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    /*
+    func configure(socialPost: TodoSocialPost) {
+        recommendedLabel.text = socialPost.articleText
+        if let title = socialPost.articleTitle {
+            titleLabel.text = title
+        }
+        postUrl.text = socialPost.articleUrl
+        
+        scheduleTimeLabel.text = formatDate(date: socialPost.updateDate)
+        
+    }
+     */
     
-    func configure(todoItem: TodoSocialPost,indexPath: IndexPath) {
-        self.toDoPost = todoItem
-        self.indexPath = indexPath
+    private func setupNavigationWithBackButton() {
+        let titleWindow = "Social Post"
+        let titleButton = UIBarButtonItem(title: titleWindow, style: .plain, target: self, action: nil)
+        titleButton.tintColor = PopmetricsColor.darkGrey
+        let titleFont = UIFont(name: FontBook.extraBold, size: 18)
+        titleButton.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
+        
+        let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "calendarIconLeftArrow"), style: .plain, target: self, action: #selector(handlerClickBack))
+        
+        self.navigationItem.leftBarButtonItems = [leftButtonItem, titleButton]
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
+        
     }
     
-    func configureCalendar(calendarItem: CalendarSocialPost, indexPath: IndexPath) {
-        self.calendarSocialPost = calendarItem
-        self.indexPath = indexPath
-    }
-    
-    func addPostDetails() {
-        
-        containerView.addSubview(postDetailsView)
-        postDetailsView.translatesAutoresizingMaskIntoConstraints = false
-        postDetailsView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0).isActive = true
-        postDetailsView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
-        postDetailsView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
-        postDetailsView.heightAnchor.constraint(equalToConstant: 550).isActive = true
-        
+    @objc func handlerClickBack() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func addBottomButtons() {
@@ -142,100 +110,39 @@ class SocialPostDetailsViewController: UIViewController {
         separatorView.rightAnchor.constraint(equalTo: buttonContainerView.rightAnchor).isActive = true
         separatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
-        denyPostBtn.addTarget(self, action: #selector(denyPost(sender:)), for: .touchUpInside)
-        approvePostBtn.addTarget(self, action: #selector(approvePost(sender:)), for: .touchUpInside)
+        //denyPostBtn.addTarget(self, action: #selector(denyPost(sender:)), for: .touchUpInside)
+        //approvePostBtn.addTarget(self, action: #selector(approvePost(sender:)), for: .touchUpInside)
         
+        buttonContainerView.isHidden = true
+    }
+    
+    func formatDate(date: Date) -> String {
+        
+        let dateFormater = DateFormatter()
+        var days: String = ""
+        var hour: String = ""
+        var fullDate: String = ""
+        
+        dateFormater.dateFormat = "MM/dd"
+        dateFormater.pmSymbol = "p.m"
+        days = dateFormater.string(from: date)
+        
+        dateFormater.dateFormat = "h:mm a"
+        dateFormater.amSymbol = "a.m"
+        hour = dateFormater.string(from: date)
+        
+        
+        fullDate = "\(days) @ \(hour)"
+        return fullDate
         
     }
     
-    @objc func denyPost(sender: UIButton) {
-        if calendarSocialPost != nil {
-            socialDelegate?.cancelPostFromSocial!(post: self.calendarSocialPost, indexPath: indexPath)
-        } else {
-            //socialDelegate?.denyPostFromSocial!(post: self.toDoPost, indexPath: self.indexPath)
-        }
-        
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    @objc func approvePost(sender: TwoColorButton) {
-        socialDelegate?.approvePostFromSocial!(post: self.toDoPost, indexPath: self.indexPath)
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    func setUpNavigationBar() {
-        
-        let text = UIBarButtonItem(title: "Social Post", style: .plain, target: self, action: nil)
-        text.tintColor = PopmetricsColor.darkGrey
-        let titleFont = UIFont(name: FontBook.bold, size: 18)
-        text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
-        
-        self.navigationController?.navigationBar.backgroundColor = UIColor.white
-        navigationController?.navigationBar.isTranslucent = false
-        
-        let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "iconCalLeftBold"), style: .plain, target: self, action: #selector(handlerClickBack))
-        self.navigationItem.leftBarButtonItems = [leftButtonItem, text]
-        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
-        
-    }
-    
-    @objc func handlerClickBack() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    
-    func addTextView() {
-        
-        containerView.addSubview(messageLabel)
-        messageLabel.topAnchor.constraint(equalTo: postDetailsView.bottomAnchor, constant: 0).isActive = true
-        messageLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor,constant: 25).isActive = true
-        messageLabel.bottomAnchor.constraint(equalTo: buttonContainerView.topAnchor,constant: 0).isActive = true
-        messageLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
-        
-    }
-    
-    private func addStyleToButtons() {
-        
-        denyPostBtn.titleLabel?.font = UIFont(name: FontBook.bold, size: 15)
-        approvePostBtn.setTitleColor(PopmetricsColor.todoBrown, for: .normal)
-        
-        let topColor = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
-        let bottomColor = UIColor(red: 251/255, green: 192/255, blue: 46/255, alpha: 1)
-        let colors: [UIColor] = [topColor , bottomColor]
-        
-        approvePostBtn.layer.masksToBounds = true
-        approvePostBtn.layer.cornerRadius = 18
-        setupTwoColorView(button: approvePostBtn, colors: colors)
-        approvePostBtn.labelText = "Approve Post"
-        approvePostBtn.image = UIImage(named: "iconRightYellow")
-        
-    }
-    
-    private func setupTwoColorView(button: UIButton, colors: [UIColor]) {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: 161, height: 35)
-        
-        var colorsArray: [CGColor] = []
-        var locationsArray: [NSNumber] = []
-        for (index, color) in colors.enumerated() {
-            // append same color twice
-            colorsArray.append(color.cgColor)
-            colorsArray.append(color.cgColor)
-            locationsArray.append(NSNumber(value: (1.0 / Double(colors.count)) * Double(index)))
-            locationsArray.append(NSNumber(value: (1.0 / Double(colors.count)) * Double(index + 1)))
-        }
-        
-        gradientLayer.colors = colorsArray
-        gradientLayer.locations = locationsArray
-        
-        button.layer.addSublayer(gradientLayer)
-        
-    }
 }
+
 
 @objc protocol ActionSocialPostProtocol: class {
     @objc optional func denyPostFromSocial(post: TodoCard, indexPath: IndexPath)
     @objc optional func cancelPostFromSocial(post: CalendarSocialPost, indexPath: IndexPath)
     @objc optional func approvePostFromSocial(post: TodoSocialPost, indexPath: IndexPath)
-    
 }
+

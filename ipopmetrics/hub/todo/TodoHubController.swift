@@ -430,20 +430,19 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
 //        }
 //    }
     
-    /*
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let detailsViewController = UIStoryboard(name: "TodoPostDetails", bundle: nil).instantiateViewController(withIdentifier: "postDetailsId") as! SocialPostDetailsViewController
-        detailsViewController.hidesBottomBarWhenPushed = true
-        
+        /*
         let socialPost = store.getTodoSocialPostsForCard(store.getTodoCards()[indexPath.section])[indexPath.row] //store.getTodoCards()[indexPath.section]
         
         detailsViewController.socialDelegate = self
         detailsViewController.configure(todoItem: socialPost,indexPath: indexPath)
-        self.navigationController?.pushViewController(detailsViewController, animated: true)
+         */
         
+        let detailsVC = SocialPostDetailsViewController(nibName: "SocialPostDetails", bundle: nil)
+        self.navigationController?.pushViewController(detailsVC, animated: true)
     }
-    */
+    
     
     func addApprovedView() {
         self.view.insertSubview(bannerMessageView, aboveSubview: tableView)
