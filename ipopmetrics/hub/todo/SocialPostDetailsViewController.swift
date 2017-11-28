@@ -100,6 +100,7 @@ class SocialPostDetailsViewController: UIViewController {
         
         let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "calendarIconLeftArrow"), style: .plain, target: self, action: #selector(handlerClickBack))
         
+        self.navigationItem.setLeftBarButton(leftButtonItem, animated: false)
         self.navigationItem.leftBarButtonItems = [leftButtonItem, titleButton]
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
         

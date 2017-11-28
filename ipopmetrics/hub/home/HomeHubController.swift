@@ -90,7 +90,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     let store = FeedStore.getInstance()
     
     var shouldDisplayCell = true
-    private var isShowAllRequiredCards = false
+    private var isShowAllRequiredCards = true
     
     let transition = BubbleTransition();
     var transitionButton:UIButton = UIButton();
@@ -251,6 +251,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         switch(item.type) {
         case HomeCardType.requiredAction.rawValue:
+            
             if isShowAllRequiredCards {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RequriedActionCard", for: indexPath) as! RequiredActionCard
                 cell.configure(item, handler: self.requiredActionHandler)
@@ -304,6 +305,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             return cell
         default:
             let cell = UITableViewCell()
+            cell.backgroundColor = .clear
             return cell
         }
     }
@@ -374,7 +376,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let homeSection = HomeSection.init(rawValue: self.indexToSection[section]!)
         let count = countCardsInSection((homeSection?.rawValue)!)
         if count < 1 {
-            return UIView()
+            let emptyView = UIView()
+            emptyView.translatesAutoresizingMaskIntoConstraints = false
+            emptyView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            return emptyView
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
