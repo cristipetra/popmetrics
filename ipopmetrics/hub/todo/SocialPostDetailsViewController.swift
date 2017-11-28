@@ -93,15 +93,19 @@ class SocialPostDetailsViewController: UIViewController {
     
     private func setupNavigationWithBackButton() {
         let titleWindow = "Social Post"
+        
+        let leftSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        leftSpace.width = 5
+        
         let titleButton = UIBarButtonItem(title: titleWindow, style: .plain, target: self, action: nil)
         titleButton.tintColor = PopmetricsColor.darkGrey
         let titleFont = UIFont(name: FontBook.extraBold, size: 18)
         titleButton.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
         
         let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "calendarIconLeftArrow"), style: .plain, target: self, action: #selector(handlerClickBack))
+        leftButtonItem.tintColor = PopmetricsColor.darkGrey
         
-        self.navigationItem.setLeftBarButton(leftButtonItem, animated: false)
-        self.navigationItem.leftBarButtonItems = [leftButtonItem, titleButton]
+        self.navigationItem.leftBarButtonItems = [leftSpace, leftButtonItem, titleButton]
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
         
     }
