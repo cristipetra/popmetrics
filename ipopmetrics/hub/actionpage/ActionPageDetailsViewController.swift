@@ -15,6 +15,7 @@ class ActionPageDetailsViewController: UIViewController {
     @IBOutlet weak var titleArticle: UILabel!
     @IBOutlet weak var blogTitle: UILabel!
     @IBOutlet weak var blogSummary: UILabel!
+    @IBOutlet weak var impactScore: ImpactScoreView!
     
     
     @IBOutlet weak var constraintHeightDetailsMarkdown: NSLayoutConstraint!
@@ -34,7 +35,7 @@ class ActionPageDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         addIceView()
-        
+        impactScore.setProgress(0.0)
         setupNavigationWithBackButton()
         updateView()
     }
@@ -66,6 +67,10 @@ class ActionPageDetailsViewController: UIViewController {
         if let imageUrl = feedCard.imageUri {
             cardImage.af_setImage(withURL: URL(string: imageUrl)!)
         }
+        
+        let progress = CGFloat(feedCard.iceImpactPercentage) / CGFloat(100)
+        
+        impactScore.setProgress(progress)
         
         displayMarkdownDetails()
         displayMarkdownClosing()

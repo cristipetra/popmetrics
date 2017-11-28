@@ -28,9 +28,11 @@
                 <outlet property="blogTitle" destination="mkY-xN-C2h" id="gIZ-hf-url"/>
                 <outlet property="cardImage" destination="U1O-y9-Lc9" id="aV6-Lo-4f7"/>
                 <outlet property="constraintHeightClosingMarkdown" destination="MS2-3l-h7f" id="ejL-fd-F1Q"/>
+                <outlet property="constraintHeightContainerImpactScore" destination="pez-Av-kGk" id="yI3-g4-4R9"/>
                 <outlet property="constraintHeightDetailsMarkdown" destination="LrX-Dx-yxw" id="8GS-uj-0MY"/>
                 <outlet property="containerClosingMarkdown" destination="g3d-wh-WNj" id="ZHS-p0-Imm"/>
                 <outlet property="containerDetailsMarkdown" destination="SyP-Vc-Dxu" id="dmX-Fw-Xjy"/>
+                <outlet property="impactScore" destination="1Wc-cJ-uUu" id="JfW-29-x37"/>
                 <outlet property="labelInsightArguments" destination="eAG-EN-Yrb" id="lTA-zN-wXZ"/>
                 <outlet property="titleArticle" destination="iXN-EG-5jT" id="tsc-ZI-9Il"/>
                 <outlet property="view" destination="9rQ-fw-uKn" id="Zy9-tT-yoj"/>

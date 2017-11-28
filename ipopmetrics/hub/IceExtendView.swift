@@ -37,7 +37,9 @@ class IceExtendView: UIView {
     
     private var feedCard: FeedCard! {
         didSet {
-            updateView()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.updateView()
+            }
         }
     }
     
@@ -222,8 +224,9 @@ class IceExtendView: UIView {
         let impactLvlAttr = impactLevel.set(style: impactStyle)
         let costAttr = cost.set(style: costStyle)
         let effortAttr = effort.set(style: effortStyle)
+        let lastText = "website traffic".set(style: impactStyle)
         
-        let attrString: NSMutableAttributedString = "This is a " + impactLvlAttr + " task that we can complete for " + aproxChar + "" + "" + costAttr + " or you can do it in " +  aproxChar2 + "" + effortAttr + " that will help your website traffic most"
+        let attrString: NSMutableAttributedString = "This is a " + impactLvlAttr + " task that we can complete for "  + "" + "" + costAttr + " or you can do it in " +  aproxChar2 + "" + effortAttr + " that will help your " + lastText + " most"
         
         messageLbl.attributedText = attrString
     }

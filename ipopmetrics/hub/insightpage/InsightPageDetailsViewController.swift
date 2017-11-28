@@ -26,15 +26,18 @@ class InsightPageDetailsViewController: UIViewController {
     @IBOutlet weak var containerInsightArguments: UIView!
     @IBOutlet weak var constraintHeightClosingMarkdown: NSLayoutConstraint!
     
+    @IBOutlet weak var constraintHeightContainerImpactScore: NSLayoutConstraint!
     private var feedCard: FeedCard!
     private var recommendActionHandler: RecommendActionHandler?
     
+    @IBOutlet weak var impactScore: ImpactScoreView!
     let statsView = IndividualTaskView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationWithBackButton()
+        
         updateView()
     }
 
@@ -54,6 +57,14 @@ class InsightPageDetailsViewController: UIViewController {
             cardImage.af_setImage(withURL: URL(string: cardImageUrl)!)
         }
         
+        if(!Bool(feedCard.iceEnabled)) {
+            hideImpactScoreView()
+        }
+        
+        let progress = CGFloat(feedCard.iceImpactPercentage) / CGFloat(100)
+        
+        impactScore.setProgress(progress)
+        
         blogTitle.text = feedCard.blogTitle
         if let blogImageUrl = feedCard.blogImageUrl {
             blogImage.af_setImage(withURL: URL(string: blogImageUrl)!)
@@ -63,6 +74,11 @@ class InsightPageDetailsViewController: UIViewController {
         displayInsightArguments()
         displayMarkDetails()
         displayMarkClosing()
+    }
+    
+    private func hideImpactScoreView() {
+        constraintHeightContainerImpactScore.constant = 0
+        impactScore.isHidden = true
     }
     
     private func setupNavigationWithBackButton() {
