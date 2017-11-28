@@ -7,11 +7,18 @@
 //
 
 import UIKit
+import GTProgressBar
 
 class PaidActionCardCell: UITableViewCell {
     
     @IBOutlet weak var wrapperView: UIStackView!
     
+    @IBOutlet weak var viewStatus: UIView!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var costLabel: UILabel!
+    @IBOutlet weak var impactLabel: UILabel!
+    @IBOutlet weak var progressImpact: GTProgressBar!
+    @IBOutlet weak var progressCost: GTProgressBar!
     @IBOutlet weak var containerBtn: UIView!
     @IBOutlet weak var containerShadow: UIView!
     @IBOutlet weak var impactView: ImpactScoreView!
@@ -19,14 +26,28 @@ class PaidActionCardCell: UITableViewCell {
     @IBOutlet weak var cardImageView: UIImageView!
     var todoCard: TodoCard!
     
+    private let colorCost = UIColor(red: 177/255, green: 154/255, blue: 219/255, alpha: 1)
+    private let colorImpact = UIColor(red: 124/255, green: 202/255, blue: 176/255, alpha: 1)
+    private let colorBackgroundBar = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        clearView()
         self.backgroundColor = .clear
         self.selectionStyle = .none
         
         addShadowToView(containerShadow, radius: 4, opacity: 0.5)
         setCornerRadius()
+        setProgressCosttStyle()
+        setProgressImpacttStyle()
+    }
+    
+    private func clearView() {
+        cardTitle.text = ""
+        impactLabel.text = ""
+        costLabel.text = ""
+        statusLabel.text = ""
     }
     
     private func setCornerRadius() {
@@ -34,8 +55,29 @@ class PaidActionCardCell: UITableViewCell {
         self.containerBtn.layer.cornerRadius = 14
     }
     
+    private func setProgressCosttStyle() {
+        progressCost.progress = 0
+        progressCost.barBackgroundColor = colorBackgroundBar
+        progressCost.barFillColor = colorCost
+        progressCost.barBorderWidth = 0
+        progressCost.barFillInset = 0
+        progressCost.barBorderColor = colorCost
+        progressCost.displayLabel = false
+        progressCost.cornerRadius = 5
+    }
+    
+    private func setProgressImpacttStyle() {
+        progressImpact.progress = 0
+        progressImpact.barBackgroundColor = colorBackgroundBar
+        progressImpact.barFillColor = colorImpact
+        progressImpact.barBorderWidth = 0
+        progressImpact.barFillInset = 0
+        progressImpact.barBorderColor = colorImpact
+        progressImpact.displayLabel = false
+        progressImpact.cornerRadius = 5
+    }
+    
     private func updateView() {
-        
         if let url = todoCard.imageUri {
             cardImageView.af_setImage(withURL: URL(string: url)!)
         }
@@ -44,9 +86,14 @@ class PaidActionCardCell: UITableViewCell {
             cardTitle.text = title
         }
         
-        let valueProgress = Double(todoCard.impactPercentage) / Double(100)
-        impactView.setProgress(CGFloat(valueProgress))
+        let valueProgress = CGFloat(todoCard.impactPercentage) / CGFloat(100)
+        impactLabel.text = "+\(todoCard.impactPercentage)"
+        progressImpact.animateTo(progress: valueProgress)
         
+        costLabel.text = todoCard.iceCostLabel
+        
+        let costPercentage = CGFloat(todoCard.iceCostPercentage) / CGFloat(100)
+        progressCost.animateTo(progress: costPercentage)
     }
     
     internal func configure(_ todoCard: TodoCard) {
