@@ -26,6 +26,7 @@
                 <outlet property="containerClosingMarkdown" destination="H9S-LN-qse" id="03R-M9-Nxg"/>
                 <outlet property="containerDetailsMarkdown" destination="SyP-Vc-Dxu" id="dmX-Fw-Xjy"/>
                 <outlet property="containerIceView" destination="D9a-9X-GT2" id="Azq-h5-D6u"/>
+                <outlet property="impactScore" destination="ExX-DN-ReU" id="CmU-fd-Yeq"/>
                 <outlet property="titleArticle" destination="iXN-EG-5jT" id="tsc-ZI-9Il"/>
                 <outlet property="view" destination="9rQ-fw-uKn" id="Zy9-tT-yoj"/>
             </connections>

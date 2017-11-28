@@ -26,7 +26,7 @@ class ImpactScoreView: UIView {
     private lazy var impactScoreLbl : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "+13"
+        label.text = ""
         label.font = UIFont(name: FontBook.semibold, size: 15)
         label.textAlignment = .left
         label.textColor = PopmetricsColor.calendarCompleteGreen
@@ -74,6 +74,7 @@ class ImpactScoreView: UIView {
         let constraintScoreLbl = impactScoreLbl.leftAnchor.constraint(equalTo: self.titleView.rightAnchor, constant: 10)
         constraintScoreLbl.isActive = true
         impactScoreLbl.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
+        impactScoreLbl.widthAnchor.constraint(equalToConstant: 50).isActive = true
         
         //progress bar
         self.addSubview(progress)

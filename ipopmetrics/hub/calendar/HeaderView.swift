@@ -66,8 +66,6 @@ class HeaderView: UIView {
     }
     
     func setup() {
-        self.clipsToBounds = true
-        
         self.backgroundColor = UIColor.white
         
         
@@ -114,6 +112,7 @@ class HeaderView: UIView {
         
         //addTapView
         addBtnView();
+        self.clipsToBounds = true
     }
     
     func addBtnView() {

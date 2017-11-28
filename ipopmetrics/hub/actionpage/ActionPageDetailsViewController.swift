@@ -15,6 +15,7 @@ class ActionPageDetailsViewController: UIViewController {
     @IBOutlet weak var titleArticle: UILabel!
     @IBOutlet weak var blogTitle: UILabel!
     @IBOutlet weak var blogSummary: UILabel!
+    @IBOutlet weak var impactScore: ImpactScoreView!
     
     
     @IBOutlet weak var constraintHeightDetailsMarkdown: NSLayoutConstraint!
@@ -34,7 +35,7 @@ class ActionPageDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         addIceView()
-        
+        impactScore.setProgress(0.0)
         setupNavigationWithBackButton()
         updateView()
     }
@@ -67,19 +68,29 @@ class ActionPageDetailsViewController: UIViewController {
             cardImage.af_setImage(withURL: URL(string: imageUrl)!)
         }
         
+        let progress = CGFloat(feedCard.iceImpactPercentage) / CGFloat(100)
+        
+        impactScore.setProgress(progress)
+        
         displayMarkdownDetails()
         displayMarkdownClosing()
     }
     
     private func setupNavigationWithBackButton() {
         let titleWindow = "Action Page"
+        
+        let leftSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        leftSpace.width = 5
+        
         let titleButton = UIBarButtonItem(title: titleWindow, style: .plain, target: self, action: nil)
         titleButton.tintColor = PopmetricsColor.darkGrey
         let titleFont = UIFont(name: FontBook.extraBold, size: 18)
         titleButton.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
         
         let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "calendarIconLeftArrow"), style: .plain, target: self, action: #selector(handlerClickBack))
-        self.navigationItem.leftBarButtonItems = [leftButtonItem, titleButton]
+        leftButtonItem.tintColor = PopmetricsColor.darkGrey
+        
+        self.navigationItem.leftBarButtonItems = [leftSpace, leftButtonItem, titleButton]
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     }
 

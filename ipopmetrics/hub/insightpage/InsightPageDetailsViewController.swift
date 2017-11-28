@@ -26,15 +26,18 @@ class InsightPageDetailsViewController: UIViewController {
     @IBOutlet weak var containerInsightArguments: UIView!
     @IBOutlet weak var constraintHeightClosingMarkdown: NSLayoutConstraint!
     
+    @IBOutlet weak var constraintHeightContainerImpactScore: NSLayoutConstraint!
     private var feedCard: FeedCard!
     private var recommendActionHandler: RecommendActionHandler?
     
+    @IBOutlet weak var impactScore: ImpactScoreView!
     let statsView = IndividualTaskView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationWithBackButton()
+        
         updateView()
     }
 
@@ -54,6 +57,14 @@ class InsightPageDetailsViewController: UIViewController {
             cardImage.af_setImage(withURL: URL(string: cardImageUrl)!)
         }
         
+        if(!Bool(feedCard.iceEnabled)) {
+            hideImpactScoreView()
+        }
+        
+        let progress = CGFloat(feedCard.iceImpactPercentage) / CGFloat(100)
+        
+        impactScore.setProgress(progress)
+        
         blogTitle.text = feedCard.blogTitle
         if let blogImageUrl = feedCard.blogImageUrl {
             blogImage.af_setImage(withURL: URL(string: blogImageUrl)!)
@@ -65,17 +76,27 @@ class InsightPageDetailsViewController: UIViewController {
         displayMarkClosing()
     }
     
+    private func hideImpactScoreView() {
+        constraintHeightContainerImpactScore.constant = 0
+        impactScore.isHidden = true
+    }
+    
     private func setupNavigationWithBackButton() {
         let titleWindow = "Insight Page"
+        
+        let leftSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        leftSpace.width = 5
+        
         let titleButton = UIBarButtonItem(title: titleWindow, style: .plain, target: self, action: nil)
         titleButton.tintColor = PopmetricsColor.darkGrey
         let titleFont = UIFont(name: FontBook.extraBold, size: 18)
         titleButton.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
         
         let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "calendarIconLeftArrow"), style: .plain, target: self, action: #selector(handlerClickBack))
-        self.navigationItem.leftBarButtonItems = [leftButtonItem, titleButton]
-        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
+        leftButtonItem.tintColor = PopmetricsColor.darkGrey
         
+        self.navigationItem.leftBarButtonItems = [leftSpace, leftButtonItem, titleButton]
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     }
     
     internal func displayInsightArguments() {
