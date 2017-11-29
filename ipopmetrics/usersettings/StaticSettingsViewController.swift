@@ -30,8 +30,19 @@ class StaticSettingsViewController: BaseTableViewController {
         allowNotifications.addTarget(self, action: #selector(changeNotifications(_:)), for: .valueChanged)
         setUpNavigationBar()
         updateView()
+
+        
+        NotificationCenter.default.addObserver(self, selector: "handlerDidBecomeActive", name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        updateAllowNoticationsSwitch()
+    }
+    
+    @objc  func handlerDidBecomeActive() {
+        updateAllowNoticationsSwitch()
+    }
     
     private func updateView() {
         let user = UsersStore.getInstance().getLocalUserAccount()
@@ -43,9 +54,7 @@ class StaticSettingsViewController: BaseTableViewController {
         
         brandName.text = UsersStore.currentBrandName
         
-        allowNotifications.isOn = UIApplication.shared.isRegisteredForRemoteNotifications
         allowSounds.isOn = userSettings.allowSounds
-        
     }
     
     func setUpNavigationBar() {
@@ -169,18 +178,33 @@ class StaticSettingsViewController: BaseTableViewController {
     }
     
     @objc func changeNotifications(_ sender: UISwitch) {
-        if sender.isOn == true {
+        if UsersStore.didAskedForAllowingNotification {
+            Alert.showNotificationAlertDialog(parent: self, action: { (action) -> (Void) in
+                switch action {
+                case .cancel:
+                    self.updateAllowNoticationsSwitch()
+                case .save:
+                    UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+                }
+            }, message: "Do you want to go to settings to change notifications?", title: "Notifications", okButton: true)
+        } else {
             registerForNotification()
-        }
-        
-        if sender.isOn == false {
-            UIApplication.shared.unregisterForRemoteNotifications()
         }
     }
     
+    private func updateAllowNoticationsSwitch() {
+        allowNotifications.isOn = UsersStore.isNotificationsAllowed
+    }
+
     private func registerForNotification() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
             (granted, error) in
+            UsersStore.didAskedForAllowingNotification = true
+            if granted {
+                self.allowNotifications.isOn = true
+            } else {
+                self.allowNotifications.isOn = false
+            }
             self.getNotificationSettings()
         }
     }
@@ -188,10 +212,7 @@ class StaticSettingsViewController: BaseTableViewController {
     func getNotificationSettings() {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             guard settings.authorizationStatus == .authorized else {return }
-            DispatchQueue.main.async {
                 UIApplication.shared.registerForRemoteNotifications()
-                
-            }
         }
         
     }

@@ -155,7 +155,18 @@ class UsersStore {
             return notificationType == [] ? false : true
         }
     }
-    
+  
+    static var didAskedForAllowingNotification: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "didAskedForAllowingNotifications")
+        }
+        
+        set {
+            let defaults = UserDefaults.standard
+            defaults.set(newValue, forKey: "didAskedForAllowingNotifications")
+            
+        }
+    }
     
     static var brandIndex: Int  = 0
     static var overlayIndex: IndexPath = IndexPath(row: 0, section: 0)
