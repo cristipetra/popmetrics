@@ -60,6 +60,8 @@ class TodoCard:  Object, Mappable {
     @objc dynamic var impactPercentage: Int = 0
     @objc dynamic var impactSplit: String? = nil // "[{'label': "Website Traffice", 'percentage': 10}]"
     
+    @objc dynamic var actionStatus: String?  = nil
+    
     @objc dynamic var diyInstructions: String? = nil // ['## markdown1', '### markdown 2 *b']
     @objc dynamic var insightArguments: String? = nil // ['## markdown1', '### amrkdown 2']
     
@@ -114,6 +116,7 @@ class TodoCard:  Object, Mappable {
         impactPercentage <- map["impact_percentage"]
         impactSplit <- map["impact_split"]
         
+        actionStatus <- map["action_status"]
         
         diyInstructions     <- map["diy_instructions"]
         insightArguments    <- map["insight_arguments"]

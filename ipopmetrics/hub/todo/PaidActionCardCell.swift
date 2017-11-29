@@ -98,6 +98,8 @@ class PaidActionCardCell: UITableViewCell {
         
         let costPercentage = CGFloat(todoCard.iceCostPercentage) / CGFloat(100)
         progressCost.animateTo(progress: costPercentage)
+        
+        statusLabel.text = todoCard.actionStatus ?? ""
     }
     
     internal func configure(_ todoCard: TodoCard) {
