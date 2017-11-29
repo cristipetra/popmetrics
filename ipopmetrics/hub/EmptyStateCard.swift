@@ -51,10 +51,13 @@ class EmptyStateCard: UITableViewCell {
         
         titleLabel.text = feedCard.headerTitle!
         messageLabel.text = feedCard.message!
+
         footerVIew.actionButton.changeTitle(feedCard.actionLabel)
         
-        if let imageUrl = feedCard.imageUri {
-            backgroundImageView.af_setImage(withURL: URL(string: imageUrl)!)
+        if var imageUrl = feedCard.imageUri {
+            if imageUrl.isValidUrl() {
+                backgroundImageView.af_setImage(withURL: URL(string: imageUrl)!)
+            }
         }
         
         self.footerVIew.actionButton.isHidden = true

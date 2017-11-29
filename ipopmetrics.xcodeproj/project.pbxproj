@@ -18,6 +18,7 @@
 		080DCA881F4D9716000C73DC /* InsightCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DCA871F4D9716000C73DC /* InsightCard.swift */; };
 		0813A0571FC2F102003E6478 /* SettingsSocialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0813A0561FC2F102003E6478 /* SettingsSocialView.xib */; };
 		0813A0591FC2F1C4003E6478 /* SettingsSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0813A0581FC2F1C4003E6478 /* SettingsSocialViewController.swift */; };
+		081B924A1FCEF205006D3BAB /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081B92491FCEF205006D3BAB /* StringExtensions.swift */; };
 		083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083938FE1F63C334007DDA37 /* MainTabInfo.swift */; };
 		0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */; };
 		0848280F1F39F9200054B04C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848280E1F39F9200054B04C /* HeaderView.swift */; };
@@ -241,6 +242,7 @@
 		080DCA871F4D9716000C73DC /* InsightCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsightCard.swift; sourceTree = "<group>"; };
 		0813A0561FC2F102003E6478 /* SettingsSocialView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsSocialView.xib; sourceTree = "<group>"; };
 		0813A0581FC2F1C4003E6478 /* SettingsSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSocialViewController.swift; sourceTree = "<group>"; };
+		081B92491FCEF205006D3BAB /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		083938FE1F63C334007DDA37 /* MainTabInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabInfo.swift; sourceTree = "<group>"; };
 		0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellTransition.swift; sourceTree = "<group>"; };
 		0848280E1F39F9200054B04C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				086EDE451FC8651B002F4140 /* UIViewExtensions.swift */,
+				081B92491FCEF205006D3BAB /* StringExtensions.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -1412,6 +1415,7 @@
 				08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */,
 				08B7ADEA1FB22B8300C56688 /* FooterViewController.swift in Sources */,
 				1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */,
+				081B924A1FCEF205006D3BAB /* StringExtensions.swift in Sources */,
 				08B4EBBA1FC56ACE00BFC5A1 /* MainTabBarController.swift in Sources */,
 				08B4EBB91FC56ACE00BFC5A1 /* GradientView.swift in Sources */,
 				11DD967D1FC4FA5400386F1E /* ApiUrls.swift in Sources */,
