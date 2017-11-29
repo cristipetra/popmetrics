@@ -12,12 +12,18 @@ class ActionInstructionsPageViewController: UIViewController {
     @IBOutlet weak var instructionsLabel: UILabel!
     
     private var feedCard: FeedCard!
+    private var todoCard: TodoCard!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationWithBackButton()
-        updateView()
+        if feedCard != nil {
+            updateViewFromFeedCard()
+        }
+        if todoCard != nil {
+            updateViewFromTodoCard()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,15 +33,32 @@ class ActionInstructionsPageViewController: UIViewController {
     
     public func configure(_ feedCard: FeedCard) {
         self.feedCard = feedCard
-        
     }
     
-    private func updateView() {
+    internal func configure(todoCard: TodoCard) {
+        self.todoCard = todoCard
+    }
+    
+    private func updateViewFromTodoCard() {
         updateText()
     }
     
+    private func updateViewFromFeedCard() {
+        updateText()
+    }
+    
+    private func getInstrunctions() -> [String] {
+        if feedCard != nil {
+            return feedCard.getDiyInstructions()
+        }
+        if todoCard != nil {
+            return todoCard.getDiyInstructions()
+        }
+        return []
+    }
+    
     private func updateText() {
-        let instructions = feedCard.getDiyInstructions()
+        let instructions = getInstrunctions()
         var textString = ""
         for argument in instructions {
             textString += "\(argument) \n\n"

@@ -22,12 +22,17 @@ class ActionPageDetailsViewController: UIViewController {
     @IBOutlet weak var containerIceView: UIView!
     @IBOutlet weak var containerDetailsMarkdown: UIView!
     @IBOutlet weak var containerInsightArguments: UIView!
-    
-    private var feedCard: FeedCard!
+
     @IBOutlet weak var constraintHeightClosingMarkdown: NSLayoutConstraint!
     private var recommendActionHandler: RecommendActionHandler?
     
     @IBOutlet weak var containerClosingMarkdown: UIView!
+    
+    private var feedCard: FeedCard!
+    private var todoCard: TodoCard!
+    
+    private var actionModel: ActionPageModel!
+    
     let statsView = IndividualTaskView()
     let iceView = IceExtendView()
     
@@ -37,7 +42,8 @@ class ActionPageDetailsViewController: UIViewController {
         addIceView()
         impactScore.setProgress(0.0)
         setupNavigationWithBackButton()
-        updateView()
+        
+       updatView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,19 +63,27 @@ class ActionPageDetailsViewController: UIViewController {
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
         self.feedCard = feedCard
+        actionModel = ActionPageModel(feedCard: feedCard)
         recommendActionHandler = handler
         iceView.configure(feedCard)
     }
     
-    private func updateView() {
-        titleArticle.text = feedCard.headerTitle
-        
-        if let imageUrl = feedCard.imageUri {
-            cardImage.af_setImage(withURL: URL(string: imageUrl)!)
+    public func configure(todoCard: TodoCard) {
+        self.todoCard = todoCard
+        iceView.configure(todoCard: todoCard)
+        actionModel = ActionPageModel(todoCard: todoCard)
+    }
+    
+    private func updatView() {
+        if let url = actionModel.imageUri {
+            cardImage.af_setImage(withURL: URL(string: url)!)
         }
         
-        let progress = CGFloat(feedCard.iceImpactPercentage) / CGFloat(100)
+        if let title = actionModel.titleArticle {
+            titleArticle.text = title
+        }
         
+        let progress = CGFloat(actionModel.impactPercentage) / CGFloat(100)
         impactScore.setProgress(progress)
         
         displayMarkdownDetails()
@@ -95,11 +109,11 @@ class ActionPageDetailsViewController: UIViewController {
     }
 
     private func getDetailsMarkdownString() -> String {
-        return feedCard.detailsMarkdown ?? ""
+        return actionModel.detailsMarkdown ?? ""
     }
     
     private func getClosingMarkdownString() -> String {
-        return feedCard.closingMarkdown ?? ""
+        return actionModel.closingMarkdown ?? ""
     }
     
     internal func displayMarkdownDetails() {
@@ -113,29 +127,61 @@ class ActionPageDetailsViewController: UIViewController {
     }
 
     @IBAction func handlerViewArticleBtn(_ sender: Any) {
-        if let url = feedCard.blogUrl {
+        if let url = actionModel.blogUrl {
             self.openURLInside(url: url)
         }
     }
     
     @IBAction func handlerViewInstructions(_ sender: Any) {
         let instructionsPageVc: ActionInstructionsPageViewController = ActionInstructionsPageViewController(nibName: "ActionInstructionsPage", bundle: nil)
-        
-        instructionsPageVc.configure(feedCard)
+        if (feedCard != nil) {
+            instructionsPageVc.configure(feedCard)
+        }
+        if todoCard != nil {
+            instructionsPageVc.configure(todoCard: todoCard)
+        }
         self.navigationController?.pushViewController(instructionsPageVc, animated: true)
     }
     
     @IBAction func handlerAddToMyActions(_ sender: Any) {
-        FeedApi().postAddToMyActions(feedCardId: self.feedCard.cardId!, brandId: UsersStore.currentBrandId) { todoCard in
-            TodoStore.getInstance().addTodoCard(todoCard!)
-            FeedStore.getInstance().removeCard(self.feedCard)
-            self.navigationController?.popViewController(animated: true)
+        if feedCard != nil {
+            FeedApi().postAddToMyActions(feedCardId: self.feedCard.cardId!, brandId: UsersStore.currentBrandId) { todoCard in
+                TodoStore.getInstance().addTodoCard(todoCard!)
+                FeedStore.getInstance().removeCard(self.feedCard)
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
-    
-    
-    
+
     @objc func handlerClickBack() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+
+class ActionPageModel: NSObject {
+    internal var titleArticle: String? = ""
+    internal var imageUri: String?
+    internal var impactPercentage: Int = 0
+    internal var detailsMarkdown: String? = ""
+    internal var closingMarkdown: String? = ""
+    internal var blogUrl: String? = ""
+    
+    init(todoCard: TodoCard) {
+        titleArticle         = todoCard.headerTitle
+        imageUri             = todoCard.imageUri
+        impactPercentage     = todoCard.iceImpactPercentage
+        detailsMarkdown      = todoCard.detailsMarkdown
+        closingMarkdown      = todoCard.closingMarkdown
+        blogUrl              = todoCard.blogUrl
+    }
+    
+    init(feedCard: FeedCard) {
+        titleArticle        = feedCard.headerTitle
+        imageUri            = feedCard.imageUri
+        impactPercentage    = feedCard.iceImpactPercentage
+        detailsMarkdown     = feedCard.detailsMarkdown
+        closingMarkdown     = feedCard.closingMarkdown
+        blogUrl             = feedCard.blogUrl
     }
 }
