@@ -74,8 +74,8 @@ class CodeViewController: UIViewController {
             }
             
             let userAccount = responseWrapper?.data
+            
             if let teams = userAccount?.profileDetails?.brandTeams {
-                print(teams)
                 UserStore.getInstance().storeLocalUserAccount(userAccount!)
                 UserStore.currentBrandId = teams[0].brandId!
                 if let _ = teams[0].brandName {
@@ -88,7 +88,7 @@ class CodeViewController: UIViewController {
                     "current_brand": teams[0],
                     "allow_sounds": true,
                     "overlay_description": "Overlay description",
-                    "overlay_actions": "action 1, action 2, action 3",
+                    "overlay_actions": "Visit Website, Learn More, Find Out More",
                     "overlay_action_url": "http://www.actionURL.com"
                     ] as [String : Any]
                 
