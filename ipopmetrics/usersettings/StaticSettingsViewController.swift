@@ -231,14 +231,13 @@ extension StaticSettingsViewController: MFMailComposeViewControllerDelegate {
     }
     
     func configuredMailComposeVC() -> MFMailComposeViewController {
-        
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
-        //mailComposerVC.setSubject("Test mail")
         if let myNumber = UserStore.getInstance().getLocalUserAccount().phone {
-            mailComposerVC.setMessageBody("Hey, I’d like to change my phone number from \(myNumber) to", isHTML: false)
+            mailComposerVC.setSubject("I'd like to change my Cell Phone Number")
+            mailComposerVC.setMessageBody("Hi Aimee,\n \nHey, I’d like to change my Cell Phone Number that I log in to my account to the following number: [insert number]", isHTML: false)
         }
-        //mailComposerVC.setToRecipients([""])
+        mailComposerVC.setToRecipients(["Aimee@popmetrics.io"])
         return mailComposerVC
     }
     
