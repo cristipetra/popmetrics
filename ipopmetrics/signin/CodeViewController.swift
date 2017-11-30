@@ -76,10 +76,10 @@ class CodeViewController: UIViewController {
             let userAccount = responseWrapper?.data
             if let teams = userAccount?.profileDetails?.brandTeams {
                 print(teams)
-                UsersStore.getInstance().storeLocalUserAccount(userAccount!)
-                UsersStore.currentBrandId = teams[0].brandId!
+                UserStore.getInstance().storeLocalUserAccount(userAccount!)
+                UserStore.currentBrandId = teams[0].brandId!
                 if let _ = teams[0].brandName {
-                    UsersStore.currentBrandName = teams[0].brandName!
+                    UserStore.currentBrandName = teams[0].brandName!
                 }
                 
                 //Fixme: This is tmp json until it will be received data
@@ -94,7 +94,7 @@ class CodeViewController: UIViewController {
                 
                 let userSettings = Mapper<UserSettings>().map(JSONObject: tmpUserSettingsJson)
                 
-                UsersStore.getInstance().storeLocalUserSettings(userSettings!)
+                UserStore.getInstance().storeLocalUserSettings(userSettings!)
                 
                 SyncService.getInstance().syncAll(silent: false)
                 
@@ -169,7 +169,7 @@ class CodeViewController: UIViewController {
 extension CodeViewController {
     internal func handleApiError(_ error: ApiError, completionHandler: () -> Void) {
         if error == ApiError.userNotAuthenticated {
-            UsersStore.getInstance().clearCredentials()
+            UserStore.getInstance().clearCredentials()
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.setInitialViewController()
             completionHandler()

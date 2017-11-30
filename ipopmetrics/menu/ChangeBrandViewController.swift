@@ -67,7 +67,7 @@ class ChangeBrandViewController: BaseTableViewController {
     
     @objc func handlerClickBack() {
         if didChangedBrand {
-            UsersStore.brandIndex = (previousIndex?.row)!
+            UserStore.brandIndex = (previousIndex?.row)!
             brandDelegate?.changeBrandName(name: selectedBrand)
         }
         self.navigationController?.dismissToDirection(direction: .left)
@@ -90,7 +90,7 @@ class ChangeBrandViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "brandId", for: indexPath) as! BrandTableViewCell
         cell.brandName.text = myBrands[indexPath.row].name
-        if indexPath.row == UsersStore.brandIndex {
+        if indexPath.row == UserStore.brandIndex {
             cell.setupSelectedCell()
             previousIndex = indexPath
             selectedBrand = cell.brandName.text!

@@ -111,7 +111,7 @@
 		08B4EB991FC569F700BFC5A1 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB981FC569F600BFC5A1 /* FeedStore.swift */; };
 		08B4EB9B1FC569FE00BFC5A1 /* StatisticsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB9A1FC569FE00BFC5A1 /* StatisticsStore.swift */; };
 		08B4EB9D1FC56A0400BFC5A1 /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB9C1FC56A0400BFC5A1 /* TodoStore.swift */; };
-		08B4EB9F1FC56A0C00BFC5A1 /* UsersStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB9E1FC56A0C00BFC5A1 /* UsersStore.swift */; };
+		08B4EB9F1FC56A0C00BFC5A1 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB9E1FC56A0C00BFC5A1 /* UserStore.swift */; };
 		08B4EBAF1FC56ACE00BFC5A1 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA21FC56ACD00BFC5A1 /* Validator.swift */; };
 		08B4EBB01FC56ACE00BFC5A1 /* PopmetricsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA31FC56ACD00BFC5A1 /* PopmetricsColor.swift */; };
 		08B4EBB11FC56ACE00BFC5A1 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA41FC56ACD00BFC5A1 /* BaseTableViewController.swift */; };
@@ -337,7 +337,7 @@
 		08B4EB981FC569F600BFC5A1 /* FeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		08B4EB9A1FC569FE00BFC5A1 /* StatisticsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsStore.swift; sourceTree = "<group>"; };
 		08B4EB9C1FC56A0400BFC5A1 /* TodoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
-		08B4EB9E1FC56A0C00BFC5A1 /* UsersStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersStore.swift; sourceTree = "<group>"; };
+		08B4EB9E1FC56A0C00BFC5A1 /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		08B4EBA21FC56ACD00BFC5A1 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		08B4EBA31FC56ACD00BFC5A1 /* PopmetricsColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopmetricsColor.swift; sourceTree = "<group>"; };
 		08B4EBA41FC56ACD00BFC5A1 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
@@ -504,7 +504,7 @@
 			children = (
 				08B4EB981FC569F600BFC5A1 /* FeedStore.swift */,
 				08B4EB9A1FC569FE00BFC5A1 /* StatisticsStore.swift */,
-				08B4EB9E1FC56A0C00BFC5A1 /* UsersStore.swift */,
+				08B4EB9E1FC56A0C00BFC5A1 /* UserStore.swift */,
 				08B4EB9C1FC56A0400BFC5A1 /* TodoStore.swift */,
 				08B4EB961FC569EC00BFC5A1 /* CalendarFeedStore.swift */,
 			);
@@ -743,6 +743,7 @@
 			isa = PBXGroup;
 			children = (
 				080DCA801F4D6EE6000C73DC /* MenuViewController.swift */,
+				08B968A91FBB141400482CDE /* ChangeBrandViewController.swift */,
 			);
 			path = menu;
 			sourceTree = "<group>";
@@ -801,7 +802,6 @@
 				08C580FC1FBF21440013B03F /* SettingsOverlayUrlView.xib */,
 				0813A0561FC2F102003E6478 /* SettingsSocialView.xib */,
 				088F14F91FB9C6080004F925 /* StaticSettingsViewController.swift */,
-				08B968A91FBB141400482CDE /* ChangeBrandViewController.swift */,
 				08593DED1FBB3B7600077A65 /* SettingsEmailViewController.swift */,
 				08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */,
 				0857AB641FBC98D1002B9F53 /* SettingsGAViewController.swift */,
@@ -1400,7 +1400,7 @@
 				08593DEE1FBB3B7600077A65 /* SettingsEmailViewController.swift in Sources */,
 				08B4EBB81FC56ACE00BFC5A1 /* CardActionHanlder.swift in Sources */,
 				08B4EB9D1FC56A0400BFC5A1 /* TodoStore.swift in Sources */,
-				08B4EB9F1FC56A0C00BFC5A1 /* UsersStore.swift in Sources */,
+				08B4EB9F1FC56A0C00BFC5A1 /* UserStore.swift in Sources */,
 				08B2803F1F55862100E36D19 /* Statistics.swift in Sources */,
 				08BAD73E1F960A70008BC88F /* MJCalendarViewController.swift in Sources */,
 				085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */,

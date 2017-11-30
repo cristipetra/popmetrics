@@ -49,7 +49,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
     internal var isAnimatingHeader: Bool = false
     var stopAnimatingAfterScroll = false
     
-    var currentBrandId = UsersStore.currentBrandId
+    var currentBrandId = UserStore.currentBrandId
     
     var shouldReloadData: Bool = false
     fileprivate var didAnimateCardFirstTime = false
@@ -344,12 +344,12 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
             //return
         }
         
-        if !UsersStore.didShowedTransitionFromTodo {
+        if !UserStore.didShowedTransitionFromTodo {
            tableViewCellTransition.animateDisplayLoadindFirstTimeCell(indexPath, cell: cell)
             return
         }
  
-        if UsersStore.didShowedTransitionFromTodo {
+        if UserStore.didShowedTransitionFromTodo {
             if !stopAnimatingAfterScroll {
                 tableViewCellTransition.animateDisplayLoadindCell(indexPath, cell: cell, completion: {
                     self.stopAnimatingAfterScroll = true

@@ -18,7 +18,7 @@ class SettingsOverlayActionViewController: SettingsBaseViewController, UITableVi
     var didChangedOverlay: Bool = false
     var firstTimeSetOverlay = true
     
-    private let userSettings: UserSettings = UsersStore.getInstance().getLocalUserSettings()
+    private let userSettings: UserSettings = UserStore.getInstance().getLocalUserSettings()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +61,7 @@ class SettingsOverlayActionViewController: SettingsBaseViewController, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "brandId", for: indexPath) as! BrandTableViewCell
         cell.brandName.text = dataSource[indexPath.row]
-        if indexPath == UsersStore.overlayIndex {
+        if indexPath == UserStore.overlayIndex {
             cell.setupSelectedCell()
             selectedBrand = cell.brandName.text!
         }
@@ -73,7 +73,7 @@ class SettingsOverlayActionViewController: SettingsBaseViewController, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didChangedOverlay = true
         if firstTimeSetOverlay {
-            guard let cell = tableView.cellForRow(at: UsersStore.overlayIndex) as? BrandTableViewCell else {
+            guard let cell = tableView.cellForRow(at: UserStore.overlayIndex) as? BrandTableViewCell else {
                 return
             }
             cell.setDefault()
@@ -83,7 +83,7 @@ class SettingsOverlayActionViewController: SettingsBaseViewController, UITableVi
         guard let cell = tableView.cellForRow(at: indexPath) as? BrandTableViewCell else {
             return
         }
-        UsersStore.overlayIndex = indexPath
+        UserStore.overlayIndex = indexPath
         selectedBrand = cell.brandName.text!
         cell.setupSelectedCell()
     }

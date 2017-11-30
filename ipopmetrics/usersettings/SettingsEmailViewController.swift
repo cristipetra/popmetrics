@@ -12,7 +12,7 @@ import EZAlertController
 class SettingsEmailViewController: SettingsBaseViewController {
     
     @IBOutlet weak var emailTextfield: UITextField!
-    let user = UsersStore.getInstance().getLocalUserAccount()
+    let user = UserStore.getInstance().getLocalUserAccount()
     
     private var didDisplayAlert: Bool = false
     private var didChangedEmail: Bool {

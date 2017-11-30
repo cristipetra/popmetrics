@@ -13,7 +13,7 @@ class SettingsOverlayDescriptionViewController: SettingsBaseViewController {
     @IBOutlet weak var descriptionText: UITextView!
     private var isDescriptionChanged: Bool = false
     
-    let userSettings: UserSettings = UsersStore.getInstance().getLocalUserSettings()
+    let userSettings: UserSettings = UserStore.getInstance().getLocalUserSettings()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -100,7 +100,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     var isAnimatingHeader = false
     
-    var currentBrandId = UsersStore.currentBrandId
+    var currentBrandId = UserStore.currentBrandId
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -34,7 +34,7 @@ class MenuViewController: ElasticModalViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.brandNameLabel.text = UsersStore.currentBrandName
+        self.brandNameLabel.text = UserStore.currentBrandName
         
         setup()
         transition.edge = .right
@@ -69,7 +69,7 @@ class MenuViewController: ElasticModalViewController {
     }
     
     @IBAction func logoutButtonPressed(_ sender: UIButton) {
-        UsersStore.getInstance().clearCredentials()
+        UserStore.getInstance().clearCredentials()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setInitialViewController()
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.default

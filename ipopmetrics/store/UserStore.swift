@@ -16,9 +16,9 @@ class User {
     
 }
 
-class UsersStore {
+class UserStore {
 
-    static func getInstance() -> UsersStore {
+    static func getInstance() -> UserStore {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.usersStore
     }

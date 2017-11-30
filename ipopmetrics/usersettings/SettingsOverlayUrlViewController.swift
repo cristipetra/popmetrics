@@ -12,7 +12,7 @@ class SettingsOverlayUrlViewController: SettingsBaseViewController {
     
     @IBOutlet weak var textUrl: UITextField!
     
-    let userSettings: UserSettings = UsersStore.getInstance().getLocalUserSettings()
+    let userSettings: UserSettings = UserStore.getInstance().getLocalUserSettings()
     
     
     override func viewDidLoad() {

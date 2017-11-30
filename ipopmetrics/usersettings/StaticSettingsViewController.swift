@@ -45,14 +45,14 @@ class StaticSettingsViewController: BaseTableViewController {
     }
     
     private func updateView() {
-        let user = UsersStore.getInstance().getLocalUserAccount()
-        let userSettings: UserSettings = UsersStore.getInstance().getLocalUserSettings()
+        let user = UserStore.getInstance().getLocalUserAccount()
+        let userSettings: UserSettings = UserStore.getInstance().getLocalUserSettings()
         
         name.text = user.name
         phone.text = user.phone
         professionalEmail.text = user.email
         
-        brandName.text = UsersStore.currentBrandName
+        brandName.text = UserStore.currentBrandName
         
         allowSounds.isOn = userSettings.allowSounds
     }
@@ -178,7 +178,7 @@ class StaticSettingsViewController: BaseTableViewController {
     }
     
     @objc func changeNotifications(_ sender: UISwitch) {
-        if UsersStore.didAskedForAllowingNotification {
+        if UserStore.didAskedForAllowingNotification {
             Alert.showNotificationAlertDialog(parent: self, action: { (action) -> (Void) in
                 switch action {
                 case .cancel:
@@ -193,13 +193,13 @@ class StaticSettingsViewController: BaseTableViewController {
     }
     
     private func updateAllowNoticationsSwitch() {
-        allowNotifications.isOn = UsersStore.isNotificationsAllowed
+        allowNotifications.isOn = UserStore.isNotificationsAllowed
     }
 
     private func registerForNotification() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
             (granted, error) in
-            UsersStore.didAskedForAllowingNotification = true
+            UserStore.didAskedForAllowingNotification = true
             if granted {
                 self.allowNotifications.isOn = true
             } else {
@@ -235,7 +235,7 @@ extension StaticSettingsViewController: MFMailComposeViewControllerDelegate {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         //mailComposerVC.setSubject("Test mail")
-        if let myNumber = UsersStore.getInstance().getLocalUserAccount().phone {
+        if let myNumber = UserStore.getInstance().getLocalUserAccount().phone {
             mailComposerVC.setMessageBody("Hey, I’d like to change my phone number from \(myNumber) to", isHTML: false)
         }
         //mailComposerVC.setToRecipients([""])

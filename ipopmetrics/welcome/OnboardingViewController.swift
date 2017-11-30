@@ -25,7 +25,7 @@ class OnboardingViewController: UIViewController {
         isHeroEnabled = true
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
         
-        let user = UsersStore.getInstance().getLocalUserAccount()
+        let user = UserStore.getInstance().getLocalUserAccount()
         
         guard let _ = user.name else {
             return

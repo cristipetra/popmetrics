@@ -107,7 +107,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
             if (session != nil) {
                 let params = [
-                    "user_id":UsersStore.getInstance().getLocalUserAccount().id,
+                    "user_id":UserStore.getInstance().getLocalUserAccount().id,
                     "twitter_user_id":session?.userID,
                     "access_token":session?.authToken,
                     "access_token_secret":session?.authTokenSecret
@@ -125,7 +125,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                                             else {
                                                 ProgressHUD.hideProgressIndicator()
                                                 sender.setTitle("Connected.", for: .normal)
-                                                UsersStore.isTwitterConnected = true
+                                                UserStore.isTwitterConnected = true
                                                 self.showBanner(bannerType: .success)
                                             }
                 } // usersApi.logInWithGoogle()

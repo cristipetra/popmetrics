@@ -39,7 +39,7 @@ class TableViewCellTransition: NSObject {
                 cell.alpha = 1
                 cell.layer.transform = CATransform3DIdentity
             }, completion: { (completed) in
-                UsersStore.didShowedTransitionFromTodo = true
+                UserStore.didShowedTransitionFromTodo = true
             })
         }
     }

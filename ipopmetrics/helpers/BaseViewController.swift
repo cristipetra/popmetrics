@@ -65,7 +65,7 @@ class BaseViewController: UIViewController {
     
     internal func handleApiError(_ error: ApiError, completionHandler: () -> Void) {
         if error == ApiError.userNotAuthenticated {
-            UsersStore.getInstance().clearCredentials()
+            UserStore.getInstance().clearCredentials()
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.setInitialViewController()
             completionHandler()

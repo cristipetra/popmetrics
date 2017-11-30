@@ -14,7 +14,7 @@ class SyncService: SessionDelegate {
     
     var manager: SessionManager!
     public var reachability: Reachability!
-    var usersStore: UsersStore!
+    var usersStore: UserStore!
     var usersApi: UsersApi!
     
     var feedStore: FeedStore!
@@ -42,7 +42,7 @@ class SyncService: SessionDelegate {
         manager = createManager()
         setupReachability(ApiUrls.getHost())
         
-        usersStore = UsersStore.getInstance()
+        usersStore = UserStore.getInstance()
         usersApi = UsersApi()
         
         feedStore = FeedStore.getInstance()
@@ -98,7 +98,7 @@ class SyncService: SessionDelegate {
         }
         
         
-        let currentBrandId = UsersStore.currentBrandId
+        let currentBrandId = UserStore.currentBrandId
         
         FeedApi().getItems(currentBrandId) { feedResponse in
             
@@ -117,7 +117,7 @@ class SyncService: SessionDelegate {
             return
         }
         
-        let currentBrandId = UsersStore.currentBrandId
+        let currentBrandId = UserStore.currentBrandId
         
         TodoApi().getItems(currentBrandId) { todoResponse in
             
@@ -135,7 +135,7 @@ class SyncService: SessionDelegate {
             return
         }
         
-        let currentBrandId = UsersStore.currentBrandId
+        let currentBrandId = UserStore.currentBrandId
         
         
         CalendarApi().getItems(currentBrandId) { responseWrapper, error in
@@ -171,7 +171,7 @@ class SyncService: SessionDelegate {
             return
         }
         
-        let currentBrandId = UsersStore.currentBrandId
+        let currentBrandId = UserStore.currentBrandId
         
         StatisticsApi().getItems(currentBrandId) { responseWrapper, error in
             if error != nil {

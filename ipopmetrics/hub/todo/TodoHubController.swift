@@ -115,7 +115,7 @@ class TodoHubController: BaseViewController {
     internal var isAnimatingHeader: Bool = false
     
     var isAllApproved : Bool = false
-    var currentBrandId = UsersStore.currentBrandId
+    var currentBrandId = UserStore.currentBrandId
     
     internal var didAnimateOpeningCells = false
 
@@ -474,9 +474,9 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
             self.tableView.reloadData()
             
-            if !UsersStore.didShowedTransitionFromTodo {
+            if !UserStore.didShowedTransitionFromTodo {
                 self.tabBarController?.selectedIndex += 1
-                UsersStore.didShowedTransitionFromTodo = true
+                UserStore.didShowedTransitionFromTodo = true
             }
         }
     }

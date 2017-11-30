@@ -38,7 +38,7 @@ class AccountViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let localUser = UsersStore.getInstance().getLocalUserAccount()
+        let localUser = UserStore.getInstance().getLocalUserAccount()
         nameTextField.text = localUser.name
         emailLabel.text = localUser.email
         let imageUrl = ApiUrls.getAccountThumbnailUrl(localUser.id!)
@@ -84,10 +84,10 @@ class AccountViewController: BaseViewController {
     }
     
     @IBAction func didChangeNameValue(_ sender: TextFieldValidator) {
-        let localUser = UsersStore.getInstance().getLocalUserAccount()
+        let localUser = UserStore.getInstance().getLocalUserAccount()
         if let name = nameTextField.text {
             localUser.name = name
-            UsersStore.getInstance().storeLocalUserAccount(localUser)
+            UserStore.getInstance().storeLocalUserAccount(localUser)
         }
     }
     

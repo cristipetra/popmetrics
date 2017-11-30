@@ -794,7 +794,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yn2-wp-c3t">
-                                                        <rect key="frame" x="157" y="49" width="62.5" height="20"/>
+                                                        <rect key="frame" x="156.5" y="49" width="62.5" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="KGM-jS-UP8"/>
                                                         </constraints>

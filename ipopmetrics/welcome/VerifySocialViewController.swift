@@ -149,7 +149,7 @@ extension VerifySocialViewController/*: GIDSignInUIDelegate, GIDSignInDelegate*/
         
         Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
             if (session != nil) {
-                FeedApi().connectTwitter(userId: (session?.userID)!, brandId: UsersStore.currentBrandId, token: (session?.authToken)!,
+                FeedApi().connectTwitter(userId: (session?.userID)!, brandId: UserStore.currentBrandId, token: (session?.authToken)!,
                                          tokenSecret: (session?.authTokenSecret)!) { responseDict, error in
                                             if error != nil {
                                                 let nc = NotificationCenter.default
@@ -160,7 +160,7 @@ extension VerifySocialViewController/*: GIDSignInUIDelegate, GIDSignInDelegate*/
                                                 return
                                             } // error != nil
                                             else {
-                                                UsersStore.isTwitterConnected = true
+                                                UserStore.isTwitterConnected = true
                                                 print("connected")
                                                 self.actionsCompleted += 1
                                                 if self.actionsCompleted < 3 {

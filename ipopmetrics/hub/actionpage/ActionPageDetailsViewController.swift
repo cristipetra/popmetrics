@@ -145,7 +145,7 @@ class ActionPageDetailsViewController: UIViewController {
     
     @IBAction func handlerAddToMyActions(_ sender: Any) {
         if feedCard != nil {
-            FeedApi().postAddToMyActions(feedCardId: self.feedCard.cardId!, brandId: UsersStore.currentBrandId) { todoCard in
+            FeedApi().postAddToMyActions(feedCardId: self.feedCard.cardId!, brandId: UserStore.currentBrandId) { todoCard in
                 TodoStore.getInstance().addTodoCard(todoCard!)
                 FeedStore.getInstance().removeCard(self.feedCard)
                 self.navigationController?.popViewController(animated: true)
