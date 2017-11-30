@@ -106,7 +106,9 @@ class StaticSettingsViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath)
-        if(indexPath.section == 0 && indexPath.row == 1) {
+        if(indexPath.section == 0 && indexPath.row == 0) {
+            sendEmailChangeName()
+        } else if(indexPath.section == 0 && indexPath.row == 1) {
             sendEmail()
         } else if(indexPath.section == 0 && indexPath.row == 2) {
             displaySettingsEmail()
@@ -222,12 +224,29 @@ class StaticSettingsViewController: BaseTableViewController {
 extension StaticSettingsViewController: MFMailComposeViewControllerDelegate {
     
     private func sendEmail() {
-        
         let mailComposerVC = configuredMailComposeVC()
         if MFMailComposeViewController.canSendMail() {
             self.present(mailComposerVC, animated: true, completion: nil)
         }
+    }
+    
+    private func sendEmailChangeName() {
+        let mailComposerVC = configuredMailComposeVCName()
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposerVC, animated: true, completion: nil)
+        }
+    }
+    
+    func configuredMailComposeVCName() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        if let myNumber = UserStore.getInstance().getLocalUserAccount().phone {
+            mailComposerVC.setSubject("Change my Name")
+            mailComposerVC.setMessageBody("Hi Aimee,\n \nHey, I’d like to change my name on my account to: [insert your Name]", isHTML: false)
+        }
+        mailComposerVC.setToRecipients([Config.mailSettings])
         
+        return mailComposerVC
     }
     
     func configuredMailComposeVC() -> MFMailComposeViewController {
@@ -237,7 +256,8 @@ extension StaticSettingsViewController: MFMailComposeViewControllerDelegate {
             mailComposerVC.setSubject("I'd like to change my Cell Phone Number")
             mailComposerVC.setMessageBody("Hi Aimee,\n \nHey, I’d like to change my Cell Phone Number that I log in to my account to the following number: [insert number]", isHTML: false)
         }
-        mailComposerVC.setToRecipients(["Aimee@popmetrics.io"])
+        mailComposerVC.setToRecipients([Config.mailSettings])
+        
         return mailComposerVC
     }
     
