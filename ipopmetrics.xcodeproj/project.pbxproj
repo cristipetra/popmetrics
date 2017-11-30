@@ -168,7 +168,6 @@
 		08F368951F18F93800819CDE /* DailyInsightsCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F368941F18F93800819CDE /* DailyInsightsCardCell.swift */; };
 		08F368971F19029100819CDE /* LastCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08F368961F19029100819CDE /* LastCard.xib */; };
 		08F7A0971F17AB0C00A1B2C3 /* RecommendationCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F7A0961F17AB0C00A1B2C3 /* RecommendationCardCell.swift */; };
-		08FAE8411F541D060097DF3E /* Statistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08FAE8401F541D060097DF3E /* Statistics.storyboard */; };
 		08FAE8441F541D790097DF3E /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE8431F541D790097DF3E /* StatisticsViewController.swift */; };
 		08FAE8471F541FF40097DF3E /* TrafficCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08FAE8461F541FF40097DF3E /* TrafficCard.xib */; };
 		08FAE8491F5420050097DF3E /* TrafficCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */; };
@@ -393,7 +392,6 @@
 		08F368941F18F93800819CDE /* DailyInsightsCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyInsightsCardCell.swift; sourceTree = "<group>"; };
 		08F368961F19029100819CDE /* LastCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LastCard.xib; sourceTree = "<group>"; };
 		08F7A0961F17AB0C00A1B2C3 /* RecommendationCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationCardCell.swift; sourceTree = "<group>"; };
-		08FAE8401F541D060097DF3E /* Statistics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Statistics.storyboard; sourceTree = "<group>"; };
 		08FAE8431F541D790097DF3E /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		08FAE8461F541FF40097DF3E /* TrafficCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrafficCard.xib; sourceTree = "<group>"; };
 		08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficCardViewCell.swift; sourceTree = "<group>"; };
@@ -722,7 +720,6 @@
 			isa = PBXGroup;
 			children = (
 				08FAE8461F541FF40097DF3E /* TrafficCard.xib */,
-				08FAE8401F541D060097DF3E /* Statistics.storyboard */,
 				08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */,
 				08AA6C6A1F56DD060022DE91 /* TrafficVisits.swift */,
 				08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */,
@@ -1045,7 +1042,6 @@
 				08C580FD1FBF21440013B03F /* SettingsOverlayUrlView.xib in Resources */,
 				08AA6C6F1F56F3BA0022DE91 /* ChartStatistics.storyboard in Resources */,
 				08B745941F1F6C0100EC3F8C /* OpenSans-Bold.ttf in Resources */,
-				08FAE8411F541D060097DF3E /* Statistics.storyboard in Resources */,
 				0856F3581F272F020061DF7E /* Calendar.storyboard in Resources */,
 				0854AF351F3F2B18007B60F9 /* CalendarCardSimple.xib in Resources */,
 				085CB7B21F4ADCA200038C03 /* Notifications.storyboard in Resources */,

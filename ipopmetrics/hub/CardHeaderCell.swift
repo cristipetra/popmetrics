@@ -76,8 +76,9 @@ class CardHeaderCell: UITableViewCell {
             sectionTitleLabel.textColor = PopmetricsColor.weekDaysGrey
             titleLeftAnchor.constant = 0
         case .traffic:
-            connectionView.backgroundColor = PopmetricsColor.trafficHeaderColor
-            roundConnectionView.backgroundColor = PopmetricsColor.trafficHeaderColor
+//            connectionView.backgroundColor = PopmetricsColor.trafficHeaderColor
+//            roundConnectionView.backgroundColor = PopmetricsColor.trafficHeaderColor
+            let a = 0
         case .insight:
             connectionView.backgroundColor = PopmetricsColor.darkGrey
             roundConnectionView.backgroundColor = PopmetricsColor.darkGrey
