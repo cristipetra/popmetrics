@@ -16,6 +16,7 @@ class User {
     
 }
 
+
 class UserStore {
 
     static func getInstance() -> UserStore {
