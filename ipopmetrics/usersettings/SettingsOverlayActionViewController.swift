@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import MessageUI
 
 class SettingsOverlayActionViewController: SettingsBaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var handlerCTA: UIButton!
     
     private var dataSource: [String] = []
     
@@ -44,6 +46,10 @@ class SettingsOverlayActionViewController: SettingsBaseViewController, UITableVi
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func handlerCTA(_ sender: Any) {
+        sendEmail(emailMessageType: .overlayAction)
     }
     
     private func registerCell() {
@@ -93,4 +99,32 @@ class SettingsOverlayActionViewController: SettingsBaseViewController, UITableVi
         prevCell.setDefault()
     }
     
+}
+
+extension SettingsOverlayActionViewController: MFMailComposeViewControllerDelegate {
+    
+    private func sendEmail(emailMessageType: EmailMessageType) {
+        let mailComposerVC = configuredMailComposeVC(emailMessageType: emailMessageType)
+        
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposerVC, animated: true, completion: nil)
+        }
+    }
+    
+    func configuredMailComposeVC(emailMessageType: EmailMessageType) -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        let info = EmailMessages.getInstance().getEmailMessages(emailMessageType: emailMessageType)
+        
+        mailComposerVC.setSubject(info.subject!)
+        mailComposerVC.setMessageBody(info.messageBody!, isHTML: false)
+        
+        mailComposerVC.setToRecipients([Config.mailSettings])
+        
+        return mailComposerVC
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

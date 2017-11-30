@@ -106,12 +106,18 @@ class StaticSettingsViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath)
-        if(indexPath.section == 0 && indexPath.row == 1) {
-            sendEmail()
+        if(indexPath.section == 0 && indexPath.row == 0) {
+            sendEmail(emailMessageType: .name)
+        } else if(indexPath.section == 0 && indexPath.row == 1) {
+            sendEmail(emailMessageType: .phone)
         } else if(indexPath.section == 0 && indexPath.row == 2) {
             displaySettingsEmail()
+        } else if (indexPath.section == 2 && indexPath.row == 0) {
+            sendEmail(emailMessageType: .brand)
         } else if (indexPath.section == 2 && indexPath.row == 1) {
             displaySettingsLogo()
+        } else if (indexPath.section == 2 && indexPath.row == 2) {
+            sendEmail(emailMessageType: .webAddress)
         } else if (indexPath.section == 3 && indexPath.row == 0) {
             displayFacebook()
         } else if (indexPath.section == 3 && indexPath.row == 1) {
@@ -221,24 +227,24 @@ class StaticSettingsViewController: BaseTableViewController {
 
 extension StaticSettingsViewController: MFMailComposeViewControllerDelegate {
     
-    private func sendEmail() {
+    private func sendEmail(emailMessageType: EmailMessageType) {
+        let mailComposerVC = configuredMailComposeVC(emailMessageType: emailMessageType)
         
-        let mailComposerVC = configuredMailComposeVC()
         if MFMailComposeViewController.canSendMail() {
             self.present(mailComposerVC, animated: true, completion: nil)
         }
-        
     }
     
-    func configuredMailComposeVC() -> MFMailComposeViewController {
-        
+    func configuredMailComposeVC(emailMessageType: EmailMessageType) -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
-        //mailComposerVC.setSubject("Test mail")
-        if let myNumber = UserStore.getInstance().getLocalUserAccount().phone {
-            mailComposerVC.setMessageBody("Hey, I’d like to change my phone number from \(myNumber) to", isHTML: false)
-        }
-        //mailComposerVC.setToRecipients([""])
+        let info = EmailMessages.getInstance().getEmailMessages(emailMessageType: emailMessageType)
+        
+        mailComposerVC.setSubject(info.subject!)
+        mailComposerVC.setMessageBody(info.messageBody!, isHTML: false)
+        
+        mailComposerVC.setToRecipients([Config.mailSettings])
+        
         return mailComposerVC
     }
     
@@ -246,3 +252,4 @@ extension StaticSettingsViewController: MFMailComposeViewControllerDelegate {
         self.dismiss(animated: true, completion: nil)
     }
 }
+

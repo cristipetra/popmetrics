@@ -62,8 +62,10 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bH-hO-cAe">
-                    <rect key="frame" x="25" y="268" width="295" height="70"/>
-                    <string key="text">Keffiyeh tofu austin enamel pin woke vice quinoa vaporware VHS dreamcatcher occupy skateboard swag. Cliche subway tile pabst chia authentic. </string>
+                    <rect key="frame" x="25" y="268" width="285" height="122.5"/>
+                    <string key="text">This is where we will send traffic that engages with the Content Overlay.
+
+We recommend keeping this as your main website, but you can easily change to another destination such as a blog or campaign-specific landing page.</string>
                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                     <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -78,7 +80,7 @@
                 <constraint firstItem="hL3-BO-fmx" firstAttribute="top" secondItem="ZmJ-Nv-7RO" secondAttribute="bottom" constant="21" id="Rdj-b4-xA0"/>
                 <constraint firstItem="ZmJ-Nv-7RO" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Tzf-kb-AgH"/>
                 <constraint firstItem="ZmJ-Nv-7RO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="anb-rU-gZb"/>
-                <constraint firstItem="3bH-hO-cAe" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="cIa-Q1-OIW"/>
+                <constraint firstItem="3bH-hO-cAe" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-10" id="cIa-Q1-OIW"/>
                 <constraint firstItem="euF-AM-3o0" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="17" id="iuu-wg-yR8"/>
                 <constraint firstItem="hL3-BO-fmx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="nie-Yi-UEa"/>
                 <constraint firstItem="hL3-BO-fmx" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-10" id="qYx-IE-8Sw"/>
