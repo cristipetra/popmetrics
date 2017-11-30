@@ -116,6 +116,8 @@ class StaticSettingsViewController: BaseTableViewController {
             sendEmail(emailMessageType: .brand)
         } else if (indexPath.section == 2 && indexPath.row == 1) {
             displaySettingsLogo()
+        } else if (indexPath.section == 2 && indexPath.row == 2) {
+            sendEmail(emailMessageType: .webAddress)
         } else if (indexPath.section == 3 && indexPath.row == 0) {
             displayFacebook()
         } else if (indexPath.section == 3 && indexPath.row == 1) {
