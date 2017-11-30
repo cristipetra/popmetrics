@@ -25,7 +25,7 @@ class Alert {
         let titleAttrString = NSMutableAttributedString(string: "There are unsaved changes.", attributes: titleAttributes)
         alertController.setValue(titleAttrString, forKey: "attributedTitle")
         
-        let messageAttrString = NSMutableAttributedString(string: "Are you sure you would like to leave them?", attributes: messageAttributes)
+        let messageAttrString = NSMutableAttributedString(string: "Are you sure you would like to cancel?", attributes: messageAttributes)
         alertController.setValue(messageAttrString, forKey: "attributedMessage")
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive){ (cancel) in
