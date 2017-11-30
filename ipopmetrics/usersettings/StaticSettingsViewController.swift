@@ -107,11 +107,13 @@ class StaticSettingsViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath)
         if(indexPath.section == 0 && indexPath.row == 0) {
-            sendEmailChangeName()
+            sendEmail(emailMessageType: .name)
         } else if(indexPath.section == 0 && indexPath.row == 1) {
-            sendEmail()
+            sendEmail(emailMessageType: .phone)
         } else if(indexPath.section == 0 && indexPath.row == 2) {
             displaySettingsEmail()
+        } else if (indexPath.section == 2 && indexPath.row == 0) {
+            sendEmail(emailMessageType: .brand)
         } else if (indexPath.section == 2 && indexPath.row == 1) {
             displaySettingsLogo()
         } else if (indexPath.section == 3 && indexPath.row == 0) {
@@ -223,39 +225,22 @@ class StaticSettingsViewController: BaseTableViewController {
 
 extension StaticSettingsViewController: MFMailComposeViewControllerDelegate {
     
-    private func sendEmail() {
-        let mailComposerVC = configuredMailComposeVC()
-        if MFMailComposeViewController.canSendMail() {
-            self.present(mailComposerVC, animated: true, completion: nil)
-        }
-    }
-    
-    private func sendEmailChangeName() {
-        let mailComposerVC = configuredMailComposeVCName()
-        if MFMailComposeViewController.canSendMail() {
-            self.present(mailComposerVC, animated: true, completion: nil)
-        }
-    }
-    
-    func configuredMailComposeVCName() -> MFMailComposeViewController {
-        let mailComposerVC = MFMailComposeViewController()
-        mailComposerVC.mailComposeDelegate = self
-        if let myNumber = UserStore.getInstance().getLocalUserAccount().phone {
-            mailComposerVC.setSubject("Change my Name")
-            mailComposerVC.setMessageBody("Hi Aimee,\n \nHey, I’d like to change my name on my account to: [insert your Name]", isHTML: false)
-        }
-        mailComposerVC.setToRecipients([Config.mailSettings])
+    private func sendEmail(emailMessageType: EmailMessageType) {
+        let mailComposerVC = configuredMailComposeVC(emailMessageType: emailMessageType)
         
-        return mailComposerVC
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposerVC, animated: true, completion: nil)
+        }
     }
     
-    func configuredMailComposeVC() -> MFMailComposeViewController {
+    func configuredMailComposeVC(emailMessageType: EmailMessageType) -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
-        if let myNumber = UserStore.getInstance().getLocalUserAccount().phone {
-            mailComposerVC.setSubject("I'd like to change my Cell Phone Number")
-            mailComposerVC.setMessageBody("Hi Aimee,\n \nHey, I’d like to change my Cell Phone Number that I log in to my account to the following number: [insert number]", isHTML: false)
-        }
+        let info = EmailMessages.getInstance().getEmailMessages(emailMessageType: emailMessageType)
+        
+        mailComposerVC.setSubject(info.subject!)
+        mailComposerVC.setMessageBody(info.messageBody!, isHTML: false)
+        
         mailComposerVC.setToRecipients([Config.mailSettings])
         
         return mailComposerVC
@@ -265,3 +250,4 @@ extension StaticSettingsViewController: MFMailComposeViewControllerDelegate {
         self.dismiss(animated: true, completion: nil)
     }
 }
+

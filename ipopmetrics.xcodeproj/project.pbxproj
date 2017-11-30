@@ -156,6 +156,7 @@
 		08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */; };
 		08CC6EC01FBC7F9C00A6521E /* SettingsLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */; };
 		08CC6EC21FBC7FBA00A6521E /* SettingsLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08CC6EC11FBC7FBA00A6521E /* SettingsLogoView.xib */; };
+		08CE428F1FD041AE00FF8C80 /* EmailMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CE428E1FD041AE00FF8C80 /* EmailMessages.swift */; };
 		08D1BC371F1DF4F900D377B2 /* ViewNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC361F1DF4F900D377B2 /* ViewNames.swift */; };
 		08D1BC391F1E3D6200D377B2 /* LDSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC381F1E3D6200D377B2 /* LDSplashView.swift */; };
 		08D1BC3B1F1E568A00D377B2 /* PhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC3A1F1E568A00D377B2 /* PhoneView.swift */; };
@@ -379,6 +380,7 @@
 		08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLogoViewController.swift; sourceTree = "<group>"; };
 		08CC6EC11FBC7FBA00A6521E /* SettingsLogoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsLogoView.xib; sourceTree = "<group>"; };
+		08CE428E1FD041AE00FF8C80 /* EmailMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailMessages.swift; sourceTree = "<group>"; };
 		08D1BC361F1DF4F900D377B2 /* ViewNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewNames.swift; sourceTree = "<group>"; };
 		08D1BC381F1E3D6200D377B2 /* LDSplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDSplashView.swift; sourceTree = "<group>"; };
 		08D1BC3A1F1E568A00D377B2 /* PhoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneView.swift; sourceTree = "<group>"; };
@@ -528,6 +530,7 @@
 				08B4EBA81FC56ACD00BFC5A1 /* UIColorExtensions.swift */,
 				08B4EBA21FC56ACD00BFC5A1 /* Validator.swift */,
 				08A51D2E1FC6DBBE0097B334 /* Markdown.swift */,
+				08CE428E1FD041AE00FF8C80 /* EmailMessages.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -1304,6 +1307,7 @@
 				08B4EBB61FC56ACE00BFC5A1 /* AppStoryboard.swift in Sources */,
 				1128B3F91ECF256600BDA58C /* SimpleButtonStateChangeValue.swift in Sources */,
 				11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */,
+				08CE428F1FD041AE00FF8C80 /* EmailMessages.swift in Sources */,
 				085AA0D41F42ECAA0014D4CE /* Todo.swift in Sources */,
 				113976A91E97C71300B535DF /* AccountViewController.swift in Sources */,
 				08953E761F4C35AC003ABEFC /* RequiredActionCard.swift in Sources */,
