@@ -48,7 +48,7 @@ class NotificationsViewController: UIViewController {
             (granted, error) in
             
             print("Permission granted: \(granted)")
-            
+            UsersStore.didAskedForAllowingNotification = true
             self.openNextView()
             
             guard granted else { return }

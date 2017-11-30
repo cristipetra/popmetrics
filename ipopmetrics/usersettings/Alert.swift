@@ -68,6 +68,48 @@ class Alert {
         // present an actionSheet...
         parent?.present(actionSheetController, animated: true, completion: nil)
     }
+    
+    static func showNotificationAlertDialog(parent: UIViewController?, action: Action?, message: String, title: String, okButton: Bool) {
+        let actionSelected: Action? = action
+        
+        let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        
+        let titleAttributes: [NSAttributedStringKey: Any] = [NSAttributedStringKey.font: UIFont(name: FontBook.bold, size: 16)!, NSAttributedStringKey.foregroundColor: UIColor(red: 49/255, green: 63/255, blue: 72/255, alpha: 1)]
+        
+        let messageAttributes : [NSAttributedStringKey: Any] = [NSAttributedStringKey.font: UIFont(name: FontBook.regular, size: 15)!, NSAttributedStringKey.foregroundColor: UIColor(red: 49/255, green: 63/255, blue: 72/255, alpha: 1)]
+        
+        let titleAttrString = NSMutableAttributedString(string: title, attributes: titleAttributes)
+        alertController.setValue(titleAttrString, forKey: "attributedTitle")
+        
+        let messageAttrString = NSMutableAttributedString(string: message, attributes: messageAttributes)
+        alertController.setValue(messageAttrString, forKey: "attributedMessage")
+        
+        if okButton {
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default){ (ok) in
+                actionSelected!(.cancel)
+            }
+            
+            let okAction = UIAlertAction(title: "OK", style: .default) { (save) in
+                actionSelected!(.save)
+            }
+            alertController.addAction(okAction)
+            alertController.addAction(cancelAction)
+        } else {
+            let cancelAction = UIAlertAction(title: "Cancel", style: .destructive){ (cancel) in
+                actionSelected!(.cancel)
+            }
+            
+            let saveAction = UIAlertAction(title: "Save Changes", style: .default) { (save) in
+                actionSelected!(.save)
+            }
+            
+            alertController.addAction(cancelAction)
+            alertController.addAction(saveAction)
+        }
+        
+        parent?.present(alertController, animated: true, completion: nil)
+        //UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
+    }
 }
 
 enum AlertAction {

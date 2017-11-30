@@ -91,5 +91,11 @@ class ImpactScoreView: UIView {
     
     internal func setProgress(_ value: CGFloat) {
         self.progress.animateTo(progress: value)
+        setScore(value)
+    }
+    
+    internal func setScore(_ value: CGFloat) {
+        let no = Int(value * 100)
+        self.impactScoreLbl.text = "+\(no)"
     }
 }

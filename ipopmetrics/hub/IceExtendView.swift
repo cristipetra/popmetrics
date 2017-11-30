@@ -30,12 +30,14 @@ class IceExtendView: UIView {
     @IBOutlet weak var progressEffort: GTProgressBar!
     @IBOutlet var splitLabelsLeadingAnchor: [NSLayoutConstraint]!
     
-    
     private let colorCost = UIColor(red: 177/255, green: 154/255, blue: 219/255, alpha: 1)
     private let colorEffort = UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1)
     private let colorBackgroundBar = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
     
-    private var feedCard: FeedCard! {
+    private var feedCard: FeedCard!
+    private var todoCard: TodoCard!
+    
+    private var iceCardModel: IceCardViewModel! {
         didSet {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.updateView()
@@ -66,6 +68,12 @@ class IceExtendView: UIView {
     
     func configure(_ feedCard: FeedCard) {
         self.feedCard = feedCard
+        iceCardModel = IceCardViewModel(feedCard: feedCard)
+    }
+    
+    func configure(todoCard: TodoCard) {
+        self.todoCard = todoCard
+        iceCardModel = IceCardViewModel(todoCard: todoCard)
     }
     
     override func layoutSubviews() {
@@ -91,7 +99,7 @@ class IceExtendView: UIView {
     private func updateView() {
         setUpLabel()
         
-        setSplitValues()
+        setSplitValues(splitValues: iceCardModel.getIceImpactSplit())
         
         setProgressEffortStyle()
         setProgressCostStyle()
@@ -106,19 +114,19 @@ class IceExtendView: UIView {
     
     private func updateProgressCost() {
         
-        let value = CGFloat(feedCard.iceCostPercentage) / CGFloat(100)
+        let value = CGFloat(iceCardModel.iceCostPercentage) / CGFloat(100)
         self.progressCost.animateTo(progress: value)
         
-        guard let label = feedCard.iceCostLabel else { return }
+        guard let label = iceCardModel.iceCostLabel else { return }
         
         costLbl.text = label
     }
     
     private func updateProgressEffort() {
-        let value = CGFloat(feedCard.iceEffortPercentage) / CGFloat(100)
+        let value = CGFloat(iceCardModel.iceEffortPercentage) / CGFloat(100)
         progressEffort.animateTo(progress: CGFloat(value))
         
-        if let effort = feedCard.iceEffortLabel {
+        if let effort = iceCardModel.iceEffortLabel {
             effortLbl.text = effort
         }
     }
@@ -157,21 +165,16 @@ class IceExtendView: UIView {
     }
     
     private func getIceImpactLabel() -> String {
-        if( feedCard.iceImpactPercentage < 30) {
+        if( iceCardModel.iceImpactPercentage < 30) {
             return "low"
-        } else if(feedCard.iceImpactPercentage > 30 && feedCard.iceImpactPercentage<70) {
+        } else if(iceCardModel.iceImpactPercentage > 30 && iceCardModel.iceImpactPercentage<70) {
             return "medium"
         } else {
             return "high"
         }
     }
     
-    private func setSplitValues() {
-        
-        var splitValues = feedCard.getIceImpactSplit()
-        
-        print(splitValues)
-        
+    private func setSplitValues(splitValues: [ImpactSplit]) {
         for index in 0..<splitValues.count {
             splitLabels[index].text = splitValues[index].label
             
@@ -185,8 +188,8 @@ class IceExtendView: UIView {
     private func setUpLabel() {
         let impactLevel: String = (getIceImpactLabel() + " impact")
         
-        guard let cost = feedCard.iceCostLabel else { return }
-        guard let effort = feedCard.iceEffortLabel else { return }
+        guard let cost = iceCardModel.iceCostLabel else { return }
+        guard let effort = iceCardModel.iceEffortLabel else { return }
         
         let impactStyle = Style("impactStyle", { (style) -> (Void) in
             style.font = FontAttribute(FontBook.bold, size: 15)
@@ -230,11 +233,11 @@ class IceExtendView: UIView {
         
         messageLbl.attributedText = attrString
     }
-    
+    /*
     private func setCostStyle() {
         costMainProgressView.clipsToBounds = true
-        let value = String(feedCard.iceCostPercentage)
-        guard let label = feedCard.iceCostLabel else {
+        let value = String(iceCardModel.iceCostPercentage)
+        guard let label = iceCardModel.iceCostLabel else {
             return
         }
         
@@ -253,9 +256,9 @@ class IceExtendView: UIView {
         costLbl.attributedText = "~".set(style: circaCharacterStyle) + "$\(label)".set(style: extraBoldStyle)
         
     }
-    
+    */
     private func setMultipleProgressViewConstaits() {
-        var splitValues = feedCard.getIceImpactSplit()
+        var splitValues = iceCardModel.getIceImpactSplit()
         impactMultipleMainProgressView.clipsToBounds = true
         
         var bounds: CGRect! = CGRect.zero
@@ -326,5 +329,53 @@ class IceExtendView: UIView {
         }
         
     }
+}
+
+
+struct IceCardViewModel {
+    internal var iceImpactPercentage: Int
+    internal var iceImpactSplit: String? = nil // "[{'label': "Website Traffice", 'percentage': 10}]"
+    
+    internal var iceCostLabel: String? = nil
+    internal var iceCostPercentage: Int = 0
+    internal var iceEffortLabel: String? = nil
+    internal var iceEffortPercentage: Int = 0
+    
+    init(todoCard: TodoCard) {
+        iceImpactPercentage     = todoCard.iceImpactPercentage
+        iceImpactSplit          = todoCard.iceImpactSplit
+        iceCostLabel            = todoCard.iceCostLabel
+        iceCostPercentage       = todoCard.iceCostPercentage
+        iceEffortLabel          = todoCard.iceEffortLabel
+        iceCostPercentage       = todoCard.iceCostPercentage
+        
+    }
+    
+    init(feedCard: FeedCard) {
+        iceImpactPercentage     = feedCard.iceImpactPercentage
+        iceImpactSplit          = feedCard.iceImpactSplit
+        iceCostLabel            = feedCard.iceCostLabel
+        iceCostPercentage       = feedCard.iceCostPercentage
+        iceEffortLabel          = feedCard.iceEffortLabel
+        iceCostPercentage       = feedCard.iceCostPercentage
+    }
+    
+    func getIceImpactSplit() -> [ImpactSplit] {
+        guard let _  = iceImpactSplit else { return [] }
+        let values = iceImpactSplit!
+        let splitImpactArray = values.toJSON() as! NSMutableArray
+        
+        var dict: [ImpactSplit] = []
+        dict.removeAll()
+        for index in 0..<splitImpactArray.count {
+            if let obj = splitImpactArray.object(at: index) as? [String: Any] {
+                var impact = ImpactSplit()
+                impact.initParam(param: obj)
+                dict.append(impact)
+            }
+        }
+        return dict
+    }
+    
 }
 

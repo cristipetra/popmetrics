@@ -41,6 +41,10 @@ class PaidActionCardCell: UITableViewCell {
         setCornerRadius()
         setProgressCosttStyle()
         setProgressImpacttStyle()
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        cardImageView.isUserInteractionEnabled = true
+        cardImageView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     private func clearView() {
@@ -94,6 +98,8 @@ class PaidActionCardCell: UITableViewCell {
         
         let costPercentage = CGFloat(todoCard.iceCostPercentage) / CGFloat(100)
         progressCost.animateTo(progress: costPercentage)
+        
+        statusLabel.text = todoCard.actionStatus ?? ""
     }
     
     internal func configure(_ todoCard: TodoCard) {
@@ -104,6 +110,12 @@ class PaidActionCardCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    @objc private func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        let actionPageVc: ActionPageDetailsViewController = ActionPageDetailsViewController(nibName: "ActionPage", bundle: nil)
+        actionPageVc.configure(todoCard: todoCard)
+        self.parentViewController?.navigationController?.pushViewController(actionPageVc, animated: true)
     }
     
 }

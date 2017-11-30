@@ -42,17 +42,20 @@
                                     <constraint firstAttribute="height" constant="2" id="qKx-3J-5wJ"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is an article for you to read" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWm-YO-eOH">
-                                <rect key="frame" x="20" y="16" width="270" height="54"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="This is an article for you to read" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWm-YO-eOH">
+                                <rect key="frame" x="15" y="16" width="275" height="63"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="80" id="1wy-wF-K0u"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="80" id="h8R-9u-dhO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AlfaSlabOne-Regular" family="Alfa Slab One" pointSize="23"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePyramid" translatesAutoresizingMaskIntoConstraints="NO" id="aNv-If-Qw8">
-                                <rect key="frame" x="5" y="100" width="290" height="179"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="imagePyramid" translatesAutoresizingMaskIntoConstraints="NO" id="aNv-If-Qw8">
+                                <rect key="frame" x="8" y="89" width="284" height="179"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="250" constant="179" id="YlU-4J-6qd"/>
+                                </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ac9-8F-2bQ" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="355.5" width="300" height="94"/>
@@ -73,8 +76,8 @@
                                     <constraint firstItem="U5K-rC-Lev" firstAttribute="leading" secondItem="ac9-8F-2bQ" secondAttribute="leading" id="sjn-h1-35N"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter is a key access point to increase your social following." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ViH-mX-DwS">
-                                <rect key="frame" x="20" y="289" width="270" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Twitter is a key access point to increase your social to increase your social following." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ViH-mX-DwS">
+                                <rect key="frame" x="15" y="279" width="275" height="61.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="112" id="HfM-9b-kgi"/>
                                 </constraints>
@@ -83,24 +86,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ViH-mX-DwS" firstAttribute="top" secondItem="aNv-If-Qw8" secondAttribute="bottom" priority="750" constant="10" id="01c-A5-3y1"/>
+                            <constraint firstItem="ViH-mX-DwS" firstAttribute="top" secondItem="aNv-If-Qw8" secondAttribute="bottom" priority="750" constant="20" id="01c-A5-3y1"/>
                             <constraint firstAttribute="height" constant="450" id="3Ie-cy-UsX"/>
                             <constraint firstAttribute="bottom" secondItem="ac9-8F-2bQ" secondAttribute="bottom" id="5fn-D0-QBd"/>
                             <constraint firstItem="ViH-mX-DwS" firstAttribute="leading" secondItem="rWm-YO-eOH" secondAttribute="leading" id="AQg-nS-36g"/>
                             <constraint firstAttribute="trailing" secondItem="rWm-YO-eOH" secondAttribute="trailing" constant="10" id="EDF-0p-Xgn"/>
-                            <constraint firstItem="aNv-If-Qw8" firstAttribute="leading" secondItem="2qy-Km-f1n" secondAttribute="leading" priority="750" constant="5" id="Ied-NF-2VO"/>
+                            <constraint firstItem="aNv-If-Qw8" firstAttribute="leading" secondItem="2qy-Km-f1n" secondAttribute="leading" constant="8" id="Ied-NF-2VO"/>
                             <constraint firstItem="ET2-4F-t9a" firstAttribute="leading" secondItem="2qy-Km-f1n" secondAttribute="leading" id="PKV-Mu-gb5"/>
+                            <constraint firstItem="ac9-8F-2bQ" firstAttribute="top" secondItem="ViH-mX-DwS" secondAttribute="bottom" constant="15" id="R36-kB-zvw"/>
                             <constraint firstAttribute="trailing" secondItem="ac9-8F-2bQ" secondAttribute="trailing" id="RUX-NO-kmV"/>
                             <constraint firstAttribute="trailing" secondItem="ET2-4F-t9a" secondAttribute="trailing" id="U2F-U2-IQl"/>
-                            <constraint firstItem="rWm-YO-eOH" firstAttribute="leading" secondItem="2qy-Km-f1n" secondAttribute="leading" constant="20" id="Uf7-Ns-eKC"/>
+                            <constraint firstItem="rWm-YO-eOH" firstAttribute="leading" secondItem="2qy-Km-f1n" secondAttribute="leading" constant="15" id="Uf7-Ns-eKC"/>
                             <constraint firstItem="ET2-4F-t9a" firstAttribute="top" secondItem="2qy-Km-f1n" secondAttribute="top" id="VyX-NU-iyO"/>
-                            <constraint firstAttribute="trailing" secondItem="aNv-If-Qw8" secondAttribute="trailing" priority="750" constant="5" id="WBY-Xe-h7l"/>
+                            <constraint firstAttribute="trailing" secondItem="aNv-If-Qw8" secondAttribute="trailing" constant="8" id="WBY-Xe-h7l"/>
                             <constraint firstItem="rWm-YO-eOH" firstAttribute="top" secondItem="2qy-Km-f1n" secondAttribute="top" constant="16" id="Ye8-hk-x4G"/>
                             <constraint firstItem="ac9-8F-2bQ" firstAttribute="leading" secondItem="2qy-Km-f1n" secondAttribute="leading" id="imJ-b8-pFy"/>
                             <constraint firstItem="ViH-mX-DwS" firstAttribute="trailing" secondItem="rWm-YO-eOH" secondAttribute="trailing" id="qBt-JU-2MC"/>
-                            <constraint firstItem="aNv-If-Qw8" firstAttribute="top" secondItem="rWm-YO-eOH" secondAttribute="bottom" priority="250" constant="30" id="qiI-Rh-coq"/>
+                            <constraint firstItem="aNv-If-Qw8" firstAttribute="top" secondItem="rWm-YO-eOH" secondAttribute="bottom" constant="10" id="qiI-Rh-coq"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1oH-BX-P4L">
@@ -131,7 +134,6 @@
                 <outlet property="containerView" destination="2qy-Km-f1n" id="bY4-59-0jN"/>
                 <outlet property="footerVIew" destination="ac9-8F-2bQ" id="22M-27-dSK"/>
                 <outlet property="messageLabel" destination="ViH-mX-DwS" id="YDa-En-4DB"/>
-                <outlet property="titleHeightConstraint" destination="1wy-wF-K0u" id="0MW-Cn-MEM"/>
                 <outlet property="titleLabel" destination="rWm-YO-eOH" id="NId-zu-tPT"/>
                 <outlet property="toolBarView" destination="RHK-Wo-rDa" id="kP3-y1-krI"/>
             </connections>
