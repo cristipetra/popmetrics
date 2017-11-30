@@ -27,8 +27,8 @@ class MainTabBarController: UITabBarController {
         
         // let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        self.tabBar.tintColor = PopmetricsColor.textGrey
-        self.tabBar.unselectedItemTintColor = PopmetricsColor.unselectedTabBarItemTint
+//        self.tabBar.tintColor = PopmetricsColor.textGrey
+//        self.tabBar.unselectedItemTintColor = PopmetricsColor.unselectedTabBarItemTint
         
 //        homeNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationID") as! UINavigationController
 //        homeNavigationController.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
@@ -56,13 +56,13 @@ class MainTabBarController: UITabBarController {
     
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        print("the selected index is : \(tabBar.items?.index(of: item))")
-        let selectedIndex = tabBar.items?.index(of: item)
-        let tabInfo = MainTabInfo.getInstance()
-        tabInfo.lastItemIndex = tabInfo.currentItemIndex
-        tabInfo.currentItemIndex = selectedIndex!
-        
-        setTabItemImages()
+//        print("the selected index is : \(tabBar.items?.index(of: item))")
+//        let selectedIndex = tabBar.items?.index(of: item)
+//        let tabInfo = MainTabInfo.getInstance()
+//        tabInfo.lastItemIndex = tabInfo.currentItemIndex
+//        tabInfo.currentItemIndex = selectedIndex!
+//
+//        setTabItemImages()
     }
     
     func setTabItemImages() {
