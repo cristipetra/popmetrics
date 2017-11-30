@@ -13,6 +13,7 @@ enum EmailMessageType {
     case brand
     case phone
     case webAddress
+    case overlayAction
 }
 
 class EmailMessages: NSObject {
@@ -39,6 +40,10 @@ class EmailMessages: NSObject {
         case .webAddress:
             emailInfo.subject = "Change my Primary Web Address"
             emailInfo.messageBody = "Hi Aimee,\n \nI’d like to change the Primary Website to the following: [insert new URL]"
+            return emailInfo
+        case .overlayAction:
+            emailInfo.subject = "Suggestion for an Overlay Call To Action (CTA)"
+            emailInfo.messageBody = "Hi Aimee,\n \nI have a suggestion for a new CTA. What about having: [Inser CTA suggestion]"
             return emailInfo
         default:
             return emailInfo

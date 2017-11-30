@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,6 +18,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OverlayActionViewController" customModule="ipopmetrics" customModuleProvider="target">
             <connections>
+                <outlet property="handlerCTA" destination="qzN-e7-y4B" id="KNR-HI-CJi"/>
                 <outlet property="tableView" destination="cuS-P8-vdH" id="DPv-Kr-Luw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -44,8 +46,8 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3cf-4X-4cl">
                                     <rect key="frame" x="0.0" y="305" width="320" height="60"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzN-e7-y4B">
-                                            <rect key="frame" x="25" y="9" width="100" height="42"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzN-e7-y4B">
+                                            <rect key="frame" x="25" y="9" width="287" height="42"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="42" id="mKN-w1-URC"/>
                                             </constraints>
@@ -53,6 +55,9 @@
                                             <state key="normal" title="Suggest a CTA">
                                                 <color key="titleColor" red="0.25490196078431371" green="0.60784313725490191" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="handlerCTA:" destination="-1" eventType="touchUpInside" id="xOl-o0-Sz3"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qs4-4K-eYm">
                                             <rect key="frame" x="274" y="24" width="22" height="13"/>
@@ -108,6 +113,7 @@
                                 <constraint firstItem="3cf-4X-4cl" firstAttribute="top" secondItem="cuS-P8-vdH" secondAttribute="bottom" constant="1" id="baU-n9-J8x"/>
                                 <constraint firstAttribute="trailing" secondItem="3cf-4X-4cl" secondAttribute="trailing" id="esl-SJ-qeJ"/>
                                 <constraint firstItem="f0k-5k-n7i" firstAttribute="leading" secondItem="Ca8-gX-oe7" secondAttribute="leading" constant="25" id="fRb-Aq-JdE"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="qzN-e7-y4B" secondAttribute="trailing" id="iaM-ew-dwX"/>
                                 <constraint firstItem="vSB-VM-VBn" firstAttribute="top" secondItem="3cf-4X-4cl" secondAttribute="bottom" constant="20" id="p6h-4j-psd"/>
                                 <constraint firstItem="f0k-5k-n7i" firstAttribute="top" secondItem="vSB-VM-VBn" secondAttribute="bottom" constant="10" id="rsT-Ev-vE1"/>
                             </constraints>
