@@ -28,7 +28,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACCOUNT DETAILS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9I-Us-ML3">
-                    <rect key="frame" x="25" y="37" width="118" height="21"/>
+                    <rect key="frame" x="25" y="37" width="113" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="hMO-tV-hTS"/>
                     </constraints>
@@ -39,16 +39,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CLl-zg-cjo">
                     <rect key="frame" x="0.0" y="75" width="375" height="44"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJP-ci-Ika">
-                            <rect key="frame" x="342" y="16" width="22" height="13"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="13" id="Eki-XS-U10"/>
-                                <constraint firstAttribute="width" constant="22" id="fNq-8P-h3W"/>
-                            </constraints>
-                            <state key="normal" title="Button" image="iconEnvelope"/>
-                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@BrandName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fle-Af-FIh">
-                            <rect key="frame" x="25" y="11.5" width="105" height="22"/>
+                            <rect key="frame" x="25" y="11.5" width="111" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="YiQ-5g-z7h"/>
                             </constraints>
@@ -59,9 +51,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="iJP-ci-Ika" secondAttribute="trailing" constant="11" id="0Rf-HG-SQc"/>
                         <constraint firstItem="fle-Af-FIh" firstAttribute="leading" secondItem="CLl-zg-cjo" secondAttribute="leading" constant="25" id="Bt1-GO-c2Q"/>
-                        <constraint firstItem="iJP-ci-Ika" firstAttribute="centerY" secondItem="CLl-zg-cjo" secondAttribute="centerY" id="ERk-oA-bRf"/>
                         <constraint firstItem="fle-Af-FIh" firstAttribute="centerY" secondItem="CLl-zg-cjo" secondAttribute="centerY" id="bMZ-gH-H6V"/>
                         <constraint firstAttribute="height" constant="44" id="dgH-Ac-8RE"/>
                     </constraints>
@@ -69,16 +59,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="des-QF-Ty2">
                     <rect key="frame" x="0.0" y="120" width="375" height="44"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9x-QB-QWz">
-                            <rect key="frame" x="342" y="16" width="22" height="13"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="13" id="5M3-4j-Lke"/>
-                                <constraint firstAttribute="width" constant="22" id="UbX-lQ-t3p"/>
-                            </constraints>
-                            <state key="normal" title="Button" image="iconEnvelope"/>
-                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://www.facebook.com/brandname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="lS2-GT-rZ2">
-                            <rect key="frame" x="25" y="11.5" width="307" height="22"/>
+                            <rect key="frame" x="25" y="11.5" width="304" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="rgA-J3-NY6"/>
                             </constraints>
@@ -89,10 +71,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="l9x-QB-QWz" firstAttribute="centerY" secondItem="des-QF-Ty2" secondAttribute="centerY" id="Qvt-7r-Rmr"/>
                         <constraint firstItem="lS2-GT-rZ2" firstAttribute="centerY" secondItem="des-QF-Ty2" secondAttribute="centerY" id="Vks-xs-Bfo"/>
-                        <constraint firstItem="l9x-QB-QWz" firstAttribute="leading" secondItem="lS2-GT-rZ2" secondAttribute="trailing" constant="10" id="hLb-IU-ne5"/>
-                        <constraint firstAttribute="trailing" secondItem="l9x-QB-QWz" secondAttribute="trailing" constant="11" id="ifY-9q-kuE"/>
                         <constraint firstAttribute="height" constant="44" id="n4E-Ar-WFC"/>
                         <constraint firstItem="lS2-GT-rZ2" firstAttribute="leading" secondItem="des-QF-Ty2" secondAttribute="leading" constant="25" id="nrA-59-ywP"/>
                     </constraints>
@@ -100,16 +79,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YKg-Rn-ZTp">
                     <rect key="frame" x="0.0" y="165" width="375" height="44"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pad-YE-QN0">
-                            <rect key="frame" x="342" y="15" width="22" height="13"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="22" id="NoE-Gp-eIr"/>
-                                <constraint firstAttribute="height" constant="13" id="lPi-Nm-Jk6"/>
-                            </constraints>
-                            <state key="normal" title="Button" image="iconEnvelope"/>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qKg-Vq-4Pu">
-                            <rect key="frame" x="25" y="11" width="205" height="22"/>
+                            <rect key="frame" x="25" y="11" width="207" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="Hv1-9w-VKG"/>
                             </constraints>
@@ -122,14 +93,12 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="qKg-Vq-4Pu" firstAttribute="centerY" secondItem="YKg-Rn-ZTp" secondAttribute="centerY" id="Fap-Ev-itT"/>
-                        <constraint firstAttribute="trailing" secondItem="pad-YE-QN0" secondAttribute="trailing" constant="11" id="R2w-mc-BBo"/>
                         <constraint firstItem="qKg-Vq-4Pu" firstAttribute="leading" secondItem="YKg-Rn-ZTp" secondAttribute="leading" constant="25" id="hzJ-eQ-lRn"/>
                         <constraint firstAttribute="height" constant="44" id="pwL-02-Kbv"/>
-                        <constraint firstItem="pad-YE-QN0" firstAttribute="centerY" secondItem="YKg-Rn-ZTp" secondAttribute="centerY" id="yqw-tJ-YQd"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79j-ah-1wB">
-                    <rect key="frame" x="25" y="225" width="339" height="122.5"/>
+                    <rect key="frame" x="25" y="225" width="339" height="143"/>
                     <string key="text">Popmetrics will use your Google Analytics account to track important information such as website traffic and brand presence online. With this information we can make insights to grow your business and send you informative reports on how your business is performing.
 </string>
                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
@@ -158,7 +127,4 @@
             <point key="canvasLocation" x="24.5" y="51.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="iconEnvelope" width="22" height="13"/>
-    </resources>
 </document>

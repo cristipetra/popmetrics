@@ -35,7 +35,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTh-Ej-IGn">
-                                                    <rect key="frame" x="8" y="10.5" width="48" height="23.5"/>
+                                                    <rect key="frame" x="8" y="11" width="48" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -73,7 +73,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALp-oJ-Lfx">
-                                                    <rect key="frame" x="8" y="10.5" width="155" height="23.5"/>
+                                                    <rect key="frame" x="8" y="11" width="155" height="23.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="155" id="Te4-7T-V2U"/>
                                                     </constraints>
@@ -114,7 +114,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Professional Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0iS-bx-YTh">
-                                                    <rect key="frame" x="8" y="10.5" width="145.5" height="23.5"/>
+                                                    <rect key="frame" x="8" y="11" width="145.5" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -143,7 +143,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARm-ZC-ras">
-                                                    <rect key="frame" x="8" y="10" width="120" height="23.5"/>
+                                                    <rect key="frame" x="8" y="10.5" width="120" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.46666666670000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -167,7 +167,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrA-d8-xSW">
-                                                    <rect key="frame" x="8" y="10" width="100.5" height="23.5"/>
+                                                    <rect key="frame" x="8" y="10.5" width="100.5" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -192,7 +192,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6s-2W-ocQ">
-                                                    <rect key="frame" x="8" y="10.5" width="59" height="23.5"/>
+                                                    <rect key="frame" x="8" y="11" width="59" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -221,7 +221,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZS-w1-aVc">
-                                                    <rect key="frame" x="8" y="10.5" width="100" height="23.5"/>
+                                                    <rect key="frame" x="8" y="11" width="100" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -259,7 +259,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Replace Brand Logo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPz-Zf-d2o">
-                                                    <rect key="frame" x="8" y="10.5" width="157.5" height="23.5"/>
+                                                    <rect key="frame" x="8" y="11" width="157.5" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -279,7 +279,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Primary Web Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saK-58-0qo">
-                                                    <rect key="frame" x="8" y="10.5" width="170.5" height="23.5"/>
+                                                    <rect key="frame" x="8" y="11" width="170.5" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -321,7 +321,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28f-Lr-SUU">
-                                                    <rect key="frame" x="8" y="10.5" width="144" height="23.5"/>
+                                                    <rect key="frame" x="8" y="11" width="144" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -350,7 +350,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7WE-Fk-uyZ">
-                                                    <rect key="frame" x="8" y="10" width="124" height="23.5"/>
+                                                    <rect key="frame" x="8" y="10.5" width="124" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -379,7 +379,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LinkedIn Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gly-pM-nPY">
-                                                    <rect key="frame" x="8" y="11" width="136" height="23.5"/>
+                                                    <rect key="frame" x="8" y="11.5" width="136" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -411,7 +411,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Analytics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZd-ST-g3k">
-                                                    <rect key="frame" x="8" y="11" width="130.5" height="23.5"/>
+                                                    <rect key="frame" x="8" y="11.5" width="130.5" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -527,18 +527,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="129831294R1HF9HG9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyP-Fu-qTu">
-                                                    <rect key="frame" x="8" y="10.5" width="173.5" height="23.5"/>
+                                                    <rect key="frame" x="8" y="10" width="173.5" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconEnvelope" translatesAutoresizingMaskIntoConstraints="NO" id="0tR-zS-wVc">
-                                                    <rect key="frame" x="345" y="15.5" width="22" height="13"/>
-                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="0tR-zS-wVc" firstAttribute="centerY" secondItem="3qk-yS-22j" secondAttribute="centerY" id="824-p9-m3G"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="0tR-zS-wVc" secondAttribute="trailing" id="8rF-KY-RUf"/>
                                                 <constraint firstItem="jyP-Fu-qTu" firstAttribute="leading" secondItem="3qk-yS-22j" secondAttribute="leadingMargin" id="bJ3-SJ-aYE"/>
                                                 <constraint firstItem="jyP-Fu-qTu" firstAttribute="centerY" secondItem="3qk-yS-22j" secondAttribute="centerY" id="sxu-SB-HNN"/>
                                             </constraints>
@@ -552,18 +547,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://www.brandname.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGm-sL-aGB">
-                                                    <rect key="frame" x="8" y="10.5" width="225" height="23.5"/>
+                                                    <rect key="frame" x="8" y="10" width="225" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconEnvelope" translatesAutoresizingMaskIntoConstraints="NO" id="Che-xw-fm6">
-                                                    <rect key="frame" x="345" y="14.5" width="22" height="13"/>
-                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Che-xw-fm6" secondAttribute="trailing" id="8k3-iX-ZuO"/>
-                                                <constraint firstItem="Che-xw-fm6" firstAttribute="centerY" secondItem="4b6-er-ubr" secondAttribute="centerY" id="fZO-BF-jrE"/>
                                                 <constraint firstItem="WGm-sL-aGB" firstAttribute="leading" secondItem="4b6-er-ubr" secondAttribute="leadingMargin" id="gs4-yi-LUl"/>
                                                 <constraint firstItem="WGm-sL-aGB" firstAttribute="centerY" secondItem="4b6-er-ubr" secondAttribute="centerY" id="o44-Fk-bL3"/>
                                             </constraints>
@@ -586,14 +576,9 @@
                                                         <color key="titleColor" red="0.94117647059999998" green="0.36078431370000003" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconEnvelope" translatesAutoresizingMaskIntoConstraints="NO" id="9gw-l3-Jba">
-                                                    <rect key="frame" x="345" y="14.5" width="22" height="13"/>
-                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="9gw-l3-Jba" firstAttribute="centerY" secondItem="fqH-bK-WQg" secondAttribute="centerY" id="51y-uX-1y8"/>
                                                 <constraint firstItem="1lj-6p-4Rm" firstAttribute="centerY" secondItem="fqH-bK-WQg" secondAttribute="centerY" id="fU8-EJ-tzB"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="9gw-l3-Jba" secondAttribute="trailing" id="tlz-ee-8DD"/>
                                                 <constraint firstItem="1lj-6p-4Rm" firstAttribute="leading" secondItem="fqH-bK-WQg" secondAttribute="leadingMargin" id="wve-Vd-AXL"/>
                                             </constraints>
                                         </tableViewCellContentView>
