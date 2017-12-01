@@ -44,6 +44,10 @@ class ActionPageDetailsViewController: UIViewController {
         setupNavigationWithBackButton()
         
        updatView()
+        
+        self.view.addSwipeGestureRecognizer {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     override func didReceiveMemoryWarning() {

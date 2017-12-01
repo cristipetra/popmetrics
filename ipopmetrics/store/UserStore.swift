@@ -104,7 +104,6 @@ class UserStore {
             } else {
                 return "Unset"
             }
-            
         }
     }
     

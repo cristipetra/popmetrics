@@ -77,6 +77,7 @@
 		08953E721F4C352B003ABEFC /* RequiredActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08953E711F4C352B003ABEFC /* RequiredActionCard.xib */; };
 		08953E741F4C359E003ABEFC /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E731F4C359E003ABEFC /* FooterView.swift */; };
 		08953E761F4C35AC003ABEFC /* RequiredActionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E751F4C35AC003ABEFC /* RequiredActionCard.swift */; };
+		089E10561FD1716200D57A08 /* SwipeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E10551FD1716200D57A08 /* SwipeExtension.swift */; };
 		089F93AB1FB5FE1E00155674 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089F93AA1FB5FE1E00155674 /* Settings.storyboard */; };
 		08A4A53D1F458423001071E3 /* ToolbarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */; };
 		08A4A5411F45B563001071E3 /* AlfaSlabOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */; };
@@ -302,6 +303,7 @@
 		08953E711F4C352B003ABEFC /* RequiredActionCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequiredActionCard.xib; sourceTree = "<group>"; };
 		08953E731F4C359E003ABEFC /* FooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		08953E751F4C35AC003ABEFC /* RequiredActionCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredActionCard.swift; sourceTree = "<group>"; };
+		089E10551FD1716200D57A08 /* SwipeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeExtension.swift; sourceTree = "<group>"; };
 		089F93AA1FB5FE1E00155674 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarViewCell.swift; sourceTree = "<group>"; };
 		08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AlfaSlabOne-Regular.ttf"; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 				08B4EBA21FC56ACD00BFC5A1 /* Validator.swift */,
 				08A51D2E1FC6DBBE0097B334 /* Markdown.swift */,
 				08CE428E1FD041AE00FF8C80 /* EmailMessages.swift */,
+				089E10551FD1716200D57A08 /* SwipeExtension.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -1432,6 +1435,7 @@
 				08B485E01F20EA23005918A1 /* Config.swift in Sources */,
 				085530461F6CEE0A00D82A09 /* ActionActivationView.swift in Sources */,
 				08AA6C631F56C9560022DE91 /* TrafficReportViewController.swift in Sources */,
+				089E10561FD1716200D57A08 /* SwipeExtension.swift in Sources */,
 				08FAE8441F541D790097DF3E /* StatisticsViewController.swift in Sources */,
 				08B485E61F210A61005918A1 /* RoundButton.swift in Sources */,
 				08AA6C671F56DC8B0022DE91 /* StatsSlideViewController.swift in Sources */,

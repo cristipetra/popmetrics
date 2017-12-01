@@ -185,6 +185,8 @@ class StaticSettingsViewController: BaseTableViewController {
                     self.updateAllowNoticationsSwitch()
                 case .save:
                     UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+                default:
+                    break
                 }
             }, message: "Do you want to go to settings to change notifications?", title: "Notifications", okButton: true)
         } else {
