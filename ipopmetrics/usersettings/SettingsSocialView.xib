@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -60,7 +61,7 @@
                     <rect key="frame" x="0.0" y="120" width="375" height="44"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://www.facebook.com/brandname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="lS2-GT-rZ2">
-                            <rect key="frame" x="25" y="11.5" width="304" height="22"/>
+                            <rect key="frame" x="25" y="11.5" width="332" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="rgA-J3-NY6"/>
                             </constraints>
@@ -72,6 +73,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="lS2-GT-rZ2" firstAttribute="centerY" secondItem="des-QF-Ty2" secondAttribute="centerY" id="Vks-xs-Bfo"/>
+                        <constraint firstAttribute="trailingMargin" secondItem="lS2-GT-rZ2" secondAttribute="trailing" constant="10" id="iob-FD-evm"/>
                         <constraint firstAttribute="height" constant="44" id="n4E-Ar-WFC"/>
                         <constraint firstItem="lS2-GT-rZ2" firstAttribute="leading" secondItem="des-QF-Ty2" secondAttribute="leading" constant="25" id="nrA-59-ywP"/>
                     </constraints>

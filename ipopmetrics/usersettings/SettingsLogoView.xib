@@ -64,6 +64,9 @@
                             <state key="normal" title="Replace Logo">
                                 <color key="titleColor" red="0.25490196078431371" green="0.60784313725490191" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="handlerReplaceLogo:" destination="-1" eventType="touchUpInside" id="ibF-ou-9zO"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

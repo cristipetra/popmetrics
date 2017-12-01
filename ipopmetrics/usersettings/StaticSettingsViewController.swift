@@ -106,14 +106,8 @@ class StaticSettingsViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath)
-        if(indexPath.section == 0 && indexPath.row == 0) {
-            sendEmail(emailMessageType: .name)
-        } else if(indexPath.section == 0 && indexPath.row == 1) {
-            sendEmail(emailMessageType: .phone)
-        } else if(indexPath.section == 0 && indexPath.row == 2) {
+        if(indexPath.section == 0 && indexPath.row == 2) {
             displaySettingsEmail()
-        } else if (indexPath.section == 2 && indexPath.row == 0) {
-            sendEmail(emailMessageType: .brand)
         } else if (indexPath.section == 2 && indexPath.row == 1) {
             displaySettingsLogo()
         } else if (indexPath.section == 2 && indexPath.row == 2) {
@@ -222,7 +216,27 @@ class StaticSettingsViewController: BaseTableViewController {
         }
         
     }
-
+    
+    @IBAction func handlerEmailName(_ sender: Any) {
+        sendEmail(emailMessageType: .name)
+    }
+    
+    @IBAction func handlerEmailPhone(_ sender: Any) {
+        sendEmail(emailMessageType: .phone)
+    }
+    
+    @IBAction func handlerEmailBrandName(_ sender: Any) {
+        sendEmail(emailMessageType: .brand)
+    }
+    
+    @IBAction func handlerEmailPrimaryUrl(_ sender: UIButton) {
+        sendEmail(emailMessageType: .webAddress)
+    }
+    
+    @IBAction func handlerEmailWebAddress(_ sender: Any) {
+        sendEmail(emailMessageType: .webAddress)
+    }
+    
 }
 
 extension StaticSettingsViewController: MFMailComposeViewControllerDelegate {

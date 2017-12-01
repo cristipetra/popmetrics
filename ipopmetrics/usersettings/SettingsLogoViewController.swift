@@ -72,6 +72,10 @@ class SettingsLogoViewController: SettingsBaseViewController, UINavigationContro
     }
     
     @objc override func doneHandler() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func handlerReplaceLogo(_ sender: Any) {
         showAlertDialog()
     }
     
