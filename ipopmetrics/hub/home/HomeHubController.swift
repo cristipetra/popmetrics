@@ -442,9 +442,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     ///
     
-    @objc func handleRequiredAction(_ sender : UIButton){
-        print("handling required action")
+    func callRequiredAction(_ requiredActionCard: FeedCard) {
+        self.requiredActionHandler.homeHubViewController = self
+        self.requiredActionHandler.handleRequiredAction(requiredActionCard)
+        
     }
+    
     
     func openInsightDetails(_ feedCard: FeedCard) {
         let insightDetails = InsightPageDetailsViewController(nibName: "InsightPage", bundle: nil)

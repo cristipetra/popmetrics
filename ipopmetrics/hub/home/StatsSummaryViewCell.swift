@@ -57,7 +57,7 @@ class StatsSummaryViewCell: UITableViewCell {
     }
     
     @objc func handleAction(_ sender: SimpleButton) {
-        actionHandler?.handleRequiredAction(sender, item: self.item!)
+//        actionHandler?.handleRequiredAction(sender, item: self.item!)
     }
     
 }

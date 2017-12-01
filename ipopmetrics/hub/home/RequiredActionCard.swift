@@ -75,17 +75,17 @@ class RequiredActionCard: UITableViewCell {
             //footerView.actionButton.imageButtonType = .allowNotification
             //self.footerView.actionButton.addTarget(self, action:#selector(handleActionNotifications(_:)), for: .touchDown)
         } else {
-            self.footerView.actionButton.addTarget(self, action:#selector(handleActionTwitter(_:)), for: .touchDown)
+            self.footerView.actionButton.addTarget(self, action:#selector(handleCallToAction(_:)), for: .touchDown)
             self.footerView.informationBtn.addTarget(self, action: #selector(handleInfoButtonPressed(_:)), for: .touchDown)
         }
         
         configureFooterView()
         
-        if(item.actionHandler == RequiredActionHandler.RequiredActionType.email.rawValue) {
+        if(item.actionHandler == "email") {
             displayEmailView()
-        } else if (item.actionHandler == RequiredActionHandler.RequiredActionType.googleAnalytics.rawValue) {
+        } else if (item.actionHandler == "ganalytics") {
             displayGoogleAnalytics()
-        } else if (item.actionHandler == RequiredActionHandler.RequiredActionType.linkedin.rawValue) {
+        } else if (item.actionHandler == "linkedin") {
             //displayLinkedin()
         }
         
@@ -171,8 +171,11 @@ class RequiredActionCard: UITableViewCell {
         infoDelegate?.sendInfo(sender)
     }
     
-    @objc func handleActionTwitter(_ sender: SimpleButton) {
-        actionHandler?.handleRequiredAction(sender, item: self.item!)
+    @objc func handleCallToAction(_ sender: SimpleButton) {
+        let homeHubViewController = self.parentViewController as! HomeHubViewController
+        homeHubViewController.callRequiredAction(self.item!)
+        
+        
     }
     
     

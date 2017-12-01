@@ -8,7 +8,8 @@
 
 import UIKit
 import Reachability
-import  Whisper
+import Whisper
+import NotificationBannerSwift
 
 class BaseTableViewController: UITableViewController {
     
@@ -77,7 +78,7 @@ class BaseTableViewController: UITableViewController {
     }
     
     internal func displayWhisper(_ title: String, message: String) {
-        let announcement = Announcement(title: title, subtitle: message, image: UIImage(named: "avatar"))
+        let announcement = Announcement(title: title, subtitle: message, image: UIImage(named: "active_home"), duration: 5)
         Whisper.show(shout: announcement, to: self.navigationController!)
     }
     
@@ -105,6 +106,47 @@ class BaseTableViewController: UITableViewController {
         
     }
     
+    func showBanner(bannerType: BannerType, title: String, message: String) {
+        let banner: NotificationBanner!
+        switch bannerType {
+        case .success:
+            let titleAttribute = [
+                NSAttributedStringKey.font: UIFont(name: "OpenSans-Bold", size: 12),
+                NSAttributedStringKey.foregroundColor: PopmetricsColor.darkGrey]
+            let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [NSAttributedStringKey : Any]))
+            let subtitle = message
+            let subtitleAttribute = [
+                NSAttributedStringKey.font: UIFont(name: "OpenSans-SemiBold", size: 12),
+                NSAttributedStringKey.foregroundColor: UIColor.white]
+            let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [NSAttributedStringKey : Any]))
+            banner = NotificationBanner(attributedTitle: attributedTitle, attributedSubtitle: attributedSubtitle, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
+            banner.backgroundColor = PopmetricsColor.greenMedium
+            break
+        case .failed:
+            let title = title
+            let titleAttribute = [
+                NSAttributedStringKey.font: UIFont(name: "OpenSans-Bold", size: 12),
+                NSAttributedStringKey.foregroundColor: PopmetricsColor.notificationBGColor]
+            let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [NSAttributedStringKey : Any]))
+            let subtitle = message
+            let subtitleAttribute = [
+                NSAttributedStringKey.font: UIFont(name: "OpenSans-SemiBold", size: 12),
+                NSAttributedStringKey.foregroundColor: UIColor.white]
+            let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [NSAttributedStringKey : Any]))
+            banner = NotificationBanner(attributedTitle: attributedTitle, attributedSubtitle: attributedSubtitle, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
+            banner.backgroundColor = PopmetricsColor.salmondColor
+            break
+        default:
+            break
+        }
+        banner.duration = TimeInterval(exactly: 7.0)!
+        banner.show()
+        
+        banner.onTap = {
+            banner.dismiss()
+        }
+    }
+   
 }
 
 
