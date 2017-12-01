@@ -40,7 +40,7 @@ class StatisticsViewController: BaseViewController {
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
         
-        createItemsLocally()
+        //createItemsLocally()
         
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
@@ -203,7 +203,8 @@ class StatisticsViewController: BaseViewController {
     
     @objc func openTrafficReport(_ sender: AnyObject, card: StatisticsCard) {
         let cardTmp  = StatisticsStore.getInstance().getStatisticsCards()[0]
-        let trafficReportVC: TrafficReportViewController = AppStoryboard.Statistics.instance.instantiateViewController(withIdentifier: ViewNames.SBID_TRAFFIC_REPORT) as! TrafficReportViewController
+        let trafficReportVC: TrafficReportViewController = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_TRAFFIC_REPORT) as! TrafficReportViewController
+        
         trafficReportVC.configure(statisticsCard: cardTmp)
         self.navigationController?.pushViewController(trafficReportVC, animated: true)
     }

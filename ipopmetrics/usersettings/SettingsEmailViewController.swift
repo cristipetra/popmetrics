@@ -35,7 +35,13 @@ class SettingsEmailViewController: SettingsBaseViewController {
     }
     
     @IBAction func handlerConfirmEmail(_ sender: UIButton) {
-    }    
+        sendEmail()
+    }
+    
+    //Api
+    private func sendEmail() {
+        
+    }
 
     @objc override func cancelHandler() {
         if shouldDisplayAlert() {
