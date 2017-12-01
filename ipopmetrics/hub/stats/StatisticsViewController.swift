@@ -126,6 +126,7 @@ class StatisticsViewController: BaseViewController {
             statsMet1.currentPeriodLabel = "Sep28-Aug27"
             statsMet1.currentPeriodValues = "20 23 12 14 1 1 1 1 1 1 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 3 7 3 6 7 35 34 34 33 35"
             statsMet1.prevPeriodValues = "0 12 12 14 16 17 1 1 1 1 1 1 1 13 14 13 13 17 13 16 17 15 34 14 15 13 14 13 13 17 13 16 17 15 34";
+            statsMet1.breakDownsJson = "[{'group':'Demographics', [{'label':'Male','current_value':1100, 'delta_value':20, {'label':'Female','current_value':1000, 'delta_value':20}], {'group':'Devices', [{'label':'Phone','current_value':1100, 'delta_value':20},{'label':'Tablet','current_value':1100, 'delta_value':20}]}"
             store.realm.add(statsMet1, update: true)
             
             let statsMet11 = StatisticMetric()
