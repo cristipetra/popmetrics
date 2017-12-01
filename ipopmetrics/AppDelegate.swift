@@ -27,6 +27,7 @@ public extension Notification {
         public static let ApiResponseUnsuccessfull = Notification.Name("Notification.Popmetrics.ApiResponseUnsuccessfull")
         
         
+        public static let RemoteMessage = Notification.Name("Notification.Popmetrics.RemoteMessage")
         public static let UiRefreshRequired = Notification.Name("Notification.Popmetrics.UiRefreshRequired")
         public static let ReloadGraph = Notification.Name("Notification.Popmetrics.ReloadGraph")
         
@@ -192,6 +193,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
         let aps = userInfo["aps"] as! [String: AnyObject]
+        NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
+                                        userInfo: ["sucess":true])
+        
         
         print("launched from notifications ... ")
         self.syncService.syncAll(silent: false)

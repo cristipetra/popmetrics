@@ -10,6 +10,40 @@ import Foundation
 import RealmSwift
 import ObjectMapper
 
+class MetricBreakdown: Mappable {
+    
+    var label: String?
+    var currentValue: Float?
+    var deltaValue: Float?
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map:Map) {
+        label           <- map["label"]
+        currentValue    <- map["current_value"]
+        deltaValue    <- map["delta_value"]
+    }
+    
+}
+
+
+class MetricGroupBreakdown: Mappable {
+    
+    var group: String?
+    var breakdowns: [MetricBreakdown]?
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map:Map) {
+        group               <- map["group"]
+        breakdowns          <- map["breakdowns"]
+    }
+    
+}
+
+
 class StatisticMetric: Object, Mappable {
     
     @objc dynamic var statisticCard: StatisticsCard? = nil
@@ -33,6 +67,8 @@ class StatisticMetric: Object, Mappable {
     @objc dynamic var prevPeriodValues: String = ""
     @objc dynamic var prevPeriodStartDate: Date = Date()
     @objc dynamic var prevPeriodEndDate: Date = Date()
+    
+    @objc dynamic var breakDownsJson: String = ""
     
     required convenience init?(map: Map) {
         self.init()
@@ -75,6 +111,12 @@ class StatisticMetric: Object, Mappable {
         let sarr = self.prevPeriodValues.components(separatedBy: " ")
         return sarr.map{ Double($0)! }
     }
+    
+    func getBreakDownGroups() -> [MetricGroupBreakdown] {
+        let list: Array<MetricGroupBreakdown> = Mapper<MetricGroupBreakdown>().mapArray(JSONString: self.breakDownsJson)!
+        return list
+    }
+    
 }
 
 
