@@ -55,6 +55,10 @@ class SocialPostDetailsViewController: UIViewController {
         
         addBottomButtons()
         updateView()
+        
+        self.view.addSwipeGestureRecognizer {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     override func didReceiveMemoryWarning() {

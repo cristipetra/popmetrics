@@ -39,6 +39,10 @@ class InsightPageDetailsViewController: UIViewController {
         setupNavigationWithBackButton()
         
         updateView()
+        
+        self.view.addSwipeGestureRecognizer {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 
     override func didReceiveMemoryWarning() {
