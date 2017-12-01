@@ -83,7 +83,8 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
         grayPlot.barWidth = barWidth
         grayPlot.barLineWidth = 1
         grayPlot.barLineColor = UIColor.white
-        grayPlot.barColor = UIColor(red: 122/255, green: 136/255, blue: 150/255, alpha: 0.6)
+        grayPlot.barColor = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1)
+        
         grayPlot.adaptAnimationType = ScrollableGraphViewAnimationType.elastic
         grayPlot.animationDuration = animationDuration
         //        grayPlot.lineWidth = 1
@@ -105,7 +106,8 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
         pinkPlot.barWidth = barWidth
         pinkPlot.barLineWidth = 1
         pinkPlot.barLineColor = UIColor.white
-        pinkPlot.barColor = UIColor(red: 219/255, green: 14/255, blue: 95/255, alpha: 0.7)
+        pinkPlot.barColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha:1)
+        
         pinkPlot.adaptAnimationType = ScrollableGraphViewAnimationType.elastic
         pinkPlot.animationDuration = animationDuration
         

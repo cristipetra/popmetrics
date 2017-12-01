@@ -71,8 +71,8 @@ class PopmetricsColor {
     static let separatorColor = UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 1.0)
     static let unselectedTabBarItemTint = UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1.0)
     
-    static let visitFirstColor = UIColor(red: 160/255, green: 12/255, blue: 77/255, alpha: 1)
-    static let visitSecondColor = UIColor(red: 255/255, green: 33/255, blue: 122/255, alpha: 1)
+    static let visitFirstColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
+    static let visitSecondColor = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1)
     
     static let topButtonColor = UIColor(red: 252/255, green: 221/255, blue: 105/255, alpha: 1)
     static let bottomButtonColor = UIColor(red: 251/255, green: 192/255, blue: 46/255, alpha: 1)
@@ -84,4 +84,6 @@ class PopmetricsColor {
     static let barBackground = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
     
     static let myActionCircle = UIColor(red: 87/255, green: 93/255, blue: 99/255, alpha: 1)
+    
+    static let secondGray = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1)
 }

@@ -34,9 +34,13 @@ class TrafficReportViewController: UIViewController {
         super.viewDidLoad()
         
         setUpNavigationBar()
+        
+        statusLbl.text = ""
+        
         statsPageVC.indexDelegate = self
         addPageView()
         setUpPageControlViews()
+     
     }
     
     func configure(statisticsCard: StatisticsCard) {
@@ -48,7 +52,7 @@ class TrafficReportViewController: UIViewController {
     }
     
     func setUpPageControlViews() {
-        statusLbl.text = "Stats \(pageIndex) of \(statisticStore.getNumberOfPages(statisticsCard))"
+        //statusLbl.text = "Stats \(pageIndex) of \(statisticStore.getNumberOfPages(statisticsCard))"
         
         bottomLbl.textColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
         bottomLbl.font = UIFont(name: FontBook.semibold, size: 15)
@@ -82,26 +86,23 @@ class TrafficReportViewController: UIViewController {
         
     }
     
-    func setUpNavigationBar() {
-        let text = UIBarButtonItem(title: "Traffic Report", style: .plain, target: self, action: nil)
-        text.tintColor = PopmetricsColor.darkGrey
+    private func setUpNavigationBar() {
+        let titleWindow = "WEBSITE REPORT"
         
-        let titleFont = UIFont(name: FontBook.bold, size: 18)
-        text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
+        let titleButton = UIBarButtonItem(title: titleWindow, style: .plain, target: self, action: nil)
+        titleButton.tintColor = PopmetricsColor.darkGrey
+        let titleFont = UIFont(name: FontBook.extraBold, size: 18)
+        titleButton.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
         
-        self.navigationController?.navigationBar.backgroundColor = UIColor.white
-        navigationController?.navigationBar.isTranslucent = false
+        let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "calendarIconLeftArrow"), style: .plain, target: self, action: #selector(handlerClickBack))
+        leftButtonItem.tintColor = PopmetricsColor.darkGrey
         
-        let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "iconCalLeftBold"), style: .plain, target: self, action: #selector(handlerClickBack))
-        self.navigationItem.leftBarButtonItem = leftButtonItem
-        self.navigationItem.leftBarButtonItems = [leftButtonItem, text]
-        
+        self.navigationItem.leftBarButtonItems = [leftButtonItem, titleButton]
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
+        
     }
     
     @IBAction func handlerPrevPage(_ sender: Any) {
-        print("hello")
-        
         statsPageVC.previousViewController()
     }
     
@@ -122,7 +123,7 @@ extension TrafficReportViewController: IndexPageProtocol {
         self.topPageControl.currentPage = index
         self.pageIndex = index
         bottomLbl.text = statisticStore.getStatisticMetricsForCardAtPageIndex(statisticsCard, (pageIndex + 1))[0].pageName
-        statusLbl.text = "Stats \(index + 1) of \(statisticStore.getNumberOfPages(statisticsCard))"
+        //statusLbl.text = "Stats \(index + 1) of \(statisticStore.getNumberOfPages(statisticsCard))"
     }
 }
 

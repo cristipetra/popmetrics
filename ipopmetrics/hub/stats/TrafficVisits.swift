@@ -75,36 +75,36 @@ class TrafficVisits: UITableViewCell {
     }
     
     func setUpVisitsView() {
-        
         self.backgroundColor = UIColor.white
         
-        
         self.addSubview(titleLabel)
-        titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 22).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 25).isActive = true
         titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 26).isActive = true
         titleLabel.widthAnchor.constraint(equalToConstant: 170).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         titleLabel.text = ""
-        titleLabel.font = UIFont(name: FontBook.semibold, size: 18)
+        titleLabel.font = UIFont(name: FontBook.regular, size: 15)
         titleLabel.textColor = UIColor(red: 87/255, green: 93/255, blue: 99/255, alpha: 1)
+        titleLabel.textAlignment = .left
         
         self.addSubview(firstValueLabel)
-        firstValueLabel.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 2).isActive = true
+        //firstValueLabel.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 2).isActive = true
         firstValueLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 26).isActive = true
         firstValueLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
         
         self.addSubview(secondValueLabel)
-        secondValueLabel.leftAnchor.constraint(equalTo: firstValueLabel.rightAnchor, constant: 2).isActive = true
+        secondValueLabel.leftAnchor.constraint(equalTo: firstValueLabel.rightAnchor, constant: 20).isActive = true
         secondValueLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 26).isActive = true
         secondValueLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        secondValueLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -21).isActive = true
         
         self.addSubview(mainProgressView)
-        mainProgressView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 19).isActive = true
+        mainProgressView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 25).isActive = true
         mainProgressView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 13).isActive = true
         mainProgressView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -21).isActive = true
-        mainProgressView.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        mainProgressView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+        mainProgressView.heightAnchor.constraint(equalToConstant: 19).isActive = true
+        mainProgressView.backgroundColor = PopmetricsColor.statisticsTableBackground
         
         mainProgressView.addSubview(secondProgressView)
         mainProgressView.addSubview(firstProgressView)
@@ -121,15 +121,18 @@ class TrafficVisits: UITableViewCell {
     }
     
     private func setDesign() {
-        firstValueLabel.font = UIFont(name: FontBook.alfaRegular, size: 18)
+        firstValueLabel.font = UIFont(name: FontBook.extraBold, size: 18)
         firstValueLabel.textColor = PopmetricsColor.visitFirstColor
+        firstValueLabel.textAlignment = .left
         
-        secondValueLabel.font = UIFont(name: FontBook.alfaRegular, size: 18)
+        secondValueLabel.font = UIFont(name: FontBook.extraBold, size: 18)
         secondValueLabel.textColor = PopmetricsColor.visitSecondColor
+        secondValueLabel.textAlignment = .left
         
-        mainProgressView.layer.cornerRadius = 4
+        mainProgressView.layer.cornerRadius = 10
         firstProgressView.layer.cornerRadius = 4
         secondProgressView.layer.cornerRadius = 4
+        mainProgressView.clipsToBounds = true
     }
     
     private func setProgress(firstValue: CGFloat, secondValue: CGFloat) {
@@ -144,8 +147,8 @@ class TrafficVisits: UITableViewCell {
         firstProgressView.layoutSubviews()
         secondProgressView.layoutSubviews()
         
-        firstProgressView.backgroundColor = PopmetricsColor.visitFirstColor
-        secondProgressView.backgroundColor = PopmetricsColor.visitSecondColor
+        firstProgressView.backgroundColor = PopmetricsColor.textGrey
+        secondProgressView.backgroundColor = PopmetricsColor.secondGray
         
         DispatchQueue.main.async {
             self.firstProgressView.setNeedsLayout()
@@ -187,7 +190,5 @@ class TrafficVisits: UITableViewCell {
         secondProgressView.layoutSubviews()
         
     }
-    
-
     
 }
