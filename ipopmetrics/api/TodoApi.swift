@@ -47,5 +47,28 @@ class TodoApi: BaseApi {
         }
     }
     
+    func postRequiredAction(_ brandId:String, params:[String:Any],
+                    callback: @escaping (_ response: RequiredActionResponse?)  -> Void) {
+        // /api/actions/brand/<brand_id>/required-action
+        
+        
+        
+        
+        let url = ApiUrls.composedBaseUrl(String(format:"/api/actions/brand/%@/required-action", brandId))
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default,
+                          headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperOne<RequiredActionResponse>>) in
+                            let levelOneHandled = super.handleNotOkCodes(response: response.response)
+                            if !levelOneHandled {
+                                let handled = super.handleResponseWrap(response.value!)
+                                if !handled {
+                                    callback(response.result.value?.data)
+                                }
+                            }
+                            
+        }
+    }
+    
+    
     
 }

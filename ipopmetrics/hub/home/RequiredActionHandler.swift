@@ -22,27 +22,20 @@ protocol InfoButtonDelegate {
 
 
 class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, GIDSignInDelegate {
+   
+    var homeHubViewController: HomeHubViewController?
     
-   enum RequiredActionType: String {
-        case googleAnalytics = "r6.brand_not_connected_with_google_analytics"
-        case twitter = "r6.brand_not_connected_with_twitter"
-        case linkedin = "r6.brand_not_connected_with_linkedin"
-        case email =  "r6.brand_not_connected_with_email"
-    }
-
-    var actionButtonSaved : SimpleButton?
-    
-    func  handleRequiredAction(_ sender : SimpleButton, item: FeedCard) {
+    func  handleRequiredAction(_ item: FeedCard) {
         
-        switch(item.actionHandler) {
-            case "ganalytics.connect_with_popmetrics":
-                connectGoogleAnalytics(sender, item:item)
+        switch(item.name) {
+            case "ganalytics.connect_with_brand":
+                connectGoogleAnalytics(item)
             
             case "ganalytics.connect_with_twitter":
-                connectTwitter(sender, item:item)
+                connectTwitter(item)
             
             default:
-                print("Unexpected name "+item.type)
+                print("Unexpected name "+item.name)
         
         }//switch
     }
@@ -54,55 +47,54 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                                                  annotation: annotation)
     }
     
-    
-    
-   func connectGoogleAnalytics(_ sender:SimpleButton, item:FeedCard) {
+   func connectGoogleAnalytics(_ item:FeedCard) {
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().clientID = "850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().serverClientID = "850179116799-024u4fn5ddmkm3dnius3fq3l1gs81toi.apps.googleusercontent.com"
     
         let driveScope = "https://www.googleapis.com/auth/analytics.readonly"
-        
         GIDSignIn.sharedInstance().scopes = [driveScope]
         GIDSignIn.sharedInstance().signOut()
     
-        actionButtonSaved = sender
         GIDSignIn.sharedInstance().signIn()
         
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
-        if let error = error {
-            //self.actionButtonSaved!.isLoading = false
-            let nc = NotificationCenter.default
-            nc.post(name:Notification.Name(rawValue:"CardActionNotification"),
-                    object: nil,
-                    userInfo: ["success":false, "title":"Action error", "message":"Connection with Twitter has failed... \(error.localizedDescription)", "date":Date()])
+        if let _ = error {
+            self.homeHubViewController?.presentAlertWithTitle("Warning", message: "You need to authenticate with your Google account to initiate this action.", useWhisper: true)
+//            self.homeHubViewController?.showBanner(bannerType: BannerType.failed, title: "Warning", message: "You need to authenticate with your Google account to initiate this action.")
+
             return
         }
         
-        let userId = user.userID
-        let token = user.authentication.idToken
-        let serverAuthCode = user.serverAuthCode
+        let brandId = UserStore.currentBrandId
         
-        let api = FeedApi()
+        let params = [
+            "task_name": "ganalytics.connect_with_brand",
+            "user_id":UserStore().getLocalUserAccount().id,
+            "client_id":GIDSignIn.sharedInstance().clientID,
+            "token":user.authentication.idToken,
+            "access_token": user.authentication.accessToken,
+            "refresh_token": user.authentication.refreshToken,
+            "server_auth_code": user.serverAuthCode,
+            "scopes": GIDSignIn.sharedInstance().scopes
+            ] as [String : Any]
         
-        // self.showProgressIndicator()
-        api.connectGoogleAnalytics(userId: userId!, brandId:"58fe437ac7631a139803757e", token: token!, serverAuthCode: serverAuthCode!, authentication: user.authentication) { responseDict, error in
-            self.actionButtonSaved!.isLoading = false
-            if error != nil {
-               NotificationCenter.default.post(name:Notification.Name(rawValue:"CardActionNotification"),
-                        object: nil,
-                        userInfo: ["success":false, "title":"Action error", "message":"Connection with Google Analytics has failed.", "date":Date()])
-            return
-            } // error != nil
-            self.actionButtonSaved!.setTitle("Connected.", for: .normal)
+        
+        TodoApi().postRequiredAction(brandId, params: params) { requiredActionResponse in
+            let store = FeedStore.getInstance()
+            if let card = store.getFeedCardWithName("ganalytics.connect_with_brand") {
+                store.updateCardSection(card, section: "None")
+                self.homeHubViewController?.tableView.reloadData()
+            }
+//            self.actionButtonSaved!.setTitle("Connected.", for: .normal)
         } // usersApi.logInWithGoogle()
     }
         
     
-    func connectTwitter(_ sender: SimpleButton, item:FeedCard) {
+    func connectTwitter(_ item:FeedCard) {
         
         Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
             if (session != nil) {
@@ -124,9 +116,9 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                                             } // error != nil
                                             else {
                                                 ProgressHUD.hideProgressIndicator()
-                                                sender.setTitle("Connected.", for: .normal)
+//                                                sender.setTitle("Connected.", for: .normal)
                                                 UserStore.isTwitterConnected = true
-                                                self.showBanner(bannerType: .success)
+                                             //   self.showBanner(bannerType: .success)
                                             }
                 } // usersApi.logInWithGoogle()
                 

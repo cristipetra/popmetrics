@@ -215,6 +215,20 @@ class Brand: Mappable {
     }
 }
 
+class RequiredActionResponse: Mappable {
+    
+    var scheduled: Bool?
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map:Map) {
+        scheduled               <- map["scheduled"]
+    }
+    
+}
+
+
 
 class FeedResponse: Mappable {
     

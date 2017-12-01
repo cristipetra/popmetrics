@@ -104,6 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        self.syncService.syncAll(silent: false)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -193,10 +194,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let aps = userInfo["aps"] as! [String: AnyObject]
         
         print("launched from notifications ... ")
-        func loadCallback(success:Bool) {
-            
-            self.syncService.syncAll(silent: false)
-        }
+        self.syncService.syncAll(silent: false)
         
     }
     

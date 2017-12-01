@@ -22,18 +22,8 @@ class FooterViewStateController: NSObject {
     }
     
     private func changetActionButton(_ item: FeedCard) {
-        print(item.actionHandler)
-        switch item.actionHandler {
-        case RequiredActionHandler.RequiredActionType.twitter.rawValue:
-            footerView.actionButton.changeTitle("Connect Your Twitter")
-        case RequiredActionHandler.RequiredActionType.googleAnalytics.rawValue:
-            footerView.actionButton.changeTitle("Connect Google")
-        case RequiredActionHandler.RequiredActionType.email.rawValue:
-            footerView.actionButton.changeTitle("Connect Email")
-        default:
-            footerView.actionButton.changeTitle("Connect")
-            break
-        }
+        footerView.actionButton.changeTitle(item.actionLabel)
+        
     }
     
 }
