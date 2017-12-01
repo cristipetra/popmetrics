@@ -12,6 +12,7 @@ import UIKit
 class Alert {
     
     typealias Action = (AlertAction) -> (Void)
+    typealias ActionSheet = (ActionSheetPhoto) -> (Void)
     
     static func showAlertDialog(parent: UIViewController?, action: Action?) {
         let actionSelected: Action? = action
@@ -43,22 +44,23 @@ class Alert {
         //UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
     
-    static func showActionSheet(parent: UIViewController?) {
+    static func showActionSheet(parent: UIViewController?, action: @escaping ActionSheet) {
+        let actionSelected: ActionSheet? = action
         // create an actionSheet
         let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         // create an action
         let firstAction: UIAlertAction = UIAlertAction(title: "Take Photo", style: .default) { action -> Void in
-            
-            print("First Action pressed")
+            actionSelected!(.takePicture)
         }
         
         let secondAction: UIAlertAction = UIAlertAction(title: "Choose From Library", style: .default) { action -> Void in
-            
-            print("Second Action pressed")
+            actionSelected!(.openGallery)
         }
         
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in }
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+            actionSelected!(.cancel)
+        }
         
         // add actions
         actionSheetController.addAction(firstAction)
@@ -116,3 +118,10 @@ enum AlertAction {
     case cancel
     case save
 }
+
+enum ActionSheetPhoto {
+    case cancel
+    case takePicture
+    case openGallery
+}
+

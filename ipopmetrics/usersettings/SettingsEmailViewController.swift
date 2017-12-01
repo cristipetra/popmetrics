@@ -48,6 +48,8 @@ class SettingsEmailViewController: SettingsBaseViewController {
                 case .save:
                     self.changeEmail()
                     break
+                default:
+                    break
                 }
             })
         } else {

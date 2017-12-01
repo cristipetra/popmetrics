@@ -39,7 +39,8 @@ class SettingsOverlayDescriptionViewController: SettingsBaseViewController {
                     self.navigationController?.popViewController(animated: true)
                     break
                 case .save:
-                    
+                    break
+                default:
                     break
                 }
             })
