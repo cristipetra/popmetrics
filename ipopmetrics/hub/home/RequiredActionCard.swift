@@ -208,8 +208,3 @@ extension RequiredActionCard {
         self.parentViewController?.dismiss(animated: true)
     }
 }
-
-enum BannerType {
-    case success
-    case failed
-}

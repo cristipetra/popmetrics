@@ -10,11 +10,31 @@ import UIKit
 
 class SettingsGAViewController: UITableViewController {
 
+    var currentBrand: Brand?
+    
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var tracker: UILabel!
+    
+    @IBOutlet weak var connectionEmailLabel: UILabel!
+    @IBOutlet weak var connectionDateLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupNavigationBar()
         tableView.allowsSelection = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.name.text = currentBrand?.googleAnalytics?.name ?? "N/A"
+        self.tracker.text = currentBrand?.googleAnalytics?.tracker ?? "N/A"
+        
+        if let date = currentBrand?.googleAnalytics?.connectionDate {
+            let df = DateFormatter()
+            df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+            self.connectionDateLabel.text = df.string(from: date)
+        }
+        self.connectionEmailLabel.text = currentBrand?.googleAnalytics?.connectionEmail ?? "N/A"
     }
     
     func setupNavigationBar() {

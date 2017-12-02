@@ -126,7 +126,7 @@ class VerifySocialViewController: UIViewController {
             linkedInConnectLabel.alpha = 0.3
             linkedInConnectButton.changeToDisabled()
             if actionsCompleted < 3 {
-                showBanner(title: "LinkedIn successfully connected!", subtitle: "Connect all 3 for best results. 👉")
+//                showBanner(title: "LinkedIn successfully connected!", subtitle: "Connect all 3 for best results. 👉")
             }
         default:
             break
@@ -139,9 +139,6 @@ enum ActionType {
     case twitter
     case linkedIn
 }
-
-
-extension VerifySocialViewController: ShowBanner {}
 
 
 extension VerifySocialViewController/*: GIDSignInUIDelegate, GIDSignInDelegate*/ {
@@ -164,7 +161,7 @@ extension VerifySocialViewController/*: GIDSignInUIDelegate, GIDSignInDelegate*/
                                                 print("connected")
                                                 self.actionsCompleted += 1
                                                 if self.actionsCompleted < 3 {
-                                                    self.showBanner(title: "Twitter successfully connected!", subtitle: "Connect all 3 for best results. 👉")
+//                                                    self.showBanner(title: "Twitter successfully connected!", subtitle: "Connect all 3 for best results. 👉")
                                                 }
                                                 self.setActionDisabled(actionType: .twitter, actionsCompleted: self.actionsCompleted)
                                             }
@@ -197,7 +194,7 @@ extension VerifySocialViewController/*: GIDSignInUIDelegate, GIDSignInDelegate*/
                 print("Logged in!")
                 self.actionsCompleted += 1
                 if self.actionsCompleted < 3 {
-                    self.showBanner(title: "Facebook successfully connected!", subtitle: "Connect all 3 for best results. 👉")
+//                    self.showBanner(title: "Facebook successfully connected!", subtitle: "Connect all 3 for best results. 👉")
                 }
                 self.setActionDisabled(actionType: .facebook, actionsCompleted: self.actionsCompleted)
                 self.getFBUserData()

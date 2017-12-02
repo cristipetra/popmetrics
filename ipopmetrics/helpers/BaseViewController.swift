@@ -11,7 +11,6 @@ import Crashlytics
 import SwiftRichString
 import NotificationBannerSwift
 import Reachability
-import Whisper
 
 class BaseViewController: UIViewController {
     
@@ -97,10 +96,6 @@ class BaseViewController: UIViewController {
     }
     
     internal func presentAlertWithTitle(_ title: String, message: String, useWhisper: Bool = false) {
-        if useWhisper {
-            displayWhisper(title, message: message)
-            return 
-        }
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(OKAction)
@@ -109,10 +104,6 @@ class BaseViewController: UIViewController {
         })
     }
     
-    internal func displayWhisper(_ title: String, message: String) {
-        let announcement = Announcement(title: title, subtitle: message, image: UIImage(named: "avatar"))
-        Whisper.show(shout: announcement, to: self.navigationController!)
-    }
     
     internal func addShadowToView(_ toView: UIView) {
         toView.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor

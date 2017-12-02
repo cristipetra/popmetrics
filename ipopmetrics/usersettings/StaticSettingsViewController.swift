@@ -21,7 +21,13 @@ class StaticSettingsViewController: BaseTableViewController {
     @IBOutlet weak var allowSounds: UISwitch!
     @IBOutlet weak var allowNotifications: UISwitch!
     
+    
+    @IBOutlet weak var googleAnalyticsTracker: UITextField!
+    
     let sectionTitles = ["USER IDENTITY", "NOTIFICATIONS", "BRAND IDENTITY", "SOCIAL ACCOUNTS", "DATA ACCOUNTS", "WEB OVERLAY"]
+    
+    var currentBrand = UserStore.currentBrand
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,16 +35,36 @@ class StaticSettingsViewController: BaseTableViewController {
         
         allowNotifications.addTarget(self, action: #selector(changeNotifications(_:)), for: .valueChanged)
         setUpNavigationBar()
-        updateView()
-
-        
         NotificationCenter.default.addObserver(self, selector: "handlerDidBecomeActive", name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.fetchBrandDetails()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         updateAllowNoticationsSwitch()
     }
+    
+    func fetchBrandDetails() {
+        
+        if !SyncService.getInstance().reachability.isReachable {
+            return
+        }
+        
+        self.showProgressIndicator()
+        
+        let currentBrandId = UserStore.currentBrandId
+        UsersApi().getBrandDetails(currentBrandId) { brand in
+            UserStore.currentBrand = brand!
+            self.currentBrand = brand!
+            self.hideProgressIndicator()
+            self.updateView()
+        }
+        
+    }
+    
     
     @objc  func handlerDidBecomeActive() {
         updateAllowNoticationsSwitch()
@@ -53,6 +79,8 @@ class StaticSettingsViewController: BaseTableViewController {
         professionalEmail.text = user.email
         
         brandName.text = UserStore.currentBrandName
+        
+        googleAnalyticsTracker.text = currentBrand?.googleAnalytics?.tracker ?? "N/A"
         
         allowSounds.isOn = userSettings.allowSounds
     }
@@ -159,6 +187,7 @@ class StaticSettingsViewController: BaseTableViewController {
     
     private func displayGASettings() {
         let gaVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "settingsGA") as! SettingsGAViewController
+        gaVC.currentBrand = self.currentBrand
         self.navigationController?.pushViewController(gaVC, animated: true)
     }
     

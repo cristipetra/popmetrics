@@ -14,6 +14,7 @@ import TwitterKit
 import FBSDKCoreKit
 import UserNotifications
 import URLNavigator
+import ObjectMapper
 //import STPopup
 
 
@@ -191,14 +192,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didReceiveRemoteNotification userInfo: [AnyHashable : Any],
         fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        // handler for push notifications received while the app is running
         
-        let aps = userInfo["aps"] as! [String: AnyObject]
-        NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
-                                        userInfo: ["sucess":true])
-        
-        
-        print("launched from notifications ... ")
         self.syncService.syncAll(silent: false)
+        
+//      let aps = userInfo["aps"] as! [String: AnyObject]
+        let pnotification = Mapper<PNotification>().map(JSONObject: userInfo)!
+        NotificationCenter.default.post(name: Notification.Popmetrics.RemoteMessage, object: nil,
+                                        userInfo: pnotification.toJSON())
         
     }
     

@@ -9,6 +9,34 @@
 import Foundation
 import ObjectMapper
 
+class PNotification: Mappable {
+    
+    var alert: String?
+    var title: String?
+    var subtitle: String?
+    var type: String?
+    var sound: String?
+    var badge: Int?
+    
+    var cardId: String?
+    
+    required init?(map:Map) {
+        
+    }
+    
+    
+    func mapping(map:Map) {
+        alert         <- map["aps.alert"]
+        title         <- map["title"]
+        subtitle      <- map["subtitle"]
+        type          <- map["type"]
+        sound         <- map["aps.sound"]
+        badge         <- map["aps.badge"]
+        cardId        <- map["card_id"]
+        
+    }
+}
+
 protocol ResponseWrap: class {
     
     func getCode() -> String
@@ -198,11 +226,36 @@ class UserAccount: Mappable {
     }
 }
 
+class GoogleAnalyticsDetails: Mappable {
+    
+    var name: String?
+    var tracker: String?
+    
+    var connectionDate: Date?
+    var connectionEmail: String?
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map:Map) {
+        name        <- map["view.web_property_name"]
+        tracker     <- map["view.web_property_id"]
+        
+        connectionDate <- (map["connection.date"], DateTransform())
+        connectionEmail <- map["connection.email"]
+        
+    }
+}
+
+
+
 class Brand: Mappable {
 
     var id: String?
     var name: String?
     var logoURL: String?
+    
+    var googleAnalytics: GoogleAnalyticsDetails?
     
     required init?(map: Map) {
     }
@@ -211,6 +264,9 @@ class Brand: Mappable {
         name        <- map["name"]
         id          <- map["id"]
         logoURL     <- map["logo_url"]
+        
+        googleAnalytics <- map["data.google_analytics"]
+        
         
     }
 }

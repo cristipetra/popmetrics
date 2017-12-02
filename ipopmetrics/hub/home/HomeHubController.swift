@@ -495,8 +495,8 @@ extension HomeHubViewController: InfoButtonDelegate {
     
     //
     func sendInfo(_ sender: UIButton) {
-        self.requiredActionHandler.showBanner(bannerType: .success)
-        //showTooltip(sender)
+        // self.showBanner(bannerType: .success)
+        // showTooltip(sender)
     }
     
     @objc func showTooltip(_ sender: UIButton) {

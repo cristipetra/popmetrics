@@ -97,7 +97,6 @@ class SyncService: SessionDelegate {
             return
         }
         
-        
         let currentBrandId = UserStore.currentBrandId
         
         FeedApi().getItems(currentBrandId) { feedResponse in
@@ -198,6 +197,27 @@ class SyncService: SessionDelegate {
             
         }
     }
+    
+    func syncBrandDetails(silent:Bool) {
+        
+        if !self.reachability.isReachable {
+            return
+        }
+        
+        let currentBrandId = UserStore.currentBrandId
+        UsersApi().getBrandDetails(currentBrandId) { brand in
+            
+            UserStore.currentBrand = brand!
+            if (!silent){
+                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
+                                                userInfo: ["sucess":true])
+            }
+        }
+        
+    }
+    
+    
+    
     
     func syncAll(silent:Bool) {
         if usersStore.isUserDefined() {

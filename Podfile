@@ -7,7 +7,6 @@ use_frameworks!
 target 'ipopmetrics' do
 
   pod 'ReachabilitySwift'
-  pod 'Whisper'
   pod 'Alamofire', '~> 4.0'
   pod 'AlamofireImage'
   pod 'ObjectMapper'

@@ -63,6 +63,27 @@ class UserStore {
         defaults.set(nil, forKey: "userAccountJson")
     }
     
+    
+    static var currentBrand: Brand? {
+        get {
+            guard let jsonString = UserDefaults.standard.string(forKey: "currentBrandJson")
+                else {
+                    return nil
+                }
+            let brand = Brand(JSONString: jsonString)
+            return brand!
+        }
+        
+        set {
+            guard let jsonString = newValue?.toJSONString()
+                else {
+                    return
+            }
+            UserDefaults.standard.set(jsonString, forKey:"currentBrandJson")
+        }
+    }
+    
+    
     static var currentBrandId: String {
         set {
             let defaults = UserDefaults.standard

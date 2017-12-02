@@ -279,5 +279,23 @@ class UsersApi: BaseApi {
         }
    }
     
+    func getBrandDetails(_ brandId: String,
+                  callback: @escaping (_ response: Brand?)  -> Void) {
+        // /api/brand/describe/<brand_id>'
+        let url = ApiUrls.composedBaseUrl(String(format:"/api/brand/describe/%@", brandId))
+        let params = ["a":0]
+        
+        Alamofire.request(url, method: .get, parameters: params,
+                          headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperOne<Brand>>) in
+                            let levelOneHandled = super.handleNotOkCodes(response: response.response)
+                            if !levelOneHandled {
+                                let handled = super.handleResponseWrap(response.value!)
+                                if !handled {
+                                    callback(response.result.value?.data)
+                                }
+                            }
+        }
+    }
+    
     
 }

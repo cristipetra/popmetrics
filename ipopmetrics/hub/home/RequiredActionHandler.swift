@@ -14,6 +14,7 @@ import FacebookCore
 import FacebookLogin
 import NotificationBannerSwift
 import EZAlertController
+import ObjectMapper
 
 
 protocol InfoButtonDelegate {
@@ -63,11 +64,27 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
         if let _ = error {
-            self.homeHubViewController?.presentAlertWithTitle("Warning", message: "You need to authenticate with your Google account to initiate this action.", useWhisper: true)
-//            self.homeHubViewController?.showBanner(bannerType: BannerType.failed, title: "Warning", message: "You need to authenticate with your Google account to initiate this action.")
+            
+            let notificationObj = ["alert":"Failed to connect with Google Analytics.",
+                                   "subtitle":"No credentials have been provided",
+                                   "type": "failure",
+                                   "sound":"default"
+                                   ]
+            let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+            
+            self.homeHubViewController?.showBannerForNotification(pnotification)
 
             return
         }
+        
+        let notificationObj = ["alert":"Connecting to Google Analytics.",
+                               "subtitle":"Your credentials will be validated in relation with the tracker used in your site.",
+                               "type": "info",
+                               "sound":"default"
+        ]
+        let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+        
+        self.homeHubViewController?.showBannerForNotification(pnotification)
         
         let brandId = UserStore.currentBrandId
         
@@ -179,83 +196,5 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
 //            callback(nil, nil, nil, SocialLoginError.unknown)
 //        }
 //    }
-    
-}
-
-extension RequiredActionHandler: InfoButtonDelegate {
-    func sendInfo(_ sender: UIButton) {
-        print("hello")
-        showBanner(bannerType: .failed)
-    }
-}
-
-protocol ShowBanner {
-    func showBanner(bannerType: BannerType)
-}
-
-extension RequiredActionHandler: ShowBanner {}
-
-extension ShowBanner {    
-    internal func showBanner(bannerType: BannerType) {
-        let banner: NotificationBanner!
-        switch bannerType {
-        case .success:
-            let title = "Authentication Success!"
-            let titleAttribute = [
-                NSAttributedStringKey.font: UIFont(name: "OpenSans-Bold", size: 12),
-                NSAttributedStringKey.foregroundColor: PopmetricsColor.darkGrey]
-            let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [NSAttributedStringKey : Any]))
-            let subtitle = "Twitter Connected"
-            let subtitleAttribute = [
-                NSAttributedStringKey.font: UIFont(name: "OpenSans-SemiBold", size: 12),
-                NSAttributedStringKey.foregroundColor: UIColor.white]
-            let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [NSAttributedStringKey : Any]))
-            banner = NotificationBanner(attributedTitle: attributedTitle, attributedSubtitle: attributedSubtitle, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
-            banner.backgroundColor = PopmetricsColor.greenMedium
-            break
-        case .failed:
-            let title = "Authentication Failed"
-            let titleAttribute = [
-                NSAttributedStringKey.font: UIFont(name: "OpenSans-Bold", size: 12),
-                NSAttributedStringKey.foregroundColor: PopmetricsColor.notificationBGColor]
-            let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [NSAttributedStringKey : Any]))
-            let subtitle = "Twitter failed to connect! Try again"
-            let subtitleAttribute = [
-                NSAttributedStringKey.font: UIFont(name: "OpenSans-SemiBold", size: 12),
-                NSAttributedStringKey.foregroundColor: UIColor.white]
-            let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [NSAttributedStringKey : Any]))
-            banner = NotificationBanner(attributedTitle: attributedTitle, attributedSubtitle: attributedSubtitle, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
-            banner.backgroundColor = PopmetricsColor.salmondColor
-            break
-        default:
-            break
-        }
-        banner.duration = TimeInterval(exactly: 7.0)!
-        banner.show()
-        
-        banner.onTap = {
-            banner.dismiss()
-        }
-    }
-    
-    internal func showBanner(title: String, subtitle: String) {
-        let banner: NotificationBanner!
-        let titleAttribute = [
-            NSAttributedStringKey.font: UIFont(name: "OpenSans-SemiBold", size: 12),
-            NSAttributedStringKey.foregroundColor: PopmetricsColor.bannerSuccessText]
-        let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [NSAttributedStringKey : Any]))
-        let subtitleAttribute = [
-            NSAttributedStringKey.font: UIFont(name: "OpenSans", size: 12),
-            NSAttributedStringKey.foregroundColor: UIColor.white]
-        let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [NSAttributedStringKey : Any]))
-        banner = NotificationBanner(attributedTitle: attributedTitle, attributedSubtitle: attributedSubtitle, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
-        banner.backgroundColor = PopmetricsColor.greenMedium
-        banner.duration = TimeInterval(exactly: 7.0)!
-        banner.show()
-        
-        banner.onTap = {
-            banner.dismiss()
-        }
-    }
     
 }
