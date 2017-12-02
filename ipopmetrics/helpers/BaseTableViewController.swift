@@ -103,22 +103,25 @@ class BaseTableViewController: UITableViewController {
     func showBannerForNotification(_ notification: PNotification) {
         let style: BannerStyle!
         var time = 3
+        var image = #imageLiteral(resourceName: "banner_info")
         switch notification.type {
             case "info"?:
                 style = BannerStyle.info
                 break
             case "success"?:
                 style = BannerStyle.success
+                image = #imageLiteral(resourceName: "banner_success")
                 break
             case "failure"?:
                 style = BannerStyle.danger
+                image = #imageLiteral(resourceName: "banner_danger")
                 time = 10
                 break
             default:
                 style = BannerStyle.info
             
         }
-        let leftView = UIImageView(image: #imageLiteral(resourceName: "active_home"))
+        let leftView = UIImageView(image: image)
         let banner = NotificationBanner(title: notification.alert ?? "", subtitle: notification.subtitle ?? "", leftView: leftView, style:style)
 //        switch bannerType {
 //        case .success:
