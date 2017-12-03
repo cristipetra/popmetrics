@@ -147,9 +147,9 @@ class UsersApi: BaseApi {
         var params = [
             "code": smsCode,
             "phone_number": phoneNumber,
-            "ios_udid": UIDevice.current.name
+            "ios_udid": UserStore.iosDeviceName
         ]
-        if let deviceToken = UserDefaults.standard.string(forKey:"deviceToken") {
+        if let deviceToken = UserStore.iosDeviceToken {
             params["ios_device_token"] = deviceToken
         }
         
@@ -297,5 +297,19 @@ class UsersApi: BaseApi {
         }
     }
     
+    func registerIosDeviceToken(_ token:String, deviceName: String) {
+        // /api2/caas/me/register/ios-device-token
+        let url = ApiUrls.composedBaseUrl("/api2/caas/me/register/ios-device-token")
+        let params = ["ios_device_token":token,
+                      "ios_device_name": deviceName]
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, 
+                          headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperEmpty>) in
+                            let levelOneHandled = super.handleNotOkCodes(response: response.response)
+                            if !levelOneHandled {
+                                let _ = super.handleResponseWrap(response.value!)
+                            }
+        }
+    }
     
 }

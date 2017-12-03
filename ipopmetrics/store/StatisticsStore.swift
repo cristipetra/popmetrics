@@ -104,7 +104,7 @@ class StatisticsStore {
                 realm.delete(existingMetric)
             }
            
-            for newMetric in statisticsResponse.metrics! {
+            for newMetric in statisticsResponse.metrics ?? [] {
                 
                 newMetric.statisticCard = getStatisticsCardWithId(newMetric.statisticsCardId)
                 realm.add(newMetric, update:true)

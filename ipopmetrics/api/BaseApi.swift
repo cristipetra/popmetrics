@@ -50,17 +50,23 @@ class BaseApi {
     internal func handleNotOkCodes(response: HTTPURLResponse?) -> Bool {
         if response?.statusCode == 404 {
             NotificationCenter.default.post(name: Notification.Popmetrics.ApiResponseUnsuccessfull, object: nil,
-                                            userInfo: ["title":"Communication error", "message": "The requested resource does not exist."])
+                                            userInfo: ["title": "Cloud communication error.",
+                                                       "subtitle":"The requested resource does not exist",
+                                                       "type":"failure"])
             return true
         }
         if response?.statusCode == 401 {
             NotificationCenter.default.post(name: Notification.Popmetrics.ApiClientNotAuthenticated, object: nil,
-                                            userInfo: ["title":"Communication error", "message": "Authentication is required."])
+                                            userInfo: ["title": "Cloud communication error.",
+                                                       "subtitle":"User is not authorized.",
+                                                       "type":"failure"])
             return true
         }
         if response?.statusCode != 200 {
             NotificationCenter.default.post(name: Notification.Popmetrics.ApiFailure, object: nil,
-                                            userInfo: ["title":"Communication error", "message": "Communication with the cloud failed."])
+                                            userInfo: ["title": "Cloud communication error.",
+                                                       "subtitle":"",
+                                                       "type":"failure"])
             return true
         }
         return false
@@ -70,8 +76,9 @@ class BaseApi {
         let value = responseWrap
         if value.getCode() != "success" && value.getCode() != "silent_error" {
                 NotificationCenter.default.post(name: Notification.Popmetrics.ApiResponseUnsuccessfull, object: nil,
-                                                userInfo: ["title":"Api error",
-                                                           "message":value.getMessage() ?? "The request was completed unsuccessfully by the Cloud"])
+                                                userInfo: ["title": "Cloud communication error.",
+                                                           "subtitle":"Operation was unsuccessfull",
+                                                           "type":"failure"])
                 return true
                 }
         return false

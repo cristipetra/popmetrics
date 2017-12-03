@@ -10,6 +10,7 @@ import UIKit
 import Reachability
 import NotificationBannerSwift
 import ObjectMapper
+import URLNavigator
 
 class BaseTableViewController: UITableViewController {
     
@@ -102,7 +103,7 @@ class BaseTableViewController: UITableViewController {
     
     func showBannerForNotification(_ notification: PNotification) {
         let style: BannerStyle!
-        var time = 3
+        var time = 30
         var image = #imageLiteral(resourceName: "banner_info")
         switch notification.type {
             case "info"?:
@@ -122,7 +123,7 @@ class BaseTableViewController: UITableViewController {
             
         }
         let leftView = UIImageView(image: image)
-        let banner = NotificationBanner(title: notification.alert ?? "", subtitle: notification.subtitle ?? "", leftView: leftView, style:style)
+        let banner = NotificationBanner(title: notification.title ?? notification.alert ?? "Message", subtitle: notification.subtitle ?? "", leftView: leftView, style:style)
 //        switch bannerType {
 //        case .success:
 //            let titleAttribute = [
@@ -155,11 +156,14 @@ class BaseTableViewController: UITableViewController {
 //            break
 //        }
         banner.duration = TimeInterval(exactly: time)!
-        banner.show()
-        
-        banner.onTap = {
-            banner.dismiss()
+        if let deepLink = notification.deepLink {
+            banner.onTap = {
+                print("going to "+deepLink)
+                navigator.push(deepLink)
+                // banner.dismiss()
+            }
         }
+        banner.show()
     }
    
 }

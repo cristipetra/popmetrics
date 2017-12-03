@@ -35,12 +35,12 @@ public extension Notification {
     }
 }
 
+var navigator: Navigator = Navigator()
 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
  
-    private var navigator: NavigatorType?
     var window: UIWindow?
     var usersStore: UserStore!
     var feedStore: FeedStore!
@@ -66,7 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         var configureError: NSError?
         
-        let navigator = Navigator()
         // Initialize navigation map
         NavigationMap.initialize(navigator: navigator)
         
@@ -75,13 +74,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.rootViewController = getInitialViewController()
         window.makeKeyAndVisible()
 
+        getNotificationSettings()
         
         syncService.syncAll(silent: false)
         
         // Check if launched from notification
         if let notification = launchOptions?[.remoteNotification] as? [String: AnyObject] {
-            let aps = notification["aps"] as! [String: AnyObject]
-            print("launched from notifications ... ")
+            
+            let pnotification = Mapper<PNotification>().map(JSONObject: notification)!
+            guard let link = pnotification.deepLink else { return true}
+            navigator.push(link)
             
         }
         
@@ -90,7 +92,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        
+        let fb = FBSDKApplicationDelegate.sharedInstance()
+        if fb!.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation) {
+            return true
+        }
+        // URLNavigator Handler
+        if navigator.open(url) {
+            return true
+        }
+        
+        // URLNavigator View Controller
+        if navigator.present(url, wrap: UINavigationController.self) != nil {
+            return true
+        }
+        
+        return false
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -148,13 +165,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let annotation = options[UIApplicationOpenURLOptionsKey.annotation]
         
         // Try presenting the URL first
-        if self.navigator?.present(url, wrap: UINavigationController.self) != nil {
+        if navigator.present(url, wrap: UINavigationController.self) != nil {
             print("[Navigator] present: \(url)")
             return true
         }
         
         // Try opening the URL
-        if self.navigator?.open(url) == true {
+        if navigator.open(url) == true {
             print("[Navigator] open: \(url)")
             return true
         }
@@ -192,9 +209,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didReceiveRemoteNotification userInfo: [AnyHashable : Any],
         fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        // handler for push notifications received while the app is running
+        // handler for push notifications received while the app is running or in background
         
-        self.syncService.syncAll(silent: false)
+        self.syncService.syncAll(silent: false, completionHandler:completionHandler)
         
 //      let aps = userInfo["aps"] as! [String: AnyObject]
         let pnotification = Mapper<PNotification>().map(JSONObject: userInfo)!
@@ -207,7 +224,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             print("Notification settings: \(settings)")
             guard settings.authorizationStatus == .authorized else { return }
-            UIApplication.shared.registerForRemoteNotifications()
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
         }
     }
     
@@ -218,10 +237,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let token = tokenParts.joined()
-        let defaults = UserDefaults.standard
-        defaults.set(token, forKey: "deviceToken")
-        let deviceID = UIDevice.current.name
-        defaults.set(deviceID, forKey:"deviceId")
+        let changed = UIDevice.current.name != UserStore.iosDeviceName || token != UserStore.iosDeviceToken
+        if changed {
+            UserStore.iosDeviceName = UIDevice.current.name
+            UserStore.iosDeviceToken = token
+            UsersApi().registerIosDeviceToken(token, deviceName: UIDevice.current.name)
+        }
         
     }
     

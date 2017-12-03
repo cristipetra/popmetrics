@@ -53,16 +53,8 @@ class NotificationsViewController: UIViewController {
             
             guard granted else { return }
             
-            self.getNotificationSettings()
-        }
-    }
-    
-    func getNotificationSettings() {
-        print("get notification settings")
-        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-            print("Notification settings: \(settings)")
-            guard settings.authorizationStatus == .authorized else { return }
-            UIApplication.shared.registerForRemoteNotifications()
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.getNotificationSettings()
         }
     }
     

@@ -83,6 +83,29 @@ class UserStore {
         }
     }
     
+    static var iosDeviceToken: String? {
+        set {
+            let defaults = UserDefaults.standard
+            defaults.set(newValue, forKey: "iosDeviceToken")
+        }
+        get {
+            let cbi = UserDefaults.standard.string(forKey: "iosDeviceToken")
+            return cbi
+        }
+    }
+        
+    static var iosDeviceName: String? {
+        set {
+            let defaults = UserDefaults.standard
+            defaults.set(newValue, forKey: "iosDeviceName")
+            }
+        get {
+            let cbi = UserDefaults.standard.string(forKey: "iosDeviceName")
+            return cbi
+            }
+    }
+    
+    
     
     static var currentBrandId: String {
         set {
