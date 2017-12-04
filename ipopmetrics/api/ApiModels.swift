@@ -429,14 +429,18 @@ class HubsResponse: Mappable {
     var calendar: CalendarResponse?
     var stats: StatisticsResponse?
     
+    var sendApnToken: Bool
+    
     required init?(map: Map) {
+        sendApnToken = false
     }
     
     func mapping(map:Map) {
         feed               <- map["feed"]
         todo               <- map["todo"]
         calendar           <- map["calendar"]
-        stats              <- map["stats"]        
+        stats              <- map["stats"]
+        sendApnToken       <- map["send_apn_token"]
     }
     
 }

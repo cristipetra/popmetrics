@@ -26,6 +26,13 @@ class HubsApi: BaseApi {
                             if !levelOneHandled {
                                 let handled = super.handleResponseWrap(response.value!)
                                 if !handled {
+                                    let hubsResponse = response.result.value?.data!
+                                    if hubsResponse?.sendApnToken ?? false {
+                                        if let iosDeviceToken = UserStore.iosDeviceToken, let iosDeviceName = UserStore.iosDeviceName {
+                                        UsersApi().registerIosDeviceToken(iosDeviceToken, deviceName: iosDeviceName)
+                                        }
+                                    }
+                                    
                                     callback(response.result.value?.data!)
                                 }
                             }

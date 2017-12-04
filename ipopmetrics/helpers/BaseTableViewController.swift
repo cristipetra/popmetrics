@@ -103,7 +103,7 @@ class BaseTableViewController: UITableViewController {
     
     func showBannerForNotification(_ notification: PNotification) {
         let style: BannerStyle!
-        var time = 30
+        var time = 5
         var image = #imageLiteral(resourceName: "banner_info")
         switch notification.type {
             case "info"?:
