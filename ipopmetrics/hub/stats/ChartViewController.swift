@@ -146,7 +146,7 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
     
     func value(forPlot plot: Plot, atIndex pointIndex: Int) -> Double {
         // Return the data for each plot.
-        print("ind: \(pointIndex)")
+        
         switch(plot.identifier) {
         case "Gray":
             return plotOneData[pointIndex]

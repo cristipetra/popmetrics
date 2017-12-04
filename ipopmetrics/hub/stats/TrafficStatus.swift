@@ -12,7 +12,7 @@ class TrafficStatus: UIView {
     
     @IBOutlet var contentView: UIView!
     
-    var tableView: TrafficStatsTableViewController = TrafficStatsTableViewController()
+    var tableView: TrafficStatsTableViewController = TrafficStatsTableViewController(style: .grouped)
     let chartVC = UIStoryboard(name: "ChartStatistics", bundle: nil).instantiateViewController(withIdentifier: "ChartViewId") as! ChartViewController
     
     var statisticsCard: StatisticsCard!
@@ -40,6 +40,10 @@ class TrafficStatus: UIView {
         tableView.configure(card: statisticsCard, pageIndex)
     }
     
+    func configure(staticMetric: StatisticMetric) {
+        tableView.configure(statisticMetric: staticMetric)
+    }
+    
     func setup() {
         
         Bundle.main.loadNibNamed("TrafficStatus", owner: self, options: nil)
@@ -61,7 +65,7 @@ class TrafficStatus: UIView {
         tableView.view.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         //tableView.view.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         tableView.view.topAnchor.constraint(equalTo: chartVC.view.bottomAnchor, constant: 1).isActive = true
-        tableView.view.heightAnchor.constraint(equalToConstant: 345).isActive = true
+        tableView.view.heightAnchor.constraint(equalToConstant: 545).isActive = true
         
         tableView.automaticallyAdjustsScrollViewInsets = false
     }
@@ -71,7 +75,7 @@ class TrafficStatus: UIView {
         self.addSubview(chartVC.view)
         chartVC.didMove(toParentViewController: self.parentViewController)
         
-        chartVC.barChart.backgroundFillColor = UIColor.white//UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+        chartVC.barChart.backgroundFillColor = UIColor.white
         
         chartVC.view.translatesAutoresizingMaskIntoConstraints = false
         chartVC.view.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true

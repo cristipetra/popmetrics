@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GTProgressBar
 
 class TrafficVisits: UITableViewCell {
     
@@ -51,6 +52,36 @@ class TrafficVisits: UITableViewCell {
         
     }()
     
+    lazy var firstProgress: GTProgressBar = {
+        let progress = GTProgressBar()
+        progress.translatesAutoresizingMaskIntoConstraints = false
+        progress.barBackgroundColor = PopmetricsColor.statisticsTableBackground
+        progress.barBackgroundColor = .clear
+        progress.barFillColor = PopmetricsColor.secondGray
+        progress.barBorderWidth = 0
+        progress.barFillInset = 0
+        progress.barBorderColor = PopmetricsColor.secondGray
+        progress.displayLabel = false
+        progress.cornerRadius = 0
+        progress.animateTo(progress: 0.7)
+        return progress
+    }()
+    
+    lazy var secondProgress: GTProgressBar = {
+       let second = GTProgressBar()
+        second.translatesAutoresizingMaskIntoConstraints = false
+        second.barBackgroundColor = PopmetricsColor.statisticsTableBackground
+        second.barBackgroundColor = .clear
+        second.barFillColor = PopmetricsColor.textGrey
+        second.barBorderWidth = 0
+        second.barFillInset = 0
+        second.barBorderColor = PopmetricsColor.textGrey
+        second.displayLabel = false
+        second.cornerRadius = 0
+        second.animateTo(progress: 0.4)
+        return second
+    }()
+    
     var statisticMetric: StatisticMetric!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -64,6 +95,16 @@ class TrafficVisits: UITableViewCell {
         setUpVisitsView()
     }
     
+    func configure(metricBreakdown: MetricBreakdown) {
+        
+        self.titleLabel.text = metricBreakdown.label
+        self.firstValueLabel.text = "\(Int(metricBreakdown.currentValue!))"
+        self.secondValueLabel.text = " +\(Int(metricBreakdown.deltaValue!))"
+        
+        //self.secondProgress.animateTo(progress: 0.4)
+        //self.firstProgress.animateTo(progress: 0.7)
+        //setProgress(firstValue: CGFloat(metricBreakdown.currentValue!), secondValue: CGFloat(metricBreakdown.deltaValue! + metricBreakdown.currentValue!))
+    }
     
     func configure(statisticMetric: StatisticMetric) {
         self.statisticMetric = statisticMetric
@@ -79,7 +120,7 @@ class TrafficVisits: UITableViewCell {
         
         self.addSubview(titleLabel)
         titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 25).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 26).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 17).isActive = true
         titleLabel.widthAnchor.constraint(equalToConstant: 170).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         titleLabel.text = ""
@@ -89,13 +130,13 @@ class TrafficVisits: UITableViewCell {
         
         self.addSubview(firstValueLabel)
         //firstValueLabel.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 2).isActive = true
-        firstValueLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 26).isActive = true
+        firstValueLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 17).isActive = true
         firstValueLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
         
         self.addSubview(secondValueLabel)
         secondValueLabel.leftAnchor.constraint(equalTo: firstValueLabel.rightAnchor, constant: 20).isActive = true
-        secondValueLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 26).isActive = true
+        secondValueLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 17).isActive = true
         secondValueLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         secondValueLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -21).isActive = true
         
@@ -106,6 +147,7 @@ class TrafficVisits: UITableViewCell {
         mainProgressView.heightAnchor.constraint(equalToConstant: 19).isActive = true
         mainProgressView.backgroundColor = PopmetricsColor.statisticsTableBackground
         
+        /*
         mainProgressView.addSubview(secondProgressView)
         mainProgressView.addSubview(firstProgressView)
         firstProgressView.leftAnchor.constraint(equalTo: mainProgressView.leftAnchor).isActive = true
@@ -115,6 +157,22 @@ class TrafficVisits: UITableViewCell {
         secondProgressView.leftAnchor.constraint(equalTo: mainProgressView.leftAnchor).isActive = true
         secondProgressView.topAnchor.constraint(equalTo: mainProgressView.topAnchor).isActive = true
         secondProgressView.bottomAnchor.constraint(equalTo: mainProgressView.bottomAnchor).isActive = true
+         */
+ 
+        
+        mainProgressView.addSubview(firstProgress)
+        firstProgress.bottomAnchor.constraint(equalTo: self.mainProgressView.bottomAnchor, constant: 0).isActive  = true
+        firstProgress.topAnchor.constraint(equalTo: self.mainProgressView.topAnchor, constant: 0).isActive  = true
+        firstProgress.leftAnchor.constraint(equalTo: self.mainProgressView.leftAnchor, constant: 0).isActive = true
+        firstProgress.rightAnchor.constraint(equalTo: self.mainProgressView.rightAnchor, constant: 0).isActive = true
+        
+        
+        mainProgressView.addSubview(secondProgress)
+        secondProgress.bottomAnchor.constraint(equalTo: self.mainProgressView.bottomAnchor, constant: 0).isActive  = true
+        secondProgress.topAnchor.constraint(equalTo: self.mainProgressView.topAnchor, constant: 0).isActive  = true
+        secondProgress.leftAnchor.constraint(equalTo: self.mainProgressView.leftAnchor, constant: 0).isActive = true
+        secondProgress.rightAnchor.constraint(equalTo: self.mainProgressView.rightAnchor, constant: 0).isActive = true
+ 
         
         setDesign()
         
@@ -130,8 +188,6 @@ class TrafficVisits: UITableViewCell {
         secondValueLabel.textAlignment = .left
         
         mainProgressView.layer.cornerRadius = 10
-        firstProgressView.layer.cornerRadius = 4
-        secondProgressView.layer.cornerRadius = 4
         mainProgressView.clipsToBounds = true
     }
     

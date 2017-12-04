@@ -34,7 +34,7 @@ class PopmetricsColor {
     static let borderLight = PopmetricsColor.textLight
     static let borderMedium = PopmetricsColor.textMedium
     static let borderDark = PopmetricsColor.textDark
-    static let statisticsTableBackground = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 240/255)
+    static let statisticsTableBackground = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
     static let dividerBorder = UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 1)
     static let orange = UIColor(red: 227/255.0, green: 135/255.0, blue: 58/255.0, alpha: 1.0)
     static let bannerSuccessText = UIColor(red: 13/255, green: 88/255, blue: 63/255, alpha: 1.0)

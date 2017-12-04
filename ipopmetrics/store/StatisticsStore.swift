@@ -41,8 +41,9 @@ class StatisticsStore {
     
     /*
      * Return number of pages for a statistic card
+     * sorted by page Index
      */
-    public func getNumberOfPages(_ statisticCard: StatisticsCard) -> Int {
+    public func getNumberOfPagesByPageIndex(_ statisticCard: StatisticsCard) -> Int {
         let predicate = NSPredicate(format: "statisticCard = %@", statisticCard)
         let metricsForCard = realm.objects(StatisticMetric.self).filter(predicate).sorted(byKeyPath: "pageIndex")
         let lastMetric: StatisticMetric = metricsForCard[metricsForCard.count - 1]

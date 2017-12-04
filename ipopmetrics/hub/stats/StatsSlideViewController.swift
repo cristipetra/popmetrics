@@ -19,6 +19,8 @@ class StatsSlideViewController: UIViewController {
         }
     }
     
+    private var staticMetric: StatisticMetric!
+    
     internal var pageIndex: Int = 1 {
         didSet {
             statusView.pageIndex = pageIndex 
@@ -40,6 +42,10 @@ class StatsSlideViewController: UIViewController {
         self.statistiscCard = card
         self.pageIndex = pageIndex
         statusView.configure(card: statistiscCard, pageIndex)
+    }
+    
+    func configure(staticMetric: StatisticMetric) {
+        statusView.configure(staticMetric: staticMetric)
     }
 
     override func viewDidLayoutSubviews() {
