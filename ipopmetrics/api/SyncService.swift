@@ -91,6 +91,7 @@ class SyncService: SessionDelegate {
         return manager
     }
     
+    
     func syncHomeItems(silent:Bool) {
         
         if !self.reachability.isReachable {
@@ -217,15 +218,48 @@ class SyncService: SessionDelegate {
     }
     
     
+    func syncAll(silent:Bool,
+                 completionHandler: ((UIBackgroundFetchResult) -> Void)?) {
+        
+        if !usersStore.isUserDefined() {
+            completionHandler?(.noData)
+            return
+            
+        }
+        
+        if !self.reachability.isReachable {
+            completionHandler?(.failed)
+            return
+        }
+        let brandId = UserStore.currentBrandId
+        HubsApi().getHubsItems(brandId) { hubsResponse in
+            if let feedResponse = hubsResponse!.feed {
+                self.feedStore.updateFeed( feedResponse)
+            }
+            if let todoResponse = hubsResponse!.todo {
+                self.todoStore.updateTodos( todoResponse)
+            }
+            if let calendarResponse = hubsResponse!.calendar {
+                self.calendarStore.updateCalendars( calendarResponse)
+            }
+            if let statsResponse = hubsResponse!.stats {
+                self.statsStore.updateStatistics(statsResponse)
+            }
+            completionHandler?(.newData)
+            
+            if (!silent){
+                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
+                                                userInfo: ["sucess":true])
+            }
+        }
+        
+        
+    }
     
+
     
     func syncAll(silent:Bool) {
-        if usersStore.isUserDefined() {
-            self.syncHomeItems(silent: silent)
-            self.syncTodoItems(silent: silent)
-            self.syncCalendarItems(silent: silent)
-            self.syncStatisticsItems(silent: silent)
-        }
+        syncAll(silent: silent, completionHandler: nil)
         
     }
   

@@ -18,7 +18,7 @@ class PNotification: Mappable {
     var sound: String?
     var badge: Int?
     
-    var cardId: String?
+    var deepLink: String?
     
     required init?(map:Map) {
         
@@ -32,8 +32,7 @@ class PNotification: Mappable {
         type          <- map["type"]
         sound         <- map["aps.sound"]
         badge         <- map["aps.badge"]
-        cardId        <- map["card_id"]
-        
+        deepLink      <- map["deep_link"]        
     }
 }
 
@@ -423,5 +422,22 @@ class StatisticsResponse: Mappable {
     }
 }
 
-
+class HubsResponse: Mappable {
+    
+    var feed: FeedResponse?
+    var todo: TodoResponse?
+    var calendar: CalendarResponse?
+    var stats: StatisticsResponse?
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map:Map) {
+        feed               <- map["feed"]
+        todo               <- map["todo"]
+        calendar           <- map["calendar"]
+        stats              <- map["stats"]        
+    }
+    
+}
 

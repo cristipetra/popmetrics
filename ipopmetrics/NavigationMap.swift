@@ -14,21 +14,40 @@ import URLNavigator
 enum NavigationMap {
     static func initialize(navigator: NavigatorType) {
         
-        navigator.register("popmetrics://user/<username>") { url, values, context in
-            guard let username = values["username"] as? String else { return nil }
-            print("[Navigator] NavigationMap.\(#function):\(#line) - global fallback function is called")
-            return nil
+        navigator.register("vnd.popmetrics://settings") { url, values, context in
+            
+            let settingsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "staticSettings") as! StaticSettingsViewController
+            return settingsVC
         }
+        
+        navigator.register("vnd.popmetrics://hubs/home") { url, values, context in
+            
+            let mainTabVC = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC) as! MainTabBarController
+            mainTabVC.selectedIndex = 0
+            return mainTabVC
+        }
+        
+        navigator.register("vnd.popmetrics://hubs/todo") { url, values, context in
+            
+            let mainTabVC = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC) as! MainTabBarController
+            mainTabVC.selectedIndex = 1
+            return mainTabVC
+        }
+        
+        navigator.register("vnd.popmetrics://insight/string:id") { url, values, context in
+            
+            let insightDetails = InsightPageDetailsViewController(nibName: "InsightPage", bundle: nil)
+            guard let cardID = values["id"] as? String else { return nil }
+            guard let feedCard = FeedStore.getInstance().getFeedCardWithId(cardID) else { return nil }
+            insightDetails.configure(feedCard)
+            return insightDetails
+        }
+        
         navigator.register("http://<path:_>", self.webViewControllerFactory)
         navigator.register("https://<path:_>", self.webViewControllerFactory)
-        
-        navigator.handle("popmetrics://alert", self.alert(navigator: navigator))
-        navigator.handle("popmetrics://<path:_>") { (url, values, context) -> Bool in
-            // No navigator match, do analytics or fallback function here
-            print("[Navigator] NavigationMap.\(#function):\(#line) - global fallback function is called")
-            return true
-        }
+
     }
+    
     
     private static func webViewControllerFactory(
         url: URLConvertible,
