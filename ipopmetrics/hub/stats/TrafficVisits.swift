@@ -153,12 +153,12 @@ class TrafficVisits: UITableViewCell {
     
         let maximumValue = statisticMetric.value + (statisticMetric.value * (statisticMetric.delta / Float(100) ))
     
-        let percentageCurrentValue = (metricBreakdown.currentValue! * 100) / maximumValue
+        let percentageCurrentValue = (metricBreakdown.currentValue!) / maximumValue
         
         var percentageDelta = ( metricBreakdown.currentValue! + (metricBreakdown.currentValue! * ( metricBreakdown.deltaValue! / Float(100) ) ) ) / maximumValue
         
         
-        self.valueProgress.animateTo(progress: CGFloat(percentageCurrentValue / 100))
+        self.valueProgress.animateTo(progress: CGFloat(percentageCurrentValue))
         self.deltaProgress.animateTo(progress: CGFloat(percentageDelta))
         
     }

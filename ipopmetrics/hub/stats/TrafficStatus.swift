@@ -36,8 +36,8 @@ class TrafficStatus: UIView {
     }
     
     func configure(card: StatisticsCard, _ pageIndex: Int = 1) {
-        statisticsCard = card
-        tableView.configure(card: statisticsCard, pageIndex)
+        //statisticsCard = card
+        //tableView.configure(card: statisticsCard, pageIndex)
     }
     
     func configure(staticMetric: StatisticMetric) {
