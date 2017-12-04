@@ -50,10 +50,15 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
         reloadData()
     }
     
+    func configure(statisticMetric: StatisticMetric) {
+        self.statisticMetric = statisticMetric
+        reloadData()
+    }
+    
     func reloadData() {
         self.infoLabel.text = statisticMetric.label
         self.firstValue.text = "\(Int(statisticMetric.value))"
-        self.secondValue.text = "+\(Int(statisticMetric.delta))"
+        self.secondValue.text = "+\(Int(statisticMetric.delta))%"
         reloadGraph()
     }
     

@@ -117,7 +117,7 @@ class StatisticsViewController: BaseViewController {
             let statsMet1 = StatisticMetric()
             statsMet1.statisticCard = statsCard
             statsMet1.statisticsCardId = "sfdsaf"
-            statsMet1.value = 54
+            statsMet1.value = 1300
             statsMet1.label = "Overral visits"
             statsMet1.pageName = "Overral visits"
             statsMet1.delta = 25
@@ -127,7 +127,7 @@ class StatisticsViewController: BaseViewController {
             statsMet1.currentPeriodValues = "20 23 12 14 1 1 1 1 1 1 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 3 7 3 6 7 35 34 34 33 35"
             statsMet1.prevPeriodValues = "0 12 12 14 16 17 1 1 1 1 1 1 1 13 14 13 13 17 13 16 17 15 34 14 15 13 14 13 13 17 13 16 17 15 34";
 
-            statsMet1.breakDownsJson = "[{\"group\": \"Demographics\", \"breakdowns\": [{\"label\": \"Male\", \"current_value\": 1100, \"delta_value\": 20 }]}, {\"group\": \"Devices\", \"breakdowns\" :[{\"label\": \"Mobile\", \"current_value\": 1100, \"delta_value\": 20 }  ]}]"
+            statsMet1.breakDownsJson = "[{\"group\": \"Demographics\", \"breakdowns\": [{\"label\": \"Male\", \"current_value\": 1300, \"delta_value\": 25 }]}, {\"group\": \"Devices\", \"breakdowns\" :[{\"label\": \"Mobile\", \"current_value\": 1100, \"delta_value\": 20 }, {\"label\": \"Unknown\", \"current_value\": 200, \"delta_value\": 5 }  ]}]"
 
             store.realm.add(statsMet1, update: true)
             
@@ -136,9 +136,9 @@ class StatisticsViewController: BaseViewController {
             let statsMet11 = StatisticMetric()
             statsMet11.statisticCard = statsCard
             statsMet11.statisticsCardId = "s3fsadsaf"
-            statsMet11.value = 54
-            statsMet11.label = "ooo visits"
-            statsMet11.delta = 15
+            statsMet11.value = 4000
+            statsMet11.label = "Total visits"
+            statsMet11.delta = 45
             statsMet11.pageName = "qqq visits"
             statsMet11.pageIndex = 2
             statsMet11.indexInPage = 0
@@ -147,16 +147,16 @@ class StatisticsViewController: BaseViewController {
             statsMet11.currentPeriodValues = "0 12 12 16 14 13 13 17 13 16 17 15 34 14 15 13 6 27 3 4 3 3 7 3 6 7 5"
             statsMet11.prevPeriodValues = "0 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 14 16 17 13 14 13 13 17"
             
-            statsMet11.breakDownsJson = "[ {\"group\": \"Demographics\", \"breakdowns\": [{\"label\": \"Male\", \"current_value\": 1100, \"delta_value\": 20 }]}, {\"group\": \"Devices\", \"breakdowns\" :[{\"label\": \"Mobile\", \"current_value\": 1100, \"delta_value\": 20 },{\"label\": \"Tablet\", \"current_value\": 1100, \"delta_value\": 20 },{\"label\": \"TV\", \"current_value\": 1100, \"delta_value\": 20 }] }, {\"group\": \"Age\", \"breakdowns\": [{\"label\": \"Male\", \"current_value\": 1100, \"delta_value\": 20 }]}  ]"
+            statsMet11.breakDownsJson = "[ {\"group\": \"Demographics\", \"breakdowns\": [{\"label\": \"Male\", \"current_value\": 1500, \"delta_value\": 20 }, {\"label\": \"Female\", \"current_value\": 1100, \"delta_value\": 10 }, {\"label\": \"Unknown\", \"current_value\": 1400, \"delta_value\": 10 }]}, {\"group\": \"Devices\", \"breakdowns\" :[{\"label\": \"Mobile\", \"current_value\": 1100, \"delta_value\": 20 },{\"label\": \"Tablet\", \"current_value\": 1100, \"delta_value\": 20 },{\"label\": \"TV\", \"current_value\": 1100, \"delta_value\": 20 }] }  ]"
             
             store.realm.add(statsMet11, update: true)
             
             let statsMet12 = StatisticMetric()
             statsMet12.statisticCard = statsCard
             statsMet12.statisticsCardId = "s3fsa234dsaf"
-            statsMet12.value = 24
+            statsMet12.value = 1100
             statsMet12.label = "qqq visits"
-            statsMet12.delta = 25
+            statsMet12.delta = 250
             statsMet12.pageName = "qqq visits"
             statsMet12.pageIndex = 3
             statsMet12.indexInPage = 0
@@ -164,42 +164,10 @@ class StatisticsViewController: BaseViewController {
             statsMet12.currentPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 6 27 3 4 3 3 7 3 6 7 5"
             statsMet12.prevPeriodValues = "0 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 14 16 17 13 14 13 13 17"
             
-            statsMet12.breakDownsJson = "[{\"group\": \"Demographics\", \"breakdowns\": [{\"label\": \"Malewww\", \"current_value\": 1100, \"delta_value\": 20 }] }]"
+            statsMet12.breakDownsJson = "[{\"group\": \"Demographics\", \"breakdowns\": [{\"label\": \"Male\", \"current_value\": 1100, \"delta_value\": 25 }] }]"
             
             store.realm.add(statsMet12, update: true)
             
-            let statsMet2 = StatisticMetric()
-            statsMet2.statisticCard = statsCard
-            statsMet2.statisticsCardId = "s3efdsaf"
-            statsMet2.value = 44
-            statsMet2.label = "New visits"
-            statsMet2.delta = 15
-            statsMet2.pageIndex = 4
-            statsMet2.pageName = "Unique visits"
-            statsMet2.indexInPage = 0
-            statsMet2.currentPeriodLabel = "Sep28-Aug27"
-            statsMet2.currentPeriodValues = "2 22 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 17 13 14 13 13 17 13 6 27 3 4"
-            statsMet2.prevPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 14 16 17 13 14 13 13 17"
-            
-            statsMet2.breakDownsJson = "[{\"group\": \"Demographics\", \"breakdowns\": [{\"label\": \"Male\", \"current_value\": 1100, \"delta_value\": 20 }]}, {\"group\": \"Devices\", \"breakdowns\" :[{\"label\": \"Mobile\", \"current_value\": 1100, \"delta_value\": 20 }  ]}]"
-            
-            store.realm.add(statsMet2, update: true)
-            
-            let statsMet21 = StatisticMetric()
-            statsMet21.statisticCard = statsCard
-            statsMet21.statisticsCardId = "safsfdhgs3efdsaf"
-            statsMet21.value = 44
-            statsMet21.label = "New old visits"
-            statsMet21.delta = 15
-            statsMet21.pageIndex = 5
-            statsMet21.pageName = "Unique visits"
-            statsMet21.indexInPage = 0
-            statsMet21.currentPeriodLabel = "Sep28-Aug27"
-            statsMet21.currentPeriodValues = "2 22 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 17 13 14 13 13 17 13 6 27 3 4"
-            statsMet21.prevPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 14 16 17 13 14 13 13 17"
-            statsMet21.breakDownsJson = "[{\"group\": \"Demographics\", \"breakdowns\": [{\"label\": \"Male\", \"current_value\": 1100, \"delta_value\": 20 }]}, {\"group\": \"Devices\", \"breakdowns\" :[{\"label\": \"Mobile\", \"current_value\": 1100, \"delta_value\": 20 }  ]}]"
-            
-            store.realm.add(statsMet21, update: true)
         }
         
         
@@ -239,7 +207,9 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
 //            cell.goToButton.changeTitle("View Home Feed")
 //            cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
 //            return cell
-            return UITableViewCell()
+            let emptyCell = UITableViewCell()
+            emptyCell.backgroundColor = .clear
+            return emptyCell
         }
         
         let sectionIdx = (indexPath as NSIndexPath).section

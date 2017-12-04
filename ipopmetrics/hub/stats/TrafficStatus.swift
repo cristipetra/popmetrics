@@ -20,7 +20,7 @@ class TrafficStatus: UIView {
     
     var pageIndex: Int = 1{
         didSet {
-            tableView.pageIndex = pageIndex
+            //tableView.pageIndex = pageIndex
         }
     }
     
@@ -36,12 +36,13 @@ class TrafficStatus: UIView {
     }
     
     func configure(card: StatisticsCard, _ pageIndex: Int = 1) {
-        statisticsCard = card
-        tableView.configure(card: statisticsCard, pageIndex)
+        //statisticsCard = card
+        //tableView.configure(card: statisticsCard, pageIndex)
     }
     
     func configure(staticMetric: StatisticMetric) {
         tableView.configure(statisticMetric: staticMetric)
+        chartVC.configure(statisticMetric: staticMetric)
     }
     
     func setup() {
