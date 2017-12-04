@@ -81,7 +81,7 @@ class TrafficReportViewController: UIViewController {
         statsPageVC.view.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 0).isActive = true
         //statsPageVC.view.topAnchor.constraint(equalTo: chartVC.view.bottomAnchor,constant: 1).isActive = true
         statsPageVC.view.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0).isActive = true
-        statsPageVC.view.heightAnchor.constraint(equalToConstant: 758).isActive = true
+        statsPageVC.view.heightAnchor.constraint(equalToConstant: 858).isActive = true
         
         //statsPageVC.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
         statsPageVC.view.bottomAnchor.constraint(equalTo: bottomContainerView.topAnchor).isActive = true

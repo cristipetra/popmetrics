@@ -31,28 +31,14 @@ class TrafficVisits: UITableViewCell {
         
     }()
     
-    lazy var mainProgressView : UIView = {
+    lazy var containerProgressView : UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
         
     }()
     
-    lazy var firstProgressView : UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-        
-    }()
-    
-    lazy var secondProgressView : UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-        
-    }()
-    
-    lazy var firstProgress: GTProgressBar = {
+    lazy var deltaProgress: GTProgressBar = {
         let progress = GTProgressBar()
         progress.translatesAutoresizingMaskIntoConstraints = false
         progress.barBackgroundColor = PopmetricsColor.statisticsTableBackground
@@ -63,11 +49,11 @@ class TrafficVisits: UITableViewCell {
         progress.barBorderColor = PopmetricsColor.secondGray
         progress.displayLabel = false
         progress.cornerRadius = 0
-        progress.animateTo(progress: 0.7)
+        progress.animateTo(progress: 0.0)
         return progress
     }()
     
-    lazy var secondProgress: GTProgressBar = {
+    lazy var valueProgress: GTProgressBar = {
        let second = GTProgressBar()
         second.translatesAutoresizingMaskIntoConstraints = false
         second.barBackgroundColor = PopmetricsColor.statisticsTableBackground
@@ -78,7 +64,7 @@ class TrafficVisits: UITableViewCell {
         second.barBorderColor = PopmetricsColor.textGrey
         second.displayLabel = false
         second.cornerRadius = 0
-        second.animateTo(progress: 0.4)
+        second.animateTo(progress: 0.0)
         return second
     }()
     
@@ -86,36 +72,16 @@ class TrafficVisits: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setUpVisitsView()
+        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        setUpVisitsView()
+        setup()
     }
     
-    func configure(metricBreakdown: MetricBreakdown) {
-        
-        self.titleLabel.text = metricBreakdown.label
-        self.firstValueLabel.text = "\(Int(metricBreakdown.currentValue!))"
-        self.secondValueLabel.text = " +\(Int(metricBreakdown.deltaValue!))"
-        
-        //self.secondProgress.animateTo(progress: 0.4)
-        //self.firstProgress.animateTo(progress: 0.7)
-        //setProgress(firstValue: CGFloat(metricBreakdown.currentValue!), secondValue: CGFloat(metricBreakdown.deltaValue! + metricBreakdown.currentValue!))
-    }
-    
-    func configure(statisticMetric: StatisticMetric) {
-        self.statisticMetric = statisticMetric
-        self.titleLabel.text = statisticMetric.label
-        self.firstValueLabel.text = "\(Int(statisticMetric.value))"
-        self.secondValueLabel.text = " +\(Int(statisticMetric.delta))"
-        
-        setProgress(firstValue: CGFloat(statisticMetric.value), secondValue: CGFloat(statisticMetric.delta + statisticMetric.value))
-    }
-    
-    func setUpVisitsView() {
+    func setup() {
         self.backgroundColor = UIColor.white
         
         self.addSubview(titleLabel)
@@ -140,45 +106,32 @@ class TrafficVisits: UITableViewCell {
         secondValueLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         secondValueLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -21).isActive = true
         
-        self.addSubview(mainProgressView)
-        mainProgressView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 25).isActive = true
-        mainProgressView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 13).isActive = true
-        mainProgressView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -21).isActive = true
-        mainProgressView.heightAnchor.constraint(equalToConstant: 19).isActive = true
-        mainProgressView.backgroundColor = PopmetricsColor.statisticsTableBackground
+        self.addSubview(containerProgressView)
+        containerProgressView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 25).isActive = true
+        containerProgressView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 13).isActive = true
+        containerProgressView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -21).isActive = true
+        containerProgressView.heightAnchor.constraint(equalToConstant: 19).isActive = true
+        containerProgressView.backgroundColor = PopmetricsColor.statisticsTableBackground
         
-        /*
-        mainProgressView.addSubview(secondProgressView)
-        mainProgressView.addSubview(firstProgressView)
-        firstProgressView.leftAnchor.constraint(equalTo: mainProgressView.leftAnchor).isActive = true
-        firstProgressView.topAnchor.constraint(equalTo: mainProgressView.topAnchor).isActive = true
-        firstProgressView.bottomAnchor.constraint(equalTo: mainProgressView.bottomAnchor).isActive = true
+        containerProgressView.addSubview(deltaProgress)
+        deltaProgress.bottomAnchor.constraint(equalTo: self.containerProgressView.bottomAnchor, constant: 0).isActive  = true
+        deltaProgress.topAnchor.constraint(equalTo: self.containerProgressView.topAnchor, constant: 0).isActive  = true
+        deltaProgress.leftAnchor.constraint(equalTo: self.containerProgressView.leftAnchor, constant: 0).isActive = true
+        deltaProgress.rightAnchor.constraint(equalTo: self.containerProgressView.rightAnchor, constant: 0).isActive = true
         
-        secondProgressView.leftAnchor.constraint(equalTo: mainProgressView.leftAnchor).isActive = true
-        secondProgressView.topAnchor.constraint(equalTo: mainProgressView.topAnchor).isActive = true
-        secondProgressView.bottomAnchor.constraint(equalTo: mainProgressView.bottomAnchor).isActive = true
-         */
+        
+        containerProgressView.addSubview(valueProgress)
+        valueProgress.bottomAnchor.constraint(equalTo: self.containerProgressView.bottomAnchor, constant: 0).isActive  = true
+        valueProgress.topAnchor.constraint(equalTo: self.containerProgressView.topAnchor, constant: 0).isActive  = true
+        valueProgress.leftAnchor.constraint(equalTo: self.containerProgressView.leftAnchor, constant: 0).isActive = true
+        valueProgress.rightAnchor.constraint(equalTo: self.containerProgressView.rightAnchor, constant: 0).isActive = true
  
         
-        mainProgressView.addSubview(firstProgress)
-        firstProgress.bottomAnchor.constraint(equalTo: self.mainProgressView.bottomAnchor, constant: 0).isActive  = true
-        firstProgress.topAnchor.constraint(equalTo: self.mainProgressView.topAnchor, constant: 0).isActive  = true
-        firstProgress.leftAnchor.constraint(equalTo: self.mainProgressView.leftAnchor, constant: 0).isActive = true
-        firstProgress.rightAnchor.constraint(equalTo: self.mainProgressView.rightAnchor, constant: 0).isActive = true
-        
-        
-        mainProgressView.addSubview(secondProgress)
-        secondProgress.bottomAnchor.constraint(equalTo: self.mainProgressView.bottomAnchor, constant: 0).isActive  = true
-        secondProgress.topAnchor.constraint(equalTo: self.mainProgressView.topAnchor, constant: 0).isActive  = true
-        secondProgress.leftAnchor.constraint(equalTo: self.mainProgressView.leftAnchor, constant: 0).isActive = true
-        secondProgress.rightAnchor.constraint(equalTo: self.mainProgressView.rightAnchor, constant: 0).isActive = true
- 
-        
-        setDesign()
+        updateViews()
         
     }
     
-    private func setDesign() {
+    private func updateViews() {
         firstValueLabel.font = UIFont(name: FontBook.extraBold, size: 18)
         firstValueLabel.textColor = PopmetricsColor.visitFirstColor
         firstValueLabel.textAlignment = .left
@@ -187,64 +140,39 @@ class TrafficVisits: UITableViewCell {
         secondValueLabel.textColor = PopmetricsColor.visitSecondColor
         secondValueLabel.textAlignment = .left
         
-        mainProgressView.layer.cornerRadius = 10
-        mainProgressView.clipsToBounds = true
+        containerProgressView.layer.cornerRadius = 10
+        containerProgressView.clipsToBounds = true
     }
     
-    private func setProgress(firstValue: CGFloat, secondValue: CGFloat) {
+    func configure(metricBreakdown: MetricBreakdown, statisticMetric: StatisticMetric) {
+        self.statisticMetric = statisticMetric
         
-        self.firstProgressView.widthAnchor.constraint(equalToConstant: firstValue).isActive = true
-
-        self.secondProgressView.widthAnchor.constraint(equalToConstant: (secondValue + firstValue)).isActive = true
+        self.titleLabel.text = metricBreakdown.label
+        self.firstValueLabel.text = "\(Int(metricBreakdown.currentValue!))"
+        self.secondValueLabel.text = " +\(Int(metricBreakdown.deltaValue!))%"
+    
+        let maximumValue = statisticMetric.value + (statisticMetric.value * (statisticMetric.delta / Float(100) ))
+    
+        let percentageCurrentValue = (metricBreakdown.currentValue! * 100) / maximumValue
         
-        self.firstProgressView.layer.masksToBounds = true
-        self.secondProgressView.layer.masksToBounds = true
+        var percentageDelta = ( metricBreakdown.currentValue! + (metricBreakdown.currentValue! * ( metricBreakdown.deltaValue! / Float(100) ) ) ) / maximumValue
         
-        firstProgressView.layoutSubviews()
-        secondProgressView.layoutSubviews()
         
-        firstProgressView.backgroundColor = PopmetricsColor.textGrey
-        secondProgressView.backgroundColor = PopmetricsColor.secondGray
-        
-        DispatchQueue.main.async {
-            self.firstProgressView.setNeedsLayout()
-            self.secondProgressView.setNeedsLayout()
-            
-        }
-        
-        mainProgressView.layoutIfNeeded()
+        self.valueProgress.animateTo(progress: CGFloat(percentageCurrentValue / 100))
+        self.deltaProgress.animateTo(progress: CGFloat(percentageDelta))
         
     }
     
-    func setProgressValues(doubleValue: Bool, firstValue: Int,doubleFirst: Int? ,secondValue: Int, doubleSecond: Int?) {
-        
-        setProgress(firstValue: CGFloat(firstValue), secondValue: CGFloat(secondValue))
-        
-        if doubleValue == false {
-            firstValueLabel.text = "\(firstValue)"
-            secondValueLabel.text = "+\(secondValue)"
-            
-        } else {
-            firstValueLabel.widthAnchor.constraint(equalToConstant: 68).isActive = true
-            secondValueLabel.widthAnchor.constraint(equalToConstant: 68).isActive = true
-            if let firstDouble = doubleFirst {
-                firstValueLabel.text = "\(firstValue):\(firstDouble)"
-            }
-            
-            if let secondDouble = doubleSecond {
-                secondValueLabel.text = "\(secondValue):\(secondDouble)"
-            }
-            
-        }
-        
-        setProgress(firstValue: CGFloat(firstValue), secondValue: CGFloat(secondValue))
-        
-        firstProgressView.backgroundColor = PopmetricsColor.visitFirstColor
-        secondProgressView.backgroundColor = PopmetricsColor.visitSecondColor
-        
-        firstProgressView.layoutSubviews()
-        secondProgressView.layoutSubviews()
-        
+    func getNumberByDeltaPercentage(currentValue: Float, delta: Float) -> Float {
+        return currentValue + ( currentValue * (delta / 100) )
     }
     
+    func configure(statisticMetric: StatisticMetric) {
+        self.statisticMetric = statisticMetric
+        self.titleLabel.text = statisticMetric.label
+        self.firstValueLabel.text = "\(Int(statisticMetric.value))"
+        self.secondValueLabel.text = " +\(Int(statisticMetric.delta))"
+        
+    }
+  
 }

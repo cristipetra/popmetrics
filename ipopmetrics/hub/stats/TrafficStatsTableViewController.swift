@@ -20,7 +20,7 @@ class TrafficStatsTableViewController: UITableViewController {
     
     var reloadGraphDelegate: ReloadGraphProtocol!
     
-    internal var pageIndex = 1 {
+    private var pageIndex = 1 {
         didSet {
             tableView.reloadData()
         }
@@ -59,12 +59,18 @@ class TrafficStatsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
+        guard let _ = statisticMetric else {
+            return 0
+        }
         return statisticMetric!.getBreakDownGroups().count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let breakdowns = statisticMetric.getBreakDownGroups()[section].breakdowns
-        return (breakdowns?.count)!
+        if let items = breakdowns {
+            return items.count
+        }
+        return 0
     }
     
     internal func getStatisticMetricsForCardAtPageIndex() -> Results<StatisticMetric> {
@@ -76,8 +82,13 @@ class TrafficStatsTableViewController: UITableViewController {
         let rowIdx = indexPath.row
 
         let groups = statisticMetric.getBreakDownGroups()[indexPath.section]
+        guard let _ = groups.breakdowns else {
+            return cell
+        }
+        
         let metricBreakdown: MetricBreakdown = groups.breakdowns![rowIdx]
-        cell.configure(metricBreakdown: metricBreakdown)
+        
+        cell.configure(metricBreakdown: metricBreakdown, statisticMetric: statisticMetric)
         
         cell.selectionStyle = .none
         return cell
