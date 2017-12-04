@@ -12,7 +12,7 @@ import Lottie
 class AnimationsViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
-    let animationView = LOTAnimationView(name: "animation")
+    let animationView = LOTAnimationView(name: AnimationInfo.getAnimationName())
     var numberOfTabs = 11 as CGFloat
     
     let welcomeVC = WelcomeScreen()
@@ -28,7 +28,7 @@ class AnimationsViewController: UIViewController, UIScrollViewDelegate {
         
         setupScrollView()
     }
-    
+
     func handlePan (recognizer:UIPanGestureRecognizer) {
         let translation = recognizer.translation(in: self.view)
         let progress = translation.x / self.view.bounds.size.width
@@ -63,6 +63,23 @@ class AnimationsViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func skipAnimation(_ sender: UIButton) {
         self.presentFromDirection(viewController: welcomeVC, direction: .right)
         resetAnimation()
+    }
+    
+}
+
+class AnimationInfo {
+    static func getAnimationName() -> String {
+        var isIphoneX = false
+        if UIDevice().userInterfaceIdiom == .phone {
+            if UIScreen.main.nativeBounds.height == 2436 {
+                isIphoneX = true
+            }
+        }
+        if isIphoneX {
+            return "animation_X"
+        } else {
+            return "animation_nonX"
+        }
     }
     
 }
