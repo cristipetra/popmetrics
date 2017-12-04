@@ -24,7 +24,7 @@ class TrafficReportViewController: UIViewController {
     internal var statisticsCard: StatisticsCard! {
         didSet {
             self.statsPageVC.statisticsCard = statisticsCard
-            self.statsPageVC.numberOfPages = StatisticsStore.getInstance().getNumberOfPages(statisticsCard)
+            self.statsPageVC.numberOfPages = StatisticsStore.getInstance().getStatisticMetricsForCard(statisticsCard).count
         }
     }
     
@@ -63,9 +63,11 @@ class TrafficReportViewController: UIViewController {
         
         bottomPageControl.tintColor = UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1)
         bottomPageControl.currentPageIndicatorTintColor = UIColor(red: 87/255, green: 93/255, blue: 99/255, alpha: 1)
-        bottomPageControl.numberOfPages = statisticStore.getNumberOfPages(self.statisticsCard)
+        
+        let numberOfPages = statisticStore.getStatisticMetricsForCard(statisticsCard).count
+        bottomPageControl.numberOfPages = numberOfPages
         bottomLbl.text = statisticStore.getStatisticMetricsForCardAtPageIndex(statisticsCard, pageIndex)[0].pageName
-        topPageControl.numberOfPages = statisticStore.getNumberOfPages(self.statisticsCard)
+        topPageControl.numberOfPages = numberOfPages
         
     }
     

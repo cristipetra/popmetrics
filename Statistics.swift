@@ -22,7 +22,7 @@ class MetricBreakdown: Mappable {
     func mapping(map:Map) {
         label           <- map["label"]
         currentValue    <- map["current_value"]
-        deltaValue    <- map["delta_value"]
+        deltaValue      <- map["delta_value"]
     }
     
 }

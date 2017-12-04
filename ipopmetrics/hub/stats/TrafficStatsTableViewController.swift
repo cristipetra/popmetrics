@@ -16,6 +16,8 @@ class TrafficStatsTableViewController: UITableViewController {
     
     internal var statisticCard: StatisticsCard!
     
+    internal var statisticMetric: StatisticMetric!
+    
     var reloadGraphDelegate: ReloadGraphProtocol!
     
     internal var pageIndex = 1 {
@@ -28,16 +30,23 @@ class TrafficStatsTableViewController: UITableViewController {
         super.viewDidLoad()
         registerCellForTable()
      
+        self.tableView.backgroundColor = PopmetricsColor.statisticsTableBackground
         self.tableView.alwaysBounceVertical = false
         self.tableView.separatorInset = .zero
         self.automaticallyAdjustsScrollViewInsets = false
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
         
+        self.tableView.separatorColor = PopmetricsColor.unselectedTabBarItemTint
+        
     }
     
     func configure(card: StatisticsCard, _ pageIndex: Int) {
-        self.statisticCard = card
-        self.pageIndex = pageIndex
+      
+    }
+    
+    func configure(statisticMetric: StatisticMetric) {
+        self.statisticMetric = statisticMetric
+        self.statisticCard = statisticMetric.statisticCard!
     }
     
     internal func registerCellForTable() {
@@ -50,11 +59,12 @@ class TrafficStatsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return statisticMetric!.getBreakDownGroups().count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return getStatisticMetricsForCardAtPageIndex().count
+        let breakdowns = statisticMetric.getBreakDownGroups()[section].breakdowns
+        return (breakdowns?.count)!
     }
     
     internal func getStatisticMetricsForCardAtPageIndex() -> Results<StatisticMetric> {
@@ -64,9 +74,38 @@ class TrafficStatsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "trafficVisits", for: indexPath) as! TrafficVisits
         let rowIdx = indexPath.row
-        cell.configure(statisticMetric: getStatisticMetricsForCardAtPageIndex()[rowIdx])
+
+        let groups = statisticMetric.getBreakDownGroups()[indexPath.section]
+        let metricBreakdown: MetricBreakdown = groups.breakdowns![rowIdx]
+        cell.configure(metricBreakdown: metricBreakdown)
+        
         cell.selectionStyle = .none
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = .white
+        
+        let topDividerView = UIView()
+        topDividerView.backgroundColor = PopmetricsColor.unselectedTabBarItemTint
+        headerView.addSubview(topDividerView)
+        topDividerView.translatesAutoresizingMaskIntoConstraints = false
+        topDividerView.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 0).isActive = true
+        topDividerView.rightAnchor.constraint(equalTo: headerView.rightAnchor, constant: 0).isActive = true
+        topDividerView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        topDividerView.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 0).isActive = true
+        
+        let title = UILabel()
+        title.font = UIFont(name: FontBook.extraBold, size: 24)
+        title.textColor = PopmetricsColor.darkGrey
+        headerView.addSubview(title)
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 25).isActive = true
+        title.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 10).isActive = true
+        title.text = statisticMetric.getBreakDownGroups()[section].group!
+        
+        return headerView
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -75,7 +114,11 @@ class TrafficStatsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 115
+        return 90
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 65
     }
    
 }

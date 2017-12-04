@@ -768,7 +768,7 @@
                                                     <constraint firstItem="vPg-vh-tlW" firstAttribute="centerY" secondItem="zaF-Jh-gL8" secondAttribute="centerY" id="wSH-Bd-hnd"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0rP-0p-LX7">
+                                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0rP-0p-LX7">
                                                 <rect key="frame" x="0.0" y="583" width="375" height="84"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pW1-gj-E21">
@@ -794,7 +794,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yn2-wp-c3t">
-                                                        <rect key="frame" x="157" y="49" width="62.5" height="20"/>
+                                                        <rect key="frame" x="156.5" y="49" width="62.5" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="KGM-jS-UP8"/>
                                                         </constraints>
@@ -824,7 +824,6 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="zaF-Jh-gL8" firstAttribute="leading" secondItem="prj-YY-pJo" secondAttribute="leading" id="9xv-Gn-ycl"/>
                                             <constraint firstAttribute="trailing" secondItem="0rP-0p-LX7" secondAttribute="trailing" id="QJM-3l-gah"/>
@@ -843,7 +842,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="OBA-w2-ycN" secondAttribute="trailing" id="AYg-Ke-g5j"/>
                             <constraint firstItem="r7r-fU-FJ5" firstAttribute="top" secondItem="OBA-w2-ycN" secondAttribute="bottom" id="VyH-hg-nL8"/>

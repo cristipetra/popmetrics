@@ -64,6 +64,14 @@ class TrafficVisits: UITableViewCell {
         setUpVisitsView()
     }
     
+    func configure(metricBreakdown: MetricBreakdown) {
+        
+        self.titleLabel.text = metricBreakdown.label
+        self.firstValueLabel.text = "\(Int(metricBreakdown.currentValue!))"
+        self.secondValueLabel.text = " +\(Int(metricBreakdown.deltaValue!))"
+        
+        setProgress(firstValue: CGFloat(metricBreakdown.currentValue!), secondValue: CGFloat(metricBreakdown.deltaValue! + metricBreakdown.currentValue!))
+    }
     
     func configure(statisticMetric: StatisticMetric) {
         self.statisticMetric = statisticMetric
@@ -79,7 +87,7 @@ class TrafficVisits: UITableViewCell {
         
         self.addSubview(titleLabel)
         titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 25).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 26).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 17).isActive = true
         titleLabel.widthAnchor.constraint(equalToConstant: 170).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         titleLabel.text = ""
@@ -89,13 +97,13 @@ class TrafficVisits: UITableViewCell {
         
         self.addSubview(firstValueLabel)
         //firstValueLabel.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 2).isActive = true
-        firstValueLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 26).isActive = true
+        firstValueLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 17).isActive = true
         firstValueLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
         
         self.addSubview(secondValueLabel)
         secondValueLabel.leftAnchor.constraint(equalTo: firstValueLabel.rightAnchor, constant: 20).isActive = true
-        secondValueLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 26).isActive = true
+        secondValueLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 17).isActive = true
         secondValueLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         secondValueLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -21).isActive = true
         
@@ -130,8 +138,6 @@ class TrafficVisits: UITableViewCell {
         secondValueLabel.textAlignment = .left
         
         mainProgressView.layer.cornerRadius = 10
-        firstProgressView.layer.cornerRadius = 4
-        secondProgressView.layer.cornerRadius = 4
         mainProgressView.clipsToBounds = true
     }
     
