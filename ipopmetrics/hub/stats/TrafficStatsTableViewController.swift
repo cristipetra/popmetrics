@@ -12,7 +12,7 @@ import RealmSwift
 
 class TrafficStatsTableViewController: UITableViewController {
     
-    var statisticsStore = StatisticsStore.getInstance()
+    var statisticsStore = StatsStore.getInstance()
     
     internal var statisticCard: StatisticsCard!
     

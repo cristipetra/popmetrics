@@ -9,12 +9,12 @@
 import Foundation
 import RealmSwift
 
-class StatisticsStore {
+class StatsStore {
     
     public let realm = try! Realm()
     
-    static func getInstance() -> StatisticsStore {
-        return StatisticsStore()
+    static func getInstance() -> StatsStore {
+        return StatsStore()
     }
     
     public func getStatisticsCards() -> Results<StatisticsCard> {
@@ -108,7 +108,7 @@ class StatisticsStore {
             for newMetric in statisticsResponse.metrics ?? [] {
                 
                 newMetric.statisticCard = getStatisticsCardWithId(newMetric.statisticsCardId)
-                realm.add(newMetric, update:true)
+                realm.add(newMetric)
             }
         }//try
         

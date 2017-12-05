@@ -19,7 +19,7 @@ class StatisticsViewController: BaseViewController {
     let transitionView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     var statisticsNoteView: NoteView!
     
-    let store = StatisticsStore.getInstance()
+    let store = StatsStore.getInstance()
     
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
     var insightIsDisplayed = false
@@ -40,7 +40,7 @@ class StatisticsViewController: BaseViewController {
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
         
-        createItemsLocally()
+//        createItemsLocally()
         
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
@@ -105,74 +105,6 @@ class StatisticsViewController: BaseViewController {
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     }
     
-    internal func createItemsLocally() {
-        try! store.realm.write {
-            
-            let statsCard = StatisticsCard()
-            statsCard.cardId = "dfas"
-            statsCard.section = "Traffic"
-            statsCard.index = 0
-            store.realm.add(statsCard, update: true)
-            
-            let statsMet1 = StatisticMetric()
-            statsMet1.statisticCard = statsCard
-            statsMet1.statisticsCardId = "sfdsaf"
-            statsMet1.value = 1300
-            statsMet1.label = "Overral visits"
-            statsMet1.pageName = "Overral visits"
-            statsMet1.delta = 250
-            statsMet1.pageIndex = 1
-            statsMet1.indexInPage = 0
-            statsMet1.currentPeriodLabel = "Sep28-Aug27"
-            statsMet1.currentPeriodValues = "20 23 12 14 1 1 1 1 1 1 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 3 7 3 6 7 35 34 34 33 35"
-            statsMet1.prevPeriodValues = "0 12 12 14 16 17 1 1 1 1 1 1 1 13 14 13 13 17 13 16 17 15 34 14 15 13 14 13 13 17 13 16 17 15 34";
-
-            statsMet1.breakDownsJson = "[{\"group\": \"Demographics\", \"breakdowns\": [{\"label\": \"Male\", \"current_value\": 1300, \"delta_value\": 250 }]}, {\"group\": \"Devices\", \"breakdowns\" :[{\"label\": \"Mobile\", \"current_value\": 1100, \"delta_value\": 20 }, {\"label\": \"Unknown\", \"current_value\": 200, \"delta_value\": 5 }  ]}]"
-
-            store.realm.add(statsMet1, update: true)
-            
-            print("breakdown: \(statsMet1.getBreakDownGroups())")
-            
-            let statsMet11 = StatisticMetric()
-            statsMet11.statisticCard = statsCard
-            statsMet11.statisticsCardId = "s3fsadsaf"
-            statsMet11.value = 4000
-            statsMet11.label = "Total visits"
-            statsMet11.delta = 450
-            statsMet11.pageName = "qqq visits"
-            statsMet11.pageIndex = 2
-            statsMet11.indexInPage = 0
-            statsMet1.prevPeriodLabel = "fdsa"
-            statsMet11.currentPeriodLabel = "Sep28-Aug27"
-            statsMet11.currentPeriodValues = "0 12 12 16 14 13 13 17 13 16 17 15 34 14 15 13 6 27 3 4 3 3 7 3 6 7 5"
-            statsMet11.prevPeriodValues = "0 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 14 16 17 13 14 13 13 17"
-            
-            statsMet11.breakDownsJson = "[ {\"group\": \"Demographics\", \"breakdowns\": [{\"label\": \"Male\", \"current_value\": 1500, \"delta_value\": 120 }, {\"label\": \"Female\", \"current_value\": 1100, \"delta_value\": 110 }, {\"label\": \"Unknown\", \"current_value\": 1400, \"delta_value\": 220 }]}, {\"group\": \"Devices\", \"breakdowns\" :[{\"label\": \"Mobile\", \"current_value\": 1100, \"delta_value\": 20 },{\"label\": \"Tablet\", \"current_value\": 1100, \"delta_value\": 20 },{\"label\": \"TV\", \"current_value\": 1100, \"delta_value\": 20 }] }  ]"
-            
-            store.realm.add(statsMet11, update: true)
-            
-            let statsMet12 = StatisticMetric()
-            statsMet12.statisticCard = statsCard
-            statsMet12.statisticsCardId = "s3fsa234dsaf"
-            statsMet12.value = 1100
-            statsMet12.label = "qqq visits"
-            statsMet12.delta = 250
-            statsMet12.pageName = "qqq visits"
-            statsMet12.pageIndex = 3
-            statsMet12.indexInPage = 0
-            statsMet12.currentPeriodLabel = "Sep28-Aug27"
-            statsMet12.currentPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 6 27 3 4 3 3 7 3 6 7 5"
-            statsMet12.prevPeriodValues = "0 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 14 16 17 13 14 13 13 17"
-            
-            statsMet12.breakDownsJson = "[{\"group\": \"Demographics\", \"breakdowns\": [{\"label\": \"Male\", \"current_value\": 1100, \"delta_value\": 25 }] }]"
-            
-            store.realm.add(statsMet12, update: true)
-            
-        }
-        
-        
-    }
-    
     @objc func handlerClickMenu() {
         let modalViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ViewNames.SBID_MENU_VC) as! MenuViewController
         // customization:
@@ -186,7 +118,7 @@ class StatisticsViewController: BaseViewController {
     }
     
     @objc func openTrafficReport(_ sender: AnyObject, card: StatisticsCard) {
-        let cardTmp  = StatisticsStore.getInstance().getStatisticsCards()[0]
+        let cardTmp  = StatsStore.getInstance().getStatisticsCards()[0]
         let trafficReportVC: TrafficReportViewController = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_TRAFFIC_REPORT) as! TrafficReportViewController
         
         trafficReportVC.configure(statisticsCard: cardTmp)
@@ -215,9 +147,9 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
         
-        let sectionCards = store.getStatisticMetricsForCard(store.getStatisticsCards()[sectionIdx])
-        
-        if sectionCards.isEmpty {
+        let card = store.getStatisticsCards()[sectionIdx]
+        let metrics = store.getStatisticMetricsForCard(card)
+        if metrics.isEmpty {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficEmptyCard", for: indexPath) as! TrafficEmptyView
             cellHeight = 216
@@ -225,8 +157,6 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             //cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_:)), for: .touchUpInside)
             return cell
         }
-        
-        let card = store.getStatisticsCards()[indexPath.section]
         
         switch card.section {
         case "Traffic":

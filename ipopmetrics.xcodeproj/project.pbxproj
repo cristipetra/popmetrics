@@ -109,7 +109,7 @@
 		08B485E61F210A61005918A1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485E51F210A61005918A1 /* RoundButton.swift */; };
 		08B4EB971FC569EC00BFC5A1 /* CalendarFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB961FC569EC00BFC5A1 /* CalendarFeedStore.swift */; };
 		08B4EB991FC569F700BFC5A1 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB981FC569F600BFC5A1 /* FeedStore.swift */; };
-		08B4EB9B1FC569FE00BFC5A1 /* StatisticsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB9A1FC569FE00BFC5A1 /* StatisticsStore.swift */; };
+		08B4EB9B1FC569FE00BFC5A1 /* StatsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB9A1FC569FE00BFC5A1 /* StatsStore.swift */; };
 		08B4EB9D1FC56A0400BFC5A1 /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB9C1FC56A0400BFC5A1 /* TodoStore.swift */; };
 		08B4EB9F1FC56A0C00BFC5A1 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB9E1FC56A0C00BFC5A1 /* UserStore.swift */; };
 		08B4EBAF1FC56ACE00BFC5A1 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA21FC56ACD00BFC5A1 /* Validator.swift */; };
@@ -339,7 +339,7 @@
 		08B485E51F210A61005918A1 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		08B4EB961FC569EC00BFC5A1 /* CalendarFeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarFeedStore.swift; sourceTree = "<group>"; };
 		08B4EB981FC569F600BFC5A1 /* FeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
-		08B4EB9A1FC569FE00BFC5A1 /* StatisticsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsStore.swift; sourceTree = "<group>"; };
+		08B4EB9A1FC569FE00BFC5A1 /* StatsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsStore.swift; sourceTree = "<group>"; };
 		08B4EB9C1FC56A0400BFC5A1 /* TodoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
 		08B4EB9E1FC56A0C00BFC5A1 /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		08B4EBA21FC56ACD00BFC5A1 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
@@ -511,7 +511,7 @@
 			isa = PBXGroup;
 			children = (
 				08B4EB981FC569F600BFC5A1 /* FeedStore.swift */,
-				08B4EB9A1FC569FE00BFC5A1 /* StatisticsStore.swift */,
+				08B4EB9A1FC569FE00BFC5A1 /* StatsStore.swift */,
 				08B4EB9E1FC56A0C00BFC5A1 /* UserStore.swift */,
 				08B4EB9C1FC56A0400BFC5A1 /* TodoStore.swift */,
 				08B4EB961FC569EC00BFC5A1 /* CalendarFeedStore.swift */,
@@ -1393,7 +1393,7 @@
 				086EDE431FC8449A002F4140 /* ImpactScoreView.swift in Sources */,
 				08AA6C651F56DAA10022DE91 /* StatsPageViewController.swift in Sources */,
 				088B282C1F7E7F150015A66E /* AimeeView.swift in Sources */,
-				08B4EB9B1FC569FE00BFC5A1 /* StatisticsStore.swift in Sources */,
+				08B4EB9B1FC569FE00BFC5A1 /* StatsStore.swift in Sources */,
 				088E77A91F7CE99900774F13 /* ToastView.swift in Sources */,
 				08F7A0971F17AB0C00A1B2C3 /* RecommendationCardCell.swift in Sources */,
 				11A675A91FC8E1A900EE0A15 /* EmptyStateCardCell.swift in Sources */,

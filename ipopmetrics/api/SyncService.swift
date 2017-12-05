@@ -1,4 +1,4 @@
-//
+    //
 //  SyncService.swift
 //  ipopmetrics
 //
@@ -26,7 +26,7 @@ class SyncService: SessionDelegate {
     var calendarStore: CalendarFeedStore!
     var calendarApi: CalendarApi!
     
-    var statsStore: StatisticsStore!
+    var statsStore: StatsStore!
     
     deinit {
         self.reachability.stopNotifier()
@@ -54,7 +54,7 @@ class SyncService: SessionDelegate {
         calendarStore = CalendarFeedStore()
         calendarApi = CalendarApi()
         
-        statsStore = StatisticsStore()
+        statsStore = StatsStore()
         
     }
     

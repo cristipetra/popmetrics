@@ -16,7 +16,7 @@ class TrafficStatus: UIView {
     let chartVC = UIStoryboard(name: "ChartStatistics", bundle: nil).instantiateViewController(withIdentifier: "ChartViewId") as! ChartViewController
     
     var statisticsCard: StatisticsCard!
-    let statisticStore = StatisticsStore.getInstance()
+    let statisticStore = StatsStore.getInstance()
     
     var pageIndex: Int = 1{
         didSet {

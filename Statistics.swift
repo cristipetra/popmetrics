@@ -68,18 +68,15 @@ class StatisticMetric: Object, Mappable {
     @objc dynamic var prevPeriodStartDate: Date = Date()
     @objc dynamic var prevPeriodEndDate: Date = Date()
     
+    var breakdowns: [MetricGroupBreakdown]?
     @objc dynamic var breakDownsJson: String = ""
     
     required convenience init?(map: Map) {
         self.init()
     }
     
-    override static func primaryKey() -> String? {
-        return "statisticsCardId"
-    }
-    
     func mapping(map: Map) {
-        statisticsCardId <- map["statistics_card_id"]
+        statisticsCardId <- map["card_id"]
         
         value <- map["value"]
         label <- map["label"]
@@ -100,6 +97,10 @@ class StatisticMetric: Object, Mappable {
         prevPeriodStartDate <- (map["prev_period_start_date"], DateTransform())
         prevPeriodEndDate <- (map["prev_period_end_date"], DateTransform())
         
+        breakdowns <- map["breakdowns"]
+        
+        self.setBreakDownGroups()
+        
     }
     
     func getCurrentPeriodArray() -> [Double] {
@@ -111,6 +112,11 @@ class StatisticMetric: Object, Mappable {
         let sarr = self.prevPeriodValues.components(separatedBy: " ")
         return sarr.map{ Double($0)! }
     }
+    
+    func setBreakDownGroups() -> Void {
+        self.breakDownsJson = (self.breakdowns?.toJSONString())!
+    }
+    
     
     func getBreakDownGroups() -> [MetricGroupBreakdown] {
         let list: Array<MetricGroupBreakdown> = Mapper<MetricGroupBreakdown>().mapArray(JSONString: self.breakDownsJson)!
