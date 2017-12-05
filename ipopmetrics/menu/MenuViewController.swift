@@ -10,6 +10,7 @@ import UIKit
 import ElasticTransition
 import SafariServices
 import Haptica
+import MessageUI
 
 class MenuViewController: ElasticModalViewController {
     
@@ -59,13 +60,16 @@ class MenuViewController: ElasticModalViewController {
         self.dismissAnimated(self.view)
         //self.dismiss(animated: true, completion: nil)
     }
-    @IBAction func contactButtonPressed(_ sender: UIButton) {
-        let message = "mailto:" + Config.mailContact
-        UIApplication.shared.open(URL(string: message)!, options: [:], completionHandler: nil)
+    @IBAction func handlerLegalBits(_ sender: Any) {
+        openURLInside(url: Config.legalBitsLink)
     }
     
-    @IBAction func aboutButtonPressed(_ sender: UIButton) {
-        openURLInside(url: Config.socialAutomationLink)
+    @IBAction func handlerContactUsPressed(_ sender: Any) {
+        sendEmail(emailMessageType: .contact)
+    }
+
+    @IBAction func handlerAboutButtonPressed(_ sender: Any) {
+        openURLInside(url: Config.aboutPopmetricsLink)
     }
     
     @IBAction func logoutButtonPressed(_ sender: UIButton) {
@@ -90,6 +94,34 @@ class MenuViewController: ElasticModalViewController {
         changeBrandVC.brandDelegate = self
         
         self.presentFromDirection(viewController: navController, direction: .right)
+    }
+}
+
+extension MenuViewController: MFMailComposeViewControllerDelegate {
+    
+    private func sendEmail(emailMessageType: EmailMessageType) {
+        let mailComposerVC = configuredMailComposeVC(emailMessageType: emailMessageType)
+        
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposerVC, animated: true, completion: nil)
+        }
+    }
+    
+    func configuredMailComposeVC(emailMessageType: EmailMessageType) -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        let info = EmailMessages.getInstance().getEmailMessages(emailMessageType: emailMessageType)
+        
+        mailComposerVC.setSubject(info.subject!)
+        mailComposerVC.setMessageBody(info.messageBody!, isHTML: false)
+        
+        mailComposerVC.setToRecipients(["help@popmetrics.io"])
+        
+        return mailComposerVC
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

@@ -43,7 +43,11 @@ class StatisticsCountView: UIView {
             deltaLabel.textColor = PopmetricsColor.visitSecondColor
             deltaLabel.textAlignment = .right
             let deltalabelText = "+\(Int(data[row].delta))"
-            deltaLabel.text = deltalabelText
+            
+            let deltaPercentage =  (data[row].delta * 100) / ( data[row].value + data[row].delta )
+            
+            deltaLabel.text = "\(Int(deltaPercentage))%"
+            
             let divider = UIView(frame: CGRect(x: 0, y: wrapperView.frame.height, width: wrapperView.frame.width, height: 1))
             divider.backgroundColor = PopmetricsColor.dividerBorder
             wrapperView.addSubview(messageLabel)

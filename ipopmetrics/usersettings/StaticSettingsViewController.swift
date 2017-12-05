@@ -134,8 +134,16 @@ class StaticSettingsViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath)
-        if(indexPath.section == 0 && indexPath.row == 2) {
+        if(indexPath.section == 0 && indexPath.row == 0) {
+            sendEmail(emailMessageType: .name)
+        } else if (indexPath.section == 0 && indexPath.row == 1) {
+            sendEmail(emailMessageType: .phone)
+        } else if (indexPath.section == 0 && indexPath.row == 2) {
             displaySettingsEmail()
+        } else if (indexPath.section == 0 && indexPath.row == 3) {
+            sendEmail(emailMessageType: .deleteAccount)
+        } else if (indexPath.section == 2 && indexPath.row == 0) {
+            sendEmail(emailMessageType: .brand)
         } else if (indexPath.section == 2 && indexPath.row == 1) {
             displaySettingsLogo()
         } else if (indexPath.section == 2 && indexPath.row == 2) {
