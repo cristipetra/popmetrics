@@ -48,5 +48,17 @@ class Config: NSObject {
         }
     }
     
+    class var aboutPopmetricsLink: String {
+        get {
+            return "http://popmetrics.io/c1/about-popmetrics/"
+        }
+    }
+    
+    class var legalBitsLink: String {
+        get {
+            return "http://popmetrics.io/legal-bits/"
+        }
+    }
+    
 
 }

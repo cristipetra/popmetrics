@@ -15,6 +15,7 @@ enum EmailMessageType {
     case webAddress
     case overlayAction
     case deleteAccount
+    case contact
 }
 
 class EmailMessages: NSObject {
@@ -44,6 +45,9 @@ class EmailMessages: NSObject {
         case .deleteAccount:
             emailInfo.subject = "Request account deletion"
             emailInfo.messageBody = "Hi Aimee,\n \nI'd like to delete my account for the following reason: [describe why you'd like to delete your account]"
+        case .contact:
+            emailInfo.subject = ""
+            emailInfo.messageBody = ""
         default:
             break
         }
