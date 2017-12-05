@@ -149,14 +149,16 @@ class TrafficVisits: UITableViewCell {
         
         self.titleLabel.text = metricBreakdown.label
         self.firstValueLabel.text = "\(Int(metricBreakdown.currentValue!))"
-        self.secondValueLabel.text = " +\(Int(metricBreakdown.deltaValue!))%"
     
-        let maximumValue = statisticMetric.value + (statisticMetric.value * (statisticMetric.delta / Float(100) ))
+        let maximumValue = statisticMetric.value + statisticMetric.delta
+        
+        let deltaPercentage = (metricBreakdown.deltaValue! * 100) / maximumValue
+        
+        self.secondValueLabel.text = " +\(Int(deltaPercentage))%"
     
         let percentageCurrentValue = (metricBreakdown.currentValue!) / maximumValue
         
-        var percentageDelta = ( metricBreakdown.currentValue! + (metricBreakdown.currentValue! * ( metricBreakdown.deltaValue! / Float(100) ) ) ) / maximumValue
-        
+        var percentageDelta = ( metricBreakdown.currentValue! + metricBreakdown.deltaValue! ) / maximumValue
         
         self.valueProgress.animateTo(progress: CGFloat(percentageCurrentValue))
         self.deltaProgress.animateTo(progress: CGFloat(percentageDelta))
