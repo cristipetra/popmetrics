@@ -32,7 +32,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
             case "ganalytics.connect_with_brand":
                 connectGoogleAnalytics(item)
             
-            case "ganalytics.connect_with_twitter":
+            case "twitter.connect_with_brand":
                 connectTwitter(item)
             
             default:
@@ -73,7 +73,6 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
             let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
             
             self.homeHubViewController?.showBannerForNotification(pnotification)
-
             return
         }
         
@@ -106,7 +105,6 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                 store.updateCardSection(card, section: "None")
                 self.homeHubViewController?.tableView.reloadData()
             }
-//            self.actionButtonSaved!.setTitle("Connected.", for: .normal)
         } // usersApi.logInWithGoogle()
     }
         
@@ -115,37 +113,40 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         
         Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
             if (session != nil) {
+                let notificationObj = ["alert":"Connecting to Twitter.",
+                                       "subtitle":"Your credentials will be validated while establishing the connection.",
+                                       "type": "info",
+                                       "sound":"default"
+                ]
+                let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+                
+                self.homeHubViewController?.showBannerForNotification(pnotification)
+                
                 let params = [
                     "user_id":UserStore.getInstance().getLocalUserAccount().id,
                     "twitter_user_id":session?.userID,
                     "access_token":session?.authToken,
                     "access_token_secret":session?.authTokenSecret
                     ]
-                ProgressHUD.showProgressIndicator()
-                FeedApi().postRequiredAction(feedItemId: item.cardId!, params: params) { responseDict, error in
-                                            //sender.isLoading = false
-                                            if error != nil {
-                                                let nc = NotificationCenter.default
-                                                nc.post(name:Notification.Name(rawValue:"CardActionNotification"),
-                                                        object: nil,
-                                                        userInfo: ["success":false, "title":"Action error", "message":"Connection with Twitter has failed.", "date":Date()])
-                                                return
-                                            } // error != nil
-                                            else {
-                                                ProgressHUD.hideProgressIndicator()
-//                                                sender.setTitle("Connected.", for: .normal)
-                                                UserStore.isTwitterConnected = true
-                                             //   self.showBanner(bannerType: .success)
-                                            }
-                } // usersApi.logInWithGoogle()
+                let brandId = UserStore.currentBrandId
+                TodoApi().postRequiredAction(brandId, params: params) { requiredActionResponse in
+                    let store = FeedStore.getInstance()
+                    if let card = store.getFeedCardWithName("twitter.connect_with_brand") {
+                        store.updateCardSection(card, section: "None")
+                        self.homeHubViewController?.tableView.reloadData()
+                    }
+                }
                 
             } else {
-                ProgressHUD.hideProgressIndicator()
-                //sender.isLoading = false
-                let nc = NotificationCenter.default
-                nc.post(name:Notification.Name(rawValue:"CardActionNotification"),
-                        object: nil,
-                        userInfo: ["success":false, "title":"Action error", "message":"Connection with Twitter has failed... \(error!.localizedDescription)", "date":Date()])
+                let notificationObj = ["alert":"Failed to connect with Twitter.",
+                                       "subtitle":"None or bad credentials have been provided.",
+                                       "type": "failure",
+                                       "sound":"default"
+                ]
+                let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+                
+                self.homeHubViewController?.showBannerForNotification(pnotification)
+                return
                 
             }
         }
