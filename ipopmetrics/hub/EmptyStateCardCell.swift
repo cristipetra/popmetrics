@@ -58,7 +58,7 @@ class EmptyStateCardCell: UITableViewCell {
     
     func changeTitleWithSpacing(title: String) {
         self.titleLabel.text = title
-        titleLabel.adjustLabelSpacing(spacing: 1.5, lineHeight: 24, letterSpacing: 0.3);
+        titleLabel.adjustLabelSpacing(spacing: 1.5, lineHeight: 34, letterSpacing: 0.3);
     }
     
     func changeMessageWithSpacing(message: String) {

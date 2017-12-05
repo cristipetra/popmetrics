@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,10 +29,9 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6x-z1-jd3">
-                                <rect key="frame" x="80" y="25" width="188" height="50"/>
+                                <rect key="frame" x="80" y="15" width="188" height="63"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="188" id="Soo-yO-f7z"/>
-                                    <constraint firstAttribute="height" constant="50" id="l53-KC-yka"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="You’re all caught up.">
@@ -46,7 +45,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQQ-Uf-qQE">
-                                <rect key="frame" x="23" y="93" width="311" height="40"/>
+                                <rect key="frame" x="23" y="96" width="311" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="VTz-lW-f8E"/>
                                 </constraints>
@@ -126,7 +125,7 @@
                             <constraint firstItem="gZZ-g1-aRE" firstAttribute="leading" secondItem="TXX-Yp-XlA" secondAttribute="leading" constant="24" id="47u-3N-0cl"/>
                             <constraint firstItem="1YS-lF-dzl" firstAttribute="leading" secondItem="TXX-Yp-XlA" secondAttribute="leading" constant="1" id="8OF-M1-Ofl"/>
                             <constraint firstAttribute="bottom" secondItem="1YS-lF-dzl" secondAttribute="bottom" id="FJA-7R-AOH"/>
-                            <constraint firstItem="i6x-z1-jd3" firstAttribute="top" secondItem="TXX-Yp-XlA" secondAttribute="top" constant="25" id="JFD-0k-vhc"/>
+                            <constraint firstItem="i6x-z1-jd3" firstAttribute="top" secondItem="TXX-Yp-XlA" secondAttribute="top" constant="15" id="JFD-0k-vhc"/>
                             <constraint firstItem="EQQ-Uf-qQE" firstAttribute="leading" secondItem="TXX-Yp-XlA" secondAttribute="leading" constant="23" id="XSd-0r-cvq"/>
                             <constraint firstAttribute="trailing" secondItem="EQQ-Uf-qQE" secondAttribute="trailing" constant="21" id="Xi9-vx-e9X"/>
                             <constraint firstItem="EQQ-Uf-qQE" firstAttribute="top" secondItem="i6x-z1-jd3" secondAttribute="bottom" constant="18" id="ZcH-xJ-mda"/>
