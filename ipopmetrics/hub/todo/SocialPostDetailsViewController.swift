@@ -17,6 +17,7 @@ class SocialPostDetailsViewController: UIViewController {
     @IBOutlet weak var blogMessage: UILabel!
     @IBOutlet weak var scheduleLabel: UILabel!
     @IBOutlet weak var cardImage: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     lazy var buttonContainerView: UIView = {
         let view = UIView()
@@ -35,23 +36,33 @@ class SocialPostDetailsViewController: UIViewController {
     lazy var denyPostBtn: UIButton = {
         let button = UIButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(PopmetricsColor.salmondColor, for: .normal)
+        button.setTitleColor(PopmetricsColor.secondGray, for: .normal)
         button.setTitle("Deny Post", for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.titleLabel?.font = UIFont(name: FontBook.bold, size: 15)
         return button
     }()
     
     lazy var approvePostBtn: TwoColorButton = {
         let button = TwoColorButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.changeTitle("Approve Post")
+        button.titleLabel?.font = UIFont(name: FontBook.bold, size: 15)
+        button.contentHorizontalAlignment = .right
         return button
     }()
     
     private var todoCard: TodoCard!
     
+    var bottomContainerViewBottomAnchor: NSLayoutConstraint!
+    internal var isBottomVisible = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationWithBackButton()
+        
+        scrollView.delegate = self
         
         addBottomButtons()
         updateView()
@@ -59,6 +70,7 @@ class SocialPostDetailsViewController: UIViewController {
         self.view.addSwipeGestureRecognizer {
             self.navigationController?.popViewController(animated: true)
         }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -93,6 +105,8 @@ class SocialPostDetailsViewController: UIViewController {
         if let message = todoCard.message {
             blogMessage.text = message
         }
+        
+        displayContainerBtnsIfNeeded()
     }
     
     private func setupNavigationWithBackButton() {
@@ -122,7 +136,9 @@ class SocialPostDetailsViewController: UIViewController {
         
         containerView.addSubview(buttonContainerView)
         
-        buttonContainerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        //buttonContainerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        bottomContainerViewBottomAnchor = buttonContainerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 0)
+        bottomContainerViewBottomAnchor.isActive = true
         buttonContainerView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
         buttonContainerView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
         buttonContainerView.heightAnchor.constraint(equalToConstant: 61).isActive = true
@@ -131,7 +147,7 @@ class SocialPostDetailsViewController: UIViewController {
         buttonContainerView.addSubview(approvePostBtn)
         buttonContainerView.addSubview(separatorView)
         
-        denyPostBtn.leftAnchor.constraint(equalTo: buttonContainerView.leftAnchor, constant: 30).isActive = true
+        denyPostBtn.leftAnchor.constraint(equalTo: buttonContainerView.leftAnchor, constant: 25).isActive = true
         denyPostBtn.topAnchor.constraint(equalTo: buttonContainerView.topAnchor, constant: 18).isActive = true
         denyPostBtn.widthAnchor.constraint(equalToConstant: 90).isActive = true
         denyPostBtn.heightAnchor.constraint(equalToConstant: 20).isActive = true
@@ -146,10 +162,16 @@ class SocialPostDetailsViewController: UIViewController {
         separatorView.rightAnchor.constraint(equalTo: buttonContainerView.rightAnchor).isActive = true
         separatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
-        //denyPostBtn.addTarget(self, action: #selector(denyPost(sender:)), for: .touchUpInside)
-        //approvePostBtn.addTarget(self, action: #selector(approvePost(sender:)), for: .touchUpInside)
+        denyPostBtn.addTarget(self, action: #selector(denyPost(sender:)), for: .touchUpInside)
+        approvePostBtn.addTarget(self, action: #selector(approvePost(sender:)), for: .touchUpInside)
+    }
+    
+    @objc func denyPost(sender: Any) {
         
-        buttonContainerView.isHidden = true
+    }
+    
+    @objc func approvePost(sender: AnyObject) {
+        
     }
     
     func formatDate(date: Date) -> String {
@@ -175,6 +197,40 @@ class SocialPostDetailsViewController: UIViewController {
     
 }
 
+extension SocialPostDetailsViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if ((scrollView.contentOffset.y + 60) >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
+            
+            scrollView.layoutIfNeeded()
+            
+            UIView.animate(withDuration: 0.6, animations: {
+                if self.isBottomVisible == false {
+                    self.bottomContainerViewBottomAnchor.constant = 0
+                }
+                self.isBottomVisible = true
+                self.containerView.layoutIfNeeded()
+            })
+        } else {
+            UIView.animate(withDuration: 1, animations: {
+                self.bottomContainerViewBottomAnchor.constant = 61
+                self.isBottomVisible = false
+                self.containerView.layoutIfNeeded()
+            })
+        }
+        
+    }
+    
+    func displayContainerBtnsIfNeeded() {
+        if ((scrollView.contentOffset.y + 60) >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
+            UIView.animate(withDuration: 0.6, animations: {
+                self.bottomContainerViewBottomAnchor.constant = 0
+                self.isBottomVisible = true
+            })
+        }
+    }
+    
+}
 
 @objc protocol ActionSocialPostProtocol: class {
     @objc optional func denyPostFromSocial(post: TodoCard, indexPath: IndexPath)
