@@ -14,6 +14,7 @@ class MetricBreakdown: Mappable {
     
     var label: String?
     var currentValue: Float?
+    var prevValue: Float?
     var deltaValue: Float?
     
     required init?(map: Map) {
@@ -22,7 +23,11 @@ class MetricBreakdown: Mappable {
     func mapping(map:Map) {
         label           <- map["label"]
         currentValue    <- map["current_value"]
-        deltaValue      <- map["delta_value"]
+        prevValue       <- map["prev_value"]
+        
+        let cV = currentValue ?? 0
+        let pV = prevValue ?? 0
+        deltaValue = cV - pV
     }
     
 }
@@ -37,7 +42,7 @@ class MetricGroupBreakdown: Mappable {
     }
     
     func mapping(map:Map) {
-        group               <- map["group"]
+        group               <- map["label"]
         breakdowns          <- map["breakdowns"]
     }
     
@@ -56,7 +61,6 @@ class StatisticMetric: Object, Mappable {
     
     @objc dynamic var pageName: String = "Card"
     @objc dynamic var pageIndex: Int = 0
-    @objc dynamic var indexInPage: Int = 0
     
     @objc dynamic var currentPeriodLabel: String = ""
     @objc dynamic var currentPeriodValues: String = ""
@@ -82,7 +86,7 @@ class StatisticMetric: Object, Mappable {
         label <- map["label"]
         delta <- map["delta"]
         
-        pageName <- map["page_name"]
+        pageName <- map["label"]
         pageIndex <- map["page_index"]
         
         currentPeriodLabel <- map["current_period_label"]

@@ -124,7 +124,7 @@ extension TrafficReportViewController: IndexPageProtocol {
         self.bottomPageControl.currentPage = index
         self.topPageControl.currentPage = index
         self.pageIndex = index
-        bottomLbl.text = statisticStore.getStatisticMetricsForCardAtPageIndex(statisticsCard, (pageIndex + 1))[0].pageName
+        bottomLbl.text = statisticStore.getStatisticMetricsForCardAtPageIndex(statisticsCard, pageIndex)[0].pageName
         //statusLbl.text = "Stats \(index + 1) of \(statisticStore.getNumberOfPages(statisticsCard))"
     }
 }

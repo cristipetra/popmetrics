@@ -145,7 +145,6 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let sectionIdx = (indexPath as NSIndexPath).section
-        let rowIdx = (indexPath as NSIndexPath).row
         
         let card = store.getStatisticsCards()[sectionIdx]
         let metrics = store.getStatisticMetricsForCard(card)
