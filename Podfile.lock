@@ -1,6 +1,6 @@
 PODS:
   - ActiveLabel (0.8.0)
-  - Alamofire (4.5.1)
+  - Alamofire (4.6.0)
   - AlamofireImage (3.3.0):
     - Alamofire (~> 4.5)
   - AlamofireObjectMapper (5.0.0):
@@ -60,7 +60,7 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.3)
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.3)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.3)
-  - GTMOAuth2 (1.1.5):
+  - GTMOAuth2 (1.1.6):
     - GTMSessionFetcher (~> 1.1)
   - GTMSessionFetcher (1.1.12):
     - GTMSessionFetcher/Full (= 1.1.12)
@@ -74,7 +74,7 @@ PODS:
   - lottie-ios (2.1.5)
   - M13ProgressSuite (1.2.9)
   - markymark (4.0.2)
-  - MarqueeLabel/Swift (3.1.3)
+  - MarqueeLabel/Swift (3.1.4)
   - MGSwipeTableCell (1.6.6)
   - MJCalendar (0.4.0):
     - NSDate-Escort (~> 1.5)
@@ -179,7 +179,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   ActiveLabel: c32bb6a81accc4a4c2dcab2d685036fcad537783
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
   AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -199,7 +199,7 @@ SPEC CHECKSUMS:
   Google: 98da4b1a60ed0beb80a290387a28333406a1eb90
   GoogleSignIn: 3fdaa34a2ba04dbd7a25d7db39aecb0da98d5bdc
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
-  GTMOAuth2: be83fd28d63ae3087e7d351b1f39c1a7e24ab6e7
+  GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   GTProgressBar: ecfa9f2dfaca1b9b35811925f5bd53516ee591ae
   Haptica: ed63c31f32f2aa17ecb479c110dd50904497bf5d
@@ -208,7 +208,7 @@ SPEC CHECKSUMS:
   lottie-ios: 836cdbba92f62f3c6a00e37a4ce485321fe317cf
   M13ProgressSuite: ea9f7263e73e9215e6849dfa54e29ee0ad6a145c
   markymark: 0415d62ff86424bb1193f995aaf46a246510ac38
-  MarqueeLabel: baa5753dcbd36dca080e1f5c589a665aa5c906f1
+  MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
   MGSwipeTableCell: c3bc6e261e7bc06c112909fe3fb8205de286082c
   MJCalendar: a529b085b0b988ae7b493ce7c000946cc186bf0e
   MotionAnimation: 0257eb90f766f6d58c70524f956faf8d56c5e7bf

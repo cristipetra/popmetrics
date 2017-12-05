@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="260.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXX-Yp-XlA">
+                    <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXX-Yp-XlA">
                         <rect key="frame" x="10" y="0.0" width="355" height="260.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheck" translatesAutoresizingMaskIntoConstraints="NO" id="gZZ-g1-aRE">
@@ -38,7 +38,7 @@
                                     <fragment content="You’re all caught up.">
                                         <attributes>
                                             <color key="NSColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="23" name="AlfaSlabOne-Regular"/>
+                                            <font key="NSFont" size="34" name="OpenSans-Extrabold"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.79000000000000004" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -136,6 +136,9 @@
                             <constraint firstAttribute="trailing" secondItem="1YS-lF-dzl" secondAttribute="trailing" constant="-1" id="rZa-XL-e6s"/>
                             <constraint firstItem="lCs-7n-YJn" firstAttribute="leading" secondItem="TXX-Yp-XlA" secondAttribute="leading" id="vOl-sX-29l"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <constraints>
