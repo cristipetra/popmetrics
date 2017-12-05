@@ -12,7 +12,7 @@ class StatsPageViewController: UIPageViewController {
     
     var statisticsCard: StatisticsCard! {
         didSet {
-            self.numberOfPages = StatisticsStore.getInstance().getStatisticMetricsForCard(statisticsCard).count
+            self.numberOfPages = StatsStore.getInstance().getStatisticMetricsForCard(statisticsCard).count
         }
     }
     
@@ -54,7 +54,7 @@ class StatsPageViewController: UIPageViewController {
         viewControllerList = []
         for index in 1...self.numberOfPages {
             let statsVC: StatsSlideViewController = StatsSlideViewController()
-            let metrics = StatisticsStore.getInstance().getStatisticMetricsForCard(statisticsCard)
+            let metrics = StatsStore.getInstance().getStatisticMetricsForCard(statisticsCard)
             statsVC.configure(staticMetric: metrics[index-1])
             
             statsVC.pageIndex = index

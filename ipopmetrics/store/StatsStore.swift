@@ -75,7 +75,7 @@ class StatsStore {
             }
             
             for card in cardsToDelete {
-
+                
                 let statsMetrics = self.getStatisticMetricsForCard(card)
                 for metric in statsMetrics {
                     realm.delete(metric)
@@ -104,7 +104,7 @@ class StatsStore {
             for existingMetric in metrics {
                 realm.delete(existingMetric)
             }
-           
+            
             for newMetric in statisticsResponse.metrics ?? [] {
                 
                 newMetric.statisticCard = getStatisticsCardWithId(newMetric.statisticsCardId)
@@ -116,3 +116,4 @@ class StatsStore {
     }
     
 }
+

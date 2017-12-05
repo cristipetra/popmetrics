@@ -306,9 +306,7 @@ class UsersApi: BaseApi {
         Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, 
                           headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperEmpty>) in
                             let levelOneHandled = super.handleNotOkCodes(response: response.response)
-                            if !levelOneHandled {
-                                let _ = super.handleResponseWrap(response.value!)
-                            }
+                            
         }
     }
     

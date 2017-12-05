@@ -14,6 +14,7 @@ class MetricBreakdown: Mappable {
     
     var label: String?
     var currentValue: Float?
+    var prevValue: Float?
     var deltaValue: Float?
     
     required init?(map: Map) {
@@ -22,7 +23,11 @@ class MetricBreakdown: Mappable {
     func mapping(map:Map) {
         label           <- map["label"]
         currentValue    <- map["current_value"]
-        deltaValue      <- map["delta_value"]
+        prevValue       <- map["prev_value"]
+        
+        let cV = currentValue ?? 0
+        let pV = prevValue ?? 0
+        deltaValue = cV - pV
     }
     
 }
@@ -37,7 +42,7 @@ class MetricGroupBreakdown: Mappable {
     }
     
     func mapping(map:Map) {
-        group               <- map["group"]
+        group               <- map["label"]
         breakdowns          <- map["breakdowns"]
     }
     
@@ -56,7 +61,6 @@ class StatisticMetric: Object, Mappable {
     
     @objc dynamic var pageName: String = "Card"
     @objc dynamic var pageIndex: Int = 0
-    @objc dynamic var indexInPage: Int = 0
     
     @objc dynamic var currentPeriodLabel: String = ""
     @objc dynamic var currentPeriodValues: String = ""
@@ -68,26 +72,22 @@ class StatisticMetric: Object, Mappable {
     @objc dynamic var prevPeriodStartDate: Date = Date()
     @objc dynamic var prevPeriodEndDate: Date = Date()
     
+    var breakdowns: [MetricGroupBreakdown]?
     @objc dynamic var breakDownsJson: String = ""
     
     required convenience init?(map: Map) {
         self.init()
     }
     
-    override static func primaryKey() -> String? {
-        return "statisticsCardId"
-    }
-    
     func mapping(map: Map) {
-        statisticsCardId <- map["statistics_card_id"]
+        statisticsCardId <- map["card_id"]
         
         value <- map["value"]
         label <- map["label"]
         delta <- map["delta"]
         
-        pageName <- map["page_name"]
+        pageName <- map["label"]
         pageIndex <- map["page_index"]
-        indexInPage <- map["index_in_page"]
         
         currentPeriodLabel <- map["current_period_label"]
         currentPeriodValues <- map["current_period_values"]
@@ -100,6 +100,10 @@ class StatisticMetric: Object, Mappable {
         prevPeriodStartDate <- (map["prev_period_start_date"], DateTransform())
         prevPeriodEndDate <- (map["prev_period_end_date"], DateTransform())
         
+        breakdowns <- map["breakdowns"]
+        
+        self.setBreakDownGroups()
+        
     }
     
     func getCurrentPeriodArray() -> [Double] {
@@ -111,6 +115,11 @@ class StatisticMetric: Object, Mappable {
         let sarr = self.prevPeriodValues.components(separatedBy: " ")
         return sarr.map{ Double($0)! }
     }
+    
+    func setBreakDownGroups() -> Void {
+        self.breakDownsJson = (self.breakdowns?.toJSONString())!
+    }
+    
     
     func getBreakDownGroups() -> [MetricGroupBreakdown] {
         let list: Array<MetricGroupBreakdown> = Mapper<MetricGroupBreakdown>().mapArray(JSONString: self.breakDownsJson)!

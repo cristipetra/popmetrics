@@ -19,12 +19,12 @@ class TrafficReportViewController: UIViewController {
     @IBOutlet weak var bottomContainerView: UIView!
     
     let statsPageVC: StatsPageViewController = StatsPageViewController()
-    let statisticStore = StatisticsStore.getInstance()
+    let statisticStore = StatsStore.getInstance()
     
     internal var statisticsCard: StatisticsCard! {
         didSet {
             self.statsPageVC.statisticsCard = statisticsCard
-            self.statsPageVC.numberOfPages = StatisticsStore.getInstance().getStatisticMetricsForCard(statisticsCard).count
+            self.statsPageVC.numberOfPages = StatsStore.getInstance().getStatisticMetricsForCard(statisticsCard).count
         }
     }
     
@@ -124,7 +124,7 @@ extension TrafficReportViewController: IndexPageProtocol {
         self.bottomPageControl.currentPage = index
         self.topPageControl.currentPage = index
         self.pageIndex = index
-        bottomLbl.text = statisticStore.getStatisticMetricsForCardAtPageIndex(statisticsCard, (pageIndex + 1))[0].pageName
+        bottomLbl.text = statisticStore.getStatisticMetricsForCardAtPageIndex(statisticsCard, pageIndex)[0].pageName
         //statusLbl.text = "Stats \(index + 1) of \(statisticStore.getNumberOfPages(statisticsCard))"
     }
 }
