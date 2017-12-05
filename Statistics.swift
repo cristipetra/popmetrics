@@ -84,7 +84,6 @@ class StatisticMetric: Object, Mappable {
         
         pageName <- map["page_name"]
         pageIndex <- map["page_index"]
-        indexInPage <- map["index_in_page"]
         
         currentPeriodLabel <- map["current_period_label"]
         currentPeriodValues <- map["current_period_values"]
