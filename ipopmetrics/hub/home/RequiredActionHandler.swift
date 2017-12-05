@@ -123,6 +123,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                 self.homeHubViewController?.showBannerForNotification(pnotification)
                 
                 let params = [
+                    "task_name": "twitter.connect_with_brand",
                     "user_id":UserStore.getInstance().getLocalUserAccount().id,
                     "twitter_user_id":session?.userID,
                     "access_token":session?.authToken,
