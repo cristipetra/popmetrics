@@ -97,7 +97,7 @@ class TrafficReportViewController: UIViewController {
 extension TrafficReportViewController: IndexPageProtocol {
     
     func indexOfPage(index: Int) {
-        self.topPageControl.currentPage = index
+        self.topPageControl.currentPage = index - 1
         self.pageIndex = index
     }
 }
