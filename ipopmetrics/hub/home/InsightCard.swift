@@ -65,7 +65,9 @@ class InsightCard: UITableViewCell {
         footerVIew.actionButton.changeTitle(feedCard.actionLabel)
         
         if let imageUrl = feedCard.imageUri {
-            backgroundImageView.af_setImage(withURL: URL(string: imageUrl)!)
+            if let url = URL(string: imageUrl) {
+                backgroundImageView.af_setImage(withURL: url)
+            }
         }
         
         //footerVIew.displayOnlyActionButton()
