@@ -114,7 +114,10 @@ class TrafficStatsTableViewController: UITableViewController {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 25).isActive = true
         title.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 10).isActive = true
-        title.text = statisticMetric.getBreakDownGroups()[section].group!
+        
+        if let group = statisticMetric.getBreakDownGroups()[section].group {
+            title.text = group
+        }
         
         return headerView
     }
