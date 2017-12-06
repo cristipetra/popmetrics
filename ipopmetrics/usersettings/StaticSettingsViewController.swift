@@ -22,6 +22,7 @@ class StaticSettingsViewController: BaseTableViewController {
     @IBOutlet weak var allowNotifications: UISwitch!
     
     
+    @IBOutlet weak var twitterHandleField: UITextField!
     @IBOutlet weak var googleAnalyticsTracker: UITextField!
     
     let sectionTitles = ["USER IDENTITY", "NOTIFICATIONS", "BRAND IDENTITY", "SOCIAL ACCOUNTS", "DATA ACCOUNTS", "WEB OVERLAY"]
@@ -80,6 +81,7 @@ class StaticSettingsViewController: BaseTableViewController {
         
         brandName.text = UserStore.currentBrandName
         
+        twitterHandleField.text = currentBrand?.twitterDetails?.screenName ?? "N/A"
         googleAnalyticsTracker.text = currentBrand?.googleAnalytics?.tracker ?? "N/A"
         
         allowSounds.isOn = userSettings.allowSounds
@@ -166,29 +168,33 @@ class StaticSettingsViewController: BaseTableViewController {
     }
     
     private func displayTwitter() {
-        let twitterVC = SettingsSocialViewController(nibName: "SettingsSocialView", bundle: nil)
+        let twitterVC = SettingsSocialViewController(nibName: "SettingsSocialView", bundle: nil) as SettingsSocialViewController
+        twitterVC.currentBrand = self.currentBrand
         twitterVC.displayTwitter()
         self.navigationController?.pushViewController(twitterVC, animated: true)
     }
     
     private func displayLinkedin() {
-        let linkedinVC = SettingsSocialViewController(nibName: "SettingsSocialView", bundle: nil)
+        let linkedinVC = SettingsSocialViewController(nibName: "SettingsSocialView", bundle: nil) as SettingsSocialViewController
+        linkedinVC.currentBrand = self.currentBrand
         linkedinVC.displayLinkedin()
         self.navigationController?.pushViewController(linkedinVC, animated: true)
     }
     
     private func displaySettingsEmail() {
-        let emailVC = SettingsEmailViewController(nibName: "SettingsEmailView", bundle: nil)
+        let emailVC = SettingsEmailViewController(nibName: "SettingsEmailView", bundle: nil) as SettingsEmailViewController
+//        emailVC.currentBrand = self.currentBrand
         self.navigationController?.pushViewController(emailVC, animated: true)
     }
     
     private func displaySettingsLogo() {
-        let logoVC = SettingsLogoViewController(nibName: "SettingsLogoView", bundle: nil)
+        let logoVC = SettingsLogoViewController(nibName: "SettingsLogoView", bundle: nil) as SettingsLogoViewController
         self.navigationController?.pushViewController(logoVC, animated: true)
     }
     
     private func displayFacebook() {
-        let facebookVC = SettingsSocialViewController(nibName: "SettingsSocialView", bundle: nil)
+        let facebookVC = SettingsSocialViewController(nibName: "SettingsSocialView", bundle: nil) as SettingsSocialViewController
+        facebookVC.currentBrand = self.currentBrand
         facebookVC.displayFacebook()
         self.navigationController?.pushViewController(facebookVC, animated: true)
     }

@@ -18,6 +18,7 @@ class MenuViewController: ElasticModalViewController {
     @IBOutlet weak var checkBtn: UIButton!
     @IBOutlet weak var brandNameLabel: UILabel!
     
+    @IBOutlet weak var popmetricsImageView: UIImageView!
     @IBOutlet weak var closeButton: UIButton! {
         didSet {
             closeButton.isHaptic = true
@@ -40,7 +41,24 @@ class MenuViewController: ElasticModalViewController {
         setup()
         transition.edge = .right
         transition.sticky = false
+        
+        let currentBrandId = UserStore.currentBrandId
+        if currentBrandId == "5a278fcec2ff29587ee10739" || currentBrandId == "5a27900ac2ff29587ee1073a" {
+            self.popmetricsImageView.isUserInteractionEnabled = true
+            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
+            //Add the recognizer to your view.
+            popmetricsImageView.addGestureRecognizer(tapRecognizer)
+        }
+        
     }
+    
+    @objc func imageTapped(_ gestureRecognizer: UITapGestureRecognizer) {
+        //tappedImageView will be the image view that was tapped.
+        //dismiss it, animate it off screen, whatever.
+        UsersApi().resetBrandHubs(UserStore.currentBrandId)
+        presentAlertWithTitle("Confirmation", message: "The hubs are being reset. It may take up to a minute.")
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         segue.destination.transitioningDelegate = transition as UIViewControllerTransitioningDelegate
@@ -95,6 +113,17 @@ class MenuViewController: ElasticModalViewController {
         
         self.presentFromDirection(viewController: navController, direction: .right)
     }
+    
+    
+    internal func presentAlertWithTitle(_ title: String, message: String, useWhisper: Bool = false) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(OKAction)
+        DispatchQueue.main.async(execute: {
+            self.present(alertController, animated: true, completion: nil)
+        })
+    }
+    
 }
 
 extension MenuViewController: MFMailComposeViewControllerDelegate {

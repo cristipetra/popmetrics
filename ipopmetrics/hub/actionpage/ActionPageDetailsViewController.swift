@@ -150,8 +150,14 @@ class ActionPageDetailsViewController: UIViewController {
     @IBAction func handlerAddToMyActions(_ sender: Any) {
         if feedCard != nil {
             FeedApi().postAddToMyActions(feedCardId: self.feedCard.cardId!, brandId: UserStore.currentBrandId) { todoCard in
-                TodoStore.getInstance().addTodoCard(todoCard!)
-                FeedStore.getInstance().removeCard(self.feedCard)
+                TodoStore.getInstance().addTodoCard(todoCard!)               
+                
+                if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
+                    FeedStore.getInstance().updateCardSection(insightCard, section:"None")
+                }
+                FeedStore.getInstance().updateCardSection(self.feedCard, section:"None")
+                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
+                                                userInfo: ["sucess":true])
                 self.navigationController?.popViewController(animated: true)
             }
         }

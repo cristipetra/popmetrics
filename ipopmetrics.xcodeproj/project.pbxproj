@@ -201,6 +201,7 @@
 		11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */; };
 		11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A91E2CE05D0021E64A /* CompletionView.swift */; };
 		11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */; };
+		11D6FF6B1FD7941600C7E62B /* SettingsTwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D6FF6A1FD7941600C7E62B /* SettingsTwitterViewController.swift */; };
 		11DD96761FC4FA5400386F1E /* CalendarApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD966D1FC4FA5400386F1E /* CalendarApi.swift */; };
 		11DD96771FC4FA5400386F1E /* StatisticsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD966E1FC4FA5400386F1E /* StatisticsApi.swift */; };
 		11DD96781FC4FA5400386F1E /* TodoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD966F1FC4FA5400386F1E /* TodoApi.swift */; };
@@ -437,6 +438,7 @@
 		11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		11ACA9A91E2CE05D0021E64A /* CompletionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionView.swift; sourceTree = "<group>"; };
 		11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		11D6FF6A1FD7941600C7E62B /* SettingsTwitterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTwitterViewController.swift; sourceTree = "<group>"; };
 		11DD966C1FC4FA5400386F1E /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		11DD966D1FC4FA5400386F1E /* CalendarApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarApi.swift; sourceTree = "<group>"; };
 		11DD966E1FC4FA5400386F1E /* StatisticsApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsApi.swift; sourceTree = "<group>"; };
@@ -820,6 +822,7 @@
 				08078F411FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift */,
 				08078F431FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift */,
 				08C580FE1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift */,
+				11D6FF6A1FD7941600C7E62B /* SettingsTwitterViewController.swift */,
 			);
 			path = usersettings;
 			sourceTree = "<group>";
@@ -1403,6 +1406,7 @@
 				088F14FA1FB9C6080004F925 /* StaticSettingsViewController.swift in Sources */,
 				085F91051F716CD4008A339A /* OnboardingFooter.swift in Sources */,
 				08C580FF1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift in Sources */,
+				11D6FF6B1FD7941600C7E62B /* SettingsTwitterViewController.swift in Sources */,
 				1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */,
 				08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */,
 				088E77AD1F7D499400774F13 /* TrafficStatsTableViewController.swift in Sources */,
