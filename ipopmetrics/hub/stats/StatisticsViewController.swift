@@ -106,7 +106,7 @@ class StatisticsViewController: BaseViewController {
      
             let statsMet1 = StatisticMetric()
             statsMet1.statisticCard = store.getStatisticsCards()[0]
-            statsMet1.statisticsCardId = "5a272d75e051b33d05265e43"
+            statsMet1.statisticsCardId = store.getStatisticsCards()[0].cardId!
             statsMet1.statisticsMetricId = "sadfasfdsa"
             statsMet1.value = 1300
             statsMet1.label = "Overral visits"
@@ -126,7 +126,7 @@ class StatisticsViewController: BaseViewController {
            
             let statsMet11 = StatisticMetric()
             statsMet11.statisticCard = store.getStatisticsCards()[0]
-            statsMet11.statisticsCardId = "5a272d75e051b33d05265e43"
+            statsMet11.statisticsCardId = store.getStatisticsCards()[0].cardId!
             statsMet11.statisticsMetricId = "sadfasfdasdffdsa"
             statsMet11.value = 4000
             statsMet11.label = "Total visits"
@@ -145,7 +145,7 @@ class StatisticsViewController: BaseViewController {
             
             let statsMet12 = StatisticMetric()
             statsMet12.statisticCard = store.getStatisticsCards()[0]
-            statsMet12.statisticsCardId = "5a272d75e051b33d05265e43"
+            statsMet12.statisticsCardId = store.getStatisticsCards()[0].cardId!
             statsMet12.statisticsMetricId = "sadfasfdsasadga"
             statsMet12.value = 1100
             statsMet12.label = "qqq visits"
