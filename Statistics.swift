@@ -52,6 +52,7 @@ class MetricGroupBreakdown: Mappable {
 class StatisticMetric: Object, Mappable {
     
     @objc dynamic var statisticCard: StatisticsCard? = nil
+    @objc dynamic var statisticsMetricId: String = ""
     
     @objc dynamic var statisticsCardId: String = ""
     
@@ -75,12 +76,17 @@ class StatisticMetric: Object, Mappable {
     var breakdowns: [MetricGroupBreakdown]?
     @objc dynamic var breakDownsJson: String = ""
     
+    override static func primaryKey() -> String? {
+        return "statisticsMetricId"
+    }
+    
     required convenience init?(map: Map) {
         self.init()
     }
     
     func mapping(map: Map) {
         statisticsCardId <- map["card_id"]
+        statisticsMetricId <- map["metric_id"]
         
         value <- map["value"]
         label <- map["label"]

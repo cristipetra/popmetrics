@@ -40,7 +40,7 @@ class StatisticsViewController: BaseViewController {
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
         
-//        createItemsLocally()
+        createItemsLocally()
         
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
@@ -89,6 +89,83 @@ class StatisticsViewController: BaseViewController {
             
         }
     }
+    
+    internal func createItemsLocally() {
+        try! store.realm.write {
+            /*
+            let tmp = StatisticsCard()
+            tmp.cardId = "asf23rsdf3r"
+            tmp.section = ""
+            store.realm.add(tmp, update: true)
+            */
+            let statsCard = StatisticsCard()
+            statsCard.cardId = "dfas"
+            statsCard.section = "Traffic"
+            
+            //store.realm.add(statsCard, update: true)
+     
+            let statsMet1 = StatisticMetric()
+            statsMet1.statisticCard = store.getStatisticsCards()[0]
+            statsMet1.statisticsCardId = "5a272d75e051b33d05265e43"
+            statsMet1.statisticsMetricId = "sadfasfdsa"
+            statsMet1.value = 1300
+            statsMet1.label = "Overral visits"
+            statsMet1.pageName = "Overral visits"
+            statsMet1.delta = 250
+            statsMet1.pageIndex = 1
+            
+            statsMet1.currentPeriodLabel = "Sep28-Aug27"
+            statsMet1.currentPeriodValues = "20 23 12 14 1 1 1 1 1 1 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 3 7 3 6 7 35 34 34 33 35"
+            statsMet1.prevPeriodValues = "0 12 12 14 16 17 1 1 1 1 1 1 1 13 14 13 13 17 13 16 17 15 34 14 15 13 14 13 13 17 13 16 17 15 34";
+            
+            statsMet1.breakDownsJson = "[{\"group\": \"Demographics\", \"breakdowns\": [{\"label\": \"Male\", \"current_value\": 1300, \"delta_value\": 250 }]}, {\"group\": \"Devices\", \"breakdowns\" :[{\"label\": \"Mobile\", \"current_value\": 1100, \"delta_value\": 20 }, {\"label\": \"Unknown\", \"current_value\": 200, \"delta_value\": 5 }  ]}]"
+            
+            store.realm.add(statsMet1, update: true)
+            
+            print("breakdown: \(statsMet1.getBreakDownGroups())")
+           
+            let statsMet11 = StatisticMetric()
+            statsMet11.statisticCard = store.getStatisticsCards()[0]
+            statsMet11.statisticsCardId = "5a272d75e051b33d05265e43"
+            statsMet11.statisticsMetricId = "sadfasfdasdffdsa"
+            statsMet11.value = 4000
+            statsMet11.label = "Total visits"
+            statsMet11.delta = 450
+            statsMet11.pageName = "qqq visits"
+            statsMet11.pageIndex = 2
+            
+            statsMet1.prevPeriodLabel = "fdsa"
+            statsMet11.currentPeriodLabel = "Sep28-Aug27"
+            statsMet11.currentPeriodValues = "0 12 12 16 14 13 13 17 13 16 17 15 34 14 15 13 6 27 3 4 3 3 7 3 6 7 5"
+            statsMet11.prevPeriodValues = "0 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 14 16 17 13 14 13 13 17"
+            
+            statsMet11.breakDownsJson = "[ {\"group\": \"Demographics\", \"breakdowns\": [{\"label\": \"Male\", \"current_value\": 1500, \"delta_value\": 120 }, {\"label\": \"Female\", \"current_value\": 1100, \"delta_value\": 110 }, {\"label\": \"Unknown\", \"current_value\": 1400, \"delta_value\": 220 }]}, {\"group\": \"Devices\", \"breakdowns\" :[{\"label\": \"Mobile\", \"current_value\": 1100, \"delta_value\": 20 },{\"label\": \"Tablet\", \"current_value\": 1100, \"delta_value\": 20 },{\"label\": \"TV\", \"current_value\": 1100, \"delta_value\": 20 }] }  ]"
+            
+            store.realm.add(statsMet11, update: true)
+            
+            let statsMet12 = StatisticMetric()
+            statsMet12.statisticCard = store.getStatisticsCards()[0]
+            statsMet12.statisticsCardId = "5a272d75e051b33d05265e43"
+            statsMet12.statisticsMetricId = "sadfasfdsasadga"
+            statsMet12.value = 1100
+            statsMet12.label = "qqq visits"
+            statsMet12.delta = 250
+            statsMet12.pageName = "qqq visits"
+            statsMet12.pageIndex = 3
+            
+            statsMet12.currentPeriodLabel = "Sep28-Aug27"
+            statsMet12.currentPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 6 27 3 4 3 3 7 3 6 7 5"
+            statsMet12.prevPeriodValues = "0 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 14 16 17 13 14 13 13 17"
+            
+            statsMet12.breakDownsJson = "[{\"group\": \"Demographics\", \"breakdowns\": [{\"label\": \"Male\", \"current_value\": 1100, \"delta_value\": 25 }] }]"
+            
+            store.realm.add(statsMet12, update: true)
+            
+        }
+        print(store.getStatisticsCards())
+        
+    }
+
     
     internal func setUpNavigationBar() {
         let text = UIBarButtonItem(title: "Statistics", style: .plain, target: self, action: nil)
@@ -160,6 +237,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
         switch card.section {
         case "Traffic":
             let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficCard", for: indexPath) as! TrafficCardViewCell
+            
             let results = store.getStatisticMetricsForCard(card)
             cell.statisticsCountView.setupViews(data: Array(results))
             let itemCellHeight: Int = 94
@@ -172,6 +250,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             //cell.footerView.hideButton(button: cell.footerView.xButton)
             cell.footerView.displayOnlyActionButton()
             cell.connectionLine.isHidden = true
+     
             return cell
         case "insight" :
             if insightIsDisplayed {
