@@ -274,7 +274,8 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return store.getStatisticsCards().count
+        let a = store.getStatisticsCards().count
+        return a
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

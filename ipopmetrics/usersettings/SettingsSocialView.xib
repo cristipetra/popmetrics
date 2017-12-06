@@ -30,7 +30,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACCOUNT DETAILS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9I-Us-ML3">
-                    <rect key="frame" x="25" y="37" width="118" height="21"/>
+                    <rect key="frame" x="25" y="37" width="113" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="hMO-tV-hTS"/>
                     </constraints>
@@ -39,7 +39,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://www.facebook.com/brandname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="lS2-GT-rZ2">
-                    <rect key="frame" x="25" y="120" width="290" height="22"/>
+                    <rect key="frame" x="25" y="120" width="304" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="rgA-J3-NY6"/>
                     </constraints>
@@ -57,7 +57,7 @@
                     <string key="userLabel">Popmetrics uses your social account to track important information such as website traffic and brand presence online. With this information we can make insights to grow your business and send you informative reports on how your business is performing.</string>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONNECTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hz9-ES-vIv">
-                    <rect key="frame" x="25" y="192" width="85.5" height="21"/>
+                    <rect key="frame" x="25" y="192" width="84" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Pqb-15-pwQ"/>
                     </constraints>
@@ -66,7 +66,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qKg-Vq-4Pu">
-                    <rect key="frame" x="25" y="275" width="205" height="22"/>
+                    <rect key="frame" x="25" y="275" width="207" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="Hv1-9w-VKG"/>
                     </constraints>
@@ -85,7 +85,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@BrandName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fle-Af-FIh">
-                    <rect key="frame" x="25" y="78" width="105" height="22"/>
+                    <rect key="frame" x="25" y="78" width="111" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="YiQ-5g-z7h"/>
                     </constraints>
