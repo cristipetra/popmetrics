@@ -136,8 +136,8 @@ class StatisticsViewController: BaseViewController {
             
             statsMet1.prevPeriodLabel = "fdsa"
             statsMet11.currentPeriodLabel = "Sep28-Aug27"
-            statsMet11.currentPeriodValues = "0 12 12 16 14 13 13 17 13 16 17 15 34 14 15 13 6 27 3 4 3 3 7 3 6 7 5"
-            statsMet11.prevPeriodValues = "0 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 14 16 17 13 14 13 13 17"
+            statsMet11.currentPeriodValues = "0 12 12 16 14 13 13 17 13 16 17 15 34 14 15 13 6 27 3 4 3 3 7 3 6 7 5 4 5 6 4"
+            statsMet11.prevPeriodValues = "0 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 14 16 17 13 14 13 13 17 14 15 16 17"
             
             statsMet11.breakDownsJson = "[ {\"group\": \"Demographics\", \"breakdowns\": [{\"label\": \"Male\", \"current_value\": 1500, \"delta_value\": 120 }, {\"label\": \"Female\", \"current_value\": 1100, \"delta_value\": 110 }, {\"label\": \"Unknown\", \"current_value\": 1400, \"delta_value\": 220 }]}, {\"group\": \"Devices\", \"breakdowns\" :[{\"label\": \"Mobile\", \"current_value\": 1100, \"delta_value\": 20 },{\"label\": \"Tablet\", \"current_value\": 1100, \"delta_value\": 20 },{\"label\": \"TV\", \"current_value\": 1100, \"delta_value\": 20 }] }  ]"
             
@@ -154,8 +154,8 @@ class StatisticsViewController: BaseViewController {
             statsMet12.pageIndex = 3
             
             statsMet12.currentPeriodLabel = "Sep28-Aug27"
-            statsMet12.currentPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 6 27 3 4 3 3 7 3 6 7 5"
-            statsMet12.prevPeriodValues = "0 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 14 16 17 13 14 13 13 17"
+            statsMet12.currentPeriodValues = "0 12 12 14 16 17 13 14 13 13 17 13 16 17 15 34 14 15 13 6 27 3 4 3 3 7 3 6 7 5 3"
+            statsMet12.prevPeriodValues = "0 23 12 14 6 27 3 4 3 3 7 3 6 7 5 34 4 3 5 14 16 17 13 14 13 13 17 19 19 28 18 18"
             
             statsMet12.breakDownsJson = "[{\"group\": \"Demographics\", \"breakdowns\": [{\"label\": \"Male\", \"current_value\": 1100, \"delta_value\": 25 }] }]"
             
