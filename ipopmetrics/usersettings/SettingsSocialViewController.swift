@@ -10,8 +10,12 @@ import UIKit
 
 class SettingsSocialViewController: SettingsBaseViewController {
     
+    var currentBrand: Brand?
+    
     @IBOutlet weak var brandURLLabel: UILabel!
     @IBOutlet weak var brandNameLabel: UILabel!
+    
+    @IBOutlet weak var connectionDateLabel: UILabel!
     
     private var socialType: SocialType!
     
@@ -43,7 +47,15 @@ class SettingsSocialViewController: SettingsBaseViewController {
         case .facebook:
             brandURLLabel.text = "http://www.facebook.com/brandname"
         case .twitter:
-            brandURLLabel.text = "http://www.twitter.com/brandname"
+            brandURLLabel.text = currentBrand?.twitterDetails?.screenName ?? "N/A"
+            brandNameLabel.text = currentBrand?.twitterDetails?.name ?? "N/A"
+            
+            if let date = currentBrand?.twitterDetails?.connectionDate {
+                let df = DateFormatter()
+                df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+                self.connectionDateLabel.text = df.string(from: date)
+            }
+            
             break
         case .linkedin:
             brandURLLabel.text = "http://www.linkedin.com/username"

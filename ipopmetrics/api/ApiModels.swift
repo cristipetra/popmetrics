@@ -246,6 +246,26 @@ class GoogleAnalyticsDetails: Mappable {
     }
 }
 
+class TwitterDetails: Mappable {
+    
+    var name: String?
+    var screenName: String?
+    
+    var connectionDate: Date?
+    
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map:Map) {
+        name        <- map["name"]
+        screenName     <- map["screen_name"]
+        
+        connectionDate <- (map["connection_date"], DateTransform())
+        
+    }
+}
+
 
 
 class Brand: Mappable {
@@ -255,6 +275,7 @@ class Brand: Mappable {
     var logoURL: String?
     
     var googleAnalytics: GoogleAnalyticsDetails?
+    var twitterDetails: TwitterDetails?
     
     required init?(map: Map) {
     }
@@ -265,7 +286,7 @@ class Brand: Mappable {
         logoURL     <- map["logo_url"]
         
         googleAnalytics <- map["data.google_analytics"]
-        
+        twitterDetails  <- map["social.twitter"]
         
     }
 }
