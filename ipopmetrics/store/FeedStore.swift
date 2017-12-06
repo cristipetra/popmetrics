@@ -37,6 +37,18 @@ class FeedStore {
         }
     }
     
+    public func getFeedCardWithRecommendedAction(_ name: String) -> FeedCard? {
+        let predicate = NSPredicate(format: "recommendedAction = %@", name)
+        let rset = realm.objects(FeedCard.self).filter(predicate)
+        if rset.count > 0 {
+            return rset[0]
+        }
+        else {
+            return nil
+        }
+    }
+    
+    
     public func getFeedCardsWithSection(_ section: String) -> Results<FeedCard> {
         let predicate = NSPredicate(format: "section = %@", section)
         return realm.objects(FeedCard.self).filter(predicate)

@@ -310,4 +310,20 @@ class UsersApi: BaseApi {
         }
     }
     
+    func resetBrandHubs(_ brandId: String) {
+        // /api/hubs/reset-brand/<brand_id>'
+        let url = ApiUrls.composedBaseUrl(String(format:"/api/hubs/reset-brand/%@", brandId))
+        let params = ["a":0]
+        
+        Alamofire.request(url, method: .get, parameters: params,
+                          headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperOne<Brand>>) in
+                            let levelOneHandled = super.handleNotOkCodes(response: response.response)
+                            if !levelOneHandled {
+                                let handled = super.handleResponseWrap(response.value!)
+                                SyncService().syncAll(silent:true)
+                            }
+        }
+    }
+    
+    
 }

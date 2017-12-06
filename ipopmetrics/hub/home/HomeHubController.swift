@@ -159,7 +159,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         loadingView.tintColor = PopmetricsColor.darkGrey
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             // old code: self?.fetchItems(silent:false)
-            SyncService.getInstance().syncHomeItems(silent: false)
+            SyncService.getInstance().syncAll(silent: false)
             self?.tableView.dg_stopLoading()
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
