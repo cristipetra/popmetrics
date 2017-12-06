@@ -58,7 +58,9 @@ class InsightPageDetailsViewController: UIViewController {
         titleArticle.text = feedCard.headerTitle
         
         if let cardImageUrl = feedCard.imageUri {
-            cardImage.af_setImage(withURL: URL(string: cardImageUrl)!)
+            if let url =  URL(string: cardImageUrl) {
+                cardImage.af_setImage(withURL: url)
+            }
         }
         
         if(!Bool(feedCard.iceEnabled)) {

@@ -340,6 +340,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         let actionPageVc: ActionPageDetailsViewController = ActionPageDetailsViewController(nibName: "ActionPage", bundle: nil)
         //actionPageVc.hidesBottomBarWhenPushed = true
+        actionPageVc.hidesBottomBarWhenPushed = true
         actionPageVc.configure(actionCard, handler: recommendActionHandler)
         
         self.navigationController?.pushViewController(actionPageVc, animated: true)
@@ -452,6 +453,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     func openInsightDetails(_ feedCard: FeedCard) {
         let insightDetails = InsightPageDetailsViewController(nibName: "InsightPage", bundle: nil)
         insightDetails.configure(feedCard)
+        insightDetails.hidesBottomBarWhenPushed = true 
         self.navigationController?.pushViewController(insightDetails, animated: true)
     }
 }
