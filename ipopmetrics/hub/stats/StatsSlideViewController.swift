@@ -32,6 +32,7 @@ class StatsSlideViewController: UIViewController {
     
         self.view.addSubview(statusView)
         statusView.tableView.didMove(toParentViewController: self)
+        statusView.chartVC.didMove(toParentViewController: self)
     }
 
     override func didReceiveMemoryWarning() {

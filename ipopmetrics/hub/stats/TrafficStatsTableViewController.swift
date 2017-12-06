@@ -44,6 +44,10 @@ class TrafficStatsTableViewController: UITableViewController {
       
     }
     
+    override func viewDidLayoutSubviews() {
+        tableView.frame.size = tableView.contentSize
+    }
+    
     func configure(statisticMetric: StatisticMetric) {
         self.statisticMetric = statisticMetric
         self.statisticCard = statisticMetric.statisticCard!

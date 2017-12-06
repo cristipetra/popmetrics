@@ -32,7 +32,7 @@ class StatsPageViewController: UIPageViewController {
     
     var currentPageIndex: Int = 0 {
         didSet {
-            indexDelegate?.indexOfPage(index: currentPageIndex - 1)
+            indexDelegate?.indexOfPage(index: currentPageIndex)
         }
     }
     

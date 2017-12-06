@@ -46,15 +46,10 @@ class TrafficStatus: UIView {
     }
     
     func setup() {
-        
-        Bundle.main.loadNibNamed("TrafficStatus", owner: self, options: nil)
-        addSubview(contentView)
-        contentView.frame = self.bounds
-        contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
         addChartView()
         addTableView()
     }
+    
     
     internal func addTableView() {
         
@@ -66,7 +61,9 @@ class TrafficStatus: UIView {
         tableView.view.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         //tableView.view.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         tableView.view.topAnchor.constraint(equalTo: chartVC.view.bottomAnchor, constant: 1).isActive = true
-        tableView.view.heightAnchor.constraint(equalToConstant: 545).isActive = true
+        tableView.view.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 10).isActive = true
+        //tableView.view.heightAnchor.constraint(equalToConstant: 845).isActive = true
+        
         
         tableView.automaticallyAdjustsScrollViewInsets = false
     }
