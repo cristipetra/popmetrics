@@ -40,7 +40,7 @@ class StatisticsViewController: BaseViewController {
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
         
-        createItemsLocally()
+        //createItemsLocally()
         
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
