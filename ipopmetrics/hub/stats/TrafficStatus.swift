@@ -78,7 +78,7 @@ class TrafficStatus: UIView {
         chartVC.view.translatesAutoresizingMaskIntoConstraints = false
         chartVC.view.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
         chartVC.view.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
-        chartVC.view.topAnchor.constraint(equalTo: self.topAnchor,constant: 33).isActive = true
+        chartVC.view.topAnchor.constraint(equalTo: self.topAnchor,constant: 0).isActive = true
         chartVC.view.heightAnchor.constraint(equalToConstant: 320).isActive = true
         
     }
