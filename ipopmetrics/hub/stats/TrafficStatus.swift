@@ -35,11 +35,6 @@ class TrafficStatus: UIView {
         setup()
     }
     
-    func configure(card: StatisticsCard, _ pageIndex: Int = 1) {
-        //statisticsCard = card
-        //tableView.configure(card: statisticsCard, pageIndex)
-    }
-    
     func configure(staticMetric: StatisticMetric) {
         tableView.configure(statisticMetric: staticMetric)
         chartVC.configure(statisticMetric: staticMetric)
@@ -50,7 +45,6 @@ class TrafficStatus: UIView {
         addTableView()
     }
     
-    
     internal func addTableView() {
         
         self.addSubview(tableView.view)
@@ -59,28 +53,21 @@ class TrafficStatus: UIView {
         tableView.view.translatesAutoresizingMaskIntoConstraints = false
         tableView.view.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         tableView.view.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        //tableView.view.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         tableView.view.topAnchor.constraint(equalTo: chartVC.view.bottomAnchor, constant: 1).isActive = true
         tableView.view.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 10).isActive = true
-        //tableView.view.heightAnchor.constraint(equalToConstant: 845).isActive = true
-        
-        
-        tableView.automaticallyAdjustsScrollViewInsets = false
     }
     
     internal func addChartView() {
         
         self.addSubview(chartVC.view)
         chartVC.didMove(toParentViewController: self.parentViewController)
-        
-        chartVC.barChart.backgroundFillColor = UIColor.white
-        
+     
         chartVC.view.translatesAutoresizingMaskIntoConstraints = false
         chartVC.view.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
         chartVC.view.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
         chartVC.view.topAnchor.constraint(equalTo: self.topAnchor,constant: 0).isActive = true
         chartVC.view.heightAnchor.constraint(equalToConstant: 320).isActive = true
-        
+
     }
     
 }

@@ -20,10 +20,14 @@ class TrafficReportViewController: UIViewController {
     let statsPageVC: StatsPageViewController = StatsPageViewController()
     let statisticStore = StatsStore.getInstance()
     
+    let statsSlideVC: StatsSlideViewController = StatsSlideViewController()
+    
     internal var statisticsCard: StatisticsCard! {
         didSet {
             self.statsPageVC.statisticsCard = statisticsCard
             self.statsPageVC.numberOfPages = StatsStore.getInstance().getStatisticMetricsForCard(statisticsCard).count
+            
+            let metrics = StatsStore.getInstance().getStatisticMetricsForCard(statisticsCard)
         }
     }
     
@@ -39,7 +43,7 @@ class TrafficReportViewController: UIViewController {
         statsPageVC.indexDelegate = self
         addPageView()
         setUpPageControlViews()
-     
+    
     }
     
     func configure(statisticsCard: StatisticsCard) {
@@ -69,8 +73,9 @@ class TrafficReportViewController: UIViewController {
         
         statsPageVC.view.topAnchor.constraint(equalTo: containerStats.topAnchor, constant: 0).isActive = true
         statsPageVC.view.bottomAnchor.constraint(equalTo: containerStats.bottomAnchor, constant: 0).isActive = true
-        statsPageVC.view.heightAnchor.constraint(equalToConstant: 970).isActive = true
         
+        
+        statsPageVC.view.heightAnchor.constraint(equalToConstant: 1270).isActive = true
     }
     
     private func setUpNavigationBar() {

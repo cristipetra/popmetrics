@@ -32,6 +32,8 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        barChart.backgroundFillColor = UIColor.white
         barChart.dataSource = self
         
         setupGraph(graphView: barChart)

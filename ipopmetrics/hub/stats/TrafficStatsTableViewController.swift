@@ -20,6 +20,10 @@ class TrafficStatsTableViewController: UITableViewController {
     
     var reloadGraphDelegate: ReloadGraphProtocol!
     
+    let HEIGHT_CELL = 90
+    let HEIGHT_HEADER = 65
+    var constraintHeightTable: NSLayoutConstraint!
+    
     private var pageIndex = 1 {
         didSet {
             tableView.reloadData()
@@ -38,19 +42,37 @@ class TrafficStatsTableViewController: UITableViewController {
         
         self.tableView.separatorColor = PopmetricsColor.unselectedTabBarItemTint
         
+        self.tableView.isScrollEnabled = false
+        constraintHeightTable = tableView.heightAnchor.constraint(equalToConstant: 200)
+        constraintHeightTable.isActive = true
+        
+        self.tableView.sizeToFit()
+        
     }
     
-    func configure(card: StatisticsCard, _ pageIndex: Int) {
-      
-    }
-    
-    override func viewDidLayoutSubviews() {
-        tableView.frame.size = tableView.contentSize
+    override func viewWillLayoutSubviews() {
+        super.updateViewConstraints()
+        
+        if(statisticCard == nil) { return }
+        
+        let metrics = statisticsStore.getStatisticMetricsForCard(statisticCard)  // not returning proper number static metrics
+        let sections = statisticMetric!.getBreakDownGroups()
+        
+        let value = CGFloat(metrics.count * HEIGHT_CELL) + CGFloat(3 * HEIGHT_HEADER)
+        
+        print("statistics")
+        print("metrics:  \(metrics.count)")
+        print("sections: \(sections.count)")
+        print(value)
+        
+        constraintHeightTable.constant = CGFloat(14
+            * HEIGHT_CELL) + CGFloat(sections.count * HEIGHT_HEADER) + 10
     }
     
     func configure(statisticMetric: StatisticMetric) {
         self.statisticMetric = statisticMetric
         self.statisticCard = statisticMetric.statisticCard!
+        tableView.reloadData()
     }
     
     internal func registerCellForTable() {
@@ -132,11 +154,11 @@ class TrafficStatsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return CGFloat(HEIGHT_CELL)
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 65
+        return CGFloat(HEIGHT_HEADER)
     }
    
 }
