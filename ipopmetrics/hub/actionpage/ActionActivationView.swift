@@ -100,8 +100,8 @@ class ActionActivationView: UIView {
         //footerView.topAnchor.constraint(equalTo: testView.bottomAnchor,constant: 20).isActive = true
         footerView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         footerView.heightAnchor.constraint(equalToConstant: 93).isActive = true
-        footerView.informationBtn.isHidden = true
-        footerView.xButton.isHidden = true
+      
+        footerView.leftButton.isHidden = true
     }
     
     func addBackgroundBeforeFooter() {

@@ -28,12 +28,12 @@ class TrafficEmptyView: UITableViewCell {
         self.footerView.setupGradient()
         self.setUpShadowLayer()
         self.setCornerRadius()
-        self.footerView.approveLbl.textColor = PopmetricsColor.trafficEmptyApproveLbl
+        
         self.toolbarView.title.text = "Traffic stats: Unconnected"
         self.toolbarView.leftImage.image = UIImage(named: "iconHeaderTrafficStats")
         self.toolbarView.isLeftImageHidden = false
         self.toolbarView.leftImage.widthAnchor.constraint(equalToConstant: 10).isActive = true
-        self.footerView.approveLbl.text = "View Traffic Report"
+        
         //self.footerView.actionButton.imageButtonType = .traffic
         //self.footerView.actionButton.changeToDisabled()
         self.footerView.setIsTrafficUnconnected()
