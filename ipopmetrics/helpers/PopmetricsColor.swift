@@ -86,4 +86,6 @@ class PopmetricsColor {
     static let myActionCircle = UIColor(red: 87/255, green: 93/255, blue: 99/255, alpha: 1)
     
     static let secondGray = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1)
+    
+    static let borderButton = UIColor(red: 64/255, green: 60/255, blue: 59/255, alpha: 1)
 }
