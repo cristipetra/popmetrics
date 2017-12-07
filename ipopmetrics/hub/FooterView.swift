@@ -31,13 +31,6 @@ class FooterView: UIView {
         container.backgroundColor = UIColor.clear
         return container
     }()
-    
-    
-    lazy var actionButton1: TwoColorButton = {
-        let button = TwoColorButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
  
     lazy var actionButton: ActionButton = {
         let button = ActionButton(type: .system)
@@ -50,16 +43,15 @@ class FooterView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.widthAnchor.constraint(equalToConstant: 85).isActive = true
         button.heightAnchor.constraint(equalToConstant: 46).isActive = true
-        //button.setImage(UIImage(named: "iconCtaClose"), for: .normal)
+ 
+        button.titleLabel?.font = UIFont(name: FontBook.semibold, size: 15)
+        button.setTitleColor(PopmetricsColor.visitSecondColor, for: .normal)
+        button.setTitleColor(PopmetricsColor.visitSecondColor.withAlphaComponent(0.3), for: .highlighted)
         
-        let attrTitle = Style.default {
-            $0.font = FontAttribute(FontBook.regular, size: 15)
-            $0.color = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1)
-        }
-        button.setAttributedTitle("More Info".set(style: attrTitle), for: .normal)
+        button.setTitle("More Info", for: .normal)
         
-        button.tintColor = PopmetricsColor.textGrey
-        button.backgroundColor = .clear
+        button.backgroundColor = .white
+        
         return button
     }()
     
