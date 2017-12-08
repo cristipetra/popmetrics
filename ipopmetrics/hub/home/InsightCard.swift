@@ -46,7 +46,6 @@ class InsightCard: UITableViewCell {
         setUpToolbar(imageName: "iconHeaderBranding", titleName: "Popmetrics Insight")
         titleHeightConstraint.constant = 150
         titleLabel.numberOfLines = 4
-        self.titleLabel.font = UIFont(name: FontBook.extraBold, size: 34)
         self.backgroundImageView.image = UIImage(named: "imagePyramid")
         self.messageLabel.textColor = UIColor.white
         self.messageLabel.font = UIFont(name: FontBook.regular, size: 18)

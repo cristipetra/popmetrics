@@ -44,17 +44,17 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="404-LX-Lbg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="404-LX-Lbg">
                                 <rect key="frame" x="15" y="16" width="275" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="Dq1-j8-EWF"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="80" id="Dq1-j8-EWF"/>
                                 </constraints>
                                 <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="8" bottom="8" trailing="8"/>
                                 <attributedString key="attributedText">
                                     <fragment content="This is an article for you to read">
                                         <attributes>
                                             <color key="NSColor" name="rock_bottom"/>
-                                            <font key="NSFont" size="24" name="OpenSans-Extrabold"/>
+                                            <font key="NSFont" size="34" name="OpenSans-Extrabold"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.5" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -83,7 +83,7 @@
                             <constraint firstItem="aL3-tc-p25" firstAttribute="leading" secondItem="xmp-ns-pr3" secondAttribute="leading" id="F81-T9-LO3"/>
                             <constraint firstAttribute="bottom" secondItem="aL3-tc-p25" secondAttribute="bottom" id="Foc-Ua-72B"/>
                             <constraint firstAttribute="trailing" secondItem="404-LX-Lbg" secondAttribute="trailing" constant="10" id="Rrw-Mo-vcA"/>
-                            <constraint firstItem="404-LX-Lbg" firstAttribute="top" secondItem="xmp-ns-pr3" secondAttribute="top" constant="160" id="SXE-qf-2bb"/>
+                            <constraint firstItem="404-LX-Lbg" firstAttribute="top" secondItem="xmp-ns-pr3" secondAttribute="top" constant="180" id="SXE-qf-2bb"/>
                             <constraint firstItem="eYK-Rm-n8D" firstAttribute="top" secondItem="xmp-ns-pr3" secondAttribute="top" id="WSu-8k-VYd"/>
                             <constraint firstItem="404-LX-Lbg" firstAttribute="leading" secondItem="xmp-ns-pr3" secondAttribute="leading" constant="15" id="fLK-31-SS1"/>
                             <constraint firstAttribute="trailing" secondItem="eYK-Rm-n8D" secondAttribute="trailing" id="l8D-gm-3LT"/>
