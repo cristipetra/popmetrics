@@ -37,6 +37,26 @@ class SettingsGAViewController: UITableViewController {
         self.connectionEmailLabel.text = currentBrand?.googleAnalytics?.connectionEmail ?? "N/A"
     }
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let contentView: UIView  = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 60))
+        var title: UILabel = UILabel()
+        title.font = UIFont(name: FontBook.regular, size: 17)
+        title.textColor = PopmetricsColor.textGraySettings
+        
+        contentView.addSubview(title)
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
+        if section == 0 {
+            title.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0).isActive = true
+            title.text = "ACCOUNT DETAILS"
+        } else {
+            title.text = "CONNECTION"
+            title.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -10).isActive = true
+        }
+        
+        return contentView
+    }
+    
     func setupNavigationBar() {
         
         let text = UIBarButtonItem(title: "GOOGLE ANALYTICS ACCOUNT", style: .plain, target: self, action: nil)
