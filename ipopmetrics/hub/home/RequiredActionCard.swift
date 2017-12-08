@@ -67,7 +67,8 @@ class RequiredActionCard: UITableViewCell {
         self.item = item
         self.actionHandler = handler
         
-        self.titleLabel.text  = item.headerTitle
+        //self.titleLabel.text  = item.headerTitle
+        changeTitle(item.headerTitle)
         messageLabel.text = item.message
         
         //Todo move from here addTarget
@@ -90,6 +91,21 @@ class RequiredActionCard: UITableViewCell {
         }
         
         self.footerView.actionButton.changeTitle(item.actionLabel)
+    }
+    
+    func changeTitle(_ title: String?) {
+        let tooltipImage = UIImage(named: "iconTooltip")
+        let attachment = NSTextAttachment()
+        attachment.image = tooltipImage
+        attachment.bounds = CGRect(x: 0, y: -5, width: 35, height: 35)
+        let attrAttachement = NSAttributedString(attachment: attachment)
+        if let headerTitle = title {
+            let title = NSMutableAttributedString(string: "\(headerTitle) ")
+            title.append(attrAttachement)
+            titleLabel.attributedText = title
+        } else {
+            titleLabel.text = ""
+        }
     }
     
     internal func configureFooterView() {
