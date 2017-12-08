@@ -10,6 +10,7 @@
 import UIKit
 import SwiftRichString
 
+
 class FooterView: UIView {
     
     override init(frame: CGRect) {
@@ -24,113 +25,34 @@ class FooterView: UIView {
     
     // VIEW
     
-    lazy var loadMoreBtn : RoundButton = {
-        
-        let button = RoundButton(type: UIButtonType.system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.widthAnchor.constraint(equalToConstant: 46).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 46).isActive = true
-        button.backgroundColor = UIColor.white
-        button.layer.cornerRadius = 23
-        button.tintColor = PopmetricsColor.textGrey
-        button.setImage(UIImage(named: "iconLoadMore"), for: .normal)
-        button.alpha = 0.0
-        return button
-    }()
-    
-    lazy var loadMoreLbl : UILabel = {
-        
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Load More"
-        label.font = UIFont(name: FontBook.semibold, size: 10)
-        label.textAlignment = .center
-        label.textColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
-        label.alpha = 0
-        return label
-        
-    }()
-    
     lazy var containerView : UIView = {
-        
         let container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
         container.backgroundColor = UIColor.clear
         return container
     }()
-    
-    lazy var informationBtn : RoundButton = {
-        
-        let button = RoundButton(type: UIButtonType.system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.widthAnchor.constraint(equalToConstant: 46).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 46).isActive = true
-        let attrTitle = Style.default {
-            $0.font = FontAttribute(FontBook.regular, size: 30)
-            $0.color = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
-        }
-        button.setAttributedTitle("i".set(style: attrTitle), for: .normal)
-        button.backgroundColor = UIColor.white
-        button.layer.cornerRadius = 23
-        return button
-    }()
-
-    lazy var actionButton: TwoColorButton = {
-        let button = TwoColorButton(type: .system)
+ 
+    lazy var actionButton: ActionButton = {
+        let button = ActionButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
-    /*
-    lazy var xButton : RoundButton = {
-        
-        let button = RoundButton(type: UIButtonType.system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.widthAnchor.constraint(equalToConstant: 46).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 46).isActive = true
-        //button.setImage(UIImage(named: "iconCtaClose"), for: .normal)
-        
-        let attrTitle = Style.default {
-            $0.font = FontAttribute(FontBook.regular, size: 30)
-            $0.color = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
-        }
-        button.setAttributedTitle("i".set(style: attrTitle), for: .normal)
-        
-        button.tintColor = PopmetricsColor.textGrey
-        button.backgroundColor = UIColor.white
-        button.layer.cornerRadius = 23
-        return button
-    }()
-     */
-    lazy var xButton : UIButton = {
+ 
+    lazy var leftButton : UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.widthAnchor.constraint(equalToConstant: 85).isActive = true
         button.heightAnchor.constraint(equalToConstant: 46).isActive = true
-        //button.setImage(UIImage(named: "iconCtaClose"), for: .normal)
+ 
+        button.titleLabel?.font = UIFont(name: FontBook.semibold, size: 15)
+        button.setTitleColor(PopmetricsColor.visitSecondColor, for: .normal)
+        button.setTitleColor(PopmetricsColor.visitSecondColor.withAlphaComponent(0.3), for: .highlighted)
         
-        let attrTitle = Style.default {
-            $0.font = FontAttribute(FontBook.regular, size: 15)
-            $0.color = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1)
-        }
-        button.setAttributedTitle("More Info".set(style: attrTitle), for: .normal)
+        button.setTitle("More Info", for: .normal)
         
-        button.tintColor = PopmetricsColor.textGrey
-        button.backgroundColor = .clear
+        button.backgroundColor = .white
+        
         return button
-    }()
-    
-    lazy var approveLbl : UILabel = {
-        
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: FontBook.semibold, size: 10)
-        label.text = ""
-        label.textAlignment = .center
-        label.textColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1)
-        label.numberOfLines = 2
-        return label
-        
     }()
     
     lazy var gradientLayer: GradientView = {
@@ -142,7 +64,7 @@ class FooterView: UIView {
     }()
     // END VIEW
     
-    var loadMoreStackView: UIStackView!
+    
     internal var horizontalStackView: UIStackView!
     var approveStackView: UIStackView!
     
@@ -162,16 +84,13 @@ class FooterView: UIView {
         self.addSubview(containerView)
         setContainerView()
         setUpApproveStackView()
-        setShadow(button: actionButton)
-        setShadow(button: informationBtn)
-        setShadow(button: xButton)
-        setShadow(button: loadMoreBtn)
+        //setShadow(button: actionButton)
+        
+        //setShadow(button: leftButton)
         setUpDoubleButton()
-        setUpLoadMoreStackView()
+        
         setUpHorizontalStackView()
         
-        //xButton.isHidden = true
-        informationBtn.isHidden = true
     }
     
     func setContainerView() {
@@ -201,69 +120,52 @@ class FooterView: UIView {
     }
     
     func setUpApproveStackView() {
-        approveStackView = UIStackView(arrangedSubviews: [actionButton, approveLbl])
+        approveStackView = UIStackView(arrangedSubviews: [actionButton])
         approveStackView.axis = .vertical
         approveStackView.distribution = .equalSpacing
         approveStackView.alignment = .center
         approveStackView.spacing = 2
         approveStackView.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    func setUpLoadMoreStackView() {
         
-        loadMoreStackView = UIStackView(arrangedSubviews: [loadMoreBtn, loadMoreLbl])
-        loadMoreStackView.axis = .vertical
-        loadMoreStackView.distribution = .equalSpacing
-        loadMoreStackView.alignment = .center
-        loadMoreStackView.spacing = 2
-        loadMoreStackView.translatesAutoresizingMaskIntoConstraints = false
-        loadMoreStackView.widthAnchor.constraint(equalToConstant: 54).isActive = true
+        containerView.addSubview(approveStackView)
+        approveStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: 0).isActive = true
+        approveStackView.rightAnchor.constraint(equalTo: containerView.rightAnchor,constant: -10).isActive = true
     }
     
     func setUpHorizontalStackView() {
-        horizontalStackView = UIStackView(arrangedSubviews: [xButton, informationBtn, loadMoreStackView])
+        horizontalStackView = UIStackView(arrangedSubviews: [leftButton])
         
         horizontalStackView.axis = .horizontal
         horizontalStackView.alignment = .top
-        //horizontalStackView.spacing = 16
         horizontalStackView.distribution = .equalSpacing
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        containerView.addSubview(approveStackView)
-        //approveStackView.topAnchor.constraint(equalTo: containerView.topAnchor,constant: 14).isActive = true
-        approveStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: 0).isActive = true
-        approveStackView.rightAnchor.constraint(equalTo: containerView.rightAnchor,constant: 0).isActive = true
-        
         containerView.addSubview(horizontalStackView)
-        horizontalStackView.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 24).isActive = true
-        horizontalStackView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 10).isActive = true
-        horizontalStackView.rightAnchor.constraint(equalTo: self.approveStackView.leftAnchor, constant: -12).isActive = true
+        horizontalStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: 0).isActive = true
+        horizontalStackView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 0).isActive = true
         
     }
     
     func setIsTrafficUnconnected() {
-        
-        horizontalStackView = UIStackView(arrangedSubviews: [xButton, loadMoreStackView, informationBtn])
+        horizontalStackView = UIStackView(arrangedSubviews: [leftButton])
         
         horizontalStackView.axis = .horizontal
         horizontalStackView.alignment = .top
         horizontalStackView.distribution = .equalSpacing
-        //horizontalStackView.spacing = 16
         
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
         
         containerView.addSubview(approveStackView)
-        approveStackView.topAnchor.constraint(equalTo: containerView.topAnchor,constant: 14).isActive = true
-        approveStackView.rightAnchor.constraint(equalTo: containerView.rightAnchor,constant: 0).isActive = true
+        approveStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: 0).isActive = true
+        approveStackView.rightAnchor.constraint(equalTo: containerView.rightAnchor,constant: -10).isActive = true
         
         containerView.addSubview(horizontalStackView)
-        horizontalStackView.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 14).isActive = true
-        horizontalStackView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 10).isActive = true
-        horizontalStackView.rightAnchor.constraint(equalTo: self.approveStackView.leftAnchor, constant: -10).isActive = true
+        horizontalStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: 0).isActive = true
+        horizontalStackView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 0).isActive = true
     }
     
     func setUpDoubleButton() {
-        actionButton.widthAnchor.constraint(equalToConstant: 160).isActive = true
+        actionButton.widthAnchor.constraint(equalToConstant: 165).isActive = true
         actionButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         actionButton.tintColor = PopmetricsColor.darkGrey
     }
@@ -279,10 +181,6 @@ class FooterView: UIView {
             self.roundCorners(corners: [.bottomLeft, .bottomRight] , radius: 12)
             self.containerView.roundCorners(corners: [.bottomLeft, .bottomRight] , radius: 12)
         }
-    }
-    
-    func changeVisibilityInformationButton(isVisible: Bool) {
-        informationBtn.isHidden = isVisible
     }
     
     func displayOnlyActionButton() {
@@ -310,8 +208,8 @@ class FooterView: UIView {
         self.backgroundColor = UIColor.clear
         self.isOpaque = false
         self.setIsTrafficUnconnected()
-        self.xButton.alpha = 1
-        self.hideButton(button: self.loadMoreBtn)
+        self.leftButton.alpha = 1
+        
         actionButton.changeTitle("Connect Email")
     }
     
@@ -337,12 +235,7 @@ class FooterView: UIView {
         switch cardType! {
         case .required:
             print("required")
-            actionButton.buttonCardType = cardType!
-            
-            
-            //footerView.actionButton.setUpTopBottomColors(topColor: PopmetricsColor.salmondColor, bottomColor: PopmetricsColor.salmondBottomColor)
-            //footerView.actionButton.changeLabelPosition()
-            
+            //actionButton.buttonCardType = cardType!
         default:
             break
         }

@@ -119,13 +119,17 @@ class StaticSettingsViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let contentView: UIView  = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 60))
         var title: UILabel = UILabel()
-        title.font = UIFont(name: FontBook.regular, size: 12)
+        title.font = UIFont(name: FontBook.regular, size: 17)
         title.textColor = PopmetricsColor.textGraySettings
         title.text = sectionTitles[section]
         contentView.addSubview(title)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
-        title.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -10).isActive = true
+        if section == 0 {
+            title.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0).isActive = true
+        } else {
+            title.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -10).isActive = true
+        }
         
         return contentView
     }

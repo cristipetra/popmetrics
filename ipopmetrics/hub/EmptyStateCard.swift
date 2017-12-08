@@ -43,7 +43,7 @@ class EmptyStateCard: UITableViewCell {
         
         footerVIew.actionButton.addTarget(self, action: #selector(handlerActionButton), for: .touchUpInside)
         
-        footerVIew.xButton.addTarget(self, action: #selector(handlerMoreInfo), for: .touchUpInside)
+        footerVIew.leftButton.addTarget(self, action: #selector(handlerMoreInfo), for: .touchUpInside)
     }
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {

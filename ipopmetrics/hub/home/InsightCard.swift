@@ -46,7 +46,6 @@ class InsightCard: UITableViewCell {
         setUpToolbar(imageName: "iconHeaderBranding", titleName: "Popmetrics Insight")
         titleHeightConstraint.constant = 150
         titleLabel.numberOfLines = 4
-        self.titleLabel.font = UIFont(name: FontBook.extraBold, size: 34)
         self.backgroundImageView.image = UIImage(named: "imagePyramid")
         self.messageLabel.textColor = UIColor.white
         self.messageLabel.font = UIFont(name: FontBook.regular, size: 18)
@@ -54,7 +53,7 @@ class InsightCard: UITableViewCell {
             
         footerVIew.actionButton.addTarget(self, action: #selector(handlerActionButton), for: .touchUpInside)
         
-        footerVIew.xButton.addTarget(self, action: #selector(handlerMoreInfo), for: .touchUpInside)
+        footerVIew.leftButton.addTarget(self, action: #selector(handlerMoreInfo), for: .touchUpInside)
     }
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {

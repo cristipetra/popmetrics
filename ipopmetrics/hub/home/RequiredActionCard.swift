@@ -75,8 +75,8 @@ class RequiredActionCard: UITableViewCell {
             //footerView.actionButton.imageButtonType = .allowNotification
             //self.footerView.actionButton.addTarget(self, action:#selector(handleActionNotifications(_:)), for: .touchDown)
         } else {
-            self.footerView.actionButton.addTarget(self, action:#selector(handleCallToAction(_:)), for: .touchDown)
-            self.footerView.informationBtn.addTarget(self, action: #selector(handleInfoButtonPressed(_:)), for: .touchDown)
+            
+            
         }
         
         configureFooterView()

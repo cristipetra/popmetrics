@@ -32,7 +32,7 @@
                         <constraint firstAttribute="height" constant="21" id="7NR-gl-t6l"/>
                         <constraint firstAttribute="width" constant="222" id="kFL-Tw-CKd"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                     <color key="textColor" red="0.42745098039215684" green="0.42745098039215684" blue="0.44705882352941173" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>

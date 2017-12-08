@@ -58,9 +58,7 @@ class  MoreInfoViewCell: UITableViewCell {
     }
     
     private func setUpFooter() {
-        footerView.hideButton(button: footerView.informationBtn)
-        footerView.hideButton(button: footerView.loadMoreBtn)
-        footerView.xButton.alpha = 1
+        footerView.leftButton.alpha = 1
         footerView.actionButton.changeTitle("Show Additional \nItems")
     }
     

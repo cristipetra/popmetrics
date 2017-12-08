@@ -289,7 +289,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             }
             let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
             cell.changeColor(cardType: .traffic)
-            cell.sectionTitleLabel.text = "Traffic";
+            cell.sectionTitleLabel.text = "TRAFFIC";
             return cell
         } else {
             return nil

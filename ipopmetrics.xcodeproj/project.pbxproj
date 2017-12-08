@@ -67,7 +67,6 @@
 		088BBEAA1F58214300AD5414 /* TrafficEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */; };
 		088BBEAC1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */; };
 		088E77A91F7CE99900774F13 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77A81F7CE99900774F13 /* ToastView.swift */; };
-		088E77AB1F7D441400774F13 /* TrafficStatus.xib in Resources */ = {isa = PBXBuildFile; fileRef = 088E77AA1F7D441400774F13 /* TrafficStatus.xib */; };
 		088E77AD1F7D499400774F13 /* TrafficStatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77AC1F7D499400774F13 /* TrafficStatsTableViewController.swift */; };
 		088E77AF1F7D4A8E00774F13 /* TrafficStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77AE1F7D4A8E00774F13 /* TrafficStatus.swift */; };
 		088F14FA1FB9C6080004F925 /* StaticSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F14F91FB9C6080004F925 /* StaticSettingsViewController.swift */; };
@@ -155,6 +154,7 @@
 		08C5CF361FC5EA9C001851A5 /* ActionPageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */; };
 		08C7B18D1F1CF40C00E456C6 /* WelcomeScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C7B18C1F1CF40C00E456C6 /* WelcomeScreen.xib */; };
 		08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */; };
+		08CBB0061FD96AEA0042EE9C /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CBB0051FD96AEA0042EE9C /* ActionButton.swift */; };
 		08CC6EC01FBC7F9C00A6521E /* SettingsLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */; };
 		08CC6EC21FBC7FBA00A6521E /* SettingsLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08CC6EC11FBC7FBA00A6521E /* SettingsLogoView.xib */; };
 		08CE428F1FD041AE00FF8C80 /* EmailMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CE428E1FD041AE00FF8C80 /* EmailMessages.swift */; };
@@ -296,7 +296,6 @@
 		088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficEmptyView.swift; sourceTree = "<group>"; };
 		088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		088E77A81F7CE99900774F13 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
-		088E77AA1F7D441400774F13 /* TrafficStatus.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrafficStatus.xib; sourceTree = "<group>"; };
 		088E77AC1F7D499400774F13 /* TrafficStatsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficStatsTableViewController.swift; sourceTree = "<group>"; };
 		088E77AE1F7D4A8E00774F13 /* TrafficStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficStatus.swift; sourceTree = "<group>"; };
 		088F14F91FB9C6080004F925 /* StaticSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticSettingsViewController.swift; sourceTree = "<group>"; };
@@ -383,6 +382,7 @@
 		08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPageDetailsViewController.swift; sourceTree = "<group>"; };
 		08C7B18C1F1CF40C00E456C6 /* WelcomeScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeScreen.xib; sourceTree = "<group>"; };
 		08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
+		08CBB0051FD96AEA0042EE9C /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLogoViewController.swift; sourceTree = "<group>"; };
 		08CC6EC11FBC7FBA00A6521E /* SettingsLogoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsLogoView.xib; sourceTree = "<group>"; };
 		08CE428E1FD041AE00FF8C80 /* EmailMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailMessages.swift; sourceTree = "<group>"; };
@@ -524,6 +524,7 @@
 		08B4EBA11FC56ABC00BFC5A1 /* helpers */ = {
 			isa = PBXGroup;
 			children = (
+				08CBB0041FD96A9F0042EE9C /* buttons */,
 				08B4EBA91FC56ACD00BFC5A1 /* AppStoryboard.swift */,
 				08B4EBA41FC56ACD00BFC5A1 /* BaseTableViewController.swift */,
 				08B4EBA71FC56ACD00BFC5A1 /* BaseViewController.swift */,
@@ -534,7 +535,6 @@
 				08B4EBAA1FC56ACE00BFC5A1 /* ReachabilityManager.swift */,
 				08B4EBA51FC56ACD00BFC5A1 /* SettingsBaseViewController.swift */,
 				08B4EBA61FC56ACD00BFC5A1 /* TextFieldValidator.swift */,
-				08B4EBAE1FC56ACE00BFC5A1 /* TwoImagesButton.swift */,
 				08B4EBA81FC56ACD00BFC5A1 /* UIColorExtensions.swift */,
 				08B4EBA21FC56ACD00BFC5A1 /* Validator.swift */,
 				08A51D2E1FC6DBBE0097B334 /* Markdown.swift */,
@@ -542,6 +542,15 @@
 				089E10551FD1716200D57A08 /* SwipeExtension.swift */,
 			);
 			path = helpers;
+			sourceTree = "<group>";
+		};
+		08CBB0041FD96A9F0042EE9C /* buttons */ = {
+			isa = PBXGroup;
+			children = (
+				08B4EBAE1FC56ACE00BFC5A1 /* TwoImagesButton.swift */,
+				08CBB0051FD96AEA0042EE9C /* ActionButton.swift */,
+			);
+			path = buttons;
 			sourceTree = "<group>";
 		};
 		08D1BC351F1DF4D700D377B2 /* constants */ = {
@@ -737,7 +746,6 @@
 				08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */,
 				088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */,
 				088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */,
-				088E77AA1F7D441400774F13 /* TrafficStatus.xib */,
 				088E77AE1F7D4A8E00774F13 /* TrafficStatus.swift */,
 				088B28271F7E43960015A66E /* TrafficVisitsViewCell.swift */,
 				088B28291F7E5D130015A66E /* StatisticsCountView.swift */,
@@ -1064,7 +1072,6 @@
 				08B324D81F98C65A00BB4905 /* IceExtendView.xib in Resources */,
 				08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */,
 				113DE2FE1FC8ACD100AE6DE9 /* PaidActionCard.xib in Resources */,
-				088E77AB1F7D441400774F13 /* TrafficStatus.xib in Resources */,
 				0852826C1F287DD70065A968 /* CalendarHeaderViewCell.xib in Resources */,
 				08B745961F1F6C1D00EC3F8C /* OpenSans-Regular.ttf in Resources */,
 				1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */,
@@ -1448,6 +1455,7 @@
 				089E10561FD1716200D57A08 /* SwipeExtension.swift in Sources */,
 				08FAE8441F541D790097DF3E /* StatisticsViewController.swift in Sources */,
 				08B485E61F210A61005918A1 /* RoundButton.swift in Sources */,
+				08CBB0061FD96AEA0042EE9C /* ActionButton.swift in Sources */,
 				08AA6C671F56DC8B0022DE91 /* StatsSlideViewController.swift in Sources */,
 				08A62CB21F8E4DCF0072E6A5 /* TwoColorButton.swift in Sources */,
 				08B5D4BE1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift in Sources */,

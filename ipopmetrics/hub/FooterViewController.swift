@@ -39,14 +39,13 @@ class FooterViewController: UIViewController {
     }
     
     private func addEventsTarget() {
-        footerView.xButton.addTarget(self, action: #selector(informationHandler), for: .touchUpInside)
+        footerView.leftButton.addTarget(self, action: #selector(informationHandler), for: .touchUpInside)
         footerView.actionButton.addTarget(self, action: #selector(approveHandler), for: .touchUpInside)
-        footerView.informationBtn.addTarget(self, action: #selector(informationHandler(_:)), for: .touchUpInside)
+        
     }
     
     private func changeDisplayInfoButton(_ item: FeedCard) {
         if Bool(item.tooltipEnabled) {
-            footerView.changeVisibilityInformationButton(isVisible: Bool(item.tooltipEnabled))
         }
     }
 
@@ -57,7 +56,7 @@ class FooterViewController: UIViewController {
     }
     
     @objc func deleteHandler() {
-        animateButtonBlink(button: footerView.xButton)
+        animateButtonBlink(button: footerView.leftButton)
     }
     
     @objc func informationHandler(_ btn: UIButton) {

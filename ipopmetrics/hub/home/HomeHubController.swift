@@ -384,7 +384,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
-        cell.sectionTitleLabel.text = homeSection?.sectionTitle()
+        cell.sectionTitleLabel.text = homeSection?.sectionTitle().uppercased()
         
         return cell
     }

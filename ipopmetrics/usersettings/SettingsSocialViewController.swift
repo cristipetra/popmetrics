@@ -55,10 +55,11 @@ class SettingsSocialViewController: SettingsBaseViewController {
                 df.dateFormat = "yyyy-MM-dd hh:mm:ss"
                 self.connectionDateLabel.text = df.string(from: date)
             }
-            
+            connectionDateLabel.text = "http://www.twitter.com/brandname"
             break
         case .linkedin:
             brandURLLabel.text = "http://www.linkedin.com/username"
+            connectionDateLabel.text = "http://www.linkedin.com/brandname"
             break
         default:
             break
