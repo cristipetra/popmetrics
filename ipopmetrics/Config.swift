@@ -26,13 +26,13 @@ class Config: NSObject {
     
     class var mailContact: String {
         get {
-            return "concierge@popmetrics.io"
+            return "concierge@popmetrics.ai"
         }
     }
     
     class var mailSettings: String {
         get {
-            return "aimee@popmetrics.io"
+            return "aimee@popmetrics.ai"
         }
     }
     
