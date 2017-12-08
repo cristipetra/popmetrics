@@ -24,6 +24,11 @@ class ActionPageDetailsViewController: UIViewController {
     @IBOutlet weak var containerInsightArguments: UIView!
 
     @IBOutlet weak var constraintHeightClosingMarkdown: NSLayoutConstraint!
+    
+    
+    @IBOutlet weak var addToMyActionsView: UIView!
+    @IBOutlet weak var addToPaidActionsView: UIView!
+    
     private var recommendActionHandler: RecommendActionHandler?
     
     @IBOutlet weak var containerClosingMarkdown: UIView!
@@ -162,6 +167,23 @@ class ActionPageDetailsViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func handlerAddToPadActions(_ sender: Any) {
+        if feedCard != nil {
+            FeedApi().postAddToPaidActions(feedCardId: self.feedCard.cardId!, brandId: UserStore.currentBrandId) { todoCard in
+                TodoStore.getInstance().addTodoCard(todoCard!)
+                
+                if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
+                    FeedStore.getInstance().updateCardSection(insightCard, section:"None")
+                }
+                FeedStore.getInstance().updateCardSection(self.feedCard, section:"None")
+                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
+                                                userInfo: ["sucess":true])
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
 
     @objc func handlerClickBack() {
         self.navigationController?.popViewController(animated: true)
