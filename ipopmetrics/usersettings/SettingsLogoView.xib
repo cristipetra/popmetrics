@@ -36,11 +36,11 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="595"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BRAND LOGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82N-vV-UJx">
-                                    <rect key="frame" x="25" y="17" width="111.5" height="18"/>
+                                    <rect key="frame" x="25" y="17" width="85.5" height="18"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="18" id="2Hs-Mk-8cb"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                     <color key="textColor" red="0.42745098039215684" green="0.42745098039215684" blue="0.44705882352941173" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -68,7 +68,7 @@
                                         <constraint firstItem="e3h-G8-vvC" firstAttribute="leading" secondItem="zLj-5h-XYO" secondAttribute="leading" constant="25" id="nkz-nz-24W"/>
                                     </constraints>
                                 </view>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qQS-ER-Pc5">
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_placeholder_settings" translatesAutoresizingMaskIntoConstraints="NO" id="qQS-ER-Pc5">
                                     <rect key="frame" x="0.0" y="52" width="320" height="200"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
@@ -140,5 +140,6 @@
     </objects>
     <resources>
         <image name="logo_diagram_settings" width="402" height="118"/>
+        <image name="logo_placeholder_settings" width="144" height="53"/>
     </resources>
 </document>

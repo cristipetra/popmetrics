@@ -33,6 +33,44 @@ class InsightPageDetailsViewController: UIViewController {
     @IBOutlet weak var impactScore: ImpactScoreView!
     let statsView = IndividualTaskView()
     
+    
+    var bottomContainerViewBottomAnchor: NSLayoutConstraint!
+    internal var isBottomVisible = false
+    
+    lazy var buttonContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var separatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(red: 189/255, green: 197/255, blue: 203/255, alpha: 1)
+        return view
+    }()
+    
+    lazy var denyPostBtn: UIButton = {
+        let button = UIButton(type: UIButtonType.system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(PopmetricsColor.secondGray, for: .normal)
+        button.setTitle("Deny Post", for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.titleLabel?.font = UIFont(name: FontBook.bold, size: 15)
+        return button
+    }()
+    
+    lazy var approvePostBtn: TwoColorButton = {
+        let button = TwoColorButton(type: UIButtonType.system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.changeTitle("Approve Post")
+        button.titleLabel?.font = UIFont(name: FontBook.bold, size: 15)
+        button.contentHorizontalAlignment = .right
+        return button
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +81,8 @@ class InsightPageDetailsViewController: UIViewController {
         self.view.addSwipeGestureRecognizer {
             self.navigationController?.popViewController(animated: true)
         }
+        
+        addBottomButtons()
     }
 
     override func didReceiveMemoryWarning() {
@@ -143,4 +183,39 @@ class InsightPageDetailsViewController: UIViewController {
     @objc func handlerClickBack() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func addBottomButtons() {
+        
+        view.addSubview(buttonContainerView)
+        
+        //buttonContainerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        bottomContainerViewBottomAnchor = buttonContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+        bottomContainerViewBottomAnchor.isActive = true
+        buttonContainerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        buttonContainerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        buttonContainerView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+        
+        buttonContainerView.addSubview(denyPostBtn)
+        buttonContainerView.addSubview(approvePostBtn)
+        buttonContainerView.addSubview(separatorView)
+        
+        denyPostBtn.leftAnchor.constraint(equalTo: buttonContainerView.leftAnchor, constant: 25).isActive = true
+        denyPostBtn.topAnchor.constraint(equalTo: buttonContainerView.topAnchor, constant: 18).isActive = true
+        denyPostBtn.widthAnchor.constraint(equalToConstant: 90).isActive = true
+        denyPostBtn.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        approvePostBtn.rightAnchor.constraint(equalTo: buttonContainerView.rightAnchor, constant: -24).isActive = true
+        approvePostBtn.topAnchor.constraint(equalTo: buttonContainerView.topAnchor, constant: 12).isActive = true
+        approvePostBtn.widthAnchor.constraint(equalToConstant: 161).isActive = true
+        approvePostBtn.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        separatorView.topAnchor.constraint(equalTo: buttonContainerView.topAnchor, constant: 0).isActive = true
+        separatorView.leftAnchor.constraint(equalTo: buttonContainerView.leftAnchor).isActive = true
+        separatorView.rightAnchor.constraint(equalTo: buttonContainerView.rightAnchor).isActive = true
+        separatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        //denyPostBtn.addTarget(self, action: #selector(denyPost(sender:)), for: .touchUpInside)
+        //approvePostBtn.addTarget(self, action: #selector(approvePost(sender:)), for: .touchUpInside)
+    }
+    
 }

@@ -119,7 +119,7 @@ class StaticSettingsViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let contentView: UIView  = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 60))
         var title: UILabel = UILabel()
-        title.font = UIFont(name: FontBook.regular, size: 17)
+        title.font = UIFont(name: FontBook.regular, size: 13)
         title.textColor = PopmetricsColor.textGraySettings
         title.text = sectionTitles[section]
         contentView.addSubview(title)

@@ -50,7 +50,7 @@ class SettingsLogoViewController: SettingsBaseViewController, UINavigationContro
     
     func displayEmptyImage() {
         logoImageView.image = UIImage(named: "logo_placeholder_settings")
-        logoImageView.contentMode = .scaleAspectFit
+        //logoImageView.contentMode = .scaleAspectFit
     }
     
     override func didReceiveMemoryWarning() {
