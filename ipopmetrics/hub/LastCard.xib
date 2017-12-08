@@ -21,15 +21,8 @@
                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXX-Yp-XlA">
                         <rect key="frame" x="10" y="0.0" width="355" height="260.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheck" translatesAutoresizingMaskIntoConstraints="NO" id="gZZ-g1-aRE">
-                                <rect key="frame" x="24" y="31" width="28" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="Wxl-PC-t2D"/>
-                                    <constraint firstAttribute="width" constant="28" id="crA-Vl-odA"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6x-z1-jd3">
-                                <rect key="frame" x="80" y="15" width="188" height="63"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6x-z1-jd3">
+                                <rect key="frame" x="25" y="15" width="245" height="74"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="188" id="Soo-yO-f7z"/>
                                 </constraints>
@@ -44,8 +37,8 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQQ-Uf-qQE">
-                                <rect key="frame" x="23" y="96" width="311" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQQ-Uf-qQE">
+                                <rect key="frame" x="25" y="106" width="311" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="VTz-lW-f8E"/>
                                 </constraints>
@@ -122,16 +115,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="lCs-7n-YJn" secondAttribute="trailing" id="2gB-pv-gQQ"/>
-                            <constraint firstItem="gZZ-g1-aRE" firstAttribute="leading" secondItem="TXX-Yp-XlA" secondAttribute="leading" constant="24" id="47u-3N-0cl"/>
                             <constraint firstItem="1YS-lF-dzl" firstAttribute="leading" secondItem="TXX-Yp-XlA" secondAttribute="leading" constant="1" id="8OF-M1-Ofl"/>
                             <constraint firstAttribute="bottom" secondItem="1YS-lF-dzl" secondAttribute="bottom" id="FJA-7R-AOH"/>
                             <constraint firstItem="i6x-z1-jd3" firstAttribute="top" secondItem="TXX-Yp-XlA" secondAttribute="top" constant="15" id="JFD-0k-vhc"/>
                             <constraint firstItem="EQQ-Uf-qQE" firstAttribute="leading" secondItem="TXX-Yp-XlA" secondAttribute="leading" constant="23" id="XSd-0r-cvq"/>
                             <constraint firstAttribute="trailing" secondItem="EQQ-Uf-qQE" secondAttribute="trailing" constant="21" id="Xi9-vx-e9X"/>
                             <constraint firstItem="EQQ-Uf-qQE" firstAttribute="top" secondItem="i6x-z1-jd3" secondAttribute="bottom" constant="18" id="ZcH-xJ-mda"/>
-                            <constraint firstItem="i6x-z1-jd3" firstAttribute="leading" secondItem="gZZ-g1-aRE" secondAttribute="trailing" constant="28" id="lI4-Np-oCr"/>
                             <constraint firstAttribute="bottom" secondItem="lCs-7n-YJn" secondAttribute="bottom" id="lLF-fs-4no"/>
-                            <constraint firstItem="gZZ-g1-aRE" firstAttribute="top" secondItem="TXX-Yp-XlA" secondAttribute="top" constant="31" id="oXJ-GD-h9u"/>
                             <constraint firstAttribute="trailing" secondItem="1YS-lF-dzl" secondAttribute="trailing" constant="-1" id="rZa-XL-e6s"/>
                             <constraint firstItem="lCs-7n-YJn" firstAttribute="leading" secondItem="TXX-Yp-XlA" secondAttribute="leading" id="vOl-sX-29l"/>
                         </constraints>
@@ -150,7 +140,6 @@
             <connections>
                 <outlet property="goToButton" destination="OhX-Wm-mus" id="7hB-yo-Ien"/>
                 <outlet property="headerView" destination="1YS-lF-dzl" id="mJ9-2w-fb9"/>
-                <outlet property="imageTitle" destination="gZZ-g1-aRE" id="25t-he-WkI"/>
                 <outlet property="messageLbl" destination="EQQ-Uf-qQE" id="i53-Vt-ags"/>
                 <outlet property="secondContainerView" destination="TXX-Yp-XlA" id="2h5-bR-dZ8"/>
                 <outlet property="titleLabel" destination="i6x-z1-jd3" id="Cid-dA-ILf"/>
@@ -161,7 +150,6 @@
     </objects>
     <resources>
         <image name="iconCalRightBold" width="15" height="24"/>
-        <image name="iconCheck" width="26" height="26"/>
         <image name="iconCloseCard" width="53" height="53"/>
         <image name="iconCtaClose" width="19" height="19"/>
         <image name="iconCtaTodo" width="27" height="19"/>

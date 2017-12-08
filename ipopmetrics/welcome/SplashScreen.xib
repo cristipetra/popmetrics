@@ -1,16 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="AlfaSlabOne-Regular.ttf">
-            <string>AlfaSlabOne-Regular</string>
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-ExtraBold.ttf">
+            <string>OpenSans-Extrabold</string>
         </array>
         <array key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
@@ -30,13 +33,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="page1" translatesAutoresizingMaskIntoConstraints="NO" id="Zyu-lh-tqb">
-                    <rect key="frame" x="36.5" y="99" width="247" height="63"/>
+                    <rect key="frame" x="36.5" y="99" width="247" height="57"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="247" id="yne-SV-IY3"/>
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kGI-OH-1gk">
-                    <rect key="frame" x="21" y="223" width="278" height="33"/>
+                    <rect key="frame" x="21" y="217" width="278" height="33"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marketing." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yy3-hq-kY0">
                             <rect key="frame" x="0.0" y="0.0" width="139" height="33"/>
@@ -49,7 +52,7 @@
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evolved." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9A-4F-ggf">
                             <rect key="frame" x="149" y="0.0" width="129" height="33"/>
-                            <fontDescription key="fontDescription" name="AlfaSlabOne-Regular" family="Alfa Slab One" pointSize="23"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="23"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -59,8 +62,8 @@
                         <constraint firstAttribute="width" constant="278" id="UHC-Sz-SEw"/>
                     </constraints>
                 </stackView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AVb-Iy-ZOh">
-                    <rect key="frame" x="79" y="466" width="162" height="48"/>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AVb-Iy-ZOh">
+                    <rect key="frame" x="79" y="476" width="162" height="48"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe to begin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FpX-YQ-EXe">
                             <rect key="frame" x="-0.5" y="12" width="159" height="23"/>
@@ -68,8 +71,8 @@
                                 <constraint firstAttribute="width" constant="159" id="Bvo-jf-IOE"/>
                                 <constraint firstAttribute="height" constant="23" id="j4g-ld-XZD"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                            <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swipebeginArrow" translatesAutoresizingMaskIntoConstraints="NO" id="IwU-aA-66Q">
@@ -90,12 +93,18 @@
                         <constraint firstItem="IwU-aA-66Q" firstAttribute="centerY" secondItem="AVb-Iy-ZOh" secondAttribute="centerY" id="riX-LE-ZUR"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tug-aH-hmx">
-                    <rect key="frame" x="16" y="285" width="288" height="115"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tug-aH-hmx">
+                    <rect key="frame" x="16" y="269" width="288" height="192"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="115" id="PZy-mb-P3r"/>
+                        <constraint firstAttribute="height" constant="180" id="PZy-mb-P3r"/>
                     </constraints>
-                    <string key="text">We manage and track your performance online, use data to determine your best route forward, and execute marketing tasks on demand.</string>
+                    <string key="text">Grow your business with 
+tailored recommendations 
+
+Automate your Social Media
+
+Manage your online presence
+&amp; track your performance</string>
                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                     <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -116,7 +125,7 @@
         </view>
     </objects>
     <resources>
-        <image name="page1" width="248" height="63"/>
+        <image name="page1" width="259" height="57"/>
         <image name="swipebeginArrow" width="17" height="49"/>
     </resources>
 </document>

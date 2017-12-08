@@ -43,7 +43,7 @@ class ActionButton: UIButton {
 
     internal func changeTitle(_ title: String) {
         self.setTitle(title, for: .normal)
-        self.titleLabel?.font = UIFont(name: FontBook.bold, size: 14)
+        self.titleLabel?.font = UIFont(name: FontBook.bold, size: 15)
     }
 
 }
