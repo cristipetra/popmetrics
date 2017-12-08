@@ -59,7 +59,7 @@ class TrafficReportViewController: UIViewController {
         topPageControl.currentPageIndicatorTintColor = UIColor(red: 87/255, green: 93/255, blue: 99/255, alpha: 1)
 
         let numberOfPages = statisticStore.getStatisticMetricsForCard(statisticsCard).count
-
+        topPageControl.numberOfPages = numberOfPages
     }
     
     func addPageView() {
