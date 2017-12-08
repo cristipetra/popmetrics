@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,55 +21,55 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Szb-A8-lTX" customClass="InsightCard" customModule="ipopmetrics" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="506"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="Szb-A8-lTX" id="Iw2-KH-qXD">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Szb-A8-lTX" id="Iw2-KH-qXD">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="505.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OVB-Nz-PDL" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OVB-Nz-PDL" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
                         <rect key="frame" x="10" y="0.0" width="300" height="29"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="29" id="iT6-Od-Dhn"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xmp-ns-pr3">
-                        <rect key="frame" x="10" y="29" width="300" height="439.5"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xmp-ns-pr3">
+                        <rect key="frame" x="10" y="29" width="300" height="440"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eYK-Rm-n8D">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="345"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePyramid" translatesAutoresizingMaskIntoConstraints="NO" id="eYK-Rm-n8D">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
                                 <color key="backgroundColor" name="rock_bottom"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="170" id="Gyj-Qa-Adm"/>
+                                    <constraint firstAttribute="height" constant="150" id="Gyj-Qa-Adm"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="404-LX-Lbg">
-                                <rect key="frame" x="15" y="16" width="275" height="80"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="404-LX-Lbg">
+                                <rect key="frame" x="15" y="180" width="270" height="89.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="80" id="Dq1-j8-EWF"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="120" id="yxz-XE-3cO"/>
                                 </constraints>
                                 <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="8" bottom="8" trailing="8"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="This is an article for you to read">
+                                    <fragment content="This is an article for you to read sad sad ">
                                         <attributes>
                                             <color key="NSColor" name="rock_bottom"/>
                                             <font key="NSFont" size="34" name="OpenSans-Extrabold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.5" tighteningFactorForTruncation="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.75" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Twitter is a key access point to increase your social following." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEd-JZ-7L4">
-                                <rect key="frame" x="15" y="146" width="275" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter is a key access point to increase your social following." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEd-JZ-7L4">
+                                <rect key="frame" x="15" y="284.5" width="273" height="35"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" name="larry_david"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aL3-tc-p25" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="345" width="300" height="94"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aL3-tc-p25" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="346" width="300" height="94"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="94" id="ABK-Fm-RIs"/>
@@ -77,23 +78,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YEd-JZ-7L4" firstAttribute="leading" secondItem="xmp-ns-pr3" secondAttribute="leading" constant="15" id="B2m-s6-ngN"/>
+                            <constraint firstItem="404-LX-Lbg" firstAttribute="leading" secondItem="xmp-ns-pr3" secondAttribute="leading" constant="15" id="40L-MX-qPW"/>
                             <constraint firstAttribute="trailing" secondItem="aL3-tc-p25" secondAttribute="trailing" id="DHS-kU-Ccz"/>
-                            <constraint firstItem="aL3-tc-p25" firstAttribute="top" secondItem="eYK-Rm-n8D" secondAttribute="bottom" constant="190" id="F6D-uN-qwD"/>
                             <constraint firstItem="aL3-tc-p25" firstAttribute="leading" secondItem="xmp-ns-pr3" secondAttribute="leading" id="F81-T9-LO3"/>
                             <constraint firstAttribute="bottom" secondItem="aL3-tc-p25" secondAttribute="bottom" id="Foc-Ua-72B"/>
-                            <constraint firstAttribute="trailing" secondItem="404-LX-Lbg" secondAttribute="trailing" constant="10" id="Rrw-Mo-vcA"/>
-                            <constraint firstItem="404-LX-Lbg" firstAttribute="top" secondItem="xmp-ns-pr3" secondAttribute="top" constant="180" id="SXE-qf-2bb"/>
+                            <constraint firstItem="YEd-JZ-7L4" firstAttribute="top" secondItem="404-LX-Lbg" secondAttribute="bottom" constant="15" id="Gma-8k-mIq"/>
+                            <constraint firstItem="YEd-JZ-7L4" firstAttribute="leading" secondItem="xmp-ns-pr3" secondAttribute="leading" constant="15" id="MeA-Bm-46C"/>
+                            <constraint firstAttribute="height" constant="440" id="VB3-Si-ZV7"/>
                             <constraint firstItem="eYK-Rm-n8D" firstAttribute="top" secondItem="xmp-ns-pr3" secondAttribute="top" id="WSu-8k-VYd"/>
-                            <constraint firstItem="404-LX-Lbg" firstAttribute="leading" secondItem="xmp-ns-pr3" secondAttribute="leading" constant="15" id="fLK-31-SS1"/>
+                            <constraint firstAttribute="trailing" secondItem="404-LX-Lbg" secondAttribute="trailing" constant="15" id="ZUw-vk-xNy"/>
                             <constraint firstAttribute="trailing" secondItem="eYK-Rm-n8D" secondAttribute="trailing" id="l8D-gm-3LT"/>
-                            <constraint firstItem="YEd-JZ-7L4" firstAttribute="top" secondItem="404-LX-Lbg" secondAttribute="bottom" id="phr-sD-EzI"/>
+                            <constraint firstItem="404-LX-Lbg" firstAttribute="top" secondItem="eYK-Rm-n8D" secondAttribute="bottom" constant="30" id="mnH-eL-eoD"/>
                             <constraint firstItem="eYK-Rm-n8D" firstAttribute="leading" secondItem="xmp-ns-pr3" secondAttribute="leading" id="puW-OB-2j2"/>
-                            <constraint firstAttribute="trailing" secondItem="YEd-JZ-7L4" secondAttribute="trailing" constant="10" id="yj6-44-Vyr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YEd-JZ-7L4" secondAttribute="trailing" constant="4" id="xDe-T3-2BS"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aKF-7W-goR">
-                        <rect key="frame" x="32.5" y="468" width="2" height="37"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKF-7W-goR">
+                        <rect key="frame" x="33" y="469" width="2" height="36"/>
                         <color key="backgroundColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="2" id="u4M-UU-7kV"/>
@@ -119,7 +120,6 @@
                 <outlet property="containerView" destination="xmp-ns-pr3" id="wmC-SX-gjn"/>
                 <outlet property="footerVIew" destination="aL3-tc-p25" id="wBZ-Bv-RFJ"/>
                 <outlet property="messageLabel" destination="YEd-JZ-7L4" id="hZm-2p-cpQ"/>
-                <outlet property="titleHeightConstraint" destination="Dq1-j8-EWF" id="QSK-l7-ZjZ"/>
                 <outlet property="titleLabel" destination="404-LX-Lbg" id="A3z-oJ-cbb"/>
                 <outlet property="toolBarView" destination="OVB-Nz-PDL" id="xWd-mv-oCz"/>
             </connections>
@@ -127,6 +127,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="imagePyramid" width="179" height="179"/>
         <namedColor name="larry_david">
             <color red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

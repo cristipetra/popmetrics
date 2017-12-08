@@ -105,6 +105,7 @@ class ToolbarViewCell: UIView {
         circleView.heightAnchor.constraint(equalToConstant: 12).isActive = true
         circleView.layer.cornerRadius = 6
         circleView.backgroundColor = PopmetricsColor.myActionCircle
+        
     }
     
     func setUpCircleBackground(topColor: UIColor , bottomColor: UIColor) {

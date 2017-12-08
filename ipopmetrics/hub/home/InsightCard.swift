@@ -23,9 +23,6 @@ class InsightCard: UITableViewCell {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var footerVIew: FooterView!
     
-    
-    @IBOutlet weak var titleHeightConstraint: NSLayoutConstraint!
-    
     private var feedCard: FeedCard!
     weak var delegate: RecommendeCellDelegate?
     
@@ -43,23 +40,18 @@ class InsightCard: UITableViewCell {
         setupCorners()
         setUpShadowLayer()
         
-        setUpToolbar(imageName: "iconHeaderBranding", titleName: "Popmetrics Insight")
-        titleHeightConstraint.constant = 150
-        titleLabel.numberOfLines = 4
-        self.backgroundImageView.image = UIImage(named: "imagePyramid")
-        self.messageLabel.textColor = UIColor.white
-        self.messageLabel.font = UIFont(name: FontBook.regular, size: 18)
-        self.messageLabel.numberOfLines = 5
-            
         footerVIew.actionButton.addTarget(self, action: #selector(handlerActionButton), for: .touchUpInside)
-        
         footerVIew.leftButton.addTarget(self, action: #selector(handlerMoreInfo), for: .touchUpInside)
+    
     }
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
         self.feedCard = feedCard
         
-        titleLabel.text = feedCard.headerTitle!
+        //titleLabel.text = feedCard.headerTitle!
+        titleLabel.setTextWhileKeepingAttributes(string: feedCard.headerTitle!)
+        
+        //titleLabel.attributedText = feedCard.headerTitle!
         messageLabel.text = feedCard.message!
         footerVIew.actionButton.changeTitle(feedCard.actionLabel)
         
@@ -96,29 +88,17 @@ class InsightCard: UITableViewCell {
     
     private func setTitleRecommended(title: String) {
         titleLabel.text = title
-        titleLabel.textColor = UIColor.white
-        self.titleLabel.font = UIFont(name: FontBook.bold, size: 23)
     }
     
     private func setTitleInsight(title: String) {
         titleLabel.text = title
         titleLabel.textColor = UIColor.white
-        self.titleLabel.font = UIFont(name: FontBook.bold, size: 18)
     }
     
     private func setMessage(message: String) {
         messageLabel.text = message
-        messageLabel.numberOfLines = 5
     }
     
-    private func setUpToolbar(imageName: String, titleName: String) {
-        
-        self.toolBarView.isLeftImageHidden = false
-        self.toolBarView.leftImage.image = UIImage(named: imageName)
-        self.toolBarView.title.text = titleName
-        self.toolBarView.leftImage.contentMode = UIViewContentMode.scaleAspectFit
-        self.toolBarView.title.font = UIFont(name: FontBook.bold, size: 15)
-    }
     
     func setUpShadowLayer() {
         self.insertSubview(shadowLayer, at: 0)
@@ -133,4 +113,16 @@ class InsightCard: UITableViewCell {
         shadowLayer.layer.cornerRadius = 12
     }
     
+}
+
+extension UILabel {
+    func setTextWhileKeepingAttributes(string: String) {
+        if let newAttributedText = self.attributedText {
+            let mutableAttributedText = newAttributedText.mutableCopy()
+            
+            (mutableAttributedText as AnyObject).mutableString.setString(string)
+            
+            self.attributedText = mutableAttributedText as? NSAttributedString
+        }
+    }
 }
