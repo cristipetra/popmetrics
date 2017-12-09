@@ -41,6 +41,10 @@ class ActionPageDetailsViewController: UIViewController {
     let statsView = IndividualTaskView()
     let iceView = IceExtendView()
     
+    let persistentFooter: PersistentFooter =  PersistentFooter()
+    var bottomContainerViewBottomAnchor: NSLayoutConstraint!
+    internal var isBottomVisible = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,6 +57,8 @@ class ActionPageDetailsViewController: UIViewController {
         self.view.addSwipeGestureRecognizer {
             self.navigationController?.popViewController(animated: true)
         }
+        
+        addPersistentFooter()
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,6 +75,21 @@ class ActionPageDetailsViewController: UIViewController {
         iceView.leftAnchor.constraint(equalTo: self.containerIceView.leftAnchor, constant: 0).isActive = true
         
     }
+    
+    func addPersistentFooter() {
+        view.addSubview(persistentFooter)
+        persistentFooter.translatesAutoresizingMaskIntoConstraints = false
+        persistentFooter.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        persistentFooter.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        persistentFooter.heightAnchor.constraint(equalToConstant: 81).isActive = true
+        
+        bottomContainerViewBottomAnchor = persistentFooter.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+        bottomContainerViewBottomAnchor.isActive = true
+        
+        persistentFooter.leftBtn.isHidden = true
+        persistentFooter.rightBtn.changeTitle("View")
+    }
+    
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
         self.feedCard = feedCard

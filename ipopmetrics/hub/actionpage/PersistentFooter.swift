@@ -30,9 +30,6 @@ class PersistentFooter: UIView {
     lazy var rightBtn: ActionButton = {
         let button = ActionButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        //        /button.changeTitle("Approve Post")
-        //button.titleLabel?.font = UIFont(name: FontBook.bold, size: 15)
-        //button.contentHorizontalAlignment = .right
         return button
     }()
     
@@ -70,5 +67,4 @@ class PersistentFooter: UIView {
         separatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
 
-    
 }
