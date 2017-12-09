@@ -42,7 +42,7 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="1676"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="CMJ-3S-pPM">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="1455"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1520"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DtL-7f-lTr">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="316"/>
@@ -212,6 +212,35 @@
                                         <constraint firstItem="ohg-6F-3GN" firstAttribute="centerY" secondItem="da2-1W-Lo9" secondAttribute="centerY" id="bXh-Ve-LOO"/>
                                         <constraint firstItem="Epo-Ej-XdB" firstAttribute="centerY" secondItem="da2-1W-Lo9" secondAttribute="centerY" id="l13-vx-xAa"/>
                                         <constraint firstItem="Epo-Ej-XdB" firstAttribute="leading" secondItem="da2-1W-Lo9" secondAttribute="leading" constant="25" id="rbn-PN-BAQ"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="civ-5I-2Rw">
+                                    <rect key="frame" x="0.0" y="1456" width="375" height="64"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8r-mx-7Gu">
+                                            <rect key="frame" x="25" y="0.0" width="350" height="64"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                            <state key="normal" title="Insight Page">
+                                                <color key="titleColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="handlerInsightPage:" destination="-1" eventType="touchUpInside" id="LPQ-IU-tAk"/>
+                                            </connections>
+                                        </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="8aD-on-6yH">
+                                            <rect key="frame" x="342" y="19.5" width="11" height="25"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="8aD-on-6yH" firstAttribute="centerY" secondItem="civ-5I-2Rw" secondAttribute="centerY" id="0sv-kq-qIq"/>
+                                        <constraint firstItem="R8r-mx-7Gu" firstAttribute="centerY" secondItem="civ-5I-2Rw" secondAttribute="centerY" id="CV8-LJ-FcP"/>
+                                        <constraint firstAttribute="trailing" secondItem="8aD-on-6yH" secondAttribute="trailing" constant="22" id="K8R-Fj-pca"/>
+                                        <constraint firstAttribute="trailing" secondItem="R8r-mx-7Gu" secondAttribute="trailing" id="KFv-F6-8iC"/>
+                                        <constraint firstItem="R8r-mx-7Gu" firstAttribute="leading" secondItem="civ-5I-2Rw" secondAttribute="leading" constant="25" id="Re1-tG-Fmd"/>
+                                        <constraint firstAttribute="height" constant="64" id="Xzi-1c-eul"/>
+                                        <constraint firstItem="R8r-mx-7Gu" firstAttribute="top" secondItem="civ-5I-2Rw" secondAttribute="top" id="qC8-tK-45P"/>
+                                        <constraint firstAttribute="bottom" secondItem="R8r-mx-7Gu" secondAttribute="bottom" id="ygO-92-e3Q"/>
                                     </constraints>
                                 </view>
                             </subviews>

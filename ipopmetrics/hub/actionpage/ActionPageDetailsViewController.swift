@@ -204,8 +204,15 @@ class ActionPageDetailsViewController: UIViewController {
             }
         }
     }
-    
 
+    @IBAction func handlerInsightPage(_ sender: UIButton) {
+        if feedCard == nil { return }
+        let insightDetails = InsightPageDetailsViewController(nibName: "InsightPage", bundle: nil)
+        insightDetails.configure(feedCard)
+        
+        self.navigationController?.pushViewController(insightDetails, animated: true)
+    }
+    
     @objc func handlerClickBack() {
         self.navigationController?.popViewController(animated: true)
     }
