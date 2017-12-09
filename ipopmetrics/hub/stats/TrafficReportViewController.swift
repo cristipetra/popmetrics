@@ -50,7 +50,8 @@ class TrafficReportViewController: UIViewController {
         self.statisticsCard = statisticsCard;
     }
     
-    override func viewDidLayoutSubviews() {
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         scrollView.contentSize = CGSize(width:self.scrollView.contentSize.width, height: self.containerView.frame.height)
     }
     
