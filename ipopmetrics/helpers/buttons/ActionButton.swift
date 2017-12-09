@@ -22,6 +22,7 @@ class ActionButton: UIButton {
     
     func setupView() {
         self.roundedCorners = true
+        self.tintColor = PopmetricsColor.darkGrey
         
         self.layer.cornerRadius = 22
         self.layer.borderColor = PopmetricsColor.borderButton.cgColor

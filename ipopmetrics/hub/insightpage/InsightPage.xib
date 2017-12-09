@@ -240,7 +240,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                         <constraint firstItem="CMJ-3S-pPM" firstAttribute="top" secondItem="YdJ-OJ-AEq" secondAttribute="top" id="QmW-md-2Xf"/>
                         <constraint firstItem="CMJ-3S-pPM" firstAttribute="width" secondItem="YdJ-OJ-AEq" secondAttribute="width" id="WRC-BN-5kO"/>
                         <constraint firstItem="CMJ-3S-pPM" firstAttribute="leading" secondItem="YdJ-OJ-AEq" secondAttribute="leading" id="ga3-ym-jFH"/>
-                        <constraint firstAttribute="bottom" secondItem="CMJ-3S-pPM" secondAttribute="bottom" id="rGs-US-wHD"/>
+                        <constraint firstAttribute="bottom" secondItem="CMJ-3S-pPM" secondAttribute="bottom" constant="60" id="rGs-US-wHD"/>
                     </constraints>
                 </scrollView>
             </subviews>
