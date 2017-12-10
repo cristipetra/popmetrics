@@ -131,6 +131,7 @@ class TodoHubController: BaseViewController {
         
         self.toDoTopView.setActive(section: .unapproved)
         
+        
         self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         self.tableView.estimatedSectionHeaderHeight = 60
         
@@ -165,6 +166,7 @@ class TodoHubController: BaseViewController {
         addApprovedView()
         
         topHeaderView.changeVisibilityExpandView(visible: false)
+        updateCountsTopView()
     }
     
     private func createItemsLocally() {
@@ -264,6 +266,15 @@ class TodoHubController: BaseViewController {
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     }
     
+    func updateCountsTopView() {
+        
+        guard let todoSection = TodoSection.init(rawValue: self.indexToSection[0]!)
+            else { return }
+        
+        
+        toDoTopView.changeValueSection(value: countCardsInSection(todoSection.rawValue), section: 0)
+    }
+    
     func getCardInSection( _ section: String, atIndex:Int) -> TodoCard {
         
         let nonEmptyCards = store.getNonEmptyTodoCardsWithSection(section)
@@ -303,7 +314,6 @@ class TodoHubController: BaseViewController {
             if let status = StatusArticle(rawValue: todoCard.section.lowercased()) {
                 switch status {
                 case .unapproved:
-                    toDoTopView.setTextClockLabel(text: ("(\(store.getTodoSocialPostsForCard(todoCard).count))"))
                     break
                 case .failed:
                     //toDoTopView.setTextNotificationLabel(text: ("(\(section.items.count))"))
