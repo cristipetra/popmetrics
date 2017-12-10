@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TrafficStatus: UIScrollView {
+class MetricReportView: UIScrollView {
     
     @IBOutlet var contentView: UIView!
     
