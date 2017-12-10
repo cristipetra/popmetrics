@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TrafficReportViewController: UIViewController {
+class StatsReportViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet var containerView: UIView!
@@ -100,7 +100,7 @@ class TrafficReportViewController: UIViewController {
     }
 }
 
-extension TrafficReportViewController: IndexPageProtocol {
+extension StatsReportViewController: IndexPageProtocol {
     
     func indexOfPage(index: Int) {
         self.topPageControl.currentPage = index - 1

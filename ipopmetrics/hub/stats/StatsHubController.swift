@@ -196,7 +196,7 @@ class StatsHubController: BaseViewController {
     
     @objc func openTrafficReport(_ sender: AnyObject, card: StatisticsCard) {
         let cardTmp  = StatsStore.getInstance().getStatisticsCards()[0]
-        let trafficReportVC: TrafficReportViewController = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_TRAFFIC_REPORT) as! TrafficReportViewController
+        let trafficReportVC: StatsReportViewController = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_TRAFFIC_REPORT) as! StatsReportViewController
         
         trafficReportVC.configure(statisticsCard: cardTmp)
         self.navigationController?.pushViewController(trafficReportVC, animated: true)
