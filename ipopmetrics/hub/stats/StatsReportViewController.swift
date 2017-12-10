@@ -76,7 +76,7 @@ class StatsReportViewController: UIViewController {
         statsPageVC.view.bottomAnchor.constraint(equalTo: containerStats.bottomAnchor, constant: 0).isActive = true
         
         
-        statsPageVC.view.heightAnchor.constraint(equalToConstant: 1270).isActive = true
+        // statsPageVC.view.heightAnchor.constraint(equalToConstant: 1270).isActive = true
     }
     
     private func setUpNavigationBar() {

@@ -68,7 +68,7 @@
 		088BBEAA1F58214300AD5414 /* TrafficEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */; };
 		088BBEAC1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */; };
 		088E77A91F7CE99900774F13 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77A81F7CE99900774F13 /* ToastView.swift */; };
-		088E77AD1F7D499400774F13 /* TrafficStatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77AC1F7D499400774F13 /* TrafficStatsTableViewController.swift */; };
+		088E77AD1F7D499400774F13 /* BreakdownsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77AC1F7D499400774F13 /* BreakdownsTableViewController.swift */; };
 		088E77AF1F7D4A8E00774F13 /* TrafficStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77AE1F7D4A8E00774F13 /* TrafficStatus.swift */; };
 		088F14FA1FB9C6080004F925 /* StaticSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F14F91FB9C6080004F925 /* StaticSettingsViewController.swift */; };
 		089267741F86617600D7B99E /* OfflineBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089267731F86617600D7B99E /* OfflineBanner.swift */; };
@@ -93,7 +93,7 @@
 		08AA6C631F56C9560022DE91 /* StatsReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C621F56C9560022DE91 /* StatsReportViewController.swift */; };
 		08AA6C651F56DAA10022DE91 /* StatsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C641F56DAA10022DE91 /* StatsPageViewController.swift */; };
 		08AA6C671F56DC8B0022DE91 /* StatsSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C661F56DC8B0022DE91 /* StatsSlideViewController.swift */; };
-		08AA6C6B1F56DD060022DE91 /* TrafficVisits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C6A1F56DD060022DE91 /* TrafficVisits.swift */; };
+		08AA6C6B1F56DD060022DE91 /* BreakdownViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */; };
 		08AA6C6F1F56F3BA0022DE91 /* ChartStatistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */; };
 		08AA6C731F56F8630022DE91 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C721F56F8630022DE91 /* ChartViewController.swift */; };
 		08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */; };
@@ -298,7 +298,7 @@
 		088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficEmptyView.swift; sourceTree = "<group>"; };
 		088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		088E77A81F7CE99900774F13 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
-		088E77AC1F7D499400774F13 /* TrafficStatsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficStatsTableViewController.swift; sourceTree = "<group>"; };
+		088E77AC1F7D499400774F13 /* BreakdownsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakdownsTableViewController.swift; sourceTree = "<group>"; };
 		088E77AE1F7D4A8E00774F13 /* TrafficStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficStatus.swift; sourceTree = "<group>"; };
 		088F14F91FB9C6080004F925 /* StaticSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticSettingsViewController.swift; sourceTree = "<group>"; };
 		089267731F86617600D7B99E /* OfflineBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineBanner.swift; sourceTree = "<group>"; };
@@ -326,7 +326,7 @@
 		08AA6C621F56C9560022DE91 /* StatsReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsReportViewController.swift; sourceTree = "<group>"; };
 		08AA6C641F56DAA10022DE91 /* StatsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsPageViewController.swift; sourceTree = "<group>"; };
 		08AA6C661F56DC8B0022DE91 /* StatsSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsSlideViewController.swift; sourceTree = "<group>"; };
-		08AA6C6A1F56DD060022DE91 /* TrafficVisits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficVisits.swift; sourceTree = "<group>"; };
+		08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakdownViewCell.swift; sourceTree = "<group>"; };
 		08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChartStatistics.storyboard; sourceTree = "<group>"; };
 		08AA6C721F56F8630022DE91 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		08AF04971F46FB9B0040012B /* SocialPostInCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocialPostInCardCell.xib; sourceTree = "<group>"; };
@@ -746,7 +746,7 @@
 				08FAE8431F541D790097DF3E /* StatsHubController.swift */,
 				08FAE8461F541FF40097DF3E /* TrafficCard.xib */,
 				08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */,
-				08AA6C6A1F56DD060022DE91 /* TrafficVisits.swift */,
+				08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */,
 				08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */,
 				088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */,
 				088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */,
@@ -757,7 +757,7 @@
 				08AA6C641F56DAA10022DE91 /* StatsPageViewController.swift */,
 				08AA6C661F56DC8B0022DE91 /* StatsSlideViewController.swift */,
 				08AA6C721F56F8630022DE91 /* ChartViewController.swift */,
-				088E77AC1F7D499400774F13 /* TrafficStatsTableViewController.swift */,
+				088E77AC1F7D499400774F13 /* BreakdownsTableViewController.swift */,
 			);
 			path = stats;
 			sourceTree = "<group>";
@@ -1362,7 +1362,7 @@
 				088E77AF1F7D4A8E00774F13 /* TrafficStatus.swift in Sources */,
 				08B745911F1F638000EC3F8C /* LoginNavigationViewController.swift in Sources */,
 				08B4EBBB1FC56ACE00BFC5A1 /* TwoImagesButton.swift in Sources */,
-				08AA6C6B1F56DD060022DE91 /* TrafficVisits.swift in Sources */,
+				08AA6C6B1F56DD060022DE91 /* BreakdownViewCell.swift in Sources */,
 				0857D5571F41B4E800D218DA /* CompleteCardCell.swift in Sources */,
 				08A4A53D1F458423001071E3 /* ToolbarViewCell.swift in Sources */,
 				0852826E1F287DFB0065A968 /* CalendarHeaderViewCell.swift in Sources */,
@@ -1420,7 +1420,7 @@
 				11D6FF6B1FD7941600C7E62B /* SettingsTwitterViewController.swift in Sources */,
 				1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */,
 				08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */,
-				088E77AD1F7D499400774F13 /* TrafficStatsTableViewController.swift in Sources */,
+				088E77AD1F7D499400774F13 /* BreakdownsTableViewController.swift in Sources */,
 				1148D73D1FBF39AE006EB5BB /* NavigationMap.swift in Sources */,
 				08F368951F18F93800819CDE /* DailyInsightsCardCell.swift in Sources */,
 				11FB84EB1FC79E8800FE937D /* TodoHubController.swift in Sources */,

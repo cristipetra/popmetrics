@@ -9,7 +9,7 @@
 import UIKit
 import GTProgressBar
 
-class TrafficVisits: UITableViewCell {
+class BreakdownViewCell: UITableViewCell {
     
     lazy var titleLabel : UILabel = {
         let label = UILabel()
@@ -82,7 +82,7 @@ class TrafficVisits: UITableViewCell {
     }
     
     func setup() {
-        self.backgroundColor = UIColor.white
+        self.backgroundColor = UIColor.blue
         
         self.addSubview(titleLabel)
         titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 25).isActive = true

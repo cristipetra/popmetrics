@@ -8,11 +8,11 @@
 
 import UIKit
 
-class TrafficStatus: UIView {
+class TrafficStatus: UIScrollView {
     
     @IBOutlet var contentView: UIView!
     
-    var tableView: TrafficStatsTableViewController = TrafficStatsTableViewController(style: .grouped)
+    var tableView: BreakdownsTableViewController = BreakdownsTableViewController(style: .grouped)
     let chartVC = UIStoryboard(name: "ChartStatistics", bundle: nil).instantiateViewController(withIdentifier: "ChartViewId") as! ChartViewController
     
     var statisticsCard: StatisticsCard!
@@ -48,19 +48,19 @@ class TrafficStatus: UIView {
     internal func addTableView() {
         
         self.addSubview(tableView.view)
-        tableView.didMove(toParentViewController: self.parentViewController)
+        // tableView.didMove(toParentViewController: self.parentViewController)
         
         tableView.view.translatesAutoresizingMaskIntoConstraints = false
         tableView.view.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         tableView.view.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        tableView.view.topAnchor.constraint(equalTo: chartVC.view.bottomAnchor, constant: 1).isActive = true
+        tableView.view.topAnchor.constraint(equalTo: chartVC.view.bottomAnchor, constant: 10).isActive = true
         tableView.view.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 10).isActive = true
     }
     
     internal func addChartView() {
         
         self.addSubview(chartVC.view)
-        chartVC.didMove(toParentViewController: self.parentViewController)
+        // chartVC.didMove(toParentViewController: self.parentViewController)
      
         chartVC.view.translatesAutoresizingMaskIntoConstraints = false
         chartVC.view.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true

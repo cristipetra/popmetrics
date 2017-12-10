@@ -10,7 +10,7 @@ import UIKit
 import EZAlertController
 import RealmSwift
 
-class TrafficStatsTableViewController: UITableViewController {
+class BreakdownsTableViewController: UITableViewController {
     
     var statisticsStore = StatsStore.getInstance()
     
@@ -22,7 +22,7 @@ class TrafficStatsTableViewController: UITableViewController {
     
     let HEIGHT_CELL = 90
     let HEIGHT_HEADER = 65
-    var constraintHeightTable: NSLayoutConstraint!
+//    var constraintHeightTable: NSLayoutConstraint!
     
     private var pageIndex = 1 {
         didSet {
@@ -32,9 +32,27 @@ class TrafficStatsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+//        self.tableView.sectionHeaderHeight = UITableView
+//          self.tableView.estimatedSectionHeaderHeight = 65
+          self.tableView.sectionHeaderHeight = 65
+//
+//        self.tableView.sectionFooterHeight = UITableViewAutomaticDimension
+//        self.tableView.estimatedSectionFooterHeight = 5
+          self.tableView.sectionFooterHeight = 5
+        
+//
+//        self.tableView.rowHeight = UITableViewAutomaticDimension
+          self.tableView.rowHeight = 90
+        
+//
+//        self.tableView.estimatedRowHeight = 90
+//
         registerCellForTable()
      
-        self.tableView.backgroundColor = PopmetricsColor.statisticsTableBackground
+        //self.tableView.backgroundColor = PopmetricsColor.statisticsTableBackground
+        self.tableView.backgroundColor = PopmetricsColor.orange
         self.tableView.alwaysBounceVertical = false
         self.tableView.separatorInset = .zero
         self.automaticallyAdjustsScrollViewInsets = false
@@ -43,9 +61,9 @@ class TrafficStatsTableViewController: UITableViewController {
         self.tableView.separatorColor = PopmetricsColor.unselectedTabBarItemTint
         
         self.tableView.isScrollEnabled = false
-        constraintHeightTable = tableView.heightAnchor.constraint(equalToConstant: 200)
-        constraintHeightTable.isActive = true
-        
+//        constraintHeightTable = tableView.heightAnchor.constraint(equalToConstant: 200)
+//        constraintHeightTable.isActive = true
+//
         self.tableView.sizeToFit()
         
     }
@@ -65,8 +83,8 @@ class TrafficStatsTableViewController: UITableViewController {
         print("sections: \(sections.count)")
         print(value)
         
-        constraintHeightTable.constant = CGFloat(14
-            * HEIGHT_CELL) + CGFloat(sections.count * HEIGHT_HEADER) + 10
+//        constraintHeightTable.constant = CGFloat(14
+//            * HEIGHT_CELL) + CGFloat(sections.count * HEIGHT_HEADER) + 10
     }
     
     func configure(statisticMetric: StatisticMetric) {
@@ -76,7 +94,7 @@ class TrafficStatsTableViewController: UITableViewController {
     }
     
     internal func registerCellForTable() {
-        tableView.register(TrafficVisits.self, forCellReuseIdentifier: "trafficVisits")
+        tableView.register(BreakdownViewCell.self, forCellReuseIdentifier: "trafficVisits")
     }
 
     override func didReceiveMemoryWarning() {
@@ -104,7 +122,7 @@ class TrafficStatsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "trafficVisits", for: indexPath) as! TrafficVisits
+        let cell = tableView.dequeueReusableCell(withIdentifier: "trafficVisits", for: indexPath) as! BreakdownViewCell
         let rowIdx = indexPath.row
 
         let groups = statisticMetric.getBreakDownGroups()[indexPath.section]
