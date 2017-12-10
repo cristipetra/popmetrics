@@ -8,9 +8,9 @@
 
 import UIKit
 import DGElasticPullToRefresh
-import SwiftyJSON
+// import SwiftyJSON
 
-class StatisticsViewController: BaseViewController {
+class StatsHubController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topAnchorTableView: NSLayoutConstraint!
@@ -203,7 +203,7 @@ class StatisticsViewController: BaseViewController {
     }
 }
 
-extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
+extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //empty card
