@@ -719,7 +719,7 @@
                         <outlet property="leftAnchorTableView" destination="UQv-xu-Bc2" id="C1Q-U9-17I"/>
                         <outlet property="tableView" destination="oYx-Kl-DJY" id="Z7e-vQ-5KB"/>
                         <outlet property="topAnchorTableView" destination="Zg5-DJ-mtJ" id="ZL9-PN-P2i"/>
-                        <segue destination="Jcb-oQ-as5" kind="show" identifier="showReport" id="4L1-3S-x5w"/>
+                        <segue destination="Jcb-oQ-as5" kind="show" identifier="showStatsReport" id="4L1-3S-x5w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cQO-HC-TYF" userLabel="First Responder" sceneMemberID="firstResponder"/>
