@@ -61,7 +61,6 @@
 		08755F461FCC11E600A8CF13 /* SocialPostDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */; };
 		08755F4C1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */; };
 		0888C5BE1F4EECEC00E3DB04 /* RoundedCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */; };
-		088B28281F7E43960015A66E /* TrafficVisitsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B28271F7E43960015A66E /* TrafficVisitsViewCell.swift */; };
 		088B282A1F7E5D130015A66E /* StatisticsCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B28291F7E5D130015A66E /* StatisticsCountView.swift */; };
 		088B282C1F7E7F150015A66E /* AimeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B282B1F7E7F150015A66E /* AimeeView.swift */; };
 		088BBEA81F58212A00AD5414 /* StatsEmptyCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEA71F58212A00AD5414 /* StatsEmptyCard.xib */; };
@@ -90,7 +89,7 @@
 		08A62CB21F8E4DCF0072E6A5 /* TwoColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A62CB11F8E4DCF0072E6A5 /* TwoColorButton.swift */; };
 		08A812741F16601A00672126 /* CardHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A812731F16601A00672126 /* CardHeaderCell.xib */; };
 		08A812761F1660A300672126 /* CardHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A812751F1660A300672126 /* CardHeaderCell.swift */; };
-		08AA6C631F56C9560022DE91 /* StatsReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C621F56C9560022DE91 /* StatsReportViewController.swift */; };
+		08AA6C631F56C9560022DE91 /* StatsMetricViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C621F56C9560022DE91 /* StatsMetricViewController.swift */; };
 		08AA6C651F56DAA10022DE91 /* StatsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C641F56DAA10022DE91 /* StatsPageViewController.swift */; };
 		08AA6C671F56DC8B0022DE91 /* StatsSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C661F56DC8B0022DE91 /* StatsSlideViewController.swift */; };
 		08AA6C6B1F56DD060022DE91 /* BreakdownViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */; };
@@ -291,7 +290,6 @@
 		08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPostDetailsViewController.swift; sourceTree = "<group>"; };
 		0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersButton.swift; sourceTree = "<group>"; };
-		088B28271F7E43960015A66E /* TrafficVisitsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficVisitsViewCell.swift; sourceTree = "<group>"; };
 		088B28291F7E5D130015A66E /* StatisticsCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsCountView.swift; sourceTree = "<group>"; };
 		088B282B1F7E7F150015A66E /* AimeeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimeeView.swift; sourceTree = "<group>"; };
 		088BBEA71F58212A00AD5414 /* StatsEmptyCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsEmptyCard.xib; sourceTree = "<group>"; };
@@ -323,7 +321,7 @@
 		08A812781F1672D300672126 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		08A812791F1672DC00672126 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		08A8127A1F1672E700672126 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
-		08AA6C621F56C9560022DE91 /* StatsReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsReportViewController.swift; sourceTree = "<group>"; };
+		08AA6C621F56C9560022DE91 /* StatsMetricViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsMetricViewController.swift; sourceTree = "<group>"; };
 		08AA6C641F56DAA10022DE91 /* StatsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsPageViewController.swift; sourceTree = "<group>"; };
 		08AA6C661F56DC8B0022DE91 /* StatsSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsSlideViewController.swift; sourceTree = "<group>"; };
 		08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakdownViewCell.swift; sourceTree = "<group>"; };
@@ -751,9 +749,8 @@
 				088BBEA71F58212A00AD5414 /* StatsEmptyCard.xib */,
 				088BBEA91F58214300AD5414 /* StatsEmptyCell.swift */,
 				088E77AE1F7D4A8E00774F13 /* MetricReportView.swift */,
-				088B28271F7E43960015A66E /* TrafficVisitsViewCell.swift */,
 				088B28291F7E5D130015A66E /* StatisticsCountView.swift */,
-				08AA6C621F56C9560022DE91 /* StatsReportViewController.swift */,
+				08AA6C621F56C9560022DE91 /* StatsMetricViewController.swift */,
 				08AA6C641F56DAA10022DE91 /* StatsPageViewController.swift */,
 				08AA6C661F56DC8B0022DE91 /* StatsSlideViewController.swift */,
 				08AA6C721F56F8630022DE91 /* ChartViewController.swift */,
@@ -1335,7 +1332,6 @@
 				08BF9D4E1F45F2EF00141206 /* TableFooterView.swift in Sources */,
 				08B4EBAF1FC56ACE00BFC5A1 /* Validator.swift in Sources */,
 				11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */,
-				088B28281F7E43960015A66E /* TrafficVisitsViewCell.swift in Sources */,
 				08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */,
 				08B4EBB31FC56ACE00BFC5A1 /* TextFieldValidator.swift in Sources */,
 				08AF049A1F46FBB60040012B /* SocialPostInCardCell.swift in Sources */,
@@ -1455,7 +1451,7 @@
 				11E636941FD735480081B1DC /* StatsStore.swift in Sources */,
 				08B485E01F20EA23005918A1 /* Config.swift in Sources */,
 				085530461F6CEE0A00D82A09 /* ActionActivationView.swift in Sources */,
-				08AA6C631F56C9560022DE91 /* StatsReportViewController.swift in Sources */,
+				08AA6C631F56C9560022DE91 /* StatsMetricViewController.swift in Sources */,
 				089E10561FD1716200D57A08 /* SwipeExtension.swift in Sources */,
 				08FAE8441F541D790097DF3E /* StatsHubController.swift in Sources */,
 				08B485E61F210A61005918A1 /* RoundButton.swift in Sources */,

@@ -60,8 +60,8 @@ class BreakdownsTableViewController: UITableViewController {
         self.tableView.separatorColor = PopmetricsColor.unselectedTabBarItemTint
         
         self.tableView.isScrollEnabled = false
-        self.tableViewHeightConstraint = tableView.heightAnchor.constraint(equalToConstant: 200)
-        self.tableViewHeightConstraint.isActive = true
+//        self.tableViewHeightConstraint = tableView.heightAnchor.constraint(equalToConstant: 200)
+//        self.tableViewHeightConstraint.isActive = true
 //
         self.tableView.sizeToFit()
         

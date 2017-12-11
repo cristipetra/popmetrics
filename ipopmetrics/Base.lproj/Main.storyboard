@@ -725,10 +725,18 @@
             </objects>
             <point key="canvasLocation" x="2199" y="1818"/>
         </scene>
-        <!--Stats Report View Controller-->
+        <!--Page View Controller-->
+        <scene sceneID="hsh-ca-4j2">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="Jcb-oQ-as5" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qat-c1-6Yl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3047" y="1698"/>
+        </scene>
+        <!--Stats Metric View Controller-->
         <scene sceneID="hRF-Ww-Zs3">
             <objects>
-                <viewController storyboardIdentifier="trafficReportViewId" automaticallyAdjustsScrollViewInsets="NO" id="Sa3-PG-jtN" customClass="StatsReportViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="trafficReportViewId" automaticallyAdjustsScrollViewInsets="NO" id="Sa3-PG-jtN" customClass="StatsMetricViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I4l-wh-QvR"/>
                         <viewControllerLayoutGuide type="bottom" id="r7r-fU-FJ5"/>
@@ -804,7 +812,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tnh-7j-i4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3261.5999999999999" y="1757.7211394302849"/>
+            <point key="canvasLocation" x="3766" y="1758"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xup-fx-MmK">
@@ -945,7 +953,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Qb-o3-4Bz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4044" y="1527"/>
+            <point key="canvasLocation" x="4447" y="1510"/>
         </scene>
         <!--Breakdowns Table View Controller-->
         <scene sceneID="ns0-1f-oQs">
@@ -956,7 +964,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="i0t-Yc-U28">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="i0t-Yc-U28" customClass="BreakdownViewCell" customModule="ipopmetrics" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i0t-Yc-U28" id="ph4-bU-KbF">
@@ -973,7 +981,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7tM-7V-S3M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4044" y="2059"/>
+            <point key="canvasLocation" x="4447" y="2042"/>
         </scene>
     </scenes>
     <resources>
