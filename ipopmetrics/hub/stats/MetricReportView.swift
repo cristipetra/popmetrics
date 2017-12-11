@@ -28,25 +28,28 @@ class MetricReportView: UIScrollView {
         
         self.chartVC = UIStoryboard(name: "ChartStatistics", bundle: nil).instantiateViewController(withIdentifier: "ChartViewId") as! ChartViewController
         self.chartVC.statisticMetric = self.statisticMetric
-        
         self.addSubview(chartVC.view)
-        // chartVC.didMove(toParentViewController: self.parentViewController)
         
+        chartVC.didMove(toParentViewController: self.parentViewController)
         chartVC.view.translatesAutoresizingMaskIntoConstraints = false
         chartVC.view.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
         chartVC.view.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
         chartVC.view.topAnchor.constraint(equalTo: self.topAnchor,constant: 0).isActive = true
         chartVC.view.heightAnchor.constraint(equalToConstant: 320).isActive = true
 
+
         
         self.breakdownsTableViewController = BreakdownsTableViewController(statisticMetric: self.statisticMetric)
         self.addSubview(breakdownsTableViewController.view)
+        breakdownsTableViewController.didMove(toParentViewController: self.parentViewController)
         
         breakdownsTableViewController.view.translatesAutoresizingMaskIntoConstraints = false
         breakdownsTableViewController.view.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         breakdownsTableViewController.view.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         breakdownsTableViewController.view.topAnchor.constraint(equalTo: chartVC.view.bottomAnchor, constant: 10).isActive = true
         breakdownsTableViewController.view.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 10).isActive = true
+        
+
         
     }
     

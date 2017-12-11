@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StatsReportViewController: UIViewController {
+class StatsMetricPageContentViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet var containerView: UIView!
@@ -17,21 +17,12 @@ class StatsReportViewController: UIViewController {
     
     @IBOutlet weak var containerStats: UIView!
     
-    let statsPageVC: StatsPageViewController = StatsPageViewController()
     let statisticStore = StatsStore.getInstance()
     
-    let statsSlideVC: StatsSlideViewController = StatsSlideViewController()
-    
-    internal var statisticsCard: StatisticsCard! {
-        didSet {
-            self.statsPageVC.statisticsCard = statisticsCard
-            self.statsPageVC.numberOfPages = StatsStore.getInstance().getStatisticMetricsForCard(statisticsCard).count
-            
-            let metrics = StatsStore.getInstance().getStatisticMetricsForCard(statisticsCard)
-        }
-    }
+    var statsMetric: StatisticMetric!
     
     var pageIndex: Int = 1
+    var numberOfPages: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,43 +30,18 @@ class StatsReportViewController: UIViewController {
         setUpNavigationBar()
         statusLbl.text = ""
         
-        addPageView()
         setUpPageControlViews()
     
     }
     
-    func configure(statisticsCard: StatisticsCard) {
-        self.statisticsCard = statisticsCard;
-    }
-    
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//        scrollView.contentSize = CGSize(width:self.scrollView.contentSize.width, height: self.containerView.frame.height)
-//    }
     
     func setUpPageControlViews() {
         topPageControl.tintColor = UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1)
         topPageControl.currentPageIndicatorTintColor = UIColor(red: 87/255, green: 93/255, blue: 99/255, alpha: 1)
 
-        let numberOfPages = statisticStore.getStatisticMetricsForCard(statisticsCard).count
         topPageControl.numberOfPages = numberOfPages
     }
     
-    func addPageView() {
-        addChildViewController(statsPageVC)
-        self.containerStats.addSubview(statsPageVC.view)
-        statsPageVC.didMove(toParentViewController: self)
-        
-        statsPageVC.view.translatesAutoresizingMaskIntoConstraints = false
-        statsPageVC.view.leftAnchor.constraint(equalTo: containerStats.leftAnchor, constant: 0).isActive = true
-        statsPageVC.view.rightAnchor.constraint(equalTo: containerStats.rightAnchor, constant: 0).isActive = true
-        
-        statsPageVC.view.topAnchor.constraint(equalTo: containerStats.topAnchor, constant: 0).isActive = true
-        statsPageVC.view.bottomAnchor.constraint(equalTo: containerStats.bottomAnchor, constant: 0).isActive = true
-        
-        
-        // statsPageVC.view.heightAnchor.constraint(equalToConstant: 1270).isActive = true
-    }
     
     private func setUpNavigationBar() {
         let titleWindow = "WEBSITE REPORT"
