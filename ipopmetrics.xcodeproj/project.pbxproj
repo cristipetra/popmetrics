@@ -64,7 +64,7 @@
 		088B28281F7E43960015A66E /* TrafficVisitsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B28271F7E43960015A66E /* TrafficVisitsViewCell.swift */; };
 		088B282A1F7E5D130015A66E /* StatisticsCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B28291F7E5D130015A66E /* StatisticsCountView.swift */; };
 		088B282C1F7E7F150015A66E /* AimeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B282B1F7E7F150015A66E /* AimeeView.swift */; };
-		088BBEA81F58212A00AD5414 /* TrafficEmptyCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */; };
+		088BBEA81F58212A00AD5414 /* StatsEmptyCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEA71F58212A00AD5414 /* StatsEmptyCard.xib */; };
 		088BBEAA1F58214300AD5414 /* TrafficEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */; };
 		088BBEAC1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */; };
 		088E77A91F7CE99900774F13 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77A81F7CE99900774F13 /* ToastView.swift */; };
@@ -94,7 +94,6 @@
 		08AA6C651F56DAA10022DE91 /* StatsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C641F56DAA10022DE91 /* StatsPageViewController.swift */; };
 		08AA6C671F56DC8B0022DE91 /* StatsSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C661F56DC8B0022DE91 /* StatsSlideViewController.swift */; };
 		08AA6C6B1F56DD060022DE91 /* BreakdownViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */; };
-		08AA6C6F1F56F3BA0022DE91 /* ChartStatistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */; };
 		08AA6C731F56F8630022DE91 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C721F56F8630022DE91 /* ChartViewController.swift */; };
 		08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */; };
 		08AF04981F46FB9B0040012B /* SocialPostInCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AF04971F46FB9B0040012B /* SocialPostInCardCell.xib */; };
@@ -173,7 +172,7 @@
 		08F368971F19029100819CDE /* LastCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08F368961F19029100819CDE /* LastCard.xib */; };
 		08F7A0971F17AB0C00A1B2C3 /* RecommendationCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F7A0961F17AB0C00A1B2C3 /* RecommendationCardCell.swift */; };
 		08FAE8441F541D790097DF3E /* StatsHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE8431F541D790097DF3E /* StatsHubController.swift */; };
-		08FAE8471F541FF40097DF3E /* TrafficCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08FAE8461F541FF40097DF3E /* TrafficCard.xib */; };
+		08FAE8471F541FF40097DF3E /* StatsCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08FAE8461F541FF40097DF3E /* StatsCard.xib */; };
 		08FAE8491F5420050097DF3E /* TrafficCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */; };
 		1100F6F91F5FEBCE000AF1D4 /* TodoActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1100F6F81F5FEBCE000AF1D4 /* TodoActionHandler.swift */; };
 		1104F8751FD45B3B002F6221 /* HubsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1104F8741FD45B3B002F6221 /* HubsApi.swift */; };
@@ -295,7 +294,7 @@
 		088B28271F7E43960015A66E /* TrafficVisitsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficVisitsViewCell.swift; sourceTree = "<group>"; };
 		088B28291F7E5D130015A66E /* StatisticsCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsCountView.swift; sourceTree = "<group>"; };
 		088B282B1F7E7F150015A66E /* AimeeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimeeView.swift; sourceTree = "<group>"; };
-		088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrafficEmptyCard.xib; sourceTree = "<group>"; };
+		088BBEA71F58212A00AD5414 /* StatsEmptyCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsEmptyCard.xib; sourceTree = "<group>"; };
 		088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficEmptyView.swift; sourceTree = "<group>"; };
 		088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		088E77A81F7CE99900774F13 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
@@ -328,7 +327,6 @@
 		08AA6C641F56DAA10022DE91 /* StatsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsPageViewController.swift; sourceTree = "<group>"; };
 		08AA6C661F56DC8B0022DE91 /* StatsSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsSlideViewController.swift; sourceTree = "<group>"; };
 		08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakdownViewCell.swift; sourceTree = "<group>"; };
-		08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChartStatistics.storyboard; sourceTree = "<group>"; };
 		08AA6C721F56F8630022DE91 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		08AF04971F46FB9B0040012B /* SocialPostInCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocialPostInCardCell.xib; sourceTree = "<group>"; };
 		08AF04991F46FBB60040012B /* SocialPostInCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialPostInCardCell.swift; sourceTree = "<group>"; };
@@ -404,7 +402,7 @@
 		08F368961F19029100819CDE /* LastCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LastCard.xib; sourceTree = "<group>"; };
 		08F7A0961F17AB0C00A1B2C3 /* RecommendationCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationCardCell.swift; sourceTree = "<group>"; };
 		08FAE8431F541D790097DF3E /* StatsHubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsHubController.swift; sourceTree = "<group>"; };
-		08FAE8461F541FF40097DF3E /* TrafficCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrafficCard.xib; sourceTree = "<group>"; };
+		08FAE8461F541FF40097DF3E /* StatsCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsCard.xib; sourceTree = "<group>"; };
 		08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficCardViewCell.swift; sourceTree = "<group>"; };
 		1100F6F81F5FEBCE000AF1D4 /* TodoActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoActionHandler.swift; sourceTree = "<group>"; };
 		1104F8741FD45B3B002F6221 /* HubsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubsApi.swift; sourceTree = "<group>"; };
@@ -747,11 +745,10 @@
 			isa = PBXGroup;
 			children = (
 				08FAE8431F541D790097DF3E /* StatsHubController.swift */,
-				08FAE8461F541FF40097DF3E /* TrafficCard.xib */,
+				08FAE8461F541FF40097DF3E /* StatsCard.xib */,
 				08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */,
 				08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */,
-				08AA6C6E1F56F3BA0022DE91 /* ChartStatistics.storyboard */,
-				088BBEA71F58212A00AD5414 /* TrafficEmptyCard.xib */,
+				088BBEA71F58212A00AD5414 /* StatsEmptyCard.xib */,
 				088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */,
 				088E77AE1F7D4A8E00774F13 /* MetricReportView.swift */,
 				088B28271F7E43960015A66E /* TrafficVisitsViewCell.swift */,
@@ -1068,7 +1065,6 @@
 				08A51D311FC6EF520097B334 /* ActionInstructionsPage.xib in Resources */,
 				08B745931F1F6C0100EC3F8C /* OpenSans-Light.ttf in Resources */,
 				08C580FD1FBF21440013B03F /* SettingsOverlayUrlView.xib in Resources */,
-				08AA6C6F1F56F3BA0022DE91 /* ChartStatistics.storyboard in Resources */,
 				08B745941F1F6C0100EC3F8C /* OpenSans-Bold.ttf in Resources */,
 				0856F3581F272F020061DF7E /* Calendar.storyboard in Resources */,
 				0854AF351F3F2B18007B60F9 /* CalendarCardSimple.xib in Resources */,
@@ -1086,7 +1082,7 @@
 				089F93AB1FB5FE1E00155674 /* Settings.storyboard in Resources */,
 				08953E721F4C352B003ABEFC /* RequiredActionCard.xib in Resources */,
 				0813A0571FC2F102003E6478 /* SettingsSocialView.xib in Resources */,
-				088BBEA81F58212A00AD5414 /* TrafficEmptyCard.xib in Resources */,
+				088BBEA81F58212A00AD5414 /* StatsEmptyCard.xib in Resources */,
 				1183A8661FC5064B00ED8EF6 /* InsightPage.xib in Resources */,
 				08593DF01FBB440A00077A65 /* SettingsEmailView.xib in Resources */,
 				08A533341F6BD9060080BE64 /* MoreInfoViewCell.xib in Resources */,
@@ -1109,7 +1105,7 @@
 				1128B3F61ECF256600BDA58C /* Info.plist in Resources */,
 				08F368971F19029100819CDE /* LastCard.xib in Resources */,
 				08AF04981F46FB9B0040012B /* SocialPostInCardCell.xib in Resources */,
-				08FAE8471F541FF40097DF3E /* TrafficCard.xib in Resources */,
+				08FAE8471F541FF40097DF3E /* StatsCard.xib in Resources */,
 				1119F6181ED56F34009997FF /* Boarding.storyboard in Resources */,
 				085F91031F716CBC008A339A /* OnboardingFooter.xib in Resources */,
 				085F90F71F71270E008A339A /* AnimationsViewController.xib in Resources */,

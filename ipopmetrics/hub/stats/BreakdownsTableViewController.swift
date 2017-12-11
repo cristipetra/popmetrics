@@ -34,21 +34,20 @@ class BreakdownsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
-//        self.tableView.sectionHeaderHeight = UITableView
-//          self.tableView.estimatedSectionHeaderHeight = 65
-          self.tableView.sectionHeaderHeight = 65
+        self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+          self.tableView.estimatedSectionHeaderHeight = 65
+//          self.tableView.sectionHeaderHeight = 65
 //
-//        self.tableView.sectionFooterHeight = UITableViewAutomaticDimension
-//        self.tableView.estimatedSectionFooterHeight = 5
-          self.tableView.sectionFooterHeight = 0
+        self.tableView.sectionFooterHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedSectionFooterHeight = 5
+//          self.tableView.sectionFooterHeight = 0
         
 //
-//        self.tableView.rowHeight = UITableViewAutomaticDimension
-          self.tableView.rowHeight = 90
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 90
+//          self.tableView.rowHeight = 90
         
 //
-//        self.tableView.estimatedRowHeight = 90
 //
         registerCellForTable()
      
@@ -61,22 +60,11 @@ class BreakdownsTableViewController: UITableViewController {
         self.tableView.separatorColor = PopmetricsColor.unselectedTabBarItemTint
         
         self.tableView.isScrollEnabled = false
-//        constraintHeightTable = tableView.heightAnchor.constraint(equalToConstant: 200)
-//        constraintHeightTable.isActive = true
+        self.tableViewHeightConstraint = tableView.heightAnchor.constraint(equalToConstant: 200)
+        self.tableViewHeightConstraint.isActive = true
 //
         self.tableView.sizeToFit()
         
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.updateViewConstraints()
-        
-        let sections = statisticMetric.getBreakDownGroups()
-        
-        print("sections: \(sections.count)")
-        
-//        constraintHeightTable.constant = CGFloat(14
-//            * HEIGHT_CELL) + CGFloat(sections.count * HEIGHT_HEADER) + 10
     }
     
     internal func registerCellForTable() {
