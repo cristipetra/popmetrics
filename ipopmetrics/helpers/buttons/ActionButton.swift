@@ -10,6 +10,8 @@ import UIKit
 
 class ActionButton: UIButton {
     
+    private var imageBtn: UIImage!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -35,8 +37,8 @@ class ActionButton: UIButton {
         self.titleLabel?.numberOfLines = 2
         
         self.titleEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 20)
-        let myImage = UIImage(named: "calendarArrowIcon")
-        self.setImage(myImage, for: .normal)
+        imageBtn = UIImage(named: "calendarArrowIcon")
+        self.setImage(imageBtn, for: .normal)
         self.imageEdgeInsets = UIEdgeInsets(top: 0, left: 140, bottom: 0, right: 0)
         
     }
@@ -46,4 +48,9 @@ class ActionButton: UIButton {
         self.titleLabel?.font = UIFont(name: FontBook.bold, size: 15)
     }
     
+    internal func hideImageBtn() {
+        
+        self.setImage(nil, for: .normal)
+        self.titleEdgeInsets = UIEdgeInsets(top: 0, left:0, bottom: 0, right: 0)
+    }
 }

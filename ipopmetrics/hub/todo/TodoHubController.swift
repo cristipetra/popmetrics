@@ -156,7 +156,7 @@ class TodoHubController: BaseViewController {
         tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
         
         setupTopHeaderView()
-        setupTopViewItemCount()
+        //setupTopViewItemCount()
         
         
         self.view.addSubview(transitionView)
@@ -306,24 +306,6 @@ class TodoHubController: BaseViewController {
                 return nonEmptyCards.count
             }
         }
-    }
-    
-    internal func setupTopViewItemCount() {
-        let todoCards = store.getTodoCards()
-        for  todoCard in todoCards {
-            if let status = StatusArticle(rawValue: todoCard.section.lowercased()) {
-                switch status {
-                case .unapproved:
-                    break
-                case .failed:
-                    //toDoTopView.setTextNotificationLabel(text: ("(\(section.items.count))"))
-                    break
-                default:
-                    break
-                }
-            }
-        }
-        
     }
     
     func checkApprovedAll() -> Bool {

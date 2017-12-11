@@ -168,7 +168,7 @@ CHECKOUT OPTIONS:
     :commit: 477d767987b8bdd50f9e1f977b33f8c3465b601d
     :git: https://github.com/cristipetra/ElasticTransition
   MJCalendar:
-    :commit: d656b478558afa572e961bcfb69d12546d2727f6
+    :commit: 033d7972b10c492575338f22e753cd1863279968
     :git: https://github.com/cristipetra/MJCalendar
   MotionAnimation:
     :commit: 3b47a5ba70b4186ddc17476079b28130b82c443f

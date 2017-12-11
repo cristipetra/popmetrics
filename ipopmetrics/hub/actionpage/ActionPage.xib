@@ -4,8 +4,8 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,8 +20,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActionPageDetailsViewController" customModule="ipopmetrics" customModuleProvider="target">
             <connections>
-                <outlet property="addToMyActionsView" destination="6YW-AJ-2Mf" id="bZl-gI-q4c"/>
-                <outlet property="addToPaidActionsView" destination="da2-1W-Lo9" id="rNX-1S-qfz"/>
                 <outlet property="cardImage" destination="U1O-y9-Lc9" id="aV6-Lo-4f7"/>
                 <outlet property="constraintHeightClosingMarkdown" destination="MS2-3l-h7f" id="0ea-NC-EOU"/>
                 <outlet property="constraintHeightDetailsMarkdown" destination="LrX-Dx-yxw" id="7jR-RK-ddG"/>
@@ -42,7 +40,7 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="1676"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="CMJ-3S-pPM">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="1520"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1390"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DtL-7f-lTr">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="316"/>
@@ -156,66 +154,8 @@
                                         <constraint firstItem="dK6-jM-gca" firstAttribute="top" secondItem="X0I-Ot-Br1" secondAttribute="top" id="pc3-oN-LX4"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6YW-AJ-2Mf">
-                                    <rect key="frame" x="0.0" y="1326" width="375" height="64"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYa-Kt-Pqs">
-                                            <rect key="frame" x="25" y="0.0" width="350" height="64"/>
-                                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
-                                            <state key="normal" title="Will fix it myself!">
-                                                <color key="titleColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="handlerAddToMyActions:" destination="-1" eventType="touchUpInside" id="exg-rp-9fF"/>
-                                            </connections>
-                                        </button>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="yuG-va-HvS">
-                                            <rect key="frame" x="342" y="19.5" width="11" height="25"/>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstItem="qYa-Kt-Pqs" firstAttribute="top" secondItem="6YW-AJ-2Mf" secondAttribute="top" id="0L8-zx-GV7"/>
-                                        <constraint firstAttribute="trailing" secondItem="yuG-va-HvS" secondAttribute="trailing" constant="22" id="50K-Yk-B0X"/>
-                                        <constraint firstAttribute="height" constant="64" id="OZO-5i-cgg"/>
-                                        <constraint firstItem="yuG-va-HvS" firstAttribute="centerY" secondItem="6YW-AJ-2Mf" secondAttribute="centerY" id="lgL-lo-EGi"/>
-                                        <constraint firstAttribute="bottom" secondItem="qYa-Kt-Pqs" secondAttribute="bottom" id="lxt-zh-XUO"/>
-                                        <constraint firstItem="qYa-Kt-Pqs" firstAttribute="leading" secondItem="6YW-AJ-2Mf" secondAttribute="leading" constant="25" id="mYS-TV-lGP"/>
-                                        <constraint firstItem="qYa-Kt-Pqs" firstAttribute="centerY" secondItem="6YW-AJ-2Mf" secondAttribute="centerY" id="nIL-7S-cbt"/>
-                                        <constraint firstAttribute="trailing" secondItem="qYa-Kt-Pqs" secondAttribute="trailing" id="pBr-hx-iym"/>
-                                    </constraints>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="da2-1W-Lo9">
-                                    <rect key="frame" x="0.0" y="1391" width="375" height="64"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Epo-Ej-XdB">
-                                            <rect key="frame" x="25" y="0.0" width="350" height="64"/>
-                                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
-                                            <state key="normal" title="Fix it for me!">
-                                                <color key="titleColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="handlerAddToMyActions:" destination="-1" eventType="touchUpInside" id="vcB-Gj-hxo"/>
-                                            </connections>
-                                        </button>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ohg-6F-3GN">
-                                            <rect key="frame" x="342" y="19.5" width="11" height="25"/>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="Epo-Ej-XdB" secondAttribute="bottom" id="8WI-hj-dmG"/>
-                                        <constraint firstAttribute="trailing" secondItem="ohg-6F-3GN" secondAttribute="trailing" constant="22" id="8ca-lK-ifl"/>
-                                        <constraint firstAttribute="trailing" secondItem="Epo-Ej-XdB" secondAttribute="trailing" id="IbO-Fo-5Zy"/>
-                                        <constraint firstAttribute="height" constant="64" id="Q2T-W7-HSH"/>
-                                        <constraint firstItem="Epo-Ej-XdB" firstAttribute="top" secondItem="da2-1W-Lo9" secondAttribute="top" id="aC3-BQ-PKm"/>
-                                        <constraint firstItem="ohg-6F-3GN" firstAttribute="centerY" secondItem="da2-1W-Lo9" secondAttribute="centerY" id="bXh-Ve-LOO"/>
-                                        <constraint firstItem="Epo-Ej-XdB" firstAttribute="centerY" secondItem="da2-1W-Lo9" secondAttribute="centerY" id="l13-vx-xAa"/>
-                                        <constraint firstItem="Epo-Ej-XdB" firstAttribute="leading" secondItem="da2-1W-Lo9" secondAttribute="leading" constant="25" id="rbn-PN-BAQ"/>
-                                    </constraints>
-                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="civ-5I-2Rw">
-                                    <rect key="frame" x="0.0" y="1456" width="375" height="64"/>
+                                    <rect key="frame" x="0.0" y="1326" width="375" height="64"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8r-mx-7Gu">
                                             <rect key="frame" x="25" y="0.0" width="350" height="64"/>
@@ -251,7 +191,7 @@
                         <constraint firstItem="CMJ-3S-pPM" firstAttribute="top" secondItem="YdJ-OJ-AEq" secondAttribute="top" id="QmW-md-2Xf"/>
                         <constraint firstItem="CMJ-3S-pPM" firstAttribute="width" secondItem="YdJ-OJ-AEq" secondAttribute="width" id="WRC-BN-5kO"/>
                         <constraint firstItem="CMJ-3S-pPM" firstAttribute="leading" secondItem="YdJ-OJ-AEq" secondAttribute="leading" id="ga3-ym-jFH"/>
-                        <constraint firstAttribute="bottom" secondItem="CMJ-3S-pPM" secondAttribute="bottom" constant="80" id="rGs-US-wHD"/>
+                        <constraint firstAttribute="bottomMargin" secondItem="CMJ-3S-pPM" secondAttribute="bottom" constant="70" id="rGs-US-wHD"/>
                     </constraints>
                 </scrollView>
             </subviews>
