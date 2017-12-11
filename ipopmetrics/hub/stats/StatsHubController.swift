@@ -226,7 +226,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
         let metrics = store.getStatisticMetricsForCard(card)
         if metrics.isEmpty {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficEmptyCard", for: indexPath) as! TrafficEmptyView
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficEmptyCard", for: indexPath) as! StatsEmptyCell
             cellHeight = 216
             cell.selectionStyle = .none
             //cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_:)), for: .touchUpInside)
@@ -235,7 +235,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
         
         switch card.section {
         case "Traffic":
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficCard", for: indexPath) as! TrafficCardViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficCard", for: indexPath) as! StatsCardViewCell
             
             let results = store.getStatisticMetricsForCard(card)
             cell.statisticsCountView.setupViews(data: Array(results))

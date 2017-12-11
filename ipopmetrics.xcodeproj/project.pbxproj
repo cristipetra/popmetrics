@@ -65,7 +65,7 @@
 		088B282A1F7E5D130015A66E /* StatisticsCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B28291F7E5D130015A66E /* StatisticsCountView.swift */; };
 		088B282C1F7E7F150015A66E /* AimeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B282B1F7E7F150015A66E /* AimeeView.swift */; };
 		088BBEA81F58212A00AD5414 /* StatsEmptyCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEA71F58212A00AD5414 /* StatsEmptyCard.xib */; };
-		088BBEAA1F58214300AD5414 /* TrafficEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */; };
+		088BBEAA1F58214300AD5414 /* StatsEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088BBEA91F58214300AD5414 /* StatsEmptyCell.swift */; };
 		088BBEAC1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */; };
 		088E77A91F7CE99900774F13 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77A81F7CE99900774F13 /* ToastView.swift */; };
 		088E77AD1F7D499400774F13 /* BreakdownsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77AC1F7D499400774F13 /* BreakdownsTableViewController.swift */; };
@@ -173,7 +173,7 @@
 		08F7A0971F17AB0C00A1B2C3 /* RecommendationCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F7A0961F17AB0C00A1B2C3 /* RecommendationCardCell.swift */; };
 		08FAE8441F541D790097DF3E /* StatsHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE8431F541D790097DF3E /* StatsHubController.swift */; };
 		08FAE8471F541FF40097DF3E /* StatsCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08FAE8461F541FF40097DF3E /* StatsCard.xib */; };
-		08FAE8491F5420050097DF3E /* TrafficCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */; };
+		08FAE8491F5420050097DF3E /* StatsCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE8481F5420050097DF3E /* StatsCardViewCell.swift */; };
 		1100F6F91F5FEBCE000AF1D4 /* TodoActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1100F6F81F5FEBCE000AF1D4 /* TodoActionHandler.swift */; };
 		1104F8751FD45B3B002F6221 /* HubsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1104F8741FD45B3B002F6221 /* HubsApi.swift */; };
 		110A62CA1ECEDADC0052B478 /* StatsSummaryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A62C91ECEDADC0052B478 /* StatsSummaryViewCell.swift */; };
@@ -295,7 +295,7 @@
 		088B28291F7E5D130015A66E /* StatisticsCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsCountView.swift; sourceTree = "<group>"; };
 		088B282B1F7E7F150015A66E /* AimeeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimeeView.swift; sourceTree = "<group>"; };
 		088BBEA71F58212A00AD5414 /* StatsEmptyCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsEmptyCard.xib; sourceTree = "<group>"; };
-		088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficEmptyView.swift; sourceTree = "<group>"; };
+		088BBEA91F58214300AD5414 /* StatsEmptyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsEmptyCell.swift; sourceTree = "<group>"; };
 		088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		088E77A81F7CE99900774F13 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		088E77AC1F7D499400774F13 /* BreakdownsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakdownsTableViewController.swift; sourceTree = "<group>"; };
@@ -403,7 +403,7 @@
 		08F7A0961F17AB0C00A1B2C3 /* RecommendationCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationCardCell.swift; sourceTree = "<group>"; };
 		08FAE8431F541D790097DF3E /* StatsHubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsHubController.swift; sourceTree = "<group>"; };
 		08FAE8461F541FF40097DF3E /* StatsCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsCard.xib; sourceTree = "<group>"; };
-		08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficCardViewCell.swift; sourceTree = "<group>"; };
+		08FAE8481F5420050097DF3E /* StatsCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsCardViewCell.swift; sourceTree = "<group>"; };
 		1100F6F81F5FEBCE000AF1D4 /* TodoActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoActionHandler.swift; sourceTree = "<group>"; };
 		1104F8741FD45B3B002F6221 /* HubsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubsApi.swift; sourceTree = "<group>"; };
 		110A62C91ECEDADC0052B478 /* StatsSummaryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsSummaryViewCell.swift; sourceTree = "<group>"; };
@@ -746,10 +746,10 @@
 			children = (
 				08FAE8431F541D790097DF3E /* StatsHubController.swift */,
 				08FAE8461F541FF40097DF3E /* StatsCard.xib */,
-				08FAE8481F5420050097DF3E /* TrafficCardViewCell.swift */,
+				08FAE8481F5420050097DF3E /* StatsCardViewCell.swift */,
 				08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */,
 				088BBEA71F58212A00AD5414 /* StatsEmptyCard.xib */,
-				088BBEA91F58214300AD5414 /* TrafficEmptyView.swift */,
+				088BBEA91F58214300AD5414 /* StatsEmptyCell.swift */,
 				088E77AE1F7D4A8E00774F13 /* MetricReportView.swift */,
 				088B28271F7E43960015A66E /* TrafficVisitsViewCell.swift */,
 				088B28291F7E5D130015A66E /* StatisticsCountView.swift */,
@@ -1399,7 +1399,7 @@
 				11DD96781FC4FA5400386F1E /* TodoApi.swift in Sources */,
 				11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */,
 				080DCA881F4D9716000C73DC /* InsightCard.swift in Sources */,
-				08FAE8491F5420050097DF3E /* TrafficCardViewCell.swift in Sources */,
+				08FAE8491F5420050097DF3E /* StatsCardViewCell.swift in Sources */,
 				080DCA811F4D6EE6000C73DC /* MenuViewController.swift in Sources */,
 				11DD967B1FC4FA5400386F1E /* ApiModels.swift in Sources */,
 				08755F4C1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift in Sources */,
@@ -1410,7 +1410,7 @@
 				08F7A0971F17AB0C00A1B2C3 /* RecommendationCardCell.swift in Sources */,
 				11A675A91FC8E1A900EE0A15 /* EmptyStateCardCell.swift in Sources */,
 				08B4EB971FC569EC00BFC5A1 /* CalendarFeedStore.swift in Sources */,
-				088BBEAA1F58214300AD5414 /* TrafficEmptyView.swift in Sources */,
+				088BBEAA1F58214300AD5414 /* StatsEmptyCell.swift in Sources */,
 				085053FE1F2787A100FE8234 /* CalendarViewController.swift in Sources */,
 				089267741F86617600D7B99E /* OfflineBanner.swift in Sources */,
 				088F14FA1FB9C6080004F925 /* StaticSettingsViewController.swift in Sources */,
