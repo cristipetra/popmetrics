@@ -87,7 +87,6 @@ class ActionPageDetailsViewController: UIViewController {
         bottomContainerViewBottomAnchor.isActive = true
         
         persistentFooter.leftBtn.isHidden = true
-        persistentFooter.rightBtn.changeTitle("Fix")
         
         persistentFooter.rightBtn.addTarget(self, action: #selector(handlerActionBtn), for: .touchUpInside)
     }
@@ -98,12 +97,17 @@ class ActionPageDetailsViewController: UIViewController {
         actionModel = ActionPageModel(feedCard: feedCard)
         recommendActionHandler = handler
         iceView.configure(feedCard)
+        
+        persistentFooter.rightBtn.changeTitle("Fix")
     }
     
     public func configure(todoCard: TodoCard) {
         self.todoCard = todoCard
         iceView.configure(todoCard: todoCard)
         actionModel = ActionPageModel(todoCard: todoCard)
+        
+        persistentFooter.rightBtn.changeTitle("Mark As Complete")
+        persistentFooter.rightBtn.hideImageBtn()
     }
     
     private func updatView() {

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,7 +20,7 @@
                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXX-Yp-XlA">
                         <rect key="frame" x="10" y="0.0" width="355" height="260.5"/>
                         <subviews>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6x-z1-jd3">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6x-z1-jd3">
                                 <rect key="frame" x="25" y="15" width="245" height="74"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="188" id="Soo-yO-f7z"/>
@@ -37,8 +36,8 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQQ-Uf-qQE">
-                                <rect key="frame" x="25" y="106" width="311" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQQ-Uf-qQE">
+                                <rect key="frame" x="15" y="96" width="319" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="VTz-lW-f8E"/>
                                 </constraints>
@@ -118,7 +117,8 @@
                             <constraint firstItem="1YS-lF-dzl" firstAttribute="leading" secondItem="TXX-Yp-XlA" secondAttribute="leading" constant="1" id="8OF-M1-Ofl"/>
                             <constraint firstAttribute="bottom" secondItem="1YS-lF-dzl" secondAttribute="bottom" id="FJA-7R-AOH"/>
                             <constraint firstItem="i6x-z1-jd3" firstAttribute="top" secondItem="TXX-Yp-XlA" secondAttribute="top" constant="15" id="JFD-0k-vhc"/>
-                            <constraint firstItem="EQQ-Uf-qQE" firstAttribute="leading" secondItem="TXX-Yp-XlA" secondAttribute="leading" constant="23" id="XSd-0r-cvq"/>
+                            <constraint firstItem="EQQ-Uf-qQE" firstAttribute="leading" secondItem="TXX-Yp-XlA" secondAttribute="leading" constant="15" id="XSd-0r-cvq"/>
+                            <constraint firstItem="i6x-z1-jd3" firstAttribute="leading" secondItem="TXX-Yp-XlA" secondAttribute="leading" constant="15" id="XgZ-Dn-YLs"/>
                             <constraint firstAttribute="trailing" secondItem="EQQ-Uf-qQE" secondAttribute="trailing" constant="21" id="Xi9-vx-e9X"/>
                             <constraint firstItem="EQQ-Uf-qQE" firstAttribute="top" secondItem="i6x-z1-jd3" secondAttribute="bottom" constant="18" id="ZcH-xJ-mda"/>
                             <constraint firstAttribute="bottom" secondItem="lCs-7n-YJn" secondAttribute="bottom" id="lLF-fs-4no"/>
