@@ -87,7 +87,7 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
         self.calendarView.configuration.periodType = .month
         
         // Set shape of day view. Available types: Circle, Square
-        self.calendarView.configuration.dayViewType = .circle
+        self.calendarView.configuration.dayViewType = .square
         
         // Set selected day display type. Available types:
         // Border - Only border is colored with selected day color
@@ -102,9 +102,11 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
         
         // Set selected day text color
         self.calendarView.configuration.selectedDayTextColor = PopmetricsColor.textGrey
+        
         //self.calendarView.configuration.selectedBorderWidth = 0
         // Set selected day background color
         //self.calendarView.configuration.selectedDayBackgroundColor = UIColor(hexString: "2FBD8F")
+        self.calendarView.configuration.selectedDayBackgroundColor = PopmetricsColor.yellowBGColor
         
         // Set other month day text color. Relevant only if periodType = .Month
         //self.calendarView.configuration.otherMonthTextColor = UIColor(hexString: "6f787c")
@@ -125,7 +127,7 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
         self.calendarView.configuration.weekLabelFont = UIFont(name: "OpenSans-Semibold", size: 12.0)!
         
         //Set day view size. It includes border width if selectedDayType = .Border
-        self.calendarView.configuration.dayViewSize = CGSize(width: 24, height: 24)
+        self.calendarView.configuration.dayViewSize = CGSize(width: 55, height: 24)
         
         //Set height of row with week's days
         self.calendarView.configuration.rowHeight = 45
@@ -174,7 +176,7 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
     func calendar(_ calendarView: MJCalendarView, textColorForDate date: Date) -> UIColor? {
         return dayColors[date]
     }
-    
+
     func calendar(_ calendarView: MJCalendarView, didSelectDate date: Date) {
         setupDates(date)
     }
@@ -186,6 +188,7 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
             resetColors()
             store.selectedDate = date
             self.calendarView.configuration.selectedDayTextColor = PopmetricsColor.greenSelectedDate
+            
             datesSelected = 1
         case 1:
             if date == store.selectedDate {
