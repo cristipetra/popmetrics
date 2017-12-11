@@ -37,10 +37,8 @@ class StatsReportViewController: UIViewController {
         super.viewDidLoad()
         
         setUpNavigationBar()
-        
         statusLbl.text = ""
         
-        statsPageVC.indexDelegate = self
         addPageView()
         setUpPageControlViews()
     
@@ -100,11 +98,4 @@ class StatsReportViewController: UIViewController {
     }
 }
 
-extension StatsReportViewController: IndexPageProtocol {
-    
-    func indexOfPage(index: Int) {
-        self.topPageControl.currentPage = index - 1
-        self.pageIndex = index
-    }
-}
 

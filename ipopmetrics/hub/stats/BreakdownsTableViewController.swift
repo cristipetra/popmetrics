@@ -1,4 +1,4 @@
-//
+ //
 //  TrafficStatsTableViewController.swift
 //  ipopmetrics
 //
@@ -14,9 +14,7 @@ class BreakdownsTableViewController: UITableViewController {
     
     var statisticsStore = StatsStore.getInstance()
     
-    internal var statisticCard: StatisticsCard!
-    
-    internal var statisticMetric: StatisticMetric!
+    internal var statisticMetric: StatisticMetric
     
     var reloadGraphDelegate: ReloadGraphProtocol!
     
@@ -24,10 +22,13 @@ class BreakdownsTableViewController: UITableViewController {
     let HEIGHT_HEADER = 65
 //    var constraintHeightTable: NSLayoutConstraint!
     
-    private var pageIndex = 1 {
-        didSet {
-            tableView.reloadData()
-        }
+    init(statisticMetric: StatisticMetric) {
+        self.statisticMetric = statisticMetric
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -40,7 +41,7 @@ class BreakdownsTableViewController: UITableViewController {
 //
 //        self.tableView.sectionFooterHeight = UITableViewAutomaticDimension
 //        self.tableView.estimatedSectionFooterHeight = 5
-          self.tableView.sectionFooterHeight = 5
+          self.tableView.sectionFooterHeight = 0
         
 //
 //        self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -55,7 +56,6 @@ class BreakdownsTableViewController: UITableViewController {
         self.tableView.backgroundColor = PopmetricsColor.orange
         self.tableView.alwaysBounceVertical = false
         self.tableView.separatorInset = .zero
-        self.automaticallyAdjustsScrollViewInsets = false
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
         
         self.tableView.separatorColor = PopmetricsColor.unselectedTabBarItemTint
@@ -71,26 +71,12 @@ class BreakdownsTableViewController: UITableViewController {
     override func viewWillLayoutSubviews() {
         super.updateViewConstraints()
         
-        if(statisticCard == nil) { return }
+        let sections = statisticMetric.getBreakDownGroups()
         
-        let metrics = statisticsStore.getStatisticMetricsForCard(statisticCard)  // not returning proper number static metrics
-        let sections = statisticMetric!.getBreakDownGroups()
-        
-        let value = CGFloat(metrics.count * HEIGHT_CELL) + CGFloat(3 * HEIGHT_HEADER)
-        
-        print("statistics")
-        print("metrics:  \(metrics.count)")
         print("sections: \(sections.count)")
-        print(value)
         
 //        constraintHeightTable.constant = CGFloat(14
 //            * HEIGHT_CELL) + CGFloat(sections.count * HEIGHT_HEADER) + 10
-    }
-    
-    func configure(statisticMetric: StatisticMetric) {
-        self.statisticMetric = statisticMetric
-        self.statisticCard = statisticMetric.statisticCard!
-        tableView.reloadData()
     }
     
     internal func registerCellForTable() {
@@ -103,10 +89,9 @@ class BreakdownsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        guard let _ = statisticMetric else {
-            return 0
-        }
-        return statisticMetric!.getBreakDownGroups().count
+
+        return statisticMetric.getBreakDownGroups().count
+        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -115,10 +100,6 @@ class BreakdownsTableViewController: UITableViewController {
             return items.count
         }
         return 0
-    }
-    
-    internal func getStatisticMetricsForCardAtPageIndex() -> Results<StatisticMetric> {
-        return statisticsStore.getStatisticMetricsForCardAtPageIndex(statisticCard, pageIndex)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -167,8 +148,6 @@ class BreakdownsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let metrics = getStatisticMetricsForCardAtPageIndex()[indexPath.row]
-        NotificationCenter.default.post(name: Notification.Popmetrics.ReloadGraph, object: metrics)
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
