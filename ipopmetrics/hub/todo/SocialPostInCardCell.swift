@@ -11,7 +11,8 @@ import UIKit
 class SocialPostInCardCell: UITableViewCell {
     
     
-    @IBOutlet weak var aproveButton: TwoColorButton!
+    
+    @IBOutlet weak var aproveButton: ActionTodoButton!
     @IBOutlet weak var denyPostBtn: UIButton!
     @IBOutlet weak var stackView: UIStackView!
     
@@ -51,6 +52,9 @@ class SocialPostInCardCell: UITableViewCell {
         self.circleView.roundCorners(corners: .allCorners, radius: self.circleView.frame.size.width / 2)
         addShadowToView(shadowView, radius: 4, opacity: 0.5)
 
+        
+        aproveButton.changeTitle("Approve")
+        
         setupCorners()
     }
     
@@ -81,7 +85,7 @@ class SocialPostInCardCell: UITableViewCell {
     }
     
     @objc func animationHandler() {
-        aproveButton.animateButton(decreaseWidth: 120, increaseWidth: 10, imgLeftSpace: 10)
+        //aproveButton.animateButton(decreaseWidth: 120, increaseWidth: 10, imgLeftSpace: 10)
         aproveButton.removeTarget(self, action: #selector(animationHandler), for: .touchUpInside)
         //actionSocialDelegate.approvePostFromSocial!(post: todoItem, indexPath: indexPath)
     }

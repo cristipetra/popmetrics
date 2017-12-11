@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="OpenSans-Bold.ttf">
-            <string>OpenSans-Bold</string>
-        </array>
         <array key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
         </array>
@@ -28,7 +24,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zel-Qq-zWo">
-                        <rect key="frame" x="20" y="11" width="405" height="304.5"/>
+                        <rect key="frame" x="8" y="8" width="429" height="304.5"/>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WiB-fl-y5c">
                         <rect key="frame" x="10" y="0.0" width="425" height="304.5"/>
@@ -109,37 +105,21 @@
                                             <color key="titleColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOw-MG-0y9" customClass="TwoColorButton" customModule="ipopmetrics" customModuleProvider="target">
-                                        <rect key="frame" x="259" y="12" width="156" height="36"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Vw-Ix-dg1" customClass="ActionTodoButton" customModule="ipopmetrics" customModuleProvider="target">
+                                        <rect key="frame" x="293" y="12" width="122" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="156" id="hNc-Q5-C5l"/>
-                                            <constraint firstAttribute="height" constant="36" id="sCW-nS-NjM"/>
+                                            <constraint firstAttribute="width" constant="122" id="e1t-7P-DBD"/>
+                                            <constraint firstAttribute="height" constant="35" id="imL-Fx-jFF"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
-                                        <inset key="titleEdgeInsets" minX="0.0" minY="9" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="100" minY="6" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal">
-                                            <color key="titleColor" red="0.65098039220000004" green="0.52941176469999995" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="topColor">
-                                                <color key="value" red="1" green="0.86666666670000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
-                                                <color key="value" red="0.98431372549999996" green="0.75294117650000003" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="Approve Post"/>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="iconRightYellow"/>
-                                        </userDefinedRuntimeAttributes>
+                                        <state key="normal" title="Button"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="5Vw-Ix-dg1" secondAttribute="trailing" constant="10" id="GBK-aQ-TZ8"/>
                                     <constraint firstAttribute="height" constant="60" id="H2q-br-8hT"/>
                                     <constraint firstItem="yhb-xh-eNa" firstAttribute="leading" secondItem="TT8-9v-gTd" secondAttribute="leading" constant="15" id="M2l-Fh-b3E"/>
-                                    <constraint firstItem="eOw-MG-0y9" firstAttribute="centerY" secondItem="TT8-9v-gTd" secondAttribute="centerY" id="S3g-3e-ZrV"/>
-                                    <constraint firstAttribute="trailing" secondItem="eOw-MG-0y9" secondAttribute="trailing" constant="10" id="Z7e-bU-bAf"/>
+                                    <constraint firstItem="5Vw-Ix-dg1" firstAttribute="centerY" secondItem="TT8-9v-gTd" secondAttribute="centerY" id="NoU-ry-gIo"/>
                                     <constraint firstItem="yhb-xh-eNa" firstAttribute="centerY" secondItem="TT8-9v-gTd" secondAttribute="centerY" id="iJG-ZD-sUi"/>
                                 </constraints>
                             </view>
@@ -186,7 +166,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="aproveButton" destination="eOw-MG-0y9" id="MBd-Cd-APf"/>
+                <outlet property="aproveButton" destination="5Vw-Ix-dg1" id="pAw-xa-Efj"/>
                 <outlet property="cardImage" destination="WUH-7z-lCh" id="evS-q5-eIF"/>
                 <outlet property="circleView" destination="uUR-ad-KNx" id="mQT-TA-rFQ"/>
                 <outlet property="constraintContainerBottom" destination="uxa-wD-9ya" id="SG7-K7-uON"/>
@@ -202,7 +182,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="iconRightYellow" width="11" height="25"/>
         <image name="icon_twitter" width="47" height="38"/>
         <image name="image_card_approval" width="375" height="225"/>
     </resources>

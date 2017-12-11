@@ -158,6 +158,7 @@
 		08CBB0061FD96AEA0042EE9C /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CBB0051FD96AEA0042EE9C /* ActionButton.swift */; };
 		08CC6EC01FBC7F9C00A6521E /* SettingsLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */; };
 		08CC6EC21FBC7FBA00A6521E /* SettingsLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08CC6EC11FBC7FBA00A6521E /* SettingsLogoView.xib */; };
+		08CCFFE81FDD977700755295 /* ActionTodoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CCFFE71FDD977700755295 /* ActionTodoButton.swift */; };
 		08CE428F1FD041AE00FF8C80 /* EmailMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CE428E1FD041AE00FF8C80 /* EmailMessages.swift */; };
 		08D1BC371F1DF4F900D377B2 /* ViewNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC361F1DF4F900D377B2 /* ViewNames.swift */; };
 		08D1BC391F1E3D6200D377B2 /* LDSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC381F1E3D6200D377B2 /* LDSplashView.swift */; };
@@ -387,6 +388,7 @@
 		08CBB0051FD96AEA0042EE9C /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLogoViewController.swift; sourceTree = "<group>"; };
 		08CC6EC11FBC7FBA00A6521E /* SettingsLogoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsLogoView.xib; sourceTree = "<group>"; };
+		08CCFFE71FDD977700755295 /* ActionTodoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTodoButton.swift; sourceTree = "<group>"; };
 		08CE428E1FD041AE00FF8C80 /* EmailMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailMessages.swift; sourceTree = "<group>"; };
 		08D1BC361F1DF4F900D377B2 /* ViewNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewNames.swift; sourceTree = "<group>"; };
 		08D1BC381F1E3D6200D377B2 /* LDSplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDSplashView.swift; sourceTree = "<group>"; };
@@ -551,6 +553,7 @@
 			children = (
 				08B4EBAE1FC56ACE00BFC5A1 /* TwoImagesButton.swift */,
 				08CBB0051FD96AEA0042EE9C /* ActionButton.swift */,
+				08CCFFE71FDD977700755295 /* ActionTodoButton.swift */,
 			);
 			path = buttons;
 			sourceTree = "<group>";
@@ -1428,6 +1431,7 @@
 				08B4EBB81FC56ACE00BFC5A1 /* CardActionHanlder.swift in Sources */,
 				08B4EB9D1FC56A0400BFC5A1 /* TodoStore.swift in Sources */,
 				08B4EB9F1FC56A0C00BFC5A1 /* UserStore.swift in Sources */,
+				08CCFFE81FDD977700755295 /* ActionTodoButton.swift in Sources */,
 				08B2803F1F55862100E36D19 /* Statistics.swift in Sources */,
 				08BAD73E1F960A70008BC88F /* MJCalendarViewController.swift in Sources */,
 				085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */,
