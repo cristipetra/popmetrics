@@ -76,8 +76,7 @@ class RequiredActionCard: UITableViewCell {
             //footerView.actionButton.imageButtonType = .allowNotification
             //self.footerView.actionButton.addTarget(self, action:#selector(handleActionNotifications(_:)), for: .touchDown)
         } else {
-            
-            
+            self.footerView.actionButton.addTarget(self, action:#selector(handleCallToAction(_:)), for: .touchDown)
         }
         
         configureFooterView()
@@ -179,7 +178,7 @@ class RequiredActionCard: UITableViewCell {
         toolbarController.setUpTopView(toolbarView: toolbarView)
     }
     
-    func handleActionNotifications(_ sender: SimpleButton) {
+    @objc func handleActionNotifications(_ sender: SimpleButton) {
         openUrl(string: Config.howToTurnNotificationLink)
     }
     
