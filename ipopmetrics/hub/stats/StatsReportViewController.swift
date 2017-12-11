@@ -37,10 +37,8 @@ class StatsReportViewController: UIViewController {
         super.viewDidLoad()
         
         setUpNavigationBar()
-        
         statusLbl.text = ""
         
-        statsPageVC.indexDelegate = self
         addPageView()
         setUpPageControlViews()
     
@@ -76,7 +74,7 @@ class StatsReportViewController: UIViewController {
         statsPageVC.view.bottomAnchor.constraint(equalTo: containerStats.bottomAnchor, constant: 0).isActive = true
         
         
-        statsPageVC.view.heightAnchor.constraint(equalToConstant: 1270).isActive = true
+        // statsPageVC.view.heightAnchor.constraint(equalToConstant: 1270).isActive = true
     }
     
     private func setUpNavigationBar() {
@@ -100,11 +98,4 @@ class StatsReportViewController: UIViewController {
     }
 }
 
-extension StatsReportViewController: IndexPageProtocol {
-    
-    func indexOfPage(index: Int) {
-        self.topPageControl.currentPage = index - 1
-        self.pageIndex = index
-    }
-}
 
