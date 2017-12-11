@@ -17,7 +17,7 @@ class StatsMetricPageContentViewController: UIViewController {
     
     @IBOutlet weak var containerStats: UIView!
     
-    let statsPageVC: StatsPageViewController = StatsPageViewController()
+    let statsPageVC: StatsReportPageViewController = StatsReportPageViewController()
     let statisticStore = StatsStore.getInstance()
     
     let statsSlideVC: StatsSlideViewController = StatsSlideViewController()

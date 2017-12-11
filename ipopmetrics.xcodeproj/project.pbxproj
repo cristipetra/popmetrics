@@ -89,7 +89,7 @@
 		08A62CB21F8E4DCF0072E6A5 /* TwoColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A62CB11F8E4DCF0072E6A5 /* TwoColorButton.swift */; };
 		08A812741F16601A00672126 /* CardHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A812731F16601A00672126 /* CardHeaderCell.xib */; };
 		08A812761F1660A300672126 /* CardHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A812751F1660A300672126 /* CardHeaderCell.swift */; };
-		08AA6C651F56DAA10022DE91 /* StatsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C641F56DAA10022DE91 /* StatsPageViewController.swift */; };
+		08AA6C651F56DAA10022DE91 /* StatsReportPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C641F56DAA10022DE91 /* StatsReportPageViewController.swift */; };
 		08AA6C671F56DC8B0022DE91 /* StatsSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C661F56DC8B0022DE91 /* StatsSlideViewController.swift */; };
 		08AA6C6B1F56DD060022DE91 /* BreakdownViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */; };
 		08AA6C731F56F8630022DE91 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C721F56F8630022DE91 /* ChartViewController.swift */; };
@@ -321,7 +321,7 @@
 		08A812781F1672D300672126 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		08A812791F1672DC00672126 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		08A8127A1F1672E700672126 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
-		08AA6C641F56DAA10022DE91 /* StatsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsPageViewController.swift; sourceTree = "<group>"; };
+		08AA6C641F56DAA10022DE91 /* StatsReportPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsReportPageViewController.swift; sourceTree = "<group>"; };
 		08AA6C661F56DC8B0022DE91 /* StatsSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsSlideViewController.swift; sourceTree = "<group>"; };
 		08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakdownViewCell.swift; sourceTree = "<group>"; };
 		08AA6C721F56F8630022DE91 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
@@ -751,7 +751,7 @@
 				088E77AE1F7D4A8E00774F13 /* MetricReportView.swift */,
 				088B28291F7E5D130015A66E /* StatisticsCountView.swift */,
 				11E5A8971FDF01AE0085BDEE /* StatsReportViewController.swift */,
-				08AA6C641F56DAA10022DE91 /* StatsPageViewController.swift */,
+				08AA6C641F56DAA10022DE91 /* StatsReportPageViewController.swift */,
 				08AA6C661F56DC8B0022DE91 /* StatsSlideViewController.swift */,
 				08AA6C721F56F8630022DE91 /* ChartViewController.swift */,
 				088E77AC1F7D499400774F13 /* BreakdownsTableViewController.swift */,
@@ -1401,7 +1401,7 @@
 				11DD967B1FC4FA5400386F1E /* ApiModels.swift in Sources */,
 				08755F4C1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift in Sources */,
 				086EDE431FC8449A002F4140 /* ImpactScoreView.swift in Sources */,
-				08AA6C651F56DAA10022DE91 /* StatsPageViewController.swift in Sources */,
+				08AA6C651F56DAA10022DE91 /* StatsReportPageViewController.swift in Sources */,
 				088B282C1F7E7F150015A66E /* AimeeView.swift in Sources */,
 				088E77A91F7CE99900774F13 /* ToastView.swift in Sources */,
 				08F7A0971F17AB0C00A1B2C3 /* RecommendationCardCell.swift in Sources */,
