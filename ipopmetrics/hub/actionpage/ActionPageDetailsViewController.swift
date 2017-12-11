@@ -87,7 +87,9 @@ class ActionPageDetailsViewController: UIViewController {
         bottomContainerViewBottomAnchor.isActive = true
         
         persistentFooter.leftBtn.isHidden = true
-        persistentFooter.rightBtn.changeTitle("View")
+        persistentFooter.rightBtn.changeTitle("Fix")
+        
+        persistentFooter.rightBtn.addTarget(self, action: #selector(handlerActionBtn), for: .touchUpInside)
     }
     
     
@@ -208,9 +210,30 @@ class ActionPageDetailsViewController: UIViewController {
     @IBAction func handlerInsightPage(_ sender: UIButton) {
         if feedCard == nil { return }
         let insightDetails = InsightPageDetailsViewController(nibName: "InsightPage", bundle: nil)
-        insightDetails.configure(feedCard)
         
-        self.navigationController?.pushViewController(insightDetails, animated: true)
+        if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
+            
+            insightDetails.configure(insightCard)
+        
+            self.navigationController?.pushViewController(insightDetails, animated: true)
+        }
+    }
+    
+    @objc func handlerActionBtn() {
+        if feedCard != nil {
+            FeedApi().postAddToMyActions(feedCardId: self.feedCard.cardId!, brandId: UserStore.currentBrandId) { todoCard in
+                TodoStore.getInstance().addTodoCard(todoCard!)
+                
+                if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
+                    FeedStore.getInstance().updateCardSection(insightCard, section:"None")
+                }
+                FeedStore.getInstance().updateCardSection(self.feedCard, section:"None")
+                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
+                                                userInfo: ["sucess":true])
+                
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
     
     @objc func handlerClickBack() {

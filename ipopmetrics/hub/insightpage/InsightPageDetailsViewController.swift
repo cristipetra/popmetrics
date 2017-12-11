@@ -9,7 +9,7 @@
 import UIKit
 import markymark
 
-class InsightPageDetailsViewController: UIViewController {
+class InsightPageDetailsViewController: BaseViewController {
 
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var titleArticle: UILabel!
@@ -37,6 +37,7 @@ class InsightPageDetailsViewController: UIViewController {
     internal var isBottomVisible = false
     
     let persistentFooter: PersistentFooter =  PersistentFooter()
+    let store: FeedStore = FeedStore.getInstance()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,6 +123,7 @@ class InsightPageDetailsViewController: UIViewController {
     }
     
     func getMarkDownString() -> String {
+        guard let _ = feedCard.detailsMarkdown else { return "" }
         return feedCard.detailsMarkdown!
     }
     
@@ -163,6 +165,27 @@ class InsightPageDetailsViewController: UIViewController {
         
         persistentFooter.leftBtn.isHidden = true
         persistentFooter.rightBtn.changeTitle("View Action")
+        
+        persistentFooter.rightBtn.addTarget(self, action: #selector(handlerActionBtn), for: .touchUpInside)
+    }
+    
+    @objc func handlerActionBtn() {
+        if feedCard.recommendedAction == "" {
+            self.presentAlertWithTitle("Error", message: "This insight has no recommended action!", useWhisper: true);
+            return
+        }
+        guard let actionCard = self.store.getFeedCardWithName(feedCard.recommendedAction)
+            else {
+                self.presentAlertWithTitle("Error", message: "No card to show with name: "+feedCard.recommendedAction, useWhisper: true);
+                return
+        }
+    
+        let actionPageVc: ActionPageDetailsViewController = ActionPageDetailsViewController(nibName: "ActionPage", bundle: nil)
+        
+        actionPageVc.hidesBottomBarWhenPushed = true
+        actionPageVc.configure(actionCard, handler: recommendActionHandler)
+        
+        self.navigationController?.pushViewController(actionPageVc, animated: true)
     }
     
 }
