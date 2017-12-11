@@ -25,6 +25,8 @@ class StatsHubController: BaseViewController {
     var insightIsDisplayed = false
     var cellHeight = 0 as CGFloat
     
+    var selectedCard: StatisticsCard?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.feedBackgroundColor()
@@ -58,11 +60,11 @@ class StatsHubController: BaseViewController {
     }
     
     internal func registerCellsForTable() {
-        let trafficNib = UINib(nibName: "TrafficCard", bundle: nil)
-        tableView.register(trafficNib, forCellReuseIdentifier: "TrafficCard")
+        let trafficNib = UINib(nibName: "StatsCard", bundle: nil)
+        tableView.register(trafficNib, forCellReuseIdentifier: "StatsEmptyCard")
         
-        let trafficUnconnectedNib = UINib(nibName: "TrafficEmptyCard", bundle: nil)
-        tableView.register(trafficUnconnectedNib, forCellReuseIdentifier: "TrafficEmptyCard")
+        let trafficUnconnectedNib = UINib(nibName: "StatsEmptyCard", bundle: nil)
+        tableView.register(trafficUnconnectedNib, forCellReuseIdentifier: "StatsEmptyCard")
         
         let sectionHeaderNib = UINib(nibName: "CardHeaderView", bundle: nil)
         tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CardHeaderView")
@@ -195,12 +197,22 @@ class StatsHubController: BaseViewController {
     
     @objc func openTrafficReport(_ sender: AnyObject, card: StatisticsCard) {
         let cardTmp  = StatsStore.getInstance().getStatisticsCards()[0]
-        let trafficReportVC: StatsMetricViewController = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_TRAFFIC_REPORT) as! StatsMetricViewController
         
-        trafficReportVC.configure(statisticsCard: cardTmp)
-        self.navigationController?.pushViewController(trafficReportVC, animated: true)
+        self.selectedCard = card
+        self.performSegue(withIdentifier: "showStatsReport", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showStatsReport" {
+            guard let card = self.selectedCard else { return }
+            let reportPVC = segue.destination as! StatsReportPageViewController
+            reportPVC.statisticsCard = card
+        }
     }
 }
+    
 
 extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -226,7 +238,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
         let metrics = store.getStatisticMetricsForCard(card)
         if metrics.isEmpty {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficEmptyCard", for: indexPath) as! StatsEmptyCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "StatsEmptyCard", for: indexPath) as! StatsEmptyCell
             cellHeight = 216
             cell.selectionStyle = .none
             //cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_:)), for: .touchUpInside)
@@ -235,7 +247,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
         
         switch card.section {
         case "Traffic":
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TrafficCard", for: indexPath) as! StatsCardViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "StatsCard", for: indexPath) as! StatsCardViewCell
             
             let results = store.getStatisticMetricsForCard(card)
             cell.statisticsCountView.setupViews(data: Array(results))

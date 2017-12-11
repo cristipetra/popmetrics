@@ -719,19 +719,20 @@
                         <outlet property="leftAnchorTableView" destination="UQv-xu-Bc2" id="C1Q-U9-17I"/>
                         <outlet property="tableView" destination="oYx-Kl-DJY" id="Z7e-vQ-5KB"/>
                         <outlet property="topAnchorTableView" destination="Zg5-DJ-mtJ" id="ZL9-PN-P2i"/>
+                        <segue destination="Jcb-oQ-as5" kind="show" identifier="showReport" id="4L1-3S-x5w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cQO-HC-TYF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2199" y="1818"/>
+            <point key="canvasLocation" x="1681" y="1809"/>
         </scene>
-        <!--Page View Controller-->
+        <!--Stats Report Page View Controller-->
         <scene sceneID="hsh-ca-4j2">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="Jcb-oQ-as5" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="StatsReportPageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="Jcb-oQ-as5" customClass="StatsReportPageViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qat-c1-6Yl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3047" y="1698"/>
+            <point key="canvasLocation" x="2614" y="1809"/>
         </scene>
         <!--Stats Metric View Controller-->
         <scene sceneID="hRF-Ww-Zs3">
@@ -787,6 +788,9 @@
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z3U-WA-UzM" userLabel="Breakdowns Container">
                                 <rect key="frame" x="0.0" y="352" width="375" height="448"/>
+                                <connections>
+                                    <segue destination="tef-RZ-JTg" kind="embed" id="3sZ-Gc-1MH"/>
+                                </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -812,7 +816,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tnh-7j-i4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3766" y="1758"/>
+            <point key="canvasLocation" x="3481" y="1808"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xup-fx-MmK">
@@ -831,7 +835,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVm-Zp-D38" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1255" y="1818"/>
+            <point key="canvasLocation" x="814" y="1809"/>
         </scene>
         <!--Chart View Controller-->
         <scene sceneID="Hcw-NA-76T">
@@ -953,14 +957,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Qb-o3-4Bz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4447" y="1510"/>
+            <point key="canvasLocation" x="4602" y="1336"/>
         </scene>
         <!--Breakdowns Table View Controller-->
         <scene sceneID="ns0-1f-oQs">
             <objects>
                 <tableViewController id="tef-RZ-JTg" customClass="BreakdownsTableViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="f5I-kY-SO8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="448"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -981,7 +985,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7tM-7V-S3M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4447" y="2042"/>
+            <point key="canvasLocation" x="4601" y="1957"/>
         </scene>
     </scenes>
     <resources>
