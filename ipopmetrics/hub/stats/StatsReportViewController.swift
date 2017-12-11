@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StatsReportViewController: UIViewController {
+class StatsMetricPageContentViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet var containerView: UIView!
