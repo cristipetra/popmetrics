@@ -596,6 +596,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
                 let cellFrame = tableView.rectForRow(at: indexPath)
                 if headerFrame.origin.y + 50 < tableView.contentOffset.y {
                     self.changeTopHeaderTitle(section: index.section)
+                    toDoTopView.changeSection(section: index.section)
                     animateHeader(colapse: false)
                 } else if frameOfLastCell.origin.y < tableView.contentOffset.y  {
                     animateHeader(colapse: false)

@@ -13,7 +13,7 @@ class IndicatorTopView: UIView {
     private lazy var imageView: UIImageView = {
         let imageview = UIImageView()
         imageview.translatesAutoresizingMaskIntoConstraints = false
-        imageview.image = UIImage(named: "icon_todo_header_approved_unselected")!
+        imageview.image = UIImage(named: "icon_todo_unapproved_unselected")!
         return imageview
     }()
     
@@ -97,18 +97,23 @@ class TodoTopView: UIView {
     
     internal var views: [IndicatorTopView] = []
     
+    
+    
+    let imagesSelected: [String] = ["icon_todo_unapproved_selected", "icon_todo_myactions_selected", "icon_todo_paidactions_selected", "icon_todo_more_selected"]
+    let imagesUnselected: [String] = ["icon_todo_unapproved_unselected", "icon_todo_myactions_unselected", "icon_todo_paidactions_unselected", "icon_todo_more_unselected"]
+    
     func setUpView(view: StatusArticle) {
         
         firstIndicatorTop = IndicatorTopView()
         
         secondIndicator = IndicatorTopView()
-        secondIndicator.changeImage("icon_todo_myactions_unselected")
+        secondIndicator.changeImage(imagesUnselected[1])
         
         thirdIndicator = IndicatorTopView()
-        thirdIndicator.changeImage("icon_todo_paidactions_unselected")
+        thirdIndicator.changeImage(imagesUnselected[2])
         
         fourthIndicator = IndicatorTopView()
-        fourthIndicator.changeImage("icon_todo_more_unselected")
+        fourthIndicator.changeImage(imagesUnselected[3])
         
         views = [firstIndicatorTop, secondIndicator, thirdIndicator, fourthIndicator]
         
@@ -140,6 +145,23 @@ class TodoTopView: UIView {
         if section > views.count { return }
         let indicatorTop = views[section]
         indicatorTop.changeValue(value)
+    }
+    
+    func changeSection(section: Int) {
+        if section > views.count { return }
+        unselectAllImages()
+        changeImageSelectedForSection(section: section)
+    }
+    
+    private func changeImageSelectedForSection(section: Int) {
+        let indicatorTopView = views[section]
+        indicatorTopView.changeImage(imagesSelected[section])
+    }
+    
+    func unselectAllImages() {
+        for (index, value) in views.enumerated() {
+            views[index].changeImage(imagesUnselected[index])
+        }
     }
     
     func setActive(section: StatusArticle) {
