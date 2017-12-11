@@ -162,7 +162,7 @@ class InsightPageDetailsViewController: UIViewController {
         bottomContainerViewBottomAnchor.isActive = true
         
         persistentFooter.leftBtn.isHidden = true
-        persistentFooter.rightBtn.changeTitle("View")
+        persistentFooter.rightBtn.changeTitle("View Action")
     }
     
 }
