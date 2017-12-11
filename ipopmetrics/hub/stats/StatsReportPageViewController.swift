@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StatsPageViewController: UIPageViewController {
+class StatsReportPageViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
     var statisticsCard: StatisticsCard!
     var viewControllerList: [StatsSlideViewController]!
@@ -50,9 +50,7 @@ class StatsPageViewController: UIPageViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-}
 
-extension StatsPageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         

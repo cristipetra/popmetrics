@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TrafficCardViewCell: UITableViewCell {
+class StatsCardViewCell: UITableViewCell {
     
     @IBOutlet weak var toolbarView: ToolbarViewCell!
     @IBOutlet weak var statisticsCountView: StatisticsCountView!

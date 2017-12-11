@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TrafficEmptyView: UITableViewCell {
+class StatsEmptyCell: UITableViewCell {
     
     @IBOutlet weak var footerView: FooterView!
     @IBOutlet weak var messageLabel: UILabel!

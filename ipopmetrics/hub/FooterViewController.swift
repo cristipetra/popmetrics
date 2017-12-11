@@ -65,7 +65,7 @@ class FooterViewController: UIViewController {
     }
     
     @objc func approveHandler() {
-        
+        print ("a")
     }
     
     func animateButtonBlink(button: UIButton) {
