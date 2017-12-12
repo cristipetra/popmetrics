@@ -270,7 +270,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 moreInfoCell.footerView.actionButton.addTarget(self, action: #selector(loadAllActionCards), for: .touchUpInside)
                 return moreInfoCell
             } else if (indexPath.row > 1) {
-                shouldDisplayCell = false
                 return UITableViewCell()
             }
             
@@ -290,7 +289,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             }
             cell.delegate = self
             
-            
             return cell
             
 //        case HomeCardType.recommendedAction.rawValue:
@@ -304,9 +302,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             cell.configure(item)
             return cell
         default:
-            let cell = UITableViewCell()
-            cell.backgroundColor = .clear
-            return cell
+            return UITableViewCell()
         }
     }
     
@@ -371,7 +367,15 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             return nonEmptyCards.count
         }
     }
-    
+
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let emptyView = UIView()
+        emptyView.translatesAutoresizingMaskIntoConstraints = false
+        //workaround if I put 0 it doens't work
+        emptyView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        return emptyView
+    }
+
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let homeSection = HomeSection.init(rawValue: self.indexToSection[section]!)
@@ -379,13 +383,13 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         if count < 1 {
             let emptyView = UIView()
             emptyView.translatesAutoresizingMaskIntoConstraints = false
-            emptyView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            //workaround if I put 0 it doens't work
+            emptyView.heightAnchor.constraint(equalToConstant: 1).isActive = true
             return emptyView
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
         cell.sectionTitleLabel.text = homeSection?.sectionTitle().uppercased()
-        
         return cell
     }
 
@@ -559,7 +563,3 @@ extension HomeHubViewController {
     }
     
 }
-
-
-
-
