@@ -91,23 +91,36 @@ class ActionPageDetailsViewController: UIViewController {
         persistentFooter.rightBtn.addTarget(self, action: #selector(handlerActionBtn), for: .touchUpInside)
     }
     
+    public func configure(_ feedCard: FeedCard, openedFrom: String) {
+        displayActionButton(type: openedFrom)
+        actionModel = ActionPageModel(feedCard: feedCard)
+        
+        iceView.configure(feedCard)
+        displayActionButton(type: openedFrom)
+    }
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
         self.feedCard = feedCard
         actionModel = ActionPageModel(feedCard: feedCard)
         recommendActionHandler = handler
         iceView.configure(feedCard)
-        
-        persistentFooter.rightBtn.changeTitle("Fix")
+        displayActionButton(type: "home")
     }
     
     public func configure(todoCard: TodoCard) {
         self.todoCard = todoCard
         iceView.configure(todoCard: todoCard)
         actionModel = ActionPageModel(todoCard: todoCard)
-        
-        persistentFooter.rightBtn.changeTitle("Mark As Complete")
-        persistentFooter.rightBtn.hideImageBtn()
+        displayActionButton(type: "todo")
+    }
+    
+    private func displayActionButton(type: String) {
+        if type == "home" {
+            persistentFooter.rightBtn.changeTitle("Fix")
+        } else if type == "todo" {
+            persistentFooter.rightBtn.changeTitle("Mark As Complete")
+            persistentFooter.rightBtn.hideImageBtn()
+        }
     }
     
     private func updatView() {
@@ -177,6 +190,7 @@ class ActionPageDetailsViewController: UIViewController {
             instructionsPageVc.configure(todoCard: todoCard)
         }
         self.navigationController?.pushViewController(instructionsPageVc, animated: true)
+        
     }
     
     @IBAction func handlerAddToMyActions(_ sender: Any) {
@@ -212,15 +226,34 @@ class ActionPageDetailsViewController: UIViewController {
     }
 
     @IBAction func handlerInsightPage(_ sender: UIButton) {
-        if feedCard == nil { return }
+        
         let insightDetails = InsightPageDetailsViewController(nibName: "InsightPage", bundle: nil)
         
-        if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
+        let openFrom = actionModel.todoCard != nil ? "todo" : "home"
+        print("openedFrom: \(openFrom)")
+        if let insightCard =  getRelatedInsightCard() {
+            insightDetails.configure(insightCard, openedFrom: openFrom)
             
-            insightDetails.configure(insightCard)
-        
-            self.navigationController?.pushViewController(insightDetails, animated: true)
+            self.navigationController?.pushViewController(viewController: insightDetails, animated: true, completion: {
+                self.closePreviousViewControllerFromNavigation()
+            })
+ 
         }
+    }
+    
+    func getRelatedInsightCard() -> FeedCard? {
+        let store = FeedStore.getInstance()
+        if todoCard != nil {
+            if let insightCard = store.getFeedCardWithRecommendedAction((todoCard?.name)!) {
+                return insightCard
+            }
+        }
+        if feedCard != nil {
+            if let insightCard = store.getFeedCardWithRecommendedAction((feedCard?.name)!) {
+                return insightCard
+            }
+        }
+        return nil
     }
     
     @objc func handlerActionBtn() {
@@ -254,6 +287,9 @@ class ActionPageModel: NSObject {
     internal var closingMarkdown: String? = ""
     internal var blogUrl: String? = ""
     
+    internal var todoCard: TodoCard?
+    internal var feedCard: FeedCard?
+    
     init(todoCard: TodoCard) {
         titleArticle         = todoCard.headerTitle
         imageUri             = todoCard.imageUri
@@ -261,6 +297,8 @@ class ActionPageModel: NSObject {
         detailsMarkdown      = todoCard.detailsMarkdown
         closingMarkdown      = todoCard.closingMarkdown
         blogUrl              = todoCard.blogUrl
+        
+        self.todoCard = todoCard
     }
     
     init(feedCard: FeedCard) {
@@ -270,5 +308,7 @@ class ActionPageModel: NSObject {
         detailsMarkdown     = feedCard.detailsMarkdown
         closingMarkdown     = feedCard.closingMarkdown
         blogUrl             = feedCard.blogUrl
+        
+        self.feedCard = feedCard
     }
 }

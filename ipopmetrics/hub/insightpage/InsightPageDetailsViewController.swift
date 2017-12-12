@@ -39,6 +39,8 @@ class InsightPageDetailsViewController: BaseViewController {
     let persistentFooter: PersistentFooter =  PersistentFooter()
     let store: FeedStore = FeedStore.getInstance()
     
+    private var openedFrom: String = "home"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,6 +62,11 @@ class InsightPageDetailsViewController: BaseViewController {
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
         self.feedCard = feedCard
         recommendActionHandler = handler
+    }
+    
+    public func configure(_ feedCard: FeedCard, openedFrom: String) {
+        self.openedFrom = openedFrom
+        self.feedCard = feedCard
     }
     
     private func updateView() {
@@ -183,9 +190,36 @@ class InsightPageDetailsViewController: BaseViewController {
         let actionPageVc: ActionPageDetailsViewController = ActionPageDetailsViewController(nibName: "ActionPage", bundle: nil)
         
         actionPageVc.hidesBottomBarWhenPushed = true
-        actionPageVc.configure(actionCard, handler: recommendActionHandler)
+        if openedFrom == "home" {
+            actionPageVc.configure(actionCard, handler: recommendActionHandler)
+        } else  {
+            actionPageVc.configure(actionCard, openedFrom: "todo")
+        }
         
-        self.navigationController?.pushViewController(actionPageVc, animated: true)
+
+        self.navigationController?.pushViewController(viewController: actionPageVc, animated: true, completion: {
+            self.closePreviousViewControllerFromNavigation()
+        })
+        
+    }
+    
+}
+
+extension UIViewController {
+    func closePreviousViewControllerFromNavigation() {
+        self.navigationController?.viewControllers.remove(at: ((self.navigationController?.viewControllers.count)! - 2))
+    }
+}
+
+extension UINavigationController {
+    
+    public func pushViewController(viewController: UIViewController,
+                                   animated: Bool,
+                                   completion: (() -> Void)?) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        pushViewController(viewController, animated: animated)
+        CATransaction.commit()
     }
     
 }
