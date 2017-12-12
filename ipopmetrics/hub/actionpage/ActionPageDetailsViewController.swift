@@ -182,6 +182,14 @@ class ActionPageDetailsViewController: UIViewController {
     }
     
     @IBAction func handlerViewInstructions(_ sender: Any) {
+        
+        if let url = actionModel.blogUrl {
+            if url.isValidUrl() {
+                self.openURLInside(url: url)
+            } 
+        }
+        
+        /*
         let instructionsPageVc: ActionInstructionsPageViewController = ActionInstructionsPageViewController(nibName: "ActionInstructionsPage", bundle: nil)
         if (feedCard != nil) {
             instructionsPageVc.configure(feedCard)
@@ -190,6 +198,7 @@ class ActionPageDetailsViewController: UIViewController {
             instructionsPageVc.configure(todoCard: todoCard)
         }
         self.navigationController?.pushViewController(instructionsPageVc, animated: true)
+     */
         
     }
     
