@@ -309,7 +309,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 80
+            return 60
         } else {
             return 0
         }
