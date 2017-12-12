@@ -9,6 +9,10 @@
 import UIKit
 import ScrollableGraphView
 
+protocol ReloadGraphProtocol {
+    func reloadGraph(statisticMetric: StatisticMetric)
+}
+
 class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
     
     lazy var barChart: ScrollableGraphView = {

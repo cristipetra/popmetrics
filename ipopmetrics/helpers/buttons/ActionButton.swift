@@ -11,6 +11,7 @@ import UIKit
 class ActionButton: UIButton {
     
     private var imageBtn: UIImage!
+    var context: [String:Any] = [:]
     
     override init(frame: CGRect) {
         super.init(frame: frame)

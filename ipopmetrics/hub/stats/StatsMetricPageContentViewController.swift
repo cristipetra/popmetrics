@@ -42,6 +42,21 @@ class StatsMetricPageContentViewController: UIViewController {
         topPageControl.numberOfPages = numberOfPages
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "embedBreakdowns" {
+            let vc = segue.destination as! BreakdownsTableViewController
+            vc.statisticMetric = self.statsMetric
+        }
+        else if segue.identifier == "embedChart" {
+            let vc = segue.destination as! ChartViewController
+            vc.statisticMetric = self.statsMetric
+        }
+        
+        
+    }
+    
+    
     
     private func setUpNavigationBar() {
         let titleWindow = "WEBSITE REPORT"

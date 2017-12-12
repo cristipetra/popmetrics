@@ -61,7 +61,7 @@ class StatsHubController: BaseViewController {
     
     internal func registerCellsForTable() {
         let trafficNib = UINib(nibName: "StatsCard", bundle: nil)
-        tableView.register(trafficNib, forCellReuseIdentifier: "StatsEmptyCard")
+        tableView.register(trafficNib, forCellReuseIdentifier: "StatsCard")
         
         let trafficUnconnectedNib = UINib(nibName: "StatsEmptyCard", bundle: nil)
         tableView.register(trafficUnconnectedNib, forCellReuseIdentifier: "StatsEmptyCard")
@@ -195,10 +195,10 @@ class StatsHubController: BaseViewController {
         self.tabBarController?.selectedIndex = 0
     }
     
-    @objc func openTrafficReport(_ sender: AnyObject, card: StatisticsCard) {
-        let cardTmp  = StatsStore.getInstance().getStatisticsCards()[0]
+    @objc func openTrafficReport(_ sender: AnyObject, eventInfo: AnyObject) {
+        let actionButton = sender as! ActionButton
         
-        self.selectedCard = card
+        self.selectedCard = actionButton.context["card"] as! StatisticsCard
         self.performSegue(withIdentifier: "showStatsReport", sender: self)
         
     }
@@ -257,7 +257,8 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
             
             cell.selectionStyle = .none
             cell.backgroundColor = UIColor.feedBackgroundColor()
-            cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_: card:)), for: .touchUpInside)
+            cell.footerView.actionButton.context = ["card":card]
+            cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_: eventInfo:)), for: .touchUpInside)
             //cell.footerView.hideButton(button: cell.footerView.xButton)
             cell.footerView.displayOnlyActionButton()
             cell.connectionLine.isHidden = true

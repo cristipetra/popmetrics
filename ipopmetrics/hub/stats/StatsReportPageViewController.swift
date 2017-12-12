@@ -8,105 +8,56 @@
 
 import UIKit
 
-class StatsReportPageViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+class StatsReportPageViewController: UIPageViewController {
     
     var statisticsCard: StatisticsCard!
-    var viewControllerList: [StatsSlideViewController]!
     var numberOfPages: Int = 0
     var currentPageIndex: Int = 0
+    var pageSegueIdentifier = "Page"
+    var nextViewController: UIViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.delegate = self
-        self.dataSource = self
-        
-        self.updateViewControllerList()
-        
-        if let firstVC = viewControllerList.first {
-            self.setViewControllers([firstVC], direction: .forward, animated: true, completion: { (finished) in
-            })
-        }
-    }
-    
-    func updateViewControllerList() {
-        viewControllerList = []
         let metrics = StatsStore.getInstance().getStatisticMetricsForCard(statisticsCard)
-        for index in 1...self.numberOfPages {
-            let statsVC: StatsSlideViewController = StatsSlideViewController()
-            statsVC.statsMetric = metrics[index-1]
-            viewControllerList.append(statsVC)
-        }
+        self.numberOfPages = metrics.count
+        
+        let firstPage = createViewController(sender: self)
+        setViewControllers([firstPage], direction: .forward, animated: true, completion: nil)
+        
     }
     
-    override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
-        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: options)
+    public func createViewController(sender: Any?) -> StatsMetricPageContentViewController {
+        performSegue(withIdentifier: pageSegueIdentifier, sender: sender)
+        return nextViewController! as! StatsMetricPageContentViewController
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Page" {
+            let vc = segue.destination as! StatsMetricPageContentViewController
+            let metrics = StatsStore.getInstance().getStatisticMetricsForCard(statisticsCard)
+            vc.statsMetric = metrics[currentPageIndex]
+            vc.pageIndex = currentPageIndex
+        }
+        
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
     
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        
-        guard let statsVC : StatsSlideViewController = viewController as? StatsSlideViewController else {
-            return nil
-        }
-        
-        
-        guard let indexOfVC = viewControllerList.index(of: statsVC) else {
-            return nil
-        }
-        
-        let previousIndex = indexOfVC - 1
-        
-        if previousIndex < 0 {
-            
-            return nil
-        }
-        
-        guard viewControllerList.count > previousIndex else {
-            return nil
-        }
-        
-        
-        return viewControllerList[previousIndex]
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        
-        guard let statsVC : StatsSlideViewController = viewController as? StatsSlideViewController else {
-            return nil
-        }
-        
-        guard let currentVCIndex = viewControllerList.index(of: statsVC) else {
-            return nil
-        }
-        
-        let nextIndex = currentVCIndex + 1
-        
-        guard viewControllerList.count != nextIndex else {
-            return nil
-        }
-        
-        guard viewControllerList.count > nextIndex else {
-            return nil
-        }
-        
-        return viewControllerList[nextIndex]
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        if completed {
-            if let currentViewController = pageViewController.viewControllers![0] as? StatsSlideViewController {
-                // currentPageIndex = currentViewController.pageIndex
-            }
-        }
-    }
 }
+
+public class PageSegue: UIStoryboardSegue {
+    
+    public override init(identifier: String?, source: UIViewController, destination: UIViewController) {
+        super.init(identifier: identifier, source: source, destination: destination)
+        if let pageViewController = source as? StatsReportPageViewController {
+            pageViewController.nextViewController =
+                destination as? StatsMetricPageContentViewController
+        }
+    }
+    
+    public override func perform() {}
+    
+}
+
+
 

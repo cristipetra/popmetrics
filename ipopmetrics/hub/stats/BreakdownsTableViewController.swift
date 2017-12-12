@@ -14,7 +14,7 @@ class BreakdownsTableViewController: UITableViewController {
     
     var statisticsStore = StatsStore.getInstance()
     
-    internal var statisticMetric: StatisticMetric
+    var statisticMetric: StatisticMetric!
     
     var reloadGraphDelegate: ReloadGraphProtocol!
     
@@ -22,17 +22,10 @@ class BreakdownsTableViewController: UITableViewController {
     let HEIGHT_HEADER = 65
 //    var constraintHeightTable: NSLayoutConstraint!
     
-    init(statisticMetric: StatisticMetric) {
-        self.statisticMetric = statisticMetric
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.register(BreakdownViewCell.self, forCellReuseIdentifier: "BreakdownCell")
         
         self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
           self.tableView.estimatedSectionHeaderHeight = 65
@@ -49,10 +42,9 @@ class BreakdownsTableViewController: UITableViewController {
         
 //
 //
-        registerCellForTable()
      
-        //self.tableView.backgroundColor = PopmetricsColor.statisticsTableBackground
-        self.tableView.backgroundColor = PopmetricsColor.orange
+        self.tableView.backgroundColor = PopmetricsColor.statisticsTableBackground
+        // self.tableView.backgroundColor = PopmetricsColor.orange
         self.tableView.alwaysBounceVertical = false
         self.tableView.separatorInset = .zero
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
@@ -63,12 +55,8 @@ class BreakdownsTableViewController: UITableViewController {
 //        self.tableViewHeightConstraint = tableView.heightAnchor.constraint(equalToConstant: 200)
 //        self.tableViewHeightConstraint.isActive = true
 //
-        self.tableView.sizeToFit()
+//        self.tableView.sizeToFit()
         
-    }
-    
-    internal func registerCellForTable() {
-        tableView.register(BreakdownViewCell.self, forCellReuseIdentifier: "trafficVisits")
     }
 
     override func didReceiveMemoryWarning() {
@@ -91,7 +79,7 @@ class BreakdownsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "trafficVisits", for: indexPath) as! BreakdownViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BreakdownCell", for: indexPath) as! BreakdownViewCell
         let rowIdx = indexPath.row
 
         let groups = statisticMetric.getBreakDownGroups()[indexPath.section]
