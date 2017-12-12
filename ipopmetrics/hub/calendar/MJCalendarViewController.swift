@@ -127,7 +127,7 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
         self.calendarView.configuration.weekLabelFont = UIFont(name: "OpenSans-Semibold", size: 12.0)!
         
         //Set day view size. It includes border width if selectedDayType = .Border
-        self.calendarView.configuration.dayViewSize = CGSize(width: 55, height: 24)
+        self.calendarView.configuration.dayViewSize = CGSize(width: 60, height: 24)
         
         //Set height of row with week's days
         self.calendarView.configuration.rowHeight = 45

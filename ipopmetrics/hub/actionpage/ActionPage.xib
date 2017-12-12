@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -22,6 +22,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActionPageDetailsViewController" customModule="ipopmetrics" customModuleProvider="target">
             <connections>
                 <outlet property="cardImage" destination="U1O-y9-Lc9" id="aV6-Lo-4f7"/>
+                <outlet property="constraintBottomStackView" destination="rGs-US-wHD" id="DmT-Uh-8QV"/>
                 <outlet property="constraintHeightClosingMarkdown" destination="MS2-3l-h7f" id="0ea-NC-EOU"/>
                 <outlet property="constraintHeightDetailsMarkdown" destination="LrX-Dx-yxw" id="7jR-RK-ddG"/>
                 <outlet property="containerClosingMarkdown" destination="H9S-LN-qse" id="03R-M9-Nxg"/>

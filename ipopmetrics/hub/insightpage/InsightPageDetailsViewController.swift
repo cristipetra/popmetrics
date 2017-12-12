@@ -26,6 +26,8 @@ class InsightPageDetailsViewController: BaseViewController {
     @IBOutlet weak var containerInsightArguments: UIView!
     @IBOutlet weak var constraintHeightClosingMarkdown: NSLayoutConstraint!
     
+    @IBOutlet weak var constraintBottomStackView: NSLayoutConstraint!
+    @IBOutlet weak var constraintHeightContainerFailed: NSLayoutConstraint!
     @IBOutlet weak var constraintHeightContainerImpactScore: NSLayoutConstraint!
     private var feedCard: FeedCard!
     private var recommendActionHandler: RecommendActionHandler?
@@ -39,6 +41,8 @@ class InsightPageDetailsViewController: BaseViewController {
     let persistentFooter: PersistentFooter =  PersistentFooter()
     let store: FeedStore = FeedStore.getInstance()
     
+    private var openedFrom: String = "home"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +52,10 @@ class InsightPageDetailsViewController: BaseViewController {
         
         self.view.addSwipeGestureRecognizer {
             self.navigationController?.popViewController(animated: true)
+        }
+        
+        if UIScreen.main.nativeBounds.height == 2436 {
+            constraintBottomStackView.constant = constraintBottomStackView.constant - 34
         }
         
         addPersistentFooter()
@@ -60,6 +68,11 @@ class InsightPageDetailsViewController: BaseViewController {
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
         self.feedCard = feedCard
         recommendActionHandler = handler
+    }
+    
+    public func configure(_ feedCard: FeedCard, openedFrom: String) {
+        self.openedFrom = openedFrom
+        self.feedCard = feedCard
     }
     
     private func updateView() {
@@ -75,6 +88,8 @@ class InsightPageDetailsViewController: BaseViewController {
             hideImpactScoreView()
         }
         
+        hideFailedSection()
+        
         let progress = CGFloat(feedCard.iceImpactPercentage) / CGFloat(100)
         
         impactScore.setProgress(progress)
@@ -88,6 +103,10 @@ class InsightPageDetailsViewController: BaseViewController {
         displayInsightArguments()
         displayMarkDetails()
         displayMarkClosing()
+    }
+    
+    private func hideFailedSection() {
+        constraintHeightContainerFailed.constant = 0
     }
     
     private func hideImpactScoreView() {
@@ -183,9 +202,36 @@ class InsightPageDetailsViewController: BaseViewController {
         let actionPageVc: ActionPageDetailsViewController = ActionPageDetailsViewController(nibName: "ActionPage", bundle: nil)
         
         actionPageVc.hidesBottomBarWhenPushed = true
-        actionPageVc.configure(actionCard, handler: recommendActionHandler)
+        if openedFrom == "home" {
+            actionPageVc.configure(actionCard, handler: recommendActionHandler)
+        } else  {
+            actionPageVc.configure(actionCard, openedFrom: "todo")
+        }
         
-        self.navigationController?.pushViewController(actionPageVc, animated: true)
+
+        self.navigationController?.pushViewController(viewController: actionPageVc, animated: true, completion: {
+            self.closePreviousViewControllerFromNavigation()
+        })
+        
+    }
+    
+}
+
+extension UIViewController {
+    func closePreviousViewControllerFromNavigation() {
+        self.navigationController?.viewControllers.remove(at: ((self.navigationController?.viewControllers.count)! - 2))
+    }
+}
+
+extension UINavigationController {
+    
+    public func pushViewController(viewController: UIViewController,
+                                   animated: Bool,
+                                   completion: (() -> Void)?) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        pushViewController(viewController, animated: animated)
+        CATransaction.commit()
     }
     
 }

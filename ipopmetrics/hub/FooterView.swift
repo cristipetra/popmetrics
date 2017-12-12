@@ -162,6 +162,9 @@ class FooterView: UIView {
         containerView.addSubview(horizontalStackView)
         horizontalStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: 0).isActive = true
         horizontalStackView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 0).isActive = true
+        
+        
+        leftButton.isHidden = true
     }
     
     func setUpDoubleButton() {
