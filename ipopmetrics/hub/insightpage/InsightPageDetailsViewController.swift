@@ -26,6 +26,8 @@ class InsightPageDetailsViewController: BaseViewController {
     @IBOutlet weak var containerInsightArguments: UIView!
     @IBOutlet weak var constraintHeightClosingMarkdown: NSLayoutConstraint!
     
+    @IBOutlet weak var constraintBottomStackView: NSLayoutConstraint!
+    @IBOutlet weak var constraintHeightContainerFailed: NSLayoutConstraint!
     @IBOutlet weak var constraintHeightContainerImpactScore: NSLayoutConstraint!
     private var feedCard: FeedCard!
     private var recommendActionHandler: RecommendActionHandler?
@@ -50,6 +52,10 @@ class InsightPageDetailsViewController: BaseViewController {
         
         self.view.addSwipeGestureRecognizer {
             self.navigationController?.popViewController(animated: true)
+        }
+        
+        if UIScreen.main.nativeBounds.height == 2436 {
+            constraintBottomStackView.constant = constraintBottomStackView.constant - 34
         }
         
         addPersistentFooter()
@@ -82,6 +88,8 @@ class InsightPageDetailsViewController: BaseViewController {
             hideImpactScoreView()
         }
         
+        hideFailedSection()
+        
         let progress = CGFloat(feedCard.iceImpactPercentage) / CGFloat(100)
         
         impactScore.setProgress(progress)
@@ -95,6 +103,10 @@ class InsightPageDetailsViewController: BaseViewController {
         displayInsightArguments()
         displayMarkDetails()
         displayMarkClosing()
+    }
+    
+    private func hideFailedSection() {
+        constraintHeightContainerFailed.constant = 0
     }
     
     private func hideImpactScoreView() {

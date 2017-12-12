@@ -23,6 +23,7 @@ class ActionPageDetailsViewController: UIViewController {
     @IBOutlet weak var containerDetailsMarkdown: UIView!
     @IBOutlet weak var containerInsightArguments: UIView!
 
+    @IBOutlet weak var constraintBottomStackView: NSLayoutConstraint!
     @IBOutlet weak var constraintHeightClosingMarkdown: NSLayoutConstraint!
     
     
@@ -47,6 +48,10 @@ class ActionPageDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UIScreen.main.nativeBounds.height == 2436 {
+            constraintBottomStackView.constant = constraintBottomStackView.constant - 34
+        }
         
         addIceView()
         impactScore.setProgress(0.0)
@@ -186,7 +191,7 @@ class ActionPageDetailsViewController: UIViewController {
         if let url = actionModel.blogUrl {
             if url.isValidUrl() {
                 self.openURLInside(url: url)
-            } 
+            }
         }
         
         /*

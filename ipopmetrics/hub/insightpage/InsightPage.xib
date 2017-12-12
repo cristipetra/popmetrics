@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,7 +27,9 @@
                 <outlet property="blogSummary" destination="2lc-Xd-sg6" id="6Z9-gU-Ncs"/>
                 <outlet property="blogTitle" destination="mkY-xN-C2h" id="gIZ-hf-url"/>
                 <outlet property="cardImage" destination="U1O-y9-Lc9" id="aV6-Lo-4f7"/>
+                <outlet property="constraintBottomStackView" destination="rGs-US-wHD" id="5KX-D3-l1g"/>
                 <outlet property="constraintHeightClosingMarkdown" destination="MS2-3l-h7f" id="ejL-fd-F1Q"/>
+                <outlet property="constraintHeightContainerFailed" destination="ZDf-D6-rA9" id="uzR-DQ-mhp"/>
                 <outlet property="constraintHeightContainerImpactScore" destination="pez-Av-kGk" id="yI3-g4-4R9"/>
                 <outlet property="constraintHeightDetailsMarkdown" destination="LrX-Dx-yxw" id="8GS-uj-0MY"/>
                 <outlet property="containerClosingMarkdown" destination="g3d-wh-WNj" id="ZHS-p0-Imm"/>
@@ -179,7 +181,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         <constraint firstItem="Q3I-JQ-YMS" firstAttribute="centerY" secondItem="ey0-rJ-Y0q" secondAttribute="centerY" id="w75-8v-fcU"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="80U-VB-cci">
+                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="80U-VB-cci">
                                     <rect key="frame" x="0.0" y="1032" width="375" height="365"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why you failed the test:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIx-RD-2DL">
@@ -204,6 +206,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         <constraint firstItem="bIx-RD-2DL" firstAttribute="top" secondItem="80U-VB-cci" secondAttribute="top" constant="20" id="Ab8-9q-cYj"/>
                                         <constraint firstItem="bIx-RD-2DL" firstAttribute="leading" secondItem="80U-VB-cci" secondAttribute="leading" constant="25" id="EnD-g7-NpI"/>
                                         <constraint firstItem="eAG-EN-Yrb" firstAttribute="leading" secondItem="80U-VB-cci" secondAttribute="leading" constant="25" id="Lia-8O-RPz"/>
+                                        <constraint firstAttribute="height" constant="365" id="ZDf-D6-rA9"/>
                                         <constraint firstAttribute="trailing" secondItem="eAG-EN-Yrb" secondAttribute="trailing" constant="17" id="kbX-Kl-5dU"/>
                                         <constraint firstItem="eAG-EN-Yrb" firstAttribute="top" secondItem="bIx-RD-2DL" secondAttribute="bottom" constant="10" id="mPX-VR-0CV"/>
                                     </constraints>
