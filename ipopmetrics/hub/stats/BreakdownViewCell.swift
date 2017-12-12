@@ -82,7 +82,7 @@ class BreakdownViewCell: UITableViewCell {
     }
     
     func setup() {
-        self.backgroundColor = UIColor.blue
+//        self.backgroundColor = UIColor.blue
         
         self.addSubview(titleLabel)
         titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 25).isActive = true

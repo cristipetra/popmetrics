@@ -8,14 +8,12 @@
 
 import UIKit
 
-class StatsMetricPageContentViewController: UIViewController {
+class StatsMetricPageContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet var containerView: UIView!
     @IBOutlet weak var topPageControl: UIPageControl!
     @IBOutlet weak var statusLbl: UILabel!
-    
-    @IBOutlet weak var containerStats: UIView!
+
+    @IBOutlet weak var tableView: UITableView!
     
     let statisticStore = StatsStore.getInstance()
     
@@ -31,6 +29,24 @@ class StatsMetricPageContentViewController: UIViewController {
         statusLbl.text = ""
         
         setUpPageControlViews()
+        
+        tableView.register(BreakdownViewCell.self, forCellReuseIdentifier: "BreakdownCell")
+        
+        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        tableView.estimatedSectionHeaderHeight = 65
+        
+        tableView.sectionFooterHeight = UITableViewAutomaticDimension
+        tableView.estimatedSectionFooterHeight = 5
+
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 90
+        
+        
+        tableView.backgroundColor = PopmetricsColor.statisticsTableBackground
+
+        tableView.alwaysBounceVertical = false
+
+        tableView.separatorColor = PopmetricsColor.unselectedTabBarItemTint
     
     }
     
@@ -41,21 +57,6 @@ class StatsMetricPageContentViewController: UIViewController {
 
         topPageControl.numberOfPages = numberOfPages
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "embedBreakdowns" {
-            let vc = segue.destination as! BreakdownsTableViewController
-            vc.statisticMetric = self.statsMetric
-        }
-        else if segue.identifier == "embedChart" {
-            let vc = segue.destination as! ChartViewController
-            vc.statisticMetric = self.statsMetric
-        }
-        
-        
-    }
-    
     
     
     private func setUpNavigationBar() {
@@ -77,6 +78,93 @@ class StatsMetricPageContentViewController: UIViewController {
     @objc func handlerClickBack() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    // Table delegates and data source
+    
+    // MARK: - Table view data source
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return statsMetric.getBreakDownGroups().count + 1
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        }
+        
+        let breakdowns = statsMetric.getBreakDownGroups()[section-1].breakdowns
+        if let items = breakdowns {
+            return items.count
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChartCell", for: indexPath) as! ChartViewCell
+            cell.configure(statisticMetric: statsMetric)
+            cell.selectionStyle = .none
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BreakdownCell", for: indexPath) as! BreakdownViewCell
+            let rowIdx = indexPath.row
+            
+            let groups = statsMetric.getBreakDownGroups()[indexPath.section-1]
+            guard let _ = groups.breakdowns else {
+                return cell
+            }
+        
+            let metricBreakdown: MetricBreakdown = groups.breakdowns![rowIdx]
+            
+            cell.configure(metricBreakdown: metricBreakdown, statisticMetric: statsMetric)
+            
+            cell.selectionStyle = .none
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            return UIView() // empty
+        }
+        
+        let headerView = UIView()
+        headerView.backgroundColor = .white
+        
+        let topDividerView = UIView()
+        topDividerView.backgroundColor = PopmetricsColor.unselectedTabBarItemTint
+        headerView.addSubview(topDividerView)
+        topDividerView.translatesAutoresizingMaskIntoConstraints = false
+        topDividerView.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 0).isActive = true
+        topDividerView.rightAnchor.constraint(equalTo: headerView.rightAnchor, constant: 0).isActive = true
+        topDividerView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        topDividerView.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 0).isActive = true
+        
+        let title = UILabel()
+        title.font = UIFont(name: FontBook.extraBold, size: 24)
+        title.textColor = PopmetricsColor.darkGrey
+        headerView.addSubview(title)
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 25).isActive = true
+        title.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 10).isActive = true
+        
+        if let group = statsMetric.getBreakDownGroups()[section-1].group {
+            title.text = group
+        }
+        
+        return headerView
+    }
+    
+
+    
+    
+    
+    
+    
 }
+
 
 

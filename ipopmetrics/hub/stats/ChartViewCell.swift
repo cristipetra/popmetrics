@@ -13,7 +13,7 @@ protocol ReloadGraphProtocol {
     func reloadGraph(statisticMetric: StatisticMetric)
 }
 
-class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
+class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
     
     lazy var barChart: ScrollableGraphView = {
         let chart = ScrollableGraphView(frame: CGRect(x: 16, y: 70, width: UIScreen.main.bounds.width - 35, height: 137))
@@ -21,7 +21,6 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
         return chart
     }()
     
-    @IBOutlet var mainView: UIView!
     @IBOutlet weak var currentDateLabel: UILabel!
     @IBOutlet weak var previousDateLabel: UILabel!
     @IBOutlet weak var secondValue: UILabel!
@@ -33,15 +32,26 @@ class ChartViewController: UIViewController, ScrollableGraphViewDataSource {
     var plotTwoData: [Double] = [0.0, 12.3, 12.2, 14.5, 16.7, 17.8, 13.2, 14.5, 13.3, 13.5, 17.8, 13.4, 16, 17, 15, 34, 14, 15, 13, 15, 4.5, 3.3, 3.5, 7.8, 3.4, 6, 7, 5, 34, 34, 14, 45, 45, 25, 43, 23]
     
     var statisticMetric: StatisticMetric!
+
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setup()
+    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setup()
+    }
+    
+    
+    func setup() {
         
         barChart.backgroundFillColor = UIColor.white
         barChart.dataSource = self
         
         setupGraph(graphView: barChart)
-        self.view.addSubview(barChart)
+        self.addSubview(barChart)
     
         let nc = NotificationCenter.default
         nc.addObserver(forName:Notification.Popmetrics.ReloadGraph, object:nil, queue:nil, using: handerReloadData)

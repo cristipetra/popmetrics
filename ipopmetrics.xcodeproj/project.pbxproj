@@ -67,7 +67,6 @@
 		088BBEAA1F58214300AD5414 /* StatsEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088BBEA91F58214300AD5414 /* StatsEmptyCell.swift */; };
 		088BBEAC1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */; };
 		088E77A91F7CE99900774F13 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77A81F7CE99900774F13 /* ToastView.swift */; };
-		088E77AD1F7D499400774F13 /* BreakdownsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77AC1F7D499400774F13 /* BreakdownsTableViewController.swift */; };
 		088F14FA1FB9C6080004F925 /* StaticSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F14F91FB9C6080004F925 /* StaticSettingsViewController.swift */; };
 		089267741F86617600D7B99E /* OfflineBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089267731F86617600D7B99E /* OfflineBanner.swift */; };
 		08953E6F1F4C2790003ABEFC /* ToDoCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */; };
@@ -90,7 +89,7 @@
 		08A812761F1660A300672126 /* CardHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A812751F1660A300672126 /* CardHeaderCell.swift */; };
 		08AA6C651F56DAA10022DE91 /* StatsReportPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C641F56DAA10022DE91 /* StatsReportPageViewController.swift */; };
 		08AA6C6B1F56DD060022DE91 /* BreakdownViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */; };
-		08AA6C731F56F8630022DE91 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C721F56F8630022DE91 /* ChartViewController.swift */; };
+		08AA6C731F56F8630022DE91 /* ChartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C721F56F8630022DE91 /* ChartViewCell.swift */; };
 		08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */; };
 		08AF04981F46FB9B0040012B /* SocialPostInCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AF04971F46FB9B0040012B /* SocialPostInCardCell.xib */; };
 		08AF049A1F46FBB60040012B /* SocialPostInCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AF04991F46FBB60040012B /* SocialPostInCardCell.swift */; };
@@ -294,7 +293,6 @@
 		088BBEA91F58214300AD5414 /* StatsEmptyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsEmptyCell.swift; sourceTree = "<group>"; };
 		088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		088E77A81F7CE99900774F13 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
-		088E77AC1F7D499400774F13 /* BreakdownsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakdownsTableViewController.swift; sourceTree = "<group>"; };
 		088F14F91FB9C6080004F925 /* StaticSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticSettingsViewController.swift; sourceTree = "<group>"; };
 		089267731F86617600D7B99E /* OfflineBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineBanner.swift; sourceTree = "<group>"; };
 		08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCountView.swift; sourceTree = "<group>"; };
@@ -320,7 +318,7 @@
 		08A8127A1F1672E700672126 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		08AA6C641F56DAA10022DE91 /* StatsReportPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsReportPageViewController.swift; sourceTree = "<group>"; };
 		08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakdownViewCell.swift; sourceTree = "<group>"; };
-		08AA6C721F56F8630022DE91 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		08AA6C721F56F8630022DE91 /* ChartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewCell.swift; sourceTree = "<group>"; };
 		08AF04971F46FB9B0040012B /* SocialPostInCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocialPostInCardCell.xib; sourceTree = "<group>"; };
 		08AF04991F46FBB60040012B /* SocialPostInCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialPostInCardCell.swift; sourceTree = "<group>"; };
 		08B2803E1F55862100E36D19 /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
@@ -747,8 +745,7 @@
 				088B28291F7E5D130015A66E /* StatisticsCountView.swift */,
 				11E5A8971FDF01AE0085BDEE /* StatsMetricPageContentViewController.swift */,
 				08AA6C641F56DAA10022DE91 /* StatsReportPageViewController.swift */,
-				08AA6C721F56F8630022DE91 /* ChartViewController.swift */,
-				088E77AC1F7D499400774F13 /* BreakdownsTableViewController.swift */,
+				08AA6C721F56F8630022DE91 /* ChartViewCell.swift */,
 			);
 			path = stats;
 			sourceTree = "<group>";
@@ -1409,7 +1406,6 @@
 				11D6FF6B1FD7941600C7E62B /* SettingsTwitterViewController.swift in Sources */,
 				1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */,
 				08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */,
-				088E77AD1F7D499400774F13 /* BreakdownsTableViewController.swift in Sources */,
 				1148D73D1FBF39AE006EB5BB /* NavigationMap.swift in Sources */,
 				08F368951F18F93800819CDE /* DailyInsightsCardCell.swift in Sources */,
 				11FB84EB1FC79E8800FE937D /* TodoHubController.swift in Sources */,
@@ -1436,7 +1432,7 @@
 				086EDE461FC8651B002F4140 /* UIViewExtensions.swift in Sources */,
 				08B8D9711F9A4443004E7781 /* RecommendActionHandler.swift in Sources */,
 				11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */,
-				08AA6C731F56F8630022DE91 /* ChartViewController.swift in Sources */,
+				08AA6C731F56F8630022DE91 /* ChartViewCell.swift in Sources */,
 				08B4EBB71FC56ACE00BFC5A1 /* ReachabilityManager.swift in Sources */,
 				08B7459B1F1F996B00EC3F8C /* DigitCodeView.swift in Sources */,
 				085054031F27A25B00FE8234 /* CalendarCardViewCell.swift in Sources */,
