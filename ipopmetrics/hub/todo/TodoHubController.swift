@@ -352,7 +352,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         }
         if sectionIdx == 0 {
                 let cards = store.getNonEmptyTodoCardsWithSection("Social Posts")
-                if cards != nil {
+                if cards.count != 0 {
                     let card = cards[0]
                     let item = store.getTodoSocialPostsForCard(card)[rowIdx]
                     let cell = tableView.dequeueReusableCell(withIdentifier: "SocialPostInCardCell", for: indexPath) as! SocialPostInCardCell
@@ -433,22 +433,22 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /*
-        let socialPost = store.getTodoSocialPostsForCard(store.getTodoCards()[indexPath.section])[indexPath.row] //store.getTodoCards()[indexPath.section]
-        
-        detailsViewController.socialDelegate = self
-        detailsViewController.configure(todoItem: socialPost,indexPath: indexPath)
-         */
-        
+
         if (indexPath.section != 0) { return }
  
-    
-        let todoSection = TodoSection.init(rawValue: self.indexToSection[indexPath.section]!)
-        let card = getCardInSection((todoSection?.rawValue)!, atIndex: indexPath.row)
+        
+        let cards = store.getNonEmptyTodoCardsWithSection("Social Posts")
+        if cards.count == 0 { return }
+        let rowIdx = indexPath.row
+        
+        
+            let card = cards[0]
+            let item = store.getTodoSocialPostsForCard(card)[rowIdx]
+        
         
         let detailsVC = SocialPostDetailsViewController(nibName: "SocialPostDetails", bundle: nil)
-        detailsVC.configure(todoCard: card)
-        
+        detailsVC.configure(todoSocialPost: item)
+    
         self.navigationController?.pushViewController(detailsVC, animated: true)
         
     }
