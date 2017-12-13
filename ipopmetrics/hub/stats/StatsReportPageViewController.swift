@@ -39,6 +39,7 @@ class StatsReportPageViewController: UIPageViewController {
         if segue.identifier == "Page" {
             let vc = segue.destination as! StatsMetricPageContentViewController
             let metrics = StatsStore.getInstance().getStatisticMetricsForCard(statisticsCard)
+            vc.numberOfPages = numberOfPages
             vc.statsMetric = metrics[currentPageIndex]
             vc.pageIndex = currentPageIndex
         }
