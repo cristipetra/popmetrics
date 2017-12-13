@@ -43,6 +43,7 @@ class StatsHubController: BaseViewController {
         
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -310,11 +311,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 60
-        } else {
-            return 60
-        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
