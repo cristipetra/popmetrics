@@ -84,9 +84,11 @@ class SocialPostInCardCell: UITableViewCell {
         if( indexPath.row != (numberOfCellsInSection - 1) ) {
             constraintContainerBottom.constant = 0
         }
+        self.indexPath = indexPath
     }
     
     @objc func animationHandler() {
+
         aproveButton.removeTarget(self, action: #selector(animationHandler), for: .touchUpInside)
         let indexPath = IndexPath()
         actionSocialDelegate.approvePostFromSocial!(post: todoItem, indexPath: indexPath)
@@ -98,6 +100,13 @@ class SocialPostInCardCell: UITableViewCell {
         }
         
         setupStatusCardView()
+/*
+        //aproveButton.animateButton(decreaseWidth: 120, increaseWidth: 10, imgLeftSpace: 10)
+        //aproveButton.removeTarget(self, action: #selector(animationHandler), for: .touchUpInside)
+        let todoHubController = self.parentViewController as! TodoHubController
+//        TodoHubController.approvePostFromSocial(todoItem)
+        actionSocialDelegate.approvePostFromSocial!(post: todoItem, indexPath: indexPath)
+*/
     }
     
     @objc func denyPostHandler() {

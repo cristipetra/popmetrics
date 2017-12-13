@@ -728,6 +728,7 @@ extension TodoHubController: ActionSocialPostProtocol {
         let apiParams = ["action":action,
                          "todo_social_post_id": post.postId]
         
+/*
         let cards = store.getNonEmptyTodoCardsWithSection("Social Posts")
         if cards.count == 0 { return }
         
@@ -749,6 +750,11 @@ extension TodoHubController: ActionSocialPostProtocol {
     
             }
         }
+*/
+        bannerMessageView.displayApproved()
+        displayBannerInfo()
+        TodoApi().approvePost(post.postId!)
+
         
     }
     
