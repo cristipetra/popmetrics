@@ -49,10 +49,8 @@ class TodoApi: BaseApi {
     
     func postRequiredAction(_ brandId:String, params:[String:Any],
                     callback: @escaping (_ response: RequiredActionResponse?)  -> Void) {
+        
         // /api/actions/brand/<brand_id>/required-action
-        
-        
-        
         
         let url = ApiUrls.composedBaseUrl(String(format:"/api/actions/brand/%@/required-action", brandId))
         
@@ -66,6 +64,20 @@ class TodoApi: BaseApi {
                                 }
                             }
                             
+        }
+    }
+    
+    func approvePost(_ todoSocialPostId:String) {
+        let params = ["a":0]
+        let url = ApiUrls.composedBaseUrl(String(format:"/api/actions/approve-social-post/%@", todoSocialPostId))
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default,
+                          headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperEmpty>) in
+                            let levelOneHandled = super.handleNotOkCodes(response: response.response)
+                            if !levelOneHandled {
+                                let handled = super.handleResponseWrap(response.value!)
+                                SyncService().syncAll(silent:true)
+                            }
         }
     }
     

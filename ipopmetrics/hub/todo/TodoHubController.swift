@@ -728,10 +728,10 @@ extension TodoHubController: ActionSocialPostProtocol {
     func approvePostFromSocial(post: TodoSocialPost, indexPath: IndexPath) {
         print("approve social post")
         
-        removeCell(indexPath: indexPath)
+//        removeCell(indexPath: indexPath)
         bannerMessageView.displayApproved()
-        
-        //displayBannerInfo()
+        displayBannerInfo()
+        TodoApi().approvePost(post.postId!)
         
     }
     
