@@ -161,8 +161,8 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
         let extendedCardNib = UINib(nibName: "CalendarCardMaximized", bundle: nil)
         tableView.register(extendedCardNib, forCellReuseIdentifier: "extendedCell")
         
-        let emptyCard = UINib(nibName: "EmptyCard", bundle: nil)
-        tableView.register(emptyCard, forCellReuseIdentifier: "EmptyCard")
+        let emptyCard = UINib(nibName: "EmptyStateCard", bundle: nil)
+        tableView.register(emptyCard, forCellReuseIdentifier: "EmptyStateCard")
         
         let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
         tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
@@ -286,13 +286,19 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         isLastCell = false
         if isLastSection(section: sectionIdx) {
             isLastCell = true
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! EmptyStateCardCell
-            cell.changeTitleWithSpacing(title: "Thats it for now");
-            cell.changeMessageWithSpacing(message: "Check back to see if there is anything more in the Home Feed")
-            cell.goToButton.changeTitle("View Home Feed")
-            cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
-            cell.selectionStyle = .none
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for: indexPath) as! EmptyStateCard
+            cell.displayEmptyForCalendar()
+            
             return cell
+            
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! EmptyStateCardCell
+//            cell.changeTitleWithSpacing(title: "Thats it for now");
+//            cell.changeMessageWithSpacing(message: "Check back to see if there is anything more in the Home Feed")
+//            cell.goToButton.changeTitle("View Home Feed")
+//            cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
+//            cell.selectionStyle = .none
+//            return cell
         }
         let sectionCards = store.getCalendarSocialPostsForCard(store.getCalendarCards()[sectionIdx], datesSelected: datesSelected)
         let card = store.getCalendarCards()[sectionIdx]
@@ -415,7 +421,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if ( isLastSection(section: indexPath.section) ) {
-            return 261
+            return 506
         }
         if store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section], datesSelected: datesSelected).isEmpty {
             return 216
@@ -454,7 +460,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         
         //last card
         if isLastSection(section: section) {
-            return 0
+            return 80
         }
         if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected).isEmpty {
             return 0
@@ -475,7 +481,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
+        return
         let yVelocity = scrollView.panGestureRecognizer.velocity(in: scrollView).y
         if yVelocity < 0 {
             calendarViewController?.animateTopPart(shouldCollapse: true, offset: scrollView.contentOffset.y)
@@ -526,6 +532,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        return
         let initialHeight = 56 as CGFloat
         if scrollView.contentOffset.y <= initialHeight {
             calendarViewController?.animateTopPart(shouldCollapse: false, offset: scrollView.contentOffset.y)
