@@ -21,8 +21,10 @@ class RequiredActionCard: UITableViewCell {
     @IBOutlet weak var containerView: UIStackView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var bottomImageView: UIImageView!
+    @IBOutlet weak var cardImageView: UIImageView!
+    
     @IBOutlet weak var connectionLineView: UIView!
+    
     
     @IBOutlet weak var messageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var messageTopConstraint: NSLayoutConstraint!
@@ -66,6 +68,12 @@ class RequiredActionCard: UITableViewCell {
     func configure(_ item: FeedCard, handler: CardActionHandler) {
         self.item = item
         self.actionHandler = handler
+        
+        if let imageUrl = item.imageUri {
+            if imageUrl.isValidUrl() {
+                cardImageView.af_setImage(withURL: URL(string: imageUrl)!)
+            }
+        }
         
         //self.titleLabel.text  = item.headerTitle
         changeTitle(item.headerTitle)

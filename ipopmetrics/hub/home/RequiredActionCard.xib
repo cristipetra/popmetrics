@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,6 +36,9 @@
                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkh-M4-e7L">
                         <rect key="frame" x="10" y="29" width="300" height="439.5"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tC9-MZ-7om">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="339"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8T-o8-GTy">
                                 <rect key="frame" x="15" y="244" width="278" height="80"/>
                                 <constraints>
@@ -66,15 +68,19 @@
                             <accessibilityTraits key="traits" image="YES"/>
                         </accessibility>
                         <constraints>
+                            <constraint firstItem="tC9-MZ-7om" firstAttribute="leading" secondItem="gkh-M4-e7L" secondAttribute="leading" id="0z9-oB-bNk"/>
                             <constraint firstAttribute="height" constant="440" id="50b-VP-n9p"/>
+                            <constraint firstItem="j8x-Kb-iAY" firstAttribute="top" secondItem="tC9-MZ-7om" secondAttribute="bottom" id="MaB-jZ-bhs"/>
                             <constraint firstAttribute="trailing" secondItem="r8T-o8-GTy" secondAttribute="trailing" constant="7" id="Miu-JT-1X4"/>
                             <constraint firstItem="j8x-Kb-iAY" firstAttribute="top" secondItem="r8T-o8-GTy" secondAttribute="bottom" constant="15" id="Msy-jt-Sna"/>
                             <constraint firstItem="sbm-nZ-v6I" firstAttribute="top" secondItem="gkh-M4-e7L" secondAttribute="top" constant="8" id="NsF-UA-KlY"/>
                             <constraint firstAttribute="trailing" secondItem="sbm-nZ-v6I" secondAttribute="trailing" constant="7" id="cqz-3Z-VHx"/>
+                            <constraint firstAttribute="trailing" secondItem="tC9-MZ-7om" secondAttribute="trailing" id="eTh-hg-DeF"/>
                             <constraint firstItem="j8x-Kb-iAY" firstAttribute="leading" secondItem="gkh-M4-e7L" secondAttribute="leading" id="iN1-EV-gGu"/>
                             <constraint firstAttribute="bottom" secondItem="j8x-Kb-iAY" secondAttribute="bottom" id="rYT-Dl-JIe"/>
                             <constraint firstAttribute="trailing" secondItem="j8x-Kb-iAY" secondAttribute="trailing" id="rmE-J2-odC"/>
                             <constraint firstItem="sbm-nZ-v6I" firstAttribute="leading" secondItem="gkh-M4-e7L" secondAttribute="leading" constant="15" id="tgQ-u6-b7a"/>
+                            <constraint firstItem="tC9-MZ-7om" firstAttribute="top" secondItem="gkh-M4-e7L" secondAttribute="top" id="uqF-3C-iRP"/>
                             <constraint firstItem="r8T-o8-GTy" firstAttribute="leading" secondItem="gkh-M4-e7L" secondAttribute="leading" constant="15" id="zX6-2r-tuJ"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -103,6 +109,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="cardImageView" destination="tC9-MZ-7om" id="K7I-Nu-cIk"/>
                 <outlet property="connectionLineView" destination="Voy-rD-hh5" id="qkz-GM-r0z"/>
                 <outlet property="containerView" destination="gkh-M4-e7L" id="mgL-H3-S9x"/>
                 <outlet property="footerView" destination="j8x-Kb-iAY" id="lDU-sh-PIO"/>
