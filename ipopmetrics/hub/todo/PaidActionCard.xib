@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,9 +18,6 @@
         <array key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
         </array>
-        <array key="OpenSans-Semibold.ttf">
-            <string>OpenSans-Semibold</string>
-        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -34,11 +30,11 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Vs-Or-TIv">
-                        <rect key="frame" x="10" y="5" width="630" height="275"/>
+                        <rect key="frame" x="10" y="5" width="630" height="250"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="epO-q6-pqH">
-                        <rect key="frame" x="10" y="5" width="630" height="275"/>
+                        <rect key="frame" x="10" y="5" width="630" height="250"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBs-zt-SPn" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="630" height="29"/>
@@ -51,7 +47,7 @@
                                 <rect key="frame" x="0.0" y="29" width="630" height="95"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_card_notifications" translatesAutoresizingMaskIntoConstraints="NO" id="4uJ-Pb-gN8">
-                                        <rect key="frame" x="0.0" y="0.0" width="630" height="231"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="630" height="206"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Google Tracker to your wordpress site." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWS-rm-0sT">
                                         <rect key="frame" x="15" y="5" width="605" height="33"/>
@@ -229,49 +225,22 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="79t-R0-X10">
-                                <rect key="frame" x="0.0" y="224" width="630" height="51"/>
+                                <rect key="frame" x="0.0" y="224" width="630" height="26"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QAj-XU-zKC">
-                                        <rect key="frame" x="0.0" y="0.0" width="630" height="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="630" height="13"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="s8h-Sm-nH1"/>
+                                            <constraint firstAttribute="height" constant="13" id="s8h-Sm-nH1"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YD2-Nv-JwH">
-                                        <rect key="frame" x="424" y="8" width="191" height="35"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="LK9-KB-oAG"/>
-                                            <constraint firstAttribute="width" constant="191" id="ygj-nR-sTn"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                        <state key="normal" title="Mark As Complete">
-                                            <color key="titleColor" red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="QAj-XU-zKC" firstAttribute="top" secondItem="79t-R0-X10" secondAttribute="top" id="8Qk-DV-TJP"/>
                                     <constraint firstAttribute="trailing" secondItem="QAj-XU-zKC" secondAttribute="trailing" id="cR3-JC-ISb"/>
                                     <constraint firstItem="QAj-XU-zKC" firstAttribute="leading" secondItem="79t-R0-X10" secondAttribute="leading" id="cgN-JG-V32"/>
-                                    <constraint firstItem="YD2-Nv-JwH" firstAttribute="centerY" secondItem="79t-R0-X10" secondAttribute="centerY" id="gno-Nd-Rm6"/>
-                                    <constraint firstAttribute="trailing" secondItem="YD2-Nv-JwH" secondAttribute="trailing" constant="15" id="gyP-md-HYa"/>
-                                    <constraint firstAttribute="height" constant="51" id="tRz-HS-NzL"/>
+                                    <constraint firstAttribute="height" constant="26" id="tRz-HS-NzL"/>
                                 </constraints>
                             </view>
                         </subviews>
