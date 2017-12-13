@@ -361,7 +361,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
                     
                     cell.configure(item: item)
                     return cell
-            }
+                }
             
         }
         let card = getCardInSection(todoSection.rawValue, atIndex: rowIdx)
@@ -441,18 +441,15 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         if cards.count == 0 { return }
         let rowIdx = indexPath.row
         
-        
-            let card = cards[0]
-            let item = store.getTodoSocialPostsForCard(card)[rowIdx]
-        
+        let card = cards[0]
+        let item = store.getTodoSocialPostsForCard(card)[rowIdx]
         
         let detailsVC = SocialPostDetailsViewController(nibName: "SocialPostDetails", bundle: nil)
         detailsVC.configure(todoSocialPost: item)
-    
+        detailsVC.actionSocialDelegate = self
         self.navigationController?.pushViewController(detailsVC, animated: true)
         
     }
-    
     
     func addApprovedView() {
         self.view.insertSubview(bannerMessageView, aboveSubview: tableView)
@@ -710,7 +707,7 @@ extension TodoHubController: ActionSocialPostProtocol {
         if bannerMessageView.transform == .identity {
             UIView.animate(withDuration: 0.5, animations: {
                 self.bannerMessageView.transform = CGAffineTransform(translationX: 0, y: -120)
-                Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (timer) in
+                Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
                     self.hideApprovedView()
                 })
                 
@@ -727,11 +724,37 @@ extension TodoHubController: ActionSocialPostProtocol {
     
     func approvePostFromSocial(post: TodoSocialPost, indexPath: IndexPath) {
         print("approve social post")
+        let action = "approve_one"
+        let apiParams = ["action":action,
+                         "todo_social_post_id": post.postId]
         
-        removeCell(indexPath: indexPath)
+/*
+        let cards = store.getNonEmptyTodoCardsWithSection("Social Posts")
+        if cards.count == 0 { return }
+        
+        let todoCard = cards[0]
+        
+        
+        TodoApi().postAction(todoCard.cardId!, params: apiParams) { result, error in
+            if error != nil {
+                self.presentAlertWithTitle("Communication error", message: "An error occurred while communicating with the Cloud")
+                return
+            }
+            else {
+                print("action occurred")
+                //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "didPostAction"), object: nil)
+                
+                //post.isApproved = true
+                self.bannerMessageView.displayApproved()
+                self.displayBannerInfo()
+    
+            }
+        }
+*/
         bannerMessageView.displayApproved()
-        
-        //displayBannerInfo()
+        displayBannerInfo()
+        TodoApi().approvePost(post.postId!)
+
         
     }
     
