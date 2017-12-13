@@ -22,6 +22,16 @@ class TodoStore {
         return realm.objects(TodoCard.self).sorted(byKeyPath: "index")
     }
     
+    public func getNonEmptyTodoCardsWithSection(_ section: String) -> Results<TodoCard> {
+        let predicate = NSPredicate(format: "section = %@ && type != %@", section, "empty_state")
+        return realm.objects(TodoCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
+    }
+    
+    public func getEmptyTodoCardsWithSection(_ section: String) -> Results<TodoCard> {
+        let predicate = NSPredicate(format: "section = %@ && type == %@", section, "empty_state")
+        return realm.objects(TodoCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
+    }
+    
     public func getTodoCardWithId(_ cardId: String) -> TodoCard? {
         return realm.object(ofType: TodoCard.self, forPrimaryKey: cardId)
     }
@@ -56,18 +66,7 @@ class TodoStore {
             return nil
         }
     }
-    
-    
-    public func getNonEmptyTodoCardsWithSection(_ section: String) -> Results<TodoCard> {
-        let predicate = NSPredicate(format: "section = %@ && type != %@", section, "empty_state")
-        return realm.objects(TodoCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
-    }
-    
-    public func getEmptyTodoCardsWithSection(_ section: String) -> Results<TodoCard> {
-        let predicate = NSPredicate(format: "section = %@ && type == %@", section, "empty_state")
-        return realm.objects(TodoCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
-    }
-    
+   
     
     public func countSections() -> Int {
         let distinctTypes = Array(Set(self.getTodoCards().value(forKey: "section") as! [String]))

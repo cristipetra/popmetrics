@@ -93,7 +93,7 @@ class ActionPageDetailsViewController: UIViewController {
         
         persistentFooter.leftBtn.isHidden = true
         
-        persistentFooter.rightBtn.addTarget(self, action: #selector(handlerActionBtn), for: .touchUpInside)
+        persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToPaidActions(_:)), for: .touchUpInside)
     }
     
     public func configure(_ feedCard: FeedCard, openedFrom: String) {
@@ -223,7 +223,7 @@ class ActionPageDetailsViewController: UIViewController {
         }
     }
     
-    @IBAction func handlerAddToPadActions(_ sender: Any) {
+    @objc func handlerAddToPaidActions(_ sender: Any) {
         if feedCard != nil {
             FeedApi().postAddToPaidActions(feedCardId: self.feedCard.cardId!, brandId: UserStore.currentBrandId) { todoCard in
                 TodoStore.getInstance().addTodoCard(todoCard!)
@@ -239,7 +239,7 @@ class ActionPageDetailsViewController: UIViewController {
         }
     }
 
-    @IBAction func handlerInsightPage(_ sender: UIButton) {
+    @objc func handlerInsightPage(_ sender: UIButton) {
         
         let insightDetails = InsightPageDetailsViewController(nibName: "InsightPage", bundle: nil)
         
@@ -270,22 +270,22 @@ class ActionPageDetailsViewController: UIViewController {
         return nil
     }
     
-    @objc func handlerActionBtn() {
-        if feedCard != nil {
-            FeedApi().postAddToMyActions(feedCardId: self.feedCard.cardId!, brandId: UserStore.currentBrandId) { todoCard in
-                TodoStore.getInstance().addTodoCard(todoCard!)
-                
-                if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
-                    FeedStore.getInstance().updateCardSection(insightCard, section:"None")
-                }
-                FeedStore.getInstance().updateCardSection(self.feedCard, section:"None")
-                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
-                                                userInfo: ["sucess":true])
-                
-                self.navigationController?.popViewController(animated: true)
-            }
-        }
-    }
+//    @objc func handlerActionBtn() {
+//        if feedCard != nil {
+//            FeedApi().postAddToMyActions(feedCardId: self.feedCard.cardId!, brandId: UserStore.currentBrandId) { todoCard in
+//                TodoStore.getInstance().addTodoCard(todoCard!)
+//
+//                if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
+//                    FeedStore.getInstance().updateCardSection(insightCard, section:"None")
+//                }
+//                FeedStore.getInstance().updateCardSection(self.feedCard, section:"None")
+//                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
+//                                                userInfo: ["sucess":true])
+//
+//                self.navigationController?.popViewController(animated: true)
+//            }
+//        }
+//    }
     
     @objc func handlerClickBack() {
         self.navigationController?.popViewController(animated: true)

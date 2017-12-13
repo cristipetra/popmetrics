@@ -31,7 +31,7 @@ class SocialPostInCardCell: UITableViewCell {
     @IBOutlet weak var constraintToolbarHeight: NSLayoutConstraint!
     @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
     
-    private var todoItem: TodoCard!;
+    private var todoItem: TodoSocialPost!;
     var indexPath: IndexPath!
     
     weak var actionSocialDelegate: ActionSocialPostProtocol!
@@ -58,12 +58,12 @@ class SocialPostInCardCell: UITableViewCell {
         setupCorners()
     }
     
-    func configure(item: TodoCard) {
+    func configure(item: TodoSocialPost) {
         todoItem = item
         
-        messageLbl.text = todoItem.message
+        messageLbl.text = todoItem.articleText
         
-        if let imageUri = todoItem.imageUri {
+        if let imageUri = todoItem.articleImage {
             let url = URL(string: imageUri)
             if let _ = url {
                 cardImage.af_setImage(withURL: url!)
