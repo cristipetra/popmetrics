@@ -19,12 +19,13 @@ class StatsReportPageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.dataSource = self
+        
         let metrics = StatsStore.getInstance().getStatisticMetricsForCard(statisticsCard)
         self.numberOfPages = metrics.count
         
         let firstPage = createViewController(sender: self)
         setViewControllers([firstPage], direction: .forward, animated: true, completion: nil)
-        
         
         setupNavigationWithBackButton()
     }
@@ -43,7 +44,15 @@ class StatsReportPageViewController: UIPageViewController {
         }
         
     }
+    /*
+    override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: options)
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    */
     func setupNavigationWithBackButton() {
         
         let titleWindow = "WEBSITE REPORT"
@@ -68,6 +77,29 @@ class StatsReportPageViewController: UIPageViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    
+}
+// MARK: UIPageViewControllerDataSource
+
+extension StatsReportPageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        
+        if currentPageIndex < numberOfPages - 1 {
+            currentPageIndex += 1
+        }
+        
+        return  createViewController(sender: self)
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        
+        if currentPageIndex > 0 {
+            currentPageIndex -= 1
+        }
+       
+        return createViewController(sender: self)
+    }
     
 }
 
