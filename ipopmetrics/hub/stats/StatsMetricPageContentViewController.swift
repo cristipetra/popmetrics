@@ -155,6 +155,7 @@ class StatsMetricPageContentViewController: UIViewController, UITableViewDelegat
         let headerView = UIView()
         headerView.backgroundColor = .white
         
+        
         let topDividerView = UIView()
         topDividerView.backgroundColor = PopmetricsColor.unselectedTabBarItemTint
         headerView.addSubview(topDividerView)
@@ -164,13 +165,25 @@ class StatsMetricPageContentViewController: UIViewController, UITableViewDelegat
         topDividerView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         topDividerView.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 0).isActive = true
         
+        let bottomDividerView = UIView()
+        bottomDividerView.backgroundColor = PopmetricsColor.unselectedTabBarItemTint
+        headerView.addSubview(bottomDividerView)
+        bottomDividerView.translatesAutoresizingMaskIntoConstraints = false
+        bottomDividerView.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 0).isActive = true
+        bottomDividerView.rightAnchor.constraint(equalTo: headerView.rightAnchor, constant: 0).isActive = true
+        bottomDividerView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        bottomDividerView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 0).isActive = true
+        
         let title = UILabel()
         title.font = UIFont(name: FontBook.extraBold, size: 24)
         title.textColor = PopmetricsColor.darkGrey
         headerView.addSubview(title)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 25).isActive = true
-        title.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 10).isActive = true
+        //title.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 10).isActive = true
+        title.centerYAnchor.constraint(equalTo: headerView.centerYAnchor).isActive = true
+        
+        //print(statsMetric.getBreakDownGroups()[section-1].toJSON())
         
         if let group = statsMetric.getBreakDownGroups()[section-1].group {
             title.text = group
