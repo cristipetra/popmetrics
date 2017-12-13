@@ -41,8 +41,6 @@ class StatsHubController: BaseViewController {
         tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
-        
-        
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
     }
@@ -74,6 +72,9 @@ class StatsHubController: BaseViewController {
         
         let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
         tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
+        
+        let emptyCard = UINib(nibName: "EmptyStateCard", bundle: nil)
+        tableView.register(emptyCard, forCellReuseIdentifier: "EmptyStateCard")
         
         let recommendedNib = UINib(nibName: "RecommendedCell", bundle: nil)
         tableView.register(recommendedNib, forCellReuseIdentifier: "RecommendedCell")
@@ -228,7 +229,8 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
 //            cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
 //            return cell
             let emptyCell = UITableViewCell()
-            emptyCell.backgroundColor = .clear
+            cellHeight = 0
+            emptyCell.backgroundColor = .blue
             return emptyCell
         }
         
@@ -237,11 +239,9 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
         let card = store.getStatisticsCards()[sectionIdx]
         let metrics = store.getStatisticMetricsForCard(card)
         if metrics.isEmpty {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "StatsEmptyCard", for: indexPath) as! StatsEmptyCell
-            cellHeight = 216
-            cell.selectionStyle = .none
-            //cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_:)), for: .touchUpInside)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for: indexPath) as! EmptyStateCard
+            cell.displayForStats()
+            cellHeight = 506
             return cell
         }
         
@@ -253,13 +253,13 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
             cell.statisticsCountView.setupViews(data: Array(results))
             let itemCellHeight: Int = 94
             cell.statisticsCountViewHeightCounstraint.constant = CGFloat(results.count * itemCellHeight)
-            cellHeight = CGFloat((results.count * itemCellHeight) + (29 + 93 + 20))
+            cellHeight = CGFloat((results.count * itemCellHeight) + (29 + 94 + 93 + 20 ))
             
             cell.selectionStyle = .none
-            cell.backgroundColor = UIColor.feedBackgroundColor()
+            cell.backgroundColor = .clear
             cell.footerView.actionButton.context = ["card":card]
             cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_: eventInfo:)), for: .touchUpInside)
-            //cell.footerView.hideButton(button: cell.footerView.xButton)
+            
             cell.footerView.displayOnlyActionButton()
             cell.connectionLine.isHidden = true
      
@@ -295,6 +295,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         if section == 0 {
             if( isLastSection(section: section)) {
                 return nil
@@ -312,7 +313,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 60
         } else {
-            return 0
+            return 60
         }
     }
     
@@ -329,7 +330,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return store.getStatisticsCards().count + 1
+        return store.getStatisticsCards().count
     }
     /*
     private func setTrafficCard(cell: TrafficCardViewCell, item: StatisticsItem) {

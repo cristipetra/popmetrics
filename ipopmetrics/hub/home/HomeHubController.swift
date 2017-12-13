@@ -84,6 +84,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                           4: HomeSectionType.summaries.rawValue,
                           5: HomeSectionType.moreOnTheWay.rawValue]
     
+    
+    /*
+     * active displaye type in section
+     */
+    let activeType = [HomeCardType.requiredAction.rawValue, HomeCardType.insight.rawValue, HomeCardType.emptyState.rawValue]
+    
     var requiredActionHandler = RequiredActionHandler()
     
     var recommendActionHandler = RecommendActionHandler()
@@ -362,14 +368,29 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     func countCardsInSection( _ section: String) -> Int {
-        let nonEmptyCards = store.getNonEmptyFeedCardsWithSection(section)
-        if nonEmptyCards.count == 0 {
+        var nonEmptyCards = store.getNonEmptyFeedCardsWithSection(section)
+        let cards = getCardsWithActiveSection(cards: nonEmptyCards)
+        //let cards = nonEmptyCards
+        if cards.count == 0 {
             let emptyCards = store.getEmptyFeedCardsWithSection(section)
             return emptyCards.count
         }
         else {
-            return nonEmptyCards.count
+            return cards.count
         }
+    }
+    
+    /*
+     * returns cards that has an type in cellForRowAt
+     */
+    private func getCardsWithActiveSection(cards: Results<FeedCard>) -> [FeedCard] {
+        var returnCards: [FeedCard] = []
+        for card in cards {
+            if activeType.contains(card.type) {
+                returnCards.append(card)
+            }
+        }
+        return returnCards
     }
 
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

@@ -124,6 +124,14 @@ class EmptyStateCard: UITableViewCell {
         footerVIew.actionButton.isHidden = true
     }
     
+    func displayForStats() {
+        backgroundImageView.image = UIImage(named: "emptyCard")
+        constraintHeightImage.constant = 159
+        setTitleCard("No Statistic Available")
+        setMessage(message: "You must first connect Google Analytics in the Home Feed to see your statistics.")
+        footerVIew.actionButton.isHidden = true
+    }
+    
     private func setUpToolbar(imageName: String, titleName: String) {
 
 //        let toolbarController: CardToolbarController  = CardToolbarController()
