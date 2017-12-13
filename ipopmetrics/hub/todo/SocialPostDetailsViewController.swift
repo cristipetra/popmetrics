@@ -43,12 +43,18 @@ class SocialPostDetailsViewController: UIViewController {
         return button
     }()
     
-    lazy var approvePostBtn: TwoColorButton = {
+    lazy var approvePostBtn1: TwoColorButton = {
         let button = TwoColorButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.changeTitle("Approve Post")
+        button.changeTitle("Approve")
         button.titleLabel?.font = UIFont(name: FontBook.bold, size: 15)
         button.contentHorizontalAlignment = .right
+        return button
+    }()
+    
+    lazy var approvePostBtn: ActionButton = {
+        let button = ActionButton(type: UIButtonType.system)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -56,6 +62,8 @@ class SocialPostDetailsViewController: UIViewController {
     
     var bottomContainerViewBottomAnchor: NSLayoutConstraint!
     internal var isBottomVisible = false
+    
+    weak var actionSocialDelegate: ActionSocialPostProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,6 +109,21 @@ class SocialPostDetailsViewController: UIViewController {
         blogMessage.text  = todoSocialPost.articleText
         
         displayContainerBtnsIfNeeded()
+        
+        setupStatusCardView()
+    }
+    
+    func setupStatusCardView() {
+        let isApproved = todoSocialPost.isApproved
+        print("approved \(isApproved)")
+        if !isApproved {
+            denyPostBtn.isHidden = false
+            approvePostBtn.changeTitle("Approve")
+        } else {
+            approvePostBtn.changeTitle("Approved")
+            denyPostBtn.isHidden = true
+            approvePostBtn.removeTarget(self, action: #selector(approvePost), for: .touchUpInside)
+        }
     }
     
     private func setupNavigationWithBackButton() {
@@ -150,6 +173,7 @@ class SocialPostDetailsViewController: UIViewController {
         approvePostBtn.topAnchor.constraint(equalTo: buttonContainerView.topAnchor, constant: 12).isActive = true
         approvePostBtn.widthAnchor.constraint(equalToConstant: 161).isActive = true
         approvePostBtn.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        approvePostBtn.layer.cornerRadius = 17
         
         separatorView.topAnchor.constraint(equalTo: buttonContainerView.topAnchor, constant: 0).isActive = true
         separatorView.leftAnchor.constraint(equalTo: buttonContainerView.leftAnchor).isActive = true
@@ -165,7 +189,15 @@ class SocialPostDetailsViewController: UIViewController {
     }
     
     @objc func approvePost(sender: AnyObject) {
+        let indexPath = IndexPath() // it's used to remove cell from table but for now we don't need it
+        if actionSocialDelegate !=  nil {
+            self.navigationController?.popViewController(animated: true)
+            self.actionSocialDelegate.approvePostFromSocial!(post: self.todoSocialPost, indexPath: indexPath)
+        }
         
+        try! todoSocialPost.realm?.write {
+            todoSocialPost.isApproved = true
+        }
     }
     
     func formatDate(date: Date) -> String {
