@@ -352,7 +352,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         }
         if sectionIdx == 0 {
                 let cards = store.getNonEmptyTodoCardsWithSection("Social Posts")
-                if cards != nil {
+                if cards.count != 0 {
                     let card = cards[0]
                     let item = store.getTodoSocialPostsForCard(card)[rowIdx]
                     let cell = tableView.dequeueReusableCell(withIdentifier: "SocialPostInCardCell", for: indexPath) as! SocialPostInCardCell
