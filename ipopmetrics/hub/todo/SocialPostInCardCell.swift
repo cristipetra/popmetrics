@@ -72,6 +72,8 @@ class SocialPostInCardCell: UITableViewCell {
         
         aproveButton.addTarget(self, action: #selector(animationHandler), for: .touchUpInside)
         denyPostBtn.addTarget(self, action: #selector(denyPostHandler), for: .touchUpInside)
+        
+        setupStatusCardView()
     }
     
     func setIndexPath(indexPath: IndexPath, numberOfCellsInSection: Int) {
@@ -86,11 +88,25 @@ class SocialPostInCardCell: UITableViewCell {
     }
     
     @objc func animationHandler() {
+
+        aproveButton.removeTarget(self, action: #selector(animationHandler), for: .touchUpInside)
+        let indexPath = IndexPath()
+        actionSocialDelegate.approvePostFromSocial!(post: todoItem, indexPath: indexPath)
+        //todoItem.isApproved = true
+        
+        //I am assuming it's succesfull
+        try! todoItem.realm?.write {
+            todoItem.isApproved = true
+        }
+        
+        setupStatusCardView()
+/*
         //aproveButton.animateButton(decreaseWidth: 120, increaseWidth: 10, imgLeftSpace: 10)
         //aproveButton.removeTarget(self, action: #selector(animationHandler), for: .touchUpInside)
         let todoHubController = self.parentViewController as! TodoHubController
 //        TodoHubController.approvePostFromSocial(todoItem)
         actionSocialDelegate.approvePostFromSocial!(post: todoItem, indexPath: indexPath)
+*/
     }
     
     @objc func denyPostHandler() {
@@ -106,13 +122,16 @@ class SocialPostInCardCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setupStatusCardView(approved: Bool) {
-        print("approved \(approved)")
-        if( approved == false) {
-            self.statusCardTypeView.isHidden = true
+    func setupStatusCardView() {
+        let isApproved = todoItem.isApproved
+        print("approved \(isApproved)")
+        if !isApproved {
+            denyPostBtn.isHidden = false
+            aproveButton.changeTitle("Approve")
         } else {
-            setStatusCardViewType()
-            self.statusCardTypeView.isHidden = false
+            aproveButton.changeTitle("Approved")
+            denyPostBtn.isHidden = true
+            aproveButton.removeTarget(self, action: #selector(animationHandler), for: .touchUpInside)
         }
     }
     
