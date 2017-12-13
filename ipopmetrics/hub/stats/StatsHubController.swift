@@ -75,6 +75,9 @@ class StatsHubController: BaseViewController {
         let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
         tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
         
+        let emptyCard = UINib(nibName: "EmptyStateCard", bundle: nil)
+        tableView.register(emptyCard, forCellReuseIdentifier: "EmptyStateCard")
+        
         let recommendedNib = UINib(nibName: "RecommendedCell", bundle: nil)
         tableView.register(recommendedNib, forCellReuseIdentifier: "RecommendedCell")
     }
@@ -228,7 +231,8 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
 //            cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
 //            return cell
             let emptyCell = UITableViewCell()
-            emptyCell.backgroundColor = .clear
+            cellHeight = 0
+            emptyCell.backgroundColor = .blue
             return emptyCell
         }
         
@@ -237,11 +241,9 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
         let card = store.getStatisticsCards()[sectionIdx]
         let metrics = store.getStatisticMetricsForCard(card)
         if metrics.isEmpty {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "StatsEmptyCard", for: indexPath) as! StatsEmptyCell
-            cellHeight = 216
-            cell.selectionStyle = .none
-            //cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_:)), for: .touchUpInside)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for: indexPath) as! EmptyStateCard
+            cell.displayForStats()
+            cellHeight = 506
             return cell
         }
         
@@ -295,6 +297,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         if section == 0 {
             if( isLastSection(section: section)) {
                 return nil
@@ -312,7 +315,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 60
         } else {
-            return 0
+            return 60
         }
     }
     
@@ -329,7 +332,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return store.getStatisticsCards().count + 1
+        return store.getStatisticsCards().count
     }
     /*
     private func setTrafficCard(cell: TrafficCardViewCell, item: StatisticsItem) {
