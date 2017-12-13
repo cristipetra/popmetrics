@@ -125,7 +125,7 @@ class EmptyStateCard: UITableViewCell {
     }
     
     func displayForStats() {
-        backgroundImageView.image = UIImage(named: "emptyCard")
+        backgroundImageView.image = UIImage(named: "emptyCardStats")
         constraintHeightImage.constant = 159
         setTitleCard("No Statistic Available")
         setMessage(message: "You must first connect Google Analytics in the Home Feed to see your statistics.")

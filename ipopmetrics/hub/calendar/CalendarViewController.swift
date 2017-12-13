@@ -149,8 +149,8 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
         let calendarCardSimpleNib = UINib(nibName: "CalendarCardSimple", bundle: nil)
         tableView.register(calendarCardSimpleNib, forCellReuseIdentifier: "CalendarCardSimple")
         
-        let sectionHeaderNib = UINib(nibName: "CalendarHeader", bundle: nil)
-        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CalendarHeader")
+        let sectionHeaderNib = UINib(nibName: "CalendarHeaderViewCell", bundle: nil)
+        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CalendarHeaderViewCell")
         
         let sectionHeaderCardNib = UINib(nibName: "CardHeader", bundle: nil)
         tableView.register(sectionHeaderCardNib, forCellReuseIdentifier: "CardHeader")
@@ -380,7 +380,8 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
             return headerCell.containerView
         }
         else {
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: "CalendarHeader") as! CalendarHeaderViewCell
+            
+            let headerCell = tableView.dequeueReusableCell(withIdentifier: "CalendarHeaderViewCell") as! CalendarHeaderViewCell
             headerCell.changeColor(color: sectionCard.getSectionColor)
             headerCell.changeTitleToolbar(title: "")
             headerCell.changeTitleSection(title: sectionCard.getCardSectionTitle)
@@ -477,7 +478,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
         
-        return store.getCalendarCards().count + 1 // adding the last card
+        return store.getCalendarCards().count // adding the last card
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
