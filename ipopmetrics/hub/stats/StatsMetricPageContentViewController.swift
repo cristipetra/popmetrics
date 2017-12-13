@@ -38,7 +38,8 @@ class StatsMetricPageContentViewController: UIViewController, UITableViewDelegat
         tableView.sectionFooterHeight = UITableViewAutomaticDimension
         tableView.estimatedSectionFooterHeight = 5
 
-        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = 90
         tableView.estimatedRowHeight = 90
         
         
@@ -86,6 +87,24 @@ class StatsMetricPageContentViewController: UIViewController, UITableViewDelegat
         
         return statsMetric.getBreakDownGroups().count + 1
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 260
+        }
+        else {
+            return 90
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 5
+        }
+        else {
+            return 65
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -158,11 +177,7 @@ class StatsMetricPageContentViewController: UIViewController, UITableViewDelegat
         return headerView
     }
     
-
-    
-    
-    
-    
+   
     
 }
 
