@@ -149,7 +149,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
         let calendarCardSimpleNib = UINib(nibName: "CalendarCardSimple", bundle: nil)
         tableView.register(calendarCardSimpleNib, forCellReuseIdentifier: "CalendarCardSimple")
         
-        let sectionHeaderNib = UINib(nibName: "CalendarHeader", bundle: nil)
+        let sectionHeaderNib = UINib(nibName: "CalendarHeaderViewCell", bundle: nil)
         tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CalendarHeader")
         
         let sectionHeaderCardNib = UINib(nibName: "CardHeader", bundle: nil)
@@ -477,7 +477,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
         
-        return store.getCalendarCards().count + 1 // adding the last card
+        return store.getCalendarCards().count // adding the last card
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
