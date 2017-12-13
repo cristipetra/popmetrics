@@ -41,8 +41,6 @@ class StatsHubController: BaseViewController {
         tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
-        
-        
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
     }
@@ -255,13 +253,13 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
             cell.statisticsCountView.setupViews(data: Array(results))
             let itemCellHeight: Int = 94
             cell.statisticsCountViewHeightCounstraint.constant = CGFloat(results.count * itemCellHeight)
-            cellHeight = CGFloat((results.count * itemCellHeight) + (29 + 93 + 20))
+            cellHeight = CGFloat((results.count * itemCellHeight) + (29 + 94 + 93 + 20 ))
             
             cell.selectionStyle = .none
-            cell.backgroundColor = UIColor.feedBackgroundColor()
+            cell.backgroundColor = .clear
             cell.footerView.actionButton.context = ["card":card]
             cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_: eventInfo:)), for: .touchUpInside)
-            //cell.footerView.hideButton(button: cell.footerView.xButton)
+            
             cell.footerView.displayOnlyActionButton()
             cell.connectionLine.isHidden = true
      
