@@ -119,7 +119,7 @@ class EmptyStateCard: UITableViewCell {
     func displayEmptyForCalendar() {
         backgroundImageView.image = UIImage(named: "emptyCard")
         constraintHeightImage.constant = 159
-        setTitleCard("Schedule Posts will Appear Here")
+        setTitleCard("Scheduled Posts will Appear Here")
         setMessage(message: "Automated social posts will appear here after your approve them. Approve them in the To Do section.")
         footerVIew.actionButton.isHidden = true
     }
@@ -127,7 +127,7 @@ class EmptyStateCard: UITableViewCell {
     func displayForStats() {
         backgroundImageView.image = UIImage(named: "emptyCardStats")
         constraintHeightImage.constant = 159
-        setTitleCard("No Statistic Available")
+        setTitleCard("No Statistics Available")
         setMessage(message: "You must first connect Google Analytics in the Home Feed to see your statistics.")
         footerVIew.actionButton.isHidden = true
     }
