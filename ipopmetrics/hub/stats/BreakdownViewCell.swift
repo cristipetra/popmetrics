@@ -82,7 +82,7 @@ class BreakdownViewCell: UITableViewCell {
     }
     
     func setup() {
-        self.backgroundColor = UIColor.blue
+//        self.backgroundColor = UIColor.blue
         
         self.addSubview(titleLabel)
         titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 25).isActive = true
@@ -109,7 +109,7 @@ class BreakdownViewCell: UITableViewCell {
         self.addSubview(containerProgressView)
         containerProgressView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 25).isActive = true
         containerProgressView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 13).isActive = true
-        containerProgressView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -21).isActive = true
+        containerProgressView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -25).isActive = true
         containerProgressView.heightAnchor.constraint(equalToConstant: 19).isActive = true
         containerProgressView.backgroundColor = PopmetricsColor.statisticsTableBackground
         
