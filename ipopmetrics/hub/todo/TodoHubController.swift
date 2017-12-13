@@ -21,13 +21,13 @@ import EZAlertController
 
 enum TodoSection: String {
     
-    case UnapprovedPosts = "Unapproved Posts"
+    case SocialPosts = "Social Posts"
     case MyActions = "My Actions"
     case PaidActions = "Paid Actions"
     case MoreOnTheWay = "More On The Way"
     
     static let sectionTitles = [
-        UnapprovedPosts: "Unapproved Posts",
+        SocialPosts: "Unapproved Posts",
         MyActions: "My Actions",
         PaidActions: "Paid Actions",
         MoreOnTheWay: "More On The Way"
@@ -35,7 +35,7 @@ enum TodoSection: String {
     
     // position in table
     static let sectionPosition = [
-        UnapprovedPosts: 0,
+        SocialPosts: 0,
         MyActions: 1,
         PaidActions: 2,
         MoreOnTheWay: 3
@@ -55,7 +55,7 @@ enum TodoSection: String {
 }
 
 enum TodoSectionType: String {
-    case unapprovedPosts = "Unapproved Posts"
+    case socialPosts = "Social Posts"
     case myActions = "My Actions"
     case paidActions = "Paid Actions"
     case moreOnTheWay = "More On The Way"
@@ -99,7 +99,7 @@ class TodoHubController: BaseViewController {
     @IBOutlet weak var topAnchorTableView: NSLayoutConstraint!
     
     
-    let indexToSection = [0: TodoSectionType.unapprovedPosts.rawValue,
+    let indexToSection = [0: TodoSectionType.socialPosts.rawValue,
                           1: TodoSectionType.myActions.rawValue,
                           2: TodoSectionType.paidActions.rawValue,
                           3: HomeSectionType.moreOnTheWay.rawValue]
@@ -283,7 +283,7 @@ class TodoHubController: BaseViewController {
             return emptyCards[atIndex]
         }
         else {
-            if section == TodoSection.UnapprovedPosts.rawValue {
+            if section == TodoSection.SocialPosts.rawValue {
                 return nonEmptyCards[0]  // There is always the same card
             }
             else {
@@ -299,7 +299,7 @@ class TodoHubController: BaseViewController {
             return emptyCards.count
         }
         else {
-            if section == TodoSection.UnapprovedPosts.rawValue {
+            if section == TodoSection.SocialPosts.rawValue {
                 return 3 // TODO - for now
             }
             else {
