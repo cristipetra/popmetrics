@@ -19,6 +19,7 @@ class EmptyStateCard: UITableViewCell {
     @IBOutlet weak var footerVIew: FooterView!
     
     
+    @IBOutlet weak var constraintHeightImage: NSLayoutConstraint!
     @IBOutlet weak var titleHeightConstraint: NSLayoutConstraint!
     
     private var feedCard: FeedCard!
@@ -107,8 +108,20 @@ class EmptyStateCard: UITableViewCell {
         titleLabel.text = title
     }
     
-    private func setMessage(message: String) {
+    internal func setMessage(message: String) {
         messageLabel.text = message
+    }
+    
+    internal func setTitleCard(_ title: String) {
+        titleLabel.text = title
+    }
+    
+    func displayEmptyForCalendar() {
+        backgroundImageView.image = UIImage(named: "emptyCard")
+        constraintHeightImage.constant = 159
+        setTitleCard("Schedule Posts will Appear Here")
+        setMessage(message: "Automated social posts will appear here after your approve them. Approve them in the To Do section.")
+        footerVIew.actionButton.isHidden = true
     }
     
     private func setUpToolbar(imageName: String, titleName: String) {

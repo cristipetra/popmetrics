@@ -302,7 +302,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             cell.configure(item)
             return cell
         default:
-            return UITableViewCell()
+            let cell = UITableViewCell()
+            cell.translatesAutoresizingMaskIntoConstraints = false
+            cell.heightAnchor.constraint(equalToConstant: 1).isActive = true
+            cell.backgroundColor = .clear
+            return cell
         }
     }
     
@@ -373,6 +377,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         emptyView.translatesAutoresizingMaskIntoConstraints = false
         //workaround if I put 0 it doens't work
         emptyView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        emptyView.backgroundColor = .clear
         return emptyView
     }
 
@@ -382,6 +387,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let count = countCardsInSection((homeSection?.rawValue)!)
         if count < 1 {
             let emptyView = UIView()
+            emptyView.backgroundColor = .clear
             emptyView.translatesAutoresizingMaskIntoConstraints = false
             //workaround if I put 0 it doens't work
             emptyView.heightAnchor.constraint(equalToConstant: 1).isActive = true
