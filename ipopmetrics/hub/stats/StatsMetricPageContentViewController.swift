@@ -57,6 +57,8 @@ class StatsMetricPageContentViewController: UIViewController, UITableViewDelegat
         topPageControl.currentPageIndicatorTintColor = UIColor(red: 87/255, green: 93/255, blue: 99/255, alpha: 1)
 
         topPageControl.numberOfPages = numberOfPages
+        
+        topPageControl.currentPage = pageIndex
     }
     
     
