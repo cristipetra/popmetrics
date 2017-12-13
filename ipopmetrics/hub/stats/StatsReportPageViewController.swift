@@ -25,6 +25,8 @@ class StatsReportPageViewController: UIPageViewController {
         let firstPage = createViewController(sender: self)
         setViewControllers([firstPage], direction: .forward, animated: true, completion: nil)
         
+        
+        setupNavigationWithBackButton()
     }
     
     public func createViewController(sender: Any?) -> StatsMetricPageContentViewController {
@@ -40,6 +42,30 @@ class StatsReportPageViewController: UIPageViewController {
             vc.pageIndex = currentPageIndex
         }
         
+    }
+    
+    func setupNavigationWithBackButton() {
+        
+        let titleWindow = "WEBSITE REPORT"
+        
+        let leftSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        leftSpace.width = 5
+        
+        let titleButton = UIBarButtonItem(title: titleWindow, style: .plain, target: self, action: nil)
+        titleButton.tintColor = PopmetricsColor.darkGrey
+        let titleFont = UIFont(name: FontBook.extraBold, size: 18)
+        titleButton.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
+        
+        let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "calendarIconLeftArrow"), style: .plain, target: self, action: #selector(handlerClickBack))
+        leftButtonItem.tintColor = PopmetricsColor.darkGrey
+        
+        self.navigationItem.leftBarButtonItems = [leftSpace, leftButtonItem, titleButton]
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
+        
+    }
+    
+    @objc func handlerClickBack() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     
