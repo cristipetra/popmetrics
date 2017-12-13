@@ -52,7 +52,7 @@ class SocialPostDetailsViewController: UIViewController {
         return button
     }()
     
-    private var todoCard: TodoCard!
+    private var todoSocialPost: TodoSocialPost!
     
     var bottomContainerViewBottomAnchor: NSLayoutConstraint!
     internal var isBottomVisible = false
@@ -77,34 +77,28 @@ class SocialPostDetailsViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func configure(todoCard: TodoCard) {
-        self.todoCard = todoCard
+    func configure(todoSocialPost: TodoSocialPost) {
+        self.todoSocialPost = todoSocialPost
     }
     
     private func updateView() {
-        if let imageUri = todoCard.imageUri {
-            if let url = URL(string: imageUri) {
-                cardImage.af_setImage(withURL: url)
+        if let imageUri = todoSocialPost.articleImage {
+            if imageUri.isValidUrl() {
+                cardImage.af_setImage(withURL: URL(string: imageUri)!)
             }
         }
     
-        if let message = todoCard.message {
-            recommendedLabel.text = message
-        }
+        recommendedLabel.text = todoSocialPost.articleText
+        
+        scheduleLabel.text = formatDate(date: todoSocialPost.updateDate)
     
-        scheduleLabel.text = formatDate(date: todoCard.updateDate)
+        blogUrl.text = todoSocialPost.articleUrl
     
-        if let url = todoCard.blogUrl {
-            blogUrl.text = url
-        }
-    
-        if let title = todoCard.blogTitle {
+        if let title = todoSocialPost.articleTitle {
             titleBlogLabel.text = title
         }
     
-        if let message = todoCard.message {
-            blogMessage.text = message
-        }
+        blogMessage.text  = todoSocialPost.articleText
         
         displayContainerBtnsIfNeeded()
     }
