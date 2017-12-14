@@ -380,7 +380,8 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
             return headerCell.containerView
         }
         else {
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: "CalendarHeader") as! CalendarHeaderViewCell
+            
+            let headerCell = tableView.dequeueReusableCell(withIdentifier: "CalendarHeaderViewCell") as! CalendarHeaderViewCell
             headerCell.changeColor(color: sectionCard.getSectionColor)
             headerCell.changeTitleToolbar(title: "")
             headerCell.changeTitleSection(title: sectionCard.getCardSectionTitle)
