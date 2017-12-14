@@ -41,9 +41,16 @@ class OnboardingViewController: UIViewController {
     }
     
     @IBAction func verifySocialButtonPressed(_ sender: UIButton) {
-        let verifySocialVC = VerifySocialViewController()
-        self.present(verifySocialVC, animated: true, completion: nil)
+        //let verifySocialVC = VerifySocialViewController()
+        
+        let navigation = UINavigationController()
+        
+        let verifySocialVC = AppStoryboard.Signin.instance.instantiateViewController(withIdentifier: "loginSocial") as! LoginSocialViewController
+        navigation.pushViewController(verifySocialVC, animated: false)
+        
+        self.present(navigation, animated: true, completion: nil)
     }
+    
     @IBAction func handlerButtonPressed(_ sender: Any) {
         let notificationsVC = AppStoryboard.Notifications.instance.instantiateViewController(withIdentifier: ViewNames.SBID_PUSH_NOTIFICATIONS_VC)
         let finalOnboardingVC = OnboardingFinalView()
