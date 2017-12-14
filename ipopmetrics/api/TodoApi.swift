@@ -67,16 +67,34 @@ class TodoApi: BaseApi {
         }
     }
     
-    func approvePost(_ todoSocialPostId:String) {
+    func approvePost(_ todoSocialPostId:String, callback: @escaping ()  -> Void) {
         let params = ["a":0]
-        let url = ApiUrls.composedBaseUrl(String(format:"/api/actions/approve-social-post/%@", todoSocialPostId))
+        let url = ApiUrls.composedBaseUrl(String(format:"/api/todo/approve-social-post/%@", todoSocialPostId))
         
         Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default,
                           headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperEmpty>) in
                             let levelOneHandled = super.handleNotOkCodes(response: response.response)
                             if !levelOneHandled {
                                 let handled = super.handleResponseWrap(response.value!)
-                                SyncService().syncAll(silent:true)
+                                if !handled {
+                                    callback()
+                                }
+                            }
+        }
+    }
+    
+    func denyPost(_ todoSocialPostId:String, callback: @escaping ()  -> Void) {
+        let params = ["a":0]
+        let url = ApiUrls.composedBaseUrl(String(format:"/api/todo/deny-social-post/%@", todoSocialPostId))
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default,
+                          headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperEmpty>) in
+                            let levelOneHandled = super.handleNotOkCodes(response: response.response)
+                            if !levelOneHandled {
+                                let handled = super.handleResponseWrap(response.value!)
+                                if !handled {
+                                    callback()
+                                }
                             }
         }
     }

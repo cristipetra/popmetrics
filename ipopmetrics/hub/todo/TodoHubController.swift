@@ -724,38 +724,13 @@ extension TodoHubController: ActionSocialPostProtocol {
     
     func approvePostFromSocial(post: TodoSocialPost, indexPath: IndexPath) {
         print("approve social post")
-        let action = "approve_one"
-        let apiParams = ["action":action,
-                         "todo_social_post_id": post.postId]
         
-/*
-        let cards = store.getNonEmptyTodoCardsWithSection("Social Posts")
-        if cards.count == 0 { return }
-        
-        let todoCard = cards[0]
-        
-        
-        TodoApi().postAction(todoCard.cardId!, params: apiParams) { result, error in
-            if error != nil {
-                self.presentAlertWithTitle("Communication error", message: "An error occurred while communicating with the Cloud")
-                return
-            }
-            else {
-                print("action occurred")
-                //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "didPostAction"), object: nil)
-                
-                //post.isApproved = true
-                self.bannerMessageView.displayApproved()
-                self.displayBannerInfo()
-    
-            }
-        }
-*/
-        bannerMessageView.displayApproved()
-        displayBannerInfo()
-        TodoApi().approvePost(post.postId!)
+        TodoApi().approvePost(post.postId!, callback: {
+            () -> Void in
+            self.bannerMessageView.displayApproved()
+            self.displayBannerInfo()
+            })
 
-        
     }
     
 }

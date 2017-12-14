@@ -660,6 +660,12 @@ extension CalendarViewController:  CalendarCardActionHandler {
 
 extension CalendarViewController: ActionSocialPostProtocol {
     func cancelPostFromSocial(post: CalendarSocialPost, indexPath: IndexPath) {
-        removeCell(indexPath: indexPath)
+        CalendarApi().cancelPost(post.postId!, callback: {
+            () -> Void in
+            self.removeCell(indexPath: indexPath)
+        })
+        
+        
+        
     }
 }

@@ -52,5 +52,23 @@ class CalendarApi: BaseApi {
         }
     }
     
+    func cancelPost(_ calendarSocialPostId:String,
+                     callback: @escaping ()  -> Void) {
+        let params = ["a":0]
+        let url = ApiUrls.composedBaseUrl(String(format:"/api/calendar/cancel-social-post/%@", calendarSocialPostId))
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default,
+                          headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperEmpty>) in
+                            let levelOneHandled = super.handleNotOkCodes(response: response.response)
+                            if !levelOneHandled {
+                                let handled = super.handleResponseWrap(response.value!)
+                                if !handled {
+                                    callback()
+                                }
+                            }
+        }
+    }
+    
+    
     
 }
