@@ -42,19 +42,20 @@ class CalendarFeedStore {
     }
     
     public func getCalendarSocialPostsForCard(_ calendarCard: CalendarCard, datesSelected: Int) -> Results<CalendarSocialPost> {
-        switch datesSelected {
-        case 0:
-            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@", calendarCard, selectedWeek.start as CVarArg, selectedWeek.end as CVarArg)
-            return realm.objects(CalendarSocialPost.self).filter(predicate)
-        case 1:
-            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@", calendarCard, selectedDate.startOfDay as CVarArg, selectedDate.endOfDay as CVarArg)
-            return realm.objects(CalendarSocialPost.self).filter(predicate)
-        case 2:
-            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@", calendarCard, selectedRange.start as CVarArg, selectedRange.end as CVarArg)
-            return realm.objects(CalendarSocialPost.self).filter(predicate)
-        default:
-            break
-        }
+        // TODO - FIX ME
+        //        switch datesSelected {
+//        case 0:
+//            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@", calendarCard, selectedWeek.start as CVarArg, selectedWeek.end as CVarArg)
+//            return realm.objects(CalendarSocialPost.self).filter(predicate)
+//        case 1:
+//            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@", calendarCard, selectedDate.startOfDay as CVarArg, selectedDate.endOfDay as CVarArg)
+//            return realm.objects(CalendarSocialPost.self).filter(predicate)
+//        case 2:
+//            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@", calendarCard, selectedRange.start as CVarArg, selectedRange.end as CVarArg)
+//            return realm.objects(CalendarSocialPost.self).filter(predicate)
+//        default:
+//            break
+//        }
         return realm.objects(CalendarSocialPost.self)
     }
     
