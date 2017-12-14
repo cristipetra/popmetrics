@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class SocialPostInCardCell: UITableViewCell {
     
@@ -111,8 +112,19 @@ class SocialPostInCardCell: UITableViewCell {
     }
     
     @objc func denyPostHandler() {
-        print("deny post handler")
-        //actionSocialDelegate.denyPostFromSocial!(post: todoItem, indexPath: indexPath)
+        TodoApi().denyPost(todoItem.postId!, callback: {
+            () -> Void in
+            let notificationObj = ["alert":"Post denied",
+                                   "subtitle":"The article will be ignored in future recommendations.",
+                                   "type": "info",
+                                   "sound":"default"
+            ]
+            let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+            
+            let todoHubController = self.parentViewController as! TodoHubController
+            todoHubController.showBannerForNotification(pnotification)
+            todoHubController.removeSocialPost(self.todoItem, indexPath: self.indexPath)
+        })
     }
     
     func setupCorners() {

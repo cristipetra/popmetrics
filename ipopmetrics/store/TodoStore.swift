@@ -50,6 +50,12 @@ class TodoStore {
         return realm.objects(TodoSocialPost.self).filter(predicate)
     }
     
+    public func removeTodoSocialPost(_ todoSocialPost: TodoSocialPost) -> Void {
+        try! realm.write {
+            realm.delete(todoSocialPost)
+        }
+    }
+    
     public func addTodoCard(_ todoCard: TodoCard) {
         try! realm.write {
             realm.add(todoCard, update:true)

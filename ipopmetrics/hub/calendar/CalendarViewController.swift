@@ -152,8 +152,8 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
         let sectionHeaderNib = UINib(nibName: "CalendarHeaderViewCell", bundle: nil)
         tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CalendarHeaderViewCell")
         
-        let sectionHeaderCardNib = UINib(nibName: "CardHeader", bundle: nil)
-        tableView.register(sectionHeaderCardNib, forCellReuseIdentifier: "CardHeader")
+        let sectionHeaderCardNib = UINib(nibName: "CardHeaderCell", bundle: nil)
+        tableView.register(sectionHeaderCardNib, forCellReuseIdentifier: "CardHeaderCell")
         
         
         tableView.register(TableFooterView.self, forHeaderFooterViewReuseIdentifier: "footerId")
@@ -375,7 +375,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         let sectionCard = store.getCalendarCards()[section]
         
         if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected).count == 0 {
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
+        let headerCell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
             headerCell.changeColor(color: sectionCard.getSectionColor)
             headerCell.changeTitle(title: sectionCard.socialTextString)
             return headerCell.containerView

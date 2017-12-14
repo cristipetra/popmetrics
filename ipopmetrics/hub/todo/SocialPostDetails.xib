@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -46,26 +46,26 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPT-f2-qZ3">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="1678"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1935"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_card_approval" translatesAutoresizingMaskIntoConstraints="NO" id="7iU-Hc-ov9">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_card_approval" translatesAutoresizingMaskIntoConstraints="NO" id="7iU-Hc-ov9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="234"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="234" id="V8c-Ki-TBi"/>
                                     </constraints>
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4IX-k1-ux1">
-                                    <rect key="frame" x="0.0" y="234" width="375" height="72.5"/>
+                                    <rect key="frame" x="0.0" y="234" width="375" height="102"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HyZ-ky-io0">
-                                            <rect key="frame" x="25" y="10" width="340" height="52.5"/>
+                                            <rect key="frame" x="25" y="10" width="340" height="82"/>
                                             <string key="text">Popmetrics recommends highly customized marketing insights to help your business grow. #Popmetrics #GrowYourBusiness Alch.my/27yd73</string>
                                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                             <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2nX-HA-YLU">
-                                            <rect key="frame" x="0.0" y="70.5" width="375" height="2"/>
+                                            <rect key="frame" x="0.0" y="100" width="375" height="2"/>
                                             <color key="backgroundColor" red="0.74117647058823533" green="0.77254901960784317" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="2" id="3zJ-vH-ywQ"/>
@@ -84,16 +84,16 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJY-p1-ohJ">
-                                    <rect key="frame" x="0.0" y="306.5" width="375" height="54"/>
+                                    <rect key="frame" x="0.0" y="336" width="375" height="54"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Will schedule for" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAu-hn-eIZ">
-                                            <rect key="frame" x="25" y="18.5" width="111" height="17.5"/>
+                                            <rect key="frame" x="25" y="17" width="118" height="20.5"/>
                                             <fontDescription key="fontDescription" name="OpenSans-BoldItalic" family="Open Sans" pointSize="15"/>
                                             <color key="textColor" red="0.25490196078431371" green="0.60784313725490191" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07/15 @ 9:15a.m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sut-GN-zs4">
-                                            <rect key="frame" x="141" y="18.5" width="113" height="17.5"/>
+                                            <rect key="frame" x="148" y="17" width="116" height="20.5"/>
                                             <fontDescription key="fontDescription" name="OpenSans-BoldItalic" family="Open Sans" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -120,7 +120,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aT7-1A-zq6">
-                                    <rect key="frame" x="0.0" y="360.5" width="375" height="54"/>
+                                    <rect key="frame" x="0.0" y="390" width="375" height="54"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVz-eE-NFl">
                                             <rect key="frame" x="25" y="10" width="34" height="34"/>
@@ -143,7 +143,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@Popmetrics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzG-ke-MJW">
-                                            <rect key="frame" x="69" y="18.5" width="89" height="17.5"/>
+                                            <rect key="frame" x="69" y="17" width="95.5" height="20.5"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                             <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -169,22 +169,22 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYn-TF-DVZ">
-                                    <rect key="frame" x="0.0" y="414.5" width="375" height="1263.5"/>
+                                    <rect key="frame" x="0.0" y="444" width="375" height="1491"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alch.my/27yd73" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Kk-zh-aHy">
-                                            <rect key="frame" x="25" y="10" width="340" height="17.5"/>
+                                            <rect key="frame" x="25" y="10" width="340" height="20.5"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                             <color key="textColor" red="0.2627450980392157" green="0.60784313725490191" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customizing Your Marketing" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcT-Fi-aCc">
-                                            <rect key="frame" x="25" y="37.5" width="340" height="70"/>
+                                            <rect key="frame" x="25" y="40.5" width="340" height="82"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="30"/>
                                             <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYT-Gm-YQs">
-                                            <rect key="frame" x="25" y="117.5" width="340" height="1136"/>
+                                            <rect key="frame" x="25" y="132.5" width="340" height="1348.5"/>
                                             <string key="text">Your marketing and sales dashboards will have a number of widgets and reports that are automatically added for you, but you can resize, remove, and add other reports as needed. The same is true for any other reporting dashboards you've created if you are using the reporting add-on. Learn how you can add, move, resize, and remove reports on a reporting dashboard.
 
 “Money isn’t the most important thing in the world. Your time is.”

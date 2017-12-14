@@ -14,6 +14,7 @@ import MGSwipeTableCell
 import DGElasticPullToRefresh
 import BubbleTransition
 import EZAlertController
+import ObjectMapper
 
 //    types = ['social_posts', 'my_action', 'paid_action', 'empty_state'];
 //    sections = ['Unapproved Posts', 'My Actions', 'Paid Actions', 'More On The Way'];
@@ -460,39 +461,11 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         bannerMessageView.widthAnchor.constraint(equalToConstant: 234).isActive = true
     }
 
-    func removeCellWithAnimation(indexPath: IndexPath) {
+    func removeSocialPost(_ todoSocialPost: TodoSocialPost, indexPath : IndexPath) {
         //remove social post card from store
-        try! store.realm.write {
-            store.realm.delete( store.getTodoSocialPostsForCard(store.getTodoCards()[indexPath.section])[indexPath.row] )
-        }
+        store.removeTodoSocialPost(todoSocialPost)
+        tableView.deleteRows(at: [indexPath], with: .middle)
         
-        if !self.store.getTodoSocialPostsForCard(self.store.getTodoCards()[indexPath.section]).isEmpty {
-            tableView.deleteRows(at: [indexPath], with: .middle)
-        }
-        
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
-            self.tableView.reloadData()
-            
-            if !UserStore.didShowedTransitionFromTodo {
-                self.tabBarController?.selectedIndex += 1
-                UserStore.didShowedTransitionFromTodo = true
-            }
-        }
-    }
-    
-    func removeCell(indexPath: IndexPath) {
-        /*
-        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { (timer) in
-            DispatchQueue.main.async {
-                self.removeCellWithAnimation(indexPath: indexPath)
-            }
-        }
-         */
-        self.removeCellWithAnimation(indexPath: indexPath)
-        
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
-            self.displayBannerInfo()
-        }
     }
     
     func hideApprovedView() {
@@ -703,19 +676,36 @@ extension TodoHubController: ActionSocialPostProtocol {
     }
     
     func denyPostFromSocial(post: TodoSocialPost, indexPath: IndexPath) {
-        removeCell(indexPath: indexPath)
-        bannerMessageView.displayDeny()
-       
-        //displayBannerInfo()
+        TodoApi().denyPost(post.postId!, callback: {
+            () -> Void in
+            let notificationObj = ["alert":"Post denied",
+                                   "subtitle":"The article will be ignored in future recommendations.",
+                                   "type": "info",
+                                   "sound":"default"
+            ]
+            let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+            
+            self.showBannerForNotification(pnotification)
+            self.removeSocialPost(post, indexPath: indexPath)
+        })
+        
+        
     }
     
     func approvePostFromSocial(post: TodoSocialPost, indexPath: IndexPath) {
-        print("approve social post")
         
         TodoApi().approvePost(post.postId!, callback: {
             () -> Void in
+            let notificationObj = ["alert":"Post approved",
+                                   "subtitle":"The article has been scheduled for posting.",
+                                   "type": "info",
+                                   "sound":"default"
+            ]
+            let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+            
+            self.showBannerForNotification(pnotification)
             self.bannerMessageView.displayApproved()
-            self.displayBannerInfo()
+
             })
 
     }
