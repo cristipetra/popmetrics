@@ -207,7 +207,11 @@ extension LoginViewController: UITextFieldDelegate {
             phoneView.numberTextField.text = "+1"
         }
         if UIScreen.main.bounds.height > 480 {
-            moveButton(moveValue: -240)
+            if UIScreen.main.bounds.height == 812 {
+                moveButton(moveValue: -340)
+            } else {
+                moveButton(moveValue: -240)
+            }
         }
     }
     
