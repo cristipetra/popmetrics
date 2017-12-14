@@ -18,6 +18,7 @@ class SocialPostDetailsViewController: UIViewController {
     @IBOutlet weak var scheduleLabel: UILabel!
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var articleUrl: UILabel!
     
     lazy var buttonContainerView: UIView = {
         let view = UIView()
@@ -78,7 +79,10 @@ class SocialPostDetailsViewController: UIViewController {
         self.view.addSwipeGestureRecognizer {
             self.navigationController?.popViewController(animated: true)
         }
-        
+     
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handlerClickArticleUrl));
+        articleUrl.isUserInteractionEnabled = true
+        articleUrl.addGestureRecognizer(tapGesture)
     }
     
     override func didReceiveMemoryWarning() {
@@ -101,6 +105,8 @@ class SocialPostDetailsViewController: UIViewController {
         scheduleLabel.text = formatDate(date: todoSocialPost.updateDate)
     
         blogUrl.text = todoSocialPost.articleUrl
+        
+        articleUrl.text = todoSocialPost.articleUrl
     
         if let title = todoSocialPost.articleTitle {
             titleBlogLabel.text = title
@@ -143,6 +149,13 @@ class SocialPostDetailsViewController: UIViewController {
         self.navigationItem.leftBarButtonItems = [leftSpace, leftButtonItem, titleButton]
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
         
+    }
+    
+    @objc func handlerClickArticleUrl(sender: Any) {
+        print(" handler click article ")
+        if todoSocialPost.articleUrl.isValidUrl() {
+            openURLInside(url: todoSocialPost.articleUrl)
+        }
     }
     
     @objc func handlerClickBack() {
