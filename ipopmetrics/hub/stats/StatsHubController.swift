@@ -44,6 +44,19 @@ class StatsHubController: BaseViewController {
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
         
+        // NotificationCenter observers
+        let nc = NotificationCenter.default
+        nc.addObserver(forName:Notification.Popmetrics.UiRefreshRequired, object:nil, queue:nil, using:catchUiRefreshRequiredNotification)
+        
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            // old code: self?.fetchItems(silent:false)
+            SyncService.getInstance().syncAll(silent: false)
+            self?.tableView.dg_stopLoading()
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
+        tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -213,6 +226,11 @@ class StatsHubController: BaseViewController {
             reportPVC.statisticsCard = card
         }
     }
+    
+    func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
+            self.tableView.reloadData()
+    }
+
 }
     
 

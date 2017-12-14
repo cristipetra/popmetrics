@@ -150,7 +150,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
         tableView.register(calendarCardSimpleNib, forCellReuseIdentifier: "CalendarCardSimple")
         
         let sectionHeaderNib = UINib(nibName: "CalendarHeaderViewCell", bundle: nil)
-        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CalendarHeader")
+        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CalendarHeaderViewCell")
         
         let sectionHeaderCardNib = UINib(nibName: "CardHeader", bundle: nil)
         tableView.register(sectionHeaderCardNib, forCellReuseIdentifier: "CardHeader")
@@ -280,6 +280,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
 }
 
 extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row

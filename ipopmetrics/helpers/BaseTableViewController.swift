@@ -124,37 +124,6 @@ class BaseTableViewController: UITableViewController {
         }
         let leftView = UIImageView(image: image)
         let banner = NotificationBanner(title: notification.title ?? notification.alert ?? "Message", subtitle: notification.subtitle ?? "", leftView: leftView, style:style)
-//        switch bannerType {
-//        case .success:
-//            let titleAttribute = [
-//                NSAttributedStringKey.font: UIFont(name: "OpenSans-Bold", size: 12),
-//                NSAttributedStringKey.foregroundColor: PopmetricsColor.darkGrey]
-//            let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [NSAttributedStringKey : Any]))
-//            let subtitle = message
-//            let subtitleAttribute = [
-//                NSAttributedStringKey.font: UIFont(name: "OpenSans-SemiBold", size: 12),
-//                NSAttributedStringKey.foregroundColor: UIColor.white]
-//            let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [NSAttributedStringKey : Any]))
-//            banner = NotificationBanner(attributedTitle: attributedTitle, attributedSubtitle: attributedSubtitle, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
-//            banner.backgroundColor = PopmetricsColor.greenMedium
-//            break
-//        case .failed:
-//            let title = title
-//            let titleAttribute = [
-//                NSAttributedStringKey.font: UIFont(name: "OpenSans-Bold", size: 12),
-//                NSAttributedStringKey.foregroundColor: PopmetricsColor.notificationBGColor]
-//            let attributedTitle = NSAttributedString(string: title, attributes: (titleAttribute as Any as! [NSAttributedStringKey : Any]))
-//            let subtitle = message
-//            let subtitleAttribute = [
-//                NSAttributedStringKey.font: UIFont(name: "OpenSans-SemiBold", size: 12),
-//                NSAttributedStringKey.foregroundColor: UIColor.white]
-//            let attributedSubtitle = NSAttributedString(string: subtitle, attributes: (subtitleAttribute as Any as! [NSAttributedStringKey : Any]))
-//            banner = NotificationBanner(attributedTitle: attributedTitle, attributedSubtitle: attributedSubtitle, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
-//            banner.backgroundColor = PopmetricsColor.salmondColor
-//            break
-//        default:
-//            break
-//        }
         banner.duration = TimeInterval(exactly: time)!
         if let deepLink = notification.deepLink {
             banner.onTap = {

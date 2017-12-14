@@ -60,6 +60,7 @@ class SocialPostInCardCell: UITableViewCell {
     
     func configure(item: TodoSocialPost) {
         todoItem = item
+        cardImage.image = nil
         
         messageLbl.text = todoItem.articleText
         
