@@ -27,7 +27,7 @@ enum TodoSection: String {
     case MoreOnTheWay = "More On The Way"
     
     static let sectionTitles = [
-        SocialPosts: "Unapproved Posts",
+        SocialPosts: "Social Posts",
         MyActions: "My Actions",
         PaidActions: "Paid Actions",
         MoreOnTheWay: "More On The Way"
@@ -600,20 +600,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     
     func changeTopHeaderTitle(section: Int) {
         if section < store.countSections() {
-            if store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count != 0 {
-                let item = store.getTodoSocialPostsForCard(store.getTodoCards()[section])[0]
-                
-                topHeaderView.changeTitle(title: item.socialTextString)
-                topHeaderView.changeColorCircle(color: item.getSectionColor)
-                if (item.status == "unapproved") {
-                    topHeaderView.changeColorCircle(color: item.getSectionColor)
-                    topHeaderView.changeTitle(title: (item.status?.capitalized)!)
-                }
-            } else {
-                let card = store.getTodoCards()[section]
-//                topHeaderView.changeTitle(title: card.getCardSectionTitle)
-//                topHeaderView.changeColorCircle(color: card.getSectionColor)
-            }
+            topHeaderView.changeTitle(title: (TodoSection(rawValue: self.indexToSection[section]!)?.sectionTitle())!)
         }
     }
     
