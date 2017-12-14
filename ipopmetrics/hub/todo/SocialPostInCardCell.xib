@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -19,33 +20,37 @@
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="313" id="m21-rv-Keq" customClass="SocialPostInCardCell" customModule="ipopmetrics" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="445" height="313"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m21-rv-Keq" id="vAo-pd-hv3">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m21-rv-Keq" id="vAo-pd-hv3">
                 <rect key="frame" x="0.0" y="0.0" width="445" height="312.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zel-Qq-zWo">
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zel-Qq-zWo">
                         <rect key="frame" x="8" y="8" width="429" height="304.5"/>
                     </view>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WiB-fl-y5c">
+                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WiB-fl-y5c">
                         <rect key="frame" x="10" y="0.0" width="425" height="304.5"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byr-Sp-pYY" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="byr-Sp-pYY" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="425" height="29.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="yyp-16-1yb"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bH9-Gn-2wp">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bH9-Gn-2wp">
                                 <rect key="frame" x="0.0" y="29.5" width="425" height="65"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_card_approval" translatesAutoresizingMaskIntoConstraints="NO" id="WUH-7z-lCh">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WUH-7z-lCh">
                                         <rect key="frame" x="0.0" y="0.0" width="425" height="225"/>
+                                        <color key="backgroundColor" name="larry_david"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uUR-ad-KNx">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uUR-ad-KNx">
                                         <rect key="frame" x="15" y="15.5" width="34" height="34"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_twitter" translatesAutoresizingMaskIntoConstraints="NO" id="Xq6-cp-y4W">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="icon_twitter" translatesAutoresizingMaskIntoConstraints="NO" id="Xq6-cp-y4W">
                                                 <rect key="frame" x="8" y="10" width="18" height="14"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="MiM-bD-ruP"/>
@@ -72,11 +77,11 @@
                                     <constraint firstAttribute="height" constant="65" id="wdW-iS-mzq"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i2q-jy-1DB">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i2q-jy-1DB">
                                 <rect key="frame" x="0.0" y="94.5" width="425" height="130"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRH-G2-gC6">
-                                        <rect key="frame" x="15" y="5" width="395" height="49"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRH-G2-gC6">
+                                        <rect key="frame" x="15" y="5" width="395" height="57.5"/>
                                         <string key="text">OG tags it knows what photo is your logo, what photo is of your business and what your business. #Popmetrics #GrowYourBusiness Alch.my/27yd73</string>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                         <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
@@ -91,10 +96,10 @@
                                     <constraint firstAttribute="height" constant="85" id="gDG-Dm-TZB"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TT8-9v-gTd">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TT8-9v-gTd">
                                 <rect key="frame" x="0.0" y="224.5" width="425" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhb-xh-eNa">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhb-xh-eNa">
                                         <rect key="frame" x="15" y="21" width="77" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="77" id="CUA-sz-lLD"/>
@@ -105,7 +110,7 @@
                                             <color key="titleColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Vw-Ix-dg1" customClass="ActionTodoButton" customModule="ipopmetrics" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Vw-Ix-dg1" customClass="ActionTodoButton" customModule="ipopmetrics" customModuleProvider="target">
                                         <rect key="frame" x="293" y="12" width="122" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="122" id="e1t-7P-DBD"/>
@@ -123,10 +128,10 @@
                                     <constraint firstItem="yhb-xh-eNa" firstAttribute="centerY" secondItem="TT8-9v-gTd" secondAttribute="centerY" id="iJG-ZD-sUi"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qrH-lG-Erw">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qrH-lG-Erw">
                                 <rect key="frame" x="0.0" y="284.5" width="425" height="20"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2VX-zs-rFl">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2VX-zs-rFl">
                                         <rect key="frame" x="0.0" y="-10" width="425" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
@@ -139,7 +144,7 @@
                                     <constraint firstAttribute="height" constant="20" id="uxa-wD-9ya"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHg-M8-4Nf">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NHg-M8-4Nf">
                                 <rect key="frame" x="0.0" y="304.5" width="425" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="ssU-FH-Pox"/>
@@ -183,6 +188,8 @@
     </objects>
     <resources>
         <image name="icon_twitter" width="47" height="38"/>
-        <image name="image_card_approval" width="375" height="225"/>
+        <namedColor name="larry_david">
+            <color red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

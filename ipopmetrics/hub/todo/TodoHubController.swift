@@ -448,6 +448,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         let detailsVC = SocialPostDetailsViewController(nibName: "SocialPostDetails", bundle: nil)
         detailsVC.configure(todoSocialPost: item)
         detailsVC.actionSocialDelegate = self
+        detailsVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailsVC, animated: true)
         
     }

@@ -149,8 +149,11 @@ class CodeViewController: UIViewController {
     }
     
     internal func showVideoScreen() {
-        let onboardingVC = OnboardingViewController()
-        self.present(onboardingVC, animated: true, completion: nil)
+        //let onboardingVC = OnboardingViewController()
+        //self.present(onboardingVC, animated: true, completion: nil)
+        
+        let finalOnboardingVC = OnboardingFinalView()
+        self.present(finalOnboardingVC, animated: true)
     }
     
     internal func showPushNotificationsScreen() {
