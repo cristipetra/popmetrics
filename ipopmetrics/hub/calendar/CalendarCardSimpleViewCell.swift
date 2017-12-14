@@ -73,8 +73,11 @@ class CalendarCardSimpleViewCell: UITableViewCell {
             self.setMessageLabel()
         }
         
-        //self.backgroundImage.image = UIImage(named: item.articleImage!)
-        //self.foregroundImage.image = UIImage(named: item.socialIcon)
+        if let imageUrl = item.image {
+            if imageUrl.isValidUrl() {
+                self.backgroundImage.af_setImage(withURL: URL(string: imageUrl)!)
+            }
+        }
         
         statusCardTypeView.typeStatusView = .cancel
         
