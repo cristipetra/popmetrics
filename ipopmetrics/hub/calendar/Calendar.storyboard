@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -106,8 +105,7 @@
                                                 <color key="tintColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" image="calendarArrowIcon"/>
                                                 <connections>
-                                                    <action selector="previousPeriodBtnPressed:" destination="ibx-ym-DqY" eventType="touchUpInside" id="B7j-r6-j3g"/>
-                                                    <action selector="previousPeriodBtnPressed:" destination="Bz0-Vs-PTi" eventType="touchUpInside" id="Bwv-X8-QjC"/>
+                                                    <action selector="previousPeriodBtnPressed:" destination="ibx-ym-DqY" eventType="touchUpInside" id="M6M-FD-F8V"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUR-aO-FgA">
@@ -117,8 +115,7 @@
                                                     <color key="titleColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="nextPeriodBtnPressed:" destination="ibx-ym-DqY" eventType="touchUpInside" id="QJS-Ge-Moo"/>
-                                                    <action selector="nextPeriodBtnPressed:" destination="Bz0-Vs-PTi" eventType="touchUpInside" id="c07-ph-4zV"/>
+                                                    <action selector="nextPeriodBtnPressed:" destination="ibx-ym-DqY" eventType="touchUpInside" id="AuS-1a-qwe"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uN-CH-vuJ">
