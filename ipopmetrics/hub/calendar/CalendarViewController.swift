@@ -416,10 +416,9 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        // when there it's no social posts
         let posts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected)
         if(posts.count == 0) {
-            return 80
+            return 0
         }
         return 109
     }
