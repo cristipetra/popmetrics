@@ -66,6 +66,10 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
         registerCellsForTable()
         
         tableView.separatorStyle = .none
+        
+        self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedSectionHeaderHeight = 109
+        
         setupTopHeaderView()
         
         topHeaderView.displayElements(isHidden: true)
@@ -347,15 +351,11 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         let socialPosts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected)
         
         if socialPosts.count == 0 {
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
-            headerCell.changeColor(color: sectionCard.getSectionColor)
-            headerCell.changeTitle(title: sectionCard.socialTextString)
-            return headerCell.containerView
-        }
-        else {
+            return UITableViewHeaderFooterView()
+        } else {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "CalendarHeaderViewCell") as! CalendarHeaderViewCell
             headerCell.changeColor(color: sectionCard.getSectionColor)
-            headerCell.changeTitleToolbar(title: "")
+            
             headerCell.changeTitleSection(title: sectionCard.getCardSectionTitle)
             return headerCell.containerView
         }
@@ -363,7 +363,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return getCountSection()
+        return store.countSections()
     }
     
     func changeTopHeaderTitle(section: Int) {
@@ -414,32 +414,12 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         
         return todoFooter
     }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let posts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected)
-        if(posts.count == 0) {
-            return 0
-        }
-        return 109
-    }
-    
+
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected).isEmpty {
             return 0
         }
         return 80
-    }
-    
-    func getCountSection() -> Int {
-        //check if we receive card that has empty social post
-        
-        if( store.getCalendarCards().count == 1) {
-            if( store.getCalendarSocialPostsForCard(store.getCalendarCards()[0], datesSelected: datesSelected).count == 0) {
-                return 1
-            }
-        }
-        
-        return store.getCalendarCards().count
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

@@ -15,8 +15,6 @@ protocol ChangeCellProtocol: class {
 class CalendarHeaderViewCell: UITableViewCell {
     @IBOutlet weak var leftConstraintLabel: NSLayoutConstraint!
     
-    @IBOutlet weak var connectionView: UIView!
-    @IBOutlet weak var roundConnectionView: UIView!
     @IBOutlet weak var sectionTitleLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var toolbarView: ToolbarViewCell!
@@ -28,35 +26,20 @@ class CalendarHeaderViewCell: UITableViewCell {
     }()
     
     override func awakeFromNib() {
-        self.backgroundColor = UIColor.feedBackgroundColor()
-        containerView.backgroundColor = UIColor.feedBackgroundColor()
-        
-        setUpCornerRadious()
-        
-        connectionView.isHidden = true
-        roundConnectionView.isHidden = true
-        leftConstraintLabel.constant = 19
+        toolbarView.title.text = ""
     }
     
     func setUpCornerRadious() {
-        roundConnectionView.layer.cornerRadius = 6
+    
     }
     
     func changeColor(color: UIColor) {
         toolbarView.backgroundColor = color
         toolbarView.changeColorCircle(color: color)
-        roundConnectionView.backgroundColor = color
-        connectionView.backgroundColor = color
-    }
-    
-    func changeTitle(title: String) {
-        //toolbarView.title.text = title
-        toolbarView.title.text = ""
-        sectionTitleLabel.text = title
     }
     
     func changeTitleSection(title: String) {
-        sectionTitleLabel.text = title
+        sectionTitleLabel.text = title.uppercased()
     }
     
     func changeTitleToolbar(title: String) {
