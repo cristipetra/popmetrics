@@ -49,24 +49,24 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
-    
-    @IBAction func nextPeriodBtnPressed(_ sender: Any) {
+    @IBAction func nextPeriodBtnPressed(_ sender: UIButton) {
         self.calendarView.moveToNextPeriod()
         let date = self.calendarView.visiblePeriodDate as NSDate
-        self.store.selectedWeek = DateInterval(start: date.atStartOfWeek(), end: date.atEndOfWeek())
+        self.store.selectedWeek = DateInterval(start: date.atStartOfWeek(), end: date.atStartOfNextWeek())
         DispatchQueue.main.async {
             self.containerToMaster?.reloadData()
         }
     }
-    
-    @IBAction func previousPeriodBtnPressed(_ sender: Any) {
+
+    @IBAction func previousPeriodBtnPressed(_ sender: UIButton) {
         self.calendarView.moveToPreviousPeriod()
         let date = self.calendarView.visiblePeriodDate as NSDate
-        self.store.selectedWeek = DateInterval(start: date.atStartOfWeek(), end: date.atEndOfWeek())
+        self.store.selectedWeek = DateInterval(start: date.atStartOfWeek(), end: date.atStartOfNextWeek())
         DispatchQueue.main.async {
             self.containerToMaster?.reloadData()
         }
     }
+
     
     @objc func tapFunction(sender: UIButton) {
         self.calendarView.configuration.selectedDayTextColor = PopmetricsColor.greenSelectedDate
@@ -164,6 +164,9 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
         self.setTitleWithDate(periodDate as NSDate)
         let date = self.calendarView.visiblePeriodDate as NSDate
         self.store.selectedWeek = DateInterval(start: date.atStartOfWeek(), end: date.atEndOfWeek())
+        
+        print("interval: \(self.store.selectedWeek)" )
+        
         DispatchQueue.main.async {
             self.containerToMaster?.reloadData()
         }
@@ -178,6 +181,7 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
     }
 
     func calendar(_ calendarView: MJCalendarView, didSelectDate date: Date) {
+        print("did select date")
         setupDates(date)
     }
     
@@ -217,7 +221,9 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
             break
         }
         print(datesSelected)
+        
         self.calendarView.reloadView()
+        containerToMaster?.setDatesSelected(datesSelected: datesSelected)
         DispatchQueue.main.async {
             self.containerToMaster?.reloadData()
         }

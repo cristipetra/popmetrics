@@ -100,6 +100,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
     }
     
     func setDatesSelected(datesSelected: Int) {
+        print("set dates selected")
         self.datesSelected = datesSelected
     }
     
@@ -281,19 +282,15 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
-        
 
-        let sectionCards = store.getCalendarSocialPostsForCard(store.getCalendarCards()[sectionIdx], datesSelected: datesSelected)
-        let card = store.getCalendarCards()[sectionIdx]
-        if sectionCards.isEmpty {
+        let socialPosts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[sectionIdx], datesSelected: datesSelected)
+        
+        if socialPosts.isEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for: indexPath) as! EmptyStateCard
-//            cell.setupView(type: .calendar, calendarStatus: StatusArticle(rawValue: (card.section))!)
-            cell.backgroundColor = UIColor.feedBackgroundColor()
-            cell.selectionStyle = .none
             return cell
         }
         
-        let item = sectionCards[rowIdx]
+        let item = socialPosts[rowIdx]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCardSimple", for: indexPath) as! CalendarCardSimpleViewCell
         cell.configure(item)
@@ -347,15 +344,15 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
         let sectionCard = store.getCalendarCards()[section]
+        let socialPosts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected)
         
-        if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected).count == 0 {
+        if socialPosts.count == 0 {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
             headerCell.changeColor(color: sectionCard.getSectionColor)
             headerCell.changeTitle(title: sectionCard.socialTextString)
             return headerCell.containerView
         }
         else {
-            
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "CalendarHeaderViewCell") as! CalendarHeaderViewCell
             headerCell.changeColor(color: sectionCard.getSectionColor)
             headerCell.changeTitleToolbar(title: "")
