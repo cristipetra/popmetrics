@@ -78,9 +78,7 @@ class CodeViewController: UIViewController {
             if let teams = userAccount?.profileDetails?.brandTeams {
                 UserStore.getInstance().storeLocalUserAccount(userAccount!)
                 UserStore.currentBrandId = teams[0].brandId!
-                if let _ = teams[0].brandName {
-                    UserStore.currentBrandName = teams[0].brandName!
-                }
+                SyncService.getInstance().syncBrandDetails(silent: true)
                 
                 //Fixme: This is tmp json until it will be received data
                 let tmpUserSettingsJson = [

@@ -36,7 +36,7 @@ class MenuViewController: ElasticModalViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.brandNameLabel.text = UserStore.currentBrandName
+        self.brandNameLabel.text = UserStore.currentBrand?.name
         
         setup()
         transition.edge = .right
@@ -180,7 +180,9 @@ extension ElasticModalViewController {
 }
 
 extension MenuViewController: BrandProtocol {
-    func changeBrandName(name: String) {
-        brandNameLabel.text = name.uppercased()
+    func changeBrand(_ brand: Brand) {
+        brandNameLabel.text = brand.name!.uppercased()
+        UserStore.currentBrand = brand
+        SyncService.getInstance().syncAll(silent: false)
     }
 }

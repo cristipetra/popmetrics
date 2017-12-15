@@ -76,10 +76,9 @@ class UserStore {
         
         set {
             guard let jsonString = newValue?.toJSONString()
-                else {
-                    return
-            }
+                else { return }
             UserDefaults.standard.set(jsonString, forKey:"currentBrandJson")
+            UserStore.currentBrandId = (newValue?.id!)!
         }
     }
     
@@ -121,36 +120,6 @@ class UserStore {
             }
         }
     }
-    
-    static var currentBrandName: String {
-        set {
-            let defaults = UserDefaults.standard
-            defaults.set(newValue, forKey: "currentBrandName")
-        }
-        get {
-            if let cbi = UserDefaults.standard.string(forKey: "currentBrandName") {
-                return cbi
-            }
-            else {
-                return "Unset"
-            }
-        }
-    }
-    
-    static var currentBrandURL: String {
-        set {
-            let defaults = UserDefaults.standard
-            defaults.set(newValue, forKey: "currentBrandURL")
-        }
-        get {
-            if let cbi = UserDefaults.standard.string(forKey: "currentBrandURL") {
-                return cbi
-            } else {
-                return "Unset"
-            }
-        }
-    }
-    
     
     static var isTwitterConnected: Bool {
         set {
@@ -212,7 +181,7 @@ class UserStore {
         }
     }
     
-    static var brandIndex: Int  = 0
+
     static var overlayIndex: IndexPath = IndexPath(row: 0, section: 0)
     
 }

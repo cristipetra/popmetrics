@@ -9,14 +9,14 @@
 import UIKit
 
 protocol BrandProtocol: class {
-    func changeBrandName(name: String)
+    func changeBrand(_ brand: Brand)
 }
 
 class ChangeBrandViewController: BaseTableViewController {
     
     var previousIndex: IndexPath?
     var brandDelegate: BrandProtocol?
-    var selectedBrand: String = ""
+    var selectedBrand: Brand?
     var didChangedBrand: Bool = false
     
     var myBrands : [Brand] = []
@@ -67,8 +67,7 @@ class ChangeBrandViewController: BaseTableViewController {
     
     @objc func handlerClickBack() {
         if didChangedBrand {
-            UserStore.brandIndex = (previousIndex?.row)!
-            brandDelegate?.changeBrandName(name: selectedBrand)
+            brandDelegate?.changeBrand(selectedBrand!)
         }
         self.navigationController?.dismissToDirection(direction: .left)
     }
@@ -90,11 +89,12 @@ class ChangeBrandViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "brandId", for: indexPath) as! BrandTableViewCell
         cell.brandName.text = myBrands[indexPath.row].name
-        if indexPath.row == UserStore.brandIndex {
+        if UserStore.currentBrand?.id == self.myBrands[indexPath.row].id {
             cell.setupSelectedCell()
             previousIndex = indexPath
-            selectedBrand = cell.brandName.text!
+            selectedBrand = self.myBrands[indexPath.row]
         }
+        
         
         cell.selectionStyle = .none
         return cell
@@ -114,7 +114,7 @@ class ChangeBrandViewController: BaseTableViewController {
         guard let cell = tableView.cellForRow(at: indexPath) as? BrandTableViewCell else {
             return
         }
-        selectedBrand = cell.brandName.text!
+        selectedBrand = self.myBrands[indexPath.row]
         cell.setupSelectedCell()
     }
     

@@ -79,7 +79,7 @@ class StaticSettingsViewController: BaseTableViewController {
         phone.text = user.phone
         professionalEmail.text = user.email
         
-        brandName.text = UserStore.currentBrandName
+        brandName.text = UserStore.currentBrand?.name
         
         twitterHandleField.text = currentBrand?.twitterDetails?.screenName ?? "N/A"
         googleAnalyticsTracker.text = currentBrand?.googleAnalytics?.tracker ?? "N/A"
