@@ -40,7 +40,7 @@
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bH9-Gn-2wp">
                                 <rect key="frame" x="0.0" y="29.5" width="425" height="65"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WUH-7z-lCh">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WUH-7z-lCh">
                                         <rect key="frame" x="0.0" y="0.0" width="425" height="225"/>
                                         <color key="backgroundColor" name="larry_david"/>
                                         <userDefinedRuntimeAttributes>
