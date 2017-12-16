@@ -44,12 +44,23 @@ class CalendarFeedStore {
         return realm.objects(CalendarCard.self).filter(predicate)
     }
     
+    public func getNonEmptyCalendarCardsWithSection(_ section: String) -> Results<CalendarCard> {
+        let predicate = NSPredicate(format: "section = %@ && type != %@", section, "empty_state")
+        return realm.objects(CalendarCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
+    }
+    
+    public func getEmptyCalendarCardsWithSection(_ section: String) -> Results<CalendarCard> {
+        let predicate = NSPredicate(format: "section = %@ && type == %@", section, "empty_state")
+        return realm.objects(CalendarCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
+    }
+    
     public func getSocialPostsForCard(_ calendarCard: CalendarCard) -> Results<CalendarSocialPost> {
         let predicate = NSPredicate(format: "calendarCard = %@", calendarCard)
         return realm.objects(CalendarSocialPost.self).filter(predicate)
     }
     
     public func getCalendarSocialPostsForCard(_ calendarCard: CalendarCard, datesSelected: Int) -> Results<CalendarSocialPost> {
+        //return realm.objects(CalendarSocialPost.self)
         
         switch datesSelected {
         case 0:

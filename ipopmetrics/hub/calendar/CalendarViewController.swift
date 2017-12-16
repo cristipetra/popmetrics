@@ -18,6 +18,16 @@ protocol MasterToContainer {
     func animateTopPart(shouldCollapse: Bool, offset: CGFloat)
 }
 
+enum CalendarSection: String {
+    case Scheduled = "Scheduled"
+    case Completed = "Completed"
+}
+
+enum CalendarSectionType: String {
+    case scheduled = "Scheduled"
+    case completed = "Completed"
+}
+
 class CalendarViewController: BaseViewController, ContainerToMaster {
     
     @IBOutlet weak var tableView: UITableView!
@@ -53,6 +63,9 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
     var shouldReloadData: Bool = false
     fileprivate var didAnimateCardFirstTime = false
     
+    let indexToSection = [0: CalendarSectionType.scheduled.rawValue,
+                          1: CalendarSectionType.completed.rawValue]
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -61,7 +74,6 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
         super.viewDidLoad()
         
         setUpNavigationBar()
-        
 
         registerCellsForTable()
         
@@ -69,6 +81,9 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
         
         self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         self.tableView.estimatedSectionHeaderHeight = 109
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 200
         
         setupTopHeaderView()
         
@@ -92,8 +107,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
         if shouldReloadData {
             SyncService.getInstance().syncCalendarItems(silent: false)
         }
-        
-        //createItemsLocally()
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -174,55 +188,6 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
         self.shouldReloadData = true
     }
     
-    func createItemsLocally() {
-        try! store.realm.write {
-            
-            let calendarItem = CalendarCard()
-            calendarItem.cardId = "fdsafsda8fsd9afsd98"
-            //calendarItem.message = "Calendar card for animation testing"
-            calendarItem.section = "Scheduled"
-            calendarItem.status = "Scheduled"
-            store.realm.add(calendarItem, update: true)
-            
-            
-            let calendarPost = CalendarSocialPost()
-            calendarPost.section = "Scheduled"
-            calendarPost.calendarCard = calendarItem
-            calendarPost.calendarCardId = "adsfasf42551dsag"
-            calendarPost.postId = "fdsafdsa254sdagasg"
-            calendarPost.status = "Scheduled"
-            calendarPost.scheduledDate = Date()
-            store.realm.add(calendarPost, update: true)
-            
-            let calendarPost1 = CalendarSocialPost()
-            calendarPost1.section = "Scheduled"
-            calendarPost1.calendarCard = calendarItem
-            calendarPost1.calendarCardId = "asdfsadf942423afa"
-            calendarPost1.postId = "sagsag2sagsag"
-            calendarPost1.status = "Scheduled"
-            calendarPost1.scheduledDate = Date()
-            store.realm.add(calendarPost1, update: true)
-            
-            let calendarPost2 = CalendarSocialPost()
-            calendarPost2.section = "Scheduled"
-            calendarPost2.calendarCard = calendarItem
-            
-            calendarPost2.postId = "asdfasdfsaf"
-            calendarPost2.status = "Scheduled"
-            calendarPost2.scheduledDate = Date()
-            store.realm.add(calendarPost2, update: true)
-            
-            let calendarComplete = CalendarCard()
-            calendarComplete.section = StatusArticle.completed.rawValue
-            calendarComplete.cardId = "dsfasdfasf2252525r"
-            calendarComplete.status = "completed"
-            
-            store.realm.add(calendarComplete, update: true)
-    
-        }
-        
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         animateTransitionView()
     }
@@ -286,7 +251,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
-
+        
         let socialPosts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[sectionIdx], datesSelected: datesSelected)
         
         if socialPosts.isEmpty {
@@ -319,9 +284,6 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         
     }
     */
-    func getCalendarPosts() {
-        
-    }
     
     @objc private func goToNextTab() {
         self.tabBarController?.selectedIndex = 0
@@ -346,16 +308,20 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-
+        guard let calendarSection = CalendarSection(rawValue: indexToSection[section]!)?.rawValue else {
+            return UIView()
+        }
+        
         let sectionCard = store.getCalendarCards()[section]
         let socialPosts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected)
-        
+
         if socialPosts.count == 0 {
-            return UITableViewHeaderFooterView()
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
+            cell.sectionTitleLabel.text = calendarSection.uppercased()
+            return cell
         } else {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "CalendarHeaderViewCell") as! CalendarHeaderViewCell
             headerCell.changeColor(color: sectionCard.getSectionColor)
-            
             headerCell.changeTitleSection(title: sectionCard.getCardSectionTitle)
             return headerCell.containerView
         }
@@ -363,7 +329,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return store.countSections()
+        return self.indexToSection.count
     }
     
     func changeTopHeaderTitle(section: Int) {
@@ -384,28 +350,51 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected).isEmpty {
-            return 1
-        }
-        return itemsToLoad(section: section)
+        guard let calendarSection = CalendarSection.init(rawValue: self.indexToSection[section]!)
+            else { return 0 }
+        return countCardsInSection(calendarSection.rawValue)
     }
     
+    func getCardInSection( _ section: String, atIndex:Int) -> CalendarCard {
+        let nonEmptyCards = store.getNonEmptyCalendarCardsWithSection(section)
+        if nonEmptyCards.count == 0 {
+            let emptyCards = store.getEmptyCalendarCardsWithSection(section)
+            return emptyCards[atIndex]
+        }
+        else {
+            return nonEmptyCards[atIndex]
+        }
+    }
+    
+    func countCardsInSection( _ section: String) -> Int {
+        var nonEmptyCards = store.getNonEmptyCalendarCardsWithSection(section)
+        if nonEmptyCards.count == 0 {
+            let emptyCards = store.getEmptyCalendarCardsWithSection(section)
+            return emptyCards.count
+        }
+        else {
+            return nonEmptyCards.count
+        }
+    }
+    /*
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
+        if store.getCalendarCards().count == 0 {
+            return 506
+        }
+        
         if store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section], datesSelected: datesSelected).isEmpty {
             return 506
         }
 
         return 148
     }
+     */
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        
         if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected).isEmpty {
             return UIView()
         }
-    
-        
+
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
         todoFooter.changeFeedType(feedType: FeedType.calendar)
         todoFooter.buttonActionHandler = self
