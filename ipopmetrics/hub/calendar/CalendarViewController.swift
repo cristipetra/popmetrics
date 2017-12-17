@@ -312,7 +312,10 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
             return UIView()
         }
         
-        let sectionCard = store.getCalendarCards()[section]
+        if store.getCalendarCards().count == 0 {
+            return UIView()
+        }
+        
         let socialPosts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected)
 
         if socialPosts.count == 0 {
@@ -320,6 +323,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
             cell.sectionTitleLabel.text = calendarSection.uppercased()
             return cell
         } else {
+            let sectionCard = store.getCalendarCards()[section]
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "CalendarHeaderViewCell") as! CalendarHeaderViewCell
             headerCell.changeColor(color: sectionCard.getSectionColor)
             headerCell.changeTitleSection(title: sectionCard.getCardSectionTitle)
@@ -391,10 +395,14 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
      */
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if store.getCalendarCards().isEmpty {
+            return UIView()
+        }
+    
         if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected).isEmpty {
             return UIView()
         }
-
+        
         let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
         todoFooter.changeFeedType(feedType: FeedType.calendar)
         todoFooter.buttonActionHandler = self
@@ -405,6 +413,9 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if store.getCalendarCards().isEmpty {
+            return 0
+        }
         if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected).isEmpty {
             return 0
         }
