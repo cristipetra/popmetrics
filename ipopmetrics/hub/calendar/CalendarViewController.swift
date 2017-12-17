@@ -44,7 +44,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
     
     let transitionView = UIView(frame: CGRect(x: 0, y: 40, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
-    let store = CalendarFeedStore.getInstance()
+    let store = CalendarStore.getInstance()
     
     internal var calendarViewController: MJCalendarViewController?
     internal var scrollToRow: IndexPath = IndexPath(row: 0, section: 0)

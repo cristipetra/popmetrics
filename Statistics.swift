@@ -56,6 +56,9 @@ class StatisticMetric: Object, Mappable {
     
     @objc dynamic var statisticsCardId: String = ""
     
+    @objc dynamic var createDate: Date = Date()
+    @objc dynamic var updateDate: Date = Date()
+    
     @objc dynamic var value: Float = 0
     @objc dynamic var label: String = ""
     @objc dynamic var delta: Float = 0
@@ -91,6 +94,9 @@ class StatisticMetric: Object, Mappable {
         value <- map["value"]
         label <- map["label"]
         delta <- map["delta"]
+        
+        createDate      <- (map["create_dt"], DateTransform())
+        updateDate      <- (map["update_dt"], DateTransform())
         
         pageName <- map["label"]
         pageIndex <- map["page_index"]

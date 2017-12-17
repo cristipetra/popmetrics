@@ -11,6 +11,7 @@ import RealmSwift
 
 class FeedStore {
     
+    
     public let realm = try! Realm()
     
     static func getInstance() -> FeedStore {
@@ -83,37 +84,27 @@ class FeedStore {
     }
     
     
-    public func removeCard(_ feedCard: FeedCard) {
+    public func archiveCard(_ feedCard: FeedCard) {
         try! realm.write {
             realm.delete(feedCard)
         }
     }
+    
+    public func getLastUpdateDate() -> Date {
+        let result = realm.objects(FeedCard.self).sorted(byKeyPath: "updateDate", ascending:false)
+        if result.count > 0 {
+            return result[0].updateDate
+        }
+        else {
+            return Date(timeIntervalSince1970: 0)
+        }
+    }
+    
     public func updateFeed(_ feedResponse: FeedResponse) {
     
         let realm = try! Realm()
-        let cards = realm.objects(FeedCard.self).sorted(byKeyPath: "index")
-    
-        var cardsToDelete: [FeedCard] = []
         try! realm.write {
-            
-            for existingCard in cards {
-                let (exists, newCard) = feedResponse.matchCard(existingCard.cardId!)
-                if !exists {
-                    cardsToDelete.append(existingCard)
-                }
-            }
-            
-            for card in cardsToDelete {
-                
-                realm.delete(card)
-            }
-            
             for newCard in feedResponse.cards! {
-                if let exCard = self.getFeedCardWithId(newCard.cardId!) {
-                    if exCard.updateDate == newCard.updateDate {
-                        continue
-                    }
-                }
                 realm.add(newCard, update:true)
             }
         }//try

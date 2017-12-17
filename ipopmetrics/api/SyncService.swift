@@ -23,7 +23,7 @@ class SyncService: SessionDelegate {
     var todoStore: TodoStore!
     var todoApi: TodoApi!
     
-    var calendarStore: CalendarFeedStore!
+    var calendarStore: CalendarStore!
     var calendarApi: CalendarApi!
     
     var statsStore: StatsStore!
@@ -51,14 +51,23 @@ class SyncService: SessionDelegate {
         todoStore = TodoStore.getInstance()
         todoApi = TodoApi()
         
-        calendarStore = CalendarFeedStore()
+        calendarStore = CalendarStore()
         calendarApi = CalendarApi()
         
         statsStore = StatsStore()
         
     }
     
-    
+    static var lastDate: Date {
+        set {
+            let defaults = UserDefaults.standard
+            defaults.set(newValue.timeIntervalSince1970, forKey: "homeHubLastDate")
+        }
+        get {
+            let cbi = UserDefaults.standard.double(forKey: "homeHubLastDate")
+            return Date(timeIntervalSince1970: cbi)
+        }
+    }
     
     func setupReachability(_ hostName: String?) {
         
@@ -94,7 +103,7 @@ class SyncService: SessionDelegate {
     
     func syncHomeItems(silent:Bool) {
         
-        if !self.reachability.isReachable {
+        if self.reachability.connection == Reachability.Connection.none {
             return
         }
         
@@ -227,12 +236,18 @@ class SyncService: SessionDelegate {
             
         }
         
-        if !self.reachability.isReachable {
+        if self.reachability.connection == Reachability.Connection.none {
             completionHandler?(.failed)
             return
         }
+        
         let brandId = UserStore.currentBrandId
-        HubsApi().getHubsItems(brandId) { hubsResponse in
+//        let dates = [self.feedStore.getLastUpdateDate(), self.todoStore.getLastCardUpdateDate(), self.todoStore.getLastSocialPostUpdateDate(),
+//                     self.calendarStore.getLastCardUpdateDate(), self.calendarStore.getLastSocialPostUpdateDate(),
+//                     self.statsStore.getLastCardUpdateDate(), self.statsStore.getLastMetricUpdateDate()]
+        
+        HubsApi().getHubsItems(brandId, lastDate:SyncService.lastDate) { hubsResponse in
+            SyncService.lastDate = hubsResponse!.lastDate
             if let feedResponse = hubsResponse!.feed {
                 self.feedStore.updateFeed( feedResponse)
             }
@@ -252,8 +267,6 @@ class SyncService: SessionDelegate {
                                                 userInfo: ["sucess":true])
             }
         }
-        
-        
     }
     
 

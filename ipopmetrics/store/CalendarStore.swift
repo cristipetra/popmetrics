@@ -9,13 +9,13 @@
 import Foundation
 import RealmSwift
 
-class CalendarFeedStore {
+class CalendarStore {
     
-    private static var instance: CalendarFeedStore = {
-        return CalendarFeedStore()
+    private static var instance: CalendarStore = {
+        return CalendarStore()
     }()
     
-    static func getInstance() -> CalendarFeedStore {
+    static func getInstance() -> CalendarStore {
         return instance
     }
     
@@ -83,6 +83,27 @@ class CalendarFeedStore {
         let distinctTypes = Array(Set(self.getCalendarCards().value(forKey: "section") as! [String]))
         return distinctTypes.count
     }
+    
+    public func getLastCardUpdateDate() -> Date {
+        let result = realm.objects(CalendarCard.self).sorted(byKeyPath: "updateDate", ascending:false)
+        if result.count > 0 {
+            return result[0].updateDate
+        }
+        else {
+            return Date(timeIntervalSince1970: 0)
+        }
+    }
+    
+    public func getLastSocialPostUpdateDate() -> Date {
+        let result = realm.objects(CalendarSocialPost.self).sorted(byKeyPath: "updateDate", ascending:false)
+        if result.count > 0 {
+            return result[0].updateDate
+        }
+        else {
+            return Date(timeIntervalSince1970: 0)
+        }
+    }
+    
     
     public func updateCalendars(_ calendarResponse: CalendarResponse) {
         

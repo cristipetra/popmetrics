@@ -55,6 +55,26 @@ class StatsStore {
         return distinctTypes.count
     }
     
+    public func getLastCardUpdateDate() -> Date {
+        let result = realm.objects(StatisticsCard.self).sorted(byKeyPath: "updateDate", ascending:false)
+        if result.count > 0 {
+            return result[0].updateDate
+        }
+        else {
+            return Date(timeIntervalSince1970: 0)
+        }
+    }
+    
+    public func getLastMetricUpdateDate() -> Date {
+        let result = realm.objects(StatisticMetric.self).sorted(byKeyPath: "updateDate", ascending:false)
+        if result.count > 0 {
+            return result[0].updateDate
+        }
+        else {
+            return Date(timeIntervalSince1970: 0)
+        }
+    }
+    
     public func updateStatistics(_ statisticsResponse: StatisticsResponse) {
         
         let realm = try! Realm()

@@ -103,7 +103,7 @@
 		08B485E01F20EA23005918A1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485DF1F20EA23005918A1 /* Config.swift */; };
 		08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485E31F210992005918A1 /* VideoScreenViewController.swift */; };
 		08B485E61F210A61005918A1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485E51F210A61005918A1 /* RoundButton.swift */; };
-		08B4EB971FC569EC00BFC5A1 /* CalendarFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB961FC569EC00BFC5A1 /* CalendarFeedStore.swift */; };
+		08B4EB971FC569EC00BFC5A1 /* CalendarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB961FC569EC00BFC5A1 /* CalendarStore.swift */; };
 		08B4EB991FC569F700BFC5A1 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB981FC569F600BFC5A1 /* FeedStore.swift */; };
 		08B4EB9D1FC56A0400BFC5A1 /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB9C1FC56A0400BFC5A1 /* TodoStore.swift */; };
 		08B4EB9F1FC56A0C00BFC5A1 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB9E1FC56A0C00BFC5A1 /* UserStore.swift */; };
@@ -333,7 +333,7 @@
 		08B485DF1F20EA23005918A1 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		08B485E31F210992005918A1 /* VideoScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoScreenViewController.swift; sourceTree = "<group>"; };
 		08B485E51F210A61005918A1 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
-		08B4EB961FC569EC00BFC5A1 /* CalendarFeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarFeedStore.swift; sourceTree = "<group>"; };
+		08B4EB961FC569EC00BFC5A1 /* CalendarStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarStore.swift; sourceTree = "<group>"; };
 		08B4EB981FC569F600BFC5A1 /* FeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		08B4EB9C1FC56A0400BFC5A1 /* TodoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
 		08B4EB9E1FC56A0C00BFC5A1 /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
@@ -513,7 +513,7 @@
 				08B4EB981FC569F600BFC5A1 /* FeedStore.swift */,
 				08B4EB9E1FC56A0C00BFC5A1 /* UserStore.swift */,
 				08B4EB9C1FC56A0400BFC5A1 /* TodoStore.swift */,
-				08B4EB961FC569EC00BFC5A1 /* CalendarFeedStore.swift */,
+				08B4EB961FC569EC00BFC5A1 /* CalendarStore.swift */,
 				11E636931FD735480081B1DC /* StatsStore.swift */,
 			);
 			path = store;
@@ -1404,7 +1404,7 @@
 				088E77A91F7CE99900774F13 /* ToastView.swift in Sources */,
 				08F7A0971F17AB0C00A1B2C3 /* RecommendationCardCell.swift in Sources */,
 				11A675A91FC8E1A900EE0A15 /* EmptyStateCardCell.swift in Sources */,
-				08B4EB971FC569EC00BFC5A1 /* CalendarFeedStore.swift in Sources */,
+				08B4EB971FC569EC00BFC5A1 /* CalendarStore.swift in Sources */,
 				088BBEAA1F58214300AD5414 /* StatsEmptyCell.swift in Sources */,
 				085053FE1F2787A100FE8234 /* CalendarViewController.swift in Sources */,
 				089267741F86617600D7B99E /* OfflineBanner.swift in Sources */,
