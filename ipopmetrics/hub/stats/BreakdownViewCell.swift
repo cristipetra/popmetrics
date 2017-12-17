@@ -68,7 +68,7 @@ class BreakdownViewCell: UITableViewCell {
         return second
     }()
     
-    var statisticMetric: StatisticMetric!
+    var statisticMetric: StatsMetric!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -144,7 +144,7 @@ class BreakdownViewCell: UITableViewCell {
         containerProgressView.clipsToBounds = true
     }
     
-    func configure(metricBreakdown: MetricBreakdown, statisticMetric: StatisticMetric) {
+    func configure(metricBreakdown: MetricBreakdown, statisticMetric: StatsMetric) {
         self.statisticMetric = statisticMetric
         
         self.titleLabel.text = metricBreakdown.label
@@ -169,7 +169,7 @@ class BreakdownViewCell: UITableViewCell {
         return currentValue + ( currentValue * (delta / 100) )
     }
     
-    func configure(statisticMetric: StatisticMetric) {
+    func configure(statisticMetric: StatsMetric) {
         self.statisticMetric = statisticMetric
         self.titleLabel.text = statisticMetric.label
         self.firstValueLabel.text = "\(Int(statisticMetric.value))"

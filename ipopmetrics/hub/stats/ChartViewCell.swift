@@ -10,7 +10,7 @@ import UIKit
 import ScrollableGraphView
 
 protocol ReloadGraphProtocol {
-    func reloadGraph(statisticMetric: StatisticMetric)
+    func reloadGraph(statisticMetric: StatsMetric)
 }
 
 class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
@@ -31,7 +31,7 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
     var plotOneData: [Double] = [0.0, 2.3, 2.2, 4.5, 6.7, 7.8, 3.2, 4.5, 3.3, 3.5, 7.8, 3.4, 6, 7, 5, 34, 4, 5, 3, 5, 4.5, 3.3, 3.5, 7.8, 3.4, 6, 7, 5, 34, 14, 45, 45, 25, 43, 23]
     var plotTwoData: [Double] = [0.0, 12.3, 12.2, 14.5, 16.7, 17.8, 13.2, 14.5, 13.3, 13.5, 17.8, 13.4, 16, 17, 15, 34, 14, 15, 13, 15, 4.5, 3.3, 3.5, 7.8, 3.4, 6, 7, 5, 34, 34, 14, 45, 45, 25, 43, 23]
     
-    var statisticMetric: StatisticMetric!
+    var statisticMetric: StatsMetric!
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -58,7 +58,7 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
     }
     
     func handerReloadData(notification:Notification) -> Void {
-        let statisticMetric  = notification.object as! StatisticMetric
+        let statisticMetric  = notification.object as! StatsMetric
         print(statisticMetric)
         print(statisticMetric.label)
         self.statisticMetric = statisticMetric
@@ -66,7 +66,7 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
         reloadData()
     }
     
-    func configure(statisticMetric: StatisticMetric) {
+    func configure(statisticMetric: StatsMetric) {
         self.statisticMetric = statisticMetric
         reloadData()
     }

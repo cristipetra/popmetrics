@@ -17,46 +17,47 @@ class StatsStore {
         return StatsStore()
     }
     
-    public func getStatisticsCards() -> Results<StatisticsCard> {
-        return realm.objects(StatisticsCard.self).sorted(byKeyPath: "index")
+    public func getStatsCards() -> Results<StatsCard> {
+        let predicate = NSPredicate(format: "status != 'archived'")
+        return realm.objects(StatsCard.self).filter(predicate).sorted(byKeyPath: "index")
     }
     
-    public func getStatisticsCardWithId(_ cardId: String) -> StatisticsCard? {
-        return realm.object(ofType: StatisticsCard.self, forPrimaryKey: cardId)
+    public func getStatsCardWithId(_ cardId: String) -> StatsCard? {
+        return realm.object(ofType: StatsCard.self, forPrimaryKey: cardId)
     }
     
     
-    public func getStatisticMetricsForCard(_ statisticCard: StatisticsCard) -> Results<StatisticMetric> {
-        let predicate = NSPredicate(format: "statisticCard = %@", statisticCard)
-        return realm.objects(StatisticMetric.self).filter(predicate)
+    public func getStatsMetricsForCard(_ statsCard: StatsCard) -> Results<StatsMetric> {
+        let predicate = NSPredicate(format: "statsCard = %@ && status !='archived'", statsCard)
+        return realm.objects(StatsMetric.self).filter(predicate)
     }
     
     /*
      * Return statistic metrics for card that has an page index
      */
-    public func getStatisticMetricsForCardAtPageIndex(_ statisticCard: StatisticsCard, _ pageIndex: Int = 0) -> Results<StatisticMetric> {
-        let predicate = NSPredicate(format: "statisticCard = %@ && pageIndex = %@", statisticCard, (pageIndex) as NSNumber)
-        return realm.objects(StatisticMetric.self).filter(predicate)
+    public func getStatsMetricsForCardAtPageIndex(_ statsCard: StatsCard, _ pageIndex: Int = 0) -> Results<StatsMetric> {
+        let predicate = NSPredicate(format: "statsCard = %@ && pageIndex = %@ && status !='archived'", statsCard, (pageIndex) as NSNumber)
+        return realm.objects(StatsMetric.self).filter(predicate)
     }
     
     /*
      * Return number of pages for a statistic card
      * sorted by page Index
      */
-    public func getNumberOfPagesByPageIndex(_ statisticCard: StatisticsCard) -> Int {
-        let predicate = NSPredicate(format: "statisticCard = %@", statisticCard)
-        let metricsForCard = realm.objects(StatisticMetric.self).filter(predicate).sorted(byKeyPath: "pageIndex")
-        let lastMetric: StatisticMetric = metricsForCard[metricsForCard.count - 1]
+    public func getNumberOfPagesByPageIndex(_ statsCard: StatsCard) -> Int {
+        let predicate = NSPredicate(format: "statsCard = %@ && status !='archived'", statsCard)
+        let metricsForCard = realm.objects(StatsMetric.self).filter(predicate).sorted(byKeyPath: "pageIndex")
+        let lastMetric: StatsMetric = metricsForCard[metricsForCard.count - 1]
         return lastMetric.pageIndex
     }
     
     public func countSections() -> Int {
-        let distinctTypes = Array(Set(self.getStatisticsCards().value(forKey: "section") as! [String]))
+        let distinctTypes = Array(Set(self.getStatsCards().value(forKey: "section") as! [String]))
         return distinctTypes.count
     }
     
     public func getLastCardUpdateDate() -> Date {
-        let result = realm.objects(StatisticsCard.self).sorted(byKeyPath: "updateDate", ascending:false)
+        let result = realm.objects(StatsCard.self).sorted(byKeyPath: "updateDate", ascending:false)
         if result.count > 0 {
             return result[0].updateDate
         }
@@ -66,7 +67,7 @@ class StatsStore {
     }
     
     public func getLastMetricUpdateDate() -> Date {
-        let result = realm.objects(StatisticMetric.self).sorted(byKeyPath: "updateDate", ascending:false)
+        let result = realm.objects(StatsMetric.self).sorted(byKeyPath: "updateDate", ascending:false)
         if result.count > 0 {
             return result[0].updateDate
         }
@@ -78,61 +79,16 @@ class StatsStore {
     public func updateStatistics(_ statisticsResponse: StatisticsResponse) {
         
         let realm = try! Realm()
-        let cards = realm.objects(StatisticsCard.self).sorted(byKeyPath: "index")
-        
-        var cardsToDelete: [StatisticsCard] = []
         try! realm.write {
-            
-            for existingCard in cards {
-                let (exists, newCard) = statisticsResponse.matchCard(existingCard.cardId!)
-                if !exists {
-                    cardsToDelete.append(existingCard)
-                }
-                else {
-                    newCard?.cardId = existingCard.cardId!
-                    realm.add(newCard!, update:true)
-                }
-            }
-            
-            for card in cardsToDelete {
-                
-                let statsMetrics = self.getStatisticMetricsForCard(card)
-                for metric in statsMetrics {
-                    realm.delete(metric)
-                }
-                
-                realm.delete(card)
-            }
-            
             for newCard in statisticsResponse.cards! {
-                if let exCard = self.getStatisticsCardWithId(newCard.cardId!) {
-                    if exCard.updateDate == newCard.updateDate {
-                        continue
-                    }
-                }
-                
                 realm.add(newCard, update:true)
-            }
-        }//try
-        
-        
-        // now update the metrics
-        let metrics = realm.objects(StatisticMetric.self)
-        var metricsToDelete: [StatisticMetric] = []
-        // update social postings
-        try! realm.write {
-            for existingMetric in metrics {
-                realm.delete(existingMetric)
             }
             
             for newMetric in statisticsResponse.metrics ?? [] {
-                
-                newMetric.statisticCard = getStatisticsCardWithId(newMetric.statisticsCardId)
+                newMetric.statsCard = getStatsCardWithId(newMetric.statsCardId)
                 realm.add(newMetric)
             }
         }//try
-        
-        
     }
     
 }

@@ -19,16 +19,17 @@ class TodoStore {
     
     
     public func getTodoCards() -> Results<TodoCard> {
-        return realm.objects(TodoCard.self).sorted(byKeyPath: "index")
+        let predicate = NSPredicate(format: "status !='archived'")
+        return realm.objects(TodoCard.self).filter(predicate).sorted(byKeyPath: "index")
     }
     
     public func getNonEmptyTodoCardsWithSection(_ section: String) -> Results<TodoCard> {
-        let predicate = NSPredicate(format: "section = %@ && type != %@", section, "empty_state")
+        let predicate = NSPredicate(format: "section = %@ && type != %@ && status != 'archived'", section, "empty_state")
         return realm.objects(TodoCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
     }
     
     public func getEmptyTodoCardsWithSection(_ section: String) -> Results<TodoCard> {
-        let predicate = NSPredicate(format: "section = %@ && type == %@", section, "empty_state")
+        let predicate = NSPredicate(format: "section = %@ && type == %@ && status != 'archived'", section, "empty_state")
         return realm.objects(TodoCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
     }
     
@@ -41,12 +42,12 @@ class TodoStore {
     }
     
     public func getTodoCardsWithSection(_ section: String) -> Results<TodoCard> {
-        let predicate = NSPredicate(format: "section = %@", section)
+        let predicate = NSPredicate(format: "section = %@ && status !='archived'", section)
         return realm.objects(TodoCard.self).filter(predicate)
     }
     
     public func getTodoSocialPostsForCard(_ todoCard: TodoCard) -> Results<TodoSocialPost> {
-        let predicate = NSPredicate(format: "todoCard = %@", todoCard)
+        let predicate = NSPredicate(format: "todoCard = %@ && status != 'archived'", todoCard)
         return realm.objects(TodoSocialPost.self).filter(predicate)
     }
     

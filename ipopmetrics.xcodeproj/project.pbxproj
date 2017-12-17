@@ -23,7 +23,7 @@
 		0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */; };
 		0848280F1F39F9200054B04C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848280E1F39F9200054B04C /* HeaderView.swift */; };
 		084E54E11F827F7D007D6F4F /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E54E01F827F7D007D6F4F /* NoteView.swift */; };
-		085053FE1F2787A100FE8234 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085053FD1F2787A100FE8234 /* CalendarViewController.swift */; };
+		085053FE1F2787A100FE8234 /* CalendarHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085053FD1F2787A100FE8234 /* CalendarHubController.swift */; };
 		085054011F2793AE00FE8234 /* CalendarCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085054001F2793AE00FE8234 /* CalendarCard.xib */; };
 		085054031F27A25B00FE8234 /* CalendarCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085054021F27A25B00FE8234 /* CalendarCardViewCell.swift */; };
 		0852826C1F287DD70065A968 /* CalendarHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0852826B1F287DD70065A968 /* CalendarHeaderViewCell.xib */; };
@@ -250,7 +250,7 @@
 		0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellTransition.swift; sourceTree = "<group>"; };
 		0848280E1F39F9200054B04C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		084E54E01F827F7D007D6F4F /* NoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
-		085053FD1F2787A100FE8234 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		085053FD1F2787A100FE8234 /* CalendarHubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHubController.swift; sourceTree = "<group>"; };
 		085054001F2793AE00FE8234 /* CalendarCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCard.xib; sourceTree = "<group>"; };
 		085054021F27A25B00FE8234 /* CalendarCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCardViewCell.swift; sourceTree = "<group>"; };
 		0852826B1F287DD70065A968 /* CalendarHeaderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarHeaderViewCell.xib; sourceTree = "<group>"; };
@@ -767,7 +767,7 @@
 			isa = PBXGroup;
 			children = (
 				0856F3571F272F020061DF7E /* Calendar.storyboard */,
-				085053FD1F2787A100FE8234 /* CalendarViewController.swift */,
+				085053FD1F2787A100FE8234 /* CalendarHubController.swift */,
 				08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */,
 				085054001F2793AE00FE8234 /* CalendarCard.xib */,
 				085054021F27A25B00FE8234 /* CalendarCardViewCell.swift */,
@@ -1406,7 +1406,7 @@
 				11A675A91FC8E1A900EE0A15 /* EmptyStateCardCell.swift in Sources */,
 				08B4EB971FC569EC00BFC5A1 /* CalendarStore.swift in Sources */,
 				088BBEAA1F58214300AD5414 /* StatsEmptyCell.swift in Sources */,
-				085053FE1F2787A100FE8234 /* CalendarViewController.swift in Sources */,
+				085053FE1F2787A100FE8234 /* CalendarHubController.swift in Sources */,
 				089267741F86617600D7B99E /* OfflineBanner.swift in Sources */,
 				088F14FA1FB9C6080004F925 /* StaticSettingsViewController.swift in Sources */,
 				085F91051F716CD4008A339A /* OnboardingFooter.swift in Sources */,

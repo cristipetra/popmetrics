@@ -10,7 +10,7 @@ import UIKit
 
 class StatsReportPageViewController: UIPageViewController {
     
-    var statisticsCard: StatisticsCard!
+    var statisticsCard: StatsCard!
     var numberOfPages: Int = 0
     var currentPageIndex: Int = 0
     var pageSegueIdentifier = "Page"
@@ -21,7 +21,7 @@ class StatsReportPageViewController: UIPageViewController {
         
         self.dataSource = self
         
-        let metrics = StatsStore.getInstance().getStatisticMetricsForCard(statisticsCard)
+        let metrics = StatsStore.getInstance().getStatsMetricsForCard(statisticsCard)
         self.numberOfPages = metrics.count
         
         let firstPage = createViewController(sender: self)
@@ -38,7 +38,7 @@ class StatsReportPageViewController: UIPageViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Page" {
             let vc = segue.destination as! StatsMetricPageContentViewController
-            let metrics = StatsStore.getInstance().getStatisticMetricsForCard(statisticsCard)
+            let metrics = StatsStore.getInstance().getStatsMetricsForCard(statisticsCard)
             vc.numberOfPages = numberOfPages
             vc.statsMetric = metrics[currentPageIndex]
             vc.pageIndex = currentPageIndex

@@ -25,7 +25,7 @@ class StatsHubController: BaseViewController {
     var insightIsDisplayed = false
     var cellHeight = 0 as CGFloat
     
-    var selectedCard: StatisticsCard?
+    var selectedCard: StatsCard?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,16 +114,16 @@ class StatsHubController: BaseViewController {
             tmp.section = ""
             store.realm.add(tmp, update: true)
             */
-            let statsCard = StatisticsCard()
+            let statsCard = StatsCard()
             statsCard.cardId = "dfas"
             statsCard.section = "Traffic"
             
             //store.realm.add(statsCard, update: true)
      
-            let statsMet1 = StatisticMetric()
-            statsMet1.statisticCard = store.getStatisticsCards()[0]
-            statsMet1.statisticsCardId = store.getStatisticsCards()[0].cardId!
-            statsMet1.statisticsMetricId = "sadfasfdsa"
+            let statsMet1 = StatsMetric()
+            statsMet1.statsCard = store.getStatsCards()[0]
+            statsMet1.statsCardId = store.getStatsCards()[0].cardId!
+            statsMet1.statsMetricId = "sadfasfdsa"
             statsMet1.value = 1300
             statsMet1.label = "Overral visits"
             statsMet1.pageName = "Overral visits"
@@ -140,10 +140,10 @@ class StatsHubController: BaseViewController {
             
             print("breakdown: \(statsMet1.getBreakDownGroups())")
            
-            let statsMet11 = StatisticMetric()
-            statsMet11.statisticCard = store.getStatisticsCards()[0]
-            statsMet11.statisticsCardId = store.getStatisticsCards()[0].cardId!
-            statsMet11.statisticsMetricId = "sadfasfdasdffdsa"
+            let statsMet11 = StatsMetric()
+            statsMet11.statsCard = store.getStatsCards()[0]
+            statsMet11.statsCardId = store.getStatsCards()[0].cardId!
+            statsMet11.statsMetricId = "sadfasfdasdffdsa"
             statsMet11.value = 4000
             statsMet11.label = "Total visits"
             statsMet11.delta = 450
@@ -159,10 +159,10 @@ class StatsHubController: BaseViewController {
             
             store.realm.add(statsMet11, update: true)
             
-            let statsMet12 = StatisticMetric()
-            statsMet12.statisticCard = store.getStatisticsCards()[0]
-            statsMet12.statisticsCardId = store.getStatisticsCards()[0].cardId!
-            statsMet12.statisticsMetricId = "sadfasfdsasadga"
+            let statsMet12 = StatsMetric()
+            statsMet12.statsCard = store.getStatsCards()[0]
+            statsMet12.statsCardId = store.getStatsCards()[0].cardId!
+            statsMet12.statsMetricId = "sadfasfdsasadga"
             statsMet12.value = 1100
             statsMet12.label = "qqq visits"
             statsMet12.delta = 250
@@ -178,7 +178,7 @@ class StatsHubController: BaseViewController {
             store.realm.add(statsMet12, update: true)
             
         }
-        print(store.getStatisticsCards())
+        print(store.getStatsCards())
         
     }
 
@@ -213,7 +213,7 @@ class StatsHubController: BaseViewController {
     @objc func openTrafficReport(_ sender: AnyObject, eventInfo: AnyObject) {
         let actionButton = sender as! ActionButton
         
-        self.selectedCard = actionButton.context["card"] as! StatisticsCard
+        self.selectedCard = actionButton.context["card"] as! StatsCard
         self.performSegue(withIdentifier: "showStatsReport", sender: self)
         
     }
@@ -255,8 +255,8 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
         
         let sectionIdx = (indexPath as NSIndexPath).section
         
-        let card = store.getStatisticsCards()[sectionIdx]
-        let metrics = store.getStatisticMetricsForCard(card)
+        let card = store.getStatsCards()[sectionIdx]
+        let metrics = store.getStatsMetricsForCard(card)
         if metrics.isEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for: indexPath) as! EmptyStateCard
             cell.displayForStats()
@@ -268,7 +268,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
         case "Traffic":
             let cell = tableView.dequeueReusableCell(withIdentifier: "StatsCard", for: indexPath) as! StatsCardViewCell
             
-            let results = store.getStatisticMetricsForCard(card)
+            let results = store.getStatsMetricsForCard(card)
             cell.statisticsCountView.setupViews(data: Array(results))
             let itemCellHeight: Int = 94
             cell.statisticsCountViewHeightCounstraint.constant = CGFloat(results.count * itemCellHeight)
@@ -305,7 +305,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let a = store.getStatisticsCards().count
+        let a = store.getStatsCards().count
         return a
     }
     
@@ -345,7 +345,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return store.getStatisticsCards().count
+        return store.getStatsCards().count
     }
     /*
     private func setTrafficCard(cell: TrafficCardViewCell, item: StatisticsItem) {
