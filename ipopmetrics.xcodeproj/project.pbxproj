@@ -70,6 +70,8 @@
 		088BBEAC1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */; };
 		088E77A91F7CE99900774F13 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77A81F7CE99900774F13 /* ToastView.swift */; };
 		088F14FA1FB9C6080004F925 /* StaticSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F14F91FB9C6080004F925 /* StaticSettingsViewController.swift */; };
+		08913D9F1FE7BC650085BE36 /* CalendarCompletedAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08913D9E1FE7BC650085BE36 /* CalendarCompletedAction.xib */; };
+		08913DA11FE7BEFB0085BE36 /* CalendarCompletedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08913DA01FE7BEFB0085BE36 /* CalendarCompletedViewCell.swift */; };
 		089267741F86617600D7B99E /* OfflineBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089267731F86617600D7B99E /* OfflineBanner.swift */; };
 		08953E6F1F4C2790003ABEFC /* ToDoCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */; };
 		08953E721F4C352B003ABEFC /* RequiredActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08953E711F4C352B003ABEFC /* RequiredActionCard.xib */; };
@@ -298,6 +300,8 @@
 		088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		088E77A81F7CE99900774F13 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		088F14F91FB9C6080004F925 /* StaticSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticSettingsViewController.swift; sourceTree = "<group>"; };
+		08913D9E1FE7BC650085BE36 /* CalendarCompletedAction.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCompletedAction.xib; sourceTree = "<group>"; };
+		08913DA01FE7BEFB0085BE36 /* CalendarCompletedViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCompletedViewCell.swift; sourceTree = "<group>"; };
 		089267731F86617600D7B99E /* OfflineBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineBanner.swift; sourceTree = "<group>"; };
 		08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCountView.swift; sourceTree = "<group>"; };
 		08953E711F4C352B003ABEFC /* RequiredActionCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequiredActionCard.xib; sourceTree = "<group>"; };
@@ -781,6 +785,8 @@
 				0854AF321F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift */,
 				0854AF341F3F2B18007B60F9 /* CalendarCardSimple.xib */,
 				0857D5561F41B4E800D218DA /* CompleteCardCell.swift */,
+				08913D9E1FE7BC650085BE36 /* CalendarCompletedAction.xib */,
+				08913DA01FE7BEFB0085BE36 /* CalendarCompletedViewCell.swift */,
 			);
 			path = calendar;
 			sourceTree = "<group>";
@@ -1060,6 +1066,7 @@
 				08B745931F1F6C0100EC3F8C /* OpenSans-Light.ttf in Resources */,
 				08C580FD1FBF21440013B03F /* SettingsOverlayUrlView.xib in Resources */,
 				08B745941F1F6C0100EC3F8C /* OpenSans-Bold.ttf in Resources */,
+				08913D9F1FE7BC650085BE36 /* CalendarCompletedAction.xib in Resources */,
 				0856F3581F272F020061DF7E /* Calendar.storyboard in Resources */,
 				0854AF351F3F2B18007B60F9 /* CalendarCardSimple.xib in Resources */,
 				085CB7B21F4ADCA200038C03 /* Notifications.storyboard in Resources */,
@@ -1408,6 +1415,7 @@
 				088BBEAA1F58214300AD5414 /* StatsEmptyCell.swift in Sources */,
 				085053FE1F2787A100FE8234 /* CalendarHubController.swift in Sources */,
 				089267741F86617600D7B99E /* OfflineBanner.swift in Sources */,
+				08913DA11FE7BEFB0085BE36 /* CalendarCompletedViewCell.swift in Sources */,
 				088F14FA1FB9C6080004F925 /* StaticSettingsViewController.swift in Sources */,
 				085F91051F716CD4008A339A /* OnboardingFooter.swift in Sources */,
 				08C580FF1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift in Sources */,
