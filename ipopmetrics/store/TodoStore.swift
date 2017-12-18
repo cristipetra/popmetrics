@@ -19,16 +19,17 @@ class TodoStore {
     
     
     public func getTodoCards() -> Results<TodoCard> {
-        return realm.objects(TodoCard.self).sorted(byKeyPath: "index")
+        let predicate = NSPredicate(format: "status !='archived'")
+        return realm.objects(TodoCard.self).filter(predicate).sorted(byKeyPath: "index")
     }
     
     public func getNonEmptyTodoCardsWithSection(_ section: String) -> Results<TodoCard> {
-        let predicate = NSPredicate(format: "section = %@ && type != %@", section, "empty_state")
+        let predicate = NSPredicate(format: "section = %@ && type != %@ && status != 'archived'", section, "empty_state")
         return realm.objects(TodoCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
     }
     
     public func getEmptyTodoCardsWithSection(_ section: String) -> Results<TodoCard> {
-        let predicate = NSPredicate(format: "section = %@ && type == %@", section, "empty_state")
+        let predicate = NSPredicate(format: "section = %@ && type == %@ && status != 'archived'", section, "empty_state")
         return realm.objects(TodoCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
     }
     
@@ -41,12 +42,12 @@ class TodoStore {
     }
     
     public func getTodoCardsWithSection(_ section: String) -> Results<TodoCard> {
-        let predicate = NSPredicate(format: "section = %@", section)
+        let predicate = NSPredicate(format: "section = %@ && status !='archived'", section)
         return realm.objects(TodoCard.self).filter(predicate)
     }
     
     public func getTodoSocialPostsForCard(_ todoCard: TodoCard) -> Results<TodoSocialPost> {
-        let predicate = NSPredicate(format: "todoCard = %@", todoCard)
+        let predicate = NSPredicate(format: "todoCard = %@ && status != 'archived'", todoCard)
         return realm.objects(TodoSocialPost.self).filter(predicate)
     }
     
@@ -79,71 +80,35 @@ class TodoStore {
         return distinctTypes.count
     }
     
+    public func getLastSocialPostUpdateDate() -> Date {
+        let result = realm.objects(TodoSocialPost.self).sorted(byKeyPath: "updateDate", ascending:false)
+        if result.count > 0 {
+            return result[0].updateDate
+        }
+        else {
+            return Date(timeIntervalSince1970: 0)
+        }
+    }
+    
+    public func getLastCardUpdateDate() -> Date {
+        let result = realm.objects(TodoCard.self).sorted(byKeyPath: "updateDate", ascending:false)
+        if result.count > 0 {
+            return result[0].updateDate
+        }
+        else {
+            return Date(timeIntervalSince1970: 0)
+        }
+    }
+    
     public func updateTodos(_ todoResponse: TodoResponse) {
         
         let realm = try! Realm()
-        let cards = realm.objects(TodoCard.self).sorted(byKeyPath: "index")
-        
-        var cardsToDelete: [TodoCard] = []
         try! realm.write {
-            for existingCard in cards {
-                let (exists, newCard) = todoResponse.matchCard(existingCard.cardId!)
-                if !exists {
-                    cardsToDelete.append(existingCard)
-                }
-                else {
-                    newCard?.cardId = existingCard.cardId!
-                    realm.add(newCard!, update:true)
-                }
-                
-            }
-            
-            for card in cardsToDelete {
-                
-                let socialPosts = self.getTodoSocialPostsForCard(card)
-                for post in socialPosts {
-                    realm.delete(post)
-                }
-                
-                realm.delete(card)
-            }
-            
             for newCard in todoResponse.cards! {
-                if let exCard = self.getTodoCardWithId(newCard.cardId!) {
-                    if exCard.updateDate == newCard.updateDate {
-                        continue
-                    }
-                }
-                
                 realm.add(newCard, update:true)
             }
             
-        }//try
-        
-        let posts = realm.objects(TodoSocialPost.self)
-        var postsToDelete: [TodoSocialPost] = []
-        // update social postings
-        try! realm.write {
-            for existingPost in posts {
-                let (exists, newPost) = todoResponse.matchSocialPost(existingPost.postId!)
-                if !exists {
-                    postsToDelete.append(existingPost)
-                }
-            }
-            
-            for post in postsToDelete {
-                //TODO delete all related items first
-                realm.delete(post)
-            }
-            
             for newPost in todoResponse.socialPosts! {
-                
-                if let exPost = self.getTodoSocialPostWithId(newPost.postId!) {
-                    if exPost.updateDate == newPost.updateDate {
-                        continue
-                    }
-                }
-                
                 newPost.todoCard = getTodoCardWithId(newPost.todoCardId!)
                 realm.add(newPost, update:true)
             }

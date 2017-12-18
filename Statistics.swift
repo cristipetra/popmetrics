@@ -49,12 +49,15 @@ class MetricGroupBreakdown: Mappable {
 }
 
 
-class StatisticMetric: Object, Mappable {
+class StatsMetric: Object, Mappable {
     
-    @objc dynamic var statisticCard: StatisticsCard? = nil
-    @objc dynamic var statisticsMetricId: String = ""
+    @objc dynamic var statsCard: StatsCard? = nil
+    @objc dynamic var statsMetricId: String = ""
     
-    @objc dynamic var statisticsCardId: String = ""
+    @objc dynamic var statsCardId: String = ""
+    
+    @objc dynamic var createDate: Date = Date()
+    @objc dynamic var updateDate: Date = Date()
     
     @objc dynamic var value: Float = 0
     @objc dynamic var label: String = ""
@@ -77,7 +80,7 @@ class StatisticMetric: Object, Mappable {
     @objc dynamic var breakDownsJson: String = ""
     
     override static func primaryKey() -> String? {
-        return "statisticsMetricId"
+        return "statsMetricId"
     }
     
     required convenience init?(map: Map) {
@@ -85,12 +88,15 @@ class StatisticMetric: Object, Mappable {
     }
     
     func mapping(map: Map) {
-        statisticsCardId <- map["card_id"]
-        statisticsMetricId <- map["metric_id"]
+        statsCardId <- map["card_id"]
+        statsMetricId <- map["metric_id"]
         
         value <- map["value"]
         label <- map["label"]
         delta <- map["delta"]
+        
+        createDate      <- (map["create_dt"], DateTransform())
+        updateDate      <- (map["update_dt"], DateTransform())
         
         pageName <- map["label"]
         pageIndex <- map["page_index"]
@@ -136,7 +142,7 @@ class StatisticMetric: Object, Mappable {
 
 
 
-class StatisticsCard: Object, Mappable {
+class StatsCard: Object, Mappable {
     
     @objc dynamic var cardId: String? = nil
     
@@ -148,6 +154,8 @@ class StatisticsCard: Object, Mappable {
     
     @objc dynamic var type = ""
     @objc dynamic var section = ""
+    @objc dynamic var status = ""
+
     
     override static func primaryKey() -> String? {
         return "cardId"
@@ -166,6 +174,7 @@ class StatisticsCard: Object, Mappable {
         index           <- map["index"]
         type            <- map["type"]
         section         <- map["section"]
+        status          <- map["status"]
     }
 }
 

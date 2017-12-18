@@ -28,7 +28,7 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
     
     internal var datesSelected = 0
     internal var dayColors = Dictionary<Date, UIColor>()
-    internal let store = CalendarFeedStore.getInstance()
+    internal let store = CalendarStore.getInstance()
     internal var containerToMaster:ContainerToMaster?
     override func viewDidLoad() {
         super.viewDidLoad()

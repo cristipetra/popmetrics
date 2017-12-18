@@ -28,7 +28,7 @@ enum CalendarSectionType: String {
     case completed = "Completed"
 }
 
-class CalendarViewController: BaseViewController, ContainerToMaster {
+class CalendarHubController: BaseViewController, ContainerToMaster {
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -44,7 +44,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
     
     let transitionView = UIView(frame: CGRect(x: 0, y: 40, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
-    let store = CalendarFeedStore.getInstance()
+    let store = CalendarStore.getInstance()
     
     internal var calendarViewController: MJCalendarViewController?
     internal var scrollToRow: IndexPath = IndexPath(row: 0, section: 0)
@@ -246,7 +246,7 @@ class CalendarViewController: BaseViewController, ContainerToMaster {
     
 }
 
-extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
+extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionIdx = (indexPath as NSIndexPath).section
@@ -571,27 +571,27 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-extension CalendarViewController: FooterActionHandlerProtocol {
+extension CalendarHubController: FooterActionHandlerProtocol {
     func handlerAction(section: Int) {
         loadMore(section: section)
     }
 }
 
 // MARK: Notification Handlers
-extension CalendarViewController {
+extension CalendarHubController {
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
         self.tableView.reloadData()
     }
 }
 
 //MARK: Calendar Card Action handler
-extension CalendarViewController:  CalendarCardActionHandler {
+extension CalendarHubController:  CalendarCardActionHandler {
     func handleCardAction(_ action: String, calendarCard: CalendarCard, params: [String : Any]) {
         print(calendarCard)
     }
 }
 
-extension CalendarViewController: ActionSocialPostProtocol {
+extension CalendarHubController: ActionSocialPostProtocol {
     func cancelPostFromSocial(post: CalendarSocialPost, indexPath: IndexPath) {
         CalendarApi().cancelPost(post.postId!, callback: {
             () -> Void in

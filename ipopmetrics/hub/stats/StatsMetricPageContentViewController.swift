@@ -17,7 +17,7 @@ class StatsMetricPageContentViewController: UIViewController, UITableViewDelegat
     
     let statisticStore = StatsStore.getInstance()
     
-    var statsMetric: StatisticMetric!
+    var statsMetric: StatsMetric!
     
     var pageIndex: Int = 1
     var numberOfPages: Int = 1

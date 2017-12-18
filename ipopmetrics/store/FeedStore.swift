@@ -11,6 +11,7 @@ import RealmSwift
 
 class FeedStore {
     
+    
     public let realm = try! Realm()
     
     static func getInstance() -> FeedStore {
@@ -19,7 +20,8 @@ class FeedStore {
     }
     
     public func getFeedCards() -> Results<FeedCard> {
-        return realm.objects(FeedCard.self).sorted(byKeyPath: "index")
+        let predicate = NSPredicate(format: "status != 'archived'")
+        return realm.objects(FeedCard.self).filter(predicate).sorted(byKeyPath: "index")
     }
     
     public func getFeedCardWithId(_ cardId: String) -> FeedCard? {
@@ -50,17 +52,17 @@ class FeedStore {
     
     
     public func getFeedCardsWithSection(_ section: String) -> Results<FeedCard> {
-        let predicate = NSPredicate(format: "section = %@", section)
+        let predicate = NSPredicate(format: "section = %@ && status != 'archived'", section)
         return realm.objects(FeedCard.self).filter(predicate)
     }
     
     public func getNonEmptyFeedCardsWithSection(_ section: String) -> Results<FeedCard> {
-        let predicate = NSPredicate(format: "section = %@ && type != %@", section, "empty_state")
+        let predicate = NSPredicate(format: "section = %@ && type != %@ && status!= 'archived'", section, "empty_state")
         return realm.objects(FeedCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
     }
     
     public func getEmptyFeedCardsWithSection(_ section: String) -> Results<FeedCard> {
-        let predicate = NSPredicate(format: "section = %@ && type == %@", section, "empty_state")
+        let predicate = NSPredicate(format: "section = %@ && type == %@ && status != 'archived'", section, "empty_state")
         return realm.objects(FeedCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
     }
     
@@ -83,37 +85,27 @@ class FeedStore {
     }
     
     
-    public func removeCard(_ feedCard: FeedCard) {
+    public func archiveCard(_ feedCard: FeedCard) {
         try! realm.write {
             realm.delete(feedCard)
         }
     }
+    
+    public func getLastUpdateDate() -> Date {
+        let result = realm.objects(FeedCard.self).sorted(byKeyPath: "updateDate", ascending:false)
+        if result.count > 0 {
+            return result[0].updateDate
+        }
+        else {
+            return Date(timeIntervalSince1970: 0)
+        }
+    }
+    
     public func updateFeed(_ feedResponse: FeedResponse) {
     
         let realm = try! Realm()
-        let cards = realm.objects(FeedCard.self).sorted(byKeyPath: "index")
-    
-        var cardsToDelete: [FeedCard] = []
         try! realm.write {
-            
-            for existingCard in cards {
-                let (exists, newCard) = feedResponse.matchCard(existingCard.cardId!)
-                if !exists {
-                    cardsToDelete.append(existingCard)
-                }
-            }
-            
-            for card in cardsToDelete {
-                
-                realm.delete(card)
-            }
-            
             for newCard in feedResponse.cards! {
-                if let exCard = self.getFeedCardWithId(newCard.cardId!) {
-                    if exCard.updateDate == newCard.updateDate {
-                        continue
-                    }
-                }
                 realm.add(newCard, update:true)
             }
         }//try

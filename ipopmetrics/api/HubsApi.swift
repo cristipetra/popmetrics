@@ -12,12 +12,12 @@ import Alamofire
 
 class HubsApi: BaseApi {
     
-    func getHubsItems(_ brandId: String,
+    func getHubsItems(_ brandId: String, lastDate: Date,
                   callback: @escaping (_ response: HubsResponse?) -> Void) {
         
         ///me/brand/<brand_id>
         let url = ApiUrls.composedBaseUrl(String(format:"/api/hubs/me/brand/%@", brandId))
-        let params = ["a":0]
+        let params = ["last_date":lastDate.timeIntervalSince1970]
         
         Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default,
                           headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperOne<HubsResponse>>) in

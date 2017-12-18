@@ -418,8 +418,8 @@ class CalendarResponse: Mappable {
 
 class StatisticsResponse: Mappable {
     
-    var cards: [StatisticsCard]?
-    var metrics: [StatisticMetric]?
+    var cards: [StatsCard]?
+    var metrics: [StatsMetric]?
     
     required init?(map: Map) {
     }
@@ -429,7 +429,7 @@ class StatisticsResponse: Mappable {
         metrics   <- map["metrics"]
     }
     
-    func matchCard(_ cardId:String) -> (Bool, StatisticsCard?) {
+    func matchCard(_ cardId:String) -> (Bool, StatsCard?) {
         if self.cards == nil {
             return (false, nil)
         }
@@ -450,6 +450,8 @@ class HubsResponse: Mappable {
     var calendar: CalendarResponse?
     var stats: StatisticsResponse?
     
+    var lastDate: Date = Date()
+    
     var sendApnToken: Bool
     
     required init?(map: Map) {
@@ -462,6 +464,8 @@ class HubsResponse: Mappable {
         calendar           <- map["calendar"]
         stats              <- map["stats"]
         sendApnToken       <- map["send_apn_token"]
+        lastDate           <- (map["last_date"], DateTransform())
+        
     }
     
 }

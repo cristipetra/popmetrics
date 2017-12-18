@@ -9,13 +9,13 @@
 import Foundation
 import RealmSwift
 
-class CalendarFeedStore {
+class CalendarStore {
     
-    private static var instance: CalendarFeedStore = {
-        return CalendarFeedStore()
+    private static var instance: CalendarStore = {
+        return CalendarStore()
     }()
     
-    static func getInstance() -> CalendarFeedStore {
+    static func getInstance() -> CalendarStore {
         return instance
     }
     
@@ -28,7 +28,8 @@ class CalendarFeedStore {
     public var selectedRange = DateInterval(start: NSDate().atStartOfWeek(), end: NSDate().atStartOfNextWeek())
     
     public func getCalendarCards() -> Results<CalendarCard> {
-        return realm.objects(CalendarCard.self).sorted(byKeyPath: "index")
+        let predicate = NSPredicate(format: "status != 'archived'")
+        return realm.objects(CalendarCard.self).filter(predicate).sorted(byKeyPath: "index")
     }
     
     public func getCalendarCardWithId(_ cardId: String) -> CalendarCard? {
@@ -40,17 +41,17 @@ class CalendarFeedStore {
     }
     
     public func getCalendarCardsWithSection(_ section: String) -> Results<CalendarCard> {
-        let predicate = NSPredicate(format: "section = %@", section)
+        let predicate = NSPredicate(format: "section = %@ && status !='archived'", section)
         return realm.objects(CalendarCard.self).filter(predicate)
     }
     
     public func getNonEmptyCalendarCardsWithSection(_ section: String) -> Results<CalendarCard> {
-        let predicate = NSPredicate(format: "section = %@ && type != %@", section, "empty_state")
+        let predicate = NSPredicate(format: "section = %@ && type != %@ && status !='archived'", section, "empty_state")
         return realm.objects(CalendarCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
     }
     
     public func getEmptyCalendarCardsWithSection(_ section: String) -> Results<CalendarCard> {
-        let predicate = NSPredicate(format: "section = %@ && type == %@", section, "empty_state")
+        let predicate = NSPredicate(format: "section = %@ && type == %@ && status != 'archived'", section, "empty_state")
         return realm.objects(CalendarCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
     }
     
@@ -64,13 +65,13 @@ class CalendarFeedStore {
         
         switch datesSelected {
         case 0:
-            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@", calendarCard, selectedWeek.start as CVarArg, selectedWeek.end as CVarArg)
+            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@ && status !='archived'", calendarCard, selectedWeek.start as CVarArg, selectedWeek.end as CVarArg)
             return realm.objects(CalendarSocialPost.self).filter(predicate)
         case 1:
-            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@", calendarCard, selectedDate.startOfDay as CVarArg, selectedDate.endOfDay as CVarArg)
+            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@ && status !='archived'", calendarCard, selectedDate.startOfDay as CVarArg, selectedDate.endOfDay as CVarArg)
             return realm.objects(CalendarSocialPost.self).filter(predicate)
         case 2:
-            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@", calendarCard, selectedRange.start as CVarArg, selectedRange.end as CVarArg)
+            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@ && status !='archived'", calendarCard, selectedRange.start as CVarArg, selectedRange.end as CVarArg)
             return realm.objects(CalendarSocialPost.self).filter(predicate)
         default:
             break
@@ -84,71 +85,36 @@ class CalendarFeedStore {
         return distinctTypes.count
     }
     
+    public func getLastCardUpdateDate() -> Date {
+        let result = realm.objects(CalendarCard.self).sorted(byKeyPath: "updateDate", ascending:false)
+        if result.count > 0 {
+            return result[0].updateDate
+        }
+        else {
+            return Date(timeIntervalSince1970: 0)
+        }
+    }
+    
+    public func getLastSocialPostUpdateDate() -> Date {
+        let result = realm.objects(CalendarSocialPost.self).sorted(byKeyPath: "updateDate", ascending:false)
+        if result.count > 0 {
+            return result[0].updateDate
+        }
+        else {
+            return Date(timeIntervalSince1970: 0)
+        }
+    }
+    
+    
     public func updateCalendars(_ calendarResponse: CalendarResponse) {
         
         let realm = try! Realm()
-        let cards = realm.objects(CalendarCard.self).sorted(byKeyPath: "index")
-        
-        var cardsToDelete: [CalendarCard] = []
         try! realm.write {
-            for existingCard in cards {
-                let (exists, newCard) = calendarResponse.matchCard(existingCard.cardId!)
-                if !exists {
-                    cardsToDelete.append(existingCard)
-                }
-                else {
-                    newCard?.cardId = existingCard.cardId!
-                    realm.add(newCard!, update:true)
-                }
-                
-            }
-            
-            for card in cardsToDelete {
-                /*
-                let socialPosts = self.getCalendarSocialPostsForCard(card)
-                for post in socialPosts {
-                    realm.delete(post)
-                }
-                */
-
-                realm.delete(card)
-            }
-            
             for newCard in calendarResponse.cards! {
-                
-                if let exCard = self.getCalendarCardWithId(newCard.cardId!) {
-                    if exCard.updateDate == newCard.updateDate {
-                        continue
-                    }
-                }
-                
                 realm.add(newCard, update:true)
-            }
-        }//try
-        
-        let posts = realm.objects(CalendarSocialPost.self)
-        var postsToDelete: [CalendarSocialPost] = []
-        // update social postings
-        try! realm.write {
-            for existingPost in posts {
-                let (exists, newPost) = calendarResponse.matchSocialPost(existingPost.postId!)
-                if !exists {
-                    postsToDelete.append(existingPost)
-                }
-            }
-            
-            for post in postsToDelete {
-                realm.delete(post)
             }
             
             for newPost in calendarResponse.socialPosts! {
-                if let exPost = self.getCalendarSocialPostWithId(newPost.postId!) {
-                    if exPost.updateDate == newPost.updateDate {
-                        continue
-                    }
-                }
-                
-                
                 newPost.calendarCard = getCalendarCardWithId(newPost.calendarCardId)
                 realm.add(newPost, update:true)
             }
