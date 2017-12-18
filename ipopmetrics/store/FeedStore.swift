@@ -101,6 +101,15 @@ class FeedStore {
         }
     }
     
+    public func wipe() {
+        let realm = try! Realm()
+        let allCards = realm.objects(FeedCard.self)
+        
+        try! realm.write {
+            realm.delete(allCards)
+        }
+    }
+    
     public func updateFeed(_ feedResponse: FeedResponse) {
     
         let realm = try! Realm()

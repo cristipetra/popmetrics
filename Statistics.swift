@@ -59,6 +59,8 @@ class StatsMetric: Object, Mappable {
     @objc dynamic var createDate: Date = Date()
     @objc dynamic var updateDate: Date = Date()
     
+    @objc dynamic var status = ""
+    
     @objc dynamic var value: Float = 0
     @objc dynamic var label: String = ""
     @objc dynamic var delta: Float = 0
@@ -97,6 +99,7 @@ class StatsMetric: Object, Mappable {
         
         createDate      <- (map["create_dt"], DateTransform())
         updateDate      <- (map["update_dt"], DateTransform())
+        status          <- map["status"]
         
         pageName <- map["label"]
         pageIndex <- map["page_index"]

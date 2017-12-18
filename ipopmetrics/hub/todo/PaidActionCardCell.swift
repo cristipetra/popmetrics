@@ -114,7 +114,7 @@ class PaidActionCardCell: UITableViewCell {
     
     @objc private func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         let actionPageVc: ActionPageDetailsViewController = ActionPageDetailsViewController(nibName: "ActionPage", bundle: nil)
-        actionPageVc.configure(todoCard: todoCard)
+        actionPageVc.configure(todoCard)
         actionPageVc.hidesBottomBarWhenPushed = true
         self.parentViewController?.navigationController?.pushViewController(actionPageVc, animated: true)
     }

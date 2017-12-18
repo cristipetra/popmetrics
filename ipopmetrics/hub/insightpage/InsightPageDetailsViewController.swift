@@ -193,7 +193,7 @@ class InsightPageDetailsViewController: BaseViewController {
             self.presentAlertWithTitle("Error", message: "This insight has no recommended action!", useWhisper: true);
             return
         }
-        guard let actionCard = self.store.getFeedCardWithName(feedCard.recommendedAction)
+        guard let actionCard = TodoStore.getInstance().getTodoCardWithName(feedCard.recommendedAction)
             else {
                 self.presentAlertWithTitle("Error", message: "No card to show with name: "+feedCard.recommendedAction, useWhisper: true);
                 return

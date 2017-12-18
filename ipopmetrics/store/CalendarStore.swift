@@ -105,6 +105,16 @@ class CalendarStore {
         }
     }
     
+    public func wipe() {
+        let realm = try! Realm()
+        let allCards = realm.objects(CalendarCard.self)
+        let allPosts = realm.objects(CalendarSocialPost.self)
+        
+        try! realm.write {
+            realm.delete(allCards)
+            realm.delete(allPosts)
+        }
+    }
     
     public func updateCalendars(_ calendarResponse: CalendarResponse) {
         

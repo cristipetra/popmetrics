@@ -192,7 +192,7 @@ class TodoSocialPost: Object, Mappable {
     
     func mapping(map: Map) {
         
-        todoCardId      <- map["todo_card_id"]
+        todoCardId      <- map["card_id"]
         postId          <- map["id"]
         index           <- map["index"]
         type            <- map["type"]

@@ -336,7 +336,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             self.presentAlertWithTitle("Error", message: "This insight has no recommended action!", useWhisper: true);
             return
         }
-        guard let actionCard = self.store.getFeedCardWithName(feedCard.recommendedAction)
+        guard let actionCard = TodoStore.getInstance().getTodoCardWithName(feedCard.recommendedAction)
             else {
                 self.presentAlertWithTitle("Error", message: "No card to show with name: "+feedCard.recommendedAction, useWhisper: true);
                 return
@@ -347,7 +347,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let actionPageVc: ActionPageDetailsViewController = ActionPageDetailsViewController(nibName: "ActionPage", bundle: nil)
         //actionPageVc.hidesBottomBarWhenPushed = true
         actionPageVc.hidesBottomBarWhenPushed = true
-        actionPageVc.configure(actionCard, handler: recommendActionHandler)
+        actionPageVc.configure(actionCard)
         
         self.navigationController?.pushViewController(actionPageVc, animated: true)
     }
