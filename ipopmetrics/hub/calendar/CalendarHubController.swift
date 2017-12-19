@@ -123,13 +123,12 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
             calendarScheduled.createDate = Date()
             calendarScheduled.section = CalendarSectionType.scheduled.rawValue
             calendarScheduled.type = "typeScheduled"
-            
             store.realm.add(calendarScheduled, update: true)
             
             let calendarCompleted = CalendarCard()
             calendarCompleted.cardId = calendarCompletedId
             calendarCompleted.createDate = Date()
-            calendarCompleted.section = "Completed"
+            calendarCompleted.section = CalendarSectionType.completed.rawValue
             calendarCompleted.type = "empty_state"
             
             store.realm.add(calendarCompleted, update: true)
@@ -137,14 +136,41 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
             
             let scheduledPost = CalendarSocialPost()
             scheduledPost.calendarCard = calendarScheduled
-            //scheduledPost.calendarCardId = calendarScheduled.cardId!
+            scheduledPost.calendarCardId = calendarScheduled.cardId!
             scheduledPost.text = "dfasfsafas"
             scheduledPost.createDate = Date()
             scheduledPost.scheduledDate = Date()
             scheduledPost.postId = "11fsadfsdfsadfa"
-            scheduledPost.type = "calendar.completed_action"
+            scheduledPost.type = "calendar.scheduled_action"
+            scheduledPost.index = 3
             scheduledPost.section = CalendarSectionType.scheduled.rawValue
             store.realm.add(scheduledPost, update: true)
+            
+            
+            let scheduledPost1 = CalendarSocialPost()
+            scheduledPost1.calendarCard = calendarScheduled
+            scheduledPost1.calendarCardId = calendarScheduled.cardId!
+            scheduledPost1.text = "dfsdagsaaswfsafas"
+            scheduledPost1.createDate = Date()
+            scheduledPost1.scheduledDate = Date()
+            scheduledPost1.postId = "11weqfsadfsdfesadfa"
+            scheduledPost1.type = "social.scheduled_posts"
+            scheduledPost1.index = 0
+            scheduledPost1.section = CalendarSectionType.scheduled.rawValue
+            store.realm.add(scheduledPost1, update: true)
+            
+            
+            let scheduledPost2 = CalendarSocialPost()
+            scheduledPost2.calendarCard = calendarScheduled
+            scheduledPost2.calendarCardId = calendarScheduled.cardId!
+            scheduledPost2.text = "dfsdagsaaswfsafas"
+            scheduledPost2.createDate = Date()
+            scheduledPost2.scheduledDate = Date()
+            scheduledPost2.postId = "11w2eqfsadfsdfesadfa"
+            scheduledPost2.type = "social.scheduled_posts"
+            scheduledPost2.index = 0
+            scheduledPost2.section = CalendarSectionType.scheduled.rawValue
+            store.realm.add(scheduledPost2, update: true)
             
             
             let scheduledActionPost = CalendarSocialPost()
@@ -154,7 +180,8 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
             scheduledActionPost.scheduledDate = Date()
             scheduledActionPost.text = "action1 post14"
             scheduledActionPost.postId = "dsfa461sagsdfsadfa"
-            scheduledActionPost.type = "calendar.completed_action"
+            scheduledActionPost.type = "calendar.scheduled_action"
+            scheduledActionPost.index = 2
             scheduledActionPost.section = CalendarSectionType.scheduled.rawValue
             store.realm.add(scheduledActionPost, update: true)
             
@@ -226,9 +253,6 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
         
         let sectionHeaderCardNib = UINib(nibName: "CardHeaderCell", bundle: nil)
         tableView.register(sectionHeaderCardNib, forCellReuseIdentifier: "CardHeaderCell")
-        
-        
-        tableView.register(TableFooterView.self, forHeaderFooterViewReuseIdentifier: "footerId")
         
         let emptyCard = UINib(nibName: "EmptyStateCard", bundle: nil)
         tableView.register(emptyCard, forCellReuseIdentifier: "EmptyStateCard")
@@ -312,15 +336,18 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         
         let item = socialPosts[rowIdx]
         
-        if item.type == "calendar.completed_action" {
+        if item.type == "calendar.scheduled_action" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCompletedAction", for: indexPath) as! CalendarCompletedViewCell
             cell.configure(socialPost: item)
+            
             return cell
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCardSimple", for: indexPath) as! CalendarCardSimpleViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
         cell.configure(item)
-        cell.indexPath = indexPath
+
+        cell.setPositions(indexPath, itemsToLoad: noItemsLoadeInitial, countPosts: socialPosts.count)
+        
         cell.cancelCardDelegate = self
         cell.actionSociaDelegate = self
         cell.selectionStyle = .none
@@ -373,6 +400,11 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
             return UIView()
         }
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
+        cell.sectionTitleLabel.text = calendarSection.uppercased()
+        return cell
+        
+        
         let socialPosts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected)
 
         if socialPosts.count == 0 {
@@ -413,7 +445,7 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let calendarSection = CalendarSection.init(rawValue: self.indexToSection[section]!)
             else { return 0 }
-        return countCardsInSection(calendarSection.rawValue)
+        return countPostsInSection(calendarSection.rawValue)
     }
     
     func getCardInSection( _ section: String, atIndex:Int) -> CalendarCard {
@@ -427,58 +459,23 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    func countCardsInSection( _ section: String) -> Int {
+    func countPostsInSection( _ section: String) -> Int {
+        
         var nonEmptyCards = store.getNonEmptyCalendarCardsWithSection(section)
         if nonEmptyCards.count == 0 {
             let emptyCards = store.getEmptyCalendarCardsWithSection(section)
             return emptyCards.count
         }
         else {
-            return nonEmptyCards.count
+            let socialPosts = store.getCalendarSocialPostsForCard(nonEmptyCards[0], datesSelected: datesSelected)
+            //to display empty card
+            if socialPosts.count == 0 {
+                return 1
+            }
+            return socialPosts.count
         }
-    }
-    /*
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if store.getCalendarCards().count == 0 {
-            return 506
-        }
-        
-        if store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section], datesSelected: datesSelected).isEmpty {
-            return 506
-        }
-
-        return 148
-    }
-     */
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if store.getCalendarCards().isEmpty {
-            return UIView()
-        }
-    
-        if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected).isEmpty {
-            return UIView()
-        }
-        
-        let todoFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerId") as! TableFooterView
-        todoFooter.changeFeedType(feedType: FeedType.calendar)
-        todoFooter.buttonActionHandler = self
-        todoFooter.xButton.isHidden = true
-        updateStateLoadMore(todoFooter, section: section)
-        
-        return todoFooter
     }
 
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if store.getCalendarCards().isEmpty {
-            return 0
-        }
-        if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected).isEmpty {
-            return 0
-        }
-        return 80
-    }
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         return
         let yVelocity = scrollView.panGestureRecognizer.velocity(in: scrollView).y

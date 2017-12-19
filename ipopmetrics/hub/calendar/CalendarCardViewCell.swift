@@ -13,71 +13,133 @@ class CalendarCardViewCell: UITableViewCell {
     
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var foregroundImage: UIImageView!
-    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var messageLbl: UILabel!
-    @IBOutlet weak var topStackView: UIStackView!
     @IBOutlet weak var circleView: UIView!
-    @IBOutlet weak var topToolbar: UIView!
     @IBOutlet weak var statusText: UILabel!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var textStackView: UIStackView!
+    @IBOutlet weak var messageLblTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var textStackViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var messageLblHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var cancelPostButton: UIButton!
+    @IBOutlet weak var textStackViewTopConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var footerView: TableFooterView!
+    @IBOutlet weak var constraintHeightFooter: NSLayoutConstraint!
+    @IBOutlet weak var constraintHeightToolbar: NSLayoutConstraint!
     internal var calendarItem: CalendarSocialPost!
     
-    weak var maximizeDelegate: ChangeCellProtocol?
+    weak var cancelCardDelegate : CalendarCardActionHandler?
+    weak var actionSociaDelegate: ActionSocialPostProtocol?
+    private var indexPath: IndexPath!
+    
+    private var heightToolbar: Int = 29
+    
+    // Extend view
+    lazy var statusCardTypeView: StatusCardTypeView = {
+        let view = StatusCardTypeView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    // End extend view
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.feedBackgroundColor()
-        
-        let tapCard = UITapGestureRecognizer(target: self, action: #selector(handlerClickCard))
         self.isUserInteractionEnabled = true
-        self.addGestureRecognizer(tapCard)
         
-        setupCorners()
-    }
-    
-    @objc func handlerClickCard() {
-        maximizeDelegate?.maximizeCell()
+        self.backgroundColor = .clear
+
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    func setupCorners() {
-        DispatchQueue.main.async {
-            self.topToolbar.roundCorners(corners: [.topRight, .topLeft] , radius: 12)
-            self.circleView.roundCorners(corners: .allCorners, radius: self.circleView.frame.size.width/2)
+    func setPositions(_ indexPath: IndexPath, itemsToLoad: Int, countPosts: Int) {
+        self.indexPath = indexPath
+        
+        if indexPath.row != 0 {
+            constraintHeightToolbar.constant = 0
+        } else {
+            constraintHeightToolbar.constant = 29
         }
+        
+        var posFooter = itemsToLoad >= countPosts ? itemsToLoad : countPosts
+    
+        if (indexPath.row != posFooter - 1) {
+            constraintHeightFooter.constant = 0
+        } else {
+            constraintHeightFooter.constant = 80
+        }
+        
+        constraintHeightFooter.constant = 0
+
+        self.layoutIfNeeded()
     }
     
     func configure(_ item: CalendarSocialPost) {
+        
         calendarItem = item;
-        self.titleLbl.text = item.title
+        
         let formatedDate = self.formatDate((item.scheduledDate)!)
-        self.statusText.text = item.socialTextString
+        
         self.timeLbl.text = formatedDate
         
-        self.messageLbl.text = item.text
+        if item.text != "" {
+            self.messageLbl.text = item.text
+        }
         
-        self.backgroundImage.image = UIImage(named: item.image!)
-        self.foregroundImage.image = UIImage(named: item.socialIcon)
+        if let imageUrl = item.image {
+            if imageUrl.isValidUrl() {
+                self.backgroundImage.af_setImage(withURL: URL(string: imageUrl)!)
+            }
+        }
         
+        statusCardTypeView.typeStatusView = .cancel
+        
+        cancelPostButton.addTarget(self, action: #selector(cancelPostHandler), for: .touchUpInside)
         
         changeColor()
+        
+        
+        footerView.changeFeedType(feedType: FeedType.calendar)
+        //footerView.buttonActionHandler = self
+        footerView.xButton.isHidden = true
+        //updateStateLoadMore(footerView, section: section)
+     
     }
     
-    func changeColor() {
+    internal func addStatusCardTypeView() {
+        if( statusCardTypeView.isDescendant(of: self)) {
+            return
+        }
+        
+        self.addSubview(statusCardTypeView)
+        statusCardTypeView.topAnchor.constraint(equalTo: self.containerView.topAnchor).isActive = true
+        statusCardTypeView.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor).isActive = true
+        statusCardTypeView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor).isActive = true
+        statusCardTypeView.rightAnchor.constraint(equalTo: self.containerView.rightAnchor).isActive = true
+        statusCardTypeView.layer.cornerRadius = 6
+    }
+    
+    
+    internal func changeColor() {
         statusText.textColor = calendarItem.socialTextStringColor
     }
     
-    func formatDate(_ date: Date) -> String {
+    internal func formatDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd @ h:mma"
         dateFormatter.amSymbol = "a.m."
         dateFormatter.pmSymbol = "p.m."
         
         return dateFormatter.string(from: date)
+    }
+    
+    @objc internal func cancelPostHandler() {
+        actionSociaDelegate?.cancelPostFromSocial!(post: calendarItem, indexPath: indexPath)
     }
     
 }

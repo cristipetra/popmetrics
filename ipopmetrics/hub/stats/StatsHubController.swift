@@ -56,7 +56,8 @@ class StatsHubController: BaseViewController {
         tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
         tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
         
-        
+     
+        createItemsLocally()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,8 +118,8 @@ class StatsHubController: BaseViewController {
             let statsCard = StatsCard()
             statsCard.cardId = "dfas"
             statsCard.section = "Traffic"
-            
-            //store.realm.add(statsCard, update: true)
+            statsCard.status = "sadf"
+            store.realm.add(statsCard, update: true)
      
             let statsMet1 = StatsMetric()
             statsMet1.statsCard = store.getStatsCards()[0]
