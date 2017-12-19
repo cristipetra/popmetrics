@@ -64,7 +64,7 @@ class TodoStore {
     }
 
     public func getTodoCardWithName(_ name: String) -> TodoCard? {
-        let predicate = NSPredicate(format: "name = %@", name)
+        let predicate = NSPredicate(format: "name = %@ && status != 'archived' ", name)
         let rset = realm.objects(TodoCard.self).filter(predicate)
         if rset.count > 0 {
             return rset[0]
@@ -99,6 +99,18 @@ class TodoStore {
             return Date(timeIntervalSince1970: 0)
         }
     }
+    
+    public func wipe() {
+        let realm = try! Realm()
+        let allCards = realm.objects(TodoCard.self)
+        let allPosts = realm.objects(TodoSocialPost.self)
+        
+        try! realm.write {
+            realm.delete(allCards)
+            realm.delete(allPosts)
+        }
+    }
+    
     
     public func updateTodos(_ todoResponse: TodoResponse) {
         

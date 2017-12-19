@@ -32,6 +32,28 @@ class StatsStore {
         return realm.objects(StatsMetric.self).filter(predicate)
     }
     
+    public func getStatsCardsWithSection(_ section: String) -> Results<StatsCard> {
+        let predicate = NSPredicate(format: "section = %@ && status != 'archived'", section)
+        return realm.objects(StatsCard.self).filter(predicate)
+    }
+    
+    public func getNonEmptyStatsCardsWithSection(_ section: String) -> Results<StatsCard> {
+        let predicate = NSPredicate(format: "section = %@ && type != %@ && status!= 'archived'", section, "empty_state")
+        return realm.objects(StatsCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
+    }
+    
+    public func getEmptyStatsCardsWithSection(_ section: String) -> Results<StatsCard> {
+        let predicate = NSPredicate(format: "section = %@ && type == %@ && status != 'archived'", section, "empty_state")
+        return realm.objects(StatsCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
+    }
+    
+    
+    public func getSections() -> [String] {
+        let distinctTypes = Array(Set(self.getStatsCards().value(forKey: "section") as! [String]))
+        return distinctTypes
+    }
+    
+    
     /*
      * Return statistic metrics for card that has an page index
      */
@@ -75,6 +97,16 @@ class StatsStore {
             return Date(timeIntervalSince1970: 0)
         }
     }
+    public func wipe() {
+        let realm = try! Realm()
+        let allCards = realm.objects(StatsCard.self)
+        let allMetrics = realm.objects(StatsMetric.self)
+        
+        try! realm.write {
+            realm.delete(allCards)
+            realm.delete(allMetrics)
+        }
+    }
     
     public func updateStatistics(_ statisticsResponse: StatisticsResponse) {
         
@@ -86,7 +118,7 @@ class StatsStore {
             
             for newMetric in statisticsResponse.metrics ?? [] {
                 newMetric.statsCard = getStatsCardWithId(newMetric.statsCardId)
-                realm.add(newMetric)
+                realm.add(newMetric, update:true)
             }
         }//try
     }

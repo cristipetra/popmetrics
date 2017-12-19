@@ -10,11 +10,55 @@ import UIKit
 import DGElasticPullToRefresh
 // import SwiftyJSON
 
+enum StatsSection: String {
+    
+    case Traffic = "Traffic"
+    case MoreOnTheWay = "More On The Way"
+    
+    static let sectionTitles = [
+        Traffic: "Traffic",
+        MoreOnTheWay: "More On The Way"
+    ]
+    
+    // position in table
+    static let sectionPosition = [
+        Traffic: 0,
+        MoreOnTheWay: 1
+    ]
+    
+    func sectionTitle() -> String {
+        if let sectionTitle = StatsSection.sectionTitles[self] {
+            return sectionTitle
+        } else {
+            return ""
+        }
+    }
+    
+    func getSectionPosition() -> Int {
+        return StatsSection.sectionPosition[self]!
+    }
+}
+
+
+
+enum StatsSectionType: String {
+    case traffic = "Traffic"
+    case moreOnTheWay = "More On The Way"
+}
+
+enum StatsCardType: String {
+    case metricsCard = "metrics_card"
+    case emptyState = "empty_state"
+}
+
 class StatsHubController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topAnchorTableView: NSLayoutConstraint!
     @IBOutlet weak var leftAnchorTableView: NSLayoutConstraint!
+    
+    let indexToSection = [0: StatsSectionType.traffic.rawValue]
+//                          1: StatsSectionType.moreOnTheWay.rawValue]
     
     let transitionView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     var statisticsNoteView: NoteView!
@@ -231,6 +275,29 @@ class StatsHubController: BaseViewController {
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
             self.tableView.reloadData()
     }
+    
+    func getCardInSection( _ section: String, atIndex:Int) -> StatsCard {
+        let nonEmptyCards = store.getNonEmptyStatsCardsWithSection(section)
+        if nonEmptyCards.count == 0 {
+            let emptyCards = store.getEmptyStatsCardsWithSection(section)
+            return emptyCards[atIndex]
+        }
+        else {
+            return nonEmptyCards[atIndex]
+        }
+    }
+    
+    func countCardsInSection( _ section: String) -> Int {
+        let cards = store.getNonEmptyStatsCardsWithSection(section)
+        //let cards = nonEmptyCards
+        if cards.count == 0 {
+            let emptyCards = store.getEmptyStatsCardsWithSection(section)
+            return emptyCards.count
+        }
+        else {
+            return cards.count
+        }
+    }
 
 }
     
@@ -238,76 +305,60 @@ class StatsHubController: BaseViewController {
 extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //empty card
-        if isLastSection(section: indexPath.section) {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "LastCard", for: indexPath) as! EmptyStateCardCell
-//            cellHeight = 261
-//            cell.changeTitleWithSpacing(title: "You're all caught up.")
-//            cell.changeMessageWithSpacing(message: "Find more actions to improve your business tomorrow!")
-//            cell.selectionStyle = .none
-//            cell.goToButton.changeTitle("View Home Feed")
-//            cell.goToButton.addTarget(self, action: #selector(goToNextTab), for: .touchUpInside)
-//            return cell
-            let emptyCell = UITableViewCell()
-            cellHeight = 0
-            emptyCell.backgroundColor = .blue
-            return emptyCell
+        let sectionIdx = indexPath.section
+        let rowIdx = indexPath.row
+        
+        guard let statsSection = StatsSection.init(rawValue: self.indexToSection[sectionIdx]!)
+            else {
+                return UITableViewCell()
         }
         
-        let sectionIdx = (indexPath as NSIndexPath).section
+        let card = getCardInSection(statsSection.rawValue, atIndex: rowIdx)
+        let cardsCount = countCardsInSection(statsSection.rawValue)
         
-        let card = store.getStatsCards()[sectionIdx]
-        let metrics = store.getStatsMetricsForCard(card)
-        if metrics.isEmpty {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for: indexPath) as! EmptyStateCard
-            cell.displayForStats()
-            cellHeight = 506
-            return cell
-        }
-        
-        switch card.section {
-        case "Traffic":
-            let cell = tableView.dequeueReusableCell(withIdentifier: "StatsCard", for: indexPath) as! StatsCardViewCell
-            
-            let results = store.getStatsMetricsForCard(card)
-            cell.statisticsCountView.setupViews(data: Array(results))
-            let itemCellHeight: Int = 94
-            cell.statisticsCountViewHeightCounstraint.constant = CGFloat(results.count * itemCellHeight)
-            cellHeight = CGFloat((results.count * itemCellHeight) + (29 + 94 + 93 + 20 ))
-            
-            cell.selectionStyle = .none
-            cell.backgroundColor = .clear
-            cell.footerView.actionButton.context = ["card":card]
-            cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_: eventInfo:)), for: .touchUpInside)
-            
-            cell.footerView.displayOnlyActionButton()
-            cell.connectionLine.isHidden = true
-     
-            return cell
-        case "insight" :
-            if insightIsDisplayed {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendedCell", for: indexPath) as! InsightCard
-                cellHeight = 469
+        let item = card
+        switch(item.type) {
+            case StatsCardType.emptyState.rawValue:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for: indexPath) as! EmptyStateCard
+                cell.displayForStats()
+                cellHeight = 506
+                return cell
+            case StatsCardType.metricsCard.rawValue:
+                let metrics = store.getStatsMetricsForCard(card)
+                let cell = tableView.dequeueReusableCell(withIdentifier: "StatsCard", for: indexPath) as! StatsCardViewCell
+                
+                let results = store.getStatsMetricsForCard(card)
+                cell.statisticsCountView.setupViews(data: Array(results))
+                let itemCellHeight: Int = 94
+                cell.statisticsCountViewHeightCounstraint.constant = CGFloat(results.count * itemCellHeight)
+                cellHeight = CGFloat((results.count * itemCellHeight) + (29 + 94 + 93 + 20 ))
+                
                 cell.selectionStyle = .none
+                cell.backgroundColor = .clear
+                cell.footerView.actionButton.context = ["card":card]
+                cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_: eventInfo:)), for: .touchUpInside)
+                
+                cell.footerView.displayOnlyActionButton()
+                cell.connectionLine.isHidden = true
+                
                 return cell
-            } else {
+            default:
                 let cell = UITableViewCell()
-                cellHeight = 0
-                cell.isHidden = true
+                cell.translatesAutoresizingMaskIntoConstraints = false
+                cell.heightAnchor.constraint(equalToConstant: 1).isActive = true
+                cell.backgroundColor = .clear
                 return cell
-            }
-        default:
-            let cell = UITableViewCell()
-            cellHeight = 0
-            cell.isHidden = true
-            return cell
-        }
- 
+            }//switch
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let a = store.getStatsCards().count
-        return a
+        
+        guard let statsSection = StatsSection.init(rawValue: self.indexToSection[section]!)
+            else { return 0 }
+        
+        return countCardsInSection(statsSection.rawValue)
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -317,9 +368,6 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if section == 0 {
-            if( isLastSection(section: section)) {
-                return nil
-            }
             let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
             cell.changeColor(cardType: .traffic)
             cell.sectionTitleLabel.text = "TRAFFIC";
@@ -337,26 +385,9 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
         return 0
     }
     
-    func isLastSection(section: Int) -> Bool {
-        if section == store.countSections() {
-            return true
-        }
-        return false
-    }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return store.getStatsCards().count
+        return self.indexToSection.count
     }
-    /*
-    private func setTrafficCard(cell: TrafficCardViewCell, item: StatisticsItem) {
-        if item.status == StatusArticle.unapproved.rawValue {
-            insightIsDisplayed = true
-            cell.connectionLine.isHidden = false
-        } else {
-            cellHeight = 404
-            cell.connectionLine.isHidden = true
-        }
-    }
-    */
+    
 }

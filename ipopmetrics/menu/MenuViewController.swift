@@ -55,6 +55,11 @@ class MenuViewController: ElasticModalViewController {
     @objc func imageTapped(_ gestureRecognizer: UITapGestureRecognizer) {
         //tappedImageView will be the image view that was tapped.
         //dismiss it, animate it off screen, whatever.
+        FeedStore.getInstance().wipe()
+        TodoStore.getInstance().wipe()
+        CalendarStore.getInstance().wipe()
+        StatsStore.getInstance().wipe()
+        
         UsersApi().resetBrandHubs(UserStore.currentBrandId)
         presentAlertWithTitle("Confirmation", message: "The hubs are being reset. It may take up to a minute.")
     }

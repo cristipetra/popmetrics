@@ -101,39 +101,7 @@ class FeedApi: BaseApi {
         }
     }
     
-    func postAddToMyActions( feedCardId:String, brandId:String, callback: @escaping (_ response: TodoCard?) -> Void) {
-        
-        let url = ApiUrls.composedBaseUrl("/api/feed/add-to-my-actions")
-        let params = ["card_id":feedCardId, "brand_id":brandId]
-
-        Alamofire.request(url, method: .post, parameters:params, encoding: JSONEncoding.default,
-                          headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperOne<TodoCard>>) in
-                            let levelOneHandled = super.handleNotOkCodes(response: response.response)
-                            if !levelOneHandled {
-                                let handled = super.handleResponseWrap(response.value!)
-                                if !handled {
-                                    callback(response.result.value?.data)
-                                }
-                            }
-        }
-    }
     
-    func postAddToPaidActions( feedCardId:String, brandId:String, callback: @escaping (_ response: TodoCard?) -> Void) {
-        
-        let url = ApiUrls.composedBaseUrl("/api/feed/add-to-paid-actions")
-        let params = ["card_id":feedCardId, "brand_id":brandId]
-        
-        Alamofire.request(url, method: .post, parameters:params, encoding: JSONEncoding.default,
-                          headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperOne<TodoCard>>) in
-                            let levelOneHandled = super.handleNotOkCodes(response: response.response)
-                            if !levelOneHandled {
-                                let handled = super.handleResponseWrap(response.value!)
-                                if !handled {
-                                    callback(response.result.value?.data)
-                                }
-                            }
-        }
-    }
     
     
 }

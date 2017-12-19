@@ -273,6 +273,8 @@ class Brand: Mappable {
     var id: String?
     var name: String?
     var logoURL: String?
+    var domainURL: String?
+    var isTestBrand: Bool?
     
     var googleAnalytics: GoogleAnalyticsDetails?
     var twitterDetails: TwitterDetails?
@@ -284,6 +286,8 @@ class Brand: Mappable {
         name        <- map["name"]
         id          <- map["id"]
         logoURL     <- map["logo_url"]
+        domainURL   <- map["domain_url"]
+        isTestBrand <- map["is_test_brand"]
         
         googleAnalytics <- map["data.google_analytics"]
         twitterDetails  <- map["social.twitter"]
@@ -459,10 +463,10 @@ class HubsResponse: Mappable {
     }
     
     func mapping(map:Map) {
-        feed               <- map["feed"]
-        todo               <- map["todo"]
-        calendar           <- map["calendar"]
-        stats              <- map["stats"]
+        feed               <- map["Home"]
+        todo               <- map["Todo"]
+        calendar           <- map["Calendar"]
+        stats              <- map["Stats"]
         sendApnToken       <- map["send_apn_token"]
         lastDate           <- (map["last_date"], DateTransform())
         
