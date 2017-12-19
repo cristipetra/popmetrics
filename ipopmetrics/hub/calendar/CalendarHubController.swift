@@ -107,7 +107,7 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
         if shouldReloadData {
             SyncService.getInstance().syncCalendarItems(silent: false)
         }
-
+        
     }
     
     func createItemsLocally() {
@@ -129,9 +129,30 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
             calendarCompleted.cardId = calendarCompletedId
             calendarCompleted.createDate = Date()
             calendarCompleted.section = CalendarSectionType.completed.rawValue
-            calendarCompleted.type = "empty_state"
+            calendarCompleted.type = "completed"
             
             store.realm.add(calendarCompleted, update: true)
+            
+            let socialCompleted = CalendarSocialPost()
+            socialCompleted.calendarCardId = calendarCompleted.cardId!
+            socialCompleted.calendarCard = calendarCompleted
+            socialCompleted.scheduledDate = Date()
+            socialCompleted.postId = "af234rdsagsdaga"
+            socialCompleted.type = "calendar.completed_posts"
+            socialCompleted.index = 0
+            socialCompleted.section = CalendarSectionType.completed.rawValue
+            store.realm.add(socialCompleted, update: true)
+            
+            let socialActionCompleted = CalendarSocialPost()
+            socialActionCompleted.calendarCardId = calendarCompleted.cardId!
+            socialActionCompleted.calendarCard = calendarCompleted
+            socialActionCompleted.scheduledDate = Date()
+            socialActionCompleted.postId = "af23242421344rdsagsdaga"
+            socialActionCompleted.type = "calendar.completed_action"
+            socialCompleted.text = "Completed action"
+            socialActionCompleted.index = 2
+            socialActionCompleted.section = CalendarSectionType.completed.rawValue
+            store.realm.add(socialActionCompleted, update: true)
             
             
             let scheduledPost = CalendarSocialPost()
@@ -341,6 +362,30 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCompletedAction", for: indexPath) as! CalendarCompletedViewCell
             cell.configure(socialPost: item)
             cell.setPositions(indexPath: indexPath, countPosts: socialPosts.count)
+            
+            return cell
+        }
+        
+        
+        if item.type == "calendar.completed_action" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCompletedAction", for: indexPath) as! CalendarCompletedViewCell
+            cell.configure(socialPost: item)
+            cell.setPositions(indexPath: indexPath, countPosts: socialPosts.count)
+            
+            return cell
+        }
+        
+        if item.type == "calendar.completed_posts" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
+            cell.configure(item)
+            
+            let postsByType = store.getCalendarSocialPostsForCardByType(store.getCalendarCards()[sectionIdx], type: item.type)
+            
+            cell.setPositions(indexPath, itemsToLoad: noItemsLoadeInitial, countPosts: postsByType.count)
+            
+            cell.cancelCardDelegate = self
+            cell.actionSociaDelegate = self
+            cell.selectionStyle = .none
             
             return cell
         }
