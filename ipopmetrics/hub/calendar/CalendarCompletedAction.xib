@@ -25,8 +25,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="429" height="278.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="faf-oE-lFA">
-                        <rect key="frame" x="0.0" y="0.0" width="396" height="230.5"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faf-oE-lFA">
+                        <rect key="frame" x="8" y="8" width="421" height="262.5"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6q-d2-itf">
                         <rect key="frame" x="32" y="0.0" width="2" height="20"/>
@@ -44,11 +44,11 @@
                             <constraint firstAttribute="width" constant="2" id="KTF-HS-JTy"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c2R-xz-63f">
-                        <rect key="frame" x="0.0" y="0.0" width="409" height="258.5"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c2R-xz-63f">
+                        <rect key="frame" x="10" y="10" width="409" height="258.5"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Jz-m5-HwS">
-                                <rect key="frame" x="0.0" y="0.0" width="407" height="200"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Jz-m5-HwS">
+                                <rect key="frame" x="0.0" y="15" width="417" height="200"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uSZ-Zg-6fO">
                                         <rect key="frame" x="0.0" y="0.0" width="409" height="200"/>

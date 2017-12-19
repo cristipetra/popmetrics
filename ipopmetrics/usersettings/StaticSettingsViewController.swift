@@ -84,7 +84,6 @@ class StaticSettingsViewController: BaseTableViewController {
         twitterHandleField.text = currentBrand?.twitterDetails?.screenName ?? "N/A"
         googleAnalyticsTracker.text = currentBrand?.googleAnalytics?.tracker ?? "N/A"
         
-        allowSounds.isOn = userSettings.allowSounds
     }
     
     func setUpNavigationBar() {
