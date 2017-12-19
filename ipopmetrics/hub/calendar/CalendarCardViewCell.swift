@@ -25,6 +25,7 @@ class CalendarCardViewCell: UITableViewCell {
     @IBOutlet weak var cancelPostButton: UIButton!
     @IBOutlet weak var textStackViewTopConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var constraintHeightContainerLine: NSLayoutConstraint!
     @IBOutlet weak var footerView: TableFooterView!
     @IBOutlet weak var constraintHeightFooter: NSLayoutConstraint!
     @IBOutlet weak var constraintHeightToolbar: NSLayoutConstraint!
@@ -65,13 +66,15 @@ class CalendarCardViewCell: UITableViewCell {
         } else {
             constraintHeightToolbar.constant = 29
         }
+
+        var posFooter = itemsToLoad >= countPosts ? countPosts : itemsToLoad
         
-        var posFooter = itemsToLoad >= countPosts ? itemsToLoad : countPosts
-    
         if (indexPath.row != posFooter - 1) {
             constraintHeightFooter.constant = 0
+            constraintHeightContainerLine.constant = 0
         } else {
             constraintHeightFooter.constant = 80
+            constraintHeightContainerLine.constant = 20
         }
         
         constraintHeightFooter.constant = 0

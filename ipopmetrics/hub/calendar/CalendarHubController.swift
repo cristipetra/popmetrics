@@ -198,6 +198,7 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
     func setDatesSelected(datesSelected: Int) {
         print("set dates selected")
         self.datesSelected = datesSelected
+        store.datesSelected = datesSelected
     }
     
     func reloadData() {
@@ -339,6 +340,7 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         if item.type == "calendar.scheduled_action" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCompletedAction", for: indexPath) as! CalendarCompletedViewCell
             cell.configure(socialPost: item)
+            cell.setPositions(indexPath: indexPath, countPosts: socialPosts.count)
             
             return cell
         }
@@ -346,7 +348,9 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
         cell.configure(item)
 
-        cell.setPositions(indexPath, itemsToLoad: noItemsLoadeInitial, countPosts: socialPosts.count)
+        let postsByType = store.getCalendarSocialPostsForCardByType(store.getCalendarCards()[sectionIdx], type: item.type)
+        
+        cell.setPositions(indexPath, itemsToLoad: noItemsLoadeInitial, countPosts: postsByType.count)
         
         cell.cancelCardDelegate = self
         cell.actionSociaDelegate = self
