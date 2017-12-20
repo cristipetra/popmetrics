@@ -51,6 +51,8 @@ class CalendarCardViewCell: UITableViewCell {
         self.isUserInteractionEnabled = true
         
         self.backgroundColor = .clear
+        
+        self.setMessageLabel()
 
     }
     
@@ -147,6 +149,26 @@ class CalendarCardViewCell: UITableViewCell {
         dateFormatter.pmSymbol = "p.m."
         
         return dateFormatter.string(from: date)
+    }
+    
+    private func setMessageLabel() {
+        messageLbl.adjustLabelSpacing(spacing: 0, lineHeight: 18, letterSpacing: 0.3)
+        if messageLbl.frame.width < 250 {
+            if messageLbl.frame.width < 200 {
+                messageLblTopConstraint.constant = 5
+                messageLblHeightConstraint.constant = 90
+                textStackViewTopConstraint.constant = 12
+                messageLbl.adjustLabelSpacing(spacing: 0, lineHeight: 15, letterSpacing: 0.2)
+                messageLbl.font = messageLbl.font.withSize(12)
+                textStackView.axis = .vertical
+                textStackView.alignment = .trailing
+                textStackViewHeightConstraint.constant = 28
+            } else {
+                messageLblHeightConstraint.constant = 90
+                messageLblTopConstraint.constant = 3
+                textStackViewTopConstraint.constant = 22
+            }
+        }
     }
     
     @objc internal func cancelPostHandler() {

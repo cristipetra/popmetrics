@@ -123,6 +123,9 @@
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QbH-bN-BSW">
                                     <rect key="frame" x="103" y="1" width="251" height="87.5"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="102" id="WBH-aS-u63"/>
+                                    </constraints>
                                     <string key="text">Popmetrics recommends highly customized marketing insights to help your business grow. #Popmetrics #GrowYourBusiness Alch.my/27yd73</string>
                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                     <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

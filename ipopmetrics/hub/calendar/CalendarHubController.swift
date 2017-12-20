@@ -180,7 +180,7 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
             let scheduledPost1 = CalendarSocialPost()
             scheduledPost1.calendarCard = calendarScheduled
             scheduledPost1.calendarCardId = calendarScheduled.cardId!
-            scheduledPost1.text = "dfsdagsaaswfsafas"
+            scheduledPost1.text = "Popmetrics recommends highly customized marketing insights highly customized  recommends highly customized marketing insights highly customized marketing insights to help your business grow. #Popmetrics #GrowYourBusiness Alch.my/27yd73"
             scheduledPost1.createDate = Date()
             scheduledPost1.scheduledDate = Date()
             scheduledPost1.postId = "11weqfsadfsdfesadfa"
