@@ -35,7 +35,7 @@ class CalendarCompletedViewCell: UITableViewCell {
     func configure(socialPost: CalendarSocialPost) {
         let formatedDate = self.formatDate((socialPost.scheduledDate)!)
 
-        self.actionTime.text = "Completed on \(formatedDate)"
+        self.actionTime.text = "\(socialPost.socialTextTime) \(formatedDate)"
         
         if socialPost.text != "" {
             self.actionTitle.text = socialPost.text

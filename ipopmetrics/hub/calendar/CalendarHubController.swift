@@ -28,6 +28,13 @@ enum CalendarSectionType: String {
     case completed = "Completed"
 }
 
+enum CalendarCardType: String {
+    case completedAction = "calendar.completed_action"
+    case completedPosts = "social.completed_posts"
+    case scheduledPosts = "social.scheduled_posts"
+    case scheduledAction = "calendar.scheduled_action"
+}
+
 class CalendarHubController: BaseViewController, ContainerToMaster {
     
     @IBOutlet weak var tableView: UITableView!
@@ -108,6 +115,7 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
             SyncService.getInstance().syncCalendarItems(silent: false)
         }
         
+        createItemsLocally()
     }
     
     func createItemsLocally() {
@@ -138,7 +146,8 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
             socialCompleted.calendarCard = calendarCompleted
             socialCompleted.scheduledDate = Date()
             socialCompleted.postId = "af234rdsagsdaga"
-            socialCompleted.type = "calendar.completed_posts"
+            socialCompleted.type = "social.completed_posts"
+            socialCompleted.text = "Do some magic"
             socialCompleted.index = 0
             socialCompleted.section = CalendarSectionType.completed.rawValue
             store.realm.add(socialCompleted, update: true)
@@ -149,7 +158,7 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
             socialActionCompleted.scheduledDate = Date()
             socialActionCompleted.postId = "af23242421344rdsagsdaga"
             socialActionCompleted.type = "calendar.completed_action"
-            socialCompleted.text = "Completed action"
+            socialCompleted.text = "Completed1 action"
             socialActionCompleted.index = 2
             socialActionCompleted.section = CalendarSectionType.completed.rawValue
             store.realm.add(socialActionCompleted, update: true)
@@ -358,24 +367,8 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         
         let item = socialPosts[rowIdx]
         
-        if item.type == "calendar.scheduled_action" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCompletedAction", for: indexPath) as! CalendarCompletedViewCell
-            cell.configure(socialPost: item)
-            cell.setPositions(indexPath: indexPath, countPosts: socialPosts.count)
-            
-            return cell
-        }
-        
-        
-        if item.type == "calendar.completed_action" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCompletedAction", for: indexPath) as! CalendarCompletedViewCell
-            cell.configure(socialPost: item)
-            cell.setPositions(indexPath: indexPath, countPosts: socialPosts.count)
-            
-            return cell
-        }
-        
-        if item.type == "calendar.completed_posts" {
+        switch item.type {
+        case CalendarCardType.scheduledPosts.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
             cell.configure(item)
             
@@ -388,21 +381,38 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
             cell.selectionStyle = .none
             
             return cell
+        case CalendarCardType.scheduledAction.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCompletedAction", for: indexPath) as! CalendarCompletedViewCell
+            cell.configure(socialPost: item)
+            cell.setPositions(indexPath: indexPath, countPosts: socialPosts.count)
+            
+            return cell
+        case CalendarCardType.completedPosts.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
+            cell.configure(item)
+            
+            let postsByType = store.getCalendarSocialPostsForCardByType(store.getCalendarCards()[sectionIdx], type: item.type)
+            
+            cell.setPositions(indexPath, itemsToLoad: noItemsLoadeInitial, countPosts: postsByType.count)
+            
+            cell.cancelCardDelegate = self
+            cell.actionSociaDelegate = self
+            cell.selectionStyle = .none
+            
+            return cell
+        case CalendarCardType.completedAction.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCompletedAction", for: indexPath) as! CalendarCompletedViewCell
+            cell.configure(socialPost: item)
+            cell.setPositions(indexPath: indexPath, countPosts: socialPosts.count)
+            
+            return cell
+            break
+        default:
+            return UITableViewCell()
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
-        cell.configure(item)
-
-        let postsByType = store.getCalendarSocialPostsForCardByType(store.getCalendarCards()[sectionIdx], type: item.type)
-        
-        cell.setPositions(indexPath, itemsToLoad: noItemsLoadeInitial, countPosts: postsByType.count)
-        
-        cell.cancelCardDelegate = self
-        cell.actionSociaDelegate = self
-        cell.selectionStyle = .none
-        
-        return cell
     }
+    
     /*
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

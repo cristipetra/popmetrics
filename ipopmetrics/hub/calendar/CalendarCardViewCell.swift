@@ -69,6 +69,8 @@ class CalendarCardViewCell: UITableViewCell {
 
         var posFooter = itemsToLoad >= countPosts ? countPosts : itemsToLoad
         
+        print(posFooter)
+        
         if (indexPath.row != posFooter - 1) {
             constraintHeightFooter.constant = 0
             constraintHeightContainerLine.constant = 0
@@ -89,6 +91,7 @@ class CalendarCardViewCell: UITableViewCell {
         let formatedDate = self.formatDate((item.scheduledDate)!)
         
         self.timeLbl.text = formatedDate
+        self.statusText.text = item.socialTextTime
         
         if item.text != "" {
             self.messageLbl.text = item.text
@@ -106,6 +109,11 @@ class CalendarCardViewCell: UITableViewCell {
         
         changeColor()
         
+        if item.section == CalendarSectionType.completed.rawValue {
+            cancelPostButton.isHidden = true
+        } else {
+            cancelPostButton.isHidden = false
+        }
         
         footerView.changeFeedType(feedType: FeedType.calendar)
         //footerView.buttonActionHandler = self
