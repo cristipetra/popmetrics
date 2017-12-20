@@ -53,6 +53,7 @@
 		085F91011F716AD2008A339A /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F91001F716AD2008A339A /* OnboardingViewController.swift */; };
 		085F91031F716CBC008A339A /* OnboardingFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085F91021F716CBC008A339A /* OnboardingFooter.xib */; };
 		085F91051F716CD4008A339A /* OnboardingFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F91041F716CD4008A339A /* OnboardingFooter.swift */; };
+		0863C4641FEA91C400999A81 /* animation_iphone4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0863C4631FEA91C400999A81 /* animation_iphone4.json */; };
 		086B453C1FDC22530043F981 /* PersistentFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086B453B1FDC22530043F981 /* PersistentFooter.swift */; };
 		086EDE3D1FC82D11002F4140 /* MyActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086EDE3C1FC82D11002F4140 /* MyActionCard.xib */; };
 		086EDE3F1FC830F1002F4140 /* MyActionCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE3E1FC830F1002F4140 /* MyActionCardCell.swift */; };
@@ -282,6 +283,7 @@
 		085F91001F716AD2008A339A /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		085F91021F716CBC008A339A /* OnboardingFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingFooter.xib; sourceTree = "<group>"; };
 		085F91041F716CD4008A339A /* OnboardingFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFooter.swift; sourceTree = "<group>"; };
+		0863C4631FEA91C400999A81 /* animation_iphone4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_iphone4.json; sourceTree = "<group>"; };
 		086B453B1FDC22530043F981 /* PersistentFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentFooter.swift; sourceTree = "<group>"; };
 		086EDE3C1FC82D11002F4140 /* MyActionCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyActionCard.xib; sourceTree = "<group>"; };
 		086EDE3E1FC830F1002F4140 /* MyActionCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActionCardCell.swift; sourceTree = "<group>"; };
@@ -486,6 +488,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0863C4621FEA91AD00999A81 /* animations */ = {
+			isa = PBXGroup;
+			children = (
+				0863C4631FEA91C400999A81 /* animation_iphone4.json */,
+				08C497AC1FD5A0110066E515 /* animation_nonX.json */,
+				08C497B01FD5A31C0066E515 /* animation_X.json */,
+			);
+			path = animations;
+			sourceTree = "<group>";
+		};
 		086EDE441FC864E7002F4140 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -839,13 +851,12 @@
 		11DD96641FC4F3BD00386F1E /* effects */ = {
 			isa = PBXGroup;
 			children = (
+				0863C4621FEA91AD00999A81 /* animations */,
 				11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */,
 				0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */,
 				08B485E51F210A61005918A1 /* RoundButton.swift */,
 				08A5333D1F6C2E910080BE64 /* ButtonWithContainer.swift */,
 				08A62CB11F8E4DCF0072E6A5 /* TwoColorButton.swift */,
-				08C497AC1FD5A0110066E515 /* animation_nonX.json */,
-				08C497B01FD5A31C0066E515 /* animation_X.json */,
 				085F90F61F71270E008A339A /* AnimationsViewController.xib */,
 				085F90F11F712660008A339A /* AnimationsViewController.swift */,
 				0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */,
@@ -1111,6 +1122,7 @@
 				085F91031F716CBC008A339A /* OnboardingFooter.xib in Resources */,
 				085F90F71F71270E008A339A /* AnimationsViewController.xib in Resources */,
 				11F89F691EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist in Resources */,
+				0863C4641FEA91C400999A81 /* animation_iphone4.json in Resources */,
 				08B6AFAA1F9DC813005E3049 /* IceCardView.xib in Resources */,
 				085F90FA1F7169FE008A339A /* OnboardingView.xib in Resources */,
 				085F90FC1F716A57008A339A /* VerifySocialViewController.xib in Resources */,

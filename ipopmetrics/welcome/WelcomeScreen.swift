@@ -45,9 +45,7 @@ class WelcomeScreen: UIViewController {
     private func updateConstraintValues() {
         if UIScreen.main.bounds.height <= CGFloat(480) {
             topImageConstraint.constant = 20
-            bottomButtonsConstraint.constant = 20
             heightTextConstraint.constant = 100
-            topTextConstraint.constant = 20
         }
     }
     
