@@ -19,7 +19,7 @@ private let PROTOCOL = "http"
 private let HOST = "192.168.7.100"
 private let PORT = 5030
 
-// private let HOST = "10.0.1.50"
+// private let HOST = "10.0.1.8"
 // private let HOST = "172.20.10.2"
 
 private let LOGIN_PATH = "/api/caas/sign_in_with_email"

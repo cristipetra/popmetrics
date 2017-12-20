@@ -77,6 +77,34 @@ class EmptyStateCard: UITableViewCell {
         self.footerVIew.actionButton.isHidden = true
     }
     
+    internal func configure(calendarCard: CalendarCard) {
+        
+        titleLabel.text = calendarCard.headerTitle
+        messageLabel.text = calendarCard.message!
+        
+        if let imageUrl = calendarCard.imageUri {
+            if let url = URL(string: imageUrl) {
+                backgroundImageView.af_setImage(withURL: url)
+            }
+        }
+        
+        self.footerVIew.actionButton.isHidden = true
+    }
+    
+    internal func configure(statsCard: StatsCard) {
+        
+        titleLabel.text = statsCard.headerTitle
+        messageLabel.text = statsCard.message!
+        
+        if let imageUrl = statsCard.imageUri {
+            if let url = URL(string: imageUrl) {
+                backgroundImageView.af_setImage(withURL: url)
+            }
+        }
+        
+        self.footerVIew.actionButton.isHidden = true
+    }
+    
     @objc func handlerActionButton() {
         guard let _ = feedCard else { return }
         delegate?.recommendedCellDidTapAction(feedCard)

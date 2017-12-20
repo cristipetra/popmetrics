@@ -320,7 +320,12 @@ class UsersApi: BaseApi {
                             let levelOneHandled = super.handleNotOkCodes(response: response.response)
                             if !levelOneHandled {
                                 let handled = super.handleResponseWrap(response.value!)
-                                SyncService().syncAll(silent:true)
+                                let when = DispatchTime.now() + 3 
+                                DispatchQueue.main.asyncAfter(deadline: when) {
+                                    SyncService().syncAll(silent:true)
+
+                                }
+
                             }
         }
     }

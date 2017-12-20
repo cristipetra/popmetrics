@@ -158,7 +158,29 @@ class StatsCard: Object, Mappable {
     @objc dynamic var type = ""
     @objc dynamic var section = ""
     @objc dynamic var status = ""
-
+    
+    @objc dynamic var headerTitle: String? = nil
+    @objc dynamic var headerSubtitle: String? = nil
+    @objc dynamic var headerIconUri:String? = nil
+    @objc dynamic var message:String? = nil
+    
+    @objc dynamic var actionLabel = ""
+    @objc dynamic var actionHandler = ""
+    @objc dynamic var recommendedAction = ""
+    
+    @objc dynamic var imageUri:String? = nil
+    @objc dynamic var blogUrl:String? = nil
+    @objc dynamic var blogTitle:String? = nil
+    @objc dynamic var blogImageUrl:String? = nil
+    @objc dynamic var blogSummary:String? = nil
+    
+    @objc dynamic var detailsMarkdown:String? = ""
+    @objc dynamic var closingMarkdown:String? = ""
+    
+    
+    @objc dynamic var tooltipEnabled = 0
+    @objc dynamic var tooltipTitle: String? = nil
+    @objc dynamic var tooltipContent: String? = nil
     
     override static func primaryKey() -> String? {
         return "cardId"
@@ -178,6 +200,29 @@ class StatsCard: Object, Mappable {
         type            <- map["type"]
         section         <- map["section"]
         status          <- map["status"]
+        
+        headerTitle     <- map["header_title"]
+        headerSubtitle  <- map["header_subtitle"]
+        headerIconUri   <- map["header_icon"]
+        imageUri        <- map["image_url"]
+        
+        blogUrl         <- map["blog_url"]
+        blogTitle       <- map["blog_title"]
+        blogImageUrl    <- map["blog_image_url"]
+        blogSummary     <- map["blog_summary"]
+        
+        message         <- map["message"]
+        actionLabel     <- map["action_label"]
+        actionHandler   <- map["handler"]
+        recommendedAction   <- map["recommended_action"]
+        
+        detailsMarkdown <- map["details_markdown"]
+        closingMarkdown <- map["closing_markdown"]
+        
+        tooltipEnabled  <- map["tooltip_enabled"]
+        tooltipTitle    <- map["tooltip_title"]
+        tooltipContent  <- map["tooltip_content"]
+        
     }
 }
 

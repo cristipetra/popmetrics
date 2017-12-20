@@ -19,13 +19,47 @@ protocol MasterToContainer {
 }
 
 enum CalendarSection: String {
+    
     case Scheduled = "Scheduled"
     case Completed = "Completed"
+    
+    static let sectionTitles = [
+        Scheduled: "Scheduled",
+        Completed: "Completed"
+    ]
+    
+    // position in table
+    static let sectionPosition = [
+        Scheduled: 0,
+        Completed: 1
+    ]
+    
+    func sectionTitle() -> String {
+        if let sectionTitle = CalendarSection.sectionTitles[self] {
+            return sectionTitle
+        } else {
+            return ""
+        }
+    }
+    
+    func getSectionPosition() -> Int {
+        return CalendarSection.sectionPosition[self]!
+    }
 }
+
+
 
 enum CalendarSectionType: String {
     case scheduled = "Scheduled"
     case completed = "Completed"
+}
+
+enum CalendarCardType: String {
+    case emptyState = "empty_state"
+    case scheduledSocialPosts = "scheduled_social_posts"
+    case completedSocialPosts = "completed_social_posts"
+    case scheduledAction = "scheduled_action"
+    case completedAction = "completed_action"
 }
 
 class CalendarHubController: BaseViewController, ContainerToMaster {
@@ -307,6 +341,7 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         
         if socialPosts.isEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for: indexPath) as! EmptyStateCard
+            //  cell.configure(calendarCard:)
             return cell
         }
         
