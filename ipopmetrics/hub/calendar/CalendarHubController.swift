@@ -333,34 +333,72 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
 
 extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
     
+    func getVisibleItemsInSection(_ section: Int) -> [Any] {
+        
+        guard let calSection = CalendarSection.init(rawValue: self.indexToSection[section]!)
+            else { return [] }
+        
+        let emptyStateCards = store.getEmptyCalendarCardsWithSection(calSection.rawValue)
+        let nonEmptyCards = store.getNonEmptyCalendarCardsWithSection(calSection.rawValue)
+        var items : [Any] = []
+        if nonEmptyCards.count > 0 {
+            for card in nonEmptyCards {
+                if card.type == "scheduled_social_posts" || card.type == "completed_social_posts" {
+                    let socialPost = store.getSocialPostsForCard(card)
+                    for sp in socialPost {
+                        items.append(sp)
+                    }
+                }
+                else {
+                        items.append(card)
+                    }
+                }
+            if items.count == 0 {
+                return Array(emptyStateCards)
+            }
+            else {
+                return items
+            }
+        }
+        else {
+            return Array(emptyStateCards)
+        }
+    }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
         
-        let socialPosts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[sectionIdx], datesSelected: datesSelected)
-        
-        if socialPosts.isEmpty {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for: indexPath) as! EmptyStateCard
-            //  cell.configure(calendarCard:)
+        let items = getVisibleItemsInSection(sectionIdx)
+        if items.count == 0 {
+            return UITableViewCell()
+        }
+
+        let item = items[rowIdx]
+        if item is CalendarSocialPost {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCardSimple", for: indexPath) as! CalendarCardSimpleViewCell
+            cell.configure(item as! CalendarSocialPost)
+            cell.indexPath = indexPath
+            cell.cancelCardDelegate = self
+            cell.actionSociaDelegate = self
+            cell.selectionStyle = .none
+            
             return cell
         }
-        
-        let item = socialPosts[rowIdx]
-        
-        if item.type == "calendar.completed_action" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCompletedAction", for: indexPath) as! CalendarCompletedViewCell
-            cell.configure(socialPost: item)
-            return cell
+        else {
+            let card = item as! CalendarCard
+            if card.type == "calendar.completed_action" {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCompletedAction", for: indexPath) as! CalendarCompletedViewCell
+                return cell
+            }
+            else if card.type == "empty_state" {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for:indexPath) as! EmptyStateCard
+                cell.configure(calendarCard:card)
+                return cell
+            }
         }
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCardSimple", for: indexPath) as! CalendarCardSimpleViewCell
-        cell.configure(item)
-        cell.indexPath = indexPath
-        cell.cancelCardDelegate = self
-        cell.actionSociaDelegate = self
-        cell.selectionStyle = .none
-        
-        return cell
+        return UITableViewCell()
     }
     /*
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -446,9 +484,9 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let calendarSection = CalendarSection.init(rawValue: self.indexToSection[section]!)
-            else { return 0 }
-        return countCardsInSection(calendarSection.rawValue)
+        
+        let items = getVisibleItemsInSection(section)
+        return items.count
     }
     
     func getCardInSection( _ section: String, atIndex:Int) -> CalendarCard {

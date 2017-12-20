@@ -269,44 +269,31 @@ class TodoHubController: BaseViewController {
     
     func updateCountsTopView() {
         
-        guard let todoSection = TodoSection.init(rawValue: self.indexToSection[0]!)
-            else { return }
-        
-        
-        toDoTopView.changeValueSection(value: countCardsInSection(todoSection.rawValue), section: 0)
+        let items = getVisibleItemsInSection(0)
+        toDoTopView.changeValueSection(value: items.count, section: 0)
     }
     
-    func getCardInSection( _ section: String, atIndex:Int) -> TodoCard {
+    func getVisibleItemsInSection(_ section: Int) -> [Any] {
         
-        let nonEmptyCards = store.getNonEmptyTodoCardsWithSection(section)
-        if nonEmptyCards.count == 0 {
-            let emptyCards = store.getEmptyTodoCardsWithSection(section)
-            return emptyCards[atIndex]
+        guard let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
+            else { return [] }
+        
+        let emptyStateCards = store.getEmptyTodoCardsWithSection(todoSection.rawValue)
+        if section == 0 {
+            guard let card = store.getTodoCardWithName("social.control_articles") else {
+                return Array(emptyStateCards)
+            }
+            let items = store.getTodoSocialPostsForCard(card)
+            return Array(items)
+        }
+        let nonEmptyCards = store.getNonEmptyTodoCardsWithSection(todoSection.rawValue)
+        if nonEmptyCards.count > 0 {
+            return Array(nonEmptyCards)
         }
         else {
-            if section == TodoSection.SocialPosts.rawValue {
-                return nonEmptyCards[0]  // There is always the same card
-            }
-            else {
-                return nonEmptyCards[atIndex]
-            }
+            return Array(emptyStateCards)
         }
-    }
-    
-    func countCardsInSection( _ section: String) -> Int {
-        let nonEmptyCards = store.getNonEmptyTodoCardsWithSection(section)
-        if nonEmptyCards.count == 0 {
-            let emptyCards = store.getEmptyTodoCardsWithSection(section)
-            return emptyCards.count
-        }
-        else {
-            if section == TodoSection.SocialPosts.rawValue {
-                return 3 // TODO - for now
-            }
-            else {
-                return nonEmptyCards.count
-            }
-        }
+        
     }
     
     func checkApprovedAll() -> Bool {
@@ -331,59 +318,50 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
-            else { return 0 }
-
-        if section == 0 {
-            guard let card = store.getTodoCardWithName("social.control_articles") else { return 1 }
-            let items = store.getTodoSocialPostsForCard(card)
-            return items.count
-        }
-        return countCardsInSection(todoSection.rawValue)
+        
+        let items = getVisibleItemsInSection(section)
+        return items.count
+        
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionIdx = indexPath.section
-        let rowIdx = (indexPath as NSIndexPath).row
-        
+        let rowIdx = indexPath.row
         guard let todoSection = TodoSection.init(rawValue: self.indexToSection[sectionIdx]!)
             else {
                 return UITableViewCell()
         }
-        if sectionIdx == 0 {
-                let cards = store.getNonEmptyTodoCardsWithSection("Social Posts")
-                if cards.count != 0 {
-                    let card = cards[0]
-                    let item = store.getTodoSocialPostsForCard(card)[rowIdx]
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "SocialPostInCardCell", for: indexPath) as! SocialPostInCardCell
-                    cell.setIndexPath(indexPath: indexPath, numberOfCellsInSection: store.getTodoSocialPostsForCard(card).count)
-                    cell.actionSocialDelegate = self
-                    
-                    cell.configure(item: item)
-                    return cell
-                }
-            
+        let items = getVisibleItemsInSection(sectionIdx)
+        if items.count == 0 {
+            return UITableViewCell()    
         }
-        let card = getCardInSection(todoSection.rawValue, atIndex: rowIdx)
-        let cardsCount = countCardsInSection(todoSection.rawValue)
+        let item = items[rowIdx]
+        if item is TodoSocialPost {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SocialPostInCardCell", for: indexPath) as! SocialPostInCardCell
+            cell.setIndexPath(indexPath: indexPath, numberOfCellsInSection: items.count)
+            cell.actionSocialDelegate = self
         
-        let item = card
+            cell.configure(item: item as! TodoSocialPost)
+            return cell
+            }
+
+        let cardItem = item as! TodoCard
         
-        switch(item.type) {
+        switch(cardItem.type) {
         
             case TodoCardType.myAction.rawValue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MyActionCard", for: indexPath) as! MyActionCardCell
-                cell.configure(item)
+                cell.configure(cardItem)
                 return cell
             
             case TodoCardType.paidAction.rawValue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "PaidActionCard", for: indexPath) as! PaidActionCardCell
-                cell.configure(item)
+                cell.configure(cardItem)
                 return cell
             case TodoCardType.emptyState.rawValue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for: indexPath) as! EmptyStateCard
-                cell.configure(todoCard: item)
+                cell.configure(todoCard: cardItem)
                 
                 return cell
             default:
