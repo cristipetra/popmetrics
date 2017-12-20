@@ -65,6 +65,10 @@ class AnimationsViewController: UIViewController, UIScrollViewDelegate {
         resetAnimation()
     }
     
+    @IBAction func handlerCloseButton(_ sender: UIButton) {
+        self.dismissToDirection(direction: .left)
+    }
+    
 }
 
 class AnimationInfo {
