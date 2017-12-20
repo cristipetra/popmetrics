@@ -77,6 +77,8 @@ class AnimationInfo {
         }
         if isIphoneX {
             return "animation_X"
+        } else if UIScreen.main.bounds.height <= 480 {
+            return "animation_iphone4"
         } else {
             return "animation_nonX"
         }

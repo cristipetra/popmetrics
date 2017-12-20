@@ -15,6 +15,7 @@ class CalendarCompletedViewCell: UITableViewCell {
     @IBOutlet weak var actionTitle: UILabel!
     @IBOutlet weak var actionTime: UILabel!
     @IBOutlet weak var toolbarView: ToolbarViewCell!
+    @IBOutlet weak var constraintHeightBottomConnection: NSLayoutConstraint!
     
     private var socialPost: CalendarSocialPost!
     
@@ -23,6 +24,7 @@ class CalendarCompletedViewCell: UITableViewCell {
         // Initialization code
         
         self.backgroundColor = .clear
+        self.selectionStyle = .none
         self.toolbarView.backgroundColor = .white
     }
 
@@ -33,7 +35,7 @@ class CalendarCompletedViewCell: UITableViewCell {
     func configure(socialPost: CalendarSocialPost) {
         let formatedDate = self.formatDate((socialPost.scheduledDate)!)
 
-        self.actionTime.text = "Completed on \(formatedDate)"
+        self.actionTime.text = "\(socialPost.socialTextTime) \(formatedDate)"
         
         if socialPost.text != "" {
             self.actionTitle.text = socialPost.text
@@ -43,6 +45,14 @@ class CalendarCompletedViewCell: UITableViewCell {
             if imageUrl.isValidUrl() {
                 self.actionImage.af_setImage(withURL: URL(string: imageUrl)!)
             }
+        }
+    }
+    
+    func setPositions(indexPath: IndexPath, countPosts: Int) {
+        if indexPath.row == countPosts - 1 {
+            constraintHeightBottomConnection.constant = 0
+        } else {
+            constraintHeightBottomConnection.constant = 20
         }
     }
     

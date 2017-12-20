@@ -27,6 +27,8 @@ class CalendarStore {
     
     public var selectedRange = DateInterval(start: NSDate().atStartOfWeek(), end: NSDate().atStartOfNextWeek())
     
+    public var datesSelected: Int = 0
+    
     public func getCalendarCards() -> Results<CalendarCard> {
         let predicate = NSPredicate(format: "status != 'archived'")
         return realm.objects(CalendarCard.self).filter(predicate).sorted(byKeyPath: "index")
@@ -61,18 +63,17 @@ class CalendarStore {
     }
     
     public func getCalendarSocialPostsForCard(_ calendarCard: CalendarCard, datesSelected: Int) -> Results<CalendarSocialPost> {
-        //return realm.objects(CalendarSocialPost.self)
         
         switch datesSelected {
         case 0:
             let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@ && status !='archived'", calendarCard, selectedWeek.start as CVarArg, selectedWeek.end as CVarArg)
-            return realm.objects(CalendarSocialPost.self).filter(predicate)
+            return realm.objects(CalendarSocialPost.self).filter(predicate).sorted(byKeyPath: "index", ascending: true)
         case 1:
             let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@ && status !='archived'", calendarCard, selectedDate.startOfDay as CVarArg, selectedDate.endOfDay as CVarArg)
-            return realm.objects(CalendarSocialPost.self).filter(predicate)
+            return realm.objects(CalendarSocialPost.self).filter(predicate).sorted(byKeyPath: "index", ascending: true)
         case 2:
             let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@ && status !='archived'", calendarCard, selectedRange.start as CVarArg, selectedRange.end as CVarArg)
-            return realm.objects(CalendarSocialPost.self).filter(predicate)
+            return realm.objects(CalendarSocialPost.self).filter(predicate).sorted(byKeyPath: "index", ascending: true)
         default:
             break
         }
@@ -80,6 +81,24 @@ class CalendarStore {
         return realm.objects(CalendarSocialPost.self)
     }
     
+    public func getCalendarSocialPostsForCardByType(_ calendarCard: CalendarCard, type: String) -> Results<CalendarSocialPost> {
+        switch datesSelected {
+        case 0:
+            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@ && status !='archived' && type == %@", calendarCard, selectedWeek.start as CVarArg, selectedWeek.end as CVarArg, type)
+            return realm.objects(CalendarSocialPost.self).filter(predicate).sorted(byKeyPath: "index", ascending: true)
+        case 1:
+            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@ && status !='archived' && type == %@", calendarCard, selectedDate.startOfDay as CVarArg, selectedDate.endOfDay as CVarArg, type)
+            return realm.objects(CalendarSocialPost.self).filter(predicate).sorted(byKeyPath: "index", ascending: true)
+        case 2:
+            let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@ && status !='archived' && type == %@", calendarCard, selectedRange.start as CVarArg, selectedRange.end as CVarArg, type)
+            return realm.objects(CalendarSocialPost.self).filter(predicate).sorted(byKeyPath: "index", ascending: true)
+        default:
+            break
+        }
+        
+        return realm.objects(CalendarSocialPost.self)
+    }
+ 
     public func countSections() -> Int {
         let distinctTypes = Array(Set(self.getCalendarCards().value(forKey: "section") as! [String]))
         return distinctTypes.count

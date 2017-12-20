@@ -21,7 +21,7 @@ protocol FooterActionHandlerProtocol: class {
 }
 
 
-class TableFooterView: UITableViewHeaderFooterView {
+class TableFooterView: UIView {
     
     let SPACE_ELEMENTS: CGFloat = 15
     
@@ -40,14 +40,23 @@ class TableFooterView: UITableViewHeaderFooterView {
     weak var buttonHandlerDelegate: FooterButtonHandlerProtocol?
     weak var buttonActionHandler: FooterActionHandlerProtocol?
     
+    /*
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         self.contentView.backgroundColor = UIColor.feedBackgroundColor()
         setUpFooter()
     }
+ */
+ 
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUpFooter()
+    }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder);
+        setUpFooter()
     }
     
     // VIEW
@@ -131,7 +140,7 @@ class TableFooterView: UITableViewHeaderFooterView {
     
     func setUpFooter() {
         
-        contentView.addSubview(containerView)
+        self.addSubview(containerView)
         setContainerView()
         
         setTopLineView()
@@ -149,10 +158,10 @@ class TableFooterView: UITableViewHeaderFooterView {
     }
     
     func setContainerView() {
-        containerView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 8).isActive = true
-        containerView.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-        containerView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -8).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
+        containerView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
+        containerView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        containerView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         setupCorners()
     }
     
@@ -163,7 +172,7 @@ class TableFooterView: UITableViewHeaderFooterView {
     }
     
     func setTopLineView() {
-        contentView.addSubview(topLineView)
+        self.addSubview(topLineView)
         topLineView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 0).isActive = true
         topLineView.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 0).isActive = true
         topLineView.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: 0).isActive = true
@@ -348,7 +357,7 @@ class TableFooterView: UITableViewHeaderFooterView {
     }
     
     func setUpFooterShadowView() {
-        contentView.insertSubview(footerShadow, belowSubview: containerView)
+        self.insertSubview(footerShadow, belowSubview: containerView)
         footerShadow.backgroundColor = containerView.backgroundColor
         footerShadow.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
         footerShadow.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
