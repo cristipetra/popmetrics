@@ -175,11 +175,8 @@ class IceExtendView: UIView {
     }
     
     private func setSplitValues(splitValues: [ImpactSplit]) {
-        let tmpSplitValues = ["Website Traffic", "Online Footprint", "Customers"]
-        
         for index in 0..<splitValues.count {
-            //splitLabels[index].text = splitValues[index].label
-            splitLabels[index].text = tmpSplitValues[index]
+            splitLabels[index].text = splitValues[index].label
             
             splitLabels[index].isHidden = false
             splitSquare[index].isHidden = false
