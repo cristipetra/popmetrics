@@ -26,6 +26,9 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var topPickerStackViewHeight: NSLayoutConstraint!
     
+    var selectedFromDate = Date()
+    var selectedToDate = Date()
+    
     internal var datesSelected = 0
     internal var dayColors = Dictionary<Date, UIColor>()
     internal let store = CalendarStore.getInstance()

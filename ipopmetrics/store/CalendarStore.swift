@@ -62,6 +62,14 @@ class CalendarStore {
         return realm.objects(CalendarSocialPost.self).filter(predicate)
     }
     
+    
+    public func getCalendarSocialPostsInRange(fromDate: Date, toDate:Date) -> Results<CalendarSocialPost> {
+        
+        let predicate = NSPredicate(format: "scheduledDate > %@ && scheduledDate < %@ && status !='archived'",
+                                    fromDate as CVarArg, toDate as CVarArg)
+        return realm.objects(CalendarSocialPost.self).filter(predicate).sorted(byKeyPath: "scheduledDate", ascending: true)
+    }
+    
     public func getCalendarSocialPostsForCard(_ calendarCard: CalendarCard, datesSelected: Int) -> Results<CalendarSocialPost> {
         
         switch datesSelected {

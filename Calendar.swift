@@ -193,6 +193,7 @@ class CalendarSocialPost: Object, Mappable {
     @objc dynamic var isApproved = false
     
     @objc dynamic var scheduledDate: Date? = nil
+    @objc dynamic var completionDate: Date? = nil
     
     @objc dynamic var type = ""
     @objc dynamic var section = ""
@@ -220,6 +221,7 @@ class CalendarSocialPost: Object, Mappable {
         index           <- map["index"]
         type            <- map["type"]
         scheduledDate   <- (map["schedule_dt"], DateTransform())
+        completionDate   <- (map["completion_dt"], DateTransform())
         section         <- map["section"]
         status          <- map["status"]
         title           <- map["title"]

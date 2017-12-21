@@ -80,7 +80,7 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
     
     let store = CalendarStore.getInstance()
     
-    internal var calendarViewController: MJCalendarViewController?
+    internal var calendarViewController: MJCalendarViewController!
     internal var scrollToRow: IndexPath = IndexPath(row: 0, section: 0)
     internal var reachedFooter = false
     internal var shouldMaximizeCell = false
@@ -141,8 +141,7 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
         if shouldReloadData {
             SyncService.getInstance().syncCalendarItems(silent: false)
         }
-        
-        createItemsLocally()
+
     }
     
     func createItemsLocally() {
@@ -381,7 +380,7 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
 
 extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
     
-    func getVisibleItemsInSection(_ section: Int) -> [Any] {
+    func getVisibleItemsInSection(_ section: Int, fromDate:Date, toDate:Date) -> [Any] {
         
         guard let calSection = CalendarSection.init(rawValue: self.indexToSection[section]!)
             else { return [] }
@@ -418,7 +417,7 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         let sectionIdx = (indexPath as NSIndexPath).section
         let rowIdx = (indexPath as NSIndexPath).row
         
-        let items = getVisibleItemsInSection(sectionIdx)
+        let items = getVisibleItemsInSection(sectionIdx, fromDate: self.calendarViewController.selectedFromDate, toDate: self.calendarViewController.selectedToDate)
         if items.count == 0 {
             return UITableViewCell()
         }
@@ -433,9 +432,6 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
             cell.selectionStyle = .none
             
             return cell
-            break
-        default:
-            return UITableViewCell()
         }
         else {
             let card = item as! CalendarCard
