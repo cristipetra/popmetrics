@@ -108,7 +108,7 @@ class RequiredActionCard: UITableViewCell {
         let attrAttachement = NSAttributedString(attachment: attachment)
         if let headerTitle = title {
             let title = NSMutableAttributedString(string: "\(headerTitle) ")
-            title.append(attrAttachement)
+            //title.append(attrAttachement)
             titleLabel.attributedText = title
         } else {
             titleLabel.text = ""

@@ -28,7 +28,6 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
     
     var selectedFromDate = Date()
     var selectedToDate = Date()
-    
     internal var datesSelected = 0
     internal var dayColors = Dictionary<Date, UIColor>()
     internal let store = CalendarStore.getInstance()
@@ -44,6 +43,16 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
             self.animateToPeriod(.oneWeek)
             self.previousButton.transform = CGAffineTransform(scaleX: -1, y: 1)
         }
+        
+        initialSelectedDays()
+    }
+    
+    func initialSelectedDays() {
+        datesSelected = 1
+        selectedFromDate = NSDate().atStartOfWeek()
+        selectedToDate = NSDate().atStartOfNextWeek()
+        
+        setupDates(NSDate().atStartOfNextWeek())
     }
     
     func animateToPeriod(_ period: MJConfiguration.PeriodType) {
@@ -55,7 +64,8 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
     @IBAction func nextPeriodBtnPressed(_ sender: UIButton) {
         self.calendarView.moveToNextPeriod()
         let date = self.calendarView.visiblePeriodDate as NSDate
-        self.store.selectedWeek = DateInterval(start: date.atStartOfWeek(), end: date.atStartOfNextWeek())
+        self.selectedFromDate = date.atStartOfWeek()
+        self.selectedToDate = date.atStartOfNextWeek()
         DispatchQueue.main.async {
             self.containerToMaster?.reloadData()
         }
@@ -64,7 +74,8 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
     @IBAction func previousPeriodBtnPressed(_ sender: UIButton) {
         self.calendarView.moveToPreviousPeriod()
         let date = self.calendarView.visiblePeriodDate as NSDate
-        self.store.selectedWeek = DateInterval(start: date.atStartOfWeek(), end: date.atStartOfNextWeek())
+        self.selectedToDate = date.atStartOfNextWeek()
+        self.selectedFromDate = date.atStartOfWeek()
         DispatchQueue.main.async {
             self.containerToMaster?.reloadData()
         }
@@ -77,9 +88,10 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
         self.calendarView.goToCurrentDay()
         let currentDate = NSDate().atStartOfDay()
         resetColors()
-        self.store.selectedDate = currentDate
-        datesSelected = 0
-        containerToMaster?.setDatesSelected(datesSelected: 0)
+        
+        self.selectedFromDate = currentDate
+        self.selectedToDate = currentDate.endOfDay
+        
         setupDates(currentDate)
         self.containerToMaster?.reloadData()
     }
@@ -166,9 +178,9 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
     func calendar(_ calendarView: MJCalendarView, didChangePeriod periodDate: Date, bySwipe: Bool) {
         self.setTitleWithDate(periodDate as NSDate)
         let date = self.calendarView.visiblePeriodDate as NSDate
-        self.store.selectedWeek = DateInterval(start: date.atStartOfWeek(), end: date.atEndOfWeek())
         
-        print("interval: \(self.store.selectedWeek)" )
+        selectedFromDate = date.atStartOfWeek()
+        selectedToDate = date.atStartOfNextWeek()
         
         DispatchQueue.main.async {
             self.containerToMaster?.reloadData()
@@ -184,52 +196,56 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
     }
 
     func calendar(_ calendarView: MJCalendarView, didSelectDate date: Date) {
-        print("did select date")
         setupDates(date)
     }
     
     func setupDates(_ date: Date) {
-        print(datesSelected)
+        
         switch datesSelected {
         case 0:
             resetColors()
-            store.selectedDate = date
-            self.calendarView.configuration.selectedDayTextColor = PopmetricsColor.greenSelectedDate
+            
+            self.selectedFromDate = date.startOfDay
+            self.selectedToDate = date.endOfDay
+            //self.calendarView.configuration.selectedDayTextColor = PopmetricsColor.greenSelectedDate
+            self.calendarView.configuration.selectedDayTextColor = PopmetricsColor.textGrey
             
             datesSelected = 1
         case 1:
-            if date == store.selectedDate {
+            if date.startOfDay == selectedFromDate {
                 self.calendarView.configuration.selectedDayTextColor = PopmetricsColor.textGrey
                 datesSelected = 0
             } else {
-                if date < store.selectedDate {
-                    let startDate = date
-                    let endDate = store.selectedDate
-                    setUpDays(120, startDate, endDate)
-                    store.selectedRange = DateInterval(start: startDate.startOfDay, end: endDate.endOfDay)
-                } else if date > store.selectedDate{
-                    let startDate = store.selectedDate
-                    let endDate = date
-                    setUpDays(120, startDate, endDate)
-                    store.selectedRange = DateInterval(start: startDate.startOfDay, end: endDate.endOfDay)
+                if date.startOfDay < selectedFromDate {
+                    selectedFromDate = date
+                    setUpDays(120, selectedFromDate, selectedToDate)
+                } else if date.startOfDay
+                    > selectedFromDate {
+                    selectedToDate = date.endOfDay
+                    setUpDays(120, selectedFromDate, selectedToDate)
                 }
-                store.selectedDate = date
                 datesSelected = 2
             }
+            
+            break
         case 2:
             resetColors()
-            store.selectedDate = date
+            self.selectedFromDate = date.startOfDay
+            self.selectedToDate = date.endOfDay
             datesSelected = 1
         default:
             break
         }
-        print(datesSelected)
+        print("dates: \(datesSelected)")
+        print(selectedFromDate)
+        print(selectedToDate)
         
         self.calendarView.reloadView()
         containerToMaster?.setDatesSelected(datesSelected: datesSelected)
         DispatchQueue.main.async {
             self.containerToMaster?.reloadData()
         }
+ 
     }
     
     func dateByIndex(_ index: Int, daysRange: Int) -> Date {
@@ -242,7 +258,7 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
         for i in 0...daysRange {
             let day = self.dateByIndex(i, daysRange: daysRange)
             if day >= startDate && day <= endDate {
-                self.dayColors[day] = PopmetricsColor.greenSelectedDate
+                self.dayColors[day] = PopmetricsColor.textGrey
             } else {
                 self.dayColors[day] = nil
             }

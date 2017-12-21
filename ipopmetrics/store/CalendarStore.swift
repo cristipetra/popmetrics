@@ -21,14 +21,6 @@ class CalendarStore {
     
     public let realm = try! Realm()
     
-    public var selectedDate = Date()
-    
-    public var selectedWeek = DateInterval(start: NSDate().atStartOfWeek(), end: NSDate().atStartOfNextWeek())
-    
-    public var selectedRange = DateInterval(start: NSDate().atStartOfWeek(), end: NSDate().atStartOfNextWeek())
-    
-    public var datesSelected: Int = 0
-    
     public func getCalendarCards() -> Results<CalendarCard> {
         let predicate = NSPredicate(format: "status != 'archived'")
         return realm.objects(CalendarCard.self).filter(predicate).sorted(byKeyPath: "index")
@@ -62,9 +54,7 @@ class CalendarStore {
         return realm.objects(CalendarSocialPost.self).filter(predicate)
     }
     
-    
-    public func getCalendarSocialPostsInRange(fromDate: Date, toDate:Date) -> Results<CalendarSocialPost> {
-        
+    public func getCalendarSocialPostsInRange(fromDate: Date, toDate:Date) -> Results<CalendarSocialPost> {   
         let predicate = NSPredicate(format: "scheduledDate > %@ && scheduledDate < %@ && status !='archived'",
                                     fromDate as CVarArg, toDate as CVarArg)
         return realm.objects(CalendarSocialPost.self).filter(predicate).sorted(byKeyPath: "scheduledDate", ascending: true)
@@ -72,6 +62,11 @@ class CalendarStore {
     
     public func getCalendarSocialPostsForCard(_ calendarCard: CalendarCard, datesSelected: Int) -> Results<CalendarSocialPost> {
         
+        var selectedDate = Date()
+        var selectedWeek = DateInterval(start: NSDate().atStartOfWeek(), end: NSDate().atStartOfNextWeek())
+        var selectedRange = DateInterval(start: NSDate().atStartOfWeek(), end: NSDate().atStartOfNextWeek())
+        var datesSelected: Int = 0
+
         switch datesSelected {
         case 0:
             let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@ && status !='archived'", calendarCard, selectedWeek.start as CVarArg, selectedWeek.end as CVarArg)
@@ -90,6 +85,12 @@ class CalendarStore {
     }
     
     public func getCalendarSocialPostsForCardByType(_ calendarCard: CalendarCard, type: String) -> Results<CalendarSocialPost> {
+        
+        var selectedDate = Date()
+        var selectedWeek = DateInterval(start: NSDate().atStartOfWeek(), end: NSDate().atStartOfNextWeek())
+        var selectedRange = DateInterval(start: NSDate().atStartOfWeek(), end: NSDate().atStartOfNextWeek())
+        var datesSelected: Int = 0
+        
         switch datesSelected {
         case 0:
             let predicate = NSPredicate(format: "calendarCard = %@ &&  scheduledDate > %@ && scheduledDate < %@ && status !='archived' && type == %@", calendarCard, selectedWeek.start as CVarArg, selectedWeek.end as CVarArg, type)
