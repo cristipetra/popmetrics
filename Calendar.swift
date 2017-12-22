@@ -164,11 +164,11 @@ class CalendarCard:  Object, Mappable {
         get {
             switch section{
             case StatusArticle.scheduled.rawValue:
-                return "Scheduled Tweets"
+                return "Scheduled"
             case StatusArticle.executed.rawValue:
-                return "Completed Tweets"
+                return "Completed"
             case StatusArticle.completed.rawValue:
-                return "Completed Tweets"
+                return "Completed"
             default:
                 return "Scheduled"
             }
@@ -216,6 +216,17 @@ class CalendarSocialPost: Object, Mappable {
     
  
     func mapping(map: Map) {
+         /*
+         card_id=str(self.card.id),
+         type=self.ctype, status=self.status,
+         article_category=self.article_category,
+         article_title=self.article_title,
+         article_text=self.article_text,
+         article_url=self.article_url,
+         article_hashtags=self.article_hashtags,
+         article_image=self.article_image
+         */
+ 
         postId          <- map["id"]
         calendarCardId  <- map["calendar_card_id"]
         index           <- map["index"]
@@ -224,11 +235,11 @@ class CalendarSocialPost: Object, Mappable {
         completionDate   <- (map["completion_dt"], DateTransform())
         section         <- map["section"]
         status          <- map["status"]
-        title           <- map["title"]
-        text            <- map["text"]
-        url             <- map["url"]
-        hashtags        <- map["hashtags"]
-        image           <- map["image"]
+        title           <- map["article_title"]
+        text            <- map["article_text"]
+        url             <- map["article_url"]
+        hashtags        <- map["article_hashtags"]
+        image           <- map["article_image"]
         
         createDate      <- (map["create_dt"], DateTransform())
         updateDate      <- (map["update_dt"], DateTransform())

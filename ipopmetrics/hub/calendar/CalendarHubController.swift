@@ -251,11 +251,6 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
         }
     }
     
-    func setDatesSelected(datesSelected: Int) {
-        print("set dates selected")
-        self.datesSelected = datesSelected
-        store.datesSelected = datesSelected
-    }
     
     func reloadData() {
         tableView.reloadData()
@@ -391,7 +386,7 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         if nonEmptyCards.count > 0 {
             for card in nonEmptyCards {
                 if card.type == "scheduled_social_posts" || card.type == "completed_social_posts" {
-                    let socialPost = store.getSocialPostsForCard(card)
+                    let socialPost = store.getCalendarSocialPostsInRange(fromDate:fromDate, toDate:toDate)
                     for sp in socialPost {
                         items.append(sp)
                     }
@@ -486,27 +481,26 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         guard let calendarSection = CalendarSection(rawValue: indexToSection[section]!)?.rawValue else {
             return UIView()
         }
         
-        if store.getCalendarCards().count == 0 {
-            return UIView()
+        let sectionIdx = section
+        
+        let items = getVisibleItemsInSection(sectionIdx, fromDate: self.calendarViewController.selectedFromDate, toDate: self.calendarViewController.selectedToDate)
+        if items.count == 0 {
+            return UITableViewCell()
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
-        cell.sectionTitleLabel.text = calendarSection.uppercased()
-        return cell
-        
-        
-        let socialPosts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected)
-
-        if socialPosts.count == 0 {
+        let item = items[0]
+        if item is CalendarSocialPost {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
             cell.sectionTitleLabel.text = calendarSection.uppercased()
-            return cell
-        } else {
-            let sectionCard = store.getCalendarCards()[section]
+            return cell.containerView
+        }
+        else {
+            let sectionCard = item as! CalendarCard
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "CalendarHeaderViewCell") as! CalendarHeaderViewCell
             headerCell.changeColor(color: sectionCard.getSectionColor)
             headerCell.changeTitleSection(title: sectionCard.getCardSectionTitle)
@@ -520,20 +514,24 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func changeTopHeaderTitle(section: Int) {
-        if section < store.countSections() {
-            if store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected).count != 0 {
-                let item = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected)[0]
-                topHeaderView.changeTitle(title: item.socialTextString)
-                topHeaderView.changeColorCircle(color: item.getSectionColor)
-                if (item.status == "unapproved") {
-                    topHeaderView.changeColorCircle(color: PopmetricsColor.blueURLColor);
-                }
-            } else {
-                let card = store.getCalendarCards()[section]
-                topHeaderView.changeTitle(title: card.section)
-                topHeaderView.changeColorCircle(color: card.getSectionColor)
+        
+        let items = getVisibleItemsInSection(section, fromDate: self.calendarViewController.selectedFromDate, toDate: self.calendarViewController.selectedToDate)
+        if items.count == 0 {
+            return
+        }
+        
+        if let item  = items[0] as? CalendarSocialPost {
+            topHeaderView.changeTitle(title: item.socialTextString)
+            topHeaderView.changeColorCircle(color: item.getSectionColor)
+            if (item.status == "unapproved") {
+                topHeaderView.changeColorCircle(color: PopmetricsColor.blueURLColor);
             }
         }
+        else if let card = items[0] as? CalendarCard {
+            topHeaderView.changeTitle(title: card.section)
+            topHeaderView.changeColorCircle(color: card.getSectionColor)
+        }
+
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -542,33 +540,7 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         return items.count
     }
     
-    func getCardInSection( _ section: String, atIndex:Int) -> CalendarCard {
-        let nonEmptyCards = store.getNonEmptyCalendarCardsWithSection(section)
-        if nonEmptyCards.count == 0 {
-            let emptyCards = store.getEmptyCalendarCardsWithSection(section)
-            return emptyCards[atIndex]
-        }
-        else {
-            return nonEmptyCards[atIndex]
-        }
-    }
     
-    func countPostsInSection( _ section: String) -> Int {
-        
-        var nonEmptyCards = store.getNonEmptyCalendarCardsWithSection(section)
-        if nonEmptyCards.count == 0 {
-            let emptyCards = store.getEmptyCalendarCardsWithSection(section)
-            return emptyCards.count
-        }
-        else {
-            let socialPosts = store.getCalendarSocialPostsForCard(nonEmptyCards[0], datesSelected: datesSelected)
-            //to display empty card
-            if socialPosts.count == 0 {
-                return 1
-            }
-            return socialPosts.count
-        }
-    }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         return
@@ -652,7 +624,8 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func updateStateLoadMore(_ footerView: TableFooterView, section: Int) {
-        let posts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected)
+        let posts = store.getCalendarSocialPostsInRange(fromDate: self.calendarViewController.selectedFromDate,
+                                                        toDate: self.calendarViewController.selectedToDate)
         if( posts.count <= noItemsLoaded[section]) {
             footerView.setUpLoadMoreDisabled()
         }
@@ -673,17 +646,20 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func itemsToLoad(section: Int) -> Int {
-        if (store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected).count > noItemsLoaded(section)) {
+        let posts = store.getCalendarSocialPostsInRange(fromDate: self.calendarViewController.selectedFromDate,
+                                                        toDate: self.calendarViewController.selectedToDate)
+        if (posts.count > noItemsLoaded(section)) {
             return noItemsLoaded(section)
         } else {
-            return store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected).count
+            return posts.count
         }
         return noItemsLoadeInitial
     }
     
     func loadMore(section: Int) {
         var addItem = noItemsLoadeInitial
-        let posts = store.getCalendarSocialPostsForCard(store.getCalendarCards()[section], datesSelected: datesSelected)
+        let posts = store.getCalendarSocialPostsInRange(fromDate: self.calendarViewController.selectedFromDate,
+                                                        toDate: self.calendarViewController.selectedToDate)
         if (posts.count > noItemsLoaded(section) + noItemsLoadeInitial) {
             addItem = noItemsLoadeInitial
         } else {
@@ -697,22 +673,19 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         
     }
     
-    func removeCellFromTable(indexPath: IndexPath) {
+    func removeCellFromTable(indexPath: IndexPath, socialPost: CalendarSocialPost) {
+        let posts = store.getCalendarSocialPostsInRange(fromDate: self.calendarViewController.selectedFromDate,
+                                                        toDate: self.calendarViewController.selectedToDate)
         try! store.realm.write {
-              store.realm.delete(store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section], datesSelected: datesSelected)[indexPath.row])
-            }
-            
-            if !store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section], datesSelected: datesSelected).isEmpty {
-                self.tableView.deleteRows(at: [indexPath], with: .middle)
-            } else {
-                self.tableView.reloadData()
+            self.store.realm.delete(posts)
+            self.tableView.reloadData()
         }
     }
     
-    func removeCell(indexPath: IndexPath) {
+    func removeCell(indexPath: IndexPath, socialPost: CalendarSocialPost) {
         Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
             DispatchQueue.main.async {
-                self.removeCellFromTable(indexPath: indexPath)
+                self.removeCellFromTable(indexPath: indexPath, socialPost:socialPost)
             }
         }
     }
@@ -743,7 +716,7 @@ extension CalendarHubController: ActionSocialPostProtocol {
     func cancelPostFromSocial(post: CalendarSocialPost, indexPath: IndexPath) {
         CalendarApi().cancelPost(post.postId!, callback: {
             () -> Void in
-            self.removeCell(indexPath: indexPath)
+            self.removeCell(indexPath: indexPath, socialPost:post)
         })
         
         

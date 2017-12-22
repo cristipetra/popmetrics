@@ -231,7 +231,7 @@ class TodoHubController: BaseViewController {
         let sectionHeaderNib = UINib(nibName: "CalendarHeader", bundle: nil)
         tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CalendarHeader")
         
-        tableView.register(TableFooterView.self, forHeaderFooterViewReuseIdentifier: "footerId")
+//        tableView.register(TableFooterView.self, forHeaderFooterViewReuseIdentifier: "footerId")
         
         let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
         tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
@@ -478,7 +478,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
         cell.sectionTitleLabel.text = todoSection?.sectionTitle().uppercased()
         
-        return cell
+        return cell.containerView
     }
     
     func reloadDataTable() {
