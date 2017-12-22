@@ -538,7 +538,7 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let items = getVisibleItemsInSection(section)
+        let items = getVisibleItemsInSection(section, fromDate: self.calendarViewController.selectedFromDate, toDate:self.calendarViewController.selectedToDate)
         return items.count
     }
     
