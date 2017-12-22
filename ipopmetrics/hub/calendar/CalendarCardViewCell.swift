@@ -33,7 +33,7 @@ class CalendarCardViewCell: UITableViewCell {
     
     weak var cancelCardDelegate : CalendarCardActionHandler?
     weak var actionSociaDelegate: ActionSocialPostProtocol?
-    private var indexPath: IndexPath!
+    internal var indexPath: IndexPath!
     
     private var heightToolbar: Int = 29
     
@@ -53,12 +53,14 @@ class CalendarCardViewCell: UITableViewCell {
         self.backgroundColor = .clear
         
         self.setMessageLabel()
-
+        
+        self.constraintHeightFooter.constant = 0
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
     
     func setPositions(_ indexPath: IndexPath, itemsToLoad: Int, countPosts: Int) {
         self.indexPath = indexPath

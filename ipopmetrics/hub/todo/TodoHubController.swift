@@ -431,6 +431,11 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
+        
+    }
+    
     func addApprovedView() {
         self.view.insertSubview(bannerMessageView, aboveSubview: tableView)
         
@@ -477,8 +482,8 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
         let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
         cell.sectionTitleLabel.text = todoSection?.sectionTitle().uppercased()
-        
-        return cell.containerView
+        cell.sectionTitleLabel.text = todoSection?.rawValue.uppercased()
+        return cell
     }
     
     func reloadDataTable() {

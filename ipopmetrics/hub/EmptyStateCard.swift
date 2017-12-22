@@ -41,6 +41,7 @@ class EmptyStateCard: UITableViewCell {
         setUpShadowLayer()
         
         self.footerVIew.actionButton.isHidden = true
+        self.footerVIew.leftButton.isHidden = true
         footerVIew.actionButton.addTarget(self, action: #selector(handlerActionButton), for: .touchUpInside)
         
         footerVIew.leftButton.addTarget(self, action: #selector(handlerMoreInfo), for: .touchUpInside)

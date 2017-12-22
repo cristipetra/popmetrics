@@ -433,7 +433,7 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
 
         let item = items[rowIdx]
         if item is CalendarSocialPost {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCardSimple", for: indexPath) as! CalendarCardSimpleViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
             cell.configure(item as! CalendarSocialPost)
             cell.indexPath = indexPath
             cell.cancelCardDelegate = self
@@ -515,6 +515,12 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         }
         else {
             let sectionCard = item as! CalendarCard
+            
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
+            cell.sectionTitleLabel.text = calendarSection.uppercased()
+            return cell.containerView
+            
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "CalendarHeaderViewCell") as! CalendarHeaderViewCell
             headerCell.changeColor(color: sectionCard.getSectionColor)
             headerCell.changeTitleSection(title: sectionCard.getCardSectionTitle)

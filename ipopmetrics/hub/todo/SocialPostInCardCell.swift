@@ -81,6 +81,8 @@ class SocialPostInCardCell: UITableViewCell {
     func setIndexPath(indexPath: IndexPath, numberOfCellsInSection: Int) {
         if( indexPath.row != 0 ) {
             constraintToolbarHeight.constant = 0
+        } else {
+            constraintToolbarHeight.constant = 29
         }
         
         if( indexPath.row != (numberOfCellsInSection - 1) ) {
