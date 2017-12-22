@@ -63,6 +63,8 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
     @IBAction func nextPeriodBtnPressed(_ sender: UIButton) {
         self.calendarView.moveToNextPeriod()
         let date = self.calendarView.visiblePeriodDate as NSDate
+        self.selectedFromDate = date.atStartOfWeek()
+        self.selectedToDate = date.atStartOfNextWeek()
         DispatchQueue.main.async {
             self.containerToMaster?.reloadData()
         }
@@ -71,6 +73,8 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
     @IBAction func previousPeriodBtnPressed(_ sender: UIButton) {
         self.calendarView.moveToPreviousPeriod()
         let date = self.calendarView.visiblePeriodDate as NSDate
+        self.selectedToDate = date.atStartOfNextWeek()
+        self.selectedFromDate = date.atStartOfWeek()
         DispatchQueue.main.async {
             self.containerToMaster?.reloadData()
         }
@@ -83,6 +87,10 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
         self.calendarView.goToCurrentDay()
         let currentDate = NSDate().atStartOfDay()
         resetColors()
+        
+        self.selectedFromDate = currentDate
+        self.selectedToDate = currentDate.endOfDay
+        
         setupDates(currentDate)
         self.containerToMaster?.reloadData()
     }
@@ -169,6 +177,9 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
     func calendar(_ calendarView: MJCalendarView, didChangePeriod periodDate: Date, bySwipe: Bool) {
         self.setTitleWithDate(periodDate as NSDate)
         let date = self.calendarView.visiblePeriodDate as NSDate
+        
+        selectedFromDate = date.atStartOfWeek()
+        selectedToDate = date.atStartOfNextWeek()
         
         DispatchQueue.main.async {
             self.containerToMaster?.reloadData()

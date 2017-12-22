@@ -257,6 +257,9 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
         }
     }
     
+    func setDatesSelected(datesSelected: Int) {
+        self.datesSelected = datesSelected
+    }
     
     func reloadData() {
         tableView.reloadData()
