@@ -42,6 +42,16 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
             self.animateToPeriod(.oneWeek)
             self.previousButton.transform = CGAffineTransform(scaleX: -1, y: 1)
         }
+        
+        initialSelectedDays()
+    }
+    
+    func initialSelectedDays() {
+        datesSelected = 1
+        selectedFromDate = NSDate().atStartOfWeek()
+        selectedToDate = NSDate().atStartOfNextWeek()
+        
+        setupDates(NSDate().atStartOfNextWeek())
     }
     
     func animateToPeriod(_ period: MJConfiguration.PeriodType) {
@@ -174,7 +184,6 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
     }
 
     func calendar(_ calendarView: MJCalendarView, didSelectDate date: Date) {
-        print("did select date")
         setupDates(date)
     }
     
@@ -194,6 +203,7 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
         DispatchQueue.main.async {
             self.containerToMaster?.reloadData()
         }
+ 
     }
     
     func dateByIndex(_ index: Int, daysRange: Int) -> Date {
@@ -206,7 +216,7 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
         for i in 0...daysRange {
             let day = self.dateByIndex(i, daysRange: daysRange)
             if day >= startDate && day <= endDate {
-                self.dayColors[day] = PopmetricsColor.greenSelectedDate
+                self.dayColors[day] = PopmetricsColor.textGrey
             } else {
                 self.dayColors[day] = nil
             }

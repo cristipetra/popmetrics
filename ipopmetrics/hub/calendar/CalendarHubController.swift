@@ -141,7 +141,7 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
         if shouldReloadData {
             SyncService.getInstance().syncCalendarItems(silent: false)
         }
-
+        
     }
     
     func createItemsLocally() {
@@ -156,15 +156,21 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
             calendarScheduled.cardId = calendarScheduledId
             calendarScheduled.createDate = Date()
             calendarScheduled.section = CalendarSectionType.scheduled.rawValue
-            calendarScheduled.type = "typeScheduled"
+            calendarScheduled.type = "scheduled_social_posts"
             store.realm.add(calendarScheduled, update: true)
+            
+            let calendarCompleted1 = CalendarCard()
+            calendarCompleted1.createDate = Date()
+            calendarCompleted1.section = CalendarSectionType.scheduled.rawValue
+            calendarCompleted1.type = "calendar.completed_action"
+            store.realm.add(calendarCompleted1, update: true)
+            
             
             let calendarCompleted = CalendarCard()
             calendarCompleted.cardId = calendarCompletedId
             calendarCompleted.createDate = Date()
             calendarCompleted.section = CalendarSectionType.completed.rawValue
-            calendarCompleted.type = "completed"
-            
+            calendarCompleted.type = "calendar.completed_action"
             store.realm.add(calendarCompleted, update: true)
             
             let socialCompleted = CalendarSocialPost()
@@ -204,13 +210,13 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
             
             
             let scheduledPost1 = CalendarSocialPost()
-            scheduledPost1.calendarCard = calendarScheduled
-            scheduledPost1.calendarCardId = calendarScheduled.cardId!
+            //scheduledPost1.calendarCard = calendarScheduled
+            //scheduledPost1.calendarCardId = calendarScheduled.cardId!
             scheduledPost1.text = "Popmetrics recommends highly customized marketing insights highly customized  recommends highly customized marketing insights highly customized marketing insights to help your business grow. #Popmetrics #GrowYourBusiness Alch.my/27yd73"
             scheduledPost1.createDate = Date()
             scheduledPost1.scheduledDate = Date()
             scheduledPost1.postId = "11weqfsadfsdfesadfa"
-            scheduledPost1.type = "social.scheduled_posts"
+            scheduledPost1.type = "scheduled_social_posts"
             scheduledPost1.index = 0
             scheduledPost1.section = CalendarSectionType.scheduled.rawValue
             store.realm.add(scheduledPost1, update: true)
@@ -375,13 +381,17 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
 
 extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
     
-    func getVisibleItemsInSection(_ section: Int, fromDate:Date, toDate:Date) -> [Any] {
+    func getVisibleItemsInSection(_ section: Int, fromDate: Date, toDate: Date) -> [Any] {
         
         guard let calSection = CalendarSection.init(rawValue: self.indexToSection[section]!)
             else { return [] }
         
         let emptyStateCards = store.getEmptyCalendarCardsWithSection(calSection.rawValue)
         let nonEmptyCards = store.getNonEmptyCalendarCardsWithSection(calSection.rawValue)
+        
+        print(calSection.rawValue)
+        
+        
         var items : [Any] = []
         if nonEmptyCards.count > 0 {
             for card in nonEmptyCards {
@@ -413,6 +423,7 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         let rowIdx = (indexPath as NSIndexPath).row
         
         let items = getVisibleItemsInSection(sectionIdx, fromDate: self.calendarViewController.selectedFromDate, toDate: self.calendarViewController.selectedToDate)
+        
         if items.count == 0 {
             return UITableViewCell()
         }
