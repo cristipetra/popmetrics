@@ -74,11 +74,13 @@ class SyncService: SessionDelegate {
         self.reachability = hostName == nil ? Reachability() : Reachability(hostname: hostName!)
         
         reachability?.whenReachable = { reachability in
+            print("Reachability changed. Reachable state ...")
             NotificationCenter.default.post(name: Notification.Popmetrics.ApiReachable, object: reachability)
             self.syncAll(silent: false)
         }
         
         reachability?.whenUnreachable = { reachability in
+            print("Reachability changed. Unreachable state ...")
             NotificationCenter.default.post(name: Notification.Popmetrics.ApiNotReachable, object: reachability)
         }
         

@@ -80,6 +80,7 @@ class FeedStore {
     public func updateCardSection(_ feedCard: FeedCard, section:String) {
         try! realm.write {
             feedCard.section = section
+            feedCard.updateDate = Date(timeIntervalSinceNow: 0)
             realm.add(feedCard, update: true)
         }
     }
