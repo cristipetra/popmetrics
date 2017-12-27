@@ -51,6 +51,7 @@ class CalendarCardViewCell: UITableViewCell {
         self.isUserInteractionEnabled = true
         
         self.backgroundColor = .clear
+        self.selectionStyle = .none
         
         self.setMessageLabel()
         
