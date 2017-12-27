@@ -180,7 +180,8 @@ extension LoginViewController {
         banner.show()
         
         banner.onTap = {
-            self.openURLInside(url: Config.appWebAimeeLink)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.openURLInside(self, url: Config.appWebAimeeLink)
         }
     }
     

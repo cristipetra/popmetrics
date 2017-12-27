@@ -154,7 +154,8 @@ class SocialPostDetailsViewController: UIViewController {
     @objc func handlerClickArticleUrl(sender: Any) {
         print(" handler click article ")
         if todoSocialPost.articleUrl.isValidUrl() {
-            openURLInside(url: todoSocialPost.articleUrl)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.openURLInside(self, url: todoSocialPost.articleUrl)
         }
     }
     

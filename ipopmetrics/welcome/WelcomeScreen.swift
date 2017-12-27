@@ -62,12 +62,14 @@ class WelcomeScreen: UIViewController {
     }
     
     @IBAction func handlerDidPressNewButton(_ sender: UIButton) {
-        openURLInside(url: Config.appWebAimeeLink)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.openURLInside(self, url: Config.appWebAimeeLink)
     }
     
     @IBAction func handleBackPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    
 }
 
 // MARK : splash logo animation

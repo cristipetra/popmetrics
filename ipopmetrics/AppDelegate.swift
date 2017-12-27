@@ -15,6 +15,7 @@ import FBSDKCoreKit
 import UserNotifications
 import URLNavigator
 import ObjectMapper
+import SafariServices
 //import STPopup
 
 
@@ -47,6 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var storyBoard: UIStoryboard!
     
     var syncService: SyncService!
+    
+    var safari: SFSafariViewController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -89,6 +92,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         return true
+    }
+    
+    func openURLInside(_ controller:UIViewController, url: String) {
+        let url = URL(string: url)
+        self.safari = SFSafariViewController(url: url!)
+        controller.present(self.safari!, animated: true)
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
