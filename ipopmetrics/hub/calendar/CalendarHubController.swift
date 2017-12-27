@@ -342,7 +342,7 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
                           }
         )
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         tableView.isHidden = false
     }
@@ -499,11 +499,11 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         guard let calendarSection = CalendarSection(rawValue: indexToSection[section]!)?.rawValue else {
             return UIView()
         }
-        
+    
         let sectionIdx = section
         
         let items = getVisibleItemsInSection(sectionIdx, fromDate: self.calendarViewController.selectedFromDate, toDate: self.calendarViewController.selectedToDate)
-        if items.count == 0 {
+        if items.count == 0 {            
             return UITableViewCell()
         }
         
@@ -511,20 +511,14 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         if item is CalendarSocialPost {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
             cell.sectionTitleLabel.text = calendarSection.uppercased()
-            return cell.containerView
+            return cell
         }
         else {
             let sectionCard = item as! CalendarCard
             
-            
             let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
-            cell.sectionTitleLabel.text = calendarSection.uppercased()
-            return cell.containerView
-            
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: "CalendarHeaderViewCell") as! CalendarHeaderViewCell
-            headerCell.changeColor(color: sectionCard.getSectionColor)
-            headerCell.changeTitleSection(title: sectionCard.getCardSectionTitle)
-            return headerCell.containerView
+            cell.sectionTitleLabel.text = sectionCard.getCardSectionTitle.uppercased()
+            return cell
         }
         
     }
