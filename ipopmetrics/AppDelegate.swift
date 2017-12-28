@@ -15,6 +15,7 @@ import FBSDKCoreKit
 import UserNotifications
 import URLNavigator
 import ObjectMapper
+import SafariServices
 //import STPopup
 
 
@@ -28,6 +29,7 @@ public extension Notification {
         public static let ApiResponseUnsuccessfull = Notification.Name("Notification.Popmetrics.ApiResponseUnsuccessfull")
         
         
+        public static let SignIn = Notification.Name("Notification.Popmetrics.SignIn")
         public static let RemoteMessage = Notification.Name("Notification.Popmetrics.RemoteMessage")
         public static let UiRefreshRequired = Notification.Name("Notification.Popmetrics.UiRefreshRequired")
         public static let ReloadGraph = Notification.Name("Notification.Popmetrics.ReloadGraph")
@@ -47,6 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var storyBoard: UIStoryboard!
     
     var syncService: SyncService!
+    
+    var safari: SFSafariViewController?
+    
+    var welcomeViewController: WelcomeScreen?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -63,8 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Fabric.with([Twitter.self])
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-
-        var configureError: NSError?
         
         // Initialize navigation map
         NavigationMap.initialize(navigator: navigator)
@@ -87,8 +91,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         
-        
         return true
+    }
+    
+    func openURLInside(_ controller:UIViewController, url: String) {
+        let url = URL(string: url)
+        self.safari = SFSafariViewController(url: url!)
+        controller.present(self.safari!, animated: true)
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
@@ -146,7 +155,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func getInitialViewController() -> UIViewController {
         if !isLoggedIn() {
             return SplashScreen()
-            return AnimationsViewController()
         }
         return AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC)
 
@@ -163,6 +171,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool {
         let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String
         let annotation = options[UIApplicationOpenURLOptionsKey.annotation]
+        
+        if url.absoluteString.contains("/registration") {
+            let outcome = url.queryParameters["outcome"]
+            guard let phoneNumber = url.queryParameters["phone"] else { return true }
+            UserStore.getInstance().phoneNumber = phoneNumber
+            self.safari?.dismiss(animated: true, completion: {
+                NotificationCenter.default.post(name: Notification.Popmetrics.SignIn, object: nil, userInfo: ["sucess":true])
+                })
+        }
         
         // Try presenting the URL first
         if navigator.present(url, wrap: UINavigationController.self) != nil {
@@ -252,31 +269,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-
-
-
-
-
-//extension AppDelegate: UNUserNotificationCenterDelegate {
-//    
-//    func userNotificationCenter(_ center: UNUserNotificationCenter,
-//                                didReceive response: UNNotificationResponse,
-//                                withCompletionHandler completionHandler: @escaping () -> Void) {
-//        
-//        let userInfo = response.notification.request.content.userInfo
-//        let aps = userInfo["aps"] as! [String: AnyObject]
-//        
-//        if let newsItem = NewsItem.makeNewsItem(aps) {
-//            (window?.rootViewController as? UITabBarController)?.selectedIndex = 1
-//            
-//            if response.actionIdentifier == viewActionIdentifier,
-//                let url = URL(string: newsItem.link) {
-//                let safari = SFSafariViewController(url: url)
-//                window?.rootViewController?.present(safari, animated: true, completion: nil)
-//            }
-//        }
-//        
-//        completionHandler()
-//    }
-//}
 

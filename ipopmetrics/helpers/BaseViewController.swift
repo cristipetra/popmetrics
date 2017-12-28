@@ -19,9 +19,6 @@ class BaseViewController: UIViewController {
     internal var offlineBanner: OfflineBanner!
     internal var reachability: Reachability!
     
-    func getMyNotification() -> Notification.Name {
-        return Notification.Name(rawValue:"HomzenNotification")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

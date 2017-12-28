@@ -16,30 +16,24 @@ import BubbleTransition
 import EZAlertController
 import ObjectMapper
 
-//    types = ['social_posts', 'my_action', 'paid_action', 'empty_state'];
-//    sections = ['Unapproved Posts', 'My Actions', 'Paid Actions', 'More On The Way'];
-
 
 enum TodoSection: String {
     
     case SocialPosts = "Social Posts"
     case MyActions = "My Actions"
     case PaidActions = "Paid Actions"
-    case MoreOnTheWay = "More On The Way"
     
     static let sectionTitles = [
         SocialPosts: "Social Posts",
         MyActions: "My Actions",
-        PaidActions: "Paid Actions",
-        MoreOnTheWay: "More On The Way"
+        PaidActions: "Paid Actions"
     ]
     
     // position in table
     static let sectionPosition = [
         SocialPosts: 0,
         MyActions: 1,
-        PaidActions: 2,
-        MoreOnTheWay: 3
+        PaidActions: 2
     ]
     
     func sectionTitle() -> String {
@@ -59,7 +53,6 @@ enum TodoSectionType: String {
     case socialPosts = "Social Posts"
     case myActions = "My Actions"
     case paidActions = "Paid Actions"
-    case moreOnTheWay = "More On The Way"
 }
 
 enum TodoCardType: String {
@@ -87,8 +80,7 @@ class TodoHubController: BaseViewController {
     
     let indexToSection = [0: TodoSectionType.socialPosts.rawValue,
                           1: TodoSectionType.myActions.rawValue,
-                          2: TodoSectionType.paidActions.rawValue,
-                          3: HomeSectionType.moreOnTheWay.rawValue]
+                          2: TodoSectionType.paidActions.rawValue]
     
     let store = TodoStore.getInstance()
 
@@ -256,7 +248,12 @@ class TodoHubController: BaseViewController {
                 return Array(emptyStateCards)
             }
             let items = store.getTodoSocialPostsForCard(card)
-            return Array(items)
+            if items.count > 0 {
+                return Array(items)
+            }
+            else {
+                return Array(emptyStateCards)
+            }
         }
         let nonEmptyCards = store.getNonEmptyTodoCardsWithSection(todoSection.rawValue)
         if nonEmptyCards.count > 0 {

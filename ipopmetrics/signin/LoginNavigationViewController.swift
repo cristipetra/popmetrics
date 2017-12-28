@@ -10,14 +10,10 @@ import UIKit
 
 class LoginNavigationViewController: UINavigationController {
     
-    var loginVC: LoginViewController = LoginViewController();
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationBar.backgroundColor = UIColor.white
-        
-        self.pushViewController(loginVC, animated: false)
     }
 
 }

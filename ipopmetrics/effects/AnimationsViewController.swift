@@ -15,8 +15,6 @@ class AnimationsViewController: UIViewController, UIScrollViewDelegate {
     let animationView = LOTAnimationView(name: AnimationInfo.getAnimationName())
     var numberOfTabs = 11 as CGFloat
     
-    let welcomeVC = WelcomeScreen()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         animationView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
@@ -48,9 +46,8 @@ class AnimationsViewController: UIViewController, UIScrollViewDelegate {
             animationView.animationProgress = progress
             if progress == 1 {
                 //self.presentFromDirection(viewController: welcomeVC, direction: .right)
-                self.present(welcomeVC, animated: true, completion: {
-                    self.resetAnimation()
-                })
+                self.resetAnimation()
+                self.performSegue(withIdentifier: "welcomeSegue", sender: self)
             }
         }
     }
@@ -61,7 +58,8 @@ class AnimationsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func skipAnimation(_ sender: UIButton) {
-        self.presentFromDirection(viewController: welcomeVC, direction: .right)
+        resetAnimation()
+        self.performSegue(withIdentifier: "welcomeSegue", sender: self)
         resetAnimation()
     }
     

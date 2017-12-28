@@ -24,6 +24,8 @@ class UserStore {
         return appDelegate.usersStore
     }
     
+    var phoneNumber: String = ""
+    
     func isUserDefined() -> Bool {
         if let cbi = UserDefaults.standard.string(forKey: "currentBrandId") {
             return true

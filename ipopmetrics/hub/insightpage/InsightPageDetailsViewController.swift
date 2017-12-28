@@ -164,7 +164,8 @@ class InsightPageDetailsViewController: BaseViewController {
     
     @IBAction func handlerViewArticleBtn(_ sender: Any) {
         if let url = feedCard.blogUrl {
-            self.openURLInside(url: url)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.openURLInside(self, url: url)
         }
     }
     

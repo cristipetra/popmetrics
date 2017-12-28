@@ -84,7 +84,8 @@ class MenuViewController: ElasticModalViewController {
         //self.dismiss(animated: true, completion: nil)
     }
     @IBAction func handlerLegalBits(_ sender: Any) {
-        openURLInside(url: Config.legalBitsLink)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.openURLInside(self, url: Config.legalBitsLink)
     }
     
     @IBAction func handlerContactUsPressed(_ sender: Any) {
@@ -92,7 +93,8 @@ class MenuViewController: ElasticModalViewController {
     }
 
     @IBAction func handlerAboutButtonPressed(_ sender: Any) {
-        openURLInside(url: Config.aboutPopmetricsLink)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.openURLInside(self, url: Config.aboutPopmetricsLink)
     }
     
     @IBAction func logoutButtonPressed(_ sender: UIButton) {
@@ -164,14 +166,6 @@ extension MenuViewController: MFMailComposeViewControllerDelegate {
 extension MenuViewController {
     private func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         dismiss(animated: true)
-    }
-}
-
-extension UIViewController {
-    func openURLInside(url: String) {
-        let url = URL(string: url)
-        let safari = SFSafariViewController(url: url!)
-        self.present(safari, animated: true)
     }
 }
 

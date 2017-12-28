@@ -181,7 +181,8 @@ class ActionPageDetailsViewController: UIViewController {
 
     @IBAction func handlerViewArticleBtn(_ sender: Any) {
         if let url = actionModel.blogUrl {
-            self.openURLInside(url: url)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.openURLInside(self, url: url)
         }
     }
     
@@ -189,7 +190,8 @@ class ActionPageDetailsViewController: UIViewController {
         
         if let url = actionModel.blogUrl {
             if url.isValidUrl() {
-                self.openURLInside(url: url)
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.openURLInside(self, url: url)
             }
         }
         
