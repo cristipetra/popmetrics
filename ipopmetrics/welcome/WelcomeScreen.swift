@@ -20,16 +20,15 @@ class WelcomeScreen: UIViewController {
     
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var backButton: UIButton!
-    
-    @IBOutlet weak var topTextConstraint: NSLayoutConstraint!
-    @IBOutlet weak var heightTextConstraint: NSLayoutConstraint!
-    @IBOutlet weak var topImageConstraint: NSLayoutConstraint!
-    @IBOutlet weak var bottomButtonsConstraint: NSLayoutConstraint!
+
     var splashView: LDSplashView?
     var indicatorView: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let nc = NotificationCenter.default
+        nc.addObserver(forName:Notification.Popmetrics.SignIn, object:nil, queue:nil, using:catchNotification)
  
         addShadowToView(blueButton)
 
@@ -37,16 +36,10 @@ class WelcomeScreen: UIViewController {
         
         isHeroEnabled = true
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
-    }
-    override func viewDidLayoutSubviews() {
-        updateConstraintValues()
-    }
-    
-    private func updateConstraintValues() {
-        if UIScreen.main.bounds.height <= CGFloat(480) {
-            topImageConstraint.constant = 20
-            heightTextConstraint.constant = 100
-        }
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.welcomeViewController = self
+        
     }
     
     internal func addShadowToView(_ toView: UIView) {
@@ -57,8 +50,7 @@ class WelcomeScreen: UIViewController {
     }
     
     @IBAction func handlerSpoken(_ sender: UIButton) {
-        let loginVC = LoginViewController()
-        self.present(loginVC, animated: true, completion: nil)
+        self.performSegue(withIdentifier: "signInSegue", sender: self)
     }
     
     @IBAction func handlerDidPressNewButton(_ sender: UIButton) {
@@ -68,6 +60,20 @@ class WelcomeScreen: UIViewController {
     
     @IBAction func handleBackPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is LoginViewController
+        {
+            let vc = segue.destination as? LoginViewController
+            vc?.phoneNumber = UserStore.getInstance().phoneNumber
+            vc?.configure()
+        }
+    }
+    
+    func catchNotification(notification:Notification) -> Void {
+        self.performSegue(withIdentifier: "signInSegue", sender: self)        
     }
     
 }

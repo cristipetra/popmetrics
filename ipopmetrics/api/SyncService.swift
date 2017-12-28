@@ -221,8 +221,7 @@ class SyncService: SessionDelegate {
             
             UserStore.currentBrand = brand!
             if (!silent){
-                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
-                                                userInfo: ["sucess":true])
+                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil, userInfo: ["sucess":true])
             }
         }
         

@@ -19,13 +19,15 @@ class LoginViewController: UIViewController {
     
     fileprivate let progressHUD = ProgressHUD(text: "Loading...")
     
+    var phoneNumber: String = ""
+    
     var phoneView: PhoneView = PhoneView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     let digitCodeView = DigitCodeView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height));
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        phoneView.numberTextField.text = self.phoneNumber
         phoneView.numberTextField.delegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
@@ -39,9 +41,13 @@ class LoginViewController: UIViewController {
         view.addSubview(progressHUD)
         progressHUD.hide()
         
-        
         isHeroEnabled = true
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
+    }
+    
+    func configure() {
+        phoneView.numberTextField.text = self.phoneNumber
+        phoneView.reloadSubViews()
     }
     
     @objc func rotated() {
@@ -171,7 +177,7 @@ extension LoginViewController {
             $0.color = UIColor(red: 179/255, green: 50/255, blue: 39/255, alpha: 1.0)
         }
         
-        let fullStr = "Haven't spoken with Aimee yet? 👋 ".set(style: first) + "Click here.".set(style: second)
+        let fullStr = "Haven't registered yet? 👋 ".set(style: first) + "Click here.".set(style: second)
         let attrTitle = "Unrecognized Number".set(style: title)
         
         let banner = NotificationBanner(attributedTitle: attrTitle, attributedSubtitle: fullStr, leftView: nil, rightView: nil, style: BannerStyle.none, colors: nil)
@@ -180,8 +186,11 @@ extension LoginViewController {
         banner.show()
         
         banner.onTap = {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.openURLInside(self, url: Config.appWebAimeeLink)
+            self.dismiss(animated: true, completion: {
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.openURLInside(appDelegate.welcomeViewController!, url: Config.appWebAimeeLink)
+            })
+            
         }
     }
     
