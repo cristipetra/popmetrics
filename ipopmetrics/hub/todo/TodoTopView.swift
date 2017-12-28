@@ -54,7 +54,7 @@ class IndicatorTopView: UIView {
         imageView.widthAnchor.constraint(equalToConstant: imageWidth).isActive = true
         
         countLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        countLabel.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        countLabel.widthAnchor.constraint(equalToConstant: 30).isActive = true
         countLabel.heightAnchor.constraint(equalToConstant: imageHeight).isActive = true
         countLabel.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: 10).isActive = true
         countLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
