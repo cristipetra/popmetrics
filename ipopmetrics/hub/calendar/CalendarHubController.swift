@@ -435,10 +435,12 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         if item is CalendarSocialPost {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
             cell.configure(item as! CalendarSocialPost)
-            cell.indexPath = indexPath
+            
+            cell.setPositions(indexPath, itemsToLoad: 0, countPosts: items.count)
+            
             cell.cancelCardDelegate = self
             cell.actionSociaDelegate = self
-            cell.selectionStyle = .none
+            
             
             return cell
         }
@@ -503,7 +505,7 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         let sectionIdx = section
         
         let items = getVisibleItemsInSection(sectionIdx, fromDate: self.calendarViewController.selectedFromDate, toDate: self.calendarViewController.selectedToDate)
-        if items.count == 0 {            
+        if items.count == 0 {
             return UITableViewCell()
         }
         
