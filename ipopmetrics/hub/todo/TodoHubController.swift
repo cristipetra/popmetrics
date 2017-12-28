@@ -67,21 +67,6 @@ enum TodoCardType: String {
     case myAction = "my_action"
     case paidAction = "paid_action"
     case emptyState = "empty_state"
-    
-    static let cardHeight = [
-        socialPosts: 505,
-        myAction: 229,
-        paidAction: 261,
-        emptyState: 261,
-        ]
-    
-    func getCardHeight() -> CGFloat {
-        if let cardHeight = TodoCardType.cardHeight[self] {
-            return CGFloat(cardHeight)
-        } else {
-            return 0
-        }
-    }
 }
 
 
@@ -168,19 +153,6 @@ class TodoHubController: BaseViewController {
         
         topHeaderView.changeVisibilityExpandView(visible: false)
         updateCountsTopView()
-    }
-    
-    private func createItemsLocally() {
-        try! store.realm.write {
-            let todoCard = TodoCard()
-            todoCard.cardId = "sadfasfasa1321525"
-            todoCard.type = "my_action"
-            todoCard.section = "My Actions"
-            todoCard.headerTitle = "Fix your facebook"
-            
-            store.realm.add(todoCard, update: true)
-            
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -320,6 +292,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         let items = getVisibleItemsInSection(section)
+        
         return items.count
         
     }
@@ -333,9 +306,11 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
                 return UITableViewCell()
         }
         let items = getVisibleItemsInSection(sectionIdx)
+        
         if items.count == 0 {
             return UITableViewCell()    
         }
+        
         let item = items[rowIdx]
         if item is TodoSocialPost {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SocialPostInCardCell", for: indexPath) as! SocialPostInCardCell
