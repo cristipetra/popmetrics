@@ -18,7 +18,6 @@ class EmptyStateCard: UITableViewCell {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var footerVIew: FooterView!
     
-    
     @IBOutlet weak var constraintHeightImage: NSLayoutConstraint!
     @IBOutlet weak var titleHeightConstraint: NSLayoutConstraint!
     
@@ -42,8 +41,8 @@ class EmptyStateCard: UITableViewCell {
         
         self.footerVIew.actionButton.isHidden = true
         self.footerVIew.leftButton.isHidden = true
-        footerVIew.actionButton.addTarget(self, action: #selector(handlerActionButton), for: .touchUpInside)
         
+        footerVIew.actionButton.addTarget(self, action: #selector(handlerActionButton), for: .touchUpInside)
         footerVIew.leftButton.addTarget(self, action: #selector(handlerMoreInfo), for: .touchUpInside)
     }
     
@@ -142,22 +141,6 @@ class EmptyStateCard: UITableViewCell {
     
     internal func setTitleCard(_ title: String) {
         titleLabel.text = title
-    }
-    
-    func displayEmptyForCalendar() {
-        backgroundImageView.image = UIImage(named: "emptyCard")
-        constraintHeightImage.constant = 159
-        setTitleCard("Scheduled Posts will Appear Here")
-        setMessage(message: "Automated social posts will appear here after your approve them. Approve them in the To Do section.")
-        footerVIew.actionButton.isHidden = true
-    }
-    
-    func displayForStats() {
-        backgroundImageView.image = UIImage(named: "emptyCardStats")
-        constraintHeightImage.constant = 159
-        setTitleCard("No Statistics Available")
-        setMessage(message: "You must first connect Google Analytics in the Home Feed to see your statistics.")
-        footerVIew.actionButton.isHidden = true
     }
     
     private func setUpToolbar(imageName: String, titleName: String) {
