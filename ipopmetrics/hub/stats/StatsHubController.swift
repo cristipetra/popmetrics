@@ -100,8 +100,6 @@ class StatsHubController: BaseViewController {
         tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
         tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
         
-     
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -153,21 +151,16 @@ class StatsHubController: BaseViewController {
     
     internal func createItemsLocally() {
         try! store.realm.write {
-            /*
-            let tmp = StatisticsCard()
-            tmp.cardId = "asf23rsdf3r"
-            tmp.section = ""
-            store.realm.add(tmp, update: true)
-            */
             let statsCard = StatsCard()
             statsCard.cardId = "dfas"
             statsCard.section = "Traffic"
-            statsCard.status = "sadf"
+            statsCard.status = "live"
+            statsCard.type = "metrics_card"
             store.realm.add(statsCard, update: true)
      
             let statsMet1 = StatsMetric()
-            statsMet1.statsCard = store.getStatsCards()[0]
-            statsMet1.statsCardId = store.getStatsCards()[0].cardId!
+            statsMet1.statsCard = store.getStatsCards()[1]
+            statsMet1.statsCardId = store.getStatsCards()[1].cardId!
             statsMet1.statsMetricId = "sadfasfdsa"
             statsMet1.value = 1300
             statsMet1.label = "Overral visits"
@@ -186,8 +179,8 @@ class StatsHubController: BaseViewController {
             print("breakdown: \(statsMet1.getBreakDownGroups())")
            
             let statsMet11 = StatsMetric()
-            statsMet11.statsCard = store.getStatsCards()[0]
-            statsMet11.statsCardId = store.getStatsCards()[0].cardId!
+            statsMet11.statsCard = store.getStatsCards()[1]
+            statsMet11.statsCardId = store.getStatsCards()[1].cardId!
             statsMet11.statsMetricId = "sadfasfdasdffdsa"
             statsMet11.value = 4000
             statsMet11.label = "Total visits"
@@ -205,8 +198,8 @@ class StatsHubController: BaseViewController {
             store.realm.add(statsMet11, update: true)
             
             let statsMet12 = StatsMetric()
-            statsMet12.statsCard = store.getStatsCards()[0]
-            statsMet12.statsCardId = store.getStatsCards()[0].cardId!
+            statsMet12.statsCard = store.getStatsCards()[1]
+            statsMet12.statsCardId = store.getStatsCards()[1].cardId!
             statsMet12.statsMetricId = "sadfasfdsasadga"
             statsMet12.value = 1100
             statsMet12.label = "qqq visits"
@@ -318,8 +311,9 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
         if items.count == 0 {
             return UITableViewCell()
         }
-
+        
         let item = items[rowIdx] as! StatsCard
+        
         switch(item.type) {
             case StatsCardType.emptyState.rawValue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for: indexPath) as! EmptyStateCard
@@ -371,22 +365,17 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
         var items : [Any] = []
         if nonEmptyCards.count > 0 {
             for card in nonEmptyCards {
-                if card.type == "metrics_card"  {
-                    let statsMetrics = store.getStatsMetricsForCard(card)
-                    for sm in statsMetrics {
-                        items.append(sm)
-                    }
-                }
-                else {
+                let statsMetrics = store.getStatsMetricsForCard(card)
+                if statsMetrics.count > 0 {
                     items.append(card)
                 }
             }
             if items.count == 0 {
                 return Array(emptyStateCards)
-            }
-            else {
+            } else {
                 return items
             }
+            return Array(nonEmptyCards)
         }
         else {
             return Array(emptyStateCards)
