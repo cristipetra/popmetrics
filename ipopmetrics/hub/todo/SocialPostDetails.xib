@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -50,7 +51,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPT-f2-qZ3">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="1935"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_card_approval" translatesAutoresizingMaskIntoConstraints="NO" id="7iU-Hc-ov9">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7iU-Hc-ov9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="234"/>
                                     <color key="backgroundColor" name="larry_david"/>
                                     <constraints>
@@ -131,21 +132,22 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVz-eE-NFl">
                                             <rect key="frame" x="25" y="10" width="34" height="34"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_twitter" translatesAutoresizingMaskIntoConstraints="NO" id="msp-s8-Vas">
-                                                    <rect key="frame" x="0.0" y="-0.5" width="34" height="34"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_twitter" translatesAutoresizingMaskIntoConstraints="NO" id="msp-s8-Vas">
+                                                    <rect key="frame" x="9" y="8.5" width="17" height="17"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
+                                                <constraint firstItem="msp-s8-Vas" firstAttribute="width" secondItem="UVz-eE-NFl" secondAttribute="width" multiplier="50%" id="0Wl-pL-vZl"/>
                                                 <constraint firstItem="msp-s8-Vas" firstAttribute="centerY" secondItem="UVz-eE-NFl" secondAttribute="centerY" id="BKC-dC-9O5"/>
                                                 <constraint firstAttribute="height" constant="34" id="Juv-j2-azX"/>
                                                 <constraint firstItem="msp-s8-Vas" firstAttribute="centerX" secondItem="UVz-eE-NFl" secondAttribute="centerX" id="QFV-NE-QLW"/>
-                                                <constraint firstItem="msp-s8-Vas" firstAttribute="width" secondItem="UVz-eE-NFl" secondAttribute="width" id="Qop-aF-eia"/>
-                                                <constraint firstItem="msp-s8-Vas" firstAttribute="height" secondItem="UVz-eE-NFl" secondAttribute="height" id="uRw-uE-0FS"/>
+                                                <constraint firstItem="msp-s8-Vas" firstAttribute="height" secondItem="UVz-eE-NFl" secondAttribute="height" multiplier="50%" id="riq-UD-Qg1"/>
                                                 <constraint firstAttribute="width" constant="34" id="wrT-BT-xMC"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@Popmetrics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzG-ke-MJW">

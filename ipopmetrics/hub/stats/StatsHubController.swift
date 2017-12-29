@@ -100,8 +100,6 @@ class StatsHubController: BaseViewController {
         tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
         tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
         
-     
-        createItemsLocally()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -153,21 +151,16 @@ class StatsHubController: BaseViewController {
     
     internal func createItemsLocally() {
         try! store.realm.write {
-            /*
-            let tmp = StatisticsCard()
-            tmp.cardId = "asf23rsdf3r"
-            tmp.section = ""
-            store.realm.add(tmp, update: true)
-            */
             let statsCard = StatsCard()
             statsCard.cardId = "dfas"
             statsCard.section = "Traffic"
-            statsCard.status = "sadf"
+            statsCard.status = "live"
+            statsCard.type = "metrics_card"
             store.realm.add(statsCard, update: true)
      
             let statsMet1 = StatsMetric()
-            statsMet1.statsCard = store.getStatsCards()[0]
-            statsMet1.statsCardId = store.getStatsCards()[0].cardId!
+            statsMet1.statsCard = store.getStatsCards()[1]
+            statsMet1.statsCardId = store.getStatsCards()[1].cardId!
             statsMet1.statsMetricId = "sadfasfdsa"
             statsMet1.value = 1300
             statsMet1.label = "Overral visits"
@@ -186,8 +179,8 @@ class StatsHubController: BaseViewController {
             print("breakdown: \(statsMet1.getBreakDownGroups())")
            
             let statsMet11 = StatsMetric()
-            statsMet11.statsCard = store.getStatsCards()[0]
-            statsMet11.statsCardId = store.getStatsCards()[0].cardId!
+            statsMet11.statsCard = store.getStatsCards()[1]
+            statsMet11.statsCardId = store.getStatsCards()[1].cardId!
             statsMet11.statsMetricId = "sadfasfdasdffdsa"
             statsMet11.value = 4000
             statsMet11.label = "Total visits"
@@ -205,8 +198,8 @@ class StatsHubController: BaseViewController {
             store.realm.add(statsMet11, update: true)
             
             let statsMet12 = StatsMetric()
-            statsMet12.statsCard = store.getStatsCards()[0]
-            statsMet12.statsCardId = store.getStatsCards()[0].cardId!
+            statsMet12.statsCard = store.getStatsCards()[1]
+            statsMet12.statsCardId = store.getStatsCards()[1].cardId!
             statsMet12.statsMetricId = "sadfasfdsasadga"
             statsMet12.value = 1100
             statsMet12.label = "qqq visits"
@@ -313,21 +306,23 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
         }
         
-        let card = getCardInSection(statsSection.rawValue, atIndex: rowIdx)
-        let cardsCount = countCardsInSection(statsSection.rawValue)
+        let items = getVisibleItemsInSection(sectionIdx)
         
-        let item = card
+        if items.count == 0 {
+            return UITableViewCell()
+        }
+        
+        let item = items[rowIdx] as! StatsCard
+        
         switch(item.type) {
             case StatsCardType.emptyState.rawValue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for: indexPath) as! EmptyStateCard
-                cell.displayForStats()
-                cellHeight = 506
+                cell.configure(statsCard: item)
                 return cell
             case StatsCardType.metricsCard.rawValue:
-                let metrics = store.getStatsMetricsForCard(card)
                 let cell = tableView.dequeueReusableCell(withIdentifier: "StatsCard", for: indexPath) as! StatsCardViewCell
                 
-                let results = store.getStatsMetricsForCard(card)
+                let results = store.getStatsMetricsForCard(item)
                 cell.statisticsCountView.setupViews(data: Array(results))
                 let itemCellHeight: Int = 94
                 cell.statisticsCountViewHeightCounstraint.constant = CGFloat(results.count * itemCellHeight)
@@ -335,7 +330,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
                 
                 cell.selectionStyle = .none
                 cell.backgroundColor = .clear
-                cell.footerView.actionButton.context = ["card":card]
+                cell.footerView.actionButton.context = ["card": item]
                 cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_: eventInfo:)), for: .touchUpInside)
                 
                 cell.footerView.displayOnlyActionButton()
@@ -352,13 +347,39 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.indexToSection.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return getVisibleItemsInSection(section).count
+    }
+    
+    func getVisibleItemsInSection(_ section: Int) -> [Any] {
         
-        guard let statsSection = StatsSection.init(rawValue: self.indexToSection[section]!)
-            else { return 0 }
+        guard let statsSection = StatsSection.init(rawValue: self.indexToSection[section]!) else { return [] }
         
-        return countCardsInSection(statsSection.rawValue)
+        let emptyStateCards = store.getEmptyStatsCardsWithSection(statsSection.rawValue)
+        let nonEmptyCards = store.getNonEmptyStatsCardsWithSection(statsSection.rawValue)
         
+        var items : [Any] = []
+        if nonEmptyCards.count > 0 {
+            for card in nonEmptyCards {
+                let statsMetrics = store.getStatsMetricsForCard(card)
+                if statsMetrics.count > 0 {
+                    items.append(card)
+                }
+            }
+            if items.count == 0 {
+                return Array(emptyStateCards)
+            } else {
+                return items
+            }
+            return Array(nonEmptyCards)
+        }
+        else {
+            return Array(emptyStateCards)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -383,11 +404,6 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
-    }
-    
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return self.indexToSection.count
     }
     
 }

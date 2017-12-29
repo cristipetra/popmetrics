@@ -45,7 +45,15 @@ class SettingsSocialViewController: SettingsBaseViewController {
     private func changeSocialType() {
         switch socialType {
         case .facebook:
-            brandURLLabel.text = "http://www.facebook.com/brandname"
+            brandURLLabel.text = currentBrand?.facebookDetails?.screenName ?? "N/A"
+            brandNameLabel.text = currentBrand?.facebookDetails?.name ?? "N/A"
+            
+            if let date = currentBrand?.facebookDetails?.connectionDate {
+                let df = DateFormatter()
+                df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+                self.connectionDateLabel.text = df.string(from: date)
+            }
+            
         case .twitter:
             brandURLLabel.text = currentBrand?.twitterDetails?.screenName ?? "N/A"
             brandNameLabel.text = currentBrand?.twitterDetails?.name ?? "N/A"

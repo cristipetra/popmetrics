@@ -232,9 +232,18 @@ class TodoHubController: BaseViewController {
     }
     
     func updateCountsTopView() {
-        
+        var count = 0
         let items = getVisibleItemsInSection(0)
-        toDoTopView.changeValueSection(value: items.count, section: 0)
+        count = items.count
+        if items.count == 1 {
+            let item = items[0] as! TodoCard
+            if item.type != "empty_state" {
+                count = items.count
+            }
+            
+        }
+        
+        toDoTopView.changeValueSection(value: count, section: 0)
     }
     
     func getVisibleItemsInSection(_ section: Int) -> [Any] {

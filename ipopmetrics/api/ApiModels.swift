@@ -246,6 +246,22 @@ class GoogleAnalyticsDetails: Mappable {
     }
 }
 
+class FacebookDetails: Mappable {
+    var name: String?
+    var screenName: String?
+    
+    var connectionDate: Date?
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map: Map) {
+        name              <- map[""]
+        connectionDate    <- (map["connection.date"], DateTransform())
+    }
+    
+}
+
 class TwitterDetails: Mappable {
     
     var name: String?
@@ -278,6 +294,7 @@ class Brand: Mappable {
     
     var googleAnalytics: GoogleAnalyticsDetails?
     var twitterDetails: TwitterDetails?
+    var facebookDetails: FacebookDetails?
     
     required init?(map: Map) {
     }
