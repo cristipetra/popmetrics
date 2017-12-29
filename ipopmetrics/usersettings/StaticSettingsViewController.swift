@@ -22,6 +22,7 @@ class StaticSettingsViewController: BaseTableViewController {
     @IBOutlet weak var allowNotifications: UISwitch!
     
     
+    @IBOutlet weak var facebookHandleField: UITextField!
     @IBOutlet weak var twitterHandleField: UITextField!
     @IBOutlet weak var googleAnalyticsTracker: UITextField!
     
@@ -81,6 +82,7 @@ class StaticSettingsViewController: BaseTableViewController {
         
         brandName.text = UserStore.currentBrand?.name
         
+        facebookHandleField.text = currentBrand?.facebookDetails?.screenName ?? "Not connected"
         twitterHandleField.text = currentBrand?.twitterDetails?.screenName ?? "N/A"
         googleAnalyticsTracker.text = currentBrand?.googleAnalytics?.tracker ?? "N/A"
         
