@@ -14,6 +14,7 @@ import MessageUI
 
 class MenuViewController: ElasticModalViewController {
     
+    @IBOutlet weak var buildLabel: UILabel!
     @IBOutlet weak var changeBrandBtn: UIButton!
     @IBOutlet weak var checkBtn: UIButton!
     @IBOutlet weak var brandNameLabel: UILabel!
@@ -35,6 +36,7 @@ class MenuViewController: ElasticModalViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        buildLabel.text = UIApplication.versionBuild()
         
         self.brandNameLabel.text = UserStore.currentBrand?.name
         
