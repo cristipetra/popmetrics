@@ -35,7 +35,7 @@ class Config: NSObject {
     
     class var mailSettings: String {
         get {
-            return "aimee@popmetrics.ai"
+            return "help@popmetrics.ai"
         }
     }
     
