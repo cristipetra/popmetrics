@@ -92,7 +92,7 @@ class CalendarCard:  Object, Mappable {
         get {
             switch section {
             case StatusArticle.scheduled.rawValue:
-                return "Scheduled Tweets"
+                return "Scheduled Social Posts"
             case StatusArticle.failed.rawValue:
                 return "Failed"
             case StatusArticle.executed.rawValue:
@@ -155,7 +155,7 @@ class CalendarCard:  Object, Mappable {
             case StatusArticle.executed.rawValue:
                 return ""
             default:
-                return "Scheduled Tweets"
+                return "Scheduled Social Posts"
             }
         }
     }

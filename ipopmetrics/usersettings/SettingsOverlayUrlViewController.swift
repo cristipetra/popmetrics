@@ -24,7 +24,7 @@ class SettingsOverlayUrlViewController: SettingsBaseViewController {
     }
     
     private func updateView() {
-        if let url = userSettings.overlayActionUrl {
+        if let url = UserStore.currentBrand?.domainURL {
             textUrl.text = url
         }
     }
