@@ -282,7 +282,33 @@ class TwitterDetails: Mappable {
     }
 }
 
+class OverlayDetails: Mappable {
 
+    var id: String?
+    var title:String?
+    var description:String?
+    var layout:String?
+    var colorScheme:String?
+    
+    var ctaText:String?
+    var ctaUrl:String?
+    var ctaType:String?
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map:Map) {
+        id          <- map["id"]
+        title       <- map["title"]
+        description <- map["description"]
+        layout      <- map["layout"]
+        colorScheme <- map["colorScheme"]
+        ctaText     <- map["cta_text"]
+        ctaUrl      <- map["cta_url"]
+        ctaType      <- map["cta_type"]
+    }
+    
+}
 
 class Brand: Mappable {
 
@@ -296,6 +322,8 @@ class Brand: Mappable {
     var twitterDetails: TwitterDetails?
     var facebookDetails: FacebookDetails?
     
+    var overlayDetails: OverlayDetails?
+    
     required init?(map: Map) {
     }
     
@@ -308,6 +336,8 @@ class Brand: Mappable {
         
         googleAnalytics <- map["data.google_analytics"]
         twitterDetails  <- map["social.twitter"]
+        facebookDetails <- map["social.facebook"]
+        overlayDetails  <- map["overlay"]
         
     }
 }
