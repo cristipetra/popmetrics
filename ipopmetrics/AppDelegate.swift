@@ -282,8 +282,14 @@ extension UIApplication {
     
     class func versionBuild() -> String {
         let version = appVersion(), build = appBuild()
-        
-        return version == build ? "v\(version)" : "v\(version)(\(build))"
+        var api = "dev"
+        if ApiUrls.getHost().contains("test") {
+            api = "staging"
+        }
+        else if ApiUrls.getHost().contains("api") {
+            api = ""
+        }
+        return version == build ? "v\(version)\(api)" : "v\(version)(\(build))\(api)"
     }
 }
 
