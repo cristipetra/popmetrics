@@ -28,7 +28,6 @@ class AboutViewController: BaseTableViewController {
     
     private func updateView() {
         versionLabel.text = UIApplication.versionBuild()
-        contactLabel.text = Config.mailSettings
     }
     
     private func setUpNavigationBar() {
