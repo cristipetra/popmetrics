@@ -19,6 +19,11 @@ class StatisticsCountView: UIView {
     }
     
     func setupViews(data: [StatsMetric]) {
+        
+        for view in self.subviews {
+            view.removeFromSuperview()
+        }
+ 
         let labelY = 35 as CGFloat
         var wrapperViewY = 0 as CGFloat
         let messageLabelWidth = UIScreen.main.bounds.width / 2
