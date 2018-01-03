@@ -30,7 +30,7 @@ class StatsCardViewCell: UITableViewCell {
         self.setCornerRadius()
         setUpShadowLayer()
         
-        self.toolbarView.title.text = "Traffic stats: hutcheson.io"
+        self.toolbarView.title.text = "Traffic stats"
         self.toolbarView.leftImage.widthAnchor.constraint(equalToConstant: 10).isActive = true
     
         self.footerView.actionButton.changeTitle("Stats Report")
