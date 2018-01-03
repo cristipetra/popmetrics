@@ -95,8 +95,12 @@ class MenuViewController: ElasticModalViewController {
     }
 
     @IBAction func handlerAboutButtonPressed(_ sender: Any) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.openURLInside(self, url: Config.aboutPopmetricsLink)
+        let aboutVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "aboutViewController") as! AboutViewController
+        
+        let navigationController = UINavigationController()
+        navigationController.pushViewController(aboutVC, animated: false)
+        
+        self.presentFromDirection(viewController: navigationController, direction: .right)
     }
     
     @IBAction func logoutButtonPressed(_ sender: UIButton) {
