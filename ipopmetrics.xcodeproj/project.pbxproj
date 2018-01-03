@@ -62,6 +62,7 @@
 		08755F4C1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */; };
 		088674111FE28506008DB87E /* LoginSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088674101FE28506008DB87E /* LoginSocialViewController.swift */; };
 		088674131FE285A0008DB87E /* SocialMediaLoginButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088674121FE285A0008DB87E /* SocialMediaLoginButtonsView.swift */; };
+		088728971FFCE98700BE9882 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088728961FFCE98700BE9882 /* AboutViewController.swift */; };
 		0888C5BE1F4EECEC00E3DB04 /* RoundedCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */; };
 		088B282A1F7E5D130015A66E /* StatisticsCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B28291F7E5D130015A66E /* StatisticsCountView.swift */; };
 		088B282C1F7E7F150015A66E /* AimeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B282B1F7E7F150015A66E /* AimeeView.swift */; };
@@ -290,6 +291,7 @@
 		0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		088674101FE28506008DB87E /* LoginSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSocialViewController.swift; sourceTree = "<group>"; };
 		088674121FE285A0008DB87E /* SocialMediaLoginButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaLoginButtonsView.swift; sourceTree = "<group>"; };
+		088728961FFCE98700BE9882 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersButton.swift; sourceTree = "<group>"; };
 		088B28291F7E5D130015A66E /* StatisticsCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsCountView.swift; sourceTree = "<group>"; };
 		088B282B1F7E7F150015A66E /* AimeeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimeeView.swift; sourceTree = "<group>"; };
@@ -769,6 +771,7 @@
 			children = (
 				080DCA801F4D6EE6000C73DC /* MenuViewController.swift */,
 				08B968A91FBB141400482CDE /* ChangeBrandViewController.swift */,
+				088728961FFCE98700BE9882 /* AboutViewController.swift */,
 			);
 			path = menu;
 			sourceTree = "<group>";
@@ -1359,6 +1362,7 @@
 				08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */,
 				088674111FE28506008DB87E /* LoginSocialViewController.swift in Sources */,
 				0855C0CB1F6FFBF000ACBFA9 /* EmptyStateCard.swift in Sources */,
+				088728971FFCE98700BE9882 /* AboutViewController.swift in Sources */,
 				08C5CF361FC5EA9C001851A5 /* ActionPageDetailsViewController.swift in Sources */,
 				08B745911F1F638000EC3F8C /* LoginNavigationViewController.swift in Sources */,
 				08B4EBBB1FC56ACE00BFC5A1 /* TwoImagesButton.swift in Sources */,
