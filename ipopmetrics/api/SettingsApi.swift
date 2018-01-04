@@ -24,7 +24,6 @@ class SettingsApi: BaseApi {
                             }
                             callback(nil)
         }
-        
     }
     
     func changeOverlayURL(url: String, callback: @escaping (_ error: ApiError?) -> Void) {
@@ -40,7 +39,21 @@ class SettingsApi: BaseApi {
                             }
                             callback(nil)
         }
+    }
+    
+    func changeOverlayAction(action: String, callback: @escaping (_ error: ApiError?) -> Void) {
+        let url = ""
+        let params = ["action": action]
         
+        Alamofire.request(url,
+                          method: .post, parameters: params, encoding: JSONEncoding.default,
+                          headers:createHeaders()).responseJSON { response in
+                            if let err = self.createErrorWithHttpResponse(response: response.response) {
+                                callback(err)
+                                return
+                            }
+                            callback(nil)
+        }
     }
     
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import EZAlertController
 
 class SettingsOverlayActionViewController: SettingsBaseViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -16,7 +17,7 @@ class SettingsOverlayActionViewController: SettingsBaseViewController, UITableVi
     
     private var dataSource: [String] = []
     
-    var selectedBrand: String = ""
+    var selectedAction: String = ""
     var didChangedOverlay: Bool = false
     var firstTimeSetOverlay = true
     
@@ -69,7 +70,7 @@ class SettingsOverlayActionViewController: SettingsBaseViewController, UITableVi
         cell.brandName.text = dataSource[indexPath.row]
         if indexPath == UserStore.overlayIndex {
             cell.setupSelectedCell()
-            selectedBrand = cell.brandName.text!
+            selectedAction = cell.brandName.text!
         }
         
         cell.selectionStyle = .none
@@ -90,13 +91,28 @@ class SettingsOverlayActionViewController: SettingsBaseViewController, UITableVi
             return
         }
         UserStore.overlayIndex = indexPath
-        selectedBrand = cell.brandName.text!
+        selectedAction = cell.brandName.text!
         cell.setupSelectedCell()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let prevCell = tableView.cellForRow(at: indexPath) as! BrandTableViewCell
         prevCell.setDefault()
+    }
+    
+    override func doneHandler() {
+        changeOverlayAction()
+    }
+    
+    private func changeOverlayAction() {
+        SettingsApi().changeOverlayAction(action: selectedAction) { (error) in
+            if error == nil {
+                self.closeWindow()
+            } else {
+                let message = "Something went wrong. Please try again later."
+                EZAlertController.alert("Error", message: message)
+            }
+        }
     }
     
 }
