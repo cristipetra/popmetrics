@@ -27,4 +27,20 @@ class SettingsApi: BaseApi {
         
     }
     
+    func changeOverlayURL(url: String, callback: @escaping (_ error: ApiError?) -> Void) {
+        let url = ""
+        let params = ["url": url]
+        
+        Alamofire.request(url,
+                          method: .post, parameters: params, encoding: JSONEncoding.default,
+                          headers:createHeaders()).responseJSON { response in
+                            if let err = self.createErrorWithHttpResponse(response: response.response) {
+                                callback(err)
+                                return
+                            }
+                            callback(nil)
+        }
+        
+    }
+    
 }

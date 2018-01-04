@@ -17,8 +17,6 @@ class SettingsOverlayDescriptionViewController: SettingsBaseViewController, UITe
     
     let userSettings: UserSettings = UserStore.getInstance().getLocalUserSettings()
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
