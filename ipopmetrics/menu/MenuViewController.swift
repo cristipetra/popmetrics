@@ -34,6 +34,8 @@ class MenuViewController: ElasticModalViewController {
     var dismissByBackgroundDrag = true
     //var dismissByForegroundDrag = true
     
+    var secretTaps = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         buildLabel.text = UIApplication.versionBuild()
@@ -44,28 +46,40 @@ class MenuViewController: ElasticModalViewController {
         transition.edge = .right
         transition.sticky = false
         
-        let currentBrandId = UserStore.currentBrandId
-        if currentBrandId == "5a278fcec2ff29587ee10739" || currentBrandId == "5a27900ac2ff29587ee1073a" {
-            self.popmetricsImageView.isUserInteractionEnabled = true
-            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
-            //Add the recognizer to your view.
-            popmetricsImageView.addGestureRecognizer(tapRecognizer)
-        }
-        
+        self.popmetricsImageView.isUserInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
+        // Add the recognizer to your view.
+        popmetricsImageView.addGestureRecognizer(tapRecognizer)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        secretTaps = 0
     }
     
     @objc func imageTapped(_ gestureRecognizer: UITapGestureRecognizer) {
-        //tappedImageView will be the image view that was tapped.
-        //dismiss it, animate it off screen, whatever.
-        FeedStore.getInstance().wipe()
-        TodoStore.getInstance().wipe()
-        CalendarStore.getInstance().wipe()
-        StatsStore.getInstance().wipe()
-        
-        UsersApi().resetBrandHubs(UserStore.currentBrandId)
-        presentAlertWithTitle("Confirmation", message: "The hubs are being reset. It may take up to a minute.")
+
+        secretTaps = secretTaps + 1
+        if secretTaps > 8 {
+            secretTaps = 0
+            let confirmAlert = UIAlertController(title: "Confirmation", message: "Are you sure you want to reset your hubs?",
+                                                 preferredStyle: UIAlertControllerStyle.alert)
+            confirmAlert.addAction(UIAlertAction(title:"Yes", style: .default, handler: { (action: UIAlertAction!) in
+                FeedStore.getInstance().wipe()
+                TodoStore.getInstance().wipe()
+                CalendarStore.getInstance().wipe()
+                StatsStore.getInstance().wipe()
+                
+                UsersApi().resetBrandHubs(UserStore.currentBrandId)
+                self.presentAlertWithTitle("Confirmation", message: "The hubs are being reset. It may take up to a minute.")
+            }))
+            
+            confirmAlert.addAction(UIAlertAction(title:"No", style: .default, handler: { (action: UIAlertAction!) in
+                self.secretTaps = 0
+            }))
+            
+            present(confirmAlert, animated: true)
+        }
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         segue.destination.transitioningDelegate = transition as UIViewControllerTransitioningDelegate

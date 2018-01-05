@@ -201,6 +201,8 @@
 		11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */; };
 		11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A91E2CE05D0021E64A /* CompletionView.swift */; };
 		11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */; };
+		11BDA92E1FFFD95F00CDA01C /* PopTipCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11BDA92D1FFFD95F00CDA01C /* PopTipCard.xib */; };
+		11BDA9301FFFD9C200CDA01C /* PopTipCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BDA92F1FFFD9C200CDA01C /* PopTipCard.swift */; };
 		11D6FF6B1FD7941600C7E62B /* SettingsTwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D6FF6A1FD7941600C7E62B /* SettingsTwitterViewController.swift */; };
 		11DD96761FC4FA5400386F1E /* CalendarApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD966D1FC4FA5400386F1E /* CalendarApi.swift */; };
 		11DD96771FC4FA5400386F1E /* StatisticsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD966E1FC4FA5400386F1E /* StatisticsApi.swift */; };
@@ -439,6 +441,8 @@
 		11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		11ACA9A91E2CE05D0021E64A /* CompletionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionView.swift; sourceTree = "<group>"; };
 		11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		11BDA92D1FFFD95F00CDA01C /* PopTipCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopTipCard.xib; sourceTree = "<group>"; };
+		11BDA92F1FFFD9C200CDA01C /* PopTipCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopTipCard.swift; sourceTree = "<group>"; };
 		11D6FF6A1FD7941600C7E62B /* SettingsTwitterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTwitterViewController.swift; sourceTree = "<group>"; };
 		11DD966C1FC4FA5400386F1E /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		11DD966D1FC4FA5400386F1E /* CalendarApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarApi.swift; sourceTree = "<group>"; };
@@ -715,12 +719,14 @@
 				08953E711F4C352B003ABEFC /* RequiredActionCard.xib */,
 				08953E751F4C35AC003ABEFC /* RequiredActionCard.swift */,
 				080DCA851F4D9707000C73DC /* InsightCard.xib */,
+				11BDA92D1FFFD95F00CDA01C /* PopTipCard.xib */,
 				080DCA871F4D9716000C73DC /* InsightCard.swift */,
 				1125ADAB1E96E7990004B4AC /* HomeHubController.swift */,
 				110A62C91ECEDADC0052B478 /* StatsSummaryViewCell.swift */,
 				08F7A0961F17AB0C00A1B2C3 /* RecommendationCardCell.swift */,
 				08F3688A1F18DC4900819CDE /* ApprovalCardCell.swift */,
 				08F368901F18E6A000819CDE /* ApprovalCardInfoCell.swift */,
+				11BDA92F1FFFD9C200CDA01C /* PopTipCard.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -1088,6 +1094,7 @@
 				085282721F28D9C50065A968 /* CalendarFooter.xib in Resources */,
 				080DCA861F4D9707000C73DC /* InsightCard.xib in Resources */,
 				089F93AB1FB5FE1E00155674 /* Settings.storyboard in Resources */,
+				11BDA92E1FFFD95F00CDA01C /* PopTipCard.xib in Resources */,
 				08953E721F4C352B003ABEFC /* RequiredActionCard.xib in Resources */,
 				0813A0571FC2F102003E6478 /* SettingsSocialView.xib in Resources */,
 				088BBEA81F58212A00AD5414 /* StatsEmptyCard.xib in Resources */,
@@ -1428,6 +1435,7 @@
 				08C580FF1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift in Sources */,
 				11D6FF6B1FD7941600C7E62B /* SettingsTwitterViewController.swift in Sources */,
 				1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */,
+				11BDA9301FFFD9C200CDA01C /* PopTipCard.swift in Sources */,
 				08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */,
 				1148D73D1FBF39AE006EB5BB /* NavigationMap.swift in Sources */,
 				08F368951F18F93800819CDE /* DailyInsightsCardCell.swift in Sources */,

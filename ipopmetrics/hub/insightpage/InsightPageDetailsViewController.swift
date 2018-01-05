@@ -68,11 +68,19 @@ class InsightPageDetailsViewController: BaseViewController {
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
         self.feedCard = feedCard
         recommendActionHandler = handler
+        
+        if self.feedCard.recommendedAction == "" {
+            self.persistentFooter.rightBtn.isHidden = true            
+        }
     }
     
     public func configure(_ feedCard: FeedCard, openedFrom: String) {
         self.openedFrom = openedFrom
         self.feedCard = feedCard
+        
+        if self.feedCard.recommendedAction == "" {
+            self.persistentFooter.rightBtn.isHidden = true
+        }
     }
     
     private func updateView() {

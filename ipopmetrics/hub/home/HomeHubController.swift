@@ -68,6 +68,7 @@ enum HomeSectionType: String {
 enum HomeCardType: String {
     case requiredAction = "required_action"
     case insight = "insight"
+    case poptip = "pop_tip"
     case recommendedAction = "recommended_action"
     case emptyState = "empty_state"
     
@@ -153,6 +154,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         let recommendedNib = UINib(nibName: "InsightCard", bundle: nil)
         tableView.register(recommendedNib, forCellReuseIdentifier: "InsightCard")
+        
+        let popTipCardNib = UINib(nibName: "PopTipCard", bundle: nil)
+        tableView.register(popTipCardNib, forCellReuseIdentifier: "PopTipCard")
         
         let recommendedActionNib = UINib(nibName: "IceCardView", bundle: nil)
         tableView.register(recommendedActionNib, forCellReuseIdentifier: "recommendedActionId")
@@ -297,6 +301,16 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             
             return cell
             
+        case HomeCardType.poptip.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PopTipCard", for: indexPath) as! PopTipCard
+            cell.configure(item, handler: recommendActionHandler)
+            if(cardsCount - 1 == indexPath.row) {
+                cell.connectionLine.isHidden = true;
+            }
+            cell.delegate = self
+            
+            return cell
+            
 //        case HomeCardType.recommendedAction.rawValue:
 //            let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedActionId", for: indexPath) as! IceCardViewCell
 //            cell.delegate = self
@@ -368,8 +382,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     func countCardsInSection( _ section: String) -> Int {
-        var nonEmptyCards = store.getNonEmptyFeedCardsWithSection(section)
-        let cards = getCardsWithActiveSection(cards: nonEmptyCards)
+        let nonEmptyCards = store.getNonEmptyFeedCardsWithSection(section)
+        let cards = nonEmptyCards
         //let cards = nonEmptyCards
         if cards.count == 0 {
             let emptyCards = store.getEmptyFeedCardsWithSection(section)
@@ -380,18 +394,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         }
     }
     
-    /*
-     * returns cards that has an type in cellForRowAt
-     */
-    private func getCardsWithActiveSection(cards: Results<FeedCard>) -> [FeedCard] {
-        var returnCards: [FeedCard] = []
-        for card in cards {
-            if activeType.contains(card.type) {
-                returnCards.append(card)
-            }
-        }
-        return returnCards
-    }
 
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let emptyView = UIView()
@@ -505,6 +507,16 @@ extension HomeHubViewController: RecommendeCellDelegate {
     }
 }
 
+extension HomeHubViewController: PopTipCellDelegate {
+    func popTipCellDidTapMoreInfo(_ feedCard: FeedCard) {
+        openInsightDetails(feedCard)
+    }
+    
+    func popTipCellDidTapAction(_ feedCard: FeedCard) {
+        openInsightDetails(feedCard)
+    }
+}
+
 // MARK: UIViewControllerTransitioningDelegate
 
 extension HomeHubViewController: UIViewControllerTransitioningDelegate {
@@ -559,6 +571,7 @@ enum CardType: String {
     case todo = "todo"
     case traffic = "traffic"
     case insight = "insight"
+    case poptip = "pop_tip"
     case scheduled = "scheduled"
 }
 
