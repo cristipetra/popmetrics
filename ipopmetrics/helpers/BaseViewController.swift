@@ -41,8 +41,15 @@ class BaseViewController: UIViewController {
     
     func setupOfflineBanner() {
         if offlineBanner == nil {
-            offlineBanner = OfflineBanner(frame: CGRect(x: 0, y: 64, width: self.view.frame.width, height: 45))
+            offlineBanner = OfflineBanner()
             self.navigationController?.view.addSubview(offlineBanner)
+            
+            offlineBanner.translatesAutoresizingMaskIntoConstraints = false
+            offlineBanner.trailingAnchor.constraint(equalTo: (self.navigationController?.view.trailingAnchor)!, constant: 0).isActive = true
+            offlineBanner.leadingAnchor.constraint(equalTo: (self.navigationController?.view.leadingAnchor)!, constant: 0).isActive = true
+            offlineBanner.heightAnchor.constraint(equalToConstant: 45).isActive = true
+            offlineBanner.topAnchor.constraint(equalTo: (self.navigationController?.view.safeAreaLayoutGuide.topAnchor)!, constant: 44).isActive = true
+            
             offlineBanner.isHidden = ReachabilityManager.shared.isNetworkAvailable
         }
     }
@@ -167,4 +174,19 @@ extension BaseViewController: NetworkStatusListener {
             offlineBanner.isHidden = true
         }
     }
+}
+
+
+extension BannerProtocol where Self: BaseViewController { //Make all the BaseViewControllers that conform to BannerProtocol have a default implementation of presentErrorNetwork
+    
+    func presentErrorNetwork() {
+        let notificationObj = ["alert":"",
+                               "subtitle": "You need to be online to perform this action.",
+                               "type": "failure",
+                               "sound":"default"
+        ]
+        let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+        showBannerForNotification(pnotification)
+    }
+    
 }

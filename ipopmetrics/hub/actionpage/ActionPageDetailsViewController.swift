@@ -9,7 +9,7 @@
 import UIKit
 import markymark
 
-class ActionPageDetailsViewController: UIViewController {
+class ActionPageDetailsViewController: BaseViewController {
     
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var titleArticle: UILabel!
@@ -209,6 +209,11 @@ class ActionPageDetailsViewController: UIViewController {
     }
     
     @IBAction func handlerAddToMyActions(_ sender: Any) {
+        if !ReachabilityManager.shared.isNetworkAvailable {
+            presentErrorNetwork()
+            return
+        }
+        
         if self.todoCard != nil {
             HubsApi().postAddToMyActions(cardId: self.todoCard.cardId!, brandId: UserStore.currentBrandId) { todoCard in
                 TodoStore.getInstance().addTodoCard(todoCard!)               
@@ -224,6 +229,11 @@ class ActionPageDetailsViewController: UIViewController {
     }
     
     @objc func handlerAddToPaidActions(_ sender: Any) {
+        if !ReachabilityManager.shared.isNetworkAvailable {
+            presentErrorNetwork()
+            return
+        }
+        
         if self.todoCard != nil {
             HubsApi().postAddToPaidActions(cardId: self.todoCard.cardId!, brandId: UserStore.currentBrandId) { todoCard in
                 TodoStore.getInstance().addTodoCard(todoCard!)
@@ -286,6 +296,9 @@ class ActionPageDetailsViewController: UIViewController {
     }
 }
 
+extension ActionPageDetailsViewController: BannerProtocol {
+    
+}
 
 class ActionPageModel: NSObject {
     internal var titleArticle: String? = ""
