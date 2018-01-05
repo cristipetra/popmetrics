@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,6 +20,7 @@
                 <outlet property="brandNameLabel" destination="fle-Af-FIh" id="GCD-Zk-WDL"/>
                 <outlet property="brandURLLabel" destination="lS2-GT-rZ2" id="P7f-bP-Mqa"/>
                 <outlet property="connectionDateLabel" destination="ovt-Yc-mss" id="XVX-xP-yus"/>
+                <outlet property="messageLabel" destination="79j-ah-1wB" id="rFY-5y-mco"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -82,7 +83,7 @@
                         <constraint firstAttribute="bottom" secondItem="lS2-GT-rZ2" secondAttribute="bottom" constant="11" id="zo5-zi-PsD"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79j-ah-1wB">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79j-ah-1wB">
                     <rect key="frame" x="20" y="318" width="329" height="133.5"/>
                     <string key="text">Popmetrics uses your social account to track important information such as website traffic and brand presence online. With this information we can make insights to grow your business and send you informative reports on how your business is performing.
 </string>

@@ -73,7 +73,7 @@ class SettingsBaseViewController: UIViewController {
         cancelButton.tintColor = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1)
         //cancelButton.setTitleTextAttributes([NSAttributedStringKey.font: sideBtnFont], for: .normal)
         
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneHandler))
+        doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneHandler))
         doneButton.tintColor = UIColor(red: 65/255, green: 155/255, blue: 249/255, alpha: 1)
         doneButton.setTitleTextAttributes([NSAttributedStringKey.font: sideBtnFont], for: .normal)
         
@@ -103,6 +103,10 @@ class SettingsBaseViewController: UIViewController {
     
     @objc func cancelHandler() {
         
+    }
+    
+    internal func closeWindow() {
+        self.navigationController?.popViewController(animated: true)
     }
 
 }
