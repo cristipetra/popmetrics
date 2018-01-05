@@ -728,8 +728,17 @@ extension CalendarHubController:  CalendarCardActionHandler {
     }
 }
 
+extension CalendarHubController: BannerProtocol {
+    
+}
+
 extension CalendarHubController: ActionSocialPostProtocol {
     func cancelPostFromSocial(post: CalendarSocialPost, indexPath: IndexPath) {
+        if !ReachabilityManager.shared.isNetworkAvailable {
+            presentErrorNetwork()
+            return
+        }
+        
         CalendarApi().cancelPost(post.postId!, callback: {
             () -> Void in
             self.removeCell(indexPath: indexPath, socialPost:post)
