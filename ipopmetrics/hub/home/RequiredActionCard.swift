@@ -197,8 +197,6 @@ class RequiredActionCard: UITableViewCell {
     @objc func handleCallToAction(_ sender: SimpleButton) {
         let homeHubViewController = self.parentViewController as! HomeHubViewController
         homeHubViewController.callRequiredAction(self.item!)
-        
-        
     }
     
     

@@ -475,6 +475,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     ///
     
     func callRequiredAction(_ requiredActionCard: FeedCard) {
+        if !ReachabilityManager.shared.isNetworkAvailable {
+            presentErrorNetwork()
+            return
+        }
+        
         self.requiredActionHandler.homeHubViewController = self
         self.requiredActionHandler.handleRequiredAction(requiredActionCard)
         
@@ -487,6 +492,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         insightDetails.hidesBottomBarWhenPushed = true 
         self.navigationController?.pushViewController(insightDetails, animated: true)
     }
+}
+
+extension HomeHubViewController: BannerProtocol {
+    
 }
 
 extension HomeHubViewController: RecommendedActionViewCellDelegate {

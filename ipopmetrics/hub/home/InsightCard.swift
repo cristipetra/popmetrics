@@ -60,8 +60,6 @@ class InsightCard: UITableViewCell {
                 backgroundImageView.af_setImage(withURL: url)
             }
         }
-        
-        //footerVIew.displayOnlyActionButton()
     }
     
     @objc func handlerActionButton() {

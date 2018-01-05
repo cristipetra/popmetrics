@@ -168,3 +168,18 @@ extension BaseViewController: NetworkStatusListener {
         }
     }
 }
+
+
+extension BannerProtocol where Self: BaseViewController { //Make all the BaseViewControllers that conform to BannerProtocol have a default implementation of presentErrorNetwork
+    
+    func presentErrorNetwork() {
+        let notificationObj = ["alert":"",
+                               "subtitle": "You need to be online to perform this action.",
+                               "type": "failure",
+                               "sound":"default"
+        ]
+        let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+        showBannerForNotification(pnotification)
+    }
+    
+}
