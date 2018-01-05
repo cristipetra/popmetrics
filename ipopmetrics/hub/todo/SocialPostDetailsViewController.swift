@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import ObjectMapper
 
-class SocialPostDetailsViewController: UIViewController {
+class SocialPostDetailsViewController: BaseViewController {
     
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var recommendedLabel: UILabel!
@@ -65,6 +66,7 @@ class SocialPostDetailsViewController: UIViewController {
     internal var isBottomVisible = false
     
     weak var actionSocialDelegate: ActionSocialPostProtocol!
+    weak var bannerDelegate: BannerProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -194,15 +196,24 @@ class SocialPostDetailsViewController: UIViewController {
         separatorView.rightAnchor.constraint(equalTo: buttonContainerView.rightAnchor).isActive = true
         separatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
-        denyPostBtn.addTarget(self, action: #selector(denyPost(sender:)), for: .touchUpInside)
+        denyPostBtn.addTarget(self, action: #selector(handlerDenyPost(sender:)), for: .touchUpInside)
         approvePostBtn.addTarget(self, action: #selector(approvePost(sender:)), for: .touchUpInside)
     }
     
-    @objc func denyPost(sender: Any) {
-        
+    @objc func handlerDenyPost(sender: Any) {
+        if !ReachabilityManager.shared.isNetworkAvailable {
+            presentErrorNetwork()
+            return
+        }
     }
     
     @objc func approvePost(sender: AnyObject) {
+        
+        if !ReachabilityManager.shared.isNetworkAvailable {
+            presentErrorNetwork()
+            return
+        }
+        
         let indexPath = IndexPath() // it's used to remove cell from table but for now we don't need it
         if actionSocialDelegate !=  nil {
             self.navigationController?.popViewController(animated: true)
@@ -234,6 +245,10 @@ class SocialPostDetailsViewController: UIViewController {
         return fullDate
         
     }
+    
+}
+
+extension SocialPostDetailsViewController: BannerProtocol {
     
 }
 
@@ -278,3 +293,20 @@ extension SocialPostDetailsViewController: UIScrollViewDelegate {
     @objc optional func approvePostFromSocial(post: TodoSocialPost, indexPath: IndexPath)
 }
 
+@objc protocol BannerProtocol: class {
+    @objc optional func presentErrorNetwork()
+}
+
+extension BannerProtocol where Self: BaseViewController { //Make all the BaseViewControllers that conform to BannerProtocol have a default implementation of presentErrorNetwork
+    
+    func presentErrorNetwork() {
+        let notificationObj = ["alert":"",
+                               "subtitle": "You need to be online to perform this action.",
+                               "type": "failure",
+                               "sound":"default"
+        ]
+        let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+        showBannerForNotification(pnotification)
+    }
+   
+}

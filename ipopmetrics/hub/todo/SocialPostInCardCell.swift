@@ -8,10 +8,9 @@
 
 import UIKit
 import ObjectMapper
+import Reachability
 
 class SocialPostInCardCell: UITableViewCell {
-    
-    
     
     @IBOutlet weak var aproveButton: ActionTodoButton!
     @IBOutlet weak var denyPostBtn: UIButton!
@@ -36,6 +35,7 @@ class SocialPostInCardCell: UITableViewCell {
     var indexPath: IndexPath!
     
     weak var actionSocialDelegate: ActionSocialPostProtocol!
+    weak var bannerDelegate: BannerProtocol!
     
     // Extend view
     lazy var statusCardTypeView: StatusCardTypeView = {
@@ -91,8 +91,23 @@ class SocialPostInCardCell: UITableViewCell {
         self.indexPath = indexPath
     }
     
+    private func displayErrorNetwork() {
+        let notificationObj = ["alert":"",
+                               "subtitle": "You need to be online to perform this action.",
+                               "type": "failure",
+                               "sound":"default"
+        ]
+        let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+        let todoHubController = self.parentViewController as! TodoHubController
+        todoHubController.showBannerForNotification(pnotification)
+    }
+    
     @objc func animationHandler() {
-
+        if !ReachabilityManager.shared.isNetworkAvailable {
+            displayErrorNetwork()
+            return
+        }
+        
         aproveButton.removeTarget(self, action: #selector(animationHandler), for: .touchUpInside)
         let indexPath = IndexPath()
         actionSocialDelegate.approvePostFromSocial!(post: todoItem, indexPath: indexPath)
@@ -114,6 +129,11 @@ class SocialPostInCardCell: UITableViewCell {
     }
     
     @objc func denyPostHandler() {
+        if !ReachabilityManager.shared.isNetworkAvailable {
+            displayErrorNetwork()
+            return
+        }
+        
         TodoApi().denyPost(todoItem.postId!, callback: {
             () -> Void in
             let notificationObj = ["alert":"Post denied",
