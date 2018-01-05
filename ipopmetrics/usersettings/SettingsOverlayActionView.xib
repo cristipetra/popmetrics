@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -32,7 +31,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="658"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ca8-gX-oe7">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="637.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="585"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OVERLAY ACTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nb6-dG-dHk">
                                     <rect key="frame" x="25" y="17" width="109.5" height="21"/>
@@ -91,8 +90,8 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0k-5k-n7i">
-                                    <rect key="frame" x="25" y="505" width="285" height="122.5"/>
-                                    <string key="text">The Overlay Action is a button that will take visitors to your website. You can adjust the link to go to a specific page within your website that you would like visitors to see first. Popmetrics recommends to have your homepage as your Overlay Action.</string>
+                                    <rect key="frame" x="25" y="505" width="285" height="70"/>
+                                    <string key="text">Choose what your overlay call-to-action button will say from the following options. Once clicked, this button will direct your audience to your company's website.</string>
                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                     <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>

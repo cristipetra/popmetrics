@@ -16,6 +16,8 @@ class SettingsSocialViewController: SettingsBaseViewController {
     @IBOutlet weak var brandNameLabel: UILabel!
     
     @IBOutlet weak var connectionDateLabel: UILabel!
+    @IBOutlet weak var messageLabel: UILabel!
+    
     
     private var socialType: SocialType!
     
@@ -25,6 +27,7 @@ class SettingsSocialViewController: SettingsBaseViewController {
         
         setupNavigationWithBackButton()
         changeSocialType()
+        changeMessage()
     }
     
     func displayTwitter() {
@@ -42,6 +45,19 @@ class SettingsSocialViewController: SettingsBaseViewController {
         socialType = .facebook
     }
     
+    private func changeMessage() {
+        switch socialType {
+        case .facebook:
+            messageLabel.text = "Popmetrics, with your approval, will share content on your Facebook channel to generate traffic to your website. Our software will also use your Facebook information to measure your digital footprint and benchmark you against your competition."
+        case .twitter:
+            messageLabel.text = "Popmetrics, with your approval, will share content on your Twitter profile to generate traffic to your website. Our software will also use your Twitter information to measure your digital footprint and benchmark you against your competition."
+        case .linkedin:
+            messageLabel.text = "Popmetrics, with your approval, will share content on your LinkedIn page to generate traffic to your website. Our software will also use your LinkedIn information to measure your digital footprint and benchmark you against your competition."
+        default:
+            break
+        }
+    }
+    
     private func changeSocialType() {
         switch socialType {
         case .facebook:
@@ -53,7 +69,6 @@ class SettingsSocialViewController: SettingsBaseViewController {
                 df.dateFormat = "yyyy-MM-dd hh:mm:ss"
                 self.connectionDateLabel.text = df.string(from: date)
             }
-            
         case .twitter:
             brandURLLabel.text = currentBrand?.twitterDetails?.screenName ?? "N/A"
             brandNameLabel.text = currentBrand?.twitterDetails?.name ?? "N/A"

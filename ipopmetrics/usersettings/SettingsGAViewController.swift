@@ -23,6 +23,7 @@ class SettingsGAViewController: UITableViewController {
 
         setupNavigationBar()
         tableView.allowsSelection = false
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,6 +56,12 @@ class SettingsGAViewController: UITableViewController {
         }
         
         return contentView
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if(indexPath.section == 1 && indexPath.row == 3) {
+            cell.separatorInset = UIEdgeInsets(top: 0, left: cell.bounds.width, bottom: 0, right: 0)
+        }
     }
     
     func setupNavigationBar() {
