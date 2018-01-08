@@ -10,8 +10,9 @@ import UIKit
 import ActiveLabel
 import SafariServices
 import Hero
+import Reachability
 
-class WelcomeScreen: UIViewController {
+class WelcomeScreen: BaseViewController {
     
     @IBOutlet weak var topImageView: UIImageView!
     @IBOutlet weak var welcomeLabel: ActiveLabel!
@@ -20,6 +21,7 @@ class WelcomeScreen: UIViewController {
     
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var backButton: UIButton!
+    //internal var offlineBanner: OfflineBanner!
 
     var splashView: LDSplashView?
     var indicatorView: UIActivityIndicatorView?
@@ -28,7 +30,7 @@ class WelcomeScreen: UIViewController {
         super.viewDidLoad()
         
         let nc = NotificationCenter.default
-        nc.addObserver(forName:Notification.Popmetrics.SignIn, object:nil, queue:nil, using:catchNotification)
+        nc.addObserver(forName:Notification.Popmetrics.SignIn, object:nil, queue:nil, using:catchNotificationSignIn)
  
         addShadowToView(blueButton)
 
@@ -42,18 +44,37 @@ class WelcomeScreen: UIViewController {
         
     }
     
-    internal func addShadowToView(_ toView: UIView) {
-        toView.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor
-        toView.layer.shadowOpacity = 0.3;
-        toView.layer.shadowRadius = 2
-        toView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+    override func setupOfflineBanner() {
+        if offlineBanner == nil {
+            offlineBanner = OfflineBanner()
+            self.view.addSubview(offlineBanner)
+            
+            offlineBanner.translatesAutoresizingMaskIntoConstraints = false
+            offlineBanner.trailingAnchor.constraint(equalTo: (self.view.trailingAnchor), constant: 0).isActive = true
+            offlineBanner.leadingAnchor.constraint(equalTo: (self.view.leadingAnchor), constant: 0).isActive = true
+            offlineBanner.heightAnchor.constraint(equalToConstant: 45).isActive = true
+            offlineBanner.topAnchor.constraint(equalTo: (self.view.safeAreaLayoutGuide.topAnchor), constant: 44).isActive = true
+            
+            offlineBanner.isHidden = ReachabilityManager.shared.isNetworkAvailable
+        }
     }
     
     @IBAction func handlerSpoken(_ sender: UIButton) {
+        
+        if !ReachabilityManager.shared.isNetworkAvailable {
+            presentErrorNetwork()
+            return
+        }
+        
         self.performSegue(withIdentifier: "signInSegue", sender: self)
     }
     
     @IBAction func handlerDidPressNewButton(_ sender: UIButton) {
+        if !ReachabilityManager.shared.isNetworkAvailable {
+            presentErrorNetwork()
+            return
+        }
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.openURLInside(self, url: Config.appWebAimeeLink)
     }
@@ -62,17 +83,19 @@ class WelcomeScreen: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.destination is LoginViewController
-        {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is LoginViewController {
             let vc = segue.destination as? LoginViewController
             vc?.phoneNumber = UserStore.getInstance().phoneNumber
             vc?.configure()
         }
     }
     
-    func catchNotification(notification:Notification) -> Void {
+    func catchNotificationSignIn(notification:Notification) -> Void {
+        if !ReachabilityManager.shared.isNetworkAvailable {
+            presentErrorNetwork()
+            return
+        }
         self.performSegue(withIdentifier: "signInSegue", sender: self)        
     }
     
@@ -92,6 +115,10 @@ extension WelcomeScreen {
     }
 }
 
+extension WelcomeScreen: BannerProtocol {
+    
+}
+
 //MARK : - Delegate Methods, implement if you need to know when the animations have started and ended
 extension WelcomeScreen: LDSplashDelegate {
     func didBeginAnimatingWithDuration(_ duration: CGFloat) {
@@ -103,7 +130,6 @@ extension WelcomeScreen: LDSplashDelegate {
         indicatorView?.removeFromSuperview()
     }
 }
-
 
 extension WelcomeScreen {
     private func safariViewControllerDidFinish(_ controller: SFSafariViewController) {

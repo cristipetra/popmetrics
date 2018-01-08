@@ -35,8 +35,6 @@ class BaseViewController: UIViewController {
         nc.addObserver(forName:Notification.Popmetrics.ApiResponseUnsuccessfull, object:nil, queue:nil, using:catchNotification)
         
         nc.addObserver(forName:Notification.Popmetrics.RemoteMessage, object:nil, queue:nil, using:catchNotification)
-        
-        
     }
     
     func setupOfflineBanner() {
@@ -102,9 +100,9 @@ class BaseViewController: UIViewController {
     
     internal func addShadowToView(_ toView: UIView) {
         toView.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor
-        toView.layer.shadowOpacity = 0.8;
+        toView.layer.shadowOpacity = 0.3;
         toView.layer.shadowRadius = 2
-        toView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        toView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
     }
     
     func catchNotification(notification:Notification) -> Void {
