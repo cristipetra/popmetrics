@@ -23,6 +23,7 @@ class SettingsGAViewController: UITableViewController {
 
         setupNavigationBar()
         tableView.allowsSelection = false
+        tableView.separatorColor = self.tableView.backgroundColor
         
     }
     
