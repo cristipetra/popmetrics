@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="PopTipCard" selectionStyle="default" indentationWidth="10" id="1rc-wY-zCx" userLabel="PopTip Card" customClass="PopTipCard" customModule="ipopmetrics" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="566"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1rc-wY-zCx" id="7iT-gr-vW4">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="565.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IvI-aY-DR3" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
+                        <rect key="frame" x="10" y="0.0" width="300" height="29"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="29" id="bUr-xA-Td9"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3RH-Bc-RS7">
+                        <rect key="frame" x="10" y="29" width="300" height="499.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X67-Lz-yJT">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
+                                <color key="backgroundColor" name="venice_winter"/>
+                                <color key="tintColor" name="venice_winter"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Pis-D4-8mO"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LaH-4L-8EL">
+                                <rect key="frame" x="15" y="180" width="270" height="104.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="140" id="pbQ-ty-gRN"/>
+                                </constraints>
+                                <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="8" bottom="8" trailing="8"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="This is an article for you to read sad sad ">
+                                        <attributes>
+                                            <color key="NSColor" name="rock_bottom"/>
+                                            <font key="NSFont" size="34" name="OpenSans-Extrabold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.75" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter is a key access point to increase your social following." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXo-qI-DSz">
+                                <rect key="frame" x="15" y="289.5" width="273" height="41"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" name="larry_david"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lax-7X-X4d" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="405.5" width="300" height="94"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="94" id="dDi-gr-lxm"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="aXo-qI-DSz" secondAttribute="trailing" constant="4" id="0A1-TN-hpP"/>
+                            <constraint firstItem="LaH-4L-8EL" firstAttribute="leading" secondItem="3RH-Bc-RS7" secondAttribute="leading" constant="15" id="AkB-Wk-4mC"/>
+                            <constraint firstItem="X67-Lz-yJT" firstAttribute="top" secondItem="3RH-Bc-RS7" secondAttribute="top" id="CTL-ce-8bU"/>
+                            <constraint firstItem="X67-Lz-yJT" firstAttribute="leading" secondItem="3RH-Bc-RS7" secondAttribute="leading" id="CV7-W0-ato"/>
+                            <constraint firstItem="lax-7X-X4d" firstAttribute="leading" secondItem="3RH-Bc-RS7" secondAttribute="leading" id="E6H-oj-Tnl"/>
+                            <constraint firstItem="aXo-qI-DSz" firstAttribute="top" secondItem="LaH-4L-8EL" secondAttribute="bottom" constant="5" id="G3Q-c9-tvb"/>
+                            <constraint firstAttribute="trailing" secondItem="lax-7X-X4d" secondAttribute="trailing" id="J90-vS-CX9"/>
+                            <constraint firstAttribute="height" constant="499.5" id="LF6-TK-nbx"/>
+                            <constraint firstAttribute="trailing" secondItem="LaH-4L-8EL" secondAttribute="trailing" constant="15" id="SdK-Ga-IUN"/>
+                            <constraint firstItem="LaH-4L-8EL" firstAttribute="top" secondItem="X67-Lz-yJT" secondAttribute="bottom" constant="30" id="cB7-mN-JYE"/>
+                            <constraint firstItem="aXo-qI-DSz" firstAttribute="leading" secondItem="3RH-Bc-RS7" secondAttribute="leading" constant="15" id="e5s-sb-IlC"/>
+                            <constraint firstAttribute="trailing" secondItem="X67-Lz-yJT" secondAttribute="trailing" id="uTn-3F-BTL"/>
+                            <constraint firstAttribute="bottom" secondItem="lax-7X-X4d" secondAttribute="bottom" id="wwl-AF-w40"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5S2-Tn-9y8">
+                        <rect key="frame" x="33" y="528.5" width="2" height="37"/>
+                        <color key="backgroundColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="2" id="2uB-wW-kKt"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="IvI-aY-DR3" firstAttribute="leading" secondItem="7iT-gr-vW4" secondAttribute="leading" constant="10" id="KA4-dT-NHQ"/>
+                    <constraint firstItem="5S2-Tn-9y8" firstAttribute="top" secondItem="3RH-Bc-RS7" secondAttribute="bottom" id="MQm-mr-1rS"/>
+                    <constraint firstItem="5S2-Tn-9y8" firstAttribute="leading" secondItem="7iT-gr-vW4" secondAttribute="leading" constant="32.5" id="VjL-Io-yzc"/>
+                    <constraint firstAttribute="trailing" secondItem="3RH-Bc-RS7" secondAttribute="trailing" constant="10" id="ajJ-lm-AZB"/>
+                    <constraint firstAttribute="bottom" secondItem="5S2-Tn-9y8" secondAttribute="bottom" id="cJD-Ph-adW"/>
+                    <constraint firstItem="3RH-Bc-RS7" firstAttribute="top" secondItem="IvI-aY-DR3" secondAttribute="bottom" id="jl9-KR-2JY"/>
+                    <constraint firstAttribute="bottom" secondItem="3RH-Bc-RS7" secondAttribute="bottom" constant="37" id="jyi-wV-Ses"/>
+                    <constraint firstItem="IvI-aY-DR3" firstAttribute="top" secondItem="7iT-gr-vW4" secondAttribute="top" id="kVM-OI-dSU"/>
+                    <constraint firstItem="3RH-Bc-RS7" firstAttribute="leading" secondItem="7iT-gr-vW4" secondAttribute="leading" constant="10" id="nHT-nt-Zib"/>
+                    <constraint firstAttribute="trailing" secondItem="IvI-aY-DR3" secondAttribute="trailing" constant="10" id="vjG-eK-33f"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="backgroundImageView" destination="X67-Lz-yJT" id="w96-Ab-Jjh"/>
+                <outlet property="connectionLine" destination="5S2-Tn-9y8" id="cco-tT-ZTO"/>
+                <outlet property="containerView" destination="3RH-Bc-RS7" id="nef-iV-KdX"/>
+                <outlet property="footerVIew" destination="lax-7X-X4d" id="bsB-h9-i2E"/>
+                <outlet property="messageLabel" destination="aXo-qI-DSz" id="xIV-N8-ebV"/>
+                <outlet property="titleLabel" destination="LaH-4L-8EL" id="jap-kk-2sz"/>
+                <outlet property="toolBarView" destination="IvI-aY-DR3" id="c1E-yQ-Ys4"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="51"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="larry_david">
+            <color red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="rock_bottom">
+            <color red="0.25098039215686274" green="0.23529411764705882" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="venice_winter">
+            <color red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

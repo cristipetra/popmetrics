@@ -152,14 +152,18 @@ class BreakdownViewCell: UITableViewCell {
     
         let maximumValue = statisticMetric.value + statisticMetric.delta
         
-        let deltaPercentage = (metricBreakdown.deltaValue! * 100) / maximumValue
+        var deltaPercentage = 0 as Float
+        var percentageCurrentValue = 0 as Float
+        var percentageDelta = 0 as Float
+        
+        if maximumValue > 0 {
+            deltaPercentage = (metricBreakdown.deltaValue! * 100) / maximumValue
+            percentageCurrentValue = (metricBreakdown.currentValue!) / maximumValue
+            percentageDelta = (metricBreakdown.currentValue! + metricBreakdown.deltaValue!) / maximumValue
+        }
         
         self.secondValueLabel.text = " +\(Int(deltaPercentage))%"
     
-        let percentageCurrentValue = (metricBreakdown.currentValue!) / maximumValue
-        
-        var percentageDelta = ( metricBreakdown.currentValue! + metricBreakdown.deltaValue! ) / maximumValue
-        
         self.valueProgress.animateTo(progress: CGFloat(percentageCurrentValue))
         self.deltaProgress.animateTo(progress: CGFloat(percentageDelta))
         

@@ -75,7 +75,10 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
         self.infoLabel.text = statisticMetric.label
         self.firstValue.text = "\(Int(statisticMetric.value))"
         self.secondValue.text = "+\(Int(statisticMetric.delta))%"
-        let percentageDelta = (statisticMetric.delta * 100) / (statisticMetric.value + statisticMetric.delta)
+        var percentageDelta = 0 as Float
+        if statisticMetric.value + statisticMetric.delta > 0 {
+            percentageDelta = (statisticMetric.delta * 100) / (statisticMetric.value + statisticMetric.delta)
+        }
         self.secondValue.text = "+\(Int(percentageDelta))%"
         
         reloadGraph()

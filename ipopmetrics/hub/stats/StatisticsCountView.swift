@@ -32,7 +32,7 @@ class StatisticsCountView: UIView {
         for row in 0 ..< data.count  {
             let wrapperView = UIView(frame: CGRect(x: 0, y: wrapperViewY, width: UIScreen.main.bounds.width, height: 94))
             let messageLabel = UILabel(frame: CGRect(x: 13, y: labelY, width: messageLabelWidth, height: 20))
-            let valueLabel = UILabel(frame: CGRect(x: deltaLabelX - rightLabelsWidth - 30, y: labelY - 5, width: rightLabelsWidth, height: 30))
+            let valueLabel = UILabel(frame: CGRect(x: deltaLabelX - rightLabelsWidth - 20, y: labelY - 5, width: rightLabelsWidth, height: 30))
             let deltaLabel = UILabel(frame: CGRect(x: deltaLabelX - 20, y: labelY - 5, width: rightLabelsWidth, height: 30))
             valueLabel.textAlignment = .left
             deltaLabel.textAlignment = .left
@@ -48,8 +48,10 @@ class StatisticsCountView: UIView {
             deltaLabel.textColor = PopmetricsColor.visitSecondColor
             deltaLabel.textAlignment = .right
             let deltalabelText = "+\(Int(data[row].delta))"
-            
-            let deltaPercentage =  (data[row].delta * 100) / ( data[row].value + data[row].delta )
+            var deltaPercentage = 0 as Float
+            if data[row].value + data[row].delta > 0 {
+                deltaPercentage =  (data[row].delta * 100) / ( data[row].value + data[row].delta )
+            }
             
             deltaLabel.text = "\(Int(deltaPercentage))%"
             

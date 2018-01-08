@@ -1,5 +1,5 @@
 //
-//  RecommendedCell.swift
+//  PopTipCard.swift
 //  ipopmetrics
 //
 //  Created by Cristian Petra on 23/08/2017.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-@objc protocol RecommendeCellDelegate: class {
-    @objc func recommendedCellDidTapAction(_ feedCard: FeedCard)
-    @objc func cellDidTapMoreInfo(_ feedCard: FeedCard)
+@objc protocol PopTipCellDelegate: class {
+    @objc func popTipCellDidTapAction(_ feedCard: FeedCard)
+    @objc func popTipCellDidTapMoreInfo(_ feedCard: FeedCard)
 }
 
-class InsightCard: UITableViewCell {
+class PopTipCard: UITableViewCell {
     
     @IBOutlet weak var toolBarView: ToolbarViewCell!
     @IBOutlet weak var containerView: UIView!
@@ -24,7 +24,7 @@ class InsightCard: UITableViewCell {
     @IBOutlet weak var footerVIew: FooterView!
     
     private var feedCard: FeedCard!
-    weak var delegate: RecommendeCellDelegate?
+    weak var delegate: PopTipCellDelegate?
     
     lazy var shadowLayer : UIView  = {
         let view = UIView()
@@ -41,8 +41,10 @@ class InsightCard: UITableViewCell {
         setUpShadowLayer()
         
         footerVIew.actionButton.addTarget(self, action: #selector(handlerActionButton), for: .touchUpInside)
-        footerVIew.leftButton.addTarget(self, action: #selector(handlerMoreInfo), for: .touchUpInside)
-    
+        
+        footerVIew.leftButton.isHidden = true
+//        footerVIew.leftButton.addTarget(self, action: #selector(handlerMoreInfo), for: .touchUpInside)
+        
     }
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
@@ -60,16 +62,18 @@ class InsightCard: UITableViewCell {
                 backgroundImageView.af_setImage(withURL: url)
             }
         }
+        
+        //footerVIew.displayOnlyActionButton()
     }
     
     @objc func handlerActionButton() {
         guard let _ = feedCard else { return }
-        delegate?.recommendedCellDidTapAction(feedCard)
+        delegate?.popTipCellDidTapAction(feedCard)
     }
     
     @objc func handlerMoreInfo() {
         guard let _ = feedCard else { return }
-        delegate?.cellDidTapMoreInfo(feedCard)
+        delegate?.popTipCellDidTapMoreInfo(feedCard)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -112,3 +116,16 @@ class InsightCard: UITableViewCell {
     }
     
 }
+
+extension UILabel {
+    func setTextWhileKeepingAttributes(string: String) {
+        if let newAttributedText = self.attributedText {
+            let mutableAttributedText = newAttributedText.mutableCopy()
+            
+            (mutableAttributedText as AnyObject).mutableString.setString(string)
+            
+            self.attributedText = mutableAttributedText as? NSAttributedString
+        }
+    }
+}
+
