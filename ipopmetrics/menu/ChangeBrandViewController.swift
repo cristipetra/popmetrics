@@ -28,7 +28,13 @@ class ChangeBrandViewController: BaseTableViewController {
         
         registerCell()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
+        if !ReachabilityManager.shared.isNetworkAvailable {
+            presentErrorNetwork()
+            return
+        }
+        
         self.showProgressIndicator()
         self.fetchBrands()
     }
@@ -117,6 +123,10 @@ class ChangeBrandViewController: BaseTableViewController {
         selectedBrand = self.myBrands[indexPath.row]
         cell.setupSelectedCell()
     }
+    
+}
+
+extension ChangeBrandViewController: BannerProtocol {
     
 }
 
