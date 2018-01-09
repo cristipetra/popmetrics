@@ -112,6 +112,9 @@ class MenuViewController: ElasticModalViewController {
     private func setup() {
         changeBrandBtn.contentHorizontalAlignment = .left
     }
+    @IBAction func labelButtonClosePressed(_ sender: UIButton) {
+        self.dismissAnimated(self.view)
+    }
     
     @IBAction func closeButtonPressed(_ sender: UIButton) {
         self.dismissAnimated(self.view)
