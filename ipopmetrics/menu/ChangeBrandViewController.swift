@@ -57,10 +57,11 @@ class ChangeBrandViewController: BaseTableViewController {
     
     func setUpNavigationBar() {
         
-        let text = UIBarButtonItem(title: "Change Brand", style: .plain, target: self, action: nil)
+        let text = UIBarButtonItem(title: "Change Brand", style: .plain, target: self, action: #selector(handlerClickBack))
         text.tintColor = PopmetricsColor.darkGrey
         let titleFont = UIFont(name: FontBook.extraBold, size: 18)
         text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
+        text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .selected)
         
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = false

@@ -358,10 +358,11 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
     }
     
     internal func setUpNavigationBar() {
-        let text = UIBarButtonItem(title: "Calendar", style: .plain, target: self, action: nil)
+        let text = UIBarButtonItem(title: "Calendar", style: .plain, target: self, action: #selector(handlerClickMenu))
         text.tintColor = UIColor(red: 67/255, green: 78/255, blue: 84/255, alpha: 1.0)
         let titleFont = UIFont(name: FontBook.regular, size: 18)
         text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
+        text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .selected)
         
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = false
