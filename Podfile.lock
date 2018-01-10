@@ -6,12 +6,12 @@ PODS:
   - AlamofireObjectMapper (5.0.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.0)
-  - Bolts (1.8.4):
-    - Bolts/AppLinks (= 1.8.4)
-    - Bolts/Tasks (= 1.8.4)
-  - Bolts/AppLinks (1.8.4):
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
-  - Bolts/Tasks (1.8.4)
+  - Bolts/Tasks (1.9.0)
   - BubbleTransition (2.0.2)
   - Crashlytics (3.9.3):
     - Fabric (~> 1.7.2)
@@ -95,7 +95,7 @@ PODS:
   - ScrollableGraphView (4.0.4)
   - SnapKit (4.0.0)
   - STPopup (1.8.3)
-  - SwiftRichString (1.0.1)
+  - SwiftRichString (1.1.0)
   - SwiftyJSON (4.0.0)
   - TwitterCore (2.8.0):
     - Fabric
@@ -182,7 +182,7 @@ SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
   AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
-  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   BubbleTransition: 7d98ed7d56f0940e83f350a98103ad473491c769
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   DGElasticPullToRefresh: 28f11a6026302a90f8ffebbc6e24748e584dddd3
@@ -222,7 +222,7 @@ SPEC CHECKSUMS:
   ScrollableGraphView: abac54d3493a5a198ade4baf4879967183af8a2c
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   STPopup: da1167250a01584af7bcccb898653185f223ec46
-  SwiftRichString: 2111627a29af277094a9e5d4d1bf6bfe0b8212ac
+  SwiftRichString: 49c75726140c7f780fad1d067f804491d51188fa
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   TwitterCore: e959987be23c767004d29eb7fab8d85d8585a2e5
   TwitterKit: 3b6044a7320340326a4098f3e37aa1dbaeb94942

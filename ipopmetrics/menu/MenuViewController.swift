@@ -11,6 +11,7 @@ import ElasticTransition
 import SafariServices
 import Haptica
 import MessageUI
+import Reachability
 
 class MenuViewController: ElasticModalViewController {
     
@@ -27,6 +28,7 @@ class MenuViewController: ElasticModalViewController {
         }
     }
     @IBOutlet weak var logoImage: UIImageView!
+    internal var offlineBanner: OfflineBanner!
     
     var transition = ElasticTransition()
     
@@ -38,6 +40,7 @@ class MenuViewController: ElasticModalViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupOfflineBanner()
         buildLabel.text = UIApplication.versionBuild()
         
         self.brandNameLabel.text = UserStore.currentBrand?.name
@@ -54,6 +57,21 @@ class MenuViewController: ElasticModalViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         secretTaps = 0
+    }
+    
+    func setupOfflineBanner() {
+        if offlineBanner == nil {
+            offlineBanner = OfflineBanner()
+            self.view.addSubview(offlineBanner)
+            
+            offlineBanner.translatesAutoresizingMaskIntoConstraints = false
+            offlineBanner.trailingAnchor.constraint(equalTo: (self.view.trailingAnchor), constant: 0).isActive = true
+            offlineBanner.leadingAnchor.constraint(equalTo: (self.view.leadingAnchor), constant: 0).isActive = true
+            offlineBanner.heightAnchor.constraint(equalToConstant: 45).isActive = true
+            offlineBanner.topAnchor.constraint(equalTo: (self.view.safeAreaLayoutGuide.topAnchor), constant: 44).isActive = true
+            
+            offlineBanner.isHidden = ReachabilityManager.shared.isNetworkAvailable
+        }
     }
     
     @objc func imageTapped(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -93,6 +111,9 @@ class MenuViewController: ElasticModalViewController {
     
     private func setup() {
         changeBrandBtn.contentHorizontalAlignment = .left
+    }
+    @IBAction func labelButtonClosePressed(_ sender: UIButton) {
+        self.dismissAnimated(self.view)
     }
     
     @IBAction func closeButtonPressed(_ sender: UIButton) {
@@ -203,5 +224,21 @@ extension MenuViewController: BrandProtocol {
         brandNameLabel.text = brand.name!.uppercased()
         UserStore.currentBrand = brand
         SyncService.getInstance().syncAll(silent: false)
+    }
+}
+
+// Mark: notifications handler
+extension MenuViewController: NetworkStatusListener {
+    
+    func networkStatusDidChange(status: Reachability.Connection) {
+        
+        switch status {
+        case .none:
+            offlineBanner.isHidden = false
+        case .wifi:
+            offlineBanner.isHidden = true
+        case .cellular:
+            offlineBanner.isHidden = true
+        }
     }
 }

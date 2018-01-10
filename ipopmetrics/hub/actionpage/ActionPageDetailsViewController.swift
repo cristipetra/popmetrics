@@ -149,10 +149,11 @@ class ActionPageDetailsViewController: BaseViewController {
         let leftSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         leftSpace.width = 5
         
-        let titleButton = UIBarButtonItem(title: titleWindow, style: .plain, target: self, action: nil)
+        let titleButton = UIBarButtonItem(title: titleWindow, style: .plain, target: self, action: #selector(handlerClickBack))
         titleButton.tintColor = PopmetricsColor.darkGrey
         let titleFont = UIFont(name: FontBook.extraBold, size: 18)
         titleButton.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
+        titleButton.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .selected)
         
         let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "calendarIconLeftArrow"), style: .plain, target: self, action: #selector(handlerClickBack))
         leftButtonItem.tintColor = PopmetricsColor.darkGrey

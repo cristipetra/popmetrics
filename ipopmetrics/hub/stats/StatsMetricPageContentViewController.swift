@@ -65,10 +65,11 @@ class StatsMetricPageContentViewController: UIViewController, UITableViewDelegat
     private func setUpNavigationBar() {
         let titleWindow = "WEBSITE REPORT"
         
-        let titleButton = UIBarButtonItem(title: titleWindow, style: .plain, target: self, action: nil)
+        let titleButton = UIBarButtonItem(title: titleWindow, style: .plain, target: self, action: #selector(handlerClickBack))
         titleButton.tintColor = PopmetricsColor.darkGrey
         let titleFont = UIFont(name: FontBook.extraBold, size: 18)
         titleButton.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
+        titleButton.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .highlighted)
         
         let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "calendarIconLeftArrow"), style: .plain, target: self, action: #selector(handlerClickBack))
         leftButtonItem.tintColor = PopmetricsColor.darkGrey

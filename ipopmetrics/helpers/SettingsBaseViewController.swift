@@ -82,10 +82,11 @@ class SettingsBaseViewController: UIViewController {
     }
     
     func setupNavigationWithBackButton() {
-        titleButton = UIBarButtonItem(title: titleWindow, style: .plain, target: self, action: nil)
+        titleButton = UIBarButtonItem(title: titleWindow, style: .plain, target: self, action: #selector(handlerClickBack))
         titleButton.tintColor = PopmetricsColor.darkGrey
         let titleFont = UIFont(name: FontBook.extraBold, size: 18)
         titleButton.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
+        titleButton.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .selected)
         
         let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "calendarIconLeftArrow"), style: .plain, target: self, action: #selector(handlerClickBack))
         self.navigationItem.leftBarButtonItems = [leftButtonItem, titleButton]
