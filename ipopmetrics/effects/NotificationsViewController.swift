@@ -20,14 +20,6 @@ class NotificationsViewController: UIViewController {
     @IBOutlet weak var thirdLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        firstLabel.adjustLabelSpacing(spacing: 4, lineHeight: 15, letterSpacing: 0.4)
-        secondLabel.adjustLabelSpacing(spacing: 4, lineHeight: 15, letterSpacing: 0.4)
-        thirdLabel.adjustLabelSpacing(spacing: 4, lineHeight: 15, letterSpacing: 0.3)
-        firstLabel.textAlignment = .center
-        secondLabel.textAlignment = .center
-        thirdLabel.textAlignment = .center
-        confirmButton.backgroundColor = PopmetricsColor.blueURLColor
-        confirmButton.setShadow()
         
         isHeroEnabled = true
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
