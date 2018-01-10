@@ -87,7 +87,6 @@ class WelcomeScreen: BaseViewController {
         if segue.destination is LoginViewController {
             let vc = segue.destination as? LoginViewController
             vc?.phoneNumber = UserStore.getInstance().phoneNumber
-            vc?.configure()
         }
     }
     

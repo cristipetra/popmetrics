@@ -11,13 +11,13 @@ import Crashlytics
 import EZAlertController
 import SafariServices
 import Hero
-import SwiftyJSON
 import ObjectMapper
 
 class CodeViewController: UIViewController {
     
     fileprivate let progressHUD = ProgressHUD(text: "Loading...")
     var phoneNo: String?
+    fileprivate var editableCodeMask = codeMask
     
     let digitCodeView = DigitCodeView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height));
 

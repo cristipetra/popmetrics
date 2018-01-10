@@ -8,6 +8,8 @@
 
 import UIKit
 
+let codeMask = "######"
+
 @IBDesignable
 class DigitCodeView: UIView {
     
@@ -28,11 +30,28 @@ class DigitCodeView: UIView {
         return sendCodeButton
     }()
     
+    lazy var logoView : UIImageView = {
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "newLogo"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    lazy var instrLabel : UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Enter the 6-digit code."
+        label.font = UIFont(name: FontBook.regular, size: 15)
+        label.textColor = .lightGray
+        return label
+    }()
+    
     lazy var resendCodeBtn : UIButton = {
         let resendCodeButton = UIButton()
         resendCodeButton.translatesAutoresizingMaskIntoConstraints = false
-        resendCodeButton.setTitle("Resend code", for: .normal)
-        
+        resendCodeButton.setAttributedTitle("Resend code".attributed.font(UIFont(name: FontBook.semibold, size: 12)!)
+            .underline().color(PopmetricsColor.buttonTitle),
+                                            for: .normal)
         return resendCodeButton
     }()
     
