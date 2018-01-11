@@ -162,8 +162,12 @@ class CodeViewController: UIViewController {
     }
     
     internal func showVideoScreen() {
-        let onboardingVC = OnboardingViewController()
-        self.present(onboardingVC, animated: true, completion: nil)
+        let navigation = UINavigationController()
+        
+        let verifySocialVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "loginSocial") as! LoginSocialViewController
+        navigation.pushViewController(verifySocialVC, animated: false)
+        
+        self.present(navigation, animated: true, completion: nil)
     }
     
     internal func showPushNotificationsScreen() {
@@ -219,7 +223,7 @@ extension CodeViewController: UITextFieldDelegate {
         }
         updateDigitFieldNumber(textField: textField, mask: editableCodeMask)
         updateCursorPosition(textField: textField)
-        digitCodeView.sendCodeBtn.isEnabled = extractCode(text: editableCodeMask).count == 6
+        digitCodeView.sendCodeBtn.isEnabled = extractCode(text: editableCodeMask).count >= 3
         return false
     }
 }

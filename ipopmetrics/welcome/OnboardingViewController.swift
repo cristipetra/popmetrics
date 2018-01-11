@@ -45,7 +45,7 @@ class OnboardingViewController: UIViewController {
         
         let navigation = UINavigationController()
         
-        let verifySocialVC = AppStoryboard.Signin.instance.instantiateViewController(withIdentifier: "loginSocial") as! LoginSocialViewController
+        let verifySocialVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "loginSocial") as! LoginSocialViewController
         navigation.pushViewController(verifySocialVC, animated: false)
         
         self.present(navigation, animated: true, completion: nil)

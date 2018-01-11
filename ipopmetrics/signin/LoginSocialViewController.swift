@@ -25,6 +25,7 @@ class LoginSocialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        progressIndexLbl.isHidden = true
         twitterView.setButton(title: .twitter)
         facebookView.setButton(title: .facebook)
         linkedInView.setButton(title: .linkedIn)
@@ -100,13 +101,9 @@ class LoginSocialViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = backButton
     }
     
-    @IBAction func maybeLaterHandler(_ sender: UIButton) {
-        print("maybe later")
-        
+    @IBAction func handlerMaybeLater(_ sender: UIButton) {
         let finalOnboardingVC = OnboardingFinalView()
-        
         self.present(finalOnboardingVC, animated: true)
-        
     }
     
     @objc func dismissView() {
