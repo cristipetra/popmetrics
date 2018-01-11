@@ -61,6 +61,7 @@ open class SocialMediaLoginButtonsView: UIView {
         addSeparator()
         addButton()
         self.layer.cornerRadius = 4
+        
     }
     
     private func addImageView() {
@@ -118,6 +119,16 @@ open class SocialMediaLoginButtonsView: UIView {
             socialImageView.tintColor = UIColor.white
             separatorView.backgroundColor = UIColor(red: 143/255, green: 205/255, blue: 248/255, alpha: 1)
             self.backgroundColor = UIColor(red: 100/255, green: 182/255, blue: 239/255, alpha: 1)
+        }
+    }
+    
+    internal var isEnabledButton: Bool {
+        set {
+            socialButton.isEnabled = newValue
+            self.alpha = newValue ? 1 : 0.5
+        }
+        get {
+            return socialButton.isEnabled
         }
     }
     

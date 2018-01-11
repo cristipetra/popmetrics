@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import FacebookLogin
+import TwitterKit
+import ObjectMapper
 
-
-class LoginSocialViewController: UIViewController {
+class LoginSocialViewController: BaseViewController {
     
     @IBOutlet weak var twitterView: SocialMediaLoginButtonsView!
     @IBOutlet weak var facebookView: SocialMediaLoginButtonsView!
@@ -22,6 +24,9 @@ class LoginSocialViewController: UIViewController {
     @IBOutlet weak var constraintTopLinkedin: NSLayoutConstraint!
     
     @IBOutlet weak var constraintTopFacebook: NSLayoutConstraint!
+    
+    var socialActionHandler = SocialActionHandler()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,23 +62,23 @@ class LoginSocialViewController: UIViewController {
     }
     
     private func addButtonAction() {
-        
         twitterView.socialButton.addTarget(self, action: #selector(loginTwitterHandler), for: .touchUpInside)
         facebookView.socialButton.addTarget(self, action: #selector(loginFacebookHandler), for: .touchUpInside)
         linkedInView.socialButton.addTarget(self, action: #selector(loginLinkedInHandler), for: .touchUpInside)
-        
     }
     
     @objc func loginTwitterHandler() {
-        print("login twitter")
+        socialActionHandler.connectTwitter(viewController: self, button: twitterView)
     }
     
     @objc func loginFacebookHandler() {
         print("login facebook")
+        socialActionHandler.connectFacebook(viewController: self, button: facebookView)
     }
     
     @objc func loginLinkedInHandler() {
         print("login linkedin")
+        
     }
     
     func setTitle(title: String) {
