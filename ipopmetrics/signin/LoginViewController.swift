@@ -211,11 +211,9 @@ extension LoginViewController {
         }
     }
     
-    func moveButton(moveValue :CGFloat) {
-        self.phoneView.buttonBottomConstraint?.isActive = false
-        
+    func moveView(value :CGFloat) {
         UIView.animate(withDuration: 0.3) {
-            self.phoneView.changeYPosItems(yPos: -140)
+            self.phoneView.changeYPosItems(yPos: value)
             self.view.layoutIfNeeded()
         }
     }
@@ -232,14 +230,8 @@ extension LoginViewController: UITextFieldDelegate {
             phoneView.numberTextField.text = "+1"
         }
  
-        if UIScreen.main.bounds.height > 480 {
-            if UIScreen.main.bounds.height == 812 {
-                moveButton(moveValue: -340)
-            } else {
-                moveButton(moveValue: -340)
-            }
-        }
- 
+        moveView(value: -140)
+        
         updateCursorPosition(textField: textField)
     }
     
@@ -282,9 +274,7 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if UIScreen.main.bounds.height > 480 {
-            moveButton(moveValue: -136)
-        }
+            moveView(value: -70)
     }
     
 }

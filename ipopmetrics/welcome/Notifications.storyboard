@@ -87,7 +87,7 @@
                                     <action selector="cancelButtonPressed:" destination="pc6-cY-x62" eventType="touchUpInside" id="7ka-TG-Ar7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BtW-ol-s7w">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BtW-ol-s7w">
                                 <rect key="frame" x="27" y="40" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="0ax-6x-rHN"/>

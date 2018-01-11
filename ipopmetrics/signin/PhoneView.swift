@@ -103,7 +103,7 @@ class PhoneView: UIView {
             setSendCodeButton(yAnchor: 120)
             setLogoView(yAnchor: 20)
         } else {
-            setNumberTextField(yAnchor: -120)
+            setNumberTextField(yAnchor: -70)
             setMessageLbl(yAnchor: 0)
             setSendCodeButton(yAnchor: 60)
             setLogoView(yAnchor: 10)

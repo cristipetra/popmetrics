@@ -124,7 +124,7 @@ class DigitCodeView: UIView {
         
         // Send code button
         self.addSubview(sendCodeBtn)
-        if UIScreen.main.bounds.height > 568 {
+        if UIScreen.main.bounds.height > 667 {
             setSendCodeButton(topSpace: 120)
         } else  {
             setSendCodeButton(topSpace: 60)
