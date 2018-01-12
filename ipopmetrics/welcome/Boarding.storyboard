@@ -148,7 +148,7 @@
         <!--Welcome Screen-->
         <scene sceneID="DNR-j6-5cu">
             <objects>
-                <viewController id="hIx-Ax-wyr" customClass="WelcomeScreen" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcomeScreen" id="hIx-Ax-wyr" customClass="WelcomeScreen" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EsR-ks-pK0"/>
                         <viewControllerLayoutGuide type="bottom" id="YAV-cn-XeS"/>
