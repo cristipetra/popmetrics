@@ -104,7 +104,7 @@ class WelcomeScreen: BaseViewController {
 extension WelcomeScreen {
     func logoSplash() {
         let logoSplashIcon = LDSplashIcon(initWithImage: UIImage(named: "logo")!, animationType: .bounce)
-        let iconColor = UIColor.yellowBackgroundColor()
+        let iconColor = UIColor.white
         self.splashView = LDSplashView(initWithSplashIcon: logoSplashIcon!, backgroundColor: iconColor, animationType: .none)
         splashView!.delegate = self
         splashView!.animationDuration = 3

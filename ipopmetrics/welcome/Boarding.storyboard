@@ -166,10 +166,10 @@
                                     </constraint>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVM-q6-zEn" customClass="ActiveLabel" customModule="ActiveLabel">
-                                <rect key="frame" x="32" y="300.5" width="311" height="66"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Popmetrics. The simpler way to manage and improve your brand online" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVM-q6-zEn" customClass="ActiveLabel" customModule="ActiveLabel">
+                                <rect key="frame" x="32" y="280.5" width="311" height="106"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="66" id="jnR-lE-Xix">
+                                    <constraint firstAttribute="height" constant="106" id="jnR-lE-Xix">
                                         <variation key="heightClass=compact-widthClass=compact" constant="82"/>
                                     </constraint>
                                 </constraints>
