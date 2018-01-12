@@ -56,5 +56,6 @@ target 'ipopmetrics' do
   pod 'markymark'
   
   pod 'GTProgressBar'
+  pod 'LinkedinSwift'
   
 end
