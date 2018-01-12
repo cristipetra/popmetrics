@@ -14,7 +14,7 @@ import FacebookLogin
 
 class SocialActionHandler: NSObject {
     
-    func connectTwitter(viewController: BaseViewController?, button: SocialMediaLoginButtonsView?) {
+    func connectTwitter(viewController: BaseViewController?, completion: @escaping ()-> ()) {
         
         Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
             if (session != nil) {
@@ -42,14 +42,15 @@ class SocialActionHandler: NSObject {
                 ]
                 let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
                 viewController?.showBannerForNotification(pnotification)
-                button?.isEnabledButton = true
-                return
+                if error == nil {
+                    completion()
+                }
             }
         }
         
     }
     
-    func connectFacebook(viewController: UIViewController?, button: SocialMediaLoginButtonsView?) {
+    func connectFacebook(viewController: UIViewController?, completion: @escaping () -> ()) {
         let loginManager = LoginManager()
         loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: viewController) { (loginResult) in
             print("login result")
@@ -62,11 +63,16 @@ class SocialActionHandler: NSObject {
                 print("success \(accessToken.userId)  \(accessToken.authenticationToken) ")
                 let userId = accessToken.userId
                 let token = accessToken.authenticationToken
-                //self.facebookView.isEnabledButton = false
-                button?.isEnabledButton = false
+                
+                completion()
             }
         }
     }
     
+    func connectLinkedin() {
+        print("connect linkedin")
+
+    }
+ 
     
 }

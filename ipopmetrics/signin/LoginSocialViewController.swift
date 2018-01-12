@@ -68,17 +68,20 @@ class LoginSocialViewController: BaseViewController {
     }
     
     @objc func loginTwitterHandler() {
-        socialActionHandler.connectTwitter(viewController: self, button: twitterView)
+        socialActionHandler.connectTwitter(viewController: self) {
+            self.nextPage()
+        }
     }
     
     @objc func loginFacebookHandler() {
         print("login facebook")
-        socialActionHandler.connectFacebook(viewController: self, button: facebookView)
+        socialActionHandler.connectFacebook(viewController: self) {
+            self.nextPage()
+        }
     }
     
     @objc func loginLinkedInHandler() {
         print("login linkedin")
-        
     }
     
     func setTitle(title: String) {
@@ -107,6 +110,10 @@ class LoginSocialViewController: BaseViewController {
     }
     
     @IBAction func handlerMaybeLater(_ sender: UIButton) {
+        nextPage()
+    }
+    
+    private func nextPage() {
         let finalOnboardingVC = OnboardingFinalView()
         self.present(finalOnboardingVC, animated: true)
     }
