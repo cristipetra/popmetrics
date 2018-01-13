@@ -80,7 +80,7 @@ PODS:
     - NSDate-Escort (~> 1.5)
     - UIView+JMFrame
   - MotionAnimation (0.1.2)
-  - NotificationBannerSwift (1.5.3):
+  - NotificationBannerSwift (1.5.4):
     - MarqueeLabel/Swift
     - SnapKit (~> 4.0)
   - NSDate-Escort (1.8.2)
@@ -212,7 +212,7 @@ SPEC CHECKSUMS:
   MGSwipeTableCell: c3bc6e261e7bc06c112909fe3fb8205de286082c
   MJCalendar: a529b085b0b988ae7b493ce7c000946cc186bf0e
   MotionAnimation: 0257eb90f766f6d58c70524f956faf8d56c5e7bf
-  NotificationBannerSwift: 0a6f482ddbafb9555668e592245af0da7871178e
+  NotificationBannerSwift: 4f6666c8421dcf11be0812dd1093d932c15921af
   NSDate-Escort: c79db277a401c0ad219acd295ec17c7b4f61266f
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
