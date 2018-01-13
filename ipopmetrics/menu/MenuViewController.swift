@@ -139,6 +139,7 @@ class MenuViewController: ElasticModalViewController {
     }
     
     @IBAction func logoutButtonPressed(_ sender: UIButton) {
+        FeedStore.getInstance().wipe()
         UserStore.getInstance().clearCredentials()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setInitialViewController()
