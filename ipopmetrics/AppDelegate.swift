@@ -18,7 +18,6 @@ import ObjectMapper
 import SafariServices
 //import STPopup
 
-
 public extension Notification {
     public class Popmetrics {
         public static let ApiClientNeedsUpdating = Notification.Name("Notification.Popmetrics.ApiClientNeedsUpdating")
@@ -101,7 +100,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        
         let fb = FBSDKApplicationDelegate.sharedInstance()
         if fb!.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation) {
             return true
@@ -154,7 +152,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func getInitialViewController() -> UIViewController {
         if !isLoggedIn() {
-            return SplashScreen()
+            return AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier:
+                "welcomeScreen")
         }
         return AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC)
 

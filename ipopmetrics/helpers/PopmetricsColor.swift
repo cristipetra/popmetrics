@@ -88,4 +88,7 @@ class PopmetricsColor {
     static let secondGray = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1)
     
     static let borderButton = UIColor(red: 64/255, green: 60/255, blue: 59/255, alpha: 1)
+    
+    static let phoneNumberField = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1)
+    static let buttonTitle = #colorLiteral(red: 0.262745098, green: 0.2980392157, blue: 0.3294117647, alpha: 1)
 }
