@@ -197,6 +197,7 @@
 		1178D6901E1E5AD9005B96C3 /* ipopmetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D68F1E1E5AD9005B96C3 /* ipopmetricsTests.swift */; };
 		1178D69B1E1E5AD9005B96C3 /* ipopmetricsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */; };
 		1183A8661FC5064B00ED8EF6 /* InsightPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1183A8651FC5064B00ED8EF6 /* InsightPage.xib */; };
+		1195EEF42009EDC800F45798 /* apple-app-site-association-unsigned in Resources */ = {isa = PBXBuildFile; fileRef = 1195EEF32009EDC800F45798 /* apple-app-site-association-unsigned */; };
 		11A675A91FC8E1A900EE0A15 /* EmptyStateCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A675A81FC8E1A900EE0A15 /* EmptyStateCardCell.swift */; };
 		11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAA5E31ECC8BFA0099B50E /* Feed.swift */; };
 		11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */; };
@@ -438,6 +439,7 @@
 		1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ipopmetricsUITests.swift; sourceTree = "<group>"; };
 		1178D69C1E1E5AD9005B96C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1183A8651FC5064B00ED8EF6 /* InsightPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InsightPage.xib; sourceTree = "<group>"; };
+		1195EEF32009EDC800F45798 /* apple-app-site-association-unsigned */ = {isa = PBXFileReference; lastKnownFileType = text; path = "apple-app-site-association-unsigned"; sourceTree = "<group>"; };
 		11A675A81FC8E1A900EE0A15 /* EmptyStateCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateCardCell.swift; sourceTree = "<group>"; };
 		11AAA5E31ECC8BFA0099B50E /* Feed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Feed.swift; path = ipopmetrics/realm/Feed.swift; sourceTree = "<group>"; };
 		11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -651,6 +653,7 @@
 				1178D6811E1E5AD9005B96C3 /* Assets.xcassets */,
 				1178D6831E1E5AD9005B96C3 /* LaunchScreen.storyboard */,
 				1178D67E1E1E5AD9005B96C3 /* Main.storyboard */,
+				1195EEF32009EDC800F45798 /* apple-app-site-association-unsigned */,
 			);
 			path = ipopmetrics;
 			sourceTree = "<group>";
@@ -1045,6 +1048,9 @@
 							com.apple.Push = {
 								enabled = 1;
 							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
 						};
 					};
 					1178D68A1E1E5AD9005B96C3 = {
@@ -1132,6 +1138,7 @@
 				08AF04981F46FB9B0040012B /* SocialPostInCardCell.xib in Resources */,
 				08FAE8471F541FF40097DF3E /* StatsCard.xib in Resources */,
 				1119F6181ED56F34009997FF /* Boarding.storyboard in Resources */,
+				1195EEF42009EDC800F45798 /* apple-app-site-association-unsigned in Resources */,
 				085F91031F716CBC008A339A /* OnboardingFooter.xib in Resources */,
 				11F89F691EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist in Resources */,
 				0863C4641FEA91C400999A81 /* animation_iphone4.json in Resources */,
