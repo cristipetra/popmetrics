@@ -172,10 +172,6 @@ class UserSettings: Mappable {
     var userAccount: UserAccount?
     var currentBrand: Brand?
     
-    var overlayActions: String?
-    var overlayDescription: String?
-    var overlayActionUrl: String?
-    
     var allowSounds: Bool = true
     
     required init?(map: Map) {
@@ -186,16 +182,9 @@ class UserSettings: Mappable {
         userAccount         <- map["user_account"]
         currentBrand        <- map["brand"]
         allowSounds         <- map["allow_sounds"]
-        
-        overlayDescription  <- map["overlay_description"]
-        overlayActions      <- map["overlay_actions"]
-        overlayActionUrl    <- map["overlay_action_url"]
+
     }
     
-    func getOverlayActions() -> [String] {
-        let actions =  overlayActions?.components(separatedBy: ",")
-        return actions!
-    }
 }
 
 class UserAccount: Mappable {
@@ -286,26 +275,29 @@ class OverlayDetails: Mappable {
 
     var id: String?
     var title:String?
-    var description:String?
     var layout:String?
     var colorScheme:String?
     
+    var message:String?
     var ctaText:String?
-    var ctaUrl:String?
+    var ctaLink:String?
     var ctaType:String?
+    
+    var availableActions: [String] = []
     
     required init?(map: Map) {
     }
     
     func mapping(map:Map) {
-        id          <- map["id"]
-        title       <- map["title"]
-        description <- map["description"]
-        layout      <- map["layout"]
-        colorScheme <- map["colorScheme"]
-        ctaText     <- map["cta_text"]
-        ctaUrl      <- map["cta_url"]
-        ctaType      <- map["cta_type"]
+        id              <- map["id"]
+        title           <- map["title"]
+        layout          <- map["layout"]
+        colorScheme     <- map["color_scheme"]
+        message         <- map["message"]
+        ctaText         <- map["cta_text"]
+        ctaLink          <- map["cta_link"]
+        ctaType         <- map["cta_type"]
+        availableActions <- map["actions"]
     }
     
 }
