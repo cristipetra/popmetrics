@@ -91,4 +91,8 @@ class PopmetricsColor {
     
     static let phoneNumberField = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1)
     static let buttonTitle = #colorLiteral(red: 0.262745098, green: 0.2980392157, blue: 0.3294117647, alpha: 1)
+    
+    static let firstBreadown = UIColor(red: 255/255, green: 33/255, blue: 113/255, alpha: 1)
+    static let secondBreadown = UIColor(red: 255/255, green: 162/255, blue: 109/255, alpha: 1)
+    static let thirdBreadown = UIColor(red: 50/255, green: 199/255, blue: 255/255, alpha: 1)
 }
