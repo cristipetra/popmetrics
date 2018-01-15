@@ -125,7 +125,6 @@ class IceExtendView: UIView {
     private func updateProgressEffort() {
         let value = CGFloat(iceCardModel.iceEffortPercentage) / CGFloat(100)
         progressEffort.animateTo(progress: CGFloat(value))
-        
         if let effort = iceCardModel.iceEffortLabel {
             effortLbl.text = effort
         }
@@ -232,7 +231,7 @@ class IceExtendView: UIView {
         let impactLvlAttr = impactLevel.set(style: impactStyle)
         let costAttr = cost.set(style: costStyle)
         let effortAttr = effort.set(style: effortStyle)
-        let lastText = getMostLabel().set(style: breakdownMostStyle)
+        let lastText = getMostLabel().lowercased().set(style: breakdownMostStyle)
         
         let attrString: NSMutableAttributedString = "This is a " + impactLvlAttr + " task that we can complete for "  + "" + "" + costAttr + " or you can do it in " +  aproxChar2 + "" + effortAttr + " that will help your " + lastText + " most"
         
@@ -371,7 +370,7 @@ struct IceCardViewModel {
         iceCostPercentage       = todoCard.iceCostPercentage
         iceEffortLabel          = todoCard.iceEffortLabel
         iceCostPercentage       = todoCard.iceCostPercentage
-        
+        iceEffortPercentage     = todoCard.iceEffortPercentage
     }
     
     init(feedCard: FeedCard) {
@@ -381,6 +380,7 @@ struct IceCardViewModel {
         iceCostPercentage       = feedCard.iceCostPercentage
         iceEffortLabel          = feedCard.iceEffortLabel
         iceCostPercentage       = feedCard.iceCostPercentage
+        iceEffortPercentage     = feedCard.iceEffortPercentage
     }
     
     func getIceImpactSplit() -> [ImpactSplit] {
