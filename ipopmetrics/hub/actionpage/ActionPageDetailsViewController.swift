@@ -17,7 +17,6 @@ class ActionPageDetailsViewController: BaseViewController {
     @IBOutlet weak var blogSummary: UILabel!
     @IBOutlet weak var impactScore: ImpactScoreView!
     
-    
     @IBOutlet weak var constraintHeightDetailsMarkdown: NSLayoutConstraint!
     @IBOutlet weak var containerIceView: UIView!
     @IBOutlet weak var containerDetailsMarkdown: UIView!
@@ -31,6 +30,8 @@ class ActionPageDetailsViewController: BaseViewController {
     @IBOutlet weak var addToPaidActionsView: UIView!
     
     private var recommendActionHandler: RecommendActionHandler?
+    
+    var cardInfoHandlerDelegate: CardInfoHandler?
     
     @IBOutlet weak var containerClosingMarkdown: UIView!
     
@@ -94,8 +95,7 @@ class ActionPageDetailsViewController: BaseViewController {
         
         if todoCard.name == "social.automated_posts" {
             persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToPaidActions(_:)), for: .touchUpInside)
-        }
-        else {
+        } else {
             persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToMyActions(_:)), for: .touchUpInside)
         }
     }
@@ -124,6 +124,10 @@ class ActionPageDetailsViewController: BaseViewController {
         } else {
             persistentFooter.rightBtn.changeTitle("Mark As Complete")
             persistentFooter.rightBtn.hideImageBtn()
+            
+            if todoCard.name == "social.automated_posts" {
+                persistentFooter.rightBtn.isHidden = true
+            }
         }
     }
     
@@ -222,8 +226,11 @@ class ActionPageDetailsViewController: BaseViewController {
                 if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
                     FeedStore.getInstance().updateCardSection(insightCard, section:"None")
                 }
+                self.cardInfoHandlerDelegate?.handleActionComplete()
+                
                 NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
                                                 userInfo: ["sucess":true])
+                
                 self.navigationController?.popViewController(animated: true)
             }
         }
@@ -242,8 +249,11 @@ class ActionPageDetailsViewController: BaseViewController {
                 if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
                     FeedStore.getInstance().updateCardSection(insightCard, section:"None")
                 }
+                self.cardInfoHandlerDelegate?.handleActionComplete()
+                
                 NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
                                                 userInfo: ["sucess":true])
+                
                 self.navigationController?.popViewController(animated: true)
             }
         }

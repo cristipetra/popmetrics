@@ -176,7 +176,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
         
         setupTopHeaderView()
-        
     }
     
     
@@ -356,13 +355,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 self.presentAlertWithTitle("Error", message: "No card to show with name: "+feedCard.recommendedAction, useWhisper: true);
                 return
         }
-        
-        
-        
+
         let actionPageVc: ActionPageDetailsViewController = ActionPageDetailsViewController(nibName: "ActionPage", bundle: nil)
         //actionPageVc.hidesBottomBarWhenPushed = true
         actionPageVc.hidesBottomBarWhenPushed = true
         actionPageVc.configure(actionCard)
+        actionPageVc.cardInfoHandlerDelegate = self
         
         self.navigationController?.pushViewController(actionPageVc, animated: true)
     }
@@ -492,8 +490,15 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     func openInsightDetails(_ feedCard: FeedCard) {
         let insightDetails = InsightPageDetailsViewController(nibName: "InsightPage", bundle: nil)
         insightDetails.configure(feedCard)
+        insightDetails.cardInfoHandlerDelegate = self
         insightDetails.hidesBottomBarWhenPushed = true 
         self.navigationController?.pushViewController(insightDetails, animated: true)
+    }
+}
+
+extension HomeHubViewController: CardInfoHandler {
+    func handleActionComplete() {
+        self.tabBarController?.selectedIndex = 1
     }
 }
 

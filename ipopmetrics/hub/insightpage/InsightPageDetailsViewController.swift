@@ -31,6 +31,7 @@ class InsightPageDetailsViewController: BaseViewController {
     @IBOutlet weak var constraintHeightContainerImpactScore: NSLayoutConstraint!
     private var feedCard: FeedCard!
     private var recommendActionHandler: RecommendActionHandler?
+    var cardInfoHandlerDelegate: CardInfoHandler?
     
     @IBOutlet weak var impactScore: ImpactScoreView!
     let statsView = IndividualTaskView()
@@ -213,6 +214,7 @@ class InsightPageDetailsViewController: BaseViewController {
         actionPageVc.hidesBottomBarWhenPushed = true
         if openedFrom == "home" {
             actionPageVc.configure(actionCard, handler: recommendActionHandler)
+            actionPageVc.cardInfoHandlerDelegate = cardInfoHandlerDelegate
         } else  {
             actionPageVc.configure(actionCard, openedFrom: "todo")
         }

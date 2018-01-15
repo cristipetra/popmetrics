@@ -125,7 +125,6 @@ class IceExtendView: UIView {
     private func updateProgressEffort() {
         let value = CGFloat(iceCardModel.iceEffortPercentage) / CGFloat(100)
         progressEffort.animateTo(progress: CGFloat(value))
-        
         if let effort = iceCardModel.iceEffortLabel {
             effortLbl.text = effort
         }
@@ -221,18 +220,41 @@ class IceExtendView: UIView {
             style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
         }
         
+        let breakdownMostStyle = Style.default { (style) -> (Void) in
+            style.font = FontAttribute(FontBook.regular, size: 15)
+            style.color = getMostLabelColor()
+        }
+        
         let aproxChar = "~".set(style: aproxCharacterStyle)
         let aproxChar2 = "~".set(style: aproxCharacterStyle2)
         let dollarChar =  "$".set(style: dollarSignStyle)
         let impactLvlAttr = impactLevel.set(style: impactStyle)
         let costAttr = cost.set(style: costStyle)
         let effortAttr = effort.set(style: effortStyle)
-        let lastText = "website traffic".set(style: impactStyle)
+        let lastText = getMostLabel().lowercased().set(style: breakdownMostStyle)
         
         let attrString: NSMutableAttributedString = "This is a " + impactLvlAttr + " task that we can complete for "  + "" + "" + costAttr + " or you can do it in " +  aproxChar2 + "" + effortAttr + " that will help your " + lastText + " most"
         
         messageLbl.attributedText = attrString
     }
+    
+    func getMostLabel() -> String {
+        let maxIndex = iceCardModel.getIceImpactSplitMaxIndex()
+        if iceCardModel.getIceImpactSplit().count == 0 {
+            return ""
+        }
+        return  (maxIndex <= iceCardModel.getIceImpactSplit().count) ? iceCardModel.getIceImpactSplit()[maxIndex].label : iceCardModel.getIceImpactSplit()[0].label
+    }
+    
+    func getMostLabelColor() -> UIColor {
+        let maxIndex = iceCardModel.getIceImpactSplitMaxIndex()
+        if maxIndex > iceCardModel.getBreakdownsColors().count {
+            return iceCardModel.getBreakdownsColors()[0]
+        }
+        
+        return iceCardModel.getBreakdownsColors()[maxIndex]
+    }
+    
     /*
     private func setCostStyle() {
         costMainProgressView.clipsToBounds = true
@@ -348,7 +370,7 @@ struct IceCardViewModel {
         iceCostPercentage       = todoCard.iceCostPercentage
         iceEffortLabel          = todoCard.iceEffortLabel
         iceCostPercentage       = todoCard.iceCostPercentage
-        
+        iceEffortPercentage     = todoCard.iceEffortPercentage
     }
     
     init(feedCard: FeedCard) {
@@ -358,6 +380,7 @@ struct IceCardViewModel {
         iceCostPercentage       = feedCard.iceCostPercentage
         iceEffortLabel          = feedCard.iceEffortLabel
         iceCostPercentage       = feedCard.iceCostPercentage
+        iceEffortPercentage     = feedCard.iceEffortPercentage
     }
     
     func getIceImpactSplit() -> [ImpactSplit] {
@@ -375,6 +398,21 @@ struct IceCardViewModel {
             }
         }
         return dict
+    }
+    
+    func getIceImpactSplitMaxIndex() -> Int {
+        let impactSplists: [ImpactSplit] = getIceImpactSplit()
+        var maxIndex = 0
+        for (pos, _) in impactSplists.enumerated() {
+            if impactSplists[pos].percentage > impactSplists[maxIndex].percentage {
+                maxIndex = pos
+            }
+        }
+        return maxIndex
+    }
+    
+    func getBreakdownsColors() -> [UIColor] {
+        return [PopmetricsColor.firstBreadown, PopmetricsColor.secondBreadown, PopmetricsColor.thirdBreadown]
     }
     
 }

@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 protocol CardActionHandler {
-    func  handleRequiredAction(_ item: FeedCard )
+    func handleRequiredAction(_ item: FeedCard )
 }
 
-protocol CardInfoHandler {
-    func handleInfoAction(_ item: FeedCard)
+@objc protocol CardInfoHandler {
+    @objc func handleActionComplete()
 }
 
 protocol CardRecommendActionHandler: class {
