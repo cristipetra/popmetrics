@@ -104,7 +104,7 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
     func setupGraph(graphView: ScrollableGraphView) {
         
         let barWidth: CGFloat = (barChart.bounds.width - 16) / CGFloat(numberOfItems)
-        let animationDuration: Double = 1
+        let animationDuration: Double = 0.4
         
         let grayPlot = BarPlot(identifier: "Gray")
         grayPlot.barWidth = barWidth
