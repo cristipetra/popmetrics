@@ -35,6 +35,9 @@ class LoginSocialViewController: BaseViewController {
         twitterView.setButton(title: .twitter)
         facebookView.setButton(title: .facebook)
         linkedInView.setButton(title: .linkedIn)
+        
+        linkedInView.isHidden = true
+        
         addButtonAction()
         setNavigationBar()
      
