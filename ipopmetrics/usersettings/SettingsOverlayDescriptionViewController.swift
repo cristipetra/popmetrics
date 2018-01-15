@@ -41,10 +41,8 @@ class SettingsOverlayDescriptionViewController: SettingsBaseViewController, UITe
     }
     
     private func updateView() {
-        if let _ = userSettings.overlayDescription {
-            descriptionText.text = userSettings.overlayDescription!
-            initialDescription = userSettings.overlayDescription!
-        }
+        descriptionText.text = UserStore.currentBrand?.overlayDetails?.message
+        initialDescription = UserStore.currentBrand?.overlayDetails?.message
     }
 
     override func doneHandler() {
@@ -53,13 +51,13 @@ class SettingsOverlayDescriptionViewController: SettingsBaseViewController, UITe
     
     private func changeOverlayDescription() {
         print("change overlay description")
-        SettingsApi().changeOverlayDescription(description: descriptionText.text ) { (error) in
-            if error == nil {
-                self.closeWindow()
-            } else {
-                let message = "Something went wrong. Please try again later."
-                EZAlertController.alert("Error", message: message)
-            }
+        print("change overlay url")
+        let overlay = UserStore.currentBrand?.overlayDetails
+        overlay?.message = descriptionText.text
+        
+        SettingsApi().postOverlay( overlay!, brandId: (UserStore.currentBrand?.id)!) { brand in
+            UserStore.currentBrand = brand
+            self.closeWindow()
         }
     }
     
@@ -81,7 +79,7 @@ class SettingsOverlayDescriptionViewController: SettingsBaseViewController, UITe
     }
     
     private func shouldDisplayAlert() -> Bool {
-        if (descriptionText.text != userSettings.overlayDescription!) {
+        if (descriptionText.text != UserStore.currentBrand?.overlayDetails?.message) {
             return true
         } else {
             return false

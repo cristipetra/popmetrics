@@ -30,7 +30,7 @@ class SettingsOverlayUrlViewController: SettingsBaseViewController {
     }
     
     private func updateView() {
-        if let url = UserStore.currentBrand?.domainURL {
+        if let url = UserStore.currentBrand?.overlayDetails?.ctaLink {
             textUrl.text = url
             initialURL = url
         }
@@ -70,13 +70,12 @@ class SettingsOverlayUrlViewController: SettingsBaseViewController {
     
     private func changeOverlayURL() {
         print("change overlay url")
-        SettingsApi().changeOverlayURL(url: textUrl.text! ) { (error) in
-            if error == nil {
-                self.closeWindow()
-            } else {
-                let message = "Something went wrong. Please try again later."
-                EZAlertController.alert("Error", message: message)
-            }
+        let overlay = UserStore.currentBrand?.overlayDetails
+        overlay?.ctaLink = self.textUrl.text
+        
+        SettingsApi().postOverlay( overlay!, brandId: (UserStore.currentBrand?.id)!) { brand in
+            UserStore.currentBrand = brand
+            self.closeWindow()
         }
     }
     

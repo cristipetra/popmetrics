@@ -11,48 +11,20 @@ import Alamofire
 
 class SettingsApi: BaseApi {
     
-    func changeOverlayDescription(description: String, callback: @escaping (_ error: ApiError?) -> Void) {
-        let url = ""
-        let params = ["description": description]
+    func postOverlay(_ overlay: OverlayDetails, brandId:String, callback: @escaping (_ response: Brand?) -> Void) {
         
-        Alamofire.request(url,
-                          method: .post, parameters: params, encoding: JSONEncoding.default,
-                          headers:createHeaders()).responseJSON { response in
-                            if let err = self.createErrorWithHttpResponse(response: response.response) {
-                                callback(err)
-                                return
-                            }
-                            callback(nil)
-        }
-    }
-    
-    func changeOverlayURL(url: String, callback: @escaping (_ error: ApiError?) -> Void) {
-        let url = ""
-        let params = ["url": url]
+        let url = ApiUrls.composedBaseUrl("/api/usersettings/overlay/"+overlay.id!)
+        let params = ["brand_id":brandId, "overlay": overlay.toJSON()] as [String : Any]
         
-        Alamofire.request(url,
-                          method: .post, parameters: params, encoding: JSONEncoding.default,
-                          headers:createHeaders()).responseJSON { response in
-                            if let err = self.createErrorWithHttpResponse(response: response.response) {
-                                callback(err)
-                                return
+        Alamofire.request(url, method: .post, parameters:params, encoding: JSONEncoding.default,
+                          headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperOne<Brand>>) in
+                            let levelOneHandled = super.handleNotOkCodes(response: response.response)
+                            if !levelOneHandled {
+                                let handled = super.handleResponseWrap(response.value!)
+                                if !handled {
+                                    callback(response.result.value?.data)
+                                }
                             }
-                            callback(nil)
-        }
-    }
-    
-    func changeOverlayAction(action: String, callback: @escaping (_ error: ApiError?) -> Void) {
-        let url = ""
-        let params = ["action": action]
-        
-        Alamofire.request(url,
-                          method: .post, parameters: params, encoding: JSONEncoding.default,
-                          headers:createHeaders()).responseJSON { response in
-                            if let err = self.createErrorWithHttpResponse(response: response.response) {
-                                callback(err)
-                                return
-                            }
-                            callback(nil)
         }
     }
     

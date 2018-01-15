@@ -21,12 +21,10 @@ class SettingsOverlayActionViewController: SettingsBaseViewController, UITableVi
     var didChangedOverlay: Bool = false
     var firstTimeSetOverlay = true
     
-    private let userSettings: UserSettings = UserStore.getInstance().getLocalUserSettings()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dataSource = userSettings.getOverlayActions()
+        dataSource = (UserStore.currentBrand?.overlayDetails?.availableActions)!
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -38,6 +36,19 @@ class SettingsOverlayActionViewController: SettingsBaseViewController, UITableVi
     }
     
     private func updateView() {
+        if let ctaText = UserStore.currentBrand?.overlayDetails?.ctaText  {
+            if let i = dataSource.index(of: ctaText) {
+                let indexPath = IndexPath(row:i, section:0)
+                tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.middle)
+                guard let cell = tableView.cellForRow(at: indexPath) as? BrandTableViewCell else {
+                    return
+                }
+                UserStore.overlayIndex = indexPath
+                selectedAction = cell.brandName.text!
+                cell.setupSelectedCell()
+            }
+        }
+        
         
     }
     
@@ -68,11 +79,6 @@ class SettingsOverlayActionViewController: SettingsBaseViewController, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "brandId", for: indexPath) as! BrandTableViewCell
         cell.brandName.text = dataSource[indexPath.row]
-        if indexPath == UserStore.overlayIndex {
-            cell.setupSelectedCell()
-            selectedAction = cell.brandName.text!
-        }
-        
         cell.selectionStyle = .none
         return cell
     }
@@ -105,14 +111,14 @@ class SettingsOverlayActionViewController: SettingsBaseViewController, UITableVi
     }
     
     private func changeOverlayAction() {
-        SettingsApi().changeOverlayAction(action: selectedAction) { (error) in
-            if error == nil {
-                self.closeWindow()
-            } else {
-                let message = "Something went wrong. Please try again later."
-                EZAlertController.alert("Error", message: message)
-            }
+        
+        let overlay = UserStore.currentBrand?.overlayDetails
+        overlay?.ctaText = selectedAction
+        SettingsApi().postOverlay( overlay!, brandId: (UserStore.currentBrand?.id)!) { brand in
+            UserStore.currentBrand = brand
+            self.closeWindow()
         }
+        
     }
     
 }
