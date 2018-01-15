@@ -490,6 +490,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     func openInsightDetails(_ feedCard: FeedCard) {
         let insightDetails = InsightPageDetailsViewController(nibName: "InsightPage", bundle: nil)
         insightDetails.configure(feedCard)
+        insightDetails.cardInfoHandlerDelegate = self
         insightDetails.hidesBottomBarWhenPushed = true 
         self.navigationController?.pushViewController(insightDetails, animated: true)
     }
