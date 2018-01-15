@@ -124,6 +124,10 @@ class ActionPageDetailsViewController: BaseViewController {
         } else {
             persistentFooter.rightBtn.changeTitle("Mark As Complete")
             persistentFooter.rightBtn.hideImageBtn()
+            
+            if todoCard.name == "social.automated_posts" {
+                persistentFooter.rightBtn.isHidden = true
+            }
         }
     }
     
