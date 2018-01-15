@@ -10,6 +10,7 @@ import UIKit
 import FacebookLogin
 import TwitterKit
 import ObjectMapper
+import LinkedinSwift
 
 class LoginSocialViewController: BaseViewController {
     
@@ -36,6 +37,7 @@ class LoginSocialViewController: BaseViewController {
         linkedInView.setButton(title: .linkedIn)
         addButtonAction()
         setNavigationBar()
+     
         addSpace()
     }
     
@@ -81,7 +83,18 @@ class LoginSocialViewController: BaseViewController {
     }
     
     @objc func loginLinkedInHandler() {
-        print("login linkedin")
+        let linkedinClientId = "77tn2ar7gq6lgv"
+        let linkedinClientSecret = "iqkDGYpWdhf7WKzA"
+        let linkedinState = "DLKDJF46ikMMZADddfdfds"
+        let linkedinRedirectUrl = "https://github.com/tonyli508/LinkedinSwift"
+        
+        let linkedinHelper = LinkedinSwiftHelper(configuration: LinkedinSwiftConfiguration(clientId: linkedinClientId, clientSecret: linkedinClientSecret, state: linkedinState, permissions: ["r_basicprofile", "r_emailaddress"], redirectUrl: linkedinRedirectUrl))
+     
+        linkedinHelper.authorizeSuccess({ [unowned self] (lsToken) -> Void in
+            }, error: { [unowned self] (error) -> Void in
+            }, cancel: { [unowned self] () -> Void in
+        })
+     
     }
     
     func setTitle(title: String) {
