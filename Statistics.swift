@@ -14,6 +14,7 @@ class MetricBreakdown: Mappable {
     
     var label: String?
     var currentValue: Float?
+    var currentValueFormatted : String = ""
     var prevValue: Float?
     var deltaValue: Float?
     
@@ -23,6 +24,7 @@ class MetricBreakdown: Mappable {
     func mapping(map:Map) {
         label           <- map["label"]
         currentValue    <- map["current_value"]
+        currentValueFormatted   <- map["current_value_formatted"]
         prevValue       <- map["prev_value"]
         
         let cV = currentValue ?? 0
@@ -62,6 +64,7 @@ class StatsMetric: Object, Mappable {
     @objc dynamic var status = ""
     
     @objc dynamic var value: Float = 0
+    @objc dynamic var valueFormatted : String = ""
     @objc dynamic var label: String = ""
     @objc dynamic var delta: Float = 0
     
@@ -94,6 +97,8 @@ class StatsMetric: Object, Mappable {
         statsMetricId <- map["metric_id"]
         
         value <- map["value"]
+        valueFormatted <- map["value_formatted"]
+        
         label <- map["label"]
         delta <- map["delta"]
         
