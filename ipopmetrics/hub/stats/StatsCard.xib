@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="OpenSans-ExtraBold.ttf">
             <string>OpenSans-Extrabold</string>
+        </array>
+        <array key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
         </array>
     </customFonts>
     <objects>
@@ -54,7 +57,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stats Summary" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtW-E2-Jjs">
-                                                <rect key="frame" x="15" y="30.5" width="189" height="33"/>
+                                                <rect key="frame" x="15" y="16" width="189" height="33"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="24"/>
                                                 <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -66,15 +69,35 @@
                                                     <constraint firstAttribute="height" constant="1" id="0y8-iD-uht"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.website.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcn-CF-yeO">
+                                                <rect key="frame" x="15" y="57" width="160" height="20.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="160" id="PeV-hs-XbP"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                                <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last 30 days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tgh-ZA-zxM">
+                                                <rect key="frame" x="185" y="57" width="160" height="20.5"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                                <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="Btt-pI-OQk" firstAttribute="top" secondItem="fgA-Ow-NHN" secondAttribute="top" id="DUx-Ra-ceO"/>
+                                            <constraint firstItem="Tgh-ZA-zxM" firstAttribute="top" secondItem="qtW-E2-Jjs" secondAttribute="bottom" constant="8" id="GWb-hl-qTg"/>
+                                            <constraint firstItem="qtW-E2-Jjs" firstAttribute="top" secondItem="Btt-pI-OQk" secondAttribute="bottom" constant="15" id="XE2-aX-E5l"/>
                                             <constraint firstAttribute="height" constant="94" id="YvT-f3-SAZ"/>
+                                            <constraint firstItem="tcn-CF-yeO" firstAttribute="top" secondItem="qtW-E2-Jjs" secondAttribute="bottom" constant="8" id="Zlp-1i-O08"/>
+                                            <constraint firstItem="tcn-CF-yeO" firstAttribute="leading" secondItem="fgA-Ow-NHN" secondAttribute="leading" constant="15" id="dM4-YE-ReE"/>
+                                            <constraint firstAttribute="trailing" secondItem="Tgh-ZA-zxM" secondAttribute="trailing" constant="10" id="ds1-5d-eAk"/>
                                             <constraint firstItem="cJF-D0-TXB" firstAttribute="leading" secondItem="fgA-Ow-NHN" secondAttribute="leading" id="fYv-X1-NkK"/>
+                                            <constraint firstItem="Tgh-ZA-zxM" firstAttribute="leading" secondItem="tcn-CF-yeO" secondAttribute="trailing" constant="10" id="jNH-kG-YxM"/>
                                             <constraint firstItem="Btt-pI-OQk" firstAttribute="leading" secondItem="fgA-Ow-NHN" secondAttribute="leading" id="l4D-p2-to9"/>
                                             <constraint firstItem="qtW-E2-Jjs" firstAttribute="leading" secondItem="fgA-Ow-NHN" secondAttribute="leading" constant="15" id="o0J-fU-6cO"/>
-                                            <constraint firstItem="qtW-E2-Jjs" firstAttribute="centerY" secondItem="fgA-Ow-NHN" secondAttribute="centerY" id="rPd-tz-sJm"/>
                                             <constraint firstAttribute="bottom" secondItem="cJF-D0-TXB" secondAttribute="bottom" id="tj9-fz-emZ"/>
                                             <constraint firstAttribute="trailing" secondItem="Btt-pI-OQk" secondAttribute="trailing" id="xzP-WJ-9UW"/>
                                             <constraint firstAttribute="trailing" secondItem="cJF-D0-TXB" secondAttribute="trailing" id="zLc-Tp-hJq"/>

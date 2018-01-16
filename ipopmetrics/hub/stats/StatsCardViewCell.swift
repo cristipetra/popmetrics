@@ -35,11 +35,6 @@ class StatsCardViewCell: UITableViewCell {
     
         self.footerView.actionButton.changeTitle("Stats Report")
         
-        DispatchQueue.main.async {
-        //    self.toolbarView.setupGradient()
-        //    self.footerView.setupGradient()
-        }
-        
     }
     
     func setCornerRadius() {

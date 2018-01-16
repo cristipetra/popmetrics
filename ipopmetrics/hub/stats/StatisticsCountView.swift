@@ -38,14 +38,16 @@ class StatisticsCountView: UIView {
             deltaLabel.textAlignment = .left
             let messageLabelText = "\(data[row].label)"
             messageLabel.text = messageLabelText
-            messageLabel.font = UIFont(name: "OpenSans-Semibold", size: 15)
+            messageLabel.font = UIFont(name: "OpenSans", size: 15)
             messageLabel.textColor = PopmetricsColor.darkGrey
             let valueLabelText = "\(Int(data[row].value))"
             valueLabel.text = valueLabelText
-            valueLabel.font = UIFont(name: "AlfaSlabOne-Regular", size: 25)
+            valueLabel.textAlignment = .right
+            valueLabel.font = UIFont(name: "OpenSans-Extrabold", size: 22)
             valueLabel.textColor = PopmetricsColor.darkGrey
-            deltaLabel.font = UIFont(name: "AlfaSlabOne-Regular", size: 25)
-            deltaLabel.textColor = PopmetricsColor.visitSecondColor
+
+            deltaLabel.font = UIFont(name: "OpenSans-Extrabold", size: 22)
+            deltaLabel.textColor = PopmetricsColor.calendarCompleteGreen
             deltaLabel.textAlignment = .right
             let deltalabelText = "+\(Int(data[row].delta))"
             var deltaPercentage = 0 as Float
