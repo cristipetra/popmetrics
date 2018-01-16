@@ -34,6 +34,7 @@ class SocialActionHandler: NSObject {
                     "access_token_secret":session?.authTokenSecret
                 ]
                 
+                completion()
             } else {
                 let notificationObj = ["alert":"Failed to connect with Twitter.",
                                        "subtitle":"None or bad credentials have been provided.",

@@ -12,7 +12,6 @@ import UIKit
 open class SocialMediaLoginButtonsView: UIView {
     
     lazy var socialImageView: UIImageView = {
-        
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
@@ -20,14 +19,12 @@ open class SocialMediaLoginButtonsView: UIView {
     }()
     
     lazy var separatorView: UIView = {
-        
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     lazy var socialButton: UIButton = {
-        
         let button = UIButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont(name: FontBook.semibold, size: 15)
@@ -38,7 +35,6 @@ open class SocialMediaLoginButtonsView: UIView {
     }()
     
     lazy var imageBackground: UIView = {
-        
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.white
@@ -56,17 +52,13 @@ open class SocialMediaLoginButtonsView: UIView {
     }
     
     private func setup() {
-        
         addImageView()
         addSeparator()
         addButton()
         self.layer.cornerRadius = 4
-        
     }
     
-    private func addImageView() {
-        self.addSubview(imageBackground)
-        self.addSubview(socialImageView)
+    open override func layoutSubviews() {
         socialImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 9).isActive = true
         socialImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         socialImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 9).isActive = true
@@ -78,24 +70,35 @@ open class SocialMediaLoginButtonsView: UIView {
         imageBackground.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 9).isActive = true
         imageBackground.widthAnchor.constraint(equalToConstant: 32).isActive = true
         imageBackground.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        
+        separatorView.widthAnchor.constraint(equalToConstant: 2).isActive = true
+        separatorView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        separatorView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        separatorView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 49).isActive = true
+        
+        
+        socialButton.leftAnchor.constraint(equalTo: separatorView.rightAnchor, constant: 7).isActive = true
+        socialButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        socialButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 2).isActive = true
+        socialButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
+    }
+    
+    private func addImageView() {
+        self.addSubview(imageBackground)
+        self.addSubview(socialImageView)
+
         imageBackground.layer.cornerRadius = 4
         socialImageView.contentMode = .center
     }
     
     private func addSeparator() {
         self.addSubview(separatorView)
-        separatorView.widthAnchor.constraint(equalToConstant: 2).isActive = true
-        separatorView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        separatorView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        separatorView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 49).isActive = true
     }
     
     private func addButton() {
         self.addSubview(socialButton)
-        socialButton.leftAnchor.constraint(equalTo: separatorView.rightAnchor, constant: 7).isActive = true
-        socialButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        socialButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 2).isActive = true
-        socialButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
     
     func setButton(title: SocialMediaType) {
