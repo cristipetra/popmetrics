@@ -33,6 +33,8 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
     
     var statisticMetric: StatsMetric!
 
+    var statsMetricView: StatsMetricViewModel!
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
@@ -68,17 +70,16 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
     
     func configure(statisticMetric: StatsMetric) {
         self.statisticMetric = statisticMetric
+        statsMetricView = StatsMetricViewModel(statsMetric: statisticMetric)
         reloadData()
     }
     
     func reloadData() {
         self.firstValue.text = "\(Int(statisticMetric.value))"
-        self.secondValue.text = "+\(Int(statisticMetric.delta))%"
-        var percentageDelta = 0 as Float
-        if statisticMetric.value + statisticMetric.delta > 0 {
-            percentageDelta = (statisticMetric.delta * 100) / (statisticMetric.value)
-        }
-        self.secondValue.text = "+\(Int(percentageDelta))%"
+        self.secondValue.text = ""
+        
+        self.secondValue.text =  statsMetricView.getPercentageText()
+        self.secondValue.textColor = statsMetricView.colorDelta()
         
         reloadGraph()
     }
@@ -194,4 +195,22 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
         return numberOfItems
     }
     
+}
+
+struct StatsMetricViewModel {
+    
+    var statsMetric: StatsMetric
+    
+    internal func colorDelta() -> UIColor {
+        return getPercentage() < 0 ? PopmetricsColor.salmondColor : PopmetricsColor.calendarCompleteGreen
+    }
+    
+    internal func getPercentage() -> Float {
+        return (self.statsMetric.delta * 100) / self.statsMetric.value
+    }
+    
+    internal func getPercentageText() -> String {
+        let percentage = getPercentage()
+        return percentage <= 0 ? "\(Int(percentage))%" : "+\(Int(percentage))%"
+    }
 }

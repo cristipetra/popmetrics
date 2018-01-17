@@ -1,5 +1,5 @@
 //
-//  TrafficVisits.swift
+//  BreakdownViewCell.swift
 //  ipopmetrics
 //
 //  Created by Cristian Petra on 30/08/2017.
@@ -14,19 +14,28 @@ class BreakdownViewCell: UITableViewCell {
     lazy var titleLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = ""
+        label.font = UIFont(name: FontBook.regular, size: 15)
+        label.textColor = PopmetricsColor.myActionCircle
+        label.textAlignment = .left
         return label
     }()
     
     lazy var firstValueLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: FontBook.extraBold, size: 18)
+        label.textColor = PopmetricsColor.visitFirstColor
+        label.textAlignment = .left
         return label
-        
     }()
     
     lazy var secondValueLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: FontBook.extraBold, size: 18)
+        label.textColor = PopmetricsColor.calendarCompleteGreen
+        label.textAlignment = .right
         return label
         
     }()
@@ -81,71 +90,73 @@ class BreakdownViewCell: UITableViewCell {
         setup()
     }
     
-    func setup() {
-//        self.backgroundColor = UIColor.blue
-        
-        self.addSubview(titleLabel)
+    override func layoutSubviews() {
+        //Add constraint title
         titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 25).isActive = true
         titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 17).isActive = true
         titleLabel.widthAnchor.constraint(equalToConstant: 170).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        titleLabel.text = ""
-        titleLabel.font = UIFont(name: FontBook.regular, size: 15)
-        titleLabel.textColor = UIColor(red: 87/255, green: 93/255, blue: 99/255, alpha: 1)
-        titleLabel.textAlignment = .left
         
-        self.addSubview(firstValueLabel)
-        //firstValueLabel.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 2).isActive = true
+        
+        //constraints value
         firstValueLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 17).isActive = true
         firstValueLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
-        
-        self.addSubview(secondValueLabel)
+        //constraints percent
         secondValueLabel.leftAnchor.constraint(equalTo: firstValueLabel.rightAnchor, constant: 20).isActive = true
         secondValueLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 17).isActive = true
         secondValueLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         secondValueLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -21).isActive = true
+        secondValueLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
         
-        self.addSubview(containerProgressView)
+        //constraint container progress
         containerProgressView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 25).isActive = true
         containerProgressView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 13).isActive = true
         containerProgressView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -25).isActive = true
         containerProgressView.heightAnchor.constraint(equalToConstant: 19).isActive = true
-        containerProgressView.backgroundColor = PopmetricsColor.statisticsTableBackground
         
-        containerProgressView.addSubview(deltaProgress)
+        //constraints delta progress
         deltaProgress.bottomAnchor.constraint(equalTo: self.containerProgressView.bottomAnchor, constant: 0).isActive  = true
         deltaProgress.topAnchor.constraint(equalTo: self.containerProgressView.topAnchor, constant: 0).isActive  = true
         deltaProgress.leftAnchor.constraint(equalTo: self.containerProgressView.leftAnchor, constant: 0).isActive = true
         deltaProgress.rightAnchor.constraint(equalTo: self.containerProgressView.rightAnchor, constant: 0).isActive = true
         
-        
-        containerProgressView.addSubview(valueProgress)
+        //constraints value progress
         valueProgress.bottomAnchor.constraint(equalTo: self.containerProgressView.bottomAnchor, constant: 0).isActive  = true
         valueProgress.topAnchor.constraint(equalTo: self.containerProgressView.topAnchor, constant: 0).isActive  = true
         valueProgress.leftAnchor.constraint(equalTo: self.containerProgressView.leftAnchor, constant: 0).isActive = true
         valueProgress.rightAnchor.constraint(equalTo: self.containerProgressView.rightAnchor, constant: 0).isActive = true
- 
+
+    }
+    
+    func setup() {
+        self.addSubview(titleLabel)
+        
+        self.addSubview(firstValueLabel)
+        
+        self.addSubview(secondValueLabel)
+        
+        self.addSubview(containerProgressView)
+        containerProgressView.backgroundColor = PopmetricsColor.statisticsTableBackground
+        
+        containerProgressView.addSubview(deltaProgress)
+        
+        containerProgressView.addSubview(valueProgress)
         
         updateViews()
-        
     }
     
     private func updateViews() {
-        firstValueLabel.font = UIFont(name: FontBook.extraBold, size: 18)
-        firstValueLabel.textColor = PopmetricsColor.visitFirstColor
-        firstValueLabel.textAlignment = .left
-        
-        secondValueLabel.font = UIFont(name: FontBook.extraBold, size: 18)
-        secondValueLabel.textColor = PopmetricsColor.calendarCompleteGreen
-        secondValueLabel.textAlignment = .left
-        
         containerProgressView.layer.cornerRadius = 10
         containerProgressView.clipsToBounds = true
     }
     
     func configure(metricBreakdown: MetricBreakdown, statisticMetric: StatsMetric) {
         self.statisticMetric = statisticMetric
+        
+        let metricBreakdownViewModel = MetricBreakdownViewModel(metricBreakdown: metricBreakdown)
+        
+        self.valueProgress.progress = 0
         
         self.titleLabel.text = metricBreakdown.label
         self.firstValueLabel.text = "\(Int(metricBreakdown.currentValue!))"
@@ -156,17 +167,15 @@ class BreakdownViewCell: UITableViewCell {
         var percentageCurrentValue = 0 as Float
         var percentageDelta = 0 as Float
         
-        if maximumValue > 0 {
-            deltaPercentage = (metricBreakdown.deltaValue! * 100) / maximumValue
-            percentageCurrentValue = (metricBreakdown.currentValue!) / maximumValue
-            percentageDelta = (metricBreakdown.currentValue! + metricBreakdown.deltaValue!) / maximumValue
-        }
+        deltaPercentage = metricBreakdownViewModel.getPercentage()
         
-        self.secondValueLabel.text = " +\(Int(deltaPercentage))%"
+        percentageCurrentValue = deltaPercentage
+        percentageDelta = deltaPercentage
         
-    
+        
+        self.secondValueLabel.text =  metricBreakdownViewModel.getPercentageText()
+        
         self.valueProgress.animateTo(progress: CGFloat(percentageCurrentValue))
-        self.deltaProgress.animateTo(progress: CGFloat(percentageDelta))
         
     }
     
@@ -182,4 +191,30 @@ class BreakdownViewCell: UITableViewCell {
         
     }
   
+}
+
+
+struct  MetricBreakdownViewModel {
+    
+    var metricBreakdown: MetricBreakdown
+    
+    internal func colorDelta() -> UIColor {
+        return getPercentage() < 0 ? PopmetricsColor.salmondColor : PopmetricsColor.calendarCompleteGreen
+    }
+    
+    internal func getPercentage() -> Float {
+        guard let currentValue = metricBreakdown.currentValue else { return 0 }
+        guard let _ = metricBreakdown.deltaValue else { return 0 }
+        
+        if currentValue == 0 {
+            return 0
+        }
+
+        return ((self.metricBreakdown.deltaValue!) * 100) / (self.metricBreakdown.currentValue!)
+    }
+    
+    internal func getPercentageText() -> String {
+        let percentage = getPercentage()
+        return percentage <= 0 ? "\(Int(percentage))%" : "+\(Int(percentage))%"
+    }
 }
