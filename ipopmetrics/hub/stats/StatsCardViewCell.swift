@@ -17,6 +17,8 @@ class StatsCardViewCell: UITableViewCell {
     @IBOutlet weak var contentWrapperView: UIView!
     @IBOutlet weak var footerView: FooterView!
     @IBOutlet weak var wrapperView: UIView!
+    @IBOutlet weak var labelUrl: UILabel!
+    @IBOutlet weak var labelPeriod: UILabel!
     
     lazy var shadowLayer : UIView  = {
         let view = UIView()

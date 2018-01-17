@@ -172,6 +172,8 @@
                 <outlet property="connectionLine" destination="DBo-xD-P61" id="pCc-A7-WCd"/>
                 <outlet property="contentWrapperView" destination="p4D-1H-Vcf" id="BuM-CF-UNr"/>
                 <outlet property="footerView" destination="isy-zy-39L" id="jLl-Q8-U6u"/>
+                <outlet property="labelPeriod" destination="Tgh-ZA-zxM" id="5ON-9Q-VHA"/>
+                <outlet property="labelUrl" destination="tcn-CF-yeO" id="WE1-04-ZUr"/>
                 <outlet property="statisticsCountView" destination="fiY-gw-CCy" id="vf6-6z-VeX"/>
                 <outlet property="statisticsCountViewHeightCounstraint" destination="lmn-yG-so1" id="A2b-RA-D9u"/>
                 <outlet property="toolbarView" destination="3LY-rp-PF5" id="61g-NN-eSi"/>

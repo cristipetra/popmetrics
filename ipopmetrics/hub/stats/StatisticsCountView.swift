@@ -43,7 +43,7 @@ class StatisticsCountView: UIView {
             
             var valueLabelText = (data[row].valueFormatted != "") ? data[row].valueFormatted : "\(Int(data[row].value))"
             valueLabel.text = valueLabelText
-            valueLabel.textAlignment = .right
+            valueLabel.textAlignment = .center
             valueLabel.font = UIFont(name: "OpenSans-Extrabold", size: 22)
             valueLabel.textColor = PopmetricsColor.darkGrey
 
@@ -54,11 +54,10 @@ class StatisticsCountView: UIView {
             let deltalabelText = "+\(Int(data[row].delta))"
             var deltaPercentage = 0 as Float
             
-            deltaPercentage =  (data[row].delta * 100) / ( data[row].value )
-            if deltaPercentage > 100 { deltaPercentage = 100 }
-            if deltaPercentage < -100 { deltaPercentage = 100 }
+            deltaPercentage =  (data[row].delta * 100) / ( data[row].value )            
             
-            deltaLabel.text = "\(Int(deltaPercentage))%"
+            deltaLabel.text =  deltaPercentage < 0 ? "\(Int(deltaPercentage))%" : "+\(Int(deltaPercentage))%"
+    
             
             let divider = UIView(frame: CGRect(x: 0, y: wrapperView.frame.height-1, width: wrapperView.frame.width, height: 1))
             divider.backgroundColor = PopmetricsColor.weekDaysGrey

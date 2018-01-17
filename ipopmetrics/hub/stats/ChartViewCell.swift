@@ -16,7 +16,7 @@ protocol ReloadGraphProtocol {
 class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
     
     lazy var barChart: ScrollableGraphView = {
-        let chart = ScrollableGraphView(frame: CGRect(x: 16, y: 70, width: UIScreen.main.bounds.width - 35, height: 137))
+        let chart = ScrollableGraphView(frame: CGRect(x: 16, y: 90, width: UIScreen.main.bounds.width - 35, height: 137))
         chart.translatesAutoresizingMaskIntoConstraints = false
         return chart
     }()
@@ -72,12 +72,11 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
     }
     
     func reloadData() {
-        self.infoLabel.text = statisticMetric.label
         self.firstValue.text = "\(Int(statisticMetric.value))"
         self.secondValue.text = "+\(Int(statisticMetric.delta))%"
         var percentageDelta = 0 as Float
         if statisticMetric.value + statisticMetric.delta > 0 {
-            percentageDelta = (statisticMetric.delta * 100) / (statisticMetric.value + statisticMetric.delta)
+            percentageDelta = (statisticMetric.delta * 100) / (statisticMetric.value)
         }
         self.secondValue.text = "+\(Int(percentageDelta))%"
         
@@ -90,10 +89,10 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
         plotTwoData = statisticMetric.getPrevPeriodArray()
         
         if(statisticMetric.prevPeriodLabel != "") {
-            previousDateLabel.text = statisticMetric.prevPeriodLabel
+            //previousDateLabel.text = statisticMetric.prevPeriodLabel
         }
         if statisticMetric.currentPeriodLabel != "" {
-            currentDateLabel.text = statisticMetric.currentPeriodLabel
+            //currentDateLabel.text = statisticMetric.currentPeriodLabel
         }
         
         barChart.reload()
@@ -103,7 +102,7 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
     
     func setupGraph(graphView: ScrollableGraphView) {
         
-        let barWidth: CGFloat = (barChart.bounds.width - 16) / CGFloat(numberOfItems)
+        let barWidth: CGFloat = (barChart.bounds.width - 30) / CGFloat(numberOfItems)
         let animationDuration: Double = 0.4
         
         let grayPlot = BarPlot(identifier: "Gray")
@@ -148,7 +147,8 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
         
         let referenceLine = ReferenceLines()
         
-        referenceLine.shouldShowLabels = true
+        referenceLine.shouldShowLabels = false
+        referenceLine.referenceLinePosition = .right
         referenceLine.dataPointLabelColor = UIColor.black
         
         // Setup the graph
@@ -166,7 +166,7 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
         graphView.addPlot(plot: grayPlot)
         graphView.addPlot(plot: pinkPlot)
         
-        //graphView.addReferenceLines(referenceLines: referenceLine)
+        graphView.addReferenceLines(referenceLines: referenceLine)
         //graphView.addPlot(plot: dotPlot)
         
     }

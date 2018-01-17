@@ -137,7 +137,7 @@ class BreakdownViewCell: UITableViewCell {
         firstValueLabel.textAlignment = .left
         
         secondValueLabel.font = UIFont(name: FontBook.extraBold, size: 18)
-        secondValueLabel.textColor = PopmetricsColor.visitSecondColor
+        secondValueLabel.textColor = PopmetricsColor.calendarCompleteGreen
         secondValueLabel.textAlignment = .left
         
         containerProgressView.layer.cornerRadius = 10
@@ -150,7 +150,7 @@ class BreakdownViewCell: UITableViewCell {
         self.titleLabel.text = metricBreakdown.label
         self.firstValueLabel.text = "\(Int(metricBreakdown.currentValue!))"
     
-        let maximumValue = statisticMetric.value + statisticMetric.delta
+        let maximumValue = statisticMetric.value// + statisticMetric.delta
         
         var deltaPercentage = 0 as Float
         var percentageCurrentValue = 0 as Float
@@ -163,6 +163,7 @@ class BreakdownViewCell: UITableViewCell {
         }
         
         self.secondValueLabel.text = " +\(Int(deltaPercentage))%"
+        
     
         self.valueProgress.animateTo(progress: CGFloat(percentageCurrentValue))
         self.deltaProgress.animateTo(progress: CGFloat(percentageDelta))

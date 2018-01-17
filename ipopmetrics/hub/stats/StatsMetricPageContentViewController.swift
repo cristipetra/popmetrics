@@ -11,9 +11,9 @@ import UIKit
 class StatsMetricPageContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var topPageControl: UIPageControl!
-    @IBOutlet weak var statusLbl: UILabel!
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var titleLabel: UILabel!
     
     let statisticStore = StatsStore.getInstance()
     
@@ -26,7 +26,7 @@ class StatsMetricPageContentViewController: UIViewController, UITableViewDelegat
         super.viewDidLoad()
         
         setUpNavigationBar()
-        statusLbl.text = ""
+        titleLabel.text = ""
         
         setUpPageControlViews()
         
@@ -59,8 +59,9 @@ class StatsMetricPageContentViewController: UIViewController, UITableViewDelegat
         topPageControl.numberOfPages = numberOfPages
         
         topPageControl.currentPage = pageIndex
+        
+        titleLabel.text = statsMetric.label
     }
-    
     
     private func setUpNavigationBar() {
         let titleWindow = "WEBSITE REPORT"
@@ -193,9 +194,4 @@ class StatsMetricPageContentViewController: UIViewController, UITableViewDelegat
         return headerView
     }
     
-   
-    
 }
-
-
-
