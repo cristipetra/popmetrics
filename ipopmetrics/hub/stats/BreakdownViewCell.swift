@@ -161,8 +161,6 @@ class BreakdownViewCell: UITableViewCell {
         self.titleLabel.text = metricBreakdown.label
         self.firstValueLabel.text = "\(Int(metricBreakdown.currentValue!))"
     
-        let maximumValue = statisticMetric.value// + statisticMetric.delta
-        
         var deltaPercentage = 0 as Float
         var percentageCurrentValue = 0 as Float
         var percentageDelta = 0 as Float

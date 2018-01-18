@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -48,7 +48,7 @@
                 <tabBarItem title="Feed" image="first" id="FdZ-LU-Uik"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oUZ-N0-Ku8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2158" y="-332"/>
+            <point key="canvasLocation" x="1348.75" y="-369.07333333333332"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="vnq-XG-9Wi">
@@ -111,10 +111,10 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MTa-KH-EBT">
-                                <rect key="frame" x="29" y="187" width="153" height="120"/>
+                                <rect key="frame" x="29" y="187" width="159" height="132"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCx-hh-YS8">
-                                        <rect key="frame" x="0.0" y="0.0" width="153" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="159" height="33"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="SETTINGS">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -124,7 +124,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWk-9n-6Qe" userLabel="ABOUT POPMETRICS">
-                                        <rect key="frame" x="0.0" y="30" width="153" height="30"/>
+                                        <rect key="frame" x="0.0" y="33" width="159" height="33"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="ABOUT POPMETRICS">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -134,7 +134,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxF-Rq-8jP">
-                                        <rect key="frame" x="0.0" y="60" width="153" height="30"/>
+                                        <rect key="frame" x="0.0" y="66" width="159" height="33"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="LEGAL INFORMATION">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -144,7 +144,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kj0-qS-TrO">
-                                        <rect key="frame" x="0.0" y="90" width="153" height="30"/>
+                                        <rect key="frame" x="0.0" y="99" width="159" height="33"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="CONTACT US">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -156,7 +156,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybe-Us-fFL">
-                                <rect key="frame" x="29" y="356" width="62" height="30"/>
+                                <rect key="frame" x="29" y="368" width="63" height="33"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="LOGOUT">
                                     <color key="titleColor" red="1" green="0.46666666670000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -180,7 +180,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOi-K4-4l3">
-                                <rect key="frame" x="3" y="335" width="370" height="1"/>
+                                <rect key="frame" x="3" y="347" width="370" height="1"/>
                                 <color key="backgroundColor" red="0.74117647060000003" green="0.7725490196" blue="0.79607843140000001" alpha="0.50449486301369861" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="16o-2h-RXg"/>
@@ -269,7 +269,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDa-y3-Fcw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-210" y="-18"/>
+            <point key="canvasLocation" x="-131.25" y="-20.009999999999998"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="min-fm-dln">
@@ -301,7 +301,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hb4-4Y-tFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="412" y="753"/>
+            <point key="canvasLocation" x="257.5" y="837.08499999999992"/>
         </scene>
         <!--Account Settings View Controller-->
         <scene sceneID="Gpm-2v-KLK">
@@ -407,7 +407,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1270" y="-18"/>
+            <point key="canvasLocation" x="-793.75" y="-20.009999999999998"/>
         </scene>
         <!--Concierge-->
         <scene sceneID="aQd-EV-7wF">
@@ -426,7 +426,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AIR-8q-4Dq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-948" y="1195"/>
+            <point key="canvasLocation" x="-592.5" y="1328.4416666666666"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BgY-0i-GYY">
@@ -445,7 +445,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fkq-Lr-Oth" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1218" y="-332"/>
+            <point key="canvasLocation" x="761.25" y="-369.07333333333332"/>
         </scene>
         <!--Todo Hub Controller-->
         <scene sceneID="PTS-xG-1pA">
@@ -495,7 +495,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vww-f1-3Q3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2158" y="369"/>
+            <point key="canvasLocation" x="1348.75" y="410.20499999999998"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pHK-EC-lYX">
@@ -514,7 +514,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qk7-ET-dL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1217" y="370"/>
+            <point key="canvasLocation" x="760.625" y="411.31666666666666"/>
         </scene>
         <!--Calendar Hub Controller-->
         <scene sceneID="3zH-mP-ZKt">
@@ -566,7 +566,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vML-Xy-Y0q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2158" y="1051"/>
+            <point key="canvasLocation" x="1348.75" y="1168.3616666666667"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="p9V-hr-U8y">
@@ -689,7 +689,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C7D-jG-Fxd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3263" y="1050"/>
+            <point key="canvasLocation" x="2039.375" y="1167.25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="h2p-fj-Y1B">
@@ -708,7 +708,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VuO-bA-rHV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1217" y="1071"/>
+            <point key="canvasLocation" x="760.625" y="1190.5949999999998"/>
         </scene>
         <!--Stats Hub Controller-->
         <scene sceneID="TqG-rc-qY3">
@@ -740,24 +740,25 @@
                         <outlet property="leftAnchorTableView" destination="UQv-xu-Bc2" id="C1Q-U9-17I"/>
                         <outlet property="tableView" destination="oYx-Kl-DJY" id="Z7e-vQ-5KB"/>
                         <outlet property="topAnchorTableView" destination="Zg5-DJ-mtJ" id="ZL9-PN-P2i"/>
-                        <segue destination="Jcb-oQ-as5" kind="show" identifier="showStatsReport" id="4L1-3S-x5w"/>
+                        <segue destination="Jcb-oQ-as5" kind="push" identifier="showStatsReport" id="4L1-3S-x5w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cQO-HC-TYF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1681" y="1809"/>
+            <point key="canvasLocation" x="1050.625" y="2011.0049999999999"/>
         </scene>
         <!--Stats Report Page View Controller-->
         <scene sceneID="hsh-ca-4j2">
             <objects>
                 <pageViewController storyboardIdentifier="StatsReportPageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="Jcb-oQ-as5" customClass="StatsReportPageViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="6zG-8y-U97"/>
                     <connections>
                         <segue destination="Sa3-PG-jtN" kind="custom" identifier="Page" customClass="PageSegue" customModule="ipopmetrics" customModuleProvider="target" id="GPt-is-7Gj"/>
                     </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qat-c1-6Yl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2614" y="1809"/>
+            <point key="canvasLocation" x="1633.75" y="2011.0049999999999"/>
         </scene>
         <!--Stats Metric Page Content View Controller-->
         <scene sceneID="hRF-Ww-Zs3">
@@ -873,7 +874,6 @@
                                                             </constraints>
                                                         </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="CI4-hD-WwD" firstAttribute="top" secondItem="REz-0N-Zlj" secondAttribute="top" constant="30" id="2Pr-GO-mC3"/>
                                                         <constraint firstAttribute="trailing" secondItem="CI4-hD-WwD" secondAttribute="trailing" id="7j6-jE-yPR"/>
@@ -885,6 +885,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="su8-pF-x57" firstAttribute="leading" secondItem="RKV-I4-IX0" secondAttribute="leading" id="7Ja-ek-r78"/>
                                                 <constraint firstAttribute="bottom" secondItem="su8-pF-x57" secondAttribute="bottom" id="DEt-y0-JOh"/>
@@ -934,7 +935,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tnh-7j-i4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3480.8000000000002" y="1807.1964017991006"/>
+            <point key="canvasLocation" x="2175.5" y="2009"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xup-fx-MmK">
@@ -953,7 +954,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVm-Zp-D38" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="814" y="1809"/>
+            <point key="canvasLocation" x="508.75" y="2011.0049999999999"/>
         </scene>
     </scenes>
     <resources>

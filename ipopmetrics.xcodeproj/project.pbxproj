@@ -53,6 +53,7 @@
 		085F91031F716CBC008A339A /* OnboardingFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085F91021F716CBC008A339A /* OnboardingFooter.xib */; };
 		085F91051F716CD4008A339A /* OnboardingFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F91041F716CD4008A339A /* OnboardingFooter.swift */; };
 		0863C4641FEA91C400999A81 /* animation_iphone4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0863C4631FEA91C400999A81 /* animation_iphone4.json */; };
+		08657382200F90D700D0ED21 /* PeriodGraphDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08657381200F90D700D0ED21 /* PeriodGraphDateView.swift */; };
 		086B453C1FDC22530043F981 /* PersistentFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086B453B1FDC22530043F981 /* PersistentFooter.swift */; };
 		086EDE3D1FC82D11002F4140 /* MyActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086EDE3C1FC82D11002F4140 /* MyActionCard.xib */; };
 		086EDE3F1FC830F1002F4140 /* MyActionCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE3E1FC830F1002F4140 /* MyActionCardCell.swift */; };
@@ -286,6 +287,7 @@
 		085F91021F716CBC008A339A /* OnboardingFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingFooter.xib; sourceTree = "<group>"; };
 		085F91041F716CD4008A339A /* OnboardingFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFooter.swift; sourceTree = "<group>"; };
 		0863C4631FEA91C400999A81 /* animation_iphone4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_iphone4.json; sourceTree = "<group>"; };
+		08657381200F90D700D0ED21 /* PeriodGraphDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodGraphDateView.swift; sourceTree = "<group>"; };
 		086B453B1FDC22530043F981 /* PersistentFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentFooter.swift; sourceTree = "<group>"; };
 		086EDE3C1FC82D11002F4140 /* MyActionCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyActionCard.xib; sourceTree = "<group>"; };
 		086EDE3E1FC830F1002F4140 /* MyActionCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActionCardCell.swift; sourceTree = "<group>"; };
@@ -783,6 +785,7 @@
 				11E5A8971FDF01AE0085BDEE /* StatsMetricPageContentViewController.swift */,
 				08AA6C641F56DAA10022DE91 /* StatsReportPageViewController.swift */,
 				08AA6C721F56F8630022DE91 /* ChartViewCell.swift */,
+				08657381200F90D700D0ED21 /* PeriodGraphDateView.swift */,
 			);
 			path = stats;
 			sourceTree = "<group>";
@@ -1409,6 +1412,7 @@
 				0852826E1F287DFB0065A968 /* CalendarHeaderViewCell.swift in Sources */,
 				1125ADAC1E96E7990004B4AC /* HomeHubController.swift in Sources */,
 				08B4EBB01FC56ACE00BFC5A1 /* PopmetricsColor.swift in Sources */,
+				08657382200F90D700D0ED21 /* PeriodGraphDateView.swift in Sources */,
 				08D1BC3B1F1E568A00D377B2 /* PhoneView.swift in Sources */,
 				08DF9E621F261C8100C60C2D /* InfoCardViewController.swift in Sources */,
 				11E5A8981FDF01AE0085BDEE /* StatsMetricPageContentViewController.swift in Sources */,

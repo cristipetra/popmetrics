@@ -16,7 +16,7 @@ protocol ReloadGraphProtocol {
 class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
     
     lazy var barChart: ScrollableGraphView = {
-        let chart = ScrollableGraphView(frame: CGRect(x: 16, y: 90, width: UIScreen.main.bounds.width - 35, height: 137))
+        let chart = ScrollableGraphView(frame: CGRect(x: 15, y: 90, width: UIScreen.main.bounds.width - 30, height: 137))
         chart.translatesAutoresizingMaskIntoConstraints = false
         return chart
     }()
@@ -26,6 +26,10 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
     @IBOutlet weak var secondValue: UILabel!
     @IBOutlet weak var firstValue: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var containerGraphLabel: UIView!
+    
+    var periodGraphDateView: PeriodGraphDateView =  PeriodGraphDateView()
+    
     
     var numberOfItems = 30
     var plotOneData: [Double] = [0.0, 2.3, 2.2, 4.5, 6.7, 7.8, 3.2, 4.5, 3.3, 3.5, 7.8, 3.4, 6, 7, 5, 34, 4, 5, 3, 5, 4.5, 3.3, 3.5, 7.8, 3.4, 6, 7, 5, 34, 14, 45, 45, 25, 43, 23]
@@ -46,7 +50,6 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
         setup()
     }
     
-    
     func setup() {
         
         barChart.backgroundFillColor = UIColor.white
@@ -55,8 +58,20 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
         setupGraph(graphView: barChart)
         self.addSubview(barChart)
     
+        addPeriodGraph()
+        
         let nc = NotificationCenter.default
         nc.addObserver(forName:Notification.Popmetrics.ReloadGraph, object:nil, queue:nil, using: handerReloadData)
+    }
+    
+    private func addPeriodGraph() {
+        periodGraphDateView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(periodGraphDateView)
+        periodGraphDateView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        periodGraphDateView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15).isActive = true
+        periodGraphDateView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -15).isActive = true
+        //periodGraphDateView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+        periodGraphDateView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 7).isActive = true
     }
     
     func handerReloadData(notification:Notification) -> Void {
@@ -71,6 +86,8 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
     func configure(statisticMetric: StatsMetric) {
         self.statisticMetric = statisticMetric
         statsMetricView = StatsMetricViewModel(statsMetric: statisticMetric)
+        
+        periodGraphDateView.configure(statisticMetric)
         reloadData()
     }
     
@@ -164,7 +181,7 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
         graphView.leftmostPointPadding = 10
         // Add everything to the graph.
         
-        graphView.addPlot(plot: grayPlot)
+        //graphView.addPlot(plot: grayPlot)
         graphView.addPlot(plot: pinkPlot)
         
         graphView.addReferenceLines(referenceLines: referenceLine)

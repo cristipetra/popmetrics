@@ -95,4 +95,6 @@ class PopmetricsColor {
     static let firstBreadown = UIColor(red: 255/255, green: 33/255, blue: 113/255, alpha: 1)
     static let secondBreadown = UIColor(red: 255/255, green: 162/255, blue: 109/255, alpha: 1)
     static let thirdBreadown = UIColor(red: 50/255, green: 199/255, blue: 255/255, alpha: 1)
+    
+    static let grayStats = UIColor(red: 151/255, green: 151/255, blue: 151/255, alpha: 1)
 }
