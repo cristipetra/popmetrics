@@ -86,7 +86,6 @@ class Markdown {
         markDownView.rightAnchor.constraint(equalTo: containerMark.rightAnchor).isActive = true
         markDownView.topAnchor.constraint(equalTo: containerMark.topAnchor).isActive = true
         markDownView.bottomAnchor.constraint(equalTo: containerMark.bottomAnchor).isActive = true
-        
     }
     
     

@@ -31,7 +31,7 @@ class PeriodGraphDateView: UIView {
         label.textAlignment = .left
         label.textColor = PopmetricsColor.textGrey
         label.font = UIFont(name: FontBook.regular, size: 10)
-        label.text = "Jun23"
+        label.text = ""
         return label
     }()
     
@@ -48,7 +48,7 @@ class PeriodGraphDateView: UIView {
         label.textAlignment = .right
         label.textColor = PopmetricsColor.textGrey
         label.font = UIFont(name: FontBook.regular, size: 10)
-        label.text = "July22"
+        label.text = ""
         return label
     }()
     
