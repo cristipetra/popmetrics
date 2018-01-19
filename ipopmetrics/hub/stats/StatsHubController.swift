@@ -336,6 +336,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
                 
                 cell.footerView.displayOnlyActionButton()
                 cell.connectionLine.isHidden = true
+                cell.labelUrl.text = UserStore.currentBrand?.domainURL
                 
                 return cell
             default:

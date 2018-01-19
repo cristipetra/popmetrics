@@ -12,6 +12,7 @@ class StatsMetricPageContentViewController: UIViewController, UITableViewDelegat
     
     @IBOutlet weak var topPageControl: UIPageControl!
 
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -61,6 +62,7 @@ class StatsMetricPageContentViewController: UIViewController, UITableViewDelegat
         topPageControl.currentPage = pageIndex
         
         titleLabel.text = statsMetric.label
+        urlLabel.text = UserStore.currentBrand?.domainURL
     }
     
     private func setUpNavigationBar() {
