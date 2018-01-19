@@ -24,7 +24,10 @@ protocol InfoButtonDelegate {
 
 class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, GIDSignInDelegate {
    
-    var homeHubViewController: HomeHubViewController?
+    static func sharedInstance() -> RequiredActionHandler {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.requiredActionHandler
+    }
     
     func  handleRequiredAction(_ item: FeedCard) {
         
@@ -34,6 +37,9 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
             
             case "twitter.connect_with_brand":
                 connectTwitter(item)
+            
+            case "facebook.connect_with_brand":
+                connectFacebook(item)
             
             default:
                 print("Unexpected name "+item.name)
@@ -48,7 +54,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                                                  annotation: annotation)
     }
     
-   func connectGoogleAnalytics(_ item:FeedCard) {
+   func connectGoogleAnalytics(_ item:FeedCard?) {
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().clientID = "850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().serverClientID = "850179116799-024u4fn5ddmkm3dnius3fq3l1gs81toi.apps.googleusercontent.com"
@@ -72,7 +78,8 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                                    ]
             let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
             
-            self.homeHubViewController?.showBannerForNotification(pnotification)
+            NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
+                                            userInfo: pnotification.toJSON())
             return
         }
         
@@ -82,14 +89,14 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                                "sound":"default"
         ]
         let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
-        
-        self.homeHubViewController?.showBannerForNotification(pnotification)
+        NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
+                                        userInfo: pnotification.toJSON())
         
         let brandId = UserStore.currentBrandId
         
         let params = [
             "task_name": "ganalytics.connect_with_brand",
-            "user_id":UserStore().getLocalUserAccount().id,
+            "user_id": UserStore().getLocalUserAccount().id,
             "client_id":GIDSignIn.sharedInstance().clientID,
             "token":user.authentication.idToken,
             "access_token": user.authentication.accessToken,
@@ -103,13 +110,16 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
             let store = FeedStore.getInstance()
             if let card = store.getFeedCardWithName("ganalytics.connect_with_brand") {
                 store.updateCardSection(card, section: "None")
-                self.homeHubViewController?.tableView.reloadData()
+                NotificationCenter.default.post(name:Notification.Popmetrics.UiRefreshRequired, object:nil,
+                                                userInfo: nil )
+                NotificationCenter.default.post(name:Notification.Popmetrics.RequiredActionComplete, object:nil,
+                                                userInfo: nil )
             }
         } // usersApi.logInWithGoogle()
     }
         
     
-    func connectTwitter(_ item:FeedCard) {
+    func connectTwitter(_ item:FeedCard?) {
         
         Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
             if (session != nil) {
@@ -120,7 +130,8 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                 ]
                 let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
                 
-                self.homeHubViewController?.showBannerForNotification(pnotification)
+                NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
+                                                userInfo: pnotification.toJSON())
                 
                 let params = [
                     "task_name": "twitter.connect_with_brand",
@@ -134,8 +145,11 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                     let store = FeedStore.getInstance()
                     if let card = store.getFeedCardWithName("twitter.connect_with_brand") {
                         store.updateCardSection(card, section: "None")
-                        self.homeHubViewController?.tableView.reloadData()
+                        NotificationCenter.default.post(name:Notification.Popmetrics.UiRefreshRequired, object:nil,
+                                                        userInfo: nil )
                     }
+                    NotificationCenter.default.post(name:Notification.Popmetrics.RequiredActionComplete, object:nil,
+                                                    userInfo: nil )
                 }
                 
             } else {
@@ -146,7 +160,8 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                 ]
                 let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
                 
-                self.homeHubViewController?.showBannerForNotification(pnotification)
+                NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
+                                                userInfo: pnotification.toJSON())
                 return
                 
             }
@@ -157,46 +172,77 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     
     
     // MARK: Facebook LogIn Process
-    func connectFacebookfunc(_ sender: SimpleButton, item:FeedCard) {
-//        let loginManager = LoginManager()
-//        let permissions = [.publicProfile, .email]
-//        loginManager.logOut()
-//        loginManager.logIn([.publicProfile, .email], viewController: self) { result in
+    func connectFacebook(_ item:FeedCard?) {
+        let loginManager = LoginManager()
+        let readPermissions = [ReadPermission.publicProfile, ReadPermission.email, ReadPermission.pagesShowList]
+        let publishPermissions = [PublishPermission.managePages, PublishPermission.publishPages]
+        
+        loginManager.logOut()
+        loginManager.logIn(readPermissions:readPermissions, viewController: nil) { result in
+            switch result {
+                case LoginResult.failed(let error):
+                    let notificationObj = ["alert":"Failed to connect with Facebook.",
+                                           "subtitle":"bad credentials have been provided.",
+                                           "type": "failure",
+                                           "sound":"default"
+                    ]
+                    let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+                    
+                    NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
+                                                    userInfo: pnotification.toJSON())
+                case LoginResult.cancelled:
+                    let notificationObj = ["alert":"Failed to connect with Facebook.",
+                                           "subtitle":"Authentication has been canceled.",
+                                           "type": "failure",
+                                           "sound":"default"
+                    ]
+                    let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+                    
+                    NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
+                                                    userInfo: pnotification.toJSON())
+                
+                case LoginResult.success(let grantedPermissions, let declinedPermissions, let accessToken):
+                    let notificationObj = ["alert":"Connecting to Facebook.",
+                                           "subtitle":"Your credentials will be validated while establishing the connection.",
+                                           "type": "info",
+                                           "sound":"default"
+                    ]
+                    let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+                    
+                    NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
+                                                    userInfo: pnotification.toJSON())
+                    let params = [
+                        "task_name": "facebook.connect_with_brand",
+                        "access_token": accessToken.authenticationToken
+                    ]
+                    let brandId = UserStore.currentBrandId
+                    TodoApi().postRequiredAction(brandId, params: params) { requiredActionResponse in
+                        NotificationCenter.default.post(name:Notification.Popmetrics.RequiredActionComplete, object:nil,
+                                                        userInfo: nil )
+                        let store = FeedStore.getInstance()
+                        if let card = store.getFeedCardWithName("facebook.connect_with_brand") {
+                            store.updateCardSection(card, section: "None")
+                            NotificationCenter.default.post(name:Notification.Popmetrics.UiRefreshRequired, object:nil,
+                                                            userInfo: nil )
+                        }
+                    }
+                    
+                }
+        }
+        
+
+//        loginManager.logIn(publishPermissions:publishPermissions, viewController: self.homeHubViewController) { result in
 //            switch result {
-//            case .Failed(let error):
+//            case LoginResult.failed(let error):
 //                print("failed")
-//            case .Cancelled:
+//            case LoginResult.cancelled:
 //                print("cancelled")
-//            case .Success(let grantedPermissions, let declinedPermissions, let accessToken):
-//                
-//                print("success")
-////                let userId = result?.token.userID
-////                let token = result?.token.tokenString
-//                userId = ""
-//                
-//                callback(userId, token, nil)
+//            case LoginResult.success(let grantedPermissions, let declinedPermissions, let accessToken):
+//                print("thank you")
 //            }
 //        }
+
+        
     }
-    
-//    func getFacebookUserInfo(callback: @escaping (_ name: String?, _ email: String?, _ picture: String?, _ error: SocialLoginError?) -> Void) {
-//        let params = ["fields": "name, email, picture"]
-//        let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: params)!
-//        graphRequest.start { connection, result, error in
-//            if error == nil, let result = result as? [String: Any] {
-//                let name = result["name"] as? String
-//                let email = result["email"] as? String
-//                var picture: String? = nil
-//                if let pictureData = result["picture"] as? [String: Any] {
-//                    if let data = pictureData["data"] as? [String: Any] {
-//                        picture = data["url"] as? String
-//                    }
-//                }
-//                callback(name, email, picture, nil)
-//                return
-//            }
-//            callback(nil, nil, nil, SocialLoginError.unknown)
-//        }
-//    }
     
 }

@@ -26,8 +26,6 @@ class LoginSocialViewController: BaseViewController {
     
     @IBOutlet weak var constraintTopFacebook: NSLayoutConstraint!
     
-    var socialActionHandler = SocialActionHandler()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,6 +40,12 @@ class LoginSocialViewController: BaseViewController {
         setNavigationBar()
      
         addSpace()
+        let nc = NotificationCenter.default
+        nc.addObserver(forName:Notification.Popmetrics.RequiredActionComplete, object:nil, queue:nil, using:catchRequiredActionCompleteNotification)
+        
+        nc.addObserver(self, selector:#selector(self.catchRequiredActionCompleteNotification), name: Notification.Popmetrics.RequiredActionComplete, object:nil)
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -73,16 +77,11 @@ class LoginSocialViewController: BaseViewController {
     }
     
     @objc func loginTwitterHandler() {
-        socialActionHandler.connectTwitter(viewController: self) {
-            self.nextPage()
-        }
+        RequiredActionHandler.sharedInstance().connectTwitter(nil)
     }
     
     @objc func loginFacebookHandler() {
-        print("login facebook")
-        socialActionHandler.connectFacebook(viewController: self) {
-            self.nextPage()
-        }
+        RequiredActionHandler.sharedInstance().connectFacebook(nil)
     }
     
     @objc func loginLinkedInHandler() {
@@ -136,6 +135,12 @@ class LoginSocialViewController: BaseViewController {
     
     @objc func dismissView() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func catchRequiredActionCompleteNotification(notification:Notification) -> Void {
+        // this will only get called after authentication is complete
+        self.nextPage()
+        
     }
     
 }

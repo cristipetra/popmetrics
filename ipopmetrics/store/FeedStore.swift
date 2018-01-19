@@ -11,7 +11,7 @@ import RealmSwift
 
 class FeedStore {
     
-    
+
     public let realm = try! Realm()
     
     static func getInstance() -> FeedStore {

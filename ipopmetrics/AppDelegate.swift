@@ -16,6 +16,7 @@ import UserNotifications
 import URLNavigator
 import ObjectMapper
 import SafariServices
+import RealmSwift
 //import STPopup
 
 public extension Notification {
@@ -30,6 +31,7 @@ public extension Notification {
         
         public static let SignIn = Notification.Name("Notification.Popmetrics.SignIn")
         public static let RemoteMessage = Notification.Name("Notification.Popmetrics.RemoteMessage")
+        public static let RequiredActionComplete = Notification.Name("Notification.Popmetrics.RequiredActionComplete")
         public static let UiRefreshRequired = Notification.Name("Notification.Popmetrics.UiRefreshRequired")
         public static let ReloadGraph = Notification.Name("Notification.Popmetrics.ReloadGraph")
         
@@ -46,8 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var usersStore: UserStore!
     var feedStore: FeedStore!
     var storyBoard: UIStoryboard!
-    
     var syncService: SyncService!
+    var requiredActionHandler: RequiredActionHandler!
     
     var safari: SFSafariViewController?
     
@@ -56,8 +58,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
+        let config = Realm.Configuration(
+            schemaVersion: 1,
+            migrationBlock: { migration, oldSchemaVersion in
+            },
+            deleteRealmIfMigrationNeeded: true
+        )
+        
+        Realm.Configuration.defaultConfiguration = config
+        
+        
         usersStore = UserStore()
         feedStore = FeedStore()
+        requiredActionHandler = RequiredActionHandler()
         
         syncService = SyncService()
         

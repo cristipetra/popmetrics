@@ -10,13 +10,13 @@ import Foundation
 
 // MARK: - Constants
 
-//private let PROTOCOL = "https"
-//private let HOST = "api.popmetrics.io"
-//private let PORT = 443
-
 private let PROTOCOL = "https"
-private let HOST = "testapi.popmetrics.ai"
+private let HOST = "api.popmetrics.io"
 private let PORT = 443
+
+//private let PROTOCOL = "https"
+//private let HOST = "testapi.popmetrics.ai"
+//private let PORT = 443
 
 
 // private let PROTOCOL = "http"
