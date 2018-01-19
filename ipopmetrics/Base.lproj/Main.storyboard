@@ -932,7 +932,6 @@
                         <outlet property="tableView" destination="f5I-kY-SO8" id="7Po-3j-87a"/>
                         <outlet property="titleLabel" destination="vPg-vh-tlW" id="Elz-Bf-jIi"/>
                         <outlet property="topPageControl" destination="ar5-Ai-FYs" id="CBS-8b-HDz"/>
-                        <outlet property="urlLabel" destination="cbI-j4-0hY" id="2O3-Mx-Vos"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tnh-7j-i4g" userLabel="First Responder" sceneMemberID="firstResponder"/>

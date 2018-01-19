@@ -62,7 +62,6 @@ class StatsMetricPageContentViewController: UIViewController, UITableViewDelegat
         topPageControl.currentPage = pageIndex
         
         titleLabel.text = statsMetric.label
-        urlLabel.text = UserStore.currentBrand?.domainURL
     }
     
     private func setUpNavigationBar() {
