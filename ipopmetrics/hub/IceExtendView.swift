@@ -21,6 +21,7 @@ class IceExtendView: UIView {
     @IBOutlet weak var costMainProgressView: UIView!
     @IBOutlet weak var effortMainProgressView: UIView!
     @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var impactScoreView: ImpactScoreView!
     
     @IBOutlet var splitSquare: [UIView]!
     @IBOutlet var splitLabels: [UILabel]!
@@ -29,6 +30,11 @@ class IceExtendView: UIView {
     @IBOutlet weak var progressCost: GTProgressBar!
     @IBOutlet weak var progressEffort: GTProgressBar!
     @IBOutlet var splitLabelsLeadingAnchor: [NSLayoutConstraint]!
+    
+    
+    @IBOutlet weak var firstScoreView: ImpactScoreView!
+    @IBOutlet weak var secondScoreView: ImpactScoreView!
+    @IBOutlet weak var thirdScoreView: ImpactScoreView!
     
     private let colorCost = UIColor(red: 177/255, green: 154/255, blue: 219/255, alpha: 1)
     private let colorEffort = UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1)
@@ -62,8 +68,28 @@ class IceExtendView: UIView {
         containerView.frame = self.bounds
         containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         containerView.layoutIfNeeded()
-        adjustSplitLabelToScreen()
+        //adjustSplitLabelToScreen()
         setCornerRadious()
+        
+        initialScores()
+
+    }
+    
+    private func initialScores() {
+        impactScoreView.setProgress(0.0)
+        
+        firstScoreView.alpha = 0.6
+        firstScoreView.setProgressPercentage(0.5)
+        firstScoreView.setTitle("Site Traffic")
+        
+        secondScoreView.alpha = 0.6
+        secondScoreView.setProgressPercentage(0.2)
+        secondScoreView.setTitle("Brand")
+        
+        thirdScoreView.alpha = 0.6
+        thirdScoreView.setProgressPercentage(0.9)
+        thirdScoreView.setTitle("Customers")
+        
     }
     
     func configure(_ feedCard: FeedCard) {
@@ -105,6 +131,10 @@ class IceExtendView: UIView {
         setProgressCostStyle()
         
         updateValues()
+        
+        let progress = CGFloat(iceCardModel.iceImpactPercentage) / CGFloat(100)
+        impactScoreView.setProgress(progress)
+
     }
     
     func updateValues() {
@@ -154,13 +184,7 @@ class IceExtendView: UIView {
     
     
     private func setCornerRadious() {
-        
         impactMultipleMainProgressView.layer.cornerRadius = 4
-        
-        splitSquare.forEach { (label) in
-            label.layer.cornerRadius = 2
-            label.layer.masksToBounds = true
-        }
     }
     
     private func getIceImpactLabel() -> String {
@@ -174,68 +198,15 @@ class IceExtendView: UIView {
     }
     
     private func setSplitValues(splitValues: [ImpactSplit]) {
+        let scoreViews: [ImpactScoreView] = [firstScoreView, secondScoreView, thirdScoreView]
         for index in 0..<splitValues.count {
-            splitLabels[index].text = splitValues[index].label
-            
-            splitLabels[index].isHidden = false
-            splitSquare[index].isHidden = false
+            scoreViews[index].setTitle(splitValues[index].label)
+            scoreViews[index].setProgressPercentage( CGFloat(splitValues[index].percentage) / 100.0)
         }
-        
-        setMultipleProgressViewConstaits()
     }
     
     private func setUpLabel() {
-        let impactLevel: String = (getIceImpactLabel() + " impact")
         
-        guard let cost = iceCardModel.iceCostLabel else { return }
-        guard let effort = iceCardModel.iceEffortLabel else { return }
-        
-        let impactStyle = Style("impactStyle", { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.bold, size: 15)
-            style.color = UIColor(red: 255/255, green: 34/255, blue: 108/255, alpha: 1)
-        })
-        
-        let aproxCharacterStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.regular, size: 15)
-            style.color = UIColor(red: 255/255, green: 229/255, blue: 135/255, alpha: 1)
-        }
-        
-        let dollarSignStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.light, size: 15)
-            style.color = UIColor(red: 255/255, green: 229/255, blue: 135/255, alpha: 1)
-        }
-        
-        let costStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.extraBold, size: 15)
-            style.color = UIColor(red: 177/255, green: 154/255, blue: 219/255, alpha: 1)
-        }
-        
-        let effortStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.bold, size: 15)
-            style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
-        }
-        
-        let aproxCharacterStyle2 = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.regular, size: 15)
-            style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
-        }
-        
-        let breakdownMostStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.regular, size: 15)
-            style.color = getMostLabelColor()
-        }
-        
-        let aproxChar = "~".set(style: aproxCharacterStyle)
-        let aproxChar2 = "~".set(style: aproxCharacterStyle2)
-        let dollarChar =  "$".set(style: dollarSignStyle)
-        let impactLvlAttr = impactLevel.set(style: impactStyle)
-        let costAttr = cost.set(style: costStyle)
-        let effortAttr = effort.set(style: effortStyle)
-        let lastText = getMostLabel().lowercased().set(style: breakdownMostStyle)
-        
-        let attrString: NSMutableAttributedString = "This is a " + impactLvlAttr + " task that we can complete for "  + "" + "" + costAttr + " or you can do it in " +  aproxChar2 + "" + effortAttr + " that will help your " + lastText + " most"
-        
-        messageLbl.attributedText = attrString
     }
     
     func getMostLabel() -> String {
@@ -254,62 +225,8 @@ class IceExtendView: UIView {
         
         return iceCardModel.getBreakdownsColors()[maxIndex]
     }
-    
-    /*
-    private func setCostStyle() {
-        costMainProgressView.clipsToBounds = true
-        let value = String(iceCardModel.iceCostPercentage)
-        guard let label = iceCardModel.iceCostLabel else {
-            return
-        }
-        
-        setProgress(animationBounds: costMainProgressView.bounds, value: value, childOff: costMainProgressView, animationColor: UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1), animationDuration: nil)
-        
-        let circaCharacterStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.regular, size: 18)
-            style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
-        }
-        
-        let extraBoldStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.extraBold, size: 18)
-            style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
-        }
-        
-        costLbl.attributedText = "~".set(style: circaCharacterStyle) + "$\(label)".set(style: extraBoldStyle)
-        
-    }
-    */
-    private func setMultipleProgressViewConstaits() {
-        var splitValues = iceCardModel.getIceImpactSplit()
-        impactMultipleMainProgressView.clipsToBounds = true
-        
-        var bounds: CGRect! = CGRect.zero
-        let progressColor: [UIColor] = [UIColor(red: 255/255, green: 34/255, blue: 105/255, alpha: 1), UIColor(red: 255/255, green: 157/255, blue: 103/255, alpha: 1), UIColor(red: 78/255, green: 198/255, blue: 255/255, alpha: 1), UIColor.green]
-        
-        if splitValues.count == 0 {
-            impactMultipleMainProgressView.isHidden = true
-            splitSquare.forEach({ (label) in
-                label.isHidden = true
-            })
-            
-            splitLabels.forEach({ (label) in
-                label.isHidden = true
-            })
-            return
-        }
-        
-        for index in 0..<splitValues.count {
-            
-            delay(time: index * 1, closure: {
-                if index == 0 {
-                    bounds = self.calcProgressBounds(startingPos: 0)
-                } else {
-                    bounds = self.calcProgressBounds(startingPos: splitValues[index - 1].percentage,previousBounds: bounds)
-                }
-                self.setProgress(animationBounds: bounds, value: String(splitValues[index].percentage), childOff: self.impactMultipleMainProgressView, animationColor: progressColor[index], animationDuration: nil)
-            })
-        }
-    }
+
+
     
     func delay(time: Int, closure: @escaping ()->()) {
         
@@ -356,6 +273,7 @@ class IceExtendView: UIView {
 
 struct IceCardViewModel {
     internal var iceImpactPercentage: Int
+    internal var impactPercentage: Int
     internal var iceImpactSplit: String? = nil // "[{'label': "Website Traffice", 'percentage': 10}]"
     
     internal var iceCostLabel: String? = nil
@@ -371,6 +289,7 @@ struct IceCardViewModel {
         iceEffortLabel          = todoCard.iceEffortLabel
         iceCostPercentage       = todoCard.iceCostPercentage
         iceEffortPercentage     = todoCard.iceEffortPercentage
+        impactPercentage        = todoCard.impactPercentage
     }
     
     init(feedCard: FeedCard) {
@@ -381,6 +300,7 @@ struct IceCardViewModel {
         iceEffortLabel          = feedCard.iceEffortLabel
         iceCostPercentage       = feedCard.iceCostPercentage
         iceEffortPercentage     = feedCard.iceEffortPercentage
+        impactPercentage        = feedCard.impactPercentage
     }
     
     func getIceImpactSplit() -> [ImpactSplit] {

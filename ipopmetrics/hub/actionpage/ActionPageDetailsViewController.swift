@@ -15,7 +15,6 @@ class ActionPageDetailsViewController: BaseViewController {
     @IBOutlet weak var titleArticle: UILabel!
     @IBOutlet weak var blogTitle: UILabel!
     @IBOutlet weak var blogSummary: UILabel!
-    @IBOutlet weak var impactScore: ImpactScoreView!
     
     @IBOutlet weak var constraintHeightDetailsMarkdown: NSLayoutConstraint!
     @IBOutlet weak var containerIceView: UIView!
@@ -25,6 +24,7 @@ class ActionPageDetailsViewController: BaseViewController {
     @IBOutlet weak var constraintBottomStackView: NSLayoutConstraint!
     @IBOutlet weak var constraintHeightClosingMarkdown: NSLayoutConstraint!
     
+    @IBOutlet weak var constraintHeightIceView: NSLayoutConstraint!
     
     @IBOutlet weak var addToMyActionsView: UIView!
     @IBOutlet weak var addToPaidActionsView: UIView!
@@ -54,7 +54,6 @@ class ActionPageDetailsViewController: BaseViewController {
         }
         
         addIceView()
-        impactScore.setProgress(0.0)
         setupNavigationWithBackButton()
         
        updatView()
@@ -66,19 +65,24 @@ class ActionPageDetailsViewController: BaseViewController {
         addPersistentFooter()
     }
     
+    override func viewWillLayoutSubviews() {
+        
+        iceView.topAnchor.constraint(equalTo: self.containerIceView.topAnchor, constant: 0).isActive = true
+        iceView.rightAnchor.constraint(equalTo: self.containerIceView.rightAnchor, constant: 0).isActive = true
+        iceView.bottomAnchor.constraint(equalTo: self.containerIceView.bottomAnchor, constant: 0).isActive = true
+        iceView.leftAnchor.constraint(equalTo: self.containerIceView.leftAnchor, constant: 0).isActive = true
+        
+        
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     private func addIceView() {
         self.containerIceView.addSubview(iceView)
-        
         iceView.translatesAutoresizingMaskIntoConstraints = false
-        iceView.topAnchor.constraint(equalTo: self.containerIceView.topAnchor, constant: 0).isActive = true
-        iceView.rightAnchor.constraint(equalTo: self.containerIceView.rightAnchor, constant: 0).isActive = true
-        iceView.bottomAnchor.constraint(equalTo: self.containerIceView.bottomAnchor, constant: 0).isActive = true
-        iceView.leftAnchor.constraint(equalTo: self.containerIceView.leftAnchor, constant: 0).isActive = true
-        
     }
     
     func addPersistentFooter() {
@@ -140,9 +144,6 @@ class ActionPageDetailsViewController: BaseViewController {
             titleArticle.text = title
         }
         
-        let progress = CGFloat(actionModel.impactPercentage) / CGFloat(100)
-        impactScore.setProgress(progress)
-        
         displayMarkdownDetails()
         displayMarkdownClosing()
     }
@@ -177,11 +178,24 @@ class ActionPageDetailsViewController: BaseViewController {
     internal func displayMarkdownDetails() {
         let mark = Markdown()
         mark.addMarkInExtendedView(containerMark: containerDetailsMarkdown, containerHeightConstraint: constraintHeightDetailsMarkdown, markdownString: getDetailsMarkdownString())
+        
+        if getDetailsMarkdownString().isEmpty || getDetailsMarkdownString().count <= 1 {
+            constraintHeightDetailsMarkdown.constant = 0
+        } else {
+            constraintHeightDetailsMarkdown.constant  = constraintHeightDetailsMarkdown.constant + 80
+        }
+        
     }
     
     internal func displayMarkdownClosing() {
         let mark = Markdown()
         mark.addMarkInExtendedView(containerMark: containerClosingMarkdown, containerHeightConstraint: constraintHeightClosingMarkdown, markdownString: getClosingMarkdownString())
+        
+        if getClosingMarkdownString().isEmpty || getClosingMarkdownString().count <= 1 {
+            constraintHeightClosingMarkdown.constant = 0
+        } else {
+            constraintHeightClosingMarkdown.constant  = constraintHeightClosingMarkdown.constant + 80
+        }
     }
 
     @IBAction func handlerViewArticleBtn(_ sender: Any) {
@@ -322,13 +336,14 @@ class ActionPageModel: NSObject {
     internal var todoCard: TodoCard?
     internal var feedCard: FeedCard?
     
+    
     init(todoCard: TodoCard) {
         titleArticle         = todoCard.headerTitle
         imageUri             = todoCard.imageUri
-        impactPercentage     = todoCard.iceImpactPercentage
         detailsMarkdown      = todoCard.detailsMarkdown
         closingMarkdown      = todoCard.closingMarkdown
         blogUrl              = todoCard.blogUrl
+        impactPercentage     = todoCard.impactPercentage
         
         self.todoCard = todoCard
     }
@@ -336,10 +351,11 @@ class ActionPageModel: NSObject {
     init(feedCard: FeedCard) {
         titleArticle        = feedCard.headerTitle
         imageUri            = feedCard.imageUri
-        impactPercentage    = feedCard.iceImpactPercentage
         detailsMarkdown     = feedCard.detailsMarkdown
         closingMarkdown     = feedCard.closingMarkdown
         blogUrl             = feedCard.blogUrl
+        impactPercentage    = feedCard.impactPercentage
+        
         
         self.feedCard = feedCard
     }

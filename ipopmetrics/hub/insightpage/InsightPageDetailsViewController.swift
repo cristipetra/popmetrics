@@ -28,12 +28,12 @@ class InsightPageDetailsViewController: BaseViewController {
     
     @IBOutlet weak var constraintBottomStackView: NSLayoutConstraint!
     @IBOutlet weak var constraintHeightContainerFailed: NSLayoutConstraint!
-    @IBOutlet weak var constraintHeightContainerImpactScore: NSLayoutConstraint!
+    
     private var feedCard: FeedCard!
     private var recommendActionHandler: RecommendActionHandler?
     var cardInfoHandlerDelegate: CardInfoHandler?
     
-    @IBOutlet weak var impactScore: ImpactScoreView!
+    
     let statsView = IndividualTaskView()
     
     var bottomContainerViewBottomAnchor: NSLayoutConstraint!
@@ -92,16 +92,8 @@ class InsightPageDetailsViewController: BaseViewController {
                 cardImage.af_setImage(withURL: url)
             }
         }
-        
-        if(!Bool(feedCard.iceEnabled)) {
-            hideImpactScoreView()
-        }
-        
+
         hideFailedSection()
-        
-        let progress = CGFloat(feedCard.iceImpactPercentage) / CGFloat(100)
-        
-        impactScore.setProgress(progress)
         
         blogTitle.text = feedCard.blogTitle
         if let blogImageUrl = feedCard.blogImageUrl {
@@ -117,12 +109,7 @@ class InsightPageDetailsViewController: BaseViewController {
     private func hideFailedSection() {
         constraintHeightContainerFailed.constant = 0
     }
-    
-    private func hideImpactScoreView() {
-        constraintHeightContainerImpactScore.constant = 0
-        impactScore.isHidden = true
-    }
-    
+
     private func setupNavigationWithBackButton() {
         let titleWindow = "Insight Page"
         
@@ -163,15 +150,27 @@ class InsightPageDetailsViewController: BaseViewController {
         let mark = Markdown()
         
         mark.addMarkInExtendedView(containerMark: containerDetailsMarkdown, containerHeightConstraint: constraintHeightDetailsMarkdown, markdownString: getMarkDownString())
+        
+        constraintHeightDetailsMarkdown.constant = constraintHeightDetailsMarkdown.constant + containerClosingMarkdown.frame.origin.y
     }
     
     internal func displayMarkClosing() {
         let mark = Markdown()
         
         mark.addMarkInExtendedView(containerMark: containerClosingMarkdown, containerHeightConstraint: constraintHeightClosingMarkdown, markdownString: getMarkClosingString())
+        
+        constraintHeightClosingMarkdown.constant = constraintHeightClosingMarkdown.constant + containerClosingMarkdown.frame.origin.y
     }
     
     @IBAction func handlerViewArticleBtn(_ sender: Any) {
+        
+        if let url = feedCard.blogUrl {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.openURLInside(self, url: url)
+        }
+    }
+
+    @IBAction func handlerClickArticle(_ sender: UIButton) {
         if let url = feedCard.blogUrl {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.openURLInside(self, url: url)

@@ -11,6 +11,13 @@ import UIKit
 @IBDesignable
 class PeriodGraphDateView: UIView {
     
+    lazy internal var topLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = PopmetricsColor.grayStats
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy internal var indicatorStartDate: UIView = {
         let view = UIView()
         view.backgroundColor = PopmetricsColor.grayStats
@@ -24,7 +31,7 @@ class PeriodGraphDateView: UIView {
         label.textAlignment = .left
         label.textColor = PopmetricsColor.textGrey
         label.font = UIFont(name: FontBook.regular, size: 10)
-        label.text = "Jun23"
+        label.text = ""
         return label
     }()
     
@@ -41,11 +48,16 @@ class PeriodGraphDateView: UIView {
         label.textAlignment = .right
         label.textColor = PopmetricsColor.textGrey
         label.font = UIFont(name: FontBook.regular, size: 10)
-        label.text = "July22"
+        label.text = ""
         return label
     }()
     
     override func layoutSubviews() {
+        
+        topLineView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
+        topLineView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+        topLineView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+        topLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
         indicatorStartDate.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
         indicatorStartDate.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
@@ -76,6 +88,8 @@ class PeriodGraphDateView: UIView {
     
     
     private func setupViews() {
+        self.addSubview(topLineView)
+        
         self.addSubview(indicatorStartDate)
         self.addSubview(startDateLabel)
         
@@ -90,11 +104,8 @@ class PeriodGraphDateView: UIView {
         startDateLabel.text = statsMetric.currentPeriodStartDate.toShortString()
         endDateLabel.text = statsMetric.currentPeriodEndDate.toShortString()
     }
-    
-    
-    
-}
 
+}
 
 extension Date {
     func toShortString() -> String{
