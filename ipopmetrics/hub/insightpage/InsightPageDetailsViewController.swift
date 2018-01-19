@@ -143,7 +143,6 @@ class InsightPageDetailsViewController: BaseViewController {
     }
     
     func getMarkClosingString() -> String {
-        print("CLOSING:::---- \(feedCard.closingMarkdown)")
         return feedCard.closingMarkdown!
     }
     
@@ -152,7 +151,7 @@ class InsightPageDetailsViewController: BaseViewController {
         
         mark.addMarkInExtendedView(containerMark: containerDetailsMarkdown, containerHeightConstraint: constraintHeightDetailsMarkdown, markdownString: getMarkDownString())
         
-        constraintHeightDetailsMarkdown.constant = constraintHeightDetailsMarkdown.constant + 60
+        constraintHeightDetailsMarkdown.constant = constraintHeightDetailsMarkdown.constant + containerClosingMarkdown.frame.origin.y
     }
     
     internal func displayMarkClosing() {
@@ -160,7 +159,7 @@ class InsightPageDetailsViewController: BaseViewController {
         
         mark.addMarkInExtendedView(containerMark: containerClosingMarkdown, containerHeightConstraint: constraintHeightClosingMarkdown, markdownString: getMarkClosingString())
         
-        constraintHeightClosingMarkdown.constant = constraintHeightClosingMarkdown.constant + 70
+        constraintHeightClosingMarkdown.constant = constraintHeightClosingMarkdown.constant + containerClosingMarkdown.frame.origin.y
     }
     
     @IBAction func handlerViewArticleBtn(_ sender: Any) {

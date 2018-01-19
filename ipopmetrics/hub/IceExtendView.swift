@@ -21,6 +21,7 @@ class IceExtendView: UIView {
     @IBOutlet weak var costMainProgressView: UIView!
     @IBOutlet weak var effortMainProgressView: UIView!
     @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var impactScoreView: ImpactScoreView!
     
     @IBOutlet var splitSquare: [UIView]!
     @IBOutlet var splitLabels: [UILabel]!
@@ -64,16 +65,22 @@ class IceExtendView: UIView {
         containerView.layoutIfNeeded()
         adjustSplitLabelToScreen()
         setCornerRadious()
+        
+        impactScoreView.setProgress(0.0)
     }
     
     func configure(_ feedCard: FeedCard) {
         self.feedCard = feedCard
         iceCardModel = IceCardViewModel(feedCard: feedCard)
+        print(iceCardModel.impactPercentage)
+        print(feedCard.iceImpactPercentage)
     }
     
     func configure(todoCard: TodoCard) {
         self.todoCard = todoCard
         iceCardModel = IceCardViewModel(todoCard: todoCard)
+        print(iceCardModel.impactPercentage)
+        print(todoCard.iceImpactPercentage)
     }
     
     override func layoutSubviews() {
@@ -105,6 +112,10 @@ class IceExtendView: UIView {
         setProgressCostStyle()
         
         updateValues()
+        
+        let progress = CGFloat(iceCardModel.iceImpactPercentage) / CGFloat(100)
+        impactScoreView.setProgress(progress)
+
     }
     
     func updateValues() {
@@ -185,57 +196,7 @@ class IceExtendView: UIView {
     }
     
     private func setUpLabel() {
-        let impactLevel: String = (getIceImpactLabel() + " impact")
         
-        guard let cost = iceCardModel.iceCostLabel else { return }
-        guard let effort = iceCardModel.iceEffortLabel else { return }
-        
-        let impactStyle = Style("impactStyle", { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.bold, size: 15)
-            style.color = UIColor(red: 255/255, green: 34/255, blue: 108/255, alpha: 1)
-        })
-        
-        let aproxCharacterStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.regular, size: 15)
-            style.color = UIColor(red: 255/255, green: 229/255, blue: 135/255, alpha: 1)
-        }
-        
-        let dollarSignStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.light, size: 15)
-            style.color = UIColor(red: 255/255, green: 229/255, blue: 135/255, alpha: 1)
-        }
-        
-        let costStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.extraBold, size: 15)
-            style.color = UIColor(red: 177/255, green: 154/255, blue: 219/255, alpha: 1)
-        }
-        
-        let effortStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.bold, size: 15)
-            style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
-        }
-        
-        let aproxCharacterStyle2 = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.regular, size: 15)
-            style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
-        }
-        
-        let breakdownMostStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.regular, size: 15)
-            style.color = getMostLabelColor()
-        }
-        
-        let aproxChar = "~".set(style: aproxCharacterStyle)
-        let aproxChar2 = "~".set(style: aproxCharacterStyle2)
-        let dollarChar =  "$".set(style: dollarSignStyle)
-        let impactLvlAttr = impactLevel.set(style: impactStyle)
-        let costAttr = cost.set(style: costStyle)
-        let effortAttr = effort.set(style: effortStyle)
-        let lastText = getMostLabel().lowercased().set(style: breakdownMostStyle)
-        
-        let attrString: NSMutableAttributedString = "This is a " + impactLvlAttr + " task that we can complete for "  + "" + "" + costAttr + " or you can do it in " +  aproxChar2 + "" + effortAttr + " that will help your " + lastText + " most"
-        
-        messageLbl.attributedText = attrString
     }
     
     func getMostLabel() -> String {
@@ -254,31 +215,7 @@ class IceExtendView: UIView {
         
         return iceCardModel.getBreakdownsColors()[maxIndex]
     }
-    
-    /*
-    private func setCostStyle() {
-        costMainProgressView.clipsToBounds = true
-        let value = String(iceCardModel.iceCostPercentage)
-        guard let label = iceCardModel.iceCostLabel else {
-            return
-        }
-        
-        setProgress(animationBounds: costMainProgressView.bounds, value: value, childOff: costMainProgressView, animationColor: UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1), animationDuration: nil)
-        
-        let circaCharacterStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.regular, size: 18)
-            style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
-        }
-        
-        let extraBoldStyle = Style.default { (style) -> (Void) in
-            style.font = FontAttribute(FontBook.extraBold, size: 18)
-            style.color = UIColor(red: 255/255, green: 221/255, blue: 105/255, alpha: 1)
-        }
-        
-        costLbl.attributedText = "~".set(style: circaCharacterStyle) + "$\(label)".set(style: extraBoldStyle)
-        
-    }
-    */
+
     private func setMultipleProgressViewConstaits() {
         var splitValues = iceCardModel.getIceImpactSplit()
         impactMultipleMainProgressView.clipsToBounds = true
@@ -356,6 +293,7 @@ class IceExtendView: UIView {
 
 struct IceCardViewModel {
     internal var iceImpactPercentage: Int
+    internal var impactPercentage: Int
     internal var iceImpactSplit: String? = nil // "[{'label': "Website Traffice", 'percentage': 10}]"
     
     internal var iceCostLabel: String? = nil
@@ -371,6 +309,7 @@ struct IceCardViewModel {
         iceEffortLabel          = todoCard.iceEffortLabel
         iceCostPercentage       = todoCard.iceCostPercentage
         iceEffortPercentage     = todoCard.iceEffortPercentage
+        impactPercentage        = todoCard.impactPercentage
     }
     
     init(feedCard: FeedCard) {
@@ -381,6 +320,7 @@ struct IceCardViewModel {
         iceEffortLabel          = feedCard.iceEffortLabel
         iceCostPercentage       = feedCard.iceCostPercentage
         iceEffortPercentage     = feedCard.iceEffortPercentage
+        impactPercentage        = feedCard.impactPercentage
     }
     
     func getIceImpactSplit() -> [ImpactSplit] {
