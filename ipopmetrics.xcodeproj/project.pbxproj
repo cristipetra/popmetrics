@@ -496,6 +496,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		081DFA61201234A800EB2651 /* progress */ = {
+			isa = PBXGroup;
+			children = (
+				086EDE421FC8449A002F4140 /* ImpactScoreView.swift */,
+			);
+			path = progress;
+			sourceTree = "<group>";
+		};
 		0863C4621FEA91AD00999A81 /* animations */ = {
 			isa = PBXGroup;
 			children = (
@@ -693,6 +701,7 @@
 		11DD96591FC4ECD600386F1E /* hub */ = {
 			isa = PBXGroup;
 			children = (
+				081DFA61201234A800EB2651 /* progress */,
 				11DD965C1FC4F0EA00386F1E /* actionpage */,
 				11DD965B1FC4F0AF00386F1E /* insightpage */,
 				11DD965A1FC4ECEE00386F1E /* home */,
@@ -721,7 +730,6 @@
 				0855C0C81F6FFBDB00ACBFA9 /* EmptyStateCard.xib */,
 				0855C0CA1F6FFBF000ACBFA9 /* EmptyStateCard.swift */,
 				084E54E01F827F7D007D6F4F /* NoteView.swift */,
-				086EDE421FC8449A002F4140 /* ImpactScoreView.swift */,
 				11A675A81FC8E1A900EE0A15 /* EmptyStateCardCell.swift */,
 			);
 			path = hub;

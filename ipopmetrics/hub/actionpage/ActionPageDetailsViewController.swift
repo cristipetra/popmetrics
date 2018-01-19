@@ -24,6 +24,7 @@ class ActionPageDetailsViewController: BaseViewController {
     @IBOutlet weak var constraintBottomStackView: NSLayoutConstraint!
     @IBOutlet weak var constraintHeightClosingMarkdown: NSLayoutConstraint!
     
+    @IBOutlet weak var constraintHeightIceView: NSLayoutConstraint!
     
     @IBOutlet weak var addToMyActionsView: UIView!
     @IBOutlet weak var addToPaidActionsView: UIView!
@@ -64,19 +65,24 @@ class ActionPageDetailsViewController: BaseViewController {
         addPersistentFooter()
     }
     
+    override func viewWillLayoutSubviews() {
+        
+        iceView.topAnchor.constraint(equalTo: self.containerIceView.topAnchor, constant: 0).isActive = true
+        iceView.rightAnchor.constraint(equalTo: self.containerIceView.rightAnchor, constant: 0).isActive = true
+        iceView.bottomAnchor.constraint(equalTo: self.containerIceView.bottomAnchor, constant: 0).isActive = true
+        iceView.leftAnchor.constraint(equalTo: self.containerIceView.leftAnchor, constant: 0).isActive = true
+        
+        
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     private func addIceView() {
         self.containerIceView.addSubview(iceView)
-        
         iceView.translatesAutoresizingMaskIntoConstraints = false
-        iceView.topAnchor.constraint(equalTo: self.containerIceView.topAnchor, constant: 0).isActive = true
-        iceView.rightAnchor.constraint(equalTo: self.containerIceView.rightAnchor, constant: 0).isActive = true
-        iceView.bottomAnchor.constraint(equalTo: self.containerIceView.bottomAnchor, constant: 0).isActive = true
-        iceView.leftAnchor.constraint(equalTo: self.containerIceView.leftAnchor, constant: 0).isActive = true
-        
     }
     
     func addPersistentFooter() {
@@ -173,18 +179,19 @@ class ActionPageDetailsViewController: BaseViewController {
         let mark = Markdown()
         mark.addMarkInExtendedView(containerMark: containerDetailsMarkdown, containerHeightConstraint: constraintHeightDetailsMarkdown, markdownString: getDetailsMarkdownString())
         
-        if getDetailsMarkdownString().isEmpty {
+        if getDetailsMarkdownString().isEmpty || getDetailsMarkdownString().count <= 1 {
             constraintHeightDetailsMarkdown.constant = 0
         } else {
             constraintHeightDetailsMarkdown.constant  = constraintHeightDetailsMarkdown.constant + 80
         }
+        
     }
     
     internal func displayMarkdownClosing() {
         let mark = Markdown()
         mark.addMarkInExtendedView(containerMark: containerClosingMarkdown, containerHeightConstraint: constraintHeightClosingMarkdown, markdownString: getClosingMarkdownString())
         
-        if getClosingMarkdownString().isEmpty {
+        if getClosingMarkdownString().isEmpty || getClosingMarkdownString().count <= 1 {
             constraintHeightClosingMarkdown.constant = 0
         } else {
             constraintHeightClosingMarkdown.constant  = constraintHeightClosingMarkdown.constant + 80

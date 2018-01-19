@@ -31,6 +31,11 @@ class IceExtendView: UIView {
     @IBOutlet weak var progressEffort: GTProgressBar!
     @IBOutlet var splitLabelsLeadingAnchor: [NSLayoutConstraint]!
     
+    
+    @IBOutlet weak var firstScoreView: ImpactScoreView!
+    @IBOutlet weak var secondScoreView: ImpactScoreView!
+    @IBOutlet weak var thirdScoreView: ImpactScoreView!
+    
     private let colorCost = UIColor(red: 177/255, green: 154/255, blue: 219/255, alpha: 1)
     private let colorEffort = UIColor(red: 255/255, green: 227/255, blue: 130/255, alpha: 1)
     private let colorBackgroundBar = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
@@ -63,24 +68,38 @@ class IceExtendView: UIView {
         containerView.frame = self.bounds
         containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         containerView.layoutIfNeeded()
-        adjustSplitLabelToScreen()
+        //adjustSplitLabelToScreen()
         setCornerRadious()
         
+        initialScores()
+
+    }
+    
+    private func initialScores() {
         impactScoreView.setProgress(0.0)
+        
+        firstScoreView.alpha = 0.6
+        firstScoreView.setProgressPercentage(0.5)
+        firstScoreView.setTitle("Site Traffic")
+        
+        secondScoreView.alpha = 0.6
+        secondScoreView.setProgressPercentage(0.2)
+        secondScoreView.setTitle("Brand")
+        
+        thirdScoreView.alpha = 0.6
+        thirdScoreView.setProgressPercentage(0.9)
+        thirdScoreView.setTitle("Customers")
+        
     }
     
     func configure(_ feedCard: FeedCard) {
         self.feedCard = feedCard
         iceCardModel = IceCardViewModel(feedCard: feedCard)
-        print(iceCardModel.impactPercentage)
-        print(feedCard.iceImpactPercentage)
     }
     
     func configure(todoCard: TodoCard) {
         self.todoCard = todoCard
         iceCardModel = IceCardViewModel(todoCard: todoCard)
-        print(iceCardModel.impactPercentage)
-        print(todoCard.iceImpactPercentage)
     }
     
     override func layoutSubviews() {
@@ -165,13 +184,7 @@ class IceExtendView: UIView {
     
     
     private func setCornerRadious() {
-        
         impactMultipleMainProgressView.layer.cornerRadius = 4
-        
-        splitSquare.forEach { (label) in
-            label.layer.cornerRadius = 2
-            label.layer.masksToBounds = true
-        }
     }
     
     private func getIceImpactLabel() -> String {
@@ -185,14 +198,11 @@ class IceExtendView: UIView {
     }
     
     private func setSplitValues(splitValues: [ImpactSplit]) {
+        let scoreViews: [ImpactScoreView] = [firstScoreView, secondScoreView, thirdScoreView]
         for index in 0..<splitValues.count {
-            splitLabels[index].text = splitValues[index].label
-            
-            splitLabels[index].isHidden = false
-            splitSquare[index].isHidden = false
+            scoreViews[index].setTitle(splitValues[index].label)
+            scoreViews[index].setProgressPercentage( CGFloat(splitValues[index].percentage) / 100.0)
         }
-        
-        setMultipleProgressViewConstaits()
     }
     
     private func setUpLabel() {
@@ -216,37 +226,7 @@ class IceExtendView: UIView {
         return iceCardModel.getBreakdownsColors()[maxIndex]
     }
 
-    private func setMultipleProgressViewConstaits() {
-        var splitValues = iceCardModel.getIceImpactSplit()
-        impactMultipleMainProgressView.clipsToBounds = true
-        
-        var bounds: CGRect! = CGRect.zero
-        let progressColor: [UIColor] = [UIColor(red: 255/255, green: 34/255, blue: 105/255, alpha: 1), UIColor(red: 255/255, green: 157/255, blue: 103/255, alpha: 1), UIColor(red: 78/255, green: 198/255, blue: 255/255, alpha: 1), UIColor.green]
-        
-        if splitValues.count == 0 {
-            impactMultipleMainProgressView.isHidden = true
-            splitSquare.forEach({ (label) in
-                label.isHidden = true
-            })
-            
-            splitLabels.forEach({ (label) in
-                label.isHidden = true
-            })
-            return
-        }
-        
-        for index in 0..<splitValues.count {
-            
-            delay(time: index * 1, closure: {
-                if index == 0 {
-                    bounds = self.calcProgressBounds(startingPos: 0)
-                } else {
-                    bounds = self.calcProgressBounds(startingPos: splitValues[index - 1].percentage,previousBounds: bounds)
-                }
-                self.setProgress(animationBounds: bounds, value: String(splitValues[index].percentage), childOff: self.impactMultipleMainProgressView, animationColor: progressColor[index], animationDuration: nil)
-            })
-        }
-    }
+
     
     func delay(time: Int, closure: @escaping ()->()) {
         
