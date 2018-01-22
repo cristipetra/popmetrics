@@ -57,8 +57,8 @@ class StatsHubController: BaseViewController {
     @IBOutlet weak var topAnchorTableView: NSLayoutConstraint!
     @IBOutlet weak var leftAnchorTableView: NSLayoutConstraint!
     
-    let indexToSection = [0: StatsSectionType.traffic.rawValue]
-//                          1: StatsSectionType.moreOnTheWay.rawValue]
+    let indexToSection = [0: StatsSectionType.traffic.rawValue,
+                         1: StatsSectionType.moreOnTheWay.rawValue]
     
     let transitionView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     var statisticsNoteView: NoteView!
@@ -100,6 +100,7 @@ class StatsHubController: BaseViewController {
         tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
         tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
         
+        //createItemsLocally()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -324,6 +325,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "StatsCard", for: indexPath) as! StatsCardViewCell
                 
                 let results = store.getStatsMetricsForCard(item)
+
                 cell.statisticsCountView.setupViews(data: Array(results))
                 let itemCellHeight: Int = 94
                 cell.statisticsCountViewHeightCounstraint.constant = CGFloat(results.count * itemCellHeight)

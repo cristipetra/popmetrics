@@ -496,14 +496,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		081DFA61201234A800EB2651 /* progress */ = {
-			isa = PBXGroup;
-			children = (
-				086EDE421FC8449A002F4140 /* ImpactScoreView.swift */,
-			);
-			path = progress;
-			sourceTree = "<group>";
-		};
 		0863C4621FEA91AD00999A81 /* animations */ = {
 			isa = PBXGroup;
 			children = (
@@ -701,7 +693,6 @@
 		11DD96591FC4ECD600386F1E /* hub */ = {
 			isa = PBXGroup;
 			children = (
-				081DFA61201234A800EB2651 /* progress */,
 				11DD965C1FC4F0EA00386F1E /* actionpage */,
 				11DD965B1FC4F0AF00386F1E /* insightpage */,
 				11DD965A1FC4ECEE00386F1E /* home */,
@@ -714,6 +705,7 @@
 				08D579F81F62E6ED00FDD744 /* StatusCardTypeView.swift */,
 				08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */,
 				083938FE1F63C334007DDA37 /* MainTabInfo.swift */,
+				086EDE421FC8449A002F4140 /* ImpactScoreView.swift */,
 				08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */,
 				08B7ADE91FB22B8300C56688 /* FooterViewController.swift */,
 				08F368961F19029100819CDE /* LastCard.xib */,

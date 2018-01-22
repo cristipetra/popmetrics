@@ -27,9 +27,9 @@ class ImpactScoreView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
-        label.font = UIFont(name: FontBook.semibold, size: 15)
-        label.textAlignment = .left
-        label.textColor = PopmetricsColor.calendarCompleteGreen
+        label.font = UIFont(name: FontBook.extraBold, size: 15)
+        label.textAlignment = .right
+        label.textColor = PopmetricsColor.borderButton
         return label
     }()
     
@@ -99,8 +99,22 @@ class ImpactScoreView: UIView {
         setScore(value)
     }
     
+    internal func setTitle(_ title: String) {
+        self.titleView.text = title
+    }
+    
     internal func setScore(_ value: CGFloat) {
         let no = Int(value * 100)
         self.impactScoreLbl.text = "+\(no)"
+    }
+    
+    internal func setProgressPercentage(_ value: CGFloat) {
+        self.progress.animateTo(progress: value)
+        self.setPercentage(value)
+    }
+    
+    private func setPercentage(_ value: CGFloat) {
+        let no = Int(value * 100)
+        self.impactScoreLbl.text = "\(no)%"
     }
 }
