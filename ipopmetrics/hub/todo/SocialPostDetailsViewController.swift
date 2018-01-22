@@ -20,6 +20,7 @@ class SocialPostDetailsViewController: BaseViewController {
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var articleUrl: UILabel!
+    @IBOutlet weak var socialBrand: UILabel!
     
     lazy var buttonContainerView: UIView = {
         let view = UIView()
@@ -103,15 +104,18 @@ class SocialPostDetailsViewController: BaseViewController {
         }
     
         recommendedLabel.text = todoSocialPost.articleText
-        
-        scheduleLabel.text = formatDate(date: todoSocialPost.updateDate)
     
         blogUrl.text = todoSocialPost.articleUrl
         
         articleUrl.text = todoSocialPost.articleUrl
+
     
+        if todoSocialPost.type == "twitter" {
+            socialBrand.text = UserStore.currentBrand?.twitterDetails?.name
+        }
+        
         if let title = todoSocialPost.articleTitle {
-            titleBlogLabel.text = title
+            titleBlogLabel.text = "\"\(title)\""
         }
     
         blogMessage.text  = todoSocialPost.articleText
@@ -135,7 +139,7 @@ class SocialPostDetailsViewController: BaseViewController {
     }
     
     private func setupNavigationWithBackButton() {
-        let titleWindow = "Social Post"
+        let titleWindow = "Recommended Social Post"
         
         let leftSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         leftSpace.width = 5
