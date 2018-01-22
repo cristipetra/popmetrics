@@ -53,8 +53,9 @@ class StatisticsCountView: UIView {
             deltaLabel.textAlignment = .right
             let deltalabelText = "+\(Int(data[row].delta))"
             var deltaPercentage = 0 as Float
-            
-            deltaPercentage =  (data[row].delta * 100) / ( data[row].value )            
+            if data[row].value != 0 {
+                deltaPercentage =  (data[row].delta * 100) / ( data[row].value )
+            }
             
             deltaLabel.text =  deltaPercentage < 0 ? "\(Int(deltaPercentage))%" : "+\(Int(deltaPercentage))%"
     

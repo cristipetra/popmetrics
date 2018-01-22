@@ -91,7 +91,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
      */
     let activeType = [HomeCardType.requiredAction.rawValue, HomeCardType.insight.rawValue, HomeCardType.emptyState.rawValue]
     
-    var requiredActionHandler = RequiredActionHandler()
+    var requiredActionHandler = RequiredActionHandler.sharedInstance()
     
     var recommendActionHandler = RecommendActionHandler()
     let store = FeedStore.getInstance()
@@ -481,7 +481,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             return
         }
         
-        self.requiredActionHandler.homeHubViewController = self
         self.requiredActionHandler.handleRequiredAction(requiredActionCard)
         
     }

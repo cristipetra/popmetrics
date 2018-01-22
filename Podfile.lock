@@ -106,11 +106,11 @@ PODS:
   - NSDate-Escort (1.8.2)
   - ObjectMapper (3.1.0)
   - ReachabilitySwift (4.1.0)
-  - Realm (3.0.2):
-    - Realm/Headers (= 3.0.2)
-  - Realm/Headers (3.0.2)
-  - RealmSwift (3.0.2):
-    - Realm (= 3.0.2)
+  - Realm (3.1.0):
+    - Realm/Headers (= 3.1.0)
+  - Realm/Headers (3.1.0)
+  - RealmSwift (3.1.0):
+    - Realm (= 3.1.0)
   - RSKImageCropper (2.0.0)
   - ScrollableGraphView (4.0.4)
   - SnapKit (4.0.0)
@@ -240,8 +240,8 @@ SPEC CHECKSUMS:
   NSDate-Escort: c79db277a401c0ad219acd295ec17c7b4f61266f
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
-  Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
-  RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
+  Realm: 09513d7c054678d65cd02ce09871f805b0d758ac
+  RealmSwift: e868fee9b10e5490ad94b6b6ecd9027944da1824
   RSKImageCropper: d9a1acbc0600bf8decc8f0d21895872c99a9e4cf
   ScrollableGraphView: abac54d3493a5a198ade4baf4879967183af8a2c
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694

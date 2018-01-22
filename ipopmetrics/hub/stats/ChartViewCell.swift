@@ -21,6 +21,8 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
         return chart
     }()
     
+    @IBOutlet weak var urlLabel: UILabel!
+    
     @IBOutlet weak var currentDateLabel: UILabel!
     @IBOutlet weak var previousDateLabel: UILabel!
     @IBOutlet weak var secondValue: UILabel!
@@ -84,6 +86,7 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
     }
     
     func configure(statisticMetric: StatsMetric) {
+        urlLabel.text = UserStore.currentBrand?.domainURL
         self.statisticMetric = statisticMetric
         statsMetricView = StatsMetricViewModel(statsMetric: statisticMetric)
         
@@ -223,7 +226,12 @@ struct StatsMetricViewModel {
     }
     
     internal func getPercentage() -> Float {
-        return (self.statsMetric.delta * 100) / self.statsMetric.value
+        if statsMetric.value != 0 {
+            return (self.statsMetric.delta * 100) / self.statsMetric.value
+        }
+        else {
+            return 0.0
+        }
     }
     
     internal func getPercentageText() -> String {

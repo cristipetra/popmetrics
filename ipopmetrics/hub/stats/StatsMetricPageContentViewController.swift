@@ -12,6 +12,7 @@ class StatsMetricPageContentViewController: UIViewController, UITableViewDelegat
     
     @IBOutlet weak var topPageControl: UIPageControl!
 
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
     

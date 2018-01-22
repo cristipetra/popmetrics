@@ -30,11 +30,11 @@ class BaseViewController: UIViewController {
         ReachabilityManager.shared.addListener(listener: self)
         
         let nc = NotificationCenter.default
-        nc.addObserver(forName:Notification.Popmetrics.ApiNotReachable, object:nil, queue:nil, using:catchNotification)
-        nc.addObserver(forName:Notification.Popmetrics.ApiFailure, object:nil, queue:nil, using:catchNotification)
-        nc.addObserver(forName:Notification.Popmetrics.ApiResponseUnsuccessfull, object:nil, queue:nil, using:catchNotification)
+        nc.addObserver(self, selector:#selector(self.catchNotification), name: Notification.Popmetrics.ApiNotReachable, object:nil)
+        nc.addObserver(self, selector:#selector(self.catchNotification), name: Notification.Popmetrics.ApiFailure, object:nil)
+        nc.addObserver(self, selector:#selector(self.catchNotification), name: Notification.Popmetrics.ApiResponseUnsuccessfull, object:nil)
+        nc.addObserver(self, selector:#selector(self.catchNotification), name: Notification.Popmetrics.RemoteMessage, object:nil)
         
-        nc.addObserver(forName:Notification.Popmetrics.RemoteMessage, object:nil, queue:nil, using:catchNotification)
     }
     
     func setupOfflineBanner() {
@@ -105,7 +105,7 @@ class BaseViewController: UIViewController {
         toView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
     }
     
-    func catchNotification(notification:Notification) -> Void {
+    @objc func catchNotification(notification:Notification) -> Void {
         print("Catch notification")
         self.hideProgressIndicator()
         

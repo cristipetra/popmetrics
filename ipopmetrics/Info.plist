@@ -29,7 +29,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb205908633280621</string>
+				<string>fb143603199508410</string>
 				<string>com.googleusercontent.apps.850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm</string>
 				<string>vnd.popmetrics</string>
 				<string>li4747084</string>
@@ -45,7 +45,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>0.1.0</string>
+	<string>8109</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -66,7 +66,7 @@
 		</array>
 	</dict>
 	<key>FacebookAppID</key>
-	<string>205908633280621</string>
+	<string>143603199508410</string>
 	<key>FacebookDisplayName</key>
 	<string>Popmetrics</string>
 	<key>LIAppId</key>
