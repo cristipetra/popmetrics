@@ -31,6 +31,8 @@ class IceExtendView: UIView {
     @IBOutlet weak var progressEffort: GTProgressBar!
     @IBOutlet var splitLabelsLeadingAnchor: [NSLayoutConstraint]!
     
+    @IBOutlet weak var constraintWidthProgressEffort: NSLayoutConstraint!
+    @IBOutlet weak var constraintWidthProgressCost: NSLayoutConstraint!
     
     @IBOutlet weak var firstScoreView: ImpactScoreView!
     @IBOutlet weak var secondScoreView: ImpactScoreView!
@@ -68,7 +70,7 @@ class IceExtendView: UIView {
         containerView.frame = self.bounds
         containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         containerView.layoutIfNeeded()
-        //adjustSplitLabelToScreen()
+        
         setCornerRadious()
         
         initialScores()
@@ -104,26 +106,14 @@ class IceExtendView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-    }
-    
-    func adjustSplitLabelToScreen() {
         
-        if UIScreen.main.bounds.width > 320 && UIScreen.main.bounds.width < 414 {
-            splitLabelsLeadingAnchor.forEach({ (leadingAnchor) in
-                leadingAnchor.constant = 12
-                leadingAnchor.isActive = true
-            })
-        } else if UIScreen.main.bounds.width > 375 {
-            splitLabelsLeadingAnchor.forEach({ (leadingAnchor) in
-                leadingAnchor.constant = 28
-                leadingAnchor.isActive = true
-            })
+        if UIScreen.main.bounds.width > 320 {
+            constraintWidthProgressCost.constant = 170
+            constraintWidthProgressEffort.constant = 170
         }
-        
     }
     
     private func updateView() {
-        setUpLabel()
         
         setSplitValues(splitValues: iceCardModel.getIceImpactSplit())
         
@@ -205,10 +195,6 @@ class IceExtendView: UIView {
         }
     }
     
-    private func setUpLabel() {
-        
-    }
-    
     func getMostLabel() -> String {
         let maxIndex = iceCardModel.getIceImpactSplitMaxIndex()
         if iceCardModel.getIceImpactSplit().count == 0 {
@@ -226,8 +212,6 @@ class IceExtendView: UIView {
         return iceCardModel.getBreakdownsColors()[maxIndex]
     }
 
-
-    
     func delay(time: Int, closure: @escaping ()->()) {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(time)) {

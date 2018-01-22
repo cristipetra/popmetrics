@@ -71,9 +71,15 @@ class ImpactScoreView: UIView {
         progress.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         progress.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         progress.heightAnchor.constraint(equalToConstant: 10).isActive = true
+
+        var widthProgress: CGFloat = 190
+        if UIScreen.main.bounds.width <= 320 {
+            widthProgress = 140
+        }
         
-        let constraintProgressWidthAnchor: NSLayoutConstraint = progress.widthAnchor.constraint(equalToConstant: 179)
+        let constraintProgressWidthAnchor: NSLayoutConstraint = progress.widthAnchor.constraint(equalToConstant: widthProgress)
         constraintProgressWidthAnchor.priority = UILayoutPriority.defaultLow
+        constraintProgressWidthAnchor.constant -= self.frame.origin.x
         constraintProgressWidthAnchor.isActive = true
         
         impactScoreLbl.rightAnchor.constraint(equalTo: progress.leftAnchor, constant: -10).isActive = true

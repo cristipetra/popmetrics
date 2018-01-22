@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -22,6 +22,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IceExtendView" customModule="ipopmetrics" customModuleProvider="target">
             <connections>
+                <outlet property="constraintWidthProgressCost" destination="W2G-E1-qaE" id="D1k-uF-wby"/>
+                <outlet property="constraintWidthProgressEffort" destination="RAT-0P-Ulm" id="iEO-fC-qbD"/>
                 <outlet property="containerView" destination="zl7-Wu-eHT" id="msg-F3-wP8"/>
                 <outlet property="costLbl" destination="4tG-xA-Rjh" id="eKV-9l-Qdo"/>
                 <outlet property="effortLbl" destination="lhV-Ll-oIN" id="2cJ-Pz-7cv"/>
@@ -252,10 +254,10 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DWv-v9-8LD" customClass="GTProgressBar" customModule="GTProgressBar">
-                                    <rect key="frame" x="170" y="26" width="134" height="10"/>
+                                    <rect key="frame" x="180" y="26" width="120" height="10"/>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="134" id="RAT-0P-Ulm"/>
+                                        <constraint firstAttribute="width" constant="120" id="RAT-0P-Ulm"/>
                                         <constraint firstAttribute="height" constant="10" id="eTT-zo-szI"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
@@ -265,7 +267,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="~5 min" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhV-Ll-oIN">
-                                    <rect key="frame" x="-70.5" y="22" width="230" height="17"/>
+                                    <rect key="frame" x="-80.5" y="22" width="250" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="17" id="2EH-rR-Dqm"/>
                                     </constraints>
@@ -279,7 +281,7 @@
                                 <constraint firstItem="xFv-Rm-0en" firstAttribute="top" secondItem="ZDk-21-tW5" secondAttribute="top" constant="20" id="4BZ-11-Q2A"/>
                                 <constraint firstItem="xFv-Rm-0en" firstAttribute="leading" secondItem="ZDk-21-tW5" secondAttribute="leading" constant="24" id="7Gt-b6-VYu"/>
                                 <constraint firstItem="DWv-v9-8LD" firstAttribute="leading" secondItem="lhV-Ll-oIN" secondAttribute="trailing" constant="10" id="OBv-6J-roz"/>
-                                <constraint firstAttribute="trailing" secondItem="DWv-v9-8LD" secondAttribute="trailing" constant="16" id="Txr-X8-jRa"/>
+                                <constraint firstAttribute="trailing" secondItem="DWv-v9-8LD" secondAttribute="trailing" constant="20" id="Txr-X8-jRa"/>
                                 <constraint firstItem="lhV-Ll-oIN" firstAttribute="centerX" secondItem="xFv-Rm-0en" secondAttribute="centerX" id="c8m-55-Wly"/>
                                 <constraint firstAttribute="height" constant="70" id="eVQ-a7-2zE"/>
                                 <constraint firstItem="DWv-v9-8LD" firstAttribute="centerY" secondItem="xFv-Rm-0en" secondAttribute="centerY" id="vgQ-Rt-Nul"/>
@@ -299,14 +301,15 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LmF-2L-j1m" customClass="GTProgressBar" customModule="GTProgressBar">
-                                    <rect key="frame" x="170" y="30" width="134" height="10"/>
+                                    <rect key="frame" x="180" y="30" width="120" height="10"/>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="W2G-E1-qaE"/>
                                         <constraint firstAttribute="height" constant="10" id="e5K-Tu-OmM"/>
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tG-xA-Rjh">
-                                    <rect key="frame" x="114" y="27.5" width="39.5" height="17"/>
+                                    <rect key="frame" x="130.5" y="27.5" width="39.5" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="17" id="K9a-Dc-ulP"/>
                                     </constraints>
@@ -317,12 +320,11 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="LmF-2L-j1m" firstAttribute="leading" secondItem="LkX-tQ-6Hb" secondAttribute="leading" constant="170" id="HSp-QA-VmF"/>
                                 <constraint firstItem="4tG-xA-Rjh" firstAttribute="centerY" secondItem="L5C-MA-HmF" secondAttribute="centerY" id="K6X-G8-dIy"/>
                                 <constraint firstItem="L5C-MA-HmF" firstAttribute="centerY" secondItem="LkX-tQ-6Hb" secondAttribute="centerY" id="KZM-rT-EhR"/>
                                 <constraint firstAttribute="height" constant="70" id="U9t-LD-aD9"/>
-                                <constraint firstAttribute="trailing" secondItem="LmF-2L-j1m" secondAttribute="trailing" constant="16" id="Une-EU-EIs"/>
-                                <constraint firstItem="4tG-xA-Rjh" firstAttribute="leading" secondItem="LkX-tQ-6Hb" secondAttribute="leading" constant="114" id="bBG-g3-XOR"/>
+                                <constraint firstAttribute="trailing" secondItem="LmF-2L-j1m" secondAttribute="trailing" constant="20" id="Une-EU-EIs"/>
+                                <constraint firstItem="LmF-2L-j1m" firstAttribute="leading" secondItem="4tG-xA-Rjh" secondAttribute="trailing" constant="10" id="Yq2-tB-PlY"/>
                                 <constraint firstItem="L5C-MA-HmF" firstAttribute="leading" secondItem="LkX-tQ-6Hb" secondAttribute="leading" constant="24" id="dUU-rR-nLR"/>
                                 <constraint firstItem="LmF-2L-j1m" firstAttribute="centerY" secondItem="LkX-tQ-6Hb" secondAttribute="centerY" id="e77-Ye-U8j"/>
                             </constraints>
