@@ -76,6 +76,7 @@ class SocialPostDetailsViewController: BaseViewController {
         
         scrollView.delegate = self
         
+        socialBrand.text =  ""
         addBottomButtons()
         updateView()
         
@@ -108,10 +109,12 @@ class SocialPostDetailsViewController: BaseViewController {
         blogUrl.text = todoSocialPost.articleUrl
         
         articleUrl.text = todoSocialPost.articleUrl
-
     
         if todoSocialPost.type == "twitter" {
-            socialBrand.text = UserStore.currentBrand?.twitterDetails?.name
+            if let name = UserStore.currentBrand?.twitterDetails?.name {
+                 socialBrand.text =  "@\(name)"
+            }
+            
         }
         
         if let title = todoSocialPost.articleTitle {
