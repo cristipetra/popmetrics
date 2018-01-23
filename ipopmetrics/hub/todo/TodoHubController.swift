@@ -140,13 +140,13 @@ class TodoHubController: BaseViewController {
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
         
-        //createItemsLocally()
         addApprovedView()
         
         topHeaderView.changeVisibilityExpandView(visible: false)
         updateCountsTopView()
+        
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         transitionView.alpha = 0.7
         let tabInfo = MainTabInfo.getInstance()
@@ -237,7 +237,12 @@ class TodoHubController: BaseViewController {
         let items = getVisibleItemsInSection(0)
         count = items.count
         if items.count == 1 {
-            let item = items[0] as! TodoCard
+            var item: TodoCard
+            if items[0] is TodoCard {
+                item = items[0] as! TodoCard
+            } else {
+                return
+            }
             if item.type != "empty_state" {
                 count = items.count
             }
