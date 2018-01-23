@@ -79,6 +79,7 @@
 		08953E741F4C359E003ABEFC /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E731F4C359E003ABEFC /* FooterView.swift */; };
 		08953E761F4C35AC003ABEFC /* RequiredActionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E751F4C35AC003ABEFC /* RequiredActionCard.swift */; };
 		089E10561FD1716200D57A08 /* SwipeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E10551FD1716200D57A08 /* SwipeExtension.swift */; };
+		089EFD39201774FF002E9CAF /* FacebookSocialPostDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089EFD38201774FF002E9CAF /* FacebookSocialPostDetails.xib */; };
 		089F93AB1FB5FE1E00155674 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089F93AA1FB5FE1E00155674 /* Settings.storyboard */; };
 		08A4A53D1F458423001071E3 /* ToolbarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */; };
 		08A4A5411F45B563001071E3 /* AlfaSlabOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */; };
@@ -312,6 +313,7 @@
 		08953E731F4C359E003ABEFC /* FooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		08953E751F4C35AC003ABEFC /* RequiredActionCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredActionCard.swift; sourceTree = "<group>"; };
 		089E10551FD1716200D57A08 /* SwipeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeExtension.swift; sourceTree = "<group>"; };
+		089EFD38201774FF002E9CAF /* FacebookSocialPostDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacebookSocialPostDetails.xib; sourceTree = "<group>"; };
 		089F93AA1FB5FE1E00155674 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarViewCell.swift; sourceTree = "<group>"; };
 		08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AlfaSlabOne-Regular.ttf"; sourceTree = "<group>"; };
@@ -509,6 +511,14 @@
 				081B92491FCEF205006D3BAB /* StringExtensions.swift */,
 			);
 			path = extensions;
+			sourceTree = "<group>";
+		};
+		089EFD37201774DA002E9CAF /* social */ = {
+			isa = PBXGroup;
+			children = (
+				089EFD38201774FF002E9CAF /* FacebookSocialPostDetails.xib */,
+			);
+			path = social;
 			sourceTree = "<group>";
 		};
 		08A812771F1672C000672126 /* fonts */ = {
@@ -816,6 +826,7 @@
 		11DD96601FC4F24E00386F1E /* todo */ = {
 			isa = PBXGroup;
 			children = (
+				089EFD37201774DA002E9CAF /* social */,
 				086EDE3C1FC82D11002F4140 /* MyActionCard.xib */,
 				086EDE3E1FC830F1002F4140 /* MyActionCardCell.swift */,
 				11FB84EA1FC79E8800FE937D /* TodoHubController.swift */,
@@ -1089,6 +1100,7 @@
 				08B745931F1F6C0100EC3F8C /* OpenSans-Light.ttf in Resources */,
 				08C580FD1FBF21440013B03F /* SettingsOverlayUrlView.xib in Resources */,
 				08B745941F1F6C0100EC3F8C /* OpenSans-Bold.ttf in Resources */,
+				089EFD39201774FF002E9CAF /* FacebookSocialPostDetails.xib in Resources */,
 				08913D9F1FE7BC650085BE36 /* CalendarCompletedAction.xib in Resources */,
 				0856F3581F272F020061DF7E /* Calendar.storyboard in Resources */,
 				0854AF351F3F2B18007B60F9 /* CalendarCardSimple.xib in Resources */,
