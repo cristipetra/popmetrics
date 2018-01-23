@@ -329,10 +329,8 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
                 cell.statisticsCountView.setupViews(data: Array(results))
                 let itemCellHeight: Int = 94
                 cell.statisticsCountViewHeightCounstraint.constant = CGFloat(results.count * itemCellHeight)
-                cellHeight = CGFloat((results.count * itemCellHeight) + (29 + 94 + 93 + 20 ))
+                cellHeight = CGFloat((results.count * itemCellHeight) + (29 + 109 + 93 + 20 ))
                 
-                cell.selectionStyle = .none
-                cell.backgroundColor = .clear
                 cell.footerView.actionButton.context = ["card": item]
                 cell.footerView.actionButton.addTarget(self, action: #selector(openTrafficReport(_: eventInfo:)), for: .touchUpInside)
                 
