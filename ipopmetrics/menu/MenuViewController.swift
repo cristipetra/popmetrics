@@ -139,11 +139,24 @@ class MenuViewController: ElasticModalViewController {
     }
     
     @IBAction func logoutButtonPressed(_ sender: UIButton) {
-        FeedStore.getInstance().wipe()
+        clearStores()
+        setInitialDateSync()
         UserStore.getInstance().clearCredentials()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setInitialViewController()
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+    }
+    
+    private func clearStores() {
+        FeedStore.getInstance().wipe()
+        TodoStore.getInstance().wipe()
+        CalendarStore.getInstance().wipe()
+        StatsStore.getInstance().wipe()
+    }
+    
+    private func setInitialDateSync() {
+        let stringDate = "2000-01-01"
+        SyncService.lastDate = stringDate.toDate(format: "yyyy-mm-dd")!
     }
     
     @IBAction func handlerClickSetttings(_ sender: UIButton) {
@@ -222,6 +235,9 @@ extension ElasticModalViewController {
 
 extension MenuViewController: BrandProtocol {
     func changeBrand(_ brand: Brand) {
+        clearStores()
+        setInitialDateSync()
+ 
         brandNameLabel.text = brand.name!.uppercased()
         UserStore.currentBrand = brand
         SyncService.getInstance().syncAll(silent: false)
