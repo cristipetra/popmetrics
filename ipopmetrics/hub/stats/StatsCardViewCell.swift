@@ -29,6 +29,10 @@ class StatsCardViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.selectionStyle = .none
+        self.backgroundColor = .clear
+        
         self.setCornerRadius()
         setUpShadowLayer()
         

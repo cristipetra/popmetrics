@@ -22,6 +22,8 @@ class SocialPostDetailsViewController: BaseViewController {
     @IBOutlet weak var articleUrl: UILabel!
     @IBOutlet weak var socialBrand: UILabel!
     
+    @IBOutlet weak var messageFacebook: UITextView!
+    
     lazy var buttonContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -103,9 +105,6 @@ class SocialPostDetailsViewController: BaseViewController {
                 cardImage.af_setImage(withURL: URL(string: imageUri)!)
             }
         }
-    
-        recommendedLabel.text = todoSocialPost.articleText
-    
         blogUrl.text = todoSocialPost.articleUrl
         
         articleUrl.text = todoSocialPost.articleUrl
@@ -114,7 +113,8 @@ class SocialPostDetailsViewController: BaseViewController {
             if let name = UserStore.currentBrand?.twitterDetails?.name {
                  socialBrand.text =  "@\(name)"
             }
-            
+        } else if todoSocialPost.type == "facebook" {
+            updateFacebook()
         }
         
         if let title = todoSocialPost.articleTitle {
@@ -126,6 +126,19 @@ class SocialPostDetailsViewController: BaseViewController {
         displayContainerBtnsIfNeeded()
         
         setupStatusCardView()
+    }
+    
+    private func updateTwitter() {
+        if recommendedLabel != nil {
+            recommendedLabel.text = todoSocialPost.articleText
+        }
+    }
+    
+    private func updateFacebook() {
+        if messageFacebook != nil {
+            messageFacebook.translatesAutoresizingMaskIntoConstraints = false
+            messageFacebook.isScrollEnabled = false
+        }
     }
     
     func setupStatusCardView() {
