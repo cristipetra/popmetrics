@@ -460,20 +460,25 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         return UITableViewCell()
     }
     
-    /*
+
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let currentCell = tableView.cellForRow(at: indexPath)
         
-        let detailsViewController = UIStoryboard(name: "TodoPostDetails", bundle: nil).instantiateViewController(withIdentifier: "postDetailsId") as! SocialPostDetailsViewController
-        detailsViewController.hidesBottomBarWhenPushed = true
-        
-        let socialPost = store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section], datesSelected: 0)[indexPath.row]
-        
-        detailsViewController.socialDelegate = self
-        detailsViewController.configureCalendar(calendarItem: socialPost, indexPath: indexPath)
-        self.navigationController?.pushViewController(detailsViewController, animated: true)
-        
+        if currentCell is CalendarCardViewCell {
+           
+            let detailsVC = SocialPostDetailsViewController(nibName: "SocialPostDetails", bundle: nil)
+            
+            let calendarCardViewCell = currentCell as! CalendarCardViewCell
+            
+            detailsVC.configure(calendarSocialPost: calendarCardViewCell.calendarItem)
+            detailsVC.actionSocialDelegate = self
+            detailsVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(detailsVC, animated: true)
+        }
     }
-    */
+ 
     
     @objc private func goToNextTab() {
         self.tabBarController?.selectedIndex = 0

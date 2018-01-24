@@ -208,7 +208,7 @@ struct  MetricBreakdownViewModel {
             return 0
         }
 
-        return ((self.metricBreakdown.deltaValue!) * 100) / (self.metricBreakdown.currentValue!)
+        return ((self.metricBreakdown.deltaValue!) ) / (self.metricBreakdown.currentValue!)
     }
     
     internal func getPercentageText() -> String {

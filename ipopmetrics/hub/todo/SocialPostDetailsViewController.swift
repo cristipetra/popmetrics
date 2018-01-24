@@ -16,13 +16,13 @@ class SocialPostDetailsViewController: BaseViewController {
     @IBOutlet weak var titleBlogLabel: UILabel!
     @IBOutlet weak var blogUrl: UILabel!
     @IBOutlet weak var blogMessage: UILabel!
-    @IBOutlet weak var scheduleLabel: UILabel!
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var articleUrl: UILabel!
     @IBOutlet weak var socialBrand: UILabel!
     
     @IBOutlet weak var messageFacebook: UITextView!
+    @IBOutlet weak var scheduleInfoLabel: UILabel!
     
     lazy var buttonContainerView: UIView = {
         let view = UIView()
@@ -64,6 +64,7 @@ class SocialPostDetailsViewController: BaseViewController {
     }()
     
     private var todoSocialPost: TodoSocialPost!
+    private var calendarSocialPost: CalendarSocialPost!
     
     var bottomContainerViewBottomAnchor: NSLayoutConstraint!
     internal var isBottomVisible = false
@@ -78,9 +79,15 @@ class SocialPostDetailsViewController: BaseViewController {
         
         scrollView.delegate = self
         
-        socialBrand.text =  ""
+        cleanView()
+        
         addBottomButtons()
-        updateView()
+    
+        if todoSocialPost != nil {
+            updateView()
+        } else if calendarSocialPost != nil {
+            updateViewCalendar()
+        }
         
         self.view.addSwipeGestureRecognizer {
             self.navigationController?.popViewController(animated: true)
@@ -89,17 +96,58 @@ class SocialPostDetailsViewController: BaseViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handlerClickArticleUrl));
         articleUrl.isUserInteractionEnabled = true
         articleUrl.addGestureRecognizer(tapGesture)
+    
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    private func cleanView() {
+        socialBrand.text =  ""
     }
     
     func configure(todoSocialPost: TodoSocialPost) {
         self.todoSocialPost = todoSocialPost
     }
     
+    func configure(calendarSocialPost: CalendarSocialPost) {
+        self.calendarSocialPost = calendarSocialPost
+    }
+    
+    private func updateViewCalendar() {
+    
+        if let imageUrl = calendarSocialPost.image {
+            if imageUrl.isValidUrl() {
+                cardImage.af_setImage(withURL: URL(string: imageUrl)!)
+            }
+        }
+        
+        blogUrl.text = calendarSocialPost.url
+        articleUrl.text = calendarSocialPost.url
+        
+        if calendarSocialPost.type == "twitter" {
+            recommendedLabel.text = calendarSocialPost.text
+            if let name = UserStore.currentBrand?.twitterDetails?.name {
+                socialBrand.text =  "@\(name)"
+            }
+        } else if calendarSocialPost.type == "facebook" {
+            updateFacebook()
+        }
+        
+        if let title = calendarSocialPost.title {
+            titleBlogLabel.text = "\"\(title)\""
+        }
+        
+        blogMessage.text  = calendarSocialPost.text ?? ""
+        
+        displayContainerBtnsIfNeeded()
+        
+        if scheduleInfoLabel != nil {
+            scheduleInfoLabel.text = "Scheduled for: \(formatDate(date: calendarSocialPost.scheduledDate!))"
+        }
+        
+        hideStatusBtns()
+    }
+    
     private func updateView() {
+        if todoSocialPost == nil { return }
         if let imageUri = todoSocialPost.articleImage {
             if imageUri.isValidUrl() {
                 cardImage.af_setImage(withURL: URL(string: imageUri)!)
@@ -128,6 +176,11 @@ class SocialPostDetailsViewController: BaseViewController {
         setupStatusCardView()
     }
     
+    private func hideStatusBtns() {
+        denyPostBtn.isHidden = true
+        approvePostBtn.isHidden = true
+    }
+    
     private func updateTwitter() {
         if recommendedLabel != nil {
             recommendedLabel.text = todoSocialPost.articleText
@@ -142,7 +195,10 @@ class SocialPostDetailsViewController: BaseViewController {
     }
     
     func setupStatusCardView() {
-        let isApproved = todoSocialPost.isApproved
+        var isApproved: Bool = false
+        if todoSocialPost != nil {
+            isApproved = todoSocialPost.isApproved
+        }
         print("approved \(isApproved)")
         if !isApproved {
             denyPostBtn.isHidden = false
@@ -177,10 +233,23 @@ class SocialPostDetailsViewController: BaseViewController {
     
     @objc func handlerClickArticleUrl(sender: Any) {
         print(" handler click article ")
-        if todoSocialPost.articleUrl.isValidUrl() {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.openURLInside(self, url: todoSocialPost.articleUrl)
+        if todoSocialPost != nil {
+            if todoSocialPost.articleUrl.isValidUrl() {
+                openArticle(todoSocialPost.articleUrl)
+            }
         }
+        
+        if calendarSocialPost != nil {
+            if calendarSocialPost.url.isValidUrl() {
+                openArticle(calendarSocialPost.url)
+            }
+        }
+        
+    }
+    
+    private func openArticle(_ articleUrl: String) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.openURLInside(self, url: articleUrl)
     }
     
     @objc func handlerClickBack() {

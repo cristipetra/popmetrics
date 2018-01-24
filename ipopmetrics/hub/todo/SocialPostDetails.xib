@@ -33,6 +33,7 @@
                 <outlet property="cardImage" destination="7iU-Hc-ov9" id="XRf-pJ-g8A"/>
                 <outlet property="containerView" destination="lPU-OC-X66" id="tSv-Q3-Ywj"/>
                 <outlet property="recommendedLabel" destination="HyZ-ky-io0" id="76N-d2-D4B"/>
+                <outlet property="scheduleInfoLabel" destination="oAu-hn-eIZ" id="ggS-AD-CxK"/>
                 <outlet property="scrollView" destination="GBz-kj-dVU" id="xiJ-hL-vRx"/>
                 <outlet property="socialBrand" destination="hzG-ke-MJW" id="Sg3-ip-NZ2"/>
                 <outlet property="titleBlogLabel" destination="VcT-Fi-aCc" id="jv5-OJ-ZhP"/>
