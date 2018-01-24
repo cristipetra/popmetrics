@@ -96,13 +96,15 @@ class StatsSummaryItemView: UIView {
 
     internal func setValue(statsMetric: StatsMetric) {
         messageLabel.text = statsMetric.label
-        
+    
         let valueLabelText = (statsMetric.valueFormatted != "") ? statsMetric.valueFormatted : "\(Int(statsMetric.value))"
         valueLabel.text = valueLabelText
         
         if statsMetric.valueFormatted != "" {
-            setValueTime(statsMetric)
-            return
+            if statsMetric.valueFormatted.count == 8 {
+                setValueTime(statsMetric)
+                return
+            }
         }
         
         var deltaPercentage = 0 as Float
