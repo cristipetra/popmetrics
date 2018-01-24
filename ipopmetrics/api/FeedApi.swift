@@ -12,28 +12,6 @@ import GoogleSignIn
 
 class FeedApi: BaseApi {
     
-    func getItems(_ brandId: String,
-                  callback: @escaping (_ response: FeedResponse?) -> Void) {
-        
-        let params = [
-            "a": 0
-        ]
-        
-        Alamofire.request(ApiUrls.getMyBrandFeedUrl(brandId), method: .get, parameters: params,
-                          headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperOne<FeedResponse>>) in
-                            
-                            let levelOneHandled = super.handleNotOkCodes(response: response.response)
-                            if !levelOneHandled {
-                                let handled = super.handleResponseWrap(response.value!)
-                                if !handled {
-                                    callback(response.result.value?.data!)
-                                }
-                            }
-                            
-        }
-    }
-    
-    
     func connectGoogleAnalytics(userId:String, brandId:String,  token:String, serverAuthCode: String,
                                 authentication:GIDAuthentication,
                                 callback: @escaping (_ resultDict: [String: Any]?, _ error: ApiError?) -> Void) {

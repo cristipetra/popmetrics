@@ -11,24 +11,6 @@ import Alamofire
 
 class TodoApi: BaseApi {
     
-    func getItems(_ brandId: String,
-                  callback: @escaping (_ response: TodoResponse?)  -> Void) {
-        
-        let url = ApiUrls.composedBaseUrl(String(format:"/api/todo/me/brand/%@", brandId))
-        let params = ["a":0]
-        
-        Alamofire.request(url, method: .get, parameters: params,
-                          headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperOne<TodoResponse>>) in
-                            let levelOneHandled = super.handleNotOkCodes(response: response.response)
-                            if !levelOneHandled {
-                                let handled = super.handleResponseWrap(response.value!)
-                                if !handled {
-                                    callback(response.result.value?.data)
-                                }
-                            }
-        }
-    }
-    
     func postAction(_ todoCardId:String, params:[String:Any],
                 callback: @escaping (_ response: ResponseWrapperEmpty?, _ error: ApiError?) -> Void) {
         

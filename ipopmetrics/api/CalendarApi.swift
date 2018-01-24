@@ -11,29 +11,6 @@ import Alamofire
 
 class CalendarApi: BaseApi {
     
-    
-    
-    func getItems(_ brandId: String,
-                  callback: @escaping (_ response: ResponseWrapperOne<CalendarResponse>?, _ error: ApiError?) -> Void) {
-        
-        let params = [
-            "a": 0
-        ]
-        
-        Alamofire.request(ApiUrls.getMyBrandCalendarUrl(brandId), method: .get, parameters: params,
-                          headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperOne<CalendarResponse>>) in
-                            
-                            if let err = self.createErrorWithHttpResponse(response: response.response) {
-                                callback(nil, err)
-                                return
-                            }
-                            else {
-                                callback(response.result.value, nil)
-                            }
-                            
-        }
-    }
-    
     func postAction(_ todoCardId:String, params:[String:Any],
                     callback: @escaping (_ response: ResponseWrapperEmpty?, _ error: ApiError?) -> Void) {
         

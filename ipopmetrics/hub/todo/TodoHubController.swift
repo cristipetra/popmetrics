@@ -127,7 +127,7 @@ class TodoHubController: BaseViewController {
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = PopmetricsColor.darkGrey
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            SyncService.getInstance().syncTodoItems(silent: false)
+            SyncService.getInstance().syncAll(silent: false)
             self?.tableView.dg_stopLoading()
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
