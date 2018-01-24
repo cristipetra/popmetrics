@@ -245,6 +245,8 @@ class TodoHubController: BaseViewController {
             }
             if item.type != "empty_state" {
                 count = items.count
+            } else {
+                count = 0
             }
             
         }
