@@ -27,21 +27,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SocialPostDetailsViewController" customModule="ipopmetrics" customModuleProvider="target">
             <connections>
-                <outlet property="articleUrl" destination="8Kk-zh-aHy" id="i1d-0a-Qta"/>
-                <outlet property="blogMessage" destination="sYT-Gm-YQs" id="zVl-iE-a8J"/>
-                <outlet property="blogUrl" destination="VcT-Fi-aCc" id="nkE-Xi-du9"/>
-                <outlet property="cardImage" destination="7iU-Hc-ov9" id="XRf-pJ-g8A"/>
+                <outlet property="articleUrl" destination="8Kk-zh-aHy" id="jaF-mi-D6k"/>
                 <outlet property="containerView" destination="lPU-OC-X66" id="tSv-Q3-Ywj"/>
-                <outlet property="recommendedLabel" destination="HyZ-ky-io0" id="76N-d2-D4B"/>
-                <outlet property="scheduleInfoLabel" destination="oAu-hn-eIZ" id="ggS-AD-CxK"/>
                 <outlet property="scrollView" destination="GBz-kj-dVU" id="xiJ-hL-vRx"/>
-                <outlet property="socialBrand" destination="hzG-ke-MJW" id="Sg3-ip-NZ2"/>
-                <outlet property="titleBlogLabel" destination="VcT-Fi-aCc" id="jv5-OJ-ZhP"/>
                 <outlet property="view" destination="lPU-OC-X66" id="9Wd-wT-PUe"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="lPU-OC-X66">
+        <view contentMode="scaleToFill" id="lPU-OC-X66" customClass="SocialPostDetailsView" customModule="ipopmetrics" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -295,6 +288,15 @@ Companies like Google and Facebook aren’t just creating products anymore. They
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="W4b-TN-jsH"/>
+            <connections>
+                <outlet property="articleUrl" destination="8Kk-zh-aHy" id="0ON-5M-SHC"/>
+                <outlet property="blogMessage" destination="sYT-Gm-YQs" id="GDF-9S-b8W"/>
+                <outlet property="cardImage" destination="7iU-Hc-ov9" id="dqr-Do-Xgg"/>
+                <outlet property="recommendedLabel" destination="HyZ-ky-io0" id="d0N-Ne-epd"/>
+                <outlet property="scheduleInfoLabel" destination="oAu-hn-eIZ" id="bxC-k7-fLQ"/>
+                <outlet property="socialBrand" destination="hzG-ke-MJW" id="7hL-5V-Np5"/>
+                <outlet property="titleBlogLabel" destination="VcT-Fi-aCc" id="WsX-bK-9H8"/>
+            </connections>
             <point key="canvasLocation" x="33.5" y="167.5"/>
         </view>
     </objects>

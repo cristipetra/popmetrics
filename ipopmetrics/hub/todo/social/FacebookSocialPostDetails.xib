@@ -27,20 +27,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SocialPostDetailsViewController" customModule="ipopmetrics" customModuleProvider="target">
             <connections>
-                <outlet property="articleUrl" destination="8Kk-zh-aHy" id="i1d-0a-Qta"/>
-                <outlet property="blogMessage" destination="sYT-Gm-YQs" id="zVl-iE-a8J"/>
-                <outlet property="blogUrl" destination="VcT-Fi-aCc" id="nkE-Xi-du9"/>
-                <outlet property="cardImage" destination="7iU-Hc-ov9" id="XRf-pJ-g8A"/>
+                <outlet property="articleUrl" destination="8Kk-zh-aHy" id="QC0-CY-tci"/>
                 <outlet property="containerView" destination="lPU-OC-X66" id="tSv-Q3-Ywj"/>
-                <outlet property="messageFacebook" destination="BlU-By-lqV" id="2dm-5F-GEk"/>
                 <outlet property="scrollView" destination="GBz-kj-dVU" id="xiJ-hL-vRx"/>
-                <outlet property="socialBrand" destination="hzG-ke-MJW" id="Sg3-ip-NZ2"/>
-                <outlet property="titleBlogLabel" destination="VcT-Fi-aCc" id="jv5-OJ-ZhP"/>
                 <outlet property="view" destination="lPU-OC-X66" id="9Wd-wT-PUe"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="lPU-OC-X66">
+        <view contentMode="scaleToFill" id="lPU-OC-X66" customClass="SocialPostDetailsView" customModule="ipopmetrics" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -322,6 +316,14 @@ Companies like Google and Facebook aren’t just creating products anymore. They
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="W4b-TN-jsH"/>
+            <connections>
+                <outlet property="articleUrl" destination="8Kk-zh-aHy" id="CRc-nl-Z1E"/>
+                <outlet property="blogMessage" destination="sYT-Gm-YQs" id="52k-QI-3q1"/>
+                <outlet property="cardImage" destination="7iU-Hc-ov9" id="Nf7-Zg-DlJ"/>
+                <outlet property="messageFacebook" destination="BlU-By-lqV" id="2Fq-bd-OgO"/>
+                <outlet property="socialBrand" destination="hzG-ke-MJW" id="3KO-LL-gda"/>
+                <outlet property="titleBlogLabel" destination="VcT-Fi-aCc" id="NPE-Tm-AWu"/>
+            </connections>
             <point key="canvasLocation" x="33.5" y="167.5"/>
         </view>
     </objects>

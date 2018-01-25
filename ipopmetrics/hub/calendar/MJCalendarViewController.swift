@@ -276,24 +276,4 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
 }
 
 
-extension Date {
-    var yesterday: Date {
-        return Calendar.current.date(byAdding: .day, value: -1, to: self)!
-    }
-    
-    var nextDay: Date {
-        return Calendar.current.date(byAdding: .day, value: 1, to: self)!
-    }
-    
-    var startOfDay: Date {
-        return Calendar.current.startOfDay(for: self)
-    }
-    
-    var endOfDay: Date {
-        var components = DateComponents()
-        components.day = 1
-        components.second = -1
-        return Calendar.current.date(byAdding: components, to: startOfDay)!
-    }
-    
-}
+
