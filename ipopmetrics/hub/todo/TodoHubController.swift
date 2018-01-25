@@ -125,13 +125,13 @@ class TodoHubController: BaseViewController {
         nc.addObserver(forName:Notification.Popmetrics.UiRefreshRequired, object:nil, queue:nil, using:catchUiRefreshRequiredNotification)
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = PopmetricsColor.darkGrey
+        loadingView.tintColor = PopmetricsColor.yellowBGColor
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             SyncService.getInstance().syncAll(silent: false)
             self?.tableView.dg_stopLoading()
             }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
-        tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
+        tableView.dg_setPullToRefreshFillColor(PopmetricsColor.borderButton)
+        tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.loadingBackground)
         
         setupTopHeaderView()
         //setupTopViewItemCount()
