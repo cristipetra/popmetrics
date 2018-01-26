@@ -18,8 +18,7 @@ class SocialPostInCardCell: UITableViewCell {
     
     @IBOutlet weak var cardImage: UIImageView!
     
-    @IBOutlet weak var circleView: UIView!
-    
+    @IBOutlet weak var socialIconView: SocialIconView!
     @IBOutlet weak var messageLbl: UILabel!
     
     @IBOutlet weak var containerView: UIView!
@@ -50,9 +49,8 @@ class SocialPostInCardCell: UITableViewCell {
         self.backgroundColor = .clear
         
         self.selectionStyle = .none
-        self.circleView.roundCorners(corners: .allCorners, radius: self.circleView.frame.size.width / 2)
-        addShadowToView(shadowView, radius: 4, opacity: 0.5)
 
+        addShadowToView(shadowView, radius: 4, opacity: 0.5)
         
         aproveButton.changeTitle("Approve")
         
@@ -71,6 +69,8 @@ class SocialPostInCardCell: UITableViewCell {
                 cardImage.af_setImage(withURL: url!)
             }
         }
+        
+        socialIconView.socialType = todoItem.type
         
         aproveButton.addTarget(self, action: #selector(animationHandler), for: .touchUpInside)
         denyPostBtn.addTarget(self, action: #selector(denyPostHandler), for: .touchUpInside)
