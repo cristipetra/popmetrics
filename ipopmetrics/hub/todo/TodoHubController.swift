@@ -411,8 +411,13 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         
         let card = cards[0]
         let item = store.getTodoSocialPostsForCard(card)[rowIdx]
+        var detailsVC: SocialPostDetailsViewController!
         
-        let detailsVC = SocialPostDetailsViewController(nibName: "SocialPostDetails", bundle: nil)
+        if item.type == "facebook" {
+            detailsVC = SocialPostDetailsViewController(nibName: "FacebookSocialPostDetails", bundle: nil)
+        } else {
+            detailsVC = SocialPostDetailsViewController(nibName: "SocialPostDetails", bundle: nil)
+        }
         detailsVC.configure(todoSocialPost: item)
         detailsVC.actionSocialDelegate = self
         detailsVC.hidesBottomBarWhenPushed = true
