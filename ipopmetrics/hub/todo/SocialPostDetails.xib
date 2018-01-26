@@ -77,13 +77,13 @@
                                                     <rect key="frame" x="69" y="0.0" width="306" height="181.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@Popmetrics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzG-ke-MJW">
-                                                            <rect key="frame" x="0.0" y="10" width="296" height="83.5"/>
+                                                            <rect key="frame" x="0.0" y="10" width="296" height="71.5"/>
                                                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                                             <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HyZ-ky-io0">
-                                                            <rect key="frame" x="0.0" y="101.5" width="296" height="70"/>
+                                                            <rect key="frame" x="0.0" y="89.5" width="296" height="82"/>
                                                             <string key="text">Popmetrics recommends highly customized marketing insights to help your business grow. #Popmetrics #GrowYourBusiness Alch.my/27yd73</string>
                                                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                                             <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
@@ -148,25 +148,25 @@
                                             <rect key="frame" x="0.0" y="430.5" width="375" height="1521.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What Article You're Sharing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7f-9A-SWa">
-                                                    <rect key="frame" x="25" y="10" width="340" height="252.5"/>
+                                                    <rect key="frame" x="25" y="10" width="340" height="25"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
                                                     <color key="textColor" red="0.25098039215686274" green="0.23529411764705882" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customizing Your Marketing" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcT-Fi-aCc">
-                                                    <rect key="frame" x="25" y="268" width="340" height="70"/>
+                                                    <rect key="frame" x="25" y="40.5" width="340" height="82"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="30"/>
                                                     <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alch.my/27yd73" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Kk-zh-aHy">
-                                                    <rect key="frame" x="25" y="348" width="340" height="17.5"/>
+                                                    <rect key="frame" x="25" y="132.5" width="340" height="20.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                                     <color key="textColor" red="0.2627450980392157" green="0.60784313725490191" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYT-Gm-YQs">
-                                                    <rect key="frame" x="25" y="375.5" width="340" height="1136"/>
+                                                    <rect key="frame" x="25" y="163" width="340" height="1348.5"/>
                                                     <string key="text">Your marketing and sales dashboards will have a number of widgets and reports that are automatically added for you, but you can resize, remove, and add other reports as needed. The same is true for any other reporting dashboards you've created if you are using the reporting add-on. Learn how you can add, move, resize, and remove reports on a reporting dashboard.
 
 “Money isn’t the most important thing in the world. Your time is.”
@@ -221,7 +221,7 @@ Companies like Google and Facebook aren’t just creating products anymore. They
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our A.I. will schedul for an optimal time for your audience" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAu-hn-eIZ">
-                                                            <rect key="frame" x="25" y="18" width="340" height="35"/>
+                                                            <rect key="frame" x="25" y="15" width="340" height="41"/>
                                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                                             <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>

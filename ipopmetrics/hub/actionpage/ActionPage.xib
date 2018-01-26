@@ -25,9 +25,11 @@
                 <outlet property="constraintBottomStackView" destination="rGs-US-wHD" id="DmT-Uh-8QV"/>
                 <outlet property="constraintHeightClosingMarkdown" destination="MS2-3l-h7f" id="0ea-NC-EOU"/>
                 <outlet property="constraintHeightDetailsMarkdown" destination="LrX-Dx-yxw" id="7jR-RK-ddG"/>
+                <outlet property="constraintHeightFixIt" destination="aqa-0N-by8" id="iuv-IM-UBs"/>
                 <outlet property="constraintHeightIceView" destination="igX-Pm-Ig8" id="YJv-d6-cTY"/>
                 <outlet property="containerClosingMarkdown" destination="H9S-LN-qse" id="03R-M9-Nxg"/>
                 <outlet property="containerDetailsMarkdown" destination="SyP-Vc-Dxu" id="dmX-Fw-Xjy"/>
+                <outlet property="containerFixIt" destination="Vr7-N6-OYO" id="Pgq-Mk-jLw"/>
                 <outlet property="containerIceView" destination="D9a-9X-GT2" id="Azq-h5-D6u"/>
                 <outlet property="titleArticle" destination="iXN-EG-5jT" id="tsc-ZI-9Il"/>
                 <outlet property="view" destination="9rQ-fw-uKn" id="Zy9-tT-yoj"/>
@@ -42,7 +44,7 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="1676"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="CMJ-3S-pPM">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="1504.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1745.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DtL-7f-lTr">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="316"/>
@@ -114,8 +116,33 @@
                                         <constraint firstAttribute="height" priority="250" constant="380" id="igX-Pm-Ig8"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvN-nL-tZe">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbJ-fs-yNN">
                                     <rect key="frame" x="0.0" y="1134.5" width="375" height="240"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to Fix it?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taK-Xm-nJh">
+                                            <rect key="frame" x="25" y="22" width="111.5" height="21"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
+                                            <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vr7-N6-OYO">
+                                            <rect key="frame" x="25" y="60" width="340" height="180"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="Vr7-N6-OYO" firstAttribute="top" secondItem="cbJ-fs-yNN" secondAttribute="top" priority="750" constant="60" id="2Ne-fr-1AT"/>
+                                        <constraint firstAttribute="trailing" secondItem="Vr7-N6-OYO" secondAttribute="trailing" constant="10" id="F3M-n4-M6B"/>
+                                        <constraint firstItem="taK-Xm-nJh" firstAttribute="leading" secondItem="cbJ-fs-yNN" secondAttribute="leading" constant="25" id="OBB-N8-1AL"/>
+                                        <constraint firstItem="Vr7-N6-OYO" firstAttribute="leading" secondItem="cbJ-fs-yNN" secondAttribute="leading" constant="25" id="OeV-ki-Rlk"/>
+                                        <constraint firstAttribute="height" constant="240" id="aqa-0N-by8"/>
+                                        <constraint firstAttribute="bottom" secondItem="Vr7-N6-OYO" secondAttribute="bottom" id="fHg-Kh-R59"/>
+                                        <constraint firstItem="taK-Xm-nJh" firstAttribute="top" secondItem="cbJ-fs-yNN" secondAttribute="top" constant="22" id="oMW-b8-5uM"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvN-nL-tZe">
+                                    <rect key="frame" x="0.0" y="1375.5" width="375" height="240"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWb-2W-afS">
                                             <rect key="frame" x="25" y="22" width="61" height="21"/>
@@ -140,7 +167,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X0I-Ot-Br1">
-                                    <rect key="frame" x="0.0" y="1375.5" width="375" height="64"/>
+                                    <rect key="frame" x="0.0" y="1616.5" width="375" height="64"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dK6-jM-gca">
                                             <rect key="frame" x="25" y="0.0" width="350" height="64"/>
@@ -169,7 +196,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="civ-5I-2Rw">
-                                    <rect key="frame" x="0.0" y="1440.5" width="375" height="64"/>
+                                    <rect key="frame" x="0.0" y="1681.5" width="375" height="64"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8r-mx-7Gu">
                                             <rect key="frame" x="25" y="0.0" width="350" height="64"/>
