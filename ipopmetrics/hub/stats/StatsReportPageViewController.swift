@@ -18,7 +18,7 @@ class StatsReportPageViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = PopmetricsColor.borderButton
         self.dataSource = self
         
         let metrics = StatsStore.getInstance().getStatsMetricsForCard(statisticsCard)
@@ -81,6 +81,8 @@ extension StatsReportPageViewController: UIPageViewControllerDataSource, UIPageV
         
         if currentPageIndex < numberOfPages - 1 {
             currentPageIndex += 1
+        } else {
+            return nil
         }
         
         return  createViewController(sender: self)
@@ -90,6 +92,8 @@ extension StatsReportPageViewController: UIPageViewControllerDataSource, UIPageV
         
         if currentPageIndex > 0 {
             currentPageIndex -= 1
+        } else {
+            return nil
         }
        
         return createViewController(sender: self)
