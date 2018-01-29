@@ -41,7 +41,7 @@ class SocialPostDetailsViewController: BaseViewController {
         button.titleLabel?.font = UIFont(name: FontBook.bold, size: 15)
         return button
     }()
-    
+    /*
     lazy var approvePostBtn1: TwoColorButton = {
         let button = TwoColorButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +50,7 @@ class SocialPostDetailsViewController: BaseViewController {
         button.contentHorizontalAlignment = .right
         return button
     }()
-    
+    */
     lazy var approvePostBtn: ActionButton = {
         let button = ActionButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -181,7 +181,7 @@ class SocialPostDetailsViewController: BaseViewController {
         containerView.addSubview(buttonContainerView)
         
         //buttonContainerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-        bottomContainerViewBottomAnchor = buttonContainerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 0)
+        bottomContainerViewBottomAnchor = buttonContainerView.bottomAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.bottomAnchor, constant: 0)
         bottomContainerViewBottomAnchor.isActive = true
         buttonContainerView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
         buttonContainerView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
