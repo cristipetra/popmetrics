@@ -18,6 +18,12 @@ class Config: NSObject {
         }
     }
     
+    class var aboutWebLink: String {
+        get {
+            return "Popmetrics.ai"
+        }
+    }
+    
     class var appWebAimeeLink: String {
         get {
             return "https://chat.popmetrics.ai/#/aimee/start-with-callback/58fe437ac7631a139803757e/59b2a6288a5da50da5790fd7"
