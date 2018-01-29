@@ -25,8 +25,8 @@ class StatsSummaryItemView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
-        label.font = UIFont(name: FontBook.extraBold, size: 22)
-        label.textAlignment = .center
+        label.font = UIFont(name: FontBook.extraBold, size: 18)
+        label.textAlignment = .right
         label.textColor = PopmetricsColor.darkGrey
         return label
         
@@ -36,7 +36,7 @@ class StatsSummaryItemView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
-        label.font = UIFont(name: FontBook.extraBold, size: 22)
+        label.font = UIFont(name: FontBook.semibold, size: 12)
         label.textAlignment = .right
         label.textColor = PopmetricsColor.darkGrey
         return label
@@ -66,20 +66,15 @@ class StatsSummaryItemView: UIView {
         messageLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 14).isActive = true
         messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         messageLabel.numberOfLines = 2
-        
-        if UIScreen.main.bounds.size.width < 375 {
-            messageLabel.widthAnchor.constraint(equalToConstant: 110).isActive = true
-        } else {
-            messageLabel.widthAnchor.constraint(equalToConstant: 170).isActive = true
-        }
+        messageLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.45).isActive = true
         
         deltaLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        deltaLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
-        deltaLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        deltaLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 10).isActive = true
+        deltaLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.45).isActive = true
         
-        valueLabel.rightAnchor.constraint(equalTo: self.deltaLabel.leftAnchor, constant: 10).isActive = true
-        valueLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
-        valueLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        valueLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+        valueLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -10).isActive = true
+        valueLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.45).isActive = true
 
         dividerLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         dividerLineView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
@@ -112,22 +107,22 @@ class StatsSummaryItemView: UIView {
             deltaPercentage =  (statsMetric.delta * 100) / ( statsMetric.value )
         }
         
-        deltaLabel.text =  deltaPercentage < 0 ? "\(Int(deltaPercentage))%" : "+\(Int(deltaPercentage))%"
+        deltaLabel.text =  deltaPercentage < 0 ? "\(Int(deltaPercentage).withCommas())%" : "+\(Int(deltaPercentage).withCommas())%"
         
         deltaLabel.textColor = statsMetric.delta < 0 ? PopmetricsColor.salmondColor : PopmetricsColor.calendarCompleteGreen
-        
+
     }
     
     private func setValueTime(_ statsMetric: StatsMetric) {
-        let valueLabelText = (statsMetric.valueFormatted != "") ? statsMetric.valueFormatted : "\(Int(statsMetric.value))"
-        valueLabel.text = parseTime(time: statsMetric.valueFormatted)
+        valueLabel.text = statsMetric.valueFormatted
         
         var deltaPercentage = 0 as Float
        
-        deltaPercentage =  (statsMetric.delta)
+        deltaPercentage = (statsMetric.delta)
        
         deltaLabel.text =  deltaPercentage < 0 ? "\(Int(deltaPercentage))%" : "+\(Int(deltaPercentage))%"
         deltaLabel.textColor = statsMetric.delta < 0 ? PopmetricsColor.salmondColor : PopmetricsColor.calendarCompleteGreen
+        
     }
     
     private func parseTime(time: String) -> String {
@@ -146,5 +141,14 @@ extension String {
         let indexEndOfText = self.index(self.endIndex, offsetBy: end)
         let substring = self[indexStartOfText..<indexEndOfText]
         return String(substring)
+    }
+}
+
+extension Int {
+    
+    func withCommas() -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        return numberFormatter.string(from: NSNumber(value:self))!
     }
 }
