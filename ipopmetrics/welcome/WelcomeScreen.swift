@@ -42,6 +42,7 @@ class WelcomeScreen: BaseViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.welcomeViewController = self
         
+        backButton.isHidden = true
     }
     
     override func setupOfflineBanner() {

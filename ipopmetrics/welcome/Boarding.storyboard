@@ -48,13 +48,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why Does Popmetrics Need Access to Your Twitter Account? " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lc4-Z1-LD7">
-                                <rect key="frame" x="26" y="50" width="273" height="37.5"/>
+                                <rect key="frame" x="26" y="50" width="273" height="44"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPL-9b-33V">
-                                <rect key="frame" x="26" y="127.5" width="323" height="19"/>
+                                <rect key="frame" x="26" y="134" width="323" height="22"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -166,7 +166,7 @@
                                     </constraint>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Popmetrics. The simpler way to manage and improve your brand online" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVM-q6-zEn" customClass="ActiveLabel" customModule="ActiveLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi! Welcome to Popmetrics. The simpler way to manage and improve your brand online" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVM-q6-zEn" customClass="ActiveLabel" customModule="ActiveLabel">
                                 <rect key="frame" x="32" y="280.5" width="311" height="106"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="106" id="jnR-lE-Xix">
@@ -194,7 +194,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ev6-3J-0cf">
                                 <rect key="frame" x="50" y="492" width="275" height="45"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.25098039215686274" green="0.19607843137254902" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="grE-3f-xSN">
                                         <variation key="heightClass=compact-widthClass=compact" constant="40"/>
@@ -202,12 +202,12 @@
                                     </constraint>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
-                                <state key="normal" title="Sign in">
-                                    <color key="titleColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="3"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="0.0"/>
@@ -238,15 +238,15 @@
                                     <constraint firstAttribute="height" constant="45" id="Ocp-Vc-N7W"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                <state key="normal" title="Register">
+                                <state key="normal" title="Log In">
                                     <color key="titleColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="3"/>
+                                        <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.25098039215686274" green="0.23529411764705882" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
                                 </userDefinedRuntimeAttributes>
