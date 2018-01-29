@@ -750,7 +750,7 @@
         <!--Stats Report Page View Controller-->
         <scene sceneID="hsh-ca-4j2">
             <objects>
-                <pageViewController storyboardIdentifier="StatsReportPageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Jcb-oQ-as5" customClass="StatsReportPageViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="StatsReportPageViewController" autoresizesArchivedViewToFullSize="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Jcb-oQ-as5" customClass="StatsReportPageViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="6zG-8y-U97"/>
                     <connections>
                         <segue destination="Sa3-PG-jtN" kind="custom" identifier="Page" customClass="PageSegue" customModule="ipopmetrics" customModuleProvider="target" id="GPt-is-7Gj"/>
@@ -837,7 +837,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="cbI-j4-0hY" firstAttribute="leading" secondItem="REz-0N-Zlj" secondAttribute="leading" id="3x8-Fw-t09"/>
                                                                 <constraint firstItem="RNT-p3-Cxa" firstAttribute="top" secondItem="cbI-j4-0hY" secondAttribute="bottom" constant="8" id="dBX-aA-iyS"/>
