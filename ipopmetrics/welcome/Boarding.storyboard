@@ -48,13 +48,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why Does Popmetrics Need Access to Your Twitter Account? " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lc4-Z1-LD7">
-                                <rect key="frame" x="26" y="50" width="273" height="44"/>
+                                <rect key="frame" x="26" y="50" width="273" height="37.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPL-9b-33V">
-                                <rect key="frame" x="26" y="134" width="323" height="22"/>
+                                <rect key="frame" x="26" y="127.5" width="323" height="19"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -194,7 +194,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ev6-3J-0cf">
                                 <rect key="frame" x="50" y="492" width="275" height="45"/>
-                                <color key="backgroundColor" red="0.25098039215686274" green="0.19607843137254902" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.25098039215686274" green="0.23529411764705882" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="grE-3f-xSN">
                                         <variation key="heightClass=compact-widthClass=compact" constant="40"/>
@@ -218,7 +218,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="handlerSpoken:" destination="hIx-Ax-wyr" eventType="touchUpInside" id="aAi-Be-zvr"/>
+                                    <action selector="handlerDidPressNewButton:" destination="hIx-Ax-wyr" eventType="touchUpInside" id="Zp2-4O-Njw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qa3-IW-mFg">
@@ -251,7 +251,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="handlerDidPressNewButton:" destination="hIx-Ax-wyr" eventType="touchUpInside" id="iTL-IV-Gat"/>
+                                    <action selector="handlerSpoken:" destination="hIx-Ax-wyr" eventType="touchUpInside" id="iOq-ce-IJI"/>
                                 </connections>
                             </button>
                         </subviews>
