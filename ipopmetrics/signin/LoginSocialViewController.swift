@@ -61,8 +61,8 @@ class LoginSocialViewController: BaseViewController {
             topButtonHeightAnchor.constant = 10
             titleTopAnchor.constant = 20
             
-            constraintTopFacebook.constant = 10
-            constraintTopLinkedin.constant = 10
+            //constraintTopFacebook.constant = 10
+            //constraintTopLinkedin.constant = 10
         } else if UIScreen.main.bounds.width > 320 {
             topButtonHeightAnchor.constant = 51
             titleTopAnchor.constant = 20
