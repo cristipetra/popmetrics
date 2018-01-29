@@ -95,13 +95,28 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
     }
     
     func reloadData() {
-        self.firstValue.text = "\(Int(statisticMetric.value))"
-        self.secondValue.text = ""
         
-        self.secondValue.text =  statsMetricView.getPercentageText()
-        self.secondValue.textColor = statsMetricView.colorDelta()
+        if statisticMetric.valueFormatted != "" {
+            setDateTime()
+        } else {
+            self.firstValue.text = "\(Int(statisticMetric.value))"
+            
+            self.secondValue.text = ""
+            self.secondValue.text =  statsMetricView.getPercentageText()
+            self.secondValue.textColor = statsMetricView.colorDelta()
+        }
         
         reloadGraph()
+    }
+    
+    private func setDateTime() {
+        self.firstValue.text = statisticMetric.valueFormatted
+        var delta = 0 as Float
+        
+        delta = statisticMetric.delta
+        
+        secondValue.text =  delta < 0 ? "\(Int(delta))%" : "+\(Int(delta))%"
+        secondValue.textColor = delta < 0 ? PopmetricsColor.salmondColor : PopmetricsColor.calendarCompleteGreen
     }
     
     func reloadGraph() {
@@ -238,4 +253,5 @@ struct StatsMetricViewModel {
         let percentage = getPercentage()
         return percentage <= 0 ? "\(Int(percentage))%" : "+\(Int(percentage))%"
     }
+    
 }

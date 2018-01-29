@@ -24,7 +24,7 @@ class BreakdownViewCell: UITableViewCell {
     lazy var firstValueLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: FontBook.extraBold, size: 18)
+        label.font = UIFont(name: FontBook.bold, size: 18)
         label.textColor = PopmetricsColor.visitFirstColor
         label.textAlignment = .left
         return label
@@ -33,7 +33,7 @@ class BreakdownViewCell: UITableViewCell {
     lazy var secondValueLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: FontBook.extraBold, size: 18)
+        label.font = UIFont(name: FontBook.semibold, size: 10)
         label.textColor = PopmetricsColor.calendarCompleteGreen
         label.textAlignment = .right
         return label
@@ -102,12 +102,12 @@ class BreakdownViewCell: UITableViewCell {
         firstValueLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 17).isActive = true
         firstValueLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
+        
         //constraints percent
-        secondValueLabel.leftAnchor.constraint(equalTo: firstValueLabel.rightAnchor, constant: 20).isActive = true
-        secondValueLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 17).isActive = true
-        secondValueLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        secondValueLabel.leftAnchor.constraint(equalTo: firstValueLabel.rightAnchor, constant: 10).isActive = true
+        secondValueLabel.lastBaselineAnchor.constraint(equalTo: firstValueLabel.lastBaselineAnchor).isActive = true
         secondValueLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -21).isActive = true
-        secondValueLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        //secondValueLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
         
         //constraint container progress
         containerProgressView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 25).isActive = true

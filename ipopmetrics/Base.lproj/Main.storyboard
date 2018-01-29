@@ -851,14 +851,14 @@
                                                             <rect key="frame" x="24" y="41" width="351" height="30"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="134" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dp-Ex-Nyp">
-                                                                    <rect key="frame" x="0.0" y="1.5" width="35.5" height="27.5"/>
-                                                                    <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="20"/>
+                                                                    <rect key="frame" x="0.0" y="3" width="31" height="25"/>
+                                                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
                                                                     <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fR7-Ce-hud">
-                                                                    <rect key="frame" x="65.5" y="1.5" width="35" height="27.5"/>
-                                                                    <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="20"/>
+                                                                    <rect key="frame" x="41" y="9" width="21" height="16.5"/>
+                                                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                                                     <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -867,8 +867,8 @@
                                                                 <constraint firstItem="4Dp-Ex-Nyp" firstAttribute="centerY" secondItem="CI4-hD-WwD" secondAttribute="centerY" id="Wzb-Vh-G8B"/>
                                                                 <constraint firstAttribute="height" constant="30" id="Xyj-fq-4hj"/>
                                                                 <constraint firstItem="4Dp-Ex-Nyp" firstAttribute="leading" secondItem="CI4-hD-WwD" secondAttribute="leading" id="fyd-6b-Itb"/>
-                                                                <constraint firstItem="fR7-Ce-hud" firstAttribute="leading" secondItem="4Dp-Ex-Nyp" secondAttribute="trailing" constant="30" id="lli-yz-s3s"/>
-                                                                <constraint firstItem="fR7-Ce-hud" firstAttribute="centerY" secondItem="CI4-hD-WwD" secondAttribute="centerY" id="ofq-Iu-xmt"/>
+                                                                <constraint firstItem="fR7-Ce-hud" firstAttribute="leading" secondItem="4Dp-Ex-Nyp" secondAttribute="trailing" constant="10" id="lli-yz-s3s"/>
+                                                                <constraint firstItem="fR7-Ce-hud" firstAttribute="centerY" secondItem="CI4-hD-WwD" secondAttribute="centerY" constant="2" id="ofq-Iu-xmt"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
