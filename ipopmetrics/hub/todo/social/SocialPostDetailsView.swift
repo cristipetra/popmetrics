@@ -64,6 +64,7 @@ class SocialPostDetailsView: UIView {
         articleUrl.text = todoSocialPost.articleUrl
         
         if todoSocialPost.type == "twitter" {
+            updateTwitter()
             if let name = UserStore.currentBrand?.twitterDetails?.name {
                 socialBrand.text =  "@\(name)"
             }
