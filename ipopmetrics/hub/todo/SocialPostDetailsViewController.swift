@@ -11,18 +11,12 @@ import ObjectMapper
 
 class SocialPostDetailsViewController: BaseViewController {
     
-    @IBOutlet var containerView: UIView!
-    @IBOutlet weak var recommendedLabel: UILabel!
-    @IBOutlet weak var titleBlogLabel: UILabel!
-    @IBOutlet weak var blogUrl: UILabel!
-    @IBOutlet weak var blogMessage: UILabel!
-    @IBOutlet weak var scheduleLabel: UILabel!
-    @IBOutlet weak var cardImage: UIImageView!
+    @IBOutlet var containerView: SocialPostDetailsView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var articleUrl: UILabel!
-    @IBOutlet weak var socialBrand: UILabel!
     
     @IBOutlet weak var messageFacebook: UITextView!
+    @IBOutlet weak var scheduleInfoLabel: UILabel!
     
     lazy var buttonContainerView: UIView = {
         let view = UIView()
@@ -47,7 +41,7 @@ class SocialPostDetailsViewController: BaseViewController {
         button.titleLabel?.font = UIFont(name: FontBook.bold, size: 15)
         return button
     }()
-    
+    /*
     lazy var approvePostBtn1: TwoColorButton = {
         let button = TwoColorButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +50,7 @@ class SocialPostDetailsViewController: BaseViewController {
         button.contentHorizontalAlignment = .right
         return button
     }()
-    
+    */
     lazy var approvePostBtn: ActionButton = {
         let button = ActionButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -64,6 +58,7 @@ class SocialPostDetailsViewController: BaseViewController {
     }()
     
     private var todoSocialPost: TodoSocialPost!
+    private var calendarSocialPost: CalendarSocialPost!
     
     var bottomContainerViewBottomAnchor: NSLayoutConstraint!
     internal var isBottomVisible = false
@@ -78,9 +73,15 @@ class SocialPostDetailsViewController: BaseViewController {
         
         scrollView.delegate = self
         
-        socialBrand.text =  ""
         addBottomButtons()
-        updateView()
+    
+        if todoSocialPost != nil {
+            containerView.configure(todoSocialPost: todoSocialPost)
+            updateView()
+        } else if calendarSocialPost != nil {
+            containerView.configure(calendarSocialPost: calendarSocialPost)
+            updateViewCalendar()
+        }
         
         self.view.addSwipeGestureRecognizer {
             self.navigationController?.popViewController(animated: true)
@@ -89,60 +90,31 @@ class SocialPostDetailsViewController: BaseViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handlerClickArticleUrl));
         articleUrl.isUserInteractionEnabled = true
         articleUrl.addGestureRecognizer(tapGesture)
-    }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        displayContainerBtnsIfNeeded()
     }
     
     func configure(todoSocialPost: TodoSocialPost) {
         self.todoSocialPost = todoSocialPost
     }
     
+    func configure(calendarSocialPost: CalendarSocialPost) {
+        self.calendarSocialPost = calendarSocialPost
+    }
+    
+    private func updateViewCalendar() {
+        hideStatusBtns()
+    }
+    
     private func updateView() {
-        if let imageUri = todoSocialPost.articleImage {
-            if imageUri.isValidUrl() {
-                cardImage.af_setImage(withURL: URL(string: imageUri)!)
-            }
-        }
-        blogUrl.text = todoSocialPost.articleUrl
-        
-        articleUrl.text = todoSocialPost.articleUrl
-    
-        if todoSocialPost.type == "twitter" {
-            if let name = UserStore.currentBrand?.twitterDetails?.name {
-                 socialBrand.text =  "@\(name)"
-            }
-        } else if todoSocialPost.type == "facebook" {
-            updateFacebook()
-        }
-        
-        if let title = todoSocialPost.articleTitle {
-            titleBlogLabel.text = "\"\(title)\""
-        }
-    
-        blogMessage.text  = todoSocialPost.articleText
-        
-        displayContainerBtnsIfNeeded()
-        
         setupStatusCardView()
     }
     
-    private func updateTwitter() {
-        if recommendedLabel != nil {
-            recommendedLabel.text = todoSocialPost.articleText
-        }
-    }
-    
-    private func updateFacebook() {
-        if messageFacebook != nil {
-            messageFacebook.translatesAutoresizingMaskIntoConstraints = false
-            messageFacebook.isScrollEnabled = false
-        }
-    }
-    
     func setupStatusCardView() {
-        let isApproved = todoSocialPost.isApproved
+        var isApproved: Bool = false
+        if todoSocialPost != nil {
+            isApproved = todoSocialPost.isApproved
+        }
         print("approved \(isApproved)")
         if !isApproved {
             denyPostBtn.isHidden = false
@@ -152,6 +124,11 @@ class SocialPostDetailsViewController: BaseViewController {
             denyPostBtn.isHidden = true
             approvePostBtn.removeTarget(self, action: #selector(approvePost), for: .touchUpInside)
         }
+    }
+    
+    internal func hideStatusBtns() {
+        denyPostBtn.isHidden = true
+        approvePostBtn.isHidden = true
     }
     
     private func setupNavigationWithBackButton() {
@@ -176,11 +153,23 @@ class SocialPostDetailsViewController: BaseViewController {
     }
     
     @objc func handlerClickArticleUrl(sender: Any) {
-        print(" handler click article ")
-        if todoSocialPost.articleUrl.isValidUrl() {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.openURLInside(self, url: todoSocialPost.articleUrl)
+        if todoSocialPost != nil {
+            if todoSocialPost.articleUrl.isValidUrl() {
+                openArticle(todoSocialPost.articleUrl)
+            }
         }
+        
+        if calendarSocialPost != nil {
+            if calendarSocialPost.url.isValidUrl() {
+                openArticle(calendarSocialPost.url)
+            }
+        }
+        
+    }
+    
+    private func openArticle(_ articleUrl: String) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.openURLInside(self, url: articleUrl)
     }
     
     @objc func handlerClickBack() {
@@ -192,7 +181,7 @@ class SocialPostDetailsViewController: BaseViewController {
         containerView.addSubview(buttonContainerView)
         
         //buttonContainerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-        bottomContainerViewBottomAnchor = buttonContainerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 0)
+        bottomContainerViewBottomAnchor = buttonContainerView.bottomAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.bottomAnchor, constant: 0)
         bottomContainerViewBottomAnchor.isActive = true
         buttonContainerView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
         buttonContainerView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
@@ -247,27 +236,6 @@ class SocialPostDetailsViewController: BaseViewController {
         }
     }
     
-    func formatDate(date: Date) -> String {
-        
-        let dateFormater = DateFormatter()
-        var days: String = ""
-        var hour: String = ""
-        var fullDate: String = ""
-        
-        dateFormater.dateFormat = "MM/dd"
-        dateFormater.pmSymbol = "p.m"
-        days = dateFormater.string(from: date)
-        
-        dateFormater.dateFormat = "h:mm a"
-        dateFormater.amSymbol = "a.m"
-        hour = dateFormater.string(from: date)
-        
-        
-        fullDate = "\(days) @ \(hour)"
-        return fullDate
-        
-    }
-    
 }
 
 extension SocialPostDetailsViewController: BannerProtocol {
@@ -318,5 +286,4 @@ extension SocialPostDetailsViewController: UIScrollViewDelegate {
 @objc protocol BannerProtocol: class {
     @objc optional func presentErrorNetwork()
 }
-
 

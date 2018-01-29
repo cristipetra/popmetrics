@@ -79,17 +79,15 @@ class IceExtendView: UIView {
     
     private func initialScores() {
         impactScoreView.setProgress(0.0)
-        
+        progressCost.animateTo(progress: 0)
+        progressEffort.animateTo(progress: 0)
         firstScoreView.alpha = 0.6
-        firstScoreView.setProgressPercentage(0.5)
         firstScoreView.setTitle("Site Traffic")
         
         secondScoreView.alpha = 0.6
-        secondScoreView.setProgressPercentage(0.2)
         secondScoreView.setTitle("Brand")
         
         thirdScoreView.alpha = 0.6
-        thirdScoreView.setProgressPercentage(0.9)
         thirdScoreView.setTitle("Customers")
         
     }

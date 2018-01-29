@@ -125,13 +125,13 @@ class TodoHubController: BaseViewController {
         nc.addObserver(forName:Notification.Popmetrics.UiRefreshRequired, object:nil, queue:nil, using:catchUiRefreshRequiredNotification)
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = PopmetricsColor.darkGrey
+        loadingView.tintColor = PopmetricsColor.yellowBGColor
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             SyncService.getInstance().syncAll(silent: false)
             self?.tableView.dg_stopLoading()
             }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
-        tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
+        tableView.dg_setPullToRefreshFillColor(PopmetricsColor.borderButton)
+        tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.loadingBackground)
         
         setupTopHeaderView()
         //setupTopViewItemCount()
@@ -218,8 +218,8 @@ class TodoHubController: BaseViewController {
     
     internal func setUpNavigationBar() {
         let text = UIBarButtonItem(title: "To Do", style: .plain, target: self, action: #selector(handlerClickMenu))
-        text.tintColor = UIColor(red: 67/255, green: 78/255, blue: 84/255, alpha: 1.0)
-        let titleFont = UIFont(name: FontBook.regular, size: 18)
+        text.tintColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1.0)
+        let titleFont = UIFont(name: FontBook.extraBold, size: 18)
         text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
         text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .selected)
         
@@ -245,6 +245,8 @@ class TodoHubController: BaseViewController {
             }
             if item.type != "empty_state" {
                 count = items.count
+            } else {
+                count = 0
             }
             
         }
@@ -409,8 +411,13 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         
         let card = cards[0]
         let item = store.getTodoSocialPostsForCard(card)[rowIdx]
+        var detailsVC: SocialPostDetailsViewController!
         
-        let detailsVC = SocialPostDetailsViewController(nibName: "SocialPostDetails", bundle: nil)
+        if item.type == "facebook" {
+            detailsVC = SocialPostDetailsViewController(nibName: "FacebookSocialPostDetails", bundle: nil)
+        } else {
+            detailsVC = SocialPostDetailsViewController(nibName: "SocialPostDetails", bundle: nil)
+        }
         detailsVC.configure(todoSocialPost: item)
         detailsVC.actionSocialDelegate = self
         detailsVC.hidesBottomBarWhenPushed = true

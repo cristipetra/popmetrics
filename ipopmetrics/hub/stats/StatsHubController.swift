@@ -82,8 +82,6 @@ class StatsHubController: BaseViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.backgroundColor = PopmetricsColor.statisticsTableBackground
-        tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
@@ -92,13 +90,15 @@ class StatsHubController: BaseViewController {
         let nc = NotificationCenter.default
         nc.addObserver(forName:Notification.Popmetrics.UiRefreshRequired, object:nil, queue:nil, using:catchUiRefreshRequiredNotification)
         
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = PopmetricsColor.yellowBGColor
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             // old code: self?.fetchItems(silent:false)
             SyncService.getInstance().syncAll(silent: false)
             self?.tableView.dg_stopLoading()
             }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
-        tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
+        tableView.dg_setPullToRefreshFillColor(PopmetricsColor.borderButton)
+        tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.loadingBackground)
         
         //createItemsLocally()
     }
@@ -224,8 +224,8 @@ class StatsHubController: BaseViewController {
     
     internal func setUpNavigationBar() {
         let text = UIBarButtonItem(title: "Statistics", style: .plain, target: self, action: #selector(handlerClickMenu))
-        text.tintColor = UIColor(red: 67/255, green: 78/255, blue: 84/255, alpha: 1.0)
-        let titleFont = UIFont(name: FontBook.regular, size: 18)
+        text.tintColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1.0)
+        let titleFont = UIFont(name: FontBook.extraBold, size: 18)
         text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
         text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .selected)
         

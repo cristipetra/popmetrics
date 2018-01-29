@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,7 +25,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zel-Qq-zWo">
-                        <rect key="frame" x="20" y="8" width="405" height="304.5"/>
+                        <rect key="frame" x="8" y="8" width="429" height="304.5"/>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WiB-fl-y5c">
                         <rect key="frame" x="10" y="0.0" width="425" height="304.5"/>
@@ -47,21 +47,10 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uUR-ad-KNx">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uUR-ad-KNx" customClass="SocialIconView" customModule="ipopmetrics" customModuleProvider="target">
                                         <rect key="frame" x="15" y="15.5" width="34" height="34"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="icon_twitter" translatesAutoresizingMaskIntoConstraints="NO" id="Xq6-cp-y4W">
-                                                <rect key="frame" x="8" y="10" width="18" height="14"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="18" id="MiM-bD-ruP"/>
-                                                    <constraint firstAttribute="height" constant="14.199999999999999" id="xfl-QC-A9f"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="Xq6-cp-y4W" firstAttribute="centerX" secondItem="uUR-ad-KNx" secondAttribute="centerX" id="9aE-Bf-rgM"/>
-                                            <constraint firstItem="Xq6-cp-y4W" firstAttribute="centerY" secondItem="uUR-ad-KNx" secondAttribute="centerY" id="JCG-00-gRj"/>
                                             <constraint firstAttribute="width" constant="34" id="QpV-rs-6uy"/>
                                             <constraint firstAttribute="height" constant="34" id="YyQ-eL-4pH"/>
                                         </constraints>
@@ -142,6 +131,7 @@
                                     <constraint firstItem="2VX-zs-rFl" firstAttribute="leading" secondItem="qrH-lG-Erw" secondAttribute="leading" id="LhA-fT-n6U"/>
                                     <constraint firstItem="2VX-zs-rFl" firstAttribute="top" secondItem="qrH-lG-Erw" secondAttribute="top" constant="-10" id="uU6-gv-8bx"/>
                                     <constraint firstAttribute="height" constant="20" id="uxa-wD-9ya"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="vE5-FG-InZ"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NHg-M8-4Nf">
@@ -173,7 +163,6 @@
             <connections>
                 <outlet property="aproveButton" destination="5Vw-Ix-dg1" id="pAw-xa-Efj"/>
                 <outlet property="cardImage" destination="WUH-7z-lCh" id="evS-q5-eIF"/>
-                <outlet property="circleView" destination="uUR-ad-KNx" id="mQT-TA-rFQ"/>
                 <outlet property="constraintContainerBottom" destination="uxa-wD-9ya" id="SG7-K7-uON"/>
                 <outlet property="constraintToolbarHeight" destination="yyp-16-1yb" id="iWQ-hp-0Ip"/>
                 <outlet property="containerBottom" destination="qrH-lG-Erw" id="jt4-Ap-fzn"/>
@@ -181,13 +170,13 @@
                 <outlet property="denyPostBtn" destination="yhb-xh-eNa" id="7OH-aT-o4A"/>
                 <outlet property="messageLbl" destination="zRH-G2-gC6" id="4qU-k2-Svx"/>
                 <outlet property="shadowView" destination="Zel-Qq-zWo" id="GT3-YJ-VtT"/>
+                <outlet property="socialIconView" destination="uUR-ad-KNx" id="gcR-jd-ESH"/>
                 <outlet property="stackView" destination="WiB-fl-y5c" id="f5H-ZT-ORM"/>
             </connections>
             <point key="canvasLocation" x="-216.5" y="518.5"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_twitter" width="47" height="38"/>
         <namedColor name="larry_david">
             <color red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

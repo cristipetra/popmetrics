@@ -28,6 +28,7 @@ class AboutViewController: BaseTableViewController {
     
     private func updateView() {
         versionLabel.text = UIApplication.versionBuild()
+        websiteLabel.text = Config.aboutWebLink
     }
     
     private func setUpNavigationBar() {

@@ -16,6 +16,9 @@ class ActionPageDetailsViewController: BaseViewController {
     @IBOutlet weak var blogTitle: UILabel!
     @IBOutlet weak var blogSummary: UILabel!
     
+    @IBOutlet weak var containerFixIt: UIView!
+    
+    @IBOutlet weak var constraintHeightFixIt: NSLayoutConstraint!
     @IBOutlet weak var constraintHeightDetailsMarkdown: NSLayoutConstraint!
     @IBOutlet weak var containerIceView: UIView!
     @IBOutlet weak var containerDetailsMarkdown: UIView!
@@ -146,6 +149,7 @@ class ActionPageDetailsViewController: BaseViewController {
         
         displayMarkdownDetails()
         displayMarkdownClosing()
+        displayMarkdownFixIt()
     }
     
     private func setupNavigationWithBackButton() {
@@ -175,6 +179,10 @@ class ActionPageDetailsViewController: BaseViewController {
         return actionModel.closingMarkdown ?? ""
     }
     
+    private func getFixItMarkdownString() -> String {
+        return actionModel.diyInstructions ?? ""
+    }
+    
     internal func displayMarkdownDetails() {
         let mark = Markdown()
         mark.addMarkInExtendedView(containerMark: containerDetailsMarkdown, containerHeightConstraint: constraintHeightDetailsMarkdown, markdownString: getDetailsMarkdownString())
@@ -185,6 +193,17 @@ class ActionPageDetailsViewController: BaseViewController {
             constraintHeightDetailsMarkdown.constant  = constraintHeightDetailsMarkdown.constant + 80
         }
         
+    }
+    
+    internal func displayMarkdownFixIt() {
+        let mark = Markdown()
+        mark.addMarkInExtendedView(containerMark: containerFixIt, containerHeightConstraint: constraintHeightFixIt, markdownString: getFixItMarkdownString())
+        
+        if getFixItMarkdownString().isEmpty || getFixItMarkdownString().count <= 1 {
+            constraintHeightFixIt.constant = 0
+        } else {
+            constraintHeightFixIt.constant  = constraintHeightFixIt.constant + 80
+        }
     }
     
     internal func displayMarkdownClosing() {
@@ -332,6 +351,7 @@ class ActionPageModel: NSObject {
     internal var detailsMarkdown: String? = ""
     internal var closingMarkdown: String? = ""
     internal var blogUrl: String? = ""
+    internal var diyInstructions: String? = ""
     
     internal var todoCard: TodoCard?
     internal var feedCard: FeedCard?
@@ -344,6 +364,7 @@ class ActionPageModel: NSObject {
         closingMarkdown      = todoCard.closingMarkdown
         blogUrl              = todoCard.blogUrl
         impactPercentage     = todoCard.impactPercentage
+        diyInstructions      = todoCard.diyInstructions
         
         self.todoCard = todoCard
     }
@@ -355,7 +376,7 @@ class ActionPageModel: NSObject {
         closingMarkdown     = feedCard.closingMarkdown
         blogUrl             = feedCard.blogUrl
         impactPercentage    = feedCard.impactPercentage
-        
+        diyInstructions     = feedCard.diyInstructions
         
         self.feedCard = feedCard
     }

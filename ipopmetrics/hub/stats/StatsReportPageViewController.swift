@@ -45,15 +45,7 @@ class StatsReportPageViewController: UIPageViewController {
         }
         
     }
-    /*
-    override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
-        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: options)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    */
+
     func setupNavigationWithBackButton() {
         
         let titleWindow = "WEBSITE REPORT"

@@ -125,13 +125,13 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
         addNotifications()
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = PopmetricsColor.darkGrey
+        loadingView.tintColor = PopmetricsColor.yellowBGColor
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             SyncService.getInstance().syncAll(silent: false)
             self?.tableView.dg_stopLoading()
             }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(PopmetricsColor.yellowBGColor)
-        tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.darkGrey)
+        tableView.dg_setPullToRefreshFillColor(PopmetricsColor.borderButton)
+        tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.loadingBackground)
         
         tableView.isHidden = true
         
@@ -359,8 +359,8 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
     
     internal func setUpNavigationBar() {
         let text = UIBarButtonItem(title: "Calendar", style: .plain, target: self, action: #selector(handlerClickMenu))
-        text.tintColor = UIColor(red: 67/255, green: 78/255, blue: 84/255, alpha: 1.0)
-        let titleFont = UIFont(name: FontBook.regular, size: 18)
+        text.tintColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1.0)
+        let titleFont = UIFont(name: FontBook.extraBold, size: 18)
         text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
         text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .selected)
         
@@ -460,20 +460,25 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         return UITableViewCell()
     }
     
-    /*
+
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let currentCell = tableView.cellForRow(at: indexPath)
         
-        let detailsViewController = UIStoryboard(name: "TodoPostDetails", bundle: nil).instantiateViewController(withIdentifier: "postDetailsId") as! SocialPostDetailsViewController
-        detailsViewController.hidesBottomBarWhenPushed = true
-        
-        let socialPost = store.getCalendarSocialPostsForCard(store.getCalendarCards()[indexPath.section], datesSelected: 0)[indexPath.row]
-        
-        detailsViewController.socialDelegate = self
-        detailsViewController.configureCalendar(calendarItem: socialPost, indexPath: indexPath)
-        self.navigationController?.pushViewController(detailsViewController, animated: true)
-        
+        if currentCell is CalendarCardViewCell {
+           
+            let detailsVC = SocialPostDetailsViewController(nibName: "SocialPostDetails", bundle: nil)
+            
+            let calendarCardViewCell = currentCell as! CalendarCardViewCell
+            
+            detailsVC.configure(calendarSocialPost: calendarCardViewCell.calendarItem)
+            detailsVC.actionSocialDelegate = self
+            detailsVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(detailsVC, animated: true)
+        }
     }
-    */
+ 
     
     @objc private func goToNextTab() {
         self.tabBarController?.selectedIndex = 0

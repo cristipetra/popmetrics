@@ -20,6 +20,10 @@ class InsightPageDetailsViewController: BaseViewController {
     
     @IBOutlet weak var labelInsightArguments: UILabel!
     
+    
+    
+    @IBOutlet weak var containerInsights: UIView!
+    @IBOutlet weak var constraintHeightInsightsMarkdown: NSLayoutConstraint!
     @IBOutlet weak var constraintHeightDetailsMarkdown: NSLayoutConstraint!
     @IBOutlet weak var containerClosingMarkdown: UIView!
     @IBOutlet weak var containerDetailsMarkdown: UIView!
@@ -101,13 +105,13 @@ class InsightPageDetailsViewController: BaseViewController {
         }
         blogSummary.text = feedCard.blogSummary
         
-        displayInsightArguments()
         displayMarkDetails()
         displayMarkClosing()
+        displayMarkInsights()
     }
     
     private func hideFailedSection() {
-        constraintHeightContainerFailed.constant = 0
+        constraintHeightInsightsMarkdown.constant = 0
     }
 
     private func setupNavigationWithBackButton() {
@@ -146,12 +150,30 @@ class InsightPageDetailsViewController: BaseViewController {
         return feedCard.closingMarkdown!
     }
     
+    func getMarkInsightsString() -> String {
+        return feedCard.insightArguments ?? ""
+    }
+    
     internal func displayMarkDetails() {
         let mark = Markdown()
         
         mark.addMarkInExtendedView(containerMark: containerDetailsMarkdown, containerHeightConstraint: constraintHeightDetailsMarkdown, markdownString: getMarkDownString())
         
         constraintHeightDetailsMarkdown.constant = constraintHeightDetailsMarkdown.constant + containerClosingMarkdown.frame.origin.y
+    }
+    
+    internal func displayMarkInsights() {
+        let mark = Markdown()
+        
+        mark.addMarkInExtendedView(containerMark: containerInsights, containerHeightConstraint: constraintHeightInsightsMarkdown, markdownString: getMarkInsightsString())
+        
+        constraintHeightInsightsMarkdown.constant = constraintHeightInsightsMarkdown.constant + containerInsights.frame.origin.y
+        
+        if getMarkInsightsString().isEmpty || getMarkInsightsString().count <= 1 {
+            constraintHeightInsightsMarkdown.constant = 0
+        } else {
+            constraintHeightInsightsMarkdown.constant  = constraintHeightInsightsMarkdown.constant + 80
+        }
     }
     
     internal func displayMarkClosing() {
