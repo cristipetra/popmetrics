@@ -233,6 +233,10 @@ class TodoHubController: BaseViewController {
     }
     
     func updateCountsTopView() {
+        updateCountSocialPost()
+    }
+    
+    private func updateCountSocialPost() {
         var count = 0
         let items = getVisibleItemsInSection(0)
         count = items.count
@@ -244,15 +248,23 @@ class TodoHubController: BaseViewController {
                 return
             }
             if item.type != "empty_state" {
-                count = items.count
+                let socialItems = items as! [TodoSocialPost]
+                count = socialItems.filter{ $0.isApproved != true }.count
             } else {
                 count = 0
             }
+            
+        } else {
+            
+            let socialItems = items as! [TodoSocialPost]
+            count = socialItems.filter{ $0.isApproved != true }.count
             
         }
         
         toDoTopView.changeValueSection(value: count, section: 0)
     }
+    
+    
     
     func getVisibleItemsInSection(_ section: Int) -> [Any] {
         
@@ -579,7 +591,6 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
 extension TodoHubController:  TodoCardActionProtocol {
     
     func handleCardAction(_ action:String, todoCard: TodoCard, params:[String:Any]) {
-        
         switch (todoCard.type) {
         case "articles_posting":
             if action == "approve_one" || action == "deny_one" {
@@ -625,7 +636,7 @@ extension TodoHubController:  TodoCardActionProtocol {
         default:
             print("Unknown type")
         }//switch
-        
+     
     }
     
 }
@@ -636,6 +647,7 @@ extension TodoHubController {
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
         //print(store.getTodoCards())
         self.tableView.reloadData()
+        updateCountsTopView()
     }
 }
 
@@ -683,6 +695,7 @@ extension TodoHubController: ActionSocialPostProtocol {
             
             self.showBannerForNotification(pnotification)
             self.bannerMessageView.displayApproved()
+            self.updateCountsTopView()
 
             })
 

@@ -20,8 +20,6 @@ class InsightPageDetailsViewController: BaseViewController {
     
     @IBOutlet weak var labelInsightArguments: UILabel!
     
-    
-    
     @IBOutlet weak var containerInsights: UIView!
     @IBOutlet weak var constraintHeightInsightsMarkdown: NSLayoutConstraint!
     @IBOutlet weak var constraintHeightDetailsMarkdown: NSLayoutConstraint!
@@ -147,7 +145,7 @@ class InsightPageDetailsViewController: BaseViewController {
     }
     
     func getMarkClosingString() -> String {
-        return feedCard.closingMarkdown!
+        return feedCard.closingMarkdown ?? ""
     }
     
     func getMarkInsightsString() -> String {
