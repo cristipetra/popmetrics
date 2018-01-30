@@ -100,9 +100,8 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Vw-Ix-dg1" customClass="ActionTodoButton" customModule="ipopmetrics" customModuleProvider="target">
-                                        <rect key="frame" x="293" y="12" width="122" height="35"/>
+                                        <rect key="frame" x="369" y="12" width="46" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="122" id="e1t-7P-DBD"/>
                                             <constraint firstAttribute="height" constant="35" id="imL-Fx-jFF"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
@@ -150,7 +149,6 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="WiB-fl-y5c" firstAttribute="height" secondItem="Zel-Qq-zWo" secondAttribute="height" id="2Lw-0p-tUP"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Zel-Qq-zWo" secondAttribute="trailing" id="N1c-vC-hBY"/>
                     <constraint firstAttribute="trailing" secondItem="WiB-fl-y5c" secondAttribute="trailing" constant="10" id="Udl-AH-2Ft"/>
                     <constraint firstItem="Zel-Qq-zWo" firstAttribute="top" secondItem="vAo-pd-hv3" secondAttribute="topMargin" id="e0A-f0-Mei"/>
