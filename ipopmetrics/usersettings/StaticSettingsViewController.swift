@@ -156,6 +156,8 @@ class StaticSettingsViewController: BaseTableViewController {
             displaySettingsLogo()
         } else if (indexPath.section == 2 && indexPath.row == 2) {
             sendEmail(emailMessageType: .webAddress)
+        } else if (indexPath.section == 2 && indexPath.row == 3) {
+            openBusinessContactDetails()
         } else if (indexPath.section == 3 && indexPath.row == 0) {
             displayFacebook()
         } else if (indexPath.section == 3 && indexPath.row == 1) {
@@ -171,6 +173,11 @@ class StaticSettingsViewController: BaseTableViewController {
         } else if (indexPath.section == 5 && indexPath.row == 2) {
             displayOverlayUrl()
         }
+    }
+    
+    private func openBusinessContactDetails() {
+        let contactDetailsVC =  UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "BusinessContactDetailsViewController") as! BusinessContactDetailsViewController
+        self.navigationController?.pushViewController(contactDetailsVC, animated: true)
     }
     
     private func displayTwitter() {

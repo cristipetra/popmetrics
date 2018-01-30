@@ -46,6 +46,7 @@
 		085AA0D41F42ECAA0014D4CE /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085AA0D31F42ECAA0014D4CE /* Todo.swift */; };
 		085CB7B21F4ADCA200038C03 /* Notifications.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 085CB7B11F4ADCA200038C03 /* Notifications.storyboard */; };
 		085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085CB7B51F4ADD9C00038C03 /* NotificationsViewController.swift */; };
+		085ECE8A2020CA16003A2B0A /* BusinessContactDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085ECE892020CA16003A2B0A /* BusinessContactDetailsViewController.swift */; };
 		085F90F21F712660008A339A /* AnimationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F90F11F712660008A339A /* AnimationsViewController.swift */; };
 		085F90FA1F7169FE008A339A /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085F90F91F7169FE008A339A /* OnboardingView.xib */; };
 		085F91011F716AD2008A339A /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F91001F716AD2008A339A /* OnboardingViewController.swift */; };
@@ -282,6 +283,7 @@
 		085AA0D31F42ECAA0014D4CE /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		085CB7B11F4ADCA200038C03 /* Notifications.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notifications.storyboard; sourceTree = "<group>"; };
 		085CB7B51F4ADD9C00038C03 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		085ECE892020CA16003A2B0A /* BusinessContactDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessContactDetailsViewController.swift; sourceTree = "<group>"; };
 		085F90F11F712660008A339A /* AnimationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationsViewController.swift; sourceTree = "<group>"; };
 		085F90F91F7169FE008A339A /* OnboardingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
 		085F91001F716AD2008A339A /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -500,6 +502,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		085ECE842020C796003A2B0A /* contactDetails */ = {
+			isa = PBXGroup;
+			children = (
+				085ECE892020CA16003A2B0A /* BusinessContactDetailsViewController.swift */,
+			);
+			path = contactDetails;
+			sourceTree = "<group>";
+		};
 		0863C4621FEA91AD00999A81 /* animations */ = {
 			isa = PBXGroup;
 			children = (
@@ -856,6 +866,7 @@
 		11DD96631FC4F32800386F1E /* usersettings */ = {
 			isa = PBXGroup;
 			children = (
+				085ECE842020C796003A2B0A /* contactDetails */,
 				113976A81E97C71300B535DF /* AccountViewController.swift */,
 				089F93AA1FB5FE1E00155674 /* Settings.storyboard */,
 				08B968AB1FBB17FE00482CDE /* BrandTableViewCell.swift */,
@@ -1518,6 +1529,7 @@
 				08B485E61F210A61005918A1 /* RoundButton.swift in Sources */,
 				08CBB0061FD96AEA0042EE9C /* ActionButton.swift in Sources */,
 				08A62CB21F8E4DCF0072E6A5 /* TwoColorButton.swift in Sources */,
+				085ECE8A2020CA16003A2B0A /* BusinessContactDetailsViewController.swift in Sources */,
 				08B5D4BE1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift in Sources */,
 				1120F2001ECDF4F200576E39 /* RequiredActionHandler.swift in Sources */,
 				0888C5BE1F4EECEC00E3DB04 /* RoundedCornersButton.swift in Sources */,

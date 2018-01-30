@@ -257,10 +257,12 @@ class TodoHubController: BaseViewController {
             }
             
         } else {
-            
-            let socialItems = items as! [TodoSocialPost]
-            count = socialItems.filter{ $0.isApproved != true }.count
-            
+            if items.count > 0 {
+                if items[0] is TodoSocialPost{
+                    let socialItems = items as! [TodoSocialPost]
+                    count = socialItems.filter{ $0.isApproved != true }.count
+                }
+            }
         }
         
         toDoTopView.changeValueSection(value: count, section: 0)
