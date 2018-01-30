@@ -158,6 +158,12 @@ class InsightPageDetailsViewController: BaseViewController {
         mark.addMarkInExtendedView(containerMark: containerDetailsMarkdown, containerHeightConstraint: constraintHeightDetailsMarkdown, markdownString: getMarkDownString())
         
         constraintHeightDetailsMarkdown.constant = constraintHeightDetailsMarkdown.constant + containerClosingMarkdown.frame.origin.y
+        
+        if getMarkDownString().isEmpty || getMarkDownString().count <= 1 {
+            constraintHeightDetailsMarkdown.constant = 0
+        } else {
+            constraintHeightDetailsMarkdown.constant  = constraintHeightDetailsMarkdown.constant + 80
+        }
     }
     
     internal func displayMarkInsights() {
@@ -180,6 +186,13 @@ class InsightPageDetailsViewController: BaseViewController {
         mark.addMarkInExtendedView(containerMark: containerClosingMarkdown, containerHeightConstraint: constraintHeightClosingMarkdown, markdownString: getMarkClosingString())
         
         constraintHeightClosingMarkdown.constant = constraintHeightClosingMarkdown.constant + containerClosingMarkdown.frame.origin.y
+        
+        if getMarkClosingString().isEmpty || getMarkClosingString().count <= 1 {
+            constraintHeightClosingMarkdown.constant = 0
+        } else {
+            constraintHeightClosingMarkdown.constant  = constraintHeightClosingMarkdown.constant + 80
+        }
+        
     }
     
     @IBAction func handlerViewArticleBtn(_ sender: Any) {
