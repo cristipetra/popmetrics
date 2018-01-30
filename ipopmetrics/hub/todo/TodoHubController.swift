@@ -432,6 +432,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         }
         detailsVC.configure(todoSocialPost: item)
         detailsVC.actionSocialDelegate = self
+        detailsVC.setIndexPath(indexPath)
         detailsVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailsVC, animated: true)
         
@@ -696,11 +697,20 @@ extension TodoHubController: ActionSocialPostProtocol {
             self.showBannerForNotification(pnotification)
             self.bannerMessageView.displayApproved()
             self.updateCountsTopView()
-
-            })
-
+            self.reloadSocialPostCell(indexPath)
+        })
+    }
+    
+    func reloadSocialPostCell(_ indexPath: IndexPath) {
+        if indexPath.count < 2 { return }
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        if cell is SocialPostInCardCell {
+            let socialCell: SocialPostInCardCell = cell as! SocialPostInCardCell
+            socialCell.setupStatusCardView()
+        }
+        
+        
     }
     
 }
-
-
