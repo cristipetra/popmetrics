@@ -245,8 +245,10 @@ class TodoHubController: BaseViewController {
             if items[0] is TodoCard {
                 item = items[0] as! TodoCard
             } else {
+                toDoTopView.changeValueSection(value: 1, section: 0)
                 return
             }
+                
             if item.type != "empty_state" {
                 let socialItems = items as! [TodoSocialPost]
                 count = socialItems.filter{ $0.isApproved != true }.count
@@ -455,7 +457,12 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     func removeSocialPost(_ todoSocialPost: TodoSocialPost, indexPath : IndexPath) {
         //remove social post card from store
         store.removeTodoSocialPost(todoSocialPost)
-        tableView.deleteRows(at: [indexPath], with: .middle)
+
+        self.tableView.reloadSections([indexPath.section], with: .none)
+        Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { (timer) in
+            self.tableView.reloadData()
+            self.updateCountsTopView()
+        })
         
     }
     
@@ -679,7 +686,6 @@ extension TodoHubController: ActionSocialPostProtocol {
             self.showBannerForNotification(pnotification)
             self.removeSocialPost(post, indexPath: indexPath)
         })
-        
         
     }
     

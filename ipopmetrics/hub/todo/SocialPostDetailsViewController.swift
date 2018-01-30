@@ -212,6 +212,15 @@ class SocialPostDetailsViewController: BaseViewController {
             presentErrorNetwork()
             return
         }
+        self.showProgressIndicator()
+        if actionSocialDelegate != nil {
+            self.actionSocialDelegate.denyPostFromSocial!(post: self.todoSocialPost, indexPath: indexPath)
+            Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { (_) in
+                self.navigationController?.popViewController(animated: true)
+                self.hideProgressIndicator()
+            })
+            
+        }
     }
     
     @objc func approvePost(sender: AnyObject) {
@@ -275,7 +284,7 @@ extension SocialPostDetailsViewController: UIScrollViewDelegate {
 }
 
 @objc protocol ActionSocialPostProtocol: class {
-    @objc optional func denyPostFromSocial(post: TodoCard, indexPath: IndexPath)
+    @objc optional func denyPostFromSocial(post: TodoSocialPost, indexPath: IndexPath)
     @objc optional func cancelPostFromSocial(post: CalendarSocialPost, indexPath: IndexPath)
     @objc optional func approvePostFromSocial(post: TodoSocialPost, indexPath: IndexPath)
 }
