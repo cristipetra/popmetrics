@@ -96,12 +96,7 @@ class CodeViewController: UIViewController {
                 
                 SyncService.getInstance().syncAll(silent: false)
                 
-                let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
-                if notificationType == [] {
-                    self.showPushNotificationsScreen()
-                } else {
-                    self.showVideoScreen()
-                }
+                self.showSocialScreen()
                 
             }
             else {
@@ -161,7 +156,7 @@ class CodeViewController: UIViewController {
         })
     }
     
-    internal func showVideoScreen() {
+    internal func showSocialScreen() {
         let navigation = UINavigationController()
         
         let verifySocialVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "loginSocial") as! LoginSocialViewController

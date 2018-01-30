@@ -75,8 +75,6 @@ class ActionPageDetailsViewController: BaseViewController {
         iceView.bottomAnchor.constraint(equalTo: self.containerIceView.bottomAnchor, constant: 0).isActive = true
         iceView.leftAnchor.constraint(equalTo: self.containerIceView.leftAnchor, constant: 0).isActive = true
         
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -100,7 +98,7 @@ class ActionPageDetailsViewController: BaseViewController {
         
         persistentFooter.leftBtn.isHidden = true
         
-        if todoCard.name == "social.automated_posts" {
+        if actionModel.name == "social.automated_posts" {
             persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToPaidActions(_:)), for: .touchUpInside)
         } else {
             persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToMyActions(_:)), for: .touchUpInside)
@@ -126,6 +124,10 @@ class ActionPageDetailsViewController: BaseViewController {
     }
     
     private func displayActionButton() {
+        if todoCard == nil {
+            persistentFooter.rightBtn.isHidden = true
+            return
+        }
         if todoCard.section == "None" {
             persistentFooter.rightBtn.changeTitle("Fix")
         } else {
@@ -345,6 +347,7 @@ extension ActionPageDetailsViewController: BannerProtocol {
 }
 
 class ActionPageModel: NSObject {
+    internal var name: String = ""
     internal var titleArticle: String? = ""
     internal var imageUri: String?
     internal var impactPercentage: Int = 0
@@ -358,6 +361,7 @@ class ActionPageModel: NSObject {
     
     
     init(todoCard: TodoCard) {
+        name                 = todoCard.name
         titleArticle         = todoCard.headerTitle
         imageUri             = todoCard.imageUri
         detailsMarkdown      = todoCard.detailsMarkdown
@@ -370,6 +374,7 @@ class ActionPageModel: NSObject {
     }
     
     init(feedCard: FeedCard) {
+        name                = feedCard.name
         titleArticle        = feedCard.headerTitle
         imageUri            = feedCard.imageUri
         detailsMarkdown     = feedCard.detailsMarkdown
