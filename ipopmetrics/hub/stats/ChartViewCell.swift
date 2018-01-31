@@ -149,13 +149,6 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
         
         grayPlot.adaptAnimationType = ScrollableGraphViewAnimationType.elastic
         grayPlot.animationDuration = animationDuration
-        //        grayPlot.lineWidth = 1
-        //        grayPlot.lineColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 0.5)
-        //        grayPlot.lineStyle = ScrollableGraphViewLineStyle.smooth
-        //
-        //        grayPlot.shouldFill = true
-        //        grayPlot.fillType = ScrollableGraphViewFillType.solid
-        //        grayPlot.fillColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 0.5)
         
         grayPlot.adaptAnimationType = ScrollableGraphViewAnimationType.elastic
         
@@ -173,13 +166,7 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
         pinkPlot.adaptAnimationType = ScrollableGraphViewAnimationType.elastic
         pinkPlot.animationDuration = animationDuration
         
-        //        pinkPlot.lineWidth = 1
-        //        pinkPlot.lineColor = UIColor(red: 252/255, green: 41/255, blue: 139/255, alpha: 0.5)
-        //        pinkPlot.lineStyle = ScrollableGraphViewLineStyle.smooth
-        //
-        //        pinkPlot.shouldFill = true
-        //        pinkPlot.fillType = ScrollableGraphViewFillType.solid
-        //        pinkPlot.fillColor = UIColor(red: 252/255, green: 41/255, blue: 139/255, alpha: 0.7)
+
         
         let referenceLine = ReferenceLines()
         
@@ -214,7 +201,7 @@ class ChartViewCell: UITableViewCell, ScrollableGraphViewDataSource {
         case "Gray":
             return plotOneData[pointIndex]
         case "Pink":
-            return plotTwoData[pointIndex]
+            return plotOneData[pointIndex]
         case "Dot":
             return plotTwoData[pointIndex]
         default:

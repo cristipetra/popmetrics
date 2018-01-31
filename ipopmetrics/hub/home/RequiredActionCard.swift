@@ -87,6 +87,8 @@ class RequiredActionCard: UITableViewCell {
             self.footerView.actionButton.addTarget(self, action:#selector(handleCallToAction(_:)), for: .touchDown)
         }
         
+        //self.footerView.leftButton.addTarget(self, action: #selector(handleMoreInfo(_:)), for: .touchUpInside)
+        
         configureFooterView()
         
         if(item.actionHandler == "email") {
@@ -199,8 +201,9 @@ class RequiredActionCard: UITableViewCell {
         homeHubViewController.callRequiredAction(self.item!)
     }
     
-    
-    @objc func handleInfoButtonPressed1() {
+    @objc func handleMoreInfo(_ sender: SimpleButton) {
+        let homeHubViewController = self.parentViewController as! HomeHubViewController
+        homeHubViewController.openActionPage(item!)
     }
     
     func setUpShadowLayer() {
