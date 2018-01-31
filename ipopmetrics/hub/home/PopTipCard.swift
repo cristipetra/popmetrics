@@ -26,6 +26,7 @@ class PopTipCard: UITableViewCell {
     private var feedCard: FeedCard!
     weak var delegate: PopTipCellDelegate?
     
+    @IBOutlet weak var constraintHeightTitle: NSLayoutConstraint!
     @IBOutlet weak var constraintHeightFooterView: NSLayoutConstraint!
     lazy var shadowLayer : UIView  = {
         let view = UIView()
@@ -64,10 +65,12 @@ class PopTipCard: UITableViewCell {
         }
         
         if !feedCard.actionLabel.isEmpty {
+            constraintHeightTitle.constant <= 140
             constraintHeightFooterView.constant = 94
             footerVIew.actionButton.changeTitle(feedCard.actionLabel)
         } else {
             constraintHeightFooterView.constant = 0
+            constraintHeightTitle.constant = 440
         }
         
     }
@@ -93,7 +96,6 @@ class PopTipCard: UITableViewCell {
         }
     }
     
-    
     private func setTitleRecommended(title: String) {
         titleLabel.text = title
     }
@@ -106,7 +108,6 @@ class PopTipCard: UITableViewCell {
     private func setMessage(message: String) {
         messageLabel.text = message
     }
-    
     
     func setUpShadowLayer() {
         self.insertSubview(shadowLayer, at: 0)

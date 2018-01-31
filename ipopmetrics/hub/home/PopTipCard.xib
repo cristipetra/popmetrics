@@ -118,6 +118,7 @@
                 <outlet property="backgroundImageView" destination="X67-Lz-yJT" id="w96-Ab-Jjh"/>
                 <outlet property="connectionLine" destination="5S2-Tn-9y8" id="cco-tT-ZTO"/>
                 <outlet property="constraintHeightFooterView" destination="dDi-gr-lxm" id="Wkm-Sf-lrI"/>
+                <outlet property="constraintHeightTitle" destination="pbQ-ty-gRN" id="JdL-dT-VH9"/>
                 <outlet property="containerView" destination="3RH-Bc-RS7" id="nef-iV-KdX"/>
                 <outlet property="footerVIew" destination="lax-7X-X4d" id="bsB-h9-i2E"/>
                 <outlet property="messageLabel" destination="aXo-qI-DSz" id="xIV-N8-ebV"/>
