@@ -47,7 +47,6 @@ class StatsStore {
         return realm.objects(StatsCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
     }
     
-    
     public func getSections() -> [String] {
         let distinctTypes = Array(Set(self.getStatsCards().value(forKey: "section") as! [String]))
         return distinctTypes

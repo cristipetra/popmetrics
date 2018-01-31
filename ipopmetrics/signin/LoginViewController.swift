@@ -31,8 +31,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //phoneView.numberTextField.text = self.phoneNumber
+      
         phoneView.numberTextField.delegate = self
+        phoneView.numberTextField.text = self.phoneNumber
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
         
