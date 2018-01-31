@@ -165,18 +165,29 @@ class BreakdownViewCell: UITableViewCell {
         var percentageCurrentValue = 0 as Float
         var percentageDelta = 0 as Float
         
+        if metricBreakdown.currentValueFormatted != "" {
+            self.firstValueLabel.text = metricBreakdown.currentValueFormatted
+        }
+        
         deltaPercentage = metricBreakdownViewModel.getPercentage()
         
-        percentageCurrentValue = deltaPercentage
-        percentageDelta = deltaPercentage
         
+        percentageDelta = deltaPercentage
         
         self.secondValueLabel.text =  metricBreakdownViewModel.getPercentageText()
         
         self.secondValueLabel.textColor = metricBreakdownViewModel.getPercentage() < 0 ? PopmetricsColor.salmondColor : PopmetricsColor.calendarCompleteGreen
         
-        self.valueProgress.animateTo(progress: CGFloat(percentageCurrentValue))
+        let value = getValueProgress(value: metricBreakdown.currentValue, maxValue: statisticMetric.value)
+        self.valueProgress.animateTo(progress: CGFloat(value))
         
+    }
+    
+    public func getValueProgress(value: Float?, maxValue: Float)  -> Float{
+        if maxValue == 0 { return 0 }
+        guard let _ = value else { return 0}
+        return (value! * 100 / maxValue) / 100
+
     }
     
     func getNumberByDeltaPercentage(currentValue: Float, delta: Float) -> Float {
@@ -210,7 +221,7 @@ struct  MetricBreakdownViewModel {
             return 0
         }
         
-        return ((self.metricBreakdown.deltaValue!) ) / (self.metricBreakdown.currentValue!)
+        return (self.metricBreakdown.deltaValue! * 100 ) / (self.metricBreakdown.currentValue!)
     }
     
     internal func getPercentageText() -> String {
