@@ -420,13 +420,16 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
 
         if (indexPath.section != 0) { return }
  
-        
         let cards = store.getNonEmptyTodoCardsWithSection("Social Posts")
         if cards.count == 0 { return }
         let rowIdx = indexPath.row
         
         let card = cards[0]
-        let item = store.getTodoSocialPostsForCard(card)[rowIdx]
+    
+        let socialPosts = store.getTodoSocialPostsForCard(card)
+        if socialPosts.count == 0 { return }
+        let item = socialPosts[rowIdx]
+        
         var detailsVC: SocialPostDetailsViewController!
         
         if item.type == "facebook" {
