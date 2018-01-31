@@ -233,6 +233,10 @@ class TodoHubController: BaseViewController {
     }
     
     func updateCountsTopView() {
+        updateCountSocialPost()
+    }
+    
+    private func updateCountSocialPost() {
         var count = 0
         let items = getVisibleItemsInSection(0)
         count = items.count
@@ -241,18 +245,30 @@ class TodoHubController: BaseViewController {
             if items[0] is TodoCard {
                 item = items[0] as! TodoCard
             } else {
+                toDoTopView.changeValueSection(value: 1, section: 0)
                 return
             }
+                
             if item.type != "empty_state" {
-                count = items.count
+                let socialItems = items as! [TodoSocialPost]
+                count = socialItems.filter{ $0.isApproved != true }.count
             } else {
                 count = 0
             }
             
+        } else {
+            if items.count > 0 {
+                if items[0] is TodoSocialPost{
+                    let socialItems = items as! [TodoSocialPost]
+                    count = socialItems.filter{ $0.isApproved != true }.count
+                }
+            }
         }
         
         toDoTopView.changeValueSection(value: count, section: 0)
     }
+    
+    
     
     func getVisibleItemsInSection(_ section: Int) -> [Any] {
         
@@ -404,13 +420,16 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
 
         if (indexPath.section != 0) { return }
  
-        
         let cards = store.getNonEmptyTodoCardsWithSection("Social Posts")
         if cards.count == 0 { return }
         let rowIdx = indexPath.row
         
         let card = cards[0]
-        let item = store.getTodoSocialPostsForCard(card)[rowIdx]
+    
+        let socialPosts = store.getTodoSocialPostsForCard(card)
+        if socialPosts.count == 0 { return }
+        let item = socialPosts[rowIdx]
+        
         var detailsVC: SocialPostDetailsViewController!
         
         if item.type == "facebook" {
@@ -420,6 +439,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         }
         detailsVC.configure(todoSocialPost: item)
         detailsVC.actionSocialDelegate = self
+        detailsVC.setIndexPath(indexPath)
         detailsVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailsVC, animated: true)
         
@@ -442,7 +462,12 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     func removeSocialPost(_ todoSocialPost: TodoSocialPost, indexPath : IndexPath) {
         //remove social post card from store
         store.removeTodoSocialPost(todoSocialPost)
-        tableView.deleteRows(at: [indexPath], with: .middle)
+
+        self.tableView.reloadSections([indexPath.section], with: .none)
+        Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { (timer) in
+            self.tableView.reloadData()
+            self.updateCountsTopView()
+        })
         
     }
     
@@ -579,7 +604,6 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
 extension TodoHubController:  TodoCardActionProtocol {
     
     func handleCardAction(_ action:String, todoCard: TodoCard, params:[String:Any]) {
-        
         switch (todoCard.type) {
         case "articles_posting":
             if action == "approve_one" || action == "deny_one" {
@@ -625,7 +649,7 @@ extension TodoHubController:  TodoCardActionProtocol {
         default:
             print("Unknown type")
         }//switch
-        
+     
     }
     
 }
@@ -636,6 +660,7 @@ extension TodoHubController {
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
         //print(store.getTodoCards())
         self.tableView.reloadData()
+        updateCountsTopView()
     }
 }
 
@@ -667,7 +692,6 @@ extension TodoHubController: ActionSocialPostProtocol {
             self.removeSocialPost(post, indexPath: indexPath)
         })
         
-        
     }
     
     func approvePostFromSocial(post: TodoSocialPost, indexPath: IndexPath) {
@@ -683,11 +707,21 @@ extension TodoHubController: ActionSocialPostProtocol {
             
             self.showBannerForNotification(pnotification)
             self.bannerMessageView.displayApproved()
-
-            })
-
+            self.updateCountsTopView()
+            self.reloadSocialPostCell(indexPath)
+        })
+    }
+    
+    func reloadSocialPostCell(_ indexPath: IndexPath) {
+        if indexPath.count < 2 { return }
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        if cell is SocialPostInCardCell {
+            let socialCell: SocialPostInCardCell = cell as! SocialPostInCardCell
+            socialCell.setupStatusCardView()
+        }
+        
+        
     }
     
 }
-
-

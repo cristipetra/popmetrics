@@ -108,13 +108,13 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
         self.calendarView.configuration.selectedDayType = .filled
         
         // Set day text color
-        self.calendarView.configuration.dayTextColor = PopmetricsColor.textGrey
+        self.calendarView.configuration.dayTextColor = PopmetricsColor.borderButton
         
         // Set day background color
         self.calendarView.configuration.dayBackgroundColor = UIColor.white
         
         // Set selected day text color
-        self.calendarView.configuration.selectedDayTextColor = PopmetricsColor.textGrey
+        self.calendarView.configuration.selectedDayTextColor = PopmetricsColor.borderButton
         
         //self.calendarView.configuration.selectedBorderWidth = 0
         // Set selected day background color
@@ -129,6 +129,8 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
         
         // Set week text color
         self.calendarView.configuration.weekLabelTextColor = PopmetricsColor.weekDaysGrey
+        
+        self.calendarView.configuration.selectedDayTextColor = PopmetricsColor.borderButton
         
         // Set start day. Available type: .Monday, Sunday
         self.calendarView.configuration.startDayType = .sunday
@@ -202,12 +204,6 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
         self.selectedFromDate = date.startOfDay
         self.selectedToDate = date.endOfDay
         resetColors()
-        
-        self.calendarView.configuration.selectedDayTextColor = PopmetricsColor.greenSelectedDate
-            
-//        if date == store.selectedDate {
-//                self.calendarView.configuration.selectedDayTextColor = PopmetricsColor.textGrey
-//            }
         
         self.calendarView.reloadView()
         DispatchQueue.main.async {

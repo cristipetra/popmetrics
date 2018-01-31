@@ -129,8 +129,23 @@ class LoginSocialViewController: BaseViewController {
     }
     
     private func nextPage() {
+        let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
+        if notificationType == [] {
+            self.showPushNotificationsScreen()
+        } else {
+            self.showOnboardingFinalScreen()
+        }
+        
+    }
+    
+    internal func showOnboardingFinalScreen() {
         let finalOnboardingVC = OnboardingFinalView()
         self.present(finalOnboardingVC, animated: true)
+    }
+    
+    internal func showPushNotificationsScreen() {
+        let notificationsVC = AppStoryboard.Notifications.instance.instantiateViewController(withIdentifier: ViewNames.SBID_PUSH_NOTIFICATIONS_VC)
+        self.present(notificationsVC, animated: false, completion: nil)
     }
     
     @objc func dismissView() {

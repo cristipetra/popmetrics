@@ -41,18 +41,9 @@ class SocialPostDetailsViewController: BaseViewController {
         button.titleLabel?.font = UIFont(name: FontBook.bold, size: 15)
         return button
     }()
-    /*
-    lazy var approvePostBtn1: TwoColorButton = {
-        let button = TwoColorButton(type: UIButtonType.system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.changeTitle("Approve")
-        button.titleLabel?.font = UIFont(name: FontBook.bold, size: 15)
-        button.contentHorizontalAlignment = .right
-        return button
-    }()
-    */
-    lazy var approvePostBtn: ActionButton = {
-        let button = ActionButton(type: UIButtonType.system)
+
+    lazy var approvePostBtn: ActionTodoButton = {
+        let button = ActionTodoButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -65,6 +56,7 @@ class SocialPostDetailsViewController: BaseViewController {
     
     weak var actionSocialDelegate: ActionSocialPostProtocol!
     weak var bannerDelegate: BannerProtocol!
+    private var indexPath: IndexPath!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +94,10 @@ class SocialPostDetailsViewController: BaseViewController {
         self.calendarSocialPost = calendarSocialPost
     }
     
+    internal func setIndexPath(_ indexPath: IndexPath) {
+        self.indexPath = indexPath
+    }
+    
     private func updateViewCalendar() {
         hideStatusBtns()
     }
@@ -118,9 +114,9 @@ class SocialPostDetailsViewController: BaseViewController {
         print("approved \(isApproved)")
         if !isApproved {
             denyPostBtn.isHidden = false
-            approvePostBtn.changeTitle("Approve")
+            approvePostBtn.displayUnapproved()
         } else {
-            approvePostBtn.changeTitle("Approved")
+            approvePostBtn.displayApproved()
             denyPostBtn.isHidden = true
             approvePostBtn.removeTarget(self, action: #selector(approvePost), for: .touchUpInside)
         }
@@ -216,6 +212,15 @@ class SocialPostDetailsViewController: BaseViewController {
             presentErrorNetwork()
             return
         }
+        self.showProgressIndicator()
+        if actionSocialDelegate != nil {
+            self.actionSocialDelegate.denyPostFromSocial!(post: self.todoSocialPost, indexPath: indexPath)
+            Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { (_) in
+                self.navigationController?.popViewController(animated: true)
+                self.hideProgressIndicator()
+            })
+            
+        }
     }
     
     @objc func approvePost(sender: AnyObject) {
@@ -225,10 +230,11 @@ class SocialPostDetailsViewController: BaseViewController {
             return
         }
         
-        let indexPath = IndexPath() // it's used to remove cell from table but for now we don't need it
+        approvePostBtn.animateButton()
+        
         if actionSocialDelegate !=  nil {
-            self.navigationController?.popViewController(animated: true)
             self.actionSocialDelegate.approvePostFromSocial!(post: self.todoSocialPost, indexPath: indexPath)
+            self.navigationController?.popViewController(animated: true)
         }
         
         try! todoSocialPost.realm?.write {
@@ -278,7 +284,7 @@ extension SocialPostDetailsViewController: UIScrollViewDelegate {
 }
 
 @objc protocol ActionSocialPostProtocol: class {
-    @objc optional func denyPostFromSocial(post: TodoCard, indexPath: IndexPath)
+    @objc optional func denyPostFromSocial(post: TodoSocialPost, indexPath: IndexPath)
     @objc optional func cancelPostFromSocial(post: CalendarSocialPost, indexPath: IndexPath)
     @objc optional func approvePostFromSocial(post: TodoSocialPost, indexPath: IndexPath)
 }

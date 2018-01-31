@@ -52,8 +52,6 @@ class SocialPostInCardCell: UITableViewCell {
 
         addShadowToView(shadowView, radius: 4, opacity: 0.5)
         
-        aproveButton.changeTitle("Approve")
-        
         setupCorners()
     }
     
@@ -113,6 +111,8 @@ class SocialPostInCardCell: UITableViewCell {
         actionSocialDelegate.approvePostFromSocial!(post: todoItem, indexPath: indexPath)
         //todoItem.isApproved = true
         
+        aproveButton.animateButton()
+        
         //I am assuming it's succesfull
         try! todoItem.realm?.write {
             todoItem.isApproved = true
@@ -162,9 +162,9 @@ class SocialPostInCardCell: UITableViewCell {
         print("approved \(isApproved)")
         if !isApproved {
             denyPostBtn.isHidden = false
-            aproveButton.changeTitle("Approve")
+            aproveButton.displayUnapproved()
         } else {
-            aproveButton.changeTitle("Approved")
+            aproveButton.displayApproved()
             denyPostBtn.isHidden = true
             aproveButton.removeTarget(self, action: #selector(animationHandler), for: .touchUpInside)
         }

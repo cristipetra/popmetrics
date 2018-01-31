@@ -173,6 +173,8 @@ class BreakdownViewCell: UITableViewCell {
         
         self.secondValueLabel.text =  metricBreakdownViewModel.getPercentageText()
         
+        self.secondValueLabel.textColor = metricBreakdownViewModel.getPercentage() < 0 ? PopmetricsColor.salmondColor : PopmetricsColor.calendarCompleteGreen
+        
         self.valueProgress.animateTo(progress: CGFloat(percentageCurrentValue))
         
     }
@@ -207,7 +209,7 @@ struct  MetricBreakdownViewModel {
         if currentValue == 0 {
             return 0
         }
-
+        
         return ((self.metricBreakdown.deltaValue!) ) / (self.metricBreakdown.currentValue!)
     }
     
