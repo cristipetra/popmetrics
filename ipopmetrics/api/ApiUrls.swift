@@ -13,10 +13,14 @@ import Foundation
 //private let PROTOCOL = "https"
 //private let HOST = "api.popmetrics.io"
 //private let PORT = 443
+//public let CHAT_URL = "https://chat.popmetrics.ai/#/aimee/start-with-callback/58fe437ac7631a139803757e/59b2a6288a5da50da5790fd7"
+
+
 
 private let PROTOCOL = "https"
 private let HOST = "testapi.popmetrics.ai"
 private let PORT = 443
+public let CHAT_URL = "https://testchat.popmetrics.ai/#/aimee/start-with-callback/58fe437ac7631a139803757e/59b2a6288a5da50da5790fd7"
 
 
 // private let PROTOCOL = "http"
