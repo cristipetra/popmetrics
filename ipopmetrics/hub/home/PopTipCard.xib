@@ -85,7 +85,7 @@
                             <constraint firstItem="lax-7X-X4d" firstAttribute="leading" secondItem="3RH-Bc-RS7" secondAttribute="leading" id="E6H-oj-Tnl"/>
                             <constraint firstItem="aXo-qI-DSz" firstAttribute="top" secondItem="LaH-4L-8EL" secondAttribute="bottom" constant="5" id="G3Q-c9-tvb"/>
                             <constraint firstAttribute="trailing" secondItem="lax-7X-X4d" secondAttribute="trailing" id="J90-vS-CX9"/>
-                            <constraint firstAttribute="height" constant="499.5" id="LF6-TK-nbx"/>
+                            <constraint firstAttribute="height" constant="500" id="LF6-TK-nbx"/>
                             <constraint firstAttribute="trailing" secondItem="LaH-4L-8EL" secondAttribute="trailing" constant="15" id="SdK-Ga-IUN"/>
                             <constraint firstItem="LaH-4L-8EL" firstAttribute="top" secondItem="X67-Lz-yJT" secondAttribute="bottom" constant="30" id="cB7-mN-JYE"/>
                             <constraint firstItem="aXo-qI-DSz" firstAttribute="leading" secondItem="3RH-Bc-RS7" secondAttribute="leading" constant="15" id="e5s-sb-IlC"/>
@@ -117,6 +117,7 @@
             <connections>
                 <outlet property="backgroundImageView" destination="X67-Lz-yJT" id="w96-Ab-Jjh"/>
                 <outlet property="connectionLine" destination="5S2-Tn-9y8" id="cco-tT-ZTO"/>
+                <outlet property="constraintHeightFooterView" destination="dDi-gr-lxm" id="Wkm-Sf-lrI"/>
                 <outlet property="containerView" destination="3RH-Bc-RS7" id="nef-iV-KdX"/>
                 <outlet property="footerVIew" destination="lax-7X-X4d" id="bsB-h9-i2E"/>
                 <outlet property="messageLabel" destination="aXo-qI-DSz" id="xIV-N8-ebV"/>

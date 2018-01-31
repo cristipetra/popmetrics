@@ -26,6 +26,7 @@ class PopTipCard: UITableViewCell {
     private var feedCard: FeedCard!
     weak var delegate: PopTipCellDelegate?
     
+    @IBOutlet weak var constraintHeightFooterView: NSLayoutConstraint!
     lazy var shadowLayer : UIView  = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -43,19 +44,18 @@ class PopTipCard: UITableViewCell {
         footerVIew.actionButton.addTarget(self, action: #selector(handlerActionButton), for: .touchUpInside)
         
         footerVIew.leftButton.isHidden = true
-//        footerVIew.leftButton.addTarget(self, action: #selector(handlerMoreInfo), for: .touchUpInside)
-        
     }
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
         self.feedCard = feedCard
         
-        //titleLabel.text = feedCard.headerTitle!
-        titleLabel.setTextWhileKeepingAttributes(string: feedCard.headerTitle!)
+        if let _ = feedCard.headerTitle {
+            titleLabel.setTextWhileKeepingAttributes(string: feedCard.headerTitle!)
+        }
         
-        //titleLabel.attributedText = feedCard.headerTitle!
-        messageLabel.text = feedCard.message!
-        footerVIew.actionButton.changeTitle(feedCard.actionLabel)
+        if let _ = feedCard.message {
+            messageLabel.text = feedCard.message!
+        }
         
         if let imageUrl = feedCard.imageUri {
             if let url = URL(string: imageUrl) {
@@ -63,7 +63,13 @@ class PopTipCard: UITableViewCell {
             }
         }
         
-        //footerVIew.displayOnlyActionButton()
+        if !feedCard.actionLabel.isEmpty {
+            constraintHeightFooterView.constant = 94
+            footerVIew.actionButton.changeTitle(feedCard.actionLabel)
+        } else {
+            constraintHeightFooterView.constant = 0
+        }
+        
     }
     
     @objc func handlerActionButton() {
