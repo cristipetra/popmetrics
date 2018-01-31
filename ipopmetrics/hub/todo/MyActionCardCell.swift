@@ -52,7 +52,7 @@ class MyActionCardCell: UITableViewCell {
             cardTitle.text = title
         }
         
-        let valueProgress = Double(todoCard.impactPercentage) / Double(100)
+        let valueProgress = Double(todoCard.iceImpactPercentage) / Double(100)
         impactView.setProgress(CGFloat(valueProgress))
         
     }
