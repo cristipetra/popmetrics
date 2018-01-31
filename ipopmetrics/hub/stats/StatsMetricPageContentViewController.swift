@@ -29,7 +29,7 @@ class StatsMetricPageContentViewController: UIViewController, UITableViewDelegat
         setUpNavigationBar()
         titleLabel.text = ""
         
-        setUpPageControlViews()
+        
         
         tableView.register(BreakdownViewCell.self, forCellReuseIdentifier: "BreakdownCell")
         
@@ -52,7 +52,11 @@ class StatsMetricPageContentViewController: UIViewController, UITableViewDelegat
     
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setUpPageControlViews()
+    }
     
+
     func setUpPageControlViews() {
         topPageControl.tintColor = UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1)
         topPageControl.currentPageIndicatorTintColor = UIColor(red: 87/255, green: 93/255, blue: 99/255, alpha: 1)

@@ -16,6 +16,8 @@ class StatsReportPageViewController: UIPageViewController {
     var pageSegueIdentifier = "Page"
     var nextViewController: UIViewController?
     
+    var pagesVC: [StatsMetricPageContentViewController] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = PopmetricsColor.borderButton
@@ -24,8 +26,14 @@ class StatsReportPageViewController: UIPageViewController {
         let metrics = StatsStore.getInstance().getStatsMetricsForCard(statisticsCard)
         self.numberOfPages = metrics.count
         
-        let firstPage = createViewController(sender: self)
-        setViewControllers([firstPage], direction: .forward, animated: true, completion: nil)
+        for metric in metrics {
+            let pg = createViewController(sender: self)
+            pagesVC.append(pg)
+            currentPageIndex += 1
+        }
+        if pagesVC.count > 0 {
+            setViewControllers([pagesVC[0]], direction: .forward, animated: true, completion: nil)
+        }
         
         setupNavigationWithBackButton()
     }
@@ -43,7 +51,6 @@ class StatsReportPageViewController: UIPageViewController {
             vc.statsMetric = metrics[currentPageIndex]
             vc.pageIndex = currentPageIndex
         }
-        
     }
 
     func setupNavigationWithBackButton() {
@@ -78,25 +85,23 @@ class StatsReportPageViewController: UIPageViewController {
 extension StatsReportPageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        let pg = viewController as! StatsMetricPageContentViewController
         
-        if currentPageIndex < numberOfPages - 1 {
-            currentPageIndex += 1
+        if pg.pageIndex < numberOfPages - 1 {
+            return self.pagesVC[pg.pageIndex + 1]
         } else {
             return nil
         }
         
-        return  createViewController(sender: self)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        
-        if currentPageIndex > 0 {
-            currentPageIndex -= 1
+        let pg = viewController as! StatsMetricPageContentViewController
+        if pg.pageIndex > 0 {
+            return self.pagesVC[pg.pageIndex - 1]
         } else {
             return nil
         }
-       
-        return createViewController(sender: self)
     }
     
 }
