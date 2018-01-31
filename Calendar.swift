@@ -55,6 +55,7 @@ class CalendarCard:  Object, Mappable {
         //actionLabel     <- map["action_label"]
         tooltipTitle    <- map["tooltip_title"]
         tooltipContent  <- map["tooltip_conent"]
+        imageUri        <- map["image_url"]
         
         createDate      <- (map["create_dt"], DateTransform())
         updateDate      <- (map["update_dt"], DateTransform())

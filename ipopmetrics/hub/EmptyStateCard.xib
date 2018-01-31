@@ -50,11 +50,14 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePyramid" translatesAutoresizingMaskIntoConstraints="NO" id="aNv-If-Qw8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePyramid" translatesAutoresizingMaskIntoConstraints="NO" id="aNv-If-Qw8">
                                 <rect key="frame" x="8" y="91.5" width="284" height="179"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="250" constant="179" id="YlU-4J-6qd"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ac9-8F-2bQ" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="355.5" width="300" height="14"/>
