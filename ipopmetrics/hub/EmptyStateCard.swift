@@ -54,7 +54,7 @@ class EmptyStateCard: UITableViewCell {
 
         footerVIew.actionButton.changeTitle(feedCard.actionLabel)
         
-        if var imageUrl = feedCard.imageUri {
+        if let imageUrl = feedCard.imageUri {
             if imageUrl.isValidUrl() {
                 backgroundImageView.af_setImage(withURL: URL(string: imageUrl)!)
             }
@@ -78,7 +78,6 @@ class EmptyStateCard: UITableViewCell {
     }
     
     internal func configure(calendarCard: CalendarCard) {
-        
         titleLabel.text = calendarCard.headerTitle
         messageLabel.text = calendarCard.message!
         
@@ -92,7 +91,6 @@ class EmptyStateCard: UITableViewCell {
     }
     
     internal func configure(statsCard: StatsCard) {
-        
         titleLabel.text = statsCard.headerTitle
         messageLabel.text = statsCard.message!
         
@@ -143,18 +141,6 @@ class EmptyStateCard: UITableViewCell {
         titleLabel.text = title
     }
     
-    private func setUpToolbar(imageName: String, titleName: String) {
-
-//        let toolbarController: CardToolbarController  = CardToolbarController()
-//        toolbarController.setUpTopView(toolbarView: self.toolBarView)
-        
-//        self.toolBarView.isLeftImageHidden = false
-//        self.toolBarView.leftImage.image = UIImage(named: imageName)
-//        self.toolBarView.title.text = titleName
-//        self.toolBarView.leftImage.contentMode = UIViewContentMode.scaleAspectFit
-//        self.toolBarView.title.font = UIFont(name: FontBook.bold, size: 15)
-    }
-    
     func setUpShadowLayer() {
         self.insertSubview(shadowLayer, at: 0)
         shadowLayer.topAnchor.constraint(equalTo: toolBarView.topAnchor).isActive = true
@@ -169,4 +155,3 @@ class EmptyStateCard: UITableViewCell {
     }
     
 }
-

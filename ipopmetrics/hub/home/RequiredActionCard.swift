@@ -87,7 +87,7 @@ class RequiredActionCard: UITableViewCell {
             self.footerView.actionButton.addTarget(self, action:#selector(handleCallToAction(_:)), for: .touchDown)
         }
         
-        //self.footerView.leftButton.addTarget(self, action: #selector(handleMoreInfo(_:)), for: .touchUpInside)
+        self.footerView.leftButton.addTarget(self, action: #selector(handleMoreInfo(_:)), for: .touchUpInside)
         
         configureFooterView()
         
@@ -202,8 +202,27 @@ class RequiredActionCard: UITableViewCell {
     }
     
     @objc func handleMoreInfo(_ sender: SimpleButton) {
-        let homeHubViewController = self.parentViewController as! HomeHubViewController
-        homeHubViewController.openActionPage(item!)
+        guard let card = item else { return }
+        var url: String = ""
+        switch(card.name) {
+        case "ganalytics.connect_with_brand":
+            url = "http://blog.popmetrics.io/popmetrics-need-access-google-analytics/"
+            break
+        case "twitter.connect_with_brand":
+            url = "http://blog.popmetrics.io/popmetrics-need-access-twitter/"
+            break
+        case "facebook.connect_with_brand":
+            url = "http://blog.popmetrics.io/popmetrics-need-access-facebook/"
+            break
+        default:
+            break
+        }
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        if url.isValidUrl() {
+            guard let _ = self.parentViewController else { return }
+            appDelegate.openURLInside(self.parentViewController!, url: url)
+        }
     }
     
     func setUpShadowLayer() {
