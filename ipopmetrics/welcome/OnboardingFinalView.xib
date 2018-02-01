@@ -42,8 +42,8 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="2Id-99-XqE">
                             <rect key="frame" x="25" y="0.0" width="270" height="68"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great Job!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ur-Co-kl7">
-                                    <rect key="frame" x="55.5" y="0.0" width="159.5" height="46"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's go!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ur-Co-kl7">
+                                    <rect key="frame" x="62.5" y="0.0" width="145.5" height="46"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="46" id="hOf-7Z-lYw"/>
                                     </constraints>
@@ -51,8 +51,8 @@
                                     <color key="textColor" name="rock_bottom"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now let’s jump in to the product." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wI7-op-HYC">
-                                    <rect key="frame" x="26" y="48" width="218.5" height="20"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time to get in to the product." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wI7-op-HYC">
+                                    <rect key="frame" x="33.5" y="48" width="203.5" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="PS7-ie-xnY"/>
                                     </constraints>
