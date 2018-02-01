@@ -136,7 +136,7 @@ class SocialPostInCardCell: UITableViewCell {
         
         TodoApi().denyPost(todoItem.postId!, callback: {
             () -> Void in
-            let notificationObj = ["alert":"Post denied",
+            let notificationObj = ["title":"Post denied",
                                    "subtitle":"The article will be ignored in future recommendations.",
                                    "type": "info",
                                    "sound":"default"
@@ -144,7 +144,7 @@ class SocialPostInCardCell: UITableViewCell {
             let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
             
             let todoHubController = self.parentViewController as! TodoHubController
-            todoHubController.showBannerForNotification(pnotification)
+            //todoHubController.showBannerForNotification(pnotification)
             todoHubController.removeSocialPost(self.todoItem, indexPath: self.indexPath)
         })
     }

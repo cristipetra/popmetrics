@@ -68,26 +68,25 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        
         if let _ = error {
-            
-            let notificationObj = ["alert":"Failed to connect with Google Analytics.",
+            let notificationObj = ["title":"Failed to connect with Google Analytics.",
                                    "subtitle":"No credentials have been provided",
-                                   "type": "failure",
+                                   "type": "info",
                                    "sound":"default"
                                    ]
             let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
             
-            NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
-                                            userInfo: pnotification.toJSON())
+//            NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
+//                                            userInfo: pnotification.toJSON())
             return
         }
         
-        let notificationObj = ["alert":"Connecting to Google Analytics.",
-                               "subtitle":"Your credentials will be validated in relation with the tracker used in your site.",
-                               "type": "info",
+        let notificationObj = ["title": "Connecting Google Analytics.",
+                               "subtitle":"This may take a few minutes.",
+                               "type": "success",
                                "sound":"default"
         ]
+
         let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
         NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
                                         userInfo: pnotification.toJSON())
@@ -123,9 +122,9 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         
         Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
             if (session != nil) {
-                let notificationObj = ["alert":"Connecting to Twitter.",
-                                       "subtitle":"Your credentials will be validated while establishing the connection.",
-                                       "type": "info",
+                let notificationObj = ["title": "Twitter successfully connected!",
+                                       "subtitle":"Automated social posting now available.",
+                                       "type": "success",
                                        "sound":"default"
                 ]
                 let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
@@ -153,15 +152,15 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                 }
                 
             } else {
-                let notificationObj = ["alert":"Failed to connect with Twitter.",
+                let notificationObj = ["title":"Failed to connect with Twitter.",
                                        "subtitle":"None or bad credentials have been provided.",
                                        "type": "failure",
                                        "sound":"default"
                 ]
                 let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
                 
-                NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
-                                                userInfo: pnotification.toJSON())
+//                NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
+//                                                userInfo: pnotification.toJSON())
                 return
                 
             }

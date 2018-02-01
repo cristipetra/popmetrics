@@ -688,7 +688,7 @@ extension TodoHubController: ActionSocialPostProtocol {
             ]
             let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
             
-            self.showBannerForNotification(pnotification)
+            //self.showBannerForNotification(pnotification)
             self.removeSocialPost(post, indexPath: indexPath)
         })
         
@@ -698,14 +698,14 @@ extension TodoHubController: ActionSocialPostProtocol {
         
         TodoApi().approvePost(post.postId!, callback: {
             () -> Void in
-            let notificationObj = ["alert":"Post approved",
+            let notificationObj = ["title":"Post approved",
                                    "subtitle":"The article has been scheduled for posting.",
                                    "type": "info",
                                    "sound":"default"
             ]
             let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
             
-            self.showBannerForNotification(pnotification)
+            //self.showBannerForNotification(pnotification)
             self.bannerMessageView.displayApproved()
             self.updateCountsTopView()
             self.reloadSocialPostCell(indexPath)
