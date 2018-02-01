@@ -41,24 +41,24 @@ class CalendarStore {
     
     public func getNonEmptyCalendarCardsWithSection(_ section: String) -> Results<CalendarCard> {
         let predicate = NSPredicate(format: "section = %@ && type != %@ && status !='archived'", section, "empty_state")
-        return realm.objects(CalendarCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
+        return realm.objects(CalendarCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:false)
     }
     
     public func getEmptyCalendarCardsWithSection(_ section: String) -> Results<CalendarCard> {
         let predicate = NSPredicate(format: "section = %@ && type == %@ && status != 'archived'", section, "empty_state")
-        return realm.objects(CalendarCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
+        return realm.objects(CalendarCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:false)
     }
 
     public func getCalendarSocialPosts() -> Results<CalendarSocialPost> {
         
         let predicate = NSPredicate(format: "status !='archived'")
-        return realm.objects(CalendarSocialPost.self).filter(predicate).sorted(byKeyPath: "scheduledDate", ascending: true)
+        return realm.objects(CalendarSocialPost.self).filter(predicate).sorted(byKeyPath: "scheduledDate", ascending: false)
     }
     
     public func getCalendarSocialPostsInRange(fromDate: Date, toDate:Date) -> Results<CalendarSocialPost> {   
         let predicate = NSPredicate(format: "scheduledDate > %@ && scheduledDate < %@ && status !='archived'",
                                     fromDate as CVarArg, toDate as CVarArg)
-        return realm.objects(CalendarSocialPost.self).filter(predicate).sorted(byKeyPath: "scheduledDate", ascending: true)
+        return realm.objects(CalendarSocialPost.self).filter(predicate).sorted(byKeyPath: "scheduledDate", ascending: false)
     }
     
     public func countSections() -> Int {

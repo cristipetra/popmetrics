@@ -19,7 +19,7 @@ class StatsStore {
     
     public func getStatsCards() -> Results<StatsCard> {
         let predicate = NSPredicate(format: "status != 'archived'")
-        return realm.objects(StatsCard.self).filter(predicate).sorted(byKeyPath: "index")
+        return realm.objects(StatsCard.self).filter(predicate).sorted(byKeyPath: "index", ascending: false)
     }
     
     public func getStatsCardWithId(_ cardId: String) -> StatsCard? {
@@ -29,7 +29,7 @@ class StatsStore {
     
     public func getStatsMetricsForCard(_ statsCard: StatsCard) -> Results<StatsMetric> {
         let predicate = NSPredicate(format: "statsCard = %@ && status !='archived'", statsCard)
-        return realm.objects(StatsMetric.self).filter(predicate)
+        return realm.objects(StatsMetric.self).filter(predicate).sorted(byKeyPath: "index", ascending:false)
     }
     
     public func getStatsCardsWithSection(_ section: String) -> Results<StatsCard> {
@@ -39,12 +39,12 @@ class StatsStore {
     
     public func getNonEmptyStatsCardsWithSection(_ section: String) -> Results<StatsCard> {
         let predicate = NSPredicate(format: "section = %@ && type != %@ && status!= 'archived'", section, "empty_state")
-        return realm.objects(StatsCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
+        return realm.objects(StatsCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:false)
     }
     
     public func getEmptyStatsCardsWithSection(_ section: String) -> Results<StatsCard> {
         let predicate = NSPredicate(format: "section = %@ && type == %@ && status != 'archived'", section, "empty_state")
-        return realm.objects(StatsCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:true)
+        return realm.objects(StatsCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:false)
     }
     
     public func getSections() -> [String] {
