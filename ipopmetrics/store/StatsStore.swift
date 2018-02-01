@@ -29,7 +29,7 @@ class StatsStore {
     
     public func getStatsMetricsForCard(_ statsCard: StatsCard) -> Results<StatsMetric> {
         let predicate = NSPredicate(format: "statsCard = %@ && status !='archived'", statsCard)
-        return realm.objects(StatsMetric.self).filter(predicate).sorted(byKeyPath: "index", ascending:false)
+        return realm.objects(StatsMetric.self).filter(predicate)
     }
     
     public func getStatsCardsWithSection(_ section: String) -> Results<StatsCard> {
