@@ -8,7 +8,7 @@
 
 import UIKit
 
-let phoneNumberMask = "+1 (###) ###-####"
+let phoneNumberMask = "+# (###) ###-####"
 
 class PhoneView: UIView {
     
