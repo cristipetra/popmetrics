@@ -23,7 +23,7 @@ class LoginViewController: UIViewController {
     fileprivate var editablePhoneNumberMask = phoneNumberMask
     fileprivate var lastEnteredDigitIndex = 0
     
-    var phoneNumber: String = ""
+    var phoneNumber: String = "+1"
     
     var phoneView: PhoneView = PhoneView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
@@ -33,7 +33,6 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
       
         phoneView.numberTextField.delegate = self
-        phoneView.numberTextField.text = self.phoneNumber
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
@@ -52,7 +51,23 @@ class LoginViewController: UIViewController {
         
         updatePhoneFieldNumber(textField: phoneView.numberTextField, phoneNumberMask: editablePhoneNumberMask)
         phoneView.sendCodeBtn.isEnabled = false
-
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if self.phoneNumber != "" {
+            
+            self.textFieldDidBeginEditing(self.phoneView.numberTextField)
+            for c in self.phoneNumber {
+                var phn = String(c)
+                if phn == "+" {
+                    continue
+                }
+                self.textField(self.phoneView.numberTextField, shouldChangeCharactersIn: NSRange(location:0, length:phn.count), replacementString: phn)
+                self.updateCursorPosition(textField: self.phoneView.numberTextField)
+                
+            }
+            
+        }
     }
     
     @objc func rotated() {
@@ -228,10 +243,6 @@ extension LoginViewController: UITextFieldDelegate {
     internal func textFieldDidBeginEditing(_ textField: UITextField) {
         phoneView.sendCodeBtn.isUserInteractionEnabled = true
         
-        if phoneView.numberTextField.text == "" {
-            phoneView.numberTextField.text = "+1"
-        }
- 
         moveView(value: -140)
         
         updateCursorPosition(textField: textField)

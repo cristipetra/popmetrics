@@ -43,7 +43,10 @@ class WelcomeScreen: BaseViewController {
         appDelegate.welcomeViewController = self
         
         backButton.isHidden = true
+        
     }
+    
+    
     
     override func setupOfflineBanner() {
         if offlineBanner == nil {
@@ -85,9 +88,14 @@ class WelcomeScreen: BaseViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // TEST CODE
+        // UserStore.getInstance().phoneNumber = "+40745028869"
+        
         if segue.destination is LoginViewController {
             let vc = segue.destination as? LoginViewController
-            vc?.phoneNumber = UserStore.getInstance().phoneNumber
+            if UserStore.getInstance().phoneNumber != "" {
+                vc?.phoneNumber = UserStore.getInstance().phoneNumber
+            }
         }
     }
     
