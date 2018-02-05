@@ -13,6 +13,7 @@ struct ViewNames {
     static let SBID_MAIN_TAB_VC = "MainTabBarController"
     static let SBID_VIDEO_SCREEN = "VideoScreenViewController"
     static let SBID_PUSH_NOTIFICATIONS_VC = "NotificationsViewController"
+    static let SBID_PUSH_MANUALLY_NOTIFCATIONS_VC = "NotificationsManuallyEnableViewController"
     static let SBID_MENU_VC = "MENU_VC"
     static let SBID_TRAFFIC_REPORT = "trafficReportViewId"
 }
