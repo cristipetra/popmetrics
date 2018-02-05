@@ -30,10 +30,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoPop" translatesAutoresizingMaskIntoConstraints="NO" id="v6a-8F-kna">
-                                <rect key="frame" x="127.66666666666669" y="49" width="120" height="28"/>
+                                <rect key="frame" x="127.66666666666669" y="49" width="120" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="2kw-jb-Jdn"/>
-                                    <constraint firstAttribute="height" constant="28" id="SOz-OS-uck"/>
+                                    <constraint firstAttribute="height" id="SOz-OS-uck"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconNotification" translatesAutoresizingMaskIntoConstraints="NO" id="JJZ-fZ-jYI">
@@ -148,14 +148,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoPop" translatesAutoresizingMaskIntoConstraints="NO" id="DJu-Sh-yZ4">
-                                <rect key="frame" x="127" y="49" width="120" height="28"/>
+                                <rect key="frame" x="127" y="49" width="120" height="0.0"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="Wn8-TA-v3w"/>
+                                    <constraint firstAttribute="height" id="Wn8-TA-v3w"/>
                                     <constraint firstAttribute="width" constant="120" id="yMd-7L-L8g"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notificationsEnable" translatesAutoresizingMaskIntoConstraints="NO" id="f8a-jG-7hN">
-                                <rect key="frame" x="14" y="106" width="339" height="202"/>
+                                <rect key="frame" x="14" y="78" width="339" height="202"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="202" id="qwb-Kb-V6g"/>
                                 </constraints>
@@ -164,7 +164,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvC-Ie-5hK">
-                                <rect key="frame" x="14" y="359" width="347" height="17.666666666666686"/>
+                                <rect key="frame" x="14" y="331" width="347" height="17.666666666666686"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Manually Enable Push Notifiications  ">
                                         <attributes>
@@ -216,12 +216,11 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="DJu-Sh-yZ4" firstAttribute="centerX" secondItem="rzK-wv-cw4" secondAttribute="centerX" id="17t-pi-WMY"/>
-                            <constraint firstItem="f8a-jG-7hN" firstAttribute="top" secondItem="s1Q-NI-oP7" secondAttribute="top" constant="62" id="4T8-mV-fxc"/>
                             <constraint firstItem="R5g-dh-TcU" firstAttribute="top" secondItem="GBV-1Z-GRd" secondAttribute="bottom" constant="30" id="JRN-OM-BSh"/>
+                            <constraint firstItem="f8a-jG-7hN" firstAttribute="top" secondItem="DJu-Sh-yZ4" secondAttribute="bottom" constant="29" id="TFn-xd-UlE"/>
                             <constraint firstItem="GBV-1Z-GRd" firstAttribute="centerX" secondItem="rzK-wv-cw4" secondAttribute="centerX" id="Vgj-tP-aqp"/>
                             <constraint firstAttribute="trailing" secondItem="f8a-jG-7hN" secondAttribute="trailing" constant="22" id="dmH-1j-5io"/>
                             <constraint firstItem="DJu-Sh-yZ4" firstAttribute="top" secondItem="s1Q-NI-oP7" secondAttribute="top" constant="5" id="ikV-OP-ryW"/>
-                            <constraint firstItem="s1Q-NI-oP7" firstAttribute="top" secondItem="DJu-Sh-yZ4" secondAttribute="bottom" constant="-33" id="kDP-BC-CnQ"/>
                             <constraint firstItem="s1Q-NI-oP7" firstAttribute="bottom" secondItem="R5g-dh-TcU" secondAttribute="bottom" constant="30" id="mgQ-X2-Mag"/>
                             <constraint firstItem="hvC-Ie-5hK" firstAttribute="leading" secondItem="s1Q-NI-oP7" secondAttribute="leading" constant="14" id="plS-4P-JpX"/>
                             <constraint firstItem="hvC-Ie-5hK" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="GBV-1Z-GRd" secondAttribute="top" constant="-20" id="qyN-o7-MYD"/>
