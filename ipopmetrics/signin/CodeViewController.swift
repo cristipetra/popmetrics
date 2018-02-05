@@ -168,6 +168,14 @@ class CodeViewController: UIViewController {
                 EZAlertController.alert("Error", message: message)
                 return
             }
+            self.clearCodeTextField()
+        }
+    }
+    
+    private func clearCodeTextField() {
+        guard let code = self.digitCodeView.digitextField.text else { return }
+        for _ in code {
+            self.textField(self.digitCodeView.digitextField, shouldChangeCharactersIn: NSRange(location:0, length:1), replacementString: "")
         }
     }
     
