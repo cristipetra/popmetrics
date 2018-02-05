@@ -13,7 +13,7 @@ class NotificationsManuallyEnableViewController: UIViewController {
     
     @IBOutlet weak var maybeLaterBtn: UIButton!
     @IBOutlet weak var goToSettingsBtn: UIButton!
-    private var linkArticle: String = ""
+    private var linkArticle: String = "http://blog.popmetrics.io/how-to-turn-on-push-notifications/"
     
     override func viewDidLoad() {
         super.viewDidLoad()
