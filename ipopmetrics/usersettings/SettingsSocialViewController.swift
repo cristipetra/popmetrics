@@ -18,6 +18,7 @@ class SettingsSocialViewController: SettingsBaseViewController {
     @IBOutlet weak var connectionDateLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     
+    private var requiredActionHandler = RequiredActionHandler()
     
     private var socialType: SocialType!
     
@@ -86,6 +87,12 @@ class SettingsSocialViewController: SettingsBaseViewController {
             break
         default:
             break
+        }
+    }
+    
+    @IBAction func handlerDisconectSocial(_ sender: UIButton) {
+        if socialType == SocialType.linkedin {
+            requiredActionHandler.disconnectTwitter()
         }
     }
     

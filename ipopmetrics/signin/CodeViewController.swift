@@ -30,6 +30,7 @@ class CodeViewController: UIViewController {
         
         self.view.addSubview(digitCodeView)
         
+        digitCodeView.didMoveToSuperview()
         digitCodeView.digitextField.delegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)

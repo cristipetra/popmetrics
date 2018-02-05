@@ -130,6 +130,9 @@
                             <state key="normal" title="Disconnect Social Account">
                                 <color key="titleColor" red="0.94117647058823528" green="0.36078431372549019" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="handlerDisconectSocial:" destination="-1" eventType="touchUpInside" id="Tba-kR-qM7"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
