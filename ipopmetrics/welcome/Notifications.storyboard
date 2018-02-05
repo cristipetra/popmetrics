@@ -52,10 +52,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZk-uz-d7o">
-                                <rect key="frame" x="71" y="680" width="233" height="43"/>
+                                <rect key="frame" x="67.666666666666686" y="680" width="240" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="Plw-XD-aTi"/>
-                                    <constraint firstAttribute="width" constant="233" id="U0q-br-xGH"/>
+                                    <constraint firstAttribute="width" constant="240" id="U0q-br-xGH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="Allow Push Notifications">
@@ -157,7 +157,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notificationsEnable" translatesAutoresizingMaskIntoConstraints="NO" id="f8a-jG-7hN">
                                 <rect key="frame" x="14" y="106" width="339" height="202"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="202" id="qwb-Kb-V6g"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="202" id="qwb-Kb-V6g"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
@@ -177,7 +177,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBV-1Z-GRd">
-                                <rect key="frame" x="71" y="638" width="233" height="43"/>
+                                <rect key="frame" x="71" y="658" width="233" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="l2b-IN-7Vm"/>
                                     <constraint firstAttribute="width" constant="233" id="z5C-4o-bhn"/>
@@ -200,7 +200,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5g-dh-TcU">
-                                <rect key="frame" x="155.66666666666666" y="721" width="64" height="17"/>
+                                <rect key="frame" x="155.66666666666666" y="731" width="64" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="R3T-UT-pLK"/>
                                 </constraints>
@@ -217,13 +217,14 @@
                         <constraints>
                             <constraint firstItem="DJu-Sh-yZ4" firstAttribute="centerX" secondItem="rzK-wv-cw4" secondAttribute="centerX" id="17t-pi-WMY"/>
                             <constraint firstItem="f8a-jG-7hN" firstAttribute="top" secondItem="s1Q-NI-oP7" secondAttribute="top" constant="62" id="4T8-mV-fxc"/>
-                            <constraint firstItem="R5g-dh-TcU" firstAttribute="top" secondItem="GBV-1Z-GRd" secondAttribute="bottom" constant="40" id="JRN-OM-BSh"/>
+                            <constraint firstItem="R5g-dh-TcU" firstAttribute="top" secondItem="GBV-1Z-GRd" secondAttribute="bottom" constant="30" id="JRN-OM-BSh"/>
                             <constraint firstItem="GBV-1Z-GRd" firstAttribute="centerX" secondItem="rzK-wv-cw4" secondAttribute="centerX" id="Vgj-tP-aqp"/>
                             <constraint firstAttribute="trailing" secondItem="f8a-jG-7hN" secondAttribute="trailing" constant="22" id="dmH-1j-5io"/>
                             <constraint firstItem="DJu-Sh-yZ4" firstAttribute="top" secondItem="s1Q-NI-oP7" secondAttribute="top" constant="5" id="ikV-OP-ryW"/>
                             <constraint firstItem="s1Q-NI-oP7" firstAttribute="top" secondItem="DJu-Sh-yZ4" secondAttribute="bottom" constant="-33" id="kDP-BC-CnQ"/>
-                            <constraint firstItem="s1Q-NI-oP7" firstAttribute="bottom" secondItem="R5g-dh-TcU" secondAttribute="bottom" constant="40" id="mgQ-X2-Mag"/>
+                            <constraint firstItem="s1Q-NI-oP7" firstAttribute="bottom" secondItem="R5g-dh-TcU" secondAttribute="bottom" constant="30" id="mgQ-X2-Mag"/>
                             <constraint firstItem="hvC-Ie-5hK" firstAttribute="leading" secondItem="s1Q-NI-oP7" secondAttribute="leading" constant="14" id="plS-4P-JpX"/>
+                            <constraint firstItem="hvC-Ie-5hK" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="GBV-1Z-GRd" secondAttribute="top" constant="-20" id="qyN-o7-MYD"/>
                             <constraint firstItem="hvC-Ie-5hK" firstAttribute="trailing" secondItem="s1Q-NI-oP7" secondAttribute="trailing" constant="-14" id="rBy-cf-JtC"/>
                             <constraint firstItem="hvC-Ie-5hK" firstAttribute="top" secondItem="f8a-jG-7hN" secondAttribute="bottom" constant="51" id="rrs-jc-ooe"/>
                             <constraint firstItem="R5g-dh-TcU" firstAttribute="centerX" secondItem="rzK-wv-cw4" secondAttribute="centerX" id="tZC-uL-wf0"/>
@@ -232,6 +233,8 @@
                         <viewLayoutGuide key="safeArea" id="s1Q-NI-oP7"/>
                     </view>
                     <connections>
+                        <outlet property="goToSettingsBtn" destination="GBV-1Z-GRd" id="HKG-K9-3P0"/>
+                        <outlet property="maybeLaterBtn" destination="R5g-dh-TcU" id="wyI-Ne-zS4"/>
                         <outlet property="textManually" destination="hvC-Ie-5hK" id="r5g-U3-Kqu"/>
                     </connections>
                 </viewController>

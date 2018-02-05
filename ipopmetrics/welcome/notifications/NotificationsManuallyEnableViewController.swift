@@ -11,6 +11,8 @@ import UIKit
 class NotificationsManuallyEnableViewController: UIViewController {
     @IBOutlet weak var textManually: UILabel!
     
+    @IBOutlet weak var maybeLaterBtn: UIButton!
+    @IBOutlet weak var goToSettingsBtn: UIButton!
     private var linkArticle: String = ""
     
     override func viewDidLoad() {
@@ -21,6 +23,12 @@ class NotificationsManuallyEnableViewController: UIViewController {
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel(tap:)))
         textManually.addGestureRecognizer(tapGesture)
         textManually.isUserInteractionEnabled = true
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        goToSettingsBtn.setTitleColor(PopmetricsColor.borderButton, for: .normal)
+        maybeLaterBtn.setTitleColor(PopmetricsColor.secondGray, for: .normal)
     }
     
     private func updateView() {
@@ -66,6 +74,12 @@ class NotificationsManuallyEnableViewController: UIViewController {
     }
     
     @IBAction func handlerMaybeLatter(_ sender: UIButton) {
+        openNextView()
+    }
+    
+    func openNextView() {
+        let finalOnboardingVC = OnboardingFinalView()
+        self.present(finalOnboardingVC, animated: true, completion: nil)
     }
     
     

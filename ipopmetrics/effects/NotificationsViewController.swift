@@ -23,6 +23,11 @@ class NotificationsViewController: UIViewController {
         
         isHeroEnabled = true
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        confirmButton.setTitleColor(PopmetricsColor.borderButton, for: .normal)
     }
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
