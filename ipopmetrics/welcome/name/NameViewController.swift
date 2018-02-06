@@ -50,7 +50,13 @@ class NameViewController: UIViewController {
         self.navigationItem.titleView = logoImageView
         let backButton = UIBarButtonItem(image: UIImage(named: "login_back"), style: .plain, target: self, action: #selector(dismissView))
         backButton.tintColor = UIColor(red: 145/255, green: 145/255, blue: 145/255, alpha: 1)
-        self.navigationItem.leftBarButtonItem = backButton
+        backButton.setTitlePositionAdjustment(UIOffset.init(horizontal: -55, vertical: 0), for: .default)
+        
+        let leftSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        leftSpace.width = 15
+        
+        self.navigationItem.leftBarButtonItems = [leftSpace, backButton]
+        
     }
     
     private func openNextScreen() {

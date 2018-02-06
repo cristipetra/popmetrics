@@ -70,8 +70,7 @@ class WelcomeScreen: BaseViewController {
             return
         }
         
-        showNextScreen()
-        //self.performSegue(withIdentifier: "signInSegue", sender: self)
+        self.performSegue(withIdentifier: "signInSegue", sender: self)
     }
     
     @IBAction func handlerDidPressNewButton(_ sender: UIButton) {
@@ -80,26 +79,12 @@ class WelcomeScreen: BaseViewController {
             return
         }
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.openURLInside(self, url: Config.appWebAimeeLink)
-    }
+        self.performSegue(withIdentifier: "signUpSegue", sender: self)
     
-    private func showNextScreen() {
-        guard let brand = UserStore.currentBrand else {
-            showScreenEnterName()
-            return
-        }
-        
-        self.performSegue(withIdentifier: "signInSegue", sender: self)
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        appDelegate.openURLInside(self, url: Config.appWebAimeeLink)
     }
-    
-    private func showScreenEnterName() {
-        let navigation = OnboardNavigationController()
-        
-        let nameVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "NameViewController") as! NameViewController
-        navigation.pushViewController(nameVC, animated: true)
-        self.present(navigation, animated: true, completion: nil)
-    }
+
     
     @IBAction func handleBackPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -109,7 +94,6 @@ class WelcomeScreen: BaseViewController {
         // TEST CODE
         // UserStore.getInstance().phoneNumber = "+40745028869"
         
-        
         if segue.destination is LoginViewController {
             let vc = segue.destination as? LoginViewController
             if UserStore.getInstance().phoneNumber != "" {
@@ -117,7 +101,6 @@ class WelcomeScreen: BaseViewController {
             }
         }
  
-
     }
     
     func catchNotificationSignIn(notification:Notification) -> Void {
