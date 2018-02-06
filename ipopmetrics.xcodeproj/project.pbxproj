@@ -147,6 +147,7 @@
 		08BD58021F7A2F3700FFDCFD /* IndividualTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */; };
 		08BD580C1F7A6AD500FFDCFD /* OnboardingFinalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */; };
 		08BF99382029A42C00B2AA86 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF99372029A42C00B2AA86 /* NameViewController.swift */; };
+		08BF993E2029CDF500B2AA86 /* WebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF993D2029CDF500B2AA86 /* WebsiteViewController.swift */; };
 		08BF9D4E1F45F2EF00141206 /* TableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */; };
 		08C497AD1FD5A0120066E515 /* animation_nonX.json in Resources */ = {isa = PBXBuildFile; fileRef = 08C497AC1FD5A0110066E515 /* animation_nonX.json */; };
 		08C497B11FD5A31C0066E515 /* animation_X.json in Resources */ = {isa = PBXBuildFile; fileRef = 08C497B01FD5A31C0066E515 /* animation_X.json */; };
@@ -385,6 +386,7 @@
 		08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualTaskView.swift; sourceTree = "<group>"; };
 		08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingFinalView.xib; sourceTree = "<group>"; };
 		08BF99372029A42C00B2AA86 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
+		08BF993D2029CDF500B2AA86 /* WebsiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteViewController.swift; sourceTree = "<group>"; };
 		08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableFooterView.swift; sourceTree = "<group>"; };
 		08C497AC1FD5A0110066E515 /* animation_nonX.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_nonX.json; sourceTree = "<group>"; };
 		08C497B01FD5A31C0066E515 /* animation_X.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_X.json; sourceTree = "<group>"; };
@@ -593,12 +595,12 @@
 			path = helpers;
 			sourceTree = "<group>";
 		};
-		08BF99362029A3FC00B2AA86 /* nameEmail */ = {
+		08BF99362029A3FC00B2AA86 /* name */ = {
 			isa = PBXGroup;
 			children = (
 				08BF99372029A42C00B2AA86 /* NameViewController.swift */,
 			);
-			path = nameEmail;
+			path = name;
 			sourceTree = "<group>";
 		};
 		08CA5D5620247AD300ED78C3 /* notifications */ = {
@@ -929,7 +931,7 @@
 		11DD96651FC4F41600386F1E /* welcome */ = {
 			isa = PBXGroup;
 			children = (
-				08BF99362029A3FC00B2AA86 /* nameEmail */,
+				08BF99362029A3FC00B2AA86 /* name */,
 				08CA5D5620247AD300ED78C3 /* notifications */,
 				1119F6171ED56F34009997FF /* Boarding.storyboard */,
 				085CB7B11F4ADCA200038C03 /* Notifications.storyboard */,
@@ -941,6 +943,7 @@
 				08D409CD1F73C3A800C5BB54 /* OnboardingFinalView.swift */,
 				08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */,
 				08B485E31F210992005918A1 /* VideoScreenViewController.swift */,
+				08BF993D2029CDF500B2AA86 /* WebsiteViewController.swift */,
 			);
 			path = welcome;
 			sourceTree = "<group>";
@@ -1522,6 +1525,7 @@
 				08078F441FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift in Sources */,
 				08D9F2E32028821500092D95 /* OnboardNavigationController.swift in Sources */,
 				08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */,
+				08BF993E2029CDF500B2AA86 /* WebsiteViewController.swift in Sources */,
 				08B7ADEA1FB22B8300C56688 /* FooterViewController.swift in Sources */,
 				1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */,
 				081B924A1FCEF205006D3BAB /* StringExtensions.swift in Sources */,
