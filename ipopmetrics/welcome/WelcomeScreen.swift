@@ -64,14 +64,13 @@ class WelcomeScreen: BaseViewController {
     }
     
     @IBAction func handlerSpoken(_ sender: UIButton) {
-        showScreenEnterName()
-        return
         
         if !ReachabilityManager.shared.isNetworkAvailable {
             presentErrorNetwork()
             return
         }
         
+        showNextScreen()
         //self.performSegue(withIdentifier: "signInSegue", sender: self)
     }
     
@@ -83,6 +82,15 @@ class WelcomeScreen: BaseViewController {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.openURLInside(self, url: Config.appWebAimeeLink)
+    }
+    
+    private func showNextScreen() {
+        guard let brand = UserStore.currentBrand else {
+            showScreenEnterName()
+            return
+        }
+        
+        self.performSegue(withIdentifier: "signInSegue", sender: self)
     }
     
     private func showScreenEnterName() {

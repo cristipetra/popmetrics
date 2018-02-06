@@ -252,7 +252,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="handlerSpoken:" destination="hIx-Ax-wyr" eventType="touchUpInside" id="iOq-ce-IJI"/>
-                                    <segue destination="R5K-Uc-bRm" kind="show" identifier="nameSegue" id="0qC-A8-5xJ"/>
                                 </connections>
                             </button>
                         </subviews>
