@@ -292,6 +292,100 @@
             </objects>
             <point key="canvasLocation" x="-1472.8" y="-286.50674662668666"/>
         </scene>
+        <!--Name View Controller-->
+        <scene sceneID="6U1-Ox-GMD">
+            <objects>
+                <viewController storyboardIdentifier="NameViewController" id="R5K-Uc-bRm" customClass="NameViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8NF-ub-7gH"/>
+                        <viewControllerLayoutGuide type="bottom" id="3z0-4b-mJg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jd0-Cr-Qgf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xEp-A8-JD9">
+                                <rect key="frame" x="8" y="221.5" width="359" height="225.5"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Steve Hobbs" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="42b-Mt-uYN">
+                                        <rect key="frame" x="59.5" y="10" width="240" height="62"/>
+                                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="tdf-ec-dXR"/>
+                                            <constraint firstAttribute="height" constant="62" id="wUZ-fd-P52"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="24"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your first &amp; last name." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAb-RZ-AXh">
+                                        <rect key="frame" x="57.5" y="90" width="245" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qS5-ei-3Sc">
+                                        <rect key="frame" x="54.5" y="170.5" width="250" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="XlC-RT-Sf1"/>
+                                            <constraint firstAttribute="width" constant="250" id="nmb-G5-aNB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="Submit">
+                                            <color key="titleColor" red="0.25098039215686274" green="0.23529411764705882" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" red="0.82352941176470584" green="0.82352941176470584" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.74117647058823533" green="0.77254901960784317" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="handlerSubmit:" destination="R5K-Uc-bRm" eventType="touchUpInside" id="evE-LX-At0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="rAb-RZ-AXh" firstAttribute="centerX" secondItem="xEp-A8-JD9" secondAttribute="centerX" id="55y-cb-Kyc"/>
+                                    <constraint firstItem="42b-Mt-uYN" firstAttribute="top" secondItem="xEp-A8-JD9" secondAttribute="top" constant="10" id="EIR-pw-ljS"/>
+                                    <constraint firstItem="qS5-ei-3Sc" firstAttribute="centerX" secondItem="xEp-A8-JD9" secondAttribute="centerX" id="UZu-kN-scN"/>
+                                    <constraint firstItem="rAb-RZ-AXh" firstAttribute="top" secondItem="42b-Mt-uYN" secondAttribute="bottom" constant="18" id="dQS-Ok-ROG"/>
+                                    <constraint firstItem="42b-Mt-uYN" firstAttribute="centerX" secondItem="xEp-A8-JD9" secondAttribute="centerX" id="dd0-K0-5fp"/>
+                                    <constraint firstAttribute="bottom" secondItem="qS5-ei-3Sc" secondAttribute="bottom" constant="10" id="q7D-xM-sRq"/>
+                                    <constraint firstItem="qS5-ei-3Sc" firstAttribute="top" secondItem="rAb-RZ-AXh" secondAttribute="bottom" constant="60" id="sfg-1W-Af6"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xEp-A8-JD9" firstAttribute="leadingMargin" secondItem="jd0-Cr-Qgf" secondAttribute="leadingMargin" id="H6G-SO-yCW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xEp-A8-JD9" secondAttribute="trailingMargin" id="PJ4-v4-E30"/>
+                            <constraint firstItem="xEp-A8-JD9" firstAttribute="centerY" secondItem="jd0-Cr-Qgf" secondAttribute="centerY" id="UOM-xh-Rw6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnSubmit" destination="qS5-ei-3Sc" id="f45-pj-r6C"/>
+                        <outlet property="constraintCenterYcontainer" destination="UOM-xh-Rw6" id="ZKY-13-jNk"/>
+                        <outlet property="container" destination="xEp-A8-JD9" id="gX9-sp-eJ4"/>
+                        <outlet property="nameTextField" destination="42b-Mt-uYN" id="9JF-DZ-yen"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jbQ-9V-g8u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1473" y="532"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="hnh-0O-cBF">
             <objects>
