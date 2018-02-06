@@ -18,6 +18,17 @@ import ObjectMapper
 import SafariServices
 import RealmSwift
 //import STPopup
+import Intercom
+
+
+let INTERCOM_LIVE_APP_KEY = "ios_sdk-56bb7df2b3d88934f7d564b7a353c66b68b54f12"
+let INTERCOM_LIVE_APP_ID = "f2713n8d"
+
+let INTERCOM_TEST_APP_KEY = "ios_sdk-b07a4fa44e59e0914ce414c278c284e2b18e6caa"
+let INTERCOM_TEST_APP_ID = "w4ce6nmv"
+
+let INTERCOM_APP_KEY = INTERCOM_LIVE_APP_KEY
+let INTERCOM_APP_ID = INTERCOM_LIVE_APP_ID
 
 public extension Notification {
     public class Popmetrics {
@@ -54,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var safari: SFSafariViewController?
     
     var welcomeViewController: WelcomeScreen?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
@@ -78,6 +89,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         storyBoard = UIStoryboard(name: "Main", bundle: nil)
 
+        //Intercom
+        Intercom.setInAppMessagesVisible(false)
+        Intercom.setApiKey(INTERCOM_APP_KEY, forAppId: INTERCOM_APP_ID)
+        
+        if isLoggedIn() {
+            let userAccount = UserStore.getInstance().getLocalUserAccount()
+            Intercom.registerUser(withUserId: userAccount.id!)
+        }else {
+            Intercom.logout()
+        }
         
         Fabric.with([Twitter.self])
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
