@@ -15,6 +15,8 @@ class NameViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var btnSubmit: UIButton!
     
+    internal var registerBrand: RegisterBrand = RegisterBrand()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,6 +63,8 @@ class NameViewController: UIViewController {
     
     private func openNextScreen() {
         let websiteVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "WebsiteViewController") as! WebsiteViewController
+        registerBrand.name = nameTextField.text!
+        websiteVC.registerBrand = registerBrand
         self.navigationController?.pushViewController(websiteVC, animated: true)
     }
     

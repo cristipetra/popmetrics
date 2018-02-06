@@ -101,7 +101,7 @@ class PhoneView: UIView {
             setNumberTextField(yAnchor: -70)
             setMessageLbl(yAnchor: 18)
             setSendCodeButton(yAnchor: 120)
-            setLogoView(yAnchor: 20)
+            setLogoView(yAnchor: 10)
         } else {
             setNumberTextField(yAnchor: -70)
             setMessageLbl(yAnchor: 0)
@@ -119,7 +119,7 @@ class PhoneView: UIView {
     }
     
     private func setLogoView(yAnchor: CGFloat) {
-        logoView.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        logoView.heightAnchor.constraint(equalToConstant: 32).isActive = true
         logoView.widthAnchor.constraint(equalToConstant: 120).isActive = true
         logoView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         logoView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: yAnchor).isActive = true

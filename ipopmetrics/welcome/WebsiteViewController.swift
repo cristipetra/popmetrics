@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import EZAlertController
 
-class WebsiteViewController: UIViewController {
+class WebsiteViewController: BaseViewController {
     
     @IBOutlet weak var constraintCenterYcontainer: NSLayoutConstraint!
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var websiteTextField: UITextField!
     @IBOutlet weak var btnSubmit: UIButton!
+    
+    internal var registerBrand: RegisterBrand = RegisterBrand()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +63,7 @@ class WebsiteViewController: UIViewController {
     
     private func openNextScreen() {
         let loginVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        loginVC.registerBrand = registerBrand
         
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(loginVC, animated: true)
@@ -76,9 +80,26 @@ class WebsiteViewController: UIViewController {
     }
     
     @IBAction func handlerSubmit(_ sender: UIButton) {
-        // TODO: Add api
+        // TODO: Fix api
+        self.registerBrand.website = websiteTextField.text!
         
-        openNextScreen()
+        self.showProgressIndicator()
+        BrandApi().valideBrandWebsite(websiteTextField.text!) { (response, error) in
+            self.hideProgressIndicator()
+            
+            if error != nil {
+                var message = "An error has occurred. Please try again later."
+                EZAlertController.alert("Error", message: message)
+                return
+            } else {
+                if  response!["data"] != nil {
+                    // set website from response; can be parsed on server
+                    self.registerBrand.website = response!["data"] as? String
+                }
+                self.openNextScreen()
+            }
+        }
+        
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -110,4 +131,7 @@ extension WebsiteViewController: UITextFieldDelegate {
     
 }
 
-
+struct RegisterBrand {
+    var name: String?
+    var website: String?
+}

@@ -148,6 +148,7 @@
 		08BD580C1F7A6AD500FFDCFD /* OnboardingFinalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */; };
 		08BF99382029A42C00B2AA86 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF99372029A42C00B2AA86 /* NameViewController.swift */; };
 		08BF993E2029CDF500B2AA86 /* WebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF993D2029CDF500B2AA86 /* WebsiteViewController.swift */; };
+		08BF9940202A09DE00B2AA86 /* BrandApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF993F202A09DE00B2AA86 /* BrandApi.swift */; };
 		08BF9D4E1F45F2EF00141206 /* TableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */; };
 		08C497AD1FD5A0120066E515 /* animation_nonX.json in Resources */ = {isa = PBXBuildFile; fileRef = 08C497AC1FD5A0110066E515 /* animation_nonX.json */; };
 		08C497B11FD5A31C0066E515 /* animation_X.json in Resources */ = {isa = PBXBuildFile; fileRef = 08C497B01FD5A31C0066E515 /* animation_X.json */; };
@@ -387,6 +388,7 @@
 		08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingFinalView.xib; sourceTree = "<group>"; };
 		08BF99372029A42C00B2AA86 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		08BF993D2029CDF500B2AA86 /* WebsiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteViewController.swift; sourceTree = "<group>"; };
+		08BF993F202A09DE00B2AA86 /* BrandApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandApi.swift; sourceTree = "<group>"; };
 		08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableFooterView.swift; sourceTree = "<group>"; };
 		08C497AC1FD5A0110066E515 /* animation_nonX.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_nonX.json; sourceTree = "<group>"; };
 		08C497B01FD5A31C0066E515 /* animation_X.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_X.json; sourceTree = "<group>"; };
@@ -986,6 +988,7 @@
 				11DD96751FC4FA5400386F1E /* FeedApi.swift */,
 				1104F8741FD45B3B002F6221 /* HubsApi.swift */,
 				08B3289D1FFE22F300549DC5 /* SettingsApi.swift */,
+				08BF993F202A09DE00B2AA86 /* BrandApi.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -1436,6 +1439,7 @@
 				113DE3021FC8AEE800AE6DE9 /* PaidActionCardCell.swift in Sources */,
 				085F90F21F712660008A339A /* AnimationsViewController.swift in Sources */,
 				08D1BC371F1DF4F900D377B2 /* ViewNames.swift in Sources */,
+				08BF9940202A09DE00B2AA86 /* BrandApi.swift in Sources */,
 				08A51D331FC6EF6D0097B334 /* ActionInstructionsPageViewController.swift in Sources */,
 				08B4EBB21FC56ACE00BFC5A1 /* SettingsBaseViewController.swift in Sources */,
 				08B4EB991FC569F700BFC5A1 /* FeedStore.swift in Sources */,
