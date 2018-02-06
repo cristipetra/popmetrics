@@ -60,6 +60,7 @@ class CodeViewController: UIViewController {
     
     
     @objc func didPressSendSmsCode(_ sender: Any) {
+        digitCodeView.digitextField.resignFirstResponder()
         
         let smsCode = extractCode(text: editableCodeMask)
         let phoneNumber = phoneNo!
@@ -258,6 +259,7 @@ extension CodeViewController: UITextFieldDelegate {
     }
     
     internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         return true
     }
     
