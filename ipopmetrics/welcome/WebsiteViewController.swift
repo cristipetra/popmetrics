@@ -55,8 +55,12 @@ class WebsiteViewController: UIViewController {
     }
     
     private func openNextScreen() {
+        let loginVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(loginVC, animated: true)
     }
+    
     
     // MARK: handlers
     @objc internal func dismissKeyboard() {

@@ -163,7 +163,7 @@ class LoginViewController: UIViewController {
     internal func showMainNavigationController() {
         showViewControllerWithStoryboardID("FEED_VC")
     }
-    
+ 
     func updatePhoneFieldNumber(textField: UITextField, phoneNumberMask: String) {
         let threshold = phoneNumberMask.range(for: "#")?.lowerBound ?? phoneNumberMask.range!.upperBound
         let boldRange = Range(uncheckedBounds: (lower: phoneNumberMask.range!.lowerBound, upper: threshold))
@@ -187,7 +187,12 @@ class LoginViewController: UIViewController {
     }
     
     @objc internal func dismissPhoneView() {
-        self.dismiss(animated: true, completion: nil)
+        if self.navigationController != nil {
+            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.isNavigationBarHidden = false
+        } else {
+          self.dismiss(animated: true, completion: nil)
+        }
     }
     
 }

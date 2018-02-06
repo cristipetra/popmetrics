@@ -54,7 +54,8 @@ class NameViewController: UIViewController {
     }
     
     private func openNextScreen() {
-        
+        let websiteVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "WebsiteViewController") as! WebsiteViewController
+        self.navigationController?.pushViewController(websiteVC, animated: true)
     }
     
     // MARK: handlers

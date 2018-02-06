@@ -252,6 +252,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="handlerSpoken:" destination="hIx-Ax-wyr" eventType="touchUpInside" id="iOq-ce-IJI"/>
+                                    <segue destination="R5K-Uc-bRm" kind="show" identifier="nameSegue" id="0qC-A8-5xJ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -449,6 +450,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="handlerSubmit:" destination="yaC-VY-TgM" eventType="touchUpInside" id="11z-R7-lgP"/>
                                             <action selector="handlerSubmit:" destination="R5K-Uc-bRm" eventType="touchUpInside" id="SQb-0x-eb5"/>
                                         </connections>
                                     </button>
@@ -481,12 +483,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lu5-Jg-0Fp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-578" y="524"/>
+            <point key="canvasLocation" x="-626" y="531"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="hnh-0O-cBF">
             <objects>
-                <viewController id="MiY-R6-tTF" customClass="LoginViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="MiY-R6-tTF" customClass="LoginViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xd9-rj-h4W"/>
                         <viewControllerLayoutGuide type="bottom" id="z44-sZ-bgM"/>
@@ -502,7 +504,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adD-E2-Yhm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-285.60000000000002" y="-287.40629685157421"/>
+            <point key="canvasLocation" x="-65" y="-287"/>
         </scene>
         <!--Code View Controller-->
         <scene sceneID="dZ6-a4-x7a">
@@ -532,9 +534,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="VIo-qm-Iv1" kind="relationship" relationship="rootViewController" id="pFX-b0-GOZ"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bcm-ho-SsN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
