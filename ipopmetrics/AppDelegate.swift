@@ -40,6 +40,12 @@ public extension Notification {
 
 var navigator: Navigator = Navigator()
 
+extension Bundle {
+    var apiBaseURL: String {
+        return object(forInfoDictionaryKey: "APIBaseURL") as? String ?? ""
+    }
+}
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
