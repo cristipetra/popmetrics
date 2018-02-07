@@ -24,7 +24,7 @@ class PhoneView: UIView {
     lazy var messageLbl : UILabel = {
         let msgLbl = UILabel()
         msgLbl.translatesAutoresizingMaskIntoConstraints = false
-        msgLbl.text = "We'll send you a magic code that you\n can use to login."
+        msgLbl.text = "Enter your cell number and we'll send you a magic code that you can use to login."
         msgLbl.font = UIFont(name: FontBook.regular, size: 15)
         msgLbl.textColor = PopmetricsColor.visitSecondColor
         return msgLbl
@@ -101,7 +101,7 @@ class PhoneView: UIView {
             setNumberTextField(yAnchor: -70)
             setMessageLbl(yAnchor: 18)
             setSendCodeButton(yAnchor: 120)
-            setLogoView(yAnchor: 20)
+            setLogoView(yAnchor: 10)
         } else {
             setNumberTextField(yAnchor: -70)
             setMessageLbl(yAnchor: 0)
@@ -119,7 +119,7 @@ class PhoneView: UIView {
     }
     
     private func setLogoView(yAnchor: CGFloat) {
-        logoView.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        logoView.heightAnchor.constraint(equalToConstant: 32).isActive = true
         logoView.widthAnchor.constraint(equalToConstant: 120).isActive = true
         logoView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         logoView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: yAnchor).isActive = true

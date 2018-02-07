@@ -79,9 +79,12 @@ class WelcomeScreen: BaseViewController {
             return
         }
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.openURLInside(self, url: Config.appWebAimeeLink)
+        self.performSegue(withIdentifier: "signUpSegue", sender: self)
+    
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        appDelegate.openURLInside(self, url: Config.appWebAimeeLink)
     }
+
     
     @IBAction func handleBackPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -97,6 +100,7 @@ class WelcomeScreen: BaseViewController {
                 vc?.phoneNumber = UserStore.getInstance().phoneNumber
             }
         }
+ 
     }
     
     func catchNotificationSignIn(notification:Notification) -> Void {

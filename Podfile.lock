@@ -1,19 +1,19 @@
 PODS:
   - ActiveLabel (0.8.0)
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
+  - AFNetworking (3.2.0):
+    - AFNetworking/NSURLSession (= 3.2.0)
+    - AFNetworking/Reachability (= 3.2.0)
+    - AFNetworking/Security (= 3.2.0)
+    - AFNetworking/Serialization (= 3.2.0)
+    - AFNetworking/UIKit (= 3.2.0)
+  - AFNetworking/NSURLSession (3.2.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
+  - AFNetworking/Reachability (3.2.0)
+  - AFNetworking/Security (3.2.0)
+  - AFNetworking/Serialization (3.2.0)
+  - AFNetworking/UIKit (3.2.0):
     - AFNetworking/NSURLSession
   - Alamofire (4.6.0)
   - AlamofireImage (3.3.0):
@@ -43,9 +43,9 @@ PODS:
     - FacebookCore (~> 0.3)
     - FBSDKCoreKit (~> 4.27)
     - FBSDKLoginKit (~> 4.27)
-  - FBSDKCoreKit (4.29.0):
+  - FBSDKCoreKit (4.30.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.29.0):
+  - FBSDKLoginKit (4.30.0):
     - FBSDKCoreKit
   - FirebaseAnalytics (3.9.0):
     - FirebaseCore (~> 3.6)
@@ -60,7 +60,7 @@ PODS:
   - Google/SignIn (3.1.0):
     - Google/Core
     - GoogleSignIn (~> 4.0)
-  - GoogleSignIn (4.1.1):
+  - GoogleSignIn (4.1.2):
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
     - GTMOAuth2 (~> 1.0)
@@ -77,21 +77,22 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.3)
   - GTMOAuth2 (1.1.6):
     - GTMSessionFetcher (~> 1.1)
-  - GTMSessionFetcher (1.1.12):
-    - GTMSessionFetcher/Full (= 1.1.12)
-  - GTMSessionFetcher/Core (1.1.12)
-  - GTMSessionFetcher/Full (1.1.12):
-    - GTMSessionFetcher/Core (= 1.1.12)
+  - GTMSessionFetcher (1.1.13):
+    - GTMSessionFetcher/Full (= 1.1.13)
+  - GTMSessionFetcher/Core (1.1.13)
+  - GTMSessionFetcher/Full (1.1.13):
+    - GTMSessionFetcher/Core (= 1.1.13)
   - GTProgressBar (0.2.3)
   - Haptica (2.0.0)
   - Hero (1.0.1)
+  - Intercom (4.1.9)
   - IOSLinkedInAPIFix (2.0.4):
     - AFNetworking (>= 2.0.0)
   - JSONWebToken (2.2.0)
   - LinkedinSwift (1.7.4):
     - AFNetworking (>= 3.1.0)
     - IOSLinkedInAPIFix (>= 2.0.4)
-  - lottie-ios (2.1.5)
+  - lottie-ios (2.5.0)
   - M13ProgressSuite (1.2.9)
   - markymark (4.0.2)
   - MarqueeLabel/Swift (3.1.4)
@@ -100,17 +101,17 @@ PODS:
     - NSDate-Escort (~> 1.5)
     - UIView+JMFrame
   - MotionAnimation (0.1.2)
-  - NotificationBannerSwift (1.5.4):
+  - NotificationBannerSwift (1.6.1):
     - MarqueeLabel/Swift
     - SnapKit (~> 4.0)
   - NSDate-Escort (1.8.2)
   - ObjectMapper (3.1.0)
   - ReachabilitySwift (4.1.0)
-  - Realm (3.1.0):
-    - Realm/Headers (= 3.1.0)
-  - Realm/Headers (3.1.0)
-  - RealmSwift (3.1.0):
-    - Realm (= 3.1.0)
+  - Realm (3.1.1):
+    - Realm/Headers (= 3.1.1)
+  - Realm/Headers (3.1.1)
+  - RealmSwift (3.1.1):
+    - Realm (= 3.1.1)
   - RSKImageCropper (2.0.0)
   - ScrollableGraphView (4.0.4)
   - SnapKit (4.0.0)
@@ -141,6 +142,7 @@ DEPENDENCIES:
   - GTProgressBar
   - Haptica
   - Hero
+  - Intercom
   - JSONWebToken
   - LinkedinSwift
   - lottie-ios
@@ -200,7 +202,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   ActiveLabel: c32bb6a81accc4a4c2dcab2d685036fcad537783
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
   AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
@@ -213,35 +215,36 @@ SPEC CHECKSUMS:
   Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   FacebookCore: 3ffa190a3f1f96cec0e44d3fc221bc322c595ffa
   FacebookLogin: 0af839ea858faef99550d16596b87b4a8e8906e6
-  FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
-  FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
+  FBSDKCoreKit: 7c4bba2877781a131ab5d54c0a78c405d4307b62
+  FBSDKLoginKit: fe7a7e82373dc5daad92e1623219e86224ab1fb1
   FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
   FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
   FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
   Google: 98da4b1a60ed0beb80a290387a28333406a1eb90
-  GoogleSignIn: 3fdaa34a2ba04dbd7a25d7db39aecb0da98d5bdc
+  GoogleSignIn: d9ef55b10f0aa401a5de2747f59b725e4b9732ac
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
-  GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
+  GTMSessionFetcher: 5bb1eae636127de695590f50e7d248483eb891e6
   GTProgressBar: ecfa9f2dfaca1b9b35811925f5bd53516ee591ae
   Haptica: ed63c31f32f2aa17ecb479c110dd50904497bf5d
   Hero: cee286821578e170d8c0c9c9cda7897357401112
+  Intercom: c69c28474ffc9bf99cce5a7c25f515aad3796944
   IOSLinkedInAPIFix: a520fd805a03dade35f42904c7d89ded2a84c752
   JSONWebToken: 6fae32489632658d563dd6952a5c34020ea813e4
   LinkedinSwift: fba071cbbcedf42471f45c0cd2438cba3f6c9c7c
-  lottie-ios: 836cdbba92f62f3c6a00e37a4ce485321fe317cf
+  lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
   M13ProgressSuite: ea9f7263e73e9215e6849dfa54e29ee0ad6a145c
   markymark: 0415d62ff86424bb1193f995aaf46a246510ac38
   MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
   MGSwipeTableCell: c3bc6e261e7bc06c112909fe3fb8205de286082c
   MJCalendar: a529b085b0b988ae7b493ce7c000946cc186bf0e
   MotionAnimation: 0257eb90f766f6d58c70524f956faf8d56c5e7bf
-  NotificationBannerSwift: 4f6666c8421dcf11be0812dd1093d932c15921af
+  NotificationBannerSwift: 1fc2955381e6eb26d958ba32160fc41721b9b689
   NSDate-Escort: c79db277a401c0ad219acd295ec17c7b4f61266f
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
-  Realm: 09513d7c054678d65cd02ce09871f805b0d758ac
-  RealmSwift: e868fee9b10e5490ad94b6b6ecd9027944da1824
+  Realm: 42d1c38a5b1bbcc828b48a7ce702cb86fc68adf4
+  RealmSwift: d31937ca6a6ee54acde64ec839523c0a3c04924b
   RSKImageCropper: d9a1acbc0600bf8decc8f0d21895872c99a9e4cf
   ScrollableGraphView: abac54d3493a5a198ade4baf4879967183af8a2c
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
@@ -253,6 +256,6 @@ SPEC CHECKSUMS:
   UIView+JMFrame: a907974c9d34b1c300aef85ae2a1a5af746f2b8a
   URLNavigator: af5582fbbb3586c958be16835d799bfdb23a4793
 
-PODFILE CHECKSUM: 5f7e94e3bf274ca9c6db89c980c21131704fc1c2
+PODFILE CHECKSUM: c87efa38ade1b25596d6cc536ba895a5337a054a
 
 COCOAPODS: 1.3.1

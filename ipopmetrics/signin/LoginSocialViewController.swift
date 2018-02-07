@@ -11,6 +11,7 @@ import FacebookLogin
 import TwitterKit
 import ObjectMapper
 import LinkedinSwift
+import UserNotifications
 
 class LoginSocialViewController: BaseViewController {
     
@@ -129,11 +130,18 @@ class LoginSocialViewController: BaseViewController {
     }
     
     private func nextPage() {
-        let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
-        if notificationType == [] {
-            self.showPushNotificationsScreen()
-        } else {
-            self.showOnboardingFinalScreen()
+        let current = UNUserNotificationCenter.current()
+        
+        current.getNotificationSettings { (settings) in
+            if settings.authorizationStatus == .denied {
+                self.showManualEnableNotifications()
+            }
+            if settings.authorizationStatus == .notDetermined {
+                self.showPushNotificationsScreen()
+            }
+            if settings.authorizationStatus == .authorized {
+                self.showOnboardingFinalScreen()
+            }
         }
         
     }
@@ -143,9 +151,14 @@ class LoginSocialViewController: BaseViewController {
         self.present(finalOnboardingVC, animated: true)
     }
     
+    internal func showManualEnableNotifications() {
+        let notificationsVC = AppStoryboard.Notifications.instance.instantiateViewController(withIdentifier: ViewNames.SBID_PUSH_MANUALLY_NOTIFCATIONS_VC)
+        self.present(notificationsVC, animated: true, completion: nil)
+    }
+    
     internal func showPushNotificationsScreen() {
         let notificationsVC = AppStoryboard.Notifications.instance.instantiateViewController(withIdentifier: ViewNames.SBID_PUSH_NOTIFICATIONS_VC)
-        self.present(notificationsVC, animated: false, completion: nil)
+        self.present(notificationsVC, animated: true, completion: nil)
     }
     
     @objc func dismissView() {

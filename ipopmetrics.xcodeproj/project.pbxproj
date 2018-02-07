@@ -22,6 +22,8 @@
 		083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083938FE1F63C334007DDA37 /* MainTabInfo.swift */; };
 		0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */; };
 		0848280F1F39F9200054B04C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848280E1F39F9200054B04C /* HeaderView.swift */; };
+		0849662B202B18D3002CE902 /* UIBarButtonItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849662A202B18D3002CE902 /* UIBarButtonItemExtensions.swift */; };
+		0849662D202B1D61002CE902 /* MessagesBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849662C202B1D61002CE902 /* MessagesBadgeView.swift */; };
 		084E54E11F827F7D007D6F4F /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E54E01F827F7D007D6F4F /* NoteView.swift */; };
 		085053FE1F2787A100FE8234 /* CalendarHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085053FD1F2787A100FE8234 /* CalendarHubController.swift */; };
 		085054011F2793AE00FE8234 /* CalendarCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085054001F2793AE00FE8234 /* CalendarCard.xib */; };
@@ -50,8 +52,6 @@
 		085F90F21F712660008A339A /* AnimationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F90F11F712660008A339A /* AnimationsViewController.swift */; };
 		085F90FA1F7169FE008A339A /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085F90F91F7169FE008A339A /* OnboardingView.xib */; };
 		085F91011F716AD2008A339A /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F91001F716AD2008A339A /* OnboardingViewController.swift */; };
-		085F91031F716CBC008A339A /* OnboardingFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085F91021F716CBC008A339A /* OnboardingFooter.xib */; };
-		085F91051F716CD4008A339A /* OnboardingFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F91041F716CD4008A339A /* OnboardingFooter.swift */; };
 		0863C4641FEA91C400999A81 /* animation_iphone4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0863C4631FEA91C400999A81 /* animation_iphone4.json */; };
 		08657382200F90D700D0ED21 /* PeriodGraphDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08657381200F90D700D0ED21 /* PeriodGraphDateView.swift */; };
 		086B453C1FDC22530043F981 /* PersistentFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086B453B1FDC22530043F981 /* PersistentFooter.swift */; };
@@ -148,6 +148,9 @@
 		08BD58001F7A2DCC00FFDCFD /* ActionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD57FF1F7A2DCC00FFDCFD /* ActionPageView.swift */; };
 		08BD58021F7A2F3700FFDCFD /* IndividualTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */; };
 		08BD580C1F7A6AD500FFDCFD /* OnboardingFinalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */; };
+		08BF99382029A42C00B2AA86 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF99372029A42C00B2AA86 /* NameViewController.swift */; };
+		08BF993E2029CDF500B2AA86 /* WebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF993D2029CDF500B2AA86 /* WebsiteViewController.swift */; };
+		08BF9940202A09DE00B2AA86 /* BrandApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF993F202A09DE00B2AA86 /* BrandApi.swift */; };
 		08BF9D4E1F45F2EF00141206 /* TableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */; };
 		08C497AD1FD5A0120066E515 /* animation_nonX.json in Resources */ = {isa = PBXBuildFile; fileRef = 08C497AC1FD5A0110066E515 /* animation_nonX.json */; };
 		08C497B11FD5A31C0066E515 /* animation_X.json in Resources */ = {isa = PBXBuildFile; fileRef = 08C497B01FD5A31C0066E515 /* animation_X.json */; };
@@ -157,6 +160,7 @@
 		08C5CF361FC5EA9C001851A5 /* ActionPageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */; };
 		08C7A438201B4D0500714360 /* SocialIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7A437201B4D0500714360 /* SocialIconView.swift */; };
 		08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */; };
+		08CA5D5820247C1000ED78C3 /* NotificationsManuallyEnableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA5D5720247C1000ED78C3 /* NotificationsManuallyEnableViewController.swift */; };
 		08CBB0061FD96AEA0042EE9C /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CBB0051FD96AEA0042EE9C /* ActionButton.swift */; };
 		08CC6EC01FBC7F9C00A6521E /* SettingsLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */; };
 		08CC6EC21FBC7FBA00A6521E /* SettingsLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08CC6EC11FBC7FBA00A6521E /* SettingsLogoView.xib */; };
@@ -168,6 +172,7 @@
 		08D1BC3B1F1E568A00D377B2 /* PhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC3A1F1E568A00D377B2 /* PhoneView.swift */; };
 		08D409CE1F73C3A800C5BB54 /* OnboardingFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D409CD1F73C3A800C5BB54 /* OnboardingFinalView.swift */; };
 		08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D579F81F62E6ED00FDD744 /* StatusCardTypeView.swift */; };
+		08D9F2E32028821500092D95 /* OnboardNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9F2E22028821500092D95 /* OnboardNavigationController.swift */; };
 		08DE806D2018E98E00621243 /* SocialPostDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DE806C2018E98E00621243 /* SocialPostDetailsView.swift */; };
 		08DF9E621F261C8100C60C2D /* InfoCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */; };
 		08EE385D1F447C0E005D1D7C /* TodoTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EE385C1F447C0E005D1D7C /* TodoTopView.swift */; };
@@ -259,6 +264,8 @@
 		083938FE1F63C334007DDA37 /* MainTabInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabInfo.swift; sourceTree = "<group>"; };
 		0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellTransition.swift; sourceTree = "<group>"; };
 		0848280E1F39F9200054B04C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		0849662A202B18D3002CE902 /* UIBarButtonItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtensions.swift; sourceTree = "<group>"; };
+		0849662C202B1D61002CE902 /* MessagesBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesBadgeView.swift; sourceTree = "<group>"; };
 		084E54E01F827F7D007D6F4F /* NoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		085053FD1F2787A100FE8234 /* CalendarHubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHubController.swift; sourceTree = "<group>"; };
 		085054001F2793AE00FE8234 /* CalendarCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCard.xib; sourceTree = "<group>"; };
@@ -287,8 +294,6 @@
 		085F90F11F712660008A339A /* AnimationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationsViewController.swift; sourceTree = "<group>"; };
 		085F90F91F7169FE008A339A /* OnboardingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
 		085F91001F716AD2008A339A /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		085F91021F716CBC008A339A /* OnboardingFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingFooter.xib; sourceTree = "<group>"; };
-		085F91041F716CD4008A339A /* OnboardingFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFooter.swift; sourceTree = "<group>"; };
 		0863C4631FEA91C400999A81 /* animation_iphone4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_iphone4.json; sourceTree = "<group>"; };
 		08657381200F90D700D0ED21 /* PeriodGraphDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodGraphDateView.swift; sourceTree = "<group>"; };
 		086B453B1FDC22530043F981 /* PersistentFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentFooter.swift; sourceTree = "<group>"; };
@@ -385,6 +390,9 @@
 		08BD57FF1F7A2DCC00FFDCFD /* ActionPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionPageView.swift; sourceTree = "<group>"; };
 		08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualTaskView.swift; sourceTree = "<group>"; };
 		08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingFinalView.xib; sourceTree = "<group>"; };
+		08BF99372029A42C00B2AA86 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
+		08BF993D2029CDF500B2AA86 /* WebsiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteViewController.swift; sourceTree = "<group>"; };
+		08BF993F202A09DE00B2AA86 /* BrandApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandApi.swift; sourceTree = "<group>"; };
 		08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableFooterView.swift; sourceTree = "<group>"; };
 		08C497AC1FD5A0110066E515 /* animation_nonX.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_nonX.json; sourceTree = "<group>"; };
 		08C497B01FD5A31C0066E515 /* animation_X.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_X.json; sourceTree = "<group>"; };
@@ -394,6 +402,7 @@
 		08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPageDetailsViewController.swift; sourceTree = "<group>"; };
 		08C7A437201B4D0500714360 /* SocialIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialIconView.swift; sourceTree = "<group>"; };
 		08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
+		08CA5D5720247C1000ED78C3 /* NotificationsManuallyEnableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManuallyEnableViewController.swift; sourceTree = "<group>"; };
 		08CBB0051FD96AEA0042EE9C /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLogoViewController.swift; sourceTree = "<group>"; };
 		08CC6EC11FBC7FBA00A6521E /* SettingsLogoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsLogoView.xib; sourceTree = "<group>"; };
@@ -406,6 +415,7 @@
 		08D409C71F73BF3100C5BB54 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		08D409CD1F73C3A800C5BB54 /* OnboardingFinalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFinalView.swift; sourceTree = "<group>"; };
 		08D579F81F62E6ED00FDD744 /* StatusCardTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCardTypeView.swift; sourceTree = "<group>"; };
+		08D9F2E22028821500092D95 /* OnboardNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardNavigationController.swift; sourceTree = "<group>"; };
 		08DE806C2018E98E00621243 /* SocialPostDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPostDetailsView.swift; sourceTree = "<group>"; };
 		08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCardViewController.swift; sourceTree = "<group>"; };
 		08EE385C1F447C0E005D1D7C /* TodoTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoTopView.swift; sourceTree = "<group>"; };
@@ -526,6 +536,7 @@
 				086EDE451FC8651B002F4140 /* UIViewExtensions.swift */,
 				081B92491FCEF205006D3BAB /* StringExtensions.swift */,
 				08D125022019F01F00D9D78B /* DateExtensions.swift */,
+				0849662A202B18D3002CE902 /* UIBarButtonItemExtensions.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -589,6 +600,23 @@
 				089E10551FD1716200D57A08 /* SwipeExtension.swift */,
 			);
 			path = helpers;
+			sourceTree = "<group>";
+		};
+		08BF99362029A3FC00B2AA86 /* name */ = {
+			isa = PBXGroup;
+			children = (
+				08BF99372029A42C00B2AA86 /* NameViewController.swift */,
+			);
+			path = name;
+			sourceTree = "<group>";
+		};
+		08CA5D5620247AD300ED78C3 /* notifications */ = {
+			isa = PBXGroup;
+			children = (
+				08CA5D5720247C1000ED78C3 /* NotificationsManuallyEnableViewController.swift */,
+				08D9F2E22028821500092D95 /* OnboardNavigationController.swift */,
+			);
+			path = notifications;
 			sourceTree = "<group>";
 		};
 		08CBB0041FD96A9F0042EE9C /* buttons */ = {
@@ -814,6 +842,7 @@
 				080DCA801F4D6EE6000C73DC /* MenuViewController.swift */,
 				08B968A91FBB141400482CDE /* ChangeBrandViewController.swift */,
 				088728961FFCE98700BE9882 /* AboutViewController.swift */,
+				0849662C202B1D61002CE902 /* MessagesBadgeView.swift */,
 			);
 			path = menu;
 			sourceTree = "<group>";
@@ -910,18 +939,19 @@
 		11DD96651FC4F41600386F1E /* welcome */ = {
 			isa = PBXGroup;
 			children = (
+				08BF99362029A3FC00B2AA86 /* name */,
+				08CA5D5620247AD300ED78C3 /* notifications */,
 				1119F6171ED56F34009997FF /* Boarding.storyboard */,
 				085CB7B11F4ADCA200038C03 /* Notifications.storyboard */,
 				085599A51F72751900E5BEA1 /* SplashScreen.xib */,
 				085599A21F72750000E5BEA1 /* SplashScreen.swift */,
 				085F90F91F7169FE008A339A /* OnboardingView.xib */,
-				085F91021F716CBC008A339A /* OnboardingFooter.xib */,
-				085F91041F716CD4008A339A /* OnboardingFooter.swift */,
 				08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */,
 				085F91001F716AD2008A339A /* OnboardingViewController.swift */,
 				08D409CD1F73C3A800C5BB54 /* OnboardingFinalView.swift */,
 				08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */,
 				08B485E31F210992005918A1 /* VideoScreenViewController.swift */,
+				08BF993D2029CDF500B2AA86 /* WebsiteViewController.swift */,
 			);
 			path = welcome;
 			sourceTree = "<group>";
@@ -964,6 +994,7 @@
 				11DD96751FC4FA5400386F1E /* FeedApi.swift */,
 				1104F8741FD45B3B002F6221 /* HubsApi.swift */,
 				08B3289D1FFE22F300549DC5 /* SettingsApi.swift */,
+				08BF993F202A09DE00B2AA86 /* BrandApi.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -1163,7 +1194,6 @@
 				08FAE8471F541FF40097DF3E /* StatsCard.xib in Resources */,
 				1119F6181ED56F34009997FF /* Boarding.storyboard in Resources */,
 				1195EEF42009EDC800F45798 /* apple-app-site-association-unsigned in Resources */,
-				085F91031F716CBC008A339A /* OnboardingFooter.xib in Resources */,
 				11F89F691EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist in Resources */,
 				0863C4641FEA91C400999A81 /* animation_iphone4.json in Resources */,
 				08B6AFAA1F9DC813005E3049 /* IceCardView.xib in Resources */,
@@ -1253,6 +1283,8 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/Intercom/Intercom/Intercom.framework/Versions/A/Resources/Intercom.bundle",
+				"${PODS_ROOT}/Intercom/Intercom/Intercom.framework/Versions/A/Resources/IntercomTranslations.bundle",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -1394,18 +1426,21 @@
 				113976A91E97C71300B535DF /* AccountViewController.swift in Sources */,
 				08953E761F4C35AC003ABEFC /* RequiredActionCard.swift in Sources */,
 				08CC6EC01FBC7F9C00A6521E /* SettingsLogoViewController.swift in Sources */,
+				08BF99382029A42C00B2AA86 /* NameViewController.swift in Sources */,
 				08BF9D4E1F45F2EF00141206 /* TableFooterView.swift in Sources */,
 				08B4EBAF1FC56ACE00BFC5A1 /* Validator.swift in Sources */,
 				11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */,
 				08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */,
 				08B4EBB31FC56ACE00BFC5A1 /* TextFieldValidator.swift in Sources */,
 				08AF049A1F46FBB60040012B /* SocialPostInCardCell.swift in Sources */,
+				0849662B202B18D3002CE902 /* UIBarButtonItemExtensions.swift in Sources */,
 				11DD967E1FC4FA5400386F1E /* FeedApi.swift in Sources */,
 				08078F421FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift in Sources */,
 				086B453C1FDC22530043F981 /* PersistentFooter.swift in Sources */,
 				085282741F28D9DE0065A968 /* CalendarFooterViewCell.swift in Sources */,
 				085599A31F72750000E5BEA1 /* SplashScreen.swift in Sources */,
 				08F3688B1F18DC4900819CDE /* ApprovalCardCell.swift in Sources */,
+				08CA5D5820247C1000ED78C3 /* NotificationsManuallyEnableViewController.swift in Sources */,
 				08B3C7E0201729D5003ADB77 /* StatsSummaryItemView.swift in Sources */,
 				086EDE3F1FC830F1002F4140 /* MyActionCardCell.swift in Sources */,
 				0813A0591FC2F1C4003E6478 /* SettingsSocialViewController.swift in Sources */,
@@ -1413,6 +1448,7 @@
 				113DE3021FC8AEE800AE6DE9 /* PaidActionCardCell.swift in Sources */,
 				085F90F21F712660008A339A /* AnimationsViewController.swift in Sources */,
 				08D1BC371F1DF4F900D377B2 /* ViewNames.swift in Sources */,
+				08BF9940202A09DE00B2AA86 /* BrandApi.swift in Sources */,
 				08A51D331FC6EF6D0097B334 /* ActionInstructionsPageViewController.swift in Sources */,
 				08B4EBB21FC56ACE00BFC5A1 /* SettingsBaseViewController.swift in Sources */,
 				08B4EB991FC569F700BFC5A1 /* FeedStore.swift in Sources */,
@@ -1480,7 +1516,6 @@
 				089267741F86617600D7B99E /* OfflineBanner.swift in Sources */,
 				08913DA11FE7BEFB0085BE36 /* CalendarCompletedViewCell.swift in Sources */,
 				088F14FA1FB9C6080004F925 /* StaticSettingsViewController.swift in Sources */,
-				085F91051F716CD4008A339A /* OnboardingFooter.swift in Sources */,
 				08C580FF1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift in Sources */,
 				11D6FF6B1FD7941600C7E62B /* SettingsTwitterViewController.swift in Sources */,
 				1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */,
@@ -1500,8 +1535,11 @@
 				08B745981F1F718300EC3F8C /* CodeViewController.swift in Sources */,
 				0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */,
 				08B4EBBF1FC58FF100BFC5A1 /* InsightPageDetailsViewController.swift in Sources */,
+				0849662D202B1D61002CE902 /* MessagesBadgeView.swift in Sources */,
 				08078F441FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift in Sources */,
+				08D9F2E32028821500092D95 /* OnboardNavigationController.swift in Sources */,
 				08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */,
+				08BF993E2029CDF500B2AA86 /* WebsiteViewController.swift in Sources */,
 				08B7ADEA1FB22B8300C56688 /* FooterViewController.swift in Sources */,
 				1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */,
 				081B924A1FCEF205006D3BAB /* StringExtensions.swift in Sources */,

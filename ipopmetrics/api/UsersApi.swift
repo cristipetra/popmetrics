@@ -33,6 +33,26 @@ class UsersApi: BaseApi {
         }
     }
 
+    func registerNewUser(name: String, website: String, phone: String,
+                            callback: @escaping(_ userDict: [String: Any]?, _ error: ApiError?) -> Void) {
+        let url = ApiUrls.composedBaseUrl(String(format:"/api/brand/register"))
+        let params = ["website": website,
+                      "name": name,
+                      "phone": phone]
+        
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { response in
+            
+            if let err = self.createErrorWithHttpResponse(response: response.response) {
+                callback(nil, err)
+                return
+            }
+            
+            if let resultDict = response.result.value as? [String: Any] {
+                callback(resultDict, nil)
+            }
+        }
+    }
     
     
     

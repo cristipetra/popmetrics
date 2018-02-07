@@ -15,6 +15,8 @@ class OnboardingFinalView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavigationBar()
+        
         isHeroEnabled = true
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
         
@@ -25,6 +27,18 @@ class OnboardingFinalView: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: when) {
             self.goToMainStoryboard()
         }
+    }
+    
+    private func setNavigationBar() {
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        
+        let logoImageView = UIImageView(image: UIImage(named: "logoPop"))
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        logoImageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        logoImageView.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        logoImageView.contentMode = .scaleAspectFill
+        self.navigationItem.titleView = logoImageView
     }
     
     func goToMainStoryboard() {
