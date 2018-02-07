@@ -167,6 +167,18 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         }
         
     }
+    
+    // MARK: Disconnect twitter
+    func disconnectTwitter() {
+        let storeTwitter = Twitter.sharedInstance().sessionStore
+        if let userID = storeTwitter.session()?.userID {
+            storeTwitter.logOutUserID(userID)
+        }
+        // TODO: add api for disconnect twitter
+        
+        
+    }
+    
 
     
     

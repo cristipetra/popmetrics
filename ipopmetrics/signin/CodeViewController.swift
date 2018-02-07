@@ -20,6 +20,8 @@ class CodeViewController: UIViewController {
     var phoneNo: String?
     fileprivate var editableCodeMask = codeMask
     
+    private let navigation = OnboardNavigationController()
+    
     let digitCodeView = DigitCodeView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height));
     
     
@@ -28,6 +30,7 @@ class CodeViewController: UIViewController {
         
         self.view.addSubview(digitCodeView)
         
+        digitCodeView.didMoveToSuperview()
         digitCodeView.digitextField.delegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
@@ -57,6 +60,7 @@ class CodeViewController: UIViewController {
     
     
     @objc func didPressSendSmsCode(_ sender: Any) {
+        digitCodeView.digitextField.resignFirstResponder()
         
         let smsCode = extractCode(text: editableCodeMask)
         let phoneNumber = phoneNo!
@@ -113,8 +117,7 @@ class CodeViewController: UIViewController {
                 
                 SyncService.getInstance().syncAll(silent: false)
                 
-                self.showSocialScreen()
-                
+                self.showNextScreen()
             }
             else {
                 EZAlertController.alert("Authentication failed.", message: "No brands associated with the account.")
@@ -122,6 +125,54 @@ class CodeViewController: UIViewController {
             }
         }
         
+    }
+    
+    private func showNextScreen() {
+        if let currentBrand = UserStore.currentBrand {
+            if let twitterDetails = currentBrand.twitterDetails {
+                if twitterDetails.name != nil {
+                    self.checkNotifcations()
+                    return
+                }
+            }
+        }
+        
+       self.showSocialScreen()
+    }
+    
+    private func checkNotifcations() {
+        let current = UNUserNotificationCenter.current()
+        
+        current.getNotificationSettings { (settings) in
+            if settings.authorizationStatus == .denied {
+                self.showManualEnableNotifications()
+            }
+            if settings.authorizationStatus == .notDetermined {
+                self.showPushNotificationsScreen()
+            }
+            if settings.authorizationStatus == .authorized {
+                self.showOnboardingFinalScreen()
+            }
+        }
+        
+    }
+    
+    internal func showOnboardingFinalScreen() {
+        let finalOnboardingVC = OnboardingFinalView()
+        navigation.pushViewController(finalOnboardingVC, animated: true)
+        self.present(navigation, animated: true, completion: nil)
+    }
+    
+    internal func showManualEnableNotifications() {
+        let notificationsVC = AppStoryboard.Notifications.instance.instantiateViewController(withIdentifier: ViewNames.SBID_PUSH_MANUALLY_NOTIFCATIONS_VC)
+        navigation.pushViewController(notificationsVC, animated: true)
+        self.present(navigation, animated: true, completion: nil)
+    }
+    
+    internal func showPushNotificationsScreen() {
+        let notificationsVC = AppStoryboard.Notifications.instance.instantiateViewController(withIdentifier: ViewNames.SBID_PUSH_NOTIFICATIONS_VC)
+        navigation.pushViewController(notificationsVC, animated: true)
+        self.present(navigation, animated: true, completion: nil)
     }
     
     @objc internal func didPressResendCode() {
@@ -134,6 +185,14 @@ class CodeViewController: UIViewController {
                 EZAlertController.alert("Error", message: message)
                 return
             }
+            self.clearCodeTextField()
+        }
+    }
+    
+    private func clearCodeTextField() {
+        guard let code = self.digitCodeView.digitextField.text else { return }
+        for _ in code {
+            self.textField(self.digitCodeView.digitextField, shouldChangeCharactersIn: NSRange(location:0, length:1), replacementString: "")
         }
     }
     
@@ -173,19 +232,14 @@ class CodeViewController: UIViewController {
         })
     }
     
+    
+    
     internal func showSocialScreen() {
-        let navigation = UINavigationController()
-        
+    
         let verifySocialVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "loginSocial") as! LoginSocialViewController
         navigation.pushViewController(verifySocialVC, animated: false)
         
         self.present(navigation, animated: true, completion: nil)
-    }
-    
-    internal func showPushNotificationsScreen() {
-        let notificationsVC = AppStoryboard.Notifications.instance.instantiateViewController(withIdentifier: ViewNames.SBID_PUSH_NOTIFICATIONS_VC)
-        //self.presentFromDirection(viewController: notificationsVC, direction: .right)
-        self.present(notificationsVC, animated: false, completion: nil)
     }
     
     @objc internal func closeVC() {
@@ -221,6 +275,7 @@ extension CodeViewController: UITextFieldDelegate {
     }
     
     internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         return true
     }
     

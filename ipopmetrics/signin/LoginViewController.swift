@@ -29,6 +29,8 @@ class LoginViewController: UIViewController {
     
     let digitCodeView = DigitCodeView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height));
     
+    internal var registerBrand: RegisterBrand?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -125,7 +127,42 @@ class LoginViewController: UIViewController {
     }
     
     @objc internal func didPressSendPhoneNumber() {
-        //let phoneNumber = phoneView.numberTextField.text!
+        if registerBrand != nil {
+            registerNewUser()
+        } else {
+            sendCodeBySms()
+        }
+        
+    }
+    
+    private func registerNewUser() {
+        guard let _ = registerBrand else { return }
+        let name = registerBrand?.name ?? ""
+        let website = registerBrand?.website ?? ""
+        let phoneNumber = extractPhoneNumber(text: extractPhoneNumber(text: editablePhoneNumberMask))
+        
+        showProgressIndicator()
+        
+        UsersApi().registerNewUser(name: name, website: website, phone: phoneNumber) { (userDict, error) in
+            self.hideProgressIndicator()
+            if error != nil {
+                var message = "An error has occurred. Please try again later."
+                EZAlertController.alert("Error", message: message)
+            } else {
+                
+                //SUCCESS
+                self.registerBrand = nil
+                let codeVC = CodeViewController();
+                codeVC.phoneNo = phoneNumber;
+                self.present(codeVC, animated: true, completion: nil)
+            }
+        }
+        
+        // to change state
+        // registerBrand = nil
+    }
+    
+    private func sendCodeBySms() {
         let phoneNumber = extractPhoneNumber(text: extractPhoneNumber(text: editablePhoneNumberMask))
         showProgressIndicator()
         UsersApi().sendCodeBySms(phoneNumber: phoneNumber) {userDict, error in
@@ -163,7 +200,7 @@ class LoginViewController: UIViewController {
     internal func showMainNavigationController() {
         showViewControllerWithStoryboardID("FEED_VC")
     }
-    
+ 
     func updatePhoneFieldNumber(textField: UITextField, phoneNumberMask: String) {
         let threshold = phoneNumberMask.range(for: "#")?.lowerBound ?? phoneNumberMask.range!.upperBound
         let boldRange = Range(uncheckedBounds: (lower: phoneNumberMask.range!.lowerBound, upper: threshold))
@@ -187,7 +224,12 @@ class LoginViewController: UIViewController {
     }
     
     @objc internal func dismissPhoneView() {
-        self.dismiss(animated: true, completion: nil)
+        if registerBrand != nil {
+            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.isNavigationBarHidden = false
+        } else {
+          self.dismiss(animated: true, completion: nil)
+        }
     }
     
 }
