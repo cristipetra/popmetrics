@@ -58,6 +58,21 @@ class ResponseWebsite: Mappable {
     }
 }
 
+class ResponseSignup: Mappable {
+    var code: String?
+    var message: String?
+    var data: String?
+    
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map: Map) {
+        code      <- map["code"]
+        message   <- map["message"]
+        data      <- map["data"]
+    }
+}
 
 class ResponseWrapper<T:Mappable>: Mappable {
     

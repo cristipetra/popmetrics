@@ -23,23 +23,24 @@ class WebsiteViewController: BaseViewController {
         super.viewDidLoad()
         
         websiteTextField.delegate = self
+        
         let tapDismissKeyboard: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         self.view.addGestureRecognizer(tapDismissKeyboard)
-        
-        websiteTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         isHeroEnabled = true
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
         
         btnSubmit.isEnabled = false
-        
         setNavigationBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        btnSubmit.isEnabled = false
+        websiteTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
-        
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        websiteTextField.removeTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    }
         
     private func setNavigationBar() {
         self.navigationController?.navigationBar.isTranslucent = false
@@ -62,7 +63,7 @@ class WebsiteViewController: BaseViewController {
         self.navigationItem.leftBarButtonItems = [leftSpace, backButton]
     }
     
-    private func openNextScreen() {
+    private func openNextScreen(_ registerBrand: RegisterBrand) {
         let loginVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         loginVC.registerBrand = registerBrand
         
@@ -81,40 +82,50 @@ class WebsiteViewController: BaseViewController {
     }
     
     @IBAction func handlerSubmit(_ sender: UIButton) {
-        self.registerBrand.website = websiteTextField.text!
+        guard let website = self.websiteTextField.text, !website.isEmpty else {
+            self.btnSubmit.isEnabled = false
+            return
+        }
         
+        self.registerBrand.website = website
         self.showProgressIndicator()
         
-        BrandApi().valideBrandWebsite(websiteTextField.text!) { (response) in
+        BrandApi().valideBrandWebsite(website) { (response) in
             self.hideProgressIndicator()
             
-            if response?.code == "invalid_input" {
-                let notificationObj = ["title": "Message",
-                                       "subtitle": response?.message!,
-                                       "type": "info",
-                                       "sound": "default"
-                ]
-                let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
-                self.showBannerForNotification(pnotification)
+            if response?.code == "success" {
+                self.registerBrand.website = response?.data!
+                self.openNextScreen(self.registerBrand)
                 
-                return
             } else {
-                if  response?.data != nil {
-                    // set website from response; can be change on server
-                    self.registerBrand.website = response?.data!
-                }
-                self.openNextScreen()
+                let title = "Error"
+                let message = response?.message ?? "An error has ocurred. Please try again later."
+                
+                self.notifyUser(title: title, message: message)
             }
         }
-        //self.openNextScreen()
+        
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if (textField.text?.contains("."))! {
-             btnSubmit.isEnabled = true
-        } else {
+        guard let website = self.websiteTextField.text, !website.isEmpty else {
             btnSubmit.isEnabled = false
+            return
         }
+        btnSubmit.isEnabled = true
+        
+    }
+    
+    func notifyUser(title: String, message: String, type: String = "info"){
+        let notificationObj = [
+            "title": title,
+            "subtitle": message,
+            "type": type,
+            "sound": "default"
+        ]
+    
+        let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+        self.showBannerForNotification(pnotification)
     }
     
 }

@@ -143,23 +143,23 @@ class LoginViewController: UIViewController {
         
         showProgressIndicator()
         
-        UsersApi().registerNewUser(name: name, website: website, phone: phoneNumber) { (userDict, error) in
+        UsersApi().registerNewUser(name: name, website: website, phone: phoneNumber) { response in
             self.hideProgressIndicator()
-            if error != nil {
-                var message = "An error has occurred. Please try again later."
-                EZAlertController.alert("Error", message: message)
-            } else {
-                
-                //SUCCESS
+            if response.code == "success" {
                 self.registerBrand = nil
                 let codeVC = CodeViewController();
-                codeVC.phoneNo = phoneNumber;
+                codeVC.phoneNo = response.data;
                 self.present(codeVC, animated: true, completion: nil)
+
+            } else {
+                let title = "Error"
+                let message = response.message ?? "An error has ocurred. Please try again later."
+                
+                EZAlertController.alert(title, message: message)
+
             }
         }
         
-        // to change state
-        // registerBrand = nil
     }
     
     private func sendCodeBySms() {
@@ -176,16 +176,24 @@ class LoginViewController: UIViewController {
                 return
             } else {
                 if let code = userDict?["code"] as? String {
-                    if code == "invalid_input" {
-                        self.sendInAppNotification()
+                    if code == "success" {
+                        let codeVC = CodeViewController();
+                        codeVC.phoneNo = phoneNumber;
+                        self.present(codeVC, animated: true, completion: nil)
                         return
+                    }else{
+                        var message = "An error has occured. Please try again later."
+                        if let msg = userDict?["message"] as? String{
+                            message = msg
+                        }
+                        
+                        EZAlertController.alert("Error", message: message)
+                        return
+
                     }
+                    
                 }
                 
-                let codeVC = CodeViewController();
-                codeVC.phoneNo = phoneNumber;
-                self.present(codeVC, animated: true, completion: nil)
-                //self.presentFromDirection(viewController: codeVC, direction: .right)
             }
         }
     }
