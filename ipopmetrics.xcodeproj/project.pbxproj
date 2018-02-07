@@ -22,8 +22,9 @@
 		083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083938FE1F63C334007DDA37 /* MainTabInfo.swift */; };
 		0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */; };
 		0848280F1F39F9200054B04C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848280E1F39F9200054B04C /* HeaderView.swift */; };
-		0849662B202B18D3002CE902 /* UIBarButtonItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849662A202B18D3002CE902 /* UIBarButtonItemExtensions.swift */; };
+		0849662B202B18D3002CE902 /* UIBarButtonItem+Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849662A202B18D3002CE902 /* UIBarButtonItem+Badge.swift */; };
 		0849662D202B1D61002CE902 /* MessagesBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849662C202B1D61002CE902 /* MessagesBadgeView.swift */; };
+		0849662F202B3213002CE902 /* BadgeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849662E202B3213002CE902 /* BadgeBarButtonItem.swift */; };
 		084E54E11F827F7D007D6F4F /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E54E01F827F7D007D6F4F /* NoteView.swift */; };
 		085053FE1F2787A100FE8234 /* CalendarHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085053FD1F2787A100FE8234 /* CalendarHubController.swift */; };
 		085054011F2793AE00FE8234 /* CalendarCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085054001F2793AE00FE8234 /* CalendarCard.xib */; };
@@ -264,8 +265,9 @@
 		083938FE1F63C334007DDA37 /* MainTabInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabInfo.swift; sourceTree = "<group>"; };
 		0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellTransition.swift; sourceTree = "<group>"; };
 		0848280E1F39F9200054B04C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		0849662A202B18D3002CE902 /* UIBarButtonItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtensions.swift; sourceTree = "<group>"; };
+		0849662A202B18D3002CE902 /* UIBarButtonItem+Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Badge.swift"; sourceTree = "<group>"; };
 		0849662C202B1D61002CE902 /* MessagesBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesBadgeView.swift; sourceTree = "<group>"; };
+		0849662E202B3213002CE902 /* BadgeBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeBarButtonItem.swift; sourceTree = "<group>"; };
 		084E54E01F827F7D007D6F4F /* NoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		085053FD1F2787A100FE8234 /* CalendarHubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHubController.swift; sourceTree = "<group>"; };
 		085054001F2793AE00FE8234 /* CalendarCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCard.xib; sourceTree = "<group>"; };
@@ -536,7 +538,7 @@
 				086EDE451FC8651B002F4140 /* UIViewExtensions.swift */,
 				081B92491FCEF205006D3BAB /* StringExtensions.swift */,
 				08D125022019F01F00D9D78B /* DateExtensions.swift */,
-				0849662A202B18D3002CE902 /* UIBarButtonItemExtensions.swift */,
+				0849662A202B18D3002CE902 /* UIBarButtonItem+Badge.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -843,6 +845,7 @@
 				08B968A91FBB141400482CDE /* ChangeBrandViewController.swift */,
 				088728961FFCE98700BE9882 /* AboutViewController.swift */,
 				0849662C202B1D61002CE902 /* MessagesBadgeView.swift */,
+				0849662E202B3213002CE902 /* BadgeBarButtonItem.swift */,
 			);
 			path = menu;
 			sourceTree = "<group>";
@@ -1433,7 +1436,7 @@
 				08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */,
 				08B4EBB31FC56ACE00BFC5A1 /* TextFieldValidator.swift in Sources */,
 				08AF049A1F46FBB60040012B /* SocialPostInCardCell.swift in Sources */,
-				0849662B202B18D3002CE902 /* UIBarButtonItemExtensions.swift in Sources */,
+				0849662B202B18D3002CE902 /* UIBarButtonItem+Badge.swift in Sources */,
 				11DD967E1FC4FA5400386F1E /* FeedApi.swift in Sources */,
 				08078F421FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift in Sources */,
 				086B453C1FDC22530043F981 /* PersistentFooter.swift in Sources */,
@@ -1513,6 +1516,7 @@
 				08B4EB971FC569EC00BFC5A1 /* CalendarStore.swift in Sources */,
 				088BBEAA1F58214300AD5414 /* StatsEmptyCell.swift in Sources */,
 				085053FE1F2787A100FE8234 /* CalendarHubController.swift in Sources */,
+				0849662F202B3213002CE902 /* BadgeBarButtonItem.swift in Sources */,
 				089267741F86617600D7B99E /* OfflineBanner.swift in Sources */,
 				08913DA11FE7BEFB0085BE36 /* CalendarCompletedViewCell.swift in Sources */,
 				088F14FA1FB9C6080004F925 /* StaticSettingsViewController.swift in Sources */,

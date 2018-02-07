@@ -126,7 +126,10 @@ class MenuViewController: ElasticModalViewController {
         let count = Intercom.unreadConversationCount()
         if count < 1 {
             messageBadge.isHidden = true
+        } else  {
+            messageBadge.isHidden = false
         }
+        
         messageBadge.changeValue(count)
     }
     

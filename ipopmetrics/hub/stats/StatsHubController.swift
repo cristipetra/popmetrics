@@ -74,7 +74,7 @@ class StatsHubController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.feedBackgroundColor()
-        setUpNavigationBar()
+        //setUpNavigationBar()
         
         registerCellsForTable()
         
@@ -113,6 +113,10 @@ class StatsHubController: BaseViewController {
                 self.transitionView.alpha = 1
             }
         )
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setUpNavigationBar()
     }
     
     internal func registerCellsForTable() {
@@ -221,7 +225,8 @@ class StatsHubController: BaseViewController {
         
     }
 
-    
+    internal var leftButtonItem: BadgeBarButtonItem!
+
     internal func setUpNavigationBar() {
         let text = UIBarButtonItem(title: "Statistics", style: .plain, target: self, action: #selector(handlerClickMenu))
         text.tintColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1.0)
@@ -232,8 +237,15 @@ class StatsHubController: BaseViewController {
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = false
         
-        let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "Icon_Menu"), style: .plain, target: self, action: #selector(handlerClickMenu))
-        self.navigationItem.leftBarButtonItem = leftButtonItem
+        leftButtonItem = BadgeBarButtonItem.init(image: UIImage(named: "Icon_Menu"), style: .plain, target: self, action: #selector(handlerClickMenu))
+        
+        leftButtonItem.addBadgeObservers()
+        leftButtonItem.updateBadge()
+        
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (tim) in
+            self.leftButtonItem.updateBadge()
+        }
+        
         self.navigationItem.leftBarButtonItems = [leftButtonItem, text]
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     }

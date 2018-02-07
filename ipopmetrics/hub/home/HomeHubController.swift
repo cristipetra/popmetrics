@@ -13,7 +13,7 @@ import DGElasticPullToRefresh
 import BubbleTransition
 import EZAlertController
 import RealmSwift
-
+import Intercom
 
 enum HomeSection: String {
     
@@ -116,7 +116,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         // Style elements
         self.view.backgroundColor = UIColor.feedBackgroundColor()
-        setUpNavigationBar()
+//        setUpNavigationBar()
         
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
@@ -136,6 +136,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let nc = NotificationCenter.default
         nc.addObserver(forName:NSNotification.Name(rawValue: "CardActionNotification"), object:nil, queue:nil, using:catchCardActionNotification)
         nc.addObserver(forName:Notification.Popmetrics.UiRefreshRequired, object:nil, queue:nil, using:catchUiRefreshRequiredNotification)
+       
         
         let requiredActionNib = UINib(nibName: "RequiredActionCard", bundle: nil)
         tableView.register(requiredActionNib, forCellReuseIdentifier: "RequriedActionCard")
@@ -178,6 +179,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         setupTopHeaderView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        setUpNavigationBar()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -204,6 +208,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         NotificationCenter.default.removeObserver(self)
     }
     
+    internal var leftButtonItem: BadgeBarButtonItem!
+    
     internal func setUpNavigationBar() {
         let text = UIBarButtonItem(title: "Home Feed", style: .plain, target: self, action: #selector(handlerClickMenu))
         text.tintColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1.0)
@@ -214,12 +220,18 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = false
         
-        let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "Icon_Menu"), style: .plain, target: self, action: #selector(handlerClickMenu))
-        self.navigationItem.leftBarButtonItem = leftButtonItem
+        leftButtonItem = BadgeBarButtonItem.init(image: UIImage(named: "Icon_Menu"), style: .plain, target: self, action: #selector(handlerClickMenu))
+        
+        leftButtonItem.addBadgeObservers()
+        leftButtonItem.updateBadge()
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (tim) in
+            self.leftButtonItem.updateBadge()
+        }
+        
         self.navigationItem.leftBarButtonItems = [leftButtonItem, text]
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
+        
     }
-    
     
     @objc func handlerClickMenu() {
         let modalViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MENU_VC") as! MenuViewController
@@ -227,6 +239,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         modalViewController.modalTransition.edge = .left
         modalViewController.modalTransition.radiusFactor = 0.3
         self.present(modalViewController, animated: true, completion: nil)
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

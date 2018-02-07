@@ -107,7 +107,7 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpNavigationBar()
+        //setUpNavigationBar()
 
         registerCellsForTable()
         
@@ -143,6 +143,8 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
         }
         
     }
+    
+    
     
     func createItemsLocally() {
         //store.realm.deleteAll()
@@ -345,6 +347,8 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
 
     override func viewDidAppear(_ animated: Bool) {
         tableView.isHidden = false
+        
+        setUpNavigationBar()
     }
     
     func setupTopHeaderView() {
@@ -357,6 +361,8 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
         }
     }
     
+    internal var leftButtonItem: BadgeBarButtonItem!
+    
     internal func setUpNavigationBar() {
         let text = UIBarButtonItem(title: "Calendar", style: .plain, target: self, action: #selector(handlerClickMenu))
         text.tintColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1.0)
@@ -367,8 +373,15 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = false
         
-        let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "Icon_Menu"), style: .plain, target: self, action: #selector(handlerClickMenu))
-        self.navigationItem.leftBarButtonItem = leftButtonItem
+        leftButtonItem = BadgeBarButtonItem.init(image: UIImage(named: "Icon_Menu"), style: .plain, target: self, action: #selector(handlerClickMenu))
+        
+        leftButtonItem.addBadgeObservers()
+        leftButtonItem.updateBadge()
+        
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (tim) in
+            self.leftButtonItem.updateBadge()
+        }
+        
         self.navigationItem.leftBarButtonItems = [leftButtonItem, text]
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     }
