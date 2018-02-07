@@ -9,25 +9,25 @@
 import Foundation
 
 // MARK: - Constants
-/*
+
 private let PROTOCOL = "https"
 private let HOST = "api.popmetrics.io"
 private let PORT = 443
 public let CHAT_URL = "https://chat.popmetrics.ai/#/aimee/start-with-callback/58fe437ac7631a139803757e/59b2a6288a5da50da5790fd7"
-*/
+
 
 
 //private let PROTOCOL = "https"
 //private let HOST = "testapi.popmetrics.ai"
 //private let PORT = 443
-public let CHAT_URL = "https://testchat.popmetrics.ai/#/aimee/start-with-callback/58fe437ac7631a139803757e/59b2a6288a5da50da5790fd7"
+//public let CHAT_URL = "https://testchat.popmetrics.ai/#/aimee/start-with-callback/58fe437ac7631a139803757e/59b2a6288a5da50da5790fd7"
 
 
-private let PROTOCOL = "http"
-private let HOST = "192.168.7.106"
+//private let PROTOCOL = "http"
+//private let HOST = "192.168.7.106"
 // private let HOST = "10.0.1.10"
 // private let HOST = "172.20.10.2"
-private let PORT = 5030
+//private let PORT = 5030
 
 
 private let LOGIN_PATH = "/api/caas/sign_in_with_email"

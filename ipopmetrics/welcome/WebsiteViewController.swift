@@ -35,10 +35,12 @@ class WebsiteViewController: BaseViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         websiteTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         websiteTextField.removeTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
         
