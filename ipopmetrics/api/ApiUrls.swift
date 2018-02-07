@@ -84,13 +84,7 @@ class ApiUrls {
     }
     
     static func getBaseUrl() -> String {
-        if (PORT == 80 || PORT == 443) {
-            return escapedUrl(String(format: "%@://%@", PROTOCOL, HOST, PORT))
-        }
-        else {
-            
-            return escapedUrl(String(format: "%@://%@:%d", PROTOCOL, HOST, PORT))
-        }
+        return Bundle.main.apiBaseURL
     }
     
     

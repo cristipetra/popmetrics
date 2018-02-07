@@ -2,6 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>Popmetrics</key>
+    <dict>
+        <key>APIBaseURL</key>
+        <string>https://api.popmetrics.io</string>
+        <key>ChatURL</key>
+        <string>https://chat.popmetrics.ai/#/aimee/start-with-callback/58fe437ac7631a139803757e/59b2a6288a5da50da5790fd7</string>
+    </dict>
+    
+    
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
