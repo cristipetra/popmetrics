@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -111,10 +111,39 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MTa-KH-EBT">
-                                <rect key="frame" x="29" y="187" width="159" height="165"/>
+                                <rect key="frame" x="29" y="187" width="320" height="130"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6l-Qs-wl4">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GtK-VO-p0W">
+                                                <rect key="frame" x="0.0" y="3" width="240" height="33"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                                <state key="normal" title="MESSAGES">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="handlerClickMessages:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="lDZ-ue-Dce"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X3d-RC-P5M" customClass="MessagesBadgeView" customModule="ipopmetrics" customModuleProvider="target">
+                                                <rect key="frame" x="295" y="7.5" width="25" height="25"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="25" id="L0r-zW-CH4"/>
+                                                    <constraint firstAttribute="height" constant="25" id="ZqM-8F-KRQ"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="X3d-RC-P5M" firstAttribute="centerY" secondItem="f6l-Qs-wl4" secondAttribute="centerY" id="eSd-mZ-d5Z"/>
+                                            <constraint firstAttribute="trailing" secondItem="X3d-RC-P5M" secondAttribute="trailing" id="uXy-Hr-Ugb"/>
+                                            <constraint firstAttribute="height" constant="40" id="zQU-9Z-C18"/>
+                                        </constraints>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCx-hh-YS8">
-                                        <rect key="frame" x="0.0" y="0.0" width="159" height="33"/>
+                                        <rect key="frame" x="0.0" y="40" width="320" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="SETTINGS">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -124,7 +153,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWk-9n-6Qe" userLabel="ABOUT POPMETRICS">
-                                        <rect key="frame" x="0.0" y="33" width="159" height="33"/>
+                                        <rect key="frame" x="0.0" y="70" width="320" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="ABOUT POPMETRICS">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -134,7 +163,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxF-Rq-8jP">
-                                        <rect key="frame" x="0.0" y="66" width="159" height="33"/>
+                                        <rect key="frame" x="0.0" y="100" width="320" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="LEGAL INFORMATION">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -143,31 +172,10 @@
                                             <action selector="handlerLegalBits:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="e1R-VV-qss"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kj0-qS-TrO">
-                                        <rect key="frame" x="0.0" y="99" width="159" height="33"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
-                                        <state key="normal" title="CONTACT US">
-                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="handlerContactUsPressed:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="MT7-Fg-jei"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0Y-zj-yaN">
-                                        <rect key="frame" x="0.0" y="132" width="159" height="33"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
-                                        <state key="normal" title="FEEDBACK">
-                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="feedbackButtonPresset:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="Bk6-cL-SbL"/>
-                                            <action selector="handlerContactUsPressed:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="q4V-Ek-F14"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybe-Us-fFL">
-                                <rect key="frame" x="29" y="401" width="63" height="33"/>
+                                <rect key="frame" x="29" y="366" width="62" height="30"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="LOGOUT">
                                     <color key="titleColor" red="1" green="0.46666666670000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -191,7 +199,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOi-K4-4l3">
-                                <rect key="frame" x="3" y="380" width="370" height="1"/>
+                                <rect key="frame" x="3" y="345" width="370" height="1"/>
                                 <color key="backgroundColor" red="0.74117647060000003" green="0.7725490196" blue="0.79607843140000001" alpha="0.50449486301369861" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="16o-2h-RXg"/>
@@ -255,6 +263,7 @@
                             <constraint firstItem="JhQ-kz-dOw" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leading" constant="3" id="XAE-4u-ISC"/>
                             <constraint firstItem="lCf-hh-gEv" firstAttribute="top" secondItem="rSp-0Z-2F3" secondAttribute="bottom" constant="-10" id="YjE-h1-uy1"/>
                             <constraint firstItem="LZd-QI-7te" firstAttribute="top" secondItem="eP9-wi-QSE" secondAttribute="bottom" constant="20" id="Zpu-vz-KCu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MTa-KH-EBT" secondAttribute="trailing" constant="10" id="bZ4-AW-uIY"/>
                             <constraint firstItem="Pfw-ZC-4fg" firstAttribute="top" secondItem="LZd-QI-7te" secondAttribute="bottom" constant="20" id="ce6-Lf-5n0"/>
                             <constraint firstItem="iOi-K4-4l3" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leading" constant="3" id="dpe-Wu-n3D"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ybe-Us-fFL" secondAttribute="trailingMargin" id="ecg-Iz-CAm"/>
@@ -274,8 +283,8 @@
                         <outlet property="changeBrandBtn" destination="gav-CH-di9" id="MCH-Or-Uvf"/>
                         <outlet property="checkBtn" destination="HcS-fh-OPC" id="DL8-C7-WJO"/>
                         <outlet property="closeButton" destination="Vqp-bm-yP8" id="jTj-XT-VJy"/>
-                        <outlet property="feedbackButton" destination="E0Y-zj-yaN" id="mLh-kP-h87"/>
                         <outlet property="logoImage" destination="eP9-wi-QSE" id="OYZ-aC-Ged"/>
+                        <outlet property="messageBadge" destination="X3d-RC-P5M" id="OzJ-G6-SpR"/>
                         <outlet property="popmetricsImageView" destination="eP9-wi-QSE" id="Ayc-ih-Fny"/>
                     </connections>
                 </viewController>

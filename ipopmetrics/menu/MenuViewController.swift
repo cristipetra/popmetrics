@@ -13,6 +13,7 @@ import Haptica
 import MessageUI
 import Reachability
 import Intercom
+import EZAlertController
 
 class MenuViewController: ElasticModalViewController {
     
@@ -37,6 +38,7 @@ class MenuViewController: ElasticModalViewController {
     var dismissByBackgroundTouch = false
     var dismissByBackgroundDrag = true
     //var dismissByForegroundDrag = true
+    @IBOutlet weak var messageBadge: MessagesBadgeView!
     
     var secretTaps = 0
     
@@ -55,12 +57,15 @@ class MenuViewController: ElasticModalViewController {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
         // Add the recognizer to your view.
         popmetricsImageView.addGestureRecognizer(tapRecognizer)
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUnreadCount(_:)), name: NSNotification.Name.IntercomUnreadConversationCountDidChange, object: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         secretTaps = 0
-        let feedback_notifications_count = Intercom.unreadConversationCount()
-        self.feedbackButton.setTitle("FEEDBACK (\(feedback_notifications_count))", for: UIControlState.normal)
+        updateBadgeCount()
     }
     
     func setupOfflineBanner() {
@@ -111,6 +116,18 @@ class MenuViewController: ElasticModalViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+    }
+    
+    @objc func updateUnreadCount(_ count: Int) {
+        updateBadgeCount()
+    }
+    
+    private func updateBadgeCount() {
+        let count = Intercom.unreadConversationCount()
+        if count < 1 {
+            messageBadge.isHidden = true
+        }
+        messageBadge.changeValue(count)
     }
     
     private func setup() {
@@ -192,10 +209,10 @@ class MenuViewController: ElasticModalViewController {
         })
     }
     
-    
-    @IBAction func feedbackButtonPresset(_ sender: Any) {
+    @IBAction func handlerClickMessages(_ sender: UIButton) {
         Intercom.presentMessenger()
     }
+
     
 }
 
