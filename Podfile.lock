@@ -34,7 +34,7 @@ PODS:
   - ElasticTransition (3.1.1):
     - MotionAnimation (~> 0.1.2)
   - EZAlertController (3.2)
-  - Fabric (1.7.2)
+  - Fabric (1.7.3)
   - FacebookCore (0.3.0):
     - Bolts (~> 1.8)
     - FBSDKCoreKit (~> 4.27)
@@ -94,7 +94,7 @@ PODS:
     - IOSLinkedInAPIFix (>= 2.0.4)
   - lottie-ios (2.5.0)
   - M13ProgressSuite (1.2.9)
-  - markymark (4.0.2)
+  - markymark (4.0.3)
   - MarqueeLabel/Swift (3.1.4)
   - MGSwipeTableCell (1.6.6)
   - MJCalendar (0.4.0):
@@ -212,7 +212,7 @@ SPEC CHECKSUMS:
   DGElasticPullToRefresh: 28f11a6026302a90f8ffebbc6e24748e584dddd3
   ElasticTransition: 72405dae44324293360776bb7f6579cdab428dd4
   EZAlertController: 633be01320bed47720be54054df47667d61c2481
-  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
+  Fabric: bb495bb9a7a7677c6d03a1f8b83d95bc49b47e41
   FacebookCore: 3ffa190a3f1f96cec0e44d3fc221bc322c595ffa
   FacebookLogin: 0af839ea858faef99550d16596b87b4a8e8906e6
   FBSDKCoreKit: 7c4bba2877781a131ab5d54c0a78c405d4307b62
@@ -234,7 +234,7 @@ SPEC CHECKSUMS:
   LinkedinSwift: fba071cbbcedf42471f45c0cd2438cba3f6c9c7c
   lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
   M13ProgressSuite: ea9f7263e73e9215e6849dfa54e29ee0ad6a145c
-  markymark: 0415d62ff86424bb1193f995aaf46a246510ac38
+  markymark: 17ac3be242f46548d9279e33e73a86375c0aacba
   MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
   MGSwipeTableCell: c3bc6e261e7bc06c112909fe3fb8205de286082c
   MJCalendar: a529b085b0b988ae7b493ce7c000946cc186bf0e

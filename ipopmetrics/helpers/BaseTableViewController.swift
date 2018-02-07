@@ -11,6 +11,7 @@ import Reachability
 import NotificationBannerSwift
 import ObjectMapper
 import URLNavigator
+import Intercom
 
 class BaseTableViewController: UITableViewController {
     

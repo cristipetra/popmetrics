@@ -4,10 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ipopmetrics.xcscheme</key>
+		<key>Live.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>Localdev.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>48</integer>
+		</dict>
+		<key>Staging.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>46</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -23,6 +33,11 @@
 			<true/>
 		</dict>
 		<key>1178D6951E1E5AD9005B96C3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>11E59554202B5C9F007AACDB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

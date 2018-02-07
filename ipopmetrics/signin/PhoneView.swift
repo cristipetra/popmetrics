@@ -24,7 +24,7 @@ class PhoneView: UIView {
     lazy var messageLbl : UILabel = {
         let msgLbl = UILabel()
         msgLbl.translatesAutoresizingMaskIntoConstraints = false
-        msgLbl.text = "We'll send you a magic code that you\n can use to login."
+        msgLbl.text = "Enter your cell number and we'll send you a magic code that you can use to login."
         msgLbl.font = UIFont(name: FontBook.regular, size: 15)
         msgLbl.textColor = PopmetricsColor.visitSecondColor
         return msgLbl

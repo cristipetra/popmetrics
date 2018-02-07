@@ -51,6 +51,24 @@ public extension Notification {
 
 var navigator: Navigator = Navigator()
 
+extension Bundle {
+    var apiBaseURL: String {
+        guard let pop = object(forInfoDictionaryKey: "Popmetrics") as! [String:String]! else { return "" }
+        return pop["APIBaseURL"]!
+    }
+    
+    var intercomAppId: String {
+        guard let pop = object(forInfoDictionaryKey: "Popmetrics") as! [String:String]! else { return "" }
+        return pop["IntercomAppId"]!
+    }
+    var intercomAppKey: String {
+        guard let pop = object(forInfoDictionaryKey: "Popmetrics") as! [String:String]! else { return "" }
+        return pop["IntercomAppKey"]!
+    }
+    
+    
+}
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

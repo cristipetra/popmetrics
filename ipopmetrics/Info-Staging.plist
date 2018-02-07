@@ -5,13 +5,13 @@
 	<key>Popmetrics</key>
 	<dict>
 		<key>APIBaseURL</key>
-		<string>https://api.popmetrics.io</string>
+		<string>https://testapi.popmetrics.ai</string>
 		<key>ChatURL</key>
-		<string>https://chat.popmetrics.ai/#/aimee/start-with-callback/58fe437ac7631a139803757e/59b2a6288a5da50da5790fd7</string>
+		<string>https://testchat.popmetrics.ai/#/aimee/start-with-callback/58fe437ac7631a139803757e/59b2a6288a5da50da5790fd7</string>
 		<key>IntercomAppId</key>
-		<string>f2713n8d</string>
+		<string>w4ce6nmv</string>
 		<key>IntercomAppKey</key>
-		<string>ios_sdk-56bb7df2b3d88934f7d564b7a353c66b68b54f12</string>
+		<string>ios_sdk-b07a4fa44e59e0914ce414c278c284e2b18e6caa</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
@@ -30,7 +30,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.4</string>
+	<string>1.0.3</string>
 	<key>CFBundleSignature</key>
 	<string></string>
 	<key>CFBundleURLTypes</key>
@@ -56,9 +56,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>100</string>
-	<key>CFBundleIconFile</key>
-	<string></string>
+	<string>8100</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
