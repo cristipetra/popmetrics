@@ -12,6 +12,7 @@ import SafariServices
 import Haptica
 import MessageUI
 import Reachability
+import Intercom
 
 class MenuViewController: ElasticModalViewController {
     
@@ -19,6 +20,7 @@ class MenuViewController: ElasticModalViewController {
     @IBOutlet weak var changeBrandBtn: UIButton!
     @IBOutlet weak var checkBtn: UIButton!
     @IBOutlet weak var brandNameLabel: UILabel!
+    @IBOutlet weak var feedbackButton: UIButton!
     
     @IBOutlet weak var popmetricsImageView: UIImageView!
     @IBOutlet weak var closeButton: UIButton! {
@@ -57,6 +59,8 @@ class MenuViewController: ElasticModalViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         secretTaps = 0
+        let feedback_notifications_count = Intercom.unreadConversationCount()
+        self.feedbackButton.setTitle("FEEDBACK (\(feedback_notifications_count))", for: UIControlState.normal)
     }
     
     func setupOfflineBanner() {
@@ -142,6 +146,8 @@ class MenuViewController: ElasticModalViewController {
         clearStores()
         setInitialDateSync()
         UserStore.getInstance().clearCredentials()
+        Intercom.logout()
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setInitialViewController()
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
@@ -184,6 +190,11 @@ class MenuViewController: ElasticModalViewController {
         DispatchQueue.main.async(execute: {
             self.present(alertController, animated: true, completion: nil)
         })
+    }
+    
+    
+    @IBAction func feedbackButtonPresset(_ sender: Any) {
+        Intercom.presentMessenger()
     }
     
 }

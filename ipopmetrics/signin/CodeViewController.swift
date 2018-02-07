@@ -12,7 +12,7 @@ import EZAlertController
 import SafariServices
 import Hero
 import ObjectMapper
-import UserNotifications
+import Intercom
 
 class CodeViewController: UIViewController {
     
@@ -98,6 +98,22 @@ class CodeViewController: UIViewController {
                 let userSettings = Mapper<UserSettings>().map(JSONObject: tmpUserSettingsJson)
                 
                 UserStore.getInstance().storeLocalUserSettings(userSettings!)
+                
+                //Intercom
+                let currentUser = UserStore.getInstance().getLocalUserAccount()
+                
+                Intercom.registerUser(withUserId: currentUser.id!)
+                /*
+                 let brand = ICMCompany()
+                 brand.name = UsersStore.getInstance().currentBrandId
+                 brand.companyId = UsersStore.getInstance().currentBrandName
+                 */
+                let userAttributes = ICMUserAttributes()
+                //userAttributes.companies = [company]
+                userAttributes.name = currentUser.name
+                userAttributes.email = currentUser.email
+                userAttributes.phone = currentUser.phone
+                Intercom.updateUser(userAttributes)
                 
                 SyncService.getInstance().syncAll(silent: false)
                 

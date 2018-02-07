@@ -58,4 +58,6 @@ target 'ipopmetrics' do
   pod 'GTProgressBar'
   pod 'LinkedinSwift'
   
+  pod 'Intercom'
+
 end
