@@ -13,23 +13,19 @@ import Alamofire
 class BrandApi: BaseApi {
     
     func valideBrandWebsite(_ website: String,
-                            callback: @escaping(_ userDict: [String: Any]?, _ error: ApiError?) -> Void) {
+                            callback: @escaping(_ response: ResponseWebsite?) -> Void) {
         let url = ApiUrls.composedBaseUrl(String(format:"/api/brand/validate_brand_website"))
         let params = ["website": website]
-                            
         
-        Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { response in
+        Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseObject { (response: DataResponse<ResponseWebsite>) in
             
-            if let err = self.createErrorWithHttpResponse(response: response.response) {
-                callback(nil, err)
-                return
+            let levelOneHandled = super.handleNotOkCodes(response: response.response)
+            
+            if !levelOneHandled {
+                callback(response.result.value)
             }
-        
-            if let resultDict = response.result.value as? [String: Any] {
-                callback(resultDict, nil)
-            }
+            
         }
     }
-    
+ 
 }
-

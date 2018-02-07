@@ -8,6 +8,7 @@
 
 import UIKit
 import EZAlertController
+import ObjectMapper
 
 class WebsiteViewController: BaseViewController {
     
@@ -80,26 +81,32 @@ class WebsiteViewController: BaseViewController {
     }
     
     @IBAction func handlerSubmit(_ sender: UIButton) {
-        // TODO: Fix api
         self.registerBrand.website = websiteTextField.text!
         
         self.showProgressIndicator()
-        BrandApi().valideBrandWebsite(websiteTextField.text!) { (response, error) in
+        
+        BrandApi().valideBrandWebsite(websiteTextField.text!) { (response) in
             self.hideProgressIndicator()
             
-            if error != nil {
-                var message = "An error has occurred. Please try again later."
-                EZAlertController.alert("Error", message: message)
+            if response?.code == "invalid_input" {
+                let notificationObj = ["title": "Message",
+                                       "subtitle": response?.message!,
+                                       "type": "info",
+                                       "sound": "default"
+                ]
+                let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+                self.showBannerForNotification(pnotification)
+                
                 return
             } else {
-                if  response!["data"] != nil {
-                    // set website from response; can be parsed on server
-                    self.registerBrand.website = response!["data"] as? String
+                if  response?.data != nil {
+                    // set website from response; can be change on server
+                    self.registerBrand.website = response?.data!
                 }
                 self.openNextScreen()
             }
         }
-        
+        //self.openNextScreen()
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
