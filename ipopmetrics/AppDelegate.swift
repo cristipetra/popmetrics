@@ -53,7 +53,8 @@ var navigator: Navigator = Navigator()
 
 extension Bundle {
     var apiBaseURL: String {
-        return object(forInfoDictionaryKey: "APIBaseURL") as? String ?? ""
+        guard let pop = object(forInfoDictionaryKey: "Popmetrics") as! [String:String]! else { return "" }
+        return pop["APIBaseURL"]!
     }
 }
 
