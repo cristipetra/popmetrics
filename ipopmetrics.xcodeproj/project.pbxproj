@@ -888,7 +888,7 @@
 		113DE3011FC8AEE800AE6DE9 /* PaidActionCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaidActionCardCell.swift; sourceTree = "<group>"; };
 		1148D73C1FBF39AE006EB5BB /* NavigationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMap.swift; sourceTree = "<group>"; };
 		116540BB1EEAA17A00417D61 /* ipopmetrics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ipopmetrics.entitlements; sourceTree = "<group>"; };
-		1178D6751E1E5AD9005B96C3 /* ipopmetrics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ipopmetrics.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1178D6751E1E5AD9005B96C3 /* Live.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Live.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1178D67F1E1E5AD9005B96C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1178D6811E1E5AD9005B96C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1132,7 +1132,7 @@
 		1178D6761E1E5AD9005B96C3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1178D6751E1E5AD9005B96C3 /* ipopmetrics.app */,
+				1178D6751E1E5AD9005B96C3 /* Live.app */,
 				1178D68B1E1E5AD9005B96C3 /* ipopmetricsTests.xctest */,
 				1178D6961E1E5AD9005B96C3 /* ipopmetricsUITests.xctest */,
 				11E5963E202B5C9F007AACDB /* Staging.app */,
@@ -1491,9 +1491,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1178D6741E1E5AD9005B96C3 /* ipopmetrics */ = {
+		1178D6741E1E5AD9005B96C3 /* Live */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1178D69F1E1E5AD9005B96C3 /* Build configuration list for PBXNativeTarget "ipopmetrics" */;
+			buildConfigurationList = 1178D69F1E1E5AD9005B96C3 /* Build configuration list for PBXNativeTarget "Live" */;
 			buildPhases = (
 				2FDEA40A3122DBE207B14F34 /* [CP] Check Pods Manifest.lock */,
 				1178D6711E1E5AD9005B96C3 /* Sources */,
@@ -1509,9 +1509,9 @@
 			);
 			dependencies = (
 			);
-			name = ipopmetrics;
+			name = Live;
 			productName = ipopmetrics;
-			productReference = 1178D6751E1E5AD9005B96C3 /* ipopmetrics.app */;
+			productReference = 1178D6751E1E5AD9005B96C3 /* Live.app */;
 			productType = "com.apple.product-type.application";
 		};
 		1178D68A1E1E5AD9005B96C3 /* ipopmetricsTests */ = {
@@ -1649,7 +1649,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1178D6741E1E5AD9005B96C3 /* ipopmetrics */,
+				1178D6741E1E5AD9005B96C3 /* Live */,
 				1178D68A1E1E5AD9005B96C3 /* ipopmetricsTests */,
 				1178D6951E1E5AD9005B96C3 /* ipopmetricsUITests */,
 				11E59554202B5C9F007AACDB /* Staging */,
@@ -2945,12 +2945,12 @@
 /* Begin PBXTargetDependency section */
 		1178D68D1E1E5AD9005B96C3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1178D6741E1E5AD9005B96C3 /* ipopmetrics */;
+			target = 1178D6741E1E5AD9005B96C3 /* Live */;
 			targetProxy = 1178D68C1E1E5AD9005B96C3 /* PBXContainerItemProxy */;
 		};
 		1178D6981E1E5AD9005B96C3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1178D6741E1E5AD9005B96C3 /* ipopmetrics */;
+			target = 1178D6741E1E5AD9005B96C3 /* Live */;
 			targetProxy = 1178D6971E1E5AD9005B96C3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -3276,7 +3276,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1178D69F1E1E5AD9005B96C3 /* Build configuration list for PBXNativeTarget "ipopmetrics" */ = {
+		1178D69F1E1E5AD9005B96C3 /* Build configuration list for PBXNativeTarget "Live" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1178D6A01E1E5AD9005B96C3 /* Debug */,
