@@ -225,6 +225,448 @@
 		11DD967C1FC4FA5400386F1E /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96731FC4FA5400386F1E /* BaseApi.swift */; };
 		11DD967D1FC4FA5400386F1E /* ApiUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96741FC4FA5400386F1E /* ApiUrls.swift */; };
 		11DD967E1FC4FA5400386F1E /* FeedApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96751FC4FA5400386F1E /* FeedApi.swift */; };
+		11E59557202B5C9F007AACDB /* TodoTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EE385C1F447C0E005D1D7C /* TodoTopView.swift */; };
+		11E59558202B5C9F007AACDB /* FooterViewStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */; };
+		11E59559202B5C9F007AACDB /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA41FC56ACD00BFC5A1 /* BaseTableViewController.swift */; };
+		11E5955A202B5C9F007AACDB /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA81FC56ACD00BFC5A1 /* UIColorExtensions.swift */; };
+		11E5955B202B5C9F007AACDB /* LDSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC381F1E3D6200D377B2 /* LDSplashView.swift */; };
+		11E5955C202B5C9F007AACDB /* CalendarCardSimpleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0854AF321F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift */; };
+		11E5955D202B5C9F007AACDB /* UsersApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96711FC4FA5400386F1E /* UsersApi.swift */; };
+		11E5955E202B5C9F007AACDB /* StatsSummaryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A62C91ECEDADC0052B478 /* StatsSummaryViewCell.swift */; };
+		11E5955F202B5C9F007AACDB /* SimpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128B3F31ECF256600BDA58C /* SimpleButton.swift */; };
+		11E59560202B5C9F007AACDB /* InstructionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B2DB961FB47522009E45F8 /* InstructionCell.swift */; };
+		11E59561202B5C9F007AACDB /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA91FC56ACD00BFC5A1 /* AppStoryboard.swift */; };
+		11E59562202B5C9F007AACDB /* SimpleButtonStateChangeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128B3F51ECF256600BDA58C /* SimpleButtonStateChangeValue.swift */; };
+		11E59563202B5C9F007AACDB /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A91E2CE05D0021E64A /* CompletionView.swift */; };
+		11E59564202B5C9F007AACDB /* EmailMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CE428E1FD041AE00FF8C80 /* EmailMessages.swift */; };
+		11E59565202B5C9F007AACDB /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085AA0D31F42ECAA0014D4CE /* Todo.swift */; };
+		11E59566202B5C9F007AACDB /* SocialMediaLoginButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088674121FE285A0008DB87E /* SocialMediaLoginButtonsView.swift */; };
+		11E59567202B5C9F007AACDB /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976A81E97C71300B535DF /* AccountViewController.swift */; };
+		11E59568202B5C9F007AACDB /* RequiredActionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E751F4C35AC003ABEFC /* RequiredActionCard.swift */; };
+		11E59569202B5C9F007AACDB /* SettingsLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */; };
+		11E5956A202B5C9F007AACDB /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF99372029A42C00B2AA86 /* NameViewController.swift */; };
+		11E5956B202B5C9F007AACDB /* TableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */; };
+		11E5956C202B5C9F007AACDB /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA21FC56ACD00BFC5A1 /* Validator.swift */; };
+		11E5956D202B5C9F007AACDB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */; };
+		11E5956E202B5C9F007AACDB /* VideoScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485E31F210992005918A1 /* VideoScreenViewController.swift */; };
+		11E5956F202B5C9F007AACDB /* TextFieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA61FC56ACD00BFC5A1 /* TextFieldValidator.swift */; };
+		11E59570202B5C9F007AACDB /* SocialPostInCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AF04991F46FBB60040012B /* SocialPostInCardCell.swift */; };
+		11E59571202B5C9F007AACDB /* UIBarButtonItem+Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849662A202B18D3002CE902 /* UIBarButtonItem+Badge.swift */; };
+		11E59572202B5C9F007AACDB /* FeedApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96751FC4FA5400386F1E /* FeedApi.swift */; };
+		11E59573202B5C9F007AACDB /* SettingsOverlayActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08078F411FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift */; };
+		11E59574202B5C9F007AACDB /* PersistentFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086B453B1FDC22530043F981 /* PersistentFooter.swift */; };
+		11E59575202B5C9F007AACDB /* CalendarFooterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085282731F28D9DE0065A968 /* CalendarFooterViewCell.swift */; };
+		11E59576202B5C9F007AACDB /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085599A21F72750000E5BEA1 /* SplashScreen.swift */; };
+		11E59577202B5C9F007AACDB /* ApprovalCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3688A1F18DC4900819CDE /* ApprovalCardCell.swift */; };
+		11E59578202B5C9F007AACDB /* NotificationsManuallyEnableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA5D5720247C1000ED78C3 /* NotificationsManuallyEnableViewController.swift */; };
+		11E59579202B5C9F007AACDB /* StatsSummaryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3C7DF201729D5003ADB77 /* StatsSummaryItemView.swift */; };
+		11E5957A202B5C9F007AACDB /* MyActionCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE3E1FC830F1002F4140 /* MyActionCardCell.swift */; };
+		11E5957B202B5C9F007AACDB /* SettingsSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0813A0581FC2F1C4003E6478 /* SettingsSocialViewController.swift */; };
+		11E5957C202B5C9F007AACDB /* IceCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6AFAB1F9DC843005E3049 /* IceCardViewCell.swift */; };
+		11E5957D202B5C9F007AACDB /* PaidActionCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113DE3011FC8AEE800AE6DE9 /* PaidActionCardCell.swift */; };
+		11E5957E202B5C9F007AACDB /* AnimationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F90F11F712660008A339A /* AnimationsViewController.swift */; };
+		11E5957F202B5C9F007AACDB /* ViewNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC361F1DF4F900D377B2 /* ViewNames.swift */; };
+		11E59580202B5C9F007AACDB /* BrandApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF993F202A09DE00B2AA86 /* BrandApi.swift */; };
+		11E59581202B5C9F007AACDB /* ActionInstructionsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A51D321FC6EF6D0097B334 /* ActionInstructionsPageViewController.swift */; };
+		11E59582202B5C9F007AACDB /* SettingsBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA51FC56ACD00BFC5A1 /* SettingsBaseViewController.swift */; };
+		11E59583202B5C9F007AACDB /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB981FC569F600BFC5A1 /* FeedStore.swift */; };
+		11E59584202B5C9F007AACDB /* StatusCardTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D579F81F62E6ED00FDD744 /* StatusCardTypeView.swift */; };
+		11E59585202B5C9F007AACDB /* LoginSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088674101FE28506008DB87E /* LoginSocialViewController.swift */; };
+		11E59586202B5C9F007AACDB /* EmptyStateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0855C0CA1F6FFBF000ACBFA9 /* EmptyStateCard.swift */; };
+		11E59587202B5C9F007AACDB /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088728961FFCE98700BE9882 /* AboutViewController.swift */; };
+		11E59588202B5C9F007AACDB /* ActionPageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */; };
+		11E59589202B5C9F007AACDB /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B745901F1F638000EC3F8C /* LoginNavigationViewController.swift */; };
+		11E5958A202B5C9F007AACDB /* TwoImagesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAE1FC56ACE00BFC5A1 /* TwoImagesButton.swift */; };
+		11E5958B202B5C9F007AACDB /* BreakdownViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */; };
+		11E5958C202B5C9F007AACDB /* CompleteCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0857D5561F41B4E800D218DA /* CompleteCardCell.swift */; };
+		11E5958D202B5C9F007AACDB /* ToolbarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */; };
+		11E5958E202B5C9F007AACDB /* CalendarHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0852826D1F287DFB0065A968 /* CalendarHeaderViewCell.swift */; };
+		11E5958F202B5C9F007AACDB /* HomeHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1125ADAB1E96E7990004B4AC /* HomeHubController.swift */; };
+		11E59590202B5C9F007AACDB /* PopmetricsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA31FC56ACD00BFC5A1 /* PopmetricsColor.swift */; };
+		11E59591202B5C9F007AACDB /* PeriodGraphDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08657381200F90D700D0ED21 /* PeriodGraphDateView.swift */; };
+		11E59592202B5C9F007AACDB /* PhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC3A1F1E568A00D377B2 /* PhoneView.swift */; };
+		11E59593202B5C9F007AACDB /* InfoCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */; };
+		11E59594202B5C9F007AACDB /* StatsMetricPageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E5A8971FDF01AE0085BDEE /* StatsMetricPageContentViewController.swift */; };
+		11E59595202B5C9F007AACDB /* ActionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD57FF1F7A2DCC00FFDCFD /* ActionPageView.swift */; };
+		11E59596202B5C9F007AACDB /* CalendarApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD966D1FC4FA5400386F1E /* CalendarApi.swift */; };
+		11E59597202B5C9F007AACDB /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848280E1F39F9200054B04C /* HeaderView.swift */; };
+		11E59598202B5C9F007AACDB /* ChangeBrandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B968A91FBB141400482CDE /* ChangeBrandViewController.swift */; };
+		11E59599202B5C9F007AACDB /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08078F381FBDA92600A4399D /* Alert.swift */; };
+		11E5959A202B5C9F007AACDB /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0852826F1F2881BD0065A968 /* Calendar.swift */; };
+		11E5959B202B5C9F007AACDB /* IndividualTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */; };
+		11E5959C202B5C9F007AACDB /* ToDoApprovedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3AA9D1F8FA748008D0503 /* ToDoApprovedView.swift */; };
+		11E5959D202B5C9F007AACDB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0809AEB31F22183400A13178 /* Constants.swift */; };
+		11E5959E202B5C9F007AACDB /* OnboardingFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D409CD1F73C3A800C5BB54 /* OnboardingFinalView.swift */; };
+		11E5959F202B5C9F007AACDB /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A51D2E1FC6DBBE0097B334 /* Markdown.swift */; };
+		11E595A0202B5C9F007AACDB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA71FC56ACD00BFC5A1 /* BaseViewController.swift */; };
+		11E595A1202B5C9F007AACDB /* SyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96701FC4FA5400386F1E /* SyncService.swift */; };
+		11E595A2202B5C9F007AACDB /* BrandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B968AB1FBB17FE00482CDE /* BrandTableViewCell.swift */; };
+		11E595A3202B5C9F007AACDB /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E731F4C359E003ABEFC /* FooterView.swift */; };
+		11E595A4202B5C9F007AACDB /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F91001F716AD2008A339A /* OnboardingViewController.swift */; };
+		11E595A5202B5C9F007AACDB /* ButtonWithContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A5333D1F6C2E910080BE64 /* ButtonWithContainer.swift */; };
+		11E595A6202B5C9F007AACDB /* ApprovalCardInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F368901F18E6A000819CDE /* ApprovalCardInfoCell.swift */; };
+		11E595A7202B5C9F007AACDB /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E54E01F827F7D007D6F4F /* NoteView.swift */; };
+		11E595A8202B5C9F007AACDB /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D125022019F01F00D9D78B /* DateExtensions.swift */; };
+		11E595A9202B5C9F007AACDB /* StatisticsCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B28291F7E5D130015A66E /* StatisticsCountView.swift */; };
+		11E595AA202B5C9F007AACDB /* MainTabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083938FE1F63C334007DDA37 /* MainTabInfo.swift */; };
+		11E595AB202B5C9F007AACDB /* HubsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1104F8741FD45B3B002F6221 /* HubsApi.swift */; };
+		11E595AC202B5C9F007AACDB /* StatisticsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD966E1FC4FA5400386F1E /* StatisticsApi.swift */; };
+		11E595AD202B5C9F007AACDB /* IceExtendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B324D91F98C6AE00BB4905 /* IceExtendView.swift */; };
+		11E595AE202B5C9F007AACDB /* CardToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7ADE71FB1D18F00C56688 /* CardToolbarController.swift */; };
+		11E595AF202B5C9F007AACDB /* SettingsGAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0857AB641FBC98D1002B9F53 /* SettingsGAViewController.swift */; };
+		11E595B0202B5C9F007AACDB /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96731FC4FA5400386F1E /* BaseApi.swift */; };
+		11E595B1202B5C9F007AACDB /* TodoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD966F1FC4FA5400386F1E /* TodoApi.swift */; };
+		11E595B2202B5C9F007AACDB /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */; };
+		11E595B3202B5C9F007AACDB /* InsightCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DCA871F4D9716000C73DC /* InsightCard.swift */; };
+		11E595B4202B5C9F007AACDB /* StatsCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE8481F5420050097DF3E /* StatsCardViewCell.swift */; };
+		11E595B5202B5C9F007AACDB /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DCA801F4D6EE6000C73DC /* MenuViewController.swift */; };
+		11E595B6202B5C9F007AACDB /* ApiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96721FC4FA5400386F1E /* ApiModels.swift */; };
+		11E595B7202B5C9F007AACDB /* SocialPostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */; };
+		11E595B8202B5C9F007AACDB /* ImpactScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE421FC8449A002F4140 /* ImpactScoreView.swift */; };
+		11E595B9202B5C9F007AACDB /* StatsReportPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C641F56DAA10022DE91 /* StatsReportPageViewController.swift */; };
+		11E595BA202B5C9F007AACDB /* AimeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B282B1F7E7F150015A66E /* AimeeView.swift */; };
+		11E595BB202B5C9F007AACDB /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77A81F7CE99900774F13 /* ToastView.swift */; };
+		11E595BC202B5C9F007AACDB /* RecommendationCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F7A0961F17AB0C00A1B2C3 /* RecommendationCardCell.swift */; };
+		11E595BD202B5C9F007AACDB /* EmptyStateCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A675A81FC8E1A900EE0A15 /* EmptyStateCardCell.swift */; };
+		11E595BE202B5C9F007AACDB /* CalendarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB961FC569EC00BFC5A1 /* CalendarStore.swift */; };
+		11E595BF202B5C9F007AACDB /* StatsEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088BBEA91F58214300AD5414 /* StatsEmptyCell.swift */; };
+		11E595C0202B5C9F007AACDB /* CalendarHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085053FD1F2787A100FE8234 /* CalendarHubController.swift */; };
+		11E595C1202B5C9F007AACDB /* BadgeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849662E202B3213002CE902 /* BadgeBarButtonItem.swift */; };
+		11E595C2202B5C9F007AACDB /* OfflineBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089267731F86617600D7B99E /* OfflineBanner.swift */; };
+		11E595C3202B5C9F007AACDB /* CalendarCompletedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08913DA01FE7BEFB0085BE36 /* CalendarCompletedViewCell.swift */; };
+		11E595C4202B5C9F007AACDB /* StaticSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F14F91FB9C6080004F925 /* StaticSettingsViewController.swift */; };
+		11E595C5202B5C9F007AACDB /* SettingsOverlayUrlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C580FE1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift */; };
+		11E595C6202B5C9F007AACDB /* SettingsTwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D6FF6A1FD7941600C7E62B /* SettingsTwitterViewController.swift */; };
+		11E595C7202B5C9F007AACDB /* SimpleButtonControlState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128B3F41ECF256600BDA58C /* SimpleButtonControlState.swift */; };
+		11E595C8202B5C9F007AACDB /* PopTipCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BDA92F1FFFD9C200CDA01C /* PopTipCard.swift */; };
+		11E595C9202B5C9F007AACDB /* MoreInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A533351F6BD9130080BE64 /* MoreInfoViewCell.swift */; };
+		11E595CA202B5C9F007AACDB /* NavigationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1148D73C1FBF39AE006EB5BB /* NavigationMap.swift */; };
+		11E595CB202B5C9F007AACDB /* DailyInsightsCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F368941F18F93800819CDE /* DailyInsightsCardCell.swift */; };
+		11E595CC202B5C9F007AACDB /* TodoHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FB84EA1FC79E8800FE937D /* TodoHubController.swift */; };
+		11E595CD202B5C9F007AACDB /* SettingsEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08593DED1FBB3B7600077A65 /* SettingsEmailViewController.swift */; };
+		11E595CE202B5C9F007AACDB /* CardActionHanlder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAB1FC56ACE00BFC5A1 /* CardActionHanlder.swift */; };
+		11E595CF202B5C9F007AACDB /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB9C1FC56A0400BFC5A1 /* TodoStore.swift */; };
+		11E595D0202B5C9F007AACDB /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB9E1FC56A0C00BFC5A1 /* UserStore.swift */; };
+		11E595D1202B5C9F007AACDB /* ActionTodoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CCFFE71FDD977700755295 /* ActionTodoButton.swift */; };
+		11E595D2202B5C9F007AACDB /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B2803E1F55862100E36D19 /* Statistics.swift */; };
+		11E595D3202B5C9F007AACDB /* MJCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */; };
+		11E595D4202B5C9F007AACDB /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085CB7B51F4ADD9C00038C03 /* NotificationsViewController.swift */; };
+		11E595D5202B5C9F007AACDB /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B745971F1F718300EC3F8C /* CodeViewController.swift */; };
+		11E595D6202B5C9F007AACDB /* TableViewCellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */; };
+		11E595D7202B5C9F007AACDB /* InsightPageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBBE1FC58FF100BFC5A1 /* InsightPageDetailsViewController.swift */; };
+		11E595D8202B5C9F007AACDB /* MessagesBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849662C202B1D61002CE902 /* MessagesBadgeView.swift */; };
+		11E595D9202B5C9F007AACDB /* SettingsOverlayDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08078F431FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift */; };
+		11E595DA202B5C9F007AACDB /* OnboardNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9F2E22028821500092D95 /* OnboardNavigationController.swift */; };
+		11E595DB202B5C9F007AACDB /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */; };
+		11E595DC202B5C9F007AACDB /* WebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF993D2029CDF500B2AA86 /* WebsiteViewController.swift */; };
+		11E595DD202B5C9F007AACDB /* FooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7ADE91FB22B8300C56688 /* FooterViewController.swift */; };
+		11E595DE202B5C9F007AACDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */; };
+		11E595DF202B5C9F007AACDB /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081B92491FCEF205006D3BAB /* StringExtensions.swift */; };
+		11E595E0202B5C9F007AACDB /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAD1FC56ACE00BFC5A1 /* MainTabBarController.swift */; };
+		11E595E1202B5C9F007AACDB /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAC1FC56ACE00BFC5A1 /* GradientView.swift */; };
+		11E595E2202B5C9F007AACDB /* ApiUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96741FC4FA5400386F1E /* ApiUrls.swift */; };
+		11E595E3202B5C9F007AACDB /* ToDoCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */; };
+		11E595E4202B5C9F007AACDB /* SocialIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7A437201B4D0500714360 /* SocialIconView.swift */; };
+		11E595E5202B5C9F007AACDB /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE451FC8651B002F4140 /* UIViewExtensions.swift */; };
+		11E595E6202B5C9F007AACDB /* RecommendActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B8D9701F9A4443004E7781 /* RecommendActionHandler.swift */; };
+		11E595E7202B5C9F007AACDB /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAA5E31ECC8BFA0099B50E /* Feed.swift */; };
+		11E595E8202B5C9F007AACDB /* ChartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C721F56F8630022DE91 /* ChartViewCell.swift */; };
+		11E595E9202B5C9F007AACDB /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAA1FC56ACE00BFC5A1 /* ReachabilityManager.swift */; };
+		11E595EA202B5C9F007AACDB /* DigitCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7459A1F1F996B00EC3F8C /* DigitCodeView.swift */; };
+		11E595EB202B5C9F007AACDB /* CalendarCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085054021F27A25B00FE8234 /* CalendarCardViewCell.swift */; };
+		11E595EC202B5C9F007AACDB /* CardHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A812751F1660A300672126 /* CardHeaderCell.swift */; };
+		11E595ED202B5C9F007AACDB /* TodoActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1100F6F81F5FEBCE000AF1D4 /* TodoActionHandler.swift */; };
+		11E595EE202B5C9F007AACDB /* StatsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E636931FD735480081B1DC /* StatsStore.swift */; };
+		11E595EF202B5C9F007AACDB /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485DF1F20EA23005918A1 /* Config.swift */; };
+		11E595F0202B5C9F007AACDB /* SocialPostDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DE806C2018E98E00621243 /* SocialPostDetailsView.swift */; };
+		11E595F1202B5C9F007AACDB /* ActionActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085530451F6CEE0A00D82A09 /* ActionActivationView.swift */; };
+		11E595F2202B5C9F007AACDB /* SettingsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3289D1FFE22F300549DC5 /* SettingsApi.swift */; };
+		11E595F3202B5C9F007AACDB /* SwipeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E10551FD1716200D57A08 /* SwipeExtension.swift */; };
+		11E595F4202B5C9F007AACDB /* StatsHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE8431F541D790097DF3E /* StatsHubController.swift */; };
+		11E595F5202B5C9F007AACDB /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485E51F210A61005918A1 /* RoundButton.swift */; };
+		11E595F6202B5C9F007AACDB /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CBB0051FD96AEA0042EE9C /* ActionButton.swift */; };
+		11E595F7202B5C9F007AACDB /* TwoColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A62CB11F8E4DCF0072E6A5 /* TwoColorButton.swift */; };
+		11E595F8202B5C9F007AACDB /* BusinessContactDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085ECE892020CA16003A2B0A /* BusinessContactDetailsViewController.swift */; };
+		11E595F9202B5C9F007AACDB /* CalendarCardMaximizedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5D4BD1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift */; };
+		11E595FA202B5C9F007AACDB /* RequiredActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1120F1FF1ECDF4F200576E39 /* RequiredActionHandler.swift */; };
+		11E595FB202B5C9F007AACDB /* RoundedCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */; };
+		11E595FD202B5C9F007AACDB /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110A62F71ECEFF400052B478 /* SafariServices.framework */; };
+		11E595FE202B5C9F007AACDB /* Pods_ipopmetrics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */; };
+		11E59601202B5C9F007AACDB /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A812791F1672DC00672126 /* OpenSans-Semibold.ttf */; };
+		11E59602202B5C9F007AACDB /* SplashScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085599A51F72751900E5BEA1 /* SplashScreen.xib */; };
+		11E59603202B5C9F007AACDB /* MyActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086EDE3C1FC82D11002F4140 /* MyActionCard.xib */; };
+		11E59604202B5C9F007AACDB /* ActionInstructionsPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A51D301FC6EF520097B334 /* ActionInstructionsPage.xib */; };
+		11E59605202B5C9F007AACDB /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A812781F1672D300672126 /* OpenSans-Light.ttf */; };
+		11E59606202B5C9F007AACDB /* SettingsOverlayUrlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C580FC1FBF21440013B03F /* SettingsOverlayUrlView.xib */; };
+		11E59607202B5C9F007AACDB /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A8127A1F1672E700672126 /* OpenSans-Bold.ttf */; };
+		11E59608202B5C9F007AACDB /* FacebookSocialPostDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089EFD38201774FF002E9CAF /* FacebookSocialPostDetails.xib */; };
+		11E59609202B5C9F007AACDB /* CalendarCompletedAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08913D9E1FE7BC650085BE36 /* CalendarCompletedAction.xib */; };
+		11E5960A202B5C9F007AACDB /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0856F3571F272F020061DF7E /* Calendar.storyboard */; };
+		11E5960B202B5C9F007AACDB /* CalendarCardSimple.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0854AF341F3F2B18007B60F9 /* CalendarCardSimple.xib */; };
+		11E5960C202B5C9F007AACDB /* Notifications.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 085CB7B11F4ADCA200038C03 /* Notifications.storyboard */; };
+		11E5960D202B5C9F007AACDB /* SettingsLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08CC6EC11FBC7FBA00A6521E /* SettingsLogoView.xib */; };
+		11E5960E202B5C9F007AACDB /* IceExtendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B324D71F98C65A00BB4905 /* IceExtendView.xib */; };
+		11E5960F202B5C9F007AACDB /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */; };
+		11E59610202B5C9F007AACDB /* PaidActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113DE2FD1FC8ACD100AE6DE9 /* PaidActionCard.xib */; };
+		11E59611202B5C9F007AACDB /* CalendarHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0852826B1F287DD70065A968 /* CalendarHeaderViewCell.xib */; };
+		11E59612202B5C9F007AACDB /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08B745951F1F6C1D00EC3F8C /* OpenSans-Regular.ttf */; };
+		11E59613202B5C9F007AACDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1178D6831E1E5AD9005B96C3 /* LaunchScreen.storyboard */; };
+		11E59614202B5C9F007AACDB /* CalendarFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085282711F28D9C50065A968 /* CalendarFooter.xib */; };
+		11E59615202B5C9F007AACDB /* InsightCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 080DCA851F4D9707000C73DC /* InsightCard.xib */; };
+		11E59616202B5C9F007AACDB /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089F93AA1FB5FE1E00155674 /* Settings.storyboard */; };
+		11E59617202B5C9F007AACDB /* PopTipCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11BDA92D1FFFD95F00CDA01C /* PopTipCard.xib */; };
+		11E59618202B5C9F007AACDB /* RequiredActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08953E711F4C352B003ABEFC /* RequiredActionCard.xib */; };
+		11E59619202B5C9F007AACDB /* SettingsSocialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0813A0561FC2F102003E6478 /* SettingsSocialView.xib */; };
+		11E5961A202B5C9F007AACDB /* StatsEmptyCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEA71F58212A00AD5414 /* StatsEmptyCard.xib */; };
+		11E5961B202B5C9F007AACDB /* InsightPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1183A8651FC5064B00ED8EF6 /* InsightPage.xib */; };
+		11E5961C202B5C9F007AACDB /* SettingsEmailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08593DEF1FBB440A00077A65 /* SettingsEmailView.xib */; };
+		11E5961D202B5C9F007AACDB /* MoreInfoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A533331F6BD9060080BE64 /* MoreInfoViewCell.xib */; };
+		11E5961E202B5C9F007AACDB /* animation_nonX.json in Resources */ = {isa = PBXBuildFile; fileRef = 08C497AC1FD5A0110066E515 /* animation_nonX.json */; };
+		11E5961F202B5C9F007AACDB /* CardHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A812731F16601A00672126 /* CardHeaderCell.xib */; };
+		11E59620202B5C9F007AACDB /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 080DCA821F4D9586000C73DC /* OpenSans-ExtraBold.ttf */; };
+		11E59621202B5C9F007AACDB /* CalendarCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085054001F2793AE00FE8234 /* CalendarCard.xib */; };
+		11E59622202B5C9F007AACDB /* ActionPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A533371F6BF7FC0080BE64 /* ActionPage.xib */; };
+		11E59623202B5C9F007AACDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1178D6811E1E5AD9005B96C3 /* Assets.xcassets */; };
+		11E59624202B5C9F007AACDB /* SettingsOverlayActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08078F3E1FBDE45200A4399D /* SettingsOverlayActionView.xib */; };
+		11E59625202B5C9F007AACDB /* SocialPostDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */; };
+		11E59626202B5C9F007AACDB /* AlfaSlabOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */; };
+		11E59627202B5C9F007AACDB /* animation_X.json in Resources */ = {isa = PBXBuildFile; fileRef = 08C497B01FD5A31C0066E515 /* animation_X.json */; };
+		11E59628202B5C9F007AACDB /* EmptyStateCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0855C0C81F6FFBDB00ACBFA9 /* EmptyStateCard.xib */; };
+		11E59629202B5C9F007AACDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1178D67E1E1E5AD9005B96C3 /* Main.storyboard */; };
+		11E5962A202B5C9F007AACDB /* CalendarCardMaximized.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B5D4BB1F29CD5000B79AD3 /* CalendarCardMaximized.xib */; };
+		11E5962B202B5C9F007AACDB /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */; };
+		11E5962C202B5C9F007AACDB /* OnboardingFinalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */; };
+		11E5962D202B5C9F007AACDB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1128B3F11ECF256600BDA58C /* Info.plist */; };
+		11E5962E202B5C9F007AACDB /* LastCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08F368961F19029100819CDE /* LastCard.xib */; };
+		11E5962F202B5C9F007AACDB /* SocialPostInCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AF04971F46FB9B0040012B /* SocialPostInCardCell.xib */; };
+		11E59630202B5C9F007AACDB /* StatsCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08FAE8461F541FF40097DF3E /* StatsCard.xib */; };
+		11E59631202B5C9F007AACDB /* Boarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1119F6171ED56F34009997FF /* Boarding.storyboard */; };
+		11E59632202B5C9F007AACDB /* apple-app-site-association-unsigned in Resources */ = {isa = PBXBuildFile; fileRef = 1195EEF32009EDC800F45798 /* apple-app-site-association-unsigned */; };
+		11E59633202B5C9F007AACDB /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */; };
+		11E59634202B5C9F007AACDB /* animation_iphone4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0863C4631FEA91C400999A81 /* animation_iphone4.json */; };
+		11E59635202B5C9F007AACDB /* IceCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B6AFA91F9DC813005E3049 /* IceCardView.xib */; };
+		11E59636202B5C9F007AACDB /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085F90F91F7169FE008A339A /* OnboardingView.xib */; };
+		11E5972E202B6618007AACDB /* TodoTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EE385C1F447C0E005D1D7C /* TodoTopView.swift */; };
+		11E5972F202B6618007AACDB /* FooterViewStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */; };
+		11E59730202B6618007AACDB /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA41FC56ACD00BFC5A1 /* BaseTableViewController.swift */; };
+		11E59731202B6618007AACDB /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA81FC56ACD00BFC5A1 /* UIColorExtensions.swift */; };
+		11E59732202B6618007AACDB /* LDSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC381F1E3D6200D377B2 /* LDSplashView.swift */; };
+		11E59733202B6618007AACDB /* CalendarCardSimpleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0854AF321F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift */; };
+		11E59734202B6618007AACDB /* UsersApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96711FC4FA5400386F1E /* UsersApi.swift */; };
+		11E59735202B6618007AACDB /* StatsSummaryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A62C91ECEDADC0052B478 /* StatsSummaryViewCell.swift */; };
+		11E59736202B6618007AACDB /* SimpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128B3F31ECF256600BDA58C /* SimpleButton.swift */; };
+		11E59737202B6618007AACDB /* InstructionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B2DB961FB47522009E45F8 /* InstructionCell.swift */; };
+		11E59738202B6618007AACDB /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA91FC56ACD00BFC5A1 /* AppStoryboard.swift */; };
+		11E59739202B6618007AACDB /* SimpleButtonStateChangeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128B3F51ECF256600BDA58C /* SimpleButtonStateChangeValue.swift */; };
+		11E5973A202B6618007AACDB /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A91E2CE05D0021E64A /* CompletionView.swift */; };
+		11E5973B202B6618007AACDB /* EmailMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CE428E1FD041AE00FF8C80 /* EmailMessages.swift */; };
+		11E5973C202B6618007AACDB /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085AA0D31F42ECAA0014D4CE /* Todo.swift */; };
+		11E5973D202B6618007AACDB /* SocialMediaLoginButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088674121FE285A0008DB87E /* SocialMediaLoginButtonsView.swift */; };
+		11E5973E202B6618007AACDB /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976A81E97C71300B535DF /* AccountViewController.swift */; };
+		11E5973F202B6618007AACDB /* RequiredActionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E751F4C35AC003ABEFC /* RequiredActionCard.swift */; };
+		11E59740202B6618007AACDB /* SettingsLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */; };
+		11E59741202B6618007AACDB /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF99372029A42C00B2AA86 /* NameViewController.swift */; };
+		11E59742202B6618007AACDB /* TableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */; };
+		11E59743202B6618007AACDB /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA21FC56ACD00BFC5A1 /* Validator.swift */; };
+		11E59744202B6618007AACDB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */; };
+		11E59745202B6618007AACDB /* VideoScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485E31F210992005918A1 /* VideoScreenViewController.swift */; };
+		11E59746202B6618007AACDB /* TextFieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA61FC56ACD00BFC5A1 /* TextFieldValidator.swift */; };
+		11E59747202B6618007AACDB /* SocialPostInCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AF04991F46FBB60040012B /* SocialPostInCardCell.swift */; };
+		11E59748202B6618007AACDB /* UIBarButtonItem+Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849662A202B18D3002CE902 /* UIBarButtonItem+Badge.swift */; };
+		11E59749202B6618007AACDB /* FeedApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96751FC4FA5400386F1E /* FeedApi.swift */; };
+		11E5974A202B6618007AACDB /* SettingsOverlayActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08078F411FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift */; };
+		11E5974B202B6618007AACDB /* PersistentFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086B453B1FDC22530043F981 /* PersistentFooter.swift */; };
+		11E5974C202B6618007AACDB /* CalendarFooterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085282731F28D9DE0065A968 /* CalendarFooterViewCell.swift */; };
+		11E5974D202B6618007AACDB /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085599A21F72750000E5BEA1 /* SplashScreen.swift */; };
+		11E5974E202B6618007AACDB /* ApprovalCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3688A1F18DC4900819CDE /* ApprovalCardCell.swift */; };
+		11E5974F202B6618007AACDB /* NotificationsManuallyEnableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA5D5720247C1000ED78C3 /* NotificationsManuallyEnableViewController.swift */; };
+		11E59750202B6618007AACDB /* StatsSummaryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3C7DF201729D5003ADB77 /* StatsSummaryItemView.swift */; };
+		11E59751202B6618007AACDB /* MyActionCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE3E1FC830F1002F4140 /* MyActionCardCell.swift */; };
+		11E59752202B6618007AACDB /* SettingsSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0813A0581FC2F1C4003E6478 /* SettingsSocialViewController.swift */; };
+		11E59753202B6618007AACDB /* IceCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6AFAB1F9DC843005E3049 /* IceCardViewCell.swift */; };
+		11E59754202B6618007AACDB /* PaidActionCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113DE3011FC8AEE800AE6DE9 /* PaidActionCardCell.swift */; };
+		11E59755202B6618007AACDB /* AnimationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F90F11F712660008A339A /* AnimationsViewController.swift */; };
+		11E59756202B6618007AACDB /* ViewNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC361F1DF4F900D377B2 /* ViewNames.swift */; };
+		11E59757202B6618007AACDB /* BrandApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF993F202A09DE00B2AA86 /* BrandApi.swift */; };
+		11E59758202B6618007AACDB /* ActionInstructionsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A51D321FC6EF6D0097B334 /* ActionInstructionsPageViewController.swift */; };
+		11E59759202B6618007AACDB /* SettingsBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA51FC56ACD00BFC5A1 /* SettingsBaseViewController.swift */; };
+		11E5975A202B6618007AACDB /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB981FC569F600BFC5A1 /* FeedStore.swift */; };
+		11E5975B202B6618007AACDB /* StatusCardTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D579F81F62E6ED00FDD744 /* StatusCardTypeView.swift */; };
+		11E5975C202B6618007AACDB /* LoginSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088674101FE28506008DB87E /* LoginSocialViewController.swift */; };
+		11E5975D202B6618007AACDB /* EmptyStateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0855C0CA1F6FFBF000ACBFA9 /* EmptyStateCard.swift */; };
+		11E5975E202B6618007AACDB /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088728961FFCE98700BE9882 /* AboutViewController.swift */; };
+		11E5975F202B6618007AACDB /* ActionPageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */; };
+		11E59760202B6618007AACDB /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B745901F1F638000EC3F8C /* LoginNavigationViewController.swift */; };
+		11E59761202B6618007AACDB /* TwoImagesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAE1FC56ACE00BFC5A1 /* TwoImagesButton.swift */; };
+		11E59762202B6618007AACDB /* BreakdownViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */; };
+		11E59763202B6618007AACDB /* CompleteCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0857D5561F41B4E800D218DA /* CompleteCardCell.swift */; };
+		11E59764202B6618007AACDB /* ToolbarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */; };
+		11E59765202B6618007AACDB /* CalendarHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0852826D1F287DFB0065A968 /* CalendarHeaderViewCell.swift */; };
+		11E59766202B6618007AACDB /* HomeHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1125ADAB1E96E7990004B4AC /* HomeHubController.swift */; };
+		11E59767202B6618007AACDB /* PopmetricsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA31FC56ACD00BFC5A1 /* PopmetricsColor.swift */; };
+		11E59768202B6618007AACDB /* PeriodGraphDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08657381200F90D700D0ED21 /* PeriodGraphDateView.swift */; };
+		11E59769202B6618007AACDB /* PhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC3A1F1E568A00D377B2 /* PhoneView.swift */; };
+		11E5976A202B6618007AACDB /* InfoCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */; };
+		11E5976B202B6618007AACDB /* StatsMetricPageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E5A8971FDF01AE0085BDEE /* StatsMetricPageContentViewController.swift */; };
+		11E5976C202B6618007AACDB /* ActionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD57FF1F7A2DCC00FFDCFD /* ActionPageView.swift */; };
+		11E5976D202B6618007AACDB /* CalendarApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD966D1FC4FA5400386F1E /* CalendarApi.swift */; };
+		11E5976E202B6618007AACDB /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848280E1F39F9200054B04C /* HeaderView.swift */; };
+		11E5976F202B6618007AACDB /* ChangeBrandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B968A91FBB141400482CDE /* ChangeBrandViewController.swift */; };
+		11E59770202B6618007AACDB /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08078F381FBDA92600A4399D /* Alert.swift */; };
+		11E59771202B6618007AACDB /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0852826F1F2881BD0065A968 /* Calendar.swift */; };
+		11E59772202B6618007AACDB /* IndividualTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */; };
+		11E59773202B6618007AACDB /* ToDoApprovedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3AA9D1F8FA748008D0503 /* ToDoApprovedView.swift */; };
+		11E59774202B6618007AACDB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0809AEB31F22183400A13178 /* Constants.swift */; };
+		11E59775202B6618007AACDB /* OnboardingFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D409CD1F73C3A800C5BB54 /* OnboardingFinalView.swift */; };
+		11E59776202B6618007AACDB /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A51D2E1FC6DBBE0097B334 /* Markdown.swift */; };
+		11E59777202B6618007AACDB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA71FC56ACD00BFC5A1 /* BaseViewController.swift */; };
+		11E59778202B6618007AACDB /* SyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96701FC4FA5400386F1E /* SyncService.swift */; };
+		11E59779202B6618007AACDB /* BrandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B968AB1FBB17FE00482CDE /* BrandTableViewCell.swift */; };
+		11E5977A202B6618007AACDB /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E731F4C359E003ABEFC /* FooterView.swift */; };
+		11E5977B202B6618007AACDB /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085F91001F716AD2008A339A /* OnboardingViewController.swift */; };
+		11E5977C202B6618007AACDB /* ButtonWithContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A5333D1F6C2E910080BE64 /* ButtonWithContainer.swift */; };
+		11E5977D202B6618007AACDB /* ApprovalCardInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F368901F18E6A000819CDE /* ApprovalCardInfoCell.swift */; };
+		11E5977E202B6618007AACDB /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E54E01F827F7D007D6F4F /* NoteView.swift */; };
+		11E5977F202B6618007AACDB /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D125022019F01F00D9D78B /* DateExtensions.swift */; };
+		11E59780202B6618007AACDB /* StatisticsCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B28291F7E5D130015A66E /* StatisticsCountView.swift */; };
+		11E59781202B6618007AACDB /* MainTabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083938FE1F63C334007DDA37 /* MainTabInfo.swift */; };
+		11E59782202B6618007AACDB /* HubsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1104F8741FD45B3B002F6221 /* HubsApi.swift */; };
+		11E59783202B6618007AACDB /* StatisticsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD966E1FC4FA5400386F1E /* StatisticsApi.swift */; };
+		11E59784202B6618007AACDB /* IceExtendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B324D91F98C6AE00BB4905 /* IceExtendView.swift */; };
+		11E59785202B6618007AACDB /* CardToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7ADE71FB1D18F00C56688 /* CardToolbarController.swift */; };
+		11E59786202B6618007AACDB /* SettingsGAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0857AB641FBC98D1002B9F53 /* SettingsGAViewController.swift */; };
+		11E59787202B6618007AACDB /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96731FC4FA5400386F1E /* BaseApi.swift */; };
+		11E59788202B6618007AACDB /* TodoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD966F1FC4FA5400386F1E /* TodoApi.swift */; };
+		11E59789202B6618007AACDB /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */; };
+		11E5978A202B6618007AACDB /* InsightCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DCA871F4D9716000C73DC /* InsightCard.swift */; };
+		11E5978B202B6618007AACDB /* StatsCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE8481F5420050097DF3E /* StatsCardViewCell.swift */; };
+		11E5978C202B6618007AACDB /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DCA801F4D6EE6000C73DC /* MenuViewController.swift */; };
+		11E5978D202B6618007AACDB /* ApiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96721FC4FA5400386F1E /* ApiModels.swift */; };
+		11E5978E202B6618007AACDB /* SocialPostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */; };
+		11E5978F202B6618007AACDB /* ImpactScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE421FC8449A002F4140 /* ImpactScoreView.swift */; };
+		11E59790202B6618007AACDB /* StatsReportPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C641F56DAA10022DE91 /* StatsReportPageViewController.swift */; };
+		11E59791202B6618007AACDB /* AimeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B282B1F7E7F150015A66E /* AimeeView.swift */; };
+		11E59792202B6618007AACDB /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E77A81F7CE99900774F13 /* ToastView.swift */; };
+		11E59793202B6618007AACDB /* RecommendationCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F7A0961F17AB0C00A1B2C3 /* RecommendationCardCell.swift */; };
+		11E59794202B6618007AACDB /* EmptyStateCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A675A81FC8E1A900EE0A15 /* EmptyStateCardCell.swift */; };
+		11E59795202B6618007AACDB /* CalendarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB961FC569EC00BFC5A1 /* CalendarStore.swift */; };
+		11E59796202B6618007AACDB /* StatsEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088BBEA91F58214300AD5414 /* StatsEmptyCell.swift */; };
+		11E59797202B6618007AACDB /* CalendarHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085053FD1F2787A100FE8234 /* CalendarHubController.swift */; };
+		11E59798202B6618007AACDB /* BadgeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849662E202B3213002CE902 /* BadgeBarButtonItem.swift */; };
+		11E59799202B6618007AACDB /* OfflineBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089267731F86617600D7B99E /* OfflineBanner.swift */; };
+		11E5979A202B6618007AACDB /* CalendarCompletedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08913DA01FE7BEFB0085BE36 /* CalendarCompletedViewCell.swift */; };
+		11E5979B202B6618007AACDB /* StaticSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F14F91FB9C6080004F925 /* StaticSettingsViewController.swift */; };
+		11E5979C202B6618007AACDB /* SettingsOverlayUrlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C580FE1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift */; };
+		11E5979D202B6618007AACDB /* SettingsTwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D6FF6A1FD7941600C7E62B /* SettingsTwitterViewController.swift */; };
+		11E5979E202B6618007AACDB /* SimpleButtonControlState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128B3F41ECF256600BDA58C /* SimpleButtonControlState.swift */; };
+		11E5979F202B6618007AACDB /* PopTipCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BDA92F1FFFD9C200CDA01C /* PopTipCard.swift */; };
+		11E597A0202B6618007AACDB /* MoreInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A533351F6BD9130080BE64 /* MoreInfoViewCell.swift */; };
+		11E597A1202B6618007AACDB /* NavigationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1148D73C1FBF39AE006EB5BB /* NavigationMap.swift */; };
+		11E597A2202B6618007AACDB /* DailyInsightsCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F368941F18F93800819CDE /* DailyInsightsCardCell.swift */; };
+		11E597A3202B6618007AACDB /* TodoHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FB84EA1FC79E8800FE937D /* TodoHubController.swift */; };
+		11E597A4202B6618007AACDB /* SettingsEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08593DED1FBB3B7600077A65 /* SettingsEmailViewController.swift */; };
+		11E597A5202B6618007AACDB /* CardActionHanlder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAB1FC56ACE00BFC5A1 /* CardActionHanlder.swift */; };
+		11E597A6202B6618007AACDB /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB9C1FC56A0400BFC5A1 /* TodoStore.swift */; };
+		11E597A7202B6618007AACDB /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EB9E1FC56A0C00BFC5A1 /* UserStore.swift */; };
+		11E597A8202B6618007AACDB /* ActionTodoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CCFFE71FDD977700755295 /* ActionTodoButton.swift */; };
+		11E597A9202B6618007AACDB /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B2803E1F55862100E36D19 /* Statistics.swift */; };
+		11E597AA202B6618007AACDB /* MJCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */; };
+		11E597AB202B6618007AACDB /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085CB7B51F4ADD9C00038C03 /* NotificationsViewController.swift */; };
+		11E597AC202B6618007AACDB /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B745971F1F718300EC3F8C /* CodeViewController.swift */; };
+		11E597AD202B6618007AACDB /* TableViewCellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */; };
+		11E597AE202B6618007AACDB /* InsightPageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBBE1FC58FF100BFC5A1 /* InsightPageDetailsViewController.swift */; };
+		11E597AF202B6618007AACDB /* MessagesBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849662C202B1D61002CE902 /* MessagesBadgeView.swift */; };
+		11E597B0202B6618007AACDB /* SettingsOverlayDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08078F431FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift */; };
+		11E597B1202B6618007AACDB /* OnboardNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9F2E22028821500092D95 /* OnboardNavigationController.swift */; };
+		11E597B2202B6618007AACDB /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */; };
+		11E597B3202B6618007AACDB /* WebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF993D2029CDF500B2AA86 /* WebsiteViewController.swift */; };
+		11E597B4202B6618007AACDB /* FooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7ADE91FB22B8300C56688 /* FooterViewController.swift */; };
+		11E597B5202B6618007AACDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */; };
+		11E597B6202B6618007AACDB /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081B92491FCEF205006D3BAB /* StringExtensions.swift */; };
+		11E597B7202B6618007AACDB /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAD1FC56ACE00BFC5A1 /* MainTabBarController.swift */; };
+		11E597B8202B6618007AACDB /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAC1FC56ACE00BFC5A1 /* GradientView.swift */; };
+		11E597B9202B6618007AACDB /* ApiUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD96741FC4FA5400386F1E /* ApiUrls.swift */; };
+		11E597BA202B6618007AACDB /* ToDoCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E6E1F4C2790003ABEFC /* ToDoCountView.swift */; };
+		11E597BB202B6618007AACDB /* SocialIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7A437201B4D0500714360 /* SocialIconView.swift */; };
+		11E597BC202B6618007AACDB /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE451FC8651B002F4140 /* UIViewExtensions.swift */; };
+		11E597BD202B6618007AACDB /* RecommendActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B8D9701F9A4443004E7781 /* RecommendActionHandler.swift */; };
+		11E597BE202B6618007AACDB /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAA5E31ECC8BFA0099B50E /* Feed.swift */; };
+		11E597BF202B6618007AACDB /* ChartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C721F56F8630022DE91 /* ChartViewCell.swift */; };
+		11E597C0202B6618007AACDB /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAA1FC56ACE00BFC5A1 /* ReachabilityManager.swift */; };
+		11E597C1202B6618007AACDB /* DigitCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7459A1F1F996B00EC3F8C /* DigitCodeView.swift */; };
+		11E597C2202B6618007AACDB /* CalendarCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085054021F27A25B00FE8234 /* CalendarCardViewCell.swift */; };
+		11E597C3202B6618007AACDB /* CardHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A812751F1660A300672126 /* CardHeaderCell.swift */; };
+		11E597C4202B6618007AACDB /* TodoActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1100F6F81F5FEBCE000AF1D4 /* TodoActionHandler.swift */; };
+		11E597C5202B6618007AACDB /* StatsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E636931FD735480081B1DC /* StatsStore.swift */; };
+		11E597C6202B6618007AACDB /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485DF1F20EA23005918A1 /* Config.swift */; };
+		11E597C7202B6618007AACDB /* SocialPostDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DE806C2018E98E00621243 /* SocialPostDetailsView.swift */; };
+		11E597C8202B6618007AACDB /* ActionActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085530451F6CEE0A00D82A09 /* ActionActivationView.swift */; };
+		11E597C9202B6618007AACDB /* SettingsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3289D1FFE22F300549DC5 /* SettingsApi.swift */; };
+		11E597CA202B6618007AACDB /* SwipeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E10551FD1716200D57A08 /* SwipeExtension.swift */; };
+		11E597CB202B6618007AACDB /* StatsHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE8431F541D790097DF3E /* StatsHubController.swift */; };
+		11E597CC202B6618007AACDB /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B485E51F210A61005918A1 /* RoundButton.swift */; };
+		11E597CD202B6618007AACDB /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CBB0051FD96AEA0042EE9C /* ActionButton.swift */; };
+		11E597CE202B6618007AACDB /* TwoColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A62CB11F8E4DCF0072E6A5 /* TwoColorButton.swift */; };
+		11E597CF202B6618007AACDB /* BusinessContactDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085ECE892020CA16003A2B0A /* BusinessContactDetailsViewController.swift */; };
+		11E597D0202B6618007AACDB /* CalendarCardMaximizedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5D4BD1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift */; };
+		11E597D1202B6618007AACDB /* RequiredActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1120F1FF1ECDF4F200576E39 /* RequiredActionHandler.swift */; };
+		11E597D2202B6618007AACDB /* RoundedCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0888C5BD1F4EECEC00E3DB04 /* RoundedCornersButton.swift */; };
+		11E597D4202B6618007AACDB /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110A62F71ECEFF400052B478 /* SafariServices.framework */; };
+		11E597D5202B6618007AACDB /* Pods_ipopmetrics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */; };
+		11E597D8202B6618007AACDB /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A812791F1672DC00672126 /* OpenSans-Semibold.ttf */; };
+		11E597D9202B6618007AACDB /* SplashScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085599A51F72751900E5BEA1 /* SplashScreen.xib */; };
+		11E597DA202B6618007AACDB /* MyActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086EDE3C1FC82D11002F4140 /* MyActionCard.xib */; };
+		11E597DB202B6618007AACDB /* ActionInstructionsPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A51D301FC6EF520097B334 /* ActionInstructionsPage.xib */; };
+		11E597DC202B6618007AACDB /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A812781F1672D300672126 /* OpenSans-Light.ttf */; };
+		11E597DD202B6618007AACDB /* SettingsOverlayUrlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C580FC1FBF21440013B03F /* SettingsOverlayUrlView.xib */; };
+		11E597DE202B6618007AACDB /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A8127A1F1672E700672126 /* OpenSans-Bold.ttf */; };
+		11E597DF202B6618007AACDB /* FacebookSocialPostDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089EFD38201774FF002E9CAF /* FacebookSocialPostDetails.xib */; };
+		11E597E0202B6618007AACDB /* CalendarCompletedAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08913D9E1FE7BC650085BE36 /* CalendarCompletedAction.xib */; };
+		11E597E1202B6618007AACDB /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0856F3571F272F020061DF7E /* Calendar.storyboard */; };
+		11E597E2202B6618007AACDB /* CalendarCardSimple.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0854AF341F3F2B18007B60F9 /* CalendarCardSimple.xib */; };
+		11E597E3202B6618007AACDB /* Notifications.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 085CB7B11F4ADCA200038C03 /* Notifications.storyboard */; };
+		11E597E4202B6618007AACDB /* SettingsLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08CC6EC11FBC7FBA00A6521E /* SettingsLogoView.xib */; };
+		11E597E5202B6618007AACDB /* IceExtendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B324D71F98C65A00BB4905 /* IceExtendView.xib */; };
+		11E597E6202B6618007AACDB /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */; };
+		11E597E7202B6618007AACDB /* PaidActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113DE2FD1FC8ACD100AE6DE9 /* PaidActionCard.xib */; };
+		11E597E8202B6618007AACDB /* CalendarHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0852826B1F287DD70065A968 /* CalendarHeaderViewCell.xib */; };
+		11E597E9202B6618007AACDB /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08B745951F1F6C1D00EC3F8C /* OpenSans-Regular.ttf */; };
+		11E597EA202B6618007AACDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1178D6831E1E5AD9005B96C3 /* LaunchScreen.storyboard */; };
+		11E597EB202B6618007AACDB /* CalendarFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085282711F28D9C50065A968 /* CalendarFooter.xib */; };
+		11E597EC202B6618007AACDB /* InsightCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 080DCA851F4D9707000C73DC /* InsightCard.xib */; };
+		11E597ED202B6618007AACDB /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089F93AA1FB5FE1E00155674 /* Settings.storyboard */; };
+		11E597EE202B6618007AACDB /* PopTipCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11BDA92D1FFFD95F00CDA01C /* PopTipCard.xib */; };
+		11E597EF202B6618007AACDB /* RequiredActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08953E711F4C352B003ABEFC /* RequiredActionCard.xib */; };
+		11E597F0202B6618007AACDB /* SettingsSocialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0813A0561FC2F102003E6478 /* SettingsSocialView.xib */; };
+		11E597F1202B6618007AACDB /* StatsEmptyCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEA71F58212A00AD5414 /* StatsEmptyCard.xib */; };
+		11E597F2202B6618007AACDB /* InsightPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1183A8651FC5064B00ED8EF6 /* InsightPage.xib */; };
+		11E597F3202B6618007AACDB /* SettingsEmailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08593DEF1FBB440A00077A65 /* SettingsEmailView.xib */; };
+		11E597F4202B6618007AACDB /* MoreInfoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A533331F6BD9060080BE64 /* MoreInfoViewCell.xib */; };
+		11E597F5202B6618007AACDB /* animation_nonX.json in Resources */ = {isa = PBXBuildFile; fileRef = 08C497AC1FD5A0110066E515 /* animation_nonX.json */; };
+		11E597F6202B6618007AACDB /* CardHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A812731F16601A00672126 /* CardHeaderCell.xib */; };
+		11E597F7202B6618007AACDB /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 080DCA821F4D9586000C73DC /* OpenSans-ExtraBold.ttf */; };
+		11E597F8202B6618007AACDB /* CalendarCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085054001F2793AE00FE8234 /* CalendarCard.xib */; };
+		11E597F9202B6618007AACDB /* ActionPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A533371F6BF7FC0080BE64 /* ActionPage.xib */; };
+		11E597FA202B6618007AACDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1178D6811E1E5AD9005B96C3 /* Assets.xcassets */; };
+		11E597FB202B6618007AACDB /* SettingsOverlayActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08078F3E1FBDE45200A4399D /* SettingsOverlayActionView.xib */; };
+		11E597FC202B6618007AACDB /* SocialPostDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */; };
+		11E597FD202B6618007AACDB /* AlfaSlabOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */; };
+		11E597FE202B6618007AACDB /* animation_X.json in Resources */ = {isa = PBXBuildFile; fileRef = 08C497B01FD5A31C0066E515 /* animation_X.json */; };
+		11E597FF202B6618007AACDB /* EmptyStateCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0855C0C81F6FFBDB00ACBFA9 /* EmptyStateCard.xib */; };
+		11E59800202B6618007AACDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1178D67E1E1E5AD9005B96C3 /* Main.storyboard */; };
+		11E59801202B6618007AACDB /* CalendarCardMaximized.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B5D4BB1F29CD5000B79AD3 /* CalendarCardMaximized.xib */; };
+		11E59802202B6618007AACDB /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 088BBEAB1F582DD000AD5414 /* OpenSans-SemiboldItalic.ttf */; };
+		11E59803202B6618007AACDB /* OnboardingFinalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */; };
+		11E59804202B6618007AACDB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1128B3F11ECF256600BDA58C /* Info.plist */; };
+		11E59805202B6618007AACDB /* LastCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08F368961F19029100819CDE /* LastCard.xib */; };
+		11E59806202B6618007AACDB /* SocialPostInCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AF04971F46FB9B0040012B /* SocialPostInCardCell.xib */; };
+		11E59807202B6618007AACDB /* StatsCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08FAE8461F541FF40097DF3E /* StatsCard.xib */; };
+		11E59808202B6618007AACDB /* Boarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1119F6171ED56F34009997FF /* Boarding.storyboard */; };
+		11E59809202B6618007AACDB /* apple-app-site-association-unsigned in Resources */ = {isa = PBXBuildFile; fileRef = 1195EEF32009EDC800F45798 /* apple-app-site-association-unsigned */; };
+		11E5980A202B6618007AACDB /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */; };
+		11E5980B202B6618007AACDB /* animation_iphone4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0863C4631FEA91C400999A81 /* animation_iphone4.json */; };
+		11E5980C202B6618007AACDB /* IceCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B6AFA91F9DC813005E3049 /* IceCardView.xib */; };
+		11E5980D202B6618007AACDB /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085F90F91F7169FE008A339A /* OnboardingView.xib */; };
 		11E5A8981FDF01AE0085BDEE /* StatsMetricPageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E5A8971FDF01AE0085BDEE /* StatsMetricPageContentViewController.swift */; };
 		11E636941FD735480081B1DC /* StatsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E636931FD735480081B1DC /* StatsStore.swift */; };
 		11F89F691EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */; };
@@ -478,6 +920,10 @@
 		11DD96731FC4FA5400386F1E /* BaseApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
 		11DD96741FC4FA5400386F1E /* ApiUrls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiUrls.swift; sourceTree = "<group>"; };
 		11DD96751FC4FA5400386F1E /* FeedApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedApi.swift; sourceTree = "<group>"; };
+		11E5963E202B5C9F007AACDB /* Staging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staging.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		11E5963F202B5C9F007AACDB /* Info-Staging.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-Staging.plist"; path = "/Users/ra/code/popmetrics/mobile/ipopmetrics/ipopmetrics/Info-Staging.plist"; sourceTree = "<absolute>"; };
+		11E59815202B6618007AACDB /* Localdev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Localdev.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		11E59816202B6618007AACDB /* Info-Localdev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-Localdev.plist"; path = "/Users/ra/code/popmetrics/mobile/ipopmetrics/ipopmetrics/Info-Localdev.plist"; sourceTree = "<absolute>"; };
 		11E5A8971FDF01AE0085BDEE /* StatsMetricPageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsMetricPageContentViewController.swift; sourceTree = "<group>"; };
 		11E636931FD735480081B1DC /* StatsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsStore.swift; sourceTree = "<group>"; };
 		11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
@@ -508,6 +954,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		11E595FC202B5C9F007AACDB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11E595FD202B5C9F007AACDB /* SafariServices.framework in Frameworks */,
+				11E595FE202B5C9F007AACDB /* Pods_ipopmetrics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		11E597D3202B6618007AACDB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11E597D4202B6618007AACDB /* SafariServices.framework in Frameworks */,
+				11E597D5202B6618007AACDB /* Pods_ipopmetrics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,6 +1135,8 @@
 				1178D6751E1E5AD9005B96C3 /* ipopmetrics.app */,
 				1178D68B1E1E5AD9005B96C3 /* ipopmetricsTests.xctest */,
 				1178D6961E1E5AD9005B96C3 /* ipopmetricsUITests.xctest */,
+				11E5963E202B5C9F007AACDB /* Staging.app */,
+				11E59815202B6618007AACDB /* Localdev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -695,6 +1161,8 @@
 				11DD96651FC4F41600386F1E /* welcome */,
 				11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */,
 				1178D6861E1E5AD9005B96C3 /* Info.plist */,
+				11E5963F202B5C9F007AACDB /* Info-Staging.plist */,
+				11E59816202B6618007AACDB /* Info-Localdev.plist */,
 				1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */,
 				08B485DF1F20EA23005918A1 /* Config.swift */,
 				08D1BC381F1E3D6200D377B2 /* LDSplashView.swift */,
@@ -1082,6 +1550,52 @@
 			productReference = 1178D6961E1E5AD9005B96C3 /* ipopmetricsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		11E59554202B5C9F007AACDB /* Staging */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 11E5963B202B5C9F007AACDB /* Build configuration list for PBXNativeTarget "Staging" */;
+			buildPhases = (
+				11E59555202B5C9F007AACDB /* [CP] Check Pods Manifest.lock */,
+				11E59556202B5C9F007AACDB /* Sources */,
+				11E595FC202B5C9F007AACDB /* Frameworks */,
+				11E595FF202B5C9F007AACDB /* ShellScript */,
+				11E59600202B5C9F007AACDB /* Resources */,
+				11E59637202B5C9F007AACDB /* [CP] Embed Pods Frameworks */,
+				11E59638202B5C9F007AACDB /* [CP] Copy Pods Resources */,
+				11E59639202B5C9F007AACDB /* ShellScript */,
+				11E5963A202B5C9F007AACDB /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Staging;
+			productName = ipopmetrics;
+			productReference = 11E5963E202B5C9F007AACDB /* Staging.app */;
+			productType = "com.apple.product-type.application";
+		};
+		11E5972B202B6618007AACDB /* Localdev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 11E59812202B6618007AACDB /* Build configuration list for PBXNativeTarget "Localdev" */;
+			buildPhases = (
+				11E5972C202B6618007AACDB /* [CP] Check Pods Manifest.lock */,
+				11E5972D202B6618007AACDB /* Sources */,
+				11E597D3202B6618007AACDB /* Frameworks */,
+				11E597D6202B6618007AACDB /* ShellScript */,
+				11E597D7202B6618007AACDB /* Resources */,
+				11E5980E202B6618007AACDB /* [CP] Embed Pods Frameworks */,
+				11E5980F202B6618007AACDB /* [CP] Copy Pods Resources */,
+				11E59810202B6618007AACDB /* ShellScript */,
+				11E59811202B6618007AACDB /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Localdev;
+			productName = ipopmetrics;
+			productReference = 11E59815202B6618007AACDB /* Localdev.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1138,6 +1652,8 @@
 				1178D6741E1E5AD9005B96C3 /* ipopmetrics */,
 				1178D68A1E1E5AD9005B96C3 /* ipopmetricsTests */,
 				1178D6951E1E5AD9005B96C3 /* ipopmetricsUITests */,
+				11E59554202B5C9F007AACDB /* Staging */,
+				11E5972B202B6618007AACDB /* Localdev */,
 			);
 		};
 /* End PBXProject section */
@@ -1218,6 +1734,128 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		11E59600202B5C9F007AACDB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11E59601202B5C9F007AACDB /* OpenSans-Semibold.ttf in Resources */,
+				11E59602202B5C9F007AACDB /* SplashScreen.xib in Resources */,
+				11E59603202B5C9F007AACDB /* MyActionCard.xib in Resources */,
+				11E59604202B5C9F007AACDB /* ActionInstructionsPage.xib in Resources */,
+				11E59605202B5C9F007AACDB /* OpenSans-Light.ttf in Resources */,
+				11E59606202B5C9F007AACDB /* SettingsOverlayUrlView.xib in Resources */,
+				11E59607202B5C9F007AACDB /* OpenSans-Bold.ttf in Resources */,
+				11E59608202B5C9F007AACDB /* FacebookSocialPostDetails.xib in Resources */,
+				11E59609202B5C9F007AACDB /* CalendarCompletedAction.xib in Resources */,
+				11E5960A202B5C9F007AACDB /* Calendar.storyboard in Resources */,
+				11E5960B202B5C9F007AACDB /* CalendarCardSimple.xib in Resources */,
+				11E5960C202B5C9F007AACDB /* Notifications.storyboard in Resources */,
+				11E5960D202B5C9F007AACDB /* SettingsLogoView.xib in Resources */,
+				11E5960E202B5C9F007AACDB /* IceExtendView.xib in Resources */,
+				11E5960F202B5C9F007AACDB /* OpenSans-BoldItalic.ttf in Resources */,
+				11E59610202B5C9F007AACDB /* PaidActionCard.xib in Resources */,
+				11E59611202B5C9F007AACDB /* CalendarHeaderViewCell.xib in Resources */,
+				11E59612202B5C9F007AACDB /* OpenSans-Regular.ttf in Resources */,
+				11E59613202B5C9F007AACDB /* LaunchScreen.storyboard in Resources */,
+				11E59614202B5C9F007AACDB /* CalendarFooter.xib in Resources */,
+				11E59615202B5C9F007AACDB /* InsightCard.xib in Resources */,
+				11E59616202B5C9F007AACDB /* Settings.storyboard in Resources */,
+				11E59617202B5C9F007AACDB /* PopTipCard.xib in Resources */,
+				11E59618202B5C9F007AACDB /* RequiredActionCard.xib in Resources */,
+				11E59619202B5C9F007AACDB /* SettingsSocialView.xib in Resources */,
+				11E5961A202B5C9F007AACDB /* StatsEmptyCard.xib in Resources */,
+				11E5961B202B5C9F007AACDB /* InsightPage.xib in Resources */,
+				11E5961C202B5C9F007AACDB /* SettingsEmailView.xib in Resources */,
+				11E5961D202B5C9F007AACDB /* MoreInfoViewCell.xib in Resources */,
+				11E5961E202B5C9F007AACDB /* animation_nonX.json in Resources */,
+				11E5961F202B5C9F007AACDB /* CardHeaderCell.xib in Resources */,
+				11E59620202B5C9F007AACDB /* OpenSans-ExtraBold.ttf in Resources */,
+				11E59621202B5C9F007AACDB /* CalendarCard.xib in Resources */,
+				11E59622202B5C9F007AACDB /* ActionPage.xib in Resources */,
+				11E59623202B5C9F007AACDB /* Assets.xcassets in Resources */,
+				11E59624202B5C9F007AACDB /* SettingsOverlayActionView.xib in Resources */,
+				11E59625202B5C9F007AACDB /* SocialPostDetails.xib in Resources */,
+				11E59626202B5C9F007AACDB /* AlfaSlabOne-Regular.ttf in Resources */,
+				11E59627202B5C9F007AACDB /* animation_X.json in Resources */,
+				11E59628202B5C9F007AACDB /* EmptyStateCard.xib in Resources */,
+				11E59629202B5C9F007AACDB /* Main.storyboard in Resources */,
+				11E5962A202B5C9F007AACDB /* CalendarCardMaximized.xib in Resources */,
+				11E5962B202B5C9F007AACDB /* OpenSans-SemiboldItalic.ttf in Resources */,
+				11E5962C202B5C9F007AACDB /* OnboardingFinalView.xib in Resources */,
+				11E5962D202B5C9F007AACDB /* Info.plist in Resources */,
+				11E5962E202B5C9F007AACDB /* LastCard.xib in Resources */,
+				11E5962F202B5C9F007AACDB /* SocialPostInCardCell.xib in Resources */,
+				11E59630202B5C9F007AACDB /* StatsCard.xib in Resources */,
+				11E59631202B5C9F007AACDB /* Boarding.storyboard in Resources */,
+				11E59632202B5C9F007AACDB /* apple-app-site-association-unsigned in Resources */,
+				11E59633202B5C9F007AACDB /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist in Resources */,
+				11E59634202B5C9F007AACDB /* animation_iphone4.json in Resources */,
+				11E59635202B5C9F007AACDB /* IceCardView.xib in Resources */,
+				11E59636202B5C9F007AACDB /* OnboardingView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		11E597D7202B6618007AACDB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11E597D8202B6618007AACDB /* OpenSans-Semibold.ttf in Resources */,
+				11E597D9202B6618007AACDB /* SplashScreen.xib in Resources */,
+				11E597DA202B6618007AACDB /* MyActionCard.xib in Resources */,
+				11E597DB202B6618007AACDB /* ActionInstructionsPage.xib in Resources */,
+				11E597DC202B6618007AACDB /* OpenSans-Light.ttf in Resources */,
+				11E597DD202B6618007AACDB /* SettingsOverlayUrlView.xib in Resources */,
+				11E597DE202B6618007AACDB /* OpenSans-Bold.ttf in Resources */,
+				11E597DF202B6618007AACDB /* FacebookSocialPostDetails.xib in Resources */,
+				11E597E0202B6618007AACDB /* CalendarCompletedAction.xib in Resources */,
+				11E597E1202B6618007AACDB /* Calendar.storyboard in Resources */,
+				11E597E2202B6618007AACDB /* CalendarCardSimple.xib in Resources */,
+				11E597E3202B6618007AACDB /* Notifications.storyboard in Resources */,
+				11E597E4202B6618007AACDB /* SettingsLogoView.xib in Resources */,
+				11E597E5202B6618007AACDB /* IceExtendView.xib in Resources */,
+				11E597E6202B6618007AACDB /* OpenSans-BoldItalic.ttf in Resources */,
+				11E597E7202B6618007AACDB /* PaidActionCard.xib in Resources */,
+				11E597E8202B6618007AACDB /* CalendarHeaderViewCell.xib in Resources */,
+				11E597E9202B6618007AACDB /* OpenSans-Regular.ttf in Resources */,
+				11E597EA202B6618007AACDB /* LaunchScreen.storyboard in Resources */,
+				11E597EB202B6618007AACDB /* CalendarFooter.xib in Resources */,
+				11E597EC202B6618007AACDB /* InsightCard.xib in Resources */,
+				11E597ED202B6618007AACDB /* Settings.storyboard in Resources */,
+				11E597EE202B6618007AACDB /* PopTipCard.xib in Resources */,
+				11E597EF202B6618007AACDB /* RequiredActionCard.xib in Resources */,
+				11E597F0202B6618007AACDB /* SettingsSocialView.xib in Resources */,
+				11E597F1202B6618007AACDB /* StatsEmptyCard.xib in Resources */,
+				11E597F2202B6618007AACDB /* InsightPage.xib in Resources */,
+				11E597F3202B6618007AACDB /* SettingsEmailView.xib in Resources */,
+				11E597F4202B6618007AACDB /* MoreInfoViewCell.xib in Resources */,
+				11E597F5202B6618007AACDB /* animation_nonX.json in Resources */,
+				11E597F6202B6618007AACDB /* CardHeaderCell.xib in Resources */,
+				11E597F7202B6618007AACDB /* OpenSans-ExtraBold.ttf in Resources */,
+				11E597F8202B6618007AACDB /* CalendarCard.xib in Resources */,
+				11E597F9202B6618007AACDB /* ActionPage.xib in Resources */,
+				11E597FA202B6618007AACDB /* Assets.xcassets in Resources */,
+				11E597FB202B6618007AACDB /* SettingsOverlayActionView.xib in Resources */,
+				11E597FC202B6618007AACDB /* SocialPostDetails.xib in Resources */,
+				11E597FD202B6618007AACDB /* AlfaSlabOne-Regular.ttf in Resources */,
+				11E597FE202B6618007AACDB /* animation_X.json in Resources */,
+				11E597FF202B6618007AACDB /* EmptyStateCard.xib in Resources */,
+				11E59800202B6618007AACDB /* Main.storyboard in Resources */,
+				11E59801202B6618007AACDB /* CalendarCardMaximized.xib in Resources */,
+				11E59802202B6618007AACDB /* OpenSans-SemiboldItalic.ttf in Resources */,
+				11E59803202B6618007AACDB /* OnboardingFinalView.xib in Resources */,
+				11E59804202B6618007AACDB /* Info.plist in Resources */,
+				11E59805202B6618007AACDB /* LastCard.xib in Resources */,
+				11E59806202B6618007AACDB /* SocialPostInCardCell.xib in Resources */,
+				11E59807202B6618007AACDB /* StatsCard.xib in Resources */,
+				11E59808202B6618007AACDB /* Boarding.storyboard in Resources */,
+				11E59809202B6618007AACDB /* apple-app-site-association-unsigned in Resources */,
+				11E5980A202B6618007AACDB /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist in Resources */,
+				11E5980B202B6618007AACDB /* animation_iphone4.json in Resources */,
+				11E5980C202B6618007AACDB /* IceCardView.xib in Resources */,
+				11E5980D202B6618007AACDB /* OnboardingView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -1259,6 +1897,370 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\n# buildNumber=$(($buildNumber + 1))\n# /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+		};
+		11E59555202B5C9F007AACDB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ipopmetrics-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		11E595FF202B5C9F007AACDB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\n# buildNumber=$(($buildNumber + 1))\n# /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+		};
+		11E59637202B5C9F007AACDB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/BubbleTransition/BubbleTransition.framework",
+				"${BUILT_PRODUCTS_DIR}/DGElasticPullToRefresh/DGElasticPullToRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/EZAlertController/EZAlertController.framework",
+				"${BUILT_PRODUCTS_DIR}/ElasticTransition/ElasticTransition.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GTProgressBar/GTProgressBar.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Haptica/Haptica.framework",
+				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+				"${BUILT_PRODUCTS_DIR}/IOSLinkedInAPIFix/IOSLinkedInAPIFix.framework",
+				"${BUILT_PRODUCTS_DIR}/JSONWebToken/JWT.framework",
+				"${BUILT_PRODUCTS_DIR}/LinkedinSwift/LinkedinSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/M13ProgressSuite/M13ProgressSuite.framework",
+				"${BUILT_PRODUCTS_DIR}/MGSwipeTableCell/MGSwipeTableCell.framework",
+				"${BUILT_PRODUCTS_DIR}/MJCalendar/MJCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionAnimation/MotionAnimation.framework",
+				"${BUILT_PRODUCTS_DIR}/NSDate-Escort/NSDate_Escort.framework",
+				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/RSKImageCropper/RSKImageCropper.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/STPopup/STPopup.framework",
+				"${BUILT_PRODUCTS_DIR}/ScrollableGraphView/ScrollableGraphView.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftRichString/SwiftRichString.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/UIView+JMFrame/UIView_JMFrame.framework",
+				"${BUILT_PRODUCTS_DIR}/URLNavigator/URLNavigator.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+				"${BUILT_PRODUCTS_DIR}/markymark/markymark.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActiveLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BubbleTransition.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DGElasticPullToRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EZAlertController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ElasticTransition.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTProgressBar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Haptica.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IOSLinkedInAPIFix.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LinkedinSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M13ProgressSuite.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MGSwipeTableCell.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSDate_Escort.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSKImageCropper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/STPopup.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScrollableGraphView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftRichString.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIView_JMFrame.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URLNavigator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/markymark.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		11E59638202B5C9F007AACDB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/Intercom/Intercom/Intercom.framework/Versions/A/Resources/Intercom.bundle",
+				"${PODS_ROOT}/Intercom/Intercom/Intercom.framework/Versions/A/Resources/IntercomTranslations.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		11E59639202B5C9F007AACDB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 03453f6778a6e9edcc7fc47df94276b095265959 fcdc0b37c7b3387ae8b47beb12b6d585830439c7986b7eac4e70a3f703183cdf";
+		};
+		11E5963A202B5C9F007AACDB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+		11E5972C202B6618007AACDB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ipopmetrics-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		11E597D6202B6618007AACDB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\n# buildNumber=$(($buildNumber + 1))\n# /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+		};
+		11E5980E202B6618007AACDB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/BubbleTransition/BubbleTransition.framework",
+				"${BUILT_PRODUCTS_DIR}/DGElasticPullToRefresh/DGElasticPullToRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/EZAlertController/EZAlertController.framework",
+				"${BUILT_PRODUCTS_DIR}/ElasticTransition/ElasticTransition.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GTProgressBar/GTProgressBar.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Haptica/Haptica.framework",
+				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+				"${BUILT_PRODUCTS_DIR}/IOSLinkedInAPIFix/IOSLinkedInAPIFix.framework",
+				"${BUILT_PRODUCTS_DIR}/JSONWebToken/JWT.framework",
+				"${BUILT_PRODUCTS_DIR}/LinkedinSwift/LinkedinSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/M13ProgressSuite/M13ProgressSuite.framework",
+				"${BUILT_PRODUCTS_DIR}/MGSwipeTableCell/MGSwipeTableCell.framework",
+				"${BUILT_PRODUCTS_DIR}/MJCalendar/MJCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionAnimation/MotionAnimation.framework",
+				"${BUILT_PRODUCTS_DIR}/NSDate-Escort/NSDate_Escort.framework",
+				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/RSKImageCropper/RSKImageCropper.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/STPopup/STPopup.framework",
+				"${BUILT_PRODUCTS_DIR}/ScrollableGraphView/ScrollableGraphView.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftRichString/SwiftRichString.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/UIView+JMFrame/UIView_JMFrame.framework",
+				"${BUILT_PRODUCTS_DIR}/URLNavigator/URLNavigator.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+				"${BUILT_PRODUCTS_DIR}/markymark/markymark.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActiveLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BubbleTransition.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DGElasticPullToRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EZAlertController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ElasticTransition.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTProgressBar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Haptica.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IOSLinkedInAPIFix.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LinkedinSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M13ProgressSuite.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MGSwipeTableCell.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSDate_Escort.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSKImageCropper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/STPopup.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScrollableGraphView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftRichString.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIView_JMFrame.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URLNavigator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/markymark.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		11E5980F202B6618007AACDB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/Intercom/Intercom/Intercom.framework/Versions/A/Resources/Intercom.bundle",
+				"${PODS_ROOT}/Intercom/Intercom/Intercom.framework/Versions/A/Resources/IntercomTranslations.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		11E59810202B6618007AACDB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 03453f6778a6e9edcc7fc47df94276b095265959 fcdc0b37c7b3387ae8b47beb12b6d585830439c7986b7eac4e70a3f703183cdf";
+		};
+		11E59811202B6618007AACDB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
 		};
 		2FDEA40A3122DBE207B14F34 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1594,6 +2596,350 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		11E59556202B5C9F007AACDB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11E59557202B5C9F007AACDB /* TodoTopView.swift in Sources */,
+				11E59558202B5C9F007AACDB /* FooterViewStateController.swift in Sources */,
+				11E59559202B5C9F007AACDB /* BaseTableViewController.swift in Sources */,
+				11E5955A202B5C9F007AACDB /* UIColorExtensions.swift in Sources */,
+				11E5955B202B5C9F007AACDB /* LDSplashView.swift in Sources */,
+				11E5955C202B5C9F007AACDB /* CalendarCardSimpleViewCell.swift in Sources */,
+				11E5955D202B5C9F007AACDB /* UsersApi.swift in Sources */,
+				11E5955E202B5C9F007AACDB /* StatsSummaryViewCell.swift in Sources */,
+				11E5955F202B5C9F007AACDB /* SimpleButton.swift in Sources */,
+				11E59560202B5C9F007AACDB /* InstructionCell.swift in Sources */,
+				11E59561202B5C9F007AACDB /* AppStoryboard.swift in Sources */,
+				11E59562202B5C9F007AACDB /* SimpleButtonStateChangeValue.swift in Sources */,
+				11E59563202B5C9F007AACDB /* CompletionView.swift in Sources */,
+				11E59564202B5C9F007AACDB /* EmailMessages.swift in Sources */,
+				11E59565202B5C9F007AACDB /* Todo.swift in Sources */,
+				11E59566202B5C9F007AACDB /* SocialMediaLoginButtonsView.swift in Sources */,
+				11E59567202B5C9F007AACDB /* AccountViewController.swift in Sources */,
+				11E59568202B5C9F007AACDB /* RequiredActionCard.swift in Sources */,
+				11E59569202B5C9F007AACDB /* SettingsLogoViewController.swift in Sources */,
+				11E5956A202B5C9F007AACDB /* NameViewController.swift in Sources */,
+				11E5956B202B5C9F007AACDB /* TableFooterView.swift in Sources */,
+				11E5956C202B5C9F007AACDB /* Validator.swift in Sources */,
+				11E5956D202B5C9F007AACDB /* LoginViewController.swift in Sources */,
+				11E5956E202B5C9F007AACDB /* VideoScreenViewController.swift in Sources */,
+				11E5956F202B5C9F007AACDB /* TextFieldValidator.swift in Sources */,
+				11E59570202B5C9F007AACDB /* SocialPostInCardCell.swift in Sources */,
+				11E59571202B5C9F007AACDB /* UIBarButtonItem+Badge.swift in Sources */,
+				11E59572202B5C9F007AACDB /* FeedApi.swift in Sources */,
+				11E59573202B5C9F007AACDB /* SettingsOverlayActionViewController.swift in Sources */,
+				11E59574202B5C9F007AACDB /* PersistentFooter.swift in Sources */,
+				11E59575202B5C9F007AACDB /* CalendarFooterViewCell.swift in Sources */,
+				11E59576202B5C9F007AACDB /* SplashScreen.swift in Sources */,
+				11E59577202B5C9F007AACDB /* ApprovalCardCell.swift in Sources */,
+				11E59578202B5C9F007AACDB /* NotificationsManuallyEnableViewController.swift in Sources */,
+				11E59579202B5C9F007AACDB /* StatsSummaryItemView.swift in Sources */,
+				11E5957A202B5C9F007AACDB /* MyActionCardCell.swift in Sources */,
+				11E5957B202B5C9F007AACDB /* SettingsSocialViewController.swift in Sources */,
+				11E5957C202B5C9F007AACDB /* IceCardViewCell.swift in Sources */,
+				11E5957D202B5C9F007AACDB /* PaidActionCardCell.swift in Sources */,
+				11E5957E202B5C9F007AACDB /* AnimationsViewController.swift in Sources */,
+				11E5957F202B5C9F007AACDB /* ViewNames.swift in Sources */,
+				11E59580202B5C9F007AACDB /* BrandApi.swift in Sources */,
+				11E59581202B5C9F007AACDB /* ActionInstructionsPageViewController.swift in Sources */,
+				11E59582202B5C9F007AACDB /* SettingsBaseViewController.swift in Sources */,
+				11E59583202B5C9F007AACDB /* FeedStore.swift in Sources */,
+				11E59584202B5C9F007AACDB /* StatusCardTypeView.swift in Sources */,
+				11E59585202B5C9F007AACDB /* LoginSocialViewController.swift in Sources */,
+				11E59586202B5C9F007AACDB /* EmptyStateCard.swift in Sources */,
+				11E59587202B5C9F007AACDB /* AboutViewController.swift in Sources */,
+				11E59588202B5C9F007AACDB /* ActionPageDetailsViewController.swift in Sources */,
+				11E59589202B5C9F007AACDB /* LoginNavigationViewController.swift in Sources */,
+				11E5958A202B5C9F007AACDB /* TwoImagesButton.swift in Sources */,
+				11E5958B202B5C9F007AACDB /* BreakdownViewCell.swift in Sources */,
+				11E5958C202B5C9F007AACDB /* CompleteCardCell.swift in Sources */,
+				11E5958D202B5C9F007AACDB /* ToolbarViewCell.swift in Sources */,
+				11E5958E202B5C9F007AACDB /* CalendarHeaderViewCell.swift in Sources */,
+				11E5958F202B5C9F007AACDB /* HomeHubController.swift in Sources */,
+				11E59590202B5C9F007AACDB /* PopmetricsColor.swift in Sources */,
+				11E59591202B5C9F007AACDB /* PeriodGraphDateView.swift in Sources */,
+				11E59592202B5C9F007AACDB /* PhoneView.swift in Sources */,
+				11E59593202B5C9F007AACDB /* InfoCardViewController.swift in Sources */,
+				11E59594202B5C9F007AACDB /* StatsMetricPageContentViewController.swift in Sources */,
+				11E59595202B5C9F007AACDB /* ActionPageView.swift in Sources */,
+				11E59596202B5C9F007AACDB /* CalendarApi.swift in Sources */,
+				11E59597202B5C9F007AACDB /* HeaderView.swift in Sources */,
+				11E59598202B5C9F007AACDB /* ChangeBrandViewController.swift in Sources */,
+				11E59599202B5C9F007AACDB /* Alert.swift in Sources */,
+				11E5959A202B5C9F007AACDB /* Calendar.swift in Sources */,
+				11E5959B202B5C9F007AACDB /* IndividualTaskView.swift in Sources */,
+				11E5959C202B5C9F007AACDB /* ToDoApprovedView.swift in Sources */,
+				11E5959D202B5C9F007AACDB /* Constants.swift in Sources */,
+				11E5959E202B5C9F007AACDB /* OnboardingFinalView.swift in Sources */,
+				11E5959F202B5C9F007AACDB /* Markdown.swift in Sources */,
+				11E595A0202B5C9F007AACDB /* BaseViewController.swift in Sources */,
+				11E595A1202B5C9F007AACDB /* SyncService.swift in Sources */,
+				11E595A2202B5C9F007AACDB /* BrandTableViewCell.swift in Sources */,
+				11E595A3202B5C9F007AACDB /* FooterView.swift in Sources */,
+				11E595A4202B5C9F007AACDB /* OnboardingViewController.swift in Sources */,
+				11E595A5202B5C9F007AACDB /* ButtonWithContainer.swift in Sources */,
+				11E595A6202B5C9F007AACDB /* ApprovalCardInfoCell.swift in Sources */,
+				11E595A7202B5C9F007AACDB /* NoteView.swift in Sources */,
+				11E595A8202B5C9F007AACDB /* DateExtensions.swift in Sources */,
+				11E595A9202B5C9F007AACDB /* StatisticsCountView.swift in Sources */,
+				11E595AA202B5C9F007AACDB /* MainTabInfo.swift in Sources */,
+				11E595AB202B5C9F007AACDB /* HubsApi.swift in Sources */,
+				11E595AC202B5C9F007AACDB /* StatisticsApi.swift in Sources */,
+				11E595AD202B5C9F007AACDB /* IceExtendView.swift in Sources */,
+				11E595AE202B5C9F007AACDB /* CardToolbarController.swift in Sources */,
+				11E595AF202B5C9F007AACDB /* SettingsGAViewController.swift in Sources */,
+				11E595B0202B5C9F007AACDB /* BaseApi.swift in Sources */,
+				11E595B1202B5C9F007AACDB /* TodoApi.swift in Sources */,
+				11E595B2202B5C9F007AACDB /* ProgressHUD.swift in Sources */,
+				11E595B3202B5C9F007AACDB /* InsightCard.swift in Sources */,
+				11E595B4202B5C9F007AACDB /* StatsCardViewCell.swift in Sources */,
+				11E595B5202B5C9F007AACDB /* MenuViewController.swift in Sources */,
+				11E595B6202B5C9F007AACDB /* ApiModels.swift in Sources */,
+				11E595B7202B5C9F007AACDB /* SocialPostDetailsViewController.swift in Sources */,
+				11E595B8202B5C9F007AACDB /* ImpactScoreView.swift in Sources */,
+				11E595B9202B5C9F007AACDB /* StatsReportPageViewController.swift in Sources */,
+				11E595BA202B5C9F007AACDB /* AimeeView.swift in Sources */,
+				11E595BB202B5C9F007AACDB /* ToastView.swift in Sources */,
+				11E595BC202B5C9F007AACDB /* RecommendationCardCell.swift in Sources */,
+				11E595BD202B5C9F007AACDB /* EmptyStateCardCell.swift in Sources */,
+				11E595BE202B5C9F007AACDB /* CalendarStore.swift in Sources */,
+				11E595BF202B5C9F007AACDB /* StatsEmptyCell.swift in Sources */,
+				11E595C0202B5C9F007AACDB /* CalendarHubController.swift in Sources */,
+				11E595C1202B5C9F007AACDB /* BadgeBarButtonItem.swift in Sources */,
+				11E595C2202B5C9F007AACDB /* OfflineBanner.swift in Sources */,
+				11E595C3202B5C9F007AACDB /* CalendarCompletedViewCell.swift in Sources */,
+				11E595C4202B5C9F007AACDB /* StaticSettingsViewController.swift in Sources */,
+				11E595C5202B5C9F007AACDB /* SettingsOverlayUrlViewController.swift in Sources */,
+				11E595C6202B5C9F007AACDB /* SettingsTwitterViewController.swift in Sources */,
+				11E595C7202B5C9F007AACDB /* SimpleButtonControlState.swift in Sources */,
+				11E595C8202B5C9F007AACDB /* PopTipCard.swift in Sources */,
+				11E595C9202B5C9F007AACDB /* MoreInfoViewCell.swift in Sources */,
+				11E595CA202B5C9F007AACDB /* NavigationMap.swift in Sources */,
+				11E595CB202B5C9F007AACDB /* DailyInsightsCardCell.swift in Sources */,
+				11E595CC202B5C9F007AACDB /* TodoHubController.swift in Sources */,
+				11E595CD202B5C9F007AACDB /* SettingsEmailViewController.swift in Sources */,
+				11E595CE202B5C9F007AACDB /* CardActionHanlder.swift in Sources */,
+				11E595CF202B5C9F007AACDB /* TodoStore.swift in Sources */,
+				11E595D0202B5C9F007AACDB /* UserStore.swift in Sources */,
+				11E595D1202B5C9F007AACDB /* ActionTodoButton.swift in Sources */,
+				11E595D2202B5C9F007AACDB /* Statistics.swift in Sources */,
+				11E595D3202B5C9F007AACDB /* MJCalendarViewController.swift in Sources */,
+				11E595D4202B5C9F007AACDB /* NotificationsViewController.swift in Sources */,
+				11E595D5202B5C9F007AACDB /* CodeViewController.swift in Sources */,
+				11E595D6202B5C9F007AACDB /* TableViewCellTransition.swift in Sources */,
+				11E595D7202B5C9F007AACDB /* InsightPageDetailsViewController.swift in Sources */,
+				11E595D8202B5C9F007AACDB /* MessagesBadgeView.swift in Sources */,
+				11E595D9202B5C9F007AACDB /* SettingsOverlayDescriptionViewController.swift in Sources */,
+				11E595DA202B5C9F007AACDB /* OnboardNavigationController.swift in Sources */,
+				11E595DB202B5C9F007AACDB /* WelcomeScreen.swift in Sources */,
+				11E595DC202B5C9F007AACDB /* WebsiteViewController.swift in Sources */,
+				11E595DD202B5C9F007AACDB /* FooterViewController.swift in Sources */,
+				11E595DE202B5C9F007AACDB /* AppDelegate.swift in Sources */,
+				11E595DF202B5C9F007AACDB /* StringExtensions.swift in Sources */,
+				11E595E0202B5C9F007AACDB /* MainTabBarController.swift in Sources */,
+				11E595E1202B5C9F007AACDB /* GradientView.swift in Sources */,
+				11E595E2202B5C9F007AACDB /* ApiUrls.swift in Sources */,
+				11E595E3202B5C9F007AACDB /* ToDoCountView.swift in Sources */,
+				11E595E4202B5C9F007AACDB /* SocialIconView.swift in Sources */,
+				11E595E5202B5C9F007AACDB /* UIViewExtensions.swift in Sources */,
+				11E595E6202B5C9F007AACDB /* RecommendActionHandler.swift in Sources */,
+				11E595E7202B5C9F007AACDB /* Feed.swift in Sources */,
+				11E595E8202B5C9F007AACDB /* ChartViewCell.swift in Sources */,
+				11E595E9202B5C9F007AACDB /* ReachabilityManager.swift in Sources */,
+				11E595EA202B5C9F007AACDB /* DigitCodeView.swift in Sources */,
+				11E595EB202B5C9F007AACDB /* CalendarCardViewCell.swift in Sources */,
+				11E595EC202B5C9F007AACDB /* CardHeaderCell.swift in Sources */,
+				11E595ED202B5C9F007AACDB /* TodoActionHandler.swift in Sources */,
+				11E595EE202B5C9F007AACDB /* StatsStore.swift in Sources */,
+				11E595EF202B5C9F007AACDB /* Config.swift in Sources */,
+				11E595F0202B5C9F007AACDB /* SocialPostDetailsView.swift in Sources */,
+				11E595F1202B5C9F007AACDB /* ActionActivationView.swift in Sources */,
+				11E595F2202B5C9F007AACDB /* SettingsApi.swift in Sources */,
+				11E595F3202B5C9F007AACDB /* SwipeExtension.swift in Sources */,
+				11E595F4202B5C9F007AACDB /* StatsHubController.swift in Sources */,
+				11E595F5202B5C9F007AACDB /* RoundButton.swift in Sources */,
+				11E595F6202B5C9F007AACDB /* ActionButton.swift in Sources */,
+				11E595F7202B5C9F007AACDB /* TwoColorButton.swift in Sources */,
+				11E595F8202B5C9F007AACDB /* BusinessContactDetailsViewController.swift in Sources */,
+				11E595F9202B5C9F007AACDB /* CalendarCardMaximizedViewCell.swift in Sources */,
+				11E595FA202B5C9F007AACDB /* RequiredActionHandler.swift in Sources */,
+				11E595FB202B5C9F007AACDB /* RoundedCornersButton.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		11E5972D202B6618007AACDB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11E5972E202B6618007AACDB /* TodoTopView.swift in Sources */,
+				11E5972F202B6618007AACDB /* FooterViewStateController.swift in Sources */,
+				11E59730202B6618007AACDB /* BaseTableViewController.swift in Sources */,
+				11E59731202B6618007AACDB /* UIColorExtensions.swift in Sources */,
+				11E59732202B6618007AACDB /* LDSplashView.swift in Sources */,
+				11E59733202B6618007AACDB /* CalendarCardSimpleViewCell.swift in Sources */,
+				11E59734202B6618007AACDB /* UsersApi.swift in Sources */,
+				11E59735202B6618007AACDB /* StatsSummaryViewCell.swift in Sources */,
+				11E59736202B6618007AACDB /* SimpleButton.swift in Sources */,
+				11E59737202B6618007AACDB /* InstructionCell.swift in Sources */,
+				11E59738202B6618007AACDB /* AppStoryboard.swift in Sources */,
+				11E59739202B6618007AACDB /* SimpleButtonStateChangeValue.swift in Sources */,
+				11E5973A202B6618007AACDB /* CompletionView.swift in Sources */,
+				11E5973B202B6618007AACDB /* EmailMessages.swift in Sources */,
+				11E5973C202B6618007AACDB /* Todo.swift in Sources */,
+				11E5973D202B6618007AACDB /* SocialMediaLoginButtonsView.swift in Sources */,
+				11E5973E202B6618007AACDB /* AccountViewController.swift in Sources */,
+				11E5973F202B6618007AACDB /* RequiredActionCard.swift in Sources */,
+				11E59740202B6618007AACDB /* SettingsLogoViewController.swift in Sources */,
+				11E59741202B6618007AACDB /* NameViewController.swift in Sources */,
+				11E59742202B6618007AACDB /* TableFooterView.swift in Sources */,
+				11E59743202B6618007AACDB /* Validator.swift in Sources */,
+				11E59744202B6618007AACDB /* LoginViewController.swift in Sources */,
+				11E59745202B6618007AACDB /* VideoScreenViewController.swift in Sources */,
+				11E59746202B6618007AACDB /* TextFieldValidator.swift in Sources */,
+				11E59747202B6618007AACDB /* SocialPostInCardCell.swift in Sources */,
+				11E59748202B6618007AACDB /* UIBarButtonItem+Badge.swift in Sources */,
+				11E59749202B6618007AACDB /* FeedApi.swift in Sources */,
+				11E5974A202B6618007AACDB /* SettingsOverlayActionViewController.swift in Sources */,
+				11E5974B202B6618007AACDB /* PersistentFooter.swift in Sources */,
+				11E5974C202B6618007AACDB /* CalendarFooterViewCell.swift in Sources */,
+				11E5974D202B6618007AACDB /* SplashScreen.swift in Sources */,
+				11E5974E202B6618007AACDB /* ApprovalCardCell.swift in Sources */,
+				11E5974F202B6618007AACDB /* NotificationsManuallyEnableViewController.swift in Sources */,
+				11E59750202B6618007AACDB /* StatsSummaryItemView.swift in Sources */,
+				11E59751202B6618007AACDB /* MyActionCardCell.swift in Sources */,
+				11E59752202B6618007AACDB /* SettingsSocialViewController.swift in Sources */,
+				11E59753202B6618007AACDB /* IceCardViewCell.swift in Sources */,
+				11E59754202B6618007AACDB /* PaidActionCardCell.swift in Sources */,
+				11E59755202B6618007AACDB /* AnimationsViewController.swift in Sources */,
+				11E59756202B6618007AACDB /* ViewNames.swift in Sources */,
+				11E59757202B6618007AACDB /* BrandApi.swift in Sources */,
+				11E59758202B6618007AACDB /* ActionInstructionsPageViewController.swift in Sources */,
+				11E59759202B6618007AACDB /* SettingsBaseViewController.swift in Sources */,
+				11E5975A202B6618007AACDB /* FeedStore.swift in Sources */,
+				11E5975B202B6618007AACDB /* StatusCardTypeView.swift in Sources */,
+				11E5975C202B6618007AACDB /* LoginSocialViewController.swift in Sources */,
+				11E5975D202B6618007AACDB /* EmptyStateCard.swift in Sources */,
+				11E5975E202B6618007AACDB /* AboutViewController.swift in Sources */,
+				11E5975F202B6618007AACDB /* ActionPageDetailsViewController.swift in Sources */,
+				11E59760202B6618007AACDB /* LoginNavigationViewController.swift in Sources */,
+				11E59761202B6618007AACDB /* TwoImagesButton.swift in Sources */,
+				11E59762202B6618007AACDB /* BreakdownViewCell.swift in Sources */,
+				11E59763202B6618007AACDB /* CompleteCardCell.swift in Sources */,
+				11E59764202B6618007AACDB /* ToolbarViewCell.swift in Sources */,
+				11E59765202B6618007AACDB /* CalendarHeaderViewCell.swift in Sources */,
+				11E59766202B6618007AACDB /* HomeHubController.swift in Sources */,
+				11E59767202B6618007AACDB /* PopmetricsColor.swift in Sources */,
+				11E59768202B6618007AACDB /* PeriodGraphDateView.swift in Sources */,
+				11E59769202B6618007AACDB /* PhoneView.swift in Sources */,
+				11E5976A202B6618007AACDB /* InfoCardViewController.swift in Sources */,
+				11E5976B202B6618007AACDB /* StatsMetricPageContentViewController.swift in Sources */,
+				11E5976C202B6618007AACDB /* ActionPageView.swift in Sources */,
+				11E5976D202B6618007AACDB /* CalendarApi.swift in Sources */,
+				11E5976E202B6618007AACDB /* HeaderView.swift in Sources */,
+				11E5976F202B6618007AACDB /* ChangeBrandViewController.swift in Sources */,
+				11E59770202B6618007AACDB /* Alert.swift in Sources */,
+				11E59771202B6618007AACDB /* Calendar.swift in Sources */,
+				11E59772202B6618007AACDB /* IndividualTaskView.swift in Sources */,
+				11E59773202B6618007AACDB /* ToDoApprovedView.swift in Sources */,
+				11E59774202B6618007AACDB /* Constants.swift in Sources */,
+				11E59775202B6618007AACDB /* OnboardingFinalView.swift in Sources */,
+				11E59776202B6618007AACDB /* Markdown.swift in Sources */,
+				11E59777202B6618007AACDB /* BaseViewController.swift in Sources */,
+				11E59778202B6618007AACDB /* SyncService.swift in Sources */,
+				11E59779202B6618007AACDB /* BrandTableViewCell.swift in Sources */,
+				11E5977A202B6618007AACDB /* FooterView.swift in Sources */,
+				11E5977B202B6618007AACDB /* OnboardingViewController.swift in Sources */,
+				11E5977C202B6618007AACDB /* ButtonWithContainer.swift in Sources */,
+				11E5977D202B6618007AACDB /* ApprovalCardInfoCell.swift in Sources */,
+				11E5977E202B6618007AACDB /* NoteView.swift in Sources */,
+				11E5977F202B6618007AACDB /* DateExtensions.swift in Sources */,
+				11E59780202B6618007AACDB /* StatisticsCountView.swift in Sources */,
+				11E59781202B6618007AACDB /* MainTabInfo.swift in Sources */,
+				11E59782202B6618007AACDB /* HubsApi.swift in Sources */,
+				11E59783202B6618007AACDB /* StatisticsApi.swift in Sources */,
+				11E59784202B6618007AACDB /* IceExtendView.swift in Sources */,
+				11E59785202B6618007AACDB /* CardToolbarController.swift in Sources */,
+				11E59786202B6618007AACDB /* SettingsGAViewController.swift in Sources */,
+				11E59787202B6618007AACDB /* BaseApi.swift in Sources */,
+				11E59788202B6618007AACDB /* TodoApi.swift in Sources */,
+				11E59789202B6618007AACDB /* ProgressHUD.swift in Sources */,
+				11E5978A202B6618007AACDB /* InsightCard.swift in Sources */,
+				11E5978B202B6618007AACDB /* StatsCardViewCell.swift in Sources */,
+				11E5978C202B6618007AACDB /* MenuViewController.swift in Sources */,
+				11E5978D202B6618007AACDB /* ApiModels.swift in Sources */,
+				11E5978E202B6618007AACDB /* SocialPostDetailsViewController.swift in Sources */,
+				11E5978F202B6618007AACDB /* ImpactScoreView.swift in Sources */,
+				11E59790202B6618007AACDB /* StatsReportPageViewController.swift in Sources */,
+				11E59791202B6618007AACDB /* AimeeView.swift in Sources */,
+				11E59792202B6618007AACDB /* ToastView.swift in Sources */,
+				11E59793202B6618007AACDB /* RecommendationCardCell.swift in Sources */,
+				11E59794202B6618007AACDB /* EmptyStateCardCell.swift in Sources */,
+				11E59795202B6618007AACDB /* CalendarStore.swift in Sources */,
+				11E59796202B6618007AACDB /* StatsEmptyCell.swift in Sources */,
+				11E59797202B6618007AACDB /* CalendarHubController.swift in Sources */,
+				11E59798202B6618007AACDB /* BadgeBarButtonItem.swift in Sources */,
+				11E59799202B6618007AACDB /* OfflineBanner.swift in Sources */,
+				11E5979A202B6618007AACDB /* CalendarCompletedViewCell.swift in Sources */,
+				11E5979B202B6618007AACDB /* StaticSettingsViewController.swift in Sources */,
+				11E5979C202B6618007AACDB /* SettingsOverlayUrlViewController.swift in Sources */,
+				11E5979D202B6618007AACDB /* SettingsTwitterViewController.swift in Sources */,
+				11E5979E202B6618007AACDB /* SimpleButtonControlState.swift in Sources */,
+				11E5979F202B6618007AACDB /* PopTipCard.swift in Sources */,
+				11E597A0202B6618007AACDB /* MoreInfoViewCell.swift in Sources */,
+				11E597A1202B6618007AACDB /* NavigationMap.swift in Sources */,
+				11E597A2202B6618007AACDB /* DailyInsightsCardCell.swift in Sources */,
+				11E597A3202B6618007AACDB /* TodoHubController.swift in Sources */,
+				11E597A4202B6618007AACDB /* SettingsEmailViewController.swift in Sources */,
+				11E597A5202B6618007AACDB /* CardActionHanlder.swift in Sources */,
+				11E597A6202B6618007AACDB /* TodoStore.swift in Sources */,
+				11E597A7202B6618007AACDB /* UserStore.swift in Sources */,
+				11E597A8202B6618007AACDB /* ActionTodoButton.swift in Sources */,
+				11E597A9202B6618007AACDB /* Statistics.swift in Sources */,
+				11E597AA202B6618007AACDB /* MJCalendarViewController.swift in Sources */,
+				11E597AB202B6618007AACDB /* NotificationsViewController.swift in Sources */,
+				11E597AC202B6618007AACDB /* CodeViewController.swift in Sources */,
+				11E597AD202B6618007AACDB /* TableViewCellTransition.swift in Sources */,
+				11E597AE202B6618007AACDB /* InsightPageDetailsViewController.swift in Sources */,
+				11E597AF202B6618007AACDB /* MessagesBadgeView.swift in Sources */,
+				11E597B0202B6618007AACDB /* SettingsOverlayDescriptionViewController.swift in Sources */,
+				11E597B1202B6618007AACDB /* OnboardNavigationController.swift in Sources */,
+				11E597B2202B6618007AACDB /* WelcomeScreen.swift in Sources */,
+				11E597B3202B6618007AACDB /* WebsiteViewController.swift in Sources */,
+				11E597B4202B6618007AACDB /* FooterViewController.swift in Sources */,
+				11E597B5202B6618007AACDB /* AppDelegate.swift in Sources */,
+				11E597B6202B6618007AACDB /* StringExtensions.swift in Sources */,
+				11E597B7202B6618007AACDB /* MainTabBarController.swift in Sources */,
+				11E597B8202B6618007AACDB /* GradientView.swift in Sources */,
+				11E597B9202B6618007AACDB /* ApiUrls.swift in Sources */,
+				11E597BA202B6618007AACDB /* ToDoCountView.swift in Sources */,
+				11E597BB202B6618007AACDB /* SocialIconView.swift in Sources */,
+				11E597BC202B6618007AACDB /* UIViewExtensions.swift in Sources */,
+				11E597BD202B6618007AACDB /* RecommendActionHandler.swift in Sources */,
+				11E597BE202B6618007AACDB /* Feed.swift in Sources */,
+				11E597BF202B6618007AACDB /* ChartViewCell.swift in Sources */,
+				11E597C0202B6618007AACDB /* ReachabilityManager.swift in Sources */,
+				11E597C1202B6618007AACDB /* DigitCodeView.swift in Sources */,
+				11E597C2202B6618007AACDB /* CalendarCardViewCell.swift in Sources */,
+				11E597C3202B6618007AACDB /* CardHeaderCell.swift in Sources */,
+				11E597C4202B6618007AACDB /* TodoActionHandler.swift in Sources */,
+				11E597C5202B6618007AACDB /* StatsStore.swift in Sources */,
+				11E597C6202B6618007AACDB /* Config.swift in Sources */,
+				11E597C7202B6618007AACDB /* SocialPostDetailsView.swift in Sources */,
+				11E597C8202B6618007AACDB /* ActionActivationView.swift in Sources */,
+				11E597C9202B6618007AACDB /* SettingsApi.swift in Sources */,
+				11E597CA202B6618007AACDB /* SwipeExtension.swift in Sources */,
+				11E597CB202B6618007AACDB /* StatsHubController.swift in Sources */,
+				11E597CC202B6618007AACDB /* RoundButton.swift in Sources */,
+				11E597CD202B6618007AACDB /* ActionButton.swift in Sources */,
+				11E597CE202B6618007AACDB /* TwoColorButton.swift in Sources */,
+				11E597CF202B6618007AACDB /* BusinessContactDetailsViewController.swift in Sources */,
+				11E597D0202B6618007AACDB /* CalendarCardMaximizedViewCell.swift in Sources */,
+				11E597D1202B6618007AACDB /* RequiredActionHandler.swift in Sources */,
+				11E597D2202B6618007AACDB /* RoundedCornersButton.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1830,6 +3176,94 @@
 			};
 			name = Release;
 		};
+		11E5963C202B5C9F007AACDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D5ECCAEA66BCED2B0405D78 /* Pods-ipopmetrics.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ipopmetrics/ipopmetrics.entitlements;
+				DEVELOPMENT_TEAM = M3K246T7Z9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ipopmetrics",
+				);
+				INFOPLIST_FILE = "Info-staging.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		11E5963D202B5C9F007AACDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ipopmetrics/ipopmetrics.entitlements;
+				DEVELOPMENT_TEAM = M3K246T7Z9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ipopmetrics",
+				);
+				INFOPLIST_FILE = "Info-staging.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		11E59813202B6618007AACDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D5ECCAEA66BCED2B0405D78 /* Pods-ipopmetrics.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ipopmetrics/ipopmetrics.entitlements;
+				DEVELOPMENT_TEAM = M3K246T7Z9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ipopmetrics",
+				);
+				INFOPLIST_FILE = "Info-Localdev.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		11E59814202B6618007AACDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ipopmetrics/ipopmetrics.entitlements;
+				DEVELOPMENT_TEAM = M3K246T7Z9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ipopmetrics",
+				);
+				INFOPLIST_FILE = "Info-Localdev.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1865,6 +3299,24 @@
 			buildConfigurations = (
 				1178D6A61E1E5AD9005B96C3 /* Debug */,
 				1178D6A71E1E5AD9005B96C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		11E5963B202B5C9F007AACDB /* Build configuration list for PBXNativeTarget "Staging" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11E5963C202B5C9F007AACDB /* Debug */,
+				11E5963D202B5C9F007AACDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		11E59812202B6618007AACDB /* Build configuration list for PBXNativeTarget "Localdev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11E59813202B6618007AACDB /* Debug */,
+				11E59814202B6618007AACDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
