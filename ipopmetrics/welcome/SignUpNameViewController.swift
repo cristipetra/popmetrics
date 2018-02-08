@@ -13,9 +13,8 @@ class SignUpNameViewController: BaseViewController {
     @IBOutlet weak var constraintCenterYcontainer: NSLayoutConstraint!
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var btnSubmit: UIButton!
+    @IBOutlet weak var btnSubmitName: UIButton!
     
-    internal var registerBrand: RegisterBrand = RegisterBrand()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +26,7 @@ class SignUpNameViewController: BaseViewController {
         isHeroEnabled = true
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
         
-        btnSubmit.isEnabled = false
+        btnSubmitName.isEnabled = false
         setNavigationBar()
     }
     
@@ -75,11 +74,10 @@ class SignUpNameViewController: BaseViewController {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         guard let name = self.nameTextField.text, !name.isEmpty else {
-            btnSubmit.isEnabled = false
+            btnSubmitName.isEnabled = false
             return
         }
-        btnSubmit.isEnabled = true
-
+        btnSubmitName.isEnabled = true
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {

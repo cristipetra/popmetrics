@@ -30,12 +30,6 @@ class DigitCodeView: UIView {
         return sendCodeButton
     }()
     
-    lazy var logoView : UIImageView = {
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "logoPop"))
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
     
     lazy var instrLabel : UILabel = {
         let label = UILabel()
@@ -63,24 +57,13 @@ class DigitCodeView: UIView {
         return contactButton
     }()
     
-    lazy var closeBtn : UIButton = {
-        let closeButton = UIButton()
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
-        closeButton.setImage(#imageLiteral(resourceName: "login_back"), for: .normal)
-        
-        return closeButton
-    }()
     
     func reloadSubViews() {
-        closeBtn.removeFromSuperview()
         digitextField.removeFromSuperview()
         sendCodeBtn.removeFromSuperview()
         resendCodeBtn.removeFromSuperview()
         //        contactBtn.removeFromSuperview()
-        logoView.removeFromSuperview()
         instrLabel.removeFromSuperview()
-        self.addSubview(logoView)
-        self.addSubview(closeBtn)
         self.addSubview(digitextField)
         self.addSubview(sendCodeBtn)
         self.addSubview(resendCodeBtn)
@@ -93,12 +76,10 @@ class DigitCodeView: UIView {
         setSendCodeButton(topSpace: 30)
         
         if UIScreen.main.bounds.height > 480 {
-            setCloseButton(yAnchor: 20)
             setNumberTextView(yAnchor: -70)
             setSendCodeButton(topSpace: 120)
             setResendCodeButton(yAnchor: -130)
             //            setContactButton(yAnchor: -90)
-            setLogoView(yAnchor: 20)
             setInstructionLabel(yAnchor: 18)
         } else {
             setNumberTextView(yAnchor: 70)
@@ -111,11 +92,6 @@ class DigitCodeView: UIView {
     func setup() {
         self.backgroundColor = .white
         
-        self.addSubview(closeBtn)
-        setCloseButton(yAnchor: 20)
-        
-        self.addSubview(logoView)
-        setLogoView(yAnchor: 20)
         
         // TextField for number
         self.addSubview(digitextField)
@@ -139,12 +115,6 @@ class DigitCodeView: UIView {
         
     }
     
-    private func setCloseButton(yAnchor: CGFloat) {
-        closeBtn.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        closeBtn.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        closeBtn.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 27).isActive = true
-        closeBtn.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: yAnchor).isActive = true
-    }
     
     private func setNumberTextView(yAnchor: CGFloat) {
         digitextField.widthAnchor.constraint(equalToConstant: 264).isActive = true
@@ -169,12 +139,6 @@ class DigitCodeView: UIView {
         sendCodeBtn.cornerRadius = 22.5
     }
     
-    private func setLogoView(yAnchor: CGFloat) {
-        logoView.heightAnchor.constraint(equalToConstant: 28).isActive = true
-        logoView.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        logoView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        logoView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: yAnchor).isActive = true
-    }
     
     private func setInstructionLabel(yAnchor: CGFloat) {
         instrLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true

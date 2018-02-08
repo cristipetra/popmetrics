@@ -36,7 +36,6 @@ class CodeViewController: BaseViewController {
         digitCodeView.sendCodeBtn.addTarget(self, action: #selector(didPressSendSmsCode), for: .touchUpInside)
         digitCodeView.contactBtn.addTarget(self, action: #selector(didPressContact), for: .touchUpInside)
         digitCodeView.resendCodeBtn.addTarget(self, action: #selector(didPressResendCode), for: .touchUpInside)
-        digitCodeView.closeBtn.addTarget(self, action: #selector(closeVC), for: .touchUpInside)
         
         updateDigitFieldNumber(textField: digitCodeView.digitextField, mask: editableCodeMask)
         isHeroEnabled = true

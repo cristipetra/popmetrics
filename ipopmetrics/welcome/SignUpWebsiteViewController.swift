@@ -15,7 +15,7 @@ class SignUpWebsiteViewController: BaseViewController {
     @IBOutlet weak var constraintCenterYcontainer: NSLayoutConstraint!
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var websiteTextField: UITextField!
-    @IBOutlet weak var btnSubmit: UIButton!
+    @IBOutlet weak var btnSubmitWebsite: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class SignUpWebsiteViewController: BaseViewController {
         isHeroEnabled = true
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
         
-        btnSubmit.isEnabled = false
+        btnSubmitWebsite.isEnabled = false
         setNavigationBar()
     }
     
@@ -69,12 +69,16 @@ class SignUpWebsiteViewController: BaseViewController {
     }
     
     @objc internal func dismissView() {
-        self.navigationController?.popViewController(animated: true)
+        
+        performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
+        // self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func unwindToNameVC(segue:UIStoryboardSegue) { }
     
     @IBAction func handlerSubmit(_ sender: UIButton) {
         guard let website = self.websiteTextField.text, !website.isEmpty else {
-            self.btnSubmit.isEnabled = false
+            self.btnSubmitWebsite.isEnabled = false
             return
         }
         self.showProgressIndicator()
@@ -96,10 +100,10 @@ class SignUpWebsiteViewController: BaseViewController {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         guard let website = self.websiteTextField.text, !website.isEmpty else {
-            btnSubmit.isEnabled = false
+            btnSubmitWebsite.isEnabled = false
             return
         }
-        btnSubmit.isEnabled = true
+        btnSubmitWebsite.isEnabled = true
         
     }
     
@@ -145,7 +149,4 @@ extension SignUpWebsiteViewController: UITextFieldDelegate {
     
 }
 
-struct RegisterBrand {
-    var name: String?
-    var website: String?
-}
+
