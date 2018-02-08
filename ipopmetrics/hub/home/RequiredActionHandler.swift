@@ -23,7 +23,7 @@ protocol InfoButtonDelegate {
 
 
 class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, GIDSignInDelegate {
-   
+    
     static func sharedInstance() -> RequiredActionHandler {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.requiredActionHandler
@@ -213,32 +213,55 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                                                     userInfo: pnotification.toJSON())
                 
                 case LoginResult.success(let grantedPermissions, let declinedPermissions, let accessToken):
-                    let notificationObj = ["alert":"Connecting to Facebook.",
-                                           "subtitle":"Your credentials will be validated while establishing the connection.",
-                                           "type": "info",
-                                           "sound":"default"
-                    ]
-                    let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+                    //TODO: validate that all read permissions requested were granted (readPermissions == grantedPermissions)
+                    //self.accesToken = accessToken.authenticationToken
                     
-                    NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
-                                                    userInfo: pnotification.toJSON())
-                    let params = [
-                        "task_name": "facebook.connect_with_brand",
-                        "access_token": accessToken.authenticationToken
-                    ]
-                    let brandId = UserStore.currentBrandId
-                    TodoApi().postRequiredAction(brandId, params: params) { requiredActionResponse in
-                        NotificationCenter.default.post(name:Notification.Popmetrics.RequiredActionComplete, object:nil,
-                                                        userInfo: nil )
-                        let store = FeedStore.getInstance()
-                        if let card = store.getFeedCardWithName("facebook.connect_with_brand") {
-                            store.updateCardSection(card, section: "None")
-                            NotificationCenter.default.post(name:Notification.Popmetrics.UiRefreshRequired, object:nil,
-                                                            userInfo: nil )
+                    let connection = GraphRequestConnection()
+                    connection.add(GraphRequest(graphPath: "/me/accounts")) { httpResponse, result in
+                        switch result {
+                        case .success(let response):
+                            print("Graph Request Succeeded: \(response)")
+                            // Show Page Popup
+                            
+                        case .failed(let error):
+                            print("Graph Request Failed: \(error)")
                         }
                     }
+                    connection.start()
+                    
+                
                     
                 }
+        }
+        
+        func connectFacebookPage(accessToken: String, facebookPageId: String, facebookPageAccessToken: String){
+            let notificationObj = ["alert":"Connecting to Facebook.",
+                                   "subtitle":"Your credentials will be validated while establishing the connection.",
+                                   "type": "info",
+                                   "sound":"default"
+            ]
+            let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+            
+            NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
+                                            userInfo: pnotification.toJSON())
+            let params = [
+                "task_name": "facebook.connect_with_brand",
+                "access_token": accessToken,
+                "facebook_page_id": facebookPageId,
+                "facebook_page_access_token": facebookPageAccessToken
+                
+            ]
+            let brandId = UserStore.currentBrandId
+            TodoApi().postRequiredAction(brandId, params: params) { requiredActionResponse in
+                NotificationCenter.default.post(name:Notification.Popmetrics.RequiredActionComplete, object:nil,
+                                                userInfo: nil )
+                let store = FeedStore.getInstance()
+                if let card = store.getFeedCardWithName("facebook.connect_with_brand") {
+                    store.updateCardSection(card, section: "None")
+                    NotificationCenter.default.post(name:Notification.Popmetrics.UiRefreshRequired, object:nil,
+                                                    userInfo: nil )
+                }
+            }
         }
         
 
