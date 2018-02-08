@@ -25,8 +25,9 @@ class SplashScreen: UIViewController {
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.left {
-            let animationVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "AnimationsViewController") as! AnimationsViewController;
-            self.presentFromDirection(viewController: animationVC, direction: .right)
+            let nav = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "BoardingNavigationController") as! BoardingNavigationController
+//            let animationVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "AnimationsViewController") as! AnimationsViewController;
+            self.presentFromDirection(viewController: nav, direction: .right)
         }
     }
 }

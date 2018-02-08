@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NameViewController: UIViewController {
+class SignUpNameViewController: BaseViewController {
 
     @IBOutlet weak var constraintCenterYcontainer: NSLayoutConstraint!
     @IBOutlet weak var container: UIView!
@@ -64,29 +64,13 @@ class NameViewController: UIViewController {
         
     }
     
-    private func openNextScreen(_ name: String) {
-        let websiteVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "WebsiteViewController") as! WebsiteViewController
-        registerBrand.name = name
-        websiteVC.registerBrand = registerBrand
-        self.navigationController?.pushViewController(websiteVC, animated: true)
-    }
-    
     // MARK: handlers
     @objc internal func dismissKeyboard() {
         nameTextField.resignFirstResponder()
     }
     
     @objc internal func dismissView() {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func handlerSubmit(_ sender: UIButton) {
-        guard let name = self.nameTextField.text, !name.isEmpty else {
-            btnSubmit.isEnabled = false
-            return
-        }
-        
-        openNextScreen(name)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -98,10 +82,21 @@ class NameViewController: UIViewController {
 
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        guard let name = self.nameTextField.text, !name.isEmpty else {
+            return false
+        }
+        
+        (self.navigationController as! BoardingNavigationController).registerBrand.name = name
+        
+        return true
+    }
+    
+    
 }
 
 // MARK: UITextFieldDelegate
-extension NameViewController: UITextFieldDelegate {
+extension SignUpNameViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         UIView.animate(withDuration: 0.3, animations: {
             self.constraintCenterYcontainer.constant = -80

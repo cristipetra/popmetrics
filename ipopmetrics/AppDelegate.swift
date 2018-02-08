@@ -114,8 +114,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if isLoggedIn() {
             let userAccount = UserStore.getInstance().getLocalUserAccount()
             Intercom.registerUser(withUserId: userAccount.id!)
-        }else {
-            Intercom.logout()
         }
         
         Fabric.with([Twitter.self])
@@ -205,7 +203,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func getInitialViewController() -> UIViewController {
         if !isLoggedIn() {
             return AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier:
-                "welcomeScreen")
+                "BoardingNavigationController")
         }
         return AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC)
 

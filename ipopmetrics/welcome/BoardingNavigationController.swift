@@ -8,8 +8,11 @@
 
 import UIKit
 
-class OnboardNavigationController: UINavigationController {
+class BoardingNavigationController: UINavigationController {
 
+    
+    public var registerBrand: RegisterBrand = RegisterBrand()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

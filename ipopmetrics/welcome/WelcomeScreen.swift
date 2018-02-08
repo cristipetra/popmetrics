@@ -46,23 +46,6 @@ class WelcomeScreen: BaseViewController {
         
     }
     
-    
-    
-    override func setupOfflineBanner() {
-        if offlineBanner == nil {
-            offlineBanner = OfflineBanner()
-            self.view.addSubview(offlineBanner)
-            
-            offlineBanner.translatesAutoresizingMaskIntoConstraints = false
-            offlineBanner.trailingAnchor.constraint(equalTo: (self.view.trailingAnchor), constant: 0).isActive = true
-            offlineBanner.leadingAnchor.constraint(equalTo: (self.view.leadingAnchor), constant: 0).isActive = true
-            offlineBanner.heightAnchor.constraint(equalToConstant: 45).isActive = true
-            offlineBanner.topAnchor.constraint(equalTo: (self.view.safeAreaLayoutGuide.topAnchor), constant: 44).isActive = true
-            
-            offlineBanner.isHidden = ReachabilityManager.shared.isNetworkAvailable
-        }
-    }
-    
     @IBAction func handlerSpoken(_ sender: UIButton) {
         
         if !ReachabilityManager.shared.isNetworkAvailable {

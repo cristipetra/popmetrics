@@ -133,7 +133,6 @@
 		08B5D4BE1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5D4BD1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift */; };
 		08B6AFAA1F9DC813005E3049 /* IceCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B6AFA91F9DC813005E3049 /* IceCardView.xib */; };
 		08B6AFAC1F9DC843005E3049 /* IceCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6AFAB1F9DC843005E3049 /* IceCardViewCell.swift */; };
-		08B745911F1F638000EC3F8C /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B745901F1F638000EC3F8C /* LoginNavigationViewController.swift */; };
 		08B745921F1F6C0100EC3F8C /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A812791F1672DC00672126 /* OpenSans-Semibold.ttf */; };
 		08B745931F1F6C0100EC3F8C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A812781F1672D300672126 /* OpenSans-Light.ttf */; };
 		08B745941F1F6C0100EC3F8C /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A8127A1F1672E700672126 /* OpenSans-Bold.ttf */; };
@@ -149,8 +148,8 @@
 		08BD58001F7A2DCC00FFDCFD /* ActionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD57FF1F7A2DCC00FFDCFD /* ActionPageView.swift */; };
 		08BD58021F7A2F3700FFDCFD /* IndividualTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */; };
 		08BD580C1F7A6AD500FFDCFD /* OnboardingFinalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */; };
-		08BF99382029A42C00B2AA86 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF99372029A42C00B2AA86 /* NameViewController.swift */; };
-		08BF993E2029CDF500B2AA86 /* WebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF993D2029CDF500B2AA86 /* WebsiteViewController.swift */; };
+		08BF99382029A42C00B2AA86 /* SignUpNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF99372029A42C00B2AA86 /* SignUpNameViewController.swift */; };
+		08BF993E2029CDF500B2AA86 /* SignUpWebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF993D2029CDF500B2AA86 /* SignUpWebsiteViewController.swift */; };
 		08BF9940202A09DE00B2AA86 /* BrandApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF993F202A09DE00B2AA86 /* BrandApi.swift */; };
 		08BF9D4E1F45F2EF00141206 /* TableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */; };
 		08C497AD1FD5A0120066E515 /* animation_nonX.json in Resources */ = {isa = PBXBuildFile; fileRef = 08C497AC1FD5A0110066E515 /* animation_nonX.json */; };
@@ -173,7 +172,7 @@
 		08D1BC3B1F1E568A00D377B2 /* PhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC3A1F1E568A00D377B2 /* PhoneView.swift */; };
 		08D409CE1F73C3A800C5BB54 /* OnboardingFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D409CD1F73C3A800C5BB54 /* OnboardingFinalView.swift */; };
 		08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D579F81F62E6ED00FDD744 /* StatusCardTypeView.swift */; };
-		08D9F2E32028821500092D95 /* OnboardNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9F2E22028821500092D95 /* OnboardNavigationController.swift */; };
+		08D9F2E32028821500092D95 /* BoardingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9F2E22028821500092D95 /* BoardingNavigationController.swift */; };
 		08DE806D2018E98E00621243 /* SocialPostDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DE806C2018E98E00621243 /* SocialPostDetailsView.swift */; };
 		08DF9E621F261C8100C60C2D /* InfoCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */; };
 		08EE385D1F447C0E005D1D7C /* TodoTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EE385C1F447C0E005D1D7C /* TodoTopView.swift */; };
@@ -244,7 +243,7 @@
 		11E59567202B5C9F007AACDB /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976A81E97C71300B535DF /* AccountViewController.swift */; };
 		11E59568202B5C9F007AACDB /* RequiredActionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E751F4C35AC003ABEFC /* RequiredActionCard.swift */; };
 		11E59569202B5C9F007AACDB /* SettingsLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */; };
-		11E5956A202B5C9F007AACDB /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF99372029A42C00B2AA86 /* NameViewController.swift */; };
+		11E5956A202B5C9F007AACDB /* SignUpNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF99372029A42C00B2AA86 /* SignUpNameViewController.swift */; };
 		11E5956B202B5C9F007AACDB /* TableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */; };
 		11E5956C202B5C9F007AACDB /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA21FC56ACD00BFC5A1 /* Validator.swift */; };
 		11E5956D202B5C9F007AACDB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */; };
@@ -275,7 +274,6 @@
 		11E59586202B5C9F007AACDB /* EmptyStateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0855C0CA1F6FFBF000ACBFA9 /* EmptyStateCard.swift */; };
 		11E59587202B5C9F007AACDB /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088728961FFCE98700BE9882 /* AboutViewController.swift */; };
 		11E59588202B5C9F007AACDB /* ActionPageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */; };
-		11E59589202B5C9F007AACDB /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B745901F1F638000EC3F8C /* LoginNavigationViewController.swift */; };
 		11E5958A202B5C9F007AACDB /* TwoImagesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAE1FC56ACE00BFC5A1 /* TwoImagesButton.swift */; };
 		11E5958B202B5C9F007AACDB /* BreakdownViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */; };
 		11E5958C202B5C9F007AACDB /* CompleteCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0857D5561F41B4E800D218DA /* CompleteCardCell.swift */; };
@@ -356,9 +354,9 @@
 		11E595D7202B5C9F007AACDB /* InsightPageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBBE1FC58FF100BFC5A1 /* InsightPageDetailsViewController.swift */; };
 		11E595D8202B5C9F007AACDB /* MessagesBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849662C202B1D61002CE902 /* MessagesBadgeView.swift */; };
 		11E595D9202B5C9F007AACDB /* SettingsOverlayDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08078F431FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift */; };
-		11E595DA202B5C9F007AACDB /* OnboardNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9F2E22028821500092D95 /* OnboardNavigationController.swift */; };
+		11E595DA202B5C9F007AACDB /* BoardingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9F2E22028821500092D95 /* BoardingNavigationController.swift */; };
 		11E595DB202B5C9F007AACDB /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */; };
-		11E595DC202B5C9F007AACDB /* WebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF993D2029CDF500B2AA86 /* WebsiteViewController.swift */; };
+		11E595DC202B5C9F007AACDB /* SignUpWebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF993D2029CDF500B2AA86 /* SignUpWebsiteViewController.swift */; };
 		11E595DD202B5C9F007AACDB /* FooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7ADE91FB22B8300C56688 /* FooterViewController.swift */; };
 		11E595DE202B5C9F007AACDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */; };
 		11E595DF202B5C9F007AACDB /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081B92491FCEF205006D3BAB /* StringExtensions.swift */; };
@@ -465,7 +463,7 @@
 		11E5973E202B6618007AACDB /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976A81E97C71300B535DF /* AccountViewController.swift */; };
 		11E5973F202B6618007AACDB /* RequiredActionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E751F4C35AC003ABEFC /* RequiredActionCard.swift */; };
 		11E59740202B6618007AACDB /* SettingsLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */; };
-		11E59741202B6618007AACDB /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF99372029A42C00B2AA86 /* NameViewController.swift */; };
+		11E59741202B6618007AACDB /* SignUpNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF99372029A42C00B2AA86 /* SignUpNameViewController.swift */; };
 		11E59742202B6618007AACDB /* TableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */; };
 		11E59743202B6618007AACDB /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBA21FC56ACD00BFC5A1 /* Validator.swift */; };
 		11E59744202B6618007AACDB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */; };
@@ -496,7 +494,6 @@
 		11E5975D202B6618007AACDB /* EmptyStateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0855C0CA1F6FFBF000ACBFA9 /* EmptyStateCard.swift */; };
 		11E5975E202B6618007AACDB /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088728961FFCE98700BE9882 /* AboutViewController.swift */; };
 		11E5975F202B6618007AACDB /* ActionPageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */; };
-		11E59760202B6618007AACDB /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B745901F1F638000EC3F8C /* LoginNavigationViewController.swift */; };
 		11E59761202B6618007AACDB /* TwoImagesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBAE1FC56ACE00BFC5A1 /* TwoImagesButton.swift */; };
 		11E59762202B6618007AACDB /* BreakdownViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */; };
 		11E59763202B6618007AACDB /* CompleteCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0857D5561F41B4E800D218DA /* CompleteCardCell.swift */; };
@@ -577,9 +574,9 @@
 		11E597AE202B6618007AACDB /* InsightPageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4EBBE1FC58FF100BFC5A1 /* InsightPageDetailsViewController.swift */; };
 		11E597AF202B6618007AACDB /* MessagesBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849662C202B1D61002CE902 /* MessagesBadgeView.swift */; };
 		11E597B0202B6618007AACDB /* SettingsOverlayDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08078F431FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift */; };
-		11E597B1202B6618007AACDB /* OnboardNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9F2E22028821500092D95 /* OnboardNavigationController.swift */; };
+		11E597B1202B6618007AACDB /* BoardingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9F2E22028821500092D95 /* BoardingNavigationController.swift */; };
 		11E597B2202B6618007AACDB /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */; };
-		11E597B3202B6618007AACDB /* WebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF993D2029CDF500B2AA86 /* WebsiteViewController.swift */; };
+		11E597B3202B6618007AACDB /* SignUpWebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF993D2029CDF500B2AA86 /* SignUpWebsiteViewController.swift */; };
 		11E597B4202B6618007AACDB /* FooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B7ADE91FB22B8300C56688 /* FooterViewController.swift */; };
 		11E597B5202B6618007AACDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */; };
 		11E597B6202B6618007AACDB /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081B92491FCEF205006D3BAB /* StringExtensions.swift */; };
@@ -821,7 +818,6 @@
 		08B5D4BD1F29CD6900B79AD3 /* CalendarCardMaximizedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCardMaximizedViewCell.swift; sourceTree = "<group>"; };
 		08B6AFA91F9DC813005E3049 /* IceCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IceCardView.xib; sourceTree = "<group>"; };
 		08B6AFAB1F9DC843005E3049 /* IceCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IceCardViewCell.swift; sourceTree = "<group>"; };
-		08B745901F1F638000EC3F8C /* LoginNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNavigationViewController.swift; sourceTree = "<group>"; };
 		08B745951F1F6C1D00EC3F8C /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		08B745971F1F718300EC3F8C /* CodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
 		08B7459A1F1F996B00EC3F8C /* DigitCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitCodeView.swift; sourceTree = "<group>"; };
@@ -834,8 +830,8 @@
 		08BD57FF1F7A2DCC00FFDCFD /* ActionPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionPageView.swift; sourceTree = "<group>"; };
 		08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualTaskView.swift; sourceTree = "<group>"; };
 		08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingFinalView.xib; sourceTree = "<group>"; };
-		08BF99372029A42C00B2AA86 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
-		08BF993D2029CDF500B2AA86 /* WebsiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteViewController.swift; sourceTree = "<group>"; };
+		08BF99372029A42C00B2AA86 /* SignUpNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNameViewController.swift; sourceTree = "<group>"; };
+		08BF993D2029CDF500B2AA86 /* SignUpWebsiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpWebsiteViewController.swift; sourceTree = "<group>"; };
 		08BF993F202A09DE00B2AA86 /* BrandApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandApi.swift; sourceTree = "<group>"; };
 		08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableFooterView.swift; sourceTree = "<group>"; };
 		08C497AC1FD5A0110066E515 /* animation_nonX.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_nonX.json; sourceTree = "<group>"; };
@@ -859,7 +855,7 @@
 		08D409C71F73BF3100C5BB54 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		08D409CD1F73C3A800C5BB54 /* OnboardingFinalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFinalView.swift; sourceTree = "<group>"; };
 		08D579F81F62E6ED00FDD744 /* StatusCardTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCardTypeView.swift; sourceTree = "<group>"; };
-		08D9F2E22028821500092D95 /* OnboardNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardNavigationController.swift; sourceTree = "<group>"; };
+		08D9F2E22028821500092D95 /* BoardingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingNavigationController.swift; sourceTree = "<group>"; };
 		08DE806C2018E98E00621243 /* SocialPostDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPostDetailsView.swift; sourceTree = "<group>"; };
 		08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCardViewController.swift; sourceTree = "<group>"; };
 		08EE385C1F447C0E005D1D7C /* TodoTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoTopView.swift; sourceTree = "<group>"; };
@@ -1068,19 +1064,10 @@
 			path = helpers;
 			sourceTree = "<group>";
 		};
-		08BF99362029A3FC00B2AA86 /* name */ = {
-			isa = PBXGroup;
-			children = (
-				08BF99372029A42C00B2AA86 /* NameViewController.swift */,
-			);
-			path = name;
-			sourceTree = "<group>";
-		};
 		08CA5D5620247AD300ED78C3 /* notifications */ = {
 			isa = PBXGroup;
 			children = (
 				08CA5D5720247C1000ED78C3 /* NotificationsManuallyEnableViewController.swift */,
-				08D9F2E22028821500092D95 /* OnboardNavigationController.swift */,
 			);
 			path = notifications;
 			sourceTree = "<group>";
@@ -1410,9 +1397,9 @@
 		11DD96651FC4F41600386F1E /* welcome */ = {
 			isa = PBXGroup;
 			children = (
-				08BF99362029A3FC00B2AA86 /* name */,
 				08CA5D5620247AD300ED78C3 /* notifications */,
 				1119F6171ED56F34009997FF /* Boarding.storyboard */,
+				08D9F2E22028821500092D95 /* BoardingNavigationController.swift */,
 				085CB7B11F4ADCA200038C03 /* Notifications.storyboard */,
 				085599A51F72751900E5BEA1 /* SplashScreen.xib */,
 				085599A21F72750000E5BEA1 /* SplashScreen.swift */,
@@ -1422,7 +1409,8 @@
 				08D409CD1F73C3A800C5BB54 /* OnboardingFinalView.swift */,
 				08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */,
 				08B485E31F210992005918A1 /* VideoScreenViewController.swift */,
-				08BF993D2029CDF500B2AA86 /* WebsiteViewController.swift */,
+				08BF993D2029CDF500B2AA86 /* SignUpWebsiteViewController.swift */,
+				08BF99372029A42C00B2AA86 /* SignUpNameViewController.swift */,
 			);
 			path = welcome;
 			sourceTree = "<group>";
@@ -1431,7 +1419,6 @@
 			isa = PBXGroup;
 			children = (
 				11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */,
-				08B745901F1F638000EC3F8C /* LoginNavigationViewController.swift */,
 				08B745971F1F718300EC3F8C /* CodeViewController.swift */,
 				08B7459A1F1F996B00EC3F8C /* DigitCodeView.swift */,
 				08D1BC3A1F1E568A00D377B2 /* PhoneView.swift */,
@@ -2431,7 +2418,7 @@
 				113976A91E97C71300B535DF /* AccountViewController.swift in Sources */,
 				08953E761F4C35AC003ABEFC /* RequiredActionCard.swift in Sources */,
 				08CC6EC01FBC7F9C00A6521E /* SettingsLogoViewController.swift in Sources */,
-				08BF99382029A42C00B2AA86 /* NameViewController.swift in Sources */,
+				08BF99382029A42C00B2AA86 /* SignUpNameViewController.swift in Sources */,
 				08BF9D4E1F45F2EF00141206 /* TableFooterView.swift in Sources */,
 				08B4EBAF1FC56ACE00BFC5A1 /* Validator.swift in Sources */,
 				11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */,
@@ -2462,7 +2449,6 @@
 				0855C0CB1F6FFBF000ACBFA9 /* EmptyStateCard.swift in Sources */,
 				088728971FFCE98700BE9882 /* AboutViewController.swift in Sources */,
 				08C5CF361FC5EA9C001851A5 /* ActionPageDetailsViewController.swift in Sources */,
-				08B745911F1F638000EC3F8C /* LoginNavigationViewController.swift in Sources */,
 				08B4EBBB1FC56ACE00BFC5A1 /* TwoImagesButton.swift in Sources */,
 				08AA6C6B1F56DD060022DE91 /* BreakdownViewCell.swift in Sources */,
 				0857D5571F41B4E800D218DA /* CompleteCardCell.swift in Sources */,
@@ -2543,9 +2529,9 @@
 				08B4EBBF1FC58FF100BFC5A1 /* InsightPageDetailsViewController.swift in Sources */,
 				0849662D202B1D61002CE902 /* MessagesBadgeView.swift in Sources */,
 				08078F441FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift in Sources */,
-				08D9F2E32028821500092D95 /* OnboardNavigationController.swift in Sources */,
+				08D9F2E32028821500092D95 /* BoardingNavigationController.swift in Sources */,
 				08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */,
-				08BF993E2029CDF500B2AA86 /* WebsiteViewController.swift in Sources */,
+				08BF993E2029CDF500B2AA86 /* SignUpWebsiteViewController.swift in Sources */,
 				08B7ADEA1FB22B8300C56688 /* FooterViewController.swift in Sources */,
 				1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */,
 				081B924A1FCEF205006D3BAB /* StringExtensions.swift in Sources */,
@@ -2619,7 +2605,7 @@
 				11E59567202B5C9F007AACDB /* AccountViewController.swift in Sources */,
 				11E59568202B5C9F007AACDB /* RequiredActionCard.swift in Sources */,
 				11E59569202B5C9F007AACDB /* SettingsLogoViewController.swift in Sources */,
-				11E5956A202B5C9F007AACDB /* NameViewController.swift in Sources */,
+				11E5956A202B5C9F007AACDB /* SignUpNameViewController.swift in Sources */,
 				11E5956B202B5C9F007AACDB /* TableFooterView.swift in Sources */,
 				11E5956C202B5C9F007AACDB /* Validator.swift in Sources */,
 				11E5956D202B5C9F007AACDB /* LoginViewController.swift in Sources */,
@@ -2650,7 +2636,6 @@
 				11E59586202B5C9F007AACDB /* EmptyStateCard.swift in Sources */,
 				11E59587202B5C9F007AACDB /* AboutViewController.swift in Sources */,
 				11E59588202B5C9F007AACDB /* ActionPageDetailsViewController.swift in Sources */,
-				11E59589202B5C9F007AACDB /* LoginNavigationViewController.swift in Sources */,
 				11E5958A202B5C9F007AACDB /* TwoImagesButton.swift in Sources */,
 				11E5958B202B5C9F007AACDB /* BreakdownViewCell.swift in Sources */,
 				11E5958C202B5C9F007AACDB /* CompleteCardCell.swift in Sources */,
@@ -2731,9 +2716,9 @@
 				11E595D7202B5C9F007AACDB /* InsightPageDetailsViewController.swift in Sources */,
 				11E595D8202B5C9F007AACDB /* MessagesBadgeView.swift in Sources */,
 				11E595D9202B5C9F007AACDB /* SettingsOverlayDescriptionViewController.swift in Sources */,
-				11E595DA202B5C9F007AACDB /* OnboardNavigationController.swift in Sources */,
+				11E595DA202B5C9F007AACDB /* BoardingNavigationController.swift in Sources */,
 				11E595DB202B5C9F007AACDB /* WelcomeScreen.swift in Sources */,
-				11E595DC202B5C9F007AACDB /* WebsiteViewController.swift in Sources */,
+				11E595DC202B5C9F007AACDB /* SignUpWebsiteViewController.swift in Sources */,
 				11E595DD202B5C9F007AACDB /* FooterViewController.swift in Sources */,
 				11E595DE202B5C9F007AACDB /* AppDelegate.swift in Sources */,
 				11E595DF202B5C9F007AACDB /* StringExtensions.swift in Sources */,
@@ -2791,7 +2776,7 @@
 				11E5973E202B6618007AACDB /* AccountViewController.swift in Sources */,
 				11E5973F202B6618007AACDB /* RequiredActionCard.swift in Sources */,
 				11E59740202B6618007AACDB /* SettingsLogoViewController.swift in Sources */,
-				11E59741202B6618007AACDB /* NameViewController.swift in Sources */,
+				11E59741202B6618007AACDB /* SignUpNameViewController.swift in Sources */,
 				11E59742202B6618007AACDB /* TableFooterView.swift in Sources */,
 				11E59743202B6618007AACDB /* Validator.swift in Sources */,
 				11E59744202B6618007AACDB /* LoginViewController.swift in Sources */,
@@ -2822,7 +2807,6 @@
 				11E5975D202B6618007AACDB /* EmptyStateCard.swift in Sources */,
 				11E5975E202B6618007AACDB /* AboutViewController.swift in Sources */,
 				11E5975F202B6618007AACDB /* ActionPageDetailsViewController.swift in Sources */,
-				11E59760202B6618007AACDB /* LoginNavigationViewController.swift in Sources */,
 				11E59761202B6618007AACDB /* TwoImagesButton.swift in Sources */,
 				11E59762202B6618007AACDB /* BreakdownViewCell.swift in Sources */,
 				11E59763202B6618007AACDB /* CompleteCardCell.swift in Sources */,
@@ -2903,9 +2887,9 @@
 				11E597AE202B6618007AACDB /* InsightPageDetailsViewController.swift in Sources */,
 				11E597AF202B6618007AACDB /* MessagesBadgeView.swift in Sources */,
 				11E597B0202B6618007AACDB /* SettingsOverlayDescriptionViewController.swift in Sources */,
-				11E597B1202B6618007AACDB /* OnboardNavigationController.swift in Sources */,
+				11E597B1202B6618007AACDB /* BoardingNavigationController.swift in Sources */,
 				11E597B2202B6618007AACDB /* WelcomeScreen.swift in Sources */,
-				11E597B3202B6618007AACDB /* WebsiteViewController.swift in Sources */,
+				11E597B3202B6618007AACDB /* SignUpWebsiteViewController.swift in Sources */,
 				11E597B4202B6618007AACDB /* FooterViewController.swift in Sources */,
 				11E597B5202B6618007AACDB /* AppDelegate.swift in Sources */,
 				11E597B6202B6618007AACDB /* StringExtensions.swift in Sources */,

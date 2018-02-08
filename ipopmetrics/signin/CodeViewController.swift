@@ -15,13 +15,10 @@ import ObjectMapper
 import Intercom
 import UserNotifications
 
-class CodeViewController: UIViewController {
+class CodeViewController: BaseViewController {
     
-    fileprivate let progressHUD = ProgressHUD(text: "Loading...")
     var phoneNo: String?
     fileprivate var editableCodeMask = codeMask
-    
-    private let navigation = OnboardNavigationController()
     
     let digitCodeView = DigitCodeView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height));
     
@@ -41,12 +38,35 @@ class CodeViewController: UIViewController {
         digitCodeView.resendCodeBtn.addTarget(self, action: #selector(didPressResendCode), for: .touchUpInside)
         digitCodeView.closeBtn.addTarget(self, action: #selector(closeVC), for: .touchUpInside)
         
-        view.addSubview(progressHUD)
-        progressHUD.hide()
         updateDigitFieldNumber(textField: digitCodeView.digitextField, mask: editableCodeMask)
         isHeroEnabled = true
         digitCodeView.sendCodeBtn.isEnabled = false
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
+        
+        setNavigationBar()
+    }
+    
+    private func setNavigationBar() {
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        
+        let logoImageView = UIImageView(image: UIImage(named: "logoPop"))
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        logoImageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        logoImageView.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        logoImageView.contentMode = .scaleAspectFill
+        self.navigationItem.titleView = logoImageView
+        
+        self.navigationItem.titleView = logoImageView
+        let backButton = UIBarButtonItem(image: UIImage(named: "login_back"), style: .plain, target: self, action: #selector(dismissView))
+        backButton.tintColor = UIColor(red: 145/255, green: 145/255, blue: 145/255, alpha: 1)
+        backButton.setTitlePositionAdjustment(UIOffset.init(horizontal: -55, vertical: 0), for: .default)
+        
+        let leftSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        leftSpace.width = 15
+        
+        self.navigationItem.leftBarButtonItems = [leftSpace, backButton]
+        
     }
     
     
@@ -111,9 +131,17 @@ class CodeViewController: UIViewController {
                  */
                 let userAttributes = ICMUserAttributes()
                 //userAttributes.companies = [company]
-                userAttributes.name = currentUser.name
-                userAttributes.email = currentUser.email
-                userAttributes.phone = currentUser.phone
+                
+                if currentUser.name != nil && !(currentUser.name?.isEmpty)! {
+                    userAttributes.name = currentUser.name
+                }
+                if currentUser.email != nil && !(currentUser.email?.isEmpty)! {
+                    userAttributes.email = currentUser.email
+                }
+                if currentUser.phone != nil && !(currentUser.phone?.isEmpty)! {
+                    userAttributes.phone = currentUser.phone
+                }
+                
                 Intercom.updateUser(userAttributes)
                 
                 SyncService.getInstance().syncAll(silent: false)
@@ -160,20 +188,17 @@ class CodeViewController: UIViewController {
     
     internal func showOnboardingFinalScreen() {
         let finalOnboardingVC = OnboardingFinalView()
-        navigation.pushViewController(finalOnboardingVC, animated: true)
-        self.present(navigation, animated: true, completion: nil)
+        self.navigationController?.pushViewController(finalOnboardingVC, animated: true)
     }
     
     internal func showManualEnableNotifications() {
         let notificationsVC = AppStoryboard.Notifications.instance.instantiateViewController(withIdentifier: ViewNames.SBID_PUSH_MANUALLY_NOTIFCATIONS_VC)
-        navigation.pushViewController(notificationsVC, animated: true)
-        self.present(navigation, animated: true, completion: nil)
+        self.navigationController?.pushViewController(notificationsVC, animated: true)
     }
     
     internal func showPushNotificationsScreen() {
         let notificationsVC = AppStoryboard.Notifications.instance.instantiateViewController(withIdentifier: ViewNames.SBID_PUSH_NOTIFICATIONS_VC)
-        navigation.pushViewController(notificationsVC, animated: true)
-        self.present(navigation, animated: true, completion: nil)
+        self.navigationController?.pushViewController(notificationsVC, animated: true)
     }
     
     @objc internal func didPressResendCode() {
@@ -219,28 +244,16 @@ class CodeViewController: UIViewController {
         textField.selectedTextRange = textField.textRange(from: cursorPosition, to: cursorPosition)
     }
     
-    internal func showProgressIndicator() {
-        DispatchQueue.main.async(execute: {
-            self.view.isUserInteractionEnabled = false
-            self.progressHUD.show()
-        })
+    @objc internal func dismissView() {
+        self.navigationController?.popViewController(animated: true)
     }
-    
-    internal func hideProgressIndicator() {
-        DispatchQueue.main.async(execute: {
-            self.view.isUserInteractionEnabled = true
-            self.progressHUD.hide()
-        })
-    }
-    
-    
     
     internal func showSocialScreen() {
     
         let verifySocialVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "loginSocial") as! LoginSocialViewController
-        navigation.pushViewController(verifySocialVC, animated: false)
+       
+        self.navigationController?.pushViewController(verifySocialVC, animated: true)
         
-        self.present(navigation, animated: true, completion: nil)
     }
     
     @objc internal func closeVC() {
@@ -249,22 +262,6 @@ class CodeViewController: UIViewController {
     
     func extractCode(text: String) -> String {
         return text.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-    }
-}
-
-// MARK: - api
-extension CodeViewController {
-    internal func handleApiError(_ error: ApiError, completionHandler: () -> Void) {
-        if error == ApiError.userNotAuthenticated {
-            UserStore.getInstance().clearCredentials()
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.setInitialViewController()
-            completionHandler()
-        } else {
-            let message = "Something went wrong. Please try again later."
-            EZAlertController.alert("Error", message: message)
-            completionHandler()
-        }
     }
 }
 
