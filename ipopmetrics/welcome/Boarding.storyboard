@@ -315,12 +315,15 @@
                                         </constraints>
                                         <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="24"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="namePhonePad" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartQuotesType="no" textContentType="name"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="nameTextFieldChanged:" destination="R5K-Uc-bRm" eventType="editingChanged" id="b1U-In-9iP"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your first &amp; last name." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAb-RZ-AXh">
                                         <rect key="frame" x="57.5" y="90" width="245" height="20.5"/>
@@ -410,7 +413,7 @@
                                         </constraints>
                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="24"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" textContentType="url"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="10"/>
@@ -473,12 +476,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="btnSubmitWebsite" destination="Eae-CD-ITD" id="1V5-mv-7mz"/>
+                        <outlet property="btnSubmitWebsite" destination="Eae-CD-ITD" id="EJp-4M-lwM"/>
                         <outlet property="constraintCenterYcontainer" destination="kyX-om-D0G" id="qCE-AW-BBF"/>
                         <outlet property="container" destination="iNO-ht-M0U" id="wJA-4V-Rrb"/>
                         <outlet property="websiteTextField" destination="VDg-zR-jTw" id="3Mw-O8-c8s"/>
                         <segue destination="MiY-R6-tTF" kind="show" identifier="enterPhoneNumberForSignUp" id="MRV-7E-Bgv"/>
-                        <segue destination="prg-6i-bPp" kind="unwind" identifier="unwindToNameVCWithSegue" unwindAction="unwindToNameVCWithSegue:" id="Nx5-Ku-Rze"/>
+                        <segue destination="prg-6i-bPp" kind="unwind" identifier="unwindSegueToNameVC" unwindAction="unwindToNameVCWithSegue:" id="Nx5-Ku-Rze"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lu5-Jg-0Fp" userLabel="First Responder" sceneMemberID="firstResponder"/>
