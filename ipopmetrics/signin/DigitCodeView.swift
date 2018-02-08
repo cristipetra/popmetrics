@@ -8,7 +8,7 @@
 
 import UIKit
 
-let codeMask = "######"
+let codeMask = "####"
 
 @IBDesignable
 class DigitCodeView: UIView {
@@ -40,7 +40,7 @@ class DigitCodeView: UIView {
     lazy var instrLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Enter the 6-digit code."
+        label.text = "Enter the 4-digit code."
         label.font = UIFont(name: FontBook.regular, size: 15)
         label.textColor = .lightGray
         return label
@@ -201,7 +201,7 @@ class DigitCodeView: UIView {
             NSAttributedStringKey.font: UIFont(name: "OpenSans", size: 23),
             NSAttributedStringKey.foregroundColor: UIColor(red: 68/255, green: 180/255, blue: 142/255, alpha: 1.0)
         ]
-        let regularAttributedString = NSAttributedString(string: "Enter 6-digit code", attributes: regularAttribute)
+        let regularAttributedString = NSAttributedString(string: "Enter 4-digit code", attributes: regularAttribute)
         mutableAttrString.append(regularAttributedString)
         digitextField.attributedPlaceholder = mutableAttrString
     }
