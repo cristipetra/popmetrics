@@ -17,7 +17,7 @@ class UsersApi: BaseApi {
                                      callback: @escaping (_ userDict: [String: Any]?, _ error: ApiError?) -> Void) {
         let params = [
             "phone_number": phoneNumber
-            ]
+        ]
         
         
         Alamofire.request(ApiUrls.getSendCodeBySmsUrl(), method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { response in
@@ -34,23 +34,19 @@ class UsersApi: BaseApi {
     }
 
     func registerNewUser(name: String, website: String, phone: String,
-                            callback: @escaping(_ userDict: [String: Any]?, _ error: ApiError?) -> Void) {
+                            callback: @escaping (_ response: ResponseSignup) -> Void) {
         let url = ApiUrls.composedBaseUrl(String(format:"/api/brand/register"))
         let params = ["website": website,
                       "name": name,
                       "phone": phone]
         
-        
-        Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { response in
-            
-            if let err = self.createErrorWithHttpResponse(response: response.response) {
-                callback(nil, err)
-                return
-            }
-            
-            if let resultDict = response.result.value as? [String: Any] {
-                callback(resultDict, nil)
-            }
+        Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseObject() { (response: DataResponse<ResponseSignup>) in
+                            
+                            let levelOneHandled = super.handleNotOkCodes(response: response.response)
+                            if !levelOneHandled {
+                                callback(response.value!)
+                            }
+                            
         }
     }
     

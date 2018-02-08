@@ -24,20 +24,23 @@ class NameViewController: UIViewController {
         let tapDismissKeyboard: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         self.view.addGestureRecognizer(tapDismissKeyboard)
         
-        nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        
         isHeroEnabled = true
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
         
         btnSubmit.isEnabled = false
-        
         setNavigationBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        btnSubmit.isEnabled = false
+        super.viewDidAppear(animated)
+        nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
-
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        nameTextField.removeTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
     private func setNavigationBar() {
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
@@ -61,9 +64,9 @@ class NameViewController: UIViewController {
         
     }
     
-    private func openNextScreen() {
+    private func openNextScreen(_ name: String) {
         let websiteVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "WebsiteViewController") as! WebsiteViewController
-        registerBrand.name = nameTextField.text!
+        registerBrand.name = name
         websiteVC.registerBrand = registerBrand
         self.navigationController?.pushViewController(websiteVC, animated: true)
     }
@@ -78,17 +81,21 @@ class NameViewController: UIViewController {
     }
     
     @IBAction func handlerSubmit(_ sender: UIButton) {
-        // TODO: Add api
+        guard let name = self.nameTextField.text, !name.isEmpty else {
+            btnSubmit.isEnabled = false
+            return
+        }
         
-        openNextScreen()
+        openNextScreen(name)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if (textField.text?.contains(" "))! {
-            btnSubmit.isEnabled = true
-        } else {
+        guard let name = self.nameTextField.text, !name.isEmpty else {
             btnSubmit.isEnabled = false
+            return
         }
+        btnSubmit.isEnabled = true
+
     }
     
 }

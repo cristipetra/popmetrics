@@ -24,7 +24,7 @@ public let CHAT_URL = "https://chat.popmetrics.ai/#/aimee/start-with-callback/58
 
 
 //private let PROTOCOL = "http"
-//private let HOST = "192.168.7.100"
+//private let HOST = "192.168.7.106"
 // private let HOST = "10.0.1.10"
 // private let HOST = "172.20.10.2"
 //private let PORT = 5030

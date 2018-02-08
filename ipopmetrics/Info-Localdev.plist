@@ -5,13 +5,13 @@
 	<key>Popmetrics</key>
 	<dict>
 		<key>APIBaseURL</key>
-		<string>https://api.popmetrics.io</string>
+		<string>http://localdev:5030</string>
 		<key>ChatURL</key>
 		<string>https://chat.popmetrics.ai/#/aimee/start-with-callback/58fe437ac7631a139803757e/59b2a6288a5da50da5790fd7</string>
 		<key>IntercomAppId</key>
-		<string>f2713n8d</string>
+		<string>w4ce6nmv</string>
 		<key>IntercomAppKey</key>
-		<string>ios_sdk-56bb7df2b3d88934f7d564b7a353c66b68b54f12</string>
+		<string>ios_sdk-b07a4fa44e59e0914ce414c278c284e2b18e6caa</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
