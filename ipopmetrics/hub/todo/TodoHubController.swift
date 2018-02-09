@@ -145,7 +145,6 @@ class TodoHubController: BaseViewController {
         topHeaderView.changeVisibilityExpandView(visible: false)
         updateCountsTopView()
         
-        
     }
     
     func createItemsLocally() {
@@ -729,6 +728,25 @@ extension TodoHubController: ActionSocialPostProtocol {
             //self.showBannerForNotification(pnotification)
             self.removeSocialPost(post, indexPath: indexPath)
         })
+        
+    }
+    
+    func approvePostFromFacebookSocial(post: TodoSocialPost, indexPath: IndexPath, message: String) {
+        TodoApi().approvePostFacebook(post.postId!, message: message, callback: {
+            () -> Void in
+            let notificationObj = ["title":"Post approved",
+                                   "subtitle":"The article has been scheduled for posting.",
+                                   "type": "info",
+                                   "sound":"default"
+            ]
+            let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+            
+            //self.showBannerForNotification(pnotification)
+            self.bannerMessageView.displayApproved()
+            self.updateCountsTopView()
+            self.reloadSocialPostCell(indexPath)
+        })
+            
         
     }
     

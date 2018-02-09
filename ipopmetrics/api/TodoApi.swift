@@ -49,6 +49,23 @@ class TodoApi: BaseApi {
         }
     }
     
+    func approvePostFacebook(_ todoSocialPostId:String, message: String, callback: @escaping ()  -> Void) {
+        let params = ["a":0,
+                      "text": message ] as [String : Any]
+        let url = ApiUrls.composedBaseUrl(String(format:"/api/todo/approve-social-post/%@", todoSocialPostId))
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default,
+                          headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperEmpty>) in
+                            let levelOneHandled = super.handleNotOkCodes(response: response.response)
+                            if !levelOneHandled {
+                                let handled = super.handleResponseWrap(response.value!)
+                                if !handled {
+                                    callback()
+                                }
+                            }
+        }
+    }
+    
     func approvePost(_ todoSocialPostId:String, callback: @escaping ()  -> Void) {
         let params = ["a":0]
         let url = ApiUrls.composedBaseUrl(String(format:"/api/todo/approve-social-post/%@", todoSocialPostId))
