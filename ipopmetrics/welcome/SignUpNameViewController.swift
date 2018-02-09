@@ -20,10 +20,9 @@ class SignUpNameViewController: BaseViewController {
         super.viewDidLoad()
         
         nameTextField.delegate = self
-        let tapDismissKeyboard: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        self.view.addGestureRecognizer(tapDismissKeyboard)
+        nameTextField.autocapitalizationType = .words
         
-        isHeroEnabled = true
+        isHeroEnabled = false
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
         
         btnSubmitName.isEnabled = false
@@ -32,12 +31,10 @@ class SignUpNameViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        nameTextField.removeTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
     private func setNavigationBar() {
@@ -72,12 +69,13 @@ class SignUpNameViewController: BaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc func textFieldDidChange(_ textField: UITextField) {
+    @IBAction func nameTextFieldChanged(_ sender: Any) {
         guard let name = self.nameTextField.text, !name.isEmpty else {
             btnSubmitName.isEnabled = false
             return
         }
         btnSubmitName.isEnabled = true
+    
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -109,5 +107,11 @@ extension SignUpNameViewController: UITextFieldDelegate {
             self.view.layoutIfNeeded()
         })
     }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
 
 }

@@ -22,9 +22,6 @@ class SignUpWebsiteViewController: BaseViewController {
         
         websiteTextField.delegate = self
         
-        let tapDismissKeyboard: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        self.view.addGestureRecognizer(tapDismissKeyboard)
-        
         isHeroEnabled = true
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
         
@@ -35,6 +32,8 @@ class SignUpWebsiteViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         websiteTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        self.reloadInputViews()
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -70,8 +69,8 @@ class SignUpWebsiteViewController: BaseViewController {
     
     @objc internal func dismissView() {
         
-        performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
-        // self.navigationController?.popViewController(animated: true)
+        //        performSegue(withIdentifier: "unwindSegueToNameVC", sender: self)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func unwindToNameVC(segue:UIStoryboardSegue) { }
@@ -146,6 +145,12 @@ extension SignUpWebsiteViewController: UITextFieldDelegate {
             self.view.layoutIfNeeded()
         })
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     
 }
 
