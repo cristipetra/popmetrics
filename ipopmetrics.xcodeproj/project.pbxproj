@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		026FA2BF3D4766BEDECAE20F /* Pods_Staging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FCE441498A8B63CE0438FB /* Pods_Staging.framework */; };
 		08078F391FBDA92600A4399D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08078F381FBDA92600A4399D /* Alert.swift */; };
 		08078F3F1FBDE45200A4399D /* SettingsOverlayActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08078F3E1FBDE45200A4399D /* SettingsOverlayActionView.xib */; };
 		08078F421FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08078F411FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift */; };
@@ -184,6 +185,7 @@
 		08FAE8441F541D790097DF3E /* StatsHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE8431F541D790097DF3E /* StatsHubController.swift */; };
 		08FAE8471F541FF40097DF3E /* StatsCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08FAE8461F541FF40097DF3E /* StatsCard.xib */; };
 		08FAE8491F5420050097DF3E /* StatsCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE8481F5420050097DF3E /* StatsCardViewCell.swift */; };
+		0A638F028D2899315036999C /* Pods_Localdev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0607FC0C1F84653FEF7BAD71 /* Pods_Localdev.framework */; };
 		1100F6F91F5FEBCE000AF1D4 /* TodoActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1100F6F81F5FEBCE000AF1D4 /* TodoActionHandler.swift */; };
 		1104F8751FD45B3B002F6221 /* HubsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1104F8741FD45B3B002F6221 /* HubsApi.swift */; };
 		110A62CA1ECEDADC0052B478 /* StatsSummaryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A62C91ECEDADC0052B478 /* StatsSummaryViewCell.swift */; };
@@ -669,6 +671,7 @@
 		11F89F691EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */; };
 		11FB84EB1FC79E8800FE937D /* TodoHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FB84EA1FC79E8800FE937D /* TodoHubController.swift */; };
 		631BDFACE57815E87C781181 /* Pods_ipopmetrics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */; };
+		BF475B66211A51939154582A /* Pods_Live.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CCD2F4B669F1EB8D731CA8 /* Pods_Live.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -689,6 +692,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0607FC0C1F84653FEF7BAD71 /* Pods_Localdev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Localdev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		08078F381FBDA92600A4399D /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		08078F3E1FBDE45200A4399D /* SettingsOverlayActionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsOverlayActionView.xib; sourceTree = "<group>"; };
 		08078F411FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOverlayActionViewController.swift; sourceTree = "<group>"; };
@@ -924,9 +928,17 @@
 		11E636931FD735480081B1DC /* StatsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsStore.swift; sourceTree = "<group>"; };
 		11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		11FB84EA1FC79E8800FE937D /* TodoHubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoHubController.swift; sourceTree = "<group>"; };
+		20FCE441498A8B63CE0438FB /* Pods_Staging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Staging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FCCD13FCD6E1EA52822D75D /* Pods-Staging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staging.release.xcconfig"; path = "Pods/Target Support Files/Pods-Staging/Pods-Staging.release.xcconfig"; sourceTree = "<group>"; };
+		3164A245BB05BAF68C6AF69A /* Pods-Staging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staging.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Staging/Pods-Staging.debug.xcconfig"; sourceTree = "<group>"; };
 		4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release.xcconfig"; sourceTree = "<group>"; };
+		700D529328C84585E1FD7E71 /* Pods-Localdev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Localdev.release.xcconfig"; path = "Pods/Target Support Files/Pods-Localdev/Pods-Localdev.release.xcconfig"; sourceTree = "<group>"; };
 		8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ipopmetrics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D5ECCAEA66BCED2B0405D78 /* Pods-ipopmetrics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.debug.xcconfig"; sourceTree = "<group>"; };
+		A45F41BF721C80914E0947BE /* Pods-Localdev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Localdev.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Localdev/Pods-Localdev.debug.xcconfig"; sourceTree = "<group>"; };
+		AAF0D58B10E44AFEF62A13C9 /* Pods-Live.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Live.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Live/Pods-Live.debug.xcconfig"; sourceTree = "<group>"; };
+		B6CCD2F4B669F1EB8D731CA8 /* Pods_Live.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Live.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E70DD4368FF0B102F33C2CF2 /* Pods-Live.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Live.release.xcconfig"; path = "Pods/Target Support Files/Pods-Live/Pods-Live.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -936,6 +948,7 @@
 			files = (
 				110A62F81ECEFF400052B478 /* SafariServices.framework in Frameworks */,
 				631BDFACE57815E87C781181 /* Pods_ipopmetrics.framework in Frameworks */,
+				BF475B66211A51939154582A /* Pods_Live.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -959,6 +972,7 @@
 			files = (
 				11E595FD202B5C9F007AACDB /* SafariServices.framework in Frameworks */,
 				11E595FE202B5C9F007AACDB /* Pods_ipopmetrics.framework in Frameworks */,
+				026FA2BF3D4766BEDECAE20F /* Pods_Staging.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -968,6 +982,7 @@
 			files = (
 				11E597D4202B6618007AACDB /* SafariServices.framework in Frameworks */,
 				11E597D5202B6618007AACDB /* Pods_ipopmetrics.framework in Frameworks */,
+				0A638F028D2899315036999C /* Pods_Localdev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1462,6 +1477,9 @@
 			children = (
 				110A62F71ECEFF400052B478 /* SafariServices.framework */,
 				8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */,
+				B6CCD2F4B669F1EB8D731CA8 /* Pods_Live.framework */,
+				0607FC0C1F84653FEF7BAD71 /* Pods_Localdev.framework */,
+				20FCE441498A8B63CE0438FB /* Pods_Staging.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1471,6 +1489,12 @@
 			children = (
 				9D5ECCAEA66BCED2B0405D78 /* Pods-ipopmetrics.debug.xcconfig */,
 				4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */,
+				AAF0D58B10E44AFEF62A13C9 /* Pods-Live.debug.xcconfig */,
+				E70DD4368FF0B102F33C2CF2 /* Pods-Live.release.xcconfig */,
+				A45F41BF721C80914E0947BE /* Pods-Localdev.debug.xcconfig */,
+				700D529328C84585E1FD7E71 /* Pods-Localdev.release.xcconfig */,
+				3164A245BB05BAF68C6AF69A /* Pods-Staging.debug.xcconfig */,
+				2FCCD13FCD6E1EA52822D75D /* Pods-Staging.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1896,7 +1920,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ipopmetrics-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Staging-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1922,7 +1946,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Staging/Pods-Staging-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
@@ -2017,7 +2041,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Staging/Pods-Staging-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		11E59638202B5C9F007AACDB /* [CP] Copy Pods Resources */ = {
@@ -2026,7 +2050,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Staging/Pods-Staging-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_ROOT}/Intercom/Intercom/Intercom.framework/Versions/A/Resources/Intercom.bundle",
 				"${PODS_ROOT}/Intercom/Intercom/Intercom.framework/Versions/A/Resources/IntercomTranslations.bundle",
@@ -2038,7 +2062,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Staging/Pods-Staging-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		11E59639202B5C9F007AACDB /* ShellScript */ = {
@@ -2078,7 +2102,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ipopmetrics-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Localdev-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2104,7 +2128,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Localdev/Pods-Localdev-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
@@ -2199,7 +2223,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Localdev/Pods-Localdev-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		11E5980F202B6618007AACDB /* [CP] Copy Pods Resources */ = {
@@ -2208,7 +2232,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Localdev/Pods-Localdev-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_ROOT}/Intercom/Intercom/Intercom.framework/Versions/A/Resources/Intercom.bundle",
 				"${PODS_ROOT}/Intercom/Intercom/Intercom.framework/Versions/A/Resources/IntercomTranslations.bundle",
@@ -2220,7 +2244,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Localdev/Pods-Localdev-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		11E59810202B6618007AACDB /* ShellScript */ = {
@@ -2260,7 +2284,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ipopmetrics-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Live-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2273,7 +2297,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Live/Pods-Live-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_ROOT}/Intercom/Intercom/Intercom.framework/Versions/A/Resources/Intercom.bundle",
 				"${PODS_ROOT}/Intercom/Intercom/Intercom.framework/Versions/A/Resources/IntercomTranslations.bundle",
@@ -2285,7 +2309,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Live/Pods-Live-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD9FB4AF998AEE764DC3C42C /* [CP] Embed Pods Frameworks */ = {
@@ -2294,7 +2318,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Live/Pods-Live-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
@@ -2389,7 +2413,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Live/Pods-Live-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -3064,7 +3088,7 @@
 		};
 		1178D6A01E1E5AD9005B96C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D5ECCAEA66BCED2B0405D78 /* Pods-ipopmetrics.debug.xcconfig */;
+			baseConfigurationReference = AAF0D58B10E44AFEF62A13C9 /* Pods-Live.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ipopmetrics/ipopmetrics.entitlements;
@@ -3086,7 +3110,7 @@
 		};
 		1178D6A11E1E5AD9005B96C3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */;
+			baseConfigurationReference = E70DD4368FF0B102F33C2CF2 /* Pods-Live.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ipopmetrics/ipopmetrics.entitlements;
@@ -3162,7 +3186,7 @@
 		};
 		11E5963C202B5C9F007AACDB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D5ECCAEA66BCED2B0405D78 /* Pods-ipopmetrics.debug.xcconfig */;
+			baseConfigurationReference = 3164A245BB05BAF68C6AF69A /* Pods-Staging.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ipopmetrics/ipopmetrics.entitlements;
@@ -3171,7 +3195,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ipopmetrics",
 				);
-				INFOPLIST_FILE = "Info-staging.plist";
+				INFOPLIST_FILE = "ipopmetrics/Info-Staging.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.app;
@@ -3184,7 +3208,7 @@
 		};
 		11E5963D202B5C9F007AACDB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */;
+			baseConfigurationReference = 2FCCD13FCD6E1EA52822D75D /* Pods-Staging.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ipopmetrics/ipopmetrics.entitlements;
@@ -3193,7 +3217,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ipopmetrics",
 				);
-				INFOPLIST_FILE = "Info-staging.plist";
+				INFOPLIST_FILE = "ipopmetrics/Info-Staging.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.app;
@@ -3206,7 +3230,7 @@
 		};
 		11E59813202B6618007AACDB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D5ECCAEA66BCED2B0405D78 /* Pods-ipopmetrics.debug.xcconfig */;
+			baseConfigurationReference = A45F41BF721C80914E0947BE /* Pods-Localdev.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ipopmetrics/ipopmetrics.entitlements;
@@ -3215,7 +3239,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ipopmetrics",
 				);
-				INFOPLIST_FILE = "Info-Localdev.plist";
+				INFOPLIST_FILE = "ipopmetrics/Info-Localdev.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.app;
@@ -3228,7 +3252,7 @@
 		};
 		11E59814202B6618007AACDB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */;
+			baseConfigurationReference = 700D529328C84585E1FD7E71 /* Pods-Localdev.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ipopmetrics/ipopmetrics.entitlements;
@@ -3237,7 +3261,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ipopmetrics",
 				);
-				INFOPLIST_FILE = "Info-Localdev.plist";
+				INFOPLIST_FILE = "ipopmetrics/Info-Localdev.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.app;

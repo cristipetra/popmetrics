@@ -179,19 +179,22 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         
     }
     
-    func parseFacebookAccounts(responseDict: [String: Any]) -> [FacebookAccount]{
+    func parseFacebookAccounts(_ responseDict: [String: Any]?) -> [FacebookAccount]?{
+        guard let accounts = responseDict?["data"] as? NSArray, accounts.count > 0 else {
+            return nil
+        }
+
         var facebookAccounts: [FacebookAccount] = []
         
-        guard let accounts = responseDict["data"] as! NSArray, accounts.isEmpty else {
-            return facebookAccounts
-        }
-        
         for account in accounts {
-            guard accountJson = JSON(account), let id = accountJson["id"], let name = accountJson["name"] else {
+            guard let accountData = account as? [String: Any],
+                let id = accountData["id"] as? String,
+                let name = accountData["name"] as? String,
+                let perms = accountData["perms"] as? [String] else {
                 continue
             }
 
-            facebookAccounts.append(FacebookAccount(id: id.string, name: name.string))
+            facebookAccounts.append(FacebookAccount(id: id, name: name, perms:perms))
             
         }
         
@@ -209,6 +212,10 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
             case LoginResult.failed(let error):
                 // Show fail read permissions message
                 EZAlertController.alert("Failed to connect with Facebook.")
+
+            case LoginResult.cancelled:
+                //Show declined read permissions message
+                EZAlertController.alert("You need to grant all the requested permissions to continue.")
                 
             case LoginResult.success(let grantedPermissions, let declinedPermissions, let accessToken):
                 // check if all requested permissions were granted
@@ -220,23 +227,26 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                 
                 // request list of Facebook Pages
                 let connection = GraphRequestConnection()
-                connection.add(GraphRequest(graphPath: "/me/accounts")) { httpResponse, result in
+                connection.add(GraphRequest(graphPath: "/me/accounts", parameters: ["fields": "id, name, perms"])) { httpResponse, result in
                     switch result {
                     case .success(let response):
-                        guard let facebookAccounts = parseFacebookAccounts(), facebookAccounts.isEmpty else{
+                        guard let facebookAccounts = self.parseFacebookAccounts(response.dictionaryValue), facebookAccounts.count > 0 else{
                             // Show no pages message
-                            EZAlertController.alert("You dont have any Facebook Pages.")
+                            EZAlertController.alert("You don't have any Facebook Pages.")
                             return
                         }
                         
+                        var options: [String] = []
+                        for facebookAccount in facebookAccounts {
+                            options.append(facebookAccount.name)
+                        }
+                        
                         Alert.showActionSheetOptions(parent: viewController, options: options, action: { (itemSelected) -> (Void) in
-                            guard let selectedFacebookAccount = facebookAccounts[itemSelected] else {
-                                // Show no page selected message
-                                EZAlertController.alert("You need to select a Facebook Page to continue.")
+                            let selectedFacebookAccount = facebookAccounts[itemSelected]
+                            if !selectedFacebookAccount.canCreateContent {
+                                EZAlertController.alert("You must be an Administrator or an Editor to post content as this Page")
                                 return
                             }
-
-                            let selectedFacebookPageId = selectedFacebookAccount.id
                             
                             loginManager.logIn(publishPermissions:publishPermissions, viewController: viewController) { result in
                                 switch result {
@@ -255,11 +265,12 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                                         return
                                     }
 
+                                    /*
                                     UserStore.currentBrand?.facebookDetails?.accessToken = accessToken.authenticationToken
                                     UserStore.currentBrand?.facebookDetails?.selectedAccountId = facebookAccounts[itemSelected].id!
-
+                                    */
                                     self.connectFacebookPage(accessToken: accessToken.authenticationToken,
-                                                             facebookPageId: selectedFacebookPageId)
+                                                             facebookPageId: selectedFacebookAccount.id)
                                     
                                 }
                             }
@@ -267,7 +278,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                             
                         })
                         
-                    case .failed(let error):
+                    case .failed( _):
                         // Show fail gettting pages
                         EZAlertController.alert("Failed to get your Facebook Pages.")
                     }
@@ -316,7 +327,14 @@ struct Facebook {
 }
 
 struct FacebookAccount {
-    var id: String
-    var name: String
+    let id: String
+    let name: String
+    let perms: [String]
+    
+    var canCreateContent: Bool {
+        get {
+            return perms.contains("CREATE_CONTENT")
+        }
+    }
 }
 

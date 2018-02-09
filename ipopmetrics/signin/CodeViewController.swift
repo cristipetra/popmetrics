@@ -156,8 +156,6 @@ class CodeViewController: BaseViewController {
     }
     
     private func showNextScreen() {
-        self.showSocialScreen()
-        /*
         if let currentBrand = UserStore.currentBrand {
             if let twitterDetails = currentBrand.twitterDetails {
                 if twitterDetails.name != nil {
@@ -168,7 +166,6 @@ class CodeViewController: BaseViewController {
         }
         
        self.showSocialScreen()
-         */
     }
     
     private func checkNotifcations() {
