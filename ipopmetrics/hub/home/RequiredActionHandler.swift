@@ -179,6 +179,24 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         
     }
     
+    func parseFacebookAccounts(responseDict: [String: Any]) -> [FacebookAccount]{
+        var facebookAccounts: [FacebookAccount] = []
+        
+        guard let accounts = responseDict["data"] as! NSArray, accounts.isEmpty else {
+            return facebookAccounts
+        }
+        
+        for account in accounts {
+            guard accountJson = JSON(account), let id = accountJson["id"], let name = accountJson["name"] else {
+                continue
+            }
+
+            facebookAccounts.append(FacebookAccount(id: id.string, name: name.string))
+            
+        }
+        
+        return facebookAccounts
+    }
 
     // MARK: Facebook LogIn Process
     func connectFacebook(viewController: UIViewController, _ item: FeedCard?) {
@@ -186,62 +204,72 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         let readPermissions = [ReadPermission.publicProfile, ReadPermission.email, ReadPermission.pagesShowList]
         let publishPermissions = [PublishPermission.managePages, PublishPermission.publishPages]
         
-        loginManager.logOut()
-        loginManager.logIn(readPermissions:readPermissions, viewController: nil) { result in
+        loginManager.logIn(readPermissions:readPermissions, viewController: viewController) { result in
             switch result {
             case LoginResult.failed(let error):
-                let notificationObj = ["alert":"Failed to connect with Facebook.",
-                                       "subtitle":"bad credentials have been provided.",
-                                       "type": "failure",
-                                       "sound":"default"
-                ]
-                let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
-                
-                NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
-                                                userInfo: pnotification.toJSON())
-            case LoginResult.cancelled:
-                let notificationObj = ["alert":"Failed to connect with Facebook.",
-                                       "subtitle":"Authentication has been canceled.",
-                                       "type": "failure",
-                                       "sound":"default"
-                ]
-                let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
-                
-                NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
-                                                userInfo: pnotification.toJSON())
+                // Show fail read permissions message
+                EZAlertController.alert("Failed to connect with Facebook.")
                 
             case LoginResult.success(let grantedPermissions, let declinedPermissions, let accessToken):
-                //TODO: validate that all read permissions requested were granted (readPermissions == grantedPermissions)
-                //self.accesToken = accessToken.authenticationToken
+                // check if all requested permissions were granted
+                if !declinedPermissions.isEmpty {
+                    //Show declined read permissions message
+                    EZAlertController.alert("You need to grant all the requested permissions to continue.")
+                    return
+                }
+                
+                // request list of Facebook Pages
                 let connection = GraphRequestConnection()
                 connection.add(GraphRequest(graphPath: "/me/accounts")) { httpResponse, result in
                     switch result {
                     case .success(let response):
-                        //print("Graph Request Succeeded: \(response)")
+                        guard let facebookAccounts = parseFacebookAccounts(), facebookAccounts.isEmpty else{
+                            // Show no pages message
+                            EZAlertController.alert("You dont have any Facebook Pages.")
+                            return
+                        }
                         
-                        if let responseDict = response.dictionaryValue {
-                            let accounts: NSArray = responseDict["data"] as! NSArray
+                        Alert.showActionSheetOptions(parent: viewController, options: options, action: { (itemSelected) -> (Void) in
+                            guard let selectedFacebookAccount = facebookAccounts[itemSelected] else {
+                                // Show no page selected message
+                                EZAlertController.alert("You need to select a Facebook Page to continue.")
+                                return
+                            }
+
+                            let selectedFacebookPageId = selectedFacebookAccount.id
                             
-                            var options: [String] = []
-                            var facebookAccounts: [FacebookAccount] = []
-                            
-                            for account in accounts {
-                                let accountJson = JSON(account)
-                                var facebookAccount: FacebookAccount = FacebookAccount(id: accountJson["id"].string, name: accountJson["name"].string)
-                                options.append(accountJson["name"].description)
-                                facebookAccounts.append(facebookAccount)
+                            loginManager.logIn(publishPermissions:publishPermissions, viewController: viewController) { result in
+                                switch result {
+                                case LoginResult.failed( _):
+                                    // Show fail request publish permissions
+                                    EZAlertController.alert("Failed to connect with Facebook.")
+                                    
+                                case LoginResult.cancelled:
+                                    //Show declined publish permissions message
+                                    EZAlertController.alert("You need to grant all the requested permissions to continue.")
+                                    
+                                case LoginResult.success( _, let declinedPermissions, let accessToken):
+                                    if !declinedPermissions.isEmpty {
+                                        //Show declined publish permissions message
+                                        EZAlertController.alert("You need to grant all the requested permissions to continue.")
+                                        return
+                                    }
+
+                                    UserStore.currentBrand?.facebookDetails?.accessToken = accessToken.authenticationToken
+                                    UserStore.currentBrand?.facebookDetails?.selectedAccountId = facebookAccounts[itemSelected].id!
+
+                                    self.connectFacebookPage(accessToken: accessToken.authenticationToken,
+                                                             facebookPageId: selectedFacebookPageId)
+                                    
+                                }
                             }
                             
-                            Alert.showActionSheetOptions(parent: viewController, options: options, action: { (itemSelected) -> (Void) in
-                                print(options[itemSelected])
-                                print(accessToken)
-                                UserStore.currentBrand?.facebookDetails?.accessToken = accessToken.authenticationToken
-                                UserStore.currentBrand?.facebookDetails?.selectedAccountId = facebookAccounts[itemSelected].id!
-                                self.connectFacebookPage(accessToken: accessToken.authenticationToken, facebookPageId: facebookAccounts[itemSelected].id!)
-                            })
-                        }
+                            
+                        })
+                        
                     case .failed(let error):
-                        print("Graph Request Failed: \(error)")
+                        // Show fail gettting pages
+                        EZAlertController.alert("Failed to get your Facebook Pages.")
                     }
                 }
                 connection.start()
@@ -288,7 +316,7 @@ struct Facebook {
 }
 
 struct FacebookAccount {
-    var id: String?
-    var name: String?
+    var id: String
+    var name: String
 }
 
