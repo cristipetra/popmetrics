@@ -152,6 +152,8 @@
 		08BF993E2029CDF500B2AA86 /* SignUpWebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF993D2029CDF500B2AA86 /* SignUpWebsiteViewController.swift */; };
 		08BF9940202A09DE00B2AA86 /* BrandApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF993F202A09DE00B2AA86 /* BrandApi.swift */; };
 		08BF9D4E1F45F2EF00141206 /* TableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */; };
+		08C42CD7202D8C5100BE8629 /* Info-Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 08C42CD6202D8C5100BE8629 /* Info-Staging.plist */; };
+		08C42CD9202DA3FC00BE8629 /* Info-Localdev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 08C42CD8202DA3FC00BE8629 /* Info-Localdev.plist */; };
 		08C497AD1FD5A0120066E515 /* animation_nonX.json in Resources */ = {isa = PBXBuildFile; fileRef = 08C497AC1FD5A0110066E515 /* animation_nonX.json */; };
 		08C497B11FD5A31C0066E515 /* animation_X.json in Resources */ = {isa = PBXBuildFile; fileRef = 08C497B01FD5A31C0066E515 /* animation_X.json */; };
 		08C580FD1FBF21440013B03F /* SettingsOverlayUrlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C580FC1FBF21440013B03F /* SettingsOverlayUrlView.xib */; };
@@ -834,6 +836,8 @@
 		08BF993D2029CDF500B2AA86 /* SignUpWebsiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpWebsiteViewController.swift; sourceTree = "<group>"; };
 		08BF993F202A09DE00B2AA86 /* BrandApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandApi.swift; sourceTree = "<group>"; };
 		08BF9D4D1F45F2EF00141206 /* TableFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableFooterView.swift; sourceTree = "<group>"; };
+		08C42CD6202D8C5100BE8629 /* Info-Staging.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Staging.plist"; sourceTree = "<group>"; };
+		08C42CD8202DA3FC00BE8629 /* Info-Localdev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Localdev.plist"; sourceTree = "<group>"; };
 		08C497AC1FD5A0110066E515 /* animation_nonX.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_nonX.json; sourceTree = "<group>"; };
 		08C497B01FD5A31C0066E515 /* animation_X.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_X.json; sourceTree = "<group>"; };
 		08C580FC1FBF21440013B03F /* SettingsOverlayUrlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsOverlayUrlView.xib; sourceTree = "<group>"; };
@@ -917,9 +921,7 @@
 		11DD96741FC4FA5400386F1E /* ApiUrls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiUrls.swift; sourceTree = "<group>"; };
 		11DD96751FC4FA5400386F1E /* FeedApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedApi.swift; sourceTree = "<group>"; };
 		11E5963E202B5C9F007AACDB /* Staging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staging.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		11E5963F202B5C9F007AACDB /* Info-Staging.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-Staging.plist"; path = "/Users/ra/code/popmetrics/mobile/ipopmetrics/ipopmetrics/Info-Staging.plist"; sourceTree = "<absolute>"; };
 		11E59815202B6618007AACDB /* Localdev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Localdev.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		11E59816202B6618007AACDB /* Info-Localdev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-Localdev.plist"; path = "/Users/ra/code/popmetrics/mobile/ipopmetrics/ipopmetrics/Info-Localdev.plist"; sourceTree = "<absolute>"; };
 		11E5A8971FDF01AE0085BDEE /* StatsMetricPageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsMetricPageContentViewController.swift; sourceTree = "<group>"; };
 		11E636931FD735480081B1DC /* StatsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsStore.swift; sourceTree = "<group>"; };
 		11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
@@ -1148,8 +1150,6 @@
 				11DD96651FC4F41600386F1E /* welcome */,
 				11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */,
 				1178D6861E1E5AD9005B96C3 /* Info.plist */,
-				11E5963F202B5C9F007AACDB /* Info-Staging.plist */,
-				11E59816202B6618007AACDB /* Info-Localdev.plist */,
 				1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */,
 				08B485DF1F20EA23005918A1 /* Config.swift */,
 				08D1BC381F1E3D6200D377B2 /* LDSplashView.swift */,
@@ -1158,6 +1158,8 @@
 				1178D6831E1E5AD9005B96C3 /* LaunchScreen.storyboard */,
 				1178D67E1E1E5AD9005B96C3 /* Main.storyboard */,
 				1195EEF32009EDC800F45798 /* apple-app-site-association-unsigned */,
+				08C42CD6202D8C5100BE8629 /* Info-Staging.plist */,
+				08C42CD8202DA3FC00BE8629 /* Info-Localdev.plist */,
 			);
 			path = ipopmetrics;
 			sourceTree = "<group>";
@@ -1650,6 +1652,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08C42CD9202DA3FC00BE8629 /* Info-Localdev.plist in Resources */,
 				08B745921F1F6C0100EC3F8C /* OpenSans-Semibold.ttf in Resources */,
 				085599A61F72751900E5BEA1 /* SplashScreen.xib in Resources */,
 				086EDE3D1FC82D11002F4140 /* MyActionCard.xib in Resources */,
@@ -1698,6 +1701,7 @@
 				08F368971F19029100819CDE /* LastCard.xib in Resources */,
 				08AF04981F46FB9B0040012B /* SocialPostInCardCell.xib in Resources */,
 				08FAE8471F541FF40097DF3E /* StatsCard.xib in Resources */,
+				08C42CD7202D8C5100BE8629 /* Info-Staging.plist in Resources */,
 				1119F6181ED56F34009997FF /* Boarding.storyboard in Resources */,
 				1195EEF42009EDC800F45798 /* apple-app-site-association-unsigned in Resources */,
 				11F89F691EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist in Resources */,
@@ -3171,7 +3175,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ipopmetrics",
 				);
-				INFOPLIST_FILE = "Info-staging.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ipopmetrics/Info-staging.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.app;
@@ -3193,7 +3197,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ipopmetrics",
 				);
-				INFOPLIST_FILE = "Info-staging.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ipopmetrics/Info-staging.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.app;
