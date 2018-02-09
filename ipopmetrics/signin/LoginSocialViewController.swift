@@ -82,7 +82,7 @@ class LoginSocialViewController: BaseViewController {
     }
     
     @objc func loginFacebookHandler() {
-        RequiredActionHandler.sharedInstance().connectFacebook(nil)
+        RequiredActionHandler.sharedInstance().connectFacebook(viewController: self, nil)
     }
     
     @objc func loginLinkedInHandler() {

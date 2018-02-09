@@ -15,7 +15,7 @@ import FacebookLogin
 import NotificationBannerSwift
 import EZAlertController
 import ObjectMapper
-
+import SwiftyJSON
 
 protocol InfoButtonDelegate {
     func sendInfo(_ sender: UIButton)
@@ -39,7 +39,8 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                 connectTwitter(item)
             
             case "facebook.connect_with_brand":
-                connectFacebook(item)
+                //connectFacebook(item)
+                break
             
             default:
                 print("Unexpected name "+item.name)
@@ -176,14 +177,11 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         }
         // TODO: add api for disconnect twitter
         
-        
     }
     
 
-    
-    
     // MARK: Facebook LogIn Process
-    func connectFacebook(_ item:FeedCard?) {
+    func connectFacebook(viewController: UIViewController, _ item: FeedCard?) {
         let loginManager = LoginManager()
         let readPermissions = [ReadPermission.publicProfile, ReadPermission.email, ReadPermission.pagesShowList]
         let publishPermissions = [PublishPermission.managePages, PublishPermission.publishPages]
@@ -191,92 +189,106 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         loginManager.logOut()
         loginManager.logIn(readPermissions:readPermissions, viewController: nil) { result in
             switch result {
-                case LoginResult.failed(let error):
-                    let notificationObj = ["alert":"Failed to connect with Facebook.",
-                                           "subtitle":"bad credentials have been provided.",
-                                           "type": "failure",
-                                           "sound":"default"
-                    ]
-                    let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
-                    
-                    NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
-                                                    userInfo: pnotification.toJSON())
-                case LoginResult.cancelled:
-                    let notificationObj = ["alert":"Failed to connect with Facebook.",
-                                           "subtitle":"Authentication has been canceled.",
-                                           "type": "failure",
-                                           "sound":"default"
-                    ]
-                    let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
-                    
-                    NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
-                                                    userInfo: pnotification.toJSON())
+            case LoginResult.failed(let error):
+                let notificationObj = ["alert":"Failed to connect with Facebook.",
+                                       "subtitle":"bad credentials have been provided.",
+                                       "type": "failure",
+                                       "sound":"default"
+                ]
+                let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
                 
-                case LoginResult.success(let grantedPermissions, let declinedPermissions, let accessToken):
-                    //TODO: validate that all read permissions requested were granted (readPermissions == grantedPermissions)
-                    //self.accesToken = accessToken.authenticationToken
-                    
-                    let connection = GraphRequestConnection()
-                    connection.add(GraphRequest(graphPath: "/me/accounts")) { httpResponse, result in
-                        switch result {
-                        case .success(let response):
-                            print("Graph Request Succeeded: \(response)")
-                            // Show Page Popup
+                NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
+                                                userInfo: pnotification.toJSON())
+            case LoginResult.cancelled:
+                let notificationObj = ["alert":"Failed to connect with Facebook.",
+                                       "subtitle":"Authentication has been canceled.",
+                                       "type": "failure",
+                                       "sound":"default"
+                ]
+                let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+                
+                NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
+                                                userInfo: pnotification.toJSON())
+                
+            case LoginResult.success(let grantedPermissions, let declinedPermissions, let accessToken):
+                //TODO: validate that all read permissions requested were granted (readPermissions == grantedPermissions)
+                //self.accesToken = accessToken.authenticationToken
+                let connection = GraphRequestConnection()
+                connection.add(GraphRequest(graphPath: "/me/accounts")) { httpResponse, result in
+                    switch result {
+                    case .success(let response):
+                        //print("Graph Request Succeeded: \(response)")
+                        
+                        if let responseDict = response.dictionaryValue {
+                            let accounts: NSArray = responseDict["data"] as! NSArray
                             
-                        case .failed(let error):
-                            print("Graph Request Failed: \(error)")
+                            var options: [String] = []
+                            var facebookAccounts: [FacebookAccount] = []
+                            
+                            for account in accounts {
+                                let accountJson = JSON(account)
+                                var facebookAccount: FacebookAccount = FacebookAccount(id: accountJson["id"].string, name: accountJson["name"].string)
+                                options.append(accountJson["name"].description)
+                                facebookAccounts.append(facebookAccount)
+                            }
+                            
+                            Alert.showActionSheetOptions(parent: viewController, options: options, action: { (itemSelected) -> (Void) in
+                                print(options[itemSelected])
+                                print(accessToken)
+                                UserStore.currentBrand?.facebookDetails?.accessToken = accessToken.authenticationToken
+                                UserStore.currentBrand?.facebookDetails?.selectedAccountId = facebookAccounts[itemSelected].id!
+                                self.connectFacebookPage(accessToken: accessToken.authenticationToken, facebookPageId: facebookAccounts[itemSelected].id!)
+                            })
                         }
+                    case .failed(let error):
+                        print("Graph Request Failed: \(error)")
                     }
-                    connection.start()
-                    
-                
-                    
                 }
-        }
-        
-        func connectFacebookPage(accessToken: String, facebookPageId: String, facebookPageAccessToken: String){
-            let notificationObj = ["alert":"Connecting to Facebook.",
-                                   "subtitle":"Your credentials will be validated while establishing the connection.",
-                                   "type": "info",
-                                   "sound":"default"
-            ]
-            let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+                connection.start()
+                
+            }
             
-            NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
-                                            userInfo: pnotification.toJSON())
-            let params = [
-                "task_name": "facebook.connect_with_brand",
-                "access_token": accessToken,
-                "facebook_page_id": facebookPageId,
-                "facebook_page_access_token": facebookPageAccessToken
-                
-            ]
-            let brandId = UserStore.currentBrandId
-            TodoApi().postRequiredAction(brandId, params: params) { requiredActionResponse in
-                NotificationCenter.default.post(name:Notification.Popmetrics.RequiredActionComplete, object:nil,
+        }
+    }
+    
+    func connectFacebookPage(accessToken: String, facebookPageId: String){
+        let notificationObj = ["alert":"Connecting to Facebook.",
+                               "subtitle":"Your credentials will be validated while establishing the connection.",
+                               "type": "info",
+                               "sound":"default"
+        ]
+        let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+        
+        NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
+                                        userInfo: pnotification.toJSON())
+        let params = [
+            "task_name": "facebook.connect_with_brand",
+            "access_token": accessToken,
+            "facebook_page_id": facebookPageId
+            
+        ]
+        let brandId = UserStore.currentBrandId
+        TodoApi().postRequiredAction(brandId, params: params) { requiredActionResponse in
+            NotificationCenter.default.post(name:Notification.Popmetrics.RequiredActionComplete, object:nil,
+                                            userInfo: nil )
+            let store = FeedStore.getInstance()
+            if let card = store.getFeedCardWithName("facebook.connect_with_brand") {
+                store.updateCardSection(card, section: "None")
+                NotificationCenter.default.post(name:Notification.Popmetrics.UiRefreshRequired, object:nil,
                                                 userInfo: nil )
-                let store = FeedStore.getInstance()
-                if let card = store.getFeedCardWithName("facebook.connect_with_brand") {
-                    store.updateCardSection(card, section: "None")
-                    NotificationCenter.default.post(name:Notification.Popmetrics.UiRefreshRequired, object:nil,
-                                                    userInfo: nil )
-                }
             }
         }
-        
-
-//        loginManager.logIn(publishPermissions:publishPermissions, viewController: self.homeHubViewController) { result in
-//            switch result {
-//            case LoginResult.failed(let error):
-//                print("failed")
-//            case LoginResult.cancelled:
-//                print("cancelled")
-//            case LoginResult.success(let grantedPermissions, let declinedPermissions, let accessToken):
-//                print("thank you")
-//            }
-//        }
-
-        
     }
     
 }
+
+struct Facebook {
+    var accessToken: String?
+    var accountSelectedName: String?
+}
+
+struct FacebookAccount {
+    var id: String?
+    var name: String?
+}
+

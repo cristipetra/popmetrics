@@ -143,6 +143,9 @@ class ResponseWrapperOne<T:Mappable>: Mappable, ResponseWrap {
     
 }
 
+
+
+
 class ResponseWrapperArray<T:Mappable>: Mappable, ResponseWrap {
     
     var code:String?
@@ -270,8 +273,10 @@ class GoogleAnalyticsDetails: Mappable {
 class FacebookDetails: Mappable {
     var name: String?
     var screenName: String?
-    
     var connectionDate: Date?
+    
+    var accessToken: String?
+    var selectedAccountId: String?
     
     required init?(map: Map) {
     }
