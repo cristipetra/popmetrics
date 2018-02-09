@@ -287,6 +287,7 @@ extension SocialPostDetailsViewController: UIScrollViewDelegate {
     @objc optional func denyPostFromSocial(post: TodoSocialPost, indexPath: IndexPath)
     @objc optional func cancelPostFromSocial(post: CalendarSocialPost, indexPath: IndexPath)
     @objc optional func approvePostFromSocial(post: TodoSocialPost, indexPath: IndexPath)
+    @objc optional func displayFacebookDetails(post: TodoSocialPost, indexPath: IndexPath)
 }
 
 @objc protocol BannerProtocol: class {

@@ -145,6 +145,24 @@ class TodoHubController: BaseViewController {
         topHeaderView.changeVisibilityExpandView(visible: false)
         updateCountsTopView()
         
+        
+    }
+    
+    func createItemsLocally() {
+        
+        try! store.realm.write {
+            var facebookPost = TodoSocialPost()
+            facebookPost.articleCategory = ""
+            facebookPost.type = "facebook"
+            facebookPost.postId = "fsdfas42we"
+            facebookPost.todoCard = store.getTodoCardWithName("social.control_articles")
+            
+            facebookPost.todoCardId  = store.getTodoCardWithName("social.control_articles")?.cardId!
+            
+            store.realm.add(facebookPost, update: true)
+            
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -442,19 +460,23 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         if socialPosts.count == 0 { return }
         let item = socialPosts[rowIdx]
         
+
+        openDetailsPage(todoSocialPost: item, indexPath: indexPath)
+    }
+    
+    func openDetailsPage(todoSocialPost: TodoSocialPost, indexPath: IndexPath) {
         var detailsVC: SocialPostDetailsViewController!
         
-        if item.type == "facebook" {
+        if todoSocialPost.type == "facebook" {
             detailsVC = SocialPostDetailsViewController(nibName: "FacebookSocialPostDetails", bundle: nil)
         } else {
             detailsVC = SocialPostDetailsViewController(nibName: "SocialPostDetails", bundle: nil)
         }
-        detailsVC.configure(todoSocialPost: item)
+        detailsVC.configure(todoSocialPost: todoSocialPost)
         detailsVC.actionSocialDelegate = self
         detailsVC.setIndexPath(indexPath)
         detailsVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailsVC, animated: true)
-        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -677,6 +699,10 @@ extension TodoHubController {
 }
 
 extension TodoHubController: ActionSocialPostProtocol {
+    
+    func displayFacebookDetails(post: TodoSocialPost, indexPath: IndexPath) {
+        openDetailsPage(todoSocialPost: post, indexPath: indexPath)
+    }
     
     func displayBannerInfo() {
         if bannerMessageView.transform == .identity {
