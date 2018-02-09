@@ -200,6 +200,13 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         
         return facebookAccounts
     }
+    
+    internal func showAlertMessage(_ viewController: UIViewController, message: String) {
+        let alertController = UIAlertController(title: message, message: "", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okButton)
+        viewController.present(alertController, animated: true, completion: nil)
+    }
 
     // MARK: Facebook LogIn Process
     func connectFacebook(viewController: UIViewController, _ item: FeedCard?) {
@@ -214,16 +221,16 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
             switch result {
             case LoginResult.failed(let error):
                 // Show fail read permissions message
-                EZAlertController.alert("Failed to connect with Facebook.")
+                self.showAlertMessage(viewController, message: "Failed to connect with Facebook.")
             case LoginResult.cancelled:
                 //Show declined read permissions message
-                EZAlertController.alert("You need to grant all the requested permissions to continue.")
+                self.showAlertMessage(viewController, message: "You need to grant all the requested permissions to continue.")
                 
             case LoginResult.success(let grantedPermissions, let declinedPermissions, let accessToken):
                 // check if all requested permissions were granted
                 if !declinedPermissions.isEmpty {
                     //Show declined read permissions message
-                    EZAlertController.alert("You need to grant all the requested permissions to continue.")
+                    self.showAlertMessage(viewController, message: "You need to grant all the requested permissions to continue.")
                     return
                 }
                 
@@ -234,7 +241,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                     case .success(let response):
                         guard let facebookAccounts = self.parseFacebookAccounts(response.dictionaryValue), facebookAccounts.count > 0 else{
                             // Show no pages message
-                            EZAlertController.alert("You don't have any Facebook Pages.")
+                            self.showAlertMessage(viewController, message: "You don't have any Facebook Pages.")
                             return
                         }
                         
@@ -246,7 +253,8 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                         Alert.showActionSheetOptions(parent: viewController, options: options, action: { (itemSelected) -> (Void) in
                             let selectedFacebookAccount = facebookAccounts[itemSelected]
                             if !selectedFacebookAccount.canCreateContent {
-                                EZAlertController.alert("You must be an Administrator or an Editor to post content as this Page")
+                                self.showAlertMessage(viewController, message: "You must be an Administrator or an Editor to post content as this Page.")
+                                
                                 return
                             }
                             
@@ -254,16 +262,16 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                                 switch result {
                                 case LoginResult.failed( _):
                                     // Show fail request publish permissions
-                                    EZAlertController.alert("Failed to connect with Facebook.")
+                                    self.showAlertMessage(viewController, message: "Failed to connect with Facebook.")
                                     
                                 case LoginResult.cancelled:
                                     //Show declined publish permissions message
-                                    EZAlertController.alert("You need to grant all the requested permissions to continue.")
+                                    self.showAlertMessage(viewController, message: "You need to grant all the requested permissions to continue.")
                                     
                                 case LoginResult.success( _, let declinedPermissions, let accessToken):
                                     if !declinedPermissions.isEmpty {
                                         //Show declined publish permissions message
-                                        EZAlertController.alert("You need to grant all the requested permissions to continue.")
+                                         self.showAlertMessage(viewController, message: "You need to grant all the requested permissions to continue.")
                                         return
                                     }
 
@@ -282,7 +290,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                         
                     case .failed( _):
                         // Show fail gettting pages
-                        EZAlertController.alert("Failed to get your Facebook Pages.")
+                        self.showAlertMessage(viewController, message: "Failed to get your Facebook Pages.")
                     }
                 }
                 connection.start()
@@ -339,4 +347,3 @@ struct FacebookAccount {
         }
     }
 }
-
