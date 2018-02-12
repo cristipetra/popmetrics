@@ -8,6 +8,7 @@
 
 import UIKit
 import ObjectMapper
+import EZAlertController
 
 class SocialPostDetailsViewController: BaseViewController {
     
@@ -225,6 +226,11 @@ class SocialPostDetailsViewController: BaseViewController {
     
     private func approvePostFacebook() {
         guard let message = containerView.messageFacebook.text else { return }
+        
+        if !containerView.isMessageFacebookSet() {
+            EZAlertController.alert("Please add a message to be posted on facebook.")
+            return
+        }
         
         approvePostBtn.animateButton()
         
