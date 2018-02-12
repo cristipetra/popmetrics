@@ -222,12 +222,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         
         leftButtonItem = BadgeBarButtonItem.init(image: UIImage(named: "Icon_Menu"), style: .plain, target: self, action: #selector(handlerClickMenu))
         
-        leftButtonItem.addBadgeObservers()
-        leftButtonItem.updateBadge()
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (tim) in
-            self.leftButtonItem.updateBadge()
-        }
-        
         self.navigationItem.leftBarButtonItems = [leftButtonItem, text]
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
         

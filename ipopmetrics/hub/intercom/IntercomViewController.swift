@@ -19,41 +19,11 @@ class IntercomViewController: UIViewController {
 
         setUpNavigationBar()
         
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(updateUnreadCount(_:)), name: NSNotification.Name.IntercomUnreadConversationCountDidChange, object: nil)
-        
-    }
-    
-    override func viewDidLayoutSubviews() {
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        
         Intercom.presentMessenger()
         self.tabBarController?.selectedIndex = 0
-        
-    }
-    
-    @objc func updateUnreadCount(_ count: Int) {
-        updateBadgeCount()
-    }
-    
-    private func updateBadgeCount() {
-        let messageBadge = self.tabBarItem
-        let count = Intercom.unreadConversationCount()
-        
-        if count < 1 {
-        
-            self.tabBarItem.badgeValue = ""
-            self.tabBarItem.badgeColor = .clear
-        } else  {
-            self.tabBarItem.badgeValue = "\(Intercom.unreadConversationCount())"
-            self.tabBarItem.badgeColor = PopmetricsColor.salmondColor
-        }
-        
-        
     }
     
     internal func setUpNavigationBar() {
@@ -67,14 +37,7 @@ class IntercomViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = false
         
         leftButtonItem = BadgeBarButtonItem.init(image: UIImage(named: "Icon_Menu"), style: .plain, target: self, action: #selector(handlerClickMenu))
-        
-        leftButtonItem.addBadgeObservers()
-        leftButtonItem.updateBadge()
-        
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (tim) in
-            self.leftButtonItem.updateBadge()
-        }
-        
+
         self.navigationItem.leftBarButtonItems = [leftButtonItem, text]
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     }

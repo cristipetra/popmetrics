@@ -58,14 +58,10 @@ class MenuViewController: ElasticModalViewController {
         // Add the recognizer to your view.
         popmetricsImageView.addGestureRecognizer(tapRecognizer)
         
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(updateUnreadCount(_:)), name: NSNotification.Name.IntercomUnreadConversationCountDidChange, object: nil)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         secretTaps = 0
-        updateBadgeCount()
     }
     
     func setupOfflineBanner() {
@@ -118,24 +114,10 @@ class MenuViewController: ElasticModalViewController {
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
     }
     
-    @objc func updateUnreadCount(_ count: Int) {
-        updateBadgeCount()
-    }
-    
-    private func updateBadgeCount() {
-        let count = Intercom.unreadConversationCount()
-        if count < 1 {
-            messageBadge.isHidden = true
-        } else  {
-            messageBadge.isHidden = false
-        }
-        
-        messageBadge.changeValue(count)
-    }
-    
     private func setup() {
         changeBrandBtn.contentHorizontalAlignment = .left
     }
+    
     @IBAction func labelButtonClosePressed(_ sender: UIButton) {
         self.dismissAnimated(self.view)
     }
