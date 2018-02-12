@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -309,25 +310,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="87U-A7-XgV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="833" y="2864"/>
+            <point key="canvasLocation" x="384" y="2794"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DfO-Q4-f7p">
             <objects>
                 <navigationController id="umm-gX-vKd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="iconIntercom" selectedImage="active_icon_intercom" id="PAl-QG-YDR"/>
+                    <tabBarItem key="tabBarItem" title="" image="inactive_intercom" selectedImage="active_intercom" id="PAl-QG-YDR"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ed3-Lh-61l">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="L0B-5Y-mpt" kind="relationship" relationship="rootViewController" id="ccj-WO-pVt"/>
+                        <segue destination="L0B-5Y-mpt" kind="relationship" relationship="rootViewController" id="Lp8-Xs-keM"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sMy-3x-vl0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="258" y="2864"/>
+            <point key="canvasLocation" x="-86" y="2623"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="min-fm-dln">
@@ -355,7 +356,7 @@
                         <segue destination="6Hj-N4-71a" kind="relationship" relationship="viewControllers" id="Gmh-7G-ppP"/>
                         <segue destination="I55-5p-Jbt" kind="relationship" relationship="viewControllers" id="KYA-ck-0BD"/>
                         <segue destination="8mf-xR-Vyo" kind="relationship" relationship="viewControllers" id="Kqb-PF-QF6"/>
-                        <segue destination="umm-gX-vKd" kind="relationship" relationship="viewControllers" id="qgf-3R-ldc"/>
+                        <segue destination="ajN-DG-2n1" kind="relationship" relationship="viewControllers" id="FH5-Lj-Aou"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hb4-4Y-tFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -486,6 +487,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AIR-8q-4Dq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-592.5" y="1328.4416666666666"/>
+        </scene>
+        <!--Intercom View Controller-->
+        <scene sceneID="4FH-cP-jUN">
+            <objects>
+                <viewController id="ajN-DG-2n1" customClass="IntercomViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Al0-aY-JAE"/>
+                        <viewControllerLayoutGuide type="bottom" id="OFI-it-l8i"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gJ6-q8-bDb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="inactive_intercom" selectedImage="active_intercom" id="jZ4-Go-Mfk" customClass="IntercomTabBarItem" customModule="Live" customModuleProvider="target">
+                        <color key="badgeColor" name="red_light"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="810-yD-QNM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-105" y="1770"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BgY-0i-GYY">
@@ -1019,21 +1041,24 @@
         <image name="Icon_Home_Selected" width="23" height="21"/>
         <image name="active_calendar" width="20" height="23"/>
         <image name="active_home" width="23" height="23"/>
-        <image name="active_icon_intercom" width="28" height="32"/>
+        <image name="active_intercom" width="28" height="32"/>
         <image name="active_statistics" width="22" height="23"/>
         <image name="active_todo" width="20" height="23"/>
         <image name="brandNameCheck" width="28" height="28"/>
         <image name="calendarArrowIcon" width="11" height="25"/>
         <image name="calendarTodayIcon" width="30" height="30"/>
         <image name="first" width="30" height="30"/>
-        <image name="iconIntercom" width="28" height="32"/>
         <image name="iconX" width="20" height="20"/>
         <image name="inactive_calendar" width="20" height="23"/>
         <image name="inactive_home" width="23" height="23"/>
+        <image name="inactive_intercom" width="28" height="32"/>
         <image name="inactive_statistics" width="22" height="23"/>
         <image name="inactive_todo" width="20" height="23"/>
         <image name="menuLogo" width="118" height="26"/>
         <image name="second" width="30" height="30"/>
         <image name="user_profile" width="16" height="16"/>
+        <namedColor name="red_light">
+            <color red="1" green="0.46666666666666667" blue="0.41568627450980394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

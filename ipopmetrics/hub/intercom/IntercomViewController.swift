@@ -9,6 +9,7 @@
 import UIKit
 import Intercom
 
+
 class IntercomViewController: UIViewController {
     
     internal var leftButtonItem: BadgeBarButtonItem!
@@ -16,13 +17,43 @@ class IntercomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Intercom.presentMessenger()
+        setUpNavigationBar()
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUnreadCount(_:)), name: NSNotification.Name.IntercomUnreadConversationCountDidChange, object: nil)
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        Intercom.presentMessenger()
         
-        setUpNavigationBar()
+        
+        Intercom.presentMessenger()
+        self.tabBarController?.selectedIndex = 0
+        
+    }
+    
+    @objc func updateUnreadCount(_ count: Int) {
+        updateBadgeCount()
+    }
+    
+    private func updateBadgeCount() {
+        let messageBadge = self.tabBarItem
+        let count = Intercom.unreadConversationCount()
+        
+        if count < 1 {
+        
+            self.tabBarItem.badgeValue = ""
+            self.tabBarItem.badgeColor = .clear
+        } else  {
+            self.tabBarItem.badgeValue = "\(Intercom.unreadConversationCount())"
+            self.tabBarItem.badgeColor = PopmetricsColor.salmondColor
+        }
+        
+        
     }
     
     internal func setUpNavigationBar() {
@@ -55,5 +86,9 @@ class IntercomViewController: UIViewController {
         modalViewController.modalTransition.radiusFactor = 0.3
         self.present(modalViewController, animated: true, completion: nil)
     }
+
+}
+
+extension IntercomViewController: UIViewControllerTransitioningDelegate{
 
 }
