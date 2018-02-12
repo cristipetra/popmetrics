@@ -1676,10 +1676,10 @@
 			projectRoot = "";
 			targets = (
 				1178D6741E1E5AD9005B96C3 /* Live */,
-				1178D68A1E1E5AD9005B96C3 /* ipopmetricsTests */,
-				1178D6951E1E5AD9005B96C3 /* ipopmetricsUITests */,
 				11E59554202B5C9F007AACDB /* Staging */,
 				11E5972B202B6618007AACDB /* Localdev */,
+				1178D68A1E1E5AD9005B96C3 /* ipopmetricsTests */,
+				1178D6951E1E5AD9005B96C3 /* ipopmetricsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -3153,6 +3153,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = M3K246T7Z9;
 				INFOPLIST_FILE = ipopmetricsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Popmetrics.ipopmetricsTests;
@@ -3167,6 +3168,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = M3K246T7Z9;
 				INFOPLIST_FILE = ipopmetricsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Popmetrics.ipopmetricsTests;
