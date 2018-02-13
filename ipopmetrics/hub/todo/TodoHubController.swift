@@ -377,6 +377,9 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
                 return cell
             default:
                 let cell = UITableViewCell()
+                cell.translatesAutoresizingMaskIntoConstraints = false
+                cell.heightAnchor.constraint(equalToConstant: 1).isActive = true
+                cell.backgroundColor = .clear
                 return cell
         }
         
