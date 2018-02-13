@@ -85,6 +85,7 @@ PODS:
   - GTProgressBar (0.2.3)
   - Haptica (2.0.0)
   - Hero (1.1.0)
+  - Intercom (4.1.9)
   - IOSLinkedInAPIFix (2.0.4):
     - AFNetworking (>= 2.0.0)
   - JSONWebToken (2.2.0)
@@ -141,6 +142,7 @@ DEPENDENCIES:
   - GTProgressBar
   - Haptica
   - Hero
+  - Intercom
   - JSONWebToken
   - LinkedinSwift
   - lottie-ios
@@ -226,6 +228,7 @@ SPEC CHECKSUMS:
   GTProgressBar: ecfa9f2dfaca1b9b35811925f5bd53516ee591ae
   Haptica: ed63c31f32f2aa17ecb479c110dd50904497bf5d
   Hero: ce59e81c79390613d97b43da7179e2c5e1017e04
+  Intercom: c69c28474ffc9bf99cce5a7c25f515aad3796944
   IOSLinkedInAPIFix: a520fd805a03dade35f42904c7d89ded2a84c752
   JSONWebToken: 6fae32489632658d563dd6952a5c34020ea813e4
   LinkedinSwift: fba071cbbcedf42471f45c0cd2438cba3f6c9c7c
@@ -253,6 +256,6 @@ SPEC CHECKSUMS:
   UIView+JMFrame: a907974c9d34b1c300aef85ae2a1a5af746f2b8a
   URLNavigator: af5582fbbb3586c958be16835d799bfdb23a4793
 
-PODFILE CHECKSUM: 5f7e94e3bf274ca9c6db89c980c21131704fc1c2
+PODFILE CHECKSUM: 79181e1bcbf7e42c554c481c9172fa79ef92c6ca
 
 COCOAPODS: 1.4.0

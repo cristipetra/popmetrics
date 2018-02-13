@@ -50,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var storyBoard: UIStoryboard!
     var syncService: SyncService!
     var requiredActionHandler: RequiredActionHandler!
+    var environment: Environment
     
     var safari: SFSafariViewController?
     
@@ -67,6 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Realm.Configuration.defaultConfiguration = config
         
+        environment = Configuration().environment
         
         usersStore = UserStore()
         feedStore = FeedStore()

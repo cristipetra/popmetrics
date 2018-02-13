@@ -21,6 +21,7 @@ target 'ipopmetrics' do
   pod 'STPopup'
   pod 'RealmSwift'
   pod 'URLNavigator'
+  pod 'Intercom'
 
   # Auth
   pod 'Google/SignIn'

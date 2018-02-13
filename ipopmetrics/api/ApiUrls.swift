@@ -10,10 +10,8 @@ import Foundation
 
 // MARK: - Constants
 
-private let PROTOCOL = "https"
-private let HOST = "api.popmetrics.io"
-private let PORT = 443
-public let CHAT_URL = "https://chat.popmetrics.ai/#/aimee/start-with-callback/58fe437ac7631a139803757e/59b2a6288a5da50da5790fd7"
+
+// public let CHAT_URL = "https://chat.popmetrics.ai/#/aimee/start-with-callback/58fe437ac7631a139803757e/59b2a6288a5da50da5790fd7"
 
 
 
@@ -84,13 +82,10 @@ class ApiUrls {
     }
     
     static func getBaseUrl() -> String {
-        if (PORT == 80 || PORT == 443) {
-            return escapedUrl(String(format: "%@://%@", PROTOCOL, HOST, PORT))
-        }
-        else {
-            
-            return escapedUrl(String(format: "%@://%@:%d", PROTOCOL, HOST, PORT))
-        }
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return escapedUrl(AppDelegate.environment.baseURL)
+        
     }
     
     

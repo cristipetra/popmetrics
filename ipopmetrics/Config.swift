@@ -8,6 +8,43 @@
 
 import UIKit
 
+enum Environment: String {
+    case Staging = "staging"
+    case Production = "production"
+    
+    var baseURL: String {
+        switch self {
+        case .Staging: return "https://staging-api.myservice.com"
+        case .Production: return "https://api.myservice.com"
+        }
+    }
+    
+    var token: String {
+        switch self {
+        case .Staging: return "lktopir156dsq16sbi8"
+        case .Production: return "5zdsegr16ipsbi1lktp"
+        }
+    }
+    
+}
+
+struct Configuration {
+    lazy var environment: Environment = {
+        if let configuration = NSBundle.mainBundle().objectForInfoDictionaryKey("Backend") as? String {
+            if configuration.rangeOfString("staging") != nil {
+                return Environment.Staging
+            }
+            if configuration.rangeOfString("production") != nil {
+                return Environment.Production
+            }
+            
+        }
+        return Environment.Production
+    }()
+}
+
+
+
 class Config: NSObject {
     
     static let sharedInstance = Config();

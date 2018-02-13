@@ -474,9 +474,13 @@
 		11E636931FD735480081B1DC /* StatsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsStore.swift; sourceTree = "<group>"; };
 		11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		11FB84EA1FC79E8800FE937D /* TodoHubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoHubController.swift; sourceTree = "<group>"; };
+		3493258FF87EFE1E56593BC2 /* Pods-ipopmetrics.release (staging).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release (staging).xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release (staging).xcconfig"; sourceTree = "<group>"; };
 		4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release.xcconfig"; sourceTree = "<group>"; };
 		8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ipopmetrics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D5ECCAEA66BCED2B0405D78 /* Pods-ipopmetrics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.debug.xcconfig"; sourceTree = "<group>"; };
+		B4B4544B39E98D6698619AEC /* Pods-ipopmetrics.debug (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.debug (production).xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.debug (production).xcconfig"; sourceTree = "<group>"; };
+		CFC64B6717A9942DCD941A53 /* Pods-ipopmetrics.debug (staging).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.debug (staging).xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.debug (staging).xcconfig"; sourceTree = "<group>"; };
+		FFE1FD22340D0C98306F8FA1 /* Pods-ipopmetrics.release (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release (production).xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release (production).xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -996,6 +1000,10 @@
 			children = (
 				9D5ECCAEA66BCED2B0405D78 /* Pods-ipopmetrics.debug.xcconfig */,
 				4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */,
+				CFC64B6717A9942DCD941A53 /* Pods-ipopmetrics.debug (staging).xcconfig */,
+				B4B4544B39E98D6698619AEC /* Pods-ipopmetrics.debug (production).xcconfig */,
+				3493258FF87EFE1E56593BC2 /* Pods-ipopmetrics.release (staging).xcconfig */,
+				FFE1FD22340D0C98306F8FA1 /* Pods-ipopmetrics.release (production).xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1267,11 +1275,15 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/Intercom/Intercom/Intercom.framework/Versions/A/Resources/Intercom.bundle",
+				"${PODS_ROOT}/Intercom/Intercom/Intercom.framework/Versions/A/Resources/IntercomTranslations.bundle",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Intercom.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IntercomTranslations.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1604,7 +1616,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		1178D69D1E1E5AD9005B96C3 /* Debug */ = {
+		1178D69D1E1E5AD9005B96C3 /* Debug (Staging) */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1657,9 +1669,9 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Debug;
+			name = "Debug (Staging)";
 		};
-		1178D69E1E1E5AD9005B96C3 /* Release */ = {
+		1178D69E1E1E5AD9005B96C3 /* Release (Staging) */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1705,13 +1717,14 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = "Release (Staging)";
 		};
-		1178D6A01E1E5AD9005B96C3 /* Debug */ = {
+		1178D6A01E1E5AD9005B96C3 /* Debug (Staging) */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D5ECCAEA66BCED2B0405D78 /* Pods-ipopmetrics.debug.xcconfig */;
+			baseConfigurationReference = CFC64B6717A9942DCD941A53 /* Pods-ipopmetrics.debug (staging).xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BACKEND = staging;
 				CODE_SIGN_ENTITLEMENTS = ipopmetrics/ipopmetrics.entitlements;
 				DEVELOPMENT_TEAM = M3K246T7Z9;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1727,13 +1740,14 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
-			name = Debug;
+			name = "Debug (Staging)";
 		};
-		1178D6A11E1E5AD9005B96C3 /* Release */ = {
+		1178D6A11E1E5AD9005B96C3 /* Release (Staging) */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */;
+			baseConfigurationReference = 3493258FF87EFE1E56593BC2 /* Pods-ipopmetrics.release (staging).xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BACKEND = staging;
 				CODE_SIGN_ENTITLEMENTS = ipopmetrics/ipopmetrics.entitlements;
 				DEVELOPMENT_TEAM = M3K246T7Z9;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1749,9 +1763,9 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
-			name = Release;
+			name = "Release (Staging)";
 		};
-		1178D6A31E1E5AD9005B96C3 /* Debug */ = {
+		1178D6A31E1E5AD9005B96C3 /* Debug (Staging) */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -1763,9 +1777,9 @@
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ipopmetrics.app/ipopmetrics";
 			};
-			name = Debug;
+			name = "Debug (Staging)";
 		};
-		1178D6A41E1E5AD9005B96C3 /* Release */ = {
+		1178D6A41E1E5AD9005B96C3 /* Release (Staging) */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -1777,9 +1791,9 @@
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ipopmetrics.app/ipopmetrics";
 			};
-			name = Release;
+			name = "Release (Staging)";
 		};
-		1178D6A61E1E5AD9005B96C3 /* Debug */ = {
+		1178D6A61E1E5AD9005B96C3 /* Debug (Staging) */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -1790,9 +1804,9 @@
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = ipopmetrics;
 			};
-			name = Debug;
+			name = "Debug (Staging)";
 		};
-		1178D6A71E1E5AD9005B96C3 /* Release */ = {
+		1178D6A71E1E5AD9005B96C3 /* Release (Staging) */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -1803,7 +1817,210 @@
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = ipopmetrics;
 			};
-			name = Release;
+			name = "Release (Staging)";
+		};
+		11C9FBDC203300A800BBF470 /* Debug (Production) */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = "Debug (Production)";
+		};
+		11C9FBDD203300A800BBF470 /* Debug (Production) */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4B4544B39E98D6698619AEC /* Pods-ipopmetrics.debug (production).xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BACKEND = production;
+				CODE_SIGN_ENTITLEMENTS = ipopmetrics/ipopmetrics.entitlements;
+				DEVELOPMENT_TEAM = M3K246T7Z9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ipopmetrics",
+				);
+				INFOPLIST_FILE = ipopmetrics/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = "Debug (Production)";
+		};
+		11C9FBDE203300A800BBF470 /* Debug (Production) */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ipopmetricsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Popmetrics.ipopmetricsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ipopmetrics.app/ipopmetrics";
+			};
+			name = "Debug (Production)";
+		};
+		11C9FBDF203300A800BBF470 /* Debug (Production) */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = ipopmetricsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Popmetrics.ipopmetricsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = ipopmetrics;
+			};
+			name = "Debug (Production)";
+		};
+		11C9FBE02033040A00BBF470 /* Release (Production) */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release (Production)";
+		};
+		11C9FBE12033040A00BBF470 /* Release (Production) */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFE1FD22340D0C98306F8FA1 /* Pods-ipopmetrics.release (production).xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BACKEND = production;
+				CODE_SIGN_ENTITLEMENTS = ipopmetrics/ipopmetrics.entitlements;
+				DEVELOPMENT_TEAM = M3K246T7Z9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ipopmetrics",
+				);
+				INFOPLIST_FILE = ipopmetrics/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.popmetrics.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = "Release (Production)";
+		};
+		11C9FBE22033040A00BBF470 /* Release (Production) */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ipopmetricsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Popmetrics.ipopmetricsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ipopmetrics.app/ipopmetrics";
+			};
+			name = "Release (Production)";
+		};
+		11C9FBE32033040A00BBF470 /* Release (Production) */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = ipopmetricsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Popmetrics.ipopmetricsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = ipopmetrics;
+			};
+			name = "Release (Production)";
 		};
 /* End XCBuildConfiguration section */
 
@@ -1811,38 +2028,46 @@
 		1178D6701E1E5AD9005B96C3 /* Build configuration list for PBXProject "ipopmetrics" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1178D69D1E1E5AD9005B96C3 /* Debug */,
-				1178D69E1E1E5AD9005B96C3 /* Release */,
+				1178D69D1E1E5AD9005B96C3 /* Debug (Staging) */,
+				11C9FBDC203300A800BBF470 /* Debug (Production) */,
+				1178D69E1E1E5AD9005B96C3 /* Release (Staging) */,
+				11C9FBE02033040A00BBF470 /* Release (Production) */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "Release (Staging)";
 		};
 		1178D69F1E1E5AD9005B96C3 /* Build configuration list for PBXNativeTarget "ipopmetrics" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1178D6A01E1E5AD9005B96C3 /* Debug */,
-				1178D6A11E1E5AD9005B96C3 /* Release */,
+				1178D6A01E1E5AD9005B96C3 /* Debug (Staging) */,
+				11C9FBDD203300A800BBF470 /* Debug (Production) */,
+				1178D6A11E1E5AD9005B96C3 /* Release (Staging) */,
+				11C9FBE12033040A00BBF470 /* Release (Production) */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "Release (Staging)";
 		};
 		1178D6A21E1E5AD9005B96C3 /* Build configuration list for PBXNativeTarget "ipopmetricsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1178D6A31E1E5AD9005B96C3 /* Debug */,
-				1178D6A41E1E5AD9005B96C3 /* Release */,
+				1178D6A31E1E5AD9005B96C3 /* Debug (Staging) */,
+				11C9FBDE203300A800BBF470 /* Debug (Production) */,
+				1178D6A41E1E5AD9005B96C3 /* Release (Staging) */,
+				11C9FBE22033040A00BBF470 /* Release (Production) */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "Release (Staging)";
 		};
 		1178D6A51E1E5AD9005B96C3 /* Build configuration list for PBXNativeTarget "ipopmetricsUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1178D6A61E1E5AD9005B96C3 /* Debug */,
-				1178D6A71E1E5AD9005B96C3 /* Release */,
+				1178D6A61E1E5AD9005B96C3 /* Debug (Staging) */,
+				11C9FBDF203300A800BBF470 /* Debug (Production) */,
+				1178D6A71E1E5AD9005B96C3 /* Release (Staging) */,
+				11C9FBE32033040A00BBF470 /* Release (Production) */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "Release (Staging)";
 		};
 /* End XCConfigurationList section */
 	};
