@@ -22,24 +22,26 @@ class CodeViewController: BaseViewController {
     
     let digitCodeView = DigitCodeView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height));
     
+    @IBOutlet weak var digitTextField: UITextField!
+    @IBOutlet weak var sendCodeBtn: UIButton!
+    @IBOutlet weak var containterView: UIView!
+    @IBOutlet weak var resendCodeBtn: UIButton!
+    @IBOutlet weak var constraintCenterYContainer: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addSubview(digitCodeView)
+        digitTextField.delegate = self
         
-        digitCodeView.didMoveToSuperview()
-        digitCodeView.digitextField.delegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
         
-        digitCodeView.sendCodeBtn.addTarget(self, action: #selector(didPressSendSmsCode), for: .touchUpInside)
-        digitCodeView.contactBtn.addTarget(self, action: #selector(didPressContact), for: .touchUpInside)
-        digitCodeView.resendCodeBtn.addTarget(self, action: #selector(didPressResendCode), for: .touchUpInside)
+        sendCodeBtn.addTarget(self, action: #selector(didPressSendSmsCode), for: .touchUpInside)
+        resendCodeBtn.addTarget(self, action: #selector(didPressResendCode), for: .touchUpInside)
         
-        updateDigitFieldNumber(textField: digitCodeView.digitextField, mask: editableCodeMask)
+        updateDigitFieldNumber(textField: digitTextField, mask: editableCodeMask)
         isHeroEnabled = true
-        digitCodeView.sendCodeBtn.isEnabled = false
+        sendCodeBtn.isEnabled = false
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
         
         setNavigationBar()
@@ -70,17 +72,17 @@ class CodeViewController: BaseViewController {
     
     
     @objc internal func dismissKeyboard() {
-        if digitCodeView.digitextField.text?.characters.count == 0 {
-            digitCodeView.sendCodeBtn.isUserInteractionEnabled = false
-            digitCodeView.sendCodeBtn.layer.backgroundColor = UIColor(red: 255/255, green: 210/255, blue: 55/255, alpha: 1.0).cgColor
-            digitCodeView.sendCodeBtn.setTitleColor(UIColor(red: 228/255, green: 185/255, blue: 39/255, alpha: 1.0), for: .normal)
+        if digitTextField.text?.characters.count == 0 {
+            sendCodeBtn.isUserInteractionEnabled = false
+            sendCodeBtn.layer.backgroundColor = UIColor(red: 255/255, green: 210/255, blue: 55/255, alpha: 1.0).cgColor
+            sendCodeBtn.setTitleColor(UIColor(red: 228/255, green: 185/255, blue: 39/255, alpha: 1.0), for: .normal)
         }
-        digitCodeView.digitextField.resignFirstResponder()
+        digitTextField.resignFirstResponder()
     }
     
     
     @objc func didPressSendSmsCode(_ sender: Any) {
-        digitCodeView.digitextField.resignFirstResponder()
+        digitTextField.resignFirstResponder()
         
         let smsCode = extractCode(text: editableCodeMask)
         let phoneNumber = phoneNo!
@@ -215,9 +217,9 @@ class CodeViewController: BaseViewController {
     }
     
     private func clearCodeTextField() {
-        guard let code = self.digitCodeView.digitextField.text else { return }
+        guard let code = self.digitTextField.text else { return }
         for _ in code {
-            self.textField(self.digitCodeView.digitextField, shouldChangeCharactersIn: NSRange(location:0, length:1), replacementString: "")
+            self.textField(self.digitTextField, shouldChangeCharactersIn: NSRange(location:0, length:1), replacementString: "")
         }
     }
     
@@ -262,13 +264,25 @@ class CodeViewController: BaseViewController {
     func extractCode(text: String) -> String {
         return text.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
     }
+    
+    func animateView(value :CGFloat) {
+        UIView.animate(withDuration: 0.3) {
+            self.constraintCenterYContainer.constant = value
+            self.view.layoutIfNeeded()
+        }
+    }
 }
 
 // MARK: - UITextFieldDelegate
 
 extension CodeViewController: UITextFieldDelegate {
     internal func textFieldDidBeginEditing(_ textField: UITextField) {
+        animateView(value: -60)
         updateCursorPosition(textField: textField)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        animateView(value: 0)
     }
     
     internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -287,7 +301,7 @@ extension CodeViewController: UITextFieldDelegate {
         }
         updateDigitFieldNumber(textField: textField, mask: editableCodeMask)
         updateCursorPosition(textField: textField)
-        digitCodeView.sendCodeBtn.isEnabled = extractCode(text: editableCodeMask).count >= 3
+        sendCodeBtn.isEnabled = extractCode(text: editableCodeMask).count >= 3
         return false
     }
 }

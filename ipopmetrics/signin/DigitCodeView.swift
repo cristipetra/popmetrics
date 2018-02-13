@@ -57,37 +57,10 @@ class DigitCodeView: UIView {
         return contactButton
     }()
     
-    
-    func reloadSubViews() {
-        digitextField.removeFromSuperview()
-        sendCodeBtn.removeFromSuperview()
-        resendCodeBtn.removeFromSuperview()
-        //        contactBtn.removeFromSuperview()
-        instrLabel.removeFromSuperview()
-        self.addSubview(digitextField)
-        self.addSubview(sendCodeBtn)
-        self.addSubview(resendCodeBtn)
-        self.addSubview(instrLabel)
-        //        self.addSubview(contactBtn)
-        setResendCodeButton(yAnchor: -130)
-       
-        setNumberTextView(yAnchor: 122)
+    override func layoutSubviews() {
         
-        setSendCodeButton(topSpace: 30)
-        
-        if UIScreen.main.bounds.height > 480 {
-            setNumberTextView(yAnchor: -70)
-            setSendCodeButton(topSpace: 120)
-            setResendCodeButton(yAnchor: -130)
-            //            setContactButton(yAnchor: -90)
-            setInstructionLabel(yAnchor: 18)
-        } else {
-            setNumberTextView(yAnchor: 70)
-            setSendCodeButton(topSpace: 30)
-            setResendCodeButton(yAnchor: -130)
-            setContactButton(yAnchor: -70)
-        }
     }
+    
     
     func setup() {
         self.backgroundColor = .white

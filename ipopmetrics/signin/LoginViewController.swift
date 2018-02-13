@@ -42,8 +42,6 @@ class LoginViewController: UIViewController {
         phoneView.sendCodeBtn.addTarget(self, action: #selector(didPressSendPhoneNumber), for: .touchUpInside)
         addPhoneView();
         
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-        
         view.addSubview(progressHUD)
         progressHUD.hide()
         
@@ -92,16 +90,6 @@ class LoginViewController: UIViewController {
         leftSpace.width = 15
         
         self.navigationItem.leftBarButtonItems = [leftSpace, backButton]
-        
-    }
-    
-    
-    @objc func rotated() {
-        if self.digitCodeView.isDescendant(of: self.view) {
-            self.digitCodeView.reloadSubViews()
-        } else {
-            self.phoneView.reloadSubViews()
-        }
         
     }
     
