@@ -98,11 +98,13 @@ class ActionPageDetailsViewController: BaseViewController {
         
         persistentFooter.leftBtn.isHidden = true
         
-        if actionModel.type == "my_action" {
-            persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToMyActions(_:)), for: .touchUpInside)
+        //add action from home feed
+        if todoCard.name == "social.automated_posts" {
+            persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToPaidActions(_:)), for: .touchUpInside)
         } else {
-            //persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToPaidActions(_:)), for: .touchUpInside)
+            persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToMyActions(_:)), for: .touchUpInside)
         }
+
     }
     
     public func configure(_ todoCard: TodoCard, openedFrom: String) {
