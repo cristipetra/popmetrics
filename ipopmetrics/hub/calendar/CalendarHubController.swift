@@ -142,6 +142,7 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
             SyncService.getInstance().syncAll(silent: false)
         }
         
+        //createItemsLocally()
     }
     
     
@@ -160,14 +161,7 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
             calendarScheduled.section = CalendarSectionType.scheduled.rawValue
             calendarScheduled.type = "scheduled_social_posts"
             store.realm.add(calendarScheduled, update: true)
-            
-            let calendarCompleted1 = CalendarCard()
-            calendarCompleted1.createDate = Date()
-            calendarCompleted1.section = CalendarSectionType.scheduled.rawValue
-            calendarCompleted1.type = "calendar.completed_action"
-            store.realm.add(calendarCompleted1, update: true)
-            
-            
+
             let calendarCompleted = CalendarCard()
             calendarCompleted.cardId = calendarCompletedId
             calendarCompleted.createDate = Date()
@@ -434,6 +428,7 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         
         let items = getVisibleItemsInSection(sectionIdx, fromDate: self.calendarViewController.selectedFromDate, toDate: self.calendarViewController.selectedToDate)
         
+    
         if items.count == 0 {
             return UITableViewCell()
         }
@@ -442,7 +437,6 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         if item is CalendarSocialPost {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
             cell.configure(item as! CalendarSocialPost)
-            
             cell.setPositions(indexPath, itemsToLoad: 0, countPosts: items.count)
             
             cell.cancelCardDelegate = self
@@ -705,7 +699,7 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         let posts = store.getCalendarSocialPostsInRange(fromDate: self.calendarViewController.selectedFromDate,
                                                         toDate: self.calendarViewController.selectedToDate)
         try! store.realm.write {
-            self.store.realm.delete(posts)
+            self.store.realm.delete(socialPost)
             self.tableView.reloadData()
         }
     }
@@ -750,13 +744,9 @@ extension CalendarHubController: ActionSocialPostProtocol {
             presentErrorNetwork()
             return
         }
-        
         CalendarApi().cancelPost(post.postId!, callback: {
             () -> Void in
             self.removeCell(indexPath: indexPath, socialPost:post)
         })
-        
-        
-        
     }
 }
