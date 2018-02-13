@@ -12,6 +12,7 @@ class MyActionCardCell: UITableViewCell {
     
     @IBOutlet weak var wrapperView: UIStackView!
     
+    @IBOutlet weak var btnMarkAsComplete: UIButton!
     @IBOutlet weak var containerBtn: UIView!
     @IBOutlet weak var containerShadow: UIView!
     @IBOutlet weak var impactView: ImpactScoreView!
