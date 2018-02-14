@@ -21,15 +21,6 @@ import RealmSwift
 import Intercom
 
 
-let INTERCOM_LIVE_APP_KEY = "ios_sdk-56bb7df2b3d88934f7d564b7a353c66b68b54f12"
-let INTERCOM_LIVE_APP_ID = "f2713n8d"
-
-let INTERCOM_TEST_APP_KEY = "ios_sdk-b07a4fa44e59e0914ce414c278c284e2b18e6caa"
-let INTERCOM_TEST_APP_ID = "w4ce6nmv"
-
-let INTERCOM_APP_KEY = INTERCOM_LIVE_APP_KEY
-let INTERCOM_APP_ID = INTERCOM_LIVE_APP_ID
-
 public extension Notification {
     public class Popmetrics {
         public static let ApiClientNeedsUpdating = Notification.Name("Notification.Popmetrics.ApiClientNeedsUpdating")
@@ -50,24 +41,6 @@ public extension Notification {
 }
 
 var navigator: Navigator = Navigator()
-
-extension Bundle {
-    var apiBaseURL: String {
-        guard let pop = object(forInfoDictionaryKey: "Popmetrics") as! [String:String]! else { return "" }
-        return pop["APIBaseURL"]!
-    }
-    
-    var intercomAppId: String {
-        guard let pop = object(forInfoDictionaryKey: "Popmetrics") as! [String:String]! else { return "" }
-        return pop["IntercomAppId"]!
-    }
-    var intercomAppKey: String {
-        guard let pop = object(forInfoDictionaryKey: "Popmetrics") as! [String:String]! else { return "" }
-        return pop["IntercomAppKey"]!
-    }
-    
-    
-}
 
 
 @UIApplicationMain
@@ -108,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //Intercom
         Intercom.setInAppMessagesVisible(false)
-        Intercom.setApiKey(INTERCOM_APP_KEY, forAppId: INTERCOM_APP_ID)
+        Intercom.setApiKey(Config.sharedInstance.environment.intercomAppKey, forAppId: Config.sharedInstance.environment.intercomAppId)
         
         if isLoggedIn() {
             let userAccount = UserStore.getInstance().getLocalUserAccount()

@@ -34,6 +34,20 @@ enum Environment: String {
         }
     }
     
+    var intercomAppKey: String {
+        switch self {
+        case .Staging: return "ios_sdk-b07a4fa44e59e0914ce414c278c284e2b18e6caa"
+        case .Production: return "ios_sdk-56bb7df2b3d88934f7d564b7a353c66b68b54f12"
+        }
+    }
+    
+    var intercomAppId: String {
+        switch self {
+        case .Staging: return "w4ce6nmv"
+        case .Production: return "f2713n8d"
+        }
+    }
+    
 }
 
 class Config: NSObject {
