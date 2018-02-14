@@ -57,6 +57,7 @@
 		086EDE3F1FC830F1002F4140 /* MyActionCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE3E1FC830F1002F4140 /* MyActionCardCell.swift */; };
 		086EDE431FC8449A002F4140 /* ImpactScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE421FC8449A002F4140 /* ImpactScoreView.swift */; };
 		086EDE461FC8651B002F4140 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE451FC8651B002F4140 /* UIViewExtensions.swift */; };
+		086F34742034986700F7043B /* SettingsBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F34732034986700F7043B /* SettingsBaseTableViewController.swift */; };
 		08755F461FCC11E600A8CF13 /* SocialPostDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */; };
 		08755F4C1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */; };
 		088674111FE28506008DB87E /* LoginSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088674101FE28506008DB87E /* LoginSocialViewController.swift */; };
@@ -300,6 +301,7 @@
 		086EDE3E1FC830F1002F4140 /* MyActionCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActionCardCell.swift; sourceTree = "<group>"; };
 		086EDE421FC8449A002F4140 /* ImpactScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactScoreView.swift; sourceTree = "<group>"; };
 		086EDE451FC8651B002F4140 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		086F34732034986700F7043B /* SettingsBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBaseTableViewController.swift; sourceTree = "<group>"; };
 		08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SocialPostDetails.xib; sourceTree = "<group>"; };
 		08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPostDetailsViewController.swift; sourceTree = "<group>"; };
 		0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -603,6 +605,7 @@
 				08A51D2E1FC6DBBE0097B334 /* Markdown.swift */,
 				08CE428E1FD041AE00FF8C80 /* EmailMessages.swift */,
 				089E10551FD1716200D57A08 /* SwipeExtension.swift */,
+				086F34732034986700F7043B /* SettingsBaseTableViewController.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -1300,10 +1303,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Intercom.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IntercomTranslations.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1468,6 +1468,7 @@
 				08B4EBB21FC56ACE00BFC5A1 /* SettingsBaseViewController.swift in Sources */,
 				08B4EB991FC569F700BFC5A1 /* FeedStore.swift in Sources */,
 				08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */,
+				086F34742034986700F7043B /* SettingsBaseTableViewController.swift in Sources */,
 				088674111FE28506008DB87E /* LoginSocialViewController.swift in Sources */,
 				0855C0CB1F6FFBF000ACBFA9 /* EmptyStateCard.swift in Sources */,
 				088728971FFCE98700BE9882 /* AboutViewController.swift in Sources */,
