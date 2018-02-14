@@ -4,7 +4,8 @@ platform :ios, '9.0'
 
 use_frameworks!
 
-def all_pods
+target 'ipopmetrics' do
+
   pod 'ReachabilitySwift'
   pod 'Alamofire', '~> 4.0'
   pod 'AlamofireImage'
@@ -58,19 +59,4 @@ def all_pods
   pod 'GTProgressBar'
   pod 'LinkedinSwift'
 
-end
-
-target 'Live' do
-  all_pods
-  
-end
-
-target 'Staging' do
-  all_pods
-  
-end
-
-target 'Localdev' do
-  all_pods
-  
 end
