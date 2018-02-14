@@ -12,6 +12,8 @@ import SafariServices
 import Haptica
 import MessageUI
 import Reachability
+import Intercom
+import EZAlertController
 
 class MenuViewController: ElasticModalViewController {
     
@@ -19,6 +21,7 @@ class MenuViewController: ElasticModalViewController {
     @IBOutlet weak var changeBrandBtn: UIButton!
     @IBOutlet weak var checkBtn: UIButton!
     @IBOutlet weak var brandNameLabel: UILabel!
+    @IBOutlet weak var feedbackButton: UIButton!
     
     @IBOutlet weak var popmetricsImageView: UIImageView!
     @IBOutlet weak var closeButton: UIButton! {
@@ -35,6 +38,7 @@ class MenuViewController: ElasticModalViewController {
     var dismissByBackgroundTouch = false
     var dismissByBackgroundDrag = true
     //var dismissByForegroundDrag = true
+    @IBOutlet weak var messageBadge: MessagesBadgeView!
     
     var secretTaps = 0
     
@@ -53,6 +57,7 @@ class MenuViewController: ElasticModalViewController {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
         // Add the recognizer to your view.
         popmetricsImageView.addGestureRecognizer(tapRecognizer)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -112,6 +117,7 @@ class MenuViewController: ElasticModalViewController {
     private func setup() {
         changeBrandBtn.contentHorizontalAlignment = .left
     }
+    
     @IBAction func labelButtonClosePressed(_ sender: UIButton) {
         self.dismissAnimated(self.view)
     }
@@ -142,6 +148,8 @@ class MenuViewController: ElasticModalViewController {
         clearStores()
         setInitialDateSync()
         UserStore.getInstance().clearCredentials()
+        Intercom.logout()
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setInitialViewController()
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
@@ -185,6 +193,11 @@ class MenuViewController: ElasticModalViewController {
             self.present(alertController, animated: true, completion: nil)
         })
     }
+    
+    @IBAction func handlerClickMessages(_ sender: UIButton) {
+        Intercom.presentMessenger()
+    }
+
     
 }
 

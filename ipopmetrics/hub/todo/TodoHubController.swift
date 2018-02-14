@@ -96,7 +96,7 @@ class TodoHubController: BaseViewController {
     var currentBrandId = UserStore.currentBrandId
     
     internal var didAnimateOpeningCells = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -105,7 +105,7 @@ class TodoHubController: BaseViewController {
         
         registerCellsForTable()
 
-        setUpNavigationBar()
+        //setUpNavigationBar()
         
         self.toDoTopView.setActive(section: .unapproved)
         
@@ -145,6 +145,10 @@ class TodoHubController: BaseViewController {
         topHeaderView.changeVisibilityExpandView(visible: false)
         updateCountsTopView()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setUpNavigationBar()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -216,6 +220,8 @@ class TodoHubController: BaseViewController {
         tableView.register(paidActionCardNib, forCellReuseIdentifier: "PaidActionCard")
     }
     
+    internal var leftButtonItem: BadgeBarButtonItem!
+    
     internal func setUpNavigationBar() {
         let text = UIBarButtonItem(title: "To Do", style: .plain, target: self, action: #selector(handlerClickMenu))
         text.tintColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1.0)
@@ -226,8 +232,8 @@ class TodoHubController: BaseViewController {
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = false
         
-        let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "Icon_Menu"), style: .plain, target: self, action: #selector(handlerClickMenu))
-        self.navigationItem.leftBarButtonItem = leftButtonItem
+        leftButtonItem = BadgeBarButtonItem.init(image: UIImage(named: "Icon_Menu"), style: .plain, target: self, action: #selector(handlerClickMenu))
+        
         self.navigationItem.leftBarButtonItems = [leftButtonItem, text]
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     }
@@ -371,6 +377,9 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
                 return cell
             default:
                 let cell = UITableViewCell()
+                cell.translatesAutoresizingMaskIntoConstraints = false
+                cell.heightAnchor.constraint(equalToConstant: 1).isActive = true
+                cell.backgroundColor = .clear
                 return cell
         }
         

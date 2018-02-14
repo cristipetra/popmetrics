@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -26,7 +27,7 @@
         <!--Feed Table View Controller-->
         <scene sceneID="yN3-TS-G0L">
             <objects>
-                <tableViewController storyboardIdentifier="FEED_VC" title="My Homes Table View Controller" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="pageSheet" id="KcM-MX-1lY" userLabel="Feed Table View Controller" customClass="HomeHubViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="FEED_VC" title="My Homes Table View Controller" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="pageSheet" id="KcM-MX-1lY" userLabel="Feed Table View Controller" customClass="HomeHubViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="2" rowHeight="182" sectionHeaderHeight="18" sectionFooterHeight="18" id="IDh-YP-3oO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,7 +54,7 @@
         <!--Menu View Controller-->
         <scene sceneID="vnq-XG-9Wi">
             <objects>
-                <viewController storyboardIdentifier="MENU_VC" id="vgc-BL-sQ3" customClass="MenuViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MENU_VC" id="vgc-BL-sQ3" customClass="MenuViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rSp-0Z-2F3"/>
                         <viewControllerLayoutGuide type="bottom" id="Pfw-ZC-4fg"/>
@@ -111,10 +112,10 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MTa-KH-EBT">
-                                <rect key="frame" x="29" y="187" width="153" height="120"/>
+                                <rect key="frame" x="29" y="187" width="320" height="99"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCx-hh-YS8">
-                                        <rect key="frame" x="0.0" y="0.0" width="153" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="33"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="SETTINGS">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -124,7 +125,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWk-9n-6Qe" userLabel="ABOUT POPMETRICS">
-                                        <rect key="frame" x="0.0" y="30" width="153" height="30"/>
+                                        <rect key="frame" x="0.0" y="33" width="320" height="33"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="ABOUT POPMETRICS">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -134,7 +135,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxF-Rq-8jP">
-                                        <rect key="frame" x="0.0" y="60" width="153" height="30"/>
+                                        <rect key="frame" x="0.0" y="66" width="320" height="33"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="LEGAL INFORMATION">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -143,20 +144,10 @@
                                             <action selector="handlerLegalBits:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="e1R-VV-qss"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kj0-qS-TrO">
-                                        <rect key="frame" x="0.0" y="90" width="153" height="30"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
-                                        <state key="normal" title="CONTACT US">
-                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="handlerContactUsPressed:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="MT7-Fg-jei"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybe-Us-fFL">
-                                <rect key="frame" x="29" y="356" width="62" height="30"/>
+                                <rect key="frame" x="29" y="335" width="63" height="33"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="LOGOUT">
                                     <color key="titleColor" red="1" green="0.46666666670000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -180,7 +171,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOi-K4-4l3">
-                                <rect key="frame" x="3" y="335" width="370" height="1"/>
+                                <rect key="frame" x="3" y="314" width="370" height="1"/>
                                 <color key="backgroundColor" red="0.74117647060000003" green="0.7725490196" blue="0.79607843140000001" alpha="0.50449486301369861" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="16o-2h-RXg"/>
@@ -244,6 +235,7 @@
                             <constraint firstItem="JhQ-kz-dOw" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leading" constant="3" id="XAE-4u-ISC"/>
                             <constraint firstItem="lCf-hh-gEv" firstAttribute="top" secondItem="rSp-0Z-2F3" secondAttribute="bottom" constant="-10" id="YjE-h1-uy1"/>
                             <constraint firstItem="LZd-QI-7te" firstAttribute="top" secondItem="eP9-wi-QSE" secondAttribute="bottom" constant="20" id="Zpu-vz-KCu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MTa-KH-EBT" secondAttribute="trailing" constant="10" id="bZ4-AW-uIY"/>
                             <constraint firstItem="Pfw-ZC-4fg" firstAttribute="top" secondItem="LZd-QI-7te" secondAttribute="bottom" constant="20" id="ce6-Lf-5n0"/>
                             <constraint firstItem="iOi-K4-4l3" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leading" constant="3" id="dpe-Wu-n3D"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ybe-Us-fFL" secondAttribute="trailingMargin" id="ecg-Iz-CAm"/>
@@ -274,7 +266,7 @@
         <!--Main Tab Bar Controller-->
         <scene sceneID="min-fm-dln">
             <objects>
-                <tabBarController storyboardIdentifier="MainTabBarController" title="Main Tab Bar Controller" id="11g-qt-nej" customClass="MainTabBarController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" title="Main Tab Bar Controller" id="11g-qt-nej" customClass="MainTabBarController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="vI3-Am-2cK"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="k0Q-yd-kzN">
@@ -297,6 +289,7 @@
                         <segue destination="6Hj-N4-71a" kind="relationship" relationship="viewControllers" id="Gmh-7G-ppP"/>
                         <segue destination="I55-5p-Jbt" kind="relationship" relationship="viewControllers" id="KYA-ck-0BD"/>
                         <segue destination="8mf-xR-Vyo" kind="relationship" relationship="viewControllers" id="Kqb-PF-QF6"/>
+                        <segue destination="JGE-kr-Y5x" kind="relationship" relationship="viewControllers" id="2xa-Kx-RkB"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hb4-4Y-tFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -306,7 +299,7 @@
         <!--Account Settings View Controller-->
         <scene sceneID="Gpm-2v-KLK">
             <objects>
-                <viewController title="Account Settings View Controller" id="aLn-zU-J6Q" customClass="AccountViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Account Settings View Controller" id="aLn-zU-J6Q" customClass="AccountViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fpg-0D-O22"/>
                         <viewControllerLayoutGuide type="bottom" id="2KW-ly-Zsx"/>
@@ -332,7 +325,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nnH-1M-vtZ" customClass="TextFieldValidator" customModule="ipopmetrics" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nnH-1M-vtZ" customClass="TextFieldValidator" customModule="Live" customModuleProvider="target">
                                 <rect key="frame" x="16" y="205" width="288" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Qqs-hE-y6C"/>
@@ -412,7 +405,7 @@
         <!--Concierge-->
         <scene sceneID="aQd-EV-7wF">
             <objects>
-                <viewController storyboardIdentifier="ConciergeChatViewController" id="mhc-LI-Iws" customClass="ConciergeChatViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConciergeChatViewController" id="mhc-LI-Iws" customClass="ConciergeChatViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8qj-oX-NIX"/>
                         <viewControllerLayoutGuide type="bottom" id="E3M-p9-6TV"/>
@@ -427,6 +420,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AIR-8q-4Dq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-592.5" y="1328.4416666666666"/>
+        </scene>
+        <!--Intercom View Controller-->
+        <scene sceneID="4FH-cP-jUN">
+            <objects>
+                <viewController id="ajN-DG-2n1" customClass="IntercomViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Al0-aY-JAE"/>
+                        <viewControllerLayoutGuide type="bottom" id="OFI-it-l8i"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gJ6-q8-bDb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="inactive_intercom" selectedImage="active_intercom" id="jZ4-Go-Mfk" customClass="IntercomTabBarItem" customModule="Live" customModuleProvider="target">
+                        <color key="badgeColor" name="red_light"/>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="kjw-rR-dto"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="810-yD-QNM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-78" y="2875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BgY-0i-GYY">
@@ -450,7 +465,7 @@
         <!--Todo Hub Controller-->
         <scene sceneID="PTS-xG-1pA">
             <objects>
-                <viewController storyboardIdentifier="TodoHubController" id="v2H-b7-whD" customClass="TodoHubController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TodoHubController" id="v2H-b7-whD" customClass="TodoHubController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KU6-Gq-h5V"/>
                         <viewControllerLayoutGuide type="bottom" id="Fda-MN-fQ7"/>
@@ -459,7 +474,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bo8-db-YCb" customClass="TodoTopView" customModule="ipopmetrics" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bo8-db-YCb" customClass="TodoTopView" customModule="Live" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="61"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -519,7 +534,7 @@
         <!--Calendar Hub Controller-->
         <scene sceneID="3zH-mP-ZKt">
             <objects>
-                <viewController storyboardIdentifier="CalendarID" extendedLayoutIncludesOpaqueBars="YES" id="oy5-0D-0Qc" customClass="CalendarHubController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalendarID" extendedLayoutIncludesOpaqueBars="YES" id="oy5-0D-0Qc" customClass="CalendarHubController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="phX-1d-82O"/>
                         <viewControllerLayoutGuide type="bottom" id="vi2-VG-ZUi"/>
@@ -571,7 +586,7 @@
         <!--Calendar View Controller-->
         <scene sceneID="p9V-hr-U8y">
             <objects>
-                <viewController extendedLayoutIncludesOpaqueBars="YES" id="LQ7-p4-nv0" customClass="MJCalendarViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="LQ7-p4-nv0" customClass="MJCalendarViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oFv-Sd-Dua"/>
                         <viewControllerLayoutGuide type="bottom" id="ALW-rf-ylu"/>
@@ -713,7 +728,7 @@
         <!--Stats Hub Controller-->
         <scene sceneID="TqG-rc-qY3">
             <objects>
-                <viewController storyboardIdentifier="statistics" id="Y7O-ql-BCV" customClass="StatsHubController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="statistics" id="Y7O-ql-BCV" customClass="StatsHubController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5Rr-KF-y2P"/>
                         <viewControllerLayoutGuide type="bottom" id="wgp-na-MZC"/>
@@ -750,10 +765,10 @@
         <!--Stats Report Page View Controller-->
         <scene sceneID="hsh-ca-4j2">
             <objects>
-                <pageViewController storyboardIdentifier="StatsReportPageViewController" autoresizesArchivedViewToFullSize="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Jcb-oQ-as5" customClass="StatsReportPageViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="StatsReportPageViewController" autoresizesArchivedViewToFullSize="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Jcb-oQ-as5" customClass="StatsReportPageViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="6zG-8y-U97"/>
                     <connections>
-                        <segue destination="Sa3-PG-jtN" kind="custom" identifier="Page" customClass="PageSegue" customModule="ipopmetrics" customModuleProvider="target" id="GPt-is-7Gj"/>
+                        <segue destination="Sa3-PG-jtN" kind="custom" identifier="Page" customClass="PageSegue" customModule="Live" customModuleProvider="target" id="GPt-is-7Gj"/>
                     </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qat-c1-6Yl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -763,7 +778,7 @@
         <!--Stats Metric Page Content View Controller-->
         <scene sceneID="hRF-Ww-Zs3">
             <objects>
-                <viewController storyboardIdentifier="trafficReportViewId" automaticallyAdjustsScrollViewInsets="NO" id="Sa3-PG-jtN" customClass="StatsMetricPageContentViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="trafficReportViewId" automaticallyAdjustsScrollViewInsets="NO" id="Sa3-PG-jtN" customClass="StatsMetricPageContentViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I4l-wh-QvR"/>
                         <viewControllerLayoutGuide type="bottom" id="r7r-fU-FJ5"/>
@@ -808,7 +823,7 @@
                                 <rect key="frame" x="0.0" y="56" width="375" height="744"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChartCell" rowHeight="260" id="eZz-WL-Rac" userLabel="Chart View Cell" customClass="ChartViewCell" customModule="ipopmetrics" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChartCell" rowHeight="260" id="eZz-WL-Rac" userLabel="Chart View Cell" customClass="ChartViewCell" customModule="Live" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="260"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eZz-WL-Rac" id="RKV-I4-IX0">
@@ -857,7 +872,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fR7-Ce-hud">
-                                                                    <rect key="frame" x="41" y="9" width="21" height="16.5"/>
+                                                                    <rect key="frame" x="41" y="9.5" width="21" height="16.5"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                                                     <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -897,7 +912,7 @@
                                             <outlet property="urlLabel" destination="cbI-j4-0hY" id="8vX-j2-kxy"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="BreakdownCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BreakdownCell" id="i0t-Yc-U28" customClass="BreakdownViewCell" customModule="ipopmetrics" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="BreakdownCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BreakdownCell" id="i0t-Yc-U28" customClass="BreakdownViewCell" customModule="Live" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="315.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i0t-Yc-U28" id="ph4-bU-KbF">
@@ -937,6 +952,23 @@
             <point key="canvasLocation" x="2175.5" y="2009"/>
         </scene>
         <!--Navigation Controller-->
+        <scene sceneID="2Ur-bA-3Ub">
+            <objects>
+                <navigationController id="JGE-kr-Y5x" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="inactive_intercom" selectedImage="active_intercom" id="brH-v8-fR0" customClass="IntercomTabBarItem" customModule="Live" customModuleProvider="target"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sPe-gx-kLE">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ajN-DG-2n1" kind="relationship" relationship="rootViewController" id="Kbt-LN-7ea"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DuY-de-BZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-77" y="2013"/>
+        </scene>
+        <!--Navigation Controller-->
         <scene sceneID="xup-fx-MmK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8mf-xR-Vyo" sceneMemberID="viewController">
@@ -960,6 +992,7 @@
         <image name="Icon_Home_Selected" width="23" height="21"/>
         <image name="active_calendar" width="20" height="23"/>
         <image name="active_home" width="23" height="23"/>
+        <image name="active_intercom" width="28" height="32"/>
         <image name="active_statistics" width="22" height="23"/>
         <image name="active_todo" width="20" height="23"/>
         <image name="brandNameCheck" width="28" height="28"/>
@@ -969,10 +1002,14 @@
         <image name="iconX" width="20" height="20"/>
         <image name="inactive_calendar" width="20" height="23"/>
         <image name="inactive_home" width="23" height="23"/>
+        <image name="inactive_intercom" width="28" height="32"/>
         <image name="inactive_statistics" width="22" height="23"/>
         <image name="inactive_todo" width="20" height="23"/>
         <image name="menuLogo" width="118" height="26"/>
         <image name="second" width="30" height="30"/>
         <image name="user_profile" width="16" height="16"/>
+        <namedColor name="red_light">
+            <color red="1" green="0.46666666666666667" blue="0.41568627450980394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

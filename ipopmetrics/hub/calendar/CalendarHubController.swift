@@ -107,7 +107,7 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpNavigationBar()
+        //setUpNavigationBar()
 
         registerCellsForTable()
         
@@ -142,7 +142,10 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
             SyncService.getInstance().syncAll(silent: false)
         }
         
+        //createItemsLocally()
     }
+    
+    
     
     func createItemsLocally() {
         //store.realm.deleteAll()
@@ -158,14 +161,7 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
             calendarScheduled.section = CalendarSectionType.scheduled.rawValue
             calendarScheduled.type = "scheduled_social_posts"
             store.realm.add(calendarScheduled, update: true)
-            
-            let calendarCompleted1 = CalendarCard()
-            calendarCompleted1.createDate = Date()
-            calendarCompleted1.section = CalendarSectionType.scheduled.rawValue
-            calendarCompleted1.type = "calendar.completed_action"
-            store.realm.add(calendarCompleted1, update: true)
-            
-            
+
             let calendarCompleted = CalendarCard()
             calendarCompleted.cardId = calendarCompletedId
             calendarCompleted.createDate = Date()
@@ -345,6 +341,8 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
 
     override func viewDidAppear(_ animated: Bool) {
         tableView.isHidden = false
+        
+        setUpNavigationBar()
     }
     
     func setupTopHeaderView() {
@@ -357,6 +355,8 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
         }
     }
     
+    internal var leftButtonItem: BadgeBarButtonItem!
+    
     internal func setUpNavigationBar() {
         let text = UIBarButtonItem(title: "Calendar", style: .plain, target: self, action: #selector(handlerClickMenu))
         text.tintColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1.0)
@@ -367,8 +367,8 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = false
         
-        let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "Icon_Menu"), style: .plain, target: self, action: #selector(handlerClickMenu))
-        self.navigationItem.leftBarButtonItem = leftButtonItem
+        leftButtonItem = BadgeBarButtonItem.init(image: UIImage(named: "Icon_Menu"), style: .plain, target: self, action: #selector(handlerClickMenu))
+        
         self.navigationItem.leftBarButtonItems = [leftButtonItem, text]
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     }
@@ -428,6 +428,7 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         
         let items = getVisibleItemsInSection(sectionIdx, fromDate: self.calendarViewController.selectedFromDate, toDate: self.calendarViewController.selectedToDate)
         
+    
         if items.count == 0 {
             return UITableViewCell()
         }
@@ -436,7 +437,6 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         if item is CalendarSocialPost {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCard", for: indexPath) as! CalendarCardViewCell
             cell.configure(item as! CalendarSocialPost)
-            
             cell.setPositions(indexPath, itemsToLoad: 0, countPosts: items.count)
             
             cell.cancelCardDelegate = self
@@ -699,7 +699,7 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         let posts = store.getCalendarSocialPostsInRange(fromDate: self.calendarViewController.selectedFromDate,
                                                         toDate: self.calendarViewController.selectedToDate)
         try! store.realm.write {
-            self.store.realm.delete(posts)
+            self.store.realm.delete(socialPost)
             self.tableView.reloadData()
         }
     }
@@ -744,13 +744,9 @@ extension CalendarHubController: ActionSocialPostProtocol {
             presentErrorNetwork()
             return
         }
-        
         CalendarApi().cancelPost(post.postId!, callback: {
             () -> Void in
             self.removeCell(indexPath: indexPath, socialPost:post)
         })
-        
-        
-        
     }
 }

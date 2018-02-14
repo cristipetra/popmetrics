@@ -12,55 +12,77 @@ import EZAlertController
 import SafariServices
 import Hero
 import ObjectMapper
+import Intercom
 import UserNotifications
 
-class CodeViewController: UIViewController {
+class CodeViewController: BaseViewController {
     
-    fileprivate let progressHUD = ProgressHUD(text: "Loading...")
     var phoneNo: String?
     fileprivate var editableCodeMask = codeMask
     
-    private let navigation = OnboardNavigationController()
-    
     let digitCodeView = DigitCodeView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height));
     
+    @IBOutlet weak var digitTextField: UITextField!
+    @IBOutlet weak var sendCodeBtn: UIButton!
+    @IBOutlet weak var containterView: UIView!
+    @IBOutlet weak var resendCodeBtn: UIButton!
+    @IBOutlet weak var constraintCenterYContainer: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addSubview(digitCodeView)
+        digitTextField.delegate = self
         
-        digitCodeView.didMoveToSuperview()
-        digitCodeView.digitextField.delegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
         
-        digitCodeView.sendCodeBtn.addTarget(self, action: #selector(didPressSendSmsCode), for: .touchUpInside)
-        digitCodeView.contactBtn.addTarget(self, action: #selector(didPressContact), for: .touchUpInside)
-        digitCodeView.resendCodeBtn.addTarget(self, action: #selector(didPressResendCode), for: .touchUpInside)
-        digitCodeView.closeBtn.addTarget(self, action: #selector(closeVC), for: .touchUpInside)
+        sendCodeBtn.addTarget(self, action: #selector(didPressSendSmsCode), for: .touchUpInside)
+        resendCodeBtn.addTarget(self, action: #selector(didPressResendCode), for: .touchUpInside)
         
-        view.addSubview(progressHUD)
-        progressHUD.hide()
-        updateDigitFieldNumber(textField: digitCodeView.digitextField, mask: editableCodeMask)
+        updateDigitFieldNumber(textField: digitTextField, mask: editableCodeMask)
         isHeroEnabled = true
-        digitCodeView.sendCodeBtn.isEnabled = false
+        sendCodeBtn.isEnabled = false
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
+        
+        setNavigationBar()
+    }
+    
+    private func setNavigationBar() {
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        
+        let logoImageView = UIImageView(image: UIImage(named: "logoPop"))
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        logoImageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        logoImageView.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        logoImageView.contentMode = .scaleAspectFill
+        self.navigationItem.titleView = logoImageView
+        
+        self.navigationItem.titleView = logoImageView
+        let backButton = UIBarButtonItem(image: UIImage(named: "login_back"), style: .plain, target: self, action: #selector(dismissView))
+        backButton.tintColor = UIColor(red: 145/255, green: 145/255, blue: 145/255, alpha: 1)
+        backButton.setTitlePositionAdjustment(UIOffset.init(horizontal: -55, vertical: 0), for: .default)
+        
+        let leftSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        leftSpace.width = 15
+        
+        self.navigationItem.leftBarButtonItems = [leftSpace, backButton]
+        
     }
     
     
     @objc internal func dismissKeyboard() {
-        if digitCodeView.digitextField.text?.characters.count == 0 {
-            digitCodeView.sendCodeBtn.isUserInteractionEnabled = false
-            digitCodeView.sendCodeBtn.layer.backgroundColor = UIColor(red: 255/255, green: 210/255, blue: 55/255, alpha: 1.0).cgColor
-            digitCodeView.sendCodeBtn.setTitleColor(UIColor(red: 228/255, green: 185/255, blue: 39/255, alpha: 1.0), for: .normal)
+        if digitTextField.text?.characters.count == 0 {
+            sendCodeBtn.isUserInteractionEnabled = false
+            sendCodeBtn.layer.backgroundColor = UIColor(red: 255/255, green: 210/255, blue: 55/255, alpha: 1.0).cgColor
+            sendCodeBtn.setTitleColor(UIColor(red: 228/255, green: 185/255, blue: 39/255, alpha: 1.0), for: .normal)
         }
-        digitCodeView.digitextField.resignFirstResponder()
+        digitTextField.resignFirstResponder()
     }
     
     
     @objc func didPressSendSmsCode(_ sender: Any) {
-        digitCodeView.digitextField.resignFirstResponder()
+        digitTextField.resignFirstResponder()
         
         let smsCode = extractCode(text: editableCodeMask)
         let phoneNumber = phoneNo!
@@ -98,6 +120,30 @@ class CodeViewController: UIViewController {
                 let userSettings = Mapper<UserSettings>().map(JSONObject: tmpUserSettingsJson)
                 
                 UserStore.getInstance().storeLocalUserSettings(userSettings!)
+                
+                //Intercom
+                let currentUser = UserStore.getInstance().getLocalUserAccount()
+                
+                Intercom.registerUser(withUserId: currentUser.id!)
+                /*
+                 let brand = ICMCompany()
+                 brand.name = UsersStore.getInstance().currentBrandId
+                 brand.companyId = UsersStore.getInstance().currentBrandName
+                 */
+                let userAttributes = ICMUserAttributes()
+                //userAttributes.companies = [company]
+                
+                if currentUser.name != nil && !(currentUser.name?.isEmpty)! {
+                    userAttributes.name = currentUser.name
+                }
+                if currentUser.email != nil && !(currentUser.email?.isEmpty)! {
+                    userAttributes.email = currentUser.email
+                }
+                if currentUser.phone != nil && !(currentUser.phone?.isEmpty)! {
+                    userAttributes.phone = currentUser.phone
+                }
+                
+                Intercom.updateUser(userAttributes)
                 
                 SyncService.getInstance().syncAll(silent: false)
                 
@@ -143,20 +189,17 @@ class CodeViewController: UIViewController {
     
     internal func showOnboardingFinalScreen() {
         let finalOnboardingVC = OnboardingFinalView()
-        navigation.pushViewController(finalOnboardingVC, animated: true)
-        self.present(navigation, animated: true, completion: nil)
+        self.navigationController?.pushViewController(finalOnboardingVC, animated: true)
     }
     
     internal func showManualEnableNotifications() {
         let notificationsVC = AppStoryboard.Notifications.instance.instantiateViewController(withIdentifier: ViewNames.SBID_PUSH_MANUALLY_NOTIFCATIONS_VC)
-        navigation.pushViewController(notificationsVC, animated: true)
-        self.present(navigation, animated: true, completion: nil)
+        self.navigationController?.pushViewController(notificationsVC, animated: true)
     }
     
     internal func showPushNotificationsScreen() {
         let notificationsVC = AppStoryboard.Notifications.instance.instantiateViewController(withIdentifier: ViewNames.SBID_PUSH_NOTIFICATIONS_VC)
-        navigation.pushViewController(notificationsVC, animated: true)
-        self.present(navigation, animated: true, completion: nil)
+        self.navigationController?.pushViewController(notificationsVC, animated: true)
     }
     
     @objc internal func didPressResendCode() {
@@ -174,9 +217,9 @@ class CodeViewController: UIViewController {
     }
     
     private func clearCodeTextField() {
-        guard let code = self.digitCodeView.digitextField.text else { return }
+        guard let code = self.digitTextField.text else { return }
         for _ in code {
-            self.textField(self.digitCodeView.digitextField, shouldChangeCharactersIn: NSRange(location:0, length:1), replacementString: "")
+            self.textField(self.digitTextField, shouldChangeCharactersIn: NSRange(location:0, length:1), replacementString: "")
         }
     }
     
@@ -202,28 +245,16 @@ class CodeViewController: UIViewController {
         textField.selectedTextRange = textField.textRange(from: cursorPosition, to: cursorPosition)
     }
     
-    internal func showProgressIndicator() {
-        DispatchQueue.main.async(execute: {
-            self.view.isUserInteractionEnabled = false
-            self.progressHUD.show()
-        })
+    @objc internal func dismissView() {
+        self.navigationController?.popViewController(animated: true)
     }
-    
-    internal func hideProgressIndicator() {
-        DispatchQueue.main.async(execute: {
-            self.view.isUserInteractionEnabled = true
-            self.progressHUD.hide()
-        })
-    }
-    
-    
     
     internal func showSocialScreen() {
     
         let verifySocialVC = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier: "loginSocial") as! LoginSocialViewController
-        navigation.pushViewController(verifySocialVC, animated: false)
+       
+        self.navigationController?.pushViewController(verifySocialVC, animated: true)
         
-        self.present(navigation, animated: true, completion: nil)
     }
     
     @objc internal func closeVC() {
@@ -233,20 +264,11 @@ class CodeViewController: UIViewController {
     func extractCode(text: String) -> String {
         return text.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
     }
-}
-
-// MARK: - api
-extension CodeViewController {
-    internal func handleApiError(_ error: ApiError, completionHandler: () -> Void) {
-        if error == ApiError.userNotAuthenticated {
-            UserStore.getInstance().clearCredentials()
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.setInitialViewController()
-            completionHandler()
-        } else {
-            let message = "Something went wrong. Please try again later."
-            EZAlertController.alert("Error", message: message)
-            completionHandler()
+    
+    func animateView(value :CGFloat) {
+        UIView.animate(withDuration: 0.3) {
+            self.constraintCenterYContainer.constant = value
+            self.view.layoutIfNeeded()
         }
     }
 }
@@ -255,7 +277,12 @@ extension CodeViewController {
 
 extension CodeViewController: UITextFieldDelegate {
     internal func textFieldDidBeginEditing(_ textField: UITextField) {
+        animateView(value: -60)
         updateCursorPosition(textField: textField)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        animateView(value: 0)
     }
     
     internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -274,7 +301,7 @@ extension CodeViewController: UITextFieldDelegate {
         }
         updateDigitFieldNumber(textField: textField, mask: editableCodeMask)
         updateCursorPosition(textField: textField)
-        digitCodeView.sendCodeBtn.isEnabled = extractCode(text: editableCodeMask).count >= 3
+        sendCodeBtn.isEnabled = extractCode(text: editableCodeMask).count >= 3
         return false
     }
 }

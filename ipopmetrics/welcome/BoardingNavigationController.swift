@@ -8,8 +8,16 @@
 
 import UIKit
 
-class OnboardNavigationController: UINavigationController {
+struct RegisterBrand {
+    var name: String?
+    var website: String?
+}
 
+class BoardingNavigationController: UINavigationController {
+
+    
+    public var registerBrand: RegisterBrand = RegisterBrand()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -45,24 +45,7 @@ class WelcomeScreen: BaseViewController {
         backButton.isHidden = true
         
     }
-    
-    
-    
-    override func setupOfflineBanner() {
-        if offlineBanner == nil {
-            offlineBanner = OfflineBanner()
-            self.view.addSubview(offlineBanner)
-            
-            offlineBanner.translatesAutoresizingMaskIntoConstraints = false
-            offlineBanner.trailingAnchor.constraint(equalTo: (self.view.trailingAnchor), constant: 0).isActive = true
-            offlineBanner.leadingAnchor.constraint(equalTo: (self.view.leadingAnchor), constant: 0).isActive = true
-            offlineBanner.heightAnchor.constraint(equalToConstant: 45).isActive = true
-            offlineBanner.topAnchor.constraint(equalTo: (self.view.safeAreaLayoutGuide.topAnchor), constant: 44).isActive = true
-            
-            offlineBanner.isHidden = ReachabilityManager.shared.isNetworkAvailable
-        }
-    }
-    
+
     @IBAction func handlerSpoken(_ sender: UIButton) {
         
         if !ReachabilityManager.shared.isNetworkAvailable {
@@ -79,10 +62,13 @@ class WelcomeScreen: BaseViewController {
             return
         }
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        // appDelegate.openURLInside(self, url: Config.appWebAimeeLink)
+        self.performSegue(withIdentifier: "signUpSegue", sender: self)
+
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        appDelegate.openURLInside(self, url: Config.appWebAimeeLink)
     }
-    
+
+
     @IBAction func handleBackPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -93,6 +79,7 @@ class WelcomeScreen: BaseViewController {
         
         if segue.destination is LoginViewController {
             let vc = segue.destination as? LoginViewController
+            vc?.isSignupFlow = false
             if UserStore.getInstance().phoneNumber != "" {
                 vc?.phoneNumber = UserStore.getInstance().phoneNumber
             }

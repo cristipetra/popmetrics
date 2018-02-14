@@ -24,20 +24,13 @@ class PhoneView: UIView {
     lazy var messageLbl : UILabel = {
         let msgLbl = UILabel()
         msgLbl.translatesAutoresizingMaskIntoConstraints = false
-        msgLbl.text = "We'll send you a magic code that you\n can use to login."
+        msgLbl.text = "Enter your cell number and we'll send you a magic code that you can use to login."
         msgLbl.font = UIFont(name: FontBook.regular, size: 15)
         msgLbl.textColor = PopmetricsColor.visitSecondColor
         return msgLbl
     }()
     
-    lazy var logoView : UIImageView = {
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "logoPop"))
-        
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
+   
     lazy var sendCodeBtn : UIButton = {
         let sendCodeButton = UIButton()
         sendCodeButton.translatesAutoresizingMaskIntoConstraints = false
@@ -46,34 +39,25 @@ class PhoneView: UIView {
         return sendCodeButton
     }()
     
-    lazy var backBtn : UIButton = {
-        let backButton = UIButton()
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.setImage(#imageLiteral(resourceName: "login_back"), for: .normal)
-        
-        return backButton
-    }()
     
     var buttonBottomConstraint: NSLayoutConstraint?
     var centerYAnchorTextField: NSLayoutConstraint?
     
     func reloadSubViews() {
-        backBtn.removeFromSuperview()
+
         numberTextField.removeFromSuperview()
         messageLbl.removeFromSuperview()
         sendCodeBtn.removeFromSuperview()
-        logoView.removeFromSuperview()
-        self.addSubview(backBtn)
+
+
         self.addSubview(numberTextField)
         self.addSubview(messageLbl)
         self.addSubview(sendCodeBtn)
-        self.addSubview(logoView)
+
         if UIScreen.main.bounds.height > 480 {
-            setBackButton(yAnchor: 40)
             setNumberTextField(yAnchor: 70)
             setMessageLbl(yAnchor: 18)
             setSendCodeButton(yAnchor: 120)
-            setLogoView(yAnchor: 20)
         } else {
             setNumberTextField(yAnchor: 70)
             setMessageLbl(yAnchor: 0)
@@ -83,46 +67,26 @@ class PhoneView: UIView {
     
     func setup() {
         self.backgroundColor = .white
-        self.addSubview(backBtn)
         
         // TextField for number
         self.addSubview(numberTextField)
         
         // Message Label
         self.addSubview(messageLbl)
-        self.addSubview(logoView)
         
         
         // Send code button
         self.addSubview(sendCodeBtn)
         
         if UIScreen.main.bounds.height > 480 {
-            setBackButton(yAnchor: 20)
             setNumberTextField(yAnchor: -70)
             setMessageLbl(yAnchor: 18)
             setSendCodeButton(yAnchor: 120)
-            setLogoView(yAnchor: 20)
         } else {
             setNumberTextField(yAnchor: -70)
             setMessageLbl(yAnchor: 0)
             setSendCodeButton(yAnchor: 60)
-            setLogoView(yAnchor: 10)
-            setBackButton(yAnchor: 10)
         }
-    }
-    
-    private func setBackButton(yAnchor: CGFloat) {
-        backBtn.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        backBtn.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        backBtn.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 27).isActive = true
-        backBtn.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: yAnchor).isActive = true
-    }
-    
-    private func setLogoView(yAnchor: CGFloat) {
-        logoView.heightAnchor.constraint(equalToConstant: 28).isActive = true
-        logoView.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        logoView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        logoView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: yAnchor).isActive = true
     }
     
     private func setNumberTextField(yAnchor: CGFloat) {

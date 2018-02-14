@@ -98,11 +98,13 @@ class ActionPageDetailsViewController: BaseViewController {
         
         persistentFooter.leftBtn.isHidden = true
         
-        if actionModel.name == "social.automated_posts" {
+        //add action from home feed
+        if todoCard.name == "social.automated_posts" {
             persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToPaidActions(_:)), for: .touchUpInside)
         } else {
             persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToMyActions(_:)), for: .touchUpInside)
         }
+
     }
     
     public func configure(_ todoCard: TodoCard, openedFrom: String) {
@@ -253,7 +255,6 @@ class ActionPageDetailsViewController: BaseViewController {
             presentErrorNetwork()
             return
         }
-        
         if self.todoCard != nil {
             HubsApi().postAddToMyActions(cardId: self.todoCard.cardId!, brandId: UserStore.currentBrandId) { todoCard in
                 TodoStore.getInstance().addTodoCard(todoCard!)               
@@ -348,6 +349,7 @@ extension ActionPageDetailsViewController: BannerProtocol {
 
 class ActionPageModel: NSObject {
     internal var name: String = ""
+    internal var type: String = ""
     internal var titleArticle: String? = ""
     internal var imageUri: String?
     internal var impactPercentage: Int = 0
@@ -362,6 +364,7 @@ class ActionPageModel: NSObject {
     
     init(todoCard: TodoCard) {
         name                 = todoCard.name
+        type                 = todoCard.type
         titleArticle         = todoCard.headerTitle
         imageUri             = todoCard.imageUri
         detailsMarkdown      = todoCard.detailsMarkdown
@@ -375,6 +378,7 @@ class ActionPageModel: NSObject {
     
     init(feedCard: FeedCard) {
         name                = feedCard.name
+        type                = feedCard.type
         titleArticle        = feedCard.headerTitle
         imageUri            = feedCard.imageUri
         detailsMarkdown     = feedCard.detailsMarkdown

@@ -18,6 +18,17 @@ import ObjectMapper
 import SafariServices
 import RealmSwift
 //import STPopup
+import Intercom
+
+
+let INTERCOM_LIVE_APP_KEY = "ios_sdk-56bb7df2b3d88934f7d564b7a353c66b68b54f12"
+let INTERCOM_LIVE_APP_ID = "f2713n8d"
+
+let INTERCOM_TEST_APP_KEY = "ios_sdk-b07a4fa44e59e0914ce414c278c284e2b18e6caa"
+let INTERCOM_TEST_APP_ID = "w4ce6nmv"
+
+let INTERCOM_APP_KEY = INTERCOM_LIVE_APP_KEY
+let INTERCOM_APP_ID = INTERCOM_LIVE_APP_ID
 
 public extension Notification {
     public class Popmetrics {
@@ -40,6 +51,24 @@ public extension Notification {
 
 var navigator: Navigator = Navigator()
 
+extension Bundle {
+    var apiBaseURL: String {
+        guard let pop = object(forInfoDictionaryKey: "Popmetrics") as! [String:String]! else { return "" }
+        return pop["APIBaseURL"]!
+    }
+    
+    var intercomAppId: String {
+        guard let pop = object(forInfoDictionaryKey: "Popmetrics") as! [String:String]! else { return "" }
+        return pop["IntercomAppId"]!
+    }
+    var intercomAppKey: String {
+        guard let pop = object(forInfoDictionaryKey: "Popmetrics") as! [String:String]! else { return "" }
+        return pop["IntercomAppKey"]!
+    }
+    
+    
+}
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -54,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var safari: SFSafariViewController?
     
     var welcomeViewController: WelcomeScreen?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
@@ -77,6 +106,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         storyBoard = UIStoryboard(name: "Main", bundle: nil)
 
+        //Intercom
+        Intercom.setInAppMessagesVisible(false)
+        Intercom.setApiKey(INTERCOM_APP_KEY, forAppId: INTERCOM_APP_ID)
+        
+        if isLoggedIn() {
+            let userAccount = UserStore.getInstance().getLocalUserAccount()
+            Intercom.registerUser(withUserId: userAccount.id!)
+        }
         
         Fabric.with([Twitter.self])
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -165,7 +202,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func getInitialViewController() -> UIViewController {
         if !isLoggedIn() {
             return AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier:
-                "welcomeScreen")
+                "BoardingNavigationController")
         }
         return AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC)
 

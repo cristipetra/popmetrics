@@ -76,9 +76,9 @@ class ApiUrls {
     static func composedBaseUrl(_ with: String) -> String {
         return escapedUrl(String(format: "%@%@", getBaseUrl(), with))
     }
-    
+
     static func getBaseUrl() -> String {
-        return escapedUrl(Config.sharedInstance.environment.baseURL)        
+        return escapedUrl(Config.sharedInstance.environment.baseURL)
     }
     
     

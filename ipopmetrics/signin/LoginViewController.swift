@@ -29,6 +29,8 @@ class LoginViewController: UIViewController {
     
     let digitCodeView = DigitCodeView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height));
     
+    var isSignupFlow = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -38,10 +40,7 @@ class LoginViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
         
         phoneView.sendCodeBtn.addTarget(self, action: #selector(didPressSendPhoneNumber), for: .touchUpInside)
-        phoneView.backBtn.addTarget(self, action: #selector(dismissPhoneView), for: .touchUpInside)
         addPhoneView();
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
         view.addSubview(progressHUD)
         progressHUD.hide()
@@ -51,6 +50,7 @@ class LoginViewController: UIViewController {
         
         updatePhoneFieldNumber(textField: phoneView.numberTextField, phoneNumberMask: editablePhoneNumberMask)
         phoneView.sendCodeBtn.isEnabled = false
+        setNavigationBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,7 +58,7 @@ class LoginViewController: UIViewController {
             
             self.textFieldDidBeginEditing(self.phoneView.numberTextField)
             for c in self.phoneNumber {
-                var phn = String(c)
+                let phn = String(c)
                 if phn == "+" {
                     continue
                 }
@@ -70,12 +70,26 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @objc func rotated() {
-        if self.digitCodeView.isDescendant(of: self.view) {
-            self.digitCodeView.reloadSubViews()
-        } else {
-            self.phoneView.reloadSubViews()
-        }
+    private func setNavigationBar() {
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        
+        let logoImageView = UIImageView(image: UIImage(named: "logoPop"))
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        logoImageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        logoImageView.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        logoImageView.contentMode = .scaleAspectFill
+        self.navigationItem.titleView = logoImageView
+        
+        self.navigationItem.titleView = logoImageView
+        let backButton = UIBarButtonItem(image: UIImage(named: "login_back"), style: .plain, target: self, action: #selector(dismissView))
+        backButton.tintColor = UIColor(red: 145/255, green: 145/255, blue: 145/255, alpha: 1)
+        backButton.setTitlePositionAdjustment(UIOffset.init(horizontal: -55, vertical: 0), for: .default)
+        
+        let leftSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        leftSpace.width = 15
+        
+        self.navigationItem.leftBarButtonItems = [leftSpace, backButton]
         
     }
     
@@ -125,7 +139,39 @@ class LoginViewController: UIViewController {
     }
     
     @objc internal func didPressSendPhoneNumber() {
-        //let phoneNumber = phoneView.numberTextField.text!
+        if isSignupFlow {
+            registerNewUser()
+        } else {
+            sendCodeBySms()
+        }
+        
+    }
+    
+    private func registerNewUser() {
+        
+        let registerBrand = (self.navigationController as! BoardingNavigationController).registerBrand
+        let name = registerBrand.name
+        let website = registerBrand.website
+        let phoneNumber = extractPhoneNumber(text: extractPhoneNumber(text: editablePhoneNumberMask))
+        
+        showProgressIndicator()
+        
+        UsersApi().registerNewUser(name: name!, website: website!, phone: phoneNumber) { response in
+            self.hideProgressIndicator()
+            if response.code == "success" {
+                self.performSegue(withIdentifier: "enterCode", sender: self)
+
+            } else {
+                let title = "Error"
+                let message = response.message ?? "An error has ocurred. Please try again later."
+                EZAlertController.alert(title, message: message)
+
+            }
+        }
+        
+    }
+    
+    private func sendCodeBySms() {
         let phoneNumber = extractPhoneNumber(text: extractPhoneNumber(text: editablePhoneNumberMask))
         showProgressIndicator()
         UsersApi().sendCodeBySms(phoneNumber: phoneNumber) {userDict, error in
@@ -136,22 +182,32 @@ class LoginViewController: UIViewController {
                     message = "User /Password combination not found."
                 }
                 EZAlertController.alert("Error", message: message)
-                return
             } else {
                 if let code = userDict?["code"] as? String {
-                    if code == "invalid_input" {
-                        self.sendInAppNotification()
-                        return
+                    if code == "success" {
+                        self.performSegue(withIdentifier: "enterCode", sender: self)
+                    }else{
+                        var message = "An error has occured. Please try again later."
+                        if let msg = userDict?["message"] as? String{
+                            message = msg
+                        }
+                        
+                        EZAlertController.alert("Error", message: message)
                     }
+                    
                 }
                 
-                let codeVC = CodeViewController();
-                codeVC.phoneNo = phoneNumber;
-                self.present(codeVC, animated: true, completion: nil)
-                //self.presentFromDirection(viewController: codeVC, direction: .right)
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "enterCode" {
+            guard let vc = segue.destination as? CodeViewController else { return }
+            vc.phoneNo =  extractPhoneNumber(text: extractPhoneNumber(text: editablePhoneNumberMask))
+        }
+    }
+    
     
     internal func showViewControllerWithStoryboardID(_ sbID: String) {
         let vc = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: sbID)
@@ -163,7 +219,7 @@ class LoginViewController: UIViewController {
     internal func showMainNavigationController() {
         showViewControllerWithStoryboardID("FEED_VC")
     }
-    
+ 
     func updatePhoneFieldNumber(textField: UITextField, phoneNumberMask: String) {
         let threshold = phoneNumberMask.range(for: "#")?.lowerBound ?? phoneNumberMask.range!.upperBound
         let boldRange = Range(uncheckedBounds: (lower: phoneNumberMask.range!.lowerBound, upper: threshold))
@@ -186,8 +242,8 @@ class LoginViewController: UIViewController {
         phoneView.numberTextField.resignFirstResponder()
     }
     
-    @objc internal func dismissPhoneView() {
-        self.dismiss(animated: true, completion: nil)
+    @objc internal func dismissView() {
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
