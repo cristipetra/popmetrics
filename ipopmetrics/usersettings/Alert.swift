@@ -10,9 +10,11 @@ import Foundation
 import UIKit
 
 class Alert {
+   
     
     typealias Action = (AlertAction) -> (Void)
     typealias ActionSheet = (ActionSheetPhoto) -> (Void)
+    typealias ActionSheetResponse = (Int) -> (Void)
     
     static func showAlertDialog(parent: UIViewController?, action: Action?) {
         let actionSelected: Action? = action
@@ -34,7 +36,7 @@ class Alert {
         }
         
         let saveAction = UIAlertAction(title: "Save Changes", style: .default) { (save) in
-            actionSelected!(.save) 
+            actionSelected!(.save)
         }
         
         alertController.addAction(cancelAction)
@@ -69,6 +71,29 @@ class Alert {
         
         // present an actionSheet...
         parent?.present(actionSheetController, animated: true, completion: nil)
+    }
+    
+    static func showActionSheetOptions(parent: UIViewController?, options: [String], action: @escaping ActionSheetResponse) -> UIAlertController {
+        let selectedAction: ActionSheetResponse? = action
+        let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        for option in options {
+            let action = UIAlertAction(title: option, style: .default, handler: { (action) in
+                let selectedIndex = options.index(of: action.title!)
+                selectedAction!(selectedIndex!)
+            })
+            actionSheetController.addAction(action)
+        }
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+        }
+        
+        actionSheetController.addAction(cancelAction)
+        actionSheetController.title = "Choose a page to post to."
+        
+        parent?.present(actionSheetController, animated: true, completion: nil)
+        
+        return actionSheetController
     }
     
     static func showNotificationAlertDialog(parent: UIViewController?, action: Action?, message: String, title: String, okButton: Bool) {

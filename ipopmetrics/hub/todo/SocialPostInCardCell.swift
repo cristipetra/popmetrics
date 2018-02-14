@@ -106,6 +106,11 @@ class SocialPostInCardCell: UITableViewCell {
             return
         }
         
+        if todoItem.type == "facebook" {
+            displayFacebook()
+            return
+        }
+        
         aproveButton.removeTarget(self, action: #selector(animationHandler), for: .touchUpInside)
         let indexPath = IndexPath()
         actionSocialDelegate.approvePostFromSocial!(post: todoItem, indexPath: indexPath)
@@ -126,6 +131,10 @@ class SocialPostInCardCell: UITableViewCell {
 //        TodoHubController.approvePostFromSocial(todoItem)
         actionSocialDelegate.approvePostFromSocial!(post: todoItem, indexPath: indexPath)
 */
+    }
+    
+    func displayFacebook() {
+        actionSocialDelegate.displayFacebookDetails!(post: todoItem, indexPath: indexPath)
     }
     
     @objc func denyPostHandler() {

@@ -19,6 +19,7 @@ class SocialPostDetailsView: UIView {
     @IBOutlet weak var scheduleInfoLabel: UILabel!
         
     @IBOutlet weak var messageFacebook: UITextView!
+    private var initMessageText = "Say something about this on Facebook…"
 
     private var calendarSocialPost: CalendarSocialPost!
     private var todoSocialPost: TodoSocialPost!
@@ -69,7 +70,7 @@ class SocialPostDetailsView: UIView {
                 socialBrand.text =  "@\(name)"
             }
         } else if todoSocialPost.type == "facebook" {
-            //updateFacebook()
+            updateFacebook()
         }
         
         if let title = todoSocialPost.articleTitle {
@@ -112,6 +113,13 @@ class SocialPostDetailsView: UIView {
         
     }
     
+    internal func isMessageFacebookSet() -> Bool {
+        if messageFacebook.text == "" || messageFacebook.text == initMessageText {
+            return false
+        }
+        return true
+    }
+    
     
     private func updateTwitter() {
         if recommendedLabel != nil {
@@ -123,7 +131,16 @@ class SocialPostDetailsView: UIView {
         if messageFacebook != nil {
             messageFacebook.translatesAutoresizingMaskIntoConstraints = false
             messageFacebook.isScrollEnabled = false
+            messageFacebook.delegate = self
         }
+        
     }
+    
+    
+}
 
+extension SocialPostDetailsView: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = ""
+    }
 }

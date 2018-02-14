@@ -8,6 +8,7 @@
 
 import UIKit
 import ObjectMapper
+import EZAlertController
 
 class SocialPostDetailsViewController: BaseViewController {
     
@@ -223,10 +224,35 @@ class SocialPostDetailsViewController: BaseViewController {
         }
     }
     
+    private func approvePostFacebook() {
+        guard let message = containerView.messageFacebook.text else { return }
+        
+        if !containerView.isMessageFacebookSet() {
+            EZAlertController.alert("Please add a message to be posted on facebook.")
+            return
+        }
+        
+        approvePostBtn.animateButton()
+        
+        if actionSocialDelegate !=  nil {
+            self.actionSocialDelegate.approvePostFromFacebookSocial!(post: todoSocialPost, indexPath: indexPath, message: message)
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        try! todoSocialPost.realm?.write {
+            todoSocialPost.isApproved = true
+        }
+    }
+    
     @objc func approvePost(sender: AnyObject) {
         
         if !ReachabilityManager.shared.isNetworkAvailable {
             presentErrorNetwork()
+            return
+        }
+        
+        if todoSocialPost.type == "facebook" {
+            approvePostFacebook()
             return
         }
         
@@ -287,6 +313,8 @@ extension SocialPostDetailsViewController: UIScrollViewDelegate {
     @objc optional func denyPostFromSocial(post: TodoSocialPost, indexPath: IndexPath)
     @objc optional func cancelPostFromSocial(post: CalendarSocialPost, indexPath: IndexPath)
     @objc optional func approvePostFromSocial(post: TodoSocialPost, indexPath: IndexPath)
+    @objc optional func approvePostFromFacebookSocial(post: TodoSocialPost, indexPath: IndexPath, message: String)
+    @objc optional func displayFacebookDetails(post: TodoSocialPost, indexPath: IndexPath)
 }
 
 @objc protocol BannerProtocol: class {

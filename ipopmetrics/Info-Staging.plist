@@ -2,17 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Popmetrics</key>
-	<dict>
-		<key>APIBaseURL</key>
-		<string>https://testapi.popmetrics.ai</string>
-		<key>ChatURL</key>
-		<string>https://testchat.popmetrics.ai/#/aimee/start-with-callback/58fe437ac7631a139803757e/59b2a6288a5da50da5790fd7</string>
-		<key>IntercomAppId</key>
-		<string>w4ce6nmv</string>
-		<key>IntercomAppKey</key>
-		<string>ios_sdk-b07a4fa44e59e0914ce414c278c284e2b18e6caa</string>
-	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -30,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.3</string>
+	<string>1.0.4</string>
 	<key>CFBundleSignature</key>
 	<string></string>
 	<key>CFBundleURLTypes</key>
@@ -56,7 +45,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>8100</string>
+	<string>100</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -116,6 +105,17 @@
 	<string></string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Pictures from the photo library can be added to the chat.</string>
+	<key>Popmetrics</key>
+	<dict>
+		<key>APIBaseURL</key>
+		<string>https://testapi.popmetrics.ai</string>
+		<key>ChatURL</key>
+		<string>https://testchat.popmetrics.ai/#/aimee/start-with-callback/58fe437ac7631a139803757e/59b2a6288a5da50da5790fd7</string>
+		<key>IntercomAppId</key>
+		<string>w4ce6nmv</string>
+		<key>IntercomAppKey</key>
+		<string>ios_sdk-b07a4fa44e59e0914ce414c278c284e2b18e6caa</string>
+	</dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Bold.ttf</string>
