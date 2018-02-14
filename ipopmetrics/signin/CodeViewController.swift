@@ -175,14 +175,20 @@ class CodeViewController: BaseViewController {
         
         current.getNotificationSettings { (settings) in
             if settings.authorizationStatus == .denied {
-                self.showManualEnableNotifications()
+                DispatchQueue.main.async {
+                    self.showManualEnableNotifications()
+                }
             }
             if settings.authorizationStatus == .notDetermined {
-                self.showPushNotificationsScreen()
+                DispatchQueue.main.async {
+                    self.showPushNotificationsScreen()
+                }
             }
             if settings.authorizationStatus == .authorized {
-                self.showOnboardingFinalScreen()
-            }
+                DispatchQueue.main.async {
+                    self.showOnboardingFinalScreen()
+                }
+            }    
         }
         
     }
