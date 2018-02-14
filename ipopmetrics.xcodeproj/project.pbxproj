@@ -198,6 +198,8 @@
 		116E339E203461E100D2BCA9 /* SignUpNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116E339A203461E100D2BCA9 /* SignUpNameViewController.swift */; };
 		116E339F203461E100D2BCA9 /* SignUpWebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116E339B203461E100D2BCA9 /* SignUpWebsiteViewController.swift */; };
 		116E33A12034621200D2BCA9 /* BrandApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116E33A02034621200D2BCA9 /* BrandApi.swift */; };
+		116E33A52034789500D2BCA9 /* IntercomTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116E33A32034789400D2BCA9 /* IntercomTabBarItem.swift */; };
+		116E33A62034789500D2BCA9 /* IntercomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116E33A42034789400D2BCA9 /* IntercomViewController.swift */; };
 		1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */; };
 		1178D6801E1E5AD9005B96C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1178D67E1E1E5AD9005B96C3 /* Main.storyboard */; };
 		1178D6821E1E5AD9005B96C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1178D6811E1E5AD9005B96C3 /* Assets.xcassets */; };
@@ -442,6 +444,8 @@
 		116E339A203461E100D2BCA9 /* SignUpNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpNameViewController.swift; sourceTree = "<group>"; };
 		116E339B203461E100D2BCA9 /* SignUpWebsiteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpWebsiteViewController.swift; sourceTree = "<group>"; };
 		116E33A02034621200D2BCA9 /* BrandApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandApi.swift; sourceTree = "<group>"; };
+		116E33A32034789400D2BCA9 /* IntercomTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntercomTabBarItem.swift; sourceTree = "<group>"; };
+		116E33A42034789400D2BCA9 /* IntercomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntercomViewController.swift; sourceTree = "<group>"; };
 		1178D6751E1E5AD9005B96C3 /* ipopmetrics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ipopmetrics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1178D67F1E1E5AD9005B96C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -643,6 +647,15 @@
 			path = SimpleButton;
 			sourceTree = "<group>";
 		};
+		116E33A22034789400D2BCA9 /* intercom */ = {
+			isa = PBXGroup;
+			children = (
+				116E33A32034789400D2BCA9 /* IntercomTabBarItem.swift */,
+				116E33A42034789400D2BCA9 /* IntercomViewController.swift */,
+			);
+			path = intercom;
+			sourceTree = "<group>";
+		};
 		1178D66C1E1E5AD9005B96C3 = {
 			isa = PBXGroup;
 			children = (
@@ -730,6 +743,7 @@
 		11DD96591FC4ECD600386F1E /* hub */ = {
 			isa = PBXGroup;
 			children = (
+				116E33A22034789400D2BCA9 /* intercom */,
 				11DD965C1FC4F0EA00386F1E /* actionpage */,
 				11DD965B1FC4F0AF00386F1E /* insightpage */,
 				11DD965A1FC4ECEE00386F1E /* home */,
@@ -1458,6 +1472,7 @@
 				0855C0CB1F6FFBF000ACBFA9 /* EmptyStateCard.swift in Sources */,
 				088728971FFCE98700BE9882 /* AboutViewController.swift in Sources */,
 				08C5CF361FC5EA9C001851A5 /* ActionPageDetailsViewController.swift in Sources */,
+				116E33A52034789500D2BCA9 /* IntercomTabBarItem.swift in Sources */,
 				08B4EBBB1FC56ACE00BFC5A1 /* TwoImagesButton.swift in Sources */,
 				08AA6C6B1F56DD060022DE91 /* BreakdownViewCell.swift in Sources */,
 				0857D5571F41B4E800D218DA /* CompleteCardCell.swift in Sources */,
@@ -1562,6 +1577,7 @@
 				08B3289E1FFE22F300549DC5 /* SettingsApi.swift in Sources */,
 				089E10561FD1716200D57A08 /* SwipeExtension.swift in Sources */,
 				08FAE8441F541D790097DF3E /* StatsHubController.swift in Sources */,
+				116E33A62034789500D2BCA9 /* IntercomViewController.swift in Sources */,
 				08B485E61F210A61005918A1 /* RoundButton.swift in Sources */,
 				116E339C203461E100D2BCA9 /* BoardingNavigationController.swift in Sources */,
 				08CBB0061FD96AEA0042EE9C /* ActionButton.swift in Sources */,
