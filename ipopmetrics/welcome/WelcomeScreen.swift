@@ -80,7 +80,7 @@ class WelcomeScreen: BaseViewController {
         }
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.openURLInside(self, url: Config.appWebAimeeLink)
+        // appDelegate.openURLInside(self, url: Config.appWebAimeeLink)
     }
     
     @IBAction func handleBackPressed(_ sender: UIButton) {

@@ -50,7 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var storyBoard: UIStoryboard!
     var syncService: SyncService!
     var requiredActionHandler: RequiredActionHandler!
-    var environment: Environment
     
     var safari: SFSafariViewController?
     
@@ -67,8 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         )
         
         Realm.Configuration.defaultConfiguration = config
-        
-        environment = Configuration().environment
         
         usersStore = UserStore()
         feedStore = FeedStore()
@@ -296,12 +293,15 @@ extension UIApplication {
     
     class func versionBuild() -> String {
         let version = appVersion(), build = appBuild()
+        
         var api = "dev"
-        if ApiUrls.getHost().contains("test") {
-            api = "staging"
-        }
-        else if ApiUrls.getHost().contains("api") {
+        switch Config.sharedInstance.environment {
+        case .Production:
             api = ""
+        case .Staging:
+            api = "staging"
+        default:
+            api = "dev"
         }
         return version == build ? "v\(version)\(api)" : "v\(version)(\(build))\(api)"
     }

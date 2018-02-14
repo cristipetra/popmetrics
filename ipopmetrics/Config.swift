@@ -12,6 +12,14 @@ enum Environment: String {
     case Staging = "staging"
     case Production = "production"
     
+    var apiHost: String {
+        switch self {
+        case .Staging: return "testapi.popmetrics.ai"
+        case .Production: return "api.popmetrics.ai"
+        }
+    }
+    
+    
     var baseURL: String {
         switch self {
         case .Staging: return "https://staging-api.myservice.com"
@@ -28,26 +36,24 @@ enum Environment: String {
     
 }
 
-struct Configuration {
-    lazy var environment: Environment = {
-        if let configuration = NSBundle.mainBundle().objectForInfoDictionaryKey("Backend") as? String {
-            if configuration.rangeOfString("staging") != nil {
+class Config: NSObject {
+    
+    static let sharedInstance = Config()
+    
+    var environment: Environment = {
+        if let configuration = Bundle.main.object(forInfoDictionaryKey:"Backend") as? String {
+            
+            if configuration.range(of:"staging") != nil {
                 return Environment.Staging
             }
-            if configuration.rangeOfString("production") != nil {
+            if configuration.range(of:"production") != nil {
                 return Environment.Production
             }
             
         }
         return Environment.Production
     }()
-}
-
-
-
-class Config: NSObject {
     
-    static let sharedInstance = Config();
     
     class var appWebLink: String {
         get {
@@ -60,13 +66,7 @@ class Config: NSObject {
             return "Popmetrics.ai"
         }
     }
-    
-    class var appWebAimeeLink: String {
-        get {
-            return CHAT_URL
-        }
-    }
-    
+       
     class var mailContact: String {
         get {
             return "concierge@popmetrics.ai"

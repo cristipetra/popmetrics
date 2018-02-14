@@ -221,8 +221,7 @@ extension LoginViewController {
         
         banner.onTap = {
             self.dismiss(animated: true, completion: {
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.openURLInside(appDelegate.welcomeViewController!, url: Config.appWebAimeeLink)
+                self.navigationController?.performSegue(withIdentifier: "signUpSeguea", sender: self)
             })
             
         }

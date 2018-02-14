@@ -40,7 +40,8 @@ class SyncService: SessionDelegate {
     override init() {
         super.init()
         manager = createManager()
-        setupReachability(ApiUrls.getHost())
+        
+        setupReachability(Config.sharedInstance.environment.apiHost)
         
         usersStore = UserStore.getInstance()
         usersApi = UsersApi()

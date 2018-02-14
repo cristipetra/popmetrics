@@ -77,15 +77,8 @@ class ApiUrls {
         return escapedUrl(String(format: "%@%@", getBaseUrl(), with))
     }
     
-    static func getHost() -> String {
-        return HOST
-    }
-    
     static func getBaseUrl() -> String {
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return escapedUrl(AppDelegate.environment.baseURL)
-        
+        return escapedUrl(Config.sharedInstance.environment.baseURL)        
     }
     
     
