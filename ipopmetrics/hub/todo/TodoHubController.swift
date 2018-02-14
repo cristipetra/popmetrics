@@ -237,7 +237,7 @@ class TodoHubController: BaseViewController {
         tableView.register(paidActionCardNib, forCellReuseIdentifier: "PaidActionCard")
     }
     
-    internal var leftButtonItem: BadgeBarButtonItem!
+    internal var leftButtonItem: UIBarButtonItem!
     
     internal func setUpNavigationBar() {
         let text = UIBarButtonItem(title: "To Do", style: .plain, target: self, action: #selector(handlerClickMenu))
@@ -249,7 +249,7 @@ class TodoHubController: BaseViewController {
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = false
         
-        leftButtonItem = BadgeBarButtonItem.init(image: UIImage(named: "Icon_Menu"), style: .plain, target: self, action: #selector(handlerClickMenu))
+        leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "Icon_Menu"), style: .plain, target: self, action: #selector(handlerClickMenu))
         
         self.navigationItem.leftBarButtonItems = [leftButtonItem, text]
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black

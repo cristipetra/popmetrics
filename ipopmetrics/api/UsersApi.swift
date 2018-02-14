@@ -19,8 +19,8 @@ class UsersApi: BaseApi {
             "phone_number": phoneNumber
         ]
         
-        
-        Alamofire.request(ApiUrls.getSendCodeBySmsUrl(), method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { response in
+        let url = ApiUrls.getSendCodeBySmsUrl()
+        Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { response in
             if let err = self.createErrorWithHttpResponse(response: response.response) {
                 callback(nil, err)
                 return

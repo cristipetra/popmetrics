@@ -22,8 +22,8 @@ enum Environment: String {
     
     var baseURL: String {
         switch self {
-        case .Staging: return "https://staging-api.myservice.com"
-        case .Production: return "https://api.myservice.com"
+        case .Staging: return "https://testapi.popmetrics.ai"
+        case .Production: return "https://api.popmetrics.io"
         }
     }
     
