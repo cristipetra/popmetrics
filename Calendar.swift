@@ -229,7 +229,7 @@ class CalendarSocialPost: Object, Mappable {
          */
  
         postId          <- map["id"]
-        calendarCardId  <- map["calendar_card_id"]
+        calendarCardId  <- map["card_id"]
         index           <- map["index"]
         type            <- map["type"]
         scheduledDate   <- (map["schedule_dt"], DateTransform())
@@ -294,14 +294,6 @@ class CalendarSocialPost: Object, Mappable {
     
     var socialTextTime: String {
         get {
-            switch section {
-            case CalendarSectionType.scheduled.rawValue:
-                return "Scheduled for"
-            case CalendarSectionType.completed.rawValue:
-                return "Completed on"
-            default:
-                return ""
-            }
             return status.capitalized
         }
     }
