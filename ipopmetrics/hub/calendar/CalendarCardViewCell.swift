@@ -120,6 +120,13 @@ class CalendarCardViewCell: UITableViewCell {
             cancelPostButton.isHidden = false
         }
         
+        if item.type == "facebook" {
+            foregroundImage.image = #imageLiteral(resourceName: "iconFacebookSocial")
+        } else if item.type == "twitter" {
+            foregroundImage.image = #imageLiteral(resourceName: "icon_twitter")
+        }
+        
+        
         footerView.changeFeedType(feedType: FeedType.calendar)
         //footerView.buttonActionHandler = self
         footerView.xButton.isHidden = true
