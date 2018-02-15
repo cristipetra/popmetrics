@@ -40,6 +40,7 @@ class BusinessContactDetailsViewController: SettingsBaseTableViewController {
         
         setupNavigationBar()
         self.titleWindow = "CONTACT DETAILS"
+        doneButton.isEnabled = false
         
         businessContact = BusinessContact()
         
@@ -123,48 +124,56 @@ extension BusinessContactDetailsViewController: UITextFieldDelegate {
             if textField.text != businessContact.phone {
                 businessContact.phone = textField.text!
                 isValuesChanged = true
+                doneButton.isEnabled = true
             }
         }
         if textField == faxText {
             if textField.text != businessContact.fax {
                 businessContact.fax = textField.text!
                 isValuesChanged = true
+                doneButton.isEnabled = true
             }
         }
         if textField == emailText {
             if textField.text != businessContact.businessEmail {
                 businessContact.businessEmail = textField.text!
                 isValuesChanged = true
+                doneButton.isEnabled = true
             }
         }
         if textField == addressText {
             if textField.text != businessContact.address {
                 businessContact.address = textField.text!
                 isValuesChanged = true
+                doneButton.isEnabled = true
             }
         }
         if textField == unitText {
             if textField.text != businessContact.unit {
                 businessContact.unit = textField.text!
                 isValuesChanged = true
+                doneButton.isEnabled = true
             }
         }
         if textField == cityText {
             if textField.text != businessContact.city {
                 businessContact.city = textField.text!
                 isValuesChanged = true
+                doneButton.isEnabled = true
             }
         }
         if textField == stateText {
             if textField.text != businessContact.state {
                 businessContact.state = textField.text!
                 isValuesChanged = true
+                doneButton.isEnabled = true
             }
         }
         if textField == zipText {
             if textField.text != businessContact.zipCode {
                 businessContact.zipCode = textField.text!
                 isValuesChanged = true
+                doneButton.isEnabled = true
             }
         }
 
