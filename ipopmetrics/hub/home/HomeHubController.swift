@@ -488,7 +488,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             return
         }
         
-        self.requiredActionHandler.handleRequiredAction(requiredActionCard)
+        self.requiredActionHandler.handleRequiredAction(viewController:self, item:requiredActionCard)
         
     }
     

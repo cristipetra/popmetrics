@@ -29,7 +29,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         return appDelegate.requiredActionHandler
     }
     
-    func  handleRequiredAction(_ item: FeedCard) {
+    func  handleRequiredAction(viewController: UIViewController, item: FeedCard) {
         
         switch(item.name) {
             case "ganalytics.connect_with_brand":
@@ -39,7 +39,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                 connectTwitter(item)
             
             case "facebook.connect_with_brand":
-                //connectFacebook(item)
+                connectFacebook(viewController:viewController, item: item)
                 break
             
             default:
@@ -209,7 +209,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     }
 
     // MARK: Facebook LogIn Process
-    func connectFacebook(viewController: UIViewController, _ item: FeedCard?) {
+    func connectFacebook(viewController: UIViewController, item: FeedCard?) {
         
         let loginManager = LoginManager()
         
