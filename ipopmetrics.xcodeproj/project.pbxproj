@@ -143,6 +143,7 @@
 		08B968AA1FBB141400482CDE /* ChangeBrandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B968A91FBB141400482CDE /* ChangeBrandViewController.swift */; };
 		08B968AC1FBB17FE00482CDE /* BrandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B968AB1FBB17FE00482CDE /* BrandTableViewCell.swift */; };
 		08BAD73E1F960A70008BC88F /* MJCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */; };
+		08BC8F1620357D66008CC969 /* BusinessContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BC8F1520357D66008CC969 /* BusinessContact.swift */; };
 		08BD58001F7A2DCC00FFDCFD /* ActionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD57FF1F7A2DCC00FFDCFD /* ActionPageView.swift */; };
 		08BD58021F7A2F3700FFDCFD /* IndividualTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */; };
 		08BD580C1F7A6AD500FFDCFD /* OnboardingFinalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */; };
@@ -387,6 +388,7 @@
 		08B968A91FBB141400482CDE /* ChangeBrandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeBrandViewController.swift; sourceTree = "<group>"; };
 		08B968AB1FBB17FE00482CDE /* BrandTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandTableViewCell.swift; sourceTree = "<group>"; };
 		08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJCalendarViewController.swift; sourceTree = "<group>"; };
+		08BC8F1520357D66008CC969 /* BusinessContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessContact.swift; sourceTree = "<group>"; };
 		08BD57FF1F7A2DCC00FFDCFD /* ActionPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionPageView.swift; sourceTree = "<group>"; };
 		08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualTaskView.swift; sourceTree = "<group>"; };
 		08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingFinalView.xib; sourceTree = "<group>"; };
@@ -1005,6 +1007,7 @@
 				11DD96751FC4FA5400386F1E /* FeedApi.swift */,
 				1104F8741FD45B3B002F6221 /* HubsApi.swift */,
 				08B3289D1FFE22F300549DC5 /* SettingsApi.swift */,
+				08BC8F1520357D66008CC969 /* BusinessContact.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -1573,6 +1576,7 @@
 				1100F6F91F5FEBCE000AF1D4 /* TodoActionHandler.swift in Sources */,
 				11E636941FD735480081B1DC /* StatsStore.swift in Sources */,
 				08B485E01F20EA23005918A1 /* Config.swift in Sources */,
+				08BC8F1620357D66008CC969 /* BusinessContact.swift in Sources */,
 				08DE806D2018E98E00621243 /* SocialPostDetailsView.swift in Sources */,
 				085530461F6CEE0A00D82A09 /* ActionActivationView.swift in Sources */,
 				08B3289E1FFE22F300549DC5 /* SettingsApi.swift in Sources */,

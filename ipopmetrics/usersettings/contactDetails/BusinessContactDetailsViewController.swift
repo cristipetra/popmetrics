@@ -9,7 +9,21 @@
 import UIKit
 
 class BusinessContactDetailsViewController: SettingsBaseTableViewController {
-
+    
+    private var didDisplayAlert: Bool = false
+    private var isChanges: Bool = false
+    
+    @IBOutlet weak var phoneText: UITextField!
+    @IBOutlet weak var faxText: UITextField!
+    @IBOutlet weak var emailText: UITextField!
+    @IBOutlet weak var addressText: UITextField!
+    @IBOutlet weak var unitText: UITextField!
+    @IBOutlet weak var cityText: UITextField!
+    @IBOutlet weak var stateText: UITextField!
+    @IBOutlet weak var zipText: UITextField!
+    
+    private var businessContact: BusinessContact!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,6 +50,54 @@ class BusinessContactDetailsViewController: SettingsBaseTableViewController {
         }
         
         return contentView
+    }
+    
+    internal func configure(businessContact: BusinessContact) {
+        phoneText.text = businessContact.phone
+        faxText.text = businessContact.fax
+        emailText.text = businessContact.businessEmail
+        addressText.text = businessContact.address
+        unitText.text = businessContact.unit
+        cityText.text = businessContact.city
+        stateText.text = businessContact.state
+        zipText.text = businessContact.zipCode
+    }
+    
+    @objc override func cancelHandler() {
+        if shouldDisplayAlert() {
+            didDisplayAlert = true
+            Alert.showAlertDialog(parent: self, action: { (action) -> (Void) in
+                switch action {
+                case .cancel:
+                    //self.navigationController?.popViewController(animated: true)
+                    break
+                case .save:
+                    self.createBusinessLocation()
+                    break
+                default:
+                    break
+                }
+            })
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func shouldDisplayAlert() -> Bool {
+        if !didDisplayAlert && isChanges {
+            return true
+        } else {
+            return false
+        }
+        return true
+    }
+    
+    @objc override func doneHandler() {
+        createBusinessLocation()
+    }
+    
+    private func createBusinessLocation() {
+        self.navigationController?.popViewController(animated: true)
     }
 
 }
