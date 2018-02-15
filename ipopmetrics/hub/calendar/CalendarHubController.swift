@@ -145,107 +145,6 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
         //createItemsLocally()
     }
     
-    
-    
-    func createItemsLocally() {
-        //store.realm.deleteAll()
-        try! store.realm.write {
-            store.realm.deleteAll()
-            
-            let calendarScheduledId = "atwqt43wtgatsga"
-            let calendarCompletedId = "adsffsa23raddsfaf"
-            
-            let calendarScheduled = CalendarCard()
-            calendarScheduled.cardId = calendarScheduledId
-            calendarScheduled.createDate = Date()
-            calendarScheduled.section = CalendarSectionType.scheduled.rawValue
-            calendarScheduled.type = "scheduled_social_posts"
-            store.realm.add(calendarScheduled, update: true)
-
-            let calendarCompleted = CalendarCard()
-            calendarCompleted.cardId = calendarCompletedId
-            calendarCompleted.createDate = Date()
-            calendarCompleted.section = CalendarSectionType.completed.rawValue
-            calendarCompleted.type = "calendar.completed_action"
-            store.realm.add(calendarCompleted, update: true)
-            
-            let socialCompleted = CalendarSocialPost()
-            socialCompleted.calendarCardId = calendarCompleted.cardId!
-            socialCompleted.calendarCard = calendarCompleted
-            socialCompleted.scheduledDate = Date()
-            socialCompleted.postId = "af234rdsagsdaga"
-            socialCompleted.type = "social.completed_posts"
-            socialCompleted.text = "Do some magic"
-            socialCompleted.index = 0
-            socialCompleted.section = CalendarSectionType.completed.rawValue
-            store.realm.add(socialCompleted, update: true)
-            
-            let socialActionCompleted = CalendarSocialPost()
-            socialActionCompleted.calendarCardId = calendarCompleted.cardId!
-            socialActionCompleted.calendarCard = calendarCompleted
-            socialActionCompleted.scheduledDate = Date()
-            socialActionCompleted.postId = "af23242421344rdsagsdaga"
-            socialActionCompleted.type = "calendar.completed_action"
-            socialCompleted.text = "Completed1 action"
-            socialActionCompleted.index = 2
-            socialActionCompleted.section = CalendarSectionType.completed.rawValue
-            store.realm.add(socialActionCompleted, update: true)
-            
-            
-            let scheduledPost = CalendarSocialPost()
-            scheduledPost.calendarCard = calendarScheduled
-            scheduledPost.calendarCardId = calendarScheduled.cardId!
-            scheduledPost.text = "dfasfsafas"
-            scheduledPost.createDate = Date()
-            scheduledPost.scheduledDate = Date()
-            scheduledPost.postId = "11fsadfsdfsadfa"
-            scheduledPost.type = "calendar.scheduled_action"
-            scheduledPost.index = 3
-            scheduledPost.section = CalendarSectionType.scheduled.rawValue
-            store.realm.add(scheduledPost, update: true)
-            
-            
-            let scheduledPost1 = CalendarSocialPost()
-            //scheduledPost1.calendarCard = calendarScheduled
-            //scheduledPost1.calendarCardId = calendarScheduled.cardId!
-            scheduledPost1.text = "Popmetrics recommends highly customized marketing insights highly customized  recommends highly customized marketing insights highly customized marketing insights to help your business grow. #Popmetrics #GrowYourBusiness Alch.my/27yd73"
-            scheduledPost1.createDate = Date()
-            scheduledPost1.scheduledDate = Date()
-            scheduledPost1.postId = "11weqfsadfsdfesadfa"
-            scheduledPost1.type = "scheduled_social_posts"
-            scheduledPost1.index = 0
-            scheduledPost1.section = CalendarSectionType.scheduled.rawValue
-            store.realm.add(scheduledPost1, update: true)
-            
-            
-            let scheduledPost2 = CalendarSocialPost()
-            scheduledPost2.calendarCard = calendarScheduled
-            scheduledPost2.calendarCardId = calendarScheduled.cardId!
-            scheduledPost2.text = "dfsdagsaaswfsafas"
-            scheduledPost2.createDate = Date()
-            scheduledPost2.scheduledDate = Date()
-            scheduledPost2.postId = "11w2eqfsadfsdfesadfa"
-            scheduledPost2.type = "social.scheduled_posts"
-            scheduledPost2.index = 0
-            scheduledPost2.section = CalendarSectionType.scheduled.rawValue
-            store.realm.add(scheduledPost2, update: true)
-            
-            
-            let scheduledActionPost = CalendarSocialPost()
-            scheduledActionPost.calendarCard = calendarScheduled
-            //scheduledActionPost.calendarCardId = calendarScheduled.cardId!
-            scheduledActionPost.createDate = Date()
-            scheduledActionPost.scheduledDate = Date()
-            scheduledActionPost.text = "action1 post14"
-            scheduledActionPost.postId = "dsfa461sagsdfsadfa"
-            scheduledActionPost.type = "calendar.scheduled_action"
-            scheduledActionPost.index = 2
-            scheduledActionPost.section = CalendarSectionType.scheduled.rawValue
-            store.realm.add(scheduledActionPost, update: true)
-            
-        }
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "calendarViewControllerSegue" {
             calendarViewController = segue.destination as? MJCalendarViewController
@@ -400,12 +299,12 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         if nonEmptyCards.count > 0 {
             for card in nonEmptyCards {
                 if card.type == "scheduled_social_posts" || card.type == "completed_social_posts" {
-                    let socialPost = store.getCalendarSocialPostsInRange(fromDate:fromDate, toDate:toDate)
+                    let socialPost = store.getCalendarSocialPostsInRangeForCard(card, fromDate:fromDate, toDate:toDate)
                     for sp in socialPost {
                         items.append(sp)
                     }
                 }
-                else {
+            else {
                         items.append(card)
                     }
                 }
@@ -645,13 +544,13 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         })
     }
     
-    func updateStateLoadMore(_ footerView: TableFooterView, section: Int) {
-        let posts = store.getCalendarSocialPostsInRange(fromDate: self.calendarViewController.selectedFromDate,
-                                                        toDate: self.calendarViewController.selectedToDate)
-        if( posts.count <= noItemsLoaded[section]) {
-            footerView.setUpLoadMoreDisabled()
-        }
-    }
+//    func updateStateLoadMore(_ footerView: TableFooterView, section: Int) {
+//        let posts = store.getCalendarSocialPostsInRange(fromDate: self.calendarViewController.selectedFromDate,
+//                                                        toDate: self.calendarViewController.selectedToDate)
+//        if( posts.count <= noItemsLoaded[section]) {
+//            footerView.setUpLoadMoreDisabled()
+//        }
+//    }
     
     func noItemsLoaded(_ section: Int) -> Int {
         if( noItemsLoaded.isEmpty ) {
@@ -667,37 +566,35 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         noItemsLoaded[section] += value
     }
     
-    func itemsToLoad(section: Int) -> Int {
-        let posts = store.getCalendarSocialPostsInRange(fromDate: self.calendarViewController.selectedFromDate,
-                                                        toDate: self.calendarViewController.selectedToDate)
-        if (posts.count > noItemsLoaded(section)) {
-            return noItemsLoaded(section)
-        } else {
-            return posts.count
-        }
-        return noItemsLoadeInitial
-    }
-    
-    func loadMore(section: Int) {
-        var addItem = noItemsLoadeInitial
-        let posts = store.getCalendarSocialPostsInRange(fromDate: self.calendarViewController.selectedFromDate,
-                                                        toDate: self.calendarViewController.selectedToDate)
-        if (posts.count > noItemsLoaded(section) + noItemsLoadeInitial) {
-            addItem = noItemsLoadeInitial
-        } else {
-            addItem = posts.count - noItemsLoaded(section)
-        }
-        changeNoItemsLoaded(section, value: addItem)
-        tableView.reloadData()
-    }
-    
+//    func itemsToLoad(section: Int) -> Int {
+//        let posts = store.getCalendarSocialPostsInRange(fromDate: self.calendarViewController.selectedFromDate,
+//                                                        toDate: self.calendarViewController.selectedToDate)
+//        if (posts.count > noItemsLoaded(section)) {
+//            return noItemsLoaded(section)
+//        } else {
+//            return posts.count
+//        }
+//        return noItemsLoadeInitial
+//    }
+//
+//    func loadMore(section: Int) {
+//        var addItem = noItemsLoadeInitial
+//        let posts = store.getCalendarSocialPostsInRangeForCard(fromDate: self.calendarViewController.selectedFromDate,
+//                                                        toDate: self.calendarViewController.selectedToDate)
+//        if (posts.count > noItemsLoaded(section) + noItemsLoadeInitial) {
+//            addItem = noItemsLoadeInitial
+//        } else {
+//            addItem = posts.count - noItemsLoaded(section)
+//        }
+//        changeNoItemsLoaded(section, value: addItem)
+//        tableView.reloadData()
+//    }
+//
     func reloadTableByDate(date: Date) {
         
     }
     
     func removeCellFromTable(indexPath: IndexPath, socialPost: CalendarSocialPost) {
-        let posts = store.getCalendarSocialPostsInRange(fromDate: self.calendarViewController.selectedFromDate,
-                                                        toDate: self.calendarViewController.selectedToDate)
         try! store.realm.write {
             self.store.realm.delete(socialPost)
             self.tableView.reloadData()
@@ -716,7 +613,7 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
 
 extension CalendarHubController: FooterActionHandlerProtocol {
     func handlerAction(section: Int) {
-        loadMore(section: section)
+//        loadMore(section: section)
     }
 }
 
