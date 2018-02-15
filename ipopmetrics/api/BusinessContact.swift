@@ -23,6 +23,9 @@ class BusinessContact: Mappable {
     required init?(map: Map) {
     }
     
+    init() {
+    }
+    
     func mapping(map: Map) {
         phone          <- map["phone"]
         fax            <- map["fax"]

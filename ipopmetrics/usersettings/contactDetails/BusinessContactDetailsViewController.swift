@@ -11,7 +11,7 @@ import UIKit
 class BusinessContactDetailsViewController: SettingsBaseTableViewController {
     
     private var didDisplayAlert: Bool = false
-    private var isChanges: Bool = false
+    internal var isValuesChanged: Bool = false
     
     @IBOutlet weak var phoneText: UITextField!
     @IBOutlet weak var faxText: UITextField!
@@ -29,10 +29,21 @@ class BusinessContactDetailsViewController: SettingsBaseTableViewController {
 
         self.tableView.backgroundColor = PopmetricsColor.tableBackground
         
+        phoneText.delegate = self
+        faxText.delegate = self
+        emailText.delegate = self
+        addressText.delegate = self
+        unitText.delegate = self
+        cityText.delegate = self
+        stateText.delegate = self
+        zipText.delegate = self
+        
         setupNavigationBar()
         self.titleWindow = "CONTACT DETAILS"
+        
+        businessContact = BusinessContact()
+        
     }
-
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let contentView: UIView  = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 60))
@@ -69,7 +80,7 @@ class BusinessContactDetailsViewController: SettingsBaseTableViewController {
             Alert.showAlertDialog(parent: self, action: { (action) -> (Void) in
                 switch action {
                 case .cancel:
-                    //self.navigationController?.popViewController(animated: true)
+                    self.navigationController?.popViewController(animated: true)
                     break
                 case .save:
                     self.createBusinessLocation()
@@ -84,7 +95,7 @@ class BusinessContactDetailsViewController: SettingsBaseTableViewController {
     }
     
     private func shouldDisplayAlert() -> Bool {
-        if !didDisplayAlert && isChanges {
+        if !didDisplayAlert && isValuesChanged {
             return true
         } else {
             return false
@@ -97,7 +108,65 @@ class BusinessContactDetailsViewController: SettingsBaseTableViewController {
     }
     
     private func createBusinessLocation() {
+        SettingsApi().postBusinessContact(businessContact, brandId: (UserStore.currentBrand?.id)!) { (brand) in
+            
+        }
+        
         self.navigationController?.popViewController(animated: true)
     }
 
+}
+
+extension BusinessContactDetailsViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == phoneText {
+            if textField.text != businessContact.phone {
+                businessContact.phone = textField.text!
+                isValuesChanged = true
+            }
+        }
+        if textField == faxText {
+            if textField.text != businessContact.fax {
+                businessContact.fax = textField.text!
+                isValuesChanged = true
+            }
+        }
+        if textField == emailText {
+            if textField.text != businessContact.businessEmail {
+                businessContact.businessEmail = textField.text!
+                isValuesChanged = true
+            }
+        }
+        if textField == addressText {
+            if textField.text != businessContact.address {
+                businessContact.address = textField.text!
+                isValuesChanged = true
+            }
+        }
+        if textField == unitText {
+            if textField.text != businessContact.unit {
+                businessContact.unit = textField.text!
+                isValuesChanged = true
+            }
+        }
+        if textField == cityText {
+            if textField.text != businessContact.city {
+                businessContact.city = textField.text!
+                isValuesChanged = true
+            }
+        }
+        if textField == stateText {
+            if textField.text != businessContact.state {
+                businessContact.state = textField.text!
+                isValuesChanged = true
+            }
+        }
+        if textField == zipText {
+            if textField.text != businessContact.zipCode {
+                businessContact.zipCode = textField.text!
+                isValuesChanged = true
+            }
+        }
+
+    }
 }
