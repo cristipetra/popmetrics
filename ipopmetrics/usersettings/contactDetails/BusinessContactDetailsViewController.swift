@@ -8,34 +8,41 @@
 
 import UIKit
 
-class BusinessContactDetailsViewController: BaseTableViewController {
-
+class BusinessContactDetailsViewController: SettingsBaseTableViewController {
+    
+    private var didDisplayAlert: Bool = false
+    internal var isValuesChanged: Bool = false
+    
+    @IBOutlet weak var phoneText: UITextField!
+    @IBOutlet weak var faxText: UITextField!
+    @IBOutlet weak var emailText: UITextField!
+    @IBOutlet weak var addressText: UITextField!
+    @IBOutlet weak var unitText: UITextField!
+    @IBOutlet weak var cityText: UITextField!
+    @IBOutlet weak var stateText: UITextField!
+    @IBOutlet weak var zipText: UITextField!
+    
+    private var businessContact: BusinessContact!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView.backgroundColor = PopmetricsColor.tableBackground
-        setUpNavigationBar()
-    }
-    
-    private func updateView() {
-        //versionLabel.text = UIApplication.versionBuild()
-        //websiteLabel.text = Config.aboutWebLink
-    }
-    
-    private func setUpNavigationBar() {
         
-        let text = UIBarButtonItem(title: "CONTACT DETAILS", style: .plain, target: self, action: #selector(handlerClickBack))
-        text.tintColor = PopmetricsColor.darkGrey
-        let titleFont = UIFont(name: FontBook.extraBold, size: 18)
-        text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
-        text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .selected)
+        phoneText.delegate = self
+        faxText.delegate = self
+        emailText.delegate = self
+        addressText.delegate = self
+        unitText.delegate = self
+        cityText.delegate = self
+        stateText.delegate = self
+        zipText.delegate = self
         
-        self.navigationController?.navigationBar.backgroundColor = UIColor.white
-        navigationController?.navigationBar.isTranslucent = false
+        setupNavigationBar()
+        self.titleWindow = "CONTACT DETAILS"
+        doneButton.isEnabled = false
         
-        let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "calendarIconLeftArrow"), style: .plain, target: self, action: #selector(handlerClickBack))
-        self.navigationItem.leftBarButtonItems = [leftButtonItem, text]
-        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
+        businessContact = BusinessContact()
         
     }
     
@@ -57,8 +64,118 @@ class BusinessContactDetailsViewController: BaseTableViewController {
         return contentView
     }
     
-    @objc func handlerClickBack() {
-        self.navigationController?.dismissToDirection(direction: .left)
+    internal func configure(businessContact: BusinessContact) {
+        phoneText.text = businessContact.phone
+        faxText.text = businessContact.fax
+        emailText.text = businessContact.businessEmail
+        addressText.text = businessContact.address
+        unitText.text = businessContact.unit
+        cityText.text = businessContact.city
+        stateText.text = businessContact.state
+        zipText.text = businessContact.zipCode
+    }
+    
+    @objc override func cancelHandler() {
+        if shouldDisplayAlert() {
+            didDisplayAlert = true
+            Alert.showAlertDialog(parent: self, action: { (action) -> (Void) in
+                switch action {
+                case .cancel:
+                    self.navigationController?.popViewController(animated: true)
+                    break
+                case .save:
+                    self.createBusinessLocation()
+                    break
+                default:
+                    break
+                }
+            })
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func shouldDisplayAlert() -> Bool {
+        if !didDisplayAlert && isValuesChanged {
+            return true
+        } else {
+            return false
+        }
+        return true
+    }
+    
+    @objc override func doneHandler() {
+        createBusinessLocation()
+    }
+    
+    private func createBusinessLocation() {
+        SettingsApi().postBusinessContact(businessContact, brandId: (UserStore.currentBrand?.id)!) { (brand) in
+            
+        }
+        
+        self.navigationController?.popViewController(animated: true)
     }
 
+}
+
+extension BusinessContactDetailsViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == phoneText {
+            if textField.text != businessContact.phone {
+                businessContact.phone = textField.text!
+                isValuesChanged = true
+                doneButton.isEnabled = true
+            }
+        }
+        if textField == faxText {
+            if textField.text != businessContact.fax {
+                businessContact.fax = textField.text!
+                isValuesChanged = true
+                doneButton.isEnabled = true
+            }
+        }
+        if textField == emailText {
+            if textField.text != businessContact.businessEmail {
+                businessContact.businessEmail = textField.text!
+                isValuesChanged = true
+                doneButton.isEnabled = true
+            }
+        }
+        if textField == addressText {
+            if textField.text != businessContact.address {
+                businessContact.address = textField.text!
+                isValuesChanged = true
+                doneButton.isEnabled = true
+            }
+        }
+        if textField == unitText {
+            if textField.text != businessContact.unit {
+                businessContact.unit = textField.text!
+                isValuesChanged = true
+                doneButton.isEnabled = true
+            }
+        }
+        if textField == cityText {
+            if textField.text != businessContact.city {
+                businessContact.city = textField.text!
+                isValuesChanged = true
+                doneButton.isEnabled = true
+            }
+        }
+        if textField == stateText {
+            if textField.text != businessContact.state {
+                businessContact.state = textField.text!
+                isValuesChanged = true
+                doneButton.isEnabled = true
+            }
+        }
+        if textField == zipText {
+            if textField.text != businessContact.zipCode {
+                businessContact.zipCode = textField.text!
+                isValuesChanged = true
+                doneButton.isEnabled = true
+            }
+        }
+
+    }
 }

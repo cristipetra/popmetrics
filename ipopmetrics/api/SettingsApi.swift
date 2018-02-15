@@ -28,4 +28,23 @@ class SettingsApi: BaseApi {
         }
     }
     
+    /*
+     * Create a business contact
+     */
+    func postBusinessContact(_ businessContact: BusinessContact, brandId:String, callback: @escaping (_ response: Brand?) -> Void) {
+        let url = ApiUrls.composedBaseUrl("/api/usersettings/")
+        let params = ["brand_id":brandId, "business_contact": businessContact.toJSON()] as [String : Any]
+        
+        Alamofire.request(url, method: .post, parameters:params, encoding: JSONEncoding.default,
+                          headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperOne<Brand>>) in
+                            let levelOneHandled = super.handleNotOkCodes(response: response.response)
+                            if !levelOneHandled {
+                                let handled = super.handleResponseWrap(response.value!)
+                                if !handled {
+                                    callback(response.result.value?.data)
+                                }
+                            }
+        }
+    }
+    
 }
