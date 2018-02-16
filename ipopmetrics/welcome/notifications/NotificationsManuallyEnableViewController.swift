@@ -46,6 +46,9 @@ class NotificationsManuallyEnableViewController: UIViewController {
         logoImageView.heightAnchor.constraint(equalToConstant: 28).isActive = true
         logoImageView.contentMode = .scaleAspectFill
         self.navigationItem.titleView = logoImageView
+        
+        let backButton = UIBarButtonItem()
+        self.navigationItem.leftBarButtonItems = [backButton]
     }
     
     private func updateView() {
