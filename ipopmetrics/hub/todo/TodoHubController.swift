@@ -579,7 +579,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     
     @objc func loadNextPage(_ btn: Any) {
         let items = getVisibleItemsInSection(0)
-        if pageIndex * noItemsLoadedInitial > items.count {
+        if pageIndex * noItemsLoadedInitial >= items.count {
             pageIndex = 1
         } else {
             pageIndex += 1
