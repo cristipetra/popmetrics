@@ -114,7 +114,7 @@ class TodoHubController: BaseViewController {
         
         
         self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedSectionHeaderHeight = 60
+        self.tableView.estimatedSectionHeaderHeight = 70
         
         self.tableView.sectionFooterHeight = UITableViewAutomaticDimension
         self.tableView.estimatedSectionFooterHeight = 0
@@ -512,7 +512,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
+        return 70
         
     }
     
@@ -596,10 +596,17 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == 0 {
+        if section == 0 {let items = getVisibleItemsInSection(0)
+            if items.count == 1 {
+                if items[0] is TodoCard {
+                    return 1
+                } else {
+                    return 49
+                }
+            }
             return 49
         }
-        return 0
+        return 1
     }
     
     func reloadDataTable() {
