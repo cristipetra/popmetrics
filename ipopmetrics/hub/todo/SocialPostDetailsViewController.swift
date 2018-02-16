@@ -83,6 +83,9 @@ class SocialPostDetailsViewController: BaseViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handlerClickArticleUrl));
         articleUrl.isUserInteractionEnabled = true
         articleUrl.addGestureRecognizer(tapGesture)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
     
         displayContainerBtnsIfNeeded()
     }
@@ -101,6 +104,12 @@ class SocialPostDetailsViewController: BaseViewController {
     
     private func updateViewCalendar() {
         hideStatusBtns()
+    }
+    
+    @objc internal func dismissKeyboard() {
+        if containerView.messageFacebook != nil {
+            containerView.messageFacebook.resignFirstResponder()
+        }
     }
     
     private func updateView() {
@@ -227,10 +236,10 @@ class SocialPostDetailsViewController: BaseViewController {
     private func approvePostFacebook() {
         guard let message = containerView.messageFacebook.text else { return }
         
-        if !containerView.isMessageFacebookSet() {
-            EZAlertController.alert("Please add a message to be posted on facebook.")
-            return
-        }
+//        if !containerView.isMessageFacebookSet() {
+//            EZAlertController.alert("Please add a message to be posted on facebook.")
+//            return
+//        }
         
         approvePostBtn.animateButton()
         
