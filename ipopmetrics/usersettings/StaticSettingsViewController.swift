@@ -187,6 +187,12 @@ class StaticSettingsViewController: BaseTableViewController {
         self.navigationController?.pushViewController(twitterVC, animated: true)
     }
     
+    private func displayTwitterSecond() {
+        let twitterVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "SettingsTwitterViewController") as! SettingsTwitterViewController
+        twitterVC.currentBrand = self.currentBrand
+        self.navigationController?.pushViewController(twitterVC, animated: true)
+    }
+    
     private func displayLinkedin() {
         let linkedinVC = SettingsSocialViewController(nibName: "SettingsSocialView", bundle: nil) as SettingsSocialViewController
         linkedinVC.currentBrand = self.currentBrand

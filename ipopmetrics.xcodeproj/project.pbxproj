@@ -144,6 +144,7 @@
 		08B968AC1FBB17FE00482CDE /* BrandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B968AB1FBB17FE00482CDE /* BrandTableViewCell.swift */; };
 		08BAD73E1F960A70008BC88F /* MJCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */; };
 		08BC8F1620357D66008CC969 /* BusinessContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BC8F1520357D66008CC969 /* BusinessContact.swift */; };
+		08BC8F192035F247008CC969 /* SettingsTwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BC8F182035F247008CC969 /* SettingsTwitterViewController.swift */; };
 		08BD58001F7A2DCC00FFDCFD /* ActionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD57FF1F7A2DCC00FFDCFD /* ActionPageView.swift */; };
 		08BD58021F7A2F3700FFDCFD /* IndividualTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */; };
 		08BD580C1F7A6AD500FFDCFD /* OnboardingFinalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */; };
@@ -217,7 +218,6 @@
 		11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */; };
 		11BDA92E1FFFD95F00CDA01C /* PopTipCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11BDA92D1FFFD95F00CDA01C /* PopTipCard.xib */; };
 		11BDA9301FFFD9C200CDA01C /* PopTipCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BDA92F1FFFD9C200CDA01C /* PopTipCard.swift */; };
-		11D6FF6B1FD7941600C7E62B /* SettingsTwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D6FF6A1FD7941600C7E62B /* SettingsTwitterViewController.swift */; };
 		11DD96761FC4FA5400386F1E /* CalendarApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD966D1FC4FA5400386F1E /* CalendarApi.swift */; };
 		11DD96771FC4FA5400386F1E /* StatisticsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD966E1FC4FA5400386F1E /* StatisticsApi.swift */; };
 		11DD96781FC4FA5400386F1E /* TodoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD966F1FC4FA5400386F1E /* TodoApi.swift */; };
@@ -389,6 +389,7 @@
 		08B968AB1FBB17FE00482CDE /* BrandTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandTableViewCell.swift; sourceTree = "<group>"; };
 		08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJCalendarViewController.swift; sourceTree = "<group>"; };
 		08BC8F1520357D66008CC969 /* BusinessContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessContact.swift; sourceTree = "<group>"; };
+		08BC8F182035F247008CC969 /* SettingsTwitterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTwitterViewController.swift; sourceTree = "<group>"; };
 		08BD57FF1F7A2DCC00FFDCFD /* ActionPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionPageView.swift; sourceTree = "<group>"; };
 		08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualTaskView.swift; sourceTree = "<group>"; };
 		08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingFinalView.xib; sourceTree = "<group>"; };
@@ -471,7 +472,6 @@
 		11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		11BDA92D1FFFD95F00CDA01C /* PopTipCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopTipCard.xib; sourceTree = "<group>"; };
 		11BDA92F1FFFD9C200CDA01C /* PopTipCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopTipCard.swift; sourceTree = "<group>"; };
-		11D6FF6A1FD7941600C7E62B /* SettingsTwitterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTwitterViewController.swift; sourceTree = "<group>"; };
 		11DD966C1FC4FA5400386F1E /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		11DD966D1FC4FA5400386F1E /* CalendarApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarApi.swift; sourceTree = "<group>"; };
 		11DD966E1FC4FA5400386F1E /* StatisticsApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsApi.swift; sourceTree = "<group>"; };
@@ -610,6 +610,14 @@
 				086F34732034986700F7043B /* SettingsBaseTableViewController.swift */,
 			);
 			path = helpers;
+			sourceTree = "<group>";
+		};
+		08BC8F172035F1B4008CC969 /* twitter */ = {
+			isa = PBXGroup;
+			children = (
+				08BC8F182035F247008CC969 /* SettingsTwitterViewController.swift */,
+			);
+			path = twitter;
 			sourceTree = "<group>";
 		};
 		08CA5D5620247AD300ED78C3 /* notifications */ = {
@@ -906,6 +914,7 @@
 		11DD96631FC4F32800386F1E /* usersettings */ = {
 			isa = PBXGroup;
 			children = (
+				08BC8F172035F1B4008CC969 /* twitter */,
 				085ECE842020C796003A2B0A /* contactDetails */,
 				113976A81E97C71300B535DF /* AccountViewController.swift */,
 				089F93AA1FB5FE1E00155674 /* Settings.storyboard */,
@@ -924,7 +933,6 @@
 				08078F411FBDE6FD00A4399D /* SettingsOverlayActionViewController.swift */,
 				08078F431FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift */,
 				08C580FE1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift */,
-				11D6FF6A1FD7941600C7E62B /* SettingsTwitterViewController.swift */,
 			);
 			path = usersettings;
 			sourceTree = "<group>";
@@ -1537,7 +1545,6 @@
 				08913DA11FE7BEFB0085BE36 /* CalendarCompletedViewCell.swift in Sources */,
 				088F14FA1FB9C6080004F925 /* StaticSettingsViewController.swift in Sources */,
 				08C580FF1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift in Sources */,
-				11D6FF6B1FD7941600C7E62B /* SettingsTwitterViewController.swift in Sources */,
 				1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */,
 				11BDA9301FFFD9C200CDA01C /* PopTipCard.swift in Sources */,
 				08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */,
@@ -1553,6 +1560,7 @@
 				08BAD73E1F960A70008BC88F /* MJCalendarViewController.swift in Sources */,
 				085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */,
 				08B745981F1F718300EC3F8C /* CodeViewController.swift in Sources */,
+				08BC8F192035F247008CC969 /* SettingsTwitterViewController.swift in Sources */,
 				0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */,
 				08B4EBBF1FC58FF100BFC5A1 /* InsightPageDetailsViewController.swift in Sources */,
 				08078F441FBDF30B00A4399D /* SettingsOverlayDescriptionViewController.swift in Sources */,
