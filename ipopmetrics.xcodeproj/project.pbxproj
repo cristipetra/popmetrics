@@ -81,6 +81,8 @@
 		089E10561FD1716200D57A08 /* SwipeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E10551FD1716200D57A08 /* SwipeExtension.swift */; };
 		089EFD39201774FF002E9CAF /* FacebookSocialPostDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089EFD38201774FF002E9CAF /* FacebookSocialPostDetails.xib */; };
 		089F93AB1FB5FE1E00155674 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089F93AA1FB5FE1E00155674 /* Settings.storyboard */; };
+		08A3C838203717D3001BD81E /* LoadMoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A3C837203717D3001BD81E /* LoadMoreView.xib */; };
+		08A3C83C203718BB001BD81E /* LoadMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A3C83B203718BB001BD81E /* LoadMoreView.swift */; };
 		08A4A53D1F458423001071E3 /* ToolbarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */; };
 		08A4A5411F45B563001071E3 /* AlfaSlabOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */; };
 		08A51D2F1FC6DBBE0097B334 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A51D2E1FC6DBBE0097B334 /* Markdown.swift */; };
@@ -327,6 +329,8 @@
 		089E10551FD1716200D57A08 /* SwipeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeExtension.swift; sourceTree = "<group>"; };
 		089EFD38201774FF002E9CAF /* FacebookSocialPostDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacebookSocialPostDetails.xib; sourceTree = "<group>"; };
 		089F93AA1FB5FE1E00155674 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		08A3C837203717D3001BD81E /* LoadMoreView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadMoreView.xib; sourceTree = "<group>"; };
+		08A3C83B203718BB001BD81E /* LoadMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreView.swift; sourceTree = "<group>"; };
 		08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarViewCell.swift; sourceTree = "<group>"; };
 		08A4A5401F45B563001071E3 /* AlfaSlabOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AlfaSlabOne-Regular.ttf"; sourceTree = "<group>"; };
 		08A51D2E1FC6DBBE0097B334 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
@@ -907,6 +911,8 @@
 				113DE3011FC8AEE800AE6DE9 /* PaidActionCardCell.swift */,
 				08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */,
 				08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */,
+				08A3C837203717D3001BD81E /* LoadMoreView.xib */,
+				08A3C83B203718BB001BD81E /* LoadMoreView.swift */,
 			);
 			path = todo;
 			sourceTree = "<group>";
@@ -1198,6 +1204,7 @@
 				1183A8661FC5064B00ED8EF6 /* InsightPage.xib in Resources */,
 				08593DF01FBB440A00077A65 /* SettingsEmailView.xib in Resources */,
 				08A533341F6BD9060080BE64 /* MoreInfoViewCell.xib in Resources */,
+				08A3C838203717D3001BD81E /* LoadMoreView.xib in Resources */,
 				08C497AD1FD5A0120066E515 /* animation_nonX.json in Resources */,
 				08A812741F16601A00672126 /* CardHeaderCell.xib in Resources */,
 				080DCA831F4D9586000C73DC /* OpenSans-ExtraBold.ttf in Resources */,
@@ -1459,6 +1466,7 @@
 				08B4EBAF1FC56ACE00BFC5A1 /* Validator.swift in Sources */,
 				11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */,
 				08B485E41F210992005918A1 /* VideoScreenViewController.swift in Sources */,
+				08A3C83C203718BB001BD81E /* LoadMoreView.swift in Sources */,
 				08B4EBB31FC56ACE00BFC5A1 /* TextFieldValidator.swift in Sources */,
 				08AF049A1F46FBB60040012B /* SocialPostInCardCell.swift in Sources */,
 				11DD967E1FC4FA5400386F1E /* FeedApi.swift in Sources */,

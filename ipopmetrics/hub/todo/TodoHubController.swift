@@ -86,7 +86,10 @@ class TodoHubController: BaseViewController {
 
     var approveIndex = 3
     var noItemsLoaded: [Int] = []
-    let noItemsLoadeInitial = 3
+    let noItemsLoadedInitial = 6
+    
+    var pageIndex: Int = 1
+    
     
     var scrollToRow: IndexPath = IndexPath(row: 0, section: 0)
     
@@ -346,8 +349,35 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         
         let items = getVisibleItemsInSection(section)
         
+        if section == 0 {
+            return getItemsToLoad(section, items: items)
+        }
+        
         return items.count
         
+    }
+    
+    
+    func getItemsToLoad(_ section: Int, items: [Any]) -> Int {
+        if section == 0 {
+            if pageIndex * noItemsLoadedInitial > items.count {
+                if pageIndex == 1 {
+                    return items.count
+                } else {
+                    return items.count - ((pageIndex - 1) * noItemsLoadedInitial)
+                }
+            }
+            return noItemsLoadedInitial
+        }
+        return 0
+    }
+    
+    func getPaginationItem(indexPath: IndexPath, items: [Any]) -> Any {
+        let rowIdx = indexPath.row
+        
+        let positionInItems = pageIndex == 1 ? rowIdx : (pageIndex - 1) * noItemsLoadedInitial + rowIdx
+        
+        return items[positionInItems]
     }
 
     
@@ -364,7 +394,12 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
             return UITableViewCell()    
         }
         
-        let item = items[rowIdx]
+        var item = items[rowIdx]
+        
+        if sectionIdx == 0 {
+            item = getPaginationItem(indexPath: indexPath, items: items)
+        }
+        
         if item is TodoSocialPost {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SocialPostInCardCell", for: indexPath) as! SocialPostInCardCell
             cell.setIndexPath(indexPath: indexPath, numberOfCellsInSection: items.count)
@@ -401,6 +436,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         }
         
     }
+    
 
 // no visual effects yet
 //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -535,6 +571,37 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         return cell
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let loadMoreView: LoadMoreView = LoadMoreView()
+        loadMoreView.btnLoadMore.addTarget(self, action: #selector(loadNextPage(_:)), for: .touchUpInside)
+        return loadMoreView
+    }
+    
+    @objc func loadNextPage(_ btn: Any) {
+        let items = getVisibleItemsInSection(0)
+        if pageIndex * noItemsLoadedInitial > items.count {
+            pageIndex = 1
+        } else {
+            pageIndex += 1
+        }
+        
+        //self.tableView.reloadData()
+        self.tableView.beginUpdates()
+        self.tableView.reloadSections([0], with: .automatic)
+        self.tableView.endUpdates()
+        self.tableView.layoutIfNeeded()
+        
+        self.tableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 49
+        }
+        return 0
+    }
+    
     func reloadDataTable() {
         UIView.transition(with: tableView,
             duration: 0.35,
@@ -544,29 +611,29 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     }
     
     
-    func noItemsLoaded(_ section: Int) -> Int {
-        if( noItemsLoaded.isEmpty || noItemsLoaded.count <= section) {
-            noItemsLoaded.append(noItemsLoadeInitial)
-        }
-        return noItemsLoaded[section]
-    }
+//    func noItemsLoaded(_ section: Int) -> Int {
+//        if( noItemsLoaded.isEmpty || noItemsLoaded.count <= section) {
+//            noItemsLoaded.append(noItemsLoadedInitial)
+//        }
+//        return noItemsLoaded[section]
+//    }
+//
+//    func changeNoItemsLoaded(_ section: Int, value: Int) {
+//        if( noItemsLoaded.isEmpty ) {
+//            noItemsLoaded[section] = noItemsLoadedInitial
+//        }
+//        noItemsLoaded[section] += value
+//    }
     
-    func changeNoItemsLoaded(_ section: Int, value: Int) {
-        if( noItemsLoaded.isEmpty ) {
-            noItemsLoaded[section] = noItemsLoadeInitial
-        }
-        noItemsLoaded[section] += value
-    }
     
-    
-    func itemsToLoad(section: Int) -> Int {
-        if (store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count > noItemsLoaded(section)) {
-            return noItemsLoaded(section)
-        } else {
-            return store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count
-        }
-        return noItemsLoadeInitial
-    }
+//    func itemsToLoad(section: Int) -> Int {
+//        if (store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count > noItemsLoaded(section)) {
+//            return noItemsLoaded(section)
+//        } else {
+//            return store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count
+//        }
+//        return noItemsLoadedInitial
+//    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
