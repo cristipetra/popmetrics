@@ -67,10 +67,20 @@ class SocialPostDetailsView: UIView {
         
         if todoSocialPost.type == "twitter" {
             updateTwitter()
-            if let name = UserStore.currentBrand?.twitterDetails?.name {
-                socialBrand.text =  "@\(name)"
+//            if let name = UserStore.currentBrand?.twitterDetails?.name {
+//                socialBrand.text =  "@\(name)"
+//            }
+            if let message = todoSocialPost.message {
+                recommendedLabel.text = message
+            }
+
+            if let socialAccount = todoSocialPost.socialAccount {
+                socialBrand.text = "\(socialAccount)"
             }
         } else if todoSocialPost.type == "facebook" {
+            if let socialAccount = todoSocialPost.socialAccount {
+                socialBrand.text = socialAccount
+            }
             updateFacebook()
         }
         
@@ -93,10 +103,23 @@ class SocialPostDetailsView: UIView {
         
         if calendarSocialPost.type == "twitter" {
             recommendedLabel.text = calendarSocialPost.text
-            if let name = UserStore.currentBrand?.twitterDetails?.name {
-                socialBrand.text =  "@\(name)"
+//            if let name = UserStore.currentBrand?.twitterDetails?.name {
+//                socialBrand.text =  "@\(name)"
+//            }
+            if let socialAccount = calendarSocialPost.socialAccount {
+                socialBrand.text = "\(socialAccount)"
             }
+            if let message = calendarSocialPost.message {
+                recommendedLabel.text = message
+            }
+            
         } else if calendarSocialPost.type == "facebook" {
+            if let socialAccount = calendarSocialPost.socialAccount {
+                socialBrand.text = socialAccount
+            }
+            if let message = calendarSocialPost.message {
+                recommendedLabel.text = message
+            }
             updateFacebook()
         }
         
@@ -124,9 +147,7 @@ class SocialPostDetailsView: UIView {
     
     
     private func updateTwitter() {
-        if recommendedLabel != nil {
-            recommendedLabel.text = todoSocialPost.articleText
-        }
+        
     }
     
     private func updateFacebook() {
@@ -134,9 +155,6 @@ class SocialPostDetailsView: UIView {
             messageFacebook.translatesAutoresizingMaskIntoConstraints = false
             messageFacebook.isScrollEnabled = false
             messageFacebook.delegate = self
-        }
-        if socialBrand != nil {
-            socialBrand.text = UserStore.currentBrand?.facebookDetails?.name ?? "Business Name"
         }
         
     }

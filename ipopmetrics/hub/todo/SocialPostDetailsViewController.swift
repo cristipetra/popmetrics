@@ -234,12 +234,15 @@ class SocialPostDetailsViewController: BaseViewController {
     }
     
     private func approvePostFacebook() {
-        guard let message = containerView.messageFacebook.text else { return }
+        guard var message = containerView.messageFacebook.text else { return }
         
 //        if !containerView.isMessageFacebookSet() {
 //            EZAlertController.alert("Please add a message to be posted on facebook.")
 //            return
 //        }
+        if !containerView.isMessageFacebookSet() {
+            message = ""
+        }
         
         approvePostBtn.animateButton()
         
