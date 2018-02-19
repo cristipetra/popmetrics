@@ -17,7 +17,8 @@ class SocialPostDetailsView: UIView {
     @IBOutlet weak var articleUrl: UILabel!
     @IBOutlet weak var socialBrand: UILabel!
     @IBOutlet weak var scheduleInfoLabel: UILabel!
-        
+    @IBOutlet weak var socialIcon: SocialIconView!
+    
     @IBOutlet weak var messageFacebook: UITextView!
     private var initMessageText = "Say something about this on Facebook…"
 
@@ -99,6 +100,8 @@ class SocialPostDetailsView: UIView {
             updateFacebook()
         }
         
+        socialIcon.socialType = calendarSocialPost.type
+        
         if let title = calendarSocialPost.title {
             titleBlogLabel.text = "\"\(title)\""
         }
@@ -131,6 +134,9 @@ class SocialPostDetailsView: UIView {
             messageFacebook.translatesAutoresizingMaskIntoConstraints = false
             messageFacebook.isScrollEnabled = false
             messageFacebook.delegate = self
+        }
+        if socialBrand != nil {
+            socialBrand.text = UserStore.currentBrand?.facebookDetails?.name ?? "Business Name"
         }
         
     }
