@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,7 +27,7 @@
         <!--Info Card View Controller-->
         <scene sceneID="6Ga-Yv-5gK">
             <objects>
-                <viewController storyboardIdentifier="InfoCardViewID" id="BiZ-yq-uFg" customClass="InfoCardViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InfoCardViewID" id="BiZ-yq-uFg" customClass="InfoCardViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xyE-v5-s93"/>
                         <viewControllerLayoutGuide type="bottom" id="eUg-qG-ruO"/>
@@ -48,13 +48,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why Does Popmetrics Need Access to Your Twitter Account? " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lc4-Z1-LD7">
-                                <rect key="frame" x="26" y="50" width="273" height="44"/>
+                                <rect key="frame" x="26" y="50" width="273" height="37.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPL-9b-33V">
-                                <rect key="frame" x="26" y="134" width="323" height="22"/>
+                                <rect key="frame" x="26" y="127.5" width="323" height="19"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -85,7 +85,7 @@
         <!--Animations View Controller-->
         <scene sceneID="f03-AO-R24">
             <objects>
-                <viewController storyboardIdentifier="AnimationsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VIo-qm-Iv1" customClass="AnimationsViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AnimationsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VIo-qm-Iv1" customClass="AnimationsViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EnM-eZ-MVP"/>
                         <viewControllerLayoutGuide type="bottom" id="OpP-Co-RZK"/>
@@ -147,7 +147,7 @@
         <!--Welcome Screen-->
         <scene sceneID="DNR-j6-5cu">
             <objects>
-                <viewController storyboardIdentifier="welcomeScreen" id="hIx-Ax-wyr" customClass="WelcomeScreen" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcomeScreen" id="hIx-Ax-wyr" customClass="WelcomeScreen" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EsR-ks-pK0"/>
                         <viewControllerLayoutGuide type="bottom" id="YAV-cn-XeS"/>
@@ -217,7 +217,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="R5K-Uc-bRm" kind="show" identifier="signUpSegue" id="dnE-vB-S3u"/>
+                                    <action selector="handlerDidPressNewButton:" destination="hIx-Ax-wyr" eventType="touchUpInside" id="LsC-E8-UTn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qa3-IW-mFg">
@@ -284,17 +284,18 @@
                         <outlet property="containerView" destination="9VB-op-QMX" id="N7v-I4-GGb"/>
                         <outlet property="topImageView" destination="l6w-5w-pub" id="Mao-sw-Zp6"/>
                         <outlet property="welcomeLabel" destination="KVM-q6-zEn" id="wOi-ss-ceH"/>
-                        <segue destination="MiY-R6-tTF" kind="show" identifier="signInSegue" id="i5F-er-2wK"/>
+                        <segue destination="6DC-o7-FRF" kind="show" identifier="signInSegue" id="Gs2-iL-90P"/>
+                        <segue destination="aVl-H2-zsb" kind="show" identifier="signUpSegue" id="EZs-u1-dmP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iso-Ek-4Lb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-736.79999999999995" y="-287.40629685157421"/>
+            <point key="canvasLocation" x="-1717" y="-288"/>
         </scene>
         <!--Sign Up Name View Controller-->
         <scene sceneID="6U1-Ox-GMD">
             <objects>
-                <viewController storyboardIdentifier="NameViewController" id="R5K-Uc-bRm" customClass="SignUpNameViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NameViewController" id="R5K-Uc-bRm" customClass="SignUpNameViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8NF-ub-7gH"/>
                         <viewControllerLayoutGuide type="bottom" id="3z0-4b-mJg"/>
@@ -387,12 +388,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jbQ-9V-g8u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1473" y="530"/>
+            <point key="canvasLocation" x="-1471" y="599"/>
         </scene>
         <!--Sign Up Website View Controller-->
         <scene sceneID="7bT-dL-X8h">
             <objects>
-                <viewController storyboardIdentifier="WebsiteViewController" id="yaC-VY-TgM" customClass="SignUpWebsiteViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebsiteViewController" id="yaC-VY-TgM" customClass="SignUpWebsiteViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bhC-hE-L6u"/>
                         <viewControllerLayoutGuide type="bottom" id="Y2R-kD-KPw"/>
@@ -492,7 +493,7 @@
         <!--Login View Controller-->
         <scene sceneID="hnh-0O-cBF">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="MiY-R6-tTF" customClass="LoginViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="MiY-R6-tTF" customClass="LoginViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xd9-rj-h4W"/>
                         <viewControllerLayoutGuide type="bottom" id="z44-sZ-bgM"/>
@@ -502,6 +503,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <navigationItem key="navigationItem" id="VSO-xO-4g8"/>
                     <connections>
                         <segue destination="f4T-wZ-eiA" kind="show" identifier="enterCode" id="XhG-mK-F6S"/>
                     </connections>
@@ -513,7 +515,7 @@
         <!--Code View Controller-->
         <scene sceneID="dZ6-a4-x7a">
             <objects>
-                <viewController id="f4T-wZ-eiA" customClass="CodeViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="f4T-wZ-eiA" customClass="CodeViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MTa-Mh-09U"/>
                         <viewControllerLayoutGuide type="bottom" id="yWg-pi-5ep"/>
@@ -623,7 +625,7 @@
         <!--Login Social View Controller-->
         <scene sceneID="5Pv-KD-9vS">
             <objects>
-                <viewController storyboardIdentifier="loginSocial" id="pdj-4u-tZY" customClass="LoginSocialViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginSocial" id="pdj-4u-tZY" customClass="LoginSocialViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pRx-gS-Gbm"/>
                         <viewControllerLayoutGuide type="bottom" id="meW-Na-Aoj"/>
@@ -670,7 +672,7 @@
                                     <action selector="handlerMaybeLater:" destination="pdj-4u-tZY" eventType="touchUpInside" id="fC4-u6-euc"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BgB-dZ-yuX" customClass="SocialMediaLoginButtonsView" customModule="Live" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BgB-dZ-yuX" customClass="SocialMediaLoginButtonsView" customModule="ipopmetrics" customModuleProvider="target">
                                 <rect key="frame" x="61" y="253.5" width="253" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -678,7 +680,7 @@
                                     <constraint firstAttribute="width" constant="253" id="oSu-w9-4rn"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CcY-Wr-MEd" customClass="SocialMediaLoginButtonsView" customModule="Live" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CcY-Wr-MEd" customClass="SocialMediaLoginButtonsView" customModule="ipopmetrics" customModuleProvider="target">
                                 <rect key="frame" x="61" y="375.5" width="253" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -686,7 +688,7 @@
                                     <constraint firstAttribute="width" constant="253" id="zax-QI-eYI"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ezY-NW-idg" customClass="SocialMediaLoginButtonsView" customModule="Live" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ezY-NW-idg" customClass="SocialMediaLoginButtonsView" customModule="ipopmetrics" customModuleProvider="target">
                                 <rect key="frame" x="61" y="314.5" width="253" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -745,7 +747,7 @@
         <!--Boarding Navigation Controller-->
         <scene sceneID="YdD-o5-g1o">
             <objects>
-                <navigationController storyboardIdentifier="BoardingNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6DC-o7-FRF" customClass="BoardingNavigationController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="BoardingNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6DC-o7-FRF" customClass="BoardingNavigationController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SrU-50-hHH">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -753,12 +755,30 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="hIx-Ax-wyr" kind="relationship" relationship="rootViewController" id="JgB-am-085"/>
+                        <segue destination="MiY-R6-tTF" kind="relationship" relationship="rootViewController" id="ZfL-3l-yWo"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ekk-ii-81Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1732" y="-287"/>
+            <point key="canvasLocation" x="-681" y="-369"/>
+        </scene>
+        <!--Boarding Navigation Controller-->
+        <scene sceneID="2oS-w4-H9Y">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aVl-H2-zsb" customClass="BoardingNavigationController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xyR-kk-nnY">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="R5K-Uc-bRm" kind="relationship" relationship="rootViewController" id="83P-jv-jJF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fn8-56-sse" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2321" y="529"/>
         </scene>
     </scenes>
     <resources>
@@ -767,6 +787,6 @@
         <image name="logoPop" width="636" height="139"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MRV-7E-Bgv"/>
+        <segue reference="ZfL-3l-yWo"/>
     </inferredMetricsTieBreakers>
 </document>
