@@ -54,6 +54,7 @@ class LoginViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+
         if self.phoneNumber != "" {
             
             self.textFieldDidBeginEditing(self.phoneView.numberTextField)
@@ -243,7 +244,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc internal func dismissView() {
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

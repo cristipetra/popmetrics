@@ -17,7 +17,8 @@ class SocialPostDetailsView: UIView {
     @IBOutlet weak var articleUrl: UILabel!
     @IBOutlet weak var socialBrand: UILabel!
     @IBOutlet weak var scheduleInfoLabel: UILabel!
-        
+    @IBOutlet weak var socialIcon: SocialIconView!
+    
     @IBOutlet weak var messageFacebook: UITextView!
     private var initMessageText = "Say something about this on Facebook…"
 
@@ -82,7 +83,6 @@ class SocialPostDetailsView: UIView {
     }
     
     internal func updateViewCalendar() {
-        
         if let imageUrl = calendarSocialPost.image {
             if imageUrl.isValidUrl() {
                 cardImage.af_setImage(withURL: URL(string: imageUrl)!)
@@ -99,6 +99,8 @@ class SocialPostDetailsView: UIView {
         } else if calendarSocialPost.type == "facebook" {
             updateFacebook()
         }
+        
+        socialIcon.socialType = calendarSocialPost.type
         
         if let title = calendarSocialPost.title {
             titleBlogLabel.text = "\"\(title)\""
@@ -133,6 +135,9 @@ class SocialPostDetailsView: UIView {
             messageFacebook.isScrollEnabled = false
             messageFacebook.delegate = self
         }
+        if socialBrand != nil {
+            socialBrand.text = UserStore.currentBrand?.facebookDetails?.name ?? "Business Name"
+        }
         
     }
     
@@ -141,6 +146,11 @@ class SocialPostDetailsView: UIView {
 
 extension SocialPostDetailsView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text = ""
+        if textView == messageFacebook {
+            if textView.text == initMessageText {
+                textView.text = ""
+                textView.textColor = PopmetricsColor.borderButton
+            }
+        }
     }
 }

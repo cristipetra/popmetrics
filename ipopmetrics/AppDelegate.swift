@@ -175,7 +175,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func getInitialViewController() -> UIViewController {
         if !isLoggedIn() {
             return AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier:
-                "BoardingNavigationController")
+                "welcomeScreen")
         }
         return AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC)
 

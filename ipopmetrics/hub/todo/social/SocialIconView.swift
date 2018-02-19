@@ -27,6 +27,9 @@ class SocialIconView: UIView {
     private var constraintHeight: NSLayoutConstraint!
     private var constraintWidth: NSLayoutConstraint!
     
+    private var heightIcon: CGFloat = 20
+    private var widthIcon: CGFloat = 20
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -51,9 +54,9 @@ class SocialIconView: UIView {
         socialIcon.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         socialIcon.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
-        constraintWidth = socialIcon.widthAnchor.constraint(equalToConstant: 20)
+        constraintWidth = socialIcon.widthAnchor.constraint(equalToConstant: widthIcon)
         constraintWidth.isActive = true
-        constraintHeight = socialIcon.heightAnchor.constraint(equalToConstant: 17)
+        constraintHeight = socialIcon.heightAnchor.constraint(equalToConstant: heightIcon)
         constraintHeight.isActive = true
     }
     
@@ -74,11 +77,15 @@ class SocialIconView: UIView {
         if constraintHeight == nil || constraintWidth == nil {  return }
         switch socialType! {
         case "twitter":
+            heightIcon = 20
             constraintHeight.constant = 20
-            constraintWidth.constant = 17
+            constraintWidth.constant = 20
+            widthIcon = 20
         case "facebook":
+            heightIcon = 20
             constraintHeight.constant = 20
-            constraintWidth.constant = 15
+            constraintWidth.constant = 18
+            widthIcon = 18
         default:
             break
         }
