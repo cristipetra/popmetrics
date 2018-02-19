@@ -82,7 +82,6 @@ class SocialPostDetailsView: UIView {
     }
     
     internal func updateViewCalendar() {
-        
         if let imageUrl = calendarSocialPost.image {
             if imageUrl.isValidUrl() {
                 cardImage.af_setImage(withURL: URL(string: imageUrl)!)
@@ -141,6 +140,11 @@ class SocialPostDetailsView: UIView {
 
 extension SocialPostDetailsView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text = ""
+        if textView == messageFacebook {
+            if textView.text == initMessageText {
+                textView.text = ""
+                textView.textColor = PopmetricsColor.borderButton
+            }
+        }
     }
 }
