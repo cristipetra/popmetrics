@@ -100,26 +100,15 @@ class SocialPostDetailsView: UIView {
         }
         
         articleUrl.text = calendarSocialPost.url
-        
-        if calendarSocialPost.type == "twitter" {
-            recommendedLabel.text = calendarSocialPost.text
-//            if let name = UserStore.currentBrand?.twitterDetails?.name {
-//                socialBrand.text =  "@\(name)"
-//            }
-            if let socialAccount = calendarSocialPost.socialAccount {
-                socialBrand.text = "\(socialAccount)"
-            }
-            if let message = calendarSocialPost.message {
-                recommendedLabel.text = message
-            }
-            
-        } else if calendarSocialPost.type == "facebook" {
-            if let socialAccount = calendarSocialPost.socialAccount {
-                socialBrand.text = socialAccount
-            }
-            if let message = calendarSocialPost.message {
-                recommendedLabel.text = message
-            }
+
+        if let socialAccount = calendarSocialPost.socialAccount {
+            socialBrand.text = "\(socialAccount)"
+        }
+        if let message = calendarSocialPost.message {
+            recommendedLabel.text = message
+        }
+
+        if calendarSocialPost.type == "facebook" {
             updateFacebook()
         }
         
