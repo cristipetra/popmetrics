@@ -173,6 +173,9 @@ class TodoSocialPost: Object, Mappable {
     @objc dynamic var type = ""
     @objc dynamic var status: String? = nil
     
+    @objc dynamic var socialAccount:String? = nil
+    @objc dynamic var message:String? = nil
+    
     @objc dynamic var articleCategory:String? = nil
     @objc dynamic var articleTitle:String? = nil
     
@@ -204,6 +207,9 @@ class TodoSocialPost: Object, Mappable {
         articleHashtags <- map["article_hashtags"]
         articleImage    <- map["article_image"]
         articleSummary  <- map["article_summary"]
+        
+        socialAccount   <- map["social_account"]
+        message         <- map["message"]
         
         createDate      <- (map["create_dt"], DateTransform())
         updateDate      <- (map["update_dt"], DateTransform())
