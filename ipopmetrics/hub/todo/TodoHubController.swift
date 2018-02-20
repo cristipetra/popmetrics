@@ -15,7 +15,7 @@ import DGElasticPullToRefresh
 import BubbleTransition
 import EZAlertController
 import ObjectMapper
-
+import EZLoadingActivity
 
 enum TodoSection: String {
     
@@ -585,14 +585,18 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
             pageIndex += 1
         }
         
-        //self.tableView.reloadData()
+        EZLoadingActivity.showLoadingSpinner(disableUI: true)
         self.tableView.beginUpdates()
         self.tableView.reloadSections([0], with: .automatic)
         self.tableView.endUpdates()
         self.tableView.layoutIfNeeded()
         
         self.tableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
-        
+        Timer.scheduledTimer(withTimeInterval: 0.4, repeats: false) { (timer) in
+            self.animateHeader(colapse: true)
+            EZLoadingActivity.hide()
+        }
+ 
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
