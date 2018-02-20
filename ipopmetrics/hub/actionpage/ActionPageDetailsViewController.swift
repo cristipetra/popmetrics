@@ -108,6 +108,7 @@ class ActionPageDetailsViewController: BaseViewController {
     }
     
     public func configure(_ todoCard: TodoCard, openedFrom: String) {
+        self.todoCard = todoCard
         displayActionButton()
         actionModel = ActionPageModel(todoCard: todoCard)
         
