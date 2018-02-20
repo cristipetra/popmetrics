@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         let config = Realm.Configuration(
-            schemaVersion: 2,
+            schemaVersion: 3,
             migrationBlock: { migration, oldSchemaVersion in
             },
             deleteRealmIfMigrationNeeded: true
@@ -175,7 +175,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func getInitialViewController() -> UIViewController {
         if !isLoggedIn() {
             return AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier:
-                "BoardingNavigationController")
+                "welcomeScreen")
         }
         return AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC)
 

@@ -66,7 +66,8 @@ class SignUpNameViewController: BaseViewController {
     }
     
     @objc internal func dismissView() {
-        self.navigationController?.popViewController(animated: true)
+        //self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func nameTextFieldChanged(_ sender: Any) {

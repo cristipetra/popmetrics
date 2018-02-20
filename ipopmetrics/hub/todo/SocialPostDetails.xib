@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -52,18 +51,9 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVz-eE-NFl">
                                                     <rect key="frame" x="15" y="20" width="34" height="34"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_twitter" translatesAutoresizingMaskIntoConstraints="NO" id="msp-s8-Vas">
-                                                            <rect key="frame" x="9" y="8.5" width="17" height="17"/>
-                                                        </imageView>
-                                                    </subviews>
                                                     <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstItem="msp-s8-Vas" firstAttribute="width" secondItem="UVz-eE-NFl" secondAttribute="width" multiplier="50%" id="0Wl-pL-vZl"/>
-                                                        <constraint firstItem="msp-s8-Vas" firstAttribute="centerY" secondItem="UVz-eE-NFl" secondAttribute="centerY" id="BKC-dC-9O5"/>
                                                         <constraint firstAttribute="height" constant="34" id="Juv-j2-azX"/>
-                                                        <constraint firstItem="msp-s8-Vas" firstAttribute="centerX" secondItem="UVz-eE-NFl" secondAttribute="centerX" id="QFV-NE-QLW"/>
-                                                        <constraint firstItem="msp-s8-Vas" firstAttribute="height" secondItem="UVz-eE-NFl" secondAttribute="height" multiplier="50%" id="riq-UD-Qg1"/>
                                                         <constraint firstAttribute="width" constant="34" id="wrT-BT-xMC"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -72,6 +62,14 @@
                                                             <real key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oVd-q8-iXe" customClass="SocialIconView" customModule="ipopmetrics" customModuleProvider="target">
+                                                    <rect key="frame" x="15" y="20" width="34" height="34"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="34" id="YFA-ff-kdm"/>
+                                                        <constraint firstAttribute="width" constant="34" id="b3N-z8-rFc"/>
+                                                    </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4IX-k1-ux1">
                                                     <rect key="frame" x="69" y="0.0" width="306" height="181.5"/>
@@ -120,8 +118,10 @@
                                                 <constraint firstItem="4IX-k1-ux1" firstAttribute="leading" secondItem="EQY-jh-wsA" secondAttribute="leading" constant="69" id="L5O-YP-OZA"/>
                                                 <constraint firstItem="7iU-Hc-ov9" firstAttribute="leading" secondItem="EQY-jh-wsA" secondAttribute="leading" constant="69" id="Ll8-y4-EhB"/>
                                                 <constraint firstAttribute="trailing" secondItem="4IX-k1-ux1" secondAttribute="trailing" id="Lq9-SZ-AB3"/>
+                                                <constraint firstItem="oVd-q8-iXe" firstAttribute="top" secondItem="EQY-jh-wsA" secondAttribute="top" constant="20" id="ffk-fS-cEg"/>
                                                 <constraint firstAttribute="bottom" secondItem="7iU-Hc-ov9" secondAttribute="bottom" constant="44" id="jHu-Bp-ZnT"/>
                                                 <constraint firstItem="UVz-eE-NFl" firstAttribute="top" secondItem="EQY-jh-wsA" secondAttribute="top" constant="20" id="oMP-bb-b9d"/>
+                                                <constraint firstItem="oVd-q8-iXe" firstAttribute="leading" secondItem="EQY-jh-wsA" secondAttribute="leading" constant="15" id="rNv-NT-q3P"/>
                                                 <constraint firstItem="4IX-k1-ux1" firstAttribute="top" secondItem="EQY-jh-wsA" secondAttribute="top" id="tCS-aa-aOh"/>
                                             </constraints>
                                         </view>
@@ -295,13 +295,13 @@ Companies like Google and Facebook aren’t just creating products anymore. They
                 <outlet property="recommendedLabel" destination="HyZ-ky-io0" id="d0N-Ne-epd"/>
                 <outlet property="scheduleInfoLabel" destination="oAu-hn-eIZ" id="bxC-k7-fLQ"/>
                 <outlet property="socialBrand" destination="hzG-ke-MJW" id="7hL-5V-Np5"/>
+                <outlet property="socialIcon" destination="oVd-q8-iXe" id="nJc-FE-woL"/>
                 <outlet property="titleBlogLabel" destination="VcT-Fi-aCc" id="WsX-bK-9H8"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="167.5"/>
         </view>
     </objects>
     <resources>
-        <image name="icon_twitter" width="47" height="38"/>
         <namedColor name="larry_david">
             <color red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
