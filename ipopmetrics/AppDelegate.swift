@@ -60,11 +60,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
+        let SCHEMA_VERSION = 4
         let config = Realm.Configuration(
-            schemaVersion: 3,
+            schemaVersion: UInt64(SCHEMA_VERSION),
             migrationBlock: { migration, oldSchemaVersion in
+                if oldSchemaVersion != SCHEMA_VERSION {
+                    SyncService.lastDate = Date(timeIntervalSince1970: 0)
+                    migration.deleteData(forType: TodoCard.className())
+                    migration.deleteData(forType: FeedCard.className())
+                    migration.deleteData(forType: CalendarCard.className())
+                    migration.deleteData(forType: StatsCard.className())
+                    migration.deleteData(forType: TodoSocialPost.className())
+                    migration.deleteData(forType: CalendarSocialPost.className())
+                }
             },
-            deleteRealmIfMigrationNeeded: true
+            deleteRealmIfMigrationNeeded: false
         )
         
         Realm.Configuration.defaultConfiguration = config
