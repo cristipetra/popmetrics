@@ -83,13 +83,11 @@ class TodoHubController: BaseViewController {
                           2: TodoSectionType.paidActions.rawValue]
     
     let store = TodoStore.getInstance()
-
-    var approveIndex = 3
+    
     var noItemsLoaded: [Int] = []
     let noItemsLoadedInitial = 6
     
     var pageIndex: Int = 1
-    
     
     var scrollToRow: IndexPath = IndexPath(row: 0, section: 0)
     
@@ -150,23 +148,6 @@ class TodoHubController: BaseViewController {
         
     }
     
-    func createItemsLocally() {
-        
-        try! store.realm.write {
-            var facebookPost = TodoSocialPost()
-            facebookPost.articleCategory = ""
-            facebookPost.type = "facebook"
-            facebookPost.postId = "fsdfas42we"
-            facebookPost.todoCard = store.getTodoCardWithName("social.control_articles")
-            
-            facebookPost.todoCardId  = store.getTodoCardWithName("social.control_articles")?.cardId!
-            
-            store.realm.add(facebookPost, update: true)
-            
-        }
-        
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         setUpNavigationBar()
     }
@@ -215,20 +196,6 @@ class TodoHubController: BaseViewController {
         
         let toDoHeaderCardNib = UINib(nibName: "CardHeaderCell", bundle: nil)
         tableView.register(toDoHeaderCardNib, forCellReuseIdentifier: "CardHeaderCell")
-        
-        let sectionHeaderNib = UINib(nibName: "CalendarHeader", bundle: nil)
-        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CalendarHeader")
-        
-//        tableView.register(TableFooterView.self, forHeaderFooterViewReuseIdentifier: "footerId")
-        
-        let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
-        tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
-        
-        let maximizedCell = UINib(nibName: "TodoCardMaximized", bundle: nil)
-        tableView.register(maximizedCell, forCellReuseIdentifier: "maxCellId")
-        
-        let todoHeader = UINib(nibName: "CardHeaderView", bundle: nil)
-        tableView.register(todoHeader, forHeaderFooterViewReuseIdentifier: "CardHeaderView")
         
         let emptyCard = UINib(nibName: "EmptyStateCard", bundle: nil)
         tableView.register(emptyCard, forCellReuseIdentifier: "EmptyStateCard")
@@ -323,11 +290,6 @@ class TodoHubController: BaseViewController {
         }
         
     }
-    
-    func checkApprovedAll() -> Bool {
-        isAllApproved = false
-        return isAllApproved
-    }
 
     @objc func handlerClickMenu() {
         let modalViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MENU_VC") as! MenuViewController
@@ -339,25 +301,11 @@ class TodoHubController: BaseViewController {
     
 }
 
-extension TodoHubController: UITableViewDelegate, UITableViewDataSource, ApproveDenySinglePostProtocol {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return self.indexToSection.count
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        let items = getVisibleItemsInSection(section)
-        
-        if section == 0 {
-            return getItemsToLoad(section, items: items)
-        }
-        
-        return items.count
-        
-    }
-    
-    
+//MARK: load more functionality
+extension TodoHubController {
+    /*
+     * Returns items that loads on a page
+     */
     func getItemsToLoad(_ section: Int, items: [Any]) -> Int {
         if section == 0 {
             if pageIndex * noItemsLoadedInitial > items.count {
@@ -372,6 +320,9 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         return 0
     }
     
+    /*
+     * return the item at a specific index
+     */
     func getPaginationItem(indexPath: IndexPath, items: [Any]) -> Any {
         let rowIdx = indexPath.row
         
@@ -379,7 +330,56 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         
         return items[positionInItems]
     }
+    
+    /*
+     * Increase page index or reset
+     */
+    func updateCurrentPageIndex() {
+        let items = getVisibleItemsInSection(0)
+        if pageIndex * noItemsLoadedInitial >= items.count {
+            pageIndex = 1
+        } else {
+            pageIndex += 1
+        }
+    }
+    
+    @objc func loadNextPage(_ btn: Any) {
+        updateCurrentPageIndex()
+        
+        EZLoadingActivity.showLoadingSpinner(disableUI: true)
+        self.tableView.beginUpdates()
+        self.tableView.reloadSections([0], with: .automatic)
+        self.tableView.endUpdates()
+        self.tableView.layoutIfNeeded()
+        
+        self.tableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+        Timer.scheduledTimer(withTimeInterval: 0.4, repeats: false) { (timer) in
+            self.animateHeader(colapse: true)
+            EZLoadingActivity.hide()
+        }
+        
+    }
+    
+}
 
+extension TodoHubController: UITableViewDelegate, UITableViewDataSource, ApproveDenySinglePostProtocol {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.indexToSection.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        let items = getVisibleItemsInSection(section)
+        
+        // section 0 has load more functionality
+        if section == 0 {
+            return getItemsToLoad(section, items: items)
+        }
+        
+        return items.count
+        
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionIdx = indexPath.section
@@ -577,28 +577,6 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         return loadMoreView
     }
     
-    @objc func loadNextPage(_ btn: Any) {
-        let items = getVisibleItemsInSection(0)
-        if pageIndex * noItemsLoadedInitial >= items.count {
-            pageIndex = 1
-        } else {
-            pageIndex += 1
-        }
-        
-        EZLoadingActivity.showLoadingSpinner(disableUI: true)
-        self.tableView.beginUpdates()
-        self.tableView.reloadSections([0], with: .automatic)
-        self.tableView.endUpdates()
-        self.tableView.layoutIfNeeded()
-        
-        self.tableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
-        Timer.scheduledTimer(withTimeInterval: 0.4, repeats: false) { (timer) in
-            self.animateHeader(colapse: true)
-            EZLoadingActivity.hide()
-        }
- 
-    }
-    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if section == 0 {let items = getVisibleItemsInSection(0)
             if items.count == 1 {
@@ -620,31 +598,6 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
             animations: { self.tableView.reloadData()
         })
     }
-    
-    
-//    func noItemsLoaded(_ section: Int) -> Int {
-//        if( noItemsLoaded.isEmpty || noItemsLoaded.count <= section) {
-//            noItemsLoaded.append(noItemsLoadedInitial)
-//        }
-//        return noItemsLoaded[section]
-//    }
-//
-//    func changeNoItemsLoaded(_ section: Int, value: Int) {
-//        if( noItemsLoaded.isEmpty ) {
-//            noItemsLoaded[section] = noItemsLoadedInitial
-//        }
-//        noItemsLoaded[section] += value
-//    }
-    
-    
-//    func itemsToLoad(section: Int) -> Int {
-//        if (store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count > noItemsLoaded(section)) {
-//            return noItemsLoaded(section)
-//        } else {
-//            return store.getTodoSocialPostsForCard(store.getTodoCards()[section]).count
-//        }
-//        return noItemsLoadedInitial
-//    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
@@ -767,6 +720,7 @@ extension TodoHubController {
     
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
         //print(store.getTodoCards())
+        pageIndex = 1
         self.tableView.reloadData()
         updateCountsTopView()
     }
