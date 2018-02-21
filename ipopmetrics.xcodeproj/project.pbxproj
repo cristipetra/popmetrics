@@ -19,6 +19,7 @@
 		0813A0571FC2F102003E6478 /* SettingsSocialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0813A0561FC2F102003E6478 /* SettingsSocialView.xib */; };
 		0813A0591FC2F1C4003E6478 /* SettingsSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0813A0581FC2F1C4003E6478 /* SettingsSocialViewController.swift */; };
 		081B924A1FCEF205006D3BAB /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081B92491FCEF205006D3BAB /* StringExtensions.swift */; };
+		0836126C203DA0CF00C040A1 /* ConnectSettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0836126B203DA0CF00C040A1 /* ConnectSettingsButton.swift */; };
 		083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083938FE1F63C334007DDA37 /* MainTabInfo.swift */; };
 		0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */; };
 		0848280F1F39F9200054B04C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848280E1F39F9200054B04C /* HeaderView.swift */; };
@@ -264,6 +265,7 @@
 		0813A0561FC2F102003E6478 /* SettingsSocialView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsSocialView.xib; sourceTree = "<group>"; };
 		0813A0581FC2F1C4003E6478 /* SettingsSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSocialViewController.swift; sourceTree = "<group>"; };
 		081B92491FCEF205006D3BAB /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		0836126B203DA0CF00C040A1 /* ConnectSettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectSettingsButton.swift; sourceTree = "<group>"; };
 		083938FE1F63C334007DDA37 /* MainTabInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabInfo.swift; sourceTree = "<group>"; };
 		0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellTransition.swift; sourceTree = "<group>"; };
 		0848280E1F39F9200054B04C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -634,6 +636,7 @@
 				08B4EBAE1FC56ACE00BFC5A1 /* TwoImagesButton.swift */,
 				08CBB0051FD96AEA0042EE9C /* ActionButton.swift */,
 				08CCFFE71FDD977700755295 /* ActionTodoButton.swift */,
+				0836126B203DA0CF00C040A1 /* ConnectSettingsButton.swift */,
 			);
 			path = buttons;
 			sourceTree = "<group>";
@@ -1314,7 +1317,10 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Intercom.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IntercomTranslations.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1437,6 +1443,7 @@
 				08B4EBB11FC56ACE00BFC5A1 /* BaseTableViewController.swift in Sources */,
 				08B4EBB51FC56ACE00BFC5A1 /* UIColorExtensions.swift in Sources */,
 				08D1BC391F1E3D6200D377B2 /* LDSplashView.swift in Sources */,
+				0836126C203DA0CF00C040A1 /* ConnectSettingsButton.swift in Sources */,
 				116E339E203461E100D2BCA9 /* SignUpNameViewController.swift in Sources */,
 				0854AF331F3F2661007B60F9 /* CalendarCardSimpleViewCell.swift in Sources */,
 				11DD967A1FC4FA5400386F1E /* UsersApi.swift in Sources */,
