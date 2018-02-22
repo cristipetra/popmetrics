@@ -14,21 +14,33 @@ class SettingsTwitterViewController: UITableViewController {
     @IBOutlet weak var tracker: UILabel!
     
     internal var currentBrand: Brand?
+    private var requiredActionHandler: RequiredActionHandler = RequiredActionHandler()
+    
     @IBOutlet weak var btnConnect: ConnectSettingsButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBar()
+        self.tableView.separatorColor = UIColor.feedBackgroundColor()
         
         updateView()
-        btnConnect.typeButton = .disconnect
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(handlerTwitterConnected), name: Notification.Popmetrics.RemoteMessage, object: nil)
     }
     
     internal func updateView() {
         name.text = currentBrand?.twitterDetails?.screenName ?? "N/A"
         tracker.text = currentBrand?.twitterDetails?.name ?? "N/A"
+        
+        if isTwitterConnected() {
+            btnConnect.typeButton = .disconnect
+        } else {
+            btnConnect.typeButton = .connect
+        }
     }
     
     func setupNavigationBar() {
@@ -48,8 +60,54 @@ class SettingsTwitterViewController: UITableViewController {
         
     }
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView: SettingsHeaderView = SettingsHeaderView()
+        headerView.changeTitle("ACCOUNT DETAILS")
+        return headerView
+    }
+    
+    private func isTwitterConnected() -> Bool {
+        if currentBrand?.twitterDetails != nil {
+            return true
+        }
+        return false
+    }
+    
+    private func connectSocial() {
+        requiredActionHandler.connectTwitter(nil)
+    }
+    
+    private func disconnectSocial() {
+    }
+    
     @objc func handlerClickBack() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func handlerTwitterConnected() {
+        fetchBrandDetails()
+    }
+    
+    func fetchBrandDetails() {
+        if !SyncService.getInstance().reachability.isReachable {
+            return
+        }
+        
+        let currentBrandId = UserStore.currentBrandId
+        UsersApi().getBrandDetails(currentBrandId) { brand in
+            UserStore.currentBrand = brand!
+            self.currentBrand = brand!
+            self.updateView()
+        }
+        
+    }
+    
+    @IBAction func handlerChangeConnectOrDisconnect(_ sender: Any) {
+        if isTwitterConnected() {
+            disconnectSocial()
+        } else {
+            connectSocial()
+        }
     }
     
 

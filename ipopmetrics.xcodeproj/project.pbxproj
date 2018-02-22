@@ -59,6 +59,7 @@
 		086EDE431FC8449A002F4140 /* ImpactScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE421FC8449A002F4140 /* ImpactScoreView.swift */; };
 		086EDE461FC8651B002F4140 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE451FC8651B002F4140 /* UIViewExtensions.swift */; };
 		086F34742034986700F7043B /* SettingsBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F34732034986700F7043B /* SettingsBaseTableViewController.swift */; };
+		08732B35203EE5A900EF4C51 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08732B34203EE5A900EF4C51 /* SettingsHeaderView.swift */; };
 		08755F461FCC11E600A8CF13 /* SocialPostDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */; };
 		08755F4C1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */; };
 		088674111FE28506008DB87E /* LoginSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088674101FE28506008DB87E /* LoginSocialViewController.swift */; };
@@ -305,6 +306,7 @@
 		086EDE421FC8449A002F4140 /* ImpactScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactScoreView.swift; sourceTree = "<group>"; };
 		086EDE451FC8651B002F4140 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		086F34732034986700F7043B /* SettingsBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBaseTableViewController.swift; sourceTree = "<group>"; };
+		08732B34203EE5A900EF4C51 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SocialPostDetails.xib; sourceTree = "<group>"; };
 		08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPostDetailsViewController.swift; sourceTree = "<group>"; };
 		0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -618,6 +620,7 @@
 			isa = PBXGroup;
 			children = (
 				08BC8F182035F247008CC969 /* SettingsTwitterViewController.swift */,
+				08732B34203EE5A900EF4C51 /* SettingsHeaderView.swift */,
 			);
 			path = twitter;
 			sourceTree = "<group>";
@@ -1505,6 +1508,7 @@
 				11E5A8981FDF01AE0085BDEE /* StatsMetricPageContentViewController.swift in Sources */,
 				08BD58001F7A2DCC00FFDCFD /* ActionPageView.swift in Sources */,
 				11DD96761FC4FA5400386F1E /* CalendarApi.swift in Sources */,
+				08732B35203EE5A900EF4C51 /* SettingsHeaderView.swift in Sources */,
 				0848280F1F39F9200054B04C /* HeaderView.swift in Sources */,
 				08B968AA1FBB141400482CDE /* ChangeBrandViewController.swift in Sources */,
 				08078F391FBDA92600A4399D /* Alert.swift in Sources */,
