@@ -211,6 +211,12 @@ class StaticSettingsViewController: BaseTableViewController {
         self.navigationController?.pushViewController(facebookVC, animated: true)
     }
     
+    private func displayFacebookSecond() {
+        let facebookVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "SettingsFacebookViewController") as! SettingsFacebookViewController
+        facebookVC.currentBrand = self.currentBrand
+        self.navigationController?.pushViewController(facebookVC, animated: true)
+    }
+    
     private func displayGASettings() {
         let gaVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "settingsGA") as! SettingsGAViewController
         gaVC.currentBrand = self.currentBrand

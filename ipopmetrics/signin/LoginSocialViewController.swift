@@ -41,11 +41,19 @@ class LoginSocialViewController: BaseViewController {
         setNavigationBar()
      
         addSpace()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let nc = NotificationCenter.default
-        nc.addObserver(forName:Notification.Popmetrics.RequiredActionComplete, object:nil, queue:nil, using:catchRequiredActionCompleteNotification)
-        
-        nc.addObserver(self, selector:#selector(self.catchRequiredActionCompleteNotification), name: Notification.Popmetrics.RequiredActionComplete, object:nil)
-        
+        nc.addObserver(self, selector:#selector(self.handlerNotification), name: Notification.Popmetrics.RemoteMessage, object:nil)
+    }
+    
+    @objc private func handlerNotification(notification: Notification) {
+        //needs to wait to be completed displaying banner message
+        Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { (timer) in
+            self.nextPage()
+        }
         
     }
     

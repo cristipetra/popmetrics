@@ -159,6 +159,7 @@
 		08C5CF361FC5EA9C001851A5 /* ActionPageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */; };
 		08C7A438201B4D0500714360 /* SocialIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7A437201B4D0500714360 /* SocialIconView.swift */; };
 		08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */; };
+		08C873AF203F1A15000C02EC /* SettingsFacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C873AE203F1A15000C02EC /* SettingsFacebookViewController.swift */; };
 		08CA5D5820247C1000ED78C3 /* NotificationsManuallyEnableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA5D5720247C1000ED78C3 /* NotificationsManuallyEnableViewController.swift */; };
 		08CBB0061FD96AEA0042EE9C /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CBB0051FD96AEA0042EE9C /* ActionButton.swift */; };
 		08CC6EC01FBC7F9C00A6521E /* SettingsLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */; };
@@ -406,6 +407,7 @@
 		08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPageDetailsViewController.swift; sourceTree = "<group>"; };
 		08C7A437201B4D0500714360 /* SocialIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialIconView.swift; sourceTree = "<group>"; };
 		08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
+		08C873AE203F1A15000C02EC /* SettingsFacebookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFacebookViewController.swift; sourceTree = "<group>"; };
 		08CA5D5720247C1000ED78C3 /* NotificationsManuallyEnableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManuallyEnableViewController.swift; sourceTree = "<group>"; };
 		08CBB0051FD96AEA0042EE9C /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLogoViewController.swift; sourceTree = "<group>"; };
@@ -623,6 +625,14 @@
 				08732B34203EE5A900EF4C51 /* SettingsHeaderView.swift */,
 			);
 			path = twitter;
+			sourceTree = "<group>";
+		};
+		08C873AD203F19EC000C02EC /* facebook */ = {
+			isa = PBXGroup;
+			children = (
+				08C873AE203F1A15000C02EC /* SettingsFacebookViewController.swift */,
+			);
+			path = facebook;
 			sourceTree = "<group>";
 		};
 		08CA5D5620247AD300ED78C3 /* notifications */ = {
@@ -920,6 +930,7 @@
 		11DD96631FC4F32800386F1E /* usersettings */ = {
 			isa = PBXGroup;
 			children = (
+				08C873AD203F19EC000C02EC /* facebook */,
 				08BC8F172035F1B4008CC969 /* twitter */,
 				085ECE842020C796003A2B0A /* contactDetails */,
 				113976A81E97C71300B535DF /* AccountViewController.swift */,
@@ -1456,6 +1467,7 @@
 				116E339620345F3A00D2BCA9 /* MessagesBadgeView.swift in Sources */,
 				08B4EBB61FC56ACE00BFC5A1 /* AppStoryboard.swift in Sources */,
 				1128B3F91ECF256600BDA58C /* SimpleButtonStateChangeValue.swift in Sources */,
+				08C873AF203F1A15000C02EC /* SettingsFacebookViewController.swift in Sources */,
 				11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */,
 				08CE428F1FD041AE00FF8C80 /* EmailMessages.swift in Sources */,
 				116E339F203461E100D2BCA9 /* SignUpWebsiteViewController.swift in Sources */,
