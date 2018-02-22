@@ -14,6 +14,7 @@ class SettingsTwitterViewController: UITableViewController {
     @IBOutlet weak var tracker: UILabel!
     
     internal var currentBrand: Brand?
+    @IBOutlet weak var btnConnect: ConnectSettingsButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,8 @@ class SettingsTwitterViewController: UITableViewController {
         setupNavigationBar()
         
         updateView()
+        btnConnect.typeButton = .disconnect
+        
     }
     
     internal func updateView() {
