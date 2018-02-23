@@ -99,7 +99,7 @@ class ActionPageDetailsViewController: BaseViewController {
         persistentFooter.leftBtn.isHidden = true
         
         //add action from home feed
-        if todoCard.name == "social.automated_posts" {
+        if todoCard.name == "social.automated_twitter_posts" || todoCard.name == "social.automated_facebook_posts" {
             persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToPaidActions(_:)), for: .touchUpInside)
         } else {
             persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToMyActions(_:)), for: .touchUpInside)
