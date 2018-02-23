@@ -34,6 +34,7 @@ PODS:
   - ElasticTransition (3.1.1):
     - MotionAnimation (~> 0.1.2)
   - EZAlertController (3.2)
+  - EZLoadingActivity (1.01)
   - Fabric (1.7.3)
   - FacebookCore (0.3.0):
     - Bolts (~> 1.8)
@@ -135,6 +136,7 @@ DEPENDENCIES:
   - DGElasticPullToRefresh (from `https://github.com/cristipetra/DGElasticPullToRefresh.git`)
   - ElasticTransition (from `https://github.com/cristipetra/ElasticTransition`)
   - EZAlertController
+  - EZLoadingActivity (from `https://github.com/cristipetra/EZLoadingActivity`)
   - Fabric
   - FacebookCore
   - FacebookLogin
@@ -173,6 +175,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/cristipetra/DGElasticPullToRefresh.git
   ElasticTransition:
     :git: https://github.com/cristipetra/ElasticTransition
+  EZLoadingActivity:
+    :git: https://github.com/cristipetra/EZLoadingActivity
   MJCalendar:
     :git: https://github.com/cristipetra/MJCalendar
   MotionAnimation:
@@ -190,6 +194,9 @@ CHECKOUT OPTIONS:
   ElasticTransition:
     :commit: 477d767987b8bdd50f9e1f977b33f8c3465b601d
     :git: https://github.com/cristipetra/ElasticTransition
+  EZLoadingActivity:
+    :commit: ddd8a780b8530378ca003ca517b10dd60c20036e
+    :git: https://github.com/cristipetra/EZLoadingActivity
   MJCalendar:
     :commit: 033d7972b10c492575338f22e753cd1863279968
     :git: https://github.com/cristipetra/MJCalendar
@@ -212,6 +219,7 @@ SPEC CHECKSUMS:
   DGElasticPullToRefresh: 28f11a6026302a90f8ffebbc6e24748e584dddd3
   ElasticTransition: 72405dae44324293360776bb7f6579cdab428dd4
   EZAlertController: 633be01320bed47720be54054df47667d61c2481
+  EZLoadingActivity: edd7e387e5197b116ce2cccb3fd747ababc2a510
   Fabric: bb495bb9a7a7677c6d03a1f8b83d95bc49b47e41
   FacebookCore: 3ffa190a3f1f96cec0e44d3fc221bc322c595ffa
   FacebookLogin: 0af839ea858faef99550d16596b87b4a8e8906e6
@@ -256,6 +264,6 @@ SPEC CHECKSUMS:
   UIView+JMFrame: a907974c9d34b1c300aef85ae2a1a5af746f2b8a
   URLNavigator: af5582fbbb3586c958be16835d799bfdb23a4793
 
-PODFILE CHECKSUM: b1c4f997ee91d61940d840a47b195be724272da9
+PODFILE CHECKSUM: 3fca4c1958e58524482fa17cf15302d3aab99a38
 
 COCOAPODS: 1.4.0
