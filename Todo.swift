@@ -58,6 +58,7 @@ class TodoCard:  Object, Mappable {
     
     @objc dynamic var iceAimee: String? = nil
     
+    // FIXME: remove this property; it's not used anymore
     @objc dynamic var impactPercentage: Int = 0
     @objc dynamic var impactSplit: String? = nil // "[{'label': "Website Traffice", 'percentage': 10}]"
     
