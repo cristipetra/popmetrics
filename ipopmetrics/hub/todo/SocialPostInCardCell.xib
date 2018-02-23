@@ -20,34 +20,35 @@
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="313" id="m21-rv-Keq" customClass="SocialPostInCardCell" customModule="ipopmetrics" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="445" height="313"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m21-rv-Keq" id="vAo-pd-hv3">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m21-rv-Keq" id="vAo-pd-hv3">
                 <rect key="frame" x="0.0" y="0.0" width="445" height="312.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zel-Qq-zWo">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zel-Qq-zWo">
                         <rect key="frame" x="8" y="8" width="429" height="304.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WiB-fl-y5c">
-                        <rect key="frame" x="10" y="0.0" width="425" height="304.5"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WiB-fl-y5c">
+                        <rect key="frame" x="10" y="0.0" width="425" height="259.5"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="byr-Sp-pYY" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byr-Sp-pYY" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="425" height="29.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="yyp-16-1yb"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bH9-Gn-2wp">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bH9-Gn-2wp">
                                 <rect key="frame" x="0.0" y="29.5" width="425" height="65"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WUH-7z-lCh">
-                                        <rect key="frame" x="0.0" y="0.0" width="425" height="225"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WUH-7z-lCh">
+                                        <rect key="frame" x="0.0" y="0.0" width="425" height="180"/>
                                         <color key="backgroundColor" name="larry_david"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uUR-ad-KNx" customClass="SocialIconView" customModule="ipopmetrics" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uUR-ad-KNx" customClass="SocialIconView" customModule="ipopmetrics" customModuleProvider="target">
                                         <rect key="frame" x="15" y="15.5" width="34" height="34"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -66,10 +67,10 @@
                                     <constraint firstAttribute="height" constant="65" id="wdW-iS-mzq"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i2q-jy-1DB">
-                                <rect key="frame" x="0.0" y="94.5" width="425" height="130"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i2q-jy-1DB">
+                                <rect key="frame" x="0.0" y="94.5" width="425" height="85"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRH-G2-gC6">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRH-G2-gC6">
                                         <rect key="frame" x="15" y="5" width="395" height="57.5"/>
                                         <string key="text">OG tags it knows what photo is your logo, what photo is of your business and what your business. #Popmetrics #GrowYourBusiness Alch.my/27yd73</string>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
@@ -85,10 +86,10 @@
                                     <constraint firstAttribute="height" constant="85" id="gDG-Dm-TZB"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TT8-9v-gTd">
-                                <rect key="frame" x="0.0" y="224.5" width="425" height="60"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TT8-9v-gTd">
+                                <rect key="frame" x="0.0" y="179.5" width="425" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhb-xh-eNa">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhb-xh-eNa">
                                         <rect key="frame" x="15" y="21" width="77" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="77" id="CUA-sz-lLD"/>
@@ -99,7 +100,7 @@
                                             <color key="titleColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Vw-Ix-dg1" customClass="ActionTodoButton" customModule="ipopmetrics" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Vw-Ix-dg1" customClass="ActionTodoButton" customModule="ipopmetrics" customModuleProvider="target">
                                         <rect key="frame" x="369" y="12" width="46" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="imL-Fx-jFF"/>
@@ -116,10 +117,10 @@
                                     <constraint firstItem="yhb-xh-eNa" firstAttribute="centerY" secondItem="TT8-9v-gTd" secondAttribute="centerY" id="iJG-ZD-sUi"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qrH-lG-Erw">
-                                <rect key="frame" x="0.0" y="284.5" width="425" height="20"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qrH-lG-Erw">
+                                <rect key="frame" x="0.0" y="239.5" width="425" height="20"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2VX-zs-rFl">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2VX-zs-rFl">
                                         <rect key="frame" x="0.0" y="-10" width="425" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
@@ -133,8 +134,8 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="vE5-FG-InZ"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NHg-M8-4Nf">
-                                <rect key="frame" x="0.0" y="304.5" width="425" height="0.0"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHg-M8-4Nf">
+                                <rect key="frame" x="0.0" y="259.5" width="425" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="ssU-FH-Pox"/>
                                 </constraints>
@@ -149,10 +150,11 @@
                     </stackView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="WiB-fl-y5c" secondAttribute="bottom" priority="250" id="DWb-dm-N6v"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Zel-Qq-zWo" secondAttribute="trailing" id="N1c-vC-hBY"/>
                     <constraint firstAttribute="trailing" secondItem="WiB-fl-y5c" secondAttribute="trailing" constant="10" id="Udl-AH-2Ft"/>
                     <constraint firstItem="Zel-Qq-zWo" firstAttribute="top" secondItem="vAo-pd-hv3" secondAttribute="topMargin" id="e0A-f0-Mei"/>
-                    <constraint firstItem="WiB-fl-y5c" firstAttribute="height" secondItem="vAo-pd-hv3" secondAttribute="height" id="elV-Xf-agx"/>
+                    <constraint firstAttribute="bottom" secondItem="Zel-Qq-zWo" secondAttribute="bottom" id="e6a-Dr-LT6"/>
                     <constraint firstItem="Zel-Qq-zWo" firstAttribute="leading" secondItem="vAo-pd-hv3" secondAttribute="leadingMargin" id="hxY-NV-1mE"/>
                     <constraint firstItem="WiB-fl-y5c" firstAttribute="top" secondItem="vAo-pd-hv3" secondAttribute="top" id="x8j-Cp-OK0"/>
                     <constraint firstItem="WiB-fl-y5c" firstAttribute="leading" secondItem="vAo-pd-hv3" secondAttribute="leading" constant="10" id="xau-sU-I9U"/>

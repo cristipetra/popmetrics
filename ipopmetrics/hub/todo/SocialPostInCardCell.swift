@@ -124,13 +124,7 @@ class SocialPostInCardCell: UITableViewCell {
         }
         
         setupStatusCardView()
-/*
-        //aproveButton.animateButton(decreaseWidth: 120, increaseWidth: 10, imgLeftSpace: 10)
-        //aproveButton.removeTarget(self, action: #selector(animationHandler), for: .touchUpInside)
-        let todoHubController = self.parentViewController as! TodoHubController
-//        TodoHubController.approvePostFromSocial(todoItem)
-        actionSocialDelegate.approvePostFromSocial!(post: todoItem, indexPath: indexPath)
-*/
+
     }
     
     func displayFacebook() {
@@ -200,7 +194,7 @@ class SocialPostInCardCell: UITableViewCell {
     
     func sideShadow(view: UIView) {
         view.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor
-        view.layer.shadowOpacity = 0.5;
+        view.layer.shadowOpacity = 0.5
         view.layer.shadowRadius = 2
         view.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         

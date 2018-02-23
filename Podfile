@@ -58,5 +58,6 @@ target 'ipopmetrics' do
   
   pod 'GTProgressBar'
   pod 'LinkedinSwift'
+  pod 'EZLoadingActivity', :git=>’https://github.com/cristipetra/EZLoadingActivity’
 
 end
