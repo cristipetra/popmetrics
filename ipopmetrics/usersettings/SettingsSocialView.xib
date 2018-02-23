@@ -84,7 +84,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79j-ah-1wB">
-                    <rect key="frame" x="20" y="318" width="329" height="133.5"/>
+                    <rect key="frame" x="20" y="274" width="329" height="133.5"/>
                     <string key="text">Popmetrics uses your social account to track important information such as website traffic and brand presence online. With this information we can make insights to grow your business and send you informative reports on how your business is performing.
 </string>
                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
@@ -102,7 +102,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OVq-WD-V9Z">
-                    <rect key="frame" x="0.0" y="208" width="375" height="88"/>
+                    <rect key="frame" x="0.0" y="208" width="375" height="44"/>
                     <subviews>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mDU-pw-Xgp">
                             <rect key="frame" x="25" y="43" width="350" height="1"/>
@@ -121,33 +121,16 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qKg-Vq-4Pu">
-                            <rect key="frame" x="25" y="55" width="207" height="22"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="22" id="UBz-Ho-X0Q"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                            <state key="normal" title="Disconnect Social Account">
-                                <color key="titleColor" red="0.94117647058823528" green="0.36078431372549019" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="handlerDisconectSocial:" destination="-1" eventType="touchUpInside" id="Tba-kR-qM7"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="mDU-pw-Xgp" firstAttribute="top" secondItem="ovt-Yc-mss" secondAttribute="bottom" constant="10" id="8pt-rR-VF8"/>
                         <constraint firstAttribute="trailing" secondItem="mDU-pw-Xgp" secondAttribute="trailing" id="JYp-hI-aWz"/>
-                        <constraint firstAttribute="bottom" secondItem="qKg-Vq-4Pu" secondAttribute="bottom" constant="11" id="MkW-ac-57M"/>
                         <constraint firstItem="mDU-pw-Xgp" firstAttribute="leading" secondItem="OVq-WD-V9Z" secondAttribute="leading" constant="25" id="TWX-fA-pAj"/>
                         <constraint firstItem="ovt-Yc-mss" firstAttribute="leading" secondItem="OVq-WD-V9Z" secondAttribute="leading" constant="25" id="Z6Y-sY-aFQ"/>
-                        <constraint firstItem="qKg-Vq-4Pu" firstAttribute="top" secondItem="mDU-pw-Xgp" secondAttribute="bottom" constant="11" id="bdG-eS-4QH"/>
                         <constraint firstAttribute="trailing" secondItem="ovt-Yc-mss" secondAttribute="trailing" constant="10" id="bwd-1K-rLD"/>
                         <constraint firstItem="ovt-Yc-mss" firstAttribute="top" secondItem="OVq-WD-V9Z" secondAttribute="top" constant="11" id="cJk-2m-zpa"/>
-                        <constraint firstItem="mDU-pw-Xgp" firstAttribute="centerY" secondItem="OVq-WD-V9Z" secondAttribute="centerY" id="cMF-ce-hMX"/>
-                        <constraint firstItem="qKg-Vq-4Pu" firstAttribute="leading" secondItem="OVq-WD-V9Z" secondAttribute="leading" constant="25" id="mTg-Lz-ZSo"/>
-                        <constraint firstAttribute="height" constant="88" id="mpy-FK-BIW"/>
+                        <constraint firstAttribute="height" constant="44" id="mpy-FK-BIW"/>
                     </constraints>
                 </view>
             </subviews>
