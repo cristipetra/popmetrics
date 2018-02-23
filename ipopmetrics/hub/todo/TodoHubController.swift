@@ -581,14 +581,14 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         if section == 0 {let items = getVisibleItemsInSection(0)
             if items.count == 1 {
                 if items[0] is TodoCard {
-                    return 1
+                    return 0.1
                 } else {
                     return 49
                 }
             }
             return 49
         }
-        return 1
+        return 0.1
     }
     
     func reloadDataTable() {
