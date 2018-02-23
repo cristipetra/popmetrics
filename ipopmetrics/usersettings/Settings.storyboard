@@ -1334,14 +1334,17 @@ You can adjust your overlay to better match the look and feel of your brand.
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QB5-ya-z76" customClass="ConnectSettingsButton" customModule="ipopmetrics" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="4" width="250" height="36"/>
+                                                    <rect key="frame" x="8" y="0.0" width="367" height="0.0"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="250" id="XCW-Rh-WoA"/>
+                                                        <constraint firstAttribute="height" id="IYw-4J-OUc"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <state key="normal" title="Disconnect Data Account">
                                                         <color key="titleColor" red="0.94117647059999998" green="0.36078431370000003" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="handlerChangeConnectOrDisconnect:" destination="IZp-s9-9JC" eventType="touchUpInside" id="0s2-Fg-IAx"/>
                                                     </connections>
@@ -1349,7 +1352,9 @@ You can adjust your overlay to better match the look and feel of your brand.
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="QB5-ya-z76" firstAttribute="leading" secondItem="HHE-MB-88j" secondAttribute="leadingMargin" id="0Sv-3f-fMh"/>
-                                                <constraint firstItem="QB5-ya-z76" firstAttribute="centerY" secondItem="HHE-MB-88j" secondAttribute="centerY" id="dAm-N1-MUq"/>
+                                                <constraint firstAttribute="trailing" secondItem="QB5-ya-z76" secondAttribute="trailing" id="DAO-WN-vZs"/>
+                                                <constraint firstAttribute="bottom" secondItem="QB5-ya-z76" secondAttribute="bottom" priority="250" id="Mjx-S9-11Q"/>
+                                                <constraint firstItem="QB5-ya-z76" firstAttribute="top" secondItem="HHE-MB-88j" secondAttribute="top" id="meU-JO-n2P"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1388,6 +1393,7 @@ You can adjust your overlay to better match the look and feel of your brand.
                     </tableView>
                     <connections>
                         <outlet property="btnConnect" destination="QB5-ya-z76" id="Nt8-Bg-gIw"/>
+                        <outlet property="constraintHeightBtnConnect" destination="IYw-4J-OUc" id="LKG-HJ-oTW"/>
                         <outlet property="name" destination="CQN-m1-lhm" id="OKR-1R-yYs"/>
                         <outlet property="tracker" destination="FBM-kw-jGj" id="QGQ-IO-WLa"/>
                     </connections>

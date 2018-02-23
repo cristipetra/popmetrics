@@ -12,6 +12,7 @@ class SettingsTwitterViewController: UITableViewController {
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var tracker: UILabel!
+    @IBOutlet weak var constraintHeightBtnConnect: NSLayoutConstraint!
     
     internal var currentBrand: Brand?
     private var requiredActionHandler: RequiredActionHandler = RequiredActionHandler()
@@ -36,11 +37,16 @@ class SettingsTwitterViewController: UITableViewController {
         name.text = currentBrand?.twitterDetails?.screenName ?? "N/A"
         tracker.text = currentBrand?.twitterDetails?.name ?? "N/A"
         
+        self.tableView.beginUpdates()
         if isTwitterConnected() {
             btnConnect.typeButton = .disconnect
+            constraintHeightBtnConnect.constant = 0
         } else {
             btnConnect.typeButton = .connect
+            constraintHeightBtnConnect.constant = 44
         }
+        self.tableView.endUpdates()
+
     }
     
     func setupNavigationBar() {
@@ -85,14 +91,12 @@ class SettingsTwitterViewController: UITableViewController {
     }
     
     @objc func handlerTwitterConnected() {
-        fetchBrandDetails()
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
+            self.fetchBrandDetails()
+        }
     }
     
     func fetchBrandDetails() {
-        if !SyncService.getInstance().reachability.isReachable {
-            return
-        }
-        
         let currentBrandId = UserStore.currentBrandId
         UsersApi().getBrandDetails(currentBrandId) { brand in
             UserStore.currentBrand = brand!
