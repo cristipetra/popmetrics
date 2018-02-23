@@ -90,8 +90,8 @@ class PaidActionCardCell: UITableViewCell {
             cardTitle.text = title
         }
         
-        let valueProgress = CGFloat(todoCard.impactPercentage) / CGFloat(100)
-        impactLabel.text = "+\(todoCard.impactPercentage)"
+        let valueProgress = CGFloat(todoCard.iceImpactPercentage) / CGFloat(100)
+        impactLabel.text = "+\(todoCard.iceImpactPercentage)"
         progressImpact.animateTo(progress: valueProgress)
         
         costLabel.text = todoCard.iceCostLabel

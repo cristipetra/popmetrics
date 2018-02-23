@@ -130,9 +130,6 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                 ]
                 let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
                 
-                NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
-                                                userInfo: pnotification.toJSON())
-                
                 let params = [
                     "task_name": "twitter.connect_with_brand",
                     "user_id":UserStore.getInstance().getLocalUserAccount().id,
@@ -148,8 +145,8 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                         NotificationCenter.default.post(name:Notification.Popmetrics.UiRefreshRequired, object:nil,
                                                         userInfo: nil )
                     }
-                    NotificationCenter.default.post(name:Notification.Popmetrics.RequiredActionComplete, object:nil,
-                                                    userInfo: nil )
+                    NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
+                                                    userInfo: pnotification.toJSON())
                 }
                 
             } else {
@@ -301,9 +298,9 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     }
     
     func connectFacebookPage(accessToken: String, facebookPageId: String){
-        let notificationObj = ["alert":"Connecting to Facebook.",
-                               "subtitle":"Your credentials will be validated while establishing the connection.",
-                               "type": "info",
+        let notificationObj = ["title": "Facebook successfully connected!",
+                               "subtitle":"Automated social posting now available.",
+                               "type": "success",
                                "sound":"default"
         ]
         let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!

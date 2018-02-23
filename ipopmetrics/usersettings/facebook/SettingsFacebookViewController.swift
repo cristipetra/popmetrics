@@ -1,15 +1,15 @@
 //
-//  SettingsTwitterViewController.swift
+//  SettingsFacebookViewController.swift
 //  ipopmetrics
 //
-//  Created by Cristian Petra on 15/02/2018.
+//  Created by Cristian Petra on 22/02/2018.
 //  Copyright © 2018 Popmetrics. All rights reserved.
 //
 
 import UIKit
 
-class SettingsTwitterViewController: UITableViewController {
-
+class SettingsFacebookViewController: UITableViewController {
+    
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var tracker: UILabel!
     
@@ -29,23 +29,24 @@ class SettingsTwitterViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(handlerTwitterConnected), name: Notification.Popmetrics.RemoteMessage, object: nil)
+        nc.addObserver(self, selector: #selector(handlerFacebookConnected), name: Notification.Popmetrics.RemoteMessage, object: nil)
     }
     
     internal func updateView() {
-        name.text = currentBrand?.twitterDetails?.screenName ?? "N/A"
-        tracker.text = currentBrand?.twitterDetails?.name ?? "N/A"
+        name.text = currentBrand?.facebookDetails?.screenName ?? "N/A"
+        tracker.text = currentBrand?.facebookDetails?.name ?? "N/A"
         
-        if isTwitterConnected() {
+        if isFacebookConnected() {
             btnConnect.typeButton = .disconnect
         } else {
             btnConnect.typeButton = .connect
         }
+    
     }
     
     func setupNavigationBar() {
         
-        let text = UIBarButtonItem(title: "TWITTER DETAILS", style: .plain, target: self, action: #selector(handlerClickBack))
+        let text = UIBarButtonItem(title: "FACEBOOK DETAILS", style: .plain, target: self, action: #selector(handlerClickBack))
         text.tintColor = PopmetricsColor.darkGrey
         let titleFont = UIFont(name: FontBook.extraBold, size: 17)
         text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
@@ -66,15 +67,15 @@ class SettingsTwitterViewController: UITableViewController {
         return headerView
     }
     
-    private func isTwitterConnected() -> Bool {
-        if currentBrand?.twitterDetails != nil {
+    private func isFacebookConnected() -> Bool {
+        if currentBrand?.facebookDetails != nil {
             return true
         }
         return false
     }
     
     private func connectSocial() {
-        requiredActionHandler.connectTwitter(nil)
+        requiredActionHandler.connectFacebook(viewController: self, item: nil)
     }
     
     private func disconnectSocial() {
@@ -84,31 +85,27 @@ class SettingsTwitterViewController: UITableViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc func handlerTwitterConnected() {
+    @objc func handlerFacebookConnected() {
         fetchBrandDetails()
     }
     
     func fetchBrandDetails() {
-        if !SyncService.getInstance().reachability.isReachable {
-            return
-        }
-        
         let currentBrandId = UserStore.currentBrandId
         UsersApi().getBrandDetails(currentBrandId) { brand in
             UserStore.currentBrand = brand!
             self.currentBrand = brand!
             self.updateView()
         }
-        
     }
     
     @IBAction func handlerChangeConnectOrDisconnect(_ sender: Any) {
-        if isTwitterConnected() {
+        if isFacebookConnected() {
             disconnectSocial()
         } else {
             connectSocial()
         }
     }
     
-
+    
 }
+

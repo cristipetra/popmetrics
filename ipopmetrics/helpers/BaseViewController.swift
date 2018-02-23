@@ -29,12 +29,14 @@ class BaseViewController: UIViewController {
         setupOfflineBanner()
         ReachabilityManager.shared.addListener(listener: self)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let nc = NotificationCenter.default
         nc.addObserver(self, selector:#selector(self.catchNotification), name: Notification.Popmetrics.ApiNotReachable, object:nil)
         nc.addObserver(self, selector:#selector(self.catchNotification), name: Notification.Popmetrics.ApiFailure, object:nil)
         nc.addObserver(self, selector:#selector(self.catchNotification), name: Notification.Popmetrics.ApiResponseUnsuccessfull, object:nil)
         nc.addObserver(self, selector:#selector(self.catchNotification), name: Notification.Popmetrics.RemoteMessage, object:nil)
-        
     }
     
     func setupOfflineBanner() {

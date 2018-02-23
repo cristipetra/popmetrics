@@ -178,10 +178,9 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BRAND NAME 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ee4-oK-e3k">
-                                <rect key="frame" x="29" y="88" width="200" height="21"/>
+                                <rect key="frame" x="29" y="88" width="283" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="5qY-7E-LWR"/>
-                                    <constraint firstAttribute="width" constant="200" id="o4N-xA-EfJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -231,6 +230,7 @@
                             <constraint firstItem="LZd-QI-7te" firstAttribute="centerX" secondItem="A0N-Un-MwM" secondAttribute="centerX" id="HKI-um-h4D"/>
                             <constraint firstItem="eP9-wi-QSE" firstAttribute="centerX" secondItem="A0N-Un-MwM" secondAttribute="centerX" id="JCK-qR-OoA"/>
                             <constraint firstAttribute="trailing" secondItem="lCf-hh-gEv" secondAttribute="trailing" id="P2N-fN-LON"/>
+                            <constraint firstItem="HcS-fh-OPC" firstAttribute="leading" secondItem="ee4-oK-e3k" secondAttribute="trailing" constant="10" id="QzL-QE-XXw"/>
                             <constraint firstItem="gav-CH-di9" firstAttribute="top" secondItem="ee4-oK-e3k" secondAttribute="bottom" constant="16" id="VvX-tN-Xtn"/>
                             <constraint firstItem="JhQ-kz-dOw" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leading" constant="3" id="XAE-4u-ISC"/>
                             <constraint firstItem="lCf-hh-gEv" firstAttribute="top" secondItem="rSp-0Z-2F3" secondAttribute="bottom" constant="-10" id="YjE-h1-uy1"/>
