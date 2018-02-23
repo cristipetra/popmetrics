@@ -83,6 +83,9 @@ class StatsHubController: BaseViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = PopmetricsColor.statisticsTableBackground
         
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 450
+        
         self.view.addSubview(transitionView)
         transitionView.addSubview(tableView)
         
@@ -93,13 +96,12 @@ class StatsHubController: BaseViewController {
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = PopmetricsColor.yellowBGColor
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            // old code: self?.fetchItems(silent:false)
             SyncService.getInstance().syncAll(silent: false)
             self?.tableView.dg_stopLoading()
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(PopmetricsColor.borderButton)
         tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.loadingBackground)
-        
+     
         //createItemsLocally()
     }
     
@@ -123,23 +125,11 @@ class StatsHubController: BaseViewController {
         let trafficNib = UINib(nibName: "StatsCard", bundle: nil)
         tableView.register(trafficNib, forCellReuseIdentifier: "StatsCard")
         
-        let trafficUnconnectedNib = UINib(nibName: "StatsEmptyCard", bundle: nil)
-        tableView.register(trafficUnconnectedNib, forCellReuseIdentifier: "StatsEmptyCard")
-        
-        let sectionHeaderNib = UINib(nibName: "CardHeaderView", bundle: nil)
-        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CardHeaderView")
-        
         let cardHeaderCellNib = UINib(nibName: "CardHeaderCell", bundle: nil)
         tableView.register(cardHeaderCellNib, forCellReuseIdentifier: "CardHeaderCell")
         
-        let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
-        tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
-        
         let emptyCard = UINib(nibName: "EmptyStateCard", bundle: nil)
         tableView.register(emptyCard, forCellReuseIdentifier: "EmptyStateCard")
-        
-        let recommendedNib = UINib(nibName: "RecommendedCell", bundle: nil)
-        tableView.register(recommendedNib, forCellReuseIdentifier: "RecommendedCell")
     }
     
     func setNoteView() {
@@ -275,7 +265,7 @@ class StatsHubController: BaseViewController {
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
             self.tableView.reloadData()
     }
-    
+    /*
     func getCardInSection( _ section: String, atIndex:Int) -> StatsCard {
         let nonEmptyCards = store.getNonEmptyStatsCardsWithSection(section)
         if nonEmptyCards.count == 0 {
@@ -298,13 +288,12 @@ class StatsHubController: BaseViewController {
             return cards.count
         }
     }
-
+     */
 }
     
 
 extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let sectionIdx = indexPath.section
         let rowIdx = indexPath.row
         
@@ -394,7 +383,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
+
         if section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
             cell.changeColor(cardType: .traffic)
@@ -408,7 +397,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
-    
+
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
