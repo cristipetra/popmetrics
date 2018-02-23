@@ -67,7 +67,7 @@ class StatsHubController: BaseViewController {
     
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
     var insightIsDisplayed = false
-    var cellHeight = 0 as CGFloat
+    var cellHeight = 450 as CGFloat
     
     var selectedCard: StatsCard?
     
