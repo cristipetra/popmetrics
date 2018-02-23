@@ -479,21 +479,29 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
+//        if (indexPath.section != 0) { return }
+//
+//        let cards = store.getNonEmptyTodoCardsWithSection("Social Posts")
+//        if cards.count == 0 { return }
+//        let rowIdx = indexPath.row
+//
+//        let card = cards[0]
+//
+//        let socialPosts = store.getTodoSocialPostsForCard(card)
+//        if socialPosts.count == 0 { return }
+//        let item = socialPosts[rowIdx]
+        
         if (indexPath.section != 0) { return }
- 
-        let cards = store.getNonEmptyTodoCardsWithSection("Social Posts")
-        if cards.count == 0 { return }
-        let rowIdx = indexPath.row
+        let currentCell = tableView.cellForRow(at: indexPath)
+        var item: TodoSocialPost!
         
-        let card = cards[0]
-    
-        let socialPosts = store.getTodoSocialPostsForCard(card)
-        if socialPosts.count == 0 { return }
-        let item = socialPosts[rowIdx]
+        if currentCell is SocialPostInCardCell {
+            let todoCell = currentCell as! SocialPostInCardCell
+            item = todoCell.todoItem
+            openDetailsPage(todoSocialPost: item, indexPath: indexPath)
+        }
         
-
-        openDetailsPage(todoSocialPost: item, indexPath: indexPath)
     }
     
     func openDetailsPage(todoSocialPost: TodoSocialPost, indexPath: IndexPath) {
@@ -760,8 +768,10 @@ extension TodoHubController: ActionSocialPostProtocol {
         
     }
     
-    func approvePostFromFacebookSocial(post: TodoSocialPost, indexPath: IndexPath, message: String) {
-        TodoApi().approvePostFacebook(post.postId!, message: message, callback: {
+    
+    
+    func approvePostFromSocialWithMessage(post: TodoSocialPost, indexPath: IndexPath, message: String) {
+        TodoApi().approvePostWithMessage(post.postId!, message: message, callback: {
             () -> Void in
             let notificationObj = ["title":"Post approved",
                                    "subtitle":"The article has been scheduled for posting.",
@@ -780,8 +790,8 @@ extension TodoHubController: ActionSocialPostProtocol {
     }
     
     func approvePostFromSocial(post: TodoSocialPost, indexPath: IndexPath) {
-        
-        TodoApi().approvePost(post.postId!, callback: {
+        let message = post.message ?? ""
+        TodoApi().approvePostWithMessage(post.postId!, message: message, callback: {
             () -> Void in
             let notificationObj = ["title":"Post approved",
                                    "subtitle":"The article has been scheduled for posting.",

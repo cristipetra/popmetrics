@@ -49,7 +49,7 @@ class TodoApi: BaseApi {
         }
     }
     
-    func approvePostFacebook(_ todoSocialPostId:String, message: String, callback: @escaping ()  -> Void) {
+    func approvePostWithMessage(_ todoSocialPostId:String, message: String, callback: @escaping ()  -> Void) {
         let params = ["a":0,
                       "text": message ] as [String : Any]
         let url = ApiUrls.composedBaseUrl(String(format:"/api/todo/approve-social-post/%@", todoSocialPostId))

@@ -1,3 +1,4 @@
+
 //
 //  ToDoCardCell.swift
 //  ipopmetrics
@@ -30,7 +31,7 @@ class SocialPostInCardCell: UITableViewCell {
     @IBOutlet weak var constraintToolbarHeight: NSLayoutConstraint!
     @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
     
-    private var todoItem: TodoSocialPost!;
+    internal var todoItem: TodoSocialPost!;
     var indexPath: IndexPath!
     
     weak var actionSocialDelegate: ActionSocialPostProtocol!

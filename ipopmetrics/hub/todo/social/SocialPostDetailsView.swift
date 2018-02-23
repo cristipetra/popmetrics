@@ -10,7 +10,7 @@ import UIKit
 
 class SocialPostDetailsView: UIView {
     
-    @IBOutlet weak var recommendedLabel: UILabel!
+    @IBOutlet weak var recommendedText: UITextView!
     @IBOutlet weak var titleBlogLabel: UILabel!
     @IBOutlet weak var blogMessage: UILabel!
     @IBOutlet weak var cardImage: UIImageView!
@@ -71,7 +71,7 @@ class SocialPostDetailsView: UIView {
 //                socialBrand.text =  "@\(name)"
 //            }
             if let message = todoSocialPost.message {
-                recommendedLabel.text = message
+                recommendedText.text = message
             }
 
             if let socialAccount = todoSocialPost.socialAccount {
@@ -105,11 +105,13 @@ class SocialPostDetailsView: UIView {
             socialBrand.text = "\(socialAccount)"
         }
         if let message = calendarSocialPost.message {
-            recommendedLabel.text = message
+            recommendedText.text = message
         }
 
         if calendarSocialPost.type == "facebook" {
             updateFacebook()
+        } else {
+            recommendedText.isEditable = false
         }
         
         socialIcon.socialType = calendarSocialPost.type

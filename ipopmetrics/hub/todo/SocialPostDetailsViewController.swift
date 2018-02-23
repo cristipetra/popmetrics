@@ -110,6 +110,9 @@ class SocialPostDetailsViewController: BaseViewController {
         if containerView.messageFacebook != nil {
             containerView.messageFacebook.resignFirstResponder()
         }
+        if containerView.recommendedText != nil {
+            containerView.recommendedText.resignFirstResponder()
+        }
     }
     
     private func updateView() {
@@ -235,25 +238,24 @@ class SocialPostDetailsViewController: BaseViewController {
     
     private func approvePostFacebook() {
         guard var message = containerView.messageFacebook.text else { return }
-        
-//        if !containerView.isMessageFacebookSet() {
-//            EZAlertController.alert("Please add a message to be posted on facebook.")
-//            return
-//        }
+
         if !containerView.isMessageFacebookSet() {
             message = ""
         }
         
         approvePostBtn.animateButton()
         
+        try! todoSocialPost.realm?.write {
+            todoSocialPost.isApproved = true
+            todoSocialPost.message = containerView.messageFacebook.text
+        }
+        
+        print(todoSocialPost.isApproved)
         if actionSocialDelegate !=  nil {
-            self.actionSocialDelegate.approvePostFromFacebookSocial!(post: todoSocialPost, indexPath: indexPath, message: message)
+            self.actionSocialDelegate.approvePostFromSocialWithMessage!(post: todoSocialPost, indexPath: indexPath, message: message)
             self.navigationController?.popViewController(animated: true)
         }
         
-        try! todoSocialPost.realm?.write {
-            todoSocialPost.isApproved = true
-        }
     }
     
     @objc func approvePost(sender: AnyObject) {
@@ -269,6 +271,10 @@ class SocialPostDetailsViewController: BaseViewController {
         }
         
         approvePostBtn.animateButton()
+        
+        try! todoSocialPost.realm?.write {
+            todoSocialPost.message = containerView.recommendedText.text
+        }
         
         if actionSocialDelegate !=  nil {
             self.actionSocialDelegate.approvePostFromSocial!(post: self.todoSocialPost, indexPath: indexPath)
@@ -325,7 +331,7 @@ extension SocialPostDetailsViewController: UIScrollViewDelegate {
     @objc optional func denyPostFromSocial(post: TodoSocialPost, indexPath: IndexPath)
     @objc optional func cancelPostFromSocial(post: CalendarSocialPost, indexPath: IndexPath)
     @objc optional func approvePostFromSocial(post: TodoSocialPost, indexPath: IndexPath)
-    @objc optional func approvePostFromFacebookSocial(post: TodoSocialPost, indexPath: IndexPath, message: String)
+    @objc optional func approvePostFromSocialWithMessage(post: TodoSocialPost, indexPath: IndexPath, message: String)
     @objc optional func displayFacebookDetails(post: TodoSocialPost, indexPath: IndexPath)
 }
 
