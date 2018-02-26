@@ -271,12 +271,11 @@ class GoogleAnalyticsDetails: Mappable {
 }
 
 class FacebookDetails: Mappable {
-    var name: String?
-    var screenName: String?
-    var connectionDate: Date?
     
-    var accessToken: String?
-    var selectedAccountId: String?
+    var page: String?
+    var name: String?
+    var pageId: String?
+    var connectionDate: Date?
     
     required init?(map: Map) {
     }
