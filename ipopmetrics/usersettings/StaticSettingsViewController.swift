@@ -83,8 +83,9 @@ class StaticSettingsViewController: BaseTableViewController {
         brandName.text = UserStore.currentBrand?.name
         
         facebookHandleField.text = currentBrand?.facebookDetails?.page ?? "Not connected"
-        twitterHandleField.text = currentBrand?.twitterDetails?.screenName ?? "N/A"
-        googleAnalyticsTracker.text = currentBrand?.googleAnalytics?.tracker ?? "N/A"
+        twitterHandleField.text = currentBrand?.twitterDetails?.screenName ?? "Not connected"
+        googleAnalyticsTracker.text = currentBrand?.googleAnalytics?.tracker ?? "Not connected"
+        
         
     }
     
@@ -173,6 +174,7 @@ class StaticSettingsViewController: BaseTableViewController {
         } else if (indexPath.section == 5 && indexPath.row == 2) {
             displayOverlayUrl()
         }
+        self.tableView.deselectRow(at: indexPath, animated: false)
     }
     
     private func openBusinessContactDetails() {
