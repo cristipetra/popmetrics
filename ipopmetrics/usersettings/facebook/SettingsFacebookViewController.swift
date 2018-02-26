@@ -12,6 +12,7 @@ class SettingsFacebookViewController: UITableViewController {
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var tracker: UILabel!
+    @IBOutlet weak var constraintHeightBtnConnect: NSLayoutConstraint!
     
     internal var currentBrand: Brand?
     private var requiredActionHandler: RequiredActionHandler = RequiredActionHandler()
@@ -38,8 +39,10 @@ class SettingsFacebookViewController: UITableViewController {
         
         if isFacebookConnected() {
             btnConnect.typeButton = .disconnect
+            constraintHeightBtnConnect.constant = 0
         } else {
             btnConnect.typeButton = .connect
+            constraintHeightBtnConnect.constant = 44
         }
     
     }
@@ -93,6 +96,7 @@ class SettingsFacebookViewController: UITableViewController {
         let currentBrandId = UserStore.currentBrandId
         UsersApi().getBrandDetails(currentBrandId) { brand in
             UserStore.currentBrand = brand!
+            
             self.currentBrand = brand!
             self.updateView()
         }

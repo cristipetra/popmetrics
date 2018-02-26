@@ -18,6 +18,9 @@ class SettingsGAViewController: UITableViewController {
     @IBOutlet weak var connectionEmailLabel: UILabel!
     @IBOutlet weak var connectionDateLabel: UILabel!
     
+    @IBOutlet weak var btnConnect: ConnectSettingsButton!
+    @IBOutlet weak var constraintHeightBtnConnect: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,16 +31,33 @@ class SettingsGAViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.name.text = currentBrand?.googleAnalytics?.name ?? "N/A"
-        self.tracker.text = currentBrand?.googleAnalytics?.tracker ?? "N/A"
+        updateView()
+    }
+    
+    private func updateView() {
+        self.name.text = currentBrand?.googleAnalytics?.name ?? "Not Connected"
+        self.tracker.text = currentBrand?.googleAnalytics?.tracker ?? "Not Connected"
+        
+        self.name.text = "Not Connected"
+        self.tracker.text = "Not Connected"
         
         if let date = currentBrand?.googleAnalytics?.connectionDate {
             let df = DateFormatter()
             df.dateFormat = "yyyy-MM-dd hh:mm:ss"
-            self.connectionDateLabel.text = df.string(from: date)
+            //self.connectionDateLabel.text = df.string(from: date)
         }
-        self.connectionEmailLabel.text = currentBrand?.googleAnalytics?.connectionEmail ?? "N/A"
+        //self.connectionEmailLabel.text = currentBrand?.googleAnalytics?.connectionEmail ?? "N/A"
+        
+        if currentBrand?.googleAnalytics != nil {
+            constraintHeightBtnConnect.constant = 0
+            btnConnect.typeButton = .disconnect
+        } else {
+            constraintHeightBtnConnect.constant = 44
+            btnConnect.typeButton = .connect
+        }
     }
+    
+    
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let contentView: UIView  = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 60))

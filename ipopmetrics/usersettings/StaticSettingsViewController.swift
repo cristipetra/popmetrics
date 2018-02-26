@@ -159,7 +159,7 @@ class StaticSettingsViewController: BaseTableViewController {
         } else if (indexPath.section == 2 && indexPath.row == 3) {
             openBusinessContactDetails()
         } else if (indexPath.section == 3 && indexPath.row == 0) {
-            displayFacebook()
+            displayFacebookSecond()
         } else if (indexPath.section == 3 && indexPath.row == 1) {
             displayTwitter()
         } else if (indexPath.section == 3 && indexPath.row == 2) {

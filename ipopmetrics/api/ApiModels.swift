@@ -262,7 +262,7 @@ class GoogleAnalyticsDetails: Mappable {
     
     func mapping(map:Map) {
         name        <- map["view.web_property_name"]
-        tracker     <- map["view.web_property_id"]
+        tracker     <- map["view.id"]
         
         connectionDate <- (map["connection.date"], DateTransform())
         connectionEmail <- map["connection.email"]
