@@ -273,7 +273,7 @@ class GoogleAnalyticsDetails: Mappable {
 class FacebookDetails: Mappable {
     
     var page: String?
-    var name: String?
+    var userName: String?
     var pageId: String?
     var connectionDate: Date?
     
@@ -281,8 +281,10 @@ class FacebookDetails: Mappable {
     }
     
     func mapping(map: Map) {
-        name              <- map[""]
-        connectionDate    <- (map["connection.date"], DateTransform())
+        page              <- map["name"]
+        pageId            <- map["id"]
+        userName          <- map["username"]        
+        connectionDate    <- (map["create_dt"], DateTransform())
     }
     
 }
@@ -364,7 +366,7 @@ class Brand: Mappable {
         
         googleAnalytics <- map["data.google_analytics"]
         twitterDetails  <- map["social.twitter"]
-        facebookDetails <- map["social.facebook"]
+        facebookDetails <- map["social.facebook_page"]
         overlayDetails  <- map["overlay"]
         
     }
