@@ -10,6 +10,8 @@ import UIKit
 
 class SettingsFacebookViewController: UITableViewController {
     
+    @IBOutlet weak var pageUrl: UILabel!
+    @IBOutlet weak var pageId: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var tracker: UILabel!
     @IBOutlet weak var constraintHeightBtnConnect: NSLayoutConstraint!
@@ -34,8 +36,10 @@ class SettingsFacebookViewController: UITableViewController {
     }
     
     internal func updateView() {
-        name.text = currentBrand?.facebookDetails?.screenName ?? "N/A"
-        tracker.text = currentBrand?.facebookDetails?.name ?? "N/A"
+        pageId.text = "Not connected"
+        pageUrl.text = "Not connected"
+        name.text = currentBrand?.facebookDetails?.userName ?? "Not connected"
+        tracker.text = currentBrand?.facebookDetails?.pageId ?? "Not connected"
         
         if isFacebookConnected() {
             btnConnect.typeButton = .disconnect
@@ -66,7 +70,11 @@ class SettingsFacebookViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView: SettingsHeaderView = SettingsHeaderView()
-        headerView.changeTitle("ACCOUNT DETAILS")
+        if section == 0 {
+            headerView.changeTitle("PAGE DETAILS")
+        } else if section == 1 {
+            headerView.changeTitle("ACCOUNT DETAILS")
+        }
         return headerView
     }
     

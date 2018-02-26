@@ -62,8 +62,8 @@ class SettingsSocialViewController: SettingsBaseViewController {
     private func changeSocialType() {
         switch socialType {
         case .facebook:
-            brandURLLabel.text = currentBrand?.facebookDetails?.screenName ?? "N/A"
-            brandNameLabel.text = currentBrand?.facebookDetails?.name ?? "N/A"
+            //brandURLLabel.text = currentBrand?.facebookDetails?.screenName ?? "N/A"
+            //brandNameLabel.text = currentBrand?.facebookDetails?.name ?? "N/A"
             
             if let date = currentBrand?.facebookDetails?.connectionDate {
                 let df = DateFormatter()

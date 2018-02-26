@@ -401,11 +401,11 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="DATA ACCOUNTS" id="jlb-mY-Gcp">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="cWP-Zw-6XS">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="cWP-Zw-6XS">
                                         <rect key="frame" x="0.0" y="763.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cWP-Zw-6XS" id="qCd-iZ-9HY">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Analytics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZd-ST-g3k">
@@ -583,16 +583,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QGf-Un-d2h">
-                                                    <rect key="frame" x="8" y="16.5" width="367" height="55"/>
+                                                    <rect key="frame" x="8" y="17" width="367" height="54.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0I-G9-YOp">
-                                                            <rect key="frame" x="0.0" y="0.0" width="367" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="367" height="23.5"/>
                                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGm-sL-aGB">
-                                                            <rect key="frame" x="0.0" y="31.5" width="347" height="23.5"/>
+                                                            <rect key="frame" x="0.0" y="31" width="347" height="23.5"/>
                                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                             <color key="textColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1235,13 +1235,13 @@ You can adjust your overlay to better match the look and feel of your brand.
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQN-m1-lhm">
-                                                    <rect key="frame" x="334" y="10.5" width="30" height="23.5"/>
+                                                    <rect key="frame" x="334" y="10" width="30" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fwp-7a-hLa">
-                                                    <rect key="frame" x="8" y="9.5" width="116.5" height="23.5"/>
+                                                    <rect key="frame" x="8" y="10" width="116.5" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1263,13 +1263,13 @@ You can adjust your overlay to better match the look and feel of your brand.
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBM-kw-jGj">
-                                                    <rect key="frame" x="334" y="10.5" width="30" height="23.5"/>
+                                                    <rect key="frame" x="334" y="10" width="30" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rtW-3M-5hC">
-                                                    <rect key="frame" x="8" y="9.5" width="91.5" height="23.5"/>
+                                                    <rect key="frame" x="8" y="10" width="91.5" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1369,7 +1369,7 @@ You can adjust your overlay to better match the look and feel of your brand.
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="ACCOUNT DETAILS" id="zvI-r8-ZOR">
+                            <tableViewSection headerTitle="PAGE DETAILS" id="zvI-r8-ZOR">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lYd-ba-bst">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
@@ -1379,13 +1379,13 @@ You can adjust your overlay to better match the look and feel of your brand.
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yY-C4-TeL">
-                                                    <rect key="frame" x="334" y="10.5" width="30" height="23.5"/>
+                                                    <rect key="frame" x="334" y="10" width="30" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bse-qM-kuE">
-                                                    <rect key="frame" x="8" y="9.5" width="86" height="23.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bse-qM-kuE">
+                                                    <rect key="frame" x="8" y="10" width="60.5" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1407,13 +1407,13 @@ You can adjust your overlay to better match the look and feel of your brand.
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19E-Jq-DI5">
-                                                    <rect key="frame" x="334" y="10.5" width="30" height="23.5"/>
+                                                    <rect key="frame" x="334" y="10" width="30" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ge-EG-kIe">
-                                                    <rect key="frame" x="8" y="9.5" width="100.5" height="23.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ge-EG-kIe">
+                                                    <rect key="frame" x="8" y="10" width="75" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1428,17 +1428,78 @@ You can adjust your overlay to better match the look and feel of your brand.
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jfI-kK-wP2">
-                                        <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="ACCOUNT DETAILS" id="vzj-6Y-UkY">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cEP-cE-5Om">
+                                        <rect key="frame" x="0.0" y="199.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jfI-kK-wP2" id="JoL-EK-aPv">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cEP-cE-5Om" id="hov-Xo-Zae">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZl-tG-LbH" customClass="ConnectSettingsButton" customModule="ipopmetrics" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKw-hM-hs5">
+                                                    <rect key="frame" x="334" y="10" width="30" height="23.5"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                                    <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebS-Yr-L4r">
+                                                    <rect key="frame" x="8" y="10" width="86" height="23.5"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="AKw-hM-hs5" firstAttribute="centerY" secondItem="hov-Xo-Zae" secondAttribute="centerY" id="8Ku-qe-XfK"/>
+                                                <constraint firstItem="ebS-Yr-L4r" firstAttribute="centerY" secondItem="hov-Xo-Zae" secondAttribute="centerY" id="Fdo-rU-aKj"/>
+                                                <constraint firstItem="ebS-Yr-L4r" firstAttribute="leading" secondItem="hov-Xo-Zae" secondAttribute="leadingMargin" id="Oyu-ka-imU"/>
+                                                <constraint firstAttribute="trailing" secondItem="AKw-hM-hs5" secondAttribute="trailing" constant="11" id="j6H-2z-94v"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Npk-Wm-Hju">
+                                        <rect key="frame" x="0.0" y="243.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Npk-Wm-Hju" id="xBN-gh-NE6">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aea-Ml-4w8">
+                                                    <rect key="frame" x="334" y="10" width="30" height="23.5"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                                    <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMe-g0-Arr">
+                                                    <rect key="frame" x="8" y="10" width="100.5" height="23.5"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="EMe-g0-Arr" firstAttribute="leading" secondItem="xBN-gh-NE6" secondAttribute="leadingMargin" id="4GL-eH-fDK"/>
+                                                <constraint firstItem="Aea-Ml-4w8" firstAttribute="centerY" secondItem="xBN-gh-NE6" secondAttribute="centerY" id="Bde-BX-GX1"/>
+                                                <constraint firstAttribute="trailing" secondItem="Aea-Ml-4w8" secondAttribute="trailing" constant="11" id="gBT-rK-OqV"/>
+                                                <constraint firstItem="EMe-g0-Arr" firstAttribute="centerY" secondItem="xBN-gh-NE6" secondAttribute="centerY" id="wVd-bl-60o"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="co5-qv-fii">
+                                        <rect key="frame" x="0.0" y="287.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="co5-qv-fii" id="2dT-gD-rQo">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jii-mg-uBf" customClass="ConnectSettingsButton" customModule="ipopmetrics" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="0.0" width="367" height="0.0"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" id="6jI-gc-FaW"/>
+                                                        <constraint firstAttribute="height" id="sm4-rj-QdG"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <state key="normal" title="Disconnect Data Account">
@@ -1448,26 +1509,26 @@ You can adjust your overlay to better match the look and feel of your brand.
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="handlerChangeConnectOrDisconnect:" destination="LE8-Tm-fbA" eventType="touchUpInside" id="ch6-pY-fv1"/>
+                                                        <action selector="handlerChangeConnectOrDisconnect:" destination="LE8-Tm-fbA" eventType="touchUpInside" id="CKR-Wg-S4u"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="NZl-tG-LbH" secondAttribute="bottom" priority="250" id="4yb-M3-eMG"/>
-                                                <constraint firstItem="NZl-tG-LbH" firstAttribute="top" secondItem="JoL-EK-aPv" secondAttribute="top" id="QXd-Ut-rCx"/>
-                                                <constraint firstItem="NZl-tG-LbH" firstAttribute="leading" secondItem="JoL-EK-aPv" secondAttribute="leadingMargin" id="q5N-pf-dwN"/>
-                                                <constraint firstAttribute="trailing" secondItem="NZl-tG-LbH" secondAttribute="trailing" id="sqL-uD-YA9"/>
+                                                <constraint firstAttribute="bottom" secondItem="Jii-mg-uBf" secondAttribute="bottom" priority="250" id="Jk3-St-TH0"/>
+                                                <constraint firstItem="Jii-mg-uBf" firstAttribute="top" secondItem="2dT-gD-rQo" secondAttribute="top" id="Yqr-l3-G7g"/>
+                                                <constraint firstItem="Jii-mg-uBf" firstAttribute="leading" secondItem="2dT-gD-rQo" secondAttribute="leadingMargin" id="YxV-7p-0gn"/>
+                                                <constraint firstAttribute="trailing" secondItem="Jii-mg-uBf" secondAttribute="trailing" id="tay-xs-BMY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="EgE-QD-nP0">
-                                        <rect key="frame" x="0.0" y="187.5" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Pdk-Ef-2h6">
+                                        <rect key="frame" x="0.0" y="331.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EgE-QD-nP0" id="ufm-c4-1Q6">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pdk-Ef-2h6" id="65R-xX-P1Y">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEg-J2-7nY">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GB5-OH-TtA">
                                                     <rect key="frame" x="8" y="13" width="359" height="17.5"/>
                                                     <string key="text">Popmetrics, with your approval, will share content on your Facebook channel to generate traffic to your website. Our software will also use your Facebook information to measure your digital footprint and benchmark you against your competition.</string>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
@@ -1476,10 +1537,10 @@ You can adjust your overlay to better match the look and feel of your brand.
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="eEg-J2-7nY" secondAttribute="bottom" constant="5" id="2EE-Sz-gYO"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="eEg-J2-7nY" secondAttribute="trailing" id="EDy-d2-0LP"/>
-                                                <constraint firstItem="eEg-J2-7nY" firstAttribute="leading" secondItem="ufm-c4-1Q6" secondAttribute="leadingMargin" id="QbC-0D-IgO"/>
-                                                <constraint firstItem="eEg-J2-7nY" firstAttribute="top" secondItem="ufm-c4-1Q6" secondAttribute="topMargin" constant="5" id="uVu-GB-TfZ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="GB5-OH-TtA" secondAttribute="trailing" id="BCz-TT-U9f"/>
+                                                <constraint firstItem="GB5-OH-TtA" firstAttribute="leading" secondItem="65R-xX-P1Y" secondAttribute="leadingMargin" id="hkU-vu-kdx"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="GB5-OH-TtA" secondAttribute="bottom" constant="5" id="nBz-6p-O5R"/>
+                                                <constraint firstItem="GB5-OH-TtA" firstAttribute="top" secondItem="65R-xX-P1Y" secondAttribute="topMargin" constant="5" id="vy2-rO-zk3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1494,10 +1555,12 @@ You can adjust your overlay to better match the look and feel of your brand.
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="btnConnect" destination="NZl-tG-LbH" id="qCh-fa-ZDL"/>
-                        <outlet property="constraintHeightBtnConnect" destination="6jI-gc-FaW" id="7OB-iK-MTk"/>
-                        <outlet property="name" destination="4yY-C4-TeL" id="PRk-AM-LXN"/>
-                        <outlet property="tracker" destination="19E-Jq-DI5" id="htS-B4-7Ve"/>
+                        <outlet property="btnConnect" destination="Jii-mg-uBf" id="t5i-fV-UqF"/>
+                        <outlet property="constraintHeightBtnConnect" destination="sm4-rj-QdG" id="tKb-FU-B1B"/>
+                        <outlet property="name" destination="AKw-hM-hs5" id="LKM-iS-bYA"/>
+                        <outlet property="pageId" destination="4yY-C4-TeL" id="4bV-FT-0i3"/>
+                        <outlet property="pageUrl" destination="19E-Jq-DI5" id="e2k-hJ-rE6"/>
+                        <outlet property="tracker" destination="Aea-Ml-4w8" id="CIK-FE-gsC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCu-ae-7BN" userLabel="First Responder" sceneMemberID="firstResponder"/>
