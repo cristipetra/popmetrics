@@ -18,6 +18,7 @@ class SettingsGAViewController: UITableViewController {
     @IBOutlet weak var connectionEmailLabel: UILabel!
     @IBOutlet weak var connectionDateLabel: UILabel!
     
+    @IBOutlet weak var cellConnect: UITableViewCell!
     @IBOutlet weak var btnConnect: ConnectSettingsButton!
     @IBOutlet weak var constraintHeightBtnConnect: NSLayoutConstraint!
     
@@ -48,15 +49,24 @@ class SettingsGAViewController: UITableViewController {
         }
         //self.connectionEmailLabel.text = currentBrand?.googleAnalytics?.connectionEmail ?? "N/A"
         
-        if currentBrand?.googleAnalytics != nil {
+        self.tableView.beginUpdates()
+        if isGoogleConnected() {
             constraintHeightBtnConnect.constant = 0
             btnConnect.typeButton = .disconnect
         } else {
             constraintHeightBtnConnect.constant = 44
             btnConnect.typeButton = .connect
         }
+        self.tableView.endUpdates()
     }
     
+    private func isGoogleConnected() -> Bool {
+        return false
+        if currentBrand?.googleAnalytics != nil {
+            return true
+        }
+        return false
+    }
     
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
