@@ -36,11 +36,13 @@ class SettingsFacebookViewController: UITableViewController {
     }
     
     internal func updateView() {
-        pageId.text = "Not connected"
-        pageUrl.text = "Not connected"
-        name.text = currentBrand?.facebookDetails?.userName ?? "Not connected"
-        tracker.text = currentBrand?.facebookDetails?.pageId ?? "Not connected"
+        pageId.text = currentBrand?.facebookDetails?.pageId ?? "Not connected"
+        pageUrl.text = currentBrand?.facebookDetails?.page ?? "Not connected"
         
+        name.text = currentBrand?.facebookDetails?.userName ?? "Not connected"
+        tracker.text = currentBrand?.facebookDetails?.page ?? "Not connected"
+        
+        self.tableView.beginUpdates()
         if isFacebookConnected() {
             btnConnect.typeButton = .disconnect
             constraintHeightBtnConnect.constant = 0
@@ -48,6 +50,7 @@ class SettingsFacebookViewController: UITableViewController {
             btnConnect.typeButton = .connect
             constraintHeightBtnConnect.constant = 44
         }
+        self.tableView.endUpdates()
     
     }
     
@@ -97,7 +100,9 @@ class SettingsFacebookViewController: UITableViewController {
     }
     
     @objc func handlerFacebookConnected() {
-        fetchBrandDetails()
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
+            self.fetchBrandDetails()
+        }
     }
     
     func fetchBrandDetails() {
