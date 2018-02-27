@@ -404,30 +404,54 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7WE-Fk-uyZ">
-                                                    <rect key="frame" x="8" y="10" width="124" height="23.5"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Not connected" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wwq-VY-nip">
-                                                    <rect key="frame" x="165" y="10.5" width="169" height="24"/>
-                                                    <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                                            <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </textField>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R37-G6-khO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="342" height="80"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wM7-gw-zsY">
+                                                            <rect key="frame" x="8" y="12.5" width="334" height="55.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter Account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7WE-Fk-uyZ">
+                                                                    <rect key="frame" x="8" y="0.0" width="124" height="23.5"/>
+                                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Not connected" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wwq-VY-nip">
+                                                                    <rect key="frame" x="8" y="31.5" width="120.5" height="24"/>
+                                                                    <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                                            <color key="value" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </textField>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="7WE-Fk-uyZ" firstAttribute="top" secondItem="wM7-gw-zsY" secondAttribute="top" id="0Pw-Qk-fBM"/>
+                                                                <constraint firstItem="7WE-Fk-uyZ" firstAttribute="leading" secondItem="wM7-gw-zsY" secondAttribute="leadingMargin" id="CXs-Bp-VZg"/>
+                                                                <constraint firstItem="Wwq-VY-nip" firstAttribute="top" secondItem="7WE-Fk-uyZ" secondAttribute="bottom" constant="8" id="OOg-oU-piE"/>
+                                                                <constraint firstItem="Wwq-VY-nip" firstAttribute="leading" secondItem="wM7-gw-zsY" secondAttribute="leadingMargin" id="hD0-fm-8B3"/>
+                                                                <constraint firstAttribute="bottom" secondItem="Wwq-VY-nip" secondAttribute="bottom" id="qGQ-ra-v7W"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="wM7-gw-zsY" firstAttribute="centerY" secondItem="R37-G6-khO" secondAttribute="centerY" id="3bD-5n-Tw2"/>
+                                                        <constraint firstItem="wM7-gw-zsY" firstAttribute="leading" secondItem="R37-G6-khO" secondAttribute="leadingMargin" id="Rbi-Vn-sPl"/>
+                                                        <constraint firstAttribute="trailing" secondItem="wM7-gw-zsY" secondAttribute="trailing" id="URw-1S-3mF"/>
+                                                        <constraint firstItem="wM7-gw-zsY" firstAttribute="centerY" secondItem="R37-G6-khO" secondAttribute="centerY" id="YaU-Da-cvi"/>
+                                                        <constraint firstAttribute="height" constant="80" id="lLD-iI-NCw"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Wwq-VY-nip" firstAttribute="centerY" secondItem="ejd-cV-5NV" secondAttribute="centerY" id="FwL-iU-fFt"/>
-                                                <constraint firstItem="7WE-Fk-uyZ" firstAttribute="leading" secondItem="ejd-cV-5NV" secondAttribute="leadingMargin" id="WtO-nQ-nNj"/>
-                                                <constraint firstItem="Wwq-VY-nip" firstAttribute="leading" secondItem="7WE-Fk-uyZ" secondAttribute="trailing" constant="33" id="kGo-l0-iNp"/>
-                                                <constraint firstItem="7WE-Fk-uyZ" firstAttribute="centerY" secondItem="ejd-cV-5NV" secondAttribute="centerY" id="rRY-Uu-yEk"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Wwq-VY-nip" secondAttribute="trailing" id="tsB-ov-d6S"/>
+                                                <constraint firstItem="R37-G6-khO" firstAttribute="top" secondItem="ejd-cV-5NV" secondAttribute="top" id="OgR-lt-LEN"/>
+                                                <constraint firstAttribute="trailing" secondItem="R37-G6-khO" secondAttribute="trailing" id="U78-aC-XMv"/>
+                                                <constraint firstAttribute="bottom" secondItem="R37-G6-khO" secondAttribute="bottom" priority="750" id="pty-cr-Grb"/>
+                                                <constraint firstItem="R37-G6-khO" firstAttribute="leading" secondItem="ejd-cV-5NV" secondAttribute="leading" id="slC-jh-MhI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -435,37 +459,61 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="DATA ACCOUNTS" id="jlb-mY-Gcp">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="cWP-Zw-6XS">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="cWP-Zw-6XS">
                                         <rect key="frame" x="0.0" y="763.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cWP-Zw-6XS" id="qCd-iZ-9HY">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Analytics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZd-ST-g3k">
-                                                    <rect key="frame" x="8" y="11" width="130.5" height="23.5"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Not connected" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W13-tI-Wsc" userLabel="Goolge Tracker">
-                                                    <rect key="frame" x="168.5" y="11" width="165.5" height="24"/>
-                                                    <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                                            <color key="value" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </textField>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4el-ZZ-4p3">
+                                                    <rect key="frame" x="8" y="8" width="334" height="80"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fux-l3-ViW">
+                                                            <rect key="frame" x="0.0" y="12.5" width="334" height="56"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Analytics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZd-ST-g3k">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="130.5" height="24"/>
+                                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Not connected" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W13-tI-Wsc" userLabel="Goolge Tracker">
+                                                                    <rect key="frame" x="37" y="52" width="165.5" height="24"/>
+                                                                    <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                                            <color key="value" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </textField>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstItem="ZZd-ST-g3k" firstAttribute="top" secondItem="fux-l3-ViW" secondAttribute="top" id="L0c-0d-ana"/>
+                                                                <constraint firstItem="ZZd-ST-g3k" firstAttribute="leading" secondItem="fux-l3-ViW" secondAttribute="leading" id="R0h-gR-IHk"/>
+                                                                <constraint firstAttribute="bottom" secondItem="W13-tI-Wsc" secondAttribute="bottom" id="VU4-7h-ibH"/>
+                                                                <constraint firstItem="W13-tI-Wsc" firstAttribute="leading" secondItem="fux-l3-ViW" secondAttribute="leading" id="VVT-ji-Bas"/>
+                                                                <constraint firstItem="W13-tI-Wsc" firstAttribute="top" secondItem="ZZd-ST-g3k" secondAttribute="bottom" constant="8" symbolic="YES" id="hVc-Na-xrr"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="fux-l3-ViW" firstAttribute="centerY" secondItem="4el-ZZ-4p3" secondAttribute="centerY" id="ByD-q7-YZk"/>
+                                                        <constraint firstAttribute="height" constant="80" id="D7b-HH-AnQ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="fux-l3-ViW" secondAttribute="trailing" id="GZ9-r0-kUU"/>
+                                                        <constraint firstItem="fux-l3-ViW" firstAttribute="leading" secondItem="4el-ZZ-4p3" secondAttribute="leading" id="Zvd-h6-5qw"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="W13-tI-Wsc" firstAttribute="leading" secondItem="ZZd-ST-g3k" secondAttribute="trailing" priority="750" constant="30" id="0RP-gj-tt3"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="W13-tI-Wsc" secondAttribute="trailing" id="hW7-fL-xPX"/>
-                                                <constraint firstItem="ZZd-ST-g3k" firstAttribute="leading" secondItem="qCd-iZ-9HY" secondAttribute="leadingMargin" id="n47-ZY-a8I"/>
-                                                <constraint firstItem="ZZd-ST-g3k" firstAttribute="centerY" secondItem="qCd-iZ-9HY" secondAttribute="centerY" id="oUv-Yv-b3X"/>
-                                                <constraint firstItem="W13-tI-Wsc" firstAttribute="centerY" secondItem="qCd-iZ-9HY" secondAttribute="centerY" id="uJT-w9-KZc"/>
+                                                <constraint firstItem="4el-ZZ-4p3" firstAttribute="top" secondItem="qCd-iZ-9HY" secondAttribute="topMargin" id="DVt-gd-RDr"/>
+                                                <constraint firstItem="4el-ZZ-4p3" firstAttribute="leading" secondItem="qCd-iZ-9HY" secondAttribute="leadingMargin" id="h6j-AZ-VUu"/>
+                                                <constraint firstAttribute="bottom" secondItem="4el-ZZ-4p3" secondAttribute="bottom" priority="750" id="kSV-T9-lRv"/>
+                                                <constraint firstAttribute="trailing" secondItem="4el-ZZ-4p3" secondAttribute="trailing" id="t3I-xj-bbc"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
