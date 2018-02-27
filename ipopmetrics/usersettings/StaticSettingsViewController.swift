@@ -82,9 +82,9 @@ class StaticSettingsViewController: BaseTableViewController {
         
         brandName.text = UserStore.currentBrand?.name
         
-        facebookHandleField.text = currentBrand?.facebookDetails?.page ?? "Not connected"
-        twitterHandleField.text = currentBrand?.twitterDetails?.screenName ?? "Not connected"
-        googleAnalyticsTracker.text = currentBrand?.googleAnalytics?.tracker ?? "Not connected"
+        facebookHandleField.text = currentBrand?.facebookDetails?.page ?? ""
+        twitterHandleField.text = currentBrand?.twitterDetails?.screenName ?? ""
+        googleAnalyticsTracker.text = currentBrand?.googleAnalytics?.tracker ?? ""
         
         
     }
