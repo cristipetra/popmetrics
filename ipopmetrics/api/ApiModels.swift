@@ -214,6 +214,7 @@ class UserSettings: Mappable {
     }
     
     func mapping(map: Map) {
+        print(map["brand"].JSON)
         userAccount         <- map["user_account"]
         currentBrand        <- map["brand"]
         allowSounds         <- map["allow_sounds"]
@@ -261,8 +262,8 @@ class GoogleAnalyticsDetails: Mappable {
     }
     
     func mapping(map:Map) {
-        name        <- map["view.web_property_name"]
-        tracker     <- map["view.id"]
+        name        <- map["website"]
+        tracker     <- map["tracking_code"]
         
         connectionDate <- (map["connection.date"], DateTransform())
         connectionEmail <- map["connection.email"]
@@ -272,18 +273,18 @@ class GoogleAnalyticsDetails: Mappable {
 
 class FacebookDetails: Mappable {
     
-    var page: String?
-    var userName: String?
-    var pageId: String?
+    var pageName: String?
+    var accountName: String?
+    var pageUrl: String?
     var connectionDate: Date?
     
     required init?(map: Map) {
     }
     
     func mapping(map: Map) {
-        page              <- map["name"]
-        pageId            <- map["id"]
-        userName          <- map["username"]        
+        pageName          <- map["page_name"]
+        pageUrl           <- map["page_url"]
+        accountName       <- map["name"]
         connectionDate    <- (map["create_dt"], DateTransform())
     }
     
@@ -293,7 +294,7 @@ class TwitterDetails: Mappable {
     
     var name: String?
     var screenName: String?
-    
+    var url: String?
     var connectionDate: Date?
     
     
@@ -301,10 +302,10 @@ class TwitterDetails: Mappable {
     }
     
     func mapping(map:Map) {
-        name        <- map["name"]
-        screenName     <- map["screen_name"]
-        
-        connectionDate <- (map["connection_date"], DateTransform())
+        name             <- map["name"]
+        screenName       <- map["screen_name"]
+        url              <- map["url"]
+        connectionDate   <- (map["connection_date"], DateTransform())
         
     }
 }
@@ -366,7 +367,7 @@ class Brand: Mappable {
         
         googleAnalytics <- map["data.google_analytics"]
         twitterDetails  <- map["social.twitter"]
-        facebookDetails <- map["social.facebook_page"]
+        facebookDetails <- map["social.facebook"]
         overlayDetails  <- map["overlay"]
         
     }

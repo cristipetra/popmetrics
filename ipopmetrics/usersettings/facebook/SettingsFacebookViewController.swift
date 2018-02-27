@@ -11,9 +11,8 @@ import UIKit
 class SettingsFacebookViewController: UITableViewController {
     
     @IBOutlet weak var pageUrl: UILabel!
-    @IBOutlet weak var pageId: UILabel!
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var tracker: UILabel!
+    @IBOutlet weak var pageName: UILabel!
+    @IBOutlet weak var accountName: UILabel!
     @IBOutlet weak var constraintHeightBtnConnect: NSLayoutConstraint!
     
     internal var currentBrand: Brand?
@@ -36,11 +35,11 @@ class SettingsFacebookViewController: UITableViewController {
     }
     
     internal func updateView() {
-        pageId.text = currentBrand?.facebookDetails?.pageId ?? "Not connected"
-        pageUrl.text = currentBrand?.facebookDetails?.page ?? "Not connected"
+        pageName.text = currentBrand?.facebookDetails?.pageName ?? "Not connected"
+        pageUrl.text = currentBrand?.facebookDetails?.pageUrl ?? "Not connected"
         
-        name.text = currentBrand?.facebookDetails?.userName ?? "Not connected"
-        tracker.text = currentBrand?.facebookDetails?.page ?? "Not connected"
+        accountName.text = currentBrand?.facebookDetails?.accountName ?? "Not connected"
+        
         
         self.tableView.beginUpdates()
         if isFacebookConnected() {

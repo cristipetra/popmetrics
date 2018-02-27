@@ -12,11 +12,8 @@ class SettingsGAViewController: UITableViewController {
 
     var currentBrand: Brand?
     
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var tracker: UILabel!
-    
-    @IBOutlet weak var connectionEmailLabel: UILabel!
-    @IBOutlet weak var connectionDateLabel: UILabel!
+    @IBOutlet weak var trackingNumber: UILabel!
+    @IBOutlet weak var websiteUrl: UILabel!
     
     @IBOutlet weak var cellConnect: UITableViewCell!
     @IBOutlet weak var btnConnect: ConnectSettingsButton!
@@ -36,18 +33,15 @@ class SettingsGAViewController: UITableViewController {
     }
     
     private func updateView() {
-        self.name.text = currentBrand?.googleAnalytics?.name ?? "Not Connected"
-        self.tracker.text = currentBrand?.googleAnalytics?.tracker ?? "Not Connected"
-        
-        self.name.text = "Not Connected"
-        self.tracker.text = "Not Connected"
+        updateTextsColor()
+        self.trackingNumber.text = currentBrand?.googleAnalytics?.tracker ?? "Not Connected"
+        self.websiteUrl.text = currentBrand?.googleAnalytics?.name ?? "Not Connected"
         
         if let date = currentBrand?.googleAnalytics?.connectionDate {
             let df = DateFormatter()
             df.dateFormat = "yyyy-MM-dd hh:mm:ss"
             //self.connectionDateLabel.text = df.string(from: date)
         }
-        //self.connectionEmailLabel.text = currentBrand?.googleAnalytics?.connectionEmail ?? "N/A"
         
         self.tableView.beginUpdates()
         if isGoogleConnected() {
@@ -60,8 +54,17 @@ class SettingsGAViewController: UITableViewController {
         self.tableView.endUpdates()
     }
     
+    func updateTextsColor() {
+        if isGoogleConnected() {
+            self.trackingNumber.textColor = PopmetricsColor.visitSecondColor
+            self.websiteUrl.textColor = PopmetricsColor.visitSecondColor
+        } else {
+            self.trackingNumber.textColor = PopmetricsColor.lightGray
+            self.websiteUrl.textColor = PopmetricsColor.lightGray
+        }
+    }
+    
     private func isGoogleConnected() -> Bool {
-        return false
         if currentBrand?.googleAnalytics != nil {
             return true
         }
@@ -115,7 +118,5 @@ class SettingsGAViewController: UITableViewController {
     @objc func handlerClickBack() {
         self.navigationController?.popViewController(animated: true)
     }
-
-
 
 }
