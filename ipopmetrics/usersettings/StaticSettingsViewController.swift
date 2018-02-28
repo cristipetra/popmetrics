@@ -158,7 +158,7 @@ class StaticSettingsViewController: BaseTableViewController {
         } else if (indexPath.section == 2 && indexPath.row == 3) {
             openBusinessContactDetails()
         } else if (indexPath.section == 3 && indexPath.row == 0) {
-            displayFacebookSecond()
+            displayFacebook()
         } else if (indexPath.section == 3 && indexPath.row == 1) {
             displayTwitter()
         } else if (indexPath.section == 3 && indexPath.row == 2) {
@@ -205,13 +205,6 @@ class StaticSettingsViewController: BaseTableViewController {
     }
     
     private func displayFacebook() {
-        let facebookVC = SettingsSocialViewController(nibName: "SettingsSocialView", bundle: nil) as SettingsSocialViewController
-        facebookVC.currentBrand = self.currentBrand
-        facebookVC.displayFacebook()
-        self.navigationController?.pushViewController(facebookVC, animated: true)
-    }
-    
-    private func displayFacebookSecond() {
         let facebookVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "SettingsFacebookViewController") as! SettingsFacebookViewController
         facebookVC.currentBrand = self.currentBrand
         self.navigationController?.pushViewController(facebookVC, animated: true)
