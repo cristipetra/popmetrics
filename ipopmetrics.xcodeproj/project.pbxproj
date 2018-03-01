@@ -160,6 +160,7 @@
 		08C583021FB1AFA500A7DD3D /* FooterViewStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */; };
 		08C5CF361FC5EA9C001851A5 /* ActionPageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */; };
 		08C6101C2048054D008FCE9E /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C6101B2048054D008FCE9E /* Payment.storyboard */; };
+		08C61020204843B5008FCE9E /* PaymentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6101F204843B5008FCE9E /* PaymentTableViewController.swift */; };
 		08C6F5D72045638700E5482C /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6F5D62045638700E5482C /* UITextFieldExtensions.swift */; };
 		08C7A438201B4D0500714360 /* SocialIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7A437201B4D0500714360 /* SocialIconView.swift */; };
 		08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */; };
@@ -412,6 +413,7 @@
 		08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterViewStateController.swift; sourceTree = "<group>"; };
 		08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPageDetailsViewController.swift; sourceTree = "<group>"; };
 		08C6101B2048054D008FCE9E /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
+		08C6101F204843B5008FCE9E /* PaymentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableViewController.swift; sourceTree = "<group>"; };
 		08C6F5D62045638700E5482C /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		08C7A437201B4D0500714360 /* SocialIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialIconView.swift; sourceTree = "<group>"; };
 		08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
@@ -640,6 +642,7 @@
 			isa = PBXGroup;
 			children = (
 				08C6101B2048054D008FCE9E /* Payment.storyboard */,
+				08C6101F204843B5008FCE9E /* PaymentTableViewController.swift */,
 			);
 			path = payment;
 			sourceTree = "<group>";
@@ -1546,6 +1549,7 @@
 				08BD58001F7A2DCC00FFDCFD /* ActionPageView.swift in Sources */,
 				11DD96761FC4FA5400386F1E /* CalendarApi.swift in Sources */,
 				08732B35203EE5A900EF4C51 /* SettingsHeaderView.swift in Sources */,
+				08C61020204843B5008FCE9E /* PaymentTableViewController.swift in Sources */,
 				0848280F1F39F9200054B04C /* HeaderView.swift in Sources */,
 				08B968AA1FBB141400482CDE /* ChangeBrandViewController.swift in Sources */,
 				08078F391FBDA92600A4399D /* Alert.swift in Sources */,
