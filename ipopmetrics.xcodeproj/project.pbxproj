@@ -159,6 +159,7 @@
 		08C580FF1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C580FE1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift */; };
 		08C583021FB1AFA500A7DD3D /* FooterViewStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */; };
 		08C5CF361FC5EA9C001851A5 /* ActionPageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */; };
+		08C6101C2048054D008FCE9E /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C6101B2048054D008FCE9E /* Payment.storyboard */; };
 		08C6F5D72045638700E5482C /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6F5D62045638700E5482C /* UITextFieldExtensions.swift */; };
 		08C7A438201B4D0500714360 /* SocialIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7A437201B4D0500714360 /* SocialIconView.swift */; };
 		08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */; };
@@ -410,6 +411,7 @@
 		08C580FE1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOverlayUrlViewController.swift; sourceTree = "<group>"; };
 		08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterViewStateController.swift; sourceTree = "<group>"; };
 		08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPageDetailsViewController.swift; sourceTree = "<group>"; };
+		08C6101B2048054D008FCE9E /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		08C6F5D62045638700E5482C /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		08C7A437201B4D0500714360 /* SocialIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialIconView.swift; sourceTree = "<group>"; };
 		08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
@@ -634,6 +636,14 @@
 			path = twitter;
 			sourceTree = "<group>";
 		};
+		08C6101A20480510008FCE9E /* payment */ = {
+			isa = PBXGroup;
+			children = (
+				08C6101B2048054D008FCE9E /* Payment.storyboard */,
+			);
+			path = payment;
+			sourceTree = "<group>";
+		};
 		08C873AD203F19EC000C02EC /* facebook */ = {
 			isa = PBXGroup;
 			children = (
@@ -779,6 +789,7 @@
 		11DD96591FC4ECD600386F1E /* hub */ = {
 			isa = PBXGroup;
 			children = (
+				08C6101A20480510008FCE9E /* payment */,
 				116E33A22034789400D2BCA9 /* intercom */,
 				11DD965C1FC4F0EA00386F1E /* actionpage */,
 				11DD965B1FC4F0AF00386F1E /* insightpage */,
@@ -1210,6 +1221,7 @@
 				08CC6EC21FBC7FBA00A6521E /* SettingsLogoView.xib in Resources */,
 				08B324D81F98C65A00BB4905 /* IceExtendView.xib in Resources */,
 				08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */,
+				08C6101C2048054D008FCE9E /* Payment.storyboard in Resources */,
 				113DE2FE1FC8ACD100AE6DE9 /* PaidActionCard.xib in Resources */,
 				0852826C1F287DD70065A968 /* CalendarHeaderViewCell.xib in Resources */,
 				08B745961F1F6C1D00EC3F8C /* OpenSans-Regular.ttf in Resources */,
