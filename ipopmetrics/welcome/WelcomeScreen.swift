@@ -52,8 +52,8 @@ class WelcomeScreen: BaseViewController {
             presentErrorNetwork()
             return
         }
-        
-        self.performSegue(withIdentifier: "signInSegue", sender: self)
+        openTmp()
+        //self.performSegue(withIdentifier: "signInSegue", sender: self)
     }
     
     @IBAction func handlerDidPressNewButton(_ sender: UIButton) {
@@ -91,7 +91,15 @@ class WelcomeScreen: BaseViewController {
             presentErrorNetwork()
             return
         }
-        self.performSegue(withIdentifier: "signInSegue", sender: self)        
+        self.performSegue(withIdentifier: "signInSegue", sender: self)
+    }
+    
+    func openTmp() {
+        let vc = AppStoryboard.Boarding.instance.instantiateViewController(withIdentifier:
+            "tmpScreen") as! SliderViewController
+        //let vc: UIViewController = UIStoryboard.init(name: "Boarding", bundle: nil).instantiateViewController(withIdentifier: "tmpScreen") as! UIViewController
+        self.present(vc, animated: true, completion: nil)
+        
     }
     
 }
