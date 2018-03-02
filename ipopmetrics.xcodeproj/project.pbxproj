@@ -165,6 +165,7 @@
 		08C7A438201B4D0500714360 /* SocialIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7A437201B4D0500714360 /* SocialIconView.swift */; };
 		08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */; };
 		08C873AF203F1A15000C02EC /* SettingsFacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C873AE203F1A15000C02EC /* SettingsFacebookViewController.swift */; };
+		08C928E320494CC900C070AE /* TrialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C928E220494CC900C070AE /* TrialViewController.swift */; };
 		08CA5D5820247C1000ED78C3 /* NotificationsManuallyEnableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA5D5720247C1000ED78C3 /* NotificationsManuallyEnableViewController.swift */; };
 		08CBB0061FD96AEA0042EE9C /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CBB0051FD96AEA0042EE9C /* ActionButton.swift */; };
 		08CC6EC01FBC7F9C00A6521E /* SettingsLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */; };
@@ -418,6 +419,7 @@
 		08C7A437201B4D0500714360 /* SocialIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialIconView.swift; sourceTree = "<group>"; };
 		08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		08C873AE203F1A15000C02EC /* SettingsFacebookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFacebookViewController.swift; sourceTree = "<group>"; };
+		08C928E220494CC900C070AE /* TrialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialViewController.swift; sourceTree = "<group>"; };
 		08CA5D5720247C1000ED78C3 /* NotificationsManuallyEnableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManuallyEnableViewController.swift; sourceTree = "<group>"; };
 		08CBB0051FD96AEA0042EE9C /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLogoViewController.swift; sourceTree = "<group>"; };
@@ -643,6 +645,7 @@
 			children = (
 				08C6101B2048054D008FCE9E /* Payment.storyboard */,
 				08C6101F204843B5008FCE9E /* PaymentTableViewController.swift */,
+				08C928E220494CC900C070AE /* TrialViewController.swift */,
 			);
 			path = payment;
 			sourceTree = "<group>";
@@ -1630,6 +1633,7 @@
 				11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */,
 				08AA6C731F56F8630022DE91 /* ChartViewCell.swift in Sources */,
 				08B4EBB71FC56ACE00BFC5A1 /* ReachabilityManager.swift in Sources */,
+				08C928E320494CC900C070AE /* TrialViewController.swift in Sources */,
 				08B7459B1F1F996B00EC3F8C /* DigitCodeView.swift in Sources */,
 				085054031F27A25B00FE8234 /* CalendarCardViewCell.swift in Sources */,
 				08A812761F1660A300672126 /* CardHeaderCell.swift in Sources */,
