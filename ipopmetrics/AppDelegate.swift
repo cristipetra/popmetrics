@@ -92,6 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Stripe
         STPPaymentConfiguration.shared().publishableKey = Config.sharedInstance.environment.stripeKey
+        STPPaymentConfiguration.shared().createCardSources = true
 
         //Intercom
         Intercom.setInAppMessagesVisible(false)

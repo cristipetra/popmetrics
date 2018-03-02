@@ -80,6 +80,7 @@
 		08953E721F4C352B003ABEFC /* RequiredActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08953E711F4C352B003ABEFC /* RequiredActionCard.xib */; };
 		08953E741F4C359E003ABEFC /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E731F4C359E003ABEFC /* FooterView.swift */; };
 		08953E761F4C35AC003ABEFC /* RequiredActionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E751F4C35AC003ABEFC /* RequiredActionCard.swift */; };
+		089DFC6D20499A47003600AF /* MockCustomerContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089DFC6C20499A47003600AF /* MockCustomerContext.swift */; };
 		089E10561FD1716200D57A08 /* SwipeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E10551FD1716200D57A08 /* SwipeExtension.swift */; };
 		089EFD39201774FF002E9CAF /* FacebookSocialPostDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089EFD38201774FF002E9CAF /* FacebookSocialPostDetails.xib */; };
 		089F93AB1FB5FE1E00155674 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089F93AA1FB5FE1E00155674 /* Settings.storyboard */; };
@@ -335,6 +336,7 @@
 		08953E711F4C352B003ABEFC /* RequiredActionCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequiredActionCard.xib; sourceTree = "<group>"; };
 		08953E731F4C359E003ABEFC /* FooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		08953E751F4C35AC003ABEFC /* RequiredActionCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredActionCard.swift; sourceTree = "<group>"; };
+		089DFC6C20499A47003600AF /* MockCustomerContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCustomerContext.swift; sourceTree = "<group>"; };
 		089E10551FD1716200D57A08 /* SwipeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeExtension.swift; sourceTree = "<group>"; };
 		089EFD38201774FF002E9CAF /* FacebookSocialPostDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacebookSocialPostDetails.xib; sourceTree = "<group>"; };
 		089F93AA1FB5FE1E00155674 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -646,6 +648,7 @@
 				08C6101B2048054D008FCE9E /* Payment.storyboard */,
 				08C6101F204843B5008FCE9E /* PaymentTableViewController.swift */,
 				08C928E220494CC900C070AE /* TrialViewController.swift */,
+				089DFC6C20499A47003600AF /* MockCustomerContext.swift */,
 			);
 			path = payment;
 			sourceTree = "<group>";
@@ -1631,6 +1634,7 @@
 				08953E6F1F4C2790003ABEFC /* ToDoCountView.swift in Sources */,
 				08C7A438201B4D0500714360 /* SocialIconView.swift in Sources */,
 				086EDE461FC8651B002F4140 /* UIViewExtensions.swift in Sources */,
+				089DFC6D20499A47003600AF /* MockCustomerContext.swift in Sources */,
 				08B8D9711F9A4443004E7781 /* RecommendActionHandler.swift in Sources */,
 				11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */,
 				08AA6C731F56F8630022DE91 /* ChartViewCell.swift in Sources */,

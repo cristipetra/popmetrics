@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Stripe
 
 class PaymentTableViewController: UITableViewController {
 
@@ -46,11 +47,50 @@ class PaymentTableViewController: UITableViewController {
         
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 3 {
+            openAddCard()
+        }
+    }
+    
+    private func openAddCard() {
+        let config = STPPaymentConfiguration.shared()
+        let theme = STPTheme.default()
+        let customerContext = MockCustomerContext()
+        
+    
+        let cardVC = STPPaymentMethodsViewController(configuration: config,
+                                                             theme: theme,
+                                                             customerContext: customerContext,
+                                                             delegate: self)
+        
+        self.navigationController?.pushViewController(cardVC, animated: true)
+    }
+    
     @objc func handlerClickBack() {
         self.navigationController?.popViewController(animated: true)
     }
     
 }
-extension PaymentTableViewController: UITextFieldDelegate {
+extension PaymentTableViewController: STPPaymentMethodsViewControllerDelegate {
+    // MARK: STPPaymentMethodsViewControllerDelegate
+    
+    func paymentMethodsViewControllerDidCancel(_ paymentMethodsViewController: STPPaymentMethodsViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func paymentMethodsViewControllerDidFinish(_ paymentMethodsViewController: STPPaymentMethodsViewController) {
+        paymentMethodsViewController.navigationController?.popViewController(animated: true)
+    }
+    
+    func paymentMethodsViewController(_ paymentMethodsViewController: STPPaymentMethodsViewController, didFailToLoadWithError error: Error) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: STPShippingAddressViewControllerDelegate
+    
+    func shippingAddressViewControllerDidCancel(_ addressViewController: STPShippingAddressViewController) {
+        dismiss(animated: true, completion: nil)
+    }
     
 }
