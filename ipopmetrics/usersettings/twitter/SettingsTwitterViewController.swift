@@ -34,8 +34,12 @@ class SettingsTwitterViewController: UITableViewController {
     }
     
     internal func updateView() {
-        name.text = currentBrand?.twitterDetails?.screenName ?? "Not Connected"
-        tracker.text = currentBrand?.twitterDetails?.name ?? "Not Connected"
+        if let screenName = currentBrand?.twitterDetails?.screenName {
+            name.text = "@\(screenName)"
+        } else {
+            name.text = "Not Connected"
+        }
+        tracker.text = currentBrand?.twitterDetails?.url ?? "Not Connected"
         
         self.tableView.beginUpdates()
         if isTwitterConnected() {

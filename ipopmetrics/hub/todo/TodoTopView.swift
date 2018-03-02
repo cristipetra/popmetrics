@@ -115,7 +115,7 @@ class TodoTopView: UIView {
         fourthIndicator = IndicatorTopView()
         fourthIndicator.changeImage(imagesUnselected[3])
         
-        views = [firstIndicatorTop, secondIndicator, thirdIndicator, fourthIndicator]
+        views = [firstIndicatorTop, secondIndicator, thirdIndicator]
         
         stackView = UIStackView(arrangedSubviews: views)
         stackView.axis = .horizontal
@@ -128,7 +128,7 @@ class TodoTopView: UIView {
         self.addSubview(stackView)
         
         stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        //stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true   //
+        //stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         stackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15).isActive = true
         stackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -15).isActive = true
         

@@ -11,9 +11,8 @@ import UIKit
 class SettingsFacebookViewController: UITableViewController {
     
     @IBOutlet weak var pageUrl: UILabel!
-    @IBOutlet weak var pageId: UILabel!
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var tracker: UILabel!
+    @IBOutlet weak var pageName: UILabel!
+    @IBOutlet weak var accountName: UILabel!
     @IBOutlet weak var constraintHeightBtnConnect: NSLayoutConstraint!
     
     internal var currentBrand: Brand?
@@ -36,11 +35,13 @@ class SettingsFacebookViewController: UITableViewController {
     }
     
     internal func updateView() {
-        pageId.text = "Not connected"
-        pageUrl.text = "Not connected"
-        name.text = currentBrand?.facebookDetails?.userName ?? "Not connected"
-        tracker.text = currentBrand?.facebookDetails?.pageId ?? "Not connected"
+        pageName.text = currentBrand?.facebookDetails?.pageName ?? "Not connected"
+        pageUrl.text = currentBrand?.facebookDetails?.pageUrl ?? "Not connected"
         
+        accountName.text = currentBrand?.facebookDetails?.accountName ?? "Not connected"
+        
+        
+        self.tableView.beginUpdates()
         if isFacebookConnected() {
             btnConnect.typeButton = .disconnect
             constraintHeightBtnConnect.constant = 0
@@ -48,6 +49,7 @@ class SettingsFacebookViewController: UITableViewController {
             btnConnect.typeButton = .connect
             constraintHeightBtnConnect.constant = 44
         }
+        self.tableView.endUpdates()
     
     }
     
@@ -97,7 +99,9 @@ class SettingsFacebookViewController: UITableViewController {
     }
     
     @objc func handlerFacebookConnected() {
-        fetchBrandDetails()
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
+            self.fetchBrandDetails()
+        }
     }
     
     func fetchBrandDetails() {

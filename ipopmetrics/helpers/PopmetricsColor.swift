@@ -99,4 +99,6 @@ class PopmetricsColor {
     static let grayStats = UIColor(red: 151/255, green: 151/255, blue: 151/255, alpha: 1)
     
     static let loadingBackground = UIColor(red: 74/255, green: 74/255, blue: 74/255, alpha: 1)
+    
+    static let lightGray = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1)
 }

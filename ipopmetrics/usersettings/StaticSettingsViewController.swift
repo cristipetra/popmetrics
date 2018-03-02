@@ -82,11 +82,9 @@ class StaticSettingsViewController: BaseTableViewController {
         
         brandName.text = UserStore.currentBrand?.name
         
-        facebookHandleField.text = currentBrand?.facebookDetails?.page ?? "Not connected"
-        twitterHandleField.text = currentBrand?.twitterDetails?.screenName ?? "Not connected"
-        googleAnalyticsTracker.text = currentBrand?.googleAnalytics?.tracker ?? "Not connected"
-        
-        
+        facebookHandleField.text = currentBrand?.facebookDetails?.pageUrl ?? ""
+        twitterHandleField.text = currentBrand?.twitterDetails?.url ?? ""
+        googleAnalyticsTracker.text = currentBrand?.googleAnalytics?.name ?? ""
     }
     
     func setUpNavigationBar() {
