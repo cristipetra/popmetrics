@@ -48,6 +48,13 @@ enum Environment: String {
         }
     }
     
+    var stripeKey: String {
+        switch self {
+        case .Staging: return "pk_test_2FpRw3r7YJGm7gvEMe3aKMvC"
+        case .Production: return "pk_test_2FpRw3r7YJGm7gvEMe3aKMvC"
+        }
+    }
+    
 }
 
 class Config: NSObject {
