@@ -193,12 +193,16 @@ class MenuViewController: ElasticModalViewController {
             self.present(alertController, animated: true, completion: nil)
         })
     }
-    
-    @IBAction func handlerClickMessages(_ sender: UIButton) {
-        Intercom.presentMessenger()
-    }
 
+    @IBAction func handlerClickSubscription(_ sender: UIButton) {
+        openSubscription()
+    }
     
+    private func openSubscription() {
+        let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "TrialViewController") as! TrialViewController
+        let navigation = UINavigationController(rootViewController: vc)
+        self.present(navigation, animated: true, completion: nil)
+    }
 }
 
 extension MenuViewController: MFMailComposeViewControllerDelegate {
