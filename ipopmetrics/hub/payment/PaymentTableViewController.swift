@@ -22,6 +22,7 @@ class PaymentTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.tableFooterView = UIView()
         setUpNavigationBar()
         
         changeTextColor()
@@ -142,7 +143,7 @@ extension PaymentTableViewController: STPPaymentMethodsViewControllerDelegate {
     // MARK: STPPaymentMethodsViewControllerDelegate
     
     func paymentMethodsViewControllerDidCancel(_ paymentMethodsViewController: STPPaymentMethodsViewController) {
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func paymentMethodsViewControllerDidFinish(_ paymentMethodsViewController: STPPaymentMethodsViewController) {
@@ -150,13 +151,13 @@ extension PaymentTableViewController: STPPaymentMethodsViewControllerDelegate {
     }
     
     func paymentMethodsViewController(_ paymentMethodsViewController: STPPaymentMethodsViewController, didFailToLoadWithError error: Error) {
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: STPShippingAddressViewControllerDelegate
     
     func shippingAddressViewControllerDidCancel(_ addressViewController: STPShippingAddressViewController) {
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
