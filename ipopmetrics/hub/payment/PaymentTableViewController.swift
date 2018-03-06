@@ -8,9 +8,11 @@
 
 import UIKit
 import Stripe
+import EZAlertController
 
 class PaymentTableViewController: UITableViewController {
 
+    @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var labelCard: UILabel!
     @IBOutlet weak var infoCardView: InfoCardView!
     @IBOutlet weak var textViewTerms: UITextView!
@@ -110,6 +112,14 @@ class PaymentTableViewController: UITableViewController {
     
     @objc func handlerClickBack() {
         self.navigationController?.popViewController(animated: true)
+    }
+    @IBAction func handlerConfirmPurchase(_ sender: UIButton) {
+        if (emailText.text?.isEmpty)! {
+            EZAlertController.alert("Email required", message: "Please enter an email address")
+            return
+        }
+        
+    
     }
     
 }

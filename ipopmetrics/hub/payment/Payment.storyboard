@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -217,7 +218,7 @@ Request 3rd party completion of solutions provided in our insights</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="eFw-aD-0P1">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="eFw-aD-0P1">
                                         <rect key="frame" x="0.0" y="240" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eFw-aD-0P1" id="jic-Ef-F1I">
@@ -230,18 +231,20 @@ Request 3rd party completion of solutions provided in our insights</string>
                                                     <color key="textColor" red="0.25098039215686274" green="0.23529411759999999" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email@email.com" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PuN-e5-y66">
-                                                    <rect key="frame" x="133" y="19" width="226" height="21"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email@email.com" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PuN-e5-y66">
+                                                    <rect key="frame" x="133" y="8" width="226" height="43.5"/>
                                                     <color key="textColor" red="0.27058823529999998" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="PuN-e5-y66" firstAttribute="top" secondItem="jic-Ef-F1I" secondAttribute="topMargin" id="Ale-DT-hiZ"/>
                                                 <constraint firstItem="Th8-bv-Q8I" firstAttribute="centerY" secondItem="jic-Ef-F1I" secondAttribute="centerY" id="J88-x1-hKA"/>
                                                 <constraint firstItem="PuN-e5-y66" firstAttribute="centerY" secondItem="jic-Ef-F1I" secondAttribute="centerY" id="Je0-2l-mQS"/>
                                                 <constraint firstItem="Th8-bv-Q8I" firstAttribute="leading" secondItem="jic-Ef-F1I" secondAttribute="leading" constant="16" id="Qt7-uw-wAz"/>
                                                 <constraint firstAttribute="trailing" secondItem="PuN-e5-y66" secondAttribute="trailing" constant="16" id="Rp2-qt-Xo8"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="PuN-e5-y66" secondAttribute="bottom" id="SbU-Jn-KIz"/>
                                                 <constraint firstItem="PuN-e5-y66" firstAttribute="leading" secondItem="Th8-bv-Q8I" secondAttribute="trailing" constant="10" id="ygm-Md-zyn"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -383,6 +386,9 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="handlerConfirmPurchase:" destination="o9i-RI-zMh" eventType="touchUpInside" id="CpW-m9-ODy"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -409,6 +415,7 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="emailText" destination="PuN-e5-y66" id="ARH-Qx-6OO"/>
                         <outlet property="infoCardView" destination="M64-WY-m3H" id="rSV-Wf-otu"/>
                         <outlet property="labelCard" destination="ZlN-p2-FH1" id="sp2-FZ-uAd"/>
                         <outlet property="textViewTerms" destination="SmP-hg-rcd" id="fzL-Ng-47E"/>
