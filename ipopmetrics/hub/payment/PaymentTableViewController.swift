@@ -26,7 +26,7 @@ class PaymentTableViewController: UITableViewController {
     }
     
     func changeTextColor() {
-        muutableString = NSMutableAttributedString(string: textViewTerms.text!, attributes: [NSAttributedStringKey.font:UIFont(name: FontBook.regular, size: 17.0)!])
+        muutableString = NSMutableAttributedString(string: textViewTerms.text!, attributes: [NSAttributedStringKey.font:UIFont(name: FontBook.regular, size: 15.0)!])
         muutableString.addAttribute(.link, value: "https://www.popmetrics.io", range: NSRange(location: 108, length: 20))
         muutableString.addAttribute(.link, value: "https://www.popmetrics.io", range: NSRange(location: 132, length: 16))
         textViewTerms.attributedText = muutableString
