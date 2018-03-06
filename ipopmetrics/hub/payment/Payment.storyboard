@@ -254,16 +254,31 @@ Request 3rd party completion of solutions provided in our insights</string>
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visa ending in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZlN-p2-FH1">
-                                                    <rect key="frame" x="16" y="19" width="101" height="20.5"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                                    <color key="textColor" red="0.27058823529999998" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M64-WY-m3H" customClass="InfoCardView" customModule="ipopmetrics" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visa ending in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZlN-p2-FH1">
+                                                            <rect key="frame" x="16" y="18" width="121" height="25"/>
+                                                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="18"/>
+                                                            <color key="textColor" red="0.25098039215686274" green="0.23529411764705882" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="ZlN-p2-FH1" firstAttribute="leading" secondItem="M64-WY-m3H" secondAttribute="leading" constant="16" id="4NK-yb-nUL"/>
+                                                        <constraint firstItem="ZlN-p2-FH1" firstAttribute="centerY" secondItem="M64-WY-m3H" secondAttribute="centerY" id="KjW-PT-Sdo"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="labelCard" destination="ZlN-p2-FH1" id="8B6-EC-u96"/>
+                                                    </connections>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ZlN-p2-FH1" firstAttribute="centerY" secondItem="UJj-MM-KVC" secondAttribute="centerY" id="dGz-m6-Lcn"/>
-                                                <constraint firstItem="ZlN-p2-FH1" firstAttribute="leading" secondItem="UJj-MM-KVC" secondAttribute="leading" constant="16" id="k9L-bR-zNx"/>
+                                                <constraint firstItem="M64-WY-m3H" firstAttribute="top" secondItem="UJj-MM-KVC" secondAttribute="top" id="B4u-FX-2tb"/>
+                                                <constraint firstItem="M64-WY-m3H" firstAttribute="leading" secondItem="UJj-MM-KVC" secondAttribute="leading" id="emd-Ex-Yre"/>
+                                                <constraint firstAttribute="bottom" secondItem="M64-WY-m3H" secondAttribute="bottom" id="kiu-fa-tWR"/>
+                                                <constraint firstAttribute="trailing" secondItem="M64-WY-m3H" secondAttribute="trailing" id="xWN-lc-qsD"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -395,6 +410,8 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="infoCardView" destination="M64-WY-m3H" id="rSV-Wf-otu"/>
+                        <outlet property="labelCard" destination="ZlN-p2-FH1" id="sp2-FZ-uAd"/>
                         <outlet property="textViewTerms" destination="SmP-hg-rcd" id="fzL-Ng-47E"/>
                     </connections>
                 </tableViewController>

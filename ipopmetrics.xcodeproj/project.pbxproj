@@ -60,6 +60,8 @@
 		086EDE461FC8651B002F4140 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE451FC8651B002F4140 /* UIViewExtensions.swift */; };
 		086F34742034986700F7043B /* SettingsBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F34732034986700F7043B /* SettingsBaseTableViewController.swift */; };
 		08732B35203EE5A900EF4C51 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08732B34203EE5A900EF4C51 /* SettingsHeaderView.swift */; };
+		08735D37204D8F9600069B65 /* MyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08735D36204D8F9600069B65 /* MyAPIClient.swift */; };
+		08735D39204D9AA300069B65 /* InfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08735D38204D9AA300069B65 /* InfoCardView.swift */; };
 		08755F461FCC11E600A8CF13 /* SocialPostDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */; };
 		08755F4C1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */; };
 		088674111FE28506008DB87E /* LoginSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088674101FE28506008DB87E /* LoginSocialViewController.swift */; };
@@ -315,6 +317,8 @@
 		086EDE451FC8651B002F4140 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		086F34732034986700F7043B /* SettingsBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBaseTableViewController.swift; sourceTree = "<group>"; };
 		08732B34203EE5A900EF4C51 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
+		08735D36204D8F9600069B65 /* MyAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAPIClient.swift; sourceTree = "<group>"; };
+		08735D38204D9AA300069B65 /* InfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCardView.swift; sourceTree = "<group>"; };
 		08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SocialPostDetails.xib; sourceTree = "<group>"; };
 		08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPostDetailsViewController.swift; sourceTree = "<group>"; };
 		0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -645,10 +649,12 @@
 		08C6101A20480510008FCE9E /* payment */ = {
 			isa = PBXGroup;
 			children = (
+				08735D36204D8F9600069B65 /* MyAPIClient.swift */,
 				08C6101B2048054D008FCE9E /* Payment.storyboard */,
 				08C6101F204843B5008FCE9E /* PaymentTableViewController.swift */,
 				08C928E220494CC900C070AE /* TrialViewController.swift */,
 				089DFC6C20499A47003600AF /* MockCustomerContext.swift */,
+				08735D38204D9AA300069B65 /* InfoCardView.swift */,
 			);
 			path = payment;
 			sourceTree = "<group>";
@@ -1536,6 +1542,7 @@
 				08A51D331FC6EF6D0097B334 /* ActionInstructionsPageViewController.swift in Sources */,
 				08B4EBB21FC56ACE00BFC5A1 /* SettingsBaseViewController.swift in Sources */,
 				08B4EB991FC569F700BFC5A1 /* FeedStore.swift in Sources */,
+				08735D39204D9AA300069B65 /* InfoCardView.swift in Sources */,
 				08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */,
 				086F34742034986700F7043B /* SettingsBaseTableViewController.swift in Sources */,
 				088674111FE28506008DB87E /* LoginSocialViewController.swift in Sources */,
@@ -1562,6 +1569,7 @@
 				08B968AA1FBB141400482CDE /* ChangeBrandViewController.swift in Sources */,
 				08078F391FBDA92600A4399D /* Alert.swift in Sources */,
 				085282701F2881BD0065A968 /* Calendar.swift in Sources */,
+				08735D37204D8F9600069B65 /* MyAPIClient.swift in Sources */,
 				08BD58021F7A2F3700FFDCFD /* IndividualTaskView.swift in Sources */,
 				08B3AA9E1F8FA748008D0503 /* ToDoApprovedView.swift in Sources */,
 				0809AEB41F22183400A13178 /* Constants.swift in Sources */,
