@@ -12,17 +12,17 @@ import XLActionController
 class AlertDetails {
 
     
-    static func showActionSheetDetails(parent: UIViewController?, options: [String], action: @escaping ActionSheetResponse) {
+    static func showActionSheetDetails(parent: UIViewController?, options: [ActionData], action: @escaping ActionSheetResponse) {
         
-        //let selectedAction: ActionSheetResponse? = action
+        let selectedAction: ActionSheetResponse? = action
         
         let actionController = DetailsActionController()
         
         for option in options {
 
-            let action = Action(ActionData(title: option, subtitle: "Subtitle", image: #imageLiteral(resourceName: "logo")), style: .default, handler: { action in
-                //let selectedIndex = options.index(of: action.title!)
-                //selectedAction!(selectedIndex!)
+            let action = Action(ActionData(title: option.title!, subtitle: option.subtitle!), style: .default, handler: { action in
+                let selectedIndex = options.index(where: {$0.title == action.data?.title && $0.subtitle == action.data?.subtitle})
+                selectedAction!(selectedIndex!)
             })    
             actionController.addAction(action)
         }
