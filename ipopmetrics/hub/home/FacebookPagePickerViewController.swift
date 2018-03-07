@@ -25,11 +25,13 @@ final class FacebookPageTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let imgHeight = self.contentView.size().height - 8
+        update()
+        
+        let imgHeight = CGFloat(25)
         imageView?.frame.size = CGSize(width: imgHeight, height: imgHeight)
         imageView?.layer.cornerRadius = imgHeight/2
 
-
+        imageView?.roundedCorners = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -50,7 +52,6 @@ final class FacebookPageTableViewCell: UITableViewCell {
         if let picture = facebookPage.picture {
             imageView?.af_setImage(withURL: URL(string: picture)!, placeholderImage: nil)
         }
-        
         textLabel?.text = facebookPage.name
         detailTextLabel?.text = facebookPage.username
         
