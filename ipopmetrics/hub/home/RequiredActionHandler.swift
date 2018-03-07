@@ -187,11 +187,21 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
             guard let accountData = account as? [String: Any],
                 let id = accountData["id"] as? String,
                 let name = accountData["name"] as? String,
+                let username = accountData["username"] as? String,
                 let perms = accountData["perms"] as? [String] else {
                 continue
             }
 
-            facebookAccounts.append(FacebookAccount(id: id, name: name, perms:perms))
+            var fbAccount = FacebookAccount(id: id, name: name, username: username, perms:perms)
+            
+            if let picture = accountData["picture"] as? [String: Any],
+                let pictureData = picture["data"] as? [String: Any],
+                let pictureUrl = pictureData["url"] as? String {
+
+                fbAccount.picture = pictureUrl
+            }
+            
+            facebookAccounts.append(fbAccount)
             
         }
         
@@ -336,7 +346,16 @@ struct Facebook {
 struct FacebookAccount {
     let id: String
     let name: String
+    let username: String
+    var picture: String?
     let perms: [String]
+    
+    init(id: String, name: String, username: String, perms: [String]){
+        self.id = id
+        self.name = name
+        self.username = username
+        self.perms = perms
+    }
     
     var canCreateContent: Bool {
         get {
