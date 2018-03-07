@@ -19,6 +19,8 @@ class SettingsGAViewController: UITableViewController {
     @IBOutlet weak var btnConnect: ConnectSettingsButton!
     @IBOutlet weak var constraintHeightBtnConnect: NSLayoutConstraint!
     
+    var requiredActionHandler: RequiredActionHandler = RequiredActionHandler()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +32,10 @@ class SettingsGAViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         updateView()
+        
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(handlerGoogleConnected), name: Notification.Popmetrics.RemoteMessage, object: nil)
+
     }
     
     private func updateView() {
@@ -115,8 +121,40 @@ class SettingsGAViewController: UITableViewController {
         
     }
     
+    private func connectSocial() {
+        requiredActionHandler.connectGoogleAnalytics(nil)
+    }
+    
+    private func disconnectSocial() {
+        
+    }
+    
+    @objc func handlerGoogleConnected() {
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
+            self.fetchBrandDetails()
+        }
+    }
+    
+    func fetchBrandDetails() {
+        let currentBrandId = UserStore.currentBrandId
+        UsersApi().getBrandDetails(currentBrandId) { brand in
+            UserStore.currentBrand = brand!
+            self.currentBrand = brand!
+            self.updateView()
+        }
+        
+    }
+    
     @objc func handlerClickBack() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func handlerChangeConnectOrDisconnect(_ sender: Any) {
+        if isGoogleConnected() {
+            disconnectSocial()
+        } else {
+            connectSocial()
+        }
     }
 
 }
