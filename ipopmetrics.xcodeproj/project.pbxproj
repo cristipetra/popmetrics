@@ -238,6 +238,7 @@
 		11F89F691EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */; };
 		11FB84EB1FC79E8800FE937D /* TodoHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FB84EA1FC79E8800FE937D /* TodoHubController.swift */; };
 		631BDFACE57815E87C781181 /* Pods_ipopmetrics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */; };
+		A615BFB720500764001F0529 /* FacebookPagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A615BFB620500764001F0529 /* FacebookPagePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -502,6 +503,7 @@
 		4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release.xcconfig"; sourceTree = "<group>"; };
 		8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ipopmetrics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D5ECCAEA66BCED2B0405D78 /* Pods-ipopmetrics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.debug.xcconfig"; sourceTree = "<group>"; };
+		A615BFB620500764001F0529 /* FacebookPagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookPagePickerViewController.swift; sourceTree = "<group>"; };
 		B4B4544B39E98D6698619AEC /* Pods-ipopmetrics.debug (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.debug (production).xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.debug (production).xcconfig"; sourceTree = "<group>"; };
 		CFC64B6717A9942DCD941A53 /* Pods-ipopmetrics.debug (staging).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.debug (staging).xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.debug (staging).xcconfig"; sourceTree = "<group>"; };
 		FFE1FD22340D0C98306F8FA1 /* Pods-ipopmetrics.release (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release (production).xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release (production).xcconfig"; sourceTree = "<group>"; };
@@ -829,6 +831,7 @@
 				08F3688A1F18DC4900819CDE /* ApprovalCardCell.swift */,
 				08F368901F18E6A000819CDE /* ApprovalCardInfoCell.swift */,
 				11BDA92F1FFFD9C200CDA01C /* PopTipCard.swift */,
+				A615BFB620500764001F0529 /* FacebookPagePickerViewController.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -1595,6 +1598,7 @@
 				08B2803F1F55862100E36D19 /* Statistics.swift in Sources */,
 				08BAD73E1F960A70008BC88F /* MJCalendarViewController.swift in Sources */,
 				085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */,
+				A615BFB720500764001F0529 /* FacebookPagePickerViewController.swift in Sources */,
 				08B745981F1F718300EC3F8C /* CodeViewController.swift in Sources */,
 				08BC8F192035F247008CC969 /* SettingsTwitterViewController.swift in Sources */,
 				0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */,
