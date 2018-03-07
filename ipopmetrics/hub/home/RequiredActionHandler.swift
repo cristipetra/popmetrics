@@ -252,11 +252,6 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                             return
                         }
                         
-                        var options: [String] = []
-                        for facebookAccount in facebookAccounts {
-                            options.append(facebookAccount.name)
-                        }
-                        
                         let pickFacebookPageController = FacebookPagePickerViewController(facebookPages: facebookAccounts){
                             selectedFacebookAccount in
                             guard let selectedFacebookAccount = selectedFacebookAccount else {
@@ -301,6 +296,8 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                         pickFacebookPageController.modalPresentationStyle =  UIModalPresentationStyle.pageSheet
                         pickFacebookPageController.modalTransitionStyle =  UIModalTransitionStyle.coverVertical
 
+                        viewController.present(pickFacebookPageController, animated: true, completion: nil)
+                        
                         let navController  = UINavigationController()
                         navController.pushViewController(pickFacebookPageController, animated: true)
                         viewController.present(navController, animated: true, completion: nil)
