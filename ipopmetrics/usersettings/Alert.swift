@@ -8,13 +8,15 @@
 
 import Foundation
 import UIKit
+import XLActionController
+
+    typealias ActionSheetResponse = (Int) -> (Void)
 
 class Alert {
    
     
     typealias Action = (AlertAction) -> (Void)
     typealias ActionSheet = (ActionSheetPhoto) -> (Void)
-    typealias ActionSheetResponse = (Int) -> (Void)
     
     static func showAlertDialog(parent: UIViewController?, action: Action?) {
         let actionSelected: Action? = action
