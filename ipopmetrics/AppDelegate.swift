@@ -291,6 +291,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserStore.iosDeviceToken = token
             UsersApi().registerIosDeviceToken(token, deviceName: UIDevice.current.name)
         }
+        Intercom.setDeviceToken(deviceToken)
         
     }
     
