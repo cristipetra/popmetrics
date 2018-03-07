@@ -257,7 +257,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                             options.append(facebookAccount.name)
                         }
                         
-                        Alert.showActionSheetOptions(parent: viewController, options: options, action: { (itemSelected) -> (Void) in
+                        AlertDetails.showActionSheetDetails(parent: viewController, options: options, action: { (itemSelected) -> (Void) in
                             let selectedFacebookAccount = facebookAccounts[itemSelected]
                             if !selectedFacebookAccount.canCreateContent {
                                 self.showAlertMessage(viewController, message: "You must be an Administrator or an Editor to post content as this Page.")

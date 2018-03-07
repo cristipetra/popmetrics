@@ -175,6 +175,9 @@
 		08D1BC3B1F1E568A00D377B2 /* PhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1BC3A1F1E568A00D377B2 /* PhoneView.swift */; };
 		08D409CE1F73C3A800C5BB54 /* OnboardingFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D409CD1F73C3A800C5BB54 /* OnboardingFinalView.swift */; };
 		08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D579F81F62E6ED00FDD744 /* StatusCardTypeView.swift */; };
+		08D9786B204FF8AA00F1CABC /* CustomActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9786A204FF8AA00F1CABC /* CustomActionSheet.swift */; };
+		08D978762050091D00F1CABC /* TwitterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08D978752050091D00F1CABC /* TwitterCell.xib */; };
+		08D9787820500C1B00F1CABC /* AlertDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9787720500C1B00F1CABC /* AlertDetails.swift */; };
 		08DE806D2018E98E00621243 /* SocialPostDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DE806C2018E98E00621243 /* SocialPostDetailsView.swift */; };
 		08DF9E621F261C8100C60C2D /* InfoCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */; };
 		08EE385D1F447C0E005D1D7C /* TodoTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EE385C1F447C0E005D1D7C /* TodoTopView.swift */; };
@@ -427,6 +430,9 @@
 		08D409C71F73BF3100C5BB54 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		08D409CD1F73C3A800C5BB54 /* OnboardingFinalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFinalView.swift; sourceTree = "<group>"; };
 		08D579F81F62E6ED00FDD744 /* StatusCardTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCardTypeView.swift; sourceTree = "<group>"; };
+		08D9786A204FF8AA00F1CABC /* CustomActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionSheet.swift; sourceTree = "<group>"; };
+		08D978752050091D00F1CABC /* TwitterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwitterCell.xib; sourceTree = "<group>"; };
+		08D9787720500C1B00F1CABC /* AlertDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetails.swift; sourceTree = "<group>"; };
 		08DE806C2018E98E00621243 /* SocialPostDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPostDetailsView.swift; sourceTree = "<group>"; };
 		08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCardViewController.swift; sourceTree = "<group>"; };
 		08EE385C1F447C0E005D1D7C /* TodoTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoTopView.swift; sourceTree = "<group>"; };
@@ -604,6 +610,7 @@
 		08B4EBA11FC56ABC00BFC5A1 /* helpers */ = {
 			isa = PBXGroup;
 			children = (
+				08D97869204FF87300F1CABC /* actionsheet */,
 				08CBB0041FD96A9F0042EE9C /* buttons */,
 				08B4EBA91FC56ACD00BFC5A1 /* AppStoryboard.swift */,
 				08B4EBA41FC56ACD00BFC5A1 /* BaseTableViewController.swift */,
@@ -669,6 +676,16 @@
 				0809AEB31F22183400A13178 /* Constants.swift */,
 			);
 			name = constants;
+			sourceTree = "<group>";
+		};
+		08D97869204FF87300F1CABC /* actionsheet */ = {
+			isa = PBXGroup;
+			children = (
+				08D9786A204FF8AA00F1CABC /* CustomActionSheet.swift */,
+				08D978752050091D00F1CABC /* TwitterCell.xib */,
+				08D9787720500C1B00F1CABC /* AlertDetails.swift */,
+			);
+			path = actionsheet;
 			sourceTree = "<group>";
 		};
 		1128B3F01ECF256600BDA58C /* SimpleButton */ = {
@@ -1222,6 +1239,7 @@
 				0813A0571FC2F102003E6478 /* SettingsSocialView.xib in Resources */,
 				088BBEA81F58212A00AD5414 /* StatsEmptyCard.xib in Resources */,
 				1183A8661FC5064B00ED8EF6 /* InsightPage.xib in Resources */,
+				08D978762050091D00F1CABC /* TwitterCell.xib in Resources */,
 				08593DF01FBB440A00077A65 /* SettingsEmailView.xib in Resources */,
 				08A533341F6BD9060080BE64 /* MoreInfoViewCell.xib in Resources */,
 				08A3C838203717D3001BD81E /* LoadMoreView.xib in Resources */,
@@ -1401,6 +1419,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/UIView+JMFrame/UIView_JMFrame.framework",
 				"${BUILT_PRODUCTS_DIR}/URLNavigator/URLNavigator.framework",
+				"${BUILT_PRODUCTS_DIR}/XLActionController/XLActionController.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/markymark/markymark.framework",
 			);
@@ -1449,6 +1468,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIView_JMFrame.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URLNavigator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLActionController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/markymark.framework",
 			);
@@ -1541,6 +1561,7 @@
 				08BD58021F7A2F3700FFDCFD /* IndividualTaskView.swift in Sources */,
 				08B3AA9E1F8FA748008D0503 /* ToDoApprovedView.swift in Sources */,
 				0809AEB41F22183400A13178 /* Constants.swift in Sources */,
+				08D9786B204FF8AA00F1CABC /* CustomActionSheet.swift in Sources */,
 				08D409CE1F73C3A800C5BB54 /* OnboardingFinalView.swift in Sources */,
 				08A51D2F1FC6DBBE0097B334 /* Markdown.swift in Sources */,
 				08B4EBB41FC56ACE00BFC5A1 /* BaseViewController.swift in Sources */,
@@ -1585,6 +1606,7 @@
 				11BDA9301FFFD9C200CDA01C /* PopTipCard.swift in Sources */,
 				08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */,
 				1148D73D1FBF39AE006EB5BB /* NavigationMap.swift in Sources */,
+				08D9787820500C1B00F1CABC /* AlertDetails.swift in Sources */,
 				08F368951F18F93800819CDE /* DailyInsightsCardCell.swift in Sources */,
 				11FB84EB1FC79E8800FE937D /* TodoHubController.swift in Sources */,
 				08593DEE1FBB3B7600077A65 /* SettingsEmailViewController.swift in Sources */,

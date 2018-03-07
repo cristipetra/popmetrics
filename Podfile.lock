@@ -125,6 +125,9 @@ PODS:
     - TwitterCore (>= 2.8)
   - UIView+JMFrame (0.1.2)
   - URLNavigator (2.0.4)
+  - XLActionController (4.0.0):
+    - XLActionController/Core (= 4.0.0)
+  - XLActionController/Core (4.0.0)
 
 DEPENDENCIES:
   - ActiveLabel (from `https://github.com/sherwinzadeh/ActiveLabel.swift`, commit `4bec2dae617cca42263b9b6efc84e8f4822cc4ad`)
@@ -166,6 +169,7 @@ DEPENDENCIES:
   - TwitterCore (~> 2.8.0)
   - TwitterKit (~> 2.8.1)
   - URLNavigator
+  - XLActionController
 
 EXTERNAL SOURCES:
   ActiveLabel:
@@ -263,7 +267,8 @@ SPEC CHECKSUMS:
   TwitterKit: 3b6044a7320340326a4098f3e37aa1dbaeb94942
   UIView+JMFrame: a907974c9d34b1c300aef85ae2a1a5af746f2b8a
   URLNavigator: af5582fbbb3586c958be16835d799bfdb23a4793
+  XLActionController: 7e88fece1799e61357cb00b1cc67104d66ec4d2c
 
-PODFILE CHECKSUM: 3fca4c1958e58524482fa17cf15302d3aab99a38
+PODFILE CHECKSUM: 9f54cf03bd218442e5a9b1273734501f0efbf490
 
 COCOAPODS: 1.4.0
