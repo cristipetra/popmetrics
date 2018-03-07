@@ -243,7 +243,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                 
                 // request list of Facebook Pages
                 let connection = GraphRequestConnection()
-                connection.add(GraphRequest(graphPath: "/me/accounts", parameters: ["fields": "id, name, perms"])) { httpResponse, result in
+                connection.add(GraphRequest(graphPath: "/me/accounts", parameters: ["fields": "id, name, perms, username, picture"])) { httpResponse, result in
                     switch result {
                     case .success(let response):
                         guard let facebookAccounts = self.parseFacebookAccounts(response.dictionaryValue), facebookAccounts.count > 0 else{
