@@ -243,7 +243,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                 
                 // request list of Facebook Pages
                 let connection = GraphRequestConnection()
-                connection.add(GraphRequest(graphPath: "/me/accounts", parameters: ["fields": "id, name, perms"])) { httpResponse, result in
+                connection.add(GraphRequest(graphPath: "/me/accounts", parameters: ["fields": "id, name, perms, username, picture"])) { httpResponse, result in
                     switch result {
                     case .success(let response):
                         guard let facebookAccounts = self.parseFacebookAccounts(response.dictionaryValue), facebookAccounts.count > 0 else{
@@ -257,8 +257,13 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                             options.append(facebookAccount.name)
                         }
                         
-                        Alert.showActionSheetOptions(parent: viewController, options: options, action: { (itemSelected) -> (Void) in
-                            let selectedFacebookAccount = facebookAccounts[itemSelected]
+                        let pickFacebookPageController = FacebookPagePickerViewController(facebookPages: facebookAccounts){
+                            selectedFacebookAccount in
+                            guard let selectedFacebookAccount = selectedFacebookAccount else {
+                                self.showAlertMessage(viewController, message: "Please select a Facebook Page.")
+                                return
+                            }
+                            
                             if !selectedFacebookAccount.canCreateContent {
                                 self.showAlertMessage(viewController, message: "You must be an Administrator or an Editor to post content as this Page.")
                                 
@@ -278,22 +283,27 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                                 case LoginResult.success( _, let declinedPermissions, let accessToken):
                                     if !declinedPermissions.isEmpty {
                                         //Show declined publish permissions message
-                                         self.showAlertMessage(viewController, message: "You need to grant all the requested permissions to continue.")
+                                        self.showAlertMessage(viewController, message: "You need to grant all the requested permissions to continue.")
                                         return
                                     }
-
+                                    
                                     /*
-                                    UserStore.currentBrand?.facebookDetails?.accessToken = accessToken.authenticationToken
-                                    UserStore.currentBrand?.facebookDetails?.selectedAccountId = facebookAccounts[itemSelected].id!
-                                    */
+                                     UserStore.currentBrand?.facebookDetails?.accessToken = accessToken.authenticationToken
+                                     UserStore.currentBrand?.facebookDetails?.selectedAccountId = facebookAccounts[itemSelected].id!
+                                     */
                                     self.connectFacebookPage(accessToken: accessToken.authenticationToken,
                                                              facebookPageId: selectedFacebookAccount.id)
                                     
                                 }
                             }
-                            
-                            
-                        })
+
+                        }
+                        pickFacebookPageController.modalPresentationStyle =  UIModalPresentationStyle.pageSheet
+                        pickFacebookPageController.modalTransitionStyle =  UIModalTransitionStyle.coverVertical
+
+                        let navController  = UINavigationController()
+                        navController.pushViewController(pickFacebookPageController, animated: true)
+                        viewController.present(navController, animated: true, completion: nil)
                         
                     case .failed( _):
                         // Show fail gettting pages
