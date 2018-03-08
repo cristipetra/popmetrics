@@ -55,18 +55,19 @@ class WelcomeScreen: BaseViewController {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.alwaysBounceHorizontal = false
         
-        let firstView: SlideSecondView = SlideSecondView(frame: CGRect(x: 0, y: 0, width: scrollView.size().width, height: scrollView.size().height))
         
-        var secondView: SlideSecondView = SlideSecondView(frame: CGRect(x: scrollView.size().width, y: 0, width: scrollView.size().width, height: scrollView.size().height))
+        let width = UIScreen.main.bounds.width
+        var height = UIScreen.main.bounds.height
+        height = scrollView.size().height
+        
+        let firstView: SlideFirstView = SlideFirstView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        var secondView: SlideSecondView = SlideSecondView(frame: CGRect(x: width, y: 0, width: width, height: height))
+        let thirdView: SlideSecondView = SlideSecondView(frame: CGRect(x: width * 2, y: 0, width: width, height: height))
+        let fourthView: SlideSecondView = SlideSecondView(frame: CGRect(x: width * 3, y: 0, width: width, height: height))
+        let fifthView: SlideSecondView = SlideSecondView(frame: CGRect(x: width * 4, y: 0, width: width, height: height))
         
         
-        let thirdView: SlideSecondView = SlideSecondView(frame: CGRect(x: scrollView.size().width * 2, y: 0, width: scrollView.size().width, height: scrollView.size().height))
-        
-        let fourthView: SlideSecondView = SlideSecondView(frame: CGRect(x: scrollView.size().width * 3, y: 0, width: scrollView.size().width, height: scrollView.size().height))
-        
-        let fifthView: SlideSecondView = SlideSecondView(frame: CGRect(x: scrollView.size().width * 4, y: 0, width: scrollView.size().width, height: scrollView.size().height))
-        
-        scrollView.contentSize = CGSize(width: scrollView.size().width * 5, height: scrollView.size().height)
+        scrollView.contentSize = CGSize(width: width * 5, height: 0)
         
         scrollView.addSubview(firstView)
         scrollView.addSubview(secondView)
@@ -75,8 +76,8 @@ class WelcomeScreen: BaseViewController {
         scrollView.addSubview(fifthView)
         
         firstView.setImage(imageName: "swipe1")
-        firstView.setTitle("")
-        firstView.setSubtitle("")
+        firstView.setTitle("Performance. Enhanced.")
+        firstView.setSubtitle("Popmetrics is your personal social media assistant working for you 24/7. The simplest way to manage and improve your business's social presence.")
         
         secondView.setImage(imageName: "swipe2")
         secondView.setTitle("Intelligent Advice")

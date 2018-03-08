@@ -23,6 +23,7 @@
 		083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083938FE1F63C334007DDA37 /* MainTabInfo.swift */; };
 		0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */; };
 		0848280F1F39F9200054B04C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848280E1F39F9200054B04C /* HeaderView.swift */; };
+		0849E86720517D57007255D0 /* SlideFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849E86620517D57007255D0 /* SlideFirstView.swift */; };
 		084E54E11F827F7D007D6F4F /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E54E01F827F7D007D6F4F /* NoteView.swift */; };
 		085053FE1F2787A100FE8234 /* CalendarHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085053FD1F2787A100FE8234 /* CalendarHubController.swift */; };
 		085054011F2793AE00FE8234 /* CalendarCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085054001F2793AE00FE8234 /* CalendarCard.xib */; };
@@ -276,6 +277,7 @@
 		083938FE1F63C334007DDA37 /* MainTabInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabInfo.swift; sourceTree = "<group>"; };
 		0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellTransition.swift; sourceTree = "<group>"; };
 		0848280E1F39F9200054B04C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		0849E86620517D57007255D0 /* SlideFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideFirstView.swift; sourceTree = "<group>"; };
 		084E54E01F827F7D007D6F4F /* NoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		085053FD1F2787A100FE8234 /* CalendarHubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHubController.swift; sourceTree = "<group>"; };
 		085054001F2793AE00FE8234 /* CalendarCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCard.xib; sourceTree = "<group>"; };
@@ -638,13 +640,14 @@
 			path = twitter;
 			sourceTree = "<group>";
 		};
-		08BD24CD20470D4A0070D173 /* sider */ = {
+		08BD24CD20470D4A0070D173 /* slider */ = {
 			isa = PBXGroup;
 			children = (
 				08BD24CB2046F0B80070D173 /* SliderViewController.swift */,
 				08BD24CE20470D880070D173 /* SlideSecondView.swift */,
+				0849E86620517D57007255D0 /* SlideFirstView.swift */,
 			);
-			path = sider;
+			path = slider;
 			sourceTree = "<group>";
 		};
 		08C873AD203F19EC000C02EC /* facebook */ = {
@@ -997,7 +1000,7 @@
 		11DD96651FC4F41600386F1E /* welcome */ = {
 			isa = PBXGroup;
 			children = (
-				08BD24CD20470D4A0070D173 /* sider */,
+				08BD24CD20470D4A0070D173 /* slider */,
 				116E3398203461E100D2BCA9 /* BoardingNavigationController.swift */,
 				116E3399203461E100D2BCA9 /* NameViewController.swift */,
 				116E339A203461E100D2BCA9 /* SignUpNameViewController.swift */,
@@ -1592,6 +1595,7 @@
 				088BBEAA1F58214300AD5414 /* StatsEmptyCell.swift in Sources */,
 				085053FE1F2787A100FE8234 /* CalendarHubController.swift in Sources */,
 				089267741F86617600D7B99E /* OfflineBanner.swift in Sources */,
+				0849E86720517D57007255D0 /* SlideFirstView.swift in Sources */,
 				08913DA11FE7BEFB0085BE36 /* CalendarCompletedViewCell.swift in Sources */,
 				088F14FA1FB9C6080004F925 /* StaticSettingsViewController.swift in Sources */,
 				08C580FF1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift in Sources */,
