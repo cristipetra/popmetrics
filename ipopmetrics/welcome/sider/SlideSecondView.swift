@@ -12,18 +12,18 @@ class SlideSecondView: UIView {
 
     lazy private var titleLbl: UILabel = {
        let lbl = UILabel()
-        lbl.text = "Personalized Business Insights"
-        lbl.font = UIFont(name: FontBook.bold, size: 17)
-        lbl.textColor = PopmetricsColor.darkGrey
+        lbl.text = "Brand Expansion"
+        lbl.font = UIFont(name: FontBook.bold, size: 18)
+        lbl.textColor = PopmetricsColor.borderButton
         lbl.textAlignment = .center
         return lbl
     }()
     
     lazy private var subtitleLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-        lbl.font = UIFont(name: FontBook.regular, size: 15)
-        lbl.textColor = PopmetricsColor.textLight
+        lbl.text = "Grow your audience by automating your social media channels. Drive more traffic to your website by expanding where you're found online."
+        lbl.font = UIFont(name: FontBook.regular, size: 18)
+        lbl.textColor = PopmetricsColor.borderButton
         lbl.textAlignment = .center
         lbl.numberOfLines = 0
         return lbl
@@ -32,7 +32,7 @@ class SlideSecondView: UIView {
     lazy private var imageView: UIImageView = {
         let imgView = UIImageView()
         imgView.image = #imageLiteral(resourceName: "emptyCard")
-        imgView.contentMode = .scaleAspectFit
+        imgView.contentMode = .scaleAspectFill
         return imgView
     }()
     
@@ -59,7 +59,7 @@ class SlideSecondView: UIView {
         //titleLbl.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
         titleLbl.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
         titleLbl.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        titleLbl.topAnchor.constraint(equalTo: self.topAnchor, constant: 50).isActive = true
+        titleLbl.topAnchor.constraint(equalTo: self.topAnchor, constant: 35).isActive = true
         
         //constraints subtitle
         subtitleLbl.translatesAutoresizingMaskIntoConstraints = false
