@@ -296,8 +296,6 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                         pickFacebookPageController.modalPresentationStyle =  UIModalPresentationStyle.pageSheet
                         pickFacebookPageController.modalTransitionStyle =  UIModalTransitionStyle.coverVertical
 
-                        viewController.present(pickFacebookPageController, animated: true, completion: nil)
-                        
                         let navController  = UINavigationController()
                         navController.pushViewController(pickFacebookPageController, animated: true)
                         viewController.present(navController, animated: true, completion: nil)
