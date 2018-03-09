@@ -60,6 +60,11 @@ class InsightCard: UITableViewCell {
                 backgroundImageView.af_setImage(withURL: url)
             }
         }
+
+        if feedCard.recommendedAction.isEmpty || feedCard.recommendedAction == "" {
+            footerVIew.actionButton.isHidden = true
+        }
+        
     }
     
     @objc func handlerActionButton() {
