@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -28,10 +28,6 @@
         <scene sceneID="6Ga-Yv-5gK">
             <objects>
                 <viewController storyboardIdentifier="InfoCardViewID" id="BiZ-yq-uFg" customClass="InfoCardViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xyE-v5-s93"/>
-                        <viewControllerLayoutGuide type="bottom" id="eUg-qG-ruO"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tjy-dn-gdd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,13 +44,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why Does Popmetrics Need Access to Your Twitter Account? " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lc4-Z1-LD7">
-                                <rect key="frame" x="26" y="50" width="273" height="44"/>
+                                <rect key="frame" x="26" y="50" width="273" height="37.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPL-9b-33V">
-                                <rect key="frame" x="26" y="134" width="323" height="22"/>
+                                <rect key="frame" x="26" y="127.5" width="323" height="19"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -64,13 +60,14 @@
                         <constraints>
                             <constraint firstItem="xPL-9b-33V" firstAttribute="leading" secondItem="tjy-dn-gdd" secondAttribute="leadingMargin" constant="10" id="4xu-bw-1N3"/>
                             <constraint firstItem="Lc4-Z1-LD7" firstAttribute="leading" secondItem="tjy-dn-gdd" secondAttribute="leadingMargin" constant="10" id="7yG-1u-1Px"/>
-                            <constraint firstItem="onE-Z4-mNz" firstAttribute="top" secondItem="xyE-v5-s93" secondAttribute="bottom" constant="10" id="BW9-cy-FVH"/>
+                            <constraint firstItem="onE-Z4-mNz" firstAttribute="top" secondItem="v5S-S4-Jz9" secondAttribute="top" constant="10" id="BW9-cy-FVH"/>
                             <constraint firstItem="xPL-9b-33V" firstAttribute="top" secondItem="Lc4-Z1-LD7" secondAttribute="bottom" constant="40" id="F1C-LQ-ua7"/>
-                            <constraint firstItem="Lc4-Z1-LD7" firstAttribute="top" secondItem="xyE-v5-s93" secondAttribute="bottom" constant="30" id="LQr-f7-4bm"/>
+                            <constraint firstItem="Lc4-Z1-LD7" firstAttribute="top" secondItem="v5S-S4-Jz9" secondAttribute="top" constant="30" id="LQr-f7-4bm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xPL-9b-33V" secondAttribute="trailing" constant="10" id="Y2U-5h-hfw"/>
                             <constraint firstItem="onE-Z4-mNz" firstAttribute="leading" secondItem="Lc4-Z1-LD7" secondAttribute="trailing" constant="10" id="b1v-Qn-yYq"/>
                             <constraint firstItem="onE-Z4-mNz" firstAttribute="trailing" secondItem="tjy-dn-gdd" secondAttribute="trailingMargin" constant="10" id="khv-0Z-QTJ"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="v5S-S4-Jz9"/>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="onE-Z4-mNz" id="FVg-m0-y1q"/>
@@ -86,10 +83,6 @@
         <scene sceneID="f03-AO-R24">
             <objects>
                 <viewController storyboardIdentifier="AnimationsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VIo-qm-Iv1" customClass="AnimationsViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="EnM-eZ-MVP"/>
-                        <viewControllerLayoutGuide type="bottom" id="OpP-Co-RZK"/>
-                    </layoutGuides>
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Upw-Z7-I6h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -125,15 +118,16 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="nph-bo-9Oy" secondAttribute="trailing" id="1dS-uh-DcH"/>
-                            <constraint firstItem="nph-bo-9Oy" firstAttribute="leading" secondItem="Upw-Z7-I6h" secondAttribute="leading" id="FHE-Ga-lo2"/>
+                            <constraint firstItem="TP7-Uo-4Oo" firstAttribute="trailing" secondItem="nph-bo-9Oy" secondAttribute="trailing" id="1dS-uh-DcH"/>
+                            <constraint firstItem="nph-bo-9Oy" firstAttribute="leading" secondItem="TP7-Uo-4Oo" secondAttribute="leading" id="FHE-Ga-lo2"/>
                             <constraint firstAttribute="bottom" secondItem="nph-bo-9Oy" secondAttribute="bottom" id="Ffs-kY-ps6"/>
-                            <constraint firstItem="HIS-2k-7m8" firstAttribute="leading" secondItem="Upw-Z7-I6h" secondAttribute="leading" constant="27" id="IAe-qH-qpO"/>
+                            <constraint firstItem="HIS-2k-7m8" firstAttribute="leading" secondItem="TP7-Uo-4Oo" secondAttribute="leading" constant="27" id="IAe-qH-qpO"/>
                             <constraint firstItem="nph-bo-9Oy" firstAttribute="top" secondItem="Upw-Z7-I6h" secondAttribute="top" id="INu-o6-B2W"/>
-                            <constraint firstAttribute="trailing" secondItem="rxx-4h-Mzz" secondAttribute="trailing" constant="21" id="OZt-g9-DX5"/>
+                            <constraint firstItem="TP7-Uo-4Oo" firstAttribute="trailing" secondItem="rxx-4h-Mzz" secondAttribute="trailing" constant="21" id="OZt-g9-DX5"/>
                             <constraint firstItem="HIS-2k-7m8" firstAttribute="top" secondItem="Upw-Z7-I6h" secondAttribute="top" constant="40" id="SKT-rv-QRL"/>
                             <constraint firstAttribute="bottom" secondItem="rxx-4h-Mzz" secondAttribute="bottom" constant="20" id="yxy-7i-I0w"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="TP7-Uo-4Oo"/>
                     </view>
                     <navigationItem key="navigationItem" id="PEE-5P-i6N"/>
                     <connections>
@@ -148,10 +142,6 @@
         <scene sceneID="DNR-j6-5cu">
             <objects>
                 <viewController storyboardIdentifier="welcomeScreen" id="hIx-Ax-wyr" customClass="WelcomeScreen" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="EsR-ks-pK0"/>
-                        <viewControllerLayoutGuide type="bottom" id="YAV-cn-XeS"/>
-                    </layoutGuides>
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="9VB-op-QMX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -238,28 +228,29 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="26b-9e-X3F" firstAttribute="leading" secondItem="9VB-op-QMX" secondAttribute="leading" id="3jM-JI-v1d"/>
-                            <constraint firstAttribute="trailing" secondItem="ev6-3J-0cf" secondAttribute="trailing" constant="50" id="4w6-eJ-2DU"/>
+                            <constraint firstItem="26b-9e-X3F" firstAttribute="leading" secondItem="4fk-RH-PH7" secondAttribute="leading" id="3jM-JI-v1d"/>
+                            <constraint firstItem="4fk-RH-PH7" firstAttribute="trailing" secondItem="ev6-3J-0cf" secondAttribute="trailing" constant="50" id="4w6-eJ-2DU"/>
                             <constraint firstItem="BwV-nL-C88" firstAttribute="top" secondItem="ev6-3J-0cf" secondAttribute="bottom" constant="28" id="8MY-0s-Hkl"/>
-                            <constraint firstItem="YAV-cn-XeS" firstAttribute="top" secondItem="65S-yN-Bog" secondAttribute="bottom" constant="20" id="9ww-7M-zyP"/>
-                            <constraint firstAttribute="trailing" secondItem="BwV-nL-C88" secondAttribute="trailing" constant="50" id="GyZ-Hl-wch"/>
-                            <constraint firstAttribute="trailing" secondItem="26b-9e-X3F" secondAttribute="trailing" id="HiA-sF-ake"/>
-                            <constraint firstItem="BwV-nL-C88" firstAttribute="leading" secondItem="9VB-op-QMX" secondAttribute="leading" constant="50" id="LUh-Y0-8Ps"/>
-                            <constraint firstItem="qa3-IW-mFg" firstAttribute="leading" secondItem="9VB-op-QMX" secondAttribute="leading" constant="27" id="Mjq-hJ-cWt"/>
-                            <constraint firstItem="l6w-5w-pub" firstAttribute="leading" secondItem="9VB-op-QMX" secondAttribute="leading" constant="68" id="PXr-7o-LZK"/>
-                            <constraint firstItem="ev6-3J-0cf" firstAttribute="leading" secondItem="9VB-op-QMX" secondAttribute="leading" constant="50" id="Prv-OX-7Q1"/>
-                            <constraint firstItem="YAV-cn-XeS" firstAttribute="top" secondItem="26b-9e-X3F" secondAttribute="bottom" id="Wh5-mq-VpN"/>
-                            <constraint firstAttribute="trailing" secondItem="l6w-5w-pub" secondAttribute="trailing" constant="68" id="WyK-5F-l4f"/>
+                            <constraint firstItem="4fk-RH-PH7" firstAttribute="bottom" secondItem="65S-yN-Bog" secondAttribute="bottom" constant="20" id="9ww-7M-zyP"/>
+                            <constraint firstItem="4fk-RH-PH7" firstAttribute="trailing" secondItem="BwV-nL-C88" secondAttribute="trailing" constant="50" id="GyZ-Hl-wch"/>
+                            <constraint firstItem="4fk-RH-PH7" firstAttribute="trailing" secondItem="26b-9e-X3F" secondAttribute="trailing" id="HiA-sF-ake"/>
+                            <constraint firstItem="BwV-nL-C88" firstAttribute="leading" secondItem="4fk-RH-PH7" secondAttribute="leading" constant="50" id="LUh-Y0-8Ps"/>
+                            <constraint firstItem="qa3-IW-mFg" firstAttribute="leading" secondItem="4fk-RH-PH7" secondAttribute="leading" constant="27" id="Mjq-hJ-cWt"/>
+                            <constraint firstItem="l6w-5w-pub" firstAttribute="leading" secondItem="4fk-RH-PH7" secondAttribute="leading" constant="68" id="PXr-7o-LZK"/>
+                            <constraint firstItem="ev6-3J-0cf" firstAttribute="leading" secondItem="4fk-RH-PH7" secondAttribute="leading" constant="50" id="Prv-OX-7Q1"/>
+                            <constraint firstItem="4fk-RH-PH7" firstAttribute="bottom" secondItem="26b-9e-X3F" secondAttribute="bottom" id="Wh5-mq-VpN"/>
+                            <constraint firstItem="4fk-RH-PH7" firstAttribute="trailing" secondItem="l6w-5w-pub" secondAttribute="trailing" constant="68" id="WyK-5F-l4f"/>
                             <constraint firstItem="qa3-IW-mFg" firstAttribute="top" secondItem="9VB-op-QMX" secondAttribute="top" constant="40" id="aAb-DK-lH2"/>
-                            <constraint firstItem="26b-9e-X3F" firstAttribute="top" secondItem="EsR-ks-pK0" secondAttribute="bottom" id="bQz-e3-wXq"/>
-                            <constraint firstItem="65S-yN-Bog" firstAttribute="centerX" secondItem="9VB-op-QMX" secondAttribute="centerX" id="cOZ-40-efj"/>
-                            <constraint firstItem="YAV-cn-XeS" firstAttribute="top" secondItem="BwV-nL-C88" secondAttribute="bottom" constant="70" id="g1E-rk-uFF"/>
+                            <constraint firstItem="26b-9e-X3F" firstAttribute="top" secondItem="4fk-RH-PH7" secondAttribute="top" id="bQz-e3-wXq"/>
+                            <constraint firstItem="65S-yN-Bog" firstAttribute="centerX" secondItem="4fk-RH-PH7" secondAttribute="centerX" id="cOZ-40-efj"/>
+                            <constraint firstItem="4fk-RH-PH7" firstAttribute="bottom" secondItem="BwV-nL-C88" secondAttribute="bottom" constant="70" id="g1E-rk-uFF"/>
                             <constraint firstItem="l6w-5w-pub" firstAttribute="top" secondItem="9VB-op-QMX" secondAttribute="top" constant="70" id="nNI-i3-NhT">
                                 <variation key="heightClass=compact-widthClass=compact" constant="35"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="60"/>
                             </constraint>
-                            <constraint firstItem="ev6-3J-0cf" firstAttribute="centerX" secondItem="9VB-op-QMX" secondAttribute="centerX" id="tAn-QH-zG4"/>
+                            <constraint firstItem="ev6-3J-0cf" firstAttribute="centerX" secondItem="4fk-RH-PH7" secondAttribute="centerX" id="tAn-QH-zG4"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="4fk-RH-PH7"/>
                     </view>
                     <navigationItem key="navigationItem" id="EPs-r8-fBL"/>
                     <connections>
@@ -282,10 +273,6 @@
         <scene sceneID="6U1-Ox-GMD">
             <objects>
                 <viewController storyboardIdentifier="NameViewController" id="R5K-Uc-bRm" customClass="SignUpNameViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8NF-ub-7gH"/>
-                        <viewControllerLayoutGuide type="bottom" id="3z0-4b-mJg"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jd0-Cr-Qgf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -363,6 +350,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="xEp-A8-JD9" secondAttribute="trailingMargin" id="PJ4-v4-E30"/>
                             <constraint firstItem="xEp-A8-JD9" firstAttribute="centerY" secondItem="jd0-Cr-Qgf" secondAttribute="centerY" id="UOM-xh-Rw6"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="joG-FH-VIr"/>
                     </view>
                     <navigationItem key="navigationItem" id="xMj-wb-RR4"/>
                     <connections>
@@ -380,14 +368,11 @@
         <scene sceneID="Cpj-2P-Vri">
             <objects>
                 <viewController storyboardIdentifier="tmpViewController" id="KVL-mI-Ie0" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="nOO-Fo-ygD"/>
-                        <viewControllerLayoutGuide type="bottom" id="c1x-gG-sTR"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WoX-uG-vB9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="Frw-Ow-WgB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n2h-p9-mLX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -398,10 +383,6 @@
         <scene sceneID="7bT-dL-X8h">
             <objects>
                 <viewController storyboardIdentifier="WebsiteViewController" id="yaC-VY-TgM" customClass="SignUpWebsiteViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bhC-hE-L6u"/>
-                        <viewControllerLayoutGuide type="bottom" id="Y2R-kD-KPw"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QbR-cw-xKn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -475,10 +456,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="iNO-ht-M0U" secondAttribute="trailing" id="MfJ-g4-Edq"/>
-                            <constraint firstItem="iNO-ht-M0U" firstAttribute="leading" secondItem="QbR-cw-xKn" secondAttribute="leading" id="g0w-3Z-Jr6"/>
+                            <constraint firstItem="HFS-YD-cdI" firstAttribute="trailing" secondItem="iNO-ht-M0U" secondAttribute="trailing" id="MfJ-g4-Edq"/>
+                            <constraint firstItem="iNO-ht-M0U" firstAttribute="leading" secondItem="HFS-YD-cdI" secondAttribute="leading" id="g0w-3Z-Jr6"/>
                             <constraint firstItem="iNO-ht-M0U" firstAttribute="centerY" secondItem="QbR-cw-xKn" secondAttribute="centerY" id="kyX-om-D0G"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="HFS-YD-cdI"/>
                     </view>
                     <connections>
                         <outlet property="btnSubmitWebsite" destination="Eae-CD-ITD" id="EJp-4M-lwM"/>
@@ -498,14 +480,11 @@
         <scene sceneID="hnh-0O-cBF">
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" id="MiY-R6-tTF" customClass="LoginViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Xd9-rj-h4W"/>
-                        <viewControllerLayoutGuide type="bottom" id="z44-sZ-bgM"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Pkm-KM-j4S">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="2g9-Kj-QZv"/>
                     </view>
                     <navigationItem key="navigationItem" id="VSO-xO-4g8"/>
                     <connections>
@@ -520,10 +499,6 @@
         <scene sceneID="dZ6-a4-x7a">
             <objects>
                 <viewController id="f4T-wZ-eiA" customClass="CodeViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="MTa-Mh-09U"/>
-                        <viewControllerLayoutGuide type="bottom" id="yWg-pi-5ep"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="S9Q-Gj-MWr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -613,6 +588,7 @@
                             <constraint firstItem="NDv-sr-id3" firstAttribute="centerY" secondItem="S9Q-Gj-MWr" secondAttribute="centerY" id="d0O-st-9mO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NDv-sr-id3" secondAttribute="trailing" id="g3N-Cj-l8s"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="BU9-ro-QZg"/>
                     </view>
                     <connections>
                         <outlet property="constraintCenterYContainer" destination="d0O-st-9mO" id="WMO-ys-9Y4"/>
@@ -630,10 +606,6 @@
         <scene sceneID="5Pv-KD-9vS">
             <objects>
                 <viewController storyboardIdentifier="loginSocial" id="pdj-4u-tZY" customClass="LoginSocialViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="pRx-gS-Gbm"/>
-                        <viewControllerLayoutGuide type="bottom" id="meW-Na-Aoj"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zoP-Jc-4YZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -718,17 +690,17 @@
                             <constraint firstItem="vtc-69-1MV" firstAttribute="leading" secondItem="lRi-wO-1A9" secondAttribute="leading" constant="36" id="9hT-NR-5Wq"/>
                             <constraint firstItem="lRi-wO-1A9" firstAttribute="trailing" secondItem="Qjx-88-PHQ" secondAttribute="trailing" constant="30" id="BwR-uF-UG2"/>
                             <constraint firstItem="CcY-Wr-MEd" firstAttribute="top" secondItem="ezY-NW-idg" secondAttribute="bottom" constant="16" id="DJa-Mo-X9m"/>
-                            <constraint firstItem="2YM-i7-sXq" firstAttribute="centerX" secondItem="zoP-Jc-4YZ" secondAttribute="centerX" id="FLG-jy-EPk"/>
+                            <constraint firstItem="2YM-i7-sXq" firstAttribute="centerX" secondItem="lRi-wO-1A9" secondAttribute="centerX" id="FLG-jy-EPk"/>
                             <constraint firstItem="nE1-UP-ub0" firstAttribute="trailing" secondItem="2YM-i7-sXq" secondAttribute="trailing" constant="-14" id="H4h-Oy-fAO"/>
                             <constraint firstItem="nE1-UP-ub0" firstAttribute="top" secondItem="2YM-i7-sXq" secondAttribute="bottom" constant="-2" id="LZJ-GO-AWM"/>
-                            <constraint firstItem="ezY-NW-idg" firstAttribute="centerX" secondItem="zoP-Jc-4YZ" secondAttribute="centerX" id="Na2-Wx-WqD"/>
-                            <constraint firstItem="aSU-RQ-JO2" firstAttribute="centerX" secondItem="zoP-Jc-4YZ" secondAttribute="centerX" id="O7M-N1-bo3"/>
-                            <constraint firstItem="CcY-Wr-MEd" firstAttribute="centerX" secondItem="zoP-Jc-4YZ" secondAttribute="centerX" id="aqM-IP-V9f"/>
+                            <constraint firstItem="ezY-NW-idg" firstAttribute="centerX" secondItem="lRi-wO-1A9" secondAttribute="centerX" id="Na2-Wx-WqD"/>
+                            <constraint firstItem="aSU-RQ-JO2" firstAttribute="centerX" secondItem="lRi-wO-1A9" secondAttribute="centerX" id="O7M-N1-bo3"/>
+                            <constraint firstItem="CcY-Wr-MEd" firstAttribute="centerX" secondItem="lRi-wO-1A9" secondAttribute="centerX" id="aqM-IP-V9f"/>
                             <constraint firstItem="ezY-NW-idg" firstAttribute="top" secondItem="BgB-dZ-yuX" secondAttribute="bottom" constant="16" id="bf2-kI-oO1"/>
                             <constraint firstItem="lRi-wO-1A9" firstAttribute="bottom" secondItem="aSU-RQ-JO2" secondAttribute="bottom" constant="18" id="evR-0B-14z"/>
                             <constraint firstItem="Qjx-88-PHQ" firstAttribute="leading" secondItem="lRi-wO-1A9" secondAttribute="leading" constant="30" id="geg-Jx-aDa"/>
                             <constraint firstItem="Qjx-88-PHQ" firstAttribute="top" secondItem="vtc-69-1MV" secondAttribute="bottom" constant="20" id="hSF-GL-eT0"/>
-                            <constraint firstItem="BgB-dZ-yuX" firstAttribute="centerX" secondItem="zoP-Jc-4YZ" secondAttribute="centerX" id="lyB-92-hMV"/>
+                            <constraint firstItem="BgB-dZ-yuX" firstAttribute="centerX" secondItem="lRi-wO-1A9" secondAttribute="centerX" id="lyB-92-hMV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lRi-wO-1A9"/>
                     </view>

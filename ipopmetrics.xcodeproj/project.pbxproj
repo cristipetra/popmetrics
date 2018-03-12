@@ -55,6 +55,7 @@
 		0863C4641FEA91C400999A81 /* animation_iphone4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0863C4631FEA91C400999A81 /* animation_iphone4.json */; };
 		08657382200F90D700D0ED21 /* PeriodGraphDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08657381200F90D700D0ED21 /* PeriodGraphDateView.swift */; };
 		086B453C1FDC22530043F981 /* PersistentFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086B453B1FDC22530043F981 /* PersistentFooter.swift */; };
+		086E708E2056A76E00576E67 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086E708D2056A76E00576E67 /* Utils.swift */; };
 		086EDE3D1FC82D11002F4140 /* MyActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086EDE3C1FC82D11002F4140 /* MyActionCard.xib */; };
 		086EDE3F1FC830F1002F4140 /* MyActionCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE3E1FC830F1002F4140 /* MyActionCardCell.swift */; };
 		086EDE431FC8449A002F4140 /* ImpactScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE421FC8449A002F4140 /* ImpactScoreView.swift */; };
@@ -150,7 +151,6 @@
 		08BAD73E1F960A70008BC88F /* MJCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */; };
 		08BC8F1620357D66008CC969 /* BusinessContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BC8F1520357D66008CC969 /* BusinessContact.swift */; };
 		08BC8F192035F247008CC969 /* SettingsTwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BC8F182035F247008CC969 /* SettingsTwitterViewController.swift */; };
-		08BD24CC2046F0B80070D173 /* SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD24CB2046F0B80070D173 /* SliderViewController.swift */; };
 		08BD24CF20470D880070D173 /* SlideSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD24CE20470D880070D173 /* SlideSecondView.swift */; };
 		08BD58001F7A2DCC00FFDCFD /* ActionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD57FF1F7A2DCC00FFDCFD /* ActionPageView.swift */; };
 		08BD58021F7A2F3700FFDCFD /* IndividualTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */; };
@@ -313,6 +313,7 @@
 		0863C4631FEA91C400999A81 /* animation_iphone4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_iphone4.json; sourceTree = "<group>"; };
 		08657381200F90D700D0ED21 /* PeriodGraphDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodGraphDateView.swift; sourceTree = "<group>"; };
 		086B453B1FDC22530043F981 /* PersistentFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentFooter.swift; sourceTree = "<group>"; };
+		086E708D2056A76E00576E67 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		086EDE3C1FC82D11002F4140 /* MyActionCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyActionCard.xib; sourceTree = "<group>"; };
 		086EDE3E1FC830F1002F4140 /* MyActionCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActionCardCell.swift; sourceTree = "<group>"; };
 		086EDE421FC8449A002F4140 /* ImpactScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactScoreView.swift; sourceTree = "<group>"; };
@@ -408,7 +409,6 @@
 		08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJCalendarViewController.swift; sourceTree = "<group>"; };
 		08BC8F1520357D66008CC969 /* BusinessContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessContact.swift; sourceTree = "<group>"; };
 		08BC8F182035F247008CC969 /* SettingsTwitterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTwitterViewController.swift; sourceTree = "<group>"; };
-		08BD24CB2046F0B80070D173 /* SliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderViewController.swift; sourceTree = "<group>"; };
 		08BD24CE20470D880070D173 /* SlideSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideSecondView.swift; sourceTree = "<group>"; };
 		08BD57FF1F7A2DCC00FFDCFD /* ActionPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionPageView.swift; sourceTree = "<group>"; };
 		08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualTaskView.swift; sourceTree = "<group>"; };
@@ -636,6 +636,7 @@
 				08CE428E1FD041AE00FF8C80 /* EmailMessages.swift */,
 				089E10551FD1716200D57A08 /* SwipeExtension.swift */,
 				086F34732034986700F7043B /* SettingsBaseTableViewController.swift */,
+				086E708D2056A76E00576E67 /* Utils.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -652,7 +653,6 @@
 		08BD24CD20470D4A0070D173 /* slider */ = {
 			isa = PBXGroup;
 			children = (
-				08BD24CB2046F0B80070D173 /* SliderViewController.swift */,
 				08BD24CE20470D880070D173 /* SlideSecondView.swift */,
 				0849E86620517D57007255D0 /* SlideFirstView.swift */,
 			);
@@ -1545,6 +1545,7 @@
 				08F3688B1F18DC4900819CDE /* ApprovalCardCell.swift in Sources */,
 				08CA5D5820247C1000ED78C3 /* NotificationsManuallyEnableViewController.swift in Sources */,
 				08B3C7E0201729D5003ADB77 /* StatsSummaryItemView.swift in Sources */,
+				086E708E2056A76E00576E67 /* Utils.swift in Sources */,
 				086EDE3F1FC830F1002F4140 /* MyActionCardCell.swift in Sources */,
 				0813A0591FC2F1C4003E6478 /* SettingsSocialViewController.swift in Sources */,
 				08B6AFAC1F9DC843005E3049 /* IceCardViewCell.swift in Sources */,
@@ -1652,7 +1653,6 @@
 				08B4EBBA1FC56ACE00BFC5A1 /* MainTabBarController.swift in Sources */,
 				08B4EBB91FC56ACE00BFC5A1 /* GradientView.swift in Sources */,
 				11DD967D1FC4FA5400386F1E /* ApiUrls.swift in Sources */,
-				08BD24CC2046F0B80070D173 /* SliderViewController.swift in Sources */,
 				08953E6F1F4C2790003ABEFC /* ToDoCountView.swift in Sources */,
 				08C7A438201B4D0500714360 /* SocialIconView.swift in Sources */,
 				086EDE461FC8651B002F4140 /* UIViewExtensions.swift in Sources */,
