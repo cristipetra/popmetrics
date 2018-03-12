@@ -48,13 +48,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why Does Popmetrics Need Access to Your Twitter Account? " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lc4-Z1-LD7">
-                                <rect key="frame" x="26" y="50" width="273" height="37.5"/>
+                                <rect key="frame" x="26" y="50" width="273" height="44"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPL-9b-33V">
-                                <rect key="frame" x="26" y="127.5" width="323" height="19"/>
+                                <rect key="frame" x="26" y="134" width="323" height="22"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -156,6 +156,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26b-9e-X3F">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </scrollView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoPop" translatesAutoresizingMaskIntoConstraints="NO" id="l6w-5w-pub">
                                 <rect key="frame" x="68" y="70" width="239" height="98"/>
                                 <constraints>
@@ -165,34 +168,8 @@
                                     </constraint>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi! Welcome to Popmetrics. The simpler way to manage and improve your brand online" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVM-q6-zEn" customClass="ActiveLabel" customModule="ActiveLabel">
-                                <rect key="frame" x="32" y="280.5" width="311" height="106"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="106" id="jnR-lE-Xix">
-                                        <variation key="heightClass=compact-widthClass=compact" constant="82"/>
-                                    </constraint>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
-                                <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lineSpacing">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="jnR-lE-Xix"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="jnR-lE-Xix"/>
-                                    </mask>
-                                </variation>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ev6-3J-0cf">
-                                <rect key="frame" x="50" y="492" width="275" height="45"/>
+                                <rect key="frame" x="50" y="479" width="275" height="45"/>
                                 <color key="backgroundColor" red="0.25098039215686274" green="0.23529411764705882" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="grE-3f-xSN">
@@ -232,7 +209,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BwV-nL-C88">
-                                <rect key="frame" x="50" y="565" width="275" height="45"/>
+                                <rect key="frame" x="50" y="552" width="275" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Ocp-Vc-N7W"/>
                                 </constraints>
@@ -253,22 +230,30 @@
                                     <action selector="handlerSpoken:" destination="hIx-Ax-wyr" eventType="touchUpInside" id="iOq-ce-IJI"/>
                                 </connections>
                             </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="65S-yN-Bog">
+                                <rect key="frame" x="152" y="610" width="71" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="0.25098039215686274" green="0.23529411764705882" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="26b-9e-X3F" firstAttribute="leading" secondItem="9VB-op-QMX" secondAttribute="leading" id="3jM-JI-v1d"/>
                             <constraint firstAttribute="trailing" secondItem="ev6-3J-0cf" secondAttribute="trailing" constant="50" id="4w6-eJ-2DU"/>
                             <constraint firstItem="BwV-nL-C88" firstAttribute="top" secondItem="ev6-3J-0cf" secondAttribute="bottom" constant="28" id="8MY-0s-Hkl"/>
+                            <constraint firstItem="YAV-cn-XeS" firstAttribute="top" secondItem="65S-yN-Bog" secondAttribute="bottom" constant="20" id="9ww-7M-zyP"/>
                             <constraint firstAttribute="trailing" secondItem="BwV-nL-C88" secondAttribute="trailing" constant="50" id="GyZ-Hl-wch"/>
+                            <constraint firstAttribute="trailing" secondItem="26b-9e-X3F" secondAttribute="trailing" id="HiA-sF-ake"/>
                             <constraint firstItem="BwV-nL-C88" firstAttribute="leading" secondItem="9VB-op-QMX" secondAttribute="leading" constant="50" id="LUh-Y0-8Ps"/>
                             <constraint firstItem="qa3-IW-mFg" firstAttribute="leading" secondItem="9VB-op-QMX" secondAttribute="leading" constant="27" id="Mjq-hJ-cWt"/>
-                            <constraint firstItem="KVM-q6-zEn" firstAttribute="leading" secondItem="9VB-op-QMX" secondAttribute="leading" constant="32" id="N62-C8-iEi"/>
                             <constraint firstItem="l6w-5w-pub" firstAttribute="leading" secondItem="9VB-op-QMX" secondAttribute="leading" constant="68" id="PXr-7o-LZK"/>
                             <constraint firstItem="ev6-3J-0cf" firstAttribute="leading" secondItem="9VB-op-QMX" secondAttribute="leading" constant="50" id="Prv-OX-7Q1"/>
+                            <constraint firstItem="YAV-cn-XeS" firstAttribute="top" secondItem="26b-9e-X3F" secondAttribute="bottom" id="Wh5-mq-VpN"/>
                             <constraint firstAttribute="trailing" secondItem="l6w-5w-pub" secondAttribute="trailing" constant="68" id="WyK-5F-l4f"/>
                             <constraint firstItem="qa3-IW-mFg" firstAttribute="top" secondItem="9VB-op-QMX" secondAttribute="top" constant="40" id="aAb-DK-lH2"/>
-                            <constraint firstAttribute="bottom" secondItem="BwV-nL-C88" secondAttribute="bottom" constant="57" id="g1E-rk-uFF"/>
-                            <constraint firstAttribute="trailing" secondItem="KVM-q6-zEn" secondAttribute="trailing" constant="32" id="hBG-uv-ljj"/>
-                            <constraint firstItem="KVM-q6-zEn" firstAttribute="centerY" secondItem="9VB-op-QMX" secondAttribute="centerY" id="jfl-ZO-YqN"/>
+                            <constraint firstItem="26b-9e-X3F" firstAttribute="top" secondItem="EsR-ks-pK0" secondAttribute="bottom" id="bQz-e3-wXq"/>
+                            <constraint firstItem="65S-yN-Bog" firstAttribute="centerX" secondItem="9VB-op-QMX" secondAttribute="centerX" id="cOZ-40-efj"/>
+                            <constraint firstItem="YAV-cn-XeS" firstAttribute="top" secondItem="BwV-nL-C88" secondAttribute="bottom" constant="70" id="g1E-rk-uFF"/>
                             <constraint firstItem="l6w-5w-pub" firstAttribute="top" secondItem="9VB-op-QMX" secondAttribute="top" constant="70" id="nNI-i3-NhT">
                                 <variation key="heightClass=compact-widthClass=compact" constant="35"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="60"/>
@@ -282,8 +267,9 @@
                         <outlet property="blueButton" destination="ev6-3J-0cf" id="6cE-3F-Ro6"/>
                         <outlet property="btnNew" destination="BwV-nL-C88" id="Cgg-Oc-dOO"/>
                         <outlet property="containerView" destination="9VB-op-QMX" id="N7v-I4-GGb"/>
+                        <outlet property="pageControl" destination="65S-yN-Bog" id="lra-qL-Vsg"/>
+                        <outlet property="scrollView" destination="26b-9e-X3F" id="N3e-PH-QOr"/>
                         <outlet property="topImageView" destination="l6w-5w-pub" id="Mao-sw-Zp6"/>
-                        <outlet property="welcomeLabel" destination="KVM-q6-zEn" id="wOi-ss-ceH"/>
                         <segue destination="6DC-o7-FRF" kind="show" identifier="signInSegue" id="Gs2-iL-90P"/>
                         <segue destination="aVl-H2-zsb" kind="show" identifier="signUpSegue" id="EZs-u1-dmP"/>
                     </connections>
@@ -389,6 +375,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jbQ-9V-g8u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1471" y="599"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Cpj-2P-Vri">
+            <objects>
+                <viewController storyboardIdentifier="tmpViewController" id="KVL-mI-Ie0" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nOO-Fo-ygD"/>
+                        <viewControllerLayoutGuide type="bottom" id="c1x-gG-sTR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WoX-uG-vB9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n2h-p9-mLX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-255" y="2081"/>
         </scene>
         <!--Sign Up Website View Controller-->
         <scene sceneID="7bT-dL-X8h">
@@ -787,6 +791,6 @@
         <image name="logoPop" width="636" height="139"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZfL-3l-yWo"/>
+        <segue reference="MRV-7E-Bgv"/>
     </inferredMetricsTieBreakers>
 </document>

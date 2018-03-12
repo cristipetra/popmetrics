@@ -14,20 +14,23 @@ import Reachability
 
 class WelcomeScreen: BaseViewController {
     
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var topImageView: UIImageView!
-    @IBOutlet weak var welcomeLabel: ActiveLabel!
     @IBOutlet weak var blueButton: UIButton!
     @IBOutlet weak var btnNew: UIButton!
     
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var backButton: UIButton!
-    //internal var offlineBanner: OfflineBanner!
 
     var splashView: LDSplashView?
     var indicatorView: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        topImageView.isHidden = true
+        setScrollView()
         
         let nc = NotificationCenter.default
         nc.addObserver(forName:Notification.Popmetrics.SignIn, object:nil, queue:nil, using:catchNotificationSignIn)
@@ -44,6 +47,53 @@ class WelcomeScreen: BaseViewController {
         
         backButton.isHidden = true
         
+    }
+    
+    func setScrollView() {
+        scrollView.delegate = self
+        scrollView.isPagingEnabled = true
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.alwaysBounceHorizontal = false
+        
+        
+        let width = UIScreen.main.bounds.width
+        var height = UIScreen.main.bounds.height
+        height = scrollView.size().height
+        
+        let firstView: SlideFirstView = SlideFirstView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        var secondView: SlideSecondView = SlideSecondView(frame: CGRect(x: width, y: 0, width: width, height: height))
+        let thirdView: SlideSecondView = SlideSecondView(frame: CGRect(x: width * 2, y: 0, width: width, height: height))
+        let fourthView: SlideSecondView = SlideSecondView(frame: CGRect(x: width * 3, y: 0, width: width, height: height))
+        let fifthView: SlideSecondView = SlideSecondView(frame: CGRect(x: width * 4, y: 0, width: width, height: height))
+        
+        
+        scrollView.contentSize = CGSize(width: width * 5, height: 0)
+        
+        scrollView.addSubview(firstView)
+        scrollView.addSubview(secondView)
+        scrollView.addSubview(thirdView)
+        scrollView.addSubview(fourthView)
+        scrollView.addSubview(fifthView)
+        
+        firstView.setImage(imageName: "swipe1")
+        firstView.setTitle("Performance. Enhanced.")
+        firstView.setSubtitle("Popmetrics is your personal social media assistant working for you 24/7. The simplest way to manage and improve your business's social presence.")
+        
+        secondView.setImage(imageName: "swipe2")
+        secondView.setTitle("Intelligent Advice")
+        secondView.setSubtitle("Learn how to grow your business with personalized recommendations and step-by-step marketing guides.")
+        
+        thirdView.setImage(imageName: "swipe3")
+        thirdView.setTitle("Brand Expansion")
+        thirdView.setSubtitle("Grow your audience by automating your social media channels. Drive more traffic to your website by expanding where you're found online.")
+
+        fourthView.setImage(imageName: "swipe4")
+        fourthView.setTitle("Supercharged Performance")
+        fourthView.setSubtitle("Track your marketing tasks and measure your progress. Follow the stats that are important to your business.")
+        
+        fifthView.setImage(imageName: "swipe5")
+        fifthView.setTitle("")
+        fifthView.setSubtitle("")
     }
 
     @IBAction func handlerSpoken(_ sender: UIButton) {
@@ -91,7 +141,7 @@ class WelcomeScreen: BaseViewController {
             presentErrorNetwork()
             return
         }
-        self.performSegue(withIdentifier: "signInSegue", sender: self)        
+        self.performSegue(withIdentifier: "signInSegue", sender: self)
     }
     
 }
@@ -111,6 +161,14 @@ extension WelcomeScreen {
 }
 
 extension WelcomeScreen: BannerProtocol {
+    
+}
+
+extension WelcomeScreen: UIScrollViewDelegate {
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        pageControl.currentPage = scrollView.currentPage - 1
+    }
     
 }
 

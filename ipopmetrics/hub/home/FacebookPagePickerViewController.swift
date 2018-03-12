@@ -62,6 +62,7 @@ final class FacebookPagePickerViewController: UITableViewController {
         super.viewDidLoad()
         
         setupNavigationWithBackButton()
+        self.tableView.tableFooterView = UIView()
         self.tableView.separatorColor = UIColor.lightGray.withAlphaComponent(0.4)
         self.tableView.register(FacebookPageTableViewCell.self, forCellReuseIdentifier: FacebookPageTableViewCell.identifier)
         self.tableView.allowsMultipleSelection = false

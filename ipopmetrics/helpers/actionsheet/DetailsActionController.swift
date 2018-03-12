@@ -10,7 +10,6 @@ import UIKit
 import XLActionController
 
 
-
 public struct ActionData {
     
     public fileprivate(set) var title: String?
@@ -35,6 +34,15 @@ public struct ActionData {
         self.init(title: title)
         self.image = image
     }
+    
+    public init(title: String, subtitle: String, imageUrl: String?) {
+        self.init(title: title, subtitle: subtitle)
+        if let url = imageUrl {
+            if url.isValidUrl() {
+            }
+        }
+    }
+    
 }
 
 
