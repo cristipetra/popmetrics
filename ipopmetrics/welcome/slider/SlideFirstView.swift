@@ -13,13 +13,13 @@ class SlideFirstView: UIView {
     lazy private var logoImageView: UIImageView = {
         let imgView = UIImageView()
         imgView.image = #imageLiteral(resourceName: "logoPop")
-        imgView.contentMode = .scaleAspectFill
+        imgView.contentMode = .scaleAspectFit
         return imgView
     }()
     
     lazy private var titleLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Brand Expansion"
+        lbl.text = ""
         lbl.font = UIFont(name: FontBook.bold, size: 18)
         lbl.textColor = PopmetricsColor.borderButton
         lbl.textAlignment = .center
@@ -28,7 +28,7 @@ class SlideFirstView: UIView {
     
     lazy private var subtitleLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Grow your audience by automating your social media channels. Drive more traffic to your website by expanding where you're found online."
+        lbl.text = ""
         lbl.font = UIFont(name: FontBook.regular, size: 18)
         lbl.textColor = PopmetricsColor.borderButton
         lbl.textAlignment = .center
@@ -39,7 +39,8 @@ class SlideFirstView: UIView {
     lazy private var imageView: UIImageView = {
         let imgView = UIImageView()
         imgView.image = #imageLiteral(resourceName: "emptyCard")
-        imgView.contentMode = .scaleAspectFill
+        imgView.contentMode = Utils.isIphoneX ? .scaleAspectFit : .scaleAspectFill
+        imgView.clipsToBounds = false
         return imgView
     }()
     
@@ -57,9 +58,9 @@ class SlideFirstView: UIView {
         
         //setup constraints image view
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
         imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        imageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
         imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
         
         //logo image view
@@ -81,7 +82,6 @@ class SlideFirstView: UIView {
         subtitleLbl.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
         subtitleLbl.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         subtitleLbl.topAnchor.constraint(equalTo: self.titleLbl.bottomAnchor, constant: 10).isActive = true
-
     }
     
     private func setupView() {

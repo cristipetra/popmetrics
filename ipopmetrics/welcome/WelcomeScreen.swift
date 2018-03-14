@@ -30,7 +30,6 @@ class WelcomeScreen: BaseViewController {
         super.viewDidLoad()
         
         topImageView.isHidden = true
-        setScrollView()
         
         let nc = NotificationCenter.default
         nc.addObserver(forName:Notification.Popmetrics.SignIn, object:nil, queue:nil, using:catchNotificationSignIn)
@@ -49,16 +48,18 @@ class WelcomeScreen: BaseViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        setScrollView()
+    }
+    
     func setScrollView() {
         scrollView.delegate = self
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.alwaysBounceHorizontal = false
         
-        
-        let width = UIScreen.main.bounds.width
-        var height = UIScreen.main.bounds.height
-        height = scrollView.size().height
+        var width = UIScreen.main.bounds.width
+        var height = scrollView.size().height
         
         let firstView: SlideFirstView = SlideFirstView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         var secondView: SlideSecondView = SlideSecondView(frame: CGRect(x: width, y: 0, width: width, height: height))
@@ -201,5 +202,12 @@ extension UIView {
             }
         }
         return nil
+    }
+}
+
+
+extension UIScrollView {
+    var currentPage:Int{
+        return Int((self.contentOffset.x+(0.5*self.frame.size.width))/self.frame.width)+1
     }
 }

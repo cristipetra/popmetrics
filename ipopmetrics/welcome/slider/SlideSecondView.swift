@@ -12,7 +12,6 @@ class SlideSecondView: UIView {
 
     lazy private var titleLbl: UILabel = {
        let lbl = UILabel()
-        lbl.text = "Brand Expansion"
         lbl.font = UIFont(name: FontBook.bold, size: 18)
         lbl.textColor = PopmetricsColor.borderButton
         lbl.textAlignment = .center
@@ -21,7 +20,7 @@ class SlideSecondView: UIView {
     
     lazy private var subtitleLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Grow your audience by automating your social media channels. Drive more traffic to your website by expanding where you're found online."
+        lbl.text = ""
         lbl.font = UIFont(name: FontBook.regular, size: 18)
         lbl.textColor = PopmetricsColor.borderButton
         lbl.textAlignment = .center
@@ -32,7 +31,7 @@ class SlideSecondView: UIView {
     lazy private var imageView: UIImageView = {
         let imgView = UIImageView()
         imgView.image = #imageLiteral(resourceName: "emptyCard")
-        imgView.contentMode = .scaleAspectFill
+        imgView.contentMode = Utils.isIphoneX ? .scaleAspectFit : .scaleAspectFill
         return imgView
     }()
     
@@ -49,10 +48,12 @@ class SlideSecondView: UIView {
     override func layoutSubviews() {
        //setup constraints image view
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
+        
+        imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
         imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        imageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
         imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+       
         
         //constraints title
         titleLbl.translatesAutoresizingMaskIntoConstraints = false
