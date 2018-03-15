@@ -1,19 +1,21 @@
 //
-//  RequiredActionLoadMore.swift
+//  RequiredActionLoadMoreView.swift
 //  ipopmetrics
 //
-//  Created by Cristian Petra on 14/03/2018.
+//  Created by Cristian Petra on 15/03/2018.
 //  Copyright © 2018 Popmetrics. All rights reserved.
 //
 
 import UIKit
 
-class RequiredActionLoadMore: UIView {
+
+class RequiredActionLoadMoreView: UIView {
+    
     @IBOutlet weak var toolbarView: ToolbarViewCell!
-    
     @IBOutlet weak var footerView: FooterView!
-    
     @IBOutlet var contentView: UIView!
+    
+    internal var loadMoreDelegate: RequiredActionLoadMore!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,14 +33,18 @@ class RequiredActionLoadMore: UIView {
     }
     
     private func updateView() {
-        footerView.actionButton.changeTitle("Show more")
+        footerView.actionButton.changeTitle("Show me")
         footerView.leftButton.isHidden = true
         toolbarView.backgroundColor = PopmetricsColor.salmondColor
         
         toolbarView.setUpCircleBackground(topColor: UIColor(red: 255/255, green: 194/255, blue: 188/255, alpha: 1), bottomColor: UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1))
         
-        //self.backgroundColor = .blue
-        //self.contentView.backgroundColor = .blue
+        footerView.actionButton.addTarget(self, action: #selector(loadAllRequiredCards), for: .touchUpInside)
+    }
+    
+    @objc
+    private func loadAllRequiredCards() {
+        loadMoreDelegate.loadMoreRequiredCard()
     }
     
     func loadNib() {
@@ -59,5 +65,6 @@ class RequiredActionLoadMore: UIView {
         //addShadowToView(innerView, radius: 3, opacity: 0.6)
     }
     
-
+    
 }
+

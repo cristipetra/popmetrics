@@ -14,7 +14,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RequiredActionLoadMore" customModule="ipopmetrics" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RequiredActionLoadMoreView" customModule="ipopmetrics" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="30C-Ru-iUN" id="evM-XQ-ixd"/>
                 <outlet property="footerView" destination="jJY-Vk-1mZ" id="WfO-xm-0AR"/>
