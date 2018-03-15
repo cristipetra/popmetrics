@@ -11,6 +11,7 @@ import UIKit
 
 class RequiredActionLoadMoreView: UIView {
     
+    @IBOutlet weak var infoLbl: UILabel!
     @IBOutlet weak var toolbarView: ToolbarViewCell!
     @IBOutlet weak var footerView: FooterView!
     @IBOutlet var contentView: UIView!
@@ -40,6 +41,14 @@ class RequiredActionLoadMoreView: UIView {
         toolbarView.setUpCircleBackground(topColor: UIColor(red: 255/255, green: 194/255, blue: 188/255, alpha: 1), bottomColor: UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1))
         
         footerView.actionButton.addTarget(self, action: #selector(loadAllRequiredCards), for: .touchUpInside)
+        
+        changeFontInfoLbl()
+    }
+    
+    private func changeFontInfoLbl() {
+        if UIScreen.main.bounds.width <= 320 {
+            infoLbl.font = UIFont(name: FontBook.extraBold, size: 29)
+        }
     }
     
     @objc

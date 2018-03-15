@@ -18,6 +18,7 @@
             <connections>
                 <outlet property="contentView" destination="30C-Ru-iUN" id="evM-XQ-ixd"/>
                 <outlet property="footerView" destination="jJY-Vk-1mZ" id="WfO-xm-0AR"/>
+                <outlet property="infoLbl" destination="Da1-av-x1R" id="R5c-WP-Epy"/>
                 <outlet property="toolbarView" destination="vzb-rP-wXD" id="j6F-hs-KgG"/>
             </connections>
         </placeholder>
