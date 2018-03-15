@@ -109,6 +109,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     var currentBrandId = UserStore.currentBrandId
     
+    let maxNoRequiredCard = 2
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -245,6 +247,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         guard let homeSection = HomeSection.init(rawValue: self.indexToSection[section]!)
             else { return 0 }
         
+        // section 0 has load more functionality
+        if section == 0 {
+            //return maxNoRequiredCard
+        }
+        
         return countCardsInSection(homeSection.rawValue)
         
     }
@@ -274,9 +281,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                 cell.configure(item, handler: self.requiredActionHandler)
                 cell.infoDelegate = self
                 if(cardsCount - 1 == indexPath.row) {
-                    cell.connectionLineView.isHidden = true
+                    //cell.changeVisibilityConnectionLine(isHidden: true)
                 } else {
-                    cell.connectionLineView.isHidden = false
+                    cell.changeVisibilityConnectionLine(isHidden: false)
                 }
                 return cell
             }
@@ -294,7 +301,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             cell.configure(item, handler: self.requiredActionHandler)
             cell.infoDelegate = self
             if(cardsCount - 1 == indexPath.row) {
-                cell.connectionLineView.isHidden = true;
+                cell.changeVisibilityConnectionLine(isHidden: true)
             }
             return cell
             
@@ -399,15 +406,21 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             return cards.count
         }
     }
-    
 
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == 0 {
+            let loadMoreView: RequiredActionLoadMore = RequiredActionLoadMore()
+            return loadMoreView
+        }
+        
         let emptyView = UIView()
         emptyView.translatesAutoresizingMaskIntoConstraints = false
         //workaround if I put 0 it doens't work
         emptyView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         emptyView.backgroundColor = .clear
         return emptyView
+        
+       
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

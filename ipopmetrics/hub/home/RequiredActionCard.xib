@@ -92,16 +92,16 @@
                         <color key="backgroundColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="2" id="DeL-lk-70R"/>
+                            <constraint firstAttribute="height" constant="37" id="KzY-H3-lD0"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Voy-rD-hh5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32.5" id="3py-Hv-YsV"/>
                     <constraint firstItem="J6P-3S-jCJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="3tx-ba-FxW"/>
-                    <constraint firstAttribute="bottom" secondItem="gkh-M4-e7L" secondAttribute="bottom" constant="37" id="Qi9-RJ-aZI"/>
                     <constraint firstItem="Voy-rD-hh5" firstAttribute="top" secondItem="gkh-M4-e7L" secondAttribute="bottom" id="UNC-b5-rFY"/>
                     <constraint firstItem="gkh-M4-e7L" firstAttribute="top" secondItem="J6P-3S-jCJ" secondAttribute="bottom" id="Uln-Kr-div"/>
-                    <constraint firstAttribute="bottom" secondItem="Voy-rD-hh5" secondAttribute="bottom" id="cLN-Rn-11u"/>
+                    <constraint firstAttribute="bottom" secondItem="Voy-rD-hh5" secondAttribute="bottom" priority="750" id="cLN-Rn-11u"/>
                     <constraint firstItem="J6P-3S-jCJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="e6o-A1-GLi"/>
                     <constraint firstItem="gkh-M4-e7L" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="kUf-PM-dmn"/>
                     <constraint firstAttribute="trailing" secondItem="gkh-M4-e7L" secondAttribute="trailing" constant="10" id="kc4-JP-r3f"/>
@@ -111,6 +111,7 @@
             <connections>
                 <outlet property="cardImageView" destination="tC9-MZ-7om" id="K7I-Nu-cIk"/>
                 <outlet property="connectionLineView" destination="Voy-rD-hh5" id="qkz-GM-r0z"/>
+                <outlet property="constraintHeightConnectionLine" destination="KzY-H3-lD0" id="2LH-gJ-KUA"/>
                 <outlet property="containerView" destination="gkh-M4-e7L" id="mgL-H3-S9x"/>
                 <outlet property="footerView" destination="j8x-Kb-iAY" id="lDU-sh-PIO"/>
                 <outlet property="messageHeightConstraint" destination="LPV-kd-nCO" id="sKm-BE-6MN"/>
