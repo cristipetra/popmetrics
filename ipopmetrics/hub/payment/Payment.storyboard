@@ -242,7 +242,7 @@ Request 3rd party completion of solutions provided in our insights</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="eFw-aD-0P1">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="eFw-aD-0P1">
                                         <rect key="frame" x="0.0" y="240" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eFw-aD-0P1" id="jic-Ef-F1I">
@@ -255,7 +255,7 @@ Request 3rd party completion of solutions provided in our insights</string>
                                                     <color key="textColor" red="0.25098039215686274" green="0.23529411759999999" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email@email.com" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PuN-e5-y66">
+                                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email@email.com" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PuN-e5-y66">
                                                     <rect key="frame" x="133" y="8" width="226" height="43.5"/>
                                                     <color key="textColor" red="0.27058823529999998" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
@@ -448,6 +448,57 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3oR-2t-wmJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1596" y="-46"/>
+        </scene>
+        <!--Email View Controller-->
+        <scene sceneID="z9l-jr-fhZ">
+            <objects>
+                <tableViewController storyboardIdentifier="EmailViewController" id="KOm-Qq-dox" customClass="EmailViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="20" sectionFooterHeight="18" id="aY8-Jv-TpA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="PROFESSIONAL EMAIL" id="LHa-Hm-xgu">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="42F-ni-ue0">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="42F-ni-ue0" id="ozD-oW-Fv1">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email@email.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ggc-vr-QBG">
+                                                    <rect key="frame" x="15" y="10" width="350" height="24"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textFieldDidChange:" destination="KOm-Qq-dox" eventType="editingChanged" id="loQ-rg-DCA"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="ggc-vr-QBG" secondAttribute="trailing" constant="10" id="17m-kP-dSY"/>
+                                                <constraint firstItem="ggc-vr-QBG" firstAttribute="centerY" secondItem="ozD-oW-Fv1" secondAttribute="centerY" id="Aii-zc-Xia"/>
+                                                <constraint firstItem="ggc-vr-QBG" firstAttribute="leading" secondItem="ozD-oW-Fv1" secondAttribute="leading" constant="15" id="GxK-ex-Mli"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="KOm-Qq-dox" id="Fg8-ws-9nN"/>
+                            <outlet property="delegate" destination="KOm-Qq-dox" id="j9z-K8-GcD"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="emailTxt" destination="ggc-vr-QBG" id="be4-GT-0ya"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ldY-Dx-ZQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2404" y="-46"/>
         </scene>
     </scenes>
     <resources>

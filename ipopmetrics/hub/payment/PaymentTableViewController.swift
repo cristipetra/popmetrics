@@ -56,12 +56,20 @@ class PaymentTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 3 {
+        if indexPath.row == 2 {
+          openEmail()
+        } else if indexPath.row == 3 {
             openAddCard()
         } else if indexPath.row == 4 {
             sendCard()
         }
         
+    }
+    
+    private func openEmail() {
+        let emailVC = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "EmailViewController") as! EmailViewController
+        emailVC.emailDelegate = self
+        self.navigationController?.pushViewController(emailVC, animated: true)
     }
     
     func sendCard() {
@@ -123,6 +131,11 @@ class PaymentTableViewController: UITableViewController {
     
     }
     
+}
+extension PaymentTableViewController: EmailProtocol {
+    func didSetEmail(_ email: String) {
+        emailText.text = email
+    }
 }
 
 extension PaymentTableViewController: STPAddCardViewControllerDelegate {
