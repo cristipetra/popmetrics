@@ -37,6 +37,7 @@ class RequiredActionLoadMoreView: UIView {
         footerView.actionButton.changeTitle("Show me")
         footerView.leftButton.isHidden = true
         toolbarView.backgroundColor = PopmetricsColor.salmondColor
+        toolbarView.changeTitle("")
         
         toolbarView.setUpCircleBackground(topColor: UIColor(red: 255/255, green: 194/255, blue: 188/255, alpha: 1), bottomColor: UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1))
         

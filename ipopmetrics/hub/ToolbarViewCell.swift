@@ -153,6 +153,10 @@ class ToolbarViewCell: UIView {
         circleView.backgroundColor = color
     }
     
+    internal func changeTitle(_ title: String) {
+        self.title.text = title
+    }
+    
 }
 
 extension ToolbarViewCell {
