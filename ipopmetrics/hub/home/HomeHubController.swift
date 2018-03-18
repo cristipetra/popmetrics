@@ -109,6 +109,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     var currentBrandId = UserStore.currentBrandId
     
+    var currentFeedCard: FeedCard?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -494,12 +496,23 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     
     func openInsightDetails(_ feedCard: FeedCard) {
-        let insightDetails = InsightPageDetailsViewController(nibName: "InsightPage", bundle: nil)
-        insightDetails.configure(feedCard)
-        insightDetails.cardInfoHandlerDelegate = self
-        insightDetails.hidesBottomBarWhenPushed = true 
-        self.navigationController?.pushViewController(insightDetails, animated: true)
+    
+        self.currentFeedCard = feedCard
+        self.performSegue(withIdentifier:"showAnalysis", sender:self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showAnalysis" {
+            guard let card = self.currentFeedCard else { return }
+            let insightDetailsViewController = segue.destination as! InsightPageDetailsViewController
+            insightDetailsViewController.configure(card)
+            insightDetailsViewController.cardInfoHandlerDelegate = self
+            insightDetailsViewController.hidesBottomBarWhenPushed = true
+        }
+    }
+    
+    
 }
 
 extension HomeHubViewController: CardInfoHandler {

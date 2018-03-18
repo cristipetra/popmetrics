@@ -221,8 +221,8 @@
 		1178D6851E1E5AD9005B96C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1178D6831E1E5AD9005B96C3 /* LaunchScreen.storyboard */; };
 		1178D6901E1E5AD9005B96C3 /* ipopmetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D68F1E1E5AD9005B96C3 /* ipopmetricsTests.swift */; };
 		1178D69B1E1E5AD9005B96C3 /* ipopmetricsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */; };
-		1183A8661FC5064B00ED8EF6 /* InsightPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1183A8651FC5064B00ED8EF6 /* InsightPage.xib */; };
 		1195EEF42009EDC800F45798 /* apple-app-site-association-unsigned in Resources */ = {isa = PBXBuildFile; fileRef = 1195EEF32009EDC800F45798 /* apple-app-site-association-unsigned */; };
+		1198436C205BC0E700C63201 /* GoogleApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1198436B205BC0E700C63201 /* GoogleApi.swift */; };
 		11A675A91FC8E1A900EE0A15 /* EmptyStateCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A675A81FC8E1A900EE0A15 /* EmptyStateCardCell.swift */; };
 		11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAA5E31ECC8BFA0099B50E /* Feed.swift */; };
 		11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */; };
@@ -488,8 +488,8 @@
 		1178D6961E1E5AD9005B96C3 /* ipopmetricsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ipopmetricsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ipopmetricsUITests.swift; sourceTree = "<group>"; };
 		1178D69C1E1E5AD9005B96C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1183A8651FC5064B00ED8EF6 /* InsightPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InsightPage.xib; sourceTree = "<group>"; };
 		1195EEF32009EDC800F45798 /* apple-app-site-association-unsigned */ = {isa = PBXFileReference; lastKnownFileType = text; path = "apple-app-site-association-unsigned"; sourceTree = "<group>"; };
+		1198436B205BC0E700C63201 /* GoogleApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleApi.swift; sourceTree = "<group>"; };
 		11A675A81FC8E1A900EE0A15 /* EmptyStateCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateCardCell.swift; sourceTree = "<group>"; };
 		11AAA5E31ECC8BFA0099B50E /* Feed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Feed.swift; path = ipopmetrics/realm/Feed.swift; sourceTree = "<group>"; };
 		11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -872,7 +872,6 @@
 		11DD965B1FC4F0AF00386F1E /* insightpage */ = {
 			isa = PBXGroup;
 			children = (
-				1183A8651FC5064B00ED8EF6 /* InsightPage.xib */,
 				08B4EBBE1FC58FF100BFC5A1 /* InsightPageDetailsViewController.swift */,
 			);
 			path = insightpage;
@@ -1079,6 +1078,7 @@
 				1104F8741FD45B3B002F6221 /* HubsApi.swift */,
 				08B3289D1FFE22F300549DC5 /* SettingsApi.swift */,
 				08BC8F1520357D66008CC969 /* BusinessContact.swift */,
+				1198436B205BC0E700C63201 /* GoogleApi.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -1258,7 +1258,6 @@
 				08953E721F4C352B003ABEFC /* RequiredActionCard.xib in Resources */,
 				0813A0571FC2F102003E6478 /* SettingsSocialView.xib in Resources */,
 				088BBEA81F58212A00AD5414 /* StatsEmptyCard.xib in Resources */,
-				1183A8661FC5064B00ED8EF6 /* InsightPage.xib in Resources */,
 				08593DF01FBB440A00077A65 /* SettingsEmailView.xib in Resources */,
 				08A533341F6BD9060080BE64 /* MoreInfoViewCell.xib in Resources */,
 				08A3C838203717D3001BD81E /* LoadMoreView.xib in Resources */,
@@ -1634,6 +1633,7 @@
 				08593DEE1FBB3B7600077A65 /* SettingsEmailViewController.swift in Sources */,
 				08B4EBB81FC56ACE00BFC5A1 /* CardActionHanlder.swift in Sources */,
 				08B4EB9D1FC56A0400BFC5A1 /* TodoStore.swift in Sources */,
+				1198436C205BC0E700C63201 /* GoogleApi.swift in Sources */,
 				08BD24CF20470D880070D173 /* SlideSecondView.swift in Sources */,
 				08B4EB9F1FC56A0C00BFC5A1 /* UserStore.swift in Sources */,
 				08CCFFE81FDD977700755295 /* ActionTodoButton.swift in Sources */,

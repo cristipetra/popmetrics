@@ -48,6 +48,14 @@ enum Environment: String {
         }
     }
     
+    var googleClientIdIos: String {
+        return "850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com"
+    }
+    
+    var googleClientIdWeb: String {
+        return "850179116799-024u4fn5ddmkm3dnius3fq3l1gs81toi.apps.googleusercontent.com"
+    }
+
 }
 
 class Config: NSObject {
