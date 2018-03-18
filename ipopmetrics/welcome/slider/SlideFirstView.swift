@@ -93,6 +93,20 @@ class SlideFirstView: UIView {
     
     internal func setTitle(_ title: String) {
         self.titleLbl.text = title
+        
+        changeFontFirstWord()
+    }
+    
+    private func changeFontFirstWord() {
+        if (titleLbl.text?.count)! < 1 { return }
+        
+        let mutableString = NSMutableAttributedString(string: titleLbl.text!, attributes: [NSAttributedStringKey.font:UIFont(name: FontBook.extraBold, size: 18.0)!])
+        
+        let spacePos = titleLbl.text?.index(of: " ") ?? 0
+     
+        mutableString.addAttributes([.font: UIFont(name: FontBook.semibold, size: 18)], range: NSRange(location: 0, length: spacePos))
+        
+        titleLbl.attributedText = mutableString
     }
     
     internal func setSubtitle(_ subtitle: String) {
@@ -103,5 +117,14 @@ class SlideFirstView: UIView {
         self.imageView.image = UIImage(named: imageName)
     }
     
+}
+
+extension String {
+    public func index(of char: Character) -> Int? {
+        if let idx = characters.index(of: char) {
+            return characters.distance(from: startIndex, to: idx)
+        }
+        return nil
+    }
 }
 

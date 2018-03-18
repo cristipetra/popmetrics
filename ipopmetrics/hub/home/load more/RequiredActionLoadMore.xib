@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-ExtraBold.ttf">
+            <string>OpenSans-Extrabold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RequiredActionLoadMoreView" customModule="ipopmetrics" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="30C-Ru-iUN" id="evM-XQ-ixd"/>
+                <outlet property="footerView" destination="jJY-Vk-1mZ" id="WfO-xm-0AR"/>
+                <outlet property="infoLbl" destination="Da1-av-x1R" id="R5c-WP-Epy"/>
+                <outlet property="toolbarView" destination="vzb-rP-wXD" id="j6F-hs-KgG"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="30C-Ru-iUN">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="G5X-TA-622">
+                    <rect key="frame" x="10" y="0.0" width="355" height="260"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzb-rP-wXD" customClass="ToolbarViewCell" customModule="ipopmetrics" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="355" height="29"/>
+                            <color key="backgroundColor" red="1" green="0.46666666670000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="29" id="Bp6-Zi-TTY"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67V-ma-LXW">
+                            <rect key="frame" x="0.0" y="29" width="355" height="141"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More Required Actions Available" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Da1-av-x1R">
+                                    <rect key="frame" x="15" y="10" width="330" height="121"/>
+                                    <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="34"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.46666666666666667" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="Da1-av-x1R" firstAttribute="leading" secondItem="67V-ma-LXW" secondAttribute="leading" constant="15" id="KSg-tF-PoK"/>
+                                <constraint firstAttribute="bottom" secondItem="Da1-av-x1R" secondAttribute="bottom" constant="10" id="P8b-hY-ATL"/>
+                                <constraint firstAttribute="height" constant="141" id="bev-cH-0he"/>
+                                <constraint firstItem="Da1-av-x1R" firstAttribute="top" secondItem="67V-ma-LXW" secondAttribute="top" constant="10" id="dNk-9Z-G3y"/>
+                                <constraint firstAttribute="trailing" secondItem="Da1-av-x1R" secondAttribute="trailing" constant="10" id="wD6-96-mJ1"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jJY-Vk-1mZ" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="170" width="355" height="90"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="90" id="r29-qw-32C"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="7ij-hC-Vbv"/>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="z4p-cc-drM" firstAttribute="trailing" secondItem="G5X-TA-622" secondAttribute="trailing" constant="10" id="OQQ-an-MAl"/>
+                <constraint firstItem="z4p-cc-drM" firstAttribute="bottom" secondItem="G5X-TA-622" secondAttribute="bottom" id="V9K-gv-TOo"/>
+                <constraint firstItem="G5X-TA-622" firstAttribute="top" secondItem="z4p-cc-drM" secondAttribute="top" id="n5i-OJ-0Ug"/>
+                <constraint firstItem="G5X-TA-622" firstAttribute="leading" secondItem="z4p-cc-drM" secondAttribute="leading" constant="10" id="wne-sc-gQE"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="z4p-cc-drM"/>
+            <point key="canvasLocation" x="49.5" y="-166"/>
+        </view>
+    </objects>
+</document>

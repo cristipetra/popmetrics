@@ -247,6 +247,11 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         guard let homeSection = HomeSection.init(rawValue: self.indexToSection[section]!)
             else { return 0 }
         
+        // section 0 has load more functionality
+        if homeSection.rawValue == HomeSectionType.requiredActions.rawValue {
+            return requiredLoadMore.getCountCards(countCardsSection: countCardsInSection(homeSection.rawValue))
+        }
+        
         return countCardsInSection(homeSection.rawValue)
         
     }
@@ -271,33 +276,17 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         switch(item.type) {
         case HomeCardType.requiredAction.rawValue:
             
-            if isShowAllRequiredCards {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "RequriedActionCard", for: indexPath) as! RequiredActionCard
-                cell.configure(item, handler: self.requiredActionHandler)
-                cell.infoDelegate = self
-                if(cardsCount - 1 == indexPath.row) {
-                    cell.connectionLineView.isHidden = true
-                } else {
-                    cell.connectionLineView.isHidden = false
-                }
-                return cell
-            }
-            
-            if(indexPath.row == 1) {
-                let moreInfoCell = tableView.dequeueReusableCell(withIdentifier: "moreInfoId", for: indexPath) as! MoreInfoViewCell
-                moreInfoCell.setActionCardCount(numberOfActionCards: cardsCount - 1)
-                moreInfoCell.footerView.actionButton.addTarget(self, action: #selector(loadAllActionCards), for: .touchUpInside)
-                return moreInfoCell
-            } else if (indexPath.row > 1) {
-                return UITableViewCell()
-            }
-            
             let cell = tableView.dequeueReusableCell(withIdentifier: "RequriedActionCard", for: indexPath) as! RequiredActionCard
             cell.configure(item, handler: self.requiredActionHandler)
             cell.infoDelegate = self
-            if(cardsCount - 1 == indexPath.row) {
-                cell.connectionLineView.isHidden = true;
+            
+            
+            if(cardsCount - 1 == indexPath.row && !requiredLoadMore.isVisibleRequiredLoadMore) {
+                cell.changeVisibilityConnectionLine(isHidden: true)
+            } else {
+                cell.changeVisibilityConnectionLine(isHidden: false)
             }
+            
             return cell
             
         case HomeCardType.insight.rawValue:
@@ -401,15 +390,21 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             return cards.count
         }
     }
-    
 
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == 0 && requiredLoadMore.isVisibleRequiredLoadMore {
+            loadMoreView = RequiredActionLoadMoreView()
+            loadMoreView.loadMoreDelegate = self
+            return loadMoreView
+        }
+        
         let emptyView = UIView()
         emptyView.translatesAutoresizingMaskIntoConstraints = false
         //workaround if I put 0 it doens't work
         emptyView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         emptyView.backgroundColor = .clear
         return emptyView
+        
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -513,6 +508,13 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     
+}
+
+extension HomeHubViewController: RequiredActionLoadMore {
+    func loadMoreRequiredCard() {
+        requiredLoadMore.loadAllRequiredCards()
+        self.tableView.reloadData()
+    }
 }
 
 extension HomeHubViewController: CardInfoHandler {

@@ -26,6 +26,7 @@ class RequiredActionCard: UITableViewCell {
     @IBOutlet weak var connectionLineView: UIView!
     
     
+    @IBOutlet weak var constraintHeightConnectionLine: NSLayoutConstraint!
     @IBOutlet weak var messageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var messageTopConstraint: NSLayoutConstraint!
     
@@ -100,6 +101,14 @@ class RequiredActionCard: UITableViewCell {
         }
         
         self.footerView.actionButton.changeTitle(item.actionLabel)
+    }
+    
+    internal func changeVisibilityConnectionLine(isHidden: Bool) {
+        if isHidden {
+            constraintHeightConnectionLine.constant = 0
+        } else {
+            constraintHeightConnectionLine.constant = 37
+        }
     }
     
     func changeTitle(_ title: String?) {
