@@ -209,7 +209,7 @@ class InsightPageDetailsViewController: BaseViewController {
     @IBAction func didPressShare(_ sender: AnyObject) {
         print("Pressed Share")
         
-        let textToShare = "Check out this Popmetrics Analysis... http://api.popmetrics.io/card/"+feedCard.cardId!
+        let textToShare = "Check out this Popmetrics Analysis... "+Config.sharedInstance.environment.baseURL+"/card/"+feedCard.cardId!
         let activityVC = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
             self.present(activityVC, animated: true, completion: nil)
     }

@@ -109,6 +109,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     var currentBrandId = UserStore.currentBrandId
     
+    var requiredLoadMore = RequiredLoadMore()
+    var loadMoreView: RequiredActionLoadMoreView!
     var currentFeedCard: FeedCard?
     
     override func viewDidLoad() {
