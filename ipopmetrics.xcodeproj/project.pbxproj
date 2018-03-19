@@ -56,6 +56,7 @@
 		086110CB20597A1600A3F75C /* RequiredActionLoadMore.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086110CA20597A1600A3F75C /* RequiredActionLoadMore.xib */; };
 		0863C4641FEA91C400999A81 /* animation_iphone4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0863C4631FEA91C400999A81 /* animation_iphone4.json */; };
 		08657382200F90D700D0ED21 /* PeriodGraphDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08657381200F90D700D0ED21 /* PeriodGraphDateView.swift */; };
+		086AF8F2205BCE390073CA1F /* StoreLocally.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086AF8F1205BCE390073CA1F /* StoreLocally.swift */; };
 		086B453C1FDC22530043F981 /* PersistentFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086B453B1FDC22530043F981 /* PersistentFooter.swift */; };
 		086E708E2056A76E00576E67 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086E708D2056A76E00576E67 /* Utils.swift */; };
 		086EDE3D1FC82D11002F4140 /* MyActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086EDE3C1FC82D11002F4140 /* MyActionCard.xib */; };
@@ -317,6 +318,7 @@
 		086110CA20597A1600A3F75C /* RequiredActionLoadMore.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequiredActionLoadMore.xib; sourceTree = "<group>"; };
 		0863C4631FEA91C400999A81 /* animation_iphone4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_iphone4.json; sourceTree = "<group>"; };
 		08657381200F90D700D0ED21 /* PeriodGraphDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodGraphDateView.swift; sourceTree = "<group>"; };
+		086AF8F1205BCE390073CA1F /* StoreLocally.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLocally.swift; sourceTree = "<group>"; };
 		086B453B1FDC22530043F981 /* PersistentFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentFooter.swift; sourceTree = "<group>"; };
 		086E708D2056A76E00576E67 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		086EDE3C1FC82D11002F4140 /* MyActionCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyActionCard.xib; sourceTree = "<group>"; };
@@ -582,6 +584,14 @@
 			path = animations;
 			sourceTree = "<group>";
 		};
+		086AF8F0205BCE000073CA1F /* tmp */ = {
+			isa = PBXGroup;
+			children = (
+				086AF8F1205BCE390073CA1F /* StoreLocally.swift */,
+			);
+			path = tmp;
+			sourceTree = "<group>";
+		};
 		086EDE441FC864E7002F4140 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -830,6 +840,7 @@
 		11DD96591FC4ECD600386F1E /* hub */ = {
 			isa = PBXGroup;
 			children = (
+				086AF8F0205BCE000073CA1F /* tmp */,
 				116E33A22034789400D2BCA9 /* intercom */,
 				11DD965C1FC4F0EA00386F1E /* actionpage */,
 				11DD965B1FC4F0AF00386F1E /* insightpage */,
@@ -1620,6 +1631,7 @@
 				08B7ADE81FB1D18F00C56688 /* CardToolbarController.swift in Sources */,
 				0857AB651FBC98D1002B9F53 /* SettingsGAViewController.swift in Sources */,
 				11DD967C1FC4FA5400386F1E /* BaseApi.swift in Sources */,
+				086AF8F2205BCE390073CA1F /* StoreLocally.swift in Sources */,
 				11DD96781FC4FA5400386F1E /* TodoApi.swift in Sources */,
 				11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */,
 				080DCA881F4D9716000C73DC /* InsightCard.swift in Sources */,

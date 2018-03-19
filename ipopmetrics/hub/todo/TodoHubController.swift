@@ -284,12 +284,12 @@ class TodoHubController: BaseViewController {
         let nonEmptyCards = store.getNonEmptyTodoCardsWithSection(todoSection.rawValue)
         if nonEmptyCards.count > 0 {
             return Array(nonEmptyCards)
-        }
-        else {
+        } else {
             return Array(emptyStateCards)
         }
         
     }
+    
 
     @objc func handlerClickMenu() {
         let modalViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MENU_VC") as! MenuViewController

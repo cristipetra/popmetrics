@@ -27,6 +27,7 @@ class IceExtendView: UIView {
     @IBOutlet var splitLabels: [UILabel]!
     @IBOutlet weak var costLbl: UILabel!
     
+    @IBOutlet weak var containerEstimations: UIStackView!
     @IBOutlet weak var progressCost: GTProgressBar!
     @IBOutlet weak var progressEffort: GTProgressBar!
     @IBOutlet var splitLabelsLeadingAnchor: [NSLayoutConstraint]!
@@ -34,6 +35,8 @@ class IceExtendView: UIView {
     @IBOutlet weak var constraintWidthProgressEffort: NSLayoutConstraint!
     @IBOutlet weak var constraintWidthProgressCost: NSLayoutConstraint!
     
+    @IBOutlet weak var expandButton: UIButton!
+    @IBOutlet weak var constraintTopContainerEstimations: NSLayoutConstraint!
     @IBOutlet weak var firstScoreView: ImpactScoreView!
     @IBOutlet weak var secondScoreView: ImpactScoreView!
     @IBOutlet weak var thirdScoreView: ImpactScoreView!
@@ -74,7 +77,8 @@ class IceExtendView: UIView {
         setCornerRadious()
         
         initialScores()
-
+        
+        self.expandButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2) );
     }
     
     private func initialScores() {
@@ -124,6 +128,21 @@ class IceExtendView: UIView {
         impactScoreView.setProgress(progress)
 
     }
+    
+    var isExpand = true
+    @IBAction func handlerExpandable(_ sender: UIButton) {
+        self.parentViewController?.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.5) {
+            let estimationTop: CGFloat =  self.isExpand ? -100 : 60
+            self.isExpand = !self.isExpand
+            
+            self.constraintTopContainerEstimations.constant = estimationTop
+            let expandRotationAngle: CGFloat = !self.isExpand ?  CGFloat((Double.pi / 2) * 3) : CGFloat(Double.pi / 2)
+            self.expandButton.transform = CGAffineTransform(rotationAngle: expandRotationAngle );
+            self.parentViewController?.view.layoutIfNeeded()
+        }
+    }
+
     
     func updateValues() {
         updateProgressCost()
