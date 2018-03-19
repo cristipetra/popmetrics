@@ -17,19 +17,19 @@ class InsightPageDetailsViewController: BaseViewController {
     @IBOutlet weak var blogTitle: UILabel!
     @IBOutlet weak var blogSummary: UILabel!
     @IBOutlet weak var blogImage: UIImageView!
+
     
-    @IBOutlet weak var labelInsightArguments: UILabel!
-    
-    @IBOutlet weak var containerInsights: UIView!
-    @IBOutlet weak var constraintHeightInsightsMarkdown: NSLayoutConstraint!
-    @IBOutlet weak var constraintHeightDetailsMarkdown: NSLayoutConstraint!
-    @IBOutlet weak var containerClosingMarkdown: UIView!
     @IBOutlet weak var containerDetailsMarkdown: UIView!
-    @IBOutlet weak var containerInsightArguments: UIView!
+    @IBOutlet weak var constraintHeightDetailsMarkdown: NSLayoutConstraint!
+    
+    
+    @IBOutlet weak var containerArgumentsMarkdown: UIView!
+    @IBOutlet weak var constraintHeightArgumentsMarkdown: NSLayoutConstraint!
+    
+    @IBOutlet weak var containerClosingMarkdown: UIView!
     @IBOutlet weak var constraintHeightClosingMarkdown: NSLayoutConstraint!
     
     @IBOutlet weak var constraintBottomStackView: NSLayoutConstraint!
-    @IBOutlet weak var constraintHeightContainerFailed: NSLayoutConstraint!
     
     private var feedCard: FeedCard!
     private var recommendActionHandler: RecommendActionHandler?
@@ -109,11 +109,11 @@ class InsightPageDetailsViewController: BaseViewController {
     }
     
     private func hideFailedSection() {
-        constraintHeightInsightsMarkdown.constant = 0
+        constraintHeightArgumentsMarkdown.constant = 0
     }
 
     private func setupNavigationWithBackButton() {
-        let titleWindow = "Insight Page"
+        let titleWindow = "Analysis"
         
         let leftSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         leftSpace.width = 5
@@ -128,15 +128,6 @@ class InsightPageDetailsViewController: BaseViewController {
         
         self.navigationItem.leftBarButtonItems = [leftSpace, leftButtonItem, titleButton]
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
-    }
-    
-    internal func displayInsightArguments() {
-        let insightsArguments = feedCard.getInsightArgumentsArray()
-        var textString = ""
-        for argument in insightsArguments {
-            textString += "\(argument) \n\n"
-        }
-        labelInsightArguments.text = textString
     }
     
     func getMarkDownString() -> String {
@@ -169,14 +160,14 @@ class InsightPageDetailsViewController: BaseViewController {
     internal func displayMarkInsights() {
         let mark = Markdown()
         
-        mark.addMarkInExtendedView(containerMark: containerInsights, containerHeightConstraint: constraintHeightInsightsMarkdown, markdownString: getMarkInsightsString())
+        mark.addMarkInExtendedView(containerMark: containerArgumentsMarkdown, containerHeightConstraint: constraintHeightArgumentsMarkdown, markdownString: getMarkInsightsString())
         
-        constraintHeightInsightsMarkdown.constant = constraintHeightInsightsMarkdown.constant + containerInsights.frame.origin.y
+        constraintHeightArgumentsMarkdown.constant = constraintHeightArgumentsMarkdown.constant + containerArgumentsMarkdown.frame.origin.y
         
         if getMarkInsightsString().isEmpty || getMarkInsightsString().count <= 1 {
-            constraintHeightInsightsMarkdown.constant = 0
+            constraintHeightArgumentsMarkdown.constant = 0
         } else {
-            constraintHeightInsightsMarkdown.constant  = constraintHeightInsightsMarkdown.constant + 80
+            constraintHeightArgumentsMarkdown.constant  = constraintHeightArgumentsMarkdown.constant + 80
         }
     }
     
@@ -212,6 +203,15 @@ class InsightPageDetailsViewController: BaseViewController {
     
     @objc func handlerClickBack() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    @IBAction func didPressShare(_ sender: AnyObject) {
+        print("Pressed Share")
+        
+        let textToShare = "Check out this Popmetrics Analysis... "+Config.sharedInstance.environment.baseURL+"/card/"+feedCard.cardId!
+        let activityVC = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
+            self.present(activityVC, animated: true, completion: nil)
     }
     
     func addPersistentFooter() {

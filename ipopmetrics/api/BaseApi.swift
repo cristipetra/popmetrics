@@ -23,10 +23,15 @@ enum ApiError {
 
 class BaseApi {
     
-    internal func createHeaders() -> HTTPHeaders {
+    internal func createHeaders( authToken:String = "" ) -> HTTPHeaders {
         var headers = [String: String]()
-        let localUser = UserStore.getInstance().getLocalUserAccount()
-        if localUser.authToken != nil { headers["Authorization"] = "Bearer "+localUser.authToken! }
+        if authToken != "" {
+            headers["Authorization"] = "Bearer "+authToken
+        }
+        else {
+            let localUser = UserStore.getInstance().getLocalUserAccount()
+            if localUser.authToken != nil { headers["Authorization"] = "Bearer "+localUser.authToken! }
+        }
         return headers
     }
     
