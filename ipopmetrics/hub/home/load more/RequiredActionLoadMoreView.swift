@@ -16,6 +16,8 @@ class RequiredActionLoadMoreView: UIView {
     @IBOutlet weak var footerView: FooterView!
     @IBOutlet var contentView: UIView!
     
+    @IBOutlet weak var shadowView: UIView!
+    
     internal var loadMoreDelegate: RequiredActionLoadMore!
     
     override init(frame: CGRect) {
@@ -65,14 +67,13 @@ class RequiredActionLoadMoreView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        //contentView.translatesAutoresizingMaskIntoConstraints = false
-        //contentView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        //contentView.leadingAnchor.constraint(equalTo: self.pa, constant: <#T##CGFloat#>)
+        setShadow()
         
-        DispatchQueue.main.async {
-            //self.innerView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 10)
-        }
-        //addShadowToView(innerView, radius: 3, opacity: 0.6)
+    }
+    
+    private func setShadow() {
+        shadowView.layer.cornerRadius = 15
+        addShadowToView(shadowView, radius: 3, opacity: 0.6)
     }
     
     
