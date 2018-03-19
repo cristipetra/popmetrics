@@ -78,7 +78,7 @@ class WelcomeScreen: BaseViewController {
         
         firstView.setImage(imageName: "swipe1")
         firstView.setTitle("Performance. Enhanced.")
-        firstView.setSubtitle("Popmetrics is your personal social media assistant working for you 24/7. The simplest way to manage and improve your business's social presence.")
+        firstView.setSubtitle("Popmetrics is your automated marketing assistant working for you 24/7. The simplest way to manage and improve your business's presence online.")
         
         secondView.setImage(imageName: "swipe2")
         secondView.setTitle("Intelligent Advice")
