@@ -11,6 +11,7 @@ import Foundation
 struct StoreLocally {
     
     var todoStore: TodoStore = TodoStore()
+    var feedStore: FeedStore = FeedStore()
     
     func createTodoLocally() {
         try! todoStore.realm.write {
@@ -37,6 +38,22 @@ struct StoreLocally {
             
             todoStore.realm.add(myActionCard, update: true)
         }
+    }
+    
+    func createHomeCards() {
+        try! feedStore.realm.write {
+            let insightCard = FeedCard()
+            insightCard.cardId = "sadfasfsadff"
+            insightCard.section = HomeSectionType.insights.rawValue
+            insightCard.status = "live"
+            insightCard.type = HomeCardType.insight.rawValue
+            
+            insightCard.headerTitle = "Nice! You've covered your bases & created a business Facebook page"
+            insightCard.message = "Out of the first things customers will look for is your company's Facebook page. Having a facebook page will help you find new customers over the internet."
+            
+            feedStore.realm.add(insightCard, update: true)
+        }
+       
     }
     
 }

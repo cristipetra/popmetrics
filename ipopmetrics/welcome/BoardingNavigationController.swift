@@ -11,6 +11,7 @@ import UIKit
 struct RegisterBrand {
     var name: String?
     var website: String?
+    var workEmail: String?
 }
 
 class BoardingNavigationController: UINavigationController {
