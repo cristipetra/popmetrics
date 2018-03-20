@@ -10,45 +10,33 @@ import UIKit
 
 class InfoCardView: UIView {
 
-    var mutableString = NSMutableAttributedString()
     @IBOutlet weak var labelCard: UILabel!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupView()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
     }
     
-    private func setupView() {
+    internal func changeLabel(label: String) {
+        labelCard.text = label
+        labelCard.attributedText = getAttributedText(label:label)
+        
     }
     
-    internal func changeTextColor() {
+    internal func resetLabel(label: String){
+        labelCard.text = label
+        labelCard.attributedText = NSMutableAttributedString(string: label, attributes: [NSAttributedStringKey.font:UIFont(name: FontBook.regular, size: 17.0)!])
         
-        mutableString = NSMutableAttributedString(string: labelCard.text!, attributes: [NSAttributedStringKey.font:UIFont(name: FontBook.regular, size: 17.0)!])
-        mutableString.addAttributes([.font: UIFont(name: "OpenSans-Bold", size: 18.0)!,], range: NSRange(location: 0, length: 4));
-        labelCard.attributedText = mutableString
- 
     }
     
-    internal func changeCardNumber(cardNumber: String) {
-        let lastNumbers = cardNumber.subString(startIndex: (cardNumber.count - 4), endIndex: (cardNumber.count - 1))
+    internal func getAttributedText(label: String) -> NSMutableAttributedString {
+        var attributedText = NSMutableAttributedString(string: labelCard.text!, attributes: [NSAttributedStringKey.font:UIFont(name: FontBook.regular, size: 17.0)!])
+        attributedText.addAttributes([.font: UIFont(name: "OpenSans-Bold", size: 18.0)!,], range: NSRange(location: 0, length: label.count - 4));
         
-        labelCard.text = "\(labelCard.text!) \(lastNumbers)"
-        
-        changeTextColorCardAdded()
-    }
-    
-    internal func changeTextColorCardAdded() {
-        
-        mutableString = NSMutableAttributedString(string: labelCard.text!, attributes: [NSAttributedStringKey.font:UIFont(name: FontBook.regular, size: 17.0)!])
-        mutableString.addAttributes([.font: UIFont(name: "OpenSans-Bold", size: 18.0)!,], range: NSRange(location: 0, length: 4));
-        mutableString.addAttributes([.font: UIFont(name: "OpenSans-Bold", size: 18.0)!,], range: NSRange(location: (labelCard.text?.count)! - 4, length: 4));
-        labelCard.attributedText = mutableString
-        
+        return attributedText
     }
     
 

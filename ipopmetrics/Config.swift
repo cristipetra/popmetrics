@@ -22,7 +22,7 @@ enum Environment: String {
     
     var baseURL: String {
         switch self {
-        case .Staging: return "https://testapi.popmetrics.ai"
+        case .Staging: return "http://testapi.popmetrics.ai:5030"
         case .Production: return "https://api.popmetrics.io"
         }
     }
@@ -55,6 +55,21 @@ enum Environment: String {
         }
     }
     
+    var stripeBasicPlanId: String {
+        switch self {
+        case .Staging: return "BASIC_ACCESS_MONTHLY_TEST"
+        case .Production: return "BASIC_ACCESS_MONTHLY"
+        }
+    }
+    
+    var stripeBasicPlanAmount: Int {
+        switch self {
+        case .Staging: return 3000
+        case .Production: return 3000
+        }
+        
+    }
+
 }
 
 class Config: NSObject {

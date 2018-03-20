@@ -61,6 +61,12 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     
     func displayPaymentConfirmation(_ viewController: UIViewController) {
         let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "PaymentTableViewController") as! PaymentTableViewController
+        
+        let brandId = UserStore.currentBrandId
+        let planId = Config.sharedInstance.environment.stripeBasicPlanId
+        let amount = Config.sharedInstance.environment.stripeBasicPlanAmount
+        vc.configure(brandId:brandId, amount:amount, planId:planId)
+        
         viewController.navigationController?.pushViewController(vc, animated: true)
     }
    

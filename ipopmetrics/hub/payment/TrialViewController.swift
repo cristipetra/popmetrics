@@ -43,6 +43,11 @@ class TrialViewController: UIViewController {
 
     @IBAction func handlerBtnSubscription(_ sender: UIButton) {
         let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "PaymentTableViewController") as! PaymentTableViewController
+
+        let brandId = UserStore.currentBrandId
+        let planId = Config.sharedInstance.environment.stripeBasicPlanId
+        let amount = Config.sharedInstance.environment.stripeBasicPlanAmount
+        vc.configure(brandId:brandId, amount:amount, planId:planId)
         
         self.navigationController?.pushViewController(vc, animated: true)
         

@@ -61,8 +61,6 @@
 		086F34742034986700F7043B /* SettingsBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F34732034986700F7043B /* SettingsBaseTableViewController.swift */; };
 		086F64DC205BA9A400F46E8A /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F64DB205BA9A400F46E8A /* EmailViewController.swift */; };
 		08732B35203EE5A900EF4C51 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08732B34203EE5A900EF4C51 /* SettingsHeaderView.swift */; };
-		08735D37204D8F9600069B65 /* MyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08735D36204D8F9600069B65 /* MyAPIClient.swift */; };
-		08735D39204D9AA300069B65 /* InfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08735D38204D9AA300069B65 /* InfoCardView.swift */; };
 		08755F461FCC11E600A8CF13 /* SocialPostDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */; };
 		08755F4C1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */; };
 		088674111FE28506008DB87E /* LoginSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088674101FE28506008DB87E /* LoginSocialViewController.swift */; };
@@ -83,7 +81,6 @@
 		08953E721F4C352B003ABEFC /* RequiredActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08953E711F4C352B003ABEFC /* RequiredActionCard.xib */; };
 		08953E741F4C359E003ABEFC /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E731F4C359E003ABEFC /* FooterView.swift */; };
 		08953E761F4C35AC003ABEFC /* RequiredActionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E751F4C35AC003ABEFC /* RequiredActionCard.swift */; };
-		089DFC6D20499A47003600AF /* MockCustomerContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089DFC6C20499A47003600AF /* MockCustomerContext.swift */; };
 		089E10561FD1716200D57A08 /* SwipeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E10551FD1716200D57A08 /* SwipeExtension.swift */; };
 		089EFD39201774FF002E9CAF /* FacebookSocialPostDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089EFD38201774FF002E9CAF /* FacebookSocialPostDetails.xib */; };
 		089F93AB1FB5FE1E00155674 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089F93AA1FB5FE1E00155674 /* Settings.storyboard */; };
@@ -245,6 +242,8 @@
 		11F89F691EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */; };
 		11FB84EB1FC79E8800FE937D /* TodoHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FB84EA1FC79E8800FE937D /* TodoHubController.swift */; };
 		631BDFACE57815E87C781181 /* Pods_ipopmetrics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */; };
+		A67E343E205F7CD400EAB428 /* PaymentApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67E343D205F7CD400EAB428 /* PaymentApi.swift */; };
+		A67E3440206021F000EAB428 /* InfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67E343F206021F000EAB428 /* InfoCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -319,8 +318,6 @@
 		086F34732034986700F7043B /* SettingsBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBaseTableViewController.swift; sourceTree = "<group>"; };
 		086F64DB205BA9A400F46E8A /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		08732B34203EE5A900EF4C51 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
-		08735D36204D8F9600069B65 /* MyAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAPIClient.swift; sourceTree = "<group>"; };
-		08735D38204D9AA300069B65 /* InfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCardView.swift; sourceTree = "<group>"; };
 		08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SocialPostDetails.xib; sourceTree = "<group>"; };
 		08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPostDetailsViewController.swift; sourceTree = "<group>"; };
 		0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -342,7 +339,6 @@
 		08953E711F4C352B003ABEFC /* RequiredActionCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequiredActionCard.xib; sourceTree = "<group>"; };
 		08953E731F4C359E003ABEFC /* FooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		08953E751F4C35AC003ABEFC /* RequiredActionCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredActionCard.swift; sourceTree = "<group>"; };
-		089DFC6C20499A47003600AF /* MockCustomerContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCustomerContext.swift; sourceTree = "<group>"; };
 		089E10551FD1716200D57A08 /* SwipeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeExtension.swift; sourceTree = "<group>"; };
 		089EFD38201774FF002E9CAF /* FacebookSocialPostDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacebookSocialPostDetails.xib; sourceTree = "<group>"; };
 		089F93AA1FB5FE1E00155674 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -516,6 +512,8 @@
 		4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release.xcconfig"; sourceTree = "<group>"; };
 		8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ipopmetrics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D5ECCAEA66BCED2B0405D78 /* Pods-ipopmetrics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.debug.xcconfig"; sourceTree = "<group>"; };
+		A67E343D205F7CD400EAB428 /* PaymentApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentApi.swift; sourceTree = "<group>"; };
+		A67E343F206021F000EAB428 /* InfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCardView.swift; sourceTree = "<group>"; };
 		B4B4544B39E98D6698619AEC /* Pods-ipopmetrics.debug (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.debug (production).xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.debug (production).xcconfig"; sourceTree = "<group>"; };
 		CFC64B6717A9942DCD941A53 /* Pods-ipopmetrics.debug (staging).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.debug (staging).xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.debug (staging).xcconfig"; sourceTree = "<group>"; };
 		FFE1FD22340D0C98306F8FA1 /* Pods-ipopmetrics.release (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release (production).xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release (production).xcconfig"; sourceTree = "<group>"; };
@@ -651,13 +649,11 @@
 		08C6101A20480510008FCE9E /* payment */ = {
 			isa = PBXGroup;
 			children = (
-				08735D36204D8F9600069B65 /* MyAPIClient.swift */,
 				08C6101B2048054D008FCE9E /* Payment.storyboard */,
 				08C6101F204843B5008FCE9E /* PaymentTableViewController.swift */,
 				08C928E220494CC900C070AE /* TrialViewController.swift */,
-				089DFC6C20499A47003600AF /* MockCustomerContext.swift */,
-				08735D38204D9AA300069B65 /* InfoCardView.swift */,
 				086F64DB205BA9A400F46E8A /* EmailViewController.swift */,
+				A67E343F206021F000EAB428 /* InfoCardView.swift */,
 			);
 			path = payment;
 			sourceTree = "<group>";
@@ -1071,6 +1067,7 @@
 				1104F8741FD45B3B002F6221 /* HubsApi.swift */,
 				08B3289D1FFE22F300549DC5 /* SettingsApi.swift */,
 				08BC8F1520357D66008CC969 /* BusinessContact.swift */,
+				A67E343D205F7CD400EAB428 /* PaymentApi.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -1545,7 +1542,7 @@
 				08A51D331FC6EF6D0097B334 /* ActionInstructionsPageViewController.swift in Sources */,
 				08B4EBB21FC56ACE00BFC5A1 /* SettingsBaseViewController.swift in Sources */,
 				08B4EB991FC569F700BFC5A1 /* FeedStore.swift in Sources */,
-				08735D39204D9AA300069B65 /* InfoCardView.swift in Sources */,
+				A67E3440206021F000EAB428 /* InfoCardView.swift in Sources */,
 				08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */,
 				086F34742034986700F7043B /* SettingsBaseTableViewController.swift in Sources */,
 				088674111FE28506008DB87E /* LoginSocialViewController.swift in Sources */,
@@ -1569,10 +1566,10 @@
 				08732B35203EE5A900EF4C51 /* SettingsHeaderView.swift in Sources */,
 				08C61020204843B5008FCE9E /* PaymentTableViewController.swift in Sources */,
 				0848280F1F39F9200054B04C /* HeaderView.swift in Sources */,
+				A67E343E205F7CD400EAB428 /* PaymentApi.swift in Sources */,
 				08B968AA1FBB141400482CDE /* ChangeBrandViewController.swift in Sources */,
 				08078F391FBDA92600A4399D /* Alert.swift in Sources */,
 				085282701F2881BD0065A968 /* Calendar.swift in Sources */,
-				08735D37204D8F9600069B65 /* MyAPIClient.swift in Sources */,
 				08BD58021F7A2F3700FFDCFD /* IndividualTaskView.swift in Sources */,
 				08B3AA9E1F8FA748008D0503 /* ToDoApprovedView.swift in Sources */,
 				0809AEB41F22183400A13178 /* Constants.swift in Sources */,
@@ -1646,7 +1643,6 @@
 				08953E6F1F4C2790003ABEFC /* ToDoCountView.swift in Sources */,
 				08C7A438201B4D0500714360 /* SocialIconView.swift in Sources */,
 				086EDE461FC8651B002F4140 /* UIViewExtensions.swift in Sources */,
-				089DFC6D20499A47003600AF /* MockCustomerContext.swift in Sources */,
 				08B8D9711F9A4443004E7781 /* RecommendActionHandler.swift in Sources */,
 				11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */,
 				08AA6C731F56F8630022DE91 /* ChartViewCell.swift in Sources */,

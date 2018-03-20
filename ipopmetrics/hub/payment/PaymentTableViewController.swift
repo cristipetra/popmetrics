@@ -17,10 +17,69 @@ class PaymentTableViewController: UITableViewController {
     @IBOutlet weak var infoCardView: InfoCardView!
     @IBOutlet weak var textViewTerms: UITextView!
     @IBOutlet weak var lblTerms: UILabel!
+    @IBOutlet weak var confirmPurchaseButton: UIButton!
+    @IBOutlet weak var amountLabel: UITextField!
     var muutableString = NSMutableAttributedString()
+    
+    var brandId: String?
+    var paymentContext: STPPaymentContext?
+    var planId: String?
+    var numberFormatter: NumberFormatter?
+    
+    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    var paymentInProgress: Bool = false {
+        didSet {
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+                if self.paymentInProgress {
+                    self.activityIndicator.startAnimating()
+                    self.activityIndicator.alpha = 1
+                    self.confirmPurchaseButton.isEnabled = false
+                }
+                else {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.alpha = 0
+                    self.confirmPurchaseButton.isEnabled = true
+                }
+            }, completion: nil)
+        }
+    }
+    
+    func configure(brandId:String, amount: Int, planId: String, currency: String = "usd") {
+        self.brandId = brandId
+        self.planId = planId
+        
+        let paymentConfig = STPPaymentConfiguration.shared()
+        let theme = STPTheme.default()
+        let customerContext = STPCustomerContext(keyProvider: self)
+        let paymentContext = STPPaymentContext(customerContext: customerContext,
+                                               configuration: paymentConfig,
+                                               theme: theme)
+        
+        let userInformation = STPUserInformation()
+        paymentContext.prefilledInformation = userInformation
+        paymentContext.paymentAmount = amount
+        paymentContext.paymentCurrency = currency
+        
+        self.paymentContext = paymentContext
+        
+        var localeComponents: [String: String] = [
+            NSLocale.Key.currencyCode.rawValue: currency,
+            ]
+        localeComponents[NSLocale.Key.languageCode.rawValue] = NSLocale.preferredLanguages.first
+        let localeID = NSLocale.localeIdentifier(fromComponents: localeComponents)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.locale = Locale(identifier: localeID)
+        numberFormatter.numberStyle = .currency
+        numberFormatter.usesGroupingSeparator = true
+        self.numberFormatter = numberFormatter
+        
+        self.paymentContext?.delegate = self
+        self.paymentContext?.hostViewController = self
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.amountLabel.text = self.numberFormatter?.string(from: NSNumber(value: Float((self.paymentContext?.paymentAmount)!)/100))!
         
         tableView.tableFooterView = UIView()
         setUpNavigationBar()
@@ -35,7 +94,7 @@ class PaymentTableViewController: UITableViewController {
         textViewTerms.attributedText = muutableString
         
         
-        infoCardView.changeTextColor()
+        infoCardView?.resetLabel(label: "Select Payment Method")
     }
     
     private func setUpNavigationBar() {
@@ -59,10 +118,8 @@ class PaymentTableViewController: UITableViewController {
         if indexPath.row == 2 {
           openEmail()
         } else if indexPath.row == 3 {
-            openAddCard()
-        } else if indexPath.row == 4 {
-            sendCard()
-        }
+            self.paymentContext?.pushPaymentMethodsViewController()
+        } 
         
     }
     
@@ -72,62 +129,11 @@ class PaymentTableViewController: UITableViewController {
         self.navigationController?.pushViewController(emailVC, animated: true)
     }
     
-    func sendCard() {
-        let cardParams = STPCardParams()
-        cardParams.number = "4242424242424242"
-        cardParams.expMonth = 10
-        cardParams.expYear = 2019
-        cardParams.cvc = "123"
-        
-        
-        STPAPIClient.shared().createToken(withCard: cardParams) { (token, error) in
-            guard let token = token, error == nil else {
-                print("error")
-                return
-            }
-            print("submit token to backend")
-            /*
-            submitTokenToBackend(token, completion: { (error: Error?) in
-                if let error = error {
-                    // Present error to user...
-                    print("eror to submit token")
-                }
-                else {
-                    // Continue with payment...
-                    print("success")
-                }
-            })
-             */
-        }
-    }
-    
-    private func openAddCard() {
-        let config = STPPaymentConfiguration.shared()
-        let theme = STPTheme.default()
-        let customerContext = MockCustomerContext()
-        config.createCardSources = true
-    
-        let cardVC = STPPaymentMethodsViewController(configuration: config,
-                                                             theme: theme,
-                                                             customerContext: customerContext,
-                                                             delegate: self)
-        
-        let addCardViewController = STPAddCardViewController()
-        addCardViewController.delegate = self
-        
-        self.navigationController?.pushViewController(cardVC, animated: true)
-        //self.navigationController?.pushViewController(addCardViewController, animated: true)
-    }
-    
     @objc func handlerClickBack() {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func handlerConfirmPurchase(_ sender: UIButton) {
-        if (emailText.text?.isEmpty)! {
-            EZAlertController.alert("Email required", message: "Please enter an email address")
-            return
-        }
-        
+        self.paymentContext?.requestPayment()
     
     }
     
@@ -138,39 +144,84 @@ extension PaymentTableViewController: EmailProtocol {
     }
 }
 
-extension PaymentTableViewController: STPAddCardViewControllerDelegate {
-    func addCardViewControllerDidCancel(_ addCardViewController: STPAddCardViewController) {
+extension PaymentTableViewController: STPPaymentContextDelegate{
+    func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPErrorBlock) {
+        let source = paymentResult.source.stripeID
+        guard
+            let brandId = self.brandId,
+            let planId = self.planId else{
+                return
+        }
+        
+        guard let email = self.emailText.text, !email.isEmpty else {
+            let alertController = UIAlertController(title: "Email required", message: "Please enter an email address", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(action)
+            self.navigationController?.present(alertController, animated: true, completion: nil)
+            
+            return
+        }
+
+        self.paymentInProgress = true
+        PaymentApi().subscribe(brandId: brandId, planId: planId, source: source, email: email){(title: String, message: String, done:Bool) in
+            self.paymentInProgress = false
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            var action = UIAlertAction(title: "OK", style: .default, handler: {action in
+                if done {
+                    _ = self.navigationController?.popViewController(animated: true)
+                    
+                    //TODO: if done then refresh home hub?
+                }
+                
+            })
+            
+            alertController.addAction(action)
+            self.navigationController?.present(alertController, animated: true, completion: nil)
+        }
     }
     
-    func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
-        navigationController?.popViewController(animated: true)
+    func paymentContext(_ paymentContext: STPPaymentContext, didFinishWith status: STPPaymentStatus, error: Error?) {
+        self.paymentInProgress = false
     }
     
-    func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateSource source: STPSource, completion: @escaping STPErrorBlock) {
+    func paymentContextDidChange(_ paymentContext: STPPaymentContext) {
+        self.paymentInProgress = paymentContext.loading
+        if let paymentMethod = paymentContext.selectedPaymentMethod {
+            self.infoCardView.changeLabel(label: paymentMethod.label)
+        }
+        else {
+            self.infoCardView.resetLabel(label: "Select Payment Method")
+        }
+        
     }
     
+    func paymentContext(_ paymentContext: STPPaymentContext, didFailToLoadWithError error: Error) {
+        let alertController = UIAlertController(
+            title: "Error",
+            message: error.localizedDescription,
+            preferredStyle: .alert
+        )
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            // Need to assign to _ because optional binding loses @discardableResult value
+            // https://bugs.swift.org/browse/SR-1681
+            _ = self.navigationController?.popViewController(animated: true)
+        })
+        let retry = UIAlertAction(title: "Retry", style: .default, handler: { action in
+            self.paymentContext?.retryLoading()
+        })
+        alertController.addAction(cancel)
+        alertController.addAction(retry)
+        self.navigationController?.present(alertController, animated: true, completion: nil)
+    }
     
 }
 
-extension PaymentTableViewController: STPPaymentMethodsViewControllerDelegate {
-    // MARK: STPPaymentMethodsViewControllerDelegate
-    
-    func paymentMethodsViewControllerDidCancel(_ paymentMethodsViewController: STPPaymentMethodsViewController) {
-        self.navigationController?.popViewController(animated: true)
+extension PaymentTableViewController: STPEphemeralKeyProvider{
+    func createCustomerKey(withAPIVersion apiVersion: String, completion: @escaping STPJSONResponseCompletionBlock) {
+        if let brandId = self.brandId {
+            PaymentApi().ephemeralKeys(brandId, apiVersion: apiVersion, completion: completion)
+            
+        }
     }
-    
-    func paymentMethodsViewControllerDidFinish(_ paymentMethodsViewController: STPPaymentMethodsViewController) {
-        paymentMethodsViewController.navigationController?.popViewController(animated: true)
-    }
-    
-    func paymentMethodsViewController(_ paymentMethodsViewController: STPPaymentMethodsViewController, didFailToLoadWithError error: Error) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    // MARK: STPShippingAddressViewControllerDelegate
-    
-    func shippingAddressViewControllerDidCancel(_ addressViewController: STPShippingAddressViewController) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
 }
+
