@@ -22,6 +22,8 @@ class PaymentTableViewController: UITableViewController {
     var muutableString = NSMutableAttributedString()
     
     var brandId: String?
+    var amount: Int?
+    var currency: String?
     var paymentContext: STPPaymentContext?
     var planId: String?
     var numberFormatter: NumberFormatter?
@@ -47,7 +49,33 @@ class PaymentTableViewController: UITableViewController {
     func configure(brandId:String, amount: Int, planId: String, currency: String = "usd") {
         self.brandId = brandId
         self.planId = planId
+        self.amount = amount
+        self.currency = currency
         
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        guard let brandId = self.brandId,
+            let planId = self.planId,
+            let amount = self.amount,
+            let currency = self.currency else{
+                self.navigationController?.popViewController(animated:true)
+                return
+        }
+        
+        
+        tableView.tableFooterView = UIView()
+        setUpNavigationBar()
+        changeTextColor()
+        setupPayments(amount: amount, currency:currency)
+
+        self.amountLabel.text = self.numberFormatter?.string(from: NSNumber(value: Float((self.paymentContext?.paymentAmount)!)/100))!
+    
+    }
+    
+    func setupPayments(amount: Int, currency: String = "usd"){
         let paymentConfig = STPPaymentConfiguration.shared()
         let theme = STPTheme.default()
         let customerContext = STPCustomerContext(keyProvider: self)
@@ -75,16 +103,7 @@ class PaymentTableViewController: UITableViewController {
         
         self.paymentContext?.delegate = self
         self.paymentContext?.hostViewController = self
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.amountLabel.text = self.numberFormatter?.string(from: NSNumber(value: Float((self.paymentContext?.paymentAmount)!)/100))!
         
-        tableView.tableFooterView = UIView()
-        setUpNavigationBar()
-        
-        changeTextColor()
     }
     
     func changeTextColor() {
