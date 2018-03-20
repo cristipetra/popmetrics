@@ -22,7 +22,7 @@ enum Environment: String {
     
     var baseURL: String {
         switch self {
-        case .Staging: return "http://testapi.popmetrics.ai:5030"
+        case .Staging: return "https://testapi.popmetrics.ai"
         case .Production: return "https://api.popmetrics.io"
         }
     }
