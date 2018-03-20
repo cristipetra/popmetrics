@@ -9,6 +9,7 @@
 import UIKit
 import Stripe
 import EZAlertController
+import EZLoadingActivity
 
 class PaymentTableViewController: UITableViewController {
 
@@ -33,13 +34,11 @@ class PaymentTableViewController: UITableViewController {
         didSet {
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
                 if self.paymentInProgress {
-                    self.activityIndicator.startAnimating()
-                    self.activityIndicator.alpha = 1
+                    EZLoadingActivity.showLoadingSpinner(disableUI: true)
                     self.confirmPurchaseButton.isEnabled = false
                 }
                 else {
-                    self.activityIndicator.stopAnimating()
-                    self.activityIndicator.alpha = 0
+                    EZLoadingActivity.hide()
                     self.confirmPurchaseButton.isEnabled = true
                 }
             }, completion: nil)
@@ -151,9 +150,9 @@ class PaymentTableViewController: UITableViewController {
     @objc func handlerClickBack() {
         self.close()
     }
+    
     @IBAction func handlerConfirmPurchase(_ sender: UIButton) {
         self.paymentContext?.requestPayment()
-    
     }
     
 }
