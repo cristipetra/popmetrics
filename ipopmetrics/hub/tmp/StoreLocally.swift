@@ -52,6 +52,20 @@ struct StoreLocally {
             insightCard.message = "Out of the first things customers will look for is your company's Facebook page. Having a facebook page will help you find new customers over the internet."
             
             feedStore.realm.add(insightCard, update: true)
+            
+            
+            let popTipCard = FeedCard()
+            popTipCard.cardId = "sadfasfsafdsadff"
+            popTipCard.section = HomeSectionType.insights.rawValue
+            popTipCard.status = "live"
+            popTipCard.type = HomeCardType.poptip.rawValue
+            
+            popTipCard.headerTitle = "Business Budgeting 101"
+            popTipCard.message = "Learn the fundamentals of tracking, planning and preparing your budget."
+            popTipCard.imageUri = "http://blog.popmetrics.io/wp-content/uploads/sites/13/2018/01/Pop-Tips-1-100.jpg"
+            popTipCard.actionLabel = "Learn more"
+            
+            feedStore.realm.add(popTipCard, update: true)
         }
        
     }
