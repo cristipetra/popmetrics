@@ -139,5 +139,17 @@ class Config: NSObject {
         }
     }
     
+    class var termsAndConditions: String {
+        get {
+            return "http://popmetrics.io/legal-bits/#terms_and_conditions"
+        }
+    }
+    
+    class var privacyPolicy: String {
+        get {
+            return "http://popmetrics.io/legal-bits/#privacy_details"
+        }
+    }
+    
 
 }

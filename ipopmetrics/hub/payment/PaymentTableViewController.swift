@@ -70,7 +70,6 @@ class PaymentTableViewController: UITableViewController {
         setUpNavigationBar()
         changeTextColor()
         
-        textViewTerms.delegate = self
         setupPayments(amount: amount, currency:currency)
 
         self.amountLabel.text = self.numberFormatter?.string(from: NSNumber(value: Float((self.paymentContext?.paymentAmount)!)/100))!
@@ -110,11 +109,10 @@ class PaymentTableViewController: UITableViewController {
     
     func changeTextColor() {
         muutableString = NSMutableAttributedString(string: textViewTerms.text!, attributes: [NSAttributedStringKey.font:UIFont(name: FontBook.regular, size: 15.0)!])
-        muutableString.addAttribute(.link, value: "https://www.google.com", range: NSRange(location: 108, length: 20))
-        muutableString.addAttribute(.link, value: "https://www.popmetrics.io", range: NSRange(location: 132, length: 16))
+        muutableString.addAttribute(.link, value: Config.termsAndConditions, range: NSRange(location: 108, length: 20))
+        muutableString.addAttribute(.link, value: Config.privacyPolicy, range: NSRange(location: 132, length: 16))
         textViewTerms.attributedText = muutableString
-        
-        
+
         infoCardView?.resetLabel(label: "Select Payment Method")
     }
     
@@ -156,15 +154,6 @@ class PaymentTableViewController: UITableViewController {
     @IBAction func handlerConfirmPurchase(_ sender: UIButton) {
         self.paymentContext?.requestPayment()
     
-    }
-    
-}
-
-extension PaymentTableViewController: UITextViewDelegate {
-    
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        UIApplication.shared.open(URL, options: [:])
-        return false
     }
     
 }
