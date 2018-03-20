@@ -69,6 +69,8 @@ class PaymentTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         setUpNavigationBar()
         changeTextColor()
+        
+        textViewTerms.delegate = self
         setupPayments(amount: amount, currency:currency)
 
         self.amountLabel.text = self.numberFormatter?.string(from: NSNumber(value: Float((self.paymentContext?.paymentAmount)!)/100))!
@@ -108,7 +110,7 @@ class PaymentTableViewController: UITableViewController {
     
     func changeTextColor() {
         muutableString = NSMutableAttributedString(string: textViewTerms.text!, attributes: [NSAttributedStringKey.font:UIFont(name: FontBook.regular, size: 15.0)!])
-        muutableString.addAttribute(.link, value: "https://www.popmetrics.io", range: NSRange(location: 108, length: 20))
+        muutableString.addAttribute(.link, value: "https://www.google.com", range: NSRange(location: 108, length: 20))
         muutableString.addAttribute(.link, value: "https://www.popmetrics.io", range: NSRange(location: 132, length: 16))
         textViewTerms.attributedText = muutableString
         
@@ -149,7 +151,7 @@ class PaymentTableViewController: UITableViewController {
     }
     
     @objc func handlerClickBack() {
-        self.navigationController?.popViewController(animated: true)
+        self.close()
     }
     @IBAction func handlerConfirmPurchase(_ sender: UIButton) {
         self.paymentContext?.requestPayment()
@@ -157,6 +159,16 @@ class PaymentTableViewController: UITableViewController {
     }
     
 }
+
+extension PaymentTableViewController: UITextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        UIApplication.shared.open(URL, options: [:])
+        return false
+    }
+    
+}
+
 extension PaymentTableViewController: EmailProtocol {
     func didSetEmail(_ email: String) {
         emailText.text = email
@@ -187,8 +199,7 @@ extension PaymentTableViewController: STPPaymentContextDelegate{
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             var action = UIAlertAction(title: "OK", style: .default, handler: {action in
                 if done {
-                    _ = self.navigationController?.popViewController(animated: true)
-                    
+                    self.close()
                     //TODO: if done then refresh home hub?
                 }
                 
@@ -223,7 +234,8 @@ extension PaymentTableViewController: STPPaymentContextDelegate{
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
             // Need to assign to _ because optional binding loses @discardableResult value
             // https://bugs.swift.org/browse/SR-1681
-            _ = self.navigationController?.popViewController(animated: true)
+            //_ = self.navigationController?.popViewController(animated: true)
+            self.close()
         })
         let retry = UIAlertAction(title: "Retry", style: .default, handler: { action in
             self.paymentContext?.retryLoading()
@@ -231,6 +243,10 @@ extension PaymentTableViewController: STPPaymentContextDelegate{
         alertController.addAction(cancel)
         alertController.addAction(retry)
         self.navigationController?.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func close() {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
