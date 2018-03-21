@@ -52,12 +52,14 @@ class PaymentApi: BaseApi {
                 var title = "Error"
                 var message = "An error has occured. Please try again later"
                 var done = true
+                var success = false
                 
                 if response.result.isSuccess, let resultCode = response.result.value?.code, let resultMessage = response.result.value?.message {
                     message = resultMessage
                     
                     if resultCode == "success" || resultCode == "already_subscribed"{
                         title = "Success"
+                        success = true
                     } else if resultCode == "invalid_card" || resultCode == "invalid_email"{
                         done = false
                     }
