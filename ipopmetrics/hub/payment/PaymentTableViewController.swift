@@ -188,7 +188,8 @@ extension PaymentTableViewController: STPPaymentContextDelegate{
             var action = UIAlertAction(title: "OK", style: .default, handler: {action in
                 if done {
                     self.close()
-                    //TODO: if done then refresh home hub?
+                    NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
+                                                    userInfo: ["sucess":true])
                 }
                 
             })
