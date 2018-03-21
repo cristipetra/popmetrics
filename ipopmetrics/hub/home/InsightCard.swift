@@ -43,6 +43,13 @@ class InsightCard: UITableViewCell {
         footerVIew.actionButton.addTarget(self, action: #selector(handlerActionButton), for: .touchUpInside)
         footerVIew.leftButton.addTarget(self, action: #selector(handlerMoreInfo), for: .touchUpInside)
     
+        updateTitleFont()
+    }
+    
+    private func updateTitleFont() {
+        if Utils.isPlusSize {
+            titleLabel.font = UIFont(name: FontBook.extraBold, size: 30)
+        }
     }
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {

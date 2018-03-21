@@ -15,4 +15,15 @@ class Utils {
         }
         return false
     }
+    
+    static var isPlusSize: Bool {
+        if UIDevice().userInterfaceIdiom == .phone {
+            if UIScreen.main.nativeScale == 3 {
+                if !Utils.isIphoneX {
+                    return true
+                }
+            }
+        }
+        return false
+    }
 }
