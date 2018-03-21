@@ -182,14 +182,16 @@ extension PaymentTableViewController: STPPaymentContextDelegate{
         }
 
         self.paymentInProgress = true
-        PaymentApi().subscribe(brandId: brandId, planId: planId, source: source, email: email){(title: String, message: String, done:Bool) in
+        PaymentApi().subscribe(brandId: brandId, planId: planId, source: source, email: email){(title: String, message: String, success:Bool, done:Bool) in
             self.paymentInProgress = false
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             var action = UIAlertAction(title: "OK", style: .default, handler: {action in
+                if success {
+                    SyncService.getInstance().syncAll(silent: false)
+                    
+                }
                 if done {
                     self.close()
-                    NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
-                                                    userInfo: ["sucess":true])
                 }
                 
             })

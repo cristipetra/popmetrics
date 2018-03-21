@@ -35,7 +35,7 @@ class PaymentApi: BaseApi {
                    planId: String,
                    source: String,
                    email: String,
-                   callback: @escaping (_ title: String, _ message: String, _ done: Bool) -> Void){
+                   callback: @escaping (_ title: String, _ message: String, _ success:Bool, _ done: Bool) -> Void){
         let url = ApiUrls.composedBaseUrl(String(format:"/api/payment/brand/%@/subscribe", brandId))
 
         let params: [String: Any] = [
@@ -65,7 +65,7 @@ class PaymentApi: BaseApi {
                     }
                 }
                 
-                callback(title, message, done)
+                callback(title, message, success, done)
                 
         }
     }
