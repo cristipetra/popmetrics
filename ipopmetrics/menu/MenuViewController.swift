@@ -22,6 +22,7 @@ class MenuViewController: ElasticModalViewController {
     @IBOutlet weak var checkBtn: UIButton!
     @IBOutlet weak var brandNameLabel: UILabel!
     @IBOutlet weak var feedbackButton: UIButton!
+    @IBOutlet weak var upgradeSubscriptionBtn: UIButton!
     
     @IBOutlet weak var popmetricsImageView: UIImageView!
     @IBOutlet weak var closeButton: UIButton! {
@@ -44,6 +45,10 @@ class MenuViewController: ElasticModalViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // this is based on subscription status so hide it until we get subscription status
+        upgradeSubscriptionBtn.isHidden = true
+        
         setupOfflineBanner()
         buildLabel.text = UIApplication.versionBuild()
         
