@@ -54,5 +54,6 @@ target 'ipopmetrics' do
   pod 'LinkedinSwift'
   pod 'EZLoadingActivity', :git=>’https://github.com/cristipetra/EZLoadingActivity’
   pod 'XLActionController'
+  pod 'Stripe'
 
 end

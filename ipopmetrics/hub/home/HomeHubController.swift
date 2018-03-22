@@ -509,6 +509,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         }
     }
     
+    func openPaymentSubscription() {
+        let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "TrialViewController") as! TrialViewController
+        let navigation = UINavigationController(rootViewController: vc)
+        self.present(navigation, animated: true, completion: nil)
+    }
+    
     
 }
 
@@ -516,12 +522,6 @@ extension HomeHubViewController: RequiredActionLoadMore {
     func loadMoreRequiredCard() {
         requiredLoadMore.loadAllRequiredCards()
         self.tableView.reloadData()
-    }
-    
-    func openPaymentSubscription() {
-        let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "TrialViewController") as! TrialViewController
-        let navigation = UINavigationController(rootViewController: vc)
-        self.present(navigation, animated: true, completion: nil)
     }
 }
 

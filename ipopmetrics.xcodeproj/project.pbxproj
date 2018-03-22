@@ -24,7 +24,6 @@
 		083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083938FE1F63C334007DDA37 /* MainTabInfo.swift */; };
 		0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FBD61FACB1CE00335073 /* TableViewCellTransition.swift */; };
 		0848280F1F39F9200054B04C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848280E1F39F9200054B04C /* HeaderView.swift */; };
-		0849E86720517D57007255D0 /* SlideFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849E86620517D57007255D0 /* SlideFirstView.swift */; };
 		084E54E11F827F7D007D6F4F /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E54E01F827F7D007D6F4F /* NoteView.swift */; };
 		085053FE1F2787A100FE8234 /* CalendarHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085053FD1F2787A100FE8234 /* CalendarHubController.swift */; };
 		085054011F2793AE00FE8234 /* CalendarCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085054001F2793AE00FE8234 /* CalendarCard.xib */; };
@@ -155,7 +154,6 @@
 		08BAD73E1F960A70008BC88F /* MJCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BAD73D1F960A70008BC88F /* MJCalendarViewController.swift */; };
 		08BC8F1620357D66008CC969 /* BusinessContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BC8F1520357D66008CC969 /* BusinessContact.swift */; };
 		08BC8F192035F247008CC969 /* SettingsTwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BC8F182035F247008CC969 /* SettingsTwitterViewController.swift */; };
-		08BD24CF20470D880070D173 /* SlideSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD24CE20470D880070D173 /* SlideSecondView.swift */; };
 		08BD58001F7A2DCC00FFDCFD /* ActionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD57FF1F7A2DCC00FFDCFD /* ActionPageView.swift */; };
 		08BD58021F7A2F3700FFDCFD /* IndividualTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BD58011F7A2F3700FFDCFD /* IndividualTaskView.swift */; };
 		08BD580C1F7A6AD500FFDCFD /* OnboardingFinalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08BD580B1F7A6AD500FFDCFD /* OnboardingFinalView.xib */; };
@@ -215,6 +213,8 @@
 		113DE2FE1FC8ACD100AE6DE9 /* PaidActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113DE2FD1FC8ACD100AE6DE9 /* PaidActionCard.xib */; };
 		113DE3021FC8AEE800AE6DE9 /* PaidActionCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113DE3011FC8AEE800AE6DE9 /* PaidActionCardCell.swift */; };
 		1148D73D1FBF39AE006EB5BB /* NavigationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1148D73C1FBF39AE006EB5BB /* NavigationMap.swift */; };
+		11670EAE20640AA400AB4598 /* SlideSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11670EAC20640AA400AB4598 /* SlideSecondView.swift */; };
+		11670EAF20640AA400AB4598 /* SlideFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11670EAD20640AA400AB4598 /* SlideFirstView.swift */; };
 		116815CB2062BDD600071E71 /* ActionApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116815CA2062BDD600071E71 /* ActionApi.swift */; };
 		116E339620345F3A00D2BCA9 /* MessagesBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116E339420345F3900D2BCA9 /* MessagesBadgeView.swift */; };
 		116E339C203461E100D2BCA9 /* BoardingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116E3398203461E100D2BCA9 /* BoardingNavigationController.swift */; };
@@ -255,6 +255,8 @@
 		11FB84EB1FC79E8800FE937D /* TodoHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FB84EA1FC79E8800FE937D /* TodoHubController.swift */; };
 		631BDFACE57815E87C781181 /* Pods_ipopmetrics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */; };
 		A615BFB720500764001F0529 /* FacebookPagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A615BFB620500764001F0529 /* FacebookPagePickerViewController.swift */; };
+		A67E343E205F7CD400EAB428 /* PaymentApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67E343D205F7CD400EAB428 /* PaymentApi.swift */; };
+		A67E3440206021F000EAB428 /* InfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67E343F206021F000EAB428 /* InfoCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -486,6 +488,8 @@
 		113DE3011FC8AEE800AE6DE9 /* PaidActionCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaidActionCardCell.swift; sourceTree = "<group>"; };
 		1148D73C1FBF39AE006EB5BB /* NavigationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMap.swift; sourceTree = "<group>"; };
 		116540BB1EEAA17A00417D61 /* ipopmetrics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ipopmetrics.entitlements; sourceTree = "<group>"; };
+		11670EAC20640AA400AB4598 /* SlideSecondView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideSecondView.swift; sourceTree = "<group>"; };
+		11670EAD20640AA400AB4598 /* SlideFirstView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideFirstView.swift; sourceTree = "<group>"; };
 		116815CA2062BDD600071E71 /* ActionApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionApi.swift; sourceTree = "<group>"; };
 		116E339420345F3900D2BCA9 /* MessagesBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesBadgeView.swift; sourceTree = "<group>"; };
 		116E3398203461E100D2BCA9 /* BoardingNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardingNavigationController.swift; sourceTree = "<group>"; };
@@ -537,6 +541,8 @@
 		8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ipopmetrics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D5ECCAEA66BCED2B0405D78 /* Pods-ipopmetrics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.debug.xcconfig"; sourceTree = "<group>"; };
 		A615BFB620500764001F0529 /* FacebookPagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookPagePickerViewController.swift; sourceTree = "<group>"; };
+		A67E343D205F7CD400EAB428 /* PaymentApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentApi.swift; sourceTree = "<group>"; };
+		A67E343F206021F000EAB428 /* InfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCardView.swift; sourceTree = "<group>"; };
 		B4B4544B39E98D6698619AEC /* Pods-ipopmetrics.debug (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.debug (production).xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.debug (production).xcconfig"; sourceTree = "<group>"; };
 		CFC64B6717A9942DCD941A53 /* Pods-ipopmetrics.debug (staging).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.debug (staging).xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.debug (staging).xcconfig"; sourceTree = "<group>"; };
 		FFE1FD22340D0C98306F8FA1 /* Pods-ipopmetrics.release (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release (production).xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release (production).xcconfig"; sourceTree = "<group>"; };
@@ -689,13 +695,16 @@
 			path = twitter;
 			sourceTree = "<group>";
 		};
-		08BD24CD20470D4A0070D173 /* slider */ = {
+		08C6101A20480510008FCE9E /* payment */ = {
 			isa = PBXGroup;
 			children = (
-				08BD24CE20470D880070D173 /* SlideSecondView.swift */,
-				0849E86620517D57007255D0 /* SlideFirstView.swift */,
+				08C6101B2048054D008FCE9E /* Payment.storyboard */,
+				08C6101F204843B5008FCE9E /* PaymentTableViewController.swift */,
+				08C928E220494CC900C070AE /* TrialViewController.swift */,
+				086F64DB205BA9A400F46E8A /* EmailViewController.swift */,
+				A67E343F206021F000EAB428 /* InfoCardView.swift */,
 			);
-			path = slider;
+			path = payment;
 			sourceTree = "<group>";
 		};
 		08C873AD203F19EC000C02EC /* facebook */ = {
@@ -757,6 +766,25 @@
 			path = SimpleButton;
 			sourceTree = "<group>";
 		};
+		11670EAA2064075B00AB4598 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				0849E86620517D57007255D0 /* SlideFirstView.swift */,
+				08BD24CE20470D880070D173 /* SlideSecondView.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		11670EAB20640AA400AB4598 /* slider */ = {
+			isa = PBXGroup;
+			children = (
+				11670EAC20640AA400AB4598 /* SlideSecondView.swift */,
+				11670EAD20640AA400AB4598 /* SlideFirstView.swift */,
+			);
+			name = slider;
+			path = ipopmetrics/welcome/slider;
+			sourceTree = SOURCE_ROOT;
+		};
 		116E33A22034789400D2BCA9 /* intercom */ = {
 			isa = PBXGroup;
 			children = (
@@ -775,6 +803,7 @@
 				1178D6761E1E5AD9005B96C3 /* Products */,
 				D34D121310C3CD88F41B3676 /* Pods */,
 				3370F07CEEDAD25A735B8558 /* Frameworks */,
+				11670EAA2064075B00AB4598 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -853,6 +882,7 @@
 		11DD96591FC4ECD600386F1E /* hub */ = {
 			isa = PBXGroup;
 			children = (
+				08C6101A20480510008FCE9E /* payment */,
 				086AF8F0205BCE000073CA1F /* tmp */,
 				116E33A22034789400D2BCA9 /* intercom */,
 				11DD965C1FC4F0EA00386F1E /* actionpage */,
@@ -1061,7 +1091,6 @@
 		11DD96651FC4F41600386F1E /* welcome */ = {
 			isa = PBXGroup;
 			children = (
-				08BD24CD20470D4A0070D173 /* slider */,
 				116E3398203461E100D2BCA9 /* BoardingNavigationController.swift */,
 				116E3399203461E100D2BCA9 /* NameViewController.swift */,
 				116E339A203461E100D2BCA9 /* SignUpNameViewController.swift */,
@@ -1084,6 +1113,7 @@
 		11DD96661FC4F62700386F1E /* signin */ = {
 			isa = PBXGroup;
 			children = (
+				11670EAB20640AA400AB4598 /* slider */,
 				11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */,
 				08B745971F1F718300EC3F8C /* CodeViewController.swift */,
 				08B7459A1F1F996B00EC3F8C /* DigitCodeView.swift */,
@@ -1122,6 +1152,7 @@
 				08BC8F1520357D66008CC969 /* BusinessContact.swift */,
 				1198436B205BC0E700C63201 /* GoogleApi.swift */,
 				116815CA2062BDD600071E71 /* ActionApi.swift */,
+				A67E343D205F7CD400EAB428 /* PaymentApi.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -1676,7 +1707,6 @@
 				088BBEAA1F58214300AD5414 /* StatsEmptyCell.swift in Sources */,
 				085053FE1F2787A100FE8234 /* CalendarHubController.swift in Sources */,
 				089267741F86617600D7B99E /* OfflineBanner.swift in Sources */,
-				0849E86720517D57007255D0 /* SlideFirstView.swift in Sources */,
 				08913DA11FE7BEFB0085BE36 /* CalendarCompletedViewCell.swift in Sources */,
 				088F14FA1FB9C6080004F925 /* StaticSettingsViewController.swift in Sources */,
 				08C580FF1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift in Sources */,
@@ -1691,7 +1721,6 @@
 				08B4EBB81FC56ACE00BFC5A1 /* CardActionHanlder.swift in Sources */,
 				08B4EB9D1FC56A0400BFC5A1 /* TodoStore.swift in Sources */,
 				1198436C205BC0E700C63201 /* GoogleApi.swift in Sources */,
-				08BD24CF20470D880070D173 /* SlideSecondView.swift in Sources */,
 				08B4EB9F1FC56A0C00BFC5A1 /* UserStore.swift in Sources */,
 				08CCFFE81FDD977700755295 /* ActionTodoButton.swift in Sources */,
 				08B2803F1F55862100E36D19 /* Statistics.swift in Sources */,
@@ -1699,6 +1728,7 @@
 				085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */,
 				A615BFB720500764001F0529 /* FacebookPagePickerViewController.swift in Sources */,
 				08E1CBFB205AA24B0037A155 /* RequiredActionLoadMoreView.swift in Sources */,
+				11670EAE20640AA400AB4598 /* SlideSecondView.swift in Sources */,
 				08B745981F1F718300EC3F8C /* CodeViewController.swift in Sources */,
 				08BC8F192035F247008CC969 /* SettingsTwitterViewController.swift in Sources */,
 				0844FBD71FACB1CE00335073 /* TableViewCellTransition.swift in Sources */,
@@ -1724,6 +1754,7 @@
 				08A812761F1660A300672126 /* CardHeaderCell.swift in Sources */,
 				1100F6F91F5FEBCE000AF1D4 /* TodoActionHandler.swift in Sources */,
 				11E636941FD735480081B1DC /* StatsStore.swift in Sources */,
+				11670EAF20640AA400AB4598 /* SlideFirstView.swift in Sources */,
 				08B485E01F20EA23005918A1 /* Config.swift in Sources */,
 				08BC8F1620357D66008CC969 /* BusinessContact.swift in Sources */,
 				08DE806D2018E98E00621243 /* SocialPostDetailsView.swift in Sources */,
