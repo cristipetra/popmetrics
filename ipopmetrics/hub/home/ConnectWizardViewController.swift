@@ -13,8 +13,9 @@ import GoogleSignIn
 import TwitterKit
 import FacebookCore
 import FacebookLogin
+import Alamofire
 
-class ConnectWizardViewController: UIViewController, FlexibleSteppedProgressBarDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
+class ConnectWizardViewController: BaseViewController, FlexibleSteppedProgressBarDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
     
     @IBOutlet weak var progressBar: FlexibleSteppedProgressBar!
     @IBOutlet weak var connectionTargetLabel: UILabel!
@@ -54,12 +55,6 @@ class ConnectWizardViewController: UIViewController, FlexibleSteppedProgressBarD
         start()
     }
     
-    internal func addShadowToView(_ toView: UIView) {
-        toView.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor
-        toView.layer.shadowOpacity = 0.3;
-        toView.layer.shadowRadius = 2
-        toView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-    }
     
     public func configure(_ card:FeedCard) {
         self.actionCard = card
@@ -71,7 +66,7 @@ class ConnectWizardViewController: UIViewController, FlexibleSteppedProgressBarD
             
         case "twitter.connect_with_brand":
             self.connectionTarget = "Twitter"
-            self.steps = ["Auth", "Approve", "Verify", "Done"]
+            self.steps = ["Auth", "Verify", "Done"]
             
         case "facebook.connect_with_brand":
             self.connectionTarget = "Facebook Page"
@@ -173,26 +168,34 @@ class ConnectWizardViewController: UIViewController, FlexibleSteppedProgressBarD
     }
     
     func stepVerifyTwitter(session:TWTRSession?, error: Error?) {
+        self.progressBar.currentIndex = 1
         if (session != nil) {
              // success
             
             let params = [
-                "task_name": "twitter.connect_with_brand",
+                "action_name": "twitter.connect_with_brand",
                 "user_id":UserStore.getInstance().getLocalUserAccount().id,
                 "twitter_user_id":session?.userID,
                 "access_token":session?.authToken,
                 "access_token_secret":session?.authTokenSecret
             ]
             let brandId = UserStore.currentBrandId
-            TodoApi().postRequiredAction(brandId, params: params) { requiredActionResponse in
-                let store = FeedStore.getInstance()
-                if let card = store.getFeedCardWithName("twitter.connect_with_brand") {
-                    store.updateCardSection(card, section: "None")
-                    NotificationCenter.default.post(name:Notification.Popmetrics.UiRefreshRequired, object:nil,
-                                                    userInfo: nil )
-                }
-//                NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
-//                                                userInfo: pnotification.toJSON())
+            let url = ApiUrls.composedBaseUrl(String(format:"/api/actions/brand/%@/required-action", brandId))
+            
+            Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default,
+                              headers:createHeaders()).responseObject() { (response: DataResponse<ResponseWrapperOne<RequiredActionResponse>>) in
+                                
+                                let levelOneHandled = self.handleNotOkCodes(response: response.response)
+                                if !levelOneHandled {
+                                    let handled = self.handleResponseWrap(response.value!)
+                                    if !handled {
+                                        let store = FeedStore.getInstance()
+                                        if let card = store.getFeedCardWithName("twitter.connect_with_brand") {
+                                            store.updateCardSection(card, section: "None")
+                                        }
+                                    }
+                                }
+                                
             }
             
         } else {
@@ -203,6 +206,59 @@ class ConnectWizardViewController: UIViewController, FlexibleSteppedProgressBarD
         }
     }
     
+    func stepDoneTwitter() {
+        self.progressBar.currentIndex = 2
+        EZAlertController.alert("Success")
+    }
+    
+    internal func createHeaders( authToken:String = "" ) -> HTTPHeaders {
+        var headers = [String: String]()
+        if authToken != "" {
+            headers["Authorization"] = "Bearer "+authToken
+        }
+        else {
+            let localUser = UserStore.getInstance().getLocalUserAccount()
+            if localUser.authToken != nil { headers["Authorization"] = "Bearer "+localUser.authToken! }
+        }
+        return headers
+    }
+    
+    internal func handleNotOkCodes(response: HTTPURLResponse?) -> Bool {
+        if response?.statusCode == 404 {
+            NotificationCenter.default.post(name: Notification.Popmetrics.ApiResponseUnsuccessfull, object: nil,
+                                            userInfo: ["title": "Cloud communication error.",
+                                                       "subtitle":"The requested resource does not exist",
+                                                       "type":"failure"])
+            return true
+        }
+        if response?.statusCode == 401 {
+            NotificationCenter.default.post(name: Notification.Popmetrics.ApiClientNotAuthenticated, object: nil,
+                                            userInfo: ["title": "Cloud communication error.",
+                                                       "subtitle":"User is not authorized.",
+                                                       "type":"failure"])
+            return true
+        }
+        if response?.statusCode != 200 {
+            NotificationCenter.default.post(name: Notification.Popmetrics.ApiFailure, object: nil,
+                                            userInfo: ["title": "Cloud communication error.",
+                                                       "subtitle":"",
+                                                       "type":"failure"])
+            return true
+        }
+        return false
+    }
+    
+    internal func handleResponseWrap(_ responseWrap: ResponseWrap) -> Bool{
+        let value = responseWrap
+        if value.getCode() != "success" && value.getCode() != "silent_error" {
+            NotificationCenter.default.post(name: Notification.Popmetrics.ApiResponseUnsuccessfull, object: nil,
+                                            userInfo: ["title": "Cloud communication error.",
+                                                       "subtitle":"Operation was unsuccessfull",
+                                                       "type":"failure"])
+            return true
+        }
+        return false
+    }
     
     
 }
