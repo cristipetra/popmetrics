@@ -228,6 +228,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         return facebookAccounts
     }
     
+    
     internal func showAlertMessage(_ viewController: UIViewController, message: String) {
         let alertController = UIAlertController(title: message, message: "", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)

@@ -126,5 +126,6 @@ final class FacebookPagePickerViewController: UITableViewController {
         cell.configure(text: facebookPage.name, details: facebookPage.link, imageUrl: facebookPage.picture  , placeholderImage: UIImage(named: "iconFacebookSocial"))
         return cell
     }
+    
 }
 
