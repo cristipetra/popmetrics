@@ -77,8 +77,8 @@ class SignUpNameViewController: BaseViewController {
             btnSubmitName.isEnabled = false
             return
         }
-        btnSubmitName.isEnabled = true
-    
+        
+        btnSubmitName.isEnabled = name.split(separator: " ").count > 1 ? true : false
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
