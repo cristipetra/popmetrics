@@ -14,13 +14,16 @@ class SignUpEmailViewController: BaseViewController {
     
     @IBOutlet weak var constraintCenterYcontainer: NSLayoutConstraint!
     @IBOutlet weak var container: UIView!
-    @IBOutlet weak var websiteTextField: UITextField!
-    @IBOutlet weak var btnSubmitWebsite: UIButton!
-
+    @IBOutlet weak var btnSubmit: UIButton!
+    @IBOutlet weak var emailTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setNavigationBar()
+        
+        btnSubmit.isEnabled = false
+        emailTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
     private func setNavigationBar() {
@@ -49,25 +52,11 @@ class SignUpEmailViewController: BaseViewController {
     }
     
     @IBAction func handlerSubmit(_ sender: UIButton) {
-        guard let website = self.websiteTextField.text, !website.isEmpty else {
-            self.btnSubmitWebsite.isEnabled = false
+        if !Validator.isValidEmail(self.emailTextField.text!) {
+            EZAlertController.alert("Invalid email", message: "Please enter a valid email address.")
             return
         }
-        self.showProgressIndicator()
-        BrandApi().valideBrandWebsite(website) { (response) in
-            self.hideProgressIndicator()
-            
-            if response?.code == "success" {
-                (self.navigationController as! BoardingNavigationController).registerBrand.website = response?.data!
-                self.performSegue(withIdentifier: "enterPhoneNumberForSignUp", sender: self)
-            } else {
-                let title = "Error"
-                let message = response?.message ?? "An error has ocurred. Please try again later."
-                
-                self.notifyUser(title: title, message: message)
-            }
-        }
-
+        //self.showProgressIndicator()
     }
     
     func notifyUser(title: String, message: String, type: String = "info"){
@@ -80,6 +69,14 @@ class SignUpEmailViewController: BaseViewController {
         
         let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
         self.showBannerForNotification(pnotification)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        guard let email = self.emailTextField.text, !email.isEmpty else {
+            btnSubmit.isEnabled = false
+            return
+        }
+        btnSubmit.isEnabled = true
     }
     
 }

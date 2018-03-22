@@ -840,10 +840,10 @@
                         <viewLayoutGuide key="safeArea" id="Tmf-L6-1zv"/>
                     </view>
                     <connections>
-                        <outlet property="btnSubmitWebsite" destination="qqH-P1-2he" id="9Y2-Fe-9qR"/>
+                        <outlet property="btnSubmit" destination="qqH-P1-2he" id="kpq-4J-jgE"/>
                         <outlet property="constraintCenterYcontainer" destination="k2d-pP-20X" id="moC-F3-MQz"/>
                         <outlet property="container" destination="7p4-pI-HZT" id="iIQ-Ex-vd1"/>
-                        <outlet property="websiteTextField" destination="yew-AF-mFh" id="hEH-gX-oKT"/>
+                        <outlet property="emailTextField" destination="yew-AF-mFh" id="k33-D6-7He"/>
                         <segue destination="0l6-yE-TR5" kind="unwind" identifier="unwindSegueToNameVC" unwindAction="unwindToNameVCWithSegue:" id="jeT-hJ-0QG"/>
                         <segue destination="MiY-R6-tTF" kind="show" identifier="enterPhoneNumberForSignUp" id="b3D-wu-624"/>
                     </connections>

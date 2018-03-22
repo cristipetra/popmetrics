@@ -77,10 +77,20 @@ class SignUpWebsiteViewController: BaseViewController {
         guard let website = self.websiteTextField.text, !website.isEmpty else {
             return
         }
-        
-        (self.navigationController as! BoardingNavigationController).registerBrand.website = website
-        
-        self.performSegue(withIdentifier: "enterWorkEmailForSignUp", sender: self)
+        self.showProgressIndicator()
+        BrandApi().valideBrandWebsite(website) { (response) in
+            self.hideProgressIndicator()
+            
+            if response?.code == "success" {
+                (self.navigationController as! BoardingNavigationController).registerBrand.website = response?.data!
+                self.performSegue(withIdentifier: "enterWorkEmailForSignUp", sender: self)
+            } else {
+                let title = "Error"
+                let message = response?.message ?? "An error has ocurred. Please try again later."
+                
+                self.notifyUser(title: title, message: message)
+            }
+        }
         
     }
     
