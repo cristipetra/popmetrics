@@ -64,6 +64,7 @@
 		086EDE431FC8449A002F4140 /* ImpactScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE421FC8449A002F4140 /* ImpactScoreView.swift */; };
 		086EDE461FC8651B002F4140 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EDE451FC8651B002F4140 /* UIViewExtensions.swift */; };
 		086F34742034986700F7043B /* SettingsBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F34732034986700F7043B /* SettingsBaseTableViewController.swift */; };
+		086F64DC205BA9A400F46E8A /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F64DB205BA9A400F46E8A /* EmailViewController.swift */; };
 		08732B35203EE5A900EF4C51 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08732B34203EE5A900EF4C51 /* SettingsHeaderView.swift */; };
 		08755F461FCC11E600A8CF13 /* SocialPostDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */; };
 		08755F4C1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */; };
@@ -165,10 +166,13 @@
 		08C580FF1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C580FE1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift */; };
 		08C583021FB1AFA500A7DD3D /* FooterViewStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */; };
 		08C5CF361FC5EA9C001851A5 /* ActionPageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */; };
+		08C6101C2048054D008FCE9E /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C6101B2048054D008FCE9E /* Payment.storyboard */; };
+		08C61020204843B5008FCE9E /* PaymentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6101F204843B5008FCE9E /* PaymentTableViewController.swift */; };
 		08C6F5D72045638700E5482C /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6F5D62045638700E5482C /* UITextFieldExtensions.swift */; };
 		08C7A438201B4D0500714360 /* SocialIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7A437201B4D0500714360 /* SocialIconView.swift */; };
 		08C7B1921F1CFEBD00E456C6 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */; };
 		08C873AF203F1A15000C02EC /* SettingsFacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C873AE203F1A15000C02EC /* SettingsFacebookViewController.swift */; };
+		08C928E320494CC900C070AE /* TrialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C928E220494CC900C070AE /* TrialViewController.swift */; };
 		08CA5D5820247C1000ED78C3 /* NotificationsManuallyEnableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA5D5720247C1000ED78C3 /* NotificationsManuallyEnableViewController.swift */; };
 		08CBB0061FD96AEA0042EE9C /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CBB0051FD96AEA0042EE9C /* ActionButton.swift */; };
 		08CC6EC01FBC7F9C00A6521E /* SettingsLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */; };
@@ -328,6 +332,7 @@
 		086EDE421FC8449A002F4140 /* ImpactScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactScoreView.swift; sourceTree = "<group>"; };
 		086EDE451FC8651B002F4140 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		086F34732034986700F7043B /* SettingsBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBaseTableViewController.swift; sourceTree = "<group>"; };
+		086F64DB205BA9A400F46E8A /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		08732B34203EE5A900EF4C51 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SocialPostDetails.xib; sourceTree = "<group>"; };
 		08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPostDetailsViewController.swift; sourceTree = "<group>"; };
@@ -429,10 +434,13 @@
 		08C580FE1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOverlayUrlViewController.swift; sourceTree = "<group>"; };
 		08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterViewStateController.swift; sourceTree = "<group>"; };
 		08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPageDetailsViewController.swift; sourceTree = "<group>"; };
+		08C6101B2048054D008FCE9E /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
+		08C6101F204843B5008FCE9E /* PaymentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableViewController.swift; sourceTree = "<group>"; };
 		08C6F5D62045638700E5482C /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		08C7A437201B4D0500714360 /* SocialIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialIconView.swift; sourceTree = "<group>"; };
 		08C7B1911F1CFEBD00E456C6 /* WelcomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		08C873AE203F1A15000C02EC /* SettingsFacebookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFacebookViewController.swift; sourceTree = "<group>"; };
+		08C928E220494CC900C070AE /* TrialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialViewController.swift; sourceTree = "<group>"; };
 		08CA5D5720247C1000ED78C3 /* NotificationsManuallyEnableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManuallyEnableViewController.swift; sourceTree = "<group>"; };
 		08CBB0051FD96AEA0042EE9C /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		08CC6EBF1FBC7F9C00A6521E /* SettingsLogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLogoViewController.swift; sourceTree = "<group>"; };
@@ -1283,6 +1291,7 @@
 				08CC6EC21FBC7FBA00A6521E /* SettingsLogoView.xib in Resources */,
 				08B324D81F98C65A00BB4905 /* IceExtendView.xib in Resources */,
 				08ADA3091F42CC4400060ECD /* OpenSans-BoldItalic.ttf in Resources */,
+				08C6101C2048054D008FCE9E /* Payment.storyboard in Resources */,
 				113DE2FE1FC8ACD100AE6DE9 /* PaidActionCard.xib in Resources */,
 				0852826C1F287DD70065A968 /* CalendarHeaderViewCell.xib in Resources */,
 				08B745961F1F6C1D00EC3F8C /* OpenSans-Regular.ttf in Resources */,
@@ -1472,6 +1481,7 @@
 				"${BUILT_PRODUCTS_DIR}/STPopup/STPopup.framework",
 				"${BUILT_PRODUCTS_DIR}/ScrollableGraphView/ScrollableGraphView.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftRichString/SwiftRichString.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/UIView+JMFrame/UIView_JMFrame.framework",
@@ -1522,6 +1532,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/STPopup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScrollableGraphView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftRichString.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIView_JMFrame.framework",
@@ -1594,6 +1605,7 @@
 				08A51D331FC6EF6D0097B334 /* ActionInstructionsPageViewController.swift in Sources */,
 				08B4EBB21FC56ACE00BFC5A1 /* SettingsBaseViewController.swift in Sources */,
 				08B4EB991FC569F700BFC5A1 /* FeedStore.swift in Sources */,
+				A67E3440206021F000EAB428 /* InfoCardView.swift in Sources */,
 				08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */,
 				086F34742034986700F7043B /* SettingsBaseTableViewController.swift in Sources */,
 				088674111FE28506008DB87E /* LoginSocialViewController.swift in Sources */,
@@ -1615,7 +1627,9 @@
 				08BD58001F7A2DCC00FFDCFD /* ActionPageView.swift in Sources */,
 				11DD96761FC4FA5400386F1E /* CalendarApi.swift in Sources */,
 				08732B35203EE5A900EF4C51 /* SettingsHeaderView.swift in Sources */,
+				08C61020204843B5008FCE9E /* PaymentTableViewController.swift in Sources */,
 				0848280F1F39F9200054B04C /* HeaderView.swift in Sources */,
+				A67E343E205F7CD400EAB428 /* PaymentApi.swift in Sources */,
 				08B968AA1FBB141400482CDE /* ChangeBrandViewController.swift in Sources */,
 				08078F391FBDA92600A4399D /* Alert.swift in Sources */,
 				085282701F2881BD0065A968 /* Calendar.swift in Sources */,
@@ -1651,6 +1665,7 @@
 				116815CB2062BDD600071E71 /* ActionApi.swift in Sources */,
 				11DD967B1FC4FA5400386F1E /* ApiModels.swift in Sources */,
 				08755F4C1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift in Sources */,
+				086F64DC205BA9A400F46E8A /* EmailViewController.swift in Sources */,
 				086EDE431FC8449A002F4140 /* ImpactScoreView.swift in Sources */,
 				08AA6C651F56DAA10022DE91 /* StatsReportPageViewController.swift in Sources */,
 				088B282C1F7E7F150015A66E /* AimeeView.swift in Sources */,
@@ -1703,6 +1718,7 @@
 				11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */,
 				08AA6C731F56F8630022DE91 /* ChartViewCell.swift in Sources */,
 				08B4EBB71FC56ACE00BFC5A1 /* ReachabilityManager.swift in Sources */,
+				08C928E320494CC900C070AE /* TrialViewController.swift in Sources */,
 				08B7459B1F1F996B00EC3F8C /* DigitCodeView.swift in Sources */,
 				085054031F27A25B00FE8234 /* CalendarCardViewCell.swift in Sources */,
 				08A812761F1660A300672126 /* CardHeaderCell.swift in Sources */,

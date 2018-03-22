@@ -458,6 +458,16 @@ article has some meta thing telling the computer that it’s magically got to ch
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MTa-KH-EBT">
                                 <rect key="frame" x="29" y="187" width="320" height="99"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8L-Vg-Wgz">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="33"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="UPGRADE SUBSCRIPTION">
+                                            <color key="titleColor" name="blue_bottle"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="handlerClickSubscription:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="0X1-3R-kDV"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCx-hh-YS8">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="33"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
@@ -602,6 +612,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                         <outlet property="closeButton" destination="Vqp-bm-yP8" id="jTj-XT-VJy"/>
                         <outlet property="logoImage" destination="eP9-wi-QSE" id="OYZ-aC-Ged"/>
                         <outlet property="popmetricsImageView" destination="eP9-wi-QSE" id="Ayc-ih-Fny"/>
+                        <outlet property="upgradeSubscriptionBtn" destination="x8L-Vg-Wgz" id="oea-g5-rZ6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDa-y3-Fcw" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -41,11 +41,33 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
             case "facebook.connect_with_brand":
                 connectFacebook(viewController:viewController, item: item)
                 break
-            
+            case "payment.subscription.upgrade":
+                displayPaymentSubscription(viewController)
+                break
+            case "payment.subscription.update_payment":
+                displayPaymentConfirmation(viewController)
+                break
             default:
                 print("Unexpected name "+item.name)
         
         }//switch
+    }
+    
+    func displayPaymentSubscription(_ viewController: UIViewController) {
+        let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "TrialViewController") as! TrialViewController
+        let navigation = UINavigationController(rootViewController: vc)
+        viewController.present(navigation, animated: true, completion: nil)
+    }
+    
+    func displayPaymentConfirmation(_ viewController: UIViewController) {
+        let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "PaymentTableViewController") as! PaymentTableViewController
+        
+        let brandId = UserStore.currentBrandId
+        let planId = Config.sharedInstance.environment.stripeBasicPlanId
+        let amount = Config.sharedInstance.environment.stripeBasicPlanAmount
+        vc.configure(brandId:brandId, amount:amount, planId:planId)
+        
+        viewController.navigationController?.pushViewController(vc, animated: true)
     }
    
     func application(_ application: UIApplication,

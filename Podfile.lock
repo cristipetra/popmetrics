@@ -96,7 +96,7 @@ PODS:
     - IOSLinkedInAPIFix (>= 2.0.4)
   - lottie-ios (2.5.0)
   - M13ProgressSuite (1.2.9)
-  - markymark (4.0.3)
+  - markymark (4.0.4)
   - MarqueeLabel/Swift (3.1.4)
   - MGSwipeTableCell (1.6.6)
   - MJCalendar (0.4.0):
@@ -118,6 +118,7 @@ PODS:
   - ScrollableGraphView (4.0.4)
   - SnapKit (4.0.0)
   - STPopup (1.8.3)
+  - Stripe (12.1.0)
   - SwiftRichString (1.1.0)
   - SwiftyJSON (4.0.0)
   - TwitterCore (2.8.0):
@@ -166,6 +167,7 @@ DEPENDENCIES:
   - ScrollableGraphView (from `https://github.com/cristipetra/ScrollableGraphView`)
   - SnapKit
   - STPopup
+  - Stripe
   - SwiftRichString
   - SwiftyJSON
   - TwitterCore (~> 2.8.0)
@@ -249,7 +251,7 @@ SPEC CHECKSUMS:
   LinkedinSwift: fba071cbbcedf42471f45c0cd2438cba3f6c9c7c
   lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
   M13ProgressSuite: ea9f7263e73e9215e6849dfa54e29ee0ad6a145c
-  markymark: 17ac3be242f46548d9279e33e73a86375c0aacba
+  markymark: 87b1bbf9f990c88c583bab25c7cbf6754a5012c6
   MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
   MGSwipeTableCell: c3bc6e261e7bc06c112909fe3fb8205de286082c
   MJCalendar: a529b085b0b988ae7b493ce7c000946cc186bf0e
@@ -264,6 +266,7 @@ SPEC CHECKSUMS:
   ScrollableGraphView: abac54d3493a5a198ade4baf4879967183af8a2c
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   STPopup: da1167250a01584af7bcccb898653185f223ec46
+  Stripe: de8bffa8e6813f678d526c52f416fe224141fa09
   SwiftRichString: 49c75726140c7f780fad1d067f804491d51188fa
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   TwitterCore: e959987be23c767004d29eb7fab8d85d8585a2e5

@@ -19,6 +19,7 @@ import SafariServices
 import RealmSwift
 //import STPopup
 import Intercom
+import Stripe
 
 
 public extension Notification {
@@ -88,6 +89,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ReachabilityManager.shared.startMonitoring()
 
         storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        
+        //Stripe
+        STPPaymentConfiguration.shared().publishableKey = Config.sharedInstance.environment.stripeKey
+        STPPaymentConfiguration.shared().createCardSources = true
 
         //Intercom
         Intercom.setInAppMessagesVisible(false)

@@ -517,6 +517,12 @@ extension HomeHubViewController: RequiredActionLoadMore {
         requiredLoadMore.loadAllRequiredCards()
         self.tableView.reloadData()
     }
+    
+    func openPaymentSubscription() {
+        let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "TrialViewController") as! TrialViewController
+        let navigation = UINavigationController(rootViewController: vc)
+        self.present(navigation, animated: true, completion: nil)
+    }
 }
 
 extension HomeHubViewController: CardInfoHandler {
@@ -541,6 +547,10 @@ extension HomeHubViewController: RecommendeCellDelegate {
     }
     
     func recommendedCellDidTapAction(_ feedCard: FeedCard) {
+        if feedCard.name == "payment.subscription.trial_insight" {
+            openPaymentSubscription()
+            return
+        }
         openActionPage(feedCard)
     }
 }

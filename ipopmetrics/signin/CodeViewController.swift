@@ -125,24 +125,10 @@ class CodeViewController: BaseViewController {
                 let currentUser = UserStore.getInstance().getLocalUserAccount()
                 
                 Intercom.registerUser(withUserId: currentUser.id!)
-                /*
-                 let brand = ICMCompany()
-                 brand.name = UsersStore.getInstance().currentBrandId
-                 brand.companyId = UsersStore.getInstance().currentBrandName
-                 */
                 let userAttributes = ICMUserAttributes()
-                //userAttributes.companies = [company]
-                
-                if currentUser.name != nil && !(currentUser.name?.isEmpty)! {
-                    userAttributes.name = currentUser.name
-                }
-                if currentUser.email != nil && !(currentUser.email?.isEmpty)! {
-                    userAttributes.email = currentUser.email
-                }
-                if currentUser.phone != nil && !(currentUser.phone?.isEmpty)! {
-                    userAttributes.phone = currentUser.phone
-                }
-                
+                userAttributes.name = currentUser.name
+                userAttributes.email = currentUser.email
+                userAttributes.phone = currentUser.phone
                 Intercom.updateUser(userAttributes)
                 
                 SyncService.getInstance().syncAll(silent: false)
