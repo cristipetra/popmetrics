@@ -14,6 +14,7 @@ class SignUpNameViewController: BaseViewController {
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var btnSubmitName: UIButton!
+    @IBOutlet weak var messageLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -22,11 +23,12 @@ class SignUpNameViewController: BaseViewController {
         nameTextField.delegate = self
         nameTextField.autocapitalizationType = .words
         
-        isHeroEnabled = false
-        heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
+        hero.isEnabled = false
+        hero.modalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
         
         btnSubmitName.isEnabled = false
         setNavigationBar()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,7 +38,7 @@ class SignUpNameViewController: BaseViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
-    
+
     private func setNavigationBar() {
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")

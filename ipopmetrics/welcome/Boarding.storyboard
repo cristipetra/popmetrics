@@ -44,13 +44,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why Does Popmetrics Need Access to Your Twitter Account? " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lc4-Z1-LD7">
-                                <rect key="frame" x="26" y="50" width="273" height="37.5"/>
+                                <rect key="frame" x="26" y="50" width="273" height="44"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPL-9b-33V">
-                                <rect key="frame" x="26" y="127.5" width="323" height="19"/>
+                                <rect key="frame" x="26" y="134" width="323" height="22"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -280,7 +280,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xEp-A8-JD9">
                                 <rect key="frame" x="8" y="221.5" width="359" height="225.5"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First &amp; Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="42b-Mt-uYN">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="James Bond" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="42b-Mt-uYN">
                                         <rect key="frame" x="59.5" y="10" width="240" height="62"/>
                                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -299,10 +299,35 @@
                                             <action selector="nameTextFieldChanged:" destination="R5K-Uc-bRm" eventType="editingChanged" id="b1U-In-9iP"/>
                                         </connections>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your first &amp; last name." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAb-RZ-AXh">
-                                        <rect key="frame" x="57.5" y="90" width="245" height="20.5"/>
-                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                        <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAb-RZ-AXh">
+                                        <rect key="frame" x="39" y="90" width="280" height="20.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="280" id="Ayi-GV-lVb"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Please enter your first &amp; last name.  (">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="15" name="OpenSans"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="Not">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="15" name="OpenSans"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    <integer key="NSUnderline" value="1"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" the name of your business)">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="15" name="OpenSans"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qS5-ei-3Sc">
@@ -336,6 +361,7 @@
                                 <constraints>
                                     <constraint firstItem="rAb-RZ-AXh" firstAttribute="centerX" secondItem="xEp-A8-JD9" secondAttribute="centerX" id="55y-cb-Kyc"/>
                                     <constraint firstItem="42b-Mt-uYN" firstAttribute="top" secondItem="xEp-A8-JD9" secondAttribute="top" constant="10" id="EIR-pw-ljS"/>
+                                    <constraint firstItem="rAb-RZ-AXh" firstAttribute="centerX" secondItem="xEp-A8-JD9" secondAttribute="centerX" id="OBh-4v-xfl"/>
                                     <constraint firstItem="qS5-ei-3Sc" firstAttribute="centerX" secondItem="xEp-A8-JD9" secondAttribute="centerX" id="UZu-kN-scN"/>
                                     <constraint firstItem="rAb-RZ-AXh" firstAttribute="top" secondItem="42b-Mt-uYN" secondAttribute="bottom" constant="18" id="dQS-Ok-ROG"/>
                                     <constraint firstItem="42b-Mt-uYN" firstAttribute="centerX" secondItem="xEp-A8-JD9" secondAttribute="centerX" id="dd0-K0-5fp"/>
@@ -357,6 +383,7 @@
                         <outlet property="btnSubmitName" destination="qS5-ei-3Sc" id="f45-pj-r6C"/>
                         <outlet property="constraintCenterYcontainer" destination="UOM-xh-Rw6" id="ZKY-13-jNk"/>
                         <outlet property="container" destination="xEp-A8-JD9" id="gX9-sp-eJ4"/>
+                        <outlet property="messageLabel" destination="rAb-RZ-AXh" id="rOH-4q-Dss"/>
                         <outlet property="nameTextField" destination="42b-Mt-uYN" id="9JF-DZ-yen"/>
                     </connections>
                 </viewController>
