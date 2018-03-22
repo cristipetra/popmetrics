@@ -211,6 +211,7 @@
 		113DE2FE1FC8ACD100AE6DE9 /* PaidActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113DE2FD1FC8ACD100AE6DE9 /* PaidActionCard.xib */; };
 		113DE3021FC8AEE800AE6DE9 /* PaidActionCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113DE3011FC8AEE800AE6DE9 /* PaidActionCardCell.swift */; };
 		1148D73D1FBF39AE006EB5BB /* NavigationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1148D73C1FBF39AE006EB5BB /* NavigationMap.swift */; };
+		116815CB2062BDD600071E71 /* ActionApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116815CA2062BDD600071E71 /* ActionApi.swift */; };
 		116E339620345F3A00D2BCA9 /* MessagesBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116E339420345F3900D2BCA9 /* MessagesBadgeView.swift */; };
 		116E339C203461E100D2BCA9 /* BoardingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116E3398203461E100D2BCA9 /* BoardingNavigationController.swift */; };
 		116E339D203461E100D2BCA9 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116E3399203461E100D2BCA9 /* NameViewController.swift */; };
@@ -219,6 +220,7 @@
 		116E33A12034621200D2BCA9 /* BrandApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116E33A02034621200D2BCA9 /* BrandApi.swift */; };
 		116E33A52034789500D2BCA9 /* IntercomTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116E33A32034789400D2BCA9 /* IntercomTabBarItem.swift */; };
 		116E33A62034789500D2BCA9 /* IntercomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116E33A42034789400D2BCA9 /* IntercomViewController.swift */; };
+		116F80D8205FE76D0084AC19 /* ConnectWizardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116F80D7205FE76D0084AC19 /* ConnectWizardViewController.swift */; };
 		1178D6791E1E5AD9005B96C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */; };
 		1178D6801E1E5AD9005B96C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1178D67E1E1E5AD9005B96C3 /* Main.storyboard */; };
 		1178D6821E1E5AD9005B96C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1178D6811E1E5AD9005B96C3 /* Assets.xcassets */; };
@@ -476,6 +478,7 @@
 		113DE3011FC8AEE800AE6DE9 /* PaidActionCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaidActionCardCell.swift; sourceTree = "<group>"; };
 		1148D73C1FBF39AE006EB5BB /* NavigationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMap.swift; sourceTree = "<group>"; };
 		116540BB1EEAA17A00417D61 /* ipopmetrics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ipopmetrics.entitlements; sourceTree = "<group>"; };
+		116815CA2062BDD600071E71 /* ActionApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionApi.swift; sourceTree = "<group>"; };
 		116E339420345F3900D2BCA9 /* MessagesBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesBadgeView.swift; sourceTree = "<group>"; };
 		116E3398203461E100D2BCA9 /* BoardingNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardingNavigationController.swift; sourceTree = "<group>"; };
 		116E3399203461E100D2BCA9 /* NameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NameViewController.swift; path = nameEmail/NameViewController.swift; sourceTree = "<group>"; };
@@ -484,6 +487,7 @@
 		116E33A02034621200D2BCA9 /* BrandApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandApi.swift; sourceTree = "<group>"; };
 		116E33A32034789400D2BCA9 /* IntercomTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntercomTabBarItem.swift; sourceTree = "<group>"; };
 		116E33A42034789400D2BCA9 /* IntercomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntercomViewController.swift; sourceTree = "<group>"; };
+		116F80D7205FE76D0084AC19 /* ConnectWizardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectWizardViewController.swift; sourceTree = "<group>"; };
 		1178D6751E1E5AD9005B96C3 /* ipopmetrics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ipopmetrics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1178D6781E1E5AD9005B96C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1178D67F1E1E5AD9005B96C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -519,6 +523,7 @@
 		11E636931FD735480081B1DC /* StatsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsStore.swift; sourceTree = "<group>"; };
 		11F89F681EEEA10500F84F67 /* client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		11FB84EA1FC79E8800FE937D /* TodoHubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoHubController.swift; sourceTree = "<group>"; };
+		3413A9EB477E6520E64A8CE7 /* Pods-ipopmetrics.debug (localdev).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.debug (localdev).xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.debug (localdev).xcconfig"; sourceTree = "<group>"; };
 		3493258FF87EFE1E56593BC2 /* Pods-ipopmetrics.release (staging).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release (staging).xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release (staging).xcconfig"; sourceTree = "<group>"; };
 		4CDBBB7027C668F876564587 /* Pods-ipopmetrics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipopmetrics.release.xcconfig"; path = "Pods/Target Support Files/Pods-ipopmetrics/Pods-ipopmetrics.release.xcconfig"; sourceTree = "<group>"; };
 		8A5907B82A0A678C7795DB11 /* Pods_ipopmetrics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ipopmetrics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -893,6 +898,7 @@
 				08F368901F18E6A000819CDE /* ApprovalCardInfoCell.swift */,
 				11BDA92F1FFFD9C200CDA01C /* PopTipCard.swift */,
 				A615BFB620500764001F0529 /* FacebookPagePickerViewController.swift */,
+				116F80D7205FE76D0084AC19 /* ConnectWizardViewController.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -1107,6 +1113,7 @@
 				08B3289D1FFE22F300549DC5 /* SettingsApi.swift */,
 				08BC8F1520357D66008CC969 /* BusinessContact.swift */,
 				1198436B205BC0E700C63201 /* GoogleApi.swift */,
+				116815CA2062BDD600071E71 /* ActionApi.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -1129,6 +1136,7 @@
 				B4B4544B39E98D6698619AEC /* Pods-ipopmetrics.debug (production).xcconfig */,
 				3493258FF87EFE1E56593BC2 /* Pods-ipopmetrics.release (staging).xcconfig */,
 				FFE1FD22340D0C98306F8FA1 /* Pods-ipopmetrics.release (production).xcconfig */,
+				3413A9EB477E6520E64A8CE7 /* Pods-ipopmetrics.debug (localdev).xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1439,6 +1447,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FlexibleSteppedProgressBar/FlexibleSteppedProgressBar.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GTProgressBar/GTProgressBar.framework",
@@ -1488,6 +1497,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlexibleSteppedProgressBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTProgressBar.framework",
@@ -1533,6 +1543,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08EE385D1F447C0E005D1D7C /* TodoTopView.swift in Sources */,
+				116F80D8205FE76D0084AC19 /* ConnectWizardViewController.swift in Sources */,
 				08C583021FB1AFA500A7DD3D /* FooterViewStateController.swift in Sources */,
 				08B4EBB11FC56ACE00BFC5A1 /* BaseTableViewController.swift in Sources */,
 				08B4EBB51FC56ACE00BFC5A1 /* UIColorExtensions.swift in Sources */,
@@ -1637,6 +1648,7 @@
 				08FAE8491F5420050097DF3E /* StatsCardViewCell.swift in Sources */,
 				116E33A12034621200D2BCA9 /* BrandApi.swift in Sources */,
 				080DCA811F4D6EE6000C73DC /* MenuViewController.swift in Sources */,
+				116815CB2062BDD600071E71 /* ActionApi.swift in Sources */,
 				11DD967B1FC4FA5400386F1E /* ApiModels.swift in Sources */,
 				08755F4C1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift in Sources */,
 				086EDE431FC8449A002F4140 /* ImpactScoreView.swift in Sources */,
@@ -1873,7 +1885,7 @@
 		};
 		1178D6A01E1E5AD9005B96C3 /* Debug (Localdev) */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CFC64B6717A9942DCD941A53 /* Pods-ipopmetrics.debug (staging).xcconfig */;
+			baseConfigurationReference = 3413A9EB477E6520E64A8CE7 /* Pods-ipopmetrics.debug (localdev).xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BACKEND = localdev;

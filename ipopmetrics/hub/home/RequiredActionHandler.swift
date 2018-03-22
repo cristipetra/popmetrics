@@ -56,29 +56,34 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     }
     
    func connectGoogleAnalytics(_ item:FeedCard?) {
-        GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().clientID = "850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance().serverClientID = "850179116799-024u4fn5ddmkm3dnius3fq3l1gs81toi.apps.googleusercontent.com"
     
-        let gaScope = "https://www.googleapis.com/auth/analytics.readonly"
-        GIDSignIn.sharedInstance().scopes = [gaScope]
-        GIDSignIn.sharedInstance().signOut()
+        navigator.push("vnd.popmetrics://required_action/"+(item?.name)!)
+//        GIDSignIn.sharedInstance().delegate = self
+//        GIDSignIn.sharedInstance().clientID = "850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com"
+//        GIDSignIn.sharedInstance().serverClientID = "850179116799-024u4fn5ddmkm3dnius3fq3l1gs81toi.apps.googleusercontent.com"
+//
+//        let gaScope = "https://www.googleapis.com/auth/analytics.readonly"
+//        GIDSignIn.sharedInstance().scopes = [gaScope]
+//        GIDSignIn.sharedInstance().signOut()
+//
+//        GIDSignIn.sharedInstance().signIn()
     
-        GIDSignIn.sharedInstance().signIn()
-        
     }
     
     func connectGoogle(_ item:FeedCard?) {
-        GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().clientID = "850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance().serverClientID = "850179116799-024u4fn5ddmkm3dnius3fq3l1gs81toi.apps.googleusercontent.com"
         
-        let gaScope = "https://www.googleapis.com/auth/analytics.readonly"
-        let gmbScope = "https://www.googleapis.com/auth/plus.business.manage"
-        GIDSignIn.sharedInstance().scopes = [gaScope, gmbScope]
-        GIDSignIn.sharedInstance().signOut()
+        navigator.push("vnd.popmetrics://required_action/"+(item?.name)!)
         
-        GIDSignIn.sharedInstance().signIn()
+//        GIDSignIn.sharedInstance().delegate = self
+//        GIDSignIn.sharedInstance().clientID = "850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com"
+//        GIDSignIn.sharedInstance().serverClientID = "850179116799-024u4fn5ddmkm3dnius3fq3l1gs81toi.apps.googleusercontent.com"
+//
+//        let gaScope = "https://www.googleapis.com/auth/analytics.readonly"
+//        let gmbScope = "https://www.googleapis.com/auth/plus.business.manage"
+//        GIDSignIn.sharedInstance().scopes = [gaScope, gmbScope]
+//        GIDSignIn.sharedInstance().signOut()
+//
+//        GIDSignIn.sharedInstance().signIn()
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -133,50 +138,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         
     
     func connectTwitter(_ item:FeedCard?) {
-        
-        Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
-            if (session != nil) {
-                let notificationObj = ["title": "Twitter successfully connected!",
-                                       "subtitle":"Automated social posting now available.",
-                                       "type": "success",
-                                       "sound":"default"
-                ]
-                let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
-                
-                let params = [
-                    "task_name": "twitter.connect_with_brand",
-                    "user_id":UserStore.getInstance().getLocalUserAccount().id,
-                    "twitter_user_id":session?.userID,
-                    "access_token":session?.authToken,
-                    "access_token_secret":session?.authTokenSecret
-                    ]
-                let brandId = UserStore.currentBrandId
-                TodoApi().postRequiredAction(brandId, params: params) { requiredActionResponse in
-                    let store = FeedStore.getInstance()
-                    if let card = store.getFeedCardWithName("twitter.connect_with_brand") {
-                        store.updateCardSection(card, section: "None")
-                        NotificationCenter.default.post(name:Notification.Popmetrics.UiRefreshRequired, object:nil,
-                                                        userInfo: nil )
-                    }
-                    NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
-                                                    userInfo: pnotification.toJSON())
-                }
-                
-            } else {
-                let notificationObj = ["title":"Failed to connect with Twitter.",
-                                       "subtitle":"None or bad credentials have been provided.",
-                                       "type": "failure",
-                                       "sound":"default"
-                ]
-                let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
-                
-//                NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
-//                                                userInfo: pnotification.toJSON())
-                return
-                
-            }
-        }
-        
+        navigator.push("vnd.popmetrics://required_action/"+(item?.name)!)
     }
     
     // MARK: Disconnect twitter

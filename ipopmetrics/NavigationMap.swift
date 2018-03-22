@@ -27,6 +27,17 @@ enum NavigationMap {
             return mainTabVC
         }
         
+        navigator.register("vnd.popmetrics://required_action/<string:action_name>") { url, values, context in
+            
+            let wizard = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: "ConnectWizardStart") as! ConnectWizardViewController
+            
+            guard let cardName = values["action_name"] as? String else { return nil }
+            guard let card = FeedStore.getInstance().getFeedCardWithName(cardName) else { return nil }
+            wizard.configure(card)
+            return wizard
+            
+        }
+        
         navigator.register("vnd.popmetrics://hubs/todo") { url, values, context in
             
             let mainTabVC = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC) as! MainTabBarController
