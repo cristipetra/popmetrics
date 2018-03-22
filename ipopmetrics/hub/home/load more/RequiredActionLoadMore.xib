@@ -19,6 +19,7 @@
                 <outlet property="contentView" destination="30C-Ru-iUN" id="evM-XQ-ixd"/>
                 <outlet property="footerView" destination="jJY-Vk-1mZ" id="WfO-xm-0AR"/>
                 <outlet property="infoLbl" destination="Da1-av-x1R" id="R5c-WP-Epy"/>
+                <outlet property="shadowView" destination="GE9-rS-z0Z" id="8pu-nJ-Ti9"/>
                 <outlet property="toolbarView" destination="vzb-rP-wXD" id="j6F-hs-KgG"/>
             </connections>
         </placeholder>
@@ -27,6 +28,13 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GE9-rS-z0Z">
+                    <rect key="frame" x="10" y="0.0" width="355" height="260"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="NO"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="G5X-TA-622">
                     <rect key="frame" x="10" y="0.0" width="355" height="260"/>
                     <subviews>
@@ -68,9 +76,13 @@
                 </stackView>
             </subviews>
             <constraints>
+                <constraint firstItem="GE9-rS-z0Z" firstAttribute="top" secondItem="z4p-cc-drM" secondAttribute="top" id="6Id-2y-Kes"/>
+                <constraint firstItem="z4p-cc-drM" firstAttribute="bottom" secondItem="GE9-rS-z0Z" secondAttribute="bottom" id="Df1-oz-Xp5"/>
                 <constraint firstItem="z4p-cc-drM" firstAttribute="trailing" secondItem="G5X-TA-622" secondAttribute="trailing" constant="10" id="OQQ-an-MAl"/>
+                <constraint firstItem="z4p-cc-drM" firstAttribute="trailing" secondItem="GE9-rS-z0Z" secondAttribute="trailing" constant="10" id="Ufs-65-KSV"/>
                 <constraint firstItem="z4p-cc-drM" firstAttribute="bottom" secondItem="G5X-TA-622" secondAttribute="bottom" id="V9K-gv-TOo"/>
                 <constraint firstItem="G5X-TA-622" firstAttribute="top" secondItem="z4p-cc-drM" secondAttribute="top" id="n5i-OJ-0Ug"/>
+                <constraint firstItem="GE9-rS-z0Z" firstAttribute="leading" secondItem="z4p-cc-drM" secondAttribute="leading" constant="10" id="u74-fS-AIN"/>
                 <constraint firstItem="G5X-TA-622" firstAttribute="leading" secondItem="z4p-cc-drM" secondAttribute="leading" constant="10" id="wne-sc-gQE"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

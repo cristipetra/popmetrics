@@ -138,7 +138,55 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         
     
     func connectTwitter(_ item:FeedCard?) {
-        navigator.push("vnd.popmetrics://required_action/"+(item?.name)!)
+//        navigator.push("vnd.popmetrics://required_action/"+(item?.name)!)
+        let storeTwitter = Twitter.sharedInstance().sessionStore
+        if let userID = storeTwitter.session()?.userID {
+            storeTwitter.logOutUserID(userID)
+        }
+        
+        Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
+            if (session != nil) {
+                let notificationObj = ["title": "Twitter successfully connected!",
+                                       "subtitle":"Automated social posting now available.",
+                                       "type": "success",
+                                       "sound":"default"
+                ]
+                let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+                
+                let params = [
+                    "task_name": "twitter.connect_with_brand",
+                    "user_id":UserStore.getInstance().getLocalUserAccount().id,
+                    "twitter_user_id":session?.userID,
+                    "access_token":session?.authToken,
+                    "access_token_secret":session?.authTokenSecret
+                    ]
+                let brandId = UserStore.currentBrandId
+                TodoApi().postRequiredAction(brandId, params: params) { requiredActionResponse in
+                    let store = FeedStore.getInstance()
+                    if let card = store.getFeedCardWithName("twitter.connect_with_brand") {
+                        store.updateCardSection(card, section: "None")
+                        NotificationCenter.default.post(name:Notification.Popmetrics.UiRefreshRequired, object:nil,
+                                                        userInfo: nil )
+                    }
+                    NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
+                                                    userInfo: pnotification.toJSON())
+                }
+                
+            } else {
+                let notificationObj = ["title":"Failed to connect with Twitter.",
+                                       "subtitle":"None or bad credentials have been provided.",
+                                       "type": "failure",
+                                       "sound":"default"
+                ]
+                let pnotification = Mapper<PNotification>().map(JSONObject: notificationObj)!
+                
+//                NotificationCenter.default.post(name:Notification.Popmetrics.RemoteMessage, object:nil,
+//                                                userInfo: pnotification.toJSON())
+                return
+                
+            }
+        }
+        
     }
     
     // MARK: Disconnect twitter
@@ -194,10 +242,10 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     func connectFacebook(viewController: UIViewController, item: FeedCard?) {
 //      navigator.push("vnd.popmetrics://required_action/"+(item?.name)!)
         let loginManager = LoginManager()
+        loginManager.logOut()
         
         let readPermissions = [ReadPermission.publicProfile, ReadPermission.email, ReadPermission.pagesShowList]
         let publishPermissions = [PublishPermission.managePages, PublishPermission.publishPages]
-        
 
         loginManager.logIn(readPermissions:readPermissions, viewController: viewController) { result in
             switch result {

@@ -5,6 +5,8 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -45,32 +47,31 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LaH-4L-8EL">
-                                <rect key="frame" x="15" y="180" width="270" height="104.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LaH-4L-8EL">
+                                <rect key="frame" x="15" y="162" width="270" height="57.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="140" id="pbQ-ty-gRN"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="pbQ-ty-gRN"/>
                                 </constraints>
                                 <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="8" bottom="8" trailing="8"/>
                                 <attributedString key="attributedText">
                                     <fragment content="This is an article for you to read sad sad ">
                                         <attributes>
                                             <color key="NSColor" name="rock_bottom"/>
-                                            <font key="NSFont" size="34" name="OpenSans-Extrabold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.75" tighteningFactorForTruncation="0.0"/>
+                                            <font key="NSFont" size="25" name="OpenSans-Extrabold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.83999999999999997" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter is a key access point to increase your social following." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXo-qI-DSz">
-                                <rect key="frame" x="15" y="289.5" width="273" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Twitter is a key access point to increase your social following." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXo-qI-DSz">
+                                <rect key="frame" x="15" y="220.5" width="273" height="41"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" name="larry_david"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lax-7X-X4d" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="405.5" width="300" height="94"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="94" id="dDi-gr-lxm"/>
                                 </constraints>
@@ -80,14 +81,15 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="aXo-qI-DSz" secondAttribute="trailing" constant="4" id="0A1-TN-hpP"/>
                             <constraint firstItem="LaH-4L-8EL" firstAttribute="leading" secondItem="3RH-Bc-RS7" secondAttribute="leading" constant="15" id="AkB-Wk-4mC"/>
+                            <constraint firstItem="lax-7X-X4d" firstAttribute="top" relation="greaterThanOrEqual" secondItem="aXo-qI-DSz" secondAttribute="baseline" constant="16" id="BZX-0V-TmB"/>
                             <constraint firstItem="X67-Lz-yJT" firstAttribute="top" secondItem="3RH-Bc-RS7" secondAttribute="top" id="CTL-ce-8bU"/>
                             <constraint firstItem="X67-Lz-yJT" firstAttribute="leading" secondItem="3RH-Bc-RS7" secondAttribute="leading" id="CV7-W0-ato"/>
                             <constraint firstItem="lax-7X-X4d" firstAttribute="leading" secondItem="3RH-Bc-RS7" secondAttribute="leading" id="E6H-oj-Tnl"/>
-                            <constraint firstItem="aXo-qI-DSz" firstAttribute="top" secondItem="LaH-4L-8EL" secondAttribute="bottom" constant="5" id="G3Q-c9-tvb"/>
+                            <constraint firstItem="aXo-qI-DSz" firstAttribute="firstBaseline" secondItem="LaH-4L-8EL" secondAttribute="baseline" constant="25" id="G3Q-c9-tvb"/>
                             <constraint firstAttribute="trailing" secondItem="lax-7X-X4d" secondAttribute="trailing" id="J90-vS-CX9"/>
                             <constraint firstAttribute="height" constant="500" id="LF6-TK-nbx"/>
                             <constraint firstAttribute="trailing" secondItem="LaH-4L-8EL" secondAttribute="trailing" constant="15" id="SdK-Ga-IUN"/>
-                            <constraint firstItem="LaH-4L-8EL" firstAttribute="top" secondItem="X67-Lz-yJT" secondAttribute="bottom" constant="30" id="cB7-mN-JYE"/>
+                            <constraint firstItem="LaH-4L-8EL" firstAttribute="top" secondItem="X67-Lz-yJT" secondAttribute="bottomMargin" constant="20" id="cB7-mN-JYE"/>
                             <constraint firstItem="aXo-qI-DSz" firstAttribute="leading" secondItem="3RH-Bc-RS7" secondAttribute="leading" constant="15" id="e5s-sb-IlC"/>
                             <constraint firstAttribute="trailing" secondItem="X67-Lz-yJT" secondAttribute="trailing" id="uTn-3F-BTL"/>
                             <constraint firstAttribute="bottom" secondItem="lax-7X-X4d" secondAttribute="bottom" id="wwl-AF-w40"/>
