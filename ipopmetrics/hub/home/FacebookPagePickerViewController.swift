@@ -2,43 +2,43 @@ import UIKit
 import Foundation
 import AlamofireImage
 
-final class FacebookPageTableViewCell: UITableViewCell {
-    
-    static let identifier = String(describing: FacebookPageTableViewCell.self)
-
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
-
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configure(text: String, details: String, imageUrl: String?, placeholderImage: UIImage?) {
-        if let picture = imageUrl {
-            imageView?.af_setImage(
-                withURL: URL(string: picture)!,
-                placeholderImage: placeholderImage
-            )
-        }else{
-            imageView?.image = placeholderImage
-        }
-        textLabel?.text = text
-        detailTextLabel?.text = details
-        
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        imageView?.af_cancelImageRequest()
-        imageView?.layer.removeAllAnimations()
-        imageView?.image = nil
-        textLabel?.text = nil
-        detailTextLabel?.text = nil
-    }
-}
+//final class FacebookPageTableViewCell: UITableViewCell {
+//
+//    static let identifier = String(describing: FacebookPageTableViewCell.self)
+//
+//    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+//        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+//
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//
+//    func configure(text: String, details: String, imageUrl: String?, placeholderImage: UIImage?) {
+//        if let picture = imageUrl {
+//            imageView?.af_setImage(
+//                withURL: URL(string: picture)!,
+//                placeholderImage: placeholderImage
+//            )
+//        }else{
+//            imageView?.image = placeholderImage
+//        }
+//        textLabel?.text = text
+//        detailTextLabel?.text = details
+//
+//    }
+//
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//
+//        imageView?.af_cancelImageRequest()
+//        imageView?.layer.removeAllAnimations()
+//        imageView?.image = nil
+//        textLabel?.text = nil
+//        detailTextLabel?.text = nil
+//    }
+//}
 
 final class FacebookPagePickerViewController: UITableViewController {
     

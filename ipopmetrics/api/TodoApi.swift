@@ -29,7 +29,7 @@ class TodoApi: BaseApi {
         }
     }
     
-    func postRequiredAction(_ brandId:String, params:[String:Any],
+func postRequiredAction(_ brandId:String, params:[String:Any],
                     callback: @escaping (_ response: RequiredActionResponse?)  -> Void) {
         
         // /api/actions/brand/<brand_id>/required-action
