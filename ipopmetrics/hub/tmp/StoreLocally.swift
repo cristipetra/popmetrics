@@ -47,9 +47,13 @@ struct StoreLocally {
             insightCard.section = HomeSectionType.insights.rawValue
             insightCard.status = "live"
             insightCard.type = HomeCardType.insight.rawValue
+            insightCard.imageUri = "http://blog.popmetrics.io/wp-content/uploads/sites/13/2018/01/Pop-Tips-1-100.jpg"
+            insightCard.recommendedAction = "fd.d"
+            insightCard.actionLabel = "Learn more"
             
-            insightCard.headerTitle = "Nice! You've covered your bases & created a business Facebook page"
-            insightCard.message = "Out of the first things customers will look for is your company's Facebook page. Having a facebook page will help you find new customers over the internet."
+            insightCard.headerTitle = "We couldn't find your business' and going onto a lot of "
+            insightCard.message = "Out of the first things customers will look for is your company's Facebook page. Having a facebook page will help you find new customers over the internet. Having a facebook page will help you find new customers over the internet."
+
             
             feedStore.realm.add(insightCard, update: true)
             
@@ -67,7 +71,7 @@ struct StoreLocally {
             
             feedStore.realm.add(popTipCard, update: true)
         }
-       
+
     }
     
 }

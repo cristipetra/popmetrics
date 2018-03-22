@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -45,32 +46,31 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="404-LX-Lbg">
-                                <rect key="frame" x="15" y="180" width="270" height="104.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="404-LX-Lbg">
+                                <rect key="frame" x="15" y="161" width="272" height="57.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="140" id="yxz-XE-3cO"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="geT-V8-ANB"/>
                                 </constraints>
                                 <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="8" bottom="8" trailing="8"/>
                                 <attributedString key="attributedText">
                                     <fragment content="This is an article for you to read sad sad ">
                                         <attributes>
                                             <color key="NSColor" name="rock_bottom"/>
-                                            <font key="NSFont" size="34" name="OpenSans-Extrabold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.75" tighteningFactorForTruncation="0.0"/>
+                                            <font key="NSFont" size="25" name="OpenSans-Extrabold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.83999999999999997" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter is a key access point to increase your social following." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEd-JZ-7L4">
-                                <rect key="frame" x="15" y="289.5" width="273" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Twitter is a key access point to increase your social following." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEd-JZ-7L4">
+                                <rect key="frame" x="15" y="220" width="272" height="41"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" name="larry_david"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aL3-tc-p25" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="405.5" width="300" height="94"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="94" id="ABK-Fm-RIs"/>
                                 </constraints>
@@ -79,18 +79,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="404-LX-Lbg" firstAttribute="leading" secondItem="xmp-ns-pr3" secondAttribute="leading" constant="15" id="40L-MX-qPW"/>
+                            <constraint firstItem="aL3-tc-p25" firstAttribute="top" relation="greaterThanOrEqual" secondItem="YEd-JZ-7L4" secondAttribute="baseline" constant="16" id="96e-Uo-tFS"/>
                             <constraint firstAttribute="trailing" secondItem="aL3-tc-p25" secondAttribute="trailing" id="DHS-kU-Ccz"/>
                             <constraint firstItem="aL3-tc-p25" firstAttribute="leading" secondItem="xmp-ns-pr3" secondAttribute="leading" id="F81-T9-LO3"/>
                             <constraint firstAttribute="bottom" secondItem="aL3-tc-p25" secondAttribute="bottom" id="Foc-Ua-72B"/>
-                            <constraint firstItem="YEd-JZ-7L4" firstAttribute="top" secondItem="404-LX-Lbg" secondAttribute="bottom" constant="5" id="Gma-8k-mIq"/>
-                            <constraint firstAttribute="height" constant="499.5" id="HJ4-LP-IkP"/>
+                            <constraint firstItem="YEd-JZ-7L4" firstAttribute="firstBaseline" secondItem="404-LX-Lbg" secondAttribute="baseline" constant="25" id="Gma-8k-mIq"/>
+                            <constraint firstAttribute="height" constant="500" id="HJ4-LP-IkP"/>
                             <constraint firstItem="YEd-JZ-7L4" firstAttribute="leading" secondItem="xmp-ns-pr3" secondAttribute="leading" constant="15" id="MeA-Bm-46C"/>
                             <constraint firstItem="eYK-Rm-n8D" firstAttribute="top" secondItem="xmp-ns-pr3" secondAttribute="top" id="WSu-8k-VYd"/>
-                            <constraint firstAttribute="trailing" secondItem="404-LX-Lbg" secondAttribute="trailing" constant="15" id="ZUw-vk-xNy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="404-LX-Lbg" secondAttribute="trailing" constant="5" id="ZUw-vk-xNy"/>
                             <constraint firstAttribute="trailing" secondItem="eYK-Rm-n8D" secondAttribute="trailing" id="l8D-gm-3LT"/>
-                            <constraint firstItem="404-LX-Lbg" firstAttribute="top" secondItem="eYK-Rm-n8D" secondAttribute="bottom" constant="30" id="mnH-eL-eoD"/>
+                            <constraint firstItem="404-LX-Lbg" firstAttribute="top" secondItem="eYK-Rm-n8D" secondAttribute="bottom" constant="11" id="mnH-eL-eoD"/>
                             <constraint firstItem="eYK-Rm-n8D" firstAttribute="leading" secondItem="xmp-ns-pr3" secondAttribute="leading" id="puW-OB-2j2"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="YEd-JZ-7L4" secondAttribute="trailing" constant="4" id="xDe-T3-2BS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YEd-JZ-7L4" secondAttribute="trailing" constant="5" id="xDe-T3-2BS"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKF-7W-goR">
@@ -106,7 +107,7 @@
                     <constraint firstItem="xmp-ns-pr3" firstAttribute="top" secondItem="OVB-Nz-PDL" secondAttribute="bottom" id="Owd-TK-H42"/>
                     <constraint firstItem="aKF-7W-goR" firstAttribute="top" secondItem="xmp-ns-pr3" secondAttribute="bottom" id="Q0M-Pk-IXq"/>
                     <constraint firstAttribute="trailing" secondItem="xmp-ns-pr3" secondAttribute="trailing" constant="10" id="Rvt-z2-ZX0"/>
-                    <constraint firstAttribute="bottom" secondItem="xmp-ns-pr3" secondAttribute="bottom" constant="37" id="Zsq-Xp-KUl"/>
+                    <constraint firstAttribute="bottom" secondItem="xmp-ns-pr3" secondAttribute="bottom" priority="750" constant="37" id="Zsq-Xp-KUl"/>
                     <constraint firstItem="xmp-ns-pr3" firstAttribute="leading" secondItem="Iw2-KH-qXD" secondAttribute="leading" constant="10" id="buQ-nD-gex"/>
                     <constraint firstItem="OVB-Nz-PDL" firstAttribute="leading" secondItem="Iw2-KH-qXD" secondAttribute="leading" constant="10" id="enW-TR-B7N"/>
                     <constraint firstAttribute="trailing" secondItem="OVB-Nz-PDL" secondAttribute="trailing" constant="10" id="fQC-2e-5Xa"/>

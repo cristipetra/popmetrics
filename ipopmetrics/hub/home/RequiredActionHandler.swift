@@ -133,6 +133,10 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         
     
     func connectTwitter(_ item:FeedCard?) {
+        let storeTwitter = Twitter.sharedInstance().sessionStore
+        if let userID = storeTwitter.session()?.userID {
+            storeTwitter.logOutUserID(userID)
+        }
         
         Twitter.sharedInstance().logIn(withMethods: [.webBased]) { session, error in
             if (session != nil) {
@@ -230,12 +234,11 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
 
     // MARK: Facebook LogIn Process
     func connectFacebook(viewController: UIViewController, item: FeedCard?) {
-        
         let loginManager = LoginManager()
+        loginManager.logOut()
         
         let readPermissions = [ReadPermission.publicProfile, ReadPermission.email, ReadPermission.pagesShowList]
         let publishPermissions = [PublishPermission.managePages, PublishPermission.publishPages]
-        
 
         loginManager.logIn(readPermissions:readPermissions, viewController: viewController) { result in
             switch result {
