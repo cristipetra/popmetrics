@@ -52,11 +52,26 @@ class SignUpEmailViewController: BaseViewController {
     }
     
     @IBAction func handlerSubmit(_ sender: UIButton) {
+        guard let email = self.emailTextField.text else { return }
         if !Validator.isValidEmail(self.emailTextField.text!) {
             EZAlertController.alert("Invalid email", message: "Please enter a valid email address.")
             return
         }
-        //self.showProgressIndicator()
+        self.showProgressIndicator()
+        
+        BrandApi().validateUserEmail(email) { (response) in
+            self.hideProgressIndicator()
+            
+            if response?.code == "success" {
+                (self.navigationController as! BoardingNavigationController).registerBrand.website = response?.data!
+                self.performSegue(withIdentifier: "enterPhoneNumberForSignUp", sender: self)
+            } else {
+                let title = "Error"
+                let message = response?.message ?? "An error has ocurred. Please try again later."
+                
+                self.notifyUser(title: title, message: message)
+            }
+        }
     }
     
     func notifyUser(title: String, message: String, type: String = "info"){
