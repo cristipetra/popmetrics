@@ -27,5 +27,21 @@ class BrandApi: BaseApi {
             
         }
     }
+    
+    func validateUserEmail(_ email: String,
+                            callback: @escaping(_ response: ResponseWrapperOne<String>) -> Void) {
+        let url = ApiUrls.composedBaseUrl(String(format:"/api/brand/validate_user_email"))
+        let params = ["email": email]
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseObject { (response: DataResponse<ResponseWrapperOne<String>>) in
+            
+            let levelOneHandled = super.handleNotOkCodes(response: response.response)
+            
+            if !levelOneHandled {
+                callback(response.result.value)
+            }
+            
+        }
+    }
  
 }
