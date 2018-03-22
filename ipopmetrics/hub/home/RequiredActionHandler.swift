@@ -232,12 +232,15 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
             guard let accountData = account as? [String: Any],
                 let id = accountData["id"] as? String,
                 let name = accountData["name"] as? String,
-                let username = accountData["username"] as? String,
                 let perms = accountData["perms"] as? [String] else {
                 continue
             }
-
-            var fbAccount = FacebookAccount(id: id, name: name, username: username, perms:perms)
+            
+            var fbAccount = FacebookAccount(id: id, name: name, perms:perms)
+            
+            if let link = accountData["link"] as? String {
+                fbAccount.link = link
+            }
             
             if let picture = accountData["picture"] as? [String: Any],
                 let pictureData = picture["data"] as? [String: Any],
@@ -253,6 +256,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         return facebookAccounts
     }
     
+    
     internal func showAlertMessage(_ viewController: UIViewController, message: String) {
         let alertController = UIAlertController(title: message, message: "", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -264,7 +268,10 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     func connectFacebook(viewController: UIViewController, item: FeedCard?) {
 //      navigator.push("vnd.popmetrics://required_action/"+(item?.name)!)
         let loginManager = LoginManager()
-        loginManager.logOut()
+
+        if let accessToken = AccessToken.current{
+            loginManager.logOut()
+        }
         
         let readPermissions = [ReadPermission.publicProfile, ReadPermission.email, ReadPermission.pagesShowList]
         let publishPermissions = [PublishPermission.managePages, PublishPermission.publishPages]
@@ -288,7 +295,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                 
                 // request list of Facebook Pages
                 let connection = GraphRequestConnection()
-                connection.add(GraphRequest(graphPath: "/me/accounts", parameters: ["fields": "id, name, perms, username, picture"])) { httpResponse, result in
+                connection.add(GraphRequest(graphPath: "/me/accounts", parameters: ["fields": "id, name, perms, link, picture"])) { httpResponse, result in
                     switch result {
                     case .success(let response):
                         guard let facebookAccounts = self.parseFacebookAccounts(response.dictionaryValue), facebookAccounts.count > 0 else{
@@ -396,14 +403,13 @@ struct Facebook {
 struct FacebookAccount {
     let id: String
     let name: String
-    let username: String
+    var link: String?
     var picture: String?
     let perms: [String]
     
-    init(id: String, name: String, username: String, perms: [String]){
+    init(id: String, name: String, perms: [String]){
         self.id = id
         self.name = name
-        self.username = username
         self.perms = perms
     }
     

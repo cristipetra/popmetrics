@@ -25,6 +25,8 @@ final class FacebookPageTableViewCell: UITableViewCell {
             imageView?.image = placeholderImage
         }
         textLabel?.text = text
+        detailTextLabel?.numberOfLines = 2
+        detailTextLabel?.lineBreakMode = NSLineBreakMode.byCharWrapping
         detailTextLabel?.text = details
 
     }
@@ -122,8 +124,9 @@ final class FacebookPagePickerViewController: UITableViewController {
             cell.setSelected(true, animated: true)
         }
         
-        cell.configure(text: facebookPage.name, details: facebookPage.username, imageUrl: facebookPage.picture  , placeholderImage: UIImage(named: "iconFacebookSocial"))
+        cell.configure(text: facebookPage.name, details: facebookPage.link, imageUrl: facebookPage.picture  , placeholderImage: UIImage(named: "iconFacebookSocial"))
         return cell
     }
+    
 }
 
