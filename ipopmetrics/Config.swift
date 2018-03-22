@@ -61,6 +61,32 @@ enum Environment: String {
     var googleClientIdWeb: String {
         return "850179116799-024u4fn5ddmkm3dnius3fq3l1gs81toi.apps.googleusercontent.com"
     }
+    
+    var stripeKey: String {
+        switch self {
+        case .Staging: return "pk_test_2FpRw3r7YJGm7gvEMe3aKMvC"
+        case .Production: return "pk_live_BjEYYMk52IKYcoWcnRAkkehu"
+        case .Localdev: return "pk_test_2FpRw3r7YJGm7gvEMe3aKMvC"
+        }
+    }
+    
+    var stripeBasicPlanId: String {
+        switch self {
+        case .Staging: return "BASIC_ACCESS_MONTHLY_TEST"
+        case .Production: return "BASIC_ACCESS_MONTHLY"
+        case .Localdev: return "BASIC_ACCESS_MONTHLY_TEST"
+        }
+    }
+    
+    var stripeBasicPlanAmount: Int {
+        
+        switch self {
+        case .Localdev: return 3000
+        case .Staging: return 3000
+        case .Production: return 3000
+        }
+        
+    }
 
     
 }
