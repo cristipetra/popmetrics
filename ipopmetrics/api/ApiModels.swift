@@ -42,7 +42,23 @@ protocol ResponseWrap: class {
     func getMessage() -> String
 }
 
-class ResponseWebsite: Mappable {
+class ResponseCheckWebsite: Mappable {
+    var code: String?
+    var message: String?
+    var data: String?
+    
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map: Map) {
+        code      <- map["code"]
+        message   <- map["message"]
+        data      <- map["data"]
+    }
+}
+
+class ResponseCheckEmail: Mappable {
     var code: String?
     var message: String?
     var data: String?
