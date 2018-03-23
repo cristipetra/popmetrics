@@ -68,8 +68,6 @@ class SignUpWebsiteViewController: BaseViewController {
     }
     
     @objc internal func dismissView() {
-        
-        //        performSegue(withIdentifier: "unwindSegueToNameVC", sender: self)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -77,7 +75,6 @@ class SignUpWebsiteViewController: BaseViewController {
     
     @IBAction func handlerSubmit(_ sender: UIButton) {
         guard let website = self.websiteTextField.text, !website.isEmpty else {
-            self.btnSubmitWebsite.isEnabled = false
             return
         }
         self.showProgressIndicator()
@@ -86,7 +83,7 @@ class SignUpWebsiteViewController: BaseViewController {
             
             if response?.code == "success" {
                 (self.navigationController as! BoardingNavigationController).registerBrand.website = response?.data!
-                self.performSegue(withIdentifier: "enterPhoneNumberForSignUp", sender: self)
+                self.performSegue(withIdentifier: "enterWorkEmailForSignUp", sender: self)
             } else {
                 let title = "Error"
                 let message = response?.message ?? "An error has ocurred. Please try again later."
