@@ -15,7 +15,7 @@ final class FacebookPageTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(text: String, details: String, imageUrl: String?, placeholderImage: UIImage?) {
+    func configure(text: String, details: String?, imageUrl: String?, placeholderImage: UIImage?) {
         if let picture = imageUrl {
             imageView?.af_setImage(
                 withURL: URL(string: picture)!,
@@ -25,8 +25,9 @@ final class FacebookPageTableViewCell: UITableViewCell {
             imageView?.image = placeholderImage
         }
         textLabel?.text = text
+        detailTextLabel?.numberOfLines = 2
+        detailTextLabel?.lineBreakMode = NSLineBreakMode.byCharWrapping
         detailTextLabel?.text = details
-        
     }
     
     override func prepareForReuse() {
@@ -122,8 +123,9 @@ final class FacebookPagePickerViewController: UITableViewController {
             cell.setSelected(true, animated: true)
         }
         
-        cell.configure(text: facebookPage.name, details: facebookPage.username, imageUrl: facebookPage.picture  , placeholderImage: UIImage(named: "iconFacebookSocial"))
+        cell.configure(text: facebookPage.name, details: facebookPage.link, imageUrl: facebookPage.picture  , placeholderImage: UIImage(named: "iconFacebookSocial"))
         return cell
     }
+    
 }
 
