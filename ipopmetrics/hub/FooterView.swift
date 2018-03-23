@@ -10,48 +10,29 @@
 import UIKit
 import SwiftRichString
 
-
 class FooterView: UIView {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUpFooter()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder);
-        setUpFooter()
-    }
-    
     // VIEW
-    
     lazy var containerView : UIView = {
         let container = UIView()
-        container.translatesAutoresizingMaskIntoConstraints = false
         container.backgroundColor = UIColor.clear
         return container
     }()
- 
+    
     lazy var actionButton: ActionButton = {
         let button = ActionButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = PopmetricsColor.darkGrey
         return button
     }()
- 
+    
     lazy var leftButton : UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.widthAnchor.constraint(equalToConstant: 85).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 46).isActive = true
- 
         button.titleLabel?.font = UIFont(name: FontBook.semibold, size: 15)
+        button.titleLabel?.textAlignment = .left
         button.setTitleColor(PopmetricsColor.visitSecondColor, for: .normal)
         button.setTitleColor(PopmetricsColor.visitSecondColor.withAlphaComponent(0.3), for: .highlighted)
-        
         button.setTitle("More Info", for: .normal)
-        
-        button.backgroundColor = .white
-        
+        button.backgroundColor = .clear
         return button
     }()
     
@@ -62,15 +43,15 @@ class FooterView: UIView {
         view.endColor = PopmetricsColor.statisticsGradientEndColor
         return view
     }()
-    // END VIEW
     
+    lazy var approveStackView: UIStackView = {
+        let stack = UIStackView()
+        return stack
+    }()
     
     internal var horizontalStackView: UIStackView!
-    var approveStackView: UIStackView!
     
-    var loadMoreCount: Int = 0
-    
-    var buttonHandler: ButtonHandler?
+    // END VIEW
     
     var feedCard: FeedCard?
     
@@ -80,25 +61,83 @@ class FooterView: UIView {
         }
     }
     
-    func setUpFooter() {
-        self.addSubview(containerView)
-        setContainerView()
-        setUpApproveStackView()
-        //setShadow(button: actionButton)
-        
-        //setShadow(button: leftButton)
-        setUpDoubleButton()
-        
-        setUpHorizontalStackView()
-        
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
     }
     
-    func setContainerView() {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder);
+        setupView()
+    }
+    
+    
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        setupCorners()
+        gradientLayer.frame = self.bounds
         
+        setConstraintsContainerView()
+        setConstraintsApproveStackView()
+        setConstraintsLeftButton()
+        setConstraintsRightButton()
+        
+        setConstraintsHorizontalStackView()
+    }
+    
+    func setupView() {
+        self.addSubview(containerView)
+        addApproveStackView()
+        addHorizontalStackView()
+    }
+    
+    private func setConstraintsLeftButton() {
+        leftButton.translatesAutoresizingMaskIntoConstraints = false
+        //leftButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
+    }
+    
+    func setConstraintsContainerView() {
+        containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
         containerView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         containerView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
         containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+    }
+    
+    func setConstraintsApproveStackView() {
+        approveStackView.translatesAutoresizingMaskIntoConstraints = false
+        approveStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: 0).isActive = true
+        approveStackView.rightAnchor.constraint(equalTo: containerView.rightAnchor,constant: -10).isActive = true
+    }
+    
+    private func setConstraintsRightButton() {
+        actionButton.translatesAutoresizingMaskIntoConstraints = false
+        actionButton.widthAnchor.constraint(equalToConstant: 165).isActive = true
+        actionButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+    }
+    
+    private func setConstraintsHorizontalStackView() {
+        horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
+        horizontalStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: 0).isActive = true
+        horizontalStackView.leadingAnchor.constraint(equalTo: self.containerView.leadingAnchor, constant: 10).isActive = true
+    }
+    
+    
+    private func addHorizontalStackView() {
+        horizontalStackView = UIStackView(arrangedSubviews: [leftButton])
+        horizontalStackView.axis = .horizontal
+        horizontalStackView.alignment = .top
+        containerView.addSubview(horizontalStackView)
+    }
+    
+    func addApproveStackView() {
+        containerView.addSubview(approveStackView)
+        
+        approveStackView.addArrangedSubview(actionButton)
+        approveStackView.axis = .vertical
+        approveStackView.distribution = .equalSpacing
+        approveStackView.alignment = .center
+        approveStackView.spacing = 2
     }
     
     @objc func handlerT() {
@@ -119,34 +158,7 @@ class FooterView: UIView {
         })
     }
     
-    func setUpApproveStackView() {
-        approveStackView = UIStackView(arrangedSubviews: [actionButton])
-        approveStackView.axis = .vertical
-        approveStackView.distribution = .equalSpacing
-        approveStackView.alignment = .center
-        approveStackView.spacing = 2
-        approveStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        containerView.addSubview(approveStackView)
-        approveStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: 0).isActive = true
-        approveStackView.rightAnchor.constraint(equalTo: containerView.rightAnchor,constant: -10).isActive = true
-    }
-    
-    func setUpHorizontalStackView() {
-        horizontalStackView = UIStackView(arrangedSubviews: [leftButton])
-        
-        horizontalStackView.axis = .horizontal
-        horizontalStackView.alignment = .top
-        horizontalStackView.distribution = .equalSpacing
-        horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        containerView.addSubview(horizontalStackView)
-        horizontalStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: 0).isActive = true
-        horizontalStackView.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 0).isActive = true
-        
-    }
-    
-    func setIsTrafficUnconnected() {
+    internal func setIsTrafficUnconnected() {
         horizontalStackView = UIStackView(arrangedSubviews: [leftButton])
         
         horizontalStackView.axis = .horizontal
@@ -165,18 +177,6 @@ class FooterView: UIView {
         
         
         leftButton.isHidden = true
-    }
-    
-    func setUpDoubleButton() {
-        actionButton.widthAnchor.constraint(equalToConstant: 165).isActive = true
-        actionButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        actionButton.tintColor = PopmetricsColor.darkGrey
-    }
-    
-    override public func layoutSubviews() {
-        super.layoutSubviews()
-        setupCorners()
-        gradientLayer.frame = self.bounds
     }
     
     internal func setupCorners() {
@@ -228,6 +228,10 @@ class FooterView: UIView {
         default:
             return
         }
+    }
+    
+    internal func changeTitleLeftButton(_ title: String) {
+        self.leftButton.setTitle(title, for: .normal)
     }
     
     internal func setTitleActionBtn(_ title: String) {
