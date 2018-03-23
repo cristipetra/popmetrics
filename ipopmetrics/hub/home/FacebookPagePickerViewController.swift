@@ -14,8 +14,8 @@ final class FacebookPageTableViewCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    func configure(text: String, details: String, imageUrl: String?, placeholderImage: UIImage?) {
+    
+    func configure(text: String, details: String?, imageUrl: String?, placeholderImage: UIImage?) {
         if let picture = imageUrl {
             imageView?.af_setImage(
                 withURL: URL(string: picture)!,

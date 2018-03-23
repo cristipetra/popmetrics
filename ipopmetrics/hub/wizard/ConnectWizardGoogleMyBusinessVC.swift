@@ -15,7 +15,7 @@ import FacebookCore
 import FacebookLogin
 import Alamofire
 
-class ConnectWizardViewController: BaseViewController, FlexibleSteppedProgressBarDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
+class ConnectWizardGoogleMyBusinessVC: BaseViewController, FlexibleSteppedProgressBarDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
     
     @IBOutlet weak var progressBar: FlexibleSteppedProgressBar!
     @IBOutlet weak var connectionTargetLabel: UILabel!
@@ -55,10 +55,24 @@ class ConnectWizardViewController: BaseViewController, FlexibleSteppedProgressBa
         start()
     }
     
+    private func add(asChildViewController viewController: UIViewController) {
+        // Add Child View Controller
+        addChildViewController(viewController)
+        
+        // Add Child View as Subview
+        containerView.addSubview(viewController.view)
+        
+        // Configure Child View
+        viewController.view.frame = containerView.bounds
+        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        // Notify Child View Controller
+        viewController.didMove(toParentViewController: self)
+    }
     
     public func configure(_ card:FeedCard) {
         self.actionCard = card
-        self.imageURL = card.imageUri
+        self.imageURL = "http://blog.popmetrics.io/wp-content/uploads/sites/13/2017/12/nofacebookpage.png"
         switch(card.name) {
         case "ganalytics.connect_with_brand":
             self.connectionTarget = "Google Analytics"
@@ -89,6 +103,8 @@ class ConnectWizardViewController: BaseViewController, FlexibleSteppedProgressBa
     
     func start() {
         self.mainButton.titleLabel?.text = "Authenticate"
+        let startVC = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: "ConnectWizardStartVC") as! ConnectWizardStartVC
+        self.add(asChildViewController: startVC)
     }
     
     @IBAction func mainButtonTouched(_ sender: Any) {
@@ -348,24 +364,28 @@ class ConnectWizardViewController: BaseViewController, FlexibleSteppedProgressBa
         
         for account in accounts {
             guard let accountData = account as? [String: Any],
-                  let id = accountData["id"] as? String,
-                  let name = accountData["name"] as? String,
-                  let username = accountData["username"] as? String,
-                  let perms = accountData["perms"] as? [String] else {
+                let id = accountData["id"] as? String,
+                let name = accountData["name"] as? String,
+                let perms = accountData["perms"] as? [String] else {
                     continue
-                    }
-        
-            var fbAccount = FacebookAccount(id: id, name: name, username: username, perms:perms)
-        
-            if let picture = accountData["picture"] as? [String: Any],
-               let pictureData = picture["data"] as? [String: Any],
-               let pictureUrl = pictureData["url"] as? String {
-                    fbAccount.picture = pictureUrl
-                }
-        
-            facebookAccounts.append(fbAccount)
-        
             }
+            
+            var fbAccount = FacebookAccount(id: id, name: name, perms:perms)
+            
+            if let link = accountData["link"] as? String {
+                fbAccount.link = link
+            }
+            
+            if let picture = accountData["picture"] as? [String: Any],
+                let pictureData = picture["data"] as? [String: Any],
+                let pictureUrl = pictureData["url"] as? String {
+                
+                fbAccount.picture = pictureUrl
+            }
+            
+            facebookAccounts.append(fbAccount)
+            
+        }
         
         return facebookAccounts
     }
@@ -449,7 +469,7 @@ final class FacebookPageTableDataSourceAndDelegate: NSObject, UITableViewDataSou
             cell.setSelected(true, animated: true)
         }
         
-        cell.configure(text: facebookPage.name, details: facebookPage.username, imageUrl: facebookPage.picture  , placeholderImage: UIImage(named: "iconFacebookSocial"))
+//        cell.configure(text: facebookPage.name, details: facebookPage.username, imageUrl: facebookPage.picture  , placeholderImage: UIImage(named: "iconFacebookSocial"))
         return cell
     }
     

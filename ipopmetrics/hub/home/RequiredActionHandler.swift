@@ -79,7 +79,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     
    func connectGoogleAnalytics(_ item:FeedCard?) {
     
-//        navigator.push("vnd.popmetrics://required_action/"+(item?.name)!)
+//          navigator.push("vnd.popmetrics://required_action/"+(item?.name)!)
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().clientID = "850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().serverClientID = "850179116799-024u4fn5ddmkm3dnius3fq3l1gs81toi.apps.googleusercontent.com"

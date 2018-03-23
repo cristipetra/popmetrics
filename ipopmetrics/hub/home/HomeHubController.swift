@@ -189,7 +189,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.isToolbarHidden = false
+
         tableView.alpha = 1
         let tabInfo = MainTabInfo.getInstance()
         let xValue = tabInfo.currentItemIndex >= tabInfo.lastItemIndex ? CGFloat(20) : CGFloat(-20)
@@ -215,6 +217,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     internal var leftButtonItem: UIBarButtonItem!
     
     internal func setUpNavigationBar() {
+        
         let text = UIBarButtonItem(title: "Home Feed", style: .plain, target: self, action: #selector(handlerClickMenu))
         text.tintColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1.0)
         let titleFont = UIFont(name: FontBook.extraBold, size: 18)

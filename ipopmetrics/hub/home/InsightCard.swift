@@ -71,6 +71,9 @@ class InsightCard: UITableViewCell {
         if feedCard.recommendedAction.isEmpty || feedCard.recommendedAction == "" {
             footerVIew.actionButton.isHidden = true
         }
+        else {
+            footerVIew.actionButton.isHidden = false
+        }
         
     }
     
