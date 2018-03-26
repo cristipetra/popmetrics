@@ -1,5 +1,5 @@
 //
-//  CardHeaderCell.swift
+//  HubSectionCell.swift
 //  ipopmetrics
 //
 //  Created by Cristian Petra on 12/07/2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardHeaderCell: UITableViewCell {
+class HubSectionCell: UITableViewCell {
     @IBOutlet weak var connectionView: UIView!
     @IBOutlet weak var roundConnectionView: UIView!
     

@@ -194,8 +194,8 @@ class TodoHubController: BaseViewController {
         let toDoCardCell = UINib(nibName: "SocialPostInCardCell", bundle: nil)
         tableView.register(toDoCardCell, forCellReuseIdentifier: "SocialPostInCardCell")
         
-        let toDoHeaderCardNib = UINib(nibName: "CardHeaderCell", bundle: nil)
-        tableView.register(toDoHeaderCardNib, forCellReuseIdentifier: "CardHeaderCell")
+        let toDoHeaderCardNib = UINib(nibName: "HubSectionCell", bundle: nil)
+        tableView.register(toDoHeaderCardNib, forCellReuseIdentifier: "HubSectionCell")
         
         let emptyCard = UINib(nibName: "EmptyStateCard", bundle: nil)
         tableView.register(emptyCard, forCellReuseIdentifier: "EmptyStateCard")
@@ -573,7 +573,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HubSectionCell") as! HubSectionCell
         cell.sectionTitleLabel.text = todoSection?.sectionTitle().uppercased()
         cell.sectionTitleLabel.text = todoSection?.rawValue.uppercased()
         return cell

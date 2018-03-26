@@ -207,8 +207,8 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
         let sectionHeaderNib = UINib(nibName: "CalendarHeaderViewCell", bundle: nil)
         tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CalendarHeaderViewCell")
         
-        let sectionHeaderCardNib = UINib(nibName: "CardHeaderCell", bundle: nil)
-        tableView.register(sectionHeaderCardNib, forCellReuseIdentifier: "CardHeaderCell")
+        let sectionHeaderCardNib = UINib(nibName: "HubSectionCell", bundle: nil)
+        tableView.register(sectionHeaderCardNib, forCellReuseIdentifier: "HubSectionCell")
         
         let emptyCard = UINib(nibName: "EmptyStateCard", bundle: nil)
         tableView.register(emptyCard, forCellReuseIdentifier: "EmptyStateCard")
@@ -416,14 +416,14 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         
         let item = items[0]
         if item is CalendarSocialPost {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HubSectionCell") as! HubSectionCell
             cell.sectionTitleLabel.text = calendarSection.uppercased()
             return cell
         }
         else {
             let sectionCard = item as! CalendarCard
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HubSectionCell") as! HubSectionCell
             cell.sectionTitleLabel.text = sectionCard.getCardSectionTitle.uppercased()
             return cell
         }

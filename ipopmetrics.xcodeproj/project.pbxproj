@@ -100,8 +100,8 @@
 		08A533381F6BF7FC0080BE64 /* ActionPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A533371F6BF7FC0080BE64 /* ActionPage.xib */; };
 		08A5333E1F6C2E910080BE64 /* ButtonWithContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A5333D1F6C2E910080BE64 /* ButtonWithContainer.swift */; };
 		08A62CB21F8E4DCF0072E6A5 /* TwoColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A62CB11F8E4DCF0072E6A5 /* TwoColorButton.swift */; };
-		08A812741F16601A00672126 /* CardHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A812731F16601A00672126 /* CardHeaderCell.xib */; };
-		08A812761F1660A300672126 /* CardHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A812751F1660A300672126 /* CardHeaderCell.swift */; };
+		08A812741F16601A00672126 /* HubSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A812731F16601A00672126 /* HubSectionCell.xib */; };
+		08A812761F1660A300672126 /* HubSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A812751F1660A300672126 /* HubSectionCell.swift */; };
 		08AA6C651F56DAA10022DE91 /* StatsReportPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C641F56DAA10022DE91 /* StatsReportPageViewController.swift */; };
 		08AA6C6B1F56DD060022DE91 /* BreakdownViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */; };
 		08AA6C731F56F8630022DE91 /* ChartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA6C721F56F8630022DE91 /* ChartViewCell.swift */; };
@@ -162,7 +162,6 @@
 		08C497B11FD5A31C0066E515 /* animation_X.json in Resources */ = {isa = PBXBuildFile; fileRef = 08C497B01FD5A31C0066E515 /* animation_X.json */; };
 		08C580FD1FBF21440013B03F /* SettingsOverlayUrlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C580FC1FBF21440013B03F /* SettingsOverlayUrlView.xib */; };
 		08C580FF1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C580FE1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift */; };
-		08C583021FB1AFA500A7DD3D /* FooterViewStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */; };
 		08C5CF361FC5EA9C001851A5 /* ActionPageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */; };
 		08C6101C2048054D008FCE9E /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C6101B2048054D008FCE9E /* Payment.storyboard */; };
 		08C61020204843B5008FCE9E /* PaymentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6101F204843B5008FCE9E /* PaymentTableViewController.swift */; };
@@ -374,8 +373,8 @@
 		08A533371F6BF7FC0080BE64 /* ActionPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionPage.xib; sourceTree = "<group>"; };
 		08A5333D1F6C2E910080BE64 /* ButtonWithContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithContainer.swift; sourceTree = "<group>"; };
 		08A62CB11F8E4DCF0072E6A5 /* TwoColorButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoColorButton.swift; sourceTree = "<group>"; };
-		08A812731F16601A00672126 /* CardHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardHeaderCell.xib; sourceTree = "<group>"; };
-		08A812751F1660A300672126 /* CardHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHeaderCell.swift; sourceTree = "<group>"; };
+		08A812731F16601A00672126 /* HubSectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HubSectionCell.xib; sourceTree = "<group>"; };
+		08A812751F1660A300672126 /* HubSectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HubSectionCell.swift; sourceTree = "<group>"; };
 		08A812781F1672D300672126 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		08A812791F1672DC00672126 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		08A8127A1F1672E700672126 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
@@ -436,7 +435,6 @@
 		08C497B01FD5A31C0066E515 /* animation_X.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_X.json; sourceTree = "<group>"; };
 		08C580FC1FBF21440013B03F /* SettingsOverlayUrlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsOverlayUrlView.xib; sourceTree = "<group>"; };
 		08C580FE1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOverlayUrlViewController.swift; sourceTree = "<group>"; };
-		08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterViewStateController.swift; sourceTree = "<group>"; };
 		08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPageDetailsViewController.swift; sourceTree = "<group>"; };
 		08C6101B2048054D008FCE9E /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		08C6101F204843B5008FCE9E /* PaymentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableViewController.swift; sourceTree = "<group>"; };
@@ -913,15 +911,14 @@
 				08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */,
 				083938FE1F63C334007DDA37 /* MainTabInfo.swift */,
 				086EDE421FC8449A002F4140 /* ImpactScoreView.swift */,
-				08C583011FB1AFA500A7DD3D /* FooterViewStateController.swift */,
+				08953E731F4C359E003ABEFC /* FooterView.swift */,
 				08B7ADE91FB22B8300C56688 /* FooterViewController.swift */,
 				08F368961F19029100819CDE /* LastCard.xib */,
-				08A812731F16601A00672126 /* CardHeaderCell.xib */,
-				08A812751F1660A300672126 /* CardHeaderCell.swift */,
+				08A812731F16601A00672126 /* HubSectionCell.xib */,
+				08A812751F1660A300672126 /* HubSectionCell.swift */,
 				08B7ADE71FB1D18F00C56688 /* CardToolbarController.swift */,
 				08A533331F6BD9060080BE64 /* MoreInfoViewCell.xib */,
 				08A533351F6BD9130080BE64 /* MoreInfoViewCell.swift */,
-				08953E731F4C359E003ABEFC /* FooterView.swift */,
 				08B324D71F98C65A00BB4905 /* IceExtendView.xib */,
 				08B324D91F98C6AE00BB4905 /* IceExtendView.swift */,
 				08B6AFA91F9DC813005E3049 /* IceCardView.xib */,
@@ -1352,7 +1349,7 @@
 				08A533341F6BD9060080BE64 /* MoreInfoViewCell.xib in Resources */,
 				08A3C838203717D3001BD81E /* LoadMoreView.xib in Resources */,
 				08C497AD1FD5A0120066E515 /* animation_nonX.json in Resources */,
-				08A812741F16601A00672126 /* CardHeaderCell.xib in Resources */,
+				08A812741F16601A00672126 /* HubSectionCell.xib in Resources */,
 				080DCA831F4D9586000C73DC /* OpenSans-ExtraBold.ttf in Resources */,
 				085054011F2793AE00FE8234 /* CalendarCard.xib in Resources */,
 				086110CB20597A1600A3F75C /* RequiredActionLoadMore.xib in Resources */,
@@ -1600,7 +1597,6 @@
 			files = (
 				08EE385D1F447C0E005D1D7C /* TodoTopView.swift in Sources */,
 				116F80D8205FE76D0084AC19 /* ConnectWizardGoogleMyBusinessVC.swift in Sources */,
-				08C583021FB1AFA500A7DD3D /* FooterViewStateController.swift in Sources */,
 				08B4EBB11FC56ACE00BFC5A1 /* BaseTableViewController.swift in Sources */,
 				08B4EBB51FC56ACE00BFC5A1 /* UIColorExtensions.swift in Sources */,
 				08D1BC391F1E3D6200D377B2 /* LDSplashView.swift in Sources */,
@@ -1767,7 +1763,7 @@
 				08C928E320494CC900C070AE /* TrialViewController.swift in Sources */,
 				08B7459B1F1F996B00EC3F8C /* DigitCodeView.swift in Sources */,
 				085054031F27A25B00FE8234 /* CalendarCardViewCell.swift in Sources */,
-				08A812761F1660A300672126 /* CardHeaderCell.swift in Sources */,
+				08A812761F1660A300672126 /* HubSectionCell.swift in Sources */,
 				1100F6F91F5FEBCE000AF1D4 /* TodoActionHandler.swift in Sources */,
 				11E636941FD735480081B1DC /* StatsStore.swift in Sources */,
 				11670EAF20640AA400AB4598 /* SlideFirstView.swift in Sources */,

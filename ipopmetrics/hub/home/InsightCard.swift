@@ -55,6 +55,10 @@ class InsightCard: UITableViewCell {
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
         self.feedCard = feedCard
         
+        if feedCard.isTest {
+            self.toolBarView.changeColorCircle(color: UIColor(named:"blue_bottle")!)
+        }
+        
         //titleLabel.text = feedCard.headerTitle!
         titleLabel.setTextWhileKeepingAttributes(string: feedCard.headerTitle!)
         
@@ -72,7 +76,13 @@ class InsightCard: UITableViewCell {
             footerVIew.actionButton.isHidden = true
         }
         else {
-            footerVIew.actionButton.isHidden = false
+            if TodoStore.getInstance().getTodoCardWithName(feedCard.recommendedAction) != nil {
+                footerVIew.actionButton.isHidden = false
+            }
+            else {
+                footerVIew.actionButton.isHidden = true
+            }
+                
         }
         
     }

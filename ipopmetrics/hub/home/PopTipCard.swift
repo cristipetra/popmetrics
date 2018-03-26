@@ -57,6 +57,9 @@ class PopTipCard: UITableViewCell {
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
         self.feedCard = feedCard
+        if feedCard.isTest {
+            self.toolBarView.changeColorCircle(color: UIColor(named:"blue_bottle")!)
+        }
         
         if let _ = feedCard.headerTitle {
             titleLabel.setTextWhileKeepingAttributes(string: feedCard.headerTitle!)

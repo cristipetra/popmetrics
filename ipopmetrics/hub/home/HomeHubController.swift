@@ -148,8 +148,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let sectionHeaderNib = UINib(nibName: "CardHeaderView", bundle: nil)
         tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CardHeaderView")
         
-        let cardHeaderCellNib = UINib(nibName: "CardHeaderCell", bundle: nil)
-        tableView.register(cardHeaderCellNib, forCellReuseIdentifier: "CardHeaderCell")
+        let HubSectionCellNib = UINib(nibName: "HubSectionCell", bundle: nil)
+        tableView.register(HubSectionCellNib, forCellReuseIdentifier: "HubSectionCell")
         
         let emptyCard = UINib(nibName: "EmptyStateCard", bundle: nil)
         tableView.register(emptyCard, forCellReuseIdentifier: "EmptyStateCard")
@@ -425,7 +425,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             return emptyView
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HubSectionCell") as! HubSectionCell
         cell.sectionTitleLabel.text = homeSection?.sectionTitle().uppercased()
         return cell
     }
