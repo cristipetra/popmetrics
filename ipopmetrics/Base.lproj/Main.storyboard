@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -610,6 +610,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                         <outlet property="closeButton" destination="Vqp-bm-yP8" id="jTj-XT-VJy"/>
                         <outlet property="logoImage" destination="eP9-wi-QSE" id="OYZ-aC-Ged"/>
                         <outlet property="popmetricsImageView" destination="eP9-wi-QSE" id="Ayc-ih-Fny"/>
+                        <outlet property="upgradeSubscriptionBtn" destination="VCx-hh-YS9" id="ZhH-Q1-dB2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDa-y3-Fcw" userLabel="First Responder" sceneMemberID="firstResponder"/>
