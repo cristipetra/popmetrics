@@ -53,6 +53,7 @@ struct StoreLocally {
             
             insightCard.headerTitle = "We couldn't find your business' and going onto a lot of "
             insightCard.message = "Out of the first things customers will look for is your company's Facebook page. Having a facebook page will help you find new customers over the internet. Having a facebook page will help you find new customers over the internet."
+
             
             feedStore.realm.add(insightCard, update: true)
             
@@ -70,7 +71,7 @@ struct StoreLocally {
             
             feedStore.realm.add(popTipCard, update: true)
         }
-        
+
     }
     
 }

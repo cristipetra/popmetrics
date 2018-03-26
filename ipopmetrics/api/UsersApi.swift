@@ -33,12 +33,13 @@ class UsersApi: BaseApi {
         }
     }
 
-    func registerNewUser(name: String, website: String, phone: String,
+    func registerNewUser(name: String, website: String, phone: String, email: String,
                             callback: @escaping (_ response: ResponseSignup) -> Void) {
         let url = ApiUrls.composedBaseUrl(String(format:"/api/brand/register"))
         let params = ["website": website,
                       "name": name,
-                      "phone": phone]
+                      "phone": phone,
+                      "email": email]
         
         Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseObject() { (response: DataResponse<ResponseSignup>) in
                             

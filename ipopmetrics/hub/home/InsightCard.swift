@@ -43,6 +43,7 @@ class InsightCard: UITableViewCell {
         footerVIew.actionButton.addTarget(self, action: #selector(handlerActionButton), for: .touchUpInside)
         footerVIew.leftButton.addTarget(self, action: #selector(handlerMoreInfo), for: .touchUpInside)
     
+        footerVIew.changeTitleLeftButton("View Analysis")
         updateTitleFont()
     }
     

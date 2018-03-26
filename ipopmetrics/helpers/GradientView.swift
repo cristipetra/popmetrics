@@ -9,7 +9,8 @@
 import UIKit
 
 
-@IBDesignable final class GradientView: UIView {
+@IBDesignable
+final class GradientView: UIView {
     
     @IBInspectable var startColor: UIColor = UIColor.clear
     @IBInspectable var endColor: UIColor = UIColor.clear

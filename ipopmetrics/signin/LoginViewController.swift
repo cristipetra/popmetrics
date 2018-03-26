@@ -154,10 +154,11 @@ class LoginViewController: UIViewController {
         let name = registerBrand.name
         let website = registerBrand.website
         let phoneNumber = extractPhoneNumber(text: extractPhoneNumber(text: editablePhoneNumberMask))
+        let email = registerBrand.workEmail ?? ""
         
         showProgressIndicator()
         
-        UsersApi().registerNewUser(name: name!, website: website!, phone: phoneNumber) { response in
+        UsersApi().registerNewUser(name: name!, website: website!, phone: phoneNumber, email: email) { response in
             self.hideProgressIndicator()
             if response.code == "success" {
                 self.performSegue(withIdentifier: "enterCode", sender: self)
