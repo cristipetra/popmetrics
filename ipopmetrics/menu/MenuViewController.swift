@@ -47,7 +47,7 @@ class MenuViewController: ElasticModalViewController {
         super.viewDidLoad()
         
         // this is based on subscription status so hide it until we get subscription status
-        upgradeSubscriptionBtn.isHidden = true
+        upgradeSubscriptionBtn?.isHidden = true
         
         setupOfflineBanner()
         buildLabel.text = UIApplication.versionBuild()
