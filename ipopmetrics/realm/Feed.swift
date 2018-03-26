@@ -44,6 +44,7 @@ class FeedCard: Object, Mappable {
     @objc dynamic var section = ""
     @objc dynamic var name = ""
     @objc dynamic var status = ""
+    @objc dynamic var isTest = false
     
     @objc dynamic var headerTitle: String? = nil
     @objc dynamic var headerSubtitle: String? = nil
@@ -62,7 +63,6 @@ class FeedCard: Object, Mappable {
     
     @objc dynamic var detailsMarkdown:String? = ""
     @objc dynamic var closingMarkdown:String? = ""
-   
     
     @objc dynamic var tooltipEnabled = 0
     @objc dynamic var tooltipTitle: String? = nil
@@ -101,6 +101,7 @@ class FeedCard: Object, Mappable {
         section         <- map["section"]
         name            <- map["name"]
         status          <- map["status"]
+        isTest          <- map["is_test"]
         
         headerTitle     <- map["header_title"]
         headerSubtitle  <- map["header_subtitle"]
@@ -137,7 +138,6 @@ class FeedCard: Object, Mappable {
         
         impactPercentage <- map["impact_percentage"]
         impactSplit <- map["impact_split"]
-        
         
         diyInstructions     <- map["diy_instructions"]
         insightArguments    <- map["insight_arguments"]

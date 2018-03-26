@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        let SCHEMA_VERSION = 4
+        let SCHEMA_VERSION = 5
         let config = Realm.Configuration(
             schemaVersion: UInt64(SCHEMA_VERSION),
             migrationBlock: { migration, oldSchemaVersion in

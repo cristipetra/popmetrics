@@ -23,6 +23,7 @@ class TodoCard:  Object, Mappable {
     @objc dynamic var section = ""
     @objc dynamic var name = ""
     @objc dynamic var status = ""
+    @objc dynamic var isTest = false
     
     @objc dynamic var headerTitle: String? = nil
     @objc dynamic var headerSubtitle: String? = nil
@@ -83,6 +84,7 @@ class TodoCard:  Object, Mappable {
         section         <- map["section"]
         name            <- map["name"]
         status          <- map["status"]
+        isTest          <- map["is_test"]
         
         headerTitle     <- map["header_title"]
         headerSubtitle  <- map["header_subtitle"]

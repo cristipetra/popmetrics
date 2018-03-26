@@ -38,11 +38,6 @@
                         <inset key="scrollIndicatorInsets" minX="0.0" minY="32" maxX="0.0" maxY="48"/>
                         <color key="sectionIndexColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="lightTextColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="l4X-R5-ZkG">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </view>
                         <connections>
                             <outlet property="dataSource" destination="KcM-MX-1lY" id="qAK-rx-hjg"/>
                             <outlet property="delegate" destination="KcM-MX-1lY" id="w73-lG-Gkj"/>

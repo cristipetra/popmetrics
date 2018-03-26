@@ -200,6 +200,8 @@ class CalendarSocialPost: Object, Mappable {
     @objc dynamic var section = ""
     @objc dynamic var status = ""
     @objc dynamic var title:String? = nil
+    @objc dynamic var isTest = false
+    
 
     @objc dynamic var socialAccount:String? = nil
     @objc dynamic var message:String? = nil
@@ -240,6 +242,7 @@ class CalendarSocialPost: Object, Mappable {
         section         <- map["section"]
         status          <- map["status"]
         title           <- map["article_title"]
+        isTest          <- map["is_test"]
         text            <- map["article_text"]
         url             <- map["article_url"]
         hashtags        <- map["article_hashtags"]
