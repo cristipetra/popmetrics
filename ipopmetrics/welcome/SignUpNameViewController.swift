@@ -23,6 +23,9 @@ class SignUpNameViewController: BaseViewController {
         nameTextField.delegate = self
         nameTextField.autocapitalizationType = .words
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+        
         hero.isEnabled = false
         hero.modalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
         

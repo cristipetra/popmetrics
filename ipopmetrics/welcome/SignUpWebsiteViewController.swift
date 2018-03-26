@@ -22,6 +22,9 @@ class SignUpWebsiteViewController: BaseViewController {
         
         websiteTextField.delegate = self
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+        
         isHeroEnabled = true
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
         
@@ -39,6 +42,7 @@ class SignUpWebsiteViewController: BaseViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         websiteTextField.removeTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        self.constraintCenterYcontainer.constant = 0
     }
         
     private func setNavigationBar() {

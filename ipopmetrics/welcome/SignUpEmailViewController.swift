@@ -20,6 +20,9 @@ class SignUpEmailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+        
         setNavigationBar()
         
         btnSubmit.isEnabled = false
@@ -92,6 +95,10 @@ class SignUpEmailViewController: BaseViewController {
             return
         }
         btnSubmit.isEnabled = true
+    }
+    
+    @objc internal func dismissKeyboard() {
+        emailTextField.resignFirstResponder()
     }
     
 }
