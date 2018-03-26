@@ -3,14 +3,14 @@ import Foundation
 import AlamofireImage
 
 final class FacebookPageTableViewCell: UITableViewCell {
-    
+
     static let identifier = String(describing: FacebookPageTableViewCell.self)
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
 
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -28,11 +28,12 @@ final class FacebookPageTableViewCell: UITableViewCell {
         detailTextLabel?.numberOfLines = 2
         detailTextLabel?.lineBreakMode = NSLineBreakMode.byCharWrapping
         detailTextLabel?.text = details
+
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+
         imageView?.af_cancelImageRequest()
         imageView?.layer.removeAllAnimations()
         imageView?.image = nil

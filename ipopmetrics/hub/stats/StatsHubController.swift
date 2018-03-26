@@ -125,8 +125,8 @@ class StatsHubController: BaseViewController {
         let trafficNib = UINib(nibName: "StatsCard", bundle: nil)
         tableView.register(trafficNib, forCellReuseIdentifier: "StatsCard")
         
-        let cardHeaderCellNib = UINib(nibName: "CardHeaderCell", bundle: nil)
-        tableView.register(cardHeaderCellNib, forCellReuseIdentifier: "CardHeaderCell")
+        let HubSectionCellNib = UINib(nibName: "HubSectionCell", bundle: nil)
+        tableView.register(HubSectionCellNib, forCellReuseIdentifier: "HubSectionCell")
         
         let emptyCard = UINib(nibName: "EmptyStateCard", bundle: nil)
         tableView.register(emptyCard, forCellReuseIdentifier: "EmptyStateCard")
@@ -385,7 +385,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
         if section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HubSectionCell") as! HubSectionCell
             cell.changeColor(cardType: .traffic)
             cell.sectionTitleLabel.text = "TRAFFIC";
             return cell

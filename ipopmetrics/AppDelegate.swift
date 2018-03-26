@@ -19,6 +19,7 @@ import SafariServices
 import RealmSwift
 //import STPopup
 import Intercom
+import Stripe
 
 
 public extension Notification {
@@ -60,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        let SCHEMA_VERSION = 4
+        let SCHEMA_VERSION = 5
         let config = Realm.Configuration(
             schemaVersion: UInt64(SCHEMA_VERSION),
             migrationBlock: { migration, oldSchemaVersion in
@@ -88,6 +89,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ReachabilityManager.shared.startMonitoring()
 
         storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        
+        //Stripe
+        STPPaymentConfiguration.shared().publishableKey = Config.sharedInstance.environment.stripeKey
+        STPPaymentConfiguration.shared().createCardSources = true
 
         //Intercom
         Intercom.setInAppMessagesVisible(false)

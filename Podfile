@@ -30,13 +30,7 @@ target 'ipopmetrics' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
 
-#  pod 'SimpleLoadingButton', '~> 0.3'
-
-#  pod 'Chatto',  :git => 'https://github.com/badoo/Chatto.git', :branch => 'master'
-#  pod 'ChattoAdditions',  :git => 'https://github.com/badoo/Chatto.git', :branch => 'master'
-#  pod 'Chatto'
-#  pod 'ChattoAdditions' # if you want to use the cells or the input component
-
+  pod "FlexibleSteppedProgressBar"
   pod 'ActiveLabel', :git => 'https://github.com/sherwinzadeh/ActiveLabel.swift', :commit => '4bec2dae617cca42263b9b6efc84e8f4822cc4ad'
   pod 'EZAlertController'
   pod 'SwiftRichString'
@@ -60,5 +54,6 @@ target 'ipopmetrics' do
   pod 'LinkedinSwift'
   pod 'EZLoadingActivity', :git=>’https://github.com/cristipetra/EZLoadingActivity’
   pod 'XLActionController'
+  pod 'Stripe'
 
 end

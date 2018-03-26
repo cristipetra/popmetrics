@@ -41,11 +41,33 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
             case "facebook.connect_with_brand":
                 connectFacebook(viewController:viewController, item: item)
                 break
-            
+            case "payment.subscription.upgrade":
+                displayPaymentSubscription(viewController)
+                break
+            case "payment.subscription.update_payment":
+                displayPaymentConfirmation(viewController)
+                break
             default:
                 print("Unexpected name "+item.name)
         
         }//switch
+    }
+    
+    func displayPaymentSubscription(_ viewController: UIViewController) {
+        let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "TrialViewController") as! TrialViewController
+        let navigation = UINavigationController(rootViewController: vc)
+        viewController.present(navigation, animated: true, completion: nil)
+    }
+    
+    func displayPaymentConfirmation(_ viewController: UIViewController) {
+        let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "PaymentTableViewController") as! PaymentTableViewController
+        
+        let brandId = UserStore.currentBrandId
+        let planId = Config.sharedInstance.environment.stripeBasicPlanId
+        let amount = Config.sharedInstance.environment.stripeBasicPlanAmount
+        vc.configure(brandId:brandId, amount:amount, planId:planId)
+        
+        viewController.navigationController?.pushViewController(vc, animated: true)
     }
    
     func application(_ application: UIApplication,
@@ -56,28 +78,33 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     }
     
    func connectGoogleAnalytics(_ item:FeedCard?) {
+    
+//          navigator.push("vnd.popmetrics://required_action/"+(item?.name)!)
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().clientID = "850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().serverClientID = "850179116799-024u4fn5ddmkm3dnius3fq3l1gs81toi.apps.googleusercontent.com"
-    
+
         let gaScope = "https://www.googleapis.com/auth/analytics.readonly"
         GIDSignIn.sharedInstance().scopes = [gaScope]
         GIDSignIn.sharedInstance().signOut()
-    
+
         GIDSignIn.sharedInstance().signIn()
-        
+    
     }
     
     func connectGoogle(_ item:FeedCard?) {
+        
+//        navigator.push("vnd.popmetrics://required_action/"+(item?.name)!)
+        
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().clientID = "850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().serverClientID = "850179116799-024u4fn5ddmkm3dnius3fq3l1gs81toi.apps.googleusercontent.com"
-        
+
         let gaScope = "https://www.googleapis.com/auth/analytics.readonly"
         let gmbScope = "https://www.googleapis.com/auth/plus.business.manage"
         GIDSignIn.sharedInstance().scopes = [gaScope, gmbScope]
         GIDSignIn.sharedInstance().signOut()
-        
+
         GIDSignIn.sharedInstance().signIn()
     }
     
@@ -133,6 +160,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         
     
     func connectTwitter(_ item:FeedCard?) {
+//        navigator.push("vnd.popmetrics://required_action/"+(item?.name)!)
         let storeTwitter = Twitter.sharedInstance().sessionStore
         if let userID = storeTwitter.session()?.userID {
             storeTwitter.logOutUserID(userID)
@@ -238,6 +266,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
 
     // MARK: Facebook LogIn Process
     func connectFacebook(viewController: UIViewController, item: FeedCard?) {
+//      navigator.push("vnd.popmetrics://required_action/"+(item?.name)!)
         let loginManager = LoginManager()
 
         if let accessToken = AccessToken.current{

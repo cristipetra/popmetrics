@@ -2,7 +2,7 @@
 //  Config.swift
 //  ipopmetrics
 //
-//  Created by Cristian Petra on 20/07/2017.
+//  Created by Rares Pop on 20/07/2017.
 //  Copyright © 2017 Popmetrics. All rights reserved.
 //
 
@@ -11,11 +11,13 @@ import UIKit
 enum Environment: String {
     case Staging = "staging"
     case Production = "production"
+    case Localdev = "localdev"
     
     var apiHost: String {
         switch self {
         case .Staging: return "testapi.popmetrics.ai"
         case .Production: return "api.popmetrics.ai"
+        case .Localdev: return "localdev.popmetrics.ai"
         }
     }
     
@@ -24,6 +26,7 @@ enum Environment: String {
         switch self {
         case .Staging: return "https://testapi.popmetrics.ai"
         case .Production: return "https://api.popmetrics.io"
+        case .Localdev: return "http://localdev.popmetrics.ai:5030"
         }
     }
     
@@ -31,6 +34,7 @@ enum Environment: String {
         switch self {
         case .Staging: return "lktopir156dsq16sbi8"
         case .Production: return "5zdsegr16ipsbi1lktp"
+        case .Localdev: return "lktopir156dsq16sbi8"
         }
     }
     
@@ -38,6 +42,7 @@ enum Environment: String {
         switch self {
         case .Staging: return "ios_sdk-b07a4fa44e59e0914ce414c278c284e2b18e6caa"
         case .Production: return "ios_sdk-56bb7df2b3d88934f7d564b7a353c66b68b54f12"
+        case .Localdev: return "ios_sdk-b07a4fa44e59e0914ce414c278c284e2b18e6caa"
         }
     }
     
@@ -45,6 +50,7 @@ enum Environment: String {
         switch self {
         case .Staging: return "w4ce6nmv"
         case .Production: return "f2713n8d"
+        case .Localdev: return "w4ce6nmv"
         }
     }
     
@@ -55,7 +61,34 @@ enum Environment: String {
     var googleClientIdWeb: String {
         return "850179116799-024u4fn5ddmkm3dnius3fq3l1gs81toi.apps.googleusercontent.com"
     }
+    
+    var stripeKey: String {
+        switch self {
+        case .Staging: return "pk_test_2FpRw3r7YJGm7gvEMe3aKMvC"
+        case .Production: return "pk_live_BjEYYMk52IKYcoWcnRAkkehu"
+        case .Localdev: return "pk_test_2FpRw3r7YJGm7gvEMe3aKMvC"
+        }
+    }
+    
+    var stripeBasicPlanId: String {
+        switch self {
+        case .Staging: return "BASIC_ACCESS_MONTHLY_TEST"
+        case .Production: return "BASIC_ACCESS_MONTHLY"
+        case .Localdev: return "BASIC_ACCESS_MONTHLY_TEST"
+        }
+    }
+    
+    var stripeBasicPlanAmount: Int {
+        
+        switch self {
+        case .Localdev: return 3000
+        case .Staging: return 3000
+        case .Production: return 3000
+        }
+        
+    }
 
+    
 }
 
 class Config: NSObject {
@@ -70,6 +103,9 @@ class Config: NSObject {
             }
             if configuration.range(of:"production") != nil {
                 return Environment.Production
+            }
+            if configuration.range(of:"localdev") != nil {
+                return Environment.Localdev
             }
             
         }
@@ -122,6 +158,18 @@ class Config: NSObject {
     class var legalBitsLink: String {
         get {
             return "http://popmetrics.io/legal-bits/"
+        }
+    }
+    
+    class var termsAndConditions: String {
+        get {
+            return "http://popmetrics.io/legal-bits/#terms_and_conditions"
+        }
+    }
+    
+    class var privacyPolicy: String {
+        get {
+            return "http://popmetrics.io/legal-bits/#privacy_details"
         }
     }
     

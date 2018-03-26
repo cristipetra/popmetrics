@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -28,9 +30,9 @@
         <!--Feed Table View Controller-->
         <scene sceneID="yN3-TS-G0L">
             <objects>
-                <tableViewController storyboardIdentifier="FEED_VC" title="My Homes Table View Controller" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="pageSheet" id="KcM-MX-1lY" userLabel="Feed Table View Controller" customClass="HomeHubViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="FEED_VC" title="My Homes Table View Controller" modalPresentationStyle="pageSheet" id="KcM-MX-1lY" userLabel="Feed Table View Controller" customClass="HomeHubViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="2" rowHeight="182" sectionHeaderHeight="18" sectionFooterHeight="18" id="IDh-YP-3oO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <inset key="scrollIndicatorInsets" minX="0.0" minY="32" maxX="0.0" maxY="48"/>
@@ -41,13 +43,13 @@
                             <outlet property="delegate" destination="KcM-MX-1lY" id="w73-lG-Gkj"/>
                         </connections>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="RNW-aJ-sFX" userLabel="Feed"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="gHR-Us-alS" kind="push" identifier="showAnalysis" id="y6m-MW-wFU"/>
+                        <segue destination="0cD-cM-vxf" kind="push" identifier="startConnectionWizard" id="zRa-8Q-GjM"/>
                     </connections>
                 </tableViewController>
                 <tabBarItem title="Feed" image="first" id="FdZ-LU-Uik"/>
@@ -55,14 +57,129 @@
             </objects>
             <point key="canvasLocation" x="1348.75" y="-369.07333333333332"/>
         </scene>
+        <!--Connect Wizard Google My BusinessVC-->
+        <scene sceneID="TW0-Ht-gaJ">
+            <objects>
+                <viewController storyboardIdentifier="ConnectWizardStart" hidesBottomBarWhenPushed="YES" id="0cD-cM-vxf" customClass="ConnectWizardGoogleMyBusinessVC" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="apa-d2-Cnc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="660"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sf5-uX-4Fo" customClass="FlexibleSteppedProgressBar" customModule="FlexibleSteppedProgressBar">
+                                <rect key="frame" x="16" y="16" width="343" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="5k6-LT-Yfv"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundShapeColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFill" semanticContentAttribute="spatial" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gJs-uo-UQj">
+                                <rect key="frame" x="20" y="160" width="343" height="500"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect Popmetrics to your" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8K-nQ-F9a">
+                                <rect key="frame" x="73" y="179" width="228.5" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Facebook Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CV7-bE-s03">
+                                <rect key="frame" x="116" y="220" width="143" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <containerView opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aSy-dJ-CVF">
+                                <rect key="frame" x="16" y="264" width="343" height="336"/>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q80-mc-6QL">
+                                <rect key="frame" x="143" y="617" width="123" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="venice_winter"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Authenticate">
+                                    <color key="titleColor" name="blue_bottle"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="mainButtonTouched:" destination="0cD-cM-vxf" eventType="touchUpInside" id="SpS-gs-GBe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="das-00-u0G">
+                                <rect key="frame" x="305" y="616" width="50" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="venice_winter"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="11"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" name="red_light"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cancelButtonTouched:" destination="0cD-cM-vxf" eventType="touchUpInside" id="nwk-B0-yu9"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="venice_winter"/>
+                        <constraints>
+                            <constraint firstItem="CV7-bE-s03" firstAttribute="centerX" secondItem="B66-en-DYP" secondAttribute="centerX" id="6ST-VW-PD3"/>
+                            <constraint firstItem="aSy-dJ-CVF" firstAttribute="leading" secondItem="gJs-uo-UQj" secondAttribute="leading" id="BV3-hL-fAH"/>
+                            <constraint firstItem="B66-en-DYP" firstAttribute="trailing" secondItem="gJs-uo-UQj" secondAttribute="trailing" constant="16" id="E30-QP-MKE"/>
+                            <constraint firstItem="gJs-uo-UQj" firstAttribute="leading" secondItem="B66-en-DYP" secondAttribute="leading" constant="16" id="Fxx-y4-Af0"/>
+                            <constraint firstItem="CV7-bE-s03" firstAttribute="top" secondItem="e8K-nQ-F9a" secondAttribute="bottom" constant="16" id="LSL-ds-g9l"/>
+                            <constraint firstItem="sf5-uX-4Fo" firstAttribute="leading" secondItem="B66-en-DYP" secondAttribute="leading" constant="16" id="Qbf-hA-gUg"/>
+                            <constraint firstItem="B66-en-DYP" firstAttribute="bottom" secondItem="aSy-dJ-CVF" secondAttribute="bottom" constant="60" id="R5y-lp-wJC"/>
+                            <constraint firstItem="aSy-dJ-CVF" firstAttribute="top" secondItem="CV7-bE-s03" secondAttribute="bottom" constant="25" id="Rew-nM-P6A"/>
+                            <constraint firstItem="gJs-uo-UQj" firstAttribute="top" secondItem="e8K-nQ-F9a" secondAttribute="bottom" constant="-40" id="YnQ-7M-03u"/>
+                            <constraint firstItem="aSy-dJ-CVF" firstAttribute="trailing" secondItem="gJs-uo-UQj" secondAttribute="trailing" id="a2e-Yy-CiM"/>
+                            <constraint firstItem="B66-en-DYP" firstAttribute="bottom" secondItem="gJs-uo-UQj" secondAttribute="bottom" id="c5f-ki-QPm"/>
+                            <constraint firstItem="e8K-nQ-F9a" firstAttribute="centerX" secondItem="apa-d2-Cnc" secondAttribute="centerX" id="cMg-EK-17Q"/>
+                            <constraint firstItem="gJs-uo-UQj" firstAttribute="top" secondItem="sf5-uX-4Fo" secondAttribute="bottom" priority="800" constant="20" id="ciG-Xp-VgN"/>
+                            <constraint firstItem="B66-en-DYP" firstAttribute="trailing" secondItem="sf5-uX-4Fo" secondAttribute="trailing" constant="16" id="swU-m2-xwO"/>
+                            <constraint firstItem="B66-en-DYP" firstAttribute="top" secondItem="sf5-uX-4Fo" secondAttribute="top" id="zn8-pf-j7j"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="B66-en-DYP"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TLg-9c-IyP"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="660"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="das-00-u0G" id="0Po-7Y-Z7D"/>
+                        <outlet property="connectionImageView" destination="gJs-uo-UQj" id="gyE-UO-Von"/>
+                        <outlet property="connectionTargetLabel" destination="CV7-bE-s03" id="sSZ-fk-0Vx"/>
+                        <outlet property="containerView" destination="aSy-dJ-CVF" id="n8P-PT-cxe"/>
+                        <outlet property="mainButton" destination="Q80-mc-6QL" id="wMc-mw-8FS"/>
+                        <outlet property="progressBar" destination="sf5-uX-4Fo" id="7A5-1L-Tcz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eap-zI-prW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="714" y="-1700"/>
+        </scene>
         <!--Insight Page Details View Controller-->
         <scene sceneID="rap-Wa-ubO">
             <objects>
                 <viewController id="gHR-Us-alS" customClass="InsightPageDetailsViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="QYg-Ze-qcD"/>
-                        <viewControllerLayoutGuide type="bottom" id="H11-kx-gcE"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jYI-Jc-5Dl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1951"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -164,8 +281,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OwA-z4-YB9">
                                                 <rect key="frame" x="0.0" y="975" width="375" height="240"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14F-WJ-qa2">
-                                                        <rect key="frame" x="25" y="22" width="67.5" height="25"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conclusion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14F-WJ-qa2">
+                                                        <rect key="frame" x="25" y="22" width="102" height="25"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -278,16 +395,12 @@ article has some meta thing telling the computer that it’s magically got to ch
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pGA-ei-Dmq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1969" y="-370"/>
+            <point key="canvasLocation" x="1847" y="-2429"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="vnq-XG-9Wi">
             <objects>
                 <viewController storyboardIdentifier="MENU_VC" id="vgc-BL-sQ3" customClass="MenuViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rSp-0Z-2F3"/>
-                        <viewControllerLayoutGuide type="bottom" id="Pfw-ZC-4fg"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="A0N-Un-MwM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -341,10 +454,20 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MTa-KH-EBT">
-                                <rect key="frame" x="29" y="187" width="320" height="90"/>
+                                <rect key="frame" x="29" y="187" width="320" height="132"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCx-hh-YS9">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="33"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="UPGRADE SUBSCRIPTION">
+                                            <color key="titleColor" name="blue_bottle"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="handlerClickSubscription:" destination="vgc-BL-sQ3" eventType="touchUpInside" id="0X1-3R-kDV"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCx-hh-YS8">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                                        <rect key="frame" x="0.0" y="33" width="320" height="33"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="SETTINGS">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -354,7 +477,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWk-9n-6Qe" userLabel="ABOUT POPMETRICS">
-                                        <rect key="frame" x="0.0" y="30" width="320" height="30"/>
+                                        <rect key="frame" x="0.0" y="66" width="320" height="33"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="ABOUT POPMETRICS">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -364,7 +487,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxF-Rq-8jP">
-                                        <rect key="frame" x="0.0" y="60" width="320" height="30"/>
+                                        <rect key="frame" x="0.0" y="99" width="320" height="33"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="LEGAL INFORMATION">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -376,7 +499,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybe-Us-fFL">
-                                <rect key="frame" x="29" y="326" width="62" height="30"/>
+                                <rect key="frame" x="29" y="368" width="63" height="33"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="LOGOUT">
                                     <color key="titleColor" red="1" green="0.46666666670000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -400,7 +523,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOi-K4-4l3">
-                                <rect key="frame" x="3" y="305" width="370" height="1"/>
+                                <rect key="frame" x="3" y="347" width="370" height="1"/>
                                 <color key="backgroundColor" red="0.74117647060000003" green="0.7725490196" blue="0.79607843140000001" alpha="0.50449486301369861" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="16o-2h-RXg"/>
@@ -447,36 +570,37 @@ article has some meta thing telling the computer that it’s magically got to ch
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="HcS-fh-OPC" secondAttribute="trailing" constant="25" id="0Fo-tX-o7E"/>
-                            <constraint firstAttribute="trailing" secondItem="JhQ-kz-dOw" secondAttribute="trailing" constant="2" id="0I0-TO-Hwr"/>
-                            <constraint firstAttribute="trailing" secondItem="Rf7-5q-oor" secondAttribute="trailing" constant="2" id="0gd-Mv-LAt"/>
+                            <constraint firstItem="GEX-sj-Apm" firstAttribute="trailing" secondItem="HcS-fh-OPC" secondAttribute="trailing" constant="25" id="0Fo-tX-o7E"/>
+                            <constraint firstItem="GEX-sj-Apm" firstAttribute="trailing" secondItem="JhQ-kz-dOw" secondAttribute="trailing" constant="2" id="0I0-TO-Hwr"/>
+                            <constraint firstItem="GEX-sj-Apm" firstAttribute="trailing" secondItem="Rf7-5q-oor" secondAttribute="trailing" constant="2" id="0gd-Mv-LAt"/>
                             <constraint firstItem="HcS-fh-OPC" firstAttribute="top" secondItem="Rf7-5q-oor" secondAttribute="bottom" constant="14" id="6fq-qv-AZ3"/>
                             <constraint firstItem="Ybe-Us-fFL" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leadingMargin" constant="13" id="6y7-uf-fwA"/>
-                            <constraint firstItem="Rf7-5q-oor" firstAttribute="top" secondItem="rSp-0Z-2F3" secondAttribute="bottom" constant="47" id="C8e-IO-C3U"/>
+                            <constraint firstItem="Rf7-5q-oor" firstAttribute="top" secondItem="GEX-sj-Apm" secondAttribute="top" constant="47" id="C8e-IO-C3U"/>
                             <constraint firstItem="ee4-oK-e3k" firstAttribute="top" secondItem="Rf7-5q-oor" secondAttribute="bottom" constant="20" id="GWn-R7-z5M"/>
                             <constraint firstItem="MTa-KH-EBT" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leadingMargin" constant="13" id="GjK-CR-yfi"/>
-                            <constraint firstItem="Rf7-5q-oor" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leading" constant="3" id="HCA-lU-1le"/>
-                            <constraint firstItem="LZd-QI-7te" firstAttribute="centerX" secondItem="A0N-Un-MwM" secondAttribute="centerX" id="HKI-um-h4D"/>
-                            <constraint firstItem="eP9-wi-QSE" firstAttribute="centerX" secondItem="A0N-Un-MwM" secondAttribute="centerX" id="JCK-qR-OoA"/>
-                            <constraint firstAttribute="trailing" secondItem="lCf-hh-gEv" secondAttribute="trailing" id="P2N-fN-LON"/>
+                            <constraint firstItem="Rf7-5q-oor" firstAttribute="leading" secondItem="GEX-sj-Apm" secondAttribute="leading" constant="3" id="HCA-lU-1le"/>
+                            <constraint firstItem="LZd-QI-7te" firstAttribute="centerX" secondItem="GEX-sj-Apm" secondAttribute="centerX" id="HKI-um-h4D"/>
+                            <constraint firstItem="eP9-wi-QSE" firstAttribute="centerX" secondItem="GEX-sj-Apm" secondAttribute="centerX" id="JCK-qR-OoA"/>
+                            <constraint firstItem="GEX-sj-Apm" firstAttribute="trailing" secondItem="lCf-hh-gEv" secondAttribute="trailing" id="P2N-fN-LON"/>
                             <constraint firstItem="HcS-fh-OPC" firstAttribute="leading" secondItem="ee4-oK-e3k" secondAttribute="trailing" constant="10" id="QzL-QE-XXw"/>
                             <constraint firstItem="gav-CH-di9" firstAttribute="top" secondItem="ee4-oK-e3k" secondAttribute="bottom" constant="16" id="VvX-tN-Xtn"/>
-                            <constraint firstItem="JhQ-kz-dOw" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leading" constant="3" id="XAE-4u-ISC"/>
-                            <constraint firstItem="lCf-hh-gEv" firstAttribute="top" secondItem="rSp-0Z-2F3" secondAttribute="bottom" constant="-10" id="YjE-h1-uy1"/>
+                            <constraint firstItem="JhQ-kz-dOw" firstAttribute="leading" secondItem="GEX-sj-Apm" secondAttribute="leading" constant="3" id="XAE-4u-ISC"/>
+                            <constraint firstItem="lCf-hh-gEv" firstAttribute="top" secondItem="GEX-sj-Apm" secondAttribute="top" constant="-10" id="YjE-h1-uy1"/>
                             <constraint firstItem="LZd-QI-7te" firstAttribute="top" secondItem="eP9-wi-QSE" secondAttribute="bottom" constant="20" id="Zpu-vz-KCu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MTa-KH-EBT" secondAttribute="trailing" constant="10" id="bZ4-AW-uIY"/>
-                            <constraint firstItem="Pfw-ZC-4fg" firstAttribute="top" secondItem="LZd-QI-7te" secondAttribute="bottom" constant="20" id="ce6-Lf-5n0"/>
-                            <constraint firstItem="iOi-K4-4l3" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leading" constant="3" id="dpe-Wu-n3D"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ybe-Us-fFL" secondAttribute="trailingMargin" id="ecg-Iz-CAm"/>
-                            <constraint firstAttribute="trailing" secondItem="iOi-K4-4l3" secondAttribute="trailing" constant="2" id="fbj-c5-hxC"/>
+                            <constraint firstItem="GEX-sj-Apm" firstAttribute="bottom" secondItem="LZd-QI-7te" secondAttribute="bottom" constant="20" id="ce6-Lf-5n0"/>
+                            <constraint firstItem="iOi-K4-4l3" firstAttribute="leading" secondItem="GEX-sj-Apm" secondAttribute="leading" constant="3" id="dpe-Wu-n3D"/>
+                            <constraint firstItem="GEX-sj-Apm" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ybe-Us-fFL" secondAttribute="trailingMargin" id="ecg-Iz-CAm"/>
+                            <constraint firstItem="GEX-sj-Apm" firstAttribute="trailing" secondItem="iOi-K4-4l3" secondAttribute="trailing" constant="2" id="fbj-c5-hxC"/>
                             <constraint firstItem="MTa-KH-EBT" firstAttribute="top" secondItem="JhQ-kz-dOw" secondAttribute="bottom" constant="15" id="gHt-J5-Wnu"/>
                             <constraint firstItem="ee4-oK-e3k" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leadingMargin" constant="13" id="p2i-2t-VHM"/>
                             <constraint firstItem="JhQ-kz-dOw" firstAttribute="top" secondItem="gav-CH-di9" secondAttribute="bottom" constant="16" id="qxB-ea-to9"/>
                             <constraint firstItem="Ybe-Us-fFL" firstAttribute="top" secondItem="iOi-K4-4l3" secondAttribute="bottom" constant="20" id="rGH-Mk-Lhh"/>
                             <constraint firstItem="iOi-K4-4l3" firstAttribute="top" secondItem="MTa-KH-EBT" secondAttribute="bottom" constant="28" id="uPk-qP-zq2"/>
-                            <constraint firstItem="gav-CH-di9" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leading" constant="29" id="vM8-mj-p2n"/>
-                            <constraint firstItem="lCf-hh-gEv" firstAttribute="leading" secondItem="A0N-Un-MwM" secondAttribute="leading" id="wJk-Ne-KF6"/>
+                            <constraint firstItem="gav-CH-di9" firstAttribute="leading" secondItem="GEX-sj-Apm" secondAttribute="leading" constant="29" id="vM8-mj-p2n"/>
+                            <constraint firstItem="lCf-hh-gEv" firstAttribute="leading" secondItem="GEX-sj-Apm" secondAttribute="leading" id="wJk-Ne-KF6"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="GEX-sj-Apm"/>
                     </view>
                     <connections>
                         <outlet property="brandNameLabel" destination="ee4-oK-e3k" id="oR9-tk-kWy"/>
@@ -529,10 +653,6 @@ article has some meta thing telling the computer that it’s magically got to ch
         <scene sceneID="Gpm-2v-KLK">
             <objects>
                 <viewController title="Account Settings View Controller" id="aLn-zU-J6Q" customClass="AccountViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fpg-0D-O22"/>
-                        <viewControllerLayoutGuide type="bottom" id="2KW-ly-Zsx"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cWH-SY-6Kv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -590,26 +710,27 @@ article has some meta thing telling the computer that it’s magically got to ch
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="nnH-1M-vtZ" firstAttribute="trailing" secondItem="cWH-SY-6Kv" secondAttribute="trailing" constant="-16" id="0hf-wz-KYJ"/>
+                            <constraint firstItem="nnH-1M-vtZ" firstAttribute="trailing" secondItem="VbR-dM-OhU" secondAttribute="trailing" constant="-16" id="0hf-wz-KYJ"/>
                             <constraint firstItem="5AT-LP-gwM" firstAttribute="top" secondItem="nnH-1M-vtZ" secondAttribute="bottom" constant="16" id="0t1-sE-6ae"/>
-                            <constraint firstItem="UTv-yD-O3p" firstAttribute="leading" secondItem="cWH-SY-6Kv" secondAttribute="leading" constant="16" id="9Ze-gA-UvZ"/>
-                            <constraint firstItem="nnH-1M-vtZ" firstAttribute="leading" secondItem="cWH-SY-6Kv" secondAttribute="leading" constant="16" id="AAe-FJ-esC"/>
+                            <constraint firstItem="UTv-yD-O3p" firstAttribute="leading" secondItem="VbR-dM-OhU" secondAttribute="leading" constant="16" id="9Ze-gA-UvZ"/>
+                            <constraint firstItem="nnH-1M-vtZ" firstAttribute="leading" secondItem="VbR-dM-OhU" secondAttribute="leading" constant="16" id="AAe-FJ-esC"/>
                             <constraint firstItem="UTv-yD-O3p" firstAttribute="top" secondItem="5AT-LP-gwM" secondAttribute="bottom" constant="16" id="CZS-FA-G1s"/>
                             <constraint firstItem="YpM-mv-kU1" firstAttribute="leading" secondItem="nnH-1M-vtZ" secondAttribute="leading" id="DYm-N9-zXh"/>
                             <constraint firstItem="nnH-1M-vtZ" firstAttribute="top" secondItem="YpM-mv-kU1" secondAttribute="bottom" constant="8" id="FKx-Lq-kxd"/>
-                            <constraint firstItem="hlI-OT-hrN" firstAttribute="centerX" secondItem="cWH-SY-6Kv" secondAttribute="centerX" id="H8K-Ni-P4G"/>
-                            <constraint firstItem="o80-3K-tKi" firstAttribute="leading" secondItem="cWH-SY-6Kv" secondAttribute="leading" constant="16" id="InM-WR-ZWc"/>
-                            <constraint firstItem="He9-dt-GiE" firstAttribute="top" secondItem="fpg-0D-O22" secondAttribute="bottom" id="PXf-zs-4JA"/>
+                            <constraint firstItem="hlI-OT-hrN" firstAttribute="centerX" secondItem="VbR-dM-OhU" secondAttribute="centerX" id="H8K-Ni-P4G"/>
+                            <constraint firstItem="o80-3K-tKi" firstAttribute="leading" secondItem="VbR-dM-OhU" secondAttribute="leading" constant="16" id="InM-WR-ZWc"/>
+                            <constraint firstItem="He9-dt-GiE" firstAttribute="top" secondItem="VbR-dM-OhU" secondAttribute="top" id="PXf-zs-4JA"/>
                             <constraint firstItem="YpM-mv-kU1" firstAttribute="top" secondItem="hlI-OT-hrN" secondAttribute="bottom" constant="41" id="RBd-pT-Iw4"/>
                             <constraint firstItem="5AT-LP-gwM" firstAttribute="leading" secondItem="UTv-yD-O3p" secondAttribute="leading" id="UbF-Kz-mCZ"/>
-                            <constraint firstItem="hlI-OT-hrN" firstAttribute="top" secondItem="fpg-0D-O22" secondAttribute="bottom" constant="32" id="YAL-v1-U05"/>
+                            <constraint firstItem="hlI-OT-hrN" firstAttribute="top" secondItem="VbR-dM-OhU" secondAttribute="top" constant="32" id="YAL-v1-U05"/>
                             <constraint firstItem="o80-3K-tKi" firstAttribute="top" secondItem="hlI-OT-hrN" secondAttribute="bottom" constant="8" id="dwS-XY-pW9"/>
-                            <constraint firstAttribute="trailing" secondItem="UTv-yD-O3p" secondAttribute="trailing" constant="16" id="iX8-ec-PDl"/>
+                            <constraint firstItem="VbR-dM-OhU" firstAttribute="trailing" secondItem="UTv-yD-O3p" secondAttribute="trailing" constant="16" id="iX8-ec-PDl"/>
                             <constraint firstItem="YpM-mv-kU1" firstAttribute="trailing" secondItem="nnH-1M-vtZ" secondAttribute="trailing" id="kbj-YM-OK9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="He9-dt-GiE" secondAttribute="trailing" constant="-7" id="lgs-6m-Ler"/>
-                            <constraint firstAttribute="trailing" secondItem="o80-3K-tKi" secondAttribute="trailing" constant="16" id="vL3-zB-3MF"/>
+                            <constraint firstItem="VbR-dM-OhU" firstAttribute="trailing" secondItem="o80-3K-tKi" secondAttribute="trailing" constant="16" id="vL3-zB-3MF"/>
                             <constraint firstItem="5AT-LP-gwM" firstAttribute="trailing" secondItem="UTv-yD-O3p" secondAttribute="trailing" id="zFn-Dk-uUM"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="VbR-dM-OhU"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="PmT-yn-pek" appends="YES" id="Io2-55-9Le"/>
                         </connections>
@@ -635,14 +756,11 @@ article has some meta thing telling the computer that it’s magically got to ch
         <scene sceneID="aQd-EV-7wF">
             <objects>
                 <viewController storyboardIdentifier="ConciergeChatViewController" id="mhc-LI-Iws" customClass="ConciergeChatViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8qj-oX-NIX"/>
-                        <viewControllerLayoutGuide type="bottom" id="E3M-p9-6TV"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2QM-8m-dkq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="pcp-Ph-sAO"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Concierge" image="first" id="d9o-pt-2Bo"/>
                 </viewController>
@@ -654,14 +772,11 @@ article has some meta thing telling the computer that it’s magically got to ch
         <scene sceneID="4FH-cP-jUN">
             <objects>
                 <viewController id="ajN-DG-2n1" customClass="IntercomViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Al0-aY-JAE"/>
-                        <viewControllerLayoutGuide type="bottom" id="OFI-it-l8i"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gJ6-q8-bDb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                        <viewLayoutGuide key="safeArea" id="PBh-1R-0nh"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="inactive_intercom" selectedImage="active_intercom" id="jZ4-Go-Mfk" customClass="IntercomTabBarItem" customModule="ipopmetrics" customModuleProvider="target">
                         <color key="badgeColor" name="red_light"/>
@@ -695,10 +810,6 @@ article has some meta thing telling the computer that it’s magically got to ch
         <scene sceneID="PTS-xG-1pA">
             <objects>
                 <viewController storyboardIdentifier="TodoHubController" id="v2H-b7-whD" customClass="TodoHubController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KU6-Gq-h5V"/>
-                        <viewControllerLayoutGuide type="bottom" id="Fda-MN-fQ7"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QLa-Rf-XYy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -720,15 +831,16 @@ article has some meta thing telling the computer that it’s magically got to ch
                             </tableView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Bo8-db-YCb" firstAttribute="top" secondItem="KU6-Gq-h5V" secondAttribute="bottom" id="70N-6q-Orw"/>
-                            <constraint firstAttribute="trailing" secondItem="q5g-rj-92z" secondAttribute="trailing" id="7gQ-Mw-rec"/>
-                            <constraint firstAttribute="trailing" secondItem="Bo8-db-YCb" secondAttribute="trailing" id="DCn-uL-TcR"/>
+                            <constraint firstItem="Bo8-db-YCb" firstAttribute="top" secondItem="lz7-81-Dge" secondAttribute="top" id="70N-6q-Orw"/>
+                            <constraint firstItem="lz7-81-Dge" firstAttribute="trailing" secondItem="q5g-rj-92z" secondAttribute="trailing" id="7gQ-Mw-rec"/>
+                            <constraint firstItem="lz7-81-Dge" firstAttribute="trailing" secondItem="Bo8-db-YCb" secondAttribute="trailing" id="DCn-uL-TcR"/>
                             <constraint firstItem="q5g-rj-92z" firstAttribute="top" secondItem="Bo8-db-YCb" secondAttribute="bottom" id="R7k-HP-k9i"/>
-                            <constraint firstItem="q5g-rj-92z" firstAttribute="bottom" secondItem="Fda-MN-fQ7" secondAttribute="top" id="Saw-Cw-7Iq"/>
-                            <constraint firstItem="Bo8-db-YCb" firstAttribute="leading" secondItem="QLa-Rf-XYy" secondAttribute="leading" id="tu0-ca-68o"/>
-                            <constraint firstItem="q5g-rj-92z" firstAttribute="leading" secondItem="QLa-Rf-XYy" secondAttribute="leading" id="vGX-LR-gkn"/>
-                            <constraint firstItem="Bo8-db-YCb" firstAttribute="top" secondItem="KU6-Gq-h5V" secondAttribute="bottom" id="zoA-eu-K57"/>
+                            <constraint firstItem="q5g-rj-92z" firstAttribute="bottom" secondItem="lz7-81-Dge" secondAttribute="bottom" id="Saw-Cw-7Iq"/>
+                            <constraint firstItem="Bo8-db-YCb" firstAttribute="leading" secondItem="lz7-81-Dge" secondAttribute="leading" id="tu0-ca-68o"/>
+                            <constraint firstItem="q5g-rj-92z" firstAttribute="leading" secondItem="lz7-81-Dge" secondAttribute="leading" id="vGX-LR-gkn"/>
+                            <constraint firstItem="Bo8-db-YCb" firstAttribute="top" secondItem="lz7-81-Dge" secondAttribute="top" id="zoA-eu-K57"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="lz7-81-Dge"/>
                     </view>
                     <navigationItem key="navigationItem" id="rdN-rC-aFb"/>
                     <connections>
@@ -764,10 +876,6 @@ article has some meta thing telling the computer that it’s magically got to ch
         <scene sceneID="3zH-mP-ZKt">
             <objects>
                 <viewController storyboardIdentifier="CalendarID" extendedLayoutIncludesOpaqueBars="YES" id="oy5-0D-0Qc" customClass="CalendarHubController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="phX-1d-82O"/>
-                        <viewControllerLayoutGuide type="bottom" id="vi2-VG-ZUi"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sm8-rA-m91">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -792,14 +900,15 @@ article has some meta thing telling the computer that it’s magically got to ch
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Qe5-WS-C7z" firstAttribute="leading" secondItem="sm8-rA-m91" secondAttribute="leading" id="3FN-na-qId"/>
-                            <constraint firstItem="IsD-kl-eqk" firstAttribute="leading" secondItem="sm8-rA-m91" secondAttribute="leading" id="Dc4-xE-U2c"/>
-                            <constraint firstItem="IsD-kl-eqk" firstAttribute="top" secondItem="phX-1d-82O" secondAttribute="bottom" id="TJO-IB-www"/>
-                            <constraint firstItem="vi2-VG-ZUi" firstAttribute="top" secondItem="Qe5-WS-C7z" secondAttribute="bottom" id="X2T-Dr-7G9"/>
+                            <constraint firstItem="Qe5-WS-C7z" firstAttribute="leading" secondItem="Pns-IB-ewy" secondAttribute="leading" id="3FN-na-qId"/>
+                            <constraint firstItem="IsD-kl-eqk" firstAttribute="leading" secondItem="Pns-IB-ewy" secondAttribute="leading" id="Dc4-xE-U2c"/>
+                            <constraint firstItem="IsD-kl-eqk" firstAttribute="top" secondItem="Pns-IB-ewy" secondAttribute="top" id="TJO-IB-www"/>
+                            <constraint firstItem="Pns-IB-ewy" firstAttribute="bottom" secondItem="Qe5-WS-C7z" secondAttribute="bottom" id="X2T-Dr-7G9"/>
                             <constraint firstItem="Qe5-WS-C7z" firstAttribute="top" secondItem="IsD-kl-eqk" secondAttribute="bottom" id="q1K-8n-64q"/>
-                            <constraint firstAttribute="trailing" secondItem="IsD-kl-eqk" secondAttribute="trailing" id="tM3-rY-ceH"/>
-                            <constraint firstAttribute="trailing" secondItem="Qe5-WS-C7z" secondAttribute="trailing" id="zYg-RK-XBe"/>
+                            <constraint firstItem="Pns-IB-ewy" firstAttribute="trailing" secondItem="IsD-kl-eqk" secondAttribute="trailing" id="tM3-rY-ceH"/>
+                            <constraint firstItem="Pns-IB-ewy" firstAttribute="trailing" secondItem="Qe5-WS-C7z" secondAttribute="trailing" id="zYg-RK-XBe"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Pns-IB-ewy"/>
                     </view>
                     <navigationItem key="navigationItem" id="iYu-CD-zNg"/>
                     <connections>
@@ -816,10 +925,6 @@ article has some meta thing telling the computer that it’s magically got to ch
         <scene sceneID="p9V-hr-U8y">
             <objects>
                 <viewController extendedLayoutIncludesOpaqueBars="YES" id="LQ7-p4-nv0" customClass="MJCalendarViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="oFv-Sd-Dua"/>
-                        <viewControllerLayoutGuide type="bottom" id="ALW-rf-ylu"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eSt-vQ-J6f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -908,17 +1013,18 @@ article has some meta thing telling the computer that it’s magically got to ch
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="IpV-KU-rq8" secondAttribute="trailing" id="EmZ-Xi-wF9"/>
+                            <constraint firstItem="Fui-sk-r7A" firstAttribute="trailing" secondItem="IpV-KU-rq8" secondAttribute="trailing" id="EmZ-Xi-wF9"/>
                             <constraint firstAttribute="bottom" secondItem="ecj-ec-JrQ" secondAttribute="bottom" id="Uiq-lf-2Kh"/>
-                            <constraint firstAttribute="trailing" secondItem="ecj-ec-JrQ" secondAttribute="trailing" id="ZGg-iG-14I"/>
+                            <constraint firstItem="Fui-sk-r7A" firstAttribute="trailing" secondItem="ecj-ec-JrQ" secondAttribute="trailing" id="ZGg-iG-14I"/>
                             <constraint firstItem="efz-Yf-Kla" firstAttribute="top" secondItem="eSt-vQ-J6f" secondAttribute="topMargin" constant="8" id="g7s-ta-web"/>
                             <constraint firstItem="IpV-KU-rq8" firstAttribute="top" secondItem="efz-Yf-Kla" secondAttribute="bottom" constant="8" id="jN9-oS-eu8"/>
-                            <constraint firstItem="ecj-ec-JrQ" firstAttribute="leading" secondItem="eSt-vQ-J6f" secondAttribute="leading" id="k9I-iR-rsg"/>
+                            <constraint firstItem="ecj-ec-JrQ" firstAttribute="leading" secondItem="Fui-sk-r7A" secondAttribute="leading" id="k9I-iR-rsg"/>
                             <constraint firstItem="IpV-KU-rq8" firstAttribute="top" secondItem="efz-Yf-Kla" secondAttribute="bottom" constant="8" id="pyv-sG-rCZ"/>
-                            <constraint firstAttribute="trailing" secondItem="efz-Yf-Kla" secondAttribute="trailing" constant="17" id="s7z-27-Cqu"/>
-                            <constraint firstItem="efz-Yf-Kla" firstAttribute="leading" secondItem="eSt-vQ-J6f" secondAttribute="leading" constant="17" id="spf-KJ-T5d"/>
-                            <constraint firstItem="IpV-KU-rq8" firstAttribute="leading" secondItem="eSt-vQ-J6f" secondAttribute="leading" id="z6Q-Kx-oUD"/>
+                            <constraint firstItem="Fui-sk-r7A" firstAttribute="trailing" secondItem="efz-Yf-Kla" secondAttribute="trailing" constant="17" id="s7z-27-Cqu"/>
+                            <constraint firstItem="efz-Yf-Kla" firstAttribute="leading" secondItem="Fui-sk-r7A" secondAttribute="leading" constant="17" id="spf-KJ-T5d"/>
+                            <constraint firstItem="IpV-KU-rq8" firstAttribute="leading" secondItem="Fui-sk-r7A" secondAttribute="leading" id="z6Q-Kx-oUD"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Fui-sk-r7A"/>
                     </view>
                     <connections>
                         <outlet property="calendarView" destination="IpV-KU-rq8" id="thp-us-rSK"/>
@@ -958,10 +1064,6 @@ article has some meta thing telling the computer that it’s magically got to ch
         <scene sceneID="TqG-rc-qY3">
             <objects>
                 <viewController storyboardIdentifier="statistics" id="Y7O-ql-BCV" customClass="StatsHubController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5Rr-KF-y2P"/>
-                        <viewControllerLayoutGuide type="bottom" id="wgp-na-MZC"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="usl-o2-zbZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -973,11 +1075,12 @@ article has some meta thing telling the computer that it’s magically got to ch
                         </subviews>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="oYx-Kl-DJY" firstAttribute="leading" secondItem="usl-o2-zbZ" secondAttribute="leading" id="UQv-xu-Bc2"/>
-                            <constraint firstItem="oYx-Kl-DJY" firstAttribute="top" secondItem="5Rr-KF-y2P" secondAttribute="bottom" id="Zg5-DJ-mtJ"/>
-                            <constraint firstAttribute="trailing" secondItem="oYx-Kl-DJY" secondAttribute="trailing" id="ddX-Fb-W4p"/>
-                            <constraint firstItem="wgp-na-MZC" firstAttribute="top" secondItem="oYx-Kl-DJY" secondAttribute="bottom" id="sj0-Gj-lU6"/>
+                            <constraint firstItem="oYx-Kl-DJY" firstAttribute="leading" secondItem="4be-bj-4mO" secondAttribute="leading" id="UQv-xu-Bc2"/>
+                            <constraint firstItem="oYx-Kl-DJY" firstAttribute="top" secondItem="4be-bj-4mO" secondAttribute="top" id="Zg5-DJ-mtJ"/>
+                            <constraint firstItem="4be-bj-4mO" firstAttribute="trailing" secondItem="oYx-Kl-DJY" secondAttribute="trailing" id="ddX-Fb-W4p"/>
+                            <constraint firstItem="4be-bj-4mO" firstAttribute="bottom" secondItem="oYx-Kl-DJY" secondAttribute="bottom" id="sj0-Gj-lU6"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="4be-bj-4mO"/>
                     </view>
                     <navigationItem key="navigationItem" id="jBx-lJ-LfI"/>
                     <connections>
@@ -1008,10 +1111,6 @@ article has some meta thing telling the computer that it’s magically got to ch
         <scene sceneID="hRF-Ww-Zs3">
             <objects>
                 <viewController storyboardIdentifier="trafficReportViewId" automaticallyAdjustsScrollViewInsets="NO" id="Sa3-PG-jtN" customClass="StatsMetricPageContentViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="I4l-wh-QvR"/>
-                        <viewControllerLayoutGuide type="bottom" id="r7r-fU-FJ5"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EHK-gk-sdX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1159,14 +1258,15 @@ article has some meta thing telling the computer that it’s magically got to ch
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="zaF-Jh-gL8" firstAttribute="top" secondItem="I4l-wh-QvR" secondAttribute="bottom" id="5NI-5p-jyC"/>
-                            <constraint firstItem="r7r-fU-FJ5" firstAttribute="top" secondItem="f5I-kY-SO8" secondAttribute="bottom" id="FlQ-cJ-zwQ"/>
-                            <constraint firstAttribute="trailing" secondItem="zaF-Jh-gL8" secondAttribute="trailing" id="M3d-Aq-d4k"/>
-                            <constraint firstItem="zaF-Jh-gL8" firstAttribute="leading" secondItem="EHK-gk-sdX" secondAttribute="leading" id="QGS-jq-3Hl"/>
-                            <constraint firstAttribute="trailing" secondItem="f5I-kY-SO8" secondAttribute="trailing" id="TiZ-sI-0VS"/>
-                            <constraint firstItem="f5I-kY-SO8" firstAttribute="leading" secondItem="EHK-gk-sdX" secondAttribute="leading" id="fhu-lY-2o8"/>
+                            <constraint firstItem="zaF-Jh-gL8" firstAttribute="top" secondItem="6PS-Sc-24i" secondAttribute="top" id="5NI-5p-jyC"/>
+                            <constraint firstItem="6PS-Sc-24i" firstAttribute="bottom" secondItem="f5I-kY-SO8" secondAttribute="bottom" id="FlQ-cJ-zwQ"/>
+                            <constraint firstItem="6PS-Sc-24i" firstAttribute="trailing" secondItem="zaF-Jh-gL8" secondAttribute="trailing" id="M3d-Aq-d4k"/>
+                            <constraint firstItem="zaF-Jh-gL8" firstAttribute="leading" secondItem="6PS-Sc-24i" secondAttribute="leading" id="QGS-jq-3Hl"/>
+                            <constraint firstItem="6PS-Sc-24i" firstAttribute="trailing" secondItem="f5I-kY-SO8" secondAttribute="trailing" id="TiZ-sI-0VS"/>
+                            <constraint firstItem="f5I-kY-SO8" firstAttribute="leading" secondItem="6PS-Sc-24i" secondAttribute="leading" id="fhu-lY-2o8"/>
                             <constraint firstItem="f5I-kY-SO8" firstAttribute="top" secondItem="zaF-Jh-gL8" secondAttribute="bottom" constant="4" id="wUY-9j-buY"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="6PS-Sc-24i"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="800"/>
@@ -1216,6 +1316,142 @@ article has some meta thing telling the computer that it’s magically got to ch
             </objects>
             <point key="canvasLocation" x="508.75" y="2011.0049999999999"/>
         </scene>
+        <!--Connect Wizard StartVC-->
+        <scene sceneID="EEz-xr-1m9">
+            <objects>
+                <viewController storyboardIdentifier="ConnectWizardStartVC" id="3Is-RB-MlE" customClass="ConnectWizardStartVC" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pmf-Os-7fR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="336"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lc-ZA-3Do">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="m7a-3h-set"/>
+                                </constraints>
+                                <string key="text">Connecting Popmetrics to your Google My Business you allow us to access and analyze your data, create insights and perform automated actions for you.</string>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Start by authenticating with your Google account and agree to permissions requests." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2Z-cf-5hS">
+                                <rect key="frame" x="0.0" y="131" width="375" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="5GC-VK-41Y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="N2Z-cf-5hS" firstAttribute="top" secondItem="4lc-ZA-3Do" secondAttribute="bottom" constant="31" id="5kO-0h-SUz"/>
+                            <constraint firstItem="J3m-xN-JFL" firstAttribute="bottom" secondItem="N2Z-cf-5hS" secondAttribute="bottom" constant="105" id="E3d-xG-Gbn"/>
+                            <constraint firstItem="4lc-ZA-3Do" firstAttribute="top" secondItem="J3m-xN-JFL" secondAttribute="top" id="L9v-ig-bXG"/>
+                            <constraint firstItem="N2Z-cf-5hS" firstAttribute="trailing" secondItem="J3m-xN-JFL" secondAttribute="trailing" constant="798" id="Roz-za-S9o"/>
+                            <constraint firstItem="J3m-xN-JFL" firstAttribute="trailing" secondItem="4lc-ZA-3Do" secondAttribute="trailing" id="Zto-GB-Xxk"/>
+                            <constraint firstItem="4lc-ZA-3Do" firstAttribute="leading" secondItem="J3m-xN-JFL" secondAttribute="leading" id="iqI-lf-pGV"/>
+                            <constraint firstItem="N2Z-cf-5hS" firstAttribute="leading" secondItem="J3m-xN-JFL" secondAttribute="leading" id="nc6-os-bsK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="J3m-xN-JFL"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="336"/>
+                    <size key="freeformSize" width="375" height="336"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="size" keyPath="contentSizeInPopup">
+                            <size key="value" width="0.0" height="336"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lme-eW-v2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="258" y="-1714"/>
+        </scene>
+        <!--Connect Wizard AuthenticatedVC-->
+        <scene sceneID="7JM-GZ-IcC">
+            <objects>
+                <viewController storyboardIdentifier="ConnectWizardGoogleMyBusinessAuthenticated" id="RTY-9D-eV6" customClass="ConnectWizardAuthenticatedVC" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IMh-hb-NOc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="336"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Succesfully authenticated with" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vo9-kb-hOO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="2cU-pL-lfb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bIG-YW-p5B">
+                                <rect key="frame" x="16" y="68" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bIG-YW-p5B" secondAttribute="height" multiplier="1:1" id="dP2-hC-TiT"/>
+                                    <constraint firstAttribute="width" constant="100" id="tmo-tZ-xig"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5c-0h-5lH">
+                                <rect key="frame" x="136" y="68" width="223" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="XOP-es-tbE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGX-xb-212">
+                                <rect key="frame" x="136" y="119" width="223" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="vYU-RM-sKf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue by confirming the authenticated account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2G-pZ-ckk">
+                                <rect key="frame" x="0.0" y="190" width="375" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="rJE-Fi-D2n"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fDP-jx-VnX" firstAttribute="trailing" secondItem="d5c-0h-5lH" secondAttribute="trailing" constant="16" id="9A7-EP-Jxc"/>
+                            <constraint firstItem="d5c-0h-5lH" firstAttribute="top" secondItem="vo9-kb-hOO" secondAttribute="bottom" constant="8" id="FPy-1J-SZq"/>
+                            <constraint firstItem="vo9-kb-hOO" firstAttribute="leading" secondItem="fDP-jx-VnX" secondAttribute="leading" id="FUG-GB-rsH"/>
+                            <constraint firstItem="vo9-kb-hOO" firstAttribute="top" secondItem="fDP-jx-VnX" secondAttribute="top" id="Feb-PO-yFA"/>
+                            <constraint firstItem="hGX-xb-212" firstAttribute="leading" secondItem="d5c-0h-5lH" secondAttribute="leading" id="GOs-By-Sjd"/>
+                            <constraint firstItem="bIG-YW-p5B" firstAttribute="leading" secondItem="fDP-jx-VnX" secondAttribute="leading" constant="16" id="GtT-RC-pfK"/>
+                            <constraint firstItem="X2G-pZ-ckk" firstAttribute="width" secondItem="vo9-kb-hOO" secondAttribute="width" id="HrI-KI-4AI"/>
+                            <constraint firstItem="d5c-0h-5lH" firstAttribute="leading" secondItem="bIG-YW-p5B" secondAttribute="trailing" constant="20" id="Q6G-wF-KCe"/>
+                            <constraint firstItem="X2G-pZ-ckk" firstAttribute="leading" secondItem="fDP-jx-VnX" secondAttribute="leading" id="RaB-er-psd"/>
+                            <constraint firstItem="bIG-YW-p5B" firstAttribute="top" secondItem="vo9-kb-hOO" secondAttribute="bottom" constant="8" id="URq-yv-UPp"/>
+                            <constraint firstItem="hGX-xb-212" firstAttribute="top" secondItem="d5c-0h-5lH" secondAttribute="bottom" constant="8" id="XMq-2t-H5h"/>
+                            <constraint firstItem="d5c-0h-5lH" firstAttribute="top" secondItem="bIG-YW-p5B" secondAttribute="top" id="YXV-sE-tr0"/>
+                            <constraint firstItem="fDP-jx-VnX" firstAttribute="trailing" secondItem="vo9-kb-hOO" secondAttribute="trailing" id="fND-cI-z9b"/>
+                            <constraint firstItem="hGX-xb-212" firstAttribute="trailing" secondItem="d5c-0h-5lH" secondAttribute="trailing" id="nG3-xa-hGi"/>
+                            <constraint firstItem="fDP-jx-VnX" firstAttribute="bottom" secondItem="X2G-pZ-ckk" secondAttribute="bottom" constant="46" id="vox-hB-h7y"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fDP-jx-VnX"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="336"/>
+                    <size key="freeformSize" width="375" height="336"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="size" keyPath="contentSizeInPopup">
+                            <size key="value" width="0.0" height="336"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dh5-lI-t0e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-202.5" y="-1714"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Icon_Home_Selected" width="23" height="21"/>
@@ -1238,6 +1474,9 @@ article has some meta thing telling the computer that it’s magically got to ch
         <image name="menuLogo" width="118" height="26"/>
         <image name="second" width="30" height="30"/>
         <image name="user_profile" width="16" height="16"/>
+        <namedColor name="blue_bottle">
+            <color red="0.25490196078431371" green="0.60784313725490191" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="red_light">
             <color red="1" green="0.46666666666666667" blue="0.41568627450980394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

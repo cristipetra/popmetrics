@@ -148,8 +148,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let sectionHeaderNib = UINib(nibName: "CardHeaderView", bundle: nil)
         tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CardHeaderView")
         
-        let cardHeaderCellNib = UINib(nibName: "CardHeaderCell", bundle: nil)
-        tableView.register(cardHeaderCellNib, forCellReuseIdentifier: "CardHeaderCell")
+        let HubSectionCellNib = UINib(nibName: "HubSectionCell", bundle: nil)
+        tableView.register(HubSectionCellNib, forCellReuseIdentifier: "HubSectionCell")
         
         let emptyCard = UINib(nibName: "EmptyStateCard", bundle: nil)
         tableView.register(emptyCard, forCellReuseIdentifier: "EmptyStateCard")
@@ -189,7 +189,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+//        self.navigationController?.isNavigationBarHidden = false
+//        self.navigationController?.isToolbarHidden = false
+
         tableView.alpha = 1
         let tabInfo = MainTabInfo.getInstance()
         let xValue = tabInfo.currentItemIndex >= tabInfo.lastItemIndex ? CGFloat(20) : CGFloat(-20)
@@ -215,6 +217,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     internal var leftButtonItem: UIBarButtonItem!
     
     internal func setUpNavigationBar() {
+        
         let text = UIBarButtonItem(title: "Home Feed", style: .plain, target: self, action: #selector(handlerClickMenu))
         text.tintColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1.0)
         let titleFont = UIFont(name: FontBook.extraBold, size: 18)
@@ -422,7 +425,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             return emptyView
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CardHeaderCell") as! CardHeaderCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HubSectionCell") as! HubSectionCell
         cell.sectionTitleLabel.text = homeSection?.sectionTitle().uppercased()
         return cell
     }
@@ -509,6 +512,12 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         }
     }
     
+    func openPaymentSubscription() {
+        let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "TrialViewController") as! TrialViewController
+        let navigation = UINavigationController(rootViewController: vc)
+        self.present(navigation, animated: true, completion: nil)
+    }
+    
     
 }
 
@@ -541,6 +550,10 @@ extension HomeHubViewController: RecommendeCellDelegate {
     }
     
     func recommendedCellDidTapAction(_ feedCard: FeedCard) {
+        if feedCard.name == "payment.subscription.trial_insight" {
+            openPaymentSubscription()
+            return
+        }
         openActionPage(feedCard)
     }
 }
