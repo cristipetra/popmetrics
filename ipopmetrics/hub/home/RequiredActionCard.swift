@@ -77,7 +77,7 @@ class RequiredActionCard: UITableViewCell {
         }
         
         if item.isTest {
-            self.toolbarView.changeColorCircle(color: UIColor(named:"blue_bottle")!)
+            toolbarView.setUpCircleBackground(topColor: UIColor(named:"blue_bottle")!, bottomColor: UIColor(named:"blue_bottle")!)
         }
         
         //self.titleLabel.text  = item.headerTitle
