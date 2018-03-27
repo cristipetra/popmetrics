@@ -67,6 +67,7 @@
 		08732B35203EE5A900EF4C51 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08732B34203EE5A900EF4C51 /* SettingsHeaderView.swift */; };
 		08755F461FCC11E600A8CF13 /* SocialPostDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */; };
 		08755F4C1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */; };
+		087A868B206A954400A2E6A9 /* HomeHubSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087A868A206A954400A2E6A9 /* HomeHubSection.swift */; };
 		088674111FE28506008DB87E /* LoginSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088674101FE28506008DB87E /* LoginSocialViewController.swift */; };
 		088674131FE285A0008DB87E /* SocialMediaLoginButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088674121FE285A0008DB87E /* SocialMediaLoginButtonsView.swift */; };
 		088728971FFCE98700BE9882 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088728961FFCE98700BE9882 /* AboutViewController.swift */; };
@@ -343,6 +344,7 @@
 		08732B34203EE5A900EF4C51 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SocialPostDetails.xib; sourceTree = "<group>"; };
 		08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPostDetailsViewController.swift; sourceTree = "<group>"; };
+		087A868A206A954400A2E6A9 /* HomeHubSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHubSection.swift; sourceTree = "<group>"; };
 		0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		088674101FE28506008DB87E /* LoginSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSocialViewController.swift; sourceTree = "<group>"; };
 		088674121FE285A0008DB87E /* SocialMediaLoginButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaLoginButtonsView.swift; sourceTree = "<group>"; };
@@ -959,6 +961,7 @@
 				08F3688A1F18DC4900819CDE /* ApprovalCardCell.swift */,
 				08F368901F18E6A000819CDE /* ApprovalCardInfoCell.swift */,
 				11BDA92F1FFFD9C200CDA01C /* PopTipCard.swift */,
+				087A868A206A954400A2E6A9 /* HomeHubSection.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -1783,6 +1786,7 @@
 				1100F6F91F5FEBCE000AF1D4 /* TodoActionHandler.swift in Sources */,
 				11E636941FD735480081B1DC /* StatsStore.swift in Sources */,
 				11670EAF20640AA400AB4598 /* SlideFirstView.swift in Sources */,
+				087A868B206A954400A2E6A9 /* HomeHubSection.swift in Sources */,
 				08B485E01F20EA23005918A1 /* Config.swift in Sources */,
 				08BC8F1620357D66008CC969 /* BusinessContact.swift in Sources */,
 				08DE806D2018E98E00621243 /* SocialPostDetailsView.swift in Sources */,
