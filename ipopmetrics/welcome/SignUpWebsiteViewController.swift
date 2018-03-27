@@ -22,6 +22,9 @@ class SignUpWebsiteViewController: BaseViewController {
         
         websiteTextField.delegate = self
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+        
         isHeroEnabled = true
         heroModalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
         
@@ -29,11 +32,14 @@ class SignUpWebsiteViewController: BaseViewController {
         setNavigationBar()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.constraintCenterYcontainer.constant = 0
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         websiteTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         self.reloadInputViews()
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -82,6 +88,7 @@ class SignUpWebsiteViewController: BaseViewController {
             self.hideProgressIndicator()
             
             if response?.code == "success" {
+                self.websiteTextField.resignFirstResponder()
                 (self.navigationController as! BoardingNavigationController).registerBrand.website = response?.data!
                 self.performSegue(withIdentifier: "enterWorkEmailForSignUp", sender: self)
             } else {
@@ -147,7 +154,6 @@ extension SignUpWebsiteViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
     
 }
 

@@ -23,6 +23,9 @@ class SignUpNameViewController: BaseViewController {
         nameTextField.delegate = self
         nameTextField.autocapitalizationType = .words
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+        
         hero.isEnabled = false
         hero.modalAnimationType = .selectBy(presenting: .push(direction: .left), dismissing: .push(direction: .right))
         
@@ -31,12 +34,8 @@ class SignUpNameViewController: BaseViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        constraintCenterYcontainer.constant = 0
     }
 
     private func setNavigationBar() {
@@ -87,10 +86,9 @@ class SignUpNameViewController: BaseViewController {
         }
         
         (self.navigationController as! BoardingNavigationController).registerBrand.name = name
-        
+        nameTextField.resignFirstResponder()
         return true
     }
-    
     
 }
 
@@ -116,5 +114,4 @@ extension SignUpNameViewController: UITextFieldDelegate {
         return true
     }
     
-
 }

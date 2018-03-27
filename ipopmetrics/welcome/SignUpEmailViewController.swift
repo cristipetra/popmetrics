@@ -20,10 +20,18 @@ class SignUpEmailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+        
         setNavigationBar()
         
         btnSubmit.isEnabled = false
         emailTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        emailTextField.delegate = self
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        constraintCenterYcontainer.constant = 0
     }
     
     private func setNavigationBar() {
@@ -94,4 +102,31 @@ class SignUpEmailViewController: BaseViewController {
         btnSubmit.isEnabled = true
     }
     
+    @objc internal func dismissKeyboard() {
+        emailTextField.resignFirstResponder()
+    }
+    
+}
+
+// MARK: UITextFieldDelegate
+extension SignUpEmailViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.constraintCenterYcontainer.constant = -100
+            self.view.layoutIfNeeded()
+            
+        })
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.4, animations: {
+            self.constraintCenterYcontainer.constant = 0
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
