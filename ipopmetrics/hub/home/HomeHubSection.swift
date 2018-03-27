@@ -23,7 +23,7 @@ class HomeHubSection {
         var cardsWithView : [FeedCard] = []
         
         cardsWithView = nonEmptyCards.filter{ $0.type == HomeCardType.insight.rawValue || $0.type == HomeCardType.poptip.rawValue }
-
+        
         return cardsWithView
     }
     
