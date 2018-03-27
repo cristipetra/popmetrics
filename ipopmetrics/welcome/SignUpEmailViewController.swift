@@ -27,6 +27,11 @@ class SignUpEmailViewController: BaseViewController {
         
         btnSubmit.isEnabled = false
         emailTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        emailTextField.delegate = self
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        constraintCenterYcontainer.constant = 0
     }
     
     private func setNavigationBar() {
@@ -101,4 +106,27 @@ class SignUpEmailViewController: BaseViewController {
         emailTextField.resignFirstResponder()
     }
     
+}
+
+// MARK: UITextFieldDelegate
+extension SignUpEmailViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.constraintCenterYcontainer.constant = -100
+            self.view.layoutIfNeeded()
+            
+        })
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.4, animations: {
+            self.constraintCenterYcontainer.constant = 0
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
