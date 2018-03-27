@@ -92,6 +92,8 @@ class MyBusinessAcccount: Mappable {
     var name: String?
     var type: String?
     
+    var locations = [MyBusinessLocation]()
+    
     required init?(map: Map) {
         
     }
@@ -119,4 +121,81 @@ class MyBusinessAccountsResponse: Mappable {
         nextPageToken      <- map["nextPageToken"]
     }
     
+}
+
+class MyBusinessLocationsResponse: Mappable {
+    
+    var locations: [MyBusinessLocation]?
+    var nextPageToken: String?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map:Map) {
+        locations           <- map["locations"]
+        nextPageToken      <- map["nextPageToken"]
+    }
+    
+}
+
+class MyBusinessLocationAddress: Mappable {
+    
+    var addressLines: [String]?
+    var languageCode: String?
+    var locality: String?
+    var regionCode: String?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map:Map) {
+        addressLines       <- map["addressLines"]
+        languageCode       <- map["languageCode"]
+        locality           <- map["locality"]
+        regionCode         <- map["regionCode"]
+    }
+    
+}
+
+class MyBusinessLocationCategory: Mappable {
+    
+    var categoryId: String?
+    var displayName: String?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map:Map) {
+        categoryId           <- map["categoryId"]
+        displayName          <- map["displayName"]
+    }
+    
+}
+
+
+class MyBusinessLocation: Mappable {
+    
+    var address: MyBusinessLocationAddress?
+    var languageCode: String?
+    var locationName: String?
+    var primaryCategory: MyBusinessLocationCategory?
+    var primaryPhone: String?
+    var websiteUrl: String?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map:Map) {
+        address            <- map["address"]
+        languageCode       <- map["languageCode"]
+        locationName       <- map["locationName"]
+        primaryPhone       <- map["primaryPhone"]
+        primaryCategory    <- map["primaryCategory"]
+        websiteUrl         <- map["websiteUrl"]
+    }
+
 }

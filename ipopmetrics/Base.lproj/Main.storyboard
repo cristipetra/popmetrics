@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -60,7 +60,7 @@
         <!--Connect Wizard Google My BusinessVC-->
         <scene sceneID="TW0-Ht-gaJ">
             <objects>
-                <viewController storyboardIdentifier="ConnectWizardStart" hidesBottomBarWhenPushed="YES" id="0cD-cM-vxf" customClass="ConnectWizardGoogleMyBusinessVC" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConnectWizardGoogleMyBusinessVC" hidesBottomBarWhenPushed="YES" id="0cD-cM-vxf" customClass="ConnectWizardGoogleMyBusinessVC" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="apa-d2-Cnc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="660"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1335,7 +1335,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Start by authenticating with your Google account and agree to permissions requests." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2Z-cf-5hS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start by authenticating with your Google account and agree to permissions requests." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2Z-cf-5hS">
                                 <rect key="frame" x="0.0" y="131" width="375" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="5GC-VK-41Y"/>
@@ -1350,7 +1350,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                             <constraint firstItem="N2Z-cf-5hS" firstAttribute="top" secondItem="4lc-ZA-3Do" secondAttribute="bottom" constant="31" id="5kO-0h-SUz"/>
                             <constraint firstItem="J3m-xN-JFL" firstAttribute="bottom" secondItem="N2Z-cf-5hS" secondAttribute="bottom" constant="105" id="E3d-xG-Gbn"/>
                             <constraint firstItem="4lc-ZA-3Do" firstAttribute="top" secondItem="J3m-xN-JFL" secondAttribute="top" id="L9v-ig-bXG"/>
-                            <constraint firstItem="N2Z-cf-5hS" firstAttribute="trailing" secondItem="J3m-xN-JFL" secondAttribute="trailing" constant="798" id="Roz-za-S9o"/>
+                            <constraint firstItem="N2Z-cf-5hS" firstAttribute="trailing" secondItem="J3m-xN-JFL" secondAttribute="trailing" id="Roz-za-S9o"/>
                             <constraint firstItem="J3m-xN-JFL" firstAttribute="trailing" secondItem="4lc-ZA-3Do" secondAttribute="trailing" id="Zto-GB-Xxk"/>
                             <constraint firstItem="4lc-ZA-3Do" firstAttribute="leading" secondItem="J3m-xN-JFL" secondAttribute="leading" id="iqI-lf-pGV"/>
                             <constraint firstItem="N2Z-cf-5hS" firstAttribute="leading" secondItem="J3m-xN-JFL" secondAttribute="leading" id="nc6-os-bsK"/>
@@ -1451,7 +1451,69 @@ article has some meta thing telling the computer that it’s magically got to ch
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dh5-lI-t0e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-202.5" y="-1714"/>
+            <point key="canvasLocation" x="-535" y="-1714"/>
+        </scene>
+        <!--Google My Business Picker TableVC-->
+        <scene sceneID="EYZ-HH-T1i">
+            <objects>
+                <tableViewController storyboardIdentifier="GoogleMyBusinessPickerTableVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="b05-tJ-HIW" customClass="GoogleMyBusinessPickerTableVC" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jIA-W0-3j7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="336"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="GoogleMyBusinessPickerTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="62" id="GQh-Ym-DiU" customClass="GoogleMyBusinessPickerTableViewCell" customModule="ipopmetrics">
+                                <rect key="frame" x="0.0" y="28" width="375" height="62"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GQh-Ym-DiU" id="oti-Hi-dGs">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="61.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQw-F7-1kA">
+                                            <rect key="frame" x="16" y="8" width="343" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fY-9g-OsL">
+                                            <rect key="frame" x="16" y="30" width="343" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="2fY-9g-OsL" firstAttribute="top" secondItem="OQw-F7-1kA" secondAttribute="bottom" constant="1" id="26c-U5-33e"/>
+                                        <constraint firstItem="2fY-9g-OsL" firstAttribute="trailing" secondItem="OQw-F7-1kA" secondAttribute="trailing" id="DBB-lc-Xjz"/>
+                                        <constraint firstAttribute="trailing" secondItem="OQw-F7-1kA" secondAttribute="trailing" constant="16" id="bMd-dy-R7w"/>
+                                        <constraint firstItem="OQw-F7-1kA" firstAttribute="leading" secondItem="oti-Hi-dGs" secondAttribute="leading" constant="16" id="gEU-f4-b1Q"/>
+                                        <constraint firstItem="OQw-F7-1kA" firstAttribute="top" secondItem="oti-Hi-dGs" secondAttribute="top" constant="8" id="kdY-3Y-2tR"/>
+                                        <constraint firstItem="2fY-9g-OsL" firstAttribute="leading" secondItem="OQw-F7-1kA" secondAttribute="leading" id="pWW-fY-pw2"/>
+                                        <constraint firstItem="2fY-9g-OsL" firstAttribute="trailing" secondItem="OQw-F7-1kA" secondAttribute="trailing" id="yKT-3b-49H"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="locationsLabel" destination="2fY-9g-OsL" id="wIg-0H-IGE"/>
+                                    <outlet property="nameLabel" destination="OQw-F7-1kA" id="DdY-Qb-9dx"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="b05-tJ-HIW" id="Ajn-S6-Cal"/>
+                            <outlet property="delegate" destination="b05-tJ-HIW" id="gYH-sh-n2L"/>
+                        </connections>
+                    </tableView>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="667"/>
+                    <size key="freeformSize" width="375" height="336"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="size" keyPath="contentSizeInPopup">
+                            <size key="value" width="0.0" height="336"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R8G-ZO-p4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-142" y="-1714"/>
         </scene>
     </scenes>
     <resources>

@@ -34,19 +34,18 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         switch(item.name) {
             case "ganalytics.connect_with_brand":
                 connectGoogleAnalytics(item)
-            
             case "twitter.connect_with_brand":
                 connectTwitter(item)
-            
+            case "gmybusiness.brand_page_requires_connection":
+                connectGoogleMyBusiness(item)
+            case "gmybusiness.brand_page_require_connection":
+                connectGoogleMyBusiness(item)
             case "facebook.connect_with_brand":
                 connectFacebook(viewController:viewController, item: item)
-                break
             case "payment.subscription.upgrade":
                 displayPaymentSubscription(viewController)
-                break
             case "payment.subscription.update_payment":
                 displayPaymentConfirmation(viewController)
-                break
             default:
                 print("Unexpected name "+item.name)
         
@@ -92,20 +91,20 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     
     }
     
-    func connectGoogle(_ item:FeedCard?) {
+    func connectGoogleMyBusiness(_ item:FeedCard?) {
         
-//        navigator.push("vnd.popmetrics://required_action/"+(item?.name)!)
+        navigator.push("vnd.popmetrics://required_action/"+(item?.name)!)
         
-        GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().clientID = "850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance().serverClientID = "850179116799-024u4fn5ddmkm3dnius3fq3l1gs81toi.apps.googleusercontent.com"
-
-        let gaScope = "https://www.googleapis.com/auth/analytics.readonly"
-        let gmbScope = "https://www.googleapis.com/auth/plus.business.manage"
-        GIDSignIn.sharedInstance().scopes = [gaScope, gmbScope]
-        GIDSignIn.sharedInstance().signOut()
-
-        GIDSignIn.sharedInstance().signIn()
+//        GIDSignIn.sharedInstance().delegate = self
+//        GIDSignIn.sharedInstance().clientID = "850179116799-12c7gg09ar5eo61tvkhv21iisr721fqm.apps.googleusercontent.com"
+//        GIDSignIn.sharedInstance().serverClientID = "850179116799-024u4fn5ddmkm3dnius3fq3l1gs81toi.apps.googleusercontent.com"
+//
+//        let gaScope = "https://www.googleapis.com/auth/analytics.readonly"
+//        let gmbScope = "https://www.googleapis.com/auth/plus.business.manage"
+//        GIDSignIn.sharedInstance().scopes = [gaScope, gmbScope]
+//        GIDSignIn.sharedInstance().signOut()
+//
+//        GIDSignIn.sharedInstance().signIn()
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
