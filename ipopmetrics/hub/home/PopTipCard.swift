@@ -86,6 +86,15 @@ class PopTipCard: UITableViewCell {
         
     }
     
+    internal func updateVisibilityConnectionLine(_ indexPath: IndexPath) {
+        let cards = HomeHubSection().getSectionCardsThatHasActiveCellView(HomeSectionType.insights.rawValue)
+        if(cards.count - 1 == indexPath.row) {
+            connectionLine.isHidden = true;
+        } else {
+            connectionLine.isHidden = false
+        }
+    }
+    
     @objc func handlerActionButton() {
         guard let _ = feedCard else { return }
         delegate?.popTipCellDidTapAction(feedCard)

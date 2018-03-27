@@ -154,9 +154,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let emptyCard = UINib(nibName: "EmptyStateCard", bundle: nil)
         tableView.register(emptyCard, forCellReuseIdentifier: "EmptyStateCard")
         
-        let lastCellNib = UINib(nibName: "LastCard", bundle: nil)
-        tableView.register(lastCellNib, forCellReuseIdentifier: "LastCard")
-        
         let recommendedNib = UINib(nibName: "InsightCard", bundle: nil)
         tableView.register(recommendedNib, forCellReuseIdentifier: "InsightCard")
         
@@ -297,9 +294,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         case HomeCardType.insight.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "InsightCard", for: indexPath) as! InsightCard
             cell.configure(item, handler: recommendActionHandler)
-            if(cardsCount - 1 == indexPath.row) {
-                cell.connectionLine.isHidden = true;
-            }
+            cell.updateVisibilityConnectionLine(indexPath)
             cell.delegate = self
             
             return cell
@@ -307,18 +302,10 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         case HomeCardType.poptip.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PopTipCard", for: indexPath) as! PopTipCard
             cell.configure(item, handler: recommendActionHandler)
-            if(cardsCount - 1 == indexPath.row) {
-                cell.connectionLine.isHidden = true;
-            }
+            cell.updateVisibilityConnectionLine(indexPath)
             cell.delegate = self
-            
             return cell
             
-//        case HomeCardType.recommendedAction.rawValue:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedActionId", for: indexPath) as! IceCardViewCell
-//            cell.delegate = self
-//            cell.configure(item)
-//            return cell
         case HomeCardType.emptyState.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCard", for: indexPath) as! EmptyStateCard
             cell.selectionStyle = .none
