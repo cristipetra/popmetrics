@@ -189,6 +189,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
 //        self.navigationController?.isNavigationBarHidden = false
 //        self.navigationController?.isToolbarHidden = false
 
+
         tableView.alpha = 1
         let tabInfo = MainTabInfo.getInstance()
         let xValue = tabInfo.currentItemIndex >= tabInfo.lastItemIndex ? CGFloat(20) : CGFloat(-20)
