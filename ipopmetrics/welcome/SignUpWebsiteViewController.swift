@@ -110,14 +110,6 @@ class SignUpWebsiteViewController: BaseViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "enterPhoneNumberForSignUp" {
-            if let destinationVC = segue.destination as? LoginViewController {
-                destinationVC.isSignupFlow = true
-            }
-        }
-    }
-    
     
     func notifyUser(title: String, message: String, type: String = "info"){
         let notificationObj = [
