@@ -36,7 +36,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTh-Ej-IGn">
-                                                    <rect key="frame" x="8" y="12" width="45.5" height="20"/>
+                                                    <rect key="frame" x="8" y="12.5" width="45.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -79,7 +79,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALp-oJ-Lfx">
-                                                    <rect key="frame" x="8" y="12" width="155" height="20"/>
+                                                    <rect key="frame" x="8" y="12.5" width="155" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="155" id="Te4-7T-V2U"/>
                                                     </constraints>
@@ -124,7 +124,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Professional Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0iS-bx-YTh">
-                                                    <rect key="frame" x="8" y="12" width="139.5" height="20"/>
+                                                    <rect key="frame" x="8" y="12.5" width="139.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -153,7 +153,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARm-ZC-ras">
-                                                    <rect key="frame" x="8" y="12.5" width="117" height="20"/>
+                                                    <rect key="frame" x="8" y="12" width="117" height="20"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.46666666670000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -190,7 +190,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrA-d8-xSW">
-                                                    <rect key="frame" x="8" y="12.5" width="95.5" height="20"/>
+                                                    <rect key="frame" x="8" y="12" width="95.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -219,7 +219,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZS-w1-aVc">
-                                                    <rect key="frame" x="8" y="12" width="96" height="20"/>
+                                                    <rect key="frame" x="8" y="12.5" width="96" height="20"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -262,7 +262,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Replace Brand Logo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPz-Zf-d2o">
-                                                    <rect key="frame" x="8" y="12" width="156.5" height="20"/>
+                                                    <rect key="frame" x="8" y="12.5" width="156.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -282,34 +282,21 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Primary Web Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saK-58-0qo">
-                                                    <rect key="frame" x="8" y="12" width="164.5" height="20"/>
+                                                    <rect key="frame" x="8" y="12.5" width="164.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="www.primaryweb.com" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qad-Rm-eBp">
-                                                    <rect key="frame" x="182.5" y="11.5" width="151.5" height="20"/>
+                                                    <rect key="frame" x="182.5" y="11.5" width="174.5" height="20"/>
                                                     <color key="textColor" red="0.56078431370000004" green="0.56078431370000004" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IR1-rc-MYB">
-                                                    <rect key="frame" x="327" y="-0.5" width="40" height="44.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="HNe-Aj-wmz"/>
-                                                        <constraint firstAttribute="height" constant="44" id="R4O-Hz-SKT"/>
-                                                    </constraints>
-                                                    <state key="normal" image="iconEnvelope"/>
-                                                    <connections>
-                                                        <action selector="handlerEmailWebAddress:" destination="F0u-YJ-867" eventType="touchUpInside" id="FUR-9B-Oxg"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Qad-Rm-eBp" secondAttribute="trailing" constant="33" id="3iu-ZV-Uqe"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Qad-Rm-eBp" secondAttribute="trailing" constant="10" id="3iu-ZV-Uqe"/>
                                                 <constraint firstItem="saK-58-0qo" firstAttribute="leading" secondItem="hlZ-U0-XDH" secondAttribute="leadingMargin" id="FdF-Xx-79e"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="IR1-rc-MYB" secondAttribute="trailing" id="Flu-Le-hxv"/>
-                                                <constraint firstItem="IR1-rc-MYB" firstAttribute="centerY" secondItem="hlZ-U0-XDH" secondAttribute="centerY" id="KTM-S2-4Ur"/>
                                                 <constraint firstItem="Qad-Rm-eBp" firstAttribute="leading" secondItem="saK-58-0qo" secondAttribute="trailing" constant="10" id="MIc-9p-uAX"/>
                                                 <constraint firstItem="Qad-Rm-eBp" firstAttribute="centerY" secondItem="hlZ-U0-XDH" secondAttribute="centerY" id="fp2-dM-LcE"/>
                                                 <constraint firstItem="saK-58-0qo" firstAttribute="centerY" secondItem="hlZ-U0-XDH" secondAttribute="centerY" id="yLB-ux-lkt"/>
@@ -324,7 +311,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business Contact Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8O-ei-qRk">
-                                                    <rect key="frame" x="8" y="12" width="190.5" height="20"/>
+                                                    <rect key="frame" x="8" y="12.5" width="190.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -351,7 +338,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="334" height="80"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vTi-NK-lXN">
-                                                            <rect key="frame" x="16" y="16.5" width="318" height="48"/>
+                                                            <rect key="frame" x="16" y="17" width="318" height="48"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28f-Lr-SUU">
                                                                     <rect key="frame" x="0.0" y="0.0" width="144" height="20"/>
@@ -408,7 +395,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="342" height="80"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wM7-gw-zsY">
-                                                            <rect key="frame" x="8" y="16.5" width="334" height="48"/>
+                                                            <rect key="frame" x="8" y="17" width="334" height="48"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter Account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7WE-Fk-uyZ">
                                                                     <rect key="frame" x="8" y="0.0" width="118.5" height="20"/>
@@ -459,18 +446,18 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="DATA ACCOUNTS" id="jlb-mY-Gcp">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="cWP-Zw-6XS">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="cWP-Zw-6XS">
                                         <rect key="frame" x="0.0" y="763.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cWP-Zw-6XS" id="qCd-iZ-9HY">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4el-ZZ-4p3">
                                                     <rect key="frame" x="8" y="8" width="334" height="80"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fux-l3-ViW">
-                                                            <rect key="frame" x="0.0" y="16.5" width="334" height="48"/>
+                                                            <rect key="frame" x="0.0" y="17" width="334" height="48"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Analytics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZd-ST-g3k">
                                                                     <rect key="frame" x="0.0" y="0.0" width="128.5" height="20"/>
@@ -529,7 +516,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overlay Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZR-wp-sw0">
-                                                    <rect key="frame" x="8" y="12.5" width="149" height="20"/>
+                                                    <rect key="frame" x="8" y="13" width="149" height="20"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -549,7 +536,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overlay Action" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c75-Xq-Wlo">
-                                                    <rect key="frame" x="8" y="13" width="111" height="20"/>
+                                                    <rect key="frame" x="8" y="12.5" width="111" height="20"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -569,7 +556,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0al-p4-wOy">
-                                                    <rect key="frame" x="8" y="12.5" width="87" height="20"/>
+                                                    <rect key="frame" x="8" y="13" width="87" height="20"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -596,6 +583,7 @@
                         <outlet property="googleAnalyticsTracker" destination="W13-tI-Wsc" id="vDg-C5-INo"/>
                         <outlet property="name" destination="yRO-c8-Fla" id="jwu-UU-gSR"/>
                         <outlet property="phone" destination="Xl7-UJ-KaW" id="lH6-zD-ilf"/>
+                        <outlet property="primaryWebAddress" destination="Qad-Rm-eBp" id="LW7-3W-MxJ"/>
                         <outlet property="professionalEmail" destination="NeA-D3-zr2" id="AQD-0i-XHV"/>
                         <outlet property="twitterHandleField" destination="Wwq-VY-nip" id="AZs-ga-L6E"/>
                     </connections>
