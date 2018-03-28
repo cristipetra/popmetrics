@@ -104,6 +104,27 @@ class MyBusinessAcccount: Mappable {
         type           <- map["type"]
     }
     
+    func describe() -> String {
+        var description = "No locations defined"
+        if locations.count == 0 {
+            return description
+        }
+        var hq = 0
+        var primaryLocation = locations[0]
+        for location in locations {
+            if location.primaryCategory?.categoryId == "gcid:corporate_office" {
+                primaryLocation = location
+                break
+            }
+        }
+        description = primaryLocation.locationName ?? "Undefined name"
+        if locations.count > 1 {
+            description = String(format:"%@ with %d locations", description, locations.count)
+        }
+        return description
+        
+    }
+    
     
 }
 

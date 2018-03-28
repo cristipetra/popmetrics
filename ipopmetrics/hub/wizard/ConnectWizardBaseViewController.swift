@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class ConnectWizardBaseViewController: UIViewController {
+class ConnectWizardBaseViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,21 +33,10 @@ class ConnectWizardBaseViewController: UIViewController {
     }
     */
     
-    internal func addShadowToView(_ toView: UIView) {
-        toView.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor
-        toView.layer.shadowOpacity = 0.3;
-        toView.layer.shadowRadius = 2
-        toView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+    func add(asChildViewController viewController: UIViewController) {
+        print("Override me!")
     }
     
-    internal func presentAlertWithTitle(_ title: String, message: String, useWhisper: Bool = false) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(OKAction)
-        DispatchQueue.main.async(execute: {
-            self.present(alertController, animated: true, completion: nil)
-        })
-    }
     
     internal func createHeaders( authToken:String = "" ) -> HTTPHeaders {
         var headers = [String: String]()
@@ -61,26 +50,32 @@ class ConnectWizardBaseViewController: UIViewController {
         return headers
     }
     
+    func showError(_ message:String, instruction: String) {
+        let vc = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: "ConnectWizardErrorViewController") as! ConnectWizardErrorViewController
+        vc.configure(message:message, instruction:instruction)
+        self.add(asChildViewController: vc)
+    }
+    
+    func showOk(_ message:String, instruction: String) {
+        let vc = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: "ConnectWizardOkViewController") as! ConnectWizardOkViewController
+        vc.configure(message:message, instruction:instruction)
+        self.add(asChildViewController: vc)
+    }
+    
     internal func handleNotOkCodes(response: HTTPURLResponse?) -> Bool {
         if response?.statusCode == 404 {
-            NotificationCenter.default.post(name: Notification.Popmetrics.ApiResponseUnsuccessfull, object: nil,
-                                            userInfo: ["title": "Cloud communication error.",
-                                                       "subtitle":"The requested resource does not exist",
-                                                       "type":"failure"])
+            self.showError("There was an error connecting your account with Popmetrics",
+                           instruction:"Please try again.")
             return true
         }
         if response?.statusCode == 401 {
-            NotificationCenter.default.post(name: Notification.Popmetrics.ApiClientNotAuthenticated, object: nil,
-                                            userInfo: ["title": "Cloud communication error.",
-                                                       "subtitle":"User is not authorized.",
-                                                       "type":"failure"])
+            self.showError("There was an error connecting your account with Popmetrics",
+                           instruction:"Please try again.")
             return true
         }
         if response?.statusCode != 200 {
-            NotificationCenter.default.post(name: Notification.Popmetrics.ApiFailure, object: nil,
-                                            userInfo: ["title": "Cloud communication error.",
-                                                       "subtitle":"",
-                                                       "type":"failure"])
+            self.showError("There was an error connecting your account with Popmetrics",
+                           instruction:"Please try again.")
             return true
         }
         return false
@@ -89,10 +84,8 @@ class ConnectWizardBaseViewController: UIViewController {
     internal func handleResponseWrap(_ responseWrap: ResponseWrap) -> Bool{
         let value = responseWrap
         if value.getCode() != "success" && value.getCode() != "silent_error" {
-            NotificationCenter.default.post(name: Notification.Popmetrics.ApiResponseUnsuccessfull, object: nil,
-                                            userInfo: ["title": "Cloud communication error.",
-                                                       "subtitle":"Operation was unsuccessfull",
-                                                       "type":"failure"])
+            self.showError("There was an error connecting your account with Popmetrics",
+                           instruction:"Please try again.")
             return true
         }
         return false

@@ -10,7 +10,7 @@ import UIKit
 class ProgressHUD: UIVisualEffectView {
     
     var text: String? {
-        didSet {
+    didSet {
             label.text = text
         }
     }

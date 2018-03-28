@@ -16,7 +16,12 @@ final class GoogleMyBusinessPickerTableViewCell: UITableViewCell {
     func configure(account: MyBusinessAcccount) {
         
         nameLabel.text = account.accountName
-        locationsLabel.text = String(format:"%@ locations", account.locations.count)
+        let count = account.locations.count
+        var format = "%d locations"
+        if count<1 {
+            format = "%d location"
+        }
+        locationsLabel.text = String(format:format, account.locations.count)
     }
 }
 
@@ -57,6 +62,12 @@ class GoogleMyBusinessPickerTableVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GoogleMyBusinessPickerTableViewCell", for: indexPath) as! GoogleMyBusinessPickerTableViewCell
         cell.configure(account:self.accounts[indexPath.row])
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let account = self.accounts[indexPath.row]
+        let pvc = self.parent as! ConnectWizardGoogleMyBusinessVC
+        pvc.didPickAccount(account)
     }
 
 
