@@ -20,6 +20,7 @@ class StaticSettingsViewController: BaseTableViewController {
     @IBOutlet weak var brandName: UITextField!
     @IBOutlet weak var allowSounds: UISwitch!
     @IBOutlet weak var allowNotifications: UISwitch!
+    @IBOutlet weak var primaryWebAddress: UITextField!
     
     
     @IBOutlet weak var facebookHandleField: UITextField!
@@ -79,6 +80,10 @@ class StaticSettingsViewController: BaseTableViewController {
         name.text = user.name
         phone.text = user.phone
         professionalEmail.text = user.email
+        
+        
+        primaryWebAddress.text = user.businessURL
+        primaryWebAddress.text = currentBrand?.domainURL ?? ""
         
         brandName.text = UserStore.currentBrand?.name
         

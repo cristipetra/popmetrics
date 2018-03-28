@@ -112,7 +112,7 @@ class TodoHubController: BaseViewController {
         
         
         self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedSectionHeaderHeight = 70
+        self.tableView.estimatedSectionHeaderHeight = 60
         
         self.tableView.sectionFooterHeight = UITableViewAutomaticDimension
         self.tableView.estimatedSectionFooterHeight = 0
@@ -519,11 +519,6 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         self.navigationController?.pushViewController(detailsVC, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 70
-        
-    }
-    
     func addApprovedView() {
         self.view.insertSubview(bannerMessageView, aboveSubview: tableView)
         
@@ -574,8 +569,8 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
         let cell = tableView.dequeueReusableCell(withIdentifier: "HubSectionCell") as! HubSectionCell
-        cell.sectionTitleLabel.text = todoSection?.sectionTitle().uppercased()
         cell.sectionTitleLabel.text = todoSection?.rawValue.uppercased()
+        cell.backgroundColor = .yellow
         return cell
     }
     

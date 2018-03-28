@@ -71,13 +71,21 @@ class SignUpEmailViewController: BaseViewController {
             self.hideProgressIndicator()
             
             if response?.code == "success" {
-                (self.navigationController as! BoardingNavigationController).registerBrand.website = response?.data!
+                (self.navigationController as! BoardingNavigationController).registerBrand.workEmail = response?.data!
                 self.performSegue(withIdentifier: "enterPhoneNumberForSignUp", sender: self)
             } else {
                 let title = "Error"
                 let message = response?.message ?? "An error has ocurred. Please try again later."
                 
                 self.notifyUser(title: title, message: message)
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "enterPhoneNumberForSignUp" {
+            if let destinationVC = segue.destination as? LoginViewController {
+                destinationVC.isSignupFlow = true
             }
         }
     }
