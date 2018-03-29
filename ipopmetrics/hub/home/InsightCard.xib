@@ -118,6 +118,7 @@
             <connections>
                 <outlet property="backgroundImageView" destination="eYK-Rm-n8D" id="mxG-0I-sKi"/>
                 <outlet property="connectionLine" destination="aKF-7W-goR" id="b3u-fh-R1G"/>
+                <outlet property="constraintBottomContainerView" destination="Zsq-Xp-KUl" id="shY-e7-fkT"/>
                 <outlet property="containerView" destination="xmp-ns-pr3" id="wmC-SX-gjn"/>
                 <outlet property="footerVIew" destination="aL3-tc-p25" id="wBZ-Bv-RFJ"/>
                 <outlet property="messageLabel" destination="YEd-JZ-7L4" id="hZm-2p-cpQ"/>

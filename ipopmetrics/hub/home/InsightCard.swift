@@ -22,6 +22,7 @@ class InsightCard: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var footerVIew: FooterView!
+    @IBOutlet weak var constraintBottomContainerView: NSLayoutConstraint!
     
     private var feedCard: FeedCard!
     weak var delegate: RecommendeCellDelegate?
@@ -92,8 +93,10 @@ class InsightCard: UITableViewCell {
         let cards = HomeHubSection().getSectionCardsThatHasActiveCellView(HomeSectionType.insights.rawValue)
         if(cards.count - 1 == indexPath.row) {
             connectionLine.isHidden = true;
+            constraintBottomContainerView.constant = 0
         } else {
             connectionLine.isHidden = false
+            constraintBottomContainerView.constant = 37
         }
     }
     
