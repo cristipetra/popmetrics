@@ -90,7 +90,6 @@ class ConnectWizardGoogleMyBusinessVC: ConnectWizardBaseViewController, Flexible
     }
     
     func start() {
-        self.mainButton.titleLabel?.text = "Authenticate"
         let startVC = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: "ConnectWizardStartVC") as! ConnectWizardStartVC
         self.add(asChildViewController: startVC)
     }
@@ -141,7 +140,7 @@ class ConnectWizardGoogleMyBusinessVC: ConnectWizardBaseViewController, Flexible
         self.showProgressIndicator()
         Alamofire.request(url, method: .get, parameters: params,
                           headers:headers).responseObject() { (response: DataResponse<MyBusinessAccountsResponse>) in
-
+                            self.accounts = [MyBusinessAcccount]()
                             let accounts = response.result.value?.accounts
                             self.remainingAccounts = (accounts?.count)!
                             for account in accounts! {
@@ -192,7 +191,7 @@ class ConnectWizardGoogleMyBusinessVC: ConnectWizardBaseViewController, Flexible
     }
     
     func showAccountPicker() {
-        
+        self.mainButton.isEnabled = false
         var locatedAccounts = [MyBusinessAcccount]()
         for account in self.accounts {
             if account.locations.count > 0 {
@@ -218,8 +217,10 @@ class ConnectWizardGoogleMyBusinessVC: ConnectWizardBaseViewController, Flexible
         let confirmVC = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: "ConnectWizardGoogleMyBusinessAccountConfirmation") as! ConnectWizardGoogleMyBusinessAccountConfirmationVC
         confirmVC.configure(account:account, signedUser:self.signedUser!)
         self.add(asChildViewController: confirmVC)
-        self.mainButton.titleLabel?.text = "Confirm"
+        self.mainButton.isEnabled = true
         self.mainButton.titleLabel?.textAlignment = .center
+        self.mainButton.titleLabel?.text = "Confirm"
+
         self.pickedAccount = account
     }
     
@@ -229,7 +230,7 @@ class ConnectWizardGoogleMyBusinessVC: ConnectWizardBaseViewController, Flexible
         let url = ApiUrls.composedBaseUrl(String(format:"/api/actions/brand/%@/wizard-required-action", brandId))
         
         let params = [
-            "task_name": "ganalytics.connect_with_brand",
+            "action_name": "gmybusiness.connect_with_brand",
             "user_id": UserStore().getLocalUserAccount().id ?? "",
             "client_id":GIDSignIn.sharedInstance().clientID,
             "token":signedUser?.authentication.idToken ?? "",
@@ -252,6 +253,8 @@ class ConnectWizardGoogleMyBusinessVC: ConnectWizardBaseViewController, Flexible
                                 self.progressBar.currentIndex = self.steps.count-1
                                 self.cancelButton.isHidden = true
                                 self.showOk("We have successfully connected Popmetrics with your Google My Business account", instruction:"Stay tuned for more insights")
+                                self.mainButton.titleLabel?.text = "Done"
+                                FeedStore.getInstance().archiveCard(self.actionCard!)
                             }
 
         }
