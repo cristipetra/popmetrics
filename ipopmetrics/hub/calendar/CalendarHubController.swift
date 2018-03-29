@@ -114,7 +114,10 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
         tableView.separatorStyle = .none
         
         self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedSectionHeaderHeight = 109
+        self.tableView.estimatedSectionHeaderHeight = 60
+        
+        self.tableView.sectionFooterHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedSectionFooterHeight = 0.1
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 200
@@ -150,6 +153,15 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
             calendarViewController = segue.destination as? MJCalendarViewController
             calendarViewController!.containerToMaster = self
         }
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let emptyView = UIView()
+        emptyView.backgroundColor = .clear
+        emptyView.translatesAutoresizingMaskIntoConstraints = false
+        //workaround if I put 0 it doens't work
+        emptyView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        return emptyView
     }
     
     func setDatesSelected(datesSelected: Int) {
@@ -198,14 +210,8 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
         let calendarCardNib = UINib(nibName: "CalendarCard", bundle: nil)
         tableView.register(calendarCardNib, forCellReuseIdentifier: "CalendarCard")
         
-        let calendarCardSimpleNib = UINib(nibName: "CalendarCardSimple", bundle: nil)
-        tableView.register(calendarCardSimpleNib, forCellReuseIdentifier: "CalendarCardSimple")
-        
         let calendarCardCompletedActionNib = UINib(nibName: "CalendarCompletedAction", bundle: nil)
         tableView.register(calendarCardCompletedActionNib, forCellReuseIdentifier: "CalendarCompletedAction")
-        
-        let sectionHeaderNib = UINib(nibName: "CalendarHeaderViewCell", bundle: nil)
-        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CalendarHeaderViewCell")
         
         let sectionHeaderCardNib = UINib(nibName: "HubSectionCell", bundle: nil)
         tableView.register(sectionHeaderCardNib, forCellReuseIdentifier: "HubSectionCell")
@@ -359,10 +365,8 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         return UITableViewCell()
     }
     
-
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
         let currentCell = tableView.cellForRow(at: indexPath)
         
         if currentCell is CalendarCardViewCell {
@@ -377,7 +381,6 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
             self.navigationController?.pushViewController(detailsVC, animated: true)
         }
     }
- 
     
     @objc private func goToNextTab() {
         self.tabBarController?.selectedIndex = 0
