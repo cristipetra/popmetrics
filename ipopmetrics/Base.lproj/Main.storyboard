@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -454,10 +454,10 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MTa-KH-EBT">
-                                <rect key="frame" x="29" y="187" width="320" height="132"/>
+                                <rect key="frame" x="29" y="187" width="320" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCx-hh-YS9">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="33"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="UPGRADE SUBSCRIPTION">
                                             <color key="titleColor" name="blue_bottle"/>
@@ -467,7 +467,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCx-hh-YS8">
-                                        <rect key="frame" x="0.0" y="33" width="320" height="33"/>
+                                        <rect key="frame" x="0.0" y="30" width="320" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="SETTINGS">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -477,7 +477,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWk-9n-6Qe" userLabel="ABOUT POPMETRICS">
-                                        <rect key="frame" x="0.0" y="66" width="320" height="33"/>
+                                        <rect key="frame" x="0.0" y="60" width="320" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="ABOUT POPMETRICS">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -487,7 +487,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxF-Rq-8jP">
-                                        <rect key="frame" x="0.0" y="99" width="320" height="33"/>
+                                        <rect key="frame" x="0.0" y="90" width="320" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="LEGAL INFORMATION">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -499,7 +499,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybe-Us-fFL">
-                                <rect key="frame" x="29" y="368" width="63" height="33"/>
+                                <rect key="frame" x="29" y="356" width="62" height="30"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="LOGOUT">
                                     <color key="titleColor" red="1" green="0.46666666670000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -523,7 +523,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOi-K4-4l3">
-                                <rect key="frame" x="3" y="347" width="370" height="1"/>
+                                <rect key="frame" x="3" y="335" width="370" height="1"/>
                                 <color key="backgroundColor" red="0.74117647060000003" green="0.7725490196" blue="0.79607843140000001" alpha="0.50449486301369861" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="16o-2h-RXg"/>
@@ -882,7 +882,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Qe5-WS-C7z">
-                                <rect key="frame" x="0.0" y="214" width="375" height="453"/>
+                                <rect key="frame" x="0.0" y="214" width="375" height="403"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="oy5-0D-0Qc" id="9xp-DT-Mo0"/>
@@ -899,12 +899,12 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Qe5-WS-C7z" firstAttribute="leading" secondItem="Pns-IB-ewy" secondAttribute="leading" id="3FN-na-qId"/>
                             <constraint firstItem="IsD-kl-eqk" firstAttribute="leading" secondItem="Pns-IB-ewy" secondAttribute="leading" id="Dc4-xE-U2c"/>
                             <constraint firstItem="IsD-kl-eqk" firstAttribute="top" secondItem="Pns-IB-ewy" secondAttribute="top" id="TJO-IB-www"/>
-                            <constraint firstItem="Pns-IB-ewy" firstAttribute="bottom" secondItem="Qe5-WS-C7z" secondAttribute="bottom" id="X2T-Dr-7G9"/>
+                            <constraint firstItem="Qe5-WS-C7z" firstAttribute="bottom" secondItem="Pns-IB-ewy" secondAttribute="bottom" constant="-50" id="YDk-Vk-i9E"/>
                             <constraint firstItem="Qe5-WS-C7z" firstAttribute="top" secondItem="IsD-kl-eqk" secondAttribute="bottom" id="q1K-8n-64q"/>
                             <constraint firstItem="Pns-IB-ewy" firstAttribute="trailing" secondItem="IsD-kl-eqk" secondAttribute="trailing" id="tM3-rY-ceH"/>
                             <constraint firstItem="Pns-IB-ewy" firstAttribute="trailing" secondItem="Qe5-WS-C7z" secondAttribute="trailing" id="zYg-RK-XBe"/>
