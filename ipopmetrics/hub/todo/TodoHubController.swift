@@ -570,7 +570,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         let todoSection = TodoSection.init(rawValue: self.indexToSection[section]!)
         let cell = tableView.dequeueReusableCell(withIdentifier: "HubSectionCell") as! HubSectionCell
         cell.sectionTitleLabel.text = todoSection?.rawValue.uppercased()
-        cell.backgroundColor = .yellow
+        
         return cell
     }
     
