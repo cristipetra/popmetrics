@@ -35,9 +35,7 @@ class InsightPageDetailsViewController: BaseViewController {
     private var recommendActionHandler: RecommendActionHandler?
     var cardInfoHandlerDelegate: CardInfoHandler?
     
-    
-    let statsView = IndividualTaskView()
-    
+
     var bottomContainerViewBottomAnchor: NSLayoutConstraint!
     internal var isBottomVisible = false
     

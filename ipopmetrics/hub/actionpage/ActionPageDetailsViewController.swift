@@ -42,7 +42,6 @@ class ActionPageDetailsViewController: BaseViewController {
     
     private var actionModel: ActionPageModel!
     
-    let statsView = IndividualTaskView()
     let iceView = IceExtendView()
     
     let persistentFooter: PersistentFooter =  PersistentFooter()
