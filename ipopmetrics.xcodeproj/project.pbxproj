@@ -67,6 +67,7 @@
 		08732B35203EE5A900EF4C51 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08732B34203EE5A900EF4C51 /* SettingsHeaderView.swift */; };
 		08755F461FCC11E600A8CF13 /* SocialPostDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */; };
 		08755F4C1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */; };
+		0877463D206E2CCB00B94DDD /* ActionStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0877463C206E2CCB00B94DDD /* ActionStatusViewController.swift */; };
 		087A868B206A954400A2E6A9 /* HomeHubSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087A868A206A954400A2E6A9 /* HomeHubSection.swift */; };
 		088674111FE28506008DB87E /* LoginSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088674101FE28506008DB87E /* LoginSocialViewController.swift */; };
 		088674131FE285A0008DB87E /* SocialMediaLoginButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088674121FE285A0008DB87E /* SocialMediaLoginButtonsView.swift */; };
@@ -345,6 +346,7 @@
 		08732B34203EE5A900EF4C51 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SocialPostDetails.xib; sourceTree = "<group>"; };
 		08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPostDetailsViewController.swift; sourceTree = "<group>"; };
+		0877463C206E2CCB00B94DDD /* ActionStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionStatusViewController.swift; sourceTree = "<group>"; };
 		087A868A206A954400A2E6A9 /* HomeHubSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHubSection.swift; sourceTree = "<group>"; };
 		0881D6E11F371466001E28D4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		088674101FE28506008DB87E /* LoginSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSocialViewController.swift; sourceTree = "<group>"; };
@@ -990,6 +992,7 @@
 				08A51D301FC6EF520097B334 /* ActionInstructionsPage.xib */,
 				08A51D321FC6EF6D0097B334 /* ActionInstructionsPageViewController.swift */,
 				086B453B1FDC22530043F981 /* PersistentFooter.swift */,
+				0877463C206E2CCB00B94DDD /* ActionStatusViewController.swift */,
 			);
 			path = actionpage;
 			sourceTree = "<group>";
@@ -1758,6 +1761,7 @@
 				1198436C205BC0E700C63201 /* GoogleApi.swift in Sources */,
 				08B4EB9F1FC56A0C00BFC5A1 /* UserStore.swift in Sources */,
 				08CCFFE81FDD977700755295 /* ActionTodoButton.swift in Sources */,
+				0877463D206E2CCB00B94DDD /* ActionStatusViewController.swift in Sources */,
 				08B2803F1F55862100E36D19 /* Statistics.swift in Sources */,
 				08BAD73E1F960A70008BC88F /* MJCalendarViewController.swift in Sources */,
 				085CB7B61F4ADD9C00038C03 /* NotificationsViewController.swift in Sources */,
