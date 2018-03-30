@@ -43,12 +43,16 @@ class PersistentFooter: UIView {
         setup()
     }
     
-    func setup() {
+    private func setup() {
         self.backgroundColor = .white
         
         self.addSubview(leftBtn)
         self.addSubview(rightBtn)
         self.addSubview(separatorView)
+        
+    }
+    
+    override func layoutSubviews() {
         
         leftBtn.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 25).isActive = true
         leftBtn.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
@@ -65,6 +69,8 @@ class PersistentFooter: UIView {
         separatorView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         separatorView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         separatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
     }
+    
 
 }
