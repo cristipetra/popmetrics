@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -32,7 +32,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="FEED_VC" title="My Homes Table View Controller" modalPresentationStyle="pageSheet" id="KcM-MX-1lY" userLabel="Feed Table View Controller" customClass="HomeHubViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="2" rowHeight="182" sectionHeaderHeight="18" sectionFooterHeight="18" id="IDh-YP-3oO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <inset key="scrollIndicatorInsets" minX="0.0" minY="32" maxX="0.0" maxY="48"/>
@@ -65,8 +65,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="660"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sf5-uX-4Fo" customClass="FlexibleSteppedProgressBar" customModule="FlexibleSteppedProgressBar">
-                                <rect key="frame" x="16" y="16" width="343" height="120"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sf5-uX-4Fo" customClass="FlexibleSteppedProgressBar" customModule="FlexibleSteppedProgressBar">
+                                <rect key="frame" x="16" y="20" width="343" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="5k6-LT-Yfv"/>
@@ -77,8 +77,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFill" semanticContentAttribute="spatial" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gJs-uo-UQj">
-                                <rect key="frame" x="20" y="160" width="343" height="500"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" semanticContentAttribute="spatial" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gJs-uo-UQj">
+                                <rect key="frame" x="16" y="160" width="343" height="500"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect Popmetrics to your" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8K-nQ-F9a">
                                 <rect key="frame" x="73" y="179" width="228.5" height="21"/>
@@ -86,27 +86,30 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Facebook Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CV7-bE-s03">
-                                <rect key="frame" x="116" y="220" width="143" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CV7-bE-s03">
+                                <rect key="frame" x="118.5" y="216" width="138.5" height="23"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aSy-dJ-CVF">
+                            <containerView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aSy-dJ-CVF">
                                 <rect key="frame" x="16" y="264" width="343" height="336"/>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q80-mc-6QL">
-                                <rect key="frame" x="143" y="617" width="123" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q80-mc-6QL">
+                                <rect key="frame" x="130" y="616" width="115" height="36"/>
                                 <color key="backgroundColor" name="venice_winter"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="H8P-vq-cwj"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                 <state key="normal" title="Authenticate">
                                     <color key="titleColor" name="blue_bottle"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -116,18 +119,21 @@
                                     <action selector="mainButtonTouched:" destination="0cD-cM-vxf" eventType="touchUpInside" id="SpS-gs-GBe"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="das-00-u0G">
-                                <rect key="frame" x="305" y="616" width="50" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="das-00-u0G">
+                                <rect key="frame" x="302" y="616" width="53" height="36"/>
                                 <color key="backgroundColor" name="venice_winter"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="j8U-c4-3UE"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="11"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" name="red_light"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -144,16 +150,20 @@
                             <constraint firstItem="aSy-dJ-CVF" firstAttribute="leading" secondItem="gJs-uo-UQj" secondAttribute="leading" id="BV3-hL-fAH"/>
                             <constraint firstItem="B66-en-DYP" firstAttribute="trailing" secondItem="gJs-uo-UQj" secondAttribute="trailing" constant="16" id="E30-QP-MKE"/>
                             <constraint firstItem="gJs-uo-UQj" firstAttribute="leading" secondItem="B66-en-DYP" secondAttribute="leading" constant="16" id="Fxx-y4-Af0"/>
+                            <constraint firstItem="B66-en-DYP" firstAttribute="trailing" secondItem="das-00-u0G" secondAttribute="trailing" constant="20" id="Hlg-Br-Qoc"/>
                             <constraint firstItem="CV7-bE-s03" firstAttribute="top" secondItem="e8K-nQ-F9a" secondAttribute="bottom" constant="16" id="LSL-ds-g9l"/>
                             <constraint firstItem="sf5-uX-4Fo" firstAttribute="leading" secondItem="B66-en-DYP" secondAttribute="leading" constant="16" id="Qbf-hA-gUg"/>
                             <constraint firstItem="B66-en-DYP" firstAttribute="bottom" secondItem="aSy-dJ-CVF" secondAttribute="bottom" constant="60" id="R5y-lp-wJC"/>
+                            <constraint firstItem="Q80-mc-6QL" firstAttribute="centerX" secondItem="B66-en-DYP" secondAttribute="centerX" id="RZq-zv-Woy"/>
                             <constraint firstItem="aSy-dJ-CVF" firstAttribute="top" secondItem="CV7-bE-s03" secondAttribute="bottom" constant="25" id="Rew-nM-P6A"/>
                             <constraint firstItem="gJs-uo-UQj" firstAttribute="top" secondItem="e8K-nQ-F9a" secondAttribute="bottom" constant="-40" id="YnQ-7M-03u"/>
                             <constraint firstItem="aSy-dJ-CVF" firstAttribute="trailing" secondItem="gJs-uo-UQj" secondAttribute="trailing" id="a2e-Yy-CiM"/>
                             <constraint firstItem="B66-en-DYP" firstAttribute="bottom" secondItem="gJs-uo-UQj" secondAttribute="bottom" id="c5f-ki-QPm"/>
                             <constraint firstItem="e8K-nQ-F9a" firstAttribute="centerX" secondItem="apa-d2-Cnc" secondAttribute="centerX" id="cMg-EK-17Q"/>
                             <constraint firstItem="gJs-uo-UQj" firstAttribute="top" secondItem="sf5-uX-4Fo" secondAttribute="bottom" priority="800" constant="20" id="ciG-Xp-VgN"/>
+                            <constraint firstItem="B66-en-DYP" firstAttribute="bottom" secondItem="Q80-mc-6QL" secondAttribute="bottom" constant="8" id="iQ0-Fm-y7j"/>
                             <constraint firstItem="B66-en-DYP" firstAttribute="trailing" secondItem="sf5-uX-4Fo" secondAttribute="trailing" constant="16" id="swU-m2-xwO"/>
+                            <constraint firstItem="das-00-u0G" firstAttribute="top" secondItem="Q80-mc-6QL" secondAttribute="top" id="ulp-aH-Cp9"/>
                             <constraint firstItem="B66-en-DYP" firstAttribute="top" secondItem="sf5-uX-4Fo" secondAttribute="top" id="zn8-pf-j7j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B66-en-DYP"/>
@@ -174,7 +184,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eap-zI-prW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="714" y="-1700"/>
+            <point key="canvasLocation" x="713.5" y="-1700"/>
         </scene>
         <!--Insight Page Details View Controller-->
         <scene sceneID="rap-Wa-ubO">
@@ -402,11 +412,11 @@ article has some meta thing telling the computer that it’s magically got to ch
             <objects>
                 <viewController storyboardIdentifier="MENU_VC" id="vgc-BL-sQ3" customClass="MenuViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A0N-Un-MwM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="-13" translatesAutoresizingMaskIntoConstraints="NO" id="lCf-hh-gEv">
-                                <rect key="frame" x="0.0" y="10" width="375" height="62"/>
+                                <rect key="frame" x="0.0" y="10" width="320" height="62"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vqp-bm-yP8">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="62"/>
@@ -436,7 +446,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11s-yx-GKo">
-                                        <rect key="frame" x="174" y="0.0" width="201" height="62"/>
+                                        <rect key="frame" x="174" y="0.0" width="146" height="62"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
@@ -446,7 +456,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </constraints>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuLogo" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-wi-QSE">
-                                <rect key="frame" x="127.5" y="587" width="120" height="28"/>
+                                <rect key="frame" x="100" y="488" width="120" height="28"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="P2W-yq-FLh"/>
@@ -454,10 +464,10 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MTa-KH-EBT">
-                                <rect key="frame" x="29" y="187" width="320" height="120"/>
+                                <rect key="frame" x="29" y="187" width="265" height="132"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCx-hh-YS9">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="265" height="33"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="UPGRADE SUBSCRIPTION">
                                             <color key="titleColor" name="blue_bottle"/>
@@ -467,7 +477,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCx-hh-YS8">
-                                        <rect key="frame" x="0.0" y="30" width="320" height="30"/>
+                                        <rect key="frame" x="0.0" y="33" width="265" height="33"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="SETTINGS">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -477,7 +487,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWk-9n-6Qe" userLabel="ABOUT POPMETRICS">
-                                        <rect key="frame" x="0.0" y="60" width="320" height="30"/>
+                                        <rect key="frame" x="0.0" y="66" width="265" height="33"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="ABOUT POPMETRICS">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -487,7 +497,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxF-Rq-8jP">
-                                        <rect key="frame" x="0.0" y="90" width="320" height="30"/>
+                                        <rect key="frame" x="0.0" y="99" width="265" height="33"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="LEGAL INFORMATION">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -509,28 +519,28 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rf7-5q-oor">
-                                <rect key="frame" x="3" y="67" width="370" height="1"/>
+                                <rect key="frame" x="3" y="67" width="315" height="1"/>
                                 <color key="backgroundColor" red="0.74117647058823533" green="0.77254901960784317" blue="0.79607843137254897" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="XHo-Nr-FYb"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JhQ-kz-dOw">
-                                <rect key="frame" x="3" y="171" width="370" height="1"/>
+                                <rect key="frame" x="3" y="171" width="315" height="1"/>
                                 <color key="backgroundColor" red="0.74117647060000003" green="0.7725490196" blue="0.79607843140000001" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Z2W-EX-Vr2"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOi-K4-4l3">
-                                <rect key="frame" x="3" y="335" width="370" height="1"/>
+                                <rect key="frame" x="3" y="347" width="315" height="1"/>
                                 <color key="backgroundColor" red="0.74117647060000003" green="0.7725490196" blue="0.79607843140000001" alpha="0.50449486301369861" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="16o-2h-RXg"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BRAND NAME 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ee4-oK-e3k">
-                                <rect key="frame" x="29" y="88" width="283" height="21"/>
+                                <rect key="frame" x="29" y="88" width="228" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="5qY-7E-LWR"/>
                                 </constraints>
@@ -553,7 +563,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HcS-fh-OPC">
-                                <rect key="frame" x="322" y="82" width="28" height="28"/>
+                                <rect key="frame" x="267" y="82" width="28" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="TlE-lK-LNb"/>
                                     <constraint firstAttribute="width" constant="28" id="d9k-7I-pEv"/>
@@ -562,7 +572,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 <state key="normal" image="brandNameCheck"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZd-QI-7te">
-                                <rect key="frame" x="174.5" y="635" width="26.5" height="12"/>
+                                <rect key="frame" x="147" y="536" width="26.5" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -655,11 +665,11 @@ article has some meta thing telling the computer that it’s magically got to ch
             <objects>
                 <viewController title="Account Settings View Controller" id="aLn-zU-J6Q" customClass="AccountViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cWH-SY-6Kv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hlI-OT-hrN">
-                                <rect key="frame" x="147.5" y="52" width="80" height="80"/>
+                                <rect key="frame" x="120" y="52" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="JLu-hy-Rol"/>
                                     <constraint firstAttribute="width" constant="80" id="zqB-DE-fq7"/>
@@ -670,7 +680,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(tap the icon to change your picture)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o80-3K-tKi">
-                                <rect key="frame" x="16" y="140" width="343" height="14.5"/>
+                                <rect key="frame" x="16" y="140" width="288" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -758,7 +768,7 @@ article has some meta thing telling the computer that it’s magically got to ch
             <objects>
                 <viewController storyboardIdentifier="ConciergeChatViewController" id="mhc-LI-Iws" customClass="ConciergeChatViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2QM-8m-dkq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="pcp-Ph-sAO"/>
@@ -774,7 +784,7 @@ article has some meta thing telling the computer that it’s magically got to ch
             <objects>
                 <viewController id="ajN-DG-2n1" customClass="IntercomViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gJ6-q8-bDb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="PBh-1R-0nh"/>
@@ -795,7 +805,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                     <tabBarItem key="tabBarItem" title="" image="inactive_home" selectedImage="active_home" id="g6b-nh-pyf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="z2a-iC-IPh">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -812,18 +822,18 @@ article has some meta thing telling the computer that it’s magically got to ch
             <objects>
                 <viewController storyboardIdentifier="TodoHubController" id="v2H-b7-whD" customClass="TodoHubController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QLa-Rf-XYy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bo8-db-YCb" customClass="TodoTopView" customModule="ipopmetrics" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="61"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="61"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="asd-35-gC2"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="q5g-rj-92z">
-                                <rect key="frame" x="0.0" y="125" width="375" height="493"/>
+                                <rect key="frame" x="0.0" y="125" width="320" height="394"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="v2H-b7-whD" id="4D1-WY-aEV"/>
@@ -861,7 +871,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                     <tabBarItem key="tabBarItem" tag="1" title="" image="inactive_todo" selectedImage="active_todo" id="7jf-rH-iYN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="chd-dM-Toj">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -878,11 +888,11 @@ article has some meta thing telling the computer that it’s magically got to ch
             <objects>
                 <viewController storyboardIdentifier="CalendarID" extendedLayoutIncludesOpaqueBars="YES" id="oy5-0D-0Qc" customClass="CalendarHubController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sm8-rA-m91">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Qe5-WS-C7z">
-                                <rect key="frame" x="0.0" y="214" width="375" height="403"/>
+                                <rect key="frame" x="0.0" y="214" width="320" height="354"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="oy5-0D-0Qc" id="9xp-DT-Mo0"/>
@@ -890,7 +900,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </connections>
                             </tableView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IsD-kl-eqk">
-                                <rect key="frame" x="0.0" y="64" width="375" height="150"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="brR-9G-Vwi"/>
                                 </constraints>
@@ -927,21 +937,21 @@ article has some meta thing telling the computer that it’s magically got to ch
             <objects>
                 <viewController extendedLayoutIncludesOpaqueBars="YES" id="LQ7-p4-nv0" customClass="MJCalendarViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eSt-vQ-J6f">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IpV-KU-rq8" customClass="MJCalendarView" customModule="MJCalendar">
-                                <rect key="frame" x="0.0" y="72" width="375" height="78"/>
+                                <rect key="frame" x="0.0" y="72" width="320" height="78"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="78" id="Wa8-3o-Y3z"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efz-Yf-Kla">
-                                <rect key="frame" x="17" y="8" width="341" height="56"/>
+                                <rect key="frame" x="17" y="8" width="286" height="56"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="iao-uO-8Xx">
-                                        <rect key="frame" x="0.0" y="13" width="341" height="30"/>
+                                        <rect key="frame" x="0.0" y="13" width="286" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apr 9 - Apr 15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iK0-gm-MsK">
                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
@@ -953,7 +963,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pej-ci-Vte">
-                                                <rect key="frame" x="176.5" y="0.0" width="11" height="30"/>
+                                                <rect key="frame" x="158" y="0.0" width="11" height="30"/>
                                                 <color key="tintColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" image="calendarArrowIcon"/>
                                                 <connections>
@@ -961,7 +971,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hja-3o-DyE">
-                                                <rect key="frame" x="243.5" y="0.0" width="11" height="30"/>
+                                                <rect key="frame" x="207" y="0.0" width="11" height="30"/>
                                                 <color key="tintColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" image="calendarArrowIcon">
                                                     <color key="titleColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
@@ -971,7 +981,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYs-7J-VRu">
-                                                <rect key="frame" x="311" y="0.0" width="30" height="30"/>
+                                                <rect key="frame" x="256" y="0.0" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="8MM-rI-pkB"/>
                                                     <constraint firstAttribute="height" constant="30" id="gkz-on-4hd"/>
@@ -993,10 +1003,10 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecj-ec-JrQ">
-                                <rect key="frame" x="0.0" y="135" width="375" height="15"/>
+                                <rect key="frame" x="0.0" y="135" width="320" height="15"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLf-hw-OTQ">
-                                        <rect key="frame" x="0.0" y="14" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="14" width="320" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="VfF-ib-Q84"/>
@@ -1049,7 +1059,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                     <tabBarItem key="tabBarItem" title="" image="inactive_calendar" selectedImage="active_calendar" id="GfI-hH-DWV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Mbu-f5-kcf">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1066,11 +1076,11 @@ article has some meta thing telling the computer that it’s magically got to ch
             <objects>
                 <viewController storyboardIdentifier="statistics" id="Y7O-ql-BCV" customClass="StatsHubController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="usl-o2-zbZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="oYx-Kl-DJY">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -1287,7 +1297,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                 <navigationController id="JGE-kr-Y5x" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="inactive_intercom" selectedImage="active_intercom" id="brH-v8-fR0" customClass="IntercomTabBarItem" customModule="ipopmetrics" customModuleProvider="target"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sPe-gx-kLE">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1305,7 +1315,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                     <tabBarItem key="tabBarItem" title="" image="inactive_statistics" selectedImage="active_statistics" id="RdO-iz-jPd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vwz-qw-bMP">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1326,7 +1336,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lc-ZA-3Do">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <rect key="frame" x="12" y="0.0" width="351" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="m7a-3h-set"/>
                                 </constraints>
@@ -1336,7 +1346,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start by authenticating with your Google account and agree to permissions requests." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2Z-cf-5hS">
-                                <rect key="frame" x="0.0" y="131" width="375" height="100"/>
+                                <rect key="frame" x="12" y="131" width="351" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="5GC-VK-41Y"/>
                                 </constraints>
@@ -1348,12 +1358,11 @@ article has some meta thing telling the computer that it’s magically got to ch
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="N2Z-cf-5hS" firstAttribute="top" secondItem="4lc-ZA-3Do" secondAttribute="bottom" constant="31" id="5kO-0h-SUz"/>
-                            <constraint firstItem="J3m-xN-JFL" firstAttribute="bottom" secondItem="N2Z-cf-5hS" secondAttribute="bottom" constant="105" id="E3d-xG-Gbn"/>
                             <constraint firstItem="4lc-ZA-3Do" firstAttribute="top" secondItem="J3m-xN-JFL" secondAttribute="top" id="L9v-ig-bXG"/>
-                            <constraint firstItem="N2Z-cf-5hS" firstAttribute="trailing" secondItem="J3m-xN-JFL" secondAttribute="trailing" id="Roz-za-S9o"/>
-                            <constraint firstItem="J3m-xN-JFL" firstAttribute="trailing" secondItem="4lc-ZA-3Do" secondAttribute="trailing" id="Zto-GB-Xxk"/>
-                            <constraint firstItem="4lc-ZA-3Do" firstAttribute="leading" secondItem="J3m-xN-JFL" secondAttribute="leading" id="iqI-lf-pGV"/>
-                            <constraint firstItem="N2Z-cf-5hS" firstAttribute="leading" secondItem="J3m-xN-JFL" secondAttribute="leading" id="nc6-os-bsK"/>
+                            <constraint firstItem="N2Z-cf-5hS" firstAttribute="trailing" secondItem="J3m-xN-JFL" secondAttribute="trailing" constant="-12" id="Roz-za-S9o"/>
+                            <constraint firstItem="J3m-xN-JFL" firstAttribute="trailing" secondItem="4lc-ZA-3Do" secondAttribute="trailing" constant="12" id="Zto-GB-Xxk"/>
+                            <constraint firstItem="4lc-ZA-3Do" firstAttribute="leading" secondItem="J3m-xN-JFL" secondAttribute="leading" constant="12" id="iqI-lf-pGV"/>
+                            <constraint firstItem="N2Z-cf-5hS" firstAttribute="leading" secondItem="J3m-xN-JFL" secondAttribute="leading" constant="12" id="nc6-os-bsK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="J3m-xN-JFL"/>
                     </view>
@@ -1369,75 +1378,96 @@ article has some meta thing telling the computer that it’s magically got to ch
             </objects>
             <point key="canvasLocation" x="258" y="-1714"/>
         </scene>
-        <!--Connect Wizard AuthenticatedVC-->
+        <!--Connect Wizard Google My Business Account ConfirmationVC-->
         <scene sceneID="7JM-GZ-IcC">
             <objects>
-                <viewController storyboardIdentifier="ConnectWizardGoogleMyBusinessAuthenticated" id="RTY-9D-eV6" customClass="ConnectWizardAuthenticatedVC" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConnectWizardGoogleMyBusinessAccountConfirmation" id="RTY-9D-eV6" customClass="ConnectWizardGoogleMyBusinessAccountConfirmationVC" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IMh-hb-NOc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="336"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Succesfully authenticated with" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vo9-kb-hOO">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vo9-kb-hOO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="2cU-pL-lfb"/>
+                                    <constraint firstAttribute="height" constant="44" id="2cU-pL-lfb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bIG-YW-p5B">
-                                <rect key="frame" x="16" y="68" width="100" height="100"/>
+                                <rect key="frame" x="20" y="52" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bIG-YW-p5B" secondAttribute="height" multiplier="1:1" id="dP2-hC-TiT"/>
                                     <constraint firstAttribute="width" constant="100" id="tmo-tZ-xig"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5c-0h-5lH">
-                                <rect key="frame" x="136" y="68" width="223" height="43"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5c-0h-5lH">
+                                <rect key="frame" x="140" y="74" width="215" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="XOP-es-tbE"/>
+                                    <constraint firstAttribute="height" constant="24" id="XOP-es-tbE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGX-xb-212">
+                                <rect key="frame" x="140" y="106" width="215" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="vYU-RM-sKf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGX-xb-212">
-                                <rect key="frame" x="136" y="119" width="223" height="43"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIL-O4-q1L">
+                                <rect key="frame" x="128.5" y="164" width="118.5" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="vYU-RM-sKf"/>
+                                    <constraint firstAttribute="height" constant="24" id="3rM-ca-434"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue by confirming the authenticated account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2G-pZ-ckk">
-                                <rect key="frame" x="0.0" y="190" width="375" height="100"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google My Business" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fg-cF-OAA">
+                                <rect key="frame" x="10.5" y="196" width="355" height="54"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue by confirming the account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2G-pZ-ckk">
+                                <rect key="frame" x="0.0" y="262" width="375" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="rJE-Fi-D2n"/>
+                                    <constraint firstAttribute="height" constant="50" id="rJE-Fi-D2n"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="fDP-jx-VnX" firstAttribute="trailing" secondItem="d5c-0h-5lH" secondAttribute="trailing" constant="16" id="9A7-EP-Jxc"/>
-                            <constraint firstItem="d5c-0h-5lH" firstAttribute="top" secondItem="vo9-kb-hOO" secondAttribute="bottom" constant="8" id="FPy-1J-SZq"/>
+                            <constraint firstItem="hGX-xb-212" firstAttribute="leading" secondItem="d5c-0h-5lH" secondAttribute="leading" id="7j8-hv-G73"/>
+                            <constraint firstItem="fDP-jx-VnX" firstAttribute="trailing" secondItem="d5c-0h-5lH" secondAttribute="trailing" constant="20" id="9A7-EP-Jxc"/>
+                            <constraint firstItem="d5c-0h-5lH" firstAttribute="top" secondItem="vo9-kb-hOO" secondAttribute="bottom" constant="30" id="9na-zV-fUJ"/>
+                            <constraint firstItem="8fg-cF-OAA" firstAttribute="top" secondItem="IIL-O4-q1L" secondAttribute="bottom" constant="8" id="ENo-jy-5Nv"/>
                             <constraint firstItem="vo9-kb-hOO" firstAttribute="leading" secondItem="fDP-jx-VnX" secondAttribute="leading" id="FUG-GB-rsH"/>
                             <constraint firstItem="vo9-kb-hOO" firstAttribute="top" secondItem="fDP-jx-VnX" secondAttribute="top" id="Feb-PO-yFA"/>
-                            <constraint firstItem="hGX-xb-212" firstAttribute="leading" secondItem="d5c-0h-5lH" secondAttribute="leading" id="GOs-By-Sjd"/>
-                            <constraint firstItem="bIG-YW-p5B" firstAttribute="leading" secondItem="fDP-jx-VnX" secondAttribute="leading" constant="16" id="GtT-RC-pfK"/>
-                            <constraint firstItem="X2G-pZ-ckk" firstAttribute="width" secondItem="vo9-kb-hOO" secondAttribute="width" id="HrI-KI-4AI"/>
+                            <constraint firstItem="bIG-YW-p5B" firstAttribute="leading" secondItem="fDP-jx-VnX" secondAttribute="leading" constant="20" id="GtT-RC-pfK"/>
+                            <constraint firstItem="IIL-O4-q1L" firstAttribute="centerX" secondItem="fDP-jx-VnX" secondAttribute="centerX" id="L5d-PR-cOD"/>
+                            <constraint firstItem="IIL-O4-q1L" firstAttribute="top" secondItem="bIG-YW-p5B" secondAttribute="bottom" constant="12" id="Mk3-4X-6pS"/>
+                            <constraint firstAttribute="trailing" secondItem="X2G-pZ-ckk" secondAttribute="trailing" id="Nl9-iK-Qyh"/>
                             <constraint firstItem="d5c-0h-5lH" firstAttribute="leading" secondItem="bIG-YW-p5B" secondAttribute="trailing" constant="20" id="Q6G-wF-KCe"/>
-                            <constraint firstItem="X2G-pZ-ckk" firstAttribute="leading" secondItem="fDP-jx-VnX" secondAttribute="leading" id="RaB-er-psd"/>
+                            <constraint firstItem="X2G-pZ-ckk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fDP-jx-VnX" secondAttribute="leading" id="RaB-er-psd"/>
                             <constraint firstItem="bIG-YW-p5B" firstAttribute="top" secondItem="vo9-kb-hOO" secondAttribute="bottom" constant="8" id="URq-yv-UPp"/>
                             <constraint firstItem="hGX-xb-212" firstAttribute="top" secondItem="d5c-0h-5lH" secondAttribute="bottom" constant="8" id="XMq-2t-H5h"/>
-                            <constraint firstItem="d5c-0h-5lH" firstAttribute="top" secondItem="bIG-YW-p5B" secondAttribute="top" id="YXV-sE-tr0"/>
+                            <constraint firstItem="X2G-pZ-ckk" firstAttribute="top" secondItem="8fg-cF-OAA" secondAttribute="bottom" constant="12" id="efT-gX-nqh"/>
                             <constraint firstItem="fDP-jx-VnX" firstAttribute="trailing" secondItem="vo9-kb-hOO" secondAttribute="trailing" id="fND-cI-z9b"/>
+                            <constraint firstItem="8fg-cF-OAA" firstAttribute="centerX" secondItem="fDP-jx-VnX" secondAttribute="centerX" id="k17-Jv-nmA"/>
                             <constraint firstItem="hGX-xb-212" firstAttribute="trailing" secondItem="d5c-0h-5lH" secondAttribute="trailing" id="nG3-xa-hGi"/>
-                            <constraint firstItem="fDP-jx-VnX" firstAttribute="bottom" secondItem="X2G-pZ-ckk" secondAttribute="bottom" constant="46" id="vox-hB-h7y"/>
+                            <constraint firstItem="8fg-cF-OAA" firstAttribute="width" secondItem="IMh-hb-NOc" secondAttribute="width" constant="-20" id="pVe-0K-HhJ"/>
+                            <constraint firstItem="X2G-pZ-ckk" firstAttribute="width" secondItem="IMh-hb-NOc" secondAttribute="width" id="s5G-Xh-kFS"/>
+                            <constraint firstItem="fDP-jx-VnX" firstAttribute="bottom" secondItem="X2G-pZ-ckk" secondAttribute="bottom" constant="24" id="vox-hB-h7y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fDP-jx-VnX"/>
                     </view>
@@ -1448,46 +1478,51 @@ article has some meta thing telling the computer that it’s magically got to ch
                             <size key="value" width="0.0" height="336"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="accountImageView" destination="bIG-YW-p5B" id="dGX-q4-fpb"/>
+                        <outlet property="authenticatedUserLabel" destination="hGX-xb-212" id="jxo-wg-IDD"/>
+                        <outlet property="myBusinessLabel" destination="8fg-cF-OAA" id="l2H-71-hfX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dh5-lI-t0e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-535" y="-1714"/>
+            <point key="canvasLocation" x="-535.5" y="-1714"/>
         </scene>
         <!--Google My Business Picker TableVC-->
         <scene sceneID="EYZ-HH-T1i">
             <objects>
                 <tableViewController storyboardIdentifier="GoogleMyBusinessPickerTableVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="b05-tJ-HIW" customClass="GoogleMyBusinessPickerTableVC" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jIA-W0-3j7">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" id="jIA-W0-3j7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="336"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="GoogleMyBusinessPickerTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="62" id="GQh-Ym-DiU" customClass="GoogleMyBusinessPickerTableViewCell" customModule="ipopmetrics">
-                                <rect key="frame" x="0.0" y="28" width="375" height="62"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GoogleMyBusinessPickerTableViewCell" rowHeight="75" id="GQh-Ym-DiU" customClass="GoogleMyBusinessPickerTableViewCell" customModule="ipopmetrics">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GQh-Ym-DiU" id="oti-Hi-dGs">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="61.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQw-F7-1kA">
-                                            <rect key="frame" x="16" y="8" width="343" height="21"/>
+                                            <rect key="frame" x="16" y="10" width="343" height="23.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fY-9g-OsL">
-                                            <rect key="frame" x="16" y="30" width="343" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fY-9g-OsL">
+                                            <rect key="frame" x="16" y="43.5" width="343" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="2fY-9g-OsL" firstAttribute="top" secondItem="OQw-F7-1kA" secondAttribute="bottom" constant="1" id="26c-U5-33e"/>
-                                        <constraint firstItem="2fY-9g-OsL" firstAttribute="trailing" secondItem="OQw-F7-1kA" secondAttribute="trailing" id="DBB-lc-Xjz"/>
+                                        <constraint firstItem="2fY-9g-OsL" firstAttribute="top" secondItem="OQw-F7-1kA" secondAttribute="bottom" constant="10" id="26c-U5-33e"/>
                                         <constraint firstAttribute="trailing" secondItem="OQw-F7-1kA" secondAttribute="trailing" constant="16" id="bMd-dy-R7w"/>
                                         <constraint firstItem="OQw-F7-1kA" firstAttribute="leading" secondItem="oti-Hi-dGs" secondAttribute="leading" constant="16" id="gEU-f4-b1Q"/>
-                                        <constraint firstItem="OQw-F7-1kA" firstAttribute="top" secondItem="oti-Hi-dGs" secondAttribute="top" constant="8" id="kdY-3Y-2tR"/>
+                                        <constraint firstAttribute="bottom" secondItem="2fY-9g-OsL" secondAttribute="bottom" constant="10" id="hRF-rR-3UT"/>
+                                        <constraint firstItem="OQw-F7-1kA" firstAttribute="top" secondItem="oti-Hi-dGs" secondAttribute="top" constant="10" id="kdY-3Y-2tR"/>
                                         <constraint firstItem="2fY-9g-OsL" firstAttribute="leading" secondItem="OQw-F7-1kA" secondAttribute="leading" id="pWW-fY-pw2"/>
                                         <constraint firstItem="2fY-9g-OsL" firstAttribute="trailing" secondItem="OQw-F7-1kA" secondAttribute="trailing" id="yKT-3b-49H"/>
                                     </constraints>
@@ -1513,7 +1548,129 @@ article has some meta thing telling the computer that it’s magically got to ch
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R8G-ZO-p4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-142" y="-1714"/>
+            <point key="canvasLocation" x="-142.5" y="-1714"/>
+        </scene>
+        <!--Connect Wizard Ok View Controller-->
+        <scene sceneID="PQD-En-nai">
+            <objects>
+                <viewController storyboardIdentifier="ConnectWizardOkViewController" id="Cl6-m7-yqK" customClass="ConnectWizardOkViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r7y-yy-aBx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="336"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_quepost" translatesAutoresizingMaskIntoConstraints="NO" id="l0Y-3K-MLt">
+                                <rect key="frame" x="10" y="71" width="66" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="l0Y-3K-MLt" secondAttribute="height" multiplier="1:1" id="1du-wo-rN2"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbA-bC-9w3" userLabel="Success message">
+                                <rect key="frame" x="100" y="24" width="259" height="161"/>
+                                <string key="text">Connecting Popmetrics to your Google My Business you allow us to access and analyze your data, create insights and perform automated actions for you.</string>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start by authenticating with your Google account and agree to permissions requests." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nA5-3R-cDZ">
+                                <rect key="frame" x="12" y="216" width="351" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="GCE-VG-DW5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="l0Y-3K-MLt" firstAttribute="leading" secondItem="v04-0S-wmN" secondAttribute="leading" constant="10" id="2aF-oi-bdk"/>
+                            <constraint firstItem="DbA-bC-9w3" firstAttribute="centerY" secondItem="l0Y-3K-MLt" secondAttribute="centerY" id="Iga-bx-Py1"/>
+                            <constraint firstItem="v04-0S-wmN" firstAttribute="bottom" secondItem="nA5-3R-cDZ" secondAttribute="bottom" constant="20" id="In5-gH-c5E"/>
+                            <constraint firstItem="DbA-bC-9w3" firstAttribute="top" secondItem="v04-0S-wmN" secondAttribute="top" constant="24" id="Lv6-nZ-lcn"/>
+                            <constraint firstItem="nA5-3R-cDZ" firstAttribute="top" secondItem="DbA-bC-9w3" secondAttribute="bottom" constant="31" id="jIL-mT-iBz"/>
+                            <constraint firstItem="v04-0S-wmN" firstAttribute="trailing" secondItem="DbA-bC-9w3" secondAttribute="trailing" constant="16" id="jLw-dw-gpa"/>
+                            <constraint firstItem="nA5-3R-cDZ" firstAttribute="leading" secondItem="v04-0S-wmN" secondAttribute="leading" constant="12" id="jg8-RZ-Cyl"/>
+                            <constraint firstItem="DbA-bC-9w3" firstAttribute="leading" secondItem="l0Y-3K-MLt" secondAttribute="trailing" constant="24" id="loC-EL-F1O"/>
+                            <constraint firstItem="nA5-3R-cDZ" firstAttribute="trailing" secondItem="v04-0S-wmN" secondAttribute="trailing" constant="-12" id="yJ1-rH-UWB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="v04-0S-wmN"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="336"/>
+                    <size key="freeformSize" width="375" height="336"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="size" keyPath="contentSizeInPopup">
+                            <size key="value" width="0.0" height="336"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="instructionsLabel" destination="nA5-3R-cDZ" id="dDb-7b-gdf"/>
+                        <outlet property="messageLabel" destination="DbA-bC-9w3" id="fZa-8x-0bh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FXK-Ct-259" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-536.5" y="-1260"/>
+        </scene>
+        <!--Connect Wizard Error View Controller-->
+        <scene sceneID="7yA-2u-9uM">
+            <objects>
+                <viewController storyboardIdentifier="ConnectWizardErrorViewController" id="GKv-VX-nW1" customClass="ConnectWizardErrorViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6WY-YY-DkQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="336"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_deny" translatesAutoresizingMaskIntoConstraints="NO" id="CIW-YU-r2Z">
+                                <rect key="frame" x="10" y="71" width="66" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="CIW-YU-r2Z" secondAttribute="height" multiplier="1:1" id="Wq2-yx-uvU"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhc-Ql-nbn" userLabel="Success message">
+                                <rect key="frame" x="100" y="24" width="259" height="161"/>
+                                <string key="text">Connecting Popmetrics to your Google My Business you allow us to access and analyze your data, create insights and perform automated actions for you.</string>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start by authenticating with your Google account and agree to permissions requests." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHQ-aH-ReZ">
+                                <rect key="frame" x="12" y="216" width="351" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="DvQ-Cg-R9I"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Lhc-Ql-nbn" firstAttribute="centerY" secondItem="CIW-YU-r2Z" secondAttribute="centerY" id="2mv-4o-d9o"/>
+                            <constraint firstItem="oHQ-aH-ReZ" firstAttribute="trailing" secondItem="Q17-yf-HBE" secondAttribute="trailing" constant="-12" id="5h1-6Z-Hrx"/>
+                            <constraint firstItem="oHQ-aH-ReZ" firstAttribute="top" secondItem="Lhc-Ql-nbn" secondAttribute="bottom" constant="31" id="7Dj-hc-alK"/>
+                            <constraint firstItem="CIW-YU-r2Z" firstAttribute="leading" secondItem="Q17-yf-HBE" secondAttribute="leading" constant="10" id="HXQ-Vf-Bva"/>
+                            <constraint firstItem="Q17-yf-HBE" firstAttribute="bottom" secondItem="oHQ-aH-ReZ" secondAttribute="bottom" constant="20" id="PYu-QG-zEd"/>
+                            <constraint firstItem="Q17-yf-HBE" firstAttribute="trailing" secondItem="Lhc-Ql-nbn" secondAttribute="trailing" constant="16" id="ZHP-OI-f5e"/>
+                            <constraint firstItem="oHQ-aH-ReZ" firstAttribute="leading" secondItem="Q17-yf-HBE" secondAttribute="leading" constant="12" id="fvI-1H-9HG"/>
+                            <constraint firstItem="Lhc-Ql-nbn" firstAttribute="leading" secondItem="CIW-YU-r2Z" secondAttribute="trailing" constant="24" id="jw1-Hk-Asm"/>
+                            <constraint firstItem="Lhc-Ql-nbn" firstAttribute="top" secondItem="Q17-yf-HBE" secondAttribute="top" constant="24" id="s0p-bY-Q7Z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Q17-yf-HBE"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="336"/>
+                    <size key="freeformSize" width="375" height="336"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="size" keyPath="contentSizeInPopup">
+                            <size key="value" width="0.0" height="336"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="instructionLabel" destination="oHQ-aH-ReZ" id="s8a-g2-yxe"/>
+                        <outlet property="messageLabel" destination="Lhc-Ql-nbn" id="nkf-7f-Tfh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r8K-sf-6kk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-143" y="-1260"/>
         </scene>
     </scenes>
     <resources>
@@ -1529,6 +1686,8 @@ article has some meta thing telling the computer that it’s magically got to ch
         <image name="first" width="30" height="30"/>
         <image name="ic_keyboard_arrow_left" width="16" height="16"/>
         <image name="iconX" width="20" height="20"/>
+        <image name="icon_deny" width="66" height="66"/>
+        <image name="icon_quepost" width="66" height="66"/>
         <image name="inactive_calendar" width="20" height="23"/>
         <image name="inactive_home" width="23" height="23"/>
         <image name="inactive_intercom" width="28" height="32"/>

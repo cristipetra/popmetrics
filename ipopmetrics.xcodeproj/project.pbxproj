@@ -213,7 +213,7 @@
 		113DE2FE1FC8ACD100AE6DE9 /* PaidActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113DE2FD1FC8ACD100AE6DE9 /* PaidActionCard.xib */; };
 		113DE3021FC8AEE800AE6DE9 /* PaidActionCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113DE3011FC8AEE800AE6DE9 /* PaidActionCardCell.swift */; };
 		1148D73D1FBF39AE006EB5BB /* NavigationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1148D73C1FBF39AE006EB5BB /* NavigationMap.swift */; };
-		1158F3E620647DDB005CD638 /* ConnectWizardAuthenticatedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1158F3E520647DDB005CD638 /* ConnectWizardAuthenticatedVC.swift */; };
+		1158F3E620647DDB005CD638 /* ConnectWizardGoogleMyBusinessAccountConfirmationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1158F3E520647DDB005CD638 /* ConnectWizardGoogleMyBusinessAccountConfirmationVC.swift */; };
 		1158F3E820647EED005CD638 /* ConnectWizardStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1158F3E720647EED005CD638 /* ConnectWizardStartVC.swift */; };
 		1158F3EA206A3D4D005CD638 /* ConnectWizardFacebookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1158F3E9206A3D4D005CD638 /* ConnectWizardFacebookVC.swift */; };
 		1158F3EC206A3DC6005CD638 /* ConnectWizardTwitterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1158F3EB206A3DC6005CD638 /* ConnectWizardTwitterVC.swift */; };
@@ -244,6 +244,8 @@
 		11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */; };
 		11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A91E2CE05D0021E64A /* CompletionView.swift */; };
 		11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */; };
+		11BC3D02206BB8520040FA3E /* ConnectWizardOkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC3D01206BB8520040FA3E /* ConnectWizardOkViewController.swift */; };
+		11BC3D04206BB8770040FA3E /* ConnectWizardErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC3D03206BB8770040FA3E /* ConnectWizardErrorViewController.swift */; };
 		11BDA92E1FFFD95F00CDA01C /* PopTipCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11BDA92D1FFFD95F00CDA01C /* PopTipCard.xib */; };
 		11BDA9301FFFD9C200CDA01C /* PopTipCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BDA92F1FFFD9C200CDA01C /* PopTipCard.swift */; };
 		11DD96761FC4FA5400386F1E /* CalendarApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD966D1FC4FA5400386F1E /* CalendarApi.swift */; };
@@ -493,7 +495,7 @@
 		113DE2FD1FC8ACD100AE6DE9 /* PaidActionCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaidActionCard.xib; sourceTree = "<group>"; };
 		113DE3011FC8AEE800AE6DE9 /* PaidActionCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaidActionCardCell.swift; sourceTree = "<group>"; };
 		1148D73C1FBF39AE006EB5BB /* NavigationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMap.swift; sourceTree = "<group>"; };
-		1158F3E520647DDB005CD638 /* ConnectWizardAuthenticatedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectWizardAuthenticatedVC.swift; sourceTree = "<group>"; };
+		1158F3E520647DDB005CD638 /* ConnectWizardGoogleMyBusinessAccountConfirmationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectWizardGoogleMyBusinessAccountConfirmationVC.swift; sourceTree = "<group>"; };
 		1158F3E720647EED005CD638 /* ConnectWizardStartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectWizardStartVC.swift; sourceTree = "<group>"; };
 		1158F3E9206A3D4D005CD638 /* ConnectWizardFacebookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectWizardFacebookVC.swift; sourceTree = "<group>"; };
 		1158F3EB206A3DC6005CD638 /* ConnectWizardTwitterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectWizardTwitterVC.swift; sourceTree = "<group>"; };
@@ -531,6 +533,8 @@
 		11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		11ACA9A91E2CE05D0021E64A /* CompletionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionView.swift; sourceTree = "<group>"; };
 		11ACA9AA1E2CE05D0021E64A /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		11BC3D01206BB8520040FA3E /* ConnectWizardOkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectWizardOkViewController.swift; sourceTree = "<group>"; };
+		11BC3D03206BB8770040FA3E /* ConnectWizardErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectWizardErrorViewController.swift; sourceTree = "<group>"; };
 		11BDA92D1FFFD95F00CDA01C /* PopTipCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopTipCard.xib; sourceTree = "<group>"; };
 		11BDA92F1FFFD9C200CDA01C /* PopTipCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopTipCard.swift; sourceTree = "<group>"; };
 		11DD966C1FC4FA5400386F1E /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
@@ -783,12 +787,14 @@
 			children = (
 				116F80D7205FE76D0084AC19 /* ConnectWizardGoogleMyBusinessVC.swift */,
 				1158F3E9206A3D4D005CD638 /* ConnectWizardFacebookVC.swift */,
-				1158F3E520647DDB005CD638 /* ConnectWizardAuthenticatedVC.swift */,
+				1158F3E520647DDB005CD638 /* ConnectWizardGoogleMyBusinessAccountConfirmationVC.swift */,
 				1158F3E720647EED005CD638 /* ConnectWizardStartVC.swift */,
 				1158F3EB206A3DC6005CD638 /* ConnectWizardTwitterVC.swift */,
 				1158F3ED206A3EDF005CD638 /* ConnectWizardBaseViewController.swift */,
 				A615BFB620500764001F0529 /* FacebookPagePickerViewController.swift */,
 				1158F3EF206A442A005CD638 /* GoogleMyBusinessPickerTableVC.swift */,
+				11BC3D01206BB8520040FA3E /* ConnectWizardOkViewController.swift */,
+				11BC3D03206BB8770040FA3E /* ConnectWizardErrorViewController.swift */,
 			);
 			path = wizard;
 			sourceTree = "<group>";
@@ -1653,7 +1659,7 @@
 				1158F3F0206A442A005CD638 /* GoogleMyBusinessPickerTableVC.swift in Sources */,
 				08B3C7E0201729D5003ADB77 /* StatsSummaryItemView.swift in Sources */,
 				086E708E2056A76E00576E67 /* Utils.swift in Sources */,
-				1158F3E620647DDB005CD638 /* ConnectWizardAuthenticatedVC.swift in Sources */,
+				1158F3E620647DDB005CD638 /* ConnectWizardGoogleMyBusinessAccountConfirmationVC.swift in Sources */,
 				086EDE3F1FC830F1002F4140 /* MyActionCardCell.swift in Sources */,
 				0813A0591FC2F1C4003E6478 /* SettingsSocialViewController.swift in Sources */,
 				08B6AFAC1F9DC843005E3049 /* IceCardViewCell.swift in Sources */,
@@ -1664,6 +1670,7 @@
 				08B4EBB21FC56ACE00BFC5A1 /* SettingsBaseViewController.swift in Sources */,
 				08B4EB991FC569F700BFC5A1 /* FeedStore.swift in Sources */,
 				A67E3440206021F000EAB428 /* InfoCardView.swift in Sources */,
+				11BC3D04206BB8770040FA3E /* ConnectWizardErrorViewController.swift in Sources */,
 				08D579F91F62E6ED00FDD744 /* StatusCardTypeView.swift in Sources */,
 				086F34742034986700F7043B /* SettingsBaseTableViewController.swift in Sources */,
 				088674111FE28506008DB87E /* LoginSocialViewController.swift in Sources */,
@@ -1744,6 +1751,7 @@
 				11BDA9301FFFD9C200CDA01C /* PopTipCard.swift in Sources */,
 				08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */,
 				1158F3EE206A3EDF005CD638 /* ConnectWizardBaseViewController.swift in Sources */,
+				11BC3D02206BB8520040FA3E /* ConnectWizardOkViewController.swift in Sources */,
 				1148D73D1FBF39AE006EB5BB /* NavigationMap.swift in Sources */,
 				08D9787820500C1B00F1CABC /* AlertDetails.swift in Sources */,
 				08F368951F18F93800819CDE /* DailyInsightsCardCell.swift in Sources */,
