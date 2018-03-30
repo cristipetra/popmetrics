@@ -336,24 +336,13 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     @objc func openActionPage(_ feedCard: FeedCard) {
-        
         if feedCard.recommendedAction == "" {
             self.presentAlertWithTitle("Error", message: "This insight has no recommended action!", useWhisper: true);
             return
         }
-        guard let actionCard = TodoStore.getInstance().getTodoCardWithName(feedCard.recommendedAction)
-            else {
-                self.presentAlertWithTitle("Error", message: "No card to show with name: "+feedCard.recommendedAction, useWhisper: true);
-                return
-        }
 
-        let actionPageVc: ActionPageDetailsViewController = ActionPageDetailsViewController(nibName: "ActionPage", bundle: nil)
-        //actionPageVc.hidesBottomBarWhenPushed = true
-        actionPageVc.hidesBottomBarWhenPushed = true
-        actionPageVc.configure(actionCard)
-        actionPageVc.cardInfoHandlerDelegate = self
-        
-        self.navigationController?.pushViewController(actionPageVc, animated: true)
+        self.currentFeedCard = feedCard
+        self.performSegue(withIdentifier: "showActionDetails", sender: self)
     }
     
     @objc private func goToNextTab() {
@@ -497,6 +486,19 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             insightDetailsViewController.configure(card)
             insightDetailsViewController.cardInfoHandlerDelegate = self
             insightDetailsViewController.hidesBottomBarWhenPushed = true
+        } else if segue.identifier == "showActionDetails" {
+            guard let card = self.currentFeedCard else { return }
+            
+            guard let actionCard = TodoStore.getInstance().getTodoCardWithName(card.recommendedAction)
+                else {
+                    self.presentAlertWithTitle("Error", message: "No card to show with name: "+card.recommendedAction, useWhisper: true);
+                    return
+            }
+            
+            let actionDetailsViewController = segue.destination as! ActionPageDetailsViewController
+            actionDetailsViewController.hidesBottomBarWhenPushed = true
+            actionDetailsViewController.configure(actionCard)
+            actionDetailsViewController.cardInfoHandlerDelegate = self
         }
     }
     
