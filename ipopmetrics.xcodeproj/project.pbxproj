@@ -55,6 +55,7 @@
 		086110CB20597A1600A3F75C /* RequiredActionLoadMore.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086110CA20597A1600A3F75C /* RequiredActionLoadMore.xib */; };
 		0863C4641FEA91C400999A81 /* animation_iphone4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0863C4631FEA91C400999A81 /* animation_iphone4.json */; };
 		08657382200F90D700D0ED21 /* PeriodGraphDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08657381200F90D700D0ED21 /* PeriodGraphDateView.swift */; };
+		08694141206F7FE400CACA57 /* PaymentPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694140206F7FE400CACA57 /* PaymentPopupViewController.swift */; };
 		086AF8F2205BCE390073CA1F /* StoreLocally.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086AF8F1205BCE390073CA1F /* StoreLocally.swift */; };
 		086B453C1FDC22530043F981 /* PersistentFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086B453B1FDC22530043F981 /* PersistentFooter.swift */; };
 		086E708E2056A76E00576E67 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086E708D2056A76E00576E67 /* Utils.swift */; };
@@ -329,6 +330,7 @@
 		086110CA20597A1600A3F75C /* RequiredActionLoadMore.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequiredActionLoadMore.xib; sourceTree = "<group>"; };
 		0863C4631FEA91C400999A81 /* animation_iphone4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_iphone4.json; sourceTree = "<group>"; };
 		08657381200F90D700D0ED21 /* PeriodGraphDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodGraphDateView.swift; sourceTree = "<group>"; };
+		08694140206F7FE400CACA57 /* PaymentPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentPopupViewController.swift; sourceTree = "<group>"; };
 		086AF8F1205BCE390073CA1F /* StoreLocally.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLocally.swift; sourceTree = "<group>"; };
 		086B453B1FDC22530043F981 /* PersistentFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentFooter.swift; sourceTree = "<group>"; };
 		086E708D2056A76E00576E67 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -710,6 +712,7 @@
 				086F64DB205BA9A400F46E8A /* EmailViewController.swift */,
 				A67E343F206021F000EAB428 /* InfoCardView.swift */,
 				08358AAA206E640900566F43 /* PromoViewController.swift */,
+				08694140206F7FE400CACA57 /* PaymentPopupViewController.swift */,
 			);
 			path = payment;
 			sourceTree = "<group>";
@@ -1731,6 +1734,7 @@
 				11BDA9301FFFD9C200CDA01C /* PopTipCard.swift in Sources */,
 				08A533361F6BD9130080BE64 /* MoreInfoViewCell.swift in Sources */,
 				1158F3EE206A3EDF005CD638 /* ConnectWizardBaseViewController.swift in Sources */,
+				08694141206F7FE400CACA57 /* PaymentPopupViewController.swift in Sources */,
 				11BC3D02206BB8520040FA3E /* ConnectWizardOkViewController.swift in Sources */,
 				1148D73D1FBF39AE006EB5BB /* NavigationMap.swift in Sources */,
 				08D9787820500C1B00F1CABC /* AlertDetails.swift in Sources */,

@@ -40,6 +40,23 @@ class TrialViewController: UIViewController {
     @objc func handlerClickBack() {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    private func openPromo() {
+        let promoVc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "PromoViewController")
+        
+        self.navigationController?.pushViewController(promoVc, animated: true)
+    }
+    
+    private func openPopup() {
+        let alertCard = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "PaymentPopupViewController") as! PaymentPopupViewController
+        
+        alertCard.providesPresentationContextTransitionStyle = true
+        alertCard.definesPresentationContext = true
+        alertCard.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        alertCard.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        alertCard.delegate = self
+        self.present(alertCard, animated: true, completion: nil)
+    }
 
     @IBAction func handlerBtnSubscription(_ sender: UIButton) {
         let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "PaymentTableViewController") as! PaymentTableViewController
@@ -53,4 +70,10 @@ class TrialViewController: UIViewController {
         
     }
     
+}
+
+extension TrialViewController: PopupAlertViewDelegate {
+    func goToHome() {
+        
+    }
 }
