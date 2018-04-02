@@ -412,7 +412,7 @@ article has some meta thing telling the computer that it’s magically got to ch
         <!--Action Details View Controller-->
         <scene sceneID="Ccw-Ad-lV1">
             <objects>
-                <viewController storyboardIdentifier="ActionPageDetailsViewController" hidesBottomBarWhenPushed="YES" id="2BS-of-lNI" customClass="ActionDetailsViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActionDetailsViewController" hidesBottomBarWhenPushed="YES" id="2BS-of-lNI" customClass="ActionDetailsViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NOu-h4-f6V">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

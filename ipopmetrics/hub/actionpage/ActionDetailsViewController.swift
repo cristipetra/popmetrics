@@ -40,8 +40,6 @@ class ActionDetailsViewController: BaseViewController {
     
     private var todoCard: TodoCard!
     
-    private var actionModel: ActionPageModel!
-    
     let iceView = IceExtendView()
     
     let persistentFooter: PersistentFooter =  PersistentFooter()
@@ -107,8 +105,6 @@ class ActionDetailsViewController: BaseViewController {
     public func configure(_ todoCard: TodoCard, openedFrom: String) {
         self.todoCard = todoCard
         displayActionButton()
-        actionModel = ActionPageModel(todoCard: todoCard)
-        
         iceView.configure(todoCard:todoCard)
         displayActionButton()
     }
@@ -119,7 +115,6 @@ class ActionDetailsViewController: BaseViewController {
         recommendActionHandler = handler
 
         iceView.configure(todoCard: todoCard)
-        actionModel = ActionPageModel(todoCard: todoCard)
         displayActionButton()
     }
     
@@ -140,11 +135,11 @@ class ActionDetailsViewController: BaseViewController {
     }
     
     private func updatView() {
-        if let url = actionModel.imageUri {
+        if let url = todoCard.imageUri {
             cardImage.af_setImage(withURL: URL(string: url)!)
         }
         
-        if let title = actionModel.titleArticle {
+        if let title = todoCard.blogTitle {
             titleArticle.text = title
         }
         
@@ -173,15 +168,15 @@ class ActionDetailsViewController: BaseViewController {
     }
 
     private func getDetailsMarkdownString() -> String {
-        return actionModel.detailsMarkdown ?? ""
+        return todoCard.detailsMarkdown ?? ""
     }
     
     private func getClosingMarkdownString() -> String {
-        return actionModel.closingMarkdown ?? ""
+        return todoCard.closingMarkdown ?? ""
     }
     
     private func getFixItMarkdownString() -> String {
-        return actionModel.diyInstructions ?? ""
+        return todoCard.diyInstructions ?? ""
     }
     
     internal func displayMarkdownDetails() {
@@ -219,7 +214,7 @@ class ActionDetailsViewController: BaseViewController {
     }
 
     @IBAction func handlerViewArticleBtn(_ sender: Any) {
-        if let url = actionModel.blogUrl {
+        if let url = todoCard.blogUrl {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.openURLInside(self, url: url)
         }
@@ -227,7 +222,7 @@ class ActionDetailsViewController: BaseViewController {
     
     @IBAction func handlerViewInstructions(_ sender: Any) {
         
-        if let url = actionModel.blogUrl {
+        if let url = todoCard.blogUrl {
             if url.isValidUrl() {
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.openURLInside(self, url: url)
@@ -294,18 +289,8 @@ class ActionDetailsViewController: BaseViewController {
 
     @objc func handlerInsightPage(_ sender: UIButton) {
         
-        let insightDetails = InsightPageDetailsViewController(nibName: "InsightPage", bundle: nil)
+        // see if we need to navigate back or go forward
         
-        let openFrom = actionModel.todoCard != nil ? "todo" : "home"
-        print("openedFrom: \(openFrom)")
-        if let insightCard =  getRelatedInsightCard() {
-            insightDetails.configure(insightCard, openedFrom: openFrom)
-            
-            self.navigationController?.pushViewController(viewController: insightDetails, animated: true, completion: {
-                self.closePreviousViewControllerFromNavigation()
-            })
- 
-        }
     }
     
     func getRelatedInsightCard() -> FeedCard? {
@@ -342,48 +327,4 @@ class ActionDetailsViewController: BaseViewController {
 
 extension ActionDetailsViewController: BannerProtocol {
     
-}
-
-class ActionPageModel: NSObject {
-    internal var name: String = ""
-    internal var type: String = ""
-    internal var titleArticle: String? = ""
-    internal var imageUri: String?
-    internal var impactPercentage: Int = 0
-    internal var detailsMarkdown: String? = ""
-    internal var closingMarkdown: String? = ""
-    internal var blogUrl: String? = ""
-    internal var diyInstructions: String? = ""
-    
-    internal var todoCard: TodoCard?
-    internal var feedCard: FeedCard?
-    
-    
-    init(todoCard: TodoCard) {
-        name                 = todoCard.name
-        type                 = todoCard.type
-        titleArticle         = todoCard.headerTitle
-        imageUri             = todoCard.imageUri
-        detailsMarkdown      = todoCard.detailsMarkdown
-        closingMarkdown      = todoCard.closingMarkdown
-        blogUrl              = todoCard.blogUrl
-        impactPercentage     = todoCard.impactPercentage
-        diyInstructions      = todoCard.diyInstructions
-        
-        self.todoCard = todoCard
-    }
-    
-    init(feedCard: FeedCard) {
-        name                = feedCard.name
-        type                = feedCard.type
-        titleArticle        = feedCard.headerTitle
-        imageUri            = feedCard.imageUri
-        detailsMarkdown     = feedCard.detailsMarkdown
-        closingMarkdown     = feedCard.closingMarkdown
-        blogUrl             = feedCard.blogUrl
-        impactPercentage    = feedCard.impactPercentage
-        diyInstructions     = feedCard.diyInstructions
-        
-        self.feedCard = feedCard
-    }
 }

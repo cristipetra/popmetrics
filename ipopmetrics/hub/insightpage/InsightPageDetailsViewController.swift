@@ -32,7 +32,7 @@ class InsightPageDetailsViewController: BaseViewController {
     @IBOutlet weak var constraintBottomStackView: NSLayoutConstraint!
     
     private var feedCard: FeedCard!
-    private var todoCard: TodoCard?
+    private var segueCard: TodoCard?
     
     private var recommendActionHandler: RecommendActionHandler?
     var cardInfoHandlerDelegate: CardInfoHandler?
@@ -232,15 +232,19 @@ class InsightPageDetailsViewController: BaseViewController {
     
     func openActionDetails(_ actionCard: TodoCard) {
         
-        self.todoCard = actionCard
-        self.performSegue(withIdentifier:"showAction", sender:self)
+        self.segueCard = actionCard
+        self.performSegue(withIdentifier:"showActionDetails", sender:self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let actionDetailsViewController = segue.destination as! ActionDetailsViewController
-        actionDetailsViewController.hidesBottomBarWhenPushed = true
-        actionDetailsViewController.configure(self.todoCard!)
+        if segue.identifier == "showActionDetails" {
+            if self.segueCard != nil {
+                let vc = segue.destination as! ActionDetailsViewController
+                vc.configure(self.segueCard!)
+            }
+        }
+        
     }
     
     
@@ -253,23 +257,9 @@ class InsightPageDetailsViewController: BaseViewController {
             else {
                 self.presentAlertWithTitle("Error", message: "No card to show with name: "+feedCard.recommendedAction, useWhisper: true);
                 return
-        }
+                }
+        
         openActionDetails(actionCard)
-        
-        let actionPageVc: ActionDetailsViewController = ActionDetailsViewController(nibName: "ActionPage", bundle: nil)
-        
-        actionPageVc.hidesBottomBarWhenPushed = true
-        if openedFrom == "home" {
-            actionPageVc.configure(actionCard, handler: recommendActionHandler)
-            actionPageVc.cardInfoHandlerDelegate = cardInfoHandlerDelegate
-        } else  {
-            actionPageVc.configure(actionCard, openedFrom: "todo")
-        }
-        
-
-        self.navigationController?.pushViewController(viewController: actionPageVc, animated: true, completion: {
-            self.closePreviousViewControllerFromNavigation()
-        })
         
     }
     
