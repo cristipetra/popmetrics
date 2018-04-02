@@ -516,13 +516,13 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3op-CW-bA1">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="598"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="595.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="promoCode" translatesAutoresizingMaskIntoConstraints="NO" id="cks-e2-2dM">
                                                 <rect key="frame" x="64.5" y="50" width="245" height="137"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Promo Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6n-ag-Sw6">
-                                                <rect key="frame" x="115" y="248" width="146.5" height="25"/>
+                                                <rect key="frame" x="118.5" y="250" width="139" height="21"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
                                                 <color key="textColor" name="rock_bottom"/>
                                                 <nil key="highlightedColor"/>
@@ -544,7 +544,7 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms &amp; Conditions Apply" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPP-jV-yeP">
-                                                <rect key="frame" x="113.5" y="501.5" width="148.5" height="16.5"/>
+                                                <rect key="frame" x="118.5" y="501.5" width="138.5" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                                 <color key="textColor" name="blue_bottle"/>
                                                 <nil key="highlightedColor"/>
@@ -610,7 +610,7 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cnr-D3-g6L">
-                                        <rect key="frame" x="10" y="239" width="335" height="25"/>
+                                        <rect key="frame" x="10" y="239" width="335" height="21"/>
                                         <string key="text">Task added to your My Actions list.
 </string>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
@@ -618,13 +618,13 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View my actions list here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w58-wb-OxQ">
-                                        <rect key="frame" x="20" y="271" width="315" height="25"/>
+                                        <rect key="frame" x="20" y="271" width="315" height="21"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                         <color key="textColor" name="rock_bottom"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVv-Iv-KJZ">
-                                        <rect key="frame" x="97" y="340" width="160" height="45"/>
+                                        <rect key="frame" x="97" y="336" width="160" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="5xm-qd-E0P"/>
                                             <constraint firstAttribute="height" constant="45" id="kHg-h5-FY6"/>
@@ -864,24 +864,22 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" rowHeight="160" id="gUf-g4-lFD">
-                                        <rect key="frame" x="0.0" y="480" width="375" height="160"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" rowHeight="120" id="gUf-g4-lFD">
+                                        <rect key="frame" x="0.0" y="480" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gUf-g4-lFD" id="EcZ-2p-TTh">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uT5-hj-a1V">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                                     <subviews>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Cdw-Sw-yjg">
-                                                            <rect key="frame" x="15" y="0.0" width="345" height="159.5"/>
+                                                            <rect key="frame" x="15" y="10" width="345" height="109.5"/>
                                                             <accessibility key="accessibilityConfiguration">
                                                                 <accessibilityTraits key="traits" link="YES"/>
                                                             </accessibility>
-                                                            <string key="text">*Payment will renew at the beginning of each 30 day period
-
-By placing your order, you agree to Popmetric's Terms and Conditions and Privacy Policy. You will be emailed a receipt of this purchase.</string>
+                                                            <string key="text">By placing your order, you agree to Popmetric's Terms and Conditions and Privacy Policy. You will be emailed a receipt of this purchase.</string>
                                                             <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -892,7 +890,7 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                                                         <constraint firstAttribute="trailing" secondItem="Cdw-Sw-yjg" secondAttribute="trailing" constant="15" id="0pc-nt-93B"/>
                                                         <constraint firstAttribute="bottom" secondItem="Cdw-Sw-yjg" secondAttribute="bottom" id="MnA-DW-5y2"/>
                                                         <constraint firstItem="Cdw-Sw-yjg" firstAttribute="leading" secondItem="uT5-hj-a1V" secondAttribute="leading" constant="15" id="cm7-4z-poC"/>
-                                                        <constraint firstItem="Cdw-Sw-yjg" firstAttribute="top" secondItem="uT5-hj-a1V" secondAttribute="top" id="zYK-th-3U0"/>
+                                                        <constraint firstItem="Cdw-Sw-yjg" firstAttribute="top" secondItem="uT5-hj-a1V" secondAttribute="top" constant="10" id="zYK-th-3U0"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -906,7 +904,7 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Awx-Hp-gQy">
-                                        <rect key="frame" x="0.0" y="640" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="600" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Awx-Hp-gQy" id="b2T-qJ-c3P">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
