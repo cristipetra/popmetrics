@@ -18,19 +18,27 @@ class PaymentPopupViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var secondLabel: UILabel!
     
+    var mutableString = NSMutableAttributedString()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handlerTap))
         self.view.addGestureRecognizer(tap)
         
-        secondLabel.isHidden = true
+        changeTextColor()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupView()
         animateView()
+    }
+    
+    func changeTextColor() {
+        mutableString = NSMutableAttributedString(string: secondLabel.text!, attributes: [NSAttributedStringKey.font:UIFont(name: FontBook.regular, size: 18.0)!])
+        mutableString.addAttribute(.foregroundColor, value: PopmetricsColor.blueURLColor, range: NSRange(location: 0, length: 4))
+        secondLabel.attributedText = mutableString
     }
     
     private func setupView() {

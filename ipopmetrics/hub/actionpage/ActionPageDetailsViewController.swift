@@ -139,6 +139,7 @@ class ActionPageDetailsViewController: BaseViewController {
             if todoCard.name == "social.automated_posts" {
                 persistentFooter.rightBtn.isHidden = true
             }
+            
         }
     }
     
@@ -294,7 +295,25 @@ class ActionPageDetailsViewController: BaseViewController {
             }
         }
     }
-
+    
+    @objc func handlerTakeActionPayment(_ sender: Any) {
+        print("handler take action payment")
+        Alert.showActionSheetPayment(parent: self) { (actionSheet) -> (Void) in
+            self.openPopup()
+        }
+    }
+    
+    private func openPopup() {
+        let alertCard = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "PaymentPopupViewController") as! PaymentPopupViewController
+        
+        alertCard.providesPresentationContextTransitionStyle = true
+        alertCard.definesPresentationContext = true
+        alertCard.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        alertCard.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        //alertCard.delegate = self
+        self.present(alertCard, animated: true, completion: nil)
+    }
+    
     @objc func handlerInsightPage(_ sender: UIButton) {
         
         let insightDetails = InsightPageDetailsViewController(nibName: "InsightPage", bundle: nil)

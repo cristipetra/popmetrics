@@ -17,6 +17,7 @@ class Alert {
     
     typealias Action = (AlertAction) -> (Void)
     typealias ActionSheet = (ActionSheetPhoto) -> (Void)
+    typealias ActionSheetPaymentOpt = (ActionSheetPayment) -> (Void)
     
     static func showAlertDialog(parent: UIViewController?, action: Action?) {
         let actionSelected: Action? = action
@@ -139,6 +140,34 @@ class Alert {
         parent?.present(alertController, animated: true, completion: nil)
         //UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
+    
+    static func showActionSheetPayment(parent: UIViewController?, action: @escaping ActionSheetPaymentOpt) {
+        let actionSelected: ActionSheetPaymentOpt? = action
+        // create an actionSheet
+        let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        // create an action
+        let firstAction: UIAlertAction = UIAlertAction(title: "Do it for me! $9.99", style: .default) { action -> Void in
+            actionSelected!(.doItForMe)
+        }
+        
+        let secondAction: UIAlertAction = UIAlertAction(title: "Do It Myself", style: .default) { action -> Void in
+            actionSelected!(.doItMyself)
+        }
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+            actionSelected!(.cancel)
+        }
+        
+        // add actions
+        actionSheetController.addAction(firstAction)
+        actionSheetController.addAction(secondAction)
+        actionSheetController.addAction(cancelAction)
+        
+        actionSheetController.title = "Choose an action."
+        // present an actionSheet...
+        parent?.present(actionSheetController, animated: true, completion: nil)
+    }
 }
 
 enum AlertAction {
@@ -150,5 +179,11 @@ enum ActionSheetPhoto {
     case cancel
     case takePicture
     case openGallery
+}
+
+enum ActionSheetPayment {
+    case cancel
+    case doItForMe
+    case doItMyself
 }
 

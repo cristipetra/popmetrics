@@ -37,6 +37,18 @@ struct StoreLocally {
             myActionCard.imageUri = "http://blog.popmetrics.io/wp-content/uploads/sites/13/2017/12/emptystate_emptystate-02.png"
             
             todoStore.realm.add(myActionCard, update: true)
+            
+            
+            let facebookPayment = TodoCard()
+            facebookPayment.cardId = "dfafsadf0sd9fdasf"
+            facebookPayment.name = "facebook.payment.tmp"
+            facebookPayment.headerTitle = "Create A Facebook Page For Your Business."
+            facebookPayment.status = "live"
+            facebookPayment.type = TodoCardType.myAction.rawValue
+            facebookPayment.section = TodoSectionType.myActions.rawValue
+            facebookPayment.imageUri = "http://blog.popmetrics.io/wp-content/uploads/sites/13/2017/12/emptystate_emptystate-02.png"
+            facebookPayment.actionLabel = "Take Action"
+            todoStore.realm.add(facebookPayment, update: true)
         }
     }
     
@@ -70,6 +82,19 @@ struct StoreLocally {
             popTipCard.actionLabel = "Learn more"
             
             feedStore.realm.add(popTipCard, update: true)
+            
+            let insightPayment = FeedCard()
+            insightPayment.cardId = "sdfsadffsafs8fs9da8f"
+            insightPayment.section = HomeSectionType.insights.rawValue
+            insightPayment.status = "live"
+            insightPayment.type = HomeCardType.insight.rawValue
+            insightPayment.imageUri = "http://blog.popmetrics.io/wp-content/uploads/sites/13/2018/01/Pop-Tips-1-100.jpg"
+            insightPayment.recommendedAction = "facebook.payment.tmp"
+            insightPayment.actionLabel = "Fix"
+            insightPayment.headerTitle = "Create a Facebook"
+            insightPayment.message = "Create a facebook"
+            feedStore.realm.add(insightPayment, update: true)
+            
         }
 
     }
