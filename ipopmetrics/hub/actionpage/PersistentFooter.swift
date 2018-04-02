@@ -56,6 +56,7 @@ class PersistentFooter: UIView {
         leftBtn.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         leftBtn.widthAnchor.constraint(equalToConstant: 120).isActive = true
         leftBtn.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        leftBtn.layer.cornerRadius = 17
         
         rightBtn.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24).isActive = true
         rightBtn.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true

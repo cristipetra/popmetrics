@@ -66,6 +66,7 @@ class OneOffPaymentViewController: UITableViewController {
         
         
         tableView.tableFooterView = UIView()
+        emailText.text = UserStore().getLocalUserAccount().email ?? ""
         setUpNavigationBar()
         changeTextColor()
         
@@ -224,9 +225,6 @@ extension OneOffPaymentViewController: STPPaymentContextDelegate{
             preferredStyle: .alert
         )
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
-            // Need to assign to _ because optional binding loses @discardableResult value
-            // https://bugs.swift.org/browse/SR-1681
-            //_ = self.navigationController?.popViewController(animated: true)
             self.close()
         })
         let retry = UIAlertAction(title: "Retry", style: .default, handler: { action in
@@ -238,7 +236,7 @@ extension OneOffPaymentViewController: STPPaymentContextDelegate{
     }
     
     private func close() {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
 }

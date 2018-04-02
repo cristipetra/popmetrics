@@ -228,7 +228,7 @@ class ActionDetailsViewController: BaseViewController {
     }
     
     @objc func handlerOrder(_ sender: Any) {
-        let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "PaymentTableViewController") as! PaymentTableViewController
+        let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "OneOffPaymentViewController") as! OneOffPaymentViewController
         
         let brandId = UserStore.currentBrandId
         let planId = Config.sharedInstance.environment.stripeBasicPlanId
