@@ -645,6 +645,9 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                                                 <real key="value" value="22"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="handlerGoToHome:" destination="LXy-ZN-B6U" eventType="touchUpInside" id="raO-Ht-sxe"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

@@ -98,6 +98,7 @@ class ActionDetailsViewController: BaseViewController {
         bottomContainerViewBottomAnchor.isActive = true
         
         persistentFooter.rightBtn.addTarget(self, action: #selector(handlerOrder(_:)), for: .touchUpInside)
+        persistentFooter.leftBtn.addTarget(self, action: #selector(handlerDoItMyself(_:)), for: .touchUpInside)
 
     }
     
@@ -234,6 +235,11 @@ class ActionDetailsViewController: BaseViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc func handlerDoItMyself(_ sender: Any) {
+        //TODO: call api
+        openPopup()
+    }
+    
     @IBAction func handlerAddToMyActions(_ sender: Any) {
         if !ReachabilityManager.shared.isNetworkAvailable {
             presentErrorNetwork()
@@ -293,7 +299,7 @@ class ActionDetailsViewController: BaseViewController {
         alertCard.definesPresentationContext = true
         alertCard.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         alertCard.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        //alertCard.delegate = self
+        alertCard.delegate = self
         self.present(alertCard, animated: true, completion: nil)
     }
     
@@ -321,4 +327,10 @@ class ActionDetailsViewController: BaseViewController {
 
 extension ActionDetailsViewController: BannerProtocol {
     
+}
+
+extension ActionDetailsViewController: PopupAlertViewDelegate {
+    func goToHome() {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
