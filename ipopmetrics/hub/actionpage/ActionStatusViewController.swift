@@ -96,10 +96,9 @@ class ActionStatusViewController: BaseViewController {
         bottomContainerViewBottomAnchor.isActive = true
         
         //add action from home feed
-        if todoCard.name == "social.automated_twitter_posts" || todoCard.name == "social.automated_facebook_posts" {
-            persistentFooter.rightBtn.addTarget(self, action: #selector(orderAction(_:)), for: .touchUpInside)
-        } else {
-            persistentFooter.rightBtn.addTarget(self, action: #selector(markAsCompleteAction(_:)), for: .touchUpInside)
+        persistentFooter.rightBtn.addTarget(self, action: #selector(orderAction(_:)), for: .touchUpInside)
+        if todoCard.name != "social.automated_twitter_posts" || todoCard.name != "social.automated_facebook_posts" {
+            persistentFooter.leftBtn.addTarget(self, action: #selector(markAsCompleteAction(_:)), for: .touchUpInside)
         }
         
     }
@@ -254,26 +253,15 @@ class ActionStatusViewController: BaseViewController {
     }
     
     @objc func orderAction(_ sender: Any) {
-        if !ReachabilityManager.shared.isNetworkAvailable {
-            presentErrorNetwork()
-            return
-        }
+        let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "OneOffPaymentViewController") as! OneOffPaymentViewController
         
-        if self.todoCard != nil {
-            ActionApi().order(cardId: self.todoCard.cardId!, brandId: UserStore.currentBrandId) { actionResponse in
-//                TodoStore.getInstance().addTodoCard(todoCard!)
-//                
-//                if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
-//                    FeedStore.getInstance().updateCardSection(insightCard, section:"None")
-//                }
-//                self.cardInfoHandlerDelegate?.handleActionComplete()
-                
-                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
-                                                userInfo: ["sucess":true])
-                
-                self.navigationController?.popViewController(animated: true)
-            }
-        }
+        let brandId = UserStore.currentBrandId
+        let planId = Config.sharedInstance.environment.stripeBasicPlanId
+        var amount = Config.sharedInstance.environment.stripeBasicPlanAmount
+        amount = 0
+        vc.configure(brandId:brandId, amount:amount, planId:planId)
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func handlerInsightPage(_ sender: UIButton) {
