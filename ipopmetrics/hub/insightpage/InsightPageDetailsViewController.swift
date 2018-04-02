@@ -62,6 +62,7 @@ class InsightPageDetailsViewController: BaseViewController {
         }
         
         addPersistentFooter()
+        
     }
 
     override func didReceiveMemoryWarning() {

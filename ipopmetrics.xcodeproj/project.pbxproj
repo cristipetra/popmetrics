@@ -56,6 +56,7 @@
 		0863C4641FEA91C400999A81 /* animation_iphone4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0863C4631FEA91C400999A81 /* animation_iphone4.json */; };
 		08657382200F90D700D0ED21 /* PeriodGraphDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08657381200F90D700D0ED21 /* PeriodGraphDateView.swift */; };
 		08694141206F7FE400CACA57 /* PaymentPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694140206F7FE400CACA57 /* PaymentPopupViewController.swift */; };
+		086AA63B20722C5600E08275 /* OneOffPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086AA63A20722C5600E08275 /* OneOffPaymentViewController.swift */; };
 		086AF8F2205BCE390073CA1F /* StoreLocally.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086AF8F1205BCE390073CA1F /* StoreLocally.swift */; };
 		086B453C1FDC22530043F981 /* PersistentFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086B453B1FDC22530043F981 /* PersistentFooter.swift */; };
 		086E708E2056A76E00576E67 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086E708D2056A76E00576E67 /* Utils.swift */; };
@@ -331,6 +332,7 @@
 		0863C4631FEA91C400999A81 /* animation_iphone4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_iphone4.json; sourceTree = "<group>"; };
 		08657381200F90D700D0ED21 /* PeriodGraphDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodGraphDateView.swift; sourceTree = "<group>"; };
 		08694140206F7FE400CACA57 /* PaymentPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentPopupViewController.swift; sourceTree = "<group>"; };
+		086AA63A20722C5600E08275 /* OneOffPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneOffPaymentViewController.swift; sourceTree = "<group>"; };
 		086AF8F1205BCE390073CA1F /* StoreLocally.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLocally.swift; sourceTree = "<group>"; };
 		086B453B1FDC22530043F981 /* PersistentFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentFooter.swift; sourceTree = "<group>"; };
 		086E708D2056A76E00576E67 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -714,6 +716,7 @@
 				A67E343F206021F000EAB428 /* InfoCardView.swift */,
 				08358AAA206E640900566F43 /* PromoViewController.swift */,
 				08694140206F7FE400CACA57 /* PaymentPopupViewController.swift */,
+				086AA63A20722C5600E08275 /* OneOffPaymentViewController.swift */,
 			);
 			path = payment;
 			sourceTree = "<group>";
@@ -1712,6 +1715,7 @@
 				11ACA9AC1E2CE05D0021E64A /* ProgressHUD.swift in Sources */,
 				080DCA881F4D9716000C73DC /* InsightCard.swift in Sources */,
 				08FAE8491F5420050097DF3E /* StatsCardViewCell.swift in Sources */,
+				086AA63B20722C5600E08275 /* OneOffPaymentViewController.swift in Sources */,
 				116E33A12034621200D2BCA9 /* BrandApi.swift in Sources */,
 				080DCA811F4D6EE6000C73DC /* MenuViewController.swift in Sources */,
 				116815CB2062BDD600071E71 /* ActionApi.swift in Sources */,

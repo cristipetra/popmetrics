@@ -1,8 +1,8 @@
 //
-//  PaymentTableViewController.swift
+//  OneOffPaymentViewController.swift
 //  ipopmetrics
 //
-//  Created by Cristian Petra on 01/03/2018.
+//  Created by Cristian Petra on 02/04/2018.
 //  Copyright © 2018 Popmetrics. All rights reserved.
 //
 
@@ -11,8 +11,9 @@ import Stripe
 import EZAlertController
 import EZLoadingActivity
 
-class PaymentTableViewController: UITableViewController {
-
+class OneOffPaymentViewController: UITableViewController {
+    
+    @IBOutlet weak var deliveryTimeText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var labelCard: UILabel!
     @IBOutlet weak var infoCardView: InfoCardView!
@@ -66,13 +67,20 @@ class PaymentTableViewController: UITableViewController {
         
         
         tableView.tableFooterView = UIView()
+        
         setUpNavigationBar()
         changeTextColor()
         
         setupPayments(amount: amount, currency:currency)
-
-        self.amountLabel.text = self.numberFormatter?.string(from: NSNumber(value: Float((self.paymentContext?.paymentAmount)!)/100))!
+        
+        updateValues()
+        
+    }
     
+    private func updateValues() {
+        emailText.text = UserStore().getLocalUserAccount().email ?? ""
+        deliveryTimeText.text = "1-2 days"
+        self.amountLabel.text = self.numberFormatter?.string(from: NSNumber(value: Float((self.paymentContext?.paymentAmount)!)/100))!
     }
     
     func setupPayments(amount: Int, currency: String = "usd"){
@@ -108,10 +116,10 @@ class PaymentTableViewController: UITableViewController {
     
     func changeTextColor() {
         muutableString = NSMutableAttributedString(string: textViewTerms.text!, attributes: [NSAttributedStringKey.font:UIFont(name: FontBook.regular, size: 15.0)!])
-        muutableString.addAttribute(.link, value: Config.termsAndConditions, range: NSRange(location: 108, length: 20))
-        muutableString.addAttribute(.link, value: Config.privacyPolicy, range: NSRange(location: 132, length: 16))
+        muutableString.addAttribute(.link, value: Config.termsAndConditions, range: NSRange(location: 48, length: 20))
+        muutableString.addAttribute(.link, value: Config.privacyPolicy, range: NSRange(location: 72, length: 16))
         textViewTerms.attributedText = muutableString
-
+        
         infoCardView?.resetLabel(label: "Select Payment Method")
     }
     
@@ -134,10 +142,10 @@ class PaymentTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 2 {
-          openEmail()
+            openEmail()
         } else if indexPath.row == 3 {
             self.paymentContext?.pushPaymentMethodsViewController()
-        } 
+        }
         
     }
     
@@ -157,13 +165,13 @@ class PaymentTableViewController: UITableViewController {
     
 }
 
-extension PaymentTableViewController: EmailProtocol {
+extension OneOffPaymentViewController: EmailProtocol {
     func didSetEmail(_ email: String) {
         emailText.text = email
     }
 }
 
-extension PaymentTableViewController: STPPaymentContextDelegate{
+extension OneOffPaymentViewController: STPPaymentContextDelegate{
     func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPErrorBlock) {
         let source = paymentResult.source.stripeID
         guard
@@ -180,7 +188,7 @@ extension PaymentTableViewController: STPPaymentContextDelegate{
             
             return
         }
-
+        
         self.paymentInProgress = true
         PaymentApi().subscribe(brandId: brandId, planId: planId, source: source, email: email){(title: String, message: String, success:Bool, done:Bool) in
             self.paymentInProgress = false
@@ -224,9 +232,6 @@ extension PaymentTableViewController: STPPaymentContextDelegate{
             preferredStyle: .alert
         )
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
-            // Need to assign to _ because optional binding loses @discardableResult value
-            // https://bugs.swift.org/browse/SR-1681
-            //_ = self.navigationController?.popViewController(animated: true)
             self.close()
         })
         let retry = UIAlertAction(title: "Retry", style: .default, handler: { action in
@@ -238,12 +243,12 @@ extension PaymentTableViewController: STPPaymentContextDelegate{
     }
     
     private func close() {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
 
-extension PaymentTableViewController: STPEphemeralKeyProvider{
+extension OneOffPaymentViewController: STPEphemeralKeyProvider{
     func createCustomerKey(withAPIVersion apiVersion: String, completion: @escaping STPJSONResponseCompletionBlock) {
         if let brandId = self.brandId {
             PaymentApi().ephemeralKeys(brandId, apiVersion: apiVersion, completion: completion)
@@ -251,4 +256,5 @@ extension PaymentTableViewController: STPEphemeralKeyProvider{
         }
     }
 }
+
 

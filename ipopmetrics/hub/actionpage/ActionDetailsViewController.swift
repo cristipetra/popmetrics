@@ -223,11 +223,12 @@ class ActionDetailsViewController: BaseViewController {
     }
     
     @objc func handlerOrder(_ sender: Any) {
-        let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "PaymentTableViewController") as! PaymentTableViewController
+        let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "OneOffPaymentViewController") as! OneOffPaymentViewController
         
         let brandId = UserStore.currentBrandId
         let planId = Config.sharedInstance.environment.stripeBasicPlanId
-        let amount = Config.sharedInstance.environment.stripeBasicPlanAmount
+        var amount = Config.sharedInstance.environment.stripeBasicPlanAmount
+        amount = 0
         vc.configure(brandId:brandId, amount:amount, planId:planId)
         
         self.navigationController?.pushViewController(vc, animated: true)
