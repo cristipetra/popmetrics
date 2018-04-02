@@ -159,7 +159,7 @@
 		08C497B11FD5A31C0066E515 /* animation_X.json in Resources */ = {isa = PBXBuildFile; fileRef = 08C497B01FD5A31C0066E515 /* animation_X.json */; };
 		08C580FD1FBF21440013B03F /* SettingsOverlayUrlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C580FC1FBF21440013B03F /* SettingsOverlayUrlView.xib */; };
 		08C580FF1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C580FE1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift */; };
-		08C5CF361FC5EA9C001851A5 /* ActionPageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */; };
+		08C5CF361FC5EA9C001851A5 /* ActionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5CF351FC5EA9C001851A5 /* ActionDetailsViewController.swift */; };
 		08C6101C2048054D008FCE9E /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C6101B2048054D008FCE9E /* Payment.storyboard */; };
 		08C61020204843B5008FCE9E /* PaymentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6101F204843B5008FCE9E /* PaymentTableViewController.swift */; };
 		08C6F5D72045638700E5482C /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6F5D62045638700E5482C /* UITextFieldExtensions.swift */; };
@@ -435,7 +435,7 @@
 		08C497B01FD5A31C0066E515 /* animation_X.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_X.json; sourceTree = "<group>"; };
 		08C580FC1FBF21440013B03F /* SettingsOverlayUrlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsOverlayUrlView.xib; sourceTree = "<group>"; };
 		08C580FE1FBF215A0013B03F /* SettingsOverlayUrlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOverlayUrlViewController.swift; sourceTree = "<group>"; };
-		08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPageDetailsViewController.swift; sourceTree = "<group>"; };
+		08C5CF351FC5EA9C001851A5 /* ActionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDetailsViewController.swift; sourceTree = "<group>"; };
 		08C6101B2048054D008FCE9E /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		08C6101F204843B5008FCE9E /* PaymentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableViewController.swift; sourceTree = "<group>"; };
 		08C6F5D62045638700E5482C /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
@@ -614,6 +614,7 @@
 		086AF8F0205BCE000073CA1F /* tmp */ = {
 			isa = PBXGroup;
 			children = (
+				08A51D321FC6EF6D0097B334 /* ActionInstructionsPageViewController.swift */,
 				086AF8F1205BCE390073CA1F /* StoreLocally.swift */,
 			);
 			path = tmp;
@@ -977,8 +978,7 @@
 		11DD965C1FC4F0EA00386F1E /* actionpage */ = {
 			isa = PBXGroup;
 			children = (
-				08C5CF351FC5EA9C001851A5 /* ActionPageDetailsViewController.swift */,
-				08A51D321FC6EF6D0097B334 /* ActionInstructionsPageViewController.swift */,
+				08C5CF351FC5EA9C001851A5 /* ActionDetailsViewController.swift */,
 				086B453B1FDC22530043F981 /* PersistentFooter.swift */,
 				0877463C206E2CCB00B94DDD /* ActionStatusViewController.swift */,
 			);
@@ -1664,7 +1664,7 @@
 				1158F3EC206A3DC6005CD638 /* ConnectWizardTwitterVC.swift in Sources */,
 				0855C0CB1F6FFBF000ACBFA9 /* EmptyStateCard.swift in Sources */,
 				088728971FFCE98700BE9882 /* AboutViewController.swift in Sources */,
-				08C5CF361FC5EA9C001851A5 /* ActionPageDetailsViewController.swift in Sources */,
+				08C5CF361FC5EA9C001851A5 /* ActionDetailsViewController.swift in Sources */,
 				116E33A52034789500D2BCA9 /* IntercomTabBarItem.swift in Sources */,
 				08B4EBBB1FC56ACE00BFC5A1 /* TwoImagesButton.swift in Sources */,
 				08AA6C6B1F56DD060022DE91 /* BreakdownViewCell.swift in Sources */,

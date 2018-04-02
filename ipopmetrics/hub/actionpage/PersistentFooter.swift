@@ -17,19 +17,17 @@ class PersistentFooter: UIView {
         return view
     }()
     
-    lazy var leftBtn: UIButton = {
-        let button = UIButton(type: UIButtonType.system)
+    lazy var leftBtn: ActionButton = {
+        let button = ActionButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(PopmetricsColor.secondGray, for: .normal)
-        button.setTitle("Deny Post", for: .normal)
-        button.contentHorizontalAlignment = .left
-        button.titleLabel?.font = UIFont(name: FontBook.bold, size: 15)
+        button.changeTitle("DIY")
         return button
     }()
-    
+
     lazy var rightBtn: ActionButton = {
         let button = ActionButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.changeTitle("Order")
         return button
     }()
     
@@ -56,12 +54,12 @@ class PersistentFooter: UIView {
         
         leftBtn.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 25).isActive = true
         leftBtn.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        leftBtn.widthAnchor.constraint(equalToConstant: 90).isActive = true
-        leftBtn.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        leftBtn.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        leftBtn.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
         rightBtn.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24).isActive = true
         rightBtn.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        rightBtn.widthAnchor.constraint(equalToConstant: 163).isActive = true
+        rightBtn.widthAnchor.constraint(equalToConstant: 120).isActive = true
         rightBtn.heightAnchor.constraint(equalToConstant: 35).isActive = true
         rightBtn.layer.cornerRadius = 17
         

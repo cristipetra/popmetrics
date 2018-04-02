@@ -96,6 +96,8 @@ class TodoHubController: BaseViewController {
     var isAllApproved : Bool = false
     var currentBrandId = UserStore.currentBrandId
     
+    var segueTodoCard: TodoCard?
+    
     internal var didAnimateOpeningCells = false
     
     override func viewDidLoad() {
@@ -298,6 +300,21 @@ class TodoHubController: BaseViewController {
         modalViewController.modalTransition.radiusFactor = 0.3
         self.present(modalViewController, animated: true, completion: nil)
     }
+    
+    func openActionStatus(_ actionCard: TodoCard) {
+        self.segueTodoCard = actionCard
+        self.performSegue(withIdentifier:"showAction", sender:self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let vc = segue.destination as! ActionStatusViewController
+        vc.hidesBottomBarWhenPushed = true
+        if (self.segueTodoCard != nil) {
+            vc.configure(self.segueTodoCard!)
+        }
+    }
+    
     
 }
 
