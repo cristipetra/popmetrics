@@ -37,6 +37,25 @@ enum NavigationMap {
             return wizard
         }
         
+        navigator.register("vnd.popmetrics://insight/string:id") { url, values, context in
+            
+            let vc = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: "InsightDetailsViewController") as! InsightPageDetailsViewController
+            guard let cardID = values["id"] as? String else { return nil }
+            guard let feedCard = FeedStore.getInstance().getFeedCardWithId(cardID) else { return nil }
+            vc.configure(feedCard)
+            return vc
+        }
+        
+        navigator.register("vnd.popmetrics://action_details/<string:action_name>") { url, values, context in
+            let vc = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: "ActionDetailsViewController") as! ActionDetailsViewController
+            
+            guard let cardName = values["action_name"] as? String else { return nil }
+            guard let card = TodoStore.getInstance().getTodoCardWithName(cardName) else { return nil }
+            
+            vc.configure(card)
+            return vc
+        }
+        
         navigator.register("vnd.popmetrics://action_status/<string:action_name>") { url, values, context in
             let vc = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: "ActionStatusViewController") as! ActionStatusViewController
             
@@ -55,14 +74,7 @@ enum NavigationMap {
             return mainTabVC
         }
         
-        navigator.register("vnd.popmetrics://insight/string:id") { url, values, context in
-            
-            let insightDetails = InsightPageDetailsViewController(nibName: "InsightPage", bundle: nil)
-            guard let cardID = values["id"] as? String else { return nil }
-            guard let feedCard = FeedStore.getInstance().getFeedCardWithId(cardID) else { return nil }
-            insightDetails.configure(feedCard)
-            return insightDetails
-        }
+        
         
         navigator.register("http://<path:_>", self.webViewControllerFactory)
         navigator.register("https://<path:_>", self.webViewControllerFactory)

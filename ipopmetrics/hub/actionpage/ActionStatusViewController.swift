@@ -40,8 +40,6 @@ class ActionStatusViewController: BaseViewController {
     
     private var todoCard: TodoCard!
     
-    private var actionModel: ActionPageModel!
-    
     let iceView = IceExtendView()
     
     let persistentFooter: PersistentFooter =  PersistentFooter()
@@ -107,7 +105,6 @@ class ActionStatusViewController: BaseViewController {
     public func configure(_ todoCard: TodoCard, openedFrom: String) {
         self.todoCard = todoCard
         displayActionButton()
-        actionModel = ActionPageModel(todoCard: todoCard)
         
         iceView.configure(todoCard:todoCard)
         displayActionButton()
@@ -119,7 +116,6 @@ class ActionStatusViewController: BaseViewController {
         recommendActionHandler = handler
         
         iceView.configure(todoCard: todoCard)
-        actionModel = ActionPageModel(todoCard: todoCard)
         displayActionButton()
     }
     
@@ -134,11 +130,11 @@ class ActionStatusViewController: BaseViewController {
     }
     
     private func updatView() {
-        if let url = actionModel.imageUri {
+        if let url = todoCard.imageUri {
             cardImage.af_setImage(withURL: URL(string: url)!)
         }
         
-        if let title = actionModel.titleArticle {
+        if let title = todoCard.blogTitle {
             titleArticle.text = title
         }
         
@@ -167,15 +163,15 @@ class ActionStatusViewController: BaseViewController {
     }
     
     private func getDetailsMarkdownString() -> String {
-        return actionModel.detailsMarkdown ?? ""
+        return todoCard.detailsMarkdown ?? ""
     }
     
     private func getClosingMarkdownString() -> String {
-        return actionModel.closingMarkdown ?? ""
+        return todoCard.closingMarkdown ?? ""
     }
     
     private func getFixItMarkdownString() -> String {
-        return actionModel.diyInstructions ?? ""
+        return todoCard.diyInstructions ?? ""
     }
     
     internal func displayMarkdownDetails() {
@@ -213,7 +209,7 @@ class ActionStatusViewController: BaseViewController {
     }
     
     @IBAction func handlerViewArticleBtn(_ sender: Any) {
-        if let url = actionModel.blogUrl {
+        if let url = todoCard.blogUrl {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.openURLInside(self, url: url)
         }
@@ -221,7 +217,7 @@ class ActionStatusViewController: BaseViewController {
     
     @IBAction func handlerViewInstructions(_ sender: Any) {
         
-        if let url = actionModel.blogUrl {
+        if let url = todoCard.blogUrl {
             if url.isValidUrl() {
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.openURLInside(self, url: url)
@@ -277,18 +273,7 @@ class ActionStatusViewController: BaseViewController {
     
     @objc func handlerInsightPage(_ sender: UIButton) {
         
-        let insightDetails = InsightPageDetailsViewController(nibName: "InsightPage", bundle: nil)
-        
-        let openFrom = actionModel.todoCard != nil ? "todo" : "home"
-        print("openedFrom: \(openFrom)")
-        if let insightCard =  getRelatedInsightCard() {
-            insightDetails.configure(insightCard, openedFrom: openFrom)
-            
-            self.navigationController?.pushViewController(viewController: insightDetails, animated: true, completion: {
-                self.closePreviousViewControllerFromNavigation()
-            })
-            
-        }
+        // unwind segue
     }
     
     func getRelatedInsightCard() -> FeedCard? {
