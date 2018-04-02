@@ -32,6 +32,8 @@ class InsightPageDetailsViewController: BaseViewController {
     @IBOutlet weak var constraintBottomStackView: NSLayoutConstraint!
     
     private var feedCard: FeedCard!
+    private var todoCard: TodoCard?
+    
     private var recommendActionHandler: RecommendActionHandler?
     var cardInfoHandlerDelegate: CardInfoHandler?
     
@@ -228,6 +230,20 @@ class InsightPageDetailsViewController: BaseViewController {
         persistentFooter.rightBtn.addTarget(self, action: #selector(handlerActionBtn), for: .touchUpInside)
     }
     
+    func openActionDetails(_ actionCard: TodoCard) {
+        
+        self.todoCard = actionCard
+        self.performSegue(withIdentifier:"showAction", sender:self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let actionDetailsViewController = segue.destination as! ActionDetailsViewController
+        actionDetailsViewController.hidesBottomBarWhenPushed = true
+        actionDetailsViewController.configure(self.todoCard!)
+    }
+    
+    
     @objc func handlerActionBtn() {
         if feedCard.recommendedAction == "" {
             self.presentAlertWithTitle("Error", message: "This insight has no recommended action!", useWhisper: true);
@@ -238,8 +254,9 @@ class InsightPageDetailsViewController: BaseViewController {
                 self.presentAlertWithTitle("Error", message: "No card to show with name: "+feedCard.recommendedAction, useWhisper: true);
                 return
         }
-    
-        let actionPageVc: ActionPageDetailsViewController = ActionPageDetailsViewController(nibName: "ActionPage", bundle: nil)
+        openActionDetails(actionCard)
+        
+        let actionPageVc: ActionDetailsViewController = ActionDetailsViewController(nibName: "ActionPage", bundle: nil)
         
         actionPageVc.hidesBottomBarWhenPushed = true
         if openedFrom == "home" {

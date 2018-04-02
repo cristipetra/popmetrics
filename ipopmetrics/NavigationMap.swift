@@ -35,8 +35,18 @@ enum NavigationMap {
             guard let card = FeedStore.getInstance().getFeedCardWithName(cardName) else { return nil }
             wizard.configure(card)
             return wizard
-            
         }
+        
+        navigator.register("vnd.popmetrics://action_status/<string:action_name>") { url, values, context in
+            let vc = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: "ActionStatusViewController") as! ActionStatusViewController
+            
+            guard let cardName = values["action_name"] as? String else { return nil }
+            guard let card = TodoStore.getInstance().getTodoCardWithName(cardName) else { return nil }
+            
+            vc.configure(card)
+            return vc
+        }
+        
         
         navigator.register("vnd.popmetrics://hubs/todo") { url, values, context in
             

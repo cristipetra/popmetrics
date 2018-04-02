@@ -95,13 +95,11 @@ class ActionStatusViewController: BaseViewController {
         bottomContainerViewBottomAnchor = persistentFooter.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         bottomContainerViewBottomAnchor.isActive = true
         
-        persistentFooter.leftBtn.isHidden = true
-        
         //add action from home feed
         if todoCard.name == "social.automated_twitter_posts" || todoCard.name == "social.automated_facebook_posts" {
-            persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToPaidActions(_:)), for: .touchUpInside)
+            persistentFooter.rightBtn.addTarget(self, action: #selector(orderAction(_:)), for: .touchUpInside)
         } else {
-            persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToMyActions(_:)), for: .touchUpInside)
+            persistentFooter.rightBtn.addTarget(self, action: #selector(markAsCompleteAction(_:)), for: .touchUpInside)
         }
         
     }
@@ -126,19 +124,12 @@ class ActionStatusViewController: BaseViewController {
     }
     
     private func displayActionButton() {
-        if todoCard == nil {
+        persistentFooter.rightBtn.changeTitle("Do it for me")
+        persistentFooter.leftBtn.changeTitle("Completed")
+        
+        if todoCard.name == "social.automated_posts" {
+            persistentFooter.leftBtn.isHidden = true
             persistentFooter.rightBtn.isHidden = true
-            return
-        }
-        if todoCard.section == "None" {
-            persistentFooter.rightBtn.changeTitle("Fix")
-        } else {
-            persistentFooter.rightBtn.changeTitle("Mark As Complete")
-            persistentFooter.rightBtn.hideImageBtn()
-            
-            if todoCard.name == "social.automated_posts" {
-                persistentFooter.rightBtn.isHidden = true
-            }
         }
     }
     
@@ -157,7 +148,7 @@ class ActionStatusViewController: BaseViewController {
     }
     
     private func setupNavigationWithBackButton() {
-        let titleWindow = "Action Page"
+        let titleWindow = "Task Status"
         
         let leftSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         leftSpace.width = 5
@@ -237,20 +228,9 @@ class ActionStatusViewController: BaseViewController {
             }
         }
         
-        /*
-         let instructionsPageVc: ActionInstructionsPageViewController = ActionInstructionsPageViewController(nibName: "ActionInstructionsPage", bundle: nil)
-         if (feedCard != nil) {
-         instructionsPageVc.configure(feedCard)
-         }
-         if todoCard != nil {
-         instructionsPageVc.configure(todoCard: todoCard)
-         }
-         self.navigationController?.pushViewController(instructionsPageVc, animated: true)
-         */
-        
     }
     
-    @IBAction func handlerAddToMyActions(_ sender: Any) {
+    @IBAction func markAsCompleteAction(_ sender: Any) {
         if !ReachabilityManager.shared.isNetworkAvailable {
             presentErrorNetwork()
             return
@@ -272,20 +252,20 @@ class ActionStatusViewController: BaseViewController {
         }
     }
     
-    @objc func handlerAddToPaidActions(_ sender: Any) {
+    @objc func orderAction(_ sender: Any) {
         if !ReachabilityManager.shared.isNetworkAvailable {
             presentErrorNetwork()
             return
         }
         
         if self.todoCard != nil {
-            HubsApi().postAddToPaidActions(cardId: self.todoCard.cardId!, brandId: UserStore.currentBrandId) { todoCard in
-                TodoStore.getInstance().addTodoCard(todoCard!)
-                
-                if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
-                    FeedStore.getInstance().updateCardSection(insightCard, section:"None")
-                }
-                self.cardInfoHandlerDelegate?.handleActionComplete()
+            ActionApi().order(cardId: self.todoCard.cardId!, brandId: UserStore.currentBrandId) { actionResponse in
+//                TodoStore.getInstance().addTodoCard(todoCard!)
+//                
+//                if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
+//                    FeedStore.getInstance().updateCardSection(insightCard, section:"None")
+//                }
+//                self.cardInfoHandlerDelegate?.handleActionComplete()
                 
                 NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
                                                 userInfo: ["sucess":true])
@@ -321,22 +301,6 @@ class ActionStatusViewController: BaseViewController {
         return nil
     }
     
-    //    @objc func handlerActionBtn() {
-    //        if feedCard != nil {
-    //            FeedApi().postAddToMyActions(feedCardId: self.feedCard.cardId!, brandId: UserStore.currentBrandId) { todoCard in
-    //                TodoStore.getInstance().addTodoCard(todoCard!)
-    //
-    //                if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
-    //                    FeedStore.getInstance().updateCardSection(insightCard, section:"None")
-    //                }
-    //                FeedStore.getInstance().updateCardSection(self.feedCard, section:"None")
-    //                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
-    //                                                userInfo: ["sucess":true])
-    //
-    //                self.navigationController?.popViewController(animated: true)
-    //            }
-    //        }
-    //    }
     
     @objc func handlerClickBack() {
         self.navigationController?.popViewController(animated: true)

@@ -9,7 +9,7 @@
 import UIKit
 import markymark
 
-class ActionPageDetailsViewController: BaseViewController {
+class ActionDetailsViewController: BaseViewController {
     
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var titleArticle: UILabel!
@@ -95,8 +95,6 @@ class ActionPageDetailsViewController: BaseViewController {
         bottomContainerViewBottomAnchor = persistentFooter.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         bottomContainerViewBottomAnchor.isActive = true
         
-        persistentFooter.leftBtn.isHidden = true
-        
         //add action from home feed
         if todoCard.name == "social.automated_twitter_posts" || todoCard.name == "social.automated_facebook_posts" {
             persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToPaidActions(_:)), for: .touchUpInside)
@@ -130,17 +128,16 @@ class ActionPageDetailsViewController: BaseViewController {
             persistentFooter.rightBtn.isHidden = true
             return
         }
-        if todoCard.section == "None" {
-            persistentFooter.rightBtn.changeTitle("Fix")
-        } else {
-            persistentFooter.rightBtn.changeTitle("Mark As Complete")
-            persistentFooter.rightBtn.hideImageBtn()
-            
-            if todoCard.name == "social.automated_posts" {
-                persistentFooter.rightBtn.isHidden = true
-            }
-            
-        }
+
+        persistentFooter.leftBtn.isHidden = false
+//        } else {
+//            persistentFooter.rightBtn.changeTitle("Mark As Complete")
+//            persistentFooter.rightBtn.hideImageBtn()
+//
+//            if todoCard.name == "social.automated_posts" {
+//                persistentFooter.rightBtn.isHidden = true
+//            }
+//        }
     }
     
     private func updatView() {
@@ -158,7 +155,7 @@ class ActionPageDetailsViewController: BaseViewController {
     }
     
     private func setupNavigationWithBackButton() {
-        let titleWindow = "Action Page"
+        let titleWindow = "Action Recommendation"
         
         let leftSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         leftSpace.width = 5
@@ -280,16 +277,16 @@ class ActionPageDetailsViewController: BaseViewController {
         }
         
         if self.todoCard != nil {
-            HubsApi().postAddToPaidActions(cardId: self.todoCard.cardId!, brandId: UserStore.currentBrandId) { todoCard in
-                TodoStore.getInstance().addTodoCard(todoCard!)
-                
-                if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
-                    FeedStore.getInstance().updateCardSection(insightCard, section:"None")
-                }
-                self.cardInfoHandlerDelegate?.handleActionComplete()
-                
-                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
-                                                userInfo: ["sucess":true])
+            ActionApi().order(cardId: self.todoCard.cardId!, brandId: UserStore.currentBrandId) { actionResponse in
+//                TodoStore.getInstance().addTodoCard(todoCard!)
+//
+//                if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
+//                    FeedStore.getInstance().updateCardSection(insightCard, section:"None")
+//                }
+//                self.cardInfoHandlerDelegate?.handleActionComplete()
+//
+//                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
+//                                                userInfo: ["sucess":true])
                 
                 self.navigationController?.popViewController(animated: true)
             }
@@ -362,7 +359,7 @@ class ActionPageDetailsViewController: BaseViewController {
     }
 }
 
-extension ActionPageDetailsViewController: BannerProtocol {
+extension ActionDetailsViewController: BannerProtocol {
     
 }
 

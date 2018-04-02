@@ -495,7 +495,7 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
                     return
             }
             
-            let actionDetailsViewController = segue.destination as! ActionPageDetailsViewController
+            let actionDetailsViewController = segue.destination as! ActionDetailsViewController
             actionDetailsViewController.hidesBottomBarWhenPushed = true
             actionDetailsViewController.configure(actionCard)
             actionDetailsViewController.cardInfoHandlerDelegate = self
