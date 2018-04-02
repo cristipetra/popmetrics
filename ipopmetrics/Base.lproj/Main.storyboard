@@ -51,6 +51,7 @@
                         <segue destination="gHR-Us-alS" kind="push" identifier="showAnalysis" id="y6m-MW-wFU"/>
                         <segue destination="0cD-cM-vxf" kind="push" identifier="startConnectionWizard" id="zRa-8Q-GjM"/>
                         <segue destination="2BS-of-lNI" kind="push" identifier="showActionDetails" id="3OR-Db-hbp"/>
+                        <segue destination="kRe-3w-5lt" kind="unwind" unwindAction="unwindToHomeHubWithSegue:" id="vRx-OY-lN6"/>
                     </connections>
                 </tableViewController>
                 <tabBarItem title="Feed" image="first" id="FdZ-LU-Uik"/>
@@ -413,13 +414,13 @@ article has some meta thing telling the computer that it’s magically got to ch
         <!--Action Details View Controller-->
         <scene sceneID="Ccw-Ad-lV1">
             <objects>
-                <viewController storyboardIdentifier="ActionDetailsViewController" hidesBottomBarWhenPushed="YES" id="2BS-of-lNI" customClass="ActionDetailsViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActionDetailsViewController" id="2BS-of-lNI" customClass="ActionDetailsViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NOu-h4-f6V">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="2200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUe-vV-Yno">
-                                <rect key="frame" x="0.0" y="64" width="320" height="2092"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="411"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="LZT-Hq-nxK">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="1609.5"/>
@@ -622,7 +623,6 @@ article has some meta thing telling the computer that it’s magically got to ch
                         <viewLayoutGuide key="safeArea" id="5FM-Jj-ao9"/>
                     </view>
                     <navigationItem key="navigationItem" id="Fur-zw-OwN"/>
-                    <size key="freeformSize" width="320" height="2200"/>
                     <connections>
                         <outlet property="cardImage" destination="gqI-Ea-ufZ" id="pjZ-be-BkM"/>
                         <outlet property="constraintBottomStackView" destination="hOy-yX-sio" id="vBs-cr-nL2"/>
@@ -635,6 +635,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                         <outlet property="containerIceView" destination="p2I-gK-VKo" id="eky-Ss-41D"/>
                         <outlet property="titleArticle" destination="TPG-hk-fuS" id="N5t-Ny-Ner"/>
                         <outlet property="whyThisRecommendationView" destination="CHU-xk-azZ" id="vHr-VI-ROr"/>
+                        <segue destination="K51-6A-wB6" kind="push" identifier="showMyActionPopup" id="t1V-1p-uv6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hky-pN-dVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -868,12 +869,11 @@ article has some meta thing telling the computer that it’s magically got to ch
                 <tabBarController storyboardIdentifier="MainTabBarController" title="Main Tab Bar Controller" id="11g-qt-nej" customClass="MainTabBarController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="vI3-Am-2cK"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="k0Q-yd-kzN">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
                                 <color key="value" red="0.99978989362716675" green="0.86510622501373291" blue="0.41471737623214722" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1089,6 +1089,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                         <viewLayoutGuide key="safeArea" id="lz7-81-Dge"/>
                     </view>
                     <navigationItem key="navigationItem" id="rdN-rC-aFb"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="tableView" destination="q5g-rj-92z" id="wCj-za-dDg"/>
                         <outlet property="toDoTopView" destination="Bo8-db-YCb" id="x9b-uZ-BHW"/>
@@ -1911,13 +1912,13 @@ article has some meta thing telling the computer that it’s magically got to ch
         <!--Action Status View Controller-->
         <scene sceneID="Vbo-aJ-30R">
             <objects>
-                <viewController storyboardIdentifier="ActionStatusViewController" hidesBottomBarWhenPushed="YES" id="HrA-cL-XtU" customClass="ActionStatusViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActionStatusViewController" id="HrA-cL-XtU" customClass="ActionStatusViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PdV-Fx-Ss6">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="1700"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1651"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pv9-YO-R6p">
-                                <rect key="frame" x="0.0" y="64" width="320" height="1636"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="1587"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="u2c-Ga-33q">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="1745.5"/>
@@ -2128,11 +2129,245 @@ article has some meta thing telling the computer that it’s magically got to ch
                         <outlet property="containerFixIt" destination="hZN-ZV-spK" id="7tW-G2-iJb"/>
                         <outlet property="containerIceView" destination="efI-lO-hAg" id="PAp-ty-w5k"/>
                         <outlet property="titleArticle" destination="SEd-Ut-xnj" id="87T-b9-mGm"/>
+                        <segue destination="hqt-Z9-3TA" kind="push" identifier="showInReviewPopup" id="HwZ-FX-N3Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="exQ-pB-IVi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2059" y="497"/>
+        </scene>
+        <!--Todo In My Actions Popup View Controller-->
+        <scene sceneID="jdn-yA-OBo">
+            <objects>
+                <viewController storyboardIdentifier="TodoInMyActionsPopupViewController" id="K51-6A-wB6" customClass="TodoInMyActionsPopupViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zbp-uK-TJ3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LHX-a4-nAQ">
+                                <rect key="frame" x="10" y="49.5" width="300" height="420"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popupIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Dhx-mx-jtT">
+                                        <rect key="frame" x="21.5" y="20" width="256" height="179"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="179" id="EoZ-RM-Twl"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRK-52-0IU">
+                                        <rect key="frame" x="10" y="239" width="280" height="25"/>
+                                        <string key="text">Task added to your My Actions list.
+</string>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
+                                        <color key="textColor" name="rock_bottom"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ezi-qU-B4Z">
+                                        <rect key="frame" x="69.5" y="340" width="160" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="IQt-ja-TPV"/>
+                                            <constraint firstAttribute="width" constant="160" id="bNX-Qp-OaT"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="To Home Feed">
+                                            <color key="titleColor" name="rock_bottom"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="rock_bottom"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="navigateToHomeHub:" destination="K51-6A-wB6" eventType="touchUpInside" id="OEf-wk-J1L"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvc-Oe-HeN">
+                                        <rect key="frame" x="70" y="287" width="160" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="160" id="Ij7-hj-XuR"/>
+                                            <constraint firstAttribute="height" constant="45" id="TZK-E1-Qgc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="View Task">
+                                            <color key="titleColor" name="rock_bottom"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="rock_bottom"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="navigateToHomeHub:" destination="K51-6A-wB6" eventType="touchUpInside" id="onL-Uk-Rde"/>
+                                            <action selector="navigateToTodoHub:" destination="K51-6A-wB6" eventType="touchUpInside" id="9Xf-a0-Cqe"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="oRK-52-0IU" firstAttribute="top" secondItem="Dhx-mx-jtT" secondAttribute="bottom" constant="40" id="GbR-Nz-xBX"/>
+                                    <constraint firstItem="oRK-52-0IU" firstAttribute="leading" secondItem="LHX-a4-nAQ" secondAttribute="leading" constant="10" id="LQk-0b-eC4"/>
+                                    <constraint firstItem="Ezi-qU-B4Z" firstAttribute="centerX" secondItem="LHX-a4-nAQ" secondAttribute="centerX" id="M1Q-8G-H3H"/>
+                                    <constraint firstItem="Dhx-mx-jtT" firstAttribute="top" secondItem="LHX-a4-nAQ" secondAttribute="top" constant="20" id="MPN-0B-Zp3"/>
+                                    <constraint firstAttribute="height" constant="420" id="OcJ-b8-bF5"/>
+                                    <constraint firstItem="Ezi-qU-B4Z" firstAttribute="top" secondItem="Tvc-Oe-HeN" secondAttribute="bottom" constant="8" id="U5q-o3-CyC"/>
+                                    <constraint firstItem="oRK-52-0IU" firstAttribute="centerX" secondItem="LHX-a4-nAQ" secondAttribute="centerX" id="Zy7-ko-EYN"/>
+                                    <constraint firstItem="Dhx-mx-jtT" firstAttribute="centerX" secondItem="LHX-a4-nAQ" secondAttribute="centerX" id="hoD-Op-DTC"/>
+                                    <constraint firstItem="Tvc-Oe-HeN" firstAttribute="top" secondItem="oRK-52-0IU" secondAttribute="bottom" constant="23" id="iJp-BE-dgj"/>
+                                    <constraint firstItem="Tvc-Oe-HeN" firstAttribute="centerX" secondItem="LHX-a4-nAQ" secondAttribute="centerX" id="ktk-6a-KIB"/>
+                                    <constraint firstAttribute="trailing" secondItem="oRK-52-0IU" secondAttribute="trailing" constant="10" id="uKP-7q-hHb"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="LHX-a4-nAQ" firstAttribute="leading" secondItem="PlN-Li-6UR" secondAttribute="leading" constant="10" id="20a-YO-u1L"/>
+                            <constraint firstItem="PlN-Li-6UR" firstAttribute="trailing" secondItem="LHX-a4-nAQ" secondAttribute="trailing" constant="10" id="TEh-mR-0Xs"/>
+                            <constraint firstItem="LHX-a4-nAQ" firstAttribute="centerY" secondItem="Zbp-uK-TJ3" secondAttribute="centerY" id="xcP-tX-kJP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PlN-Li-6UR"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="U2A-4C-r2Q"/>
+                    <connections>
+                        <outlet property="containerView" destination="LHX-a4-nAQ" id="07G-le-UTX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bjR-50-ZIs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="kRe-3w-5lt" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2782" y="-1248"/>
+        </scene>
+        <!--Todo In Review Popup View Controller-->
+        <scene sceneID="VrC-eG-U1x">
+            <objects>
+                <viewController storyboardIdentifier="TodoInReviewViewController" id="hqt-Z9-3TA" customClass="TodoInReviewPopupViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WgR-5P-j6o">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DgL-NA-6Kg">
+                                <rect key="frame" x="10" y="49.5" width="300" height="420"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popupTest" translatesAutoresizingMaskIntoConstraints="NO" id="Vcm-i7-IeZ">
+                                        <rect key="frame" x="44" y="20" width="211" height="179"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="179" id="8dH-7z-te7"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great! Let us review your work." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Efe-Tu-U5a">
+                                        <rect key="frame" x="10" y="239" width="280" height="25"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
+                                        <color key="textColor" name="rock_bottom"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4f-qT-e9t">
+                                        <rect key="frame" x="69.5" y="340" width="160" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="7wV-ip-1Du"/>
+                                            <constraint firstAttribute="width" constant="160" id="h2e-Z7-Ae7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="Home">
+                                            <color key="titleColor" name="rock_bottom"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="rock_bottom"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="navigateToHomeHub:" destination="hqt-Z9-3TA" eventType="touchUpInside" id="N1M-GY-KMM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KvY-j4-S2b">
+                                        <rect key="frame" x="70" y="287" width="160" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="160" id="7gL-Lv-XBE"/>
+                                            <constraint firstAttribute="height" constant="45" id="Eg4-U7-HvC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="Your tasks">
+                                            <color key="titleColor" name="rock_bottom"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="rock_bottom"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="navigateToHomeHub:" destination="hqt-Z9-3TA" eventType="touchUpInside" id="2pK-Kw-r0J"/>
+                                            <action selector="navigateToTodoHub:" destination="hqt-Z9-3TA" eventType="touchUpInside" id="8cY-QN-7K9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Efe-Tu-U5a" firstAttribute="top" secondItem="Vcm-i7-IeZ" secondAttribute="bottom" constant="40" id="Nbo-lU-uCe"/>
+                                    <constraint firstItem="L4f-qT-e9t" firstAttribute="top" secondItem="KvY-j4-S2b" secondAttribute="bottom" constant="8" id="OQD-Ny-nIv"/>
+                                    <constraint firstAttribute="height" constant="420" id="Opd-tA-HcR"/>
+                                    <constraint firstItem="Efe-Tu-U5a" firstAttribute="centerX" secondItem="DgL-NA-6Kg" secondAttribute="centerX" id="R60-b4-dSv"/>
+                                    <constraint firstItem="Vcm-i7-IeZ" firstAttribute="centerX" secondItem="DgL-NA-6Kg" secondAttribute="centerX" id="cVY-VN-Hq9"/>
+                                    <constraint firstAttribute="trailing" secondItem="Efe-Tu-U5a" secondAttribute="trailing" constant="10" id="icG-Z3-sGg"/>
+                                    <constraint firstItem="KvY-j4-S2b" firstAttribute="centerX" secondItem="DgL-NA-6Kg" secondAttribute="centerX" id="kpr-0J-fK5"/>
+                                    <constraint firstItem="Efe-Tu-U5a" firstAttribute="leading" secondItem="DgL-NA-6Kg" secondAttribute="leading" constant="10" id="q92-E5-YfB"/>
+                                    <constraint firstItem="Vcm-i7-IeZ" firstAttribute="top" secondItem="DgL-NA-6Kg" secondAttribute="top" constant="20" id="qoe-7v-ls3"/>
+                                    <constraint firstItem="L4f-qT-e9t" firstAttribute="centerX" secondItem="DgL-NA-6Kg" secondAttribute="centerX" id="u1d-A7-KOs"/>
+                                    <constraint firstItem="KvY-j4-S2b" firstAttribute="top" secondItem="Efe-Tu-U5a" secondAttribute="bottom" constant="23" id="vEO-Et-yvd"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="DgL-NA-6Kg" firstAttribute="leading" secondItem="Hwe-bZ-hVU" secondAttribute="leading" constant="10" id="JnU-aD-HWZ"/>
+                            <constraint firstItem="Hwe-bZ-hVU" firstAttribute="trailing" secondItem="DgL-NA-6Kg" secondAttribute="trailing" constant="10" id="Uwi-DI-133"/>
+                            <constraint firstItem="DgL-NA-6Kg" firstAttribute="centerY" secondItem="WgR-5P-j6o" secondAttribute="centerY" id="wcZ-6X-an8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Hwe-bZ-hVU"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cLF-xP-eqZ"/>
+                    <connections>
+                        <outlet property="containerView" destination="DgL-NA-6Kg" id="pbX-FJ-np0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WtC-CL-orM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2782" y="-353"/>
         </scene>
     </scenes>
     <resources>
@@ -2156,6 +2391,8 @@ article has some meta thing telling the computer that it’s magically got to ch
         <image name="inactive_statistics" width="22" height="23"/>
         <image name="inactive_todo" width="20" height="23"/>
         <image name="menuLogo" width="118" height="26"/>
+        <image name="popupIcon" width="256" height="179"/>
+        <image name="popupTest" width="211" height="196"/>
         <image name="second" width="30" height="30"/>
         <image name="user_profile" width="16" height="16"/>
         <namedColor name="blue_bottle">
@@ -2163,6 +2400,12 @@ article has some meta thing telling the computer that it’s magically got to ch
         </namedColor>
         <namedColor name="red_light">
             <color red="1" green="0.46666666666666667" blue="0.41568627450980394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="rock_bottom">
+            <color red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="rock_bottom">
+            <color red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="venice_winter">
             <color red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

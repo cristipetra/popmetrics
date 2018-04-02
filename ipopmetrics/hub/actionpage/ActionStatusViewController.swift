@@ -74,8 +74,10 @@ class ActionStatusViewController: BaseViewController {
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     private func addIceView() {
@@ -234,17 +236,19 @@ class ActionStatusViewController: BaseViewController {
         }
         if self.todoCard != nil {
             HubsApi().postAddToMyActions(cardId: self.todoCard.cardId!, brandId: UserStore.currentBrandId) { todoCard in
-                TodoStore.getInstance().addTodoCard(todoCard!)
                 
-                if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
-                    FeedStore.getInstance().updateCardSection(insightCard, section:"None")
-                }
-                self.cardInfoHandlerDelegate?.handleActionComplete()
-                
-                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
-                                                userInfo: ["sucess":true])
-                
-                self.navigationController?.popViewController(animated: true)
+                  self.performSegue(withIdentifier: "showInReviewPopup", sender: nil)
+//                TodoStore.getInstance().addTodoCard(todoCard!)
+//
+//                if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
+//                    FeedStore.getInstance().updateCardSection(insightCard, section:"None")
+//                }
+//                self.cardInfoHandlerDelegate?.handleActionComplete()
+//
+//                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
+//                                                userInfo: ["sucess":true])
+//
+//                self.navigationController?.popViewController(animated: true)
             }
         }
     }

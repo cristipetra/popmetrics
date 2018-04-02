@@ -66,7 +66,10 @@ class ActionDetailsViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.whyThisRecommendationView.isHidden = fromInsight
+        self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillLayoutSubviews() {
@@ -78,9 +81,6 @@ class ActionDetailsViewController: BaseViewController {
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     private func addIceView() {
         self.containerIceView.addSubview(iceView)
@@ -98,6 +98,8 @@ class ActionDetailsViewController: BaseViewController {
         bottomContainerViewBottomAnchor.isActive = true
         
         persistentFooter.rightBtn.addTarget(self, action: #selector(handlerOrder(_:)), for: .touchUpInside)
+        persistentFooter.leftBtn.addTarget(self, action: #selector(handlerAddToMyActions(_:)), for: .touchUpInside)
+        
 
     }
     
@@ -234,38 +236,16 @@ class ActionDetailsViewController: BaseViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func handlerAddToMyActions(_ sender: Any) {
+    @objc func handlerAddToMyActions(_ sender: Any) {
         if !ReachabilityManager.shared.isNetworkAvailable {
             presentErrorNetwork()
             return
         }
         if self.todoCard != nil {
             HubsApi().postAddToMyActions(cardId: self.todoCard.cardId!, brandId: UserStore.currentBrandId) { todoCard in
-                TodoStore.getInstance().addTodoCard(todoCard!)               
                 
-                if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
-                    FeedStore.getInstance().updateCardSection(insightCard, section:"None")
-                }
-                self.cardInfoHandlerDelegate?.handleActionComplete()
-                
-                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
-                                                userInfo: ["sucess":true])
-                
-                self.navigationController?.popViewController(animated: true)
-            }
-        }
-    }
-    
-    @objc func handlerAddToPaidActions(_ sender: Any) {
-        if !ReachabilityManager.shared.isNetworkAvailable {
-            presentErrorNetwork()
-            return
-        }
-        
-        if self.todoCard != nil {
-            ActionApi().order(cardId: self.todoCard.cardId!, brandId: UserStore.currentBrandId) { actionResponse in
-//                TodoStore.getInstance().addTodoCard(todoCard!)
-//
+                //TodoStore.getInstance().addTodoCard(todoCard!)
+                self.performSegue(withIdentifier: "showMyActionPopup", sender: nil)
 //                if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
 //                    FeedStore.getInstance().updateCardSection(insightCard, section:"None")
 //                }
@@ -273,8 +253,8 @@ class ActionDetailsViewController: BaseViewController {
 //
 //                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
 //                                                userInfo: ["sucess":true])
-                
-                self.navigationController?.popViewController(animated: true)
+//
+//                self.navigationController?.popViewController(animated: true)
             }
         }
     }

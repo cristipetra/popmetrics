@@ -187,8 +187,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
-//        self.navigationController?.isToolbarHidden = false
-
 
         tableView.alpha = 1
         let tabInfo = MainTabInfo.getInstance()
@@ -485,7 +483,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             let insightDetailsViewController = segue.destination as! InsightPageDetailsViewController
             insightDetailsViewController.configure(card)
             insightDetailsViewController.cardInfoHandlerDelegate = self
-            insightDetailsViewController.hidesBottomBarWhenPushed = true
         } else if segue.identifier == "showActionDetails" {
             guard let card = self.currentFeedCard else { return }
             
@@ -496,7 +493,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
             }
             
             let actionDetailsViewController = segue.destination as! ActionDetailsViewController
-            actionDetailsViewController.hidesBottomBarWhenPushed = true
             actionDetailsViewController.configure(actionCard)
             actionDetailsViewController.cardInfoHandlerDelegate = self
         }
@@ -508,7 +504,9 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         self.present(navigation, animated: true, completion: nil)
     }
     
-    
+    @IBAction func unwindToHomeHub(segue:UIStoryboardSegue) {
+        
+    }
 }
 
 extension HomeHubViewController: RequiredActionLoadMore {

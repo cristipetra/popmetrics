@@ -152,9 +152,14 @@ class TodoHubController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         setUpNavigationBar()
+        self.tabBarController?.tabBar.isHidden = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        
         transitionView.alpha = 0.7
         let tabInfo = MainTabInfo.getInstance()
         let xValue = tabInfo.currentItemIndex >= tabInfo.lastItemIndex ? CGFloat(20) : CGFloat(-20)
@@ -212,7 +217,7 @@ class TodoHubController: BaseViewController {
     internal var leftButtonItem: UIBarButtonItem!
     
     internal func setUpNavigationBar() {
-        let text = UIBarButtonItem(title: "To Do", style: .plain, target: self, action: #selector(handlerClickMenu))
+        let text = UIBarButtonItem(title: "Tasks", style: .plain, target: self, action: #selector(handlerClickMenu))
         text.tintColor = UIColor(red: 67/255, green: 76/255, blue: 84/255, alpha: 1.0)
         let titleFont = UIFont(name: FontBook.extraBold, size: 18)
         text.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
@@ -225,6 +230,7 @@ class TodoHubController: BaseViewController {
         
         self.navigationItem.leftBarButtonItems = [leftButtonItem, text]
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
+        
     }
     
     func updateCountsTopView() {
@@ -309,7 +315,6 @@ class TodoHubController: BaseViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let vc = segue.destination as! ActionStatusViewController
-        vc.hidesBottomBarWhenPushed = true
         if (self.segueTodoCard != nil) {
             vc.configure(self.segueTodoCard!)
         }
@@ -532,7 +537,6 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
         detailsVC.configure(todoSocialPost: todoSocialPost)
         detailsVC.actionSocialDelegate = self
         detailsVC.setIndexPath(indexPath)
-        detailsVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailsVC, animated: true)
     }
     

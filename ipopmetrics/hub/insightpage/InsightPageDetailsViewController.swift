@@ -65,8 +65,10 @@ class InsightPageDetailsViewController: BaseViewController {
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override func viewWillAppear(_ animated:Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
