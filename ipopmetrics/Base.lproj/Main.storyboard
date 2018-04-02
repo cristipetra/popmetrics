@@ -199,13 +199,13 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="1843"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="hYW-IT-klQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1583"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1447"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wnl-Vo-da4">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="316"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Dr-i2-dsZ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="316"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                                         <color key="tintColor" name="venice_winter"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
@@ -215,14 +215,14 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="6Dr-i2-dsZ" firstAttribute="top" secondItem="wnl-Vo-da4" secondAttribute="top" id="9tZ-b9-NaG"/>
-                                                    <constraint firstAttribute="height" constant="316" id="EiS-8b-SG4"/>
+                                                    <constraint firstAttribute="height" constant="180" id="EiS-8b-SG4"/>
                                                     <constraint firstItem="6Dr-i2-dsZ" firstAttribute="leading" secondItem="wnl-Vo-da4" secondAttribute="leading" id="LKZ-G2-Tw2"/>
                                                     <constraint firstAttribute="bottom" secondItem="6Dr-i2-dsZ" secondAttribute="bottom" id="O10-dL-u3j"/>
                                                     <constraint firstAttribute="trailing" secondItem="6Dr-i2-dsZ" secondAttribute="trailing" id="aIk-h5-Tum"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g0U-d4-kfS">
-                                                <rect key="frame" x="0.0" y="317" width="375" height="215"/>
+                                                <rect key="frame" x="0.0" y="181" width="375" height="215"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your web traffic is being severely held back &amp; limiting your conversions." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9z7-8b-OIX">
                                                         <rect key="frame" x="25" y="20" width="332" height="175"/>
@@ -240,7 +240,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n6J-Kb-fgd">
-                                                <rect key="frame" x="0.0" y="533" width="375" height="220"/>
+                                                <rect key="frame" x="0.0" y="397" width="375" height="220"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0G-GS-0CH">
                                                         <rect key="frame" x="25" y="22" width="65.5" height="25"/>
@@ -265,7 +265,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0tL-u9-05s">
-                                                <rect key="frame" x="0.0" y="754" width="375" height="220"/>
+                                                <rect key="frame" x="0.0" y="618" width="375" height="220"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why This Happened?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bp-7G-DVh">
                                                         <rect key="frame" x="25" y="22" width="192.5" height="25"/>
@@ -290,7 +290,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OwA-z4-YB9">
-                                                <rect key="frame" x="0.0" y="975" width="375" height="240"/>
+                                                <rect key="frame" x="0.0" y="839" width="375" height="240"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conclusion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14F-WJ-qa2">
                                                         <rect key="frame" x="25" y="22" width="102" height="25"/>
@@ -315,7 +315,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2cB-vS-k3g">
-                                                <rect key="frame" x="0.0" y="1216" width="375" height="367"/>
+                                                <rect key="frame" x="0.0" y="1080" width="375" height="367"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cAa-rb-CIK">
                                                         <rect key="frame" x="25" y="20" width="333" height="200"/>
@@ -403,6 +403,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                         <outlet property="containerDetailsMarkdown" destination="oGQ-fP-B0L" id="pfP-fv-uax"/>
                         <outlet property="titleArticle" destination="9z7-8b-OIX" id="5NK-Ri-O5t"/>
                         <segue destination="2BS-of-lNI" kind="push" identifier="showActionDetails" id="xGE-FV-qhX"/>
+                        <segue destination="P5y-fn-Vwb" kind="unwind" unwindAction="unwindToInsightWithSegue:" id="bgU-gn-eSQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pGA-ei-Dmq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -414,20 +415,20 @@ article has some meta thing telling the computer that it’s magically got to ch
             <objects>
                 <viewController storyboardIdentifier="ActionDetailsViewController" hidesBottomBarWhenPushed="YES" id="2BS-of-lNI" customClass="ActionDetailsViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NOu-h4-f6V">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="1700"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="2200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUe-vV-Yno">
-                                <rect key="frame" x="0.0" y="64" width="320" height="1592"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="2092"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="LZT-Hq-nxK">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1745.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1609.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D9U-jQ-26d">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="316"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gqI-Ea-ufZ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="316"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                                                         <color key="tintColor" name="venice_winter"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
@@ -436,7 +437,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="316" id="5qd-M9-dSO"/>
+                                                    <constraint firstAttribute="height" constant="180" id="5qd-M9-dSO"/>
                                                     <constraint firstItem="gqI-Ea-ufZ" firstAttribute="top" secondItem="D9U-jQ-26d" secondAttribute="top" id="Bhf-Xa-soG"/>
                                                     <constraint firstAttribute="trailing" secondItem="gqI-Ea-ufZ" secondAttribute="trailing" id="R7S-Ko-R70"/>
                                                     <constraint firstItem="gqI-Ea-ufZ" firstAttribute="leading" secondItem="D9U-jQ-26d" secondAttribute="leading" id="SB4-pS-YbD"/>
@@ -444,7 +445,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Gw-FL-5ZN">
-                                                <rect key="frame" x="0.0" y="317" width="320" height="214.5"/>
+                                                <rect key="frame" x="0.0" y="181" width="320" height="214.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPG-hk-fuS">
                                                         <rect key="frame" x="25" y="20" width="285" height="174.5"/>
@@ -462,7 +463,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvs-Ow-7Pj">
-                                                <rect key="frame" x="0.0" y="532.5" width="320" height="220"/>
+                                                <rect key="frame" x="0.0" y="396.5" width="320" height="220"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p39-F8-Vlw">
                                                         <rect key="frame" x="25" y="22" width="65.5" height="25"/>
@@ -487,14 +488,14 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2I-gK-VKo">
-                                                <rect key="frame" x="0.0" y="753.5" width="320" height="380"/>
+                                                <rect key="frame" x="0.0" y="617.5" width="320" height="380"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="250" constant="380" id="wvd-3d-q6g"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l83-gj-MyT">
-                                                <rect key="frame" x="0.0" y="1134.5" width="320" height="240"/>
+                                                <rect key="frame" x="0.0" y="998.5" width="320" height="240"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to Fix it?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1C-io-eRu">
                                                         <rect key="frame" x="25" y="22" width="125.5" height="25"/>
@@ -519,7 +520,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uDB-mq-ryr">
-                                                <rect key="frame" x="0.0" y="1375.5" width="320" height="240"/>
+                                                <rect key="frame" x="0.0" y="1239.5" width="320" height="240"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4i0-eT-njw">
                                                         <rect key="frame" x="25" y="22" width="67.5" height="25"/>
@@ -544,7 +545,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oxk-q9-T7A">
-                                                <rect key="frame" x="0.0" y="1616.5" width="320" height="64"/>
+                                                <rect key="frame" x="0.0" y="1480.5" width="320" height="64"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLd-WO-zmb">
                                                         <rect key="frame" x="25" y="0.0" width="295" height="64"/>
@@ -570,7 +571,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CHU-xk-azZ">
-                                                <rect key="frame" x="0.0" y="1681.5" width="320" height="64"/>
+                                                <rect key="frame" x="0.0" y="1545.5" width="320" height="64"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYF-Vq-4p3">
                                                         <rect key="frame" x="25" y="0.0" width="295" height="64"/>
@@ -578,6 +579,10 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                         <state key="normal" title="Why this recommendation?">
                                                             <color key="titleColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="whyThisRecommendationTapped:" destination="P5y-fn-Vwb" eventType="touchUpInside" id="uGP-2d-DDh"/>
+                                                            <segue destination="P5y-fn-Vwb" kind="unwind" unwindAction="unwindToInsightWithSegue:" id="mBO-Xp-pXh"/>
+                                                        </connections>
                                                     </button>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ynD-E6-yfq">
                                                         <rect key="frame" x="287" y="19.5" width="11" height="25"/>
@@ -617,7 +622,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                         <viewLayoutGuide key="safeArea" id="5FM-Jj-ao9"/>
                     </view>
                     <navigationItem key="navigationItem" id="Fur-zw-OwN"/>
-                    <size key="freeformSize" width="320" height="1700"/>
+                    <size key="freeformSize" width="320" height="2200"/>
                     <connections>
                         <outlet property="cardImage" destination="gqI-Ea-ufZ" id="pjZ-be-BkM"/>
                         <outlet property="constraintBottomStackView" destination="hOy-yX-sio" id="vBs-cr-nL2"/>
@@ -629,9 +634,11 @@ article has some meta thing telling the computer that it’s magically got to ch
                         <outlet property="containerFixIt" destination="b3v-kO-yb9" id="GAr-hP-Jqn"/>
                         <outlet property="containerIceView" destination="p2I-gK-VKo" id="eky-Ss-41D"/>
                         <outlet property="titleArticle" destination="TPG-hk-fuS" id="N5t-Ny-Ner"/>
+                        <outlet property="whyThisRecommendationView" destination="CHU-xk-azZ" id="vHr-VI-ROr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hky-pN-dVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="P5y-fn-Vwb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2501" y="-2579"/>
         </scene>

@@ -32,7 +32,7 @@ class TodoCard:  Object, Mappable {
     
     @objc dynamic var actionLabel = ""
     @objc dynamic var actionHandler = ""
-    @objc dynamic var recommendedAction = ""
+    @objc dynamic var forInsight = ""
     
     @objc dynamic var imageUri:String? = nil
     @objc dynamic var blogUrl:String? = nil
@@ -99,7 +99,7 @@ class TodoCard:  Object, Mappable {
         message         <- map["message"]
         actionLabel     <- map["action_label"]
         actionHandler   <- map["handler"]
-        recommendedAction   <- map["recommended_action"]
+        forInsight      <- map["for_insight"]
         
         detailsMarkdown <- map["details_markdown"]
         closingMarkdown <- map["closing_markdown"]
