@@ -93,13 +93,7 @@ class ActionDetailsViewController: BaseViewController {
         bottomContainerViewBottomAnchor = persistentFooter.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         bottomContainerViewBottomAnchor.isActive = true
         
-        //add action from home feed
-        if todoCard.name == "social.automated_twitter_posts" || todoCard.name == "social.automated_facebook_posts" {
-            persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToPaidActions(_:)), for: .touchUpInside)
-        } else {
-            //persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToMyActions(_:)), for: .touchUpInside)
-            persistentFooter.rightBtn.addTarget(self, action: #selector(handlerOrder(_:)), for: .touchUpInside)
-        }
+        persistentFooter.rightBtn.addTarget(self, action: #selector(handlerOrder(_:)), for: .touchUpInside)
 
     }
     
@@ -230,17 +224,6 @@ class ActionDetailsViewController: BaseViewController {
                 appDelegate.openURLInside(self, url: url)
             }
         }
-        
-        /*
-        let instructionsPageVc: ActionInstructionsPageViewController = ActionInstructionsPageViewController(nibName: "ActionInstructionsPage", bundle: nil)
-        if (feedCard != nil) {
-            instructionsPageVc.configure(feedCard)
-        }
-        if todoCard != nil {
-            instructionsPageVc.configure(todoCard: todoCard)
-        }
-        self.navigationController?.pushViewController(instructionsPageVc, animated: true)
-     */
         
     }
     
