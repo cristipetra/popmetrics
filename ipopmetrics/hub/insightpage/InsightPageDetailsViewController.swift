@@ -127,8 +127,9 @@ class InsightPageDetailsViewController: BaseViewController {
         let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "calendarIconLeftArrow"), style: .plain, target: self, action: #selector(handlerClickBack))
         leftButtonItem.tintColor = PopmetricsColor.darkGrey
         
-        self.navigationItem.leftBarButtonItems = [leftSpace, leftButtonItem, titleButton]
+        self.navigationItem.leftBarButtonItems = [leftSpace, leftButtonItem]
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
+        self.title = titleWindow
     }
     
     func getMarkDownString() -> String {
@@ -242,7 +243,7 @@ class InsightPageDetailsViewController: BaseViewController {
         if segue.identifier == "showActionDetails" {
             if self.segueCard != nil {
                 let vc = segue.destination as! ActionDetailsViewController
-                vc.configure(self.segueCard!)
+                vc.configure(self.segueCard!, fromInsight: true)
             }
         }
         
@@ -262,6 +263,10 @@ class InsightPageDetailsViewController: BaseViewController {
         
         openActionDetails(actionCard)
         
+    }
+    
+    @IBAction func unwindToInsight(segue:UIStoryboardSegue) {
+    
     }
     
 }

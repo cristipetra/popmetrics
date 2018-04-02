@@ -226,6 +226,7 @@ class ActionStatusViewController: BaseViewController {
         
     }
     
+
     @IBAction func markAsCompleteAction(_ sender: Any) {
         if !ReachabilityManager.shared.isNetworkAvailable {
             presentErrorNetwork()

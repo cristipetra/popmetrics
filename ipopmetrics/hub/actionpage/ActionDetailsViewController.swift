@@ -29,16 +29,16 @@ class ActionDetailsViewController: BaseViewController {
     
     @IBOutlet weak var constraintHeightIceView: NSLayoutConstraint!
     
+    @IBOutlet weak var whyThisRecommendationView: UIView!
     @IBOutlet weak var addToMyActionsView: UIView!
     @IBOutlet weak var addToPaidActionsView: UIView!
-    
-    private var recommendActionHandler: RecommendActionHandler?
     
     var cardInfoHandlerDelegate: CardInfoHandler?
     
     @IBOutlet weak var containerClosingMarkdown: UIView!
     
     private var todoCard: TodoCard!
+    private var fromInsight = false
     
     let iceView = IceExtendView()
     
@@ -56,13 +56,17 @@ class ActionDetailsViewController: BaseViewController {
         addIceView()
         setupNavigationWithBackButton()
         
-       updatView()
+        updatView()
         
         self.view.addSwipeGestureRecognizer {
             self.navigationController?.popViewController(animated: true)
         }
         
         addPersistentFooter()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.whyThisRecommendationView.isHidden = fromInsight
     }
     
     override func viewWillLayoutSubviews() {
@@ -97,18 +101,9 @@ class ActionDetailsViewController: BaseViewController {
 
     }
     
-    public func configure(_ todoCard: TodoCard, openedFrom: String) {
+    public func configure(_ todoCard: TodoCard, fromInsight:Bool? = false) {
         self.todoCard = todoCard
-        displayActionButton()
-        iceView.configure(todoCard:todoCard)
-        displayActionButton()
-    }
-    
-    
-    public func configure(_ todoCard: TodoCard, handler: RecommendActionHandler? = nil) {
-        self.todoCard = todoCard
-        recommendActionHandler = handler
-
+        self.fromInsight = fromInsight ?? false
         iceView.configure(todoCard: todoCard)
         displayActionButton()
     }
@@ -317,23 +312,7 @@ class ActionDetailsViewController: BaseViewController {
         }
         return nil
     }
-    
-//    @objc func handlerActionBtn() {
-//        if feedCard != nil {
-//            FeedApi().postAddToMyActions(feedCardId: self.feedCard.cardId!, brandId: UserStore.currentBrandId) { todoCard in
-//                TodoStore.getInstance().addTodoCard(todoCard!)
-//
-//                if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
-//                    FeedStore.getInstance().updateCardSection(insightCard, section:"None")
-//                }
-//                FeedStore.getInstance().updateCardSection(self.feedCard, section:"None")
-//                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
-//                                                userInfo: ["sucess":true])
-//
-//                self.navigationController?.popViewController(animated: true)
-//            }
-//        }
-//    }
+
     
     @objc func handlerClickBack() {
         self.navigationController?.popViewController(animated: true)
