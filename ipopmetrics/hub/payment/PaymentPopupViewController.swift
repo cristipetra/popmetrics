@@ -16,12 +16,15 @@ class PaymentPopupViewController: UIViewController {
 
     var delegate: PopupAlertViewDelegate!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var secondLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handlerTap))
         self.view.addGestureRecognizer(tap)
+        
+        secondLabel.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

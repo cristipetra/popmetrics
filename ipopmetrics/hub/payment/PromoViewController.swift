@@ -10,13 +10,21 @@ import UIKit
 
 class PromoViewController: UIViewController {
 
+    @IBOutlet weak var termsAndConditionsText: UILabel!
     @IBOutlet weak var promoCodeText: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    var mutableString = NSMutableAttributedString()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.promoCodeText.delegate = self
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
         setUpNavigationBar()
+        changeTextColor()
     }
     
     @objc internal func dismissKeyboard() {
@@ -41,6 +49,12 @@ class PromoViewController: UIViewController {
         
     }
     
+    func changeTextColor() {
+        mutableString = NSMutableAttributedString(string: termsAndConditionsText.text!, attributes: [NSAttributedStringKey.font:UIFont(name: FontBook.regular, size: 15.0)!])
+        mutableString.addAttribute(.link, value: Config.termsAndConditions, range: NSRange(location: 0, length: (termsAndConditionsText.text?.characters.count)!))
+        termsAndConditionsText.attributedText = mutableString
+    }
+    
     @objc func handlerClickBack() {
         self.close()
     }
@@ -49,4 +63,22 @@ class PromoViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
+}
+
+extension PromoViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        if UIScreen.main.bounds.size.height > 568 { return }
+        UIView.animate(withDuration: 0.3) {
+            self.scrollView.contentOffset = CGPoint(x: 0, y: 100)
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("end")
+        if UIScreen.main.bounds.size.height > 568 { return }
+        UIView.animate(withDuration: 0.3) {
+            self.scrollView.contentOffset = CGPoint(x: 0, y: 0)
+        }
+    }
 }
