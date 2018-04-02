@@ -745,7 +745,7 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                                                     <color key="textColor" red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="n/a" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jac-Z7-4aj">
+                                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1-2 days" placeholder="n/a" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jac-Z7-4aj">
                                                     <rect key="frame" x="138" y="19.5" width="221" height="21"/>
                                                     <color key="textColor" red="0.27058823529999998" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
@@ -958,6 +958,7 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                     <connections>
                         <outlet property="amountLabel" destination="VDc-k3-4bY" id="qgC-ia-qkl"/>
                         <outlet property="confirmPurchaseButton" destination="gkA-e7-AuW" id="igY-CC-xYe"/>
+                        <outlet property="deliveryTimeText" destination="Jac-Z7-4aj" id="KkV-dE-X9A"/>
                         <outlet property="emailText" destination="9GD-P7-Qya" id="yY2-mt-lqA"/>
                         <outlet property="infoCardView" destination="WSz-E5-Vtx" id="b7w-rQ-In7"/>
                         <outlet property="labelCard" destination="G8V-MR-oc4" id="RFD-Dl-6xD"/>

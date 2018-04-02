@@ -13,6 +13,7 @@ import EZLoadingActivity
 
 class OneOffPaymentViewController: UITableViewController {
     
+    @IBOutlet weak var deliveryTimeText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var labelCard: UILabel!
     @IBOutlet weak var infoCardView: InfoCardView!
@@ -66,14 +67,20 @@ class OneOffPaymentViewController: UITableViewController {
         
         
         tableView.tableFooterView = UIView()
-        emailText.text = UserStore().getLocalUserAccount().email ?? ""
+        
         setUpNavigationBar()
         changeTextColor()
         
         setupPayments(amount: amount, currency:currency)
         
-        self.amountLabel.text = self.numberFormatter?.string(from: NSNumber(value: Float((self.paymentContext?.paymentAmount)!)/100))!
+        updateValues()
         
+    }
+    
+    private func updateValues() {
+        emailText.text = UserStore().getLocalUserAccount().email ?? ""
+        deliveryTimeText.text = "1-2 days"
+        self.amountLabel.text = self.numberFormatter?.string(from: NSNumber(value: Float((self.paymentContext?.paymentAmount)!)/100))!
     }
     
     func setupPayments(amount: Int, currency: String = "usd"){
