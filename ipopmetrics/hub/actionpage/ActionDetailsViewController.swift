@@ -97,7 +97,8 @@ class ActionDetailsViewController: BaseViewController {
         if todoCard.name == "social.automated_twitter_posts" || todoCard.name == "social.automated_facebook_posts" {
             persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToPaidActions(_:)), for: .touchUpInside)
         } else {
-            persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToMyActions(_:)), for: .touchUpInside)
+            //persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToMyActions(_:)), for: .touchUpInside)
+            persistentFooter.rightBtn.addTarget(self, action: #selector(handlerOrder(_:)), for: .touchUpInside)
         }
 
     }
@@ -123,6 +124,7 @@ class ActionDetailsViewController: BaseViewController {
             persistentFooter.rightBtn.isHidden = true
             return
         }
+
         persistentFooter.leftBtn.isHidden = false
 //        } else {
 //            persistentFooter.rightBtn.changeTitle("Mark As Complete")
@@ -242,6 +244,17 @@ class ActionDetailsViewController: BaseViewController {
         
     }
     
+    @objc func handlerOrder(_ sender: Any) {
+        let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "PaymentTableViewController") as! PaymentTableViewController
+        
+        let brandId = UserStore.currentBrandId
+        let planId = Config.sharedInstance.environment.stripeBasicPlanId
+        let amount = Config.sharedInstance.environment.stripeBasicPlanAmount
+        vc.configure(brandId:brandId, amount:amount, planId:planId)
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @IBAction func handlerAddToMyActions(_ sender: Any) {
         if !ReachabilityManager.shared.isNetworkAvailable {
             presentErrorNetwork()
@@ -286,7 +299,25 @@ class ActionDetailsViewController: BaseViewController {
             }
         }
     }
-
+    
+    @objc func handlerTakeActionPayment(_ sender: Any) {
+        print("handler take action payment")
+        Alert.showActionSheetPayment(parent: self) { (actionSheet) -> (Void) in
+            self.openPopup()
+        }
+    }
+    
+    private func openPopup() {
+        let alertCard = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "PaymentPopupViewController") as! PaymentPopupViewController
+        
+        alertCard.providesPresentationContextTransitionStyle = true
+        alertCard.definesPresentationContext = true
+        alertCard.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        alertCard.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        //alertCard.delegate = self
+        self.present(alertCard, animated: true, completion: nil)
+    }
+    
     @objc func handlerInsightPage(_ sender: UIButton) {
         
         // see if we need to navigate back or go forward
