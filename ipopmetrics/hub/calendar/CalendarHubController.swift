@@ -377,7 +377,6 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
             
             detailsVC.configure(calendarSocialPost: calendarCardViewCell.calendarItem)
             detailsVC.actionSocialDelegate = self
-            detailsVC.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(detailsVC, animated: true)
         }
     }

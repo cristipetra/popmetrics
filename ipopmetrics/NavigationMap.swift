@@ -20,11 +20,14 @@ enum NavigationMap {
             return settingsVC
         }
         
-        navigator.register("vnd.popmetrics://hubs/home") { url, values, context in
+        navigator.handle("vnd.popmetrics://hubs/home") { url, values, context in
             
-            let mainTabVC = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC) as! MainTabBarController
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let mainTabVC = appDelegate.window?.rootViewController as! MainTabBarController
             mainTabVC.selectedIndex = 0
-            return mainTabVC
+            mainTabVC.tabBar.isHidden = false
+            
+            return true
         }
         
         navigator.register("vnd.popmetrics://required_action/<string:action_name>") { url, values, context in
@@ -66,12 +69,16 @@ enum NavigationMap {
             return vc
         }
         
-        
-        navigator.register("vnd.popmetrics://hubs/todo") { url, values, context in
+        navigator.handle("vnd.popmetrics://hubs/todo") { url, values, context in
             
-            let mainTabVC = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC) as! MainTabBarController
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let mainTabVC = appDelegate.window?.rootViewController as! MainTabBarController
             mainTabVC.selectedIndex = 1
-            return mainTabVC
+            mainTabVC.tabBarController?.selectedIndex = 1
+            mainTabVC.tabBarController?.tabBar.isHidden = false
+            mainTabVC.tabBar.isHidden = false
+            mainTabVC.tabBar.setNeedsDisplay()
+            return true
         }
         
         
