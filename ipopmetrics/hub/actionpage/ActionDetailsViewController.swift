@@ -99,7 +99,8 @@ class ActionDetailsViewController: BaseViewController {
         if todoCard.name == "social.automated_twitter_posts" || todoCard.name == "social.automated_facebook_posts" {
             persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToPaidActions(_:)), for: .touchUpInside)
         } else {
-            persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToMyActions(_:)), for: .touchUpInside)
+            //persistentFooter.rightBtn.addTarget(self, action: #selector(handlerAddToMyActions(_:)), for: .touchUpInside)
+            persistentFooter.rightBtn.addTarget(self, action: #selector(handlerOrder(_:)), for: .touchUpInside)
         }
 
     }
@@ -246,6 +247,17 @@ class ActionDetailsViewController: BaseViewController {
         self.navigationController?.pushViewController(instructionsPageVc, animated: true)
      */
         
+    }
+    
+    @objc func handlerOrder(_ sender: Any) {
+        let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "PaymentTableViewController") as! PaymentTableViewController
+        
+        let brandId = UserStore.currentBrandId
+        let planId = Config.sharedInstance.environment.stripeBasicPlanId
+        let amount = Config.sharedInstance.environment.stripeBasicPlanAmount
+        vc.configure(brandId:brandId, amount:amount, planId:planId)
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func handlerAddToMyActions(_ sender: Any) {
