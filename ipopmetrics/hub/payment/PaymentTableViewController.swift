@@ -217,6 +217,7 @@ extension PaymentTableViewController: STPPaymentContextDelegate{
     }
     
     func paymentContext(_ paymentContext: STPPaymentContext, didFailToLoadWithError error: Error) {
+        EZLoadingActivity.hide()
         let alertController = UIAlertController(
             title: "Error",
             message: error.localizedDescription,
@@ -233,7 +234,7 @@ extension PaymentTableViewController: STPPaymentContextDelegate{
         })
         alertController.addAction(cancel)
         alertController.addAction(retry)
-        self.navigationController?.present(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     private func close() {
