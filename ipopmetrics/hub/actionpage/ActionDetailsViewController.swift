@@ -66,10 +66,12 @@ class ActionDetailsViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.whyThisRecommendationView.isHidden = fromInsight
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = true
+
+        super.viewWillAppear(animated)
+        self.whyThisRecommendationView.isHidden = fromInsight
+        
     }
     
     override func viewWillLayoutSubviews() {
