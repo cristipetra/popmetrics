@@ -66,9 +66,9 @@ class InsightPageDetailsViewController: BaseViewController {
     }
 
     override func viewWillAppear(_ animated:Bool) {
-        super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = true
+        super.viewWillAppear(animated)        
     }
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
