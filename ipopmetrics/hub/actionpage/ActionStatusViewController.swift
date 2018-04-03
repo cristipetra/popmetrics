@@ -247,7 +247,7 @@ class ActionStatusViewController: BaseViewController {
         var amount = Config.sharedInstance.environment.stripeBasicPlanAmount
         amount = 0
         vc.configure(brandId:brandId, amount:amount, planId:planId)
-        
+        self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
