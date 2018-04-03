@@ -10,27 +10,6 @@ import Foundation
 import RealmSwift
 import ObjectMapper
 
-
-class StatsSummaryItem: Object, Mappable {
-    
-    @objc dynamic var feedCard: FeedCard? = nil
-    
-    @objc dynamic var value: Float = 0
-    @objc dynamic var label: String = ""
-    @objc dynamic var delta: Float = 0
-    
-    required convenience init?(map: Map) {
-        self.init()
-    }
-    
-    func mapping(map: Map) {
-        value <- map["value"]
-        label <- map["label"]
-        delta <- map["delta"]
-    }
-    
-}
-
 class FeedCard: Object, Mappable {
 
     @objc dynamic var cardId: String? = nil
@@ -193,3 +172,7 @@ extension String {
         return try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
     }
 }
+
+
+
+

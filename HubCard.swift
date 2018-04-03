@@ -19,6 +19,7 @@ class HubCard:  Object, Mappable {
     
     @objc dynamic var priority = 0
     
+    @objc dynamic var hub = ""
     @objc dynamic var ctype = ""
     @objc dynamic var section = ""
     @objc dynamic var name = ""
@@ -52,7 +53,8 @@ class HubCard:  Object, Mappable {
     
     func mapping(map: Map) {
         cardId          <- map["id"]
-        priority          <- map["priority"]
+        hub             <- map["var"]
+        priority        <- map["priority"]
         ctype           <- map["ctype"]
         section         <- map["section"]
         name            <- map["name"]

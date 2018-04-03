@@ -18,13 +18,13 @@ class HubStore{
         return StatsStore()
     }
     
-    public func getHubCards() -> Results<HubCard> {
-        let predicate = NSPredicate(format: "status != 'archived'")
+    public func getHubCards(hubs:[String]) -> Results<HubCard> {
+        let predicate = NSPredicate(format: "name IN %@ && status != 'archived'", hubs)
         return realm.objects(HubCard.self).filter(predicate).sorted(byKeyPath: "priority", ascending: false)
     }
     
-    public func getArchivedCards() -> Results<HubCard> {
-        let predicate = NSPredicate(format: "status == 'archived'")
+    public func getArchivedCards(hubs:[String]) -> Results<HubCard> {
+        let predicate = NSPredicate(format: "name IN %@ && status == 'archived'", hubs)
         return realm.objects(HubCard.self).filter(predicate).sorted(byKeyPath: "priority", ascending: false)
     }
     
@@ -32,8 +32,8 @@ class HubStore{
         return realm.object(ofType: HubCard.self, forPrimaryKey: cardId)
     }
     
-    public func getHubCardsWithSection(_ section: String) -> Results<HubCard> {
-        let predicate = NSPredicate(format: "section = %@ && status != 'archived'", section)
+    public func getHubCardsWithSection(hubs:[String],  section: String) -> Results<HubCard> {
+        let predicate = NSPredicate(format: "name IN %@ && section = %@ && status != 'archived'", hubs, section)
         return realm.objects(HubCard.self).filter(predicate)
     }
     
@@ -45,23 +45,23 @@ class HubStore{
         } else { return nil }
     }
     
-    public func getNonEmptyHubCardsWithSection(_ section: String) -> Results<HubCard> {
-        let predicate = NSPredicate(format: "section = %@ && type != %@ && status!= 'archived'", section, "empty_state")
+    public func getNonEmptyHubCardsWithSection(hubs:[String],  section: String) -> Results<HubCard> {
+        let predicate = NSPredicate(format: "name IN %@ && section = %@ && type != %@ && status!= 'archived'", hubs, section, "empty_state")
         return realm.objects(HubCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:false)
     }
     
-    public func getEmptyHubCardsWithSection(_ section: String) -> Results<HubCard> {
-        let predicate = NSPredicate(format: "section = %@ && type == %@ && status != 'archived'", section, "empty_state")
+    public func getEmptyHubCardsWithSection(hubs:[String],  section: String) -> Results<HubCard> {
+        let predicate = NSPredicate(format: "name IN %@ && section = %@ && type == %@ && status != 'archived'", hubs, section, "empty_state")
         return realm.objects(HubCard.self).filter(predicate).sorted(byKeyPath: "index", ascending:false)
     }
     
-    public func getSections() -> [String] {
-        let distinctTypes = Array(Set(self.getHubCards().value(forKey: "section") as! [String]))
+    public func getSections(hubs:[String]) -> [String] {
+        let distinctTypes = Array(Set(self.getHubCards(hubs:hubs).value(forKey: "section") as! [String]))
         return distinctTypes
     }
     
-    public func countSections() -> Int {
-        let distinctTypes = Array(Set(self.getHubCards().value(forKey: "section") as! [String]))
+    public func countSections(hubs:[String]) -> Int {
+        let distinctTypes = Array(Set(self.getHubCards(hubs:hubs).value(forKey: "section") as! [String]))
         return distinctTypes.count
     }
     
