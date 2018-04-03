@@ -221,6 +221,7 @@
 		115C66392073B4F40078DF2B /* BaseHubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115C66382073B4F40078DF2B /* BaseHubViewController.swift */; };
 		115C663B2073C1080078DF2B /* HubCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115C663A2073C1080078DF2B /* HubCard.swift */; };
 		115C663D2073CB8D0078DF2B /* HubStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115C663C2073CB8D0078DF2B /* HubStore.swift */; };
+		115C663F2073D9300078DF2B /* PopHubCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115C663E2073D9300078DF2B /* PopHubCard.swift */; };
 		11670EAE20640AA400AB4598 /* SlideSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11670EAC20640AA400AB4598 /* SlideSecondView.swift */; };
 		11670EAF20640AA400AB4598 /* SlideFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11670EAD20640AA400AB4598 /* SlideFirstView.swift */; };
 		116815CB2062BDD600071E71 /* ActionApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116815CA2062BDD600071E71 /* ActionApi.swift */; };
@@ -505,6 +506,7 @@
 		115C66382073B4F40078DF2B /* BaseHubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseHubViewController.swift; path = ipopmetrics/helpers/BaseHubViewController.swift; sourceTree = SOURCE_ROOT; };
 		115C663A2073C1080078DF2B /* HubCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubCard.swift; sourceTree = "<group>"; };
 		115C663C2073CB8D0078DF2B /* HubStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubStore.swift; sourceTree = "<group>"; };
+		115C663E2073D9300078DF2B /* PopHubCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopHubCard.swift; sourceTree = "<group>"; };
 		116540BB1EEAA17A00417D61 /* ipopmetrics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ipopmetrics.entitlements; sourceTree = "<group>"; };
 		11670EAC20640AA400AB4598 /* SlideSecondView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideSecondView.swift; sourceTree = "<group>"; };
 		11670EAD20640AA400AB4598 /* SlideFirstView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideFirstView.swift; sourceTree = "<group>"; };
@@ -917,6 +919,7 @@
 				085AA0D31F42ECAA0014D4CE /* Todo.swift */,
 				08B2803E1F55862100E36D19 /* Statistics.swift */,
 				115C663A2073C1080078DF2B /* HubCard.swift */,
+				115C663E2073D9300078DF2B /* PopHubCard.swift */,
 			);
 			name = realm;
 			path = ..;
@@ -1632,6 +1635,7 @@
 				1128B3F71ECF256600BDA58C /* SimpleButton.swift in Sources */,
 				116E339620345F3A00D2BCA9 /* MessagesBadgeView.swift in Sources */,
 				08B4EBB61FC56ACE00BFC5A1 /* AppStoryboard.swift in Sources */,
+				115C663F2073D9300078DF2B /* PopHubCard.swift in Sources */,
 				08358AAB206E640900566F43 /* PromoViewController.swift in Sources */,
 				1128B3F91ECF256600BDA58C /* SimpleButtonStateChangeValue.swift in Sources */,
 				08C873AF203F1A15000C02EC /* SettingsFacebookViewController.swift in Sources */,
