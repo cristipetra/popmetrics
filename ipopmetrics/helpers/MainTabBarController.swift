@@ -9,8 +9,12 @@
 import UIKit
 
 protocol HubProtocol {
+    
     func scrollToSection(_ section:String)
     func scrollToCard(_ cardName:String)
+    func setDefaultIndexPath(_ indexPath:IndexPath?)
+    func getDefaultIndexPath() -> IndexPath?
+    
 }
 
 class MainTabBarController: UITabBarController {
@@ -31,14 +35,14 @@ class MainTabBarController: UITabBarController {
     
     func navigateToSection(tabIndex: Int, section:String) {
         guard let vcs = self.viewControllers else {return}
-        let hubVC = vcs[tabIndex] as! HubProtocol
+        let hubVC = vcs[tabIndex].childViewControllers[0] as! HubProtocol
         hubVC.scrollToSection(section)
         
     }
     
     func navigateToCard(tabIndex: Int, cardName:String) {
         guard let vcs = self.viewControllers else {return}
-        let hubVC = vcs[tabIndex] as! HubProtocol
+        let hubVC = vcs[tabIndex].childViewControllers[0] as! HubProtocol
         hubVC.scrollToCard(cardName)
     }
     

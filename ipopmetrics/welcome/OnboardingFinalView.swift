@@ -45,7 +45,11 @@ class OnboardingFinalView: UIViewController {
     }
     
     func goToMainStoryboard() {
+        self.navigationController?.popToRootViewController(animated: false)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let mainTabVC = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: ViewNames.SBID_MAIN_TAB_VC)
+        appDelegate.window?.rootViewController = mainTabVC
+
         self.present(mainTabVC, animated: true, completion: nil)
     }
 }

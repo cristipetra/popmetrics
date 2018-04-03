@@ -89,8 +89,6 @@ class TodoHubController: BaseViewController {
     
     var pageIndex: Int = 1
     
-    var scrollToRow: IndexPath = IndexPath(row: 0, section: 0)
-    
     internal var isAnimatingHeader: Bool = false
     
     var isAllApproved : Bool = false
@@ -99,6 +97,9 @@ class TodoHubController: BaseViewController {
     var segueTodoCard: TodoCard?
     
     internal var didAnimateOpeningCells = false
+    
+    internal var defaultIndexPath: IndexPath?
+    internal var scrollToRow = IndexPath(row:0, section:0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -152,7 +153,10 @@ class TodoHubController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         setUpNavigationBar()
-        self.tabBarController?.tabBar.isHidden = false
+        if self.defaultIndexPath != nil {
+            tableView?.scrollToRow(at: self.defaultIndexPath!, at: .top, animated: false)
+            self.defaultIndexPath = nil
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -675,13 +679,23 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
 }
 
 extension TodoHubController: HubProtocol {
+    func getDefaultIndexPath() -> IndexPath? {
+        return self.defaultIndexPath
+    }
+    
     func scrollToSection(_ section: String) {
         let theSection = TodoSection.init(rawValue: section)
         let sectionIndex = theSection?.getSectionPosition() ?? 0
         let row = 0
         
         let indexPath = IndexPath(row: row, section: sectionIndex)
-        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        if self.tableView != nil {
+            tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+            setDefaultIndexPath(nil)
+        }
+        else{
+            setDefaultIndexPath(indexPath)
+        }
         
     }
     
@@ -706,6 +720,10 @@ extension TodoHubController: HubProtocol {
         let indexPath = IndexPath(row: row, section: sectionIndex)
         tableView.scrollToRow(at: indexPath, at: .top, animated: true)
         
+    }
+    
+    func setDefaultIndexPath(_ indexPath: IndexPath?) {
+        self.defaultIndexPath = indexPath
     }
     
     

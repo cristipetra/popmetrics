@@ -54,7 +54,7 @@ enum NavigationMap {
             mainTabVC.selectedIndex = 1
             // if the section is empty just leave it as default
             guard let section = values["section"] as? String else { return true }
-            mainTabVC.navigateToSection(tabIndex:0, section: section)
+            mainTabVC.navigateToSection(tabIndex:1, section: section)
             return true
         }
         
@@ -65,7 +65,7 @@ enum NavigationMap {
             mainTabVC.selectedIndex = 2
             // if the section is empty just leave it as default
             guard let section = values["section"] as? String else { return true }
-            mainTabVC.navigateToSection(tabIndex:0, section: section)
+            mainTabVC.navigateToSection(tabIndex:2, section: section)
             return true
         }
         

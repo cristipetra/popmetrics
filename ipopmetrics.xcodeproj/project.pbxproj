@@ -218,6 +218,9 @@
 		1158F3EE206A3EDF005CD638 /* ConnectWizardBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1158F3ED206A3EDF005CD638 /* ConnectWizardBaseViewController.swift */; };
 		1158F3F0206A442A005CD638 /* GoogleMyBusinessPickerTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1158F3EF206A442A005CD638 /* GoogleMyBusinessPickerTableVC.swift */; };
 		115C663720729CF50078DF2B /* TodoInReviewPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115C663620729CF50078DF2B /* TodoInReviewPopupViewController.swift */; };
+		115C66392073B4F40078DF2B /* BaseHubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115C66382073B4F40078DF2B /* BaseHubViewController.swift */; };
+		115C663B2073C1080078DF2B /* HubCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115C663A2073C1080078DF2B /* HubCard.swift */; };
+		115C663D2073CB8D0078DF2B /* HubStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115C663C2073CB8D0078DF2B /* HubStore.swift */; };
 		11670EAE20640AA400AB4598 /* SlideSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11670EAC20640AA400AB4598 /* SlideSecondView.swift */; };
 		11670EAF20640AA400AB4598 /* SlideFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11670EAD20640AA400AB4598 /* SlideFirstView.swift */; };
 		116815CB2062BDD600071E71 /* ActionApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116815CA2062BDD600071E71 /* ActionApi.swift */; };
@@ -499,6 +502,9 @@
 		1158F3ED206A3EDF005CD638 /* ConnectWizardBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectWizardBaseViewController.swift; sourceTree = "<group>"; };
 		1158F3EF206A442A005CD638 /* GoogleMyBusinessPickerTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMyBusinessPickerTableVC.swift; sourceTree = "<group>"; };
 		115C663620729CF50078DF2B /* TodoInReviewPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TodoInReviewPopupViewController.swift; path = todo/TodoInReviewPopupViewController.swift; sourceTree = "<group>"; };
+		115C66382073B4F40078DF2B /* BaseHubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseHubViewController.swift; path = ipopmetrics/helpers/BaseHubViewController.swift; sourceTree = SOURCE_ROOT; };
+		115C663A2073C1080078DF2B /* HubCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubCard.swift; sourceTree = "<group>"; };
+		115C663C2073CB8D0078DF2B /* HubStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubStore.swift; sourceTree = "<group>"; };
 		116540BB1EEAA17A00417D61 /* ipopmetrics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ipopmetrics.entitlements; sourceTree = "<group>"; };
 		11670EAC20640AA400AB4598 /* SlideSecondView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideSecondView.swift; sourceTree = "<group>"; };
 		11670EAD20640AA400AB4598 /* SlideFirstView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideFirstView.swift; sourceTree = "<group>"; };
@@ -671,6 +677,7 @@
 				08B4EB9C1FC56A0400BFC5A1 /* TodoStore.swift */,
 				08B4EB961FC569EC00BFC5A1 /* CalendarStore.swift */,
 				11E636931FD735480081B1DC /* StatsStore.swift */,
+				115C663C2073CB8D0078DF2B /* HubStore.swift */,
 			);
 			path = store;
 			sourceTree = "<group>";
@@ -909,6 +916,7 @@
 				0852826F1F2881BD0065A968 /* Calendar.swift */,
 				085AA0D31F42ECAA0014D4CE /* Todo.swift */,
 				08B2803E1F55862100E36D19 /* Statistics.swift */,
+				115C663A2073C1080078DF2B /* HubCard.swift */,
 			);
 			name = realm;
 			path = ..;
@@ -998,6 +1006,7 @@
 			isa = PBXGroup;
 			children = (
 				08FAE8431F541D790097DF3E /* StatsHubController.swift */,
+				115C66382073B4F40078DF2B /* BaseHubViewController.swift */,
 				08FAE8461F541FF40097DF3E /* StatsCard.xib */,
 				08FAE8481F5420050097DF3E /* StatsCardViewCell.swift */,
 				08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */,
@@ -1725,6 +1734,7 @@
 				116E33A12034621200D2BCA9 /* BrandApi.swift in Sources */,
 				080DCA811F4D6EE6000C73DC /* MenuViewController.swift in Sources */,
 				116815CB2062BDD600071E71 /* ActionApi.swift in Sources */,
+				115C66392073B4F40078DF2B /* BaseHubViewController.swift in Sources */,
 				11DD967B1FC4FA5400386F1E /* ApiModels.swift in Sources */,
 				08755F4C1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift in Sources */,
 				086F64DC205BA9A400F46E8A /* EmailViewController.swift in Sources */,
@@ -1755,6 +1765,7 @@
 				08B4EBB81FC56ACE00BFC5A1 /* CardActionHanlder.swift in Sources */,
 				08B4EB9D1FC56A0400BFC5A1 /* TodoStore.swift in Sources */,
 				1198436C205BC0E700C63201 /* GoogleApi.swift in Sources */,
+				115C663B2073C1080078DF2B /* HubCard.swift in Sources */,
 				08B4EB9F1FC56A0C00BFC5A1 /* UserStore.swift in Sources */,
 				08CCFFE81FDD977700755295 /* ActionTodoButton.swift in Sources */,
 				0877463D206E2CCB00B94DDD /* ActionStatusViewController.swift in Sources */,
@@ -1779,6 +1790,7 @@
 				08953E6F1F4C2790003ABEFC /* ToDoCountView.swift in Sources */,
 				08C7A438201B4D0500714360 /* SocialIconView.swift in Sources */,
 				086EDE461FC8651B002F4140 /* UIViewExtensions.swift in Sources */,
+				115C663D2073CB8D0078DF2B /* HubStore.swift in Sources */,
 				08B8D9711F9A4443004E7781 /* RecommendActionHandler.swift in Sources */,
 				11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */,
 				08AA6C731F56F8630022DE91 /* ChartViewCell.swift in Sources */,

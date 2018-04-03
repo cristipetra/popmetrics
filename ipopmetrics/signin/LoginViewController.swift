@@ -218,10 +218,7 @@ class LoginViewController: UIViewController {
         })
     }
     
-    internal func showMainNavigationController() {
-        showViewControllerWithStoryboardID("FEED_VC")
-    }
- 
+
     func updatePhoneFieldNumber(textField: UITextField, phoneNumberMask: String) {
         let threshold = phoneNumberMask.range(for: "#")?.lowerBound ?? phoneNumberMask.range!.upperBound
         let boldRange = Range(uncheckedBounds: (lower: phoneNumberMask.range!.lowerBound, upper: threshold))

@@ -53,6 +53,6 @@ class TodoInMyActionsPopupViewController: UIViewController {
     @IBAction func navigateToTodoHub(_ sender: Any) {
         self.hidesBottomBarWhenPushed = false
         self.navigationController?.popToRootViewController(animated: true)
-        navigator.open("vnd.popmetrics://hubs/todo/section/MyActions")
+        navigator.open("vnd.popmetrics://hubs/todo/section/My Actions")
     }
 }

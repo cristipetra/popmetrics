@@ -90,6 +90,12 @@ class SocialPostDetailsViewController: BaseViewController {
         displayContainerBtnsIfNeeded()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     func configure(todoSocialPost: TodoSocialPost) {
         self.todoSocialPost = todoSocialPost
     }
