@@ -21,10 +21,16 @@ class EmailViewController: SettingsBaseTableViewController {
     var emailDelegate: EmailProtocol!
 
     @IBOutlet weak var emailTxt: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupNavigationBar()
+        
+        emailTxt.delegate = self
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
     }
     
     private func shouldDisplayAlert() -> Bool {
@@ -72,6 +78,17 @@ class EmailViewController: SettingsBaseTableViewController {
         
         emailDelegate.didSetEmail(emailTxt.text!)
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc internal func dismissKeyboard() {
+        emailTxt.resignFirstResponder()
+    }
+}
+
+extension EmailViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
     }
 }
 
