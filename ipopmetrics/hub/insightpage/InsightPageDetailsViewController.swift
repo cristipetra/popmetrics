@@ -39,6 +39,7 @@ class InsightPageDetailsViewController: BaseViewController {
     
     var bottomContainerViewBottomAnchor: NSLayoutConstraint!
     internal var isBottomVisible = false
+    
     @IBOutlet weak var btnViewAction: UIButton!
     
     let store: FeedStore = FeedStore.getInstance()
