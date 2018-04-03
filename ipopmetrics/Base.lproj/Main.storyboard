@@ -2234,12 +2234,88 @@ article has some meta thing telling the computer that it’s magically got to ch
                                     <constraint firstItem="u2c-Ga-33q" firstAttribute="top" secondItem="pv9-YO-R6p" secondAttribute="top" id="s3A-0A-km0"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avf-rI-8dV">
+                                <rect key="frame" x="0.0" y="1590" width="320" height="61"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAH-yg-eqj">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="Xlj-sE-nLg"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8K-uV-l38">
+                                        <rect key="frame" x="25" y="12.5" width="120" height="35"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="r2Z-LB-Avl"/>
+                                            <constraint firstAttribute="width" constant="120" id="wLP-XB-Tce"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="95" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Completed" image="iconHammer">
+                                            <color key="titleColor" name="rock_bottom"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="rock_bottom"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKe-dc-9cX">
+                                        <rect key="frame" x="160" y="13.5" width="135" height="35"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="to6-go-bbM"/>
+                                            <constraint firstAttribute="width" constant="135" id="z2p-xB-zmv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="105" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Do It for me" image="iconCart">
+                                            <color key="titleColor" name="rock_bottom"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="rock_bottom"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="qAH-yg-eqj" firstAttribute="leading" secondItem="avf-rI-8dV" secondAttribute="leading" id="61K-xd-azb"/>
+                                    <constraint firstItem="qAH-yg-eqj" firstAttribute="top" secondItem="avf-rI-8dV" secondAttribute="top" id="6dN-p0-TmG"/>
+                                    <constraint firstAttribute="trailing" secondItem="qAH-yg-eqj" secondAttribute="trailing" id="MRH-WL-V1w"/>
+                                    <constraint firstItem="h8K-uV-l38" firstAttribute="centerY" secondItem="avf-rI-8dV" secondAttribute="centerY" id="aa0-GR-F7B"/>
+                                    <constraint firstAttribute="height" constant="61" id="nG5-QN-W0A"/>
+                                    <constraint firstItem="SKe-dc-9cX" firstAttribute="centerY" secondItem="avf-rI-8dV" secondAttribute="centerY" id="pHk-F0-YEM"/>
+                                    <constraint firstAttribute="trailing" secondItem="SKe-dc-9cX" secondAttribute="trailing" constant="25" id="quP-lJ-BsE"/>
+                                    <constraint firstItem="h8K-uV-l38" firstAttribute="leading" secondItem="avf-rI-8dV" secondAttribute="leading" constant="25" id="vUa-GR-3qW"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="pv9-YO-R6p" firstAttribute="bottom" secondItem="Cbi-h8-Vf0" secondAttribute="bottom" id="6eU-Ib-SY7"/>
                             <constraint firstItem="Cbi-h8-Vf0" firstAttribute="leading" secondItem="pv9-YO-R6p" secondAttribute="leading" id="QnH-a3-UEj"/>
+                            <constraint firstItem="avf-rI-8dV" firstAttribute="leading" secondItem="Cbi-h8-Vf0" secondAttribute="leading" id="R1j-oA-Ur6"/>
+                            <constraint firstItem="avf-rI-8dV" firstAttribute="trailing" secondItem="Cbi-h8-Vf0" secondAttribute="trailing" id="uRJ-Qx-vpH"/>
                             <constraint firstItem="Cbi-h8-Vf0" firstAttribute="top" secondItem="pv9-YO-R6p" secondAttribute="top" id="x3o-c2-0me"/>
+                            <constraint firstItem="Cbi-h8-Vf0" firstAttribute="bottom" secondItem="avf-rI-8dV" secondAttribute="bottom" id="xTa-oi-g2h"/>
                             <constraint firstItem="pv9-YO-R6p" firstAttribute="trailing" secondItem="Cbi-h8-Vf0" secondAttribute="trailing" id="xyU-qK-tH9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cbi-h8-Vf0"/>
@@ -2247,6 +2323,8 @@ article has some meta thing telling the computer that it’s magically got to ch
                     <navigationItem key="navigationItem" id="k4t-qg-VCp"/>
                     <size key="freeformSize" width="320" height="1700"/>
                     <connections>
+                        <outlet property="btnCompleted" destination="h8K-uV-l38" id="ZAi-EI-PbD"/>
+                        <outlet property="btnDoItForMe" destination="SKe-dc-9cX" id="Lze-hA-4cN"/>
                         <outlet property="cardImage" destination="OTm-k7-v4b" id="VyW-fP-9gn"/>
                         <outlet property="constraintBottomStackView" destination="iqL-Fn-8NB" id="6Lx-C4-H0o"/>
                         <outlet property="constraintHeightClosingMarkdown" destination="f1l-ae-gBr" id="6Ys-hA-Zpf"/>
@@ -2533,6 +2611,15 @@ article has some meta thing telling the computer that it’s magically got to ch
         </namedColor>
         <namedColor name="red_light">
             <color red="1" green="0.46666666666666667" blue="0.41568627450980394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="rock_bottom">
+            <color red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="rock_bottom">
+            <color red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="rock_bottom">
+            <color red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="rock_bottom">
             <color red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
