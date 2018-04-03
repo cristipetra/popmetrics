@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol HubProtocol {
+    func scrollToSection(_ section:String)
+    func scrollToCard(_ cardName:String)
+}
+
 class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
@@ -24,18 +29,17 @@ class MainTabBarController: UITabBarController {
         self.selectedIndex = 0
     }
     
-    
-    func setTabItemImages() {
+    func navigateToSection(tabIndex: Int, section:String) {
+        guard let vcs = self.viewControllers else {return}
+        let hubVC = vcs[tabIndex] as! HubProtocol
+        hubVC.scrollToSection(section)
         
-        if let count = self.tabBar.items?.count {
-            for i in 0...(count-1) {
-                let imageNameForSelectedState   = TabIcons.Active.allActive[i]
-                let imageNameForUnselectedState = TabIcons.Inactiv.allInactive[i]
-                
-                self.tabBar.items?[i].selectedImage = UIImage(named: imageNameForSelectedState.rawValue)?.withRenderingMode(.alwaysOriginal)
-                self.tabBar.items?[i].image = UIImage(named: imageNameForUnselectedState.rawValue)?.withRenderingMode(.alwaysOriginal)
-            }
-        }
+    }
+    
+    func navigateToCard(tabIndex: Int, cardName:String) {
+        guard let vcs = self.viewControllers else {return}
+        let hubVC = vcs[tabIndex] as! HubProtocol
+        hubVC.scrollToCard(cardName)
     }
     
 }

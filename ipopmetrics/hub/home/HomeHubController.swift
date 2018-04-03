@@ -509,6 +509,18 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
 }
 
+extension HomeHubViewController: HubProtocol {
+    func scrollToSection(_ section: String) {
+            
+    }
+    
+    func scrollToCard(_ cardName: String) {
+        
+    }
+    
+    
+}
+
 extension HomeHubViewController: RequiredActionLoadMore {
     func loadMoreRequiredCard() {
         requiredLoadMore.loadAllRequiredCards()

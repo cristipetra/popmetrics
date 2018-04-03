@@ -502,18 +502,6 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        if (indexPath.section != 0) { return }
-//
-//        let cards = store.getNonEmptyTodoCardsWithSection("Social Posts")
-//        if cards.count == 0 { return }
-//        let rowIdx = indexPath.row
-//
-//        let card = cards[0]
-//
-//        let socialPosts = store.getTodoSocialPostsForCard(card)
-//        if socialPosts.count == 0 { return }
-//        let item = socialPosts[rowIdx]
-        
         if (indexPath.section != 0) { return }
         let currentCell = tableView.cellForRow(at: indexPath)
         var item: TodoSocialPost!
@@ -685,6 +673,45 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     }
     
 }
+
+extension TodoHubController: HubProtocol {
+    func scrollToSection(_ section: String) {
+        let theSection = TodoSection.init(rawValue: section)
+        let sectionIndex = theSection?.getSectionPosition() ?? 0
+        let row = 0
+        
+        let indexPath = IndexPath(row: row, section: sectionIndex)
+        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        
+    }
+    
+    func scrollToCard(_ cardName: String) {
+        
+        guard let todoCard = TodoStore.getInstance().getTodoCardWithName(cardName) else { return }
+        let theSection = TodoSection.init(rawValue: todoCard.section)
+        let sectionIndex = theSection?.getSectionPosition() ?? 0
+        
+        let items = self.getVisibleItemsInSection(sectionIndex)
+        var row = 0
+        var found = false
+        for item in items {
+            if item is TodoCard && cardName == (item as! TodoCard).name {
+                found = true
+                break
+            }
+            row = row + 1
+        }
+        if !found { row = 0 }
+        
+        let indexPath = IndexPath(row: row, section: sectionIndex)
+        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        
+    }
+    
+    
+}
+
+
 
 extension TodoHubController:  TodoCardActionProtocol {
     

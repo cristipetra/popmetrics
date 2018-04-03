@@ -20,13 +20,63 @@ enum NavigationMap {
             return settingsVC
         }
         
-        navigator.handle("vnd.popmetrics://hubs/home") { url, values, context in
+        navigator.handle("vnd.popmetrics://hubs/home/section/<string:section") { url, values, context in
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let mainTabVC = appDelegate.window?.rootViewController as! MainTabBarController
             mainTabVC.selectedIndex = 0
-            mainTabVC.tabBar.isHidden = false
             
+            // if the section is empty just leave it as default
+            guard let section = values["section"] as? String else { return true }
+            
+            mainTabVC.navigateToSection(tabIndex:0, section: section)
+            return true
+        }
+        
+        navigator.handle("vnd.popmetrics://hubs/home/card/<string:card") { url, values, context in
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let mainTabVC = appDelegate.window?.rootViewController as! MainTabBarController
+            mainTabVC.selectedIndex = 0
+            
+            // if the section is empty just leave it as default
+            guard let card = values["card"] as? String else { return true }
+            
+            mainTabVC.navigateToCard(tabIndex:0, cardName: card)
+            
+            return true
+        }
+        
+        navigator.handle("vnd.popmetrics://hubs/todo/section/<string:section>") { url, values, context in
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let mainTabVC = appDelegate.window?.rootViewController as! MainTabBarController
+            mainTabVC.selectedIndex = 1
+            // if the section is empty just leave it as default
+            guard let section = values["section"] as? String else { return true }
+            mainTabVC.navigateToSection(tabIndex:0, section: section)
+            return true
+        }
+        
+        navigator.handle("vnd.popmetrics://hubs/calendar/section/<string:section>") { url, values, context in
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let mainTabVC = appDelegate.window?.rootViewController as! MainTabBarController
+            mainTabVC.selectedIndex = 2
+            // if the section is empty just leave it as default
+            guard let section = values["section"] as? String else { return true }
+            mainTabVC.navigateToSection(tabIndex:0, section: section)
+            return true
+        }
+        
+        navigator.handle("vnd.popmetrics://hubs/stats/section/<string:section>") { url, values, context in
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let mainTabVC = appDelegate.window?.rootViewController as! MainTabBarController
+            mainTabVC.selectedIndex = 3
+            // if the section is empty just leave it as default
+            guard let section = values["section"] as? String else { return true }
+            mainTabVC.navigateToSection(tabIndex:0, section: section)
             return true
         }
         
@@ -68,20 +118,7 @@ enum NavigationMap {
             vc.configure(card)
             return vc
         }
-        
-        navigator.handle("vnd.popmetrics://hubs/todo") { url, values, context in
-            
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let mainTabVC = appDelegate.window?.rootViewController as! MainTabBarController
-            mainTabVC.selectedIndex = 1
-            mainTabVC.tabBarController?.selectedIndex = 1
-            mainTabVC.tabBarController?.tabBar.isHidden = false
-            mainTabVC.tabBar.isHidden = false
-            mainTabVC.tabBar.setNeedsDisplay()
-            return true
-        }
-        
-        
+       
         
         navigator.register("http://<path:_>", self.webViewControllerFactory)
         navigator.register("https://<path:_>", self.webViewControllerFactory)
