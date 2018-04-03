@@ -37,11 +37,10 @@ class InsightPageDetailsViewController: BaseViewController {
     private var recommendActionHandler: RecommendActionHandler?
     var cardInfoHandlerDelegate: CardInfoHandler?
     
-
     var bottomContainerViewBottomAnchor: NSLayoutConstraint!
     internal var isBottomVisible = false
+    @IBOutlet weak var btnViewAction: UIButton!
     
-    let persistentFooter: PersistentFooter =  PersistentFooter()
     let store: FeedStore = FeedStore.getInstance()
     
     private var openedFrom: String = "home"
@@ -58,11 +57,10 @@ class InsightPageDetailsViewController: BaseViewController {
         }
         
         if UIScreen.main.nativeBounds.height == 2436 {
-            constraintBottomStackView.constant = constraintBottomStackView.constant - 34
+            constraintBottomStackView.constant = constraintBottomStackView.constant - 25
         }
         
-        addPersistentFooter()
-        
+        btnViewAction.addTarget(self, action: #selector(handlerActionBtn), for: .touchUpInside)
     }
 
     override func viewWillAppear(_ animated:Bool) {
@@ -76,7 +74,7 @@ class InsightPageDetailsViewController: BaseViewController {
         recommendActionHandler = handler
         
         if self.feedCard.recommendedAction == "" {
-            self.persistentFooter.rightBtn.isHidden = true            
+            btnViewAction.isHidden = true
         }
     }
     
@@ -85,7 +83,7 @@ class InsightPageDetailsViewController: BaseViewController {
         self.feedCard = feedCard
         
         if self.feedCard.recommendedAction == "" {
-            self.persistentFooter.rightBtn.isHidden = true
+            btnViewAction.isHidden = true
         }
     }
     
@@ -218,24 +216,7 @@ class InsightPageDetailsViewController: BaseViewController {
             self.present(activityVC, animated: true, completion: nil)
     }
     
-    func addPersistentFooter() {
-        view.addSubview(persistentFooter)
-        persistentFooter.translatesAutoresizingMaskIntoConstraints = false
-        persistentFooter.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        persistentFooter.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        persistentFooter.heightAnchor.constraint(equalToConstant: 81).isActive = true
-        
-        bottomContainerViewBottomAnchor = persistentFooter.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
-        bottomContainerViewBottomAnchor.isActive = true
-        
-        persistentFooter.leftBtn.isHidden = true
-        persistentFooter.rightBtn.changeTitle("View Action")
-        
-        persistentFooter.rightBtn.addTarget(self, action: #selector(handlerActionBtn), for: .touchUpInside)
-    }
-    
     func openActionDetails(_ actionCard: TodoCard) {
-        
         self.segueCard = actionCard
         self.performSegue(withIdentifier:"showActionDetails", sender:self)
     }
