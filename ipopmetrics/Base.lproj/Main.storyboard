@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -244,7 +244,7 @@
                                                 <rect key="frame" x="0.0" y="397" width="320" height="220"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0G-GS-0CH">
-                                                        <rect key="frame" x="25" y="22" width="65.5" height="25"/>
+                                                        <rect key="frame" x="25" y="22" width="55" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -269,7 +269,7 @@
                                                 <rect key="frame" x="0.0" y="618" width="320" height="220"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why This Happened?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bp-7G-DVh">
-                                                        <rect key="frame" x="25" y="22" width="192.5" height="25"/>
+                                                        <rect key="frame" x="25" y="22" width="173.5" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -294,13 +294,13 @@
                                                 <rect key="frame" x="0.0" y="839" width="320" height="240"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conclusion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14F-WJ-qa2">
-                                                        <rect key="frame" x="25" y="22" width="102" height="25"/>
+                                                        <rect key="frame" x="25" y="22" width="90.5" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LgB-f1-JX5">
-                                                        <rect key="frame" x="25" y="57" width="278" height="183"/>
+                                                        <rect key="frame" x="25" y="53" width="278" height="187"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </view>
                                                 </subviews>
@@ -325,7 +325,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy1-Q0-nsr">
-                                                        <rect key="frame" x="25" y="265" width="278" height="123"/>
+                                                        <rect key="frame" x="25" y="261" width="278" height="127"/>
                                                         <string key="text">Article excerpt? This is what happens when the
 article has some meta thing telling the computer that it’s magically got to choose the first 40 words of the article to be useful…</string>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
@@ -333,7 +333,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Article Title Here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0X4-e7-El7">
-                                                        <rect key="frame" x="25" y="230" width="278" height="25"/>
+                                                        <rect key="frame" x="25" y="230" width="278" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -363,6 +363,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <color key="backgroundColor" red="0.74117647060000003" green="0.7725490196" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="hYW-IT-klQ" firstAttribute="width" secondItem="fLG-yb-riw" secondAttribute="width" id="5CM-4F-sKf"/>
                                     <constraint firstItem="hYW-IT-klQ" firstAttribute="top" secondItem="fLG-yb-riw" secondAttribute="top" id="G0Z-S6-bU3"/>
@@ -371,12 +372,61 @@ article has some meta thing telling the computer that it’s magically got to ch
                                     <constraint firstAttribute="trailing" secondItem="hYW-IT-klQ" secondAttribute="trailing" id="wuC-zb-SxO"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xwd-2F-ZMq">
+                                <rect key="frame" x="0.0" y="463" width="320" height="61"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f0P-TJ-e6Y">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                        <color key="backgroundColor" name="larry_david"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="JTA-Ga-kv7"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tzl-tx-dWA">
+                                        <rect key="frame" x="155" y="13.5" width="140" height="35"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="140" id="eMJ-Hb-lDl"/>
+                                            <constraint firstAttribute="height" constant="35" id="h43-yp-tgQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="35" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="105" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="View Action" image="iconCart">
+                                            <color key="titleColor" name="rock_bottom"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="rock_bottom"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="DUK-6X-BZq"/>
+                                    <constraint firstItem="f0P-TJ-e6Y" firstAttribute="top" secondItem="xwd-2F-ZMq" secondAttribute="top" id="K4W-5A-gSk"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tzl-tx-dWA" secondAttribute="trailing" constant="25" id="bJw-4g-6uH"/>
+                                    <constraint firstAttribute="trailing" secondItem="f0P-TJ-e6Y" secondAttribute="trailing" id="fl1-Pl-IyD"/>
+                                    <constraint firstItem="f0P-TJ-e6Y" firstAttribute="leading" secondItem="xwd-2F-ZMq" secondAttribute="leading" id="rwp-be-Fz6"/>
+                                    <constraint firstItem="Tzl-tx-dWA" firstAttribute="centerY" secondItem="xwd-2F-ZMq" secondAttribute="centerY" id="sBF-6j-VMw"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.74117647060000003" green="0.7725490196" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="N7y-5D-86G" firstAttribute="bottom" secondItem="xwd-2F-ZMq" secondAttribute="bottom" id="XpB-y9-oKI"/>
                             <constraint firstItem="N7y-5D-86G" firstAttribute="trailing" secondItem="fLG-yb-riw" secondAttribute="trailing" id="YuZ-4r-A0T"/>
+                            <constraint firstItem="xwd-2F-ZMq" firstAttribute="leading" secondItem="N7y-5D-86G" secondAttribute="leading" id="dXh-jD-eBu"/>
                             <constraint firstItem="fLG-yb-riw" firstAttribute="top" secondItem="N7y-5D-86G" secondAttribute="top" id="qFt-Ez-X7t"/>
                             <constraint firstItem="N7y-5D-86G" firstAttribute="bottom" secondItem="fLG-yb-riw" secondAttribute="bottom" id="s3i-5x-IYH"/>
+                            <constraint firstItem="xwd-2F-ZMq" firstAttribute="trailing" secondItem="N7y-5D-86G" secondAttribute="trailing" id="uMy-gY-7dK"/>
                             <constraint firstItem="fLG-yb-riw" firstAttribute="leading" secondItem="N7y-5D-86G" secondAttribute="leading" id="xtH-gB-rq9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N7y-5D-86G"/>
@@ -393,6 +443,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                         <outlet property="blogImage" destination="cAa-rb-CIK" id="Seq-Hq-GLo"/>
                         <outlet property="blogSummary" destination="xy1-Q0-nsr" id="fYc-XD-Nch"/>
                         <outlet property="blogTitle" destination="0X4-e7-El7" id="4Bf-em-Agy"/>
+                        <outlet property="btnViewAction" destination="Tzl-tx-dWA" id="11A-36-A4W"/>
                         <outlet property="cardImage" destination="6Dr-i2-dsZ" id="YgB-UA-zaX"/>
                         <outlet property="constraintBottomStackView" destination="Kbl-uI-z8o" id="Pxt-95-dGE"/>
                         <outlet property="constraintHeightArgumentsMarkdown" destination="0uT-3f-Hjc" id="w1P-8z-25f"/>
@@ -466,7 +517,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 <rect key="frame" x="0.0" y="396.5" width="320" height="220"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p39-F8-Vlw">
-                                                        <rect key="frame" x="25" y="22" width="65.5" height="25"/>
+                                                        <rect key="frame" x="25" y="22" width="55" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -498,7 +549,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 <rect key="frame" x="0.0" y="998.5" width="320" height="240"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to Fix it?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1C-io-eRu">
-                                                        <rect key="frame" x="25" y="22" width="125.5" height="25"/>
+                                                        <rect key="frame" x="25" y="22" width="111.5" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -523,7 +574,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 <rect key="frame" x="0.0" y="1239.5" width="320" height="240"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4i0-eT-njw">
-                                                        <rect key="frame" x="25" y="22" width="67.5" height="25"/>
+                                                        <rect key="frame" x="25" y="22" width="61" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -611,11 +662,87 @@ article has some meta thing telling the computer that it’s magically got to ch
                                     <constraint firstItem="LZT-Hq-nxK" firstAttribute="width" secondItem="dUe-vV-Yno" secondAttribute="width" id="jWB-ko-jeb"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Deu-QX-TMX">
+                                <rect key="frame" x="0.0" y="463" width="320" height="61"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ed4-rX-Tes">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="uHC-fQ-Azw"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMG-8K-jUO">
+                                        <rect key="frame" x="25" y="12.5" width="120" height="35"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="WuG-pa-TA9"/>
+                                            <constraint firstAttribute="height" constant="35" id="zol-ln-YwZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="90" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="DIY" image="iconHammer">
+                                            <color key="titleColor" name="rock_bottom"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="rock_bottom"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHW-UB-6bf">
+                                        <rect key="frame" x="175" y="13.5" width="120" height="35"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="AjU-Zx-0QZ"/>
+                                            <constraint firstAttribute="height" constant="35" id="ehB-na-RvE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="90" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Order" image="iconCart">
+                                            <color key="titleColor" name="rock_bottom"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="rock_bottom"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="yMG-8K-jUO" firstAttribute="centerY" secondItem="Deu-QX-TMX" secondAttribute="centerY" id="HW7-7d-txI"/>
+                                    <constraint firstItem="ed4-rX-Tes" firstAttribute="leading" secondItem="Deu-QX-TMX" secondAttribute="leading" id="Vxt-K7-no1"/>
+                                    <constraint firstAttribute="height" constant="61" id="bck-n1-vNp"/>
+                                    <constraint firstAttribute="trailing" secondItem="AHW-UB-6bf" secondAttribute="trailing" constant="25" id="idz-U4-Dxk"/>
+                                    <constraint firstItem="AHW-UB-6bf" firstAttribute="centerY" secondItem="Deu-QX-TMX" secondAttribute="centerY" id="mMu-sd-Qpo"/>
+                                    <constraint firstItem="yMG-8K-jUO" firstAttribute="leading" secondItem="Deu-QX-TMX" secondAttribute="leading" constant="25" id="qfa-xp-Xkc"/>
+                                    <constraint firstItem="ed4-rX-Tes" firstAttribute="top" secondItem="Deu-QX-TMX" secondAttribute="top" id="w6J-F3-Rsv"/>
+                                    <constraint firstAttribute="trailing" secondItem="ed4-rX-Tes" secondAttribute="trailing" id="y8o-ye-xoy"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="5FM-Jj-ao9" firstAttribute="leading" secondItem="dUe-vV-Yno" secondAttribute="leading" id="ASM-2e-lv2"/>
                             <constraint firstItem="5FM-Jj-ao9" firstAttribute="top" secondItem="dUe-vV-Yno" secondAttribute="top" id="B2u-xw-XDk"/>
+                            <constraint firstItem="Deu-QX-TMX" firstAttribute="leading" secondItem="5FM-Jj-ao9" secondAttribute="leading" id="XKz-JT-Oca"/>
+                            <constraint firstItem="5FM-Jj-ao9" firstAttribute="bottom" secondItem="Deu-QX-TMX" secondAttribute="bottom" id="c6a-8f-7qW"/>
+                            <constraint firstItem="5FM-Jj-ao9" firstAttribute="trailing" secondItem="Deu-QX-TMX" secondAttribute="trailing" id="d28-He-XLO"/>
                             <constraint firstItem="dUe-vV-Yno" firstAttribute="bottom" secondItem="5FM-Jj-ao9" secondAttribute="bottom" id="nwx-mc-9aA"/>
                             <constraint firstItem="dUe-vV-Yno" firstAttribute="trailing" secondItem="5FM-Jj-ao9" secondAttribute="trailing" id="pLN-Sd-gDE"/>
                         </constraints>
@@ -623,6 +750,9 @@ article has some meta thing telling the computer that it’s magically got to ch
                     </view>
                     <navigationItem key="navigationItem" id="Fur-zw-OwN"/>
                     <connections>
+                        <outlet property="actionsView" destination="Deu-QX-TMX" id="jem-V6-D7x"/>
+                        <outlet property="btnDiy" destination="yMG-8K-jUO" id="F4a-aA-t59"/>
+                        <outlet property="btnOrder" destination="AHW-UB-6bf" id="GHv-rK-8vl"/>
                         <outlet property="cardImage" destination="gqI-Ea-ufZ" id="pjZ-be-BkM"/>
                         <outlet property="constraintBottomStackView" destination="hOy-yX-sio" id="vBs-cr-nL2"/>
                         <outlet property="constraintHeightClosingMarkdown" destination="HTP-4W-9nh" id="fKK-f2-qxm"/>
@@ -699,10 +829,10 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MTa-KH-EBT">
-                                <rect key="frame" x="29" y="187" width="265" height="132"/>
+                                <rect key="frame" x="29" y="187" width="265" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCx-hh-YS9">
-                                        <rect key="frame" x="0.0" y="0.0" width="265" height="33"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="265" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="UPGRADE SUBSCRIPTION">
                                             <color key="titleColor" name="blue_bottle"/>
@@ -712,7 +842,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCx-hh-YS8">
-                                        <rect key="frame" x="0.0" y="33" width="265" height="33"/>
+                                        <rect key="frame" x="0.0" y="30" width="265" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="SETTINGS">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -722,7 +852,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWk-9n-6Qe" userLabel="ABOUT POPMETRICS">
-                                        <rect key="frame" x="0.0" y="66" width="265" height="33"/>
+                                        <rect key="frame" x="0.0" y="60" width="265" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="ABOUT POPMETRICS">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -732,7 +862,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxF-Rq-8jP">
-                                        <rect key="frame" x="0.0" y="99" width="265" height="33"/>
+                                        <rect key="frame" x="0.0" y="90" width="265" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="LEGAL INFORMATION">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -744,7 +874,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybe-Us-fFL">
-                                <rect key="frame" x="29" y="368" width="63" height="33"/>
+                                <rect key="frame" x="29" y="356" width="62" height="30"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="LOGOUT">
                                     <color key="titleColor" red="1" green="0.46666666670000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -768,7 +898,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOi-K4-4l3">
-                                <rect key="frame" x="3" y="347" width="315" height="1"/>
+                                <rect key="frame" x="3" y="335" width="315" height="1"/>
                                 <color key="backgroundColor" red="0.74117647060000003" green="0.7725490196" blue="0.79607843140000001" alpha="0.50449486301369861" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="16o-2h-RXg"/>
@@ -1963,7 +2093,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 <rect key="frame" x="0.0" y="532.5" width="320" height="220"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNA-kh-RJd">
-                                                        <rect key="frame" x="25" y="22" width="65.5" height="25"/>
+                                                        <rect key="frame" x="25" y="22" width="55" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1995,7 +2125,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 <rect key="frame" x="0.0" y="1134.5" width="320" height="240"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to Fix it?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASq-OS-O5r">
-                                                        <rect key="frame" x="25" y="22" width="125.5" height="25"/>
+                                                        <rect key="frame" x="25" y="22" width="111.5" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2020,7 +2150,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 <rect key="frame" x="0.0" y="1375.5" width="320" height="240"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMC-4f-msm">
-                                                        <rect key="frame" x="25" y="22" width="67.5" height="25"/>
+                                                        <rect key="frame" x="25" y="22" width="61" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2104,12 +2234,88 @@ article has some meta thing telling the computer that it’s magically got to ch
                                     <constraint firstItem="u2c-Ga-33q" firstAttribute="top" secondItem="pv9-YO-R6p" secondAttribute="top" id="s3A-0A-km0"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avf-rI-8dV">
+                                <rect key="frame" x="0.0" y="1590" width="320" height="61"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAH-yg-eqj">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="Xlj-sE-nLg"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8K-uV-l38">
+                                        <rect key="frame" x="25" y="12.5" width="120" height="35"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="r2Z-LB-Avl"/>
+                                            <constraint firstAttribute="width" constant="120" id="wLP-XB-Tce"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="95" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Completed" image="iconHammer">
+                                            <color key="titleColor" name="rock_bottom"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="rock_bottom"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKe-dc-9cX">
+                                        <rect key="frame" x="160" y="13.5" width="135" height="35"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="to6-go-bbM"/>
+                                            <constraint firstAttribute="width" constant="135" id="z2p-xB-zmv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="105" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Do It for me" image="iconCart">
+                                            <color key="titleColor" name="rock_bottom"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="rock_bottom"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="qAH-yg-eqj" firstAttribute="leading" secondItem="avf-rI-8dV" secondAttribute="leading" id="61K-xd-azb"/>
+                                    <constraint firstItem="qAH-yg-eqj" firstAttribute="top" secondItem="avf-rI-8dV" secondAttribute="top" id="6dN-p0-TmG"/>
+                                    <constraint firstAttribute="trailing" secondItem="qAH-yg-eqj" secondAttribute="trailing" id="MRH-WL-V1w"/>
+                                    <constraint firstItem="h8K-uV-l38" firstAttribute="centerY" secondItem="avf-rI-8dV" secondAttribute="centerY" id="aa0-GR-F7B"/>
+                                    <constraint firstAttribute="height" constant="61" id="nG5-QN-W0A"/>
+                                    <constraint firstItem="SKe-dc-9cX" firstAttribute="centerY" secondItem="avf-rI-8dV" secondAttribute="centerY" id="pHk-F0-YEM"/>
+                                    <constraint firstAttribute="trailing" secondItem="SKe-dc-9cX" secondAttribute="trailing" constant="25" id="quP-lJ-BsE"/>
+                                    <constraint firstItem="h8K-uV-l38" firstAttribute="leading" secondItem="avf-rI-8dV" secondAttribute="leading" constant="25" id="vUa-GR-3qW"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="pv9-YO-R6p" firstAttribute="bottom" secondItem="Cbi-h8-Vf0" secondAttribute="bottom" id="6eU-Ib-SY7"/>
                             <constraint firstItem="Cbi-h8-Vf0" firstAttribute="leading" secondItem="pv9-YO-R6p" secondAttribute="leading" id="QnH-a3-UEj"/>
+                            <constraint firstItem="avf-rI-8dV" firstAttribute="leading" secondItem="Cbi-h8-Vf0" secondAttribute="leading" id="R1j-oA-Ur6"/>
+                            <constraint firstItem="avf-rI-8dV" firstAttribute="trailing" secondItem="Cbi-h8-Vf0" secondAttribute="trailing" id="uRJ-Qx-vpH"/>
                             <constraint firstItem="Cbi-h8-Vf0" firstAttribute="top" secondItem="pv9-YO-R6p" secondAttribute="top" id="x3o-c2-0me"/>
+                            <constraint firstItem="Cbi-h8-Vf0" firstAttribute="bottom" secondItem="avf-rI-8dV" secondAttribute="bottom" id="xTa-oi-g2h"/>
                             <constraint firstItem="pv9-YO-R6p" firstAttribute="trailing" secondItem="Cbi-h8-Vf0" secondAttribute="trailing" id="xyU-qK-tH9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cbi-h8-Vf0"/>
@@ -2117,6 +2323,8 @@ article has some meta thing telling the computer that it’s magically got to ch
                     <navigationItem key="navigationItem" id="k4t-qg-VCp"/>
                     <size key="freeformSize" width="320" height="1700"/>
                     <connections>
+                        <outlet property="btnCompleted" destination="h8K-uV-l38" id="ZAi-EI-PbD"/>
+                        <outlet property="btnDoItForMe" destination="SKe-dc-9cX" id="Lze-hA-4cN"/>
                         <outlet property="cardImage" destination="OTm-k7-v4b" id="VyW-fP-9gn"/>
                         <outlet property="constraintBottomStackView" destination="iqL-Fn-8NB" id="6Lx-C4-H0o"/>
                         <outlet property="constraintHeightClosingMarkdown" destination="f1l-ae-gBr" id="6Ys-hA-Zpf"/>
@@ -2152,7 +2360,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRK-52-0IU">
-                                        <rect key="frame" x="10" y="239" width="280" height="25"/>
+                                        <rect key="frame" x="10" y="239" width="280" height="21"/>
                                         <string key="text">Task added to your My Actions list.
 </string>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
@@ -2160,7 +2368,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ezi-qU-B4Z">
-                                        <rect key="frame" x="69.5" y="340" width="160" height="45"/>
+                                        <rect key="frame" x="69.5" y="336" width="160" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="IQt-ja-TPV"/>
                                             <constraint firstAttribute="width" constant="160" id="bNX-Qp-OaT"/>
@@ -2186,7 +2394,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvc-Oe-HeN">
-                                        <rect key="frame" x="70" y="287" width="160" height="45"/>
+                                        <rect key="frame" x="70" y="283" width="160" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="Ij7-hj-XuR"/>
                                             <constraint firstAttribute="height" constant="45" id="TZK-E1-Qgc"/>
@@ -2270,13 +2478,13 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great! Let us review your work." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Efe-Tu-U5a">
-                                        <rect key="frame" x="10" y="239" width="280" height="25"/>
+                                        <rect key="frame" x="10" y="239" width="280" height="21"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
                                         <color key="textColor" name="rock_bottom"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4f-qT-e9t">
-                                        <rect key="frame" x="69.5" y="340" width="160" height="45"/>
+                                        <rect key="frame" x="69.5" y="336" width="160" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="7wV-ip-1Du"/>
                                             <constraint firstAttribute="width" constant="160" id="h2e-Z7-Ae7"/>
@@ -2302,7 +2510,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KvY-j4-S2b">
-                                        <rect key="frame" x="70" y="287" width="160" height="45"/>
+                                        <rect key="frame" x="70" y="283" width="160" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="7gL-Lv-XBE"/>
                                             <constraint firstAttribute="height" constant="45" id="Eg4-U7-HvC"/>
@@ -2380,6 +2588,8 @@ article has some meta thing telling the computer that it’s magically got to ch
         <image name="calendarTodayIcon" width="30" height="30"/>
         <image name="first" width="30" height="30"/>
         <image name="ic_keyboard_arrow_left" width="16" height="16"/>
+        <image name="iconCart" width="17" height="16"/>
+        <image name="iconHammer" width="9" height="16"/>
         <image name="iconX" width="20" height="20"/>
         <image name="icon_deny" width="66" height="66"/>
         <image name="icon_quepost" width="66" height="66"/>
@@ -2396,11 +2606,38 @@ article has some meta thing telling the computer that it’s magically got to ch
         <namedColor name="blue_bottle">
             <color red="0.25490196078431371" green="0.60784313725490191" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="larry_david">
+            <color red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="red_light">
             <color red="1" green="0.46666666666666667" blue="0.41568627450980394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="rock_bottom">
             <color red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="rock_bottom">
+            <color red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="rock_bottom">
+            <color red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="rock_bottom">
+            <color red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="rock_bottom">
+            <color red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="rock_bottom">
+            <color red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="rock_bottom">
+            <color red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="rock_bottom">
+            <color red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="rock_bottom">
+            <color red="0.25098039215686274" green="0.23529411764705882" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="venice_winter">
             <color red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

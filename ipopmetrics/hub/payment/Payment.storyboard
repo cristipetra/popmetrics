@@ -516,18 +516,18 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3op-CW-bA1">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="595.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="598"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="promoCode" translatesAutoresizingMaskIntoConstraints="NO" id="cks-e2-2dM">
                                                 <rect key="frame" x="64.5" y="50" width="245" height="137"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Promo Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6n-ag-Sw6">
-                                                <rect key="frame" x="118.5" y="250" width="139" height="21"/>
+                                                <rect key="frame" x="115" y="248" width="146.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
                                                 <color key="textColor" name="rock_bottom"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="000-AA" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y8o-Gr-9h8">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="000-00" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y8o-Gr-9h8">
                                                 <rect key="frame" x="67" y="309" width="240" height="62"/>
                                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -536,7 +536,7 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                                                 </constraints>
                                                 <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="24"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartQuotesType="no" textContentType="name"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartQuotesType="no" textContentType="name"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="10"/>
@@ -544,11 +544,38 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms &amp; Conditions Apply" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPP-jV-yeP">
-                                                <rect key="frame" x="118.5" y="501.5" width="138.5" height="14"/>
+                                                <rect key="frame" x="113.5" y="501.5" width="148.5" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                                 <color key="textColor" name="blue_bottle"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9J-6a-0SQ">
+                                                <rect key="frame" x="106" y="401" width="162" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="KEP-FX-MBz"/>
+                                                    <constraint firstAttribute="width" constant="162" id="tWW-if-n5d"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                                <state key="normal" title="Apply">
+                                                    <color key="titleColor" name="rock_bottom"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" name="rock_bottom"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="22"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="handlerApplyCode:" destination="xt0-4c-7MO" eventType="touchUpInside" id="3R6-Ll-oBR"/>
+                                                    <action selector="handlerGoToHome:" destination="LXy-ZN-B6U" eventType="touchUpInside" id="vaG-R6-KjI"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -557,9 +584,11 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                                             <constraint firstItem="EPP-jV-yeP" firstAttribute="top" secondItem="y8o-Gr-9h8" secondAttribute="bottom" priority="249" constant="130" id="G7n-6p-CyZ"/>
                                             <constraint firstItem="cks-e2-2dM" firstAttribute="centerX" secondItem="3op-CW-bA1" secondAttribute="centerX" id="Lly-op-vzC"/>
                                             <constraint firstItem="EPP-jV-yeP" firstAttribute="centerX" secondItem="3op-CW-bA1" secondAttribute="centerX" id="OUF-FX-AGW"/>
+                                            <constraint firstItem="U9J-6a-0SQ" firstAttribute="centerX" secondItem="3op-CW-bA1" secondAttribute="centerX" id="PXc-ii-ag6"/>
                                             <constraint firstItem="y8o-Gr-9h8" firstAttribute="centerX" secondItem="3op-CW-bA1" secondAttribute="centerX" id="ROT-h0-4RB"/>
                                             <constraint firstItem="K6n-ag-Sw6" firstAttribute="centerX" secondItem="3op-CW-bA1" secondAttribute="centerX" id="S9b-lA-hrm"/>
                                             <constraint firstItem="cks-e2-2dM" firstAttribute="top" secondItem="3op-CW-bA1" secondAttribute="top" constant="50" id="hph-mG-Vha"/>
+                                            <constraint firstItem="U9J-6a-0SQ" firstAttribute="top" secondItem="y8o-Gr-9h8" secondAttribute="bottom" constant="30" id="omR-hP-130"/>
                                             <constraint firstItem="y8o-Gr-9h8" firstAttribute="top" secondItem="K6n-ag-Sw6" secondAttribute="baseline" constant="42" id="vQx-xR-LRh"/>
                                         </constraints>
                                     </view>
@@ -583,6 +612,7 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                         <viewLayoutGuide key="safeArea" id="UGD-7Q-NYN"/>
                     </view>
                     <connections>
+                        <outlet property="btnApplyCode" destination="U9J-6a-0SQ" id="MMR-Ji-wh8"/>
                         <outlet property="promoCodeText" destination="y8o-Gr-9h8" id="yBy-Qg-b8i"/>
                         <outlet property="scrollView" destination="nm4-nU-k9Z" id="TNo-g4-Wx7"/>
                         <outlet property="termsAndConditionsText" destination="EPP-jV-yeP" id="73m-kC-8rd"/>
@@ -610,7 +640,7 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cnr-D3-g6L">
-                                        <rect key="frame" x="10" y="239" width="335" height="21"/>
+                                        <rect key="frame" x="10" y="239" width="335" height="25"/>
                                         <string key="text">Task added to your My Actions list.
 </string>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
@@ -618,13 +648,13 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View my actions list here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w58-wb-OxQ">
-                                        <rect key="frame" x="20" y="271" width="315" height="21"/>
+                                        <rect key="frame" x="20" y="271" width="315" height="25"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                         <color key="textColor" name="rock_bottom"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVv-Iv-KJZ">
-                                        <rect key="frame" x="97" y="336" width="160" height="45"/>
+                                        <rect key="frame" x="97" y="340" width="160" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="5xm-qd-E0P"/>
                                             <constraint firstAttribute="height" constant="45" id="kHg-h5-FY6"/>
@@ -830,12 +860,24 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ax6-GN-38P">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ax6-GN-38P">
                                         <rect key="frame" x="0.0" y="360" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ax6-GN-38P" id="tUh-yn-g61">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Promo Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnY-ab-7ev">
+                                                    <rect key="frame" x="8" y="17" width="144" height="25"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="18"/>
+                                                    <color key="textColor" red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gnY-ab-7ev" firstAttribute="centerY" secondItem="tUh-yn-g61" secondAttribute="centerY" id="Nnz-TI-2tZ"/>
+                                                <constraint firstItem="gnY-ab-7ev" firstAttribute="leading" secondItem="tUh-yn-g61" secondAttribute="leadingMargin" id="aya-UH-drN"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zxd-sw-TxF">
@@ -979,6 +1021,9 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
         <image name="time" width="311" height="162"/>
         <namedColor name="blue_bottle">
             <color red="0.25490196078431371" green="0.60784313725490191" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="rock_bottom">
+            <color red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="rock_bottom">
             <color red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

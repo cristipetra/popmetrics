@@ -41,16 +41,17 @@ class ActionStatusViewController: BaseViewController {
     private var todoCard: TodoCard!
     
     let iceView = IceExtendView()
-    
-    let persistentFooter: PersistentFooter =  PersistentFooter()
+
     var bottomContainerViewBottomAnchor: NSLayoutConstraint!
     internal var isBottomVisible = false
+    @IBOutlet weak var btnCompleted: UIButton!
+    @IBOutlet weak var btnDoItForMe: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if UIScreen.main.nativeBounds.height == 2436 {
-            constraintBottomStackView.constant = constraintBottomStackView.constant - 34
+            constraintBottomStackView.constant = constraintBottomStackView.constant - 25
         }
         
         addIceView()
@@ -62,7 +63,9 @@ class ActionStatusViewController: BaseViewController {
             self.navigationController?.popViewController(animated: true)
         }
         
-        addPersistentFooter()
+        displayActionButton()
+        addHandlerForActionsBtns()
+        
     }
     
     override func viewWillLayoutSubviews() {
@@ -85,22 +88,11 @@ class ActionStatusViewController: BaseViewController {
         iceView.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func addPersistentFooter() {
-        view.addSubview(persistentFooter)
-        persistentFooter.translatesAutoresizingMaskIntoConstraints = false
-        persistentFooter.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        persistentFooter.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        persistentFooter.heightAnchor.constraint(equalToConstant: 81).isActive = true
-        
-        bottomContainerViewBottomAnchor = persistentFooter.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
-        bottomContainerViewBottomAnchor.isActive = true
-        
-        //add action from home feed
-        persistentFooter.rightBtn.addTarget(self, action: #selector(orderAction(_:)), for: .touchUpInside)
+    private func addHandlerForActionsBtns() {
+        btnDoItForMe.addTarget(self, action: #selector(orderAction(_:)), for: .touchUpInside)
         if todoCard.name != "social.automated_twitter_posts" || todoCard.name != "social.automated_facebook_posts" {
-            persistentFooter.leftBtn.addTarget(self, action: #selector(markAsCompleteAction(_:)), for: .touchUpInside)
+            btnCompleted.addTarget(self, action: #selector(markAsCompleteAction(_:)), for: .touchUpInside)
         }
-        
     }
     
     public func configure(_ todoCard: TodoCard, openedFrom: String) {
@@ -108,25 +100,19 @@ class ActionStatusViewController: BaseViewController {
         displayActionButton()
         
         iceView.configure(todoCard:todoCard)
-        displayActionButton()
     }
-    
     
     public func configure(_ todoCard: TodoCard, handler: RecommendActionHandler? = nil) {
         self.todoCard = todoCard
         recommendActionHandler = handler
         
         iceView.configure(todoCard: todoCard)
-        displayActionButton()
     }
     
     private func displayActionButton() {
-        persistentFooter.rightBtn.changeTitle("Do it for me")
-        persistentFooter.leftBtn.changeTitle("Completed")
-        
         if todoCard.name == "social.automated_posts" {
-            persistentFooter.leftBtn.isHidden = true
-            persistentFooter.rightBtn.isHidden = true
+            btnCompleted.isHidden = true
+            btnDoItForMe.isHidden = true
         }
     }
     

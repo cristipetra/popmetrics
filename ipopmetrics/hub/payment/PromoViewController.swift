@@ -9,11 +9,15 @@
 import UIKit
 
 class PromoViewController: UIViewController {
+    
+    let promoCodeMask = "###-##"
+    lazy fileprivate var editableCodeMask = promoCodeMask
 
     @IBOutlet weak var termsAndConditionsText: UILabel!
     @IBOutlet weak var promoCodeText: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var btnApplyCode: UIButton!
     var mutableString = NSMutableAttributedString()
     
     override func viewDidLoad() {
@@ -25,6 +29,15 @@ class PromoViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
         setUpNavigationBar()
         changeTextColor()
+        
+        self.termsAndConditionsText.isHidden = true
+        
+        btnApplyCode.setTitleColor(PopmetricsColor.weekDaysGrey, for: .disabled)
+        btnApplyCode.isEnabled = false
+        
+        promoCodeText.addTarget(self, action: #selector(textFieldDidChanged(_:)), for: .editingChanged)
+        updateDigitFieldNumber(textField: promoCodeText, mask: promoCodeMask)
+        
     }
     
     @objc internal func dismissKeyboard() {
@@ -59,15 +72,59 @@ class PromoViewController: UIViewController {
         self.close()
     }
     
+    @IBAction func handlerApplyCode(_ sender: UIButton) {
+        close()
+    }
+    
     private func close() {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
 
 }
 
 extension PromoViewController: UITextFieldDelegate {
+    
+    func updateDigitFieldNumber(textField: UITextField, mask: String) {
+        let threshold = mask.range(for: "#")?.lowerBound ?? mask.range!.upperBound
+        let boldRange = Range(uncheckedBounds: (lower: mask.range!.lowerBound, upper: threshold))
+        textField.attributedText = mask.replacingOccurrences(of: "#", with: "0").attributed
+            .font(UIFont(name: FontBook.regular, size: 24)!)
+            .color(.lightGray)
+            .font(UIFont(name: FontBook.bold, size: 24)!, range: boldRange)
+            .color(PopmetricsColor.buttonTitle, range: boldRange)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string.isEmpty {
+            guard let lastDigitRange = editableCodeMask.findMatches(for: "[0-9]").last?.range else { return false }
+            editableCodeMask = editableCodeMask
+                .replacingCharacters(in: Range(lastDigitRange, in: editableCodeMask)!, with: "#")
+        } else {
+            guard let slot = editableCodeMask.range(for: "#") else { return false }
+            editableCodeMask = editableCodeMask.replacingCharacters(in: slot, with: string)
+        }
+        updateDigitFieldNumber(textField: textField, mask: editableCodeMask)
+        updateCursorPosition(textField: textField)
+        btnApplyCode.isEnabled = extractCode(text: editableCodeMask).count >= 5
+        return false
+    }
+    
+    func extractCode(text: String) -> String {
+        return text.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+    }
+    
+    private func updateCursorPosition(textField: UITextField) {
+        guard let lastDigitRange = editableCodeMask.findMatches(for: "[+0-9]").last?.range else { return }
+        let slotPosition = Range(lastDigitRange, in: phoneNumberMask)!.upperBound.encodedOffset
+        let cursorPosition = textField.position(from: textField.beginningOfDocument, offset: slotPosition)!
+        textField.selectedTextRange = textField.textRange(from: cursorPosition, to: cursorPosition)
+    }
+   
+    @objc func textFieldDidChanged(_ textField: UITextField) {
+        btnApplyCode.isEnabled = true
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
         if UIScreen.main.bounds.size.height > 568 { return }
         UIView.animate(withDuration: 0.3) {
             self.scrollView.contentOffset = CGPoint(x: 0, y: 100)
@@ -75,7 +132,6 @@ extension PromoViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("end")
         if UIScreen.main.bounds.size.height > 568 { return }
         UIView.animate(withDuration: 0.3) {
             self.scrollView.contentOffset = CGPoint(x: 0, y: 0)

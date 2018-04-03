@@ -145,6 +145,9 @@ class OneOffPaymentViewController: UITableViewController {
             openEmail()
         } else if indexPath.row == 3 {
             self.paymentContext?.pushPaymentMethodsViewController()
+        } else if indexPath.row == 4 {
+            print("open promo")
+            openPromo()
         }
         
     }
@@ -153,6 +156,11 @@ class OneOffPaymentViewController: UITableViewController {
         let emailVC = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "EmailViewController") as! EmailViewController
         emailVC.emailDelegate = self
         self.navigationController?.pushViewController(emailVC, animated: true)
+    }
+    
+    private func openPromo() {
+        let promoVc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "PromoViewController")
+        self.navigationController?.pushViewController(promoVc, animated: true)
     }
     
     @objc func handlerClickBack() {
