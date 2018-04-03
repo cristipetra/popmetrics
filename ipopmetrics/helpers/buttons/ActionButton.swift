@@ -57,4 +57,9 @@ class ActionButton: UIButton {
     internal func changeImageEdge(left: CGFloat) {
         self.imageEdgeInsets = UIEdgeInsets(top: 0, left: (left - 30), bottom: 0, right: 0)
     }
+    
+    internal func changeImage(image: UIImage) {
+        imageBtn = image
+        self.setImage(imageBtn, for: .normal)
+    }
 }
