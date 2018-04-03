@@ -510,6 +510,15 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
 }
 
 extension HomeHubViewController: HubProtocol {
+    
+    func setDefaultIndexPath(_ indexPath: IndexPath?) {
+        
+    }
+    
+    func getDefaultIndexPath() -> IndexPath? {
+        return nil
+    }
+    
     func scrollToSection(_ section: String) {
             
     }

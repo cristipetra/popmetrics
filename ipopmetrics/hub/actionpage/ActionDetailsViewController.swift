@@ -115,16 +115,8 @@ class ActionDetailsViewController: BaseViewController {
             persistentFooter.rightBtn.isHidden = true
             return
         }
-
         persistentFooter.leftBtn.isHidden = false
-//        } else {
-//            persistentFooter.rightBtn.changeTitle("Mark As Complete")
-//            persistentFooter.rightBtn.hideImageBtn()
-//
-//            if todoCard.name == "social.automated_posts" {
-//                persistentFooter.rightBtn.isHidden = true
-//            }
-//        }
+        
     }
     
     private func updatView() {
