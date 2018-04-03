@@ -113,6 +113,8 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     var loadMoreView: RequiredActionLoadMoreView!
     var currentFeedCard: FeedCard?
     
+    internal var defaultIndexPath: IndexPath?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -137,10 +139,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         self.tableView.estimatedRowHeight = 460
         
         // NotificationCenter observers
-        let nc = NotificationCenter.default
-        nc.addObserver(forName:NSNotification.Name(rawValue: "CardActionNotification"), object:nil, queue:nil, using:catchCardActionNotification)
-        nc.addObserver(forName:Notification.Popmetrics.UiRefreshRequired, object:nil, queue:nil, using:catchUiRefreshRequiredNotification)
-       
         
         let requiredActionNib = UINib(nibName: "RequiredActionCard", bundle: nil)
         tableView.register(requiredActionNib, forCellReuseIdentifier: "RequriedActionCard")
@@ -185,8 +183,13 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let nc = NotificationCenter.default
+        nc.addObserver(forName:NSNotification.Name(rawValue: "CardActionNotification"), object:nil, queue:nil, using:catchCardActionNotification)
+        nc.addObserver(forName:Notification.Popmetrics.UiRefreshRequired, object:nil, queue:nil, using:catchUiRefreshRequiredNotification)
+        
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
 
         tableView.alpha = 1
         let tabInfo = MainTabInfo.getInstance()
@@ -511,20 +514,23 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
 
 extension HomeHubViewController: HubProtocol {
     
-    func setDefaultIndexPath(_ indexPath: IndexPath?) {
-        
-    }
-    
     func getDefaultIndexPath() -> IndexPath? {
-        return nil
+        return self.defaultIndexPath
     }
     
     func scrollToSection(_ section: String) {
-            
+        
+        
     }
     
     func scrollToCard(_ cardName: String) {
         
+        
+        
+    }
+    
+    func setDefaultIndexPath(_ indexPath: IndexPath?) {
+        self.defaultIndexPath = indexPath
     }
     
     

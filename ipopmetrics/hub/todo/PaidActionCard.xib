@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,7 +50,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="630" height="206"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Google Tracker to your wordpress site." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWS-rm-0sT">
-                                        <rect key="frame" x="15" y="5" width="605" height="33"/>
+                                        <rect key="frame" x="15" y="5" width="605" height="28"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="24"/>
                                         <color key="textColor" name="rock_bottom"/>
                                         <nil key="highlightedColor"/>
@@ -77,7 +77,7 @@
                                                 <rect key="frame" x="0.0" y="10" width="630" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Impact" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kv1-jC-4wj">
-                                                        <rect key="frame" x="15" y="5.5" width="70" height="20.5"/>
+                                                        <rect key="frame" x="15" y="7" width="70" height="17.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="70" id="6tn-2p-ll5"/>
                                                         </constraints>
@@ -86,7 +86,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@245.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgm-uc-ryd">
-                                                        <rect key="frame" x="95" y="5" width="80" height="20.5"/>
+                                                        <rect key="frame" x="95" y="6.5" width="80" height="17.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="80" id="fHj-nP-lw6"/>
                                                         </constraints>
@@ -118,7 +118,7 @@
                                                 <rect key="frame" x="0.0" y="40" width="630" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2G-ZC-9Ad">
-                                                        <rect key="frame" x="15" y="4" width="70" height="20.5"/>
+                                                        <rect key="frame" x="15" y="5.5" width="70" height="17.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="70" id="5xh-m7-xXV"/>
                                                         </constraints>
@@ -127,7 +127,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@245.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dN-Ex-z6W">
-                                                        <rect key="frame" x="95" y="4" width="80" height="20.5"/>
+                                                        <rect key="frame" x="95" y="5.5" width="80" height="17.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="80" id="Mg2-WH-mZt"/>
                                                         </constraints>
@@ -159,7 +159,7 @@
                                                 <rect key="frame" x="0.0" y="70" width="630" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAC-Sv-0nn">
-                                                        <rect key="frame" x="15" y="4" width="70" height="20.5"/>
+                                                        <rect key="frame" x="15" y="5.5" width="70" height="17.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="70" id="j0w-xV-wbM"/>
                                                         </constraints>
@@ -168,7 +168,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@245.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kn-94-R93">
-                                                        <rect key="frame" x="95" y="4" width="80" height="20.5"/>
+                                                        <rect key="frame" x="95" y="5.5" width="80" height="17.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="80" id="VeC-me-XOE"/>
                                                         </constraints>

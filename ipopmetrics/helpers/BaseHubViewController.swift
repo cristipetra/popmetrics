@@ -15,22 +15,12 @@ protocol HubControllerProtocol {
     func setDefaultIndexPath(_ indexPath:IndexPath?)
     func getDefaultIndexPath() -> IndexPath?
     
-    func getVisibleItems(inSection: String) -> [HubItem]
+    func getVisibleItems(inSection: String) -> [HubCard]
     
     func getSectionIndex(_ section: String) -> Int
     
     
 }
-
-protocol HubItem {
-    func getName() -> String
-    func getSection() -> String
-}
-
-protocol HubStore {
-    func getHubItemByName(_ name:String) -> HubItem?
-}
-
 
 class BaseHubViewController: BaseViewController, HubControllerProtocol {
 
@@ -70,7 +60,7 @@ class BaseHubViewController: BaseViewController, HubControllerProtocol {
         return 0
     }
     
-    func getVisibleItems(inSection: String) -> [HubItem] {
+    func getVisibleItems(inSection: String) -> [HubCard] {
         return []
     }
     
@@ -91,14 +81,14 @@ class BaseHubViewController: BaseViewController, HubControllerProtocol {
     
     func scrollToCard(_ cardName: String) {
         
-        guard let item = store?.getHubItemByName(cardName) else { return }
-        let sectionIndex = getSectionIndex(item.getSection())
+        guard let item = store?.getHubCardWithName(cardName) else { return }
+        let sectionIndex = getSectionIndex(item.section)
         
-        let items = self.getVisibleItems(inSection:item.getSection())
+        let items = self.getVisibleItems(inSection:item.section)
         var row = 0
         var found = false
         for item in items {
-            if cardName == item.getName() {
+            if cardName == item.name {
                 found = true
                 break
                 }
