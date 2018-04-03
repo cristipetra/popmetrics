@@ -78,9 +78,10 @@ class ActionStatusViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = true
+        super.viewWillAppear(animated)
+
     }
     
     private func addIceView() {
