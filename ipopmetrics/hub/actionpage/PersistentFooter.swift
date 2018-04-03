@@ -21,6 +21,7 @@ class PersistentFooter: UIView {
         let button = ActionButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.changeTitle("DIY")
+        button.changeImage(image: #imageLiteral(resourceName: "iconHammer"))
         return button
     }()
 
@@ -28,6 +29,7 @@ class PersistentFooter: UIView {
         let button = ActionButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.changeTitle("Order")
+        button.changeImage(image: #imageLiteral(resourceName: "iconCart"))
         return button
     }()
     
@@ -56,12 +58,14 @@ class PersistentFooter: UIView {
         leftBtn.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         leftBtn.widthAnchor.constraint(equalToConstant: 120).isActive = true
         leftBtn.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        leftBtn.changeImageEdge(left: 115)
         leftBtn.layer.cornerRadius = 17
         
         rightBtn.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24).isActive = true
         rightBtn.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         rightBtn.widthAnchor.constraint(equalToConstant: 120).isActive = true
         rightBtn.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        rightBtn.changeImageEdge(left: 115)
         rightBtn.layer.cornerRadius = 17
         
         separatorView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true

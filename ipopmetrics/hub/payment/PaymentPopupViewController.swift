@@ -14,7 +14,7 @@ protocol PopupAlertViewDelegate: class {
 
 class PaymentPopupViewController: UIViewController {
 
-    var delegate: PopupAlertViewDelegate!
+    var delegate: PopupAlertViewDelegate?
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var secondLabel: UILabel!
     
@@ -53,6 +53,10 @@ class PaymentPopupViewController: UIViewController {
             self.containerView.alpha = 1.0;
             self.containerView.frame.origin.y = self.containerView.frame.origin.y - 50
         })
+    }
+    @IBAction func handlerGoToHome(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+        delegate?.goToHome()
     }
     
     @objc func handlerTap() {

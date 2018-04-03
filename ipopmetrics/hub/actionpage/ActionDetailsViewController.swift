@@ -99,8 +99,6 @@ class ActionDetailsViewController: BaseViewController {
         
         persistentFooter.rightBtn.addTarget(self, action: #selector(handlerOrder(_:)), for: .touchUpInside)
         persistentFooter.leftBtn.addTarget(self, action: #selector(handlerAddToMyActions(_:)), for: .touchUpInside)
-        
-
     }
     
     public func configure(_ todoCard: TodoCard, fromInsight:Bool? = false) {
@@ -237,6 +235,7 @@ class ActionDetailsViewController: BaseViewController {
     }
     
     @objc func handlerAddToMyActions(_ sender: Any) {
+
         if !ReachabilityManager.shared.isNetworkAvailable {
             presentErrorNetwork()
             return
@@ -273,7 +272,7 @@ class ActionDetailsViewController: BaseViewController {
         alertCard.definesPresentationContext = true
         alertCard.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         alertCard.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        //alertCard.delegate = self
+        alertCard.delegate = self
         self.present(alertCard, animated: true, completion: nil)
     }
     
@@ -301,4 +300,10 @@ class ActionDetailsViewController: BaseViewController {
 
 extension ActionDetailsViewController: BannerProtocol {
     
+}
+
+extension ActionDetailsViewController: PopupAlertViewDelegate {
+    func goToHome() {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
