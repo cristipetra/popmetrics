@@ -32,6 +32,9 @@ class ActionDetailsViewController: BaseViewController {
     @IBOutlet weak var whyThisRecommendationView: UIView!
     @IBOutlet weak var addToMyActionsView: UIView!
     @IBOutlet weak var addToPaidActionsView: UIView!
+    @IBOutlet weak var actionsView: UIView!
+    @IBOutlet weak var btnDiy: UIButton!
+    @IBOutlet weak var btnOrder: UIButton!
     
     var cardInfoHandlerDelegate: CardInfoHandler?
     
@@ -42,16 +45,11 @@ class ActionDetailsViewController: BaseViewController {
     
     let iceView = IceExtendView()
     
-    let persistentFooter: PersistentFooter =  PersistentFooter()
     var bottomContainerViewBottomAnchor: NSLayoutConstraint!
     internal var isBottomVisible = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if UIScreen.main.nativeBounds.height == 2436 {
-            constraintBottomStackView.constant = constraintBottomStackView.constant - 34
-        }
         
         addIceView()
         setupNavigationWithBackButton()
@@ -62,7 +60,9 @@ class ActionDetailsViewController: BaseViewController {
             self.navigationController?.popViewController(animated: true)
         }
         
-        addPersistentFooter()
+        btnOrder.addTarget(self, action: #selector(handlerOrder(_:)), for: .touchUpInside)
+        btnDiy.addTarget(self, action: #selector(handlerAddToMyActions(_:)), for: .touchUpInside)
+        displayActionButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,12 +75,10 @@ class ActionDetailsViewController: BaseViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        
         iceView.topAnchor.constraint(equalTo: self.containerIceView.topAnchor, constant: 0).isActive = true
         iceView.rightAnchor.constraint(equalTo: self.containerIceView.rightAnchor, constant: 0).isActive = true
         iceView.bottomAnchor.constraint(equalTo: self.containerIceView.bottomAnchor, constant: 0).isActive = true
         iceView.leftAnchor.constraint(equalTo: self.containerIceView.leftAnchor, constant: 0).isActive = true
-        
     }
     
     
@@ -89,42 +87,20 @@ class ActionDetailsViewController: BaseViewController {
         iceView.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func addPersistentFooter() {
-        view.addSubview(persistentFooter)
-        persistentFooter.translatesAutoresizingMaskIntoConstraints = false
-        persistentFooter.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        persistentFooter.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        persistentFooter.heightAnchor.constraint(equalToConstant: 81).isActive = true
-        
-        bottomContainerViewBottomAnchor = persistentFooter.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
-        bottomContainerViewBottomAnchor.isActive = true
-        
-        persistentFooter.rightBtn.addTarget(self, action: #selector(handlerOrder(_:)), for: .touchUpInside)
-        persistentFooter.leftBtn.addTarget(self, action: #selector(handlerAddToMyActions(_:)), for: .touchUpInside)
-    }
-    
     public func configure(_ todoCard: TodoCard, fromInsight:Bool? = false) {
         self.todoCard = todoCard
         self.fromInsight = fromInsight ?? false
         iceView.configure(todoCard: todoCard)
-        displayActionButton()
     }
     
     private func displayActionButton() {
         if todoCard == nil {
-            persistentFooter.rightBtn.isHidden = true
+            btnDiy.isHidden = true
+            btnOrder.isHidden = true
             return
         }
 
-        persistentFooter.leftBtn.isHidden = false
-//        } else {
-//            persistentFooter.rightBtn.changeTitle("Mark As Complete")
-//            persistentFooter.rightBtn.hideImageBtn()
-//
-//            if todoCard.name == "social.automated_posts" {
-//                persistentFooter.rightBtn.isHidden = true
-//            }
-//        }
+        btnDiy.isHidden = false
     }
     
     private func updatView() {
