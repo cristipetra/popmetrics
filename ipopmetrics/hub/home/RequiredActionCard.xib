@@ -34,13 +34,19 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkh-M4-e7L">
-                        <rect key="frame" x="10" y="29" width="300" height="439.5"/>
+                        <rect key="frame" x="10" y="29" width="300" height="440"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tC9-MZ-7om">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="339"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="340"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect your Twitter account for better social engagement!" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbm-nZ-v6I">
+                                <rect key="frame" x="15" y="8" width="278" height="158.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="34"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8T-o8-GTy">
-                                <rect key="frame" x="15" y="244" width="278" height="80"/>
+                                <rect key="frame" x="15" y="245" width="278" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="LPV-kd-nCO"/>
                                 </constraints>
@@ -50,20 +56,46 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8x-Kb-iAY">
-                                <rect key="frame" x="0.0" y="339" width="300" height="100"/>
+                                <rect key="frame" x="0.0" y="340" width="300" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RI3-bh-lBi">
-                                        <rect key="frame" x="8" y="35" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zy3-jZ-8O0">
+                                        <rect key="frame" x="20" y="32" width="76" height="36"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <inset key="contentEdgeInsets" minX="12" minY="8" maxX="12" maxY="8"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" name="rock_bottom"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="primaryActionHandler:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gyd-pp-9Vc"/>
+                                            <action selector="primaryActionHandler:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8Et-6G-Lfb"/>
+                                            <action selector="secondaryActionHandler:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="R7c-uP-Chi"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcG-tJ-z9e">
-                                        <rect key="frame" x="246" y="35" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcG-tJ-z9e">
+                                        <rect key="frame" x="126" y="32" width="154" height="36"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <inset key="contentEdgeInsets" minX="12" minY="8" maxX="12" maxY="8"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" name="rock_bottom"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="secondaryActionHandler:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="LpI-vu-I0V"/>
                                         </connections>
@@ -71,15 +103,14 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="lcG-tJ-z9e" secondAttribute="trailing" constant="20" id="23o-cZ-w9d"/>
                                     <constraint firstAttribute="height" constant="100" id="9me-1b-xjW"/>
+                                    <constraint firstItem="lcG-tJ-z9e" firstAttribute="centerY" secondItem="Zy3-jZ-8O0" secondAttribute="centerY" id="FFo-Pp-iIR"/>
+                                    <constraint firstItem="lcG-tJ-z9e" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Zy3-jZ-8O0" secondAttribute="trailing" constant="30" id="Xeh-cV-tdQ"/>
+                                    <constraint firstItem="Zy3-jZ-8O0" firstAttribute="leading" secondItem="j8x-Kb-iAY" secondAttribute="leading" constant="20" id="evr-UO-1ma"/>
+                                    <constraint firstItem="Zy3-jZ-8O0" firstAttribute="centerY" secondItem="j8x-Kb-iAY" secondAttribute="centerY" id="jpO-Q6-x42"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect your Twitter account for better social engagement!" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbm-nZ-v6I">
-                                <rect key="frame" x="15" y="8" width="278" height="232"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="34"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" name="red_light"/>
                         <accessibility key="accessibilityConfiguration">
@@ -106,7 +137,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Voy-rD-hh5">
-                        <rect key="frame" x="32" y="468" width="2" height="37"/>
+                        <rect key="frame" x="32" y="469" width="2" height="37"/>
                         <color key="backgroundColor" red="0.2627450980392157" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="2" id="DeL-lk-70R"/>
@@ -133,7 +164,7 @@
                 <outlet property="containerView" destination="gkh-M4-e7L" id="mgL-H3-S9x"/>
                 <outlet property="messageHeightConstraint" destination="LPV-kd-nCO" id="sKm-BE-6MN"/>
                 <outlet property="messageLabel" destination="r8T-o8-GTy" id="gIL-Fn-p98"/>
-                <outlet property="primaryActionButton" destination="RI3-bh-lBi" id="igl-A9-9WM"/>
+                <outlet property="primaryActionButton" destination="Zy3-jZ-8O0" id="onT-eV-Oh5"/>
                 <outlet property="secondaryActionButton" destination="lcG-tJ-z9e" id="x9d-l3-XkM"/>
                 <outlet property="titleLabel" destination="sbm-nZ-v6I" id="UdK-Tf-vFv"/>
                 <outlet property="toolbarView" destination="J6P-3S-jCJ" id="rNq-y6-Crn"/>
@@ -144,6 +175,12 @@
     <resources>
         <namedColor name="red_light">
             <color red="1" green="0.46666666666666667" blue="0.41568627450980394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="rock_bottom">
+            <color red="0.25098039215686274" green="0.23529411764705882" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="rock_bottom">
+            <color red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
