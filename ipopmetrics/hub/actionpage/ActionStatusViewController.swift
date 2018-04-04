@@ -243,7 +243,9 @@ class ActionStatusViewController: BaseViewController {
         let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "OneOffPaymentViewController") as! OneOffPaymentViewController
         
         let brandId = UserStore.currentBrandId
-        var amount = 0
+        let planId = Config.sharedInstance.environment.stripeBasicPlanId
+        var amount = Config.sharedInstance.environment.stripeBasicPlanAmount
+        amount = 0
         vc.configure(brandId:brandId, amount:amount, todoCard: self.todoCard)
         
         self.navigationController?.pushViewController(vc, animated: true)

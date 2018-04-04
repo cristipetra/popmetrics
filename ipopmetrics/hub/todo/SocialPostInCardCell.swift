@@ -173,26 +173,7 @@ class SocialPostInCardCell: UITableViewCell {
             aproveButton.removeTarget(self, action: #selector(animationHandler), for: .touchUpInside)
         }
     }
-    
-    func setStatusCardViewType() {
-        /*
-        if(todoItem.status == "approved") {
-            statusCardTypeView.typeStatusView = .approved
-        } else if(todoItem.status == "denied") {
-            statusCardTypeView.typeStatusView = .denied
-        }
-         */
-    }
-    
-//    func addStatusCardTypeView() {
-//        self.addSubview(statusCardTypeView)
-//        statusCardTypeView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-//        statusCardTypeView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-//        statusCardTypeView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
-//        statusCardTypeView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
-//        statusCardTypeView.layer.cornerRadius = 6
-//    }
-    
+
     func sideShadow(view: UIView) {
         view.layer.shadowColor = UIColor(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1.0).cgColor
         view.layer.shadowOpacity = 0.5

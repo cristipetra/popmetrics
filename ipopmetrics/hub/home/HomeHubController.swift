@@ -161,9 +161,6 @@ class HomeHubViewController: BaseTableViewController, GIDSignInUIDelegate {
         let recommendedActionNib = UINib(nibName: "IceCardView", bundle: nil)
         tableView.register(recommendedActionNib, forCellReuseIdentifier: "recommendedActionId")
         
-        let moreInfoNib = UINib(nibName: "MoreInfoViewCell", bundle: nil)
-        tableView.register(moreInfoNib, forCellReuseIdentifier: "moreInfoId")
-        
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         
         loadingView.tintColor = PopmetricsColor.yellowBGColor

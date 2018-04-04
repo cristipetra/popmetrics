@@ -145,7 +145,7 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
             SyncService.getInstance().syncAll(silent: false)
         }
         
-        //createItemsLocally()
+        //StoreLocally().createCalendarLocally()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -303,7 +303,6 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         
         print(calSection.rawValue)
         
-        
         var items : [Any] = []
         if nonEmptyCards.count > 0 {
             for card in nonEmptyCards {
@@ -373,8 +372,7 @@ extension CalendarHubController: UITableViewDataSource, UITableViewDelegate {
         let currentCell = tableView.cellForRow(at: indexPath)
         
         if currentCell is CalendarCardViewCell {
-           
-            let detailsVC = SocialPostDetailsViewController(nibName: "SocialPostDetails", bundle: nil)
+            let detailsVC = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: "SocialPostDetailsViewController") as! SocialPostDetailsViewController
             
             let calendarCardViewCell = currentCell as! CalendarCardViewCell
             

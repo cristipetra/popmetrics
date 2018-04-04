@@ -20,3 +20,20 @@ extension UITextField{
         }
     }
 }
+
+extension UILabel {
+    
+    func setLineSpacingAndTitle(text: String, spacing: CGFloat, letterSpacing: CGFloat) {
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        
+        paragraphStyle.lineSpacing = spacing
+        
+        let attrString = NSMutableAttributedString(string: text)
+        
+        attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attrString.length))
+        attrString.addAttribute(NSAttributedStringKey.kern, value: letterSpacing, range: NSRange(location: 0, length: attrString.length))
+        
+        self.attributedText = attrString
+    }
+}

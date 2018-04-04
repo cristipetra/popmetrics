@@ -244,7 +244,7 @@
                                                 <rect key="frame" x="0.0" y="397" width="320" height="220"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0G-GS-0CH">
-                                                        <rect key="frame" x="25" y="22" width="65.5" height="25"/>
+                                                        <rect key="frame" x="25" y="22" width="55" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -269,7 +269,7 @@
                                                 <rect key="frame" x="0.0" y="618" width="320" height="220"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why This Happened?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bp-7G-DVh">
-                                                        <rect key="frame" x="25" y="22" width="192.5" height="25"/>
+                                                        <rect key="frame" x="25" y="22" width="173.5" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -294,13 +294,13 @@
                                                 <rect key="frame" x="0.0" y="839" width="320" height="240"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conclusion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14F-WJ-qa2">
-                                                        <rect key="frame" x="25" y="22" width="102" height="25"/>
+                                                        <rect key="frame" x="25" y="22" width="90.5" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LgB-f1-JX5">
-                                                        <rect key="frame" x="25" y="57" width="278" height="183"/>
+                                                        <rect key="frame" x="25" y="53" width="278" height="187"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </view>
                                                 </subviews>
@@ -325,7 +325,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy1-Q0-nsr">
-                                                        <rect key="frame" x="25" y="265" width="278" height="123"/>
+                                                        <rect key="frame" x="25" y="261" width="278" height="127"/>
                                                         <string key="text">Article excerpt? This is what happens when the
 article has some meta thing telling the computer that it’s magically got to choose the first 40 words of the article to be useful…</string>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
@@ -333,7 +333,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Article Title Here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0X4-e7-El7">
-                                                        <rect key="frame" x="25" y="230" width="278" height="25"/>
+                                                        <rect key="frame" x="25" y="230" width="278" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -518,7 +518,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 <rect key="frame" x="0.0" y="396.5" width="320" height="220"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p39-F8-Vlw">
-                                                        <rect key="frame" x="25" y="22" width="65.5" height="25"/>
+                                                        <rect key="frame" x="25" y="22" width="55" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -550,7 +550,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 <rect key="frame" x="0.0" y="998.5" width="320" height="240"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to Fix it?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1C-io-eRu">
-                                                        <rect key="frame" x="25" y="22" width="125.5" height="25"/>
+                                                        <rect key="frame" x="25" y="22" width="111.5" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -575,7 +575,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 <rect key="frame" x="0.0" y="1239.5" width="320" height="240"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4i0-eT-njw">
-                                                        <rect key="frame" x="25" y="22" width="67.5" height="25"/>
+                                                        <rect key="frame" x="25" y="22" width="61" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -830,10 +830,10 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MTa-KH-EBT">
-                                <rect key="frame" x="29" y="187" width="265" height="132"/>
+                                <rect key="frame" x="29" y="187" width="265" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCx-hh-YS9">
-                                        <rect key="frame" x="0.0" y="0.0" width="265" height="33"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="265" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="UPGRADE SUBSCRIPTION">
                                             <color key="titleColor" name="blue_bottle"/>
@@ -843,7 +843,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCx-hh-YS8">
-                                        <rect key="frame" x="0.0" y="33" width="265" height="33"/>
+                                        <rect key="frame" x="0.0" y="30" width="265" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="SETTINGS">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -853,7 +853,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWk-9n-6Qe" userLabel="ABOUT POPMETRICS">
-                                        <rect key="frame" x="0.0" y="66" width="265" height="33"/>
+                                        <rect key="frame" x="0.0" y="60" width="265" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="ABOUT POPMETRICS">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -863,7 +863,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxF-Rq-8jP">
-                                        <rect key="frame" x="0.0" y="99" width="265" height="33"/>
+                                        <rect key="frame" x="0.0" y="90" width="265" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="LEGAL INFORMATION">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -875,7 +875,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybe-Us-fFL">
-                                <rect key="frame" x="29" y="368" width="63" height="33"/>
+                                <rect key="frame" x="29" y="356" width="62" height="30"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="LOGOUT">
                                     <color key="titleColor" red="1" green="0.46666666670000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -899,7 +899,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOi-K4-4l3">
-                                <rect key="frame" x="3" y="347" width="315" height="1"/>
+                                <rect key="frame" x="3" y="335" width="315" height="1"/>
                                 <color key="backgroundColor" red="0.74117647060000003" green="0.7725490196" blue="0.79607843140000001" alpha="0.50449486301369861" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="16o-2h-RXg"/>
@@ -1580,7 +1580,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last 30 Days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNT-p3-Cxa">
-                                                                    <rect key="frame" x="170" y="36.5" width="113" height="20.5"/>
+                                                                    <rect key="frame" x="170" y="33.5" width="113" height="17.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="113" id="9Wl-xt-jvm"/>
                                                                     </constraints>
@@ -1603,13 +1603,13 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                             <rect key="frame" x="24" y="41" width="351" height="30"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="134" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dp-Ex-Nyp">
-                                                                    <rect key="frame" x="0.0" y="3" width="31" height="25"/>
+                                                                    <rect key="frame" x="0.0" y="5" width="31" height="21"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
                                                                     <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fR7-Ce-hud">
-                                                                    <rect key="frame" x="41" y="9" width="21" height="16.5"/>
+                                                                    <rect key="frame" x="41" y="10.5" width="21" height="14"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                                                     <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -1688,6 +1688,382 @@ article has some meta thing telling the computer that it’s magically got to ch
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tnh-7j-i4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2175.5" y="2009"/>
+        </scene>
+        <!--Social Post Details View Controller-->
+        <scene sceneID="OJH-E1-r1a">
+            <objects>
+                <viewController storyboardIdentifier="SocialPostDetailsViewController" id="jRP-9u-SQ6" customClass="SocialPostDetailsViewController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="X4p-vO-XbE" customClass="SocialPostDetailsView" customModule="ipopmetrics" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pet-wt-Qlv">
+                                <rect key="frame" x="0.0" y="20" width="320" height="748"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EXC-fp-i4I">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="2267.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AyJ-wa-Cn4">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="2217.5"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZI-PJ-z4G">
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="422"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K9y-AX-OTn">
+                                                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5G-yT-vdA" customClass="SocialIconView" customModule="ipopmetrics" customModuleProvider="target">
+                                                                        <rect key="frame" x="15" y="20" width="40" height="40"/>
+                                                                        <subviews>
+                                                                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconFacebookSocial" translatesAutoresizingMaskIntoConstraints="NO" id="vbk-wd-Pgo">
+                                                                                <rect key="frame" x="2" y="2" width="36" height="36"/>
+                                                                            </imageView>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="40" id="3Uv-0D-2qS"/>
+                                                                            <constraint firstItem="vbk-wd-Pgo" firstAttribute="height" secondItem="U5G-yT-vdA" secondAttribute="height" multiplier="90%" id="iqF-RR-NWn"/>
+                                                                            <constraint firstAttribute="height" constant="40" id="ql9-9y-r3P"/>
+                                                                            <constraint firstItem="vbk-wd-Pgo" firstAttribute="centerX" secondItem="U5G-yT-vdA" secondAttribute="centerX" id="rbo-fu-8q3"/>
+                                                                            <constraint firstItem="vbk-wd-Pgo" firstAttribute="centerY" secondItem="U5G-yT-vdA" secondAttribute="centerY" id="rtc-Pl-h1R"/>
+                                                                            <constraint firstItem="vbk-wd-Pgo" firstAttribute="width" secondItem="U5G-yT-vdA" secondAttribute="width" multiplier="90%" id="wfh-nm-yne"/>
+                                                                        </constraints>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="5"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </view>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nc7-ck-1J9">
+                                                                        <rect key="frame" x="70" y="28" width="240" height="21"/>
+                                                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="18"/>
+                                                                        <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="Nc7-ck-1J9" firstAttribute="top" secondItem="K9y-AX-OTn" secondAttribute="top" constant="28" id="D8S-hT-UMl"/>
+                                                                    <constraint firstItem="U5G-yT-vdA" firstAttribute="top" secondItem="K9y-AX-OTn" secondAttribute="top" constant="20" id="Mim-DS-6gI"/>
+                                                                    <constraint firstItem="Nc7-ck-1J9" firstAttribute="leading" secondItem="U5G-yT-vdA" secondAttribute="trailing" constant="15" id="RKj-L4-xSa"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="Nc7-ck-1J9" secondAttribute="trailing" constant="10" id="iVQ-J6-q8M"/>
+                                                                    <constraint firstItem="U5G-yT-vdA" firstAttribute="leading" secondItem="K9y-AX-OTn" secondAttribute="leading" constant="15" id="np8-ad-F4b"/>
+                                                                    <constraint firstAttribute="height" constant="60" id="oHW-fD-gxy"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kjM-bK-Gur">
+                                                                <rect key="frame" x="15" y="70" width="285" height="105"/>
+                                                                <subviews>
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" text="Say something about this on Facebook…" translatesAutoresizingMaskIntoConstraints="NO" id="jSE-sw-ZFc">
+                                                                        <rect key="frame" x="0.0" y="10" width="285" height="85"/>
+                                                                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="84l-T6-eZ7"/>
+                                                                        </constraints>
+                                                                        <color key="textColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="10"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                                <real key="value" value="1"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                                <color key="value" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </textView>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="jSE-sw-ZFc" secondAttribute="trailing" id="47j-oj-ij6"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="jSE-sw-ZFc" secondAttribute="bottom" constant="10" id="KHv-I8-eXh"/>
+                                                                    <constraint firstItem="jSE-sw-ZFc" firstAttribute="leading" secondItem="kjM-bK-Gur" secondAttribute="leading" id="cMH-AL-HyU"/>
+                                                                    <constraint firstItem="jSE-sw-ZFc" firstAttribute="top" secondItem="kjM-bK-Gur" secondAttribute="top" constant="10" id="vgf-Uu-tep"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VSh-pb-MCe">
+                                                                <rect key="frame" x="15" y="195" width="285" height="183"/>
+                                                                <color key="backgroundColor" name="larry_david"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="183" id="36v-x4-3gd"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </imageView>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dcv-c2-W0S">
+                                                                <rect key="frame" x="0.0" y="420" width="320" height="2"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZX-VM-Raf">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="2"/>
+                                                                        <color key="backgroundColor" red="0.74117647060000003" green="0.7725490196" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="2" id="H2O-Eb-mrb"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="2" id="FEc-Qk-SyH"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="EZX-VM-Raf" secondAttribute="bottom" id="Kq8-GG-pC9"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="EZX-VM-Raf" secondAttribute="trailing" id="kqQ-rE-eHa"/>
+                                                                    <constraint firstItem="EZX-VM-Raf" firstAttribute="leading" secondItem="Dcv-c2-W0S" secondAttribute="leading" id="wyD-qg-tVY"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstItem="K9y-AX-OTn" firstAttribute="top" secondItem="oZI-PJ-z4G" secondAttribute="top" id="6ic-q7-Zi9"/>
+                                                            <constraint firstItem="VSh-pb-MCe" firstAttribute="top" secondItem="kjM-bK-Gur" secondAttribute="bottom" constant="20" id="K5y-z8-Sm1"/>
+                                                            <constraint firstAttribute="trailing" secondItem="K9y-AX-OTn" secondAttribute="trailing" id="Nz5-Q5-HM1"/>
+                                                            <constraint firstItem="K9y-AX-OTn" firstAttribute="leading" secondItem="oZI-PJ-z4G" secondAttribute="leading" id="PNq-lF-eUP"/>
+                                                            <constraint firstItem="VSh-pb-MCe" firstAttribute="leading" secondItem="oZI-PJ-z4G" secondAttribute="leading" constant="15" id="Qbq-7x-NbP"/>
+                                                            <constraint firstAttribute="trailing" secondItem="VSh-pb-MCe" secondAttribute="trailing" constant="20" id="ZuS-XO-Bi5"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Dcv-c2-W0S" secondAttribute="trailing" id="Zur-I2-3KS"/>
+                                                            <constraint firstItem="kjM-bK-Gur" firstAttribute="leading" secondItem="oZI-PJ-z4G" secondAttribute="leading" constant="15" id="ceF-Id-kEd"/>
+                                                            <constraint firstAttribute="bottom" secondItem="VSh-pb-MCe" secondAttribute="bottom" constant="44" id="dfx-NX-BAu"/>
+                                                            <constraint firstAttribute="trailing" secondItem="kjM-bK-Gur" secondAttribute="trailing" constant="20" id="fGK-pG-ViK"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Dcv-c2-W0S" secondAttribute="bottom" id="itX-gS-p9L"/>
+                                                            <constraint firstItem="Dcv-c2-W0S" firstAttribute="leading" secondItem="oZI-PJ-z4G" secondAttribute="leading" id="lJN-I5-fDc"/>
+                                                            <constraint firstItem="kjM-bK-Gur" firstAttribute="top" secondItem="oZI-PJ-z4G" secondAttribute="top" constant="70" id="plH-tS-0sE"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G40-W5-LqZ">
+                                                        <rect key="frame" x="0.0" y="422" width="320" height="1725.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What Article You're Sharing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2X-o1-jpr">
+                                                                <rect key="frame" x="25" y="10" width="285" height="299"/>
+                                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
+                                                                <color key="textColor" red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customizing Your Marketing" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iin-Nd-63X">
+                                                                <rect key="frame" x="25" y="314.5" width="285" height="70"/>
+                                                                <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="30"/>
+                                                                <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alch.my/27yd73" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdC-cs-uiB">
+                                                                <rect key="frame" x="25" y="394.5" width="285" height="17.5"/>
+                                                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                                                <color key="textColor" red="0.26274509800000001" green="0.60784313729999995" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGs-yy-NKT">
+                                                                <rect key="frame" x="25" y="422" width="285" height="1293.5"/>
+                                                                <string key="text">Your marketing and sales dashboards will have a number of widgets and reports that are automatically added for you, but you can resize, remove, and add other reports as needed. The same is true for any other reporting dashboards you've created if you are using the reporting add-on. Learn how you can add, move, resize, and remove reports on a reporting dashboard.
+
+“Money isn’t the most important thing in the world. Your time is.”
+
+Parents, teachers, and mentors all around the world have spoken these words to us, in one form of another, throughout our lives. It makes sense, too.
+
+Most of us come to realize at some point that money is a means, not an end. It affords opportunities, but as research has shown, there are diminishing returns to what it can do for you. In fact, the strongest link between money and well-being comes from its ability to buy you time through conveniences.
+Our time is limited, and the prevailing wisdom is that the more we have of it, the more opportunities there are for us to experience joy and fulfillment.
+
+But is that the whole story? Is time really what adds more to life?
+I’d argue otherwise. The most important asset in your life isn’t time, but attention. The quality of the experiences in your life doesn’t depend on how many hours there are in the day, but in how the hours you have are used.
+You can spend 80 years of a life with as much free time as you want and still not get out of it as much as someone who only lived for 40 years but managed to appropriately direct attention to the things that mattered to them...
+Although time is indeed limited, with attention, it can be diluted to expand beyond what most other people get out of the same quantity.
+Unfortunately, this happens to be harder than it sounds.
+The World Is Designed Against You
+One of the biggest problems of our generation is that while the ability to manage our attention is becoming increasingly valuable, the world around us is being designed to steal away as much of it as possible.
+The internet and the technology companies that are built on it have democratized opportunity. It’s hard to argue that the net effect of these innovations isn’t positive. That said, it doesn’t mean that there aren’t costs.
+Smartphone addictions are real. Technology-induced stress is real.
+Companies like Google and Facebook aren’t just creating products anymore. They’re building ecosystems. And the most effective way to monetize an ecosystem is to begin with engagement. It’s by designing their features to ensure that we give up as much of our attention as possible.</string>
+                                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                                                <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="sdC-cs-uiB" firstAttribute="top" secondItem="iin-Nd-63X" secondAttribute="bottom" constant="10" id="7KA-h0-94a"/>
+                                                            <constraint firstAttribute="trailing" secondItem="sdC-cs-uiB" secondAttribute="trailing" constant="10" id="DUT-9r-1cL"/>
+                                                            <constraint firstAttribute="trailing" secondItem="w2X-o1-jpr" secondAttribute="trailing" constant="10" id="FLh-8Q-ecd"/>
+                                                            <constraint firstAttribute="trailing" secondItem="mGs-yy-NKT" secondAttribute="trailing" constant="10" id="Nem-h1-PVp"/>
+                                                            <constraint firstItem="mGs-yy-NKT" firstAttribute="leading" secondItem="G40-W5-LqZ" secondAttribute="leading" constant="25" id="TTa-Rf-shH"/>
+                                                            <constraint firstAttribute="bottom" secondItem="mGs-yy-NKT" secondAttribute="bottom" constant="10" id="Xgd-PF-8aG"/>
+                                                            <constraint firstItem="w2X-o1-jpr" firstAttribute="top" secondItem="G40-W5-LqZ" secondAttribute="top" constant="10" id="gZx-Fs-V69"/>
+                                                            <constraint firstItem="mGs-yy-NKT" firstAttribute="top" secondItem="sdC-cs-uiB" secondAttribute="bottom" constant="10" id="kRH-Q7-NsY"/>
+                                                            <constraint firstItem="sdC-cs-uiB" firstAttribute="leading" secondItem="G40-W5-LqZ" secondAttribute="leading" constant="25" id="kby-2I-dq9"/>
+                                                            <constraint firstItem="iin-Nd-63X" firstAttribute="top" secondItem="w2X-o1-jpr" secondAttribute="bottom" constant="5.5" id="lig-tn-Zvm"/>
+                                                            <constraint firstItem="iin-Nd-63X" firstAttribute="leading" secondItem="G40-W5-LqZ" secondAttribute="leading" constant="25" id="sAi-ZB-Rhd"/>
+                                                            <constraint firstAttribute="trailing" secondItem="iin-Nd-63X" secondAttribute="trailing" constant="10" id="wQE-sO-HzC"/>
+                                                            <constraint firstItem="w2X-o1-jpr" firstAttribute="leading" secondItem="G40-W5-LqZ" secondAttribute="leading" constant="25" id="xrN-aZ-exR"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7d9-kz-PpU">
+                                                        <rect key="frame" x="0.0" y="2147.5" width="320" height="70"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XIe-66-gQh">
+                                                                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wMn-0O-vnI">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="2"/>
+                                                                        <color key="backgroundColor" red="0.74117647060000003" green="0.7725490196" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="2" id="hrW-au-FP3"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our A.I. will schedul for an optimal time for your audience" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTV-MB-XGv">
+                                                                        <rect key="frame" x="25" y="18" width="285" height="35"/>
+                                                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                                                        <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3iN-O0-blQ">
+                                                                        <rect key="frame" x="0.0" y="68" width="320" height="2"/>
+                                                                        <color key="backgroundColor" red="0.74117647060000003" green="0.7725490196" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="2" id="jh0-Bt-f0I"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="3iN-O0-blQ" secondAttribute="trailing" id="5pq-ug-dQl"/>
+                                                                    <constraint firstItem="qTV-MB-XGv" firstAttribute="leading" secondItem="XIe-66-gQh" secondAttribute="leading" constant="25" id="7Yb-H1-5Po"/>
+                                                                    <constraint firstItem="3iN-O0-blQ" firstAttribute="leading" secondItem="XIe-66-gQh" secondAttribute="leading" id="Dv4-H3-Ebp"/>
+                                                                    <constraint firstItem="wMn-0O-vnI" firstAttribute="leading" secondItem="XIe-66-gQh" secondAttribute="leading" id="H5b-ns-o65"/>
+                                                                    <constraint firstItem="wMn-0O-vnI" firstAttribute="top" secondItem="XIe-66-gQh" secondAttribute="top" id="dLD-JS-Xnk"/>
+                                                                    <constraint firstItem="qTV-MB-XGv" firstAttribute="centerY" secondItem="XIe-66-gQh" secondAttribute="centerY" id="ieP-cb-h1g"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="3iN-O0-blQ" secondAttribute="bottom" id="m1h-r0-eQ5"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="wMn-0O-vnI" secondAttribute="trailing" id="rP4-aS-1Qv"/>
+                                                                    <constraint firstAttribute="height" constant="70" id="tDf-dT-sui"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="qTV-MB-XGv" secondAttribute="trailing" constant="10" id="zBv-GQ-6Pj"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstItem="XIe-66-gQh" firstAttribute="leading" secondItem="7d9-kz-PpU" secondAttribute="leading" id="7LQ-ec-f15"/>
+                                                            <constraint firstAttribute="height" constant="70" id="kbp-xH-sI9"/>
+                                                            <constraint firstAttribute="trailing" secondItem="XIe-66-gQh" secondAttribute="trailing" id="rLC-AX-9F9"/>
+                                                            <constraint firstItem="XIe-66-gQh" firstAttribute="top" secondItem="7d9-kz-PpU" secondAttribute="top" id="sd2-nN-3Dv"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="AyJ-wa-Cn4" secondAttribute="bottom" constant="50" id="DGO-eE-NBZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="AyJ-wa-Cn4" secondAttribute="trailing" id="J9Z-yj-G3j"/>
+                                            <constraint firstItem="AyJ-wa-Cn4" firstAttribute="leading" secondItem="EXC-fp-i4I" secondAttribute="leading" id="dua-hj-beH"/>
+                                            <constraint firstItem="AyJ-wa-Cn4" firstAttribute="top" secondItem="EXC-fp-i4I" secondAttribute="top" id="miH-Qe-feh"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="EXC-fp-i4I" firstAttribute="height" secondItem="Pet-wt-Qlv" secondAttribute="height" priority="250" id="5qF-XA-vDT"/>
+                                    <constraint firstItem="EXC-fp-i4I" firstAttribute="top" secondItem="Pet-wt-Qlv" secondAttribute="top" id="flf-mg-s8b"/>
+                                    <constraint firstAttribute="bottom" secondItem="EXC-fp-i4I" secondAttribute="bottom" id="j9x-fx-kIz"/>
+                                    <constraint firstAttribute="trailing" secondItem="EXC-fp-i4I" secondAttribute="trailing" id="r9Q-mD-Mb7"/>
+                                    <constraint firstItem="EXC-fp-i4I" firstAttribute="width" secondItem="Pet-wt-Qlv" secondAttribute="width" id="rDb-xr-TsE"/>
+                                    <constraint firstItem="EXC-fp-i4I" firstAttribute="leading" secondItem="Pet-wt-Qlv" secondAttribute="leading" id="rOG-lS-CQF"/>
+                                </constraints>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XYY-aT-d3g">
+                                <rect key="frame" x="0.0" y="707" width="320" height="61"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Fu-RW-teh">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                        <color key="backgroundColor" red="0.74117647058823533" green="0.77254901960784317" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="TBN-sO-lBy"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q9A-uN-QC7" customClass="ActionTodoButton" customModule="ipopmetrics" customModuleProvider="target">
+                                        <rect key="frame" x="176" y="13" width="120" height="35"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="X81-th-fEc"/>
+                                            <constraint firstAttribute="height" constant="35" id="zUa-tu-Ir3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="90" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Approve" image="calendarArrowIcon">
+                                            <color key="titleColor" name="rock_bottom"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="rock_bottom"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Wv-4F-IHR">
+                                        <rect key="frame" x="24" y="13" width="74" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="SsK-8F-AxJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Deny Post">
+                                            <color key="titleColor" name="larry_david"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="7Wv-4F-IHR" firstAttribute="leading" secondItem="XYY-aT-d3g" secondAttribute="leading" constant="24" id="7Fv-Yt-m2l"/>
+                                    <constraint firstItem="7Wv-4F-IHR" firstAttribute="centerY" secondItem="XYY-aT-d3g" secondAttribute="centerY" id="QYv-Eb-9sX"/>
+                                    <constraint firstAttribute="trailing" secondItem="3Fu-RW-teh" secondAttribute="trailing" id="Rwx-Dk-yKJ"/>
+                                    <constraint firstItem="Q9A-uN-QC7" firstAttribute="centerY" secondItem="XYY-aT-d3g" secondAttribute="centerY" id="ko0-ku-Ueq"/>
+                                    <constraint firstAttribute="height" constant="61" id="nZs-CO-mLT"/>
+                                    <constraint firstItem="3Fu-RW-teh" firstAttribute="top" secondItem="XYY-aT-d3g" secondAttribute="top" id="siq-ox-hHn"/>
+                                    <constraint firstAttribute="trailing" secondItem="Q9A-uN-QC7" secondAttribute="trailing" constant="24" id="vFR-p8-qz6"/>
+                                    <constraint firstItem="3Fu-RW-teh" firstAttribute="leading" secondItem="XYY-aT-d3g" secondAttribute="leading" id="xSI-oC-mu1"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfA-4j-zHi" firstAttribute="bottom" secondItem="Pet-wt-Qlv" secondAttribute="bottom" id="03M-rY-Lo5"/>
+                            <constraint firstItem="wfA-4j-zHi" firstAttribute="trailing" secondItem="XYY-aT-d3g" secondAttribute="trailing" id="Eqf-4x-eaN"/>
+                            <constraint firstItem="Pet-wt-Qlv" firstAttribute="leading" secondItem="wfA-4j-zHi" secondAttribute="leading" id="OJ3-Du-Bk6"/>
+                            <constraint firstItem="wfA-4j-zHi" firstAttribute="bottom" secondItem="XYY-aT-d3g" secondAttribute="bottom" id="RDM-bC-wOt"/>
+                            <constraint firstItem="wfA-4j-zHi" firstAttribute="trailing" secondItem="Pet-wt-Qlv" secondAttribute="trailing" id="WvT-6o-caI"/>
+                            <constraint firstItem="XYY-aT-d3g" firstAttribute="leading" secondItem="wfA-4j-zHi" secondAttribute="leading" id="bip-lX-pbb"/>
+                            <constraint firstItem="Pet-wt-Qlv" firstAttribute="top" secondItem="wfA-4j-zHi" secondAttribute="top" id="lsq-vt-1hk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wfA-4j-zHi"/>
+                        <connections>
+                            <outlet property="articleUrl" destination="sdC-cs-uiB" id="Tbr-TD-rKy"/>
+                            <outlet property="blogMessage" destination="mGs-yy-NKT" id="iaf-sK-oRp"/>
+                            <outlet property="cardImage" destination="VSh-pb-MCe" id="4j4-PA-mUd"/>
+                            <outlet property="messageFacebook" destination="jSE-sw-ZFc" id="cJB-EH-uI7"/>
+                            <outlet property="recommendedText" destination="jSE-sw-ZFc" id="ZDe-Tq-Z8P"/>
+                            <outlet property="socialBrand" destination="Nc7-ck-1J9" id="bDy-sq-6QH"/>
+                            <outlet property="socialIcon" destination="U5G-yT-vdA" id="m4o-Jt-qGm"/>
+                            <outlet property="titleBlogLabel" destination="iin-Nd-63X" id="h9c-Nv-ej5"/>
+                        </connections>
+                    </view>
+                    <size key="freeformSize" width="320" height="768"/>
+                    <connections>
+                        <outlet property="approvePostBtn" destination="Q9A-uN-QC7" id="0zt-eK-ObG"/>
+                        <outlet property="articleUrl" destination="sdC-cs-uiB" id="Acn-nq-Z21"/>
+                        <outlet property="bottomContainerViewBottomAnchor" destination="RDM-bC-wOt" id="bml-ad-lGa"/>
+                        <outlet property="containerView" destination="X4p-vO-XbE" id="QB6-zs-EWq"/>
+                        <outlet property="denyPostBtn" destination="7Wv-4F-IHR" id="Iy2-bE-jDC"/>
+                        <outlet property="scrollView" destination="Pet-wt-Qlv" id="MdK-nV-3hI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PYg-hP-Xjn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3086" y="1694"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2Ur-bA-3Ub">
@@ -2126,7 +2502,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 <rect key="frame" x="0.0" y="532.5" width="320" height="220"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNA-kh-RJd">
-                                                        <rect key="frame" x="25" y="22" width="65.5" height="25"/>
+                                                        <rect key="frame" x="25" y="22" width="55" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2158,7 +2534,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 <rect key="frame" x="0.0" y="1134.5" width="320" height="240"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to Fix it?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASq-OS-O5r">
-                                                        <rect key="frame" x="25" y="22" width="125.5" height="25"/>
+                                                        <rect key="frame" x="25" y="22" width="111.5" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2183,7 +2559,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                 <rect key="frame" x="0.0" y="1375.5" width="320" height="240"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMC-4f-msm">
-                                                        <rect key="frame" x="25" y="22" width="67.5" height="25"/>
+                                                        <rect key="frame" x="25" y="22" width="61" height="21"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2393,7 +2769,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRK-52-0IU">
-                                        <rect key="frame" x="10" y="239" width="280" height="25"/>
+                                        <rect key="frame" x="10" y="239" width="280" height="21"/>
                                         <string key="text">Task added to your My Actions list.
 </string>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
@@ -2401,7 +2777,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ezi-qU-B4Z">
-                                        <rect key="frame" x="69.5" y="340" width="160" height="45"/>
+                                        <rect key="frame" x="69.5" y="336" width="160" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="IQt-ja-TPV"/>
                                             <constraint firstAttribute="width" constant="160" id="bNX-Qp-OaT"/>
@@ -2427,7 +2803,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvc-Oe-HeN">
-                                        <rect key="frame" x="70" y="287" width="160" height="45"/>
+                                        <rect key="frame" x="70" y="283" width="160" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="Ij7-hj-XuR"/>
                                             <constraint firstAttribute="height" constant="45" id="TZK-E1-Qgc"/>
@@ -2511,13 +2887,13 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great! Let us review your work." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Efe-Tu-U5a">
-                                        <rect key="frame" x="10" y="239" width="280" height="25"/>
+                                        <rect key="frame" x="10" y="239" width="280" height="21"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
                                         <color key="textColor" name="rock_bottom"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4f-qT-e9t">
-                                        <rect key="frame" x="69.5" y="340" width="160" height="45"/>
+                                        <rect key="frame" x="69.5" y="336" width="160" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="7wV-ip-1Du"/>
                                             <constraint firstAttribute="width" constant="160" id="h2e-Z7-Ae7"/>
@@ -2543,7 +2919,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KvY-j4-S2b">
-                                        <rect key="frame" x="70" y="287" width="160" height="45"/>
+                                        <rect key="frame" x="70" y="283" width="160" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="7gL-Lv-XBE"/>
                                             <constraint firstAttribute="height" constant="45" id="Eg4-U7-HvC"/>
@@ -2623,6 +2999,7 @@ article has some meta thing telling the computer that it’s magically got to ch
         <image name="ic_keyboard_arrow_left" width="16" height="16"/>
         <image name="iconCart" width="17" height="16"/>
         <image name="iconCtaTodo" width="27" height="19"/>
+        <image name="iconFacebookSocial" width="40" height="40"/>
         <image name="iconHammer" width="9" height="16"/>
         <image name="iconX" width="20" height="20"/>
         <image name="icon_deny" width="66" height="66"/>
@@ -2641,7 +3018,7 @@ article has some meta thing telling the computer that it’s magically got to ch
             <color red="0.25490196078431371" green="0.60784313725490191" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="larry_david">
-            <color red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="red_light">
             <color red="1" green="0.46666666666666667" blue="0.41568627450980394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

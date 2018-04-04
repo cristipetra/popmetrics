@@ -46,6 +46,9 @@ class CodeViewController: BaseViewController {
         
         setNavigationBar()
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        digitTextField.resignFirstResponder()
+    }
     
     private func setNavigationBar() {
         self.navigationController?.navigationBar.isTranslucent = false
