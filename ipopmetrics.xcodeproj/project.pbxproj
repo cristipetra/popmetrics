@@ -624,7 +624,6 @@
 		086AF8F0205BCE000073CA1F /* tmp */ = {
 			isa = PBXGroup;
 			children = (
-				084E54E01F827F7D007D6F4F /* NoteView.swift */,
 				08A51D321FC6EF6D0097B334 /* ActionInstructionsPageViewController.swift */,
 				08A533331F6BD9060080BE64 /* MoreInfoViewCell.xib */,
 				08A533351F6BD9130080BE64 /* MoreInfoViewCell.swift */,
@@ -947,6 +946,7 @@
 				08A4A53C1F458423001071E3 /* ToolbarViewCell.swift */,
 				08D579F81F62E6ED00FDD744 /* StatusCardTypeView.swift */,
 				08DF9E611F261C8000C60C2D /* InfoCardViewController.swift */,
+				084E54E01F827F7D007D6F4F /* NoteView.swift */,
 				083938FE1F63C334007DDA37 /* MainTabInfo.swift */,
 				086EDE421FC8449A002F4140 /* ImpactScoreView.swift */,
 				08953E731F4C359E003ABEFC /* FooterView.swift */,
