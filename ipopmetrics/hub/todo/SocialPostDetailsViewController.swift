@@ -88,6 +88,7 @@ class SocialPostDetailsViewController: BaseViewController {
         self.view.addGestureRecognizer(tap)
     
         displayContainerBtnsIfNeeded()
+        self.extendedLayoutIncludesOpaqueBars = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
