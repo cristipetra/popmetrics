@@ -18,6 +18,8 @@ class SyncService: SessionDelegate {
     var usersApi: UsersApi!
     
     var feedStore: FeedStore!
+    var hubStore: HubStore<PopHubCard>!
+    
     var feedApi: FeedApi!
     
     var todoStore: TodoStore!
@@ -45,6 +47,8 @@ class SyncService: SessionDelegate {
         
         usersStore = UserStore.getInstance()
         usersApi = UsersApi()
+        
+        hubStore = PopHubStore.getInstance()
         
         feedStore = FeedStore.getInstance()
         feedApi = FeedApi()
@@ -142,9 +146,15 @@ class SyncService: SessionDelegate {
         
         HubsApi().getHubsItems(brandId, lastDate:SyncService.lastDate) { hubsResponse in
             SyncService.lastDate = hubsResponse!.lastDate
+            
+            if let hubResponse = hubsResponse!.hubs {
+                self.hubStore.updateWithArray(hubResponse.cards)
+            }
+            
             if let feedResponse = hubsResponse!.feed {
                 self.feedStore.updateFeed( feedResponse)
             }
+            
             if let todoResponse = hubsResponse!.todo {
                 self.todoStore.updateTodos( todoResponse)
             }

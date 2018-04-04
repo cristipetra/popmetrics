@@ -432,6 +432,33 @@ class FeedResponse: Mappable {
     
 }
 
+class HubResponse: Mappable {
+    
+    var cards: [PopHubCard]?
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map:Map) {
+        cards               <- map["cards"]
+    }
+    
+    func matchCard(_ cardId:String) -> (Bool, PopHubCard?) {
+        if self.cards == nil {
+            return (false, nil)
+        }
+        if let i = self.cards?.index(where: {$0.cardId == cardId}) {
+            return (true, self.cards![i])
+        }
+        else {
+            return (false, nil)
+        }
+        
+    }
+    
+}
+
+
 class TodoResponse: Mappable {
     
     var cards: [TodoCard]?
@@ -543,6 +570,7 @@ class StatisticsResponse: Mappable {
 
 class HubsResponse: Mappable {
     
+    var hubs: HubResponse?
     var feed: FeedResponse?
     var todo: TodoResponse?
     var calendar: CalendarResponse?
@@ -557,6 +585,7 @@ class HubsResponse: Mappable {
     }
     
     func mapping(map:Map) {
+        hubs               <- map["all"]
         feed               <- map["Home"]
         todo               <- map["Todo"]
         calendar           <- map["Calendar"]

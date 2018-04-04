@@ -57,7 +57,7 @@
                 <tabBarItem title="Feed" image="first" id="FdZ-LU-Uik"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oUZ-N0-Ku8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1348.75" y="-369.07333333333332"/>
+            <point key="canvasLocation" x="1204" y="-916"/>
         </scene>
         <!--Connect Wizard Google My BusinessVC-->
         <scene sceneID="TW0-Ht-gaJ">
@@ -1174,12 +1174,44 @@ article has some meta thing telling the computer that it’s magically got to ch
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="KcM-MX-1lY" kind="relationship" relationship="rootViewController" id="TNh-Xc-ucY"/>
+                        <segue destination="KcM-MX-1lY" kind="relationship" relationship="rootViewController" id="Ypr-IT-HNU"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fkq-Lr-Oth" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="761.25" y="-369.07333333333332"/>
+        </scene>
+        <!--Home Feed Hub Controller-->
+        <scene sceneID="miz-di-abx">
+            <objects>
+                <viewController storyboardIdentifier="HomeFeedHubController" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eID-Fg-seB" customClass="HomeFeedHubController" customModule="ipopmetrics" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XsO-bG-y2G">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ab8-ZB-ff1">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ab8-ZB-ff1" firstAttribute="leading" secondItem="4Tc-C7-oTL" secondAttribute="leading" id="7zs-Tu-yeW"/>
+                            <constraint firstItem="Ab8-ZB-ff1" firstAttribute="width" secondItem="XsO-bG-y2G" secondAttribute="width" id="ROs-Jr-TCk"/>
+                            <constraint firstItem="4Tc-C7-oTL" firstAttribute="trailing" secondItem="Ab8-ZB-ff1" secondAttribute="trailing" id="Z8a-Di-pSl"/>
+                            <constraint firstItem="Ab8-ZB-ff1" firstAttribute="bottom" secondItem="4Tc-C7-oTL" secondAttribute="bottom" id="rWO-ii-Tph"/>
+                            <constraint firstItem="Ab8-ZB-ff1" firstAttribute="top" secondItem="4Tc-C7-oTL" secondAttribute="top" id="vNv-Rn-7Om"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4Tc-C7-oTL"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ohd-A5-eum"/>
+                    <connections>
+                        <outlet property="tableView" destination="Ab8-ZB-ff1" id="fOX-Iw-CWD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dDU-vb-cg8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1208" y="-288"/>
         </scene>
         <!--Todo Hub Controller-->
         <scene sceneID="PTS-xG-1pA">
@@ -1528,7 +1560,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 <rect key="frame" x="0.0" y="56" width="375" height="744"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChartCell" rowHeight="260" id="eZz-WL-Rac" userLabel="Chart View Cell" customClass="ChartViewCell" customModule="ipopmetrics" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChartCell" rowHeight="260" id="eZz-WL-Rac" userLabel="Chart View Cell" customClass="ChartViewCell" customModule="ipopmetrics" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="260"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eZz-WL-Rac" id="RKV-I4-IX0">
@@ -1536,13 +1568,13 @@ article has some meta thing telling the computer that it’s magically got to ch
                                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="su8-pF-x57">
-                                                    <rect key="frame" x="0.0" y="0.0" width="430" height="260"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="REz-0N-Zlj">
-                                                            <rect key="frame" x="25" y="8" width="405" height="60"/>
+                                                            <rect key="frame" x="25" y="8" width="350" height="60"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.website.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbI-j4-0hY">
-                                                                    <rect key="frame" x="0.0" y="8" width="395" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="8" width="340" height="20.5"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                                                     <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -1568,7 +1600,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CI4-hD-WwD">
-                                                            <rect key="frame" x="24" y="41" width="406" height="30"/>
+                                                            <rect key="frame" x="24" y="41" width="351" height="30"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="134" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dp-Ex-Nyp">
                                                                     <rect key="frame" x="0.0" y="3" width="31" height="25"/>
@@ -1617,7 +1649,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                             <outlet property="urlLabel" destination="cbI-j4-0hY" id="8vX-j2-kxy"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="BreakdownCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BreakdownCell" id="i0t-Yc-U28" customClass="BreakdownViewCell" customModule="ipopmetrics" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="BreakdownCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BreakdownCell" id="i0t-Yc-U28" customClass="BreakdownViewCell" customModule="ipopmetrics" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="315.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i0t-Yc-U28" id="ph4-bU-KbF">
@@ -2622,6 +2654,6 @@ article has some meta thing telling the computer that it’s magically got to ch
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xGE-FV-qhX"/>
+        <segue reference="3OR-Db-hbp"/>
     </inferredMetricsTieBreakers>
 </document>

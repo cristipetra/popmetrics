@@ -207,6 +207,7 @@
 		1128B3F71ECF256600BDA58C /* SimpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128B3F31ECF256600BDA58C /* SimpleButton.swift */; };
 		1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128B3F41ECF256600BDA58C /* SimpleButtonControlState.swift */; };
 		1128B3F91ECF256600BDA58C /* SimpleButtonStateChangeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128B3F51ECF256600BDA58C /* SimpleButtonStateChangeValue.swift */; };
+		112A04952074D806000B7E32 /* PopHubStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112A04942074D806000B7E32 /* PopHubStore.swift */; };
 		113976A91E97C71300B535DF /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113976A81E97C71300B535DF /* AccountViewController.swift */; };
 		113DE2FE1FC8ACD100AE6DE9 /* PaidActionCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113DE2FD1FC8ACD100AE6DE9 /* PaidActionCard.xib */; };
 		113DE3021FC8AEE800AE6DE9 /* PaidActionCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113DE3011FC8AEE800AE6DE9 /* PaidActionCardCell.swift */; };
@@ -242,6 +243,7 @@
 		1178D69B1E1E5AD9005B96C3 /* ipopmetricsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1178D69A1E1E5AD9005B96C3 /* ipopmetricsUITests.swift */; };
 		1195EEF42009EDC800F45798 /* apple-app-site-association-unsigned in Resources */ = {isa = PBXBuildFile; fileRef = 1195EEF32009EDC800F45798 /* apple-app-site-association-unsigned */; };
 		1198436C205BC0E700C63201 /* GoogleApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1198436B205BC0E700C63201 /* GoogleApi.swift */; };
+		119FC5CA20750F6600E4F802 /* HomeFeedHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119FC5C920750F6600E4F802 /* HomeFeedHubController.swift */; };
 		11A675A91FC8E1A900EE0A15 /* EmptyStateCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A675A81FC8E1A900EE0A15 /* EmptyStateCardCell.swift */; };
 		11AAA5E41ECC8BFA0099B50E /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAA5E31ECC8BFA0099B50E /* Feed.swift */; };
 		11ACA9A81E2CDEC00021E64A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */; };
@@ -492,6 +494,7 @@
 		1128B3F31ECF256600BDA58C /* SimpleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleButton.swift; sourceTree = "<group>"; };
 		1128B3F41ECF256600BDA58C /* SimpleButtonControlState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleButtonControlState.swift; sourceTree = "<group>"; };
 		1128B3F51ECF256600BDA58C /* SimpleButtonStateChangeValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleButtonStateChangeValue.swift; sourceTree = "<group>"; };
+		112A04942074D806000B7E32 /* PopHubStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopHubStore.swift; sourceTree = "<group>"; };
 		113976A81E97C71300B535DF /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		113DE2FD1FC8ACD100AE6DE9 /* PaidActionCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaidActionCard.xib; sourceTree = "<group>"; };
 		113DE3011FC8AEE800AE6DE9 /* PaidActionCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaidActionCardCell.swift; sourceTree = "<group>"; };
@@ -534,6 +537,7 @@
 		1178D69C1E1E5AD9005B96C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1195EEF32009EDC800F45798 /* apple-app-site-association-unsigned */ = {isa = PBXFileReference; lastKnownFileType = text; path = "apple-app-site-association-unsigned"; sourceTree = "<group>"; };
 		1198436B205BC0E700C63201 /* GoogleApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleApi.swift; sourceTree = "<group>"; };
+		119FC5C920750F6600E4F802 /* HomeFeedHubController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeFeedHubController.swift; path = /Users/ra/code/popmetrics/mobile/ipopmetrics/ipopmetrics/hub/HomeFeedHubController.swift; sourceTree = "<absolute>"; };
 		11A675A81FC8E1A900EE0A15 /* EmptyStateCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateCardCell.swift; sourceTree = "<group>"; };
 		11AAA5E31ECC8BFA0099B50E /* Feed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Feed.swift; path = ipopmetrics/realm/Feed.swift; sourceTree = "<group>"; };
 		11ACA9A71E2CDEC00021E64A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -680,6 +684,7 @@
 				08B4EB961FC569EC00BFC5A1 /* CalendarStore.swift */,
 				11E636931FD735480081B1DC /* StatsStore.swift */,
 				115C663C2073CB8D0078DF2B /* HubStore.swift */,
+				112A04942074D806000B7E32 /* PopHubStore.swift */,
 			);
 			path = store;
 			sourceTree = "<group>";
@@ -970,6 +975,7 @@
 		11DD965A1FC4ECEE00386F1E /* home */ = {
 			isa = PBXGroup;
 			children = (
+				119FC5C920750F6600E4F802 /* HomeFeedHubController.swift */,
 				086110C9205979CD00A3F75C /* load more */,
 				1120F1FF1ECDF4F200576E39 /* RequiredActionHandler.swift */,
 				08953E711F4C352B003ABEFC /* RequiredActionCard.xib */,
@@ -1661,6 +1667,7 @@
 				086B453C1FDC22530043F981 /* PersistentFooter.swift in Sources */,
 				085282741F28D9DE0065A968 /* CalendarFooterViewCell.swift in Sources */,
 				085599A31F72750000E5BEA1 /* SplashScreen.swift in Sources */,
+				112A04952074D806000B7E32 /* PopHubStore.swift in Sources */,
 				1158F3EA206A3D4D005CD638 /* ConnectWizardFacebookVC.swift in Sources */,
 				08F3688B1F18DC4900819CDE /* ApprovalCardCell.swift in Sources */,
 				08CA5D5820247C1000ED78C3 /* NotificationsManuallyEnableViewController.swift in Sources */,
@@ -1724,6 +1731,7 @@
 				088B282A1F7E5D130015A66E /* StatisticsCountView.swift in Sources */,
 				083938FF1F63C334007DDA37 /* MainTabInfo.swift in Sources */,
 				1104F8751FD45B3B002F6221 /* HubsApi.swift in Sources */,
+				119FC5CA20750F6600E4F802 /* HomeFeedHubController.swift in Sources */,
 				11DD96771FC4FA5400386F1E /* StatisticsApi.swift in Sources */,
 				08B324DA1F98C6AE00BB4905 /* IceExtendView.swift in Sources */,
 				08B7ADE81FB1D18F00C56688 /* CardToolbarController.swift in Sources */,

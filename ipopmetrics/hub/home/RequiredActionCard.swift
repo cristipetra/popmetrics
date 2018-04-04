@@ -16,6 +16,7 @@ import EZAlertController
 
 class RequiredActionCard: UITableViewCell {
     
+    
     @IBOutlet weak var toolbarView: ToolbarViewCell!
     @IBOutlet weak var footerView: FooterView!
     @IBOutlet weak var containerView: UIStackView!
@@ -65,6 +66,11 @@ class RequiredActionCard: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    func configure(card: HubCard) {
+        print("Done")
+    }
+
     
     func configure(_ item: FeedCard, handler: CardActionHandler) {
         self.item = item

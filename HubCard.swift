@@ -10,7 +10,18 @@ import Foundation
 import RealmSwift
 import ObjectMapper
 
-class HubCard:  Object, Mappable {
+protocol HubCardProtocol {
+    
+    func getName() -> String
+    func getSection() -> String
+    func getType()  -> String
+    
+}
+
+
+class HubCard:  Object, Mappable, HubCardProtocol {
+    
+    
     
     @objc dynamic var cardId: String? = nil
     
@@ -53,8 +64,8 @@ class HubCard:  Object, Mappable {
     
     func mapping(map: Map) {
         cardId          <- map["id"]
-        hub             <- map["var"]
-        priority        <- map["priority"]
+        hub             <- map["hub"]
+        priority        <- map["sort_priority"]
         ctype           <- map["ctype"]
         section         <- map["section"]
         name            <- map["name"]
@@ -82,4 +93,15 @@ class HubCard:  Object, Mappable {
         
     }
     
+    func getName() -> String {
+        return name
+    }
+    
+    func getSection() -> String {
+        return section
+    }
+    
+    func getType() -> String {
+        return ctype
+    }
 }

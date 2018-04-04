@@ -49,6 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  
     var window: UIWindow?
     var usersStore: UserStore!
+    
+    var hubStore: PopHubStore!
+    
     var feedStore: FeedStore!
     var storyBoard: UIStoryboard!
     var syncService: SyncService!
@@ -80,6 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Realm.Configuration.defaultConfiguration = config
         
+        hubStore = PopHubStore()
         usersStore = UserStore()
         feedStore = FeedStore()
         requiredActionHandler = RequiredActionHandler()
