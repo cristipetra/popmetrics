@@ -1528,7 +1528,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                 <rect key="frame" x="0.0" y="56" width="375" height="744"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChartCell" rowHeight="260" id="eZz-WL-Rac" userLabel="Chart View Cell" customClass="ChartViewCell" customModule="ipopmetrics" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChartCell" rowHeight="260" id="eZz-WL-Rac" userLabel="Chart View Cell" customClass="ChartViewCell" customModule="ipopmetrics" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="260"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eZz-WL-Rac" id="RKV-I4-IX0">
@@ -1536,13 +1536,13 @@ article has some meta thing telling the computer that it’s magically got to ch
                                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="su8-pF-x57">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="430" height="260"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="REz-0N-Zlj">
-                                                            <rect key="frame" x="25" y="8" width="350" height="60"/>
+                                                            <rect key="frame" x="25" y="8" width="405" height="60"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.website.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbI-j4-0hY">
-                                                                    <rect key="frame" x="0.0" y="8" width="340" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="8" width="395" height="20.5"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                                                     <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -1568,7 +1568,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CI4-hD-WwD">
-                                                            <rect key="frame" x="24" y="41" width="351" height="30"/>
+                                                            <rect key="frame" x="24" y="41" width="406" height="30"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="134" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dp-Ex-Nyp">
                                                                     <rect key="frame" x="0.0" y="3" width="31" height="25"/>
@@ -1617,7 +1617,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                             <outlet property="urlLabel" destination="cbI-j4-0hY" id="8vX-j2-kxy"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="BreakdownCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BreakdownCell" id="i0t-Yc-U28" customClass="BreakdownViewCell" customModule="ipopmetrics" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="BreakdownCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BreakdownCell" id="i0t-Yc-U28" customClass="BreakdownViewCell" customModule="ipopmetrics" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="315.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i0t-Yc-U28" id="ph4-bU-KbF">

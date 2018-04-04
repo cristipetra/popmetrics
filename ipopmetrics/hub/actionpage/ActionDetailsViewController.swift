@@ -72,6 +72,10 @@ class ActionDetailsViewController: BaseViewController {
         super.viewWillAppear(animated)
         self.whyThisRecommendationView.isHidden = fromInsight
         
+        if todoCard.name == "social.automated_facebook_posts" || todoCard.name == "social.automated_twitter_posts" {
+            btnDiy.isHidden = true
+        }
+        
     }
     
     override func viewWillLayoutSubviews() {
@@ -207,7 +211,7 @@ class ActionDetailsViewController: BaseViewController {
         let planId = Config.sharedInstance.environment.stripeBasicPlanId
         var amount = Config.sharedInstance.environment.stripeBasicPlanAmount
         amount = 0
-        vc.configure(brandId:brandId, amount:amount, planId:planId)
+        vc.configure(brandId:brandId, amount:amount, todoCard: self.todoCard)
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -221,17 +225,15 @@ class ActionDetailsViewController: BaseViewController {
         if self.todoCard != nil {
             HubsApi().postAddToMyActions(cardId: self.todoCard.cardId!, brandId: UserStore.currentBrandId) { todoCard in
                 
-                //TodoStore.getInstance().addTodoCard(todoCard!)
+                TodoStore.getInstance().addTodoCard(todoCard!)
+                if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
+                    FeedStore.getInstance().updateCardSection(insightCard, section:"None")
+                }
+                self.cardInfoHandlerDelegate?.handleActionComplete()
+
+                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
+                                                userInfo: ["sucess":true])
                 self.performSegue(withIdentifier: "showMyActionPopup", sender: nil)
-//                if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
-//                    FeedStore.getInstance().updateCardSection(insightCard, section:"None")
-//                }
-//                self.cardInfoHandlerDelegate?.handleActionComplete()
-//
-//                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
-//                                                userInfo: ["sucess":true])
-//
-//                self.navigationController?.popViewController(animated: true)
             }
         }
     }

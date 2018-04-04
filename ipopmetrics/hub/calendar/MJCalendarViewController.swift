@@ -46,6 +46,7 @@ class MJCalendarViewController: UIViewController, MJCalendarViewDelegate, Master
         initialSelectedDays()
     }
     
+    
     func initialSelectedDays() {
         selectedFromDate = NSDate().atStartOfWeek()
         selectedToDate = NSDate().atStartOfNextWeek()

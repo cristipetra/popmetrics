@@ -27,7 +27,7 @@ class OneOffPaymentViewController: UITableViewController {
     var amount: Int?
     var currency: String?
     var paymentContext: STPPaymentContext?
-    var planId: String?
+    var todoCard: TodoCard?
     var numberFormatter: NumberFormatter?
     
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
@@ -46,9 +46,9 @@ class OneOffPaymentViewController: UITableViewController {
         }
     }
     
-    func configure(brandId:String, amount: Int, planId: String, currency: String = "usd") {
+    func configure(brandId:String, amount: Int, todoCard:TodoCard, currency: String = "usd") {
         self.brandId = brandId
-        self.planId = planId
+        self.todoCard = todoCard
         self.amount = amount
         self.currency = currency
         
@@ -58,9 +58,8 @@ class OneOffPaymentViewController: UITableViewController {
         super.viewDidLoad()
         
         guard let brandId = self.brandId,
-            let planId = self.planId,
             let amount = self.amount,
-            let currency = self.currency else{
+            let currency = self.currency else {
                 self.navigationController?.popViewController(animated:true)
                 return
         }
@@ -75,6 +74,11 @@ class OneOffPaymentViewController: UITableViewController {
         
         updateValues()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+        super.viewWillAppear(animated)
     }
     
     private func updateValues() {
@@ -181,40 +185,55 @@ extension OneOffPaymentViewController: EmailProtocol {
 
 extension OneOffPaymentViewController: STPPaymentContextDelegate{
     func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPErrorBlock) {
-        let source = paymentResult.source.stripeID
-        guard
-            let brandId = self.brandId,
-            let planId = self.planId else{
-                return
-        }
+//        let source = paymentResult.source.stripeID
+//        guard let brandId = self.brandId else{ return }
+//
+//        guard let email = self.emailText.text, !email.isEmpty else {
+//            let alertController = UIAlertController(title: "Email required", message: "Please enter an email address", preferredStyle: .alert)
+//            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+//            alertController.addAction(action)
+//            self.navigationController?.present(alertController, animated: true, completion: nil)
+//
+//            return
+//        }
         
-        guard let email = self.emailText.text, !email.isEmpty else {
-            let alertController = UIAlertController(title: "Email required", message: "Please enter an email address", preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alertController.addAction(action)
-            self.navigationController?.present(alertController, animated: true, completion: nil)
-            
-            return
-        }
+        
         
         self.paymentInProgress = true
-        PaymentApi().subscribe(brandId: brandId, planId: planId, source: source, email: email){(title: String, message: String, success:Bool, done:Bool) in
-            self.paymentInProgress = false
-            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            var action = UIAlertAction(title: "OK", style: .default, handler: {action in
-                if success {
-                    SyncService.getInstance().syncAll(silent: false)
-                    
-                }
-                if done {
-                    self.close()
-                }
-                
-            })
-            
-            alertController.addAction(action)
-            self.navigationController?.present(alertController, animated: true, completion: nil)
+        if self.todoCard != nil {
+            HubsApi().postAddToPaidActions(cardId: (self.todoCard?.cardId!)!, brandId: UserStore.currentBrandId) { todoCard in
+                        self.paymentInProgress = false
+                        TodoStore.getInstance().addTodoCard(todoCard!)
+        
+                        if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
+                            FeedStore.getInstance().updateCardSection(insightCard, section:"None")
+                        }
+
+                        NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
+                                                        userInfo: ["sucess":true])
+        
+                        self.navigationController?.popViewController(animated: true)
+            }
         }
+        
+        
+//        PaymentApi().subscribe(brandId: brandId, planId: planId, source: source, email: email){(title: String, message: String, success:Bool, done:Bool) in
+//            self.paymentInProgress = false
+//            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+//            var action = UIAlertAction(title: "OK", style: .default, handler: {action in
+//                if success {
+//                    SyncService.getInstance().syncAll(silent: false)
+//
+//                }
+//                if done {
+//                    self.close()
+//                }
+//
+//            })
+//
+//            alertController.addAction(action)
+//            self.navigationController?.present(alertController, animated: true, completion: nil)
+//        }
     }
     
     func paymentContext(_ paymentContext: STPPaymentContext, didFinishWith status: STPPaymentStatus, error: Error?) {

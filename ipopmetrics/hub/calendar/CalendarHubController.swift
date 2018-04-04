@@ -226,7 +226,10 @@ class CalendarHubController: BaseViewController, ContainerToMaster {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+        super.viewWillAppear(animated)
         animateTransitionView()
+        
     }
     
     private func animateTransitionView() {
