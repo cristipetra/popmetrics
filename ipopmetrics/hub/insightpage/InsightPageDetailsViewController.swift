@@ -67,25 +67,22 @@ class InsightPageDetailsViewController: BaseViewController {
     override func viewWillAppear(_ animated:Bool) {
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = true
-        super.viewWillAppear(animated)        
+        super.viewWillAppear(animated)
+        
+        if self.feedCard.recommendedAction == "" {
+            btnViewAction?.isHidden = true
+        }
     }
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
         self.feedCard = feedCard
         recommendActionHandler = handler
-        
-        if self.feedCard.recommendedAction == "" {
-            btnViewAction.isHidden = true
-        }
     }
     
     public func configure(_ feedCard: FeedCard, openedFrom: String) {
         self.openedFrom = openedFrom
         self.feedCard = feedCard
         
-        if self.feedCard.recommendedAction == "" {
-            btnViewAction.isHidden = true
-        }
     }
     
     private func updateView() {
