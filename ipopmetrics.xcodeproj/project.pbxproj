@@ -67,7 +67,6 @@
 		086F34742034986700F7043B /* SettingsBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F34732034986700F7043B /* SettingsBaseTableViewController.swift */; };
 		086F64DC205BA9A400F46E8A /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F64DB205BA9A400F46E8A /* EmailViewController.swift */; };
 		08732B35203EE5A900EF4C51 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08732B34203EE5A900EF4C51 /* SettingsHeaderView.swift */; };
-		08755F461FCC11E600A8CF13 /* SocialPostDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */; };
 		08755F4C1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */; };
 		0877463D206E2CCB00B94DDD /* ActionStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0877463C206E2CCB00B94DDD /* ActionStatusViewController.swift */; };
 		087A868B206A954400A2E6A9 /* HomeHubSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087A868A206A954400A2E6A9 /* HomeHubSection.swift */; };
@@ -89,7 +88,6 @@
 		08953E741F4C359E003ABEFC /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E731F4C359E003ABEFC /* FooterView.swift */; };
 		08953E761F4C35AC003ABEFC /* RequiredActionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08953E751F4C35AC003ABEFC /* RequiredActionCard.swift */; };
 		089E10561FD1716200D57A08 /* SwipeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E10551FD1716200D57A08 /* SwipeExtension.swift */; };
-		089EFD39201774FF002E9CAF /* FacebookSocialPostDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089EFD38201774FF002E9CAF /* FacebookSocialPostDetails.xib */; };
 		089F93AB1FB5FE1E00155674 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089F93AA1FB5FE1E00155674 /* Settings.storyboard */; };
 		08A3C838203717D3001BD81E /* LoadMoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A3C837203717D3001BD81E /* LoadMoreView.xib */; };
 		08A3C83C203718BB001BD81E /* LoadMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A3C83B203718BB001BD81E /* LoadMoreView.swift */; };
@@ -349,7 +347,6 @@
 		086F34732034986700F7043B /* SettingsBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBaseTableViewController.swift; sourceTree = "<group>"; };
 		086F64DB205BA9A400F46E8A /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		08732B34203EE5A900EF4C51 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
-		08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SocialPostDetails.xib; sourceTree = "<group>"; };
 		08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPostDetailsViewController.swift; sourceTree = "<group>"; };
 		0877463C206E2CCB00B94DDD /* ActionStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionStatusViewController.swift; sourceTree = "<group>"; };
 		087A868A206A954400A2E6A9 /* HomeHubSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHubSection.swift; sourceTree = "<group>"; };
@@ -372,7 +369,6 @@
 		08953E731F4C359E003ABEFC /* FooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		08953E751F4C35AC003ABEFC /* RequiredActionCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredActionCard.swift; sourceTree = "<group>"; };
 		089E10551FD1716200D57A08 /* SwipeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeExtension.swift; sourceTree = "<group>"; };
-		089EFD38201774FF002E9CAF /* FacebookSocialPostDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacebookSocialPostDetails.xib; sourceTree = "<group>"; };
 		089F93AA1FB5FE1E00155674 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		08A3C837203717D3001BD81E /* LoadMoreView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadMoreView.xib; sourceTree = "<group>"; };
 		08A3C83B203718BB001BD81E /* LoadMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreView.swift; sourceTree = "<group>"; };
@@ -648,7 +644,6 @@
 		089EFD37201774DA002E9CAF /* social */ = {
 			isa = PBXGroup;
 			children = (
-				089EFD38201774FF002E9CAF /* FacebookSocialPostDetails.xib */,
 				08DE806C2018E98E00621243 /* SocialPostDetailsView.swift */,
 				08C7A437201B4D0500714360 /* SocialIconView.swift */,
 			);
@@ -1075,7 +1070,6 @@
 				08B3AA9D1F8FA748008D0503 /* ToDoApprovedView.swift */,
 				113DE2FD1FC8ACD100AE6DE9 /* PaidActionCard.xib */,
 				113DE3011FC8AEE800AE6DE9 /* PaidActionCardCell.swift */,
-				08755F451FCC11E600A8CF13 /* SocialPostDetails.xib */,
 				08755F4B1FCC42CA00A8CF13 /* SocialPostDetailsViewController.swift */,
 				08A3C837203717D3001BD81E /* LoadMoreView.xib */,
 				08A3C83B203718BB001BD81E /* LoadMoreView.swift */,
@@ -1354,7 +1348,6 @@
 				08B745931F1F6C0100EC3F8C /* OpenSans-Light.ttf in Resources */,
 				08C580FD1FBF21440013B03F /* SettingsOverlayUrlView.xib in Resources */,
 				08B745941F1F6C0100EC3F8C /* OpenSans-Bold.ttf in Resources */,
-				089EFD39201774FF002E9CAF /* FacebookSocialPostDetails.xib in Resources */,
 				08913D9F1FE7BC650085BE36 /* CalendarCompletedAction.xib in Resources */,
 				0856F3581F272F020061DF7E /* Calendar.storyboard in Resources */,
 				0854AF351F3F2B18007B60F9 /* CalendarCardSimple.xib in Resources */,
@@ -1384,7 +1377,6 @@
 				086110CB20597A1600A3F75C /* RequiredActionLoadMore.xib in Resources */,
 				1178D6821E1E5AD9005B96C3 /* Assets.xcassets in Resources */,
 				08078F3F1FBDE45200A4399D /* SettingsOverlayActionView.xib in Resources */,
-				08755F461FCC11E600A8CF13 /* SocialPostDetails.xib in Resources */,
 				08A4A5411F45B563001071E3 /* AlfaSlabOne-Regular.ttf in Resources */,
 				08C497B11FD5A31C0066E515 /* animation_X.json in Resources */,
 				0855C0C91F6FFBDB00ACBFA9 /* EmptyStateCard.xib in Resources */,

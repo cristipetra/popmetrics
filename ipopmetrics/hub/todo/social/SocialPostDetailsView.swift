@@ -36,7 +36,7 @@ class SocialPostDetailsView: UIView {
     }
     
     private func setup() {
-
+        
     }
     
     private func cleanView() {
@@ -77,10 +77,12 @@ class SocialPostDetailsView: UIView {
             if let socialAccount = todoSocialPost.socialAccount {
                 socialBrand.text = "\(socialAccount)"
             }
+            socialIcon.socialType = "twitter"
         } else if todoSocialPost.type == "facebook" {
             if let socialAccount = todoSocialPost.socialAccount {
                 socialBrand.text = socialAccount
             }
+            socialIcon.socialType = "facebook"
             updateFacebook()
         }
         
@@ -110,9 +112,9 @@ class SocialPostDetailsView: UIView {
 
         if calendarSocialPost.type == "facebook" {
             updateFacebook()
-        } else {
-            recommendedText.isEditable = false
         }
+        
+        recommendedText.isEditable = false
         
         socialIcon.socialType = calendarSocialPost.type
         
@@ -149,8 +151,6 @@ class SocialPostDetailsView: UIView {
         }
         
     }
-    
-    
 }
 
 extension SocialPostDetailsView: UITextViewDelegate {

@@ -149,6 +149,7 @@ class TodoHubController: BaseViewController {
         topHeaderView.changeVisibilityExpandView(visible: false)
         updateCountsTopView()
         
+        //StoreLocally().createTodoLocally()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -519,13 +520,7 @@ extension TodoHubController: UITableViewDelegate, UITableViewDataSource, Approve
     }
     
     func openDetailsPage(todoSocialPost: TodoSocialPost, indexPath: IndexPath) {
-        var detailsVC: SocialPostDetailsViewController!
-        
-        if todoSocialPost.type == "facebook" {
-            detailsVC = SocialPostDetailsViewController(nibName: "FacebookSocialPostDetails", bundle: nil)
-        } else {
-            detailsVC = SocialPostDetailsViewController(nibName: "SocialPostDetails", bundle: nil)
-        }
+        let detailsVC = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: "SocialPostDetailsViewController") as! SocialPostDetailsViewController
         detailsVC.configure(todoSocialPost: todoSocialPost)
         detailsVC.actionSocialDelegate = self
         detailsVC.setIndexPath(indexPath)

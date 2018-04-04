@@ -18,41 +18,13 @@ class SocialPostDetailsViewController: BaseViewController {
     
     @IBOutlet weak var messageFacebook: UITextView!
     @IBOutlet weak var scheduleInfoLabel: UILabel!
-    
-    lazy var buttonContainerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    lazy var separatorView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(red: 189/255, green: 197/255, blue: 203/255, alpha: 1)
-        return view
-    }()
-    
-    lazy var denyPostBtn: UIButton = {
-        let button = UIButton(type: UIButtonType.system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(PopmetricsColor.secondGray, for: .normal)
-        button.setTitle("Deny Post", for: .normal)
-        button.contentHorizontalAlignment = .left
-        button.titleLabel?.font = UIFont(name: FontBook.bold, size: 15)
-        return button
-    }()
-
-    lazy var approvePostBtn: ActionTodoButton = {
-        let button = ActionTodoButton(type: UIButtonType.system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    @IBOutlet weak var denyPostBtn: UIButton!
+    @IBOutlet weak var approvePostBtn: ActionTodoButton!
+    @IBOutlet weak var bottomContainerViewBottomAnchor: NSLayoutConstraint!
     
     private var todoSocialPost: TodoSocialPost!
     private var calendarSocialPost: CalendarSocialPost!
     
-    var bottomContainerViewBottomAnchor: NSLayoutConstraint!
     internal var isBottomVisible = false
     
     weak var actionSocialDelegate: ActionSocialPostProtocol!
@@ -66,7 +38,6 @@ class SocialPostDetailsViewController: BaseViewController {
         
         scrollView.delegate = self
         
-        addBottomButtons()
     
         if todoSocialPost != nil {
             containerView.configure(todoSocialPost: todoSocialPost)
@@ -80,15 +51,23 @@ class SocialPostDetailsViewController: BaseViewController {
             self.navigationController?.popViewController(animated: true)
         }
      
+        addHandlers()
+    
+        displayContainerBtnsIfNeeded()
+        self.extendedLayoutIncludesOpaqueBars = true
+    }
+    
+    private func addHandlers() {
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handlerClickArticleUrl));
         articleUrl.isUserInteractionEnabled = true
         articleUrl.addGestureRecognizer(tapGesture)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
-    
-        displayContainerBtnsIfNeeded()
-        self.extendedLayoutIncludesOpaqueBars = true
+        
+        denyPostBtn.addTarget(self, action: #selector(handlerDenyPost(sender:)), for: .touchUpInside)
+        approvePostBtn.addTarget(self, action: #selector(approvePost(sender:)), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -192,41 +171,6 @@ class SocialPostDetailsViewController: BaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func addBottomButtons() {
-        
-        containerView.addSubview(buttonContainerView)
-        
-        //buttonContainerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-        bottomContainerViewBottomAnchor = buttonContainerView.bottomAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.bottomAnchor, constant: 0)
-        bottomContainerViewBottomAnchor.isActive = true
-        buttonContainerView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
-        buttonContainerView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
-        buttonContainerView.heightAnchor.constraint(equalToConstant: 61).isActive = true
-        
-        buttonContainerView.addSubview(denyPostBtn)
-        buttonContainerView.addSubview(approvePostBtn)
-        buttonContainerView.addSubview(separatorView)
-        
-        denyPostBtn.leftAnchor.constraint(equalTo: buttonContainerView.leftAnchor, constant: 25).isActive = true
-        denyPostBtn.topAnchor.constraint(equalTo: buttonContainerView.topAnchor, constant: 18).isActive = true
-        denyPostBtn.widthAnchor.constraint(equalToConstant: 90).isActive = true
-        denyPostBtn.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        approvePostBtn.rightAnchor.constraint(equalTo: buttonContainerView.rightAnchor, constant: -24).isActive = true
-        approvePostBtn.topAnchor.constraint(equalTo: buttonContainerView.topAnchor, constant: 12).isActive = true
-        approvePostBtn.widthAnchor.constraint(equalToConstant: 161).isActive = true
-        approvePostBtn.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        approvePostBtn.layer.cornerRadius = 17
-        
-        separatorView.topAnchor.constraint(equalTo: buttonContainerView.topAnchor, constant: 0).isActive = true
-        separatorView.leftAnchor.constraint(equalTo: buttonContainerView.leftAnchor).isActive = true
-        separatorView.rightAnchor.constraint(equalTo: buttonContainerView.rightAnchor).isActive = true
-        separatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        
-        denyPostBtn.addTarget(self, action: #selector(handlerDenyPost(sender:)), for: .touchUpInside)
-        approvePostBtn.addTarget(self, action: #selector(approvePost(sender:)), for: .touchUpInside)
-    }
-    
     @objc func handlerDenyPost(sender: Any) {
         if !ReachabilityManager.shared.isNetworkAvailable {
             presentErrorNetwork()
@@ -302,6 +246,7 @@ extension SocialPostDetailsViewController: BannerProtocol {
 extension SocialPostDetailsViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        /*
         if ((scrollView.contentOffset.y + 60) >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
             
             scrollView.layoutIfNeeded()
@@ -320,7 +265,7 @@ extension SocialPostDetailsViewController: UIScrollViewDelegate {
                 self.containerView.layoutIfNeeded()
             })
         }
-        
+     */
     }
     
     func displayContainerBtnsIfNeeded() {
