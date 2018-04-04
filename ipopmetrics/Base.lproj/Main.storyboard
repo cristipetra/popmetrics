@@ -1935,7 +1935,7 @@ Companies like Google and Facebook aren’t just creating products anymore. They
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XYY-aT-d3g">
-                                <rect key="frame" x="0.0" y="687" width="320" height="61"/>
+                                <rect key="frame" x="0.0" y="707" width="320" height="61"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Fu-RW-teh">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
@@ -2003,7 +2003,7 @@ Companies like Google and Facebook aren’t just creating products anymore. They
                             <constraint firstItem="wfA-4j-zHi" firstAttribute="bottom" secondItem="Pet-wt-Qlv" secondAttribute="bottom" id="03M-rY-Lo5"/>
                             <constraint firstItem="wfA-4j-zHi" firstAttribute="trailing" secondItem="XYY-aT-d3g" secondAttribute="trailing" id="Eqf-4x-eaN"/>
                             <constraint firstItem="Pet-wt-Qlv" firstAttribute="leading" secondItem="wfA-4j-zHi" secondAttribute="leading" id="OJ3-Du-Bk6"/>
-                            <constraint firstItem="wfA-4j-zHi" firstAttribute="bottom" secondItem="XYY-aT-d3g" secondAttribute="bottom" constant="20" id="RDM-bC-wOt"/>
+                            <constraint firstItem="wfA-4j-zHi" firstAttribute="bottom" secondItem="XYY-aT-d3g" secondAttribute="bottom" id="RDM-bC-wOt"/>
                             <constraint firstItem="wfA-4j-zHi" firstAttribute="trailing" secondItem="Pet-wt-Qlv" secondAttribute="trailing" id="WvT-6o-caI"/>
                             <constraint firstItem="XYY-aT-d3g" firstAttribute="leading" secondItem="wfA-4j-zHi" secondAttribute="leading" id="bip-lX-pbb"/>
                             <constraint firstItem="Pet-wt-Qlv" firstAttribute="top" secondItem="wfA-4j-zHi" secondAttribute="top" id="lsq-vt-1hk"/>
@@ -2989,17 +2989,8 @@ Companies like Google and Facebook aren’t just creating products anymore. They
         <namedColor name="larry_david">
             <color red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="larry_david">
-            <color red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="larry_david">
-            <color red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="red_light">
             <color red="1" green="0.46666666666666667" blue="0.41568627450980394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="rock_bottom">
-            <color red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="rock_bottom">
             <color red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
