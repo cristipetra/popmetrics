@@ -386,7 +386,7 @@ extension StatsHubController: UITableViewDelegate, UITableViewDataSource {
 
         if section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HubSectionCell") as! HubSectionCell
-            cell.changeColor(cardType: .traffic)
+            cell.changeColor(cardType: "traffic")
             cell.sectionTitleLabel.text = "TRAFFIC";
             return cell
         } else {

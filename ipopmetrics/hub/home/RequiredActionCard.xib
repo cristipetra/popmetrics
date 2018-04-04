@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -49,8 +49,26 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8x-Kb-iAY" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8x-Kb-iAY">
                                 <rect key="frame" x="0.0" y="339" width="300" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RI3-bh-lBi">
+                                        <rect key="frame" x="8" y="35" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="primaryActionHandler:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gyd-pp-9Vc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcG-tJ-z9e">
+                                        <rect key="frame" x="246" y="35" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="secondaryActionHandler:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="LpI-vu-I0V"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="9me-1b-xjW"/>
@@ -113,9 +131,10 @@
                 <outlet property="connectionLineView" destination="Voy-rD-hh5" id="qkz-GM-r0z"/>
                 <outlet property="constraintHeightConnectionLine" destination="KzY-H3-lD0" id="2LH-gJ-KUA"/>
                 <outlet property="containerView" destination="gkh-M4-e7L" id="mgL-H3-S9x"/>
-                <outlet property="footerView" destination="j8x-Kb-iAY" id="lDU-sh-PIO"/>
                 <outlet property="messageHeightConstraint" destination="LPV-kd-nCO" id="sKm-BE-6MN"/>
                 <outlet property="messageLabel" destination="r8T-o8-GTy" id="gIL-Fn-p98"/>
+                <outlet property="primaryActionButton" destination="RI3-bh-lBi" id="igl-A9-9WM"/>
+                <outlet property="secondaryActionButton" destination="lcG-tJ-z9e" id="x9d-l3-XkM"/>
                 <outlet property="titleLabel" destination="sbm-nZ-v6I" id="UdK-Tf-vFv"/>
                 <outlet property="toolbarView" destination="J6P-3S-jCJ" id="rNq-y6-Crn"/>
             </connections>

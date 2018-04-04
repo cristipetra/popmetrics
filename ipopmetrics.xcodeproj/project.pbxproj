@@ -201,7 +201,6 @@
 		110A62F81ECEFF400052B478 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110A62F71ECEFF400052B478 /* SafariServices.framework */; };
 		1119F6181ED56F34009997FF /* Boarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1119F6171ED56F34009997FF /* Boarding.storyboard */; };
 		1120F2001ECDF4F200576E39 /* RequiredActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1120F1FF1ECDF4F200576E39 /* RequiredActionHandler.swift */; };
-		1125ADAC1E96E7990004B4AC /* HomeHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1125ADAB1E96E7990004B4AC /* HomeHubController.swift */; };
 		1128B3F61ECF256600BDA58C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1128B3F11ECF256600BDA58C /* Info.plist */; };
 		1128B3F71ECF256600BDA58C /* SimpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128B3F31ECF256600BDA58C /* SimpleButton.swift */; };
 		1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128B3F41ECF256600BDA58C /* SimpleButtonControlState.swift */; };
@@ -486,7 +485,6 @@
 		110A62F71ECEFF400052B478 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		1119F6171ED56F34009997FF /* Boarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Boarding.storyboard; sourceTree = "<group>"; };
 		1120F1FF1ECDF4F200576E39 /* RequiredActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredActionHandler.swift; sourceTree = "<group>"; };
-		1125ADAB1E96E7990004B4AC /* HomeHubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHubController.swift; sourceTree = "<group>"; };
 		1128B3F11ECF256600BDA58C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1128B3F21ECF256600BDA58C /* SimpleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleButton.h; sourceTree = "<group>"; };
 		1128B3F31ECF256600BDA58C /* SimpleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleButton.swift; sourceTree = "<group>"; };
@@ -984,7 +982,6 @@
 				080DCA851F4D9707000C73DC /* InsightCard.xib */,
 				11BDA92D1FFFD95F00CDA01C /* PopTipCard.xib */,
 				080DCA871F4D9716000C73DC /* InsightCard.swift */,
-				1125ADAB1E96E7990004B4AC /* HomeHubController.swift */,
 				08F7A0961F17AB0C00A1B2C3 /* RecommendationCardCell.swift */,
 				08F3688A1F18DC4900819CDE /* ApprovalCardCell.swift */,
 				08F368901F18E6A000819CDE /* ApprovalCardInfoCell.swift */,
@@ -1696,7 +1693,6 @@
 				1158F3E820647EED005CD638 /* ConnectWizardStartVC.swift in Sources */,
 				08A4A53D1F458423001071E3 /* ToolbarViewCell.swift in Sources */,
 				0852826E1F287DFB0065A968 /* CalendarHeaderViewCell.swift in Sources */,
-				1125ADAC1E96E7990004B4AC /* HomeHubController.swift in Sources */,
 				08B4EBB01FC56ACE00BFC5A1 /* PopmetricsColor.swift in Sources */,
 				08657382200F90D700D0ED21 /* PeriodGraphDateView.swift in Sources */,
 				08D1BC3B1F1E568A00D377B2 /* PhoneView.swift in Sources */,

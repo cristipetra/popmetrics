@@ -89,6 +89,13 @@ class HubStore<T:HubCard>: HubStoreProtocol{
         }
     }
     
+    public func archiveCard(_ card: T) {
+        card.status = "archived"
+        try! realm.write {
+            realm.add(card, update:true)
+        }
+    }
+    
     public func wipe() {
         let realm = try! Realm()
         let allCards = realm.objects(T.self)

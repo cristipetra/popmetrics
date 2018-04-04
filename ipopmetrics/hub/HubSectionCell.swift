@@ -59,15 +59,15 @@ class HubSectionCell: UITableViewCell {
         }
     }
     
-    func changeColor(cardType :CardType) {
+    func changeColor(cardType:String) {
         switch cardType {
-        case .todo:
+        case "recommended_action":
             connectionView.backgroundColor = PopmetricsColor.yellowUnapproved
             roundConnectionView.backgroundColor = PopmetricsColor.yellowUnapproved
-        case .recommended:
+        case "recommended_action":
             connectionView.backgroundColor = PopmetricsColor.darkGrey
             roundConnectionView.backgroundColor = PopmetricsColor.darkGrey
-        case .required:
+        case "required_action":
             connectionView.backgroundColor = PopmetricsColor.salmondColor
             roundConnectionView.backgroundColor = PopmetricsColor.salmondColor
             connectionView.isHidden = true
@@ -75,14 +75,14 @@ class HubSectionCell: UITableViewCell {
             sectionTitleLabel.font =  UIFont(name: FontBook.extraBold, size: 18)
             sectionTitleLabel.textColor = PopmetricsColor.weekDaysGrey
             titleLeftAnchor.constant = 0
-        case .traffic:
+        case "traffic":
 //            connectionView.backgroundColor = PopmetricsColor.trafficHeaderColor
 //            roundConnectionView.backgroundColor = PopmetricsColor.trafficHeaderColor
             let a = 0
-        case .insight:
+        case "insight":
             connectionView.backgroundColor = PopmetricsColor.darkGrey
             roundConnectionView.backgroundColor = PopmetricsColor.darkGrey
-        case .scheduled:
+        case "scheduled":
             connectionView.backgroundColor = PopmetricsColor.blueURLColor
             roundConnectionView.backgroundColor = PopmetricsColor.blueURLColor
         default:

@@ -22,7 +22,7 @@ class HomeHubSection {
         let nonEmptyCards = store.getNonEmptyFeedCardsWithSection(section)
         var cardsWithView : [FeedCard] = []
         
-        cardsWithView = nonEmptyCards.filter{ $0.type == HomeCardType.insight.rawValue || $0.type == HomeCardType.poptip.rawValue }
+        cardsWithView = nonEmptyCards.filter{ $0.type == "insight" || $0.type == "pop_tip" }
         
         return cardsWithView
     }

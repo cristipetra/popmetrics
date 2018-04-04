@@ -27,7 +27,7 @@ class ConnectWizardGoogleMyBusinessVC: ConnectWizardBaseViewController, Flexible
     var steps: [String] = ["None"]
     var connectionTarget: String = ""
     var imageURL: String?
-    var actionCard: FeedCard?
+    var actionCard: PopHubCard?
     var accounts = [MyBusinessAcccount]()
     var remainingAccounts = 0
     var signedUser:GIDGoogleUser?
@@ -74,7 +74,7 @@ class ConnectWizardGoogleMyBusinessVC: ConnectWizardBaseViewController, Flexible
     }
 
     
-    public func configure(_ card:FeedCard) {
+    public func configure(_ card:PopHubCard) {
         self.actionCard = card
         self.imageURL = "http://blog.popmetrics.io/wp-content/uploads/sites/13/2017/12/nofacebookpage.png"
         self.connectionTarget = "Google My Business"
@@ -254,7 +254,7 @@ class ConnectWizardGoogleMyBusinessVC: ConnectWizardBaseViewController, Flexible
                                 self.cancelButton.isHidden = true
                                 self.showOk("We have successfully connected Popmetrics with your Google My Business account", instruction:"Stay tuned for more insights")
                                 self.mainButton.titleLabel?.text = "Done"
-                                FeedStore.getInstance().archiveCard(self.actionCard!)
+                                PopHubStore.getInstance().archiveCard(self.actionCard!)
                             }
 
         }

@@ -64,7 +64,7 @@ class TwoColorButton: UIButton {
     
     var indexPath: IndexPath!
     
-    var buttonCardType: CardType = .recommended{
+    var buttonCardType: String = "recommended" {
         didSet {
             changeImageButtonCardType()
         }
@@ -198,7 +198,7 @@ class TwoColorButton: UIButton {
     
     func changeImageButtonCardType() {
         switch buttonCardType {
-        case .required:
+        case "required_action":
             rightImageView.isHidden = true
             topColor = PopmetricsColor.salmondColor
             bottomColor = PopmetricsColor.salmondBottomColor

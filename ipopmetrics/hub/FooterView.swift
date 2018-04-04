@@ -55,11 +55,7 @@ class FooterView: UIView {
     
     var feedCard: FeedCard?
     
-    var cardType: CardType? {
-        didSet {
-            changedCardType()
-        }
-    }
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -236,16 +232,6 @@ class FooterView: UIView {
     
     internal func setTitleActionBtn(_ title: String) {
         
-    }
-    
-    private func changedCardType() {
-        switch cardType! {
-        case .required:
-            print("required")
-            //actionButton.buttonCardType = cardType!
-        default:
-            break
-        }
     }
     
 }

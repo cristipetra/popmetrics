@@ -81,8 +81,8 @@ class HubCard:  Object, Mappable, HubCardProtocol {
         primaryActionLabel <- map["primary_action_label"]
         primaryAction      <- map["primary_action"]
         
-        secondaryActionLabel <- map["primary_action_label"]
-        secondaryAction      <- map["primary_action"]
+        secondaryActionLabel <- map["secondary_action_label"]
+        secondaryAction      <- map["secondary_action"]
         
         tooltipEnabled  <- map["tooltip_enabled"]
         tooltipTitle    <- map["tooltip_title"]

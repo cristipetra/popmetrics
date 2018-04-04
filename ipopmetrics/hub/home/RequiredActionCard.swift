@@ -14,7 +14,7 @@ import NotificationBannerSwift
 import SafariServices
 import EZAlertController
 
-class RequiredActionCard: UITableViewCell {
+class RequiredActionCard: UITableViewCell, HubCell {
     
     
     @IBOutlet weak var toolbarView: ToolbarViewCell!
@@ -31,18 +31,14 @@ class RequiredActionCard: UITableViewCell {
     @IBOutlet weak var messageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var messageTopConstraint: NSLayoutConstraint!
     
-    var item: FeedCard?
-    var actionHandler: CardActionHandler?
+    @IBOutlet weak var primaryActionButton: UIButton!
+    @IBOutlet weak var secondaryActionButton: UIButton!
+    
+    
+    var card: HubCard?
+    var hubController: HubControllerProtocol?
     var indexPath: IndexPath?
     var infoDelegate: InfoButtonDelegate?
-    
-    // Extend view
-    lazy var emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.isHidden = true
-        return textField
-    }()
     
     lazy var shadowLayer : UIView  = {
         let view = UIView()
@@ -67,51 +63,49 @@ class RequiredActionCard: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configure(card: HubCard) {
-        print("Done")
-    }
-
-    
-    func configure(_ item: FeedCard, handler: CardActionHandler) {
-        self.item = item
-        self.actionHandler = handler
+    func updateHubCell( card: HubCard, hubController: HubControllerProtocol) {
+        self.card = card
+        self.hubController = hubController
+        if card.isTest {
+            toolbarView.setUpCircleBackground(topColor: UIColor(named:"blue_bottle")!, bottomColor: UIColor(named:"blue_bottle")!)
+        }
         
-        if let imageUrl = item.imageUri {
+        if let imageUrl = card.imageUri {
             if imageUrl.isValidUrl() {
                 cardImageView.af_setImage(withURL: URL(string: imageUrl)!)
             }
         }
+        changeTitle(card.headerTitle)
+        messageLabel?.text = card.message
         
-        if item.isTest {
-            toolbarView.setUpCircleBackground(topColor: UIColor(named:"blue_bottle")!, bottomColor: UIColor(named:"blue_bottle")!)
+        if card.primaryAction != "" {
+            self.primaryActionButton.isHidden = false
+            self.primaryActionButton.titleLabel?.text = card.primaryActionLabel
+        }
+        else {
+            self.primaryActionButton.isHidden = true
         }
         
-        //self.titleLabel.text  = item.headerTitle
-        changeTitle(item.headerTitle)
-        messageLabel.text = item.message
-        
-        //Todo move from here addTarget
-        if(item.actionLabel == "Notifications") {
-            //footerView.actionButton.imageButtonType = .allowNotification
-            //self.footerView.actionButton.addTarget(self, action:#selector(handleActionNotifications(_:)), for: .touchDown)
-        } else {
-            self.footerView.actionButton.addTarget(self, action:#selector(handleCallToAction(_:)), for: .touchDown)
+        if card.secondaryAction != "" {
+            self.secondaryActionButton.isHidden = false
+            self.secondaryActionButton.titleLabel?.text = card.secondaryActionLabel
+        }
+        else {
+            self.secondaryActionButton.isHidden = true
         }
         
-        self.footerView.leftButton.addTarget(self, action: #selector(handleMoreInfo(_:)), for: .touchUpInside)
-        
-        configureFooterView()
-        
-        if(item.actionHandler == "email") {
-            displayEmailView()
-        } else if (item.actionHandler == "ganalytics") {
-            displayGoogleAnalytics()
-        } else if (item.actionHandler == "linkedin") {
-            //displayLinkedin()
-        }
-        
-        self.footerView.actionButton.changeTitle(item.actionLabel)
     }
+    
+    @IBAction func primaryActionHandler(_ sender: Any) {
+        self.hubController?.handleCardAction(card:self.card!, actionType:"primary")
+        
+    }
+    
+    @IBAction func secondaryActionHandler(_ sender: Any) {
+        self.hubController?.handleCardAction(card:self.card!, actionType:"secondary")
+        
+    }
+    
     
     internal func changeVisibilityConnectionLine(isHidden: Bool) {
         if isHidden {
@@ -135,51 +129,6 @@ class RequiredActionCard: UITableViewCell {
             titleLabel.text = ""
         }
     }
-    
-    internal func configureFooterView() {
-        let footerViewController: FooterViewController = FooterViewController()
-        if (item != nil) {
-            footerViewController.configureCard(item: item!, view: footerView)
-        }
-    }
-    
-    private func displayGoogleAnalytics() {
-        messageLabel.numberOfLines = 4
-    }
-    
-    private func displayEmailView() {
-         setEmailFieldPlaceholder()
-    }
-    
-    private func setEmailFieldPlaceholder() {
-
-        self.containerView.addSubview(emailTextField)
-        emailTextField.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 11).isActive = true
-        emailTextField.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: -10).isActive = true
-        emailTextField.heightAnchor.constraint(equalToConstant: 49).isActive = true
-        emailTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12).isActive = true
-
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.emailTextField.frame.height))
-        emailTextField.leftView = paddingView
-        emailTextField.leftViewMode = UITextFieldViewMode.always
-
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "youremail@email.com", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1), NSAttributedStringKey.font: UIFont(name: FontBook.semibold, size: 15)!])
-        emailTextField.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
-        emailTextField.layer.cornerRadius = 4
-
-        messageHeightConstraint.constant = 70
-        messageHeightConstraint.isActive = true
-
-        messageTopConstraint.constant = 73
-        messageTopConstraint.isActive = true
-
-        titleLabel.numberOfLines = 2
-        setUpFooterViewForEmail()
-    }
-    
-    private func setUpFooterViewForEmail() {
-        footerView.setEmailViewType()
-   }
     
     internal func setupCorners() {
         DispatchQueue.main.async {
@@ -207,43 +156,6 @@ class RequiredActionCard: UITableViewCell {
         toolbarController.setUpTopView(toolbarView: toolbarView)
     }
     
-    @objc func handleActionNotifications(_ sender: SimpleButton) {
-        openUrl(string: Config.howToTurnNotificationLink)
-    }
-    
-    @objc func handleInfoButtonPressed(_ sender: SimpleButton) {
-        infoDelegate?.sendInfo(sender)
-    }
-    
-    @objc func handleCallToAction(_ sender: SimpleButton) {
-        let homeHubViewController = self.parentViewController as! HomeHubViewController
-        homeHubViewController.callRequiredAction(self.item!)
-    }
-    
-    @objc func handleMoreInfo(_ sender: SimpleButton) {
-        guard let card = item else { return }
-        var url: String = ""
-        switch(card.name) {
-        case "ganalytics.connect_with_brand":
-            url = "http://blog.popmetrics.io/popmetrics-need-access-google-analytics/"
-            break
-        case "twitter.connect_with_brand":
-            url = "http://blog.popmetrics.io/popmetrics-need-access-twitter/"
-            break
-        case "facebook.connect_with_brand":
-            url = "http://blog.popmetrics.io/popmetrics-need-access-facebook/"
-            break
-        default:
-            break
-        }
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        if url.isValidUrl() {
-            guard let _ = self.parentViewController else { return }
-            appDelegate.openURLInside(self.parentViewController!, url: url)
-        }
-    }
-    
     func setUpShadowLayer() {
         self.insertSubview(shadowLayer, at: 0)
         shadowLayer.topAnchor.constraint(equalTo: toolbarView.topAnchor).isActive = true
@@ -257,16 +169,4 @@ class RequiredActionCard: UITableViewCell {
         shadowLayer.layer.cornerRadius = 12
     }
     
-}
-
-extension RequiredActionCard {
-    func openUrl(string: String) {
-        let url = URL(string: string)
-        let safari = SFSafariViewController(url: url!)
-        self.parentViewController?.present(safari, animated: true)
-    }
-    
-    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        self.parentViewController?.dismiss(animated: true)
-    }
 }

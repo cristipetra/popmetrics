@@ -28,10 +28,11 @@ protocol HubControllerProtocol {
     
     func registerNibForCardType(_ cardType:String, nibName:String, nibIdentifier:String)
     
+    func handleCardAction(card: HubCard, actionType:String) -> Bool
 }
 
 protocol HubCell {
-    func configure( card: HubCard)
+    func updateHubCell( card: HubCard, hubController: HubControllerProtocol)
 }
 
 class BaseHubViewController: BaseViewController, HubControllerProtocol {
@@ -235,6 +236,13 @@ class BaseHubViewController: BaseViewController, HubControllerProtocol {
         self.present(modalViewController, animated: true, completion: nil)
         
     }
+    func handleCardAction(card: HubCard, actionType:String) -> Bool {
+        let actionUri = actionType=="primary" ? card.primaryAction : card.secondaryAction
+        
+        // first we try to open, otherwise we push
+        return navigator.open(actionUri) || (navigator.push(actionUri) != nil)
+        
+    }
     
 
 }
@@ -285,7 +293,7 @@ extension BaseHubViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: itemCellId, for: indexPath) as! HubCell
-        cell.configure(card:item as! HubCard)
+        cell.updateHubCell(card:item as! HubCard, hubController:self)
         return cell as! UITableViewCell
         
     }

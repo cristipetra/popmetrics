@@ -30,7 +30,7 @@ class FooterViewController: UIViewController {
         self.feedCard  = item
         view.feedCard = item
         //view.displayOnlyActionButton()
-        view.cardType = .required
+        //view.cardType = .required
         
         changetActionButton(item)
         changeDisplayInfoButton(item)

@@ -85,8 +85,8 @@ enum NavigationMap {
             let wizard = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: "ConnectWizardGoogleMyBusinessVC") as! ConnectWizardGoogleMyBusinessVC
             
             guard let cardName = values["action_name"] as? String else { return nil }
-            guard let card = FeedStore.getInstance().getFeedCardWithName(cardName) else { return nil }
-            wizard.configure(card)
+            guard let card = PopHubStore.getInstance().getHubCardWithName(cardName) else { return nil }
+            wizard.configure(card as! PopHubCard)
             return wizard
         }
         

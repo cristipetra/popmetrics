@@ -92,7 +92,7 @@ class MenuViewController: ElasticModalViewController {
             let confirmAlert = UIAlertController(title: "Confirmation", message: "Are you sure you want to reset your hubs?",
                                                  preferredStyle: UIAlertControllerStyle.alert)
             confirmAlert.addAction(UIAlertAction(title:"Yes", style: .default, handler: { (action: UIAlertAction!) in
-                FeedStore.getInstance().wipe()
+                PopHubStore.getInstance().wipe()
                 TodoStore.getInstance().wipe()
                 CalendarStore.getInstance().wipe()
                 StatsStore.getInstance().wipe()

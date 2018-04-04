@@ -90,7 +90,7 @@ class InsightCard: UITableViewCell {
     }
     
     internal func updateVisibilityConnectionLine(_ indexPath: IndexPath) {
-        let cards = HomeHubSection().getSectionCardsThatHasActiveCellView(HomeSectionType.insights.rawValue)
+        let cards = HomeHubSection().getSectionCardsThatHasActiveCellView("Insights")
         if(cards.count - 1 == indexPath.row) {
             connectionLine.isHidden = true;
             constraintBottomContainerView.constant = 0
