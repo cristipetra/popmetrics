@@ -78,7 +78,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="primaryActionHandler:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8Et-6G-Lfb"/>
-                                            <action selector="secondaryActionHandler:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="R7c-uP-Chi"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcG-tJ-z9e">

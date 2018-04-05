@@ -13,7 +13,7 @@ import UIKit
     @objc func cellDidTapMoreInfo(_ feedCard: FeedCard)
 }
 
-class InsightCard: UITableViewCell {
+class InsightCard: UITableViewCell, HubCell {
     
     @IBOutlet weak var toolBarView: ToolbarViewCell!
     @IBOutlet weak var containerView: UIView!
@@ -21,8 +21,13 @@ class InsightCard: UITableViewCell {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var footerVIew: FooterView!
     @IBOutlet weak var constraintBottomContainerView: NSLayoutConstraint!
+
+    @IBOutlet weak var primaryActionButton: UIButton!
+    @IBOutlet weak var secondaryActionButton: UIButton!
+    
+    var card: HubCard?
+    var hubController: HubControllerProtocol?
     
     private var feedCard: FeedCard!
     weak var delegate: RecommendeCellDelegate?
@@ -41,10 +46,6 @@ class InsightCard: UITableViewCell {
         setupCorners()
         setUpShadowLayer()
         
-        footerVIew.actionButton.addTarget(self, action: #selector(handlerActionButton), for: .touchUpInside)
-        footerVIew.leftButton.addTarget(self, action: #selector(handlerMoreInfo), for: .touchUpInside)
-    
-        footerVIew.changeTitleLeftButton("View Analysis")
         updateTitleFont()
     }
     
@@ -54,38 +55,48 @@ class InsightCard: UITableViewCell {
         }
     }
     
-    public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
-        self.feedCard = feedCard
-        
-        if feedCard.isTest {
-            self.toolBarView.changeColorCircle(color: UIColor(named:"blue_bottle")!)
+    func updateHubCell( card: HubCard, hubController: HubControllerProtocol) {
+        self.card = card
+        self.hubController = hubController
+        if card.isTest {
+            toolBarView.setUpCircleBackground(topColor: UIColor(named:"blue_bottle")!, bottomColor: UIColor(named:"blue_bottle")!)
         }
         
-        //titleLabel.text = feedCard.headerTitle!
-        titleLabel.setTextWhileKeepingAttributes(string: feedCard.headerTitle!)
-        
-        //titleLabel.attributedText = feedCard.headerTitle!
-        messageLabel.text = feedCard.message!
-        footerVIew.actionButton.changeTitle(feedCard.actionLabel)
-        
-        if let imageUrl = feedCard.imageUri {
-            if let url = URL(string: imageUrl) {
-                backgroundImageView.af_setImage(withURL: url)
+        if let imageUrl = card.imageUri {
+            if imageUrl.isValidUrl() {
+                backgroundImageView.af_setImage(withURL: URL(string: imageUrl)!)
             }
         }
-
-        if feedCard.recommendedAction.isEmpty || feedCard.recommendedAction == "" {
-            footerVIew.actionButton.isHidden = true
+        titleLabel?.text = card.headerTitle
+        messageLabel?.text = card.message
+        
+        if card.primaryAction != "" {
+            self.primaryActionButton.isHidden = false
+            self.primaryActionButton.setTitle(card.primaryActionLabel, for: .normal)
+            self.primaryActionButton.setTitle(card.primaryActionLabel, for: .selected)
         }
         else {
-            if TodoStore.getInstance().getTodoCardWithName(feedCard.recommendedAction) != nil {
-                footerVIew.actionButton.isHidden = false
-            }
-            else {
-                footerVIew.actionButton.isHidden = true
-            }
-                
+            self.primaryActionButton.isHidden = true
         }
+        
+        if card.secondaryAction != "" {
+            self.secondaryActionButton.isHidden = false
+            self.secondaryActionButton.setTitle(card.secondaryActionLabel, for: .normal)
+            self.secondaryActionButton.setTitle(card.secondaryActionLabel, for: .selected)
+        }
+        else {
+            self.secondaryActionButton.isHidden = true
+        }
+        
+    }
+    
+    @IBAction func primaryActionHandler(_ sender: Any) {
+        self.hubController?.handleCardAction(card:self.card!, actionType:"primary")
+        
+    }
+    
+    @IBAction func secondaryActionHandler(_ sender: Any) {
+        self.hubController?.handleCardAction(card:self.card!, actionType:"secondary")
         
     }
     
@@ -100,15 +111,7 @@ class InsightCard: UITableViewCell {
         }
     }
     
-    @objc func handlerActionButton() {
-        guard let _ = feedCard else { return }
-        delegate?.recommendedCellDidTapAction(feedCard)
-    }
-    
-    @objc func handlerMoreInfo() {
-        guard let _ = feedCard else { return }
-        delegate?.cellDidTapMoreInfo(feedCard)
-    }
+
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -121,19 +124,6 @@ class InsightCard: UITableViewCell {
         }
     }
     
-    
-    private func setTitleRecommended(title: String) {
-        titleLabel.text = title
-    }
-    
-    private func setTitleInsight(title: String) {
-        titleLabel.text = title
-        titleLabel.textColor = UIColor.white
-    }
-    
-    private func setMessage(message: String) {
-        messageLabel.text = message
-    }
     
     
     func setUpShadowLayer() {

@@ -80,10 +80,8 @@ class RequiredActionCard: UITableViewCell, HubCell {
         
         if card.primaryAction != "" {
             self.primaryActionButton.isHidden = false
-            self.primaryActionButton.setTitle("Abracadabra", for: .normal)
-            self.primaryActionButton.setTitle("Pretty to see", for: .selected)
-//            self.primaryActionButton.setTitle(card.primaryActionLabel, for: .normal)
-//            self.primaryActionButton.setTitle(card.primaryActionLabel, for: .selected)
+            self.primaryActionButton.setTitle(card.primaryActionLabel, for: .normal)
+            self.primaryActionButton.setTitle(card.primaryActionLabel, for: .selected)
         }
         else {
             self.primaryActionButton.isHidden = true

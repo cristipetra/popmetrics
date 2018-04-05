@@ -8,7 +8,9 @@
 
 import UIKit
 
-class EmptyStateCard: UITableViewCell {
+class EmptyStateCard: UITableViewCell, HubCell {
+    
+    
     
     @IBOutlet weak var toolBarView: ToolbarViewCell!
     @IBOutlet weak var containerView: UIView!
@@ -44,6 +46,10 @@ class EmptyStateCard: UITableViewCell {
         
         footerVIew.actionButton.addTarget(self, action: #selector(handlerActionButton), for: .touchUpInside)
         footerVIew.leftButton.addTarget(self, action: #selector(handlerMoreInfo), for: .touchUpInside)
+    }
+    
+    func updateHubCell(card: HubCard, hubController: HubControllerProtocol) {
+        print("nothin")
     }
     
     public func configure(_ feedCard: FeedCard, handler: RecommendActionHandler? = nil) {
