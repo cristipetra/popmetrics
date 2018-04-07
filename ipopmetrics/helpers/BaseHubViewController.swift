@@ -32,18 +32,20 @@ protocol HubControllerProtocol {
 }
 
 protocol HubCell {
-    func updateHubCell( card: HubCard, hubController: HubControllerProtocol)
+    func updateHubCell( card: HubCard, hubController: HubControllerProtocol, options:[String:Any])
 }
 
 class BaseHubViewController: BaseViewController, HubControllerProtocol {
     
-    @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var myTableView: UITableView!
+    var topHeaderView: HeaderView!
+    
     private var sectionToIndex: [String:Int] = [:]
     private var indexToSection: [Int:String] = [:]
     private var sectionToPageLimit: [String:Int] = [:]
     
     private var defaultIndexPath: IndexPath?
+    internal var isAnimatingHeader: Bool = false
     
     private var store: HubStoreProtocol?
     
@@ -64,39 +66,39 @@ class BaseHubViewController: BaseViewController, HubControllerProtocol {
     
     func registerNibForCardType(_ cardType: String, nibName:String, nibIdentifier: String) {
         let nib = UINib(nibName:nibName, bundle:nil)
-        tableView?.register(nib, forCellReuseIdentifier: nibIdentifier)
+        myTableView?.register(nib, forCellReuseIdentifier: nibIdentifier)
         self.cardTypeToNibIdentifier[cardType] = nibIdentifier
     }
     
     func registerDefaultNibs() {
         let sectionHeaderNib = UINib(nibName: "CardHeaderView", bundle: nil)
-        tableView.register(sectionHeaderNib, forCellReuseIdentifier: "CardHeaderView")
+        myTableView.register(sectionHeaderNib, forCellReuseIdentifier: "CardHeaderView")
         
         let HubSectionCellNib = UINib(nibName: "HubSectionCell", bundle: nil)
-        tableView.register(HubSectionCellNib, forCellReuseIdentifier: "HubSectionCell")
+        myTableView.register(HubSectionCellNib, forCellReuseIdentifier: "HubSectionCell")
 
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.separatorStyle = .none
-        self.tableView.allowsSelection = false
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        self.myTableView.separatorStyle = .none
+        self.myTableView.allowsSelection = false
+        self.myTableView.delegate = self
+        self.myTableView.dataSource = self
         
-        self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedSectionHeaderHeight = 80
+        self.myTableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        self.myTableView.estimatedSectionHeaderHeight = 80
         
-        self.tableView.sectionFooterHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedSectionFooterHeight = 60
+        self.myTableView.sectionFooterHeight = UITableViewAutomaticDimension
+        self.myTableView.estimatedSectionFooterHeight = 60
         
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.myTableView.rowHeight = UITableViewAutomaticDimension
         
-        self.tableView.estimatedRowHeight = 460
+        self.myTableView.estimatedRowHeight = 460
         
         registerDefaultNibs()
-
+        setupTopHeaderView()
         
     }
 
@@ -116,8 +118,18 @@ class BaseHubViewController: BaseViewController, HubControllerProtocol {
         super.viewDidDisappear(true)
         NotificationCenter.default.removeObserver(self)
     }
+    
+    func setupTopHeaderView() {
+        if topHeaderView == nil {
+            topHeaderView = HeaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 0))
+            self.myTableView.addSubview(topHeaderView)
+            topHeaderView.layer.zPosition = 1
+            topHeaderView.displayElements(isHidden: true)
+        }
+    }
+    
 
-    func registerSection(_ section:String, atIndex:Int, pageLimit:Int = 0) {
+    func registerSection(_ section:String, atIndex:Int, pageLimit:Int = Int.max - 100) {
         self.sectionToIndex[section] = atIndex
         self.indexToSection[atIndex] = section
         self.sectionToPageLimit[section] = pageLimit
@@ -136,7 +148,7 @@ class BaseHubViewController: BaseViewController, HubControllerProtocol {
         self.sectionToPageLimit[section] = pageLimit
     }
     func getSectionPageLimit(_ section: String) -> Int {
-        return self.sectionToPageLimit[section, default: 0]
+        return self.sectionToPageLimit[section, default: Int.max - 100]
     }
     
     func getDefaultIndexPath() -> IndexPath? {
@@ -164,8 +176,8 @@ class BaseHubViewController: BaseViewController, HubControllerProtocol {
         let row = 0
         
         let indexPath = IndexPath(row: row, section: sectionIndex)
-        if self.tableView != nil {
-            tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        if self.myTableView != nil {
+            myTableView.scrollToRow(at: indexPath, at: .top, animated: true)
             setDefaultIndexPath(nil)
         }
         else{
@@ -192,8 +204,8 @@ class BaseHubViewController: BaseViewController, HubControllerProtocol {
         if !found { row = 0 }
         
         let indexPath = IndexPath(row: row, section: sectionIndex)
-        if self.tableView != nil {
-            tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        if self.myTableView != nil {
+            myTableView.scrollToRow(at: indexPath, at: .top, animated: true)
             setDefaultIndexPath(nil)
         }
         else{
@@ -204,7 +216,7 @@ class BaseHubViewController: BaseViewController, HubControllerProtocol {
     
     func catchUiRefreshRequiredNotification(notification:Notification) -> Void {
         //print(store.getFeedCards())
-        self.tableView.reloadData()
+        self.myTableView.reloadData()
         
     }
     
@@ -258,20 +270,15 @@ extension BaseHubViewController: UITableViewDelegate, UITableViewDataSource {
         let sectionName = getSectionAtIndex(section)
         let items = getVisibleItems(inSection:sectionName)
         
-        let pageLimit = self.getSectionPageLimit(sectionName)
-        if pageLimit == 0 {
-            return items.count
-        }
-        else {
-            return min(pageLimit, items.count)
-        }
+        let pageLimit = self.getSectionPageLimit(sectionName) + 1 // one for the LoadMore card
+        return min(pageLimit, items.count)
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let section = getSectionAtIndex(indexPath.section)
-        let pageLimit = self.getSectionPageLimit(section)
+        let rowsInSection = self.tableView(tableView, numberOfRowsInSection: indexPath.section)
         
         let items = getVisibleItems(inSection:section)
         if items.count <= 0  {
@@ -282,6 +289,7 @@ extension BaseHubViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
         let item = items[indexPath.row]
+        let isLastCard = indexPath.row == rowsInSection - 1
         
         let itemCellId = self.cardTypeToNibIdentifier[item.getType(), default:"Unsupported"]
         if itemCellId == "Unsupported" {
@@ -293,13 +301,16 @@ extension BaseHubViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: itemCellId, for: indexPath) as! HubCell
-        cell.updateHubCell(card:item as! HubCard, hubController:self)
+        cell.updateHubCell(card:item as! HubCard, hubController:self,
+                           options: ["isLastCard":isLastCard])
         return cell as! UITableViewCell
         
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
+        let count = self.tableView(tableView, numberOfRowsInSection: section)
+        if count == 0 { return nil }
         let sectionName = self.getSectionAtIndex(section)
         let cell = tableView.dequeueReusableCell(withIdentifier: "HubSectionCell") as! HubSectionCell
         cell.sectionTitleLabel.text = sectionName
@@ -312,5 +323,69 @@ extension BaseHubViewController: UITableViewDelegate, UITableViewDataSource {
 //        loadMoreView.btnLoadMore.addTarget(self, action: #selector(loadNextPage(_:)), for: .touchUpInside)
 //        return loadMoreView
 //    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if self.topHeaderView != nil {
+            var fixedHeaderFrame = self.topHeaderView.frame
+            fixedHeaderFrame.origin.y = 0 + scrollView.contentOffset.y
+            topHeaderView.frame = fixedHeaderFrame
+        }
+        
+        
+        if let indexes = myTableView.indexPathsForVisibleRows {
+            for index in indexes {
+                let indexPath = IndexPath(row: 0, section: index.section)
+                guard let lastRowInSection = indexes.last , indexes.first?.section == index.section else {
+                    return
+                }
+                let headerFrame = myTableView.rectForHeader(inSection: index.section)
+                
+                let frameOfLastCell = myTableView.rectForRow(at: lastRowInSection)
+                let cellFrame = myTableView.rectForRow(at: indexPath)
+                if headerFrame.origin.y + 50 < myTableView.contentOffset.y {
+                    self.changeTopHeaderTitle(section: index.section)
+                    self.sectionChanged(section: index.section)
+                    
+                    animateHeader(colapse: false)
+                } else if frameOfLastCell.origin.y < myTableView.contentOffset.y  {
+                    animateHeader(colapse: false)
+                } else {
+                    animateHeader(colapse: true)
+                }
+            }
+            if myTableView.contentOffset.y == 0 {   //top of the tableView
+                animateHeader(colapse: true)
+            }
+        }
+    }
+    
+    func changeTopHeaderTitle(section: Int) {
+        let sectionName = self.getSectionAtIndex(section)
+        topHeaderView?.changeTitle(title: sectionName)
+    }
+    
+    func animateHeader(colapse: Bool) {
+        if (self.isAnimatingHeader) {
+            return
+        }
+        self.isAnimatingHeader = true
+        UIView.animate(withDuration: 0.3, animations: {
+            if colapse {
+                self.topHeaderView.frame.size.height = 0
+                self.topHeaderView.displayElements(isHidden: true)
+            } else {
+                self.topHeaderView.frame.size.height = 30
+                self.topHeaderView.displayElements(isHidden: false)
+            }
+            self.topHeaderView.layoutIfNeeded()
+        }, completion: { (completed) in
+            self.isAnimatingHeader = false
+        })
+    }
+    
+    func sectionChanged(section:Int) {
+        // toDoTopView.changeSection(section: index.section)
+    }
     
 }

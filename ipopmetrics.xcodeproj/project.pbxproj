@@ -202,6 +202,7 @@
 		1119F6181ED56F34009997FF /* Boarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1119F6171ED56F34009997FF /* Boarding.storyboard */; };
 		1120F2001ECDF4F200576E39 /* RequiredActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1120F1FF1ECDF4F200576E39 /* RequiredActionHandler.swift */; };
 		1122CF5D2077821400363486 /* BaseCardDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1122CF5C2077821400363486 /* BaseCardDetailsViewController.swift */; };
+		1122CF602078CE7D00363486 /* BaseHubCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1122CF5F2078CE7D00363486 /* BaseHubCard.swift */; };
 		1128B3F61ECF256600BDA58C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1128B3F11ECF256600BDA58C /* Info.plist */; };
 		1128B3F71ECF256600BDA58C /* SimpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128B3F31ECF256600BDA58C /* SimpleButton.swift */; };
 		1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128B3F41ECF256600BDA58C /* SimpleButtonControlState.swift */; };
@@ -487,6 +488,7 @@
 		1119F6171ED56F34009997FF /* Boarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Boarding.storyboard; sourceTree = "<group>"; };
 		1120F1FF1ECDF4F200576E39 /* RequiredActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredActionHandler.swift; sourceTree = "<group>"; };
 		1122CF5C2077821400363486 /* BaseCardDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCardDetailsViewController.swift; sourceTree = "<group>"; };
+		1122CF5F2078CE7D00363486 /* BaseHubCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHubCard.swift; sourceTree = "<group>"; };
 		1128B3F11ECF256600BDA58C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1128B3F21ECF256600BDA58C /* SimpleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleButton.h; sourceTree = "<group>"; };
 		1128B3F31ECF256600BDA58C /* SimpleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleButton.swift; sourceTree = "<group>"; };
@@ -718,6 +720,8 @@
 				086F34732034986700F7043B /* SettingsBaseTableViewController.swift */,
 				086E708D2056A76E00576E67 /* Utils.swift */,
 				1122CF5C2077821400363486 /* BaseCardDetailsViewController.swift */,
+				1122CF5F2078CE7D00363486 /* BaseHubCard.swift */,
+				115C66382073B4F40078DF2B /* BaseHubViewController.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -1016,7 +1020,6 @@
 			isa = PBXGroup;
 			children = (
 				08FAE8431F541D790097DF3E /* StatsHubController.swift */,
-				115C66382073B4F40078DF2B /* BaseHubViewController.swift */,
 				08FAE8461F541FF40097DF3E /* StatsCard.xib */,
 				08FAE8481F5420050097DF3E /* StatsCardViewCell.swift */,
 				08AA6C6A1F56DD060022DE91 /* BreakdownViewCell.swift */,
@@ -1676,6 +1679,7 @@
 				113DE3021FC8AEE800AE6DE9 /* PaidActionCardCell.swift in Sources */,
 				085F90F21F712660008A339A /* AnimationsViewController.swift in Sources */,
 				08D1BC371F1DF4F900D377B2 /* ViewNames.swift in Sources */,
+				1122CF602078CE7D00363486 /* BaseHubCard.swift in Sources */,
 				08A51D331FC6EF6D0097B334 /* ActionInstructionsPageViewController.swift in Sources */,
 				08B4EBB21FC56ACE00BFC5A1 /* SettingsBaseViewController.swift in Sources */,
 				08B4EB991FC569F700BFC5A1 /* FeedStore.swift in Sources */,

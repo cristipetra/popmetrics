@@ -42,13 +42,13 @@ class HomeFeedHubController: BaseHubViewController {
         // elastic pull to refresh loader
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = PopmetricsColor.yellowBGColor
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+        myTableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             // old code: self?.fetchItems(silent:false)
             SyncService.getInstance().syncAll(silent: false)
-            self?.tableView.dg_stopLoading()
+            self?.myTableView.dg_stopLoading()
             }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(PopmetricsColor.borderButton)
-        tableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.loadingBackground)
+        myTableView.dg_setPullToRefreshFillColor(PopmetricsColor.borderButton)
+        myTableView.dg_setPullToRefreshBackgroundColor(PopmetricsColor.loadingBackground)
         
     }
     

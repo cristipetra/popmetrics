@@ -48,7 +48,7 @@ class EmptyStateCard: UITableViewCell, HubCell {
         footerVIew.leftButton.addTarget(self, action: #selector(handlerMoreInfo), for: .touchUpInside)
     }
     
-    func updateHubCell(card: HubCard, hubController: HubControllerProtocol) {
+    func updateHubCell(card: HubCard, hubController: HubControllerProtocol, options:[String:Any] = [:]) {
         print("nothin")
     }
     
