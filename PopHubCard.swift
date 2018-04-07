@@ -63,6 +63,10 @@ class PopHubCard: HubCard {
     var impactSplit: [LabelAndPercentage] = []
     
     @objc dynamic var diyInstructions: String? = nil // ['## markdown1', '### markdown 2 *b']
+    
+    @objc dynamic var diyEnabled = true
+    @objc dynamic var orderEnabled = true
+    
     @objc dynamic var insightArguments: String? = nil // ['## markdown1', '### amrkdown 2']
     
     
@@ -96,6 +100,9 @@ class PopHubCard: HubCard {
         impactSplitJson     <- map["impact_split"]
         
         diyInstructions     <- map["diy_instructions"]
+        diyEnabled          <- map["diy_enabled"]
+        orderEnabled        <- map["order_enabled"]
+        
         insightArguments    <- map["insight_arguments"]
     }
     

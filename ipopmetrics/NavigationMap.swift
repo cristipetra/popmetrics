@@ -90,12 +90,13 @@ enum NavigationMap {
             return wizard
         }
         
-        navigator.register("vnd.popmetrics://insight_details/string:id") { url, values, context in
+        navigator.register("vnd.popmetrics://insight_details/<string:id>") { url, values, context in
             
             let vc = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: "InsightDetailsViewController") as! InsightPageDetailsViewController
             guard let cardID = values["id"] as? String else { return nil }
-            guard let feedCard = FeedStore.getInstance().getFeedCardWithId(cardID) else { return nil }
-            vc.configure(feedCard)
+            
+            guard let card = PopHubStore.getInstance().getHubCardWithId(cardID) else { return nil }
+            vc.configure(card:card)
             return vc
         }
         
