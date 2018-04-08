@@ -102,6 +102,7 @@ class PopHubCard: HubCard {
         diyInstructions     <- map["diy_instructions"]
         diyEnabled          <- map["diy_enabled"]
         orderEnabled        <- map["order_enabled"]
+        recommendedAction   <- map["recommended_action"]
         
         insightArguments    <- map["insight_arguments"]
     }

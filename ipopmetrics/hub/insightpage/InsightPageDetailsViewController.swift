@@ -47,7 +47,7 @@ class InsightPageDetailsViewController: BaseCardDetailsViewController {
         self.title = "Analysis"
         
         guard let popHubCard = self.hubCard as? PopHubCard else { return }
-        self.actionsView.isHidden = ("" != popHubCard.recommendedAction)
+        self.actionsView.isHidden = ("" == popHubCard.recommendedAction)
         
         titleArticle.text = popHubCard.headerTitle
         if let cardImageUrl = popHubCard.imageUri {
@@ -112,17 +112,15 @@ class InsightPageDetailsViewController: BaseCardDetailsViewController {
     
     @IBAction func viewActionButtonHandler(_ sender: Any) {
         
-//        if feedCard.recommendedAction == "" {
-//            self.presentAlertWithTitle("Error", message: "This insight has no recommended action!", useWhisper: true);
-//            return
-//        }
-//        guard let actionCard = TodoStore.getInstance().getTodoCardWithName(feedCard.recommendedAction)
-//            else {
-//                self.presentAlertWithTitle("Error", message: "No card to show with name: "+feedCard.recommendedAction, useWhisper: true);
-//                return
-//        }
-//
-//        openActionDetails(actionCard)
+        guard let popHubCard = self.hubCard as? PopHubCard else { return }
+        
+        guard let actionCard = TodoStore.getInstance().getTodoCardWithName(popHubCard.recommendedAction)
+            else {
+                self.presentAlertWithTitle("Error", message: "No card to show with name: "+popHubCard.recommendedAction, useWhisper: true);
+                return
+        }
+
+        openActionDetails(actionCard)
         
     }
 
@@ -153,7 +151,7 @@ class InsightPageDetailsViewController: BaseCardDetailsViewController {
         if segue.identifier == "showActionDetails" {
             if self.segueCard != nil {
                 let vc = segue.destination as! ActionDetailsViewController
-                vc.configure(self.segueCard!, fromInsight: true)
+                vc.configureWithTodoCard(self.segueCard!, fromInsight: true)
             }
         }
         

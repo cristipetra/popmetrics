@@ -29,7 +29,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         return appDelegate.requiredActionHandler
     }
     
-    func  handleRequiredAction(viewController: UIViewController, item: FeedCard) {
+    func  handleRequiredAction(viewController: UIViewController, item: HubCard) {
         
         switch(item.name) {
             case "ganalytics.connect_with_brand":
@@ -76,7 +76,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                                                  annotation: annotation)
     }
     
-   func connectGoogleAnalytics(_ item:FeedCard?) {
+   func connectGoogleAnalytics(_ item:HubCard?) {
     
 //          navigator.push("vnd.popmetrics://required_action/"+(item?.name)!)
         GIDSignIn.sharedInstance().delegate = self
@@ -91,7 +91,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     
     }
     
-    func connectGoogleMyBusiness(_ item:FeedCard?) {
+    func connectGoogleMyBusiness(_ item:HubCard?) {
         
         navigator.push("vnd.popmetrics://required_action/"+(item?.name)!)
         
@@ -146,9 +146,9 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         
         
         TodoApi().postRequiredAction(brandId, params: params) { requiredActionResponse in
-            let store = FeedStore.getInstance()
-            if let card = store.getFeedCardWithName("ganalytics.connect_with_brand") {
-                store.updateCardSection(card, section: "None")
+            let store = PopHubStore.getInstance()
+            if let card = store.getHubCardWithName("ganalytics.connect_with_brand") {
+                store.archiveCard(card as! PopHubCard)
                 NotificationCenter.default.post(name:Notification.Popmetrics.UiRefreshRequired, object:nil,
                                                 userInfo: nil )
                 NotificationCenter.default.post(name:Notification.Popmetrics.RequiredActionComplete, object:nil,
@@ -158,7 +158,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     }
         
     
-    func connectTwitter(_ item:FeedCard?) {
+    func connectTwitter(_ item:HubCard?) {
 //        navigator.push("vnd.popmetrics://required_action/"+(item?.name)!)
         let storeTwitter = Twitter.sharedInstance().sessionStore
         if let userID = storeTwitter.session()?.userID {
@@ -183,9 +183,9 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
                     ]
                 let brandId = UserStore.currentBrandId
                 TodoApi().postRequiredAction(brandId, params: params) { requiredActionResponse in
-                    let store = FeedStore.getInstance()
-                    if let card = store.getFeedCardWithName("twitter.connect_with_brand") {
-                        store.updateCardSection(card, section: "None")
+                    let store = PopHubStore.getInstance()
+                    if let card = store.getHubCardWithName("twitter.connect_with_brand") {
+                        store.archiveCard(card as! PopHubCard)
                         NotificationCenter.default.post(name:Notification.Popmetrics.UiRefreshRequired, object:nil,
                                                         userInfo: nil )
                     }
@@ -264,7 +264,7 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
     }
 
     // MARK: Facebook LogIn Process
-    func connectFacebook(viewController: UIViewController, item: FeedCard?) {
+    func connectFacebook(viewController: UIViewController, item: HubCard?) {
 //      navigator.push("vnd.popmetrics://required_action/"+(item?.name)!)
         let loginManager = LoginManager()
 
@@ -383,11 +383,10 @@ class RequiredActionHandler: NSObject, CardActionHandler, GIDSignInUIDelegate, G
         TodoApi().postRequiredAction(brandId, params: params) { requiredActionResponse in
             NotificationCenter.default.post(name:Notification.Popmetrics.RequiredActionComplete, object:nil,
                                             userInfo: nil )
-            let store = FeedStore.getInstance()
-            if let card = store.getFeedCardWithName("facebook.connect_with_brand") {
-                store.updateCardSection(card, section: "None")
-                NotificationCenter.default.post(name:Notification.Popmetrics.UiRefreshRequired, object:nil,
-                                                userInfo: nil )
+            let store = PopHubStore.getInstance()
+            if let card = store.getHubCardWithName("facebook.connect_with_brand") {
+                store.archiveCard(card as! PopHubCard)
+                NotificationCenter.default.post(name:Notification.Popmetrics.UiRefreshRequired, object:nil, userInfo: nil )
             }
         }
     }

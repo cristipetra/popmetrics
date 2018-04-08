@@ -313,6 +313,7 @@ class TodoHubController: BaseViewController {
     }
     
     func openActionStatus(_ actionCard: TodoCard) {
+        return
         self.segueTodoCard = actionCard
         self.performSegue(withIdentifier:"showAction", sender:self)
     }

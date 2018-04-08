@@ -7,8 +7,9 @@
 
 import UIKit
 import DGElasticPullToRefresh
+import GoogleSignIn
 
-class HomeFeedHubController: BaseHubViewController {
+class HomeFeedHubController: BaseHubViewController, GIDSignInUIDelegate {
     
     let onwSectionToIndex = ["Required Actions":0,
                           "Insights":1,
@@ -23,6 +24,7 @@ class HomeFeedHubController: BaseHubViewController {
     
     
     override func viewDidLoad() {
+        GIDSignIn.sharedInstance().uiDelegate = self
         
         setStore(PopHubStore.getInstance())
         
@@ -37,8 +39,8 @@ class HomeFeedHubController: BaseHubViewController {
         registerNibForCardType("required_action", nibName:"RequiredActionCard", nibIdentifier:"RequiredActionCard")
         registerNibForCardType("empty_state", nibName:"EmptyStateCard", nibIdentifier:"EmptyStateCard")
         registerNibForCardType("insight", nibName:"InsightCard", nibIdentifier:"InsightCard")
-        registerNibForCardType("pop_tip", nibName:"PopTipCard", nibIdentifier:"PopTipCard")
-        
+        //registerNibForCardType("pop_tip", nibName:"PopTipCard", nibIdentifier:"PopTipCard")
+        registerNibForCardType("pop_tip", nibName:"InsightCard", nibIdentifier:"InsightCard")
         // elastic pull to refresh loader
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = PopmetricsColor.yellowBGColor

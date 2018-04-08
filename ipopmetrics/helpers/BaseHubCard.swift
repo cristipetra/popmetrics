@@ -115,11 +115,13 @@ class BaseHubCard: UITableViewCell, HubCell {
     
     
     @IBAction func primaryActionHandler(_ sender: Any) {
+        print("primary action tapped")
         self.hubController?.handleCardAction(card:self.card!, actionType:"primary")
         
     }
     
     @IBAction func secondaryActionHandler(_ sender: Any) {
+        print("secondary action tapped")
         self.hubController?.handleCardAction(card:self.card!, actionType:"secondary")
         
     }

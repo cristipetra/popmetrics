@@ -100,13 +100,13 @@ enum NavigationMap {
             return vc
         }
         
-        navigator.register("vnd.popmetrics://action_details/<string:action_name>") { url, values, context in
+        navigator.register("vnd.popmetrics://action_details/<string:todoName>") { url, values, context in
             let vc = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: "ActionDetailsViewController") as! ActionDetailsViewController
             
-            guard let cardName = values["action_name"] as? String else { return nil }
-            guard let card = TodoStore.getInstance().getTodoCardWithName(cardName) else { return nil }
+            guard let cardName = values["todoName"] as? String else { return nil }
             
-            vc.configure(card)
+            guard let todoCard = TodoStore.getInstance().getTodoCardWithName(cardName) else { return nil }
+            vc.configureWithTodoCard(todoCard)
             return vc
         }
         
@@ -133,7 +133,10 @@ enum NavigationMap {
         context: Any?
         ) -> UIViewController? {
         guard let url = url.urlValue else { return nil }
-        return SFSafariViewController(url: url)
+        let sfvc = SFSafariViewController(url: url)
+        sfvc.navigationController?.navigationBar.isHidden = true
+        sfvc.tabBarController?.tabBar.isHidden = true
+        return sfvc
     }
     
     private static func alert(navigator: NavigatorType) -> URLOpenHandlerFactory {

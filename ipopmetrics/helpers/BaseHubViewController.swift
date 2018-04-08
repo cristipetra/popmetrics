@@ -51,6 +51,7 @@ class BaseHubViewController: BaseViewController, HubControllerProtocol {
     
     private var cardTypeToNibIdentifier:[String:String] = [:]
     
+    
     func getHubName() -> String {
         return "Base"
     }
@@ -250,8 +251,14 @@ class BaseHubViewController: BaseViewController, HubControllerProtocol {
     }
     func handleCardAction(card: HubCard, actionType:String) -> Bool {
         let actionUri = actionType=="primary" ? card.primaryAction : card.secondaryAction
+        if actionUri.range(of: "handler://") != nil {
+            RequiredActionHandler.sharedInstance().handleRequiredAction(viewController: self, item: card)
+        }
         
         // first we try to open, otherwise we push
+        if actionUri.range(of: "http") != nil {
+            return (navigator.present(actionUri) != nil)
+        }
         return navigator.open(actionUri) || (navigator.push(actionUri) != nil)
         
     }

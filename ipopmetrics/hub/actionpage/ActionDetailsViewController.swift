@@ -9,7 +9,7 @@
 import UIKit
 import markymark
 
-class ActionDetailsViewController: BaseViewController {
+class ActionDetailsViewController: BaseCardDetailsViewController {
     
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var titleArticle: UILabel!
@@ -30,11 +30,9 @@ class ActionDetailsViewController: BaseViewController {
     @IBOutlet weak var constraintHeightIceView: NSLayoutConstraint!
     
     @IBOutlet weak var whyThisRecommendationView: UIView!
-    @IBOutlet weak var addToMyActionsView: UIView!
-    @IBOutlet weak var addToPaidActionsView: UIView!
-    @IBOutlet weak var actionsView: UIView!
-    @IBOutlet weak var btnDiy: UIButton!
-    @IBOutlet weak var btnOrder: UIButton!
+
+    @IBOutlet weak var diyButton: UIButton!
+    @IBOutlet weak var orderButton: UIButton!
     
     var cardInfoHandlerDelegate: CardInfoHandler?
     
@@ -46,35 +44,20 @@ class ActionDetailsViewController: BaseViewController {
     let iceView = IceExtendView()
     
     var bottomContainerViewBottomAnchor: NSLayoutConstraint!
-    internal var isBottomVisible = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         addIceView()
-        setupNavigationWithBackButton()
         
         updatView()
-        
-        self.view.addSwipeGestureRecognizer {
-            self.navigationController?.popViewController(animated: true)
-        }
-        
-        btnOrder.addTarget(self, action: #selector(handlerOrder(_:)), for: .touchUpInside)
-        btnDiy.addTarget(self, action: #selector(handlerAddToMyActions(_:)), for: .touchUpInside)
-        displayActionButton()
+        self.title = "Recommended Action"
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = false
-        self.tabBarController?.tabBar.isHidden = true
 
         super.viewWillAppear(animated)
         self.whyThisRecommendationView.isHidden = fromInsight
-        
-        if todoCard.name == "social.automated_facebook_posts" || todoCard.name == "social.automated_twitter_posts" {
-            btnDiy.isHidden = true
-        }
         
     }
     
@@ -91,20 +74,16 @@ class ActionDetailsViewController: BaseViewController {
         iceView.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    public func configure(_ todoCard: TodoCard, fromInsight:Bool? = false) {
+    public func configureWithTodoCard(_ todoCard: TodoCard, fromInsight:Bool? = false) {
+        // this is the the method to configure things with an old todoCard
+        // will go away
+        
+        guard let card = PopHubStore.getInstance().getHubCardWithId(todoCard.cardId!) else { return }
+        self.configure(card: card)
+        
         self.todoCard = todoCard
         self.fromInsight = fromInsight ?? false
         iceView.configure(todoCard: todoCard)
-    }
-    
-    private func displayActionButton() {
-        if todoCard == nil {
-            btnDiy.isHidden = true
-            btnOrder.isHidden = true
-            return
-        }
-        
-        btnDiy.isHidden = false
     }
     
     private func updatView() {
@@ -121,25 +100,6 @@ class ActionDetailsViewController: BaseViewController {
         displayMarkdownFixIt()
     }
     
-    private func setupNavigationWithBackButton() {
-        let titleWindow = "Action Recommendation"
-        
-        let leftSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        leftSpace.width = 5
-        
-        let titleButton = UIBarButtonItem(title: titleWindow, style: .plain, target: self, action: #selector(handlerClickBack))
-        titleButton.tintColor = PopmetricsColor.darkGrey
-        let titleFont = UIFont(name: FontBook.extraBold, size: 18)
-        titleButton.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
-        titleButton.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .selected)
-        
-        let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "calendarIconLeftArrow"), style: .plain, target: self, action: #selector(handlerClickBack))
-        leftButtonItem.tintColor = PopmetricsColor.darkGrey
-        
-        self.navigationItem.leftBarButtonItems = [leftSpace, leftButtonItem, titleButton]
-        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
-    }
-
     private func getDetailsMarkdownString() -> String {
         return todoCard.detailsMarkdown ?? ""
     }
@@ -203,22 +163,9 @@ class ActionDetailsViewController: BaseViewController {
         }
         
     }
-    
-    @objc func handlerOrder(_ sender: Any) {
-        let vc = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "OneOffPaymentViewController") as! OneOffPaymentViewController
-        
-        let brandId = UserStore.currentBrandId
-        let planId = Config.sharedInstance.environment.stripeBasicPlanId
-        var amount = Config.sharedInstance.environment.stripeBasicPlanAmount
-        amount = 0
 
-        vc.configure(brandId:brandId, amount:amount, todoCard: self.todoCard)
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+    @IBAction func handleDiyAction(_ sender: Any) {
     
-    @objc func handlerAddToMyActions(_ sender: Any) {
-
         if !ReachabilityManager.shared.isNetworkAvailable {
             presentErrorNetwork()
             return
@@ -234,27 +181,22 @@ class ActionDetailsViewController: BaseViewController {
 
                 NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
                                                 userInfo: ["sucess":true])
-                self.performSegue(withIdentifier: "showMyActionPopup", sender: nil)
+                self.performSegue(withIdentifier: "showDIYPopup", sender: nil)
             }
         }
     }
     
-    @objc func handlerTakeActionPayment(_ sender: Any) {
-        print("handler take action payment")
-        Alert.showActionSheetPayment(parent: self) { (actionSheet) -> (Void) in
-            self.openPopup()
-        }
-    }
-    
-    private func openPopup() {
-        let alertCard = UIStoryboard.init(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "PaymentPopupViewController") as! PaymentPopupViewController
+    @IBAction func handleOrderAction(_ sender: Any) {
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OneOffPaymentViewController") as! OneOffPaymentViewController
         
-        alertCard.providesPresentationContextTransitionStyle = true
-        alertCard.definesPresentationContext = true
-        alertCard.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        alertCard.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        alertCard.delegate = self
-        self.present(alertCard, animated: true, completion: nil)
+        let brandId = UserStore.currentBrandId
+        var amount = Config.sharedInstance.environment.stripeBasicPlanAmount
+        amount = 0
+        
+        vc.configure(brandId:brandId, amount:amount, todoCard: self.todoCard)
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+
     }
     
     @objc func handlerInsightPage(_ sender: UIButton) {
@@ -273,10 +215,6 @@ class ActionDetailsViewController: BaseViewController {
         return nil
     }
 
-    
-    @objc func handlerClickBack() {
-        self.navigationController?.popViewController(animated: true)
-    }
 }
 
 extension ActionDetailsViewController: BannerProtocol {

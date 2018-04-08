@@ -203,6 +203,7 @@
 		1120F2001ECDF4F200576E39 /* RequiredActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1120F1FF1ECDF4F200576E39 /* RequiredActionHandler.swift */; };
 		1122CF5D2077821400363486 /* BaseCardDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1122CF5C2077821400363486 /* BaseCardDetailsViewController.swift */; };
 		1122CF602078CE7D00363486 /* BaseHubCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1122CF5F2078CE7D00363486 /* BaseHubCard.swift */; };
+		1122CF63207A01B500363486 /* TodoOrderConfirmationPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1122CF62207A01B500363486 /* TodoOrderConfirmationPopupViewController.swift */; };
 		1128B3F61ECF256600BDA58C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1128B3F11ECF256600BDA58C /* Info.plist */; };
 		1128B3F71ECF256600BDA58C /* SimpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128B3F31ECF256600BDA58C /* SimpleButton.swift */; };
 		1128B3F81ECF256600BDA58C /* SimpleButtonControlState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128B3F41ECF256600BDA58C /* SimpleButtonControlState.swift */; };
@@ -489,6 +490,7 @@
 		1120F1FF1ECDF4F200576E39 /* RequiredActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredActionHandler.swift; sourceTree = "<group>"; };
 		1122CF5C2077821400363486 /* BaseCardDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCardDetailsViewController.swift; sourceTree = "<group>"; };
 		1122CF5F2078CE7D00363486 /* BaseHubCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHubCard.swift; sourceTree = "<group>"; };
+		1122CF62207A01B500363486 /* TodoOrderConfirmationPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoOrderConfirmationPopupViewController.swift; sourceTree = "<group>"; };
 		1128B3F11ECF256600BDA58C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1128B3F21ECF256600BDA58C /* SimpleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleButton.h; sourceTree = "<group>"; };
 		1128B3F31ECF256600BDA58C /* SimpleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleButton.swift; sourceTree = "<group>"; };
@@ -505,7 +507,7 @@
 		1158F3EB206A3DC6005CD638 /* ConnectWizardTwitterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectWizardTwitterVC.swift; sourceTree = "<group>"; };
 		1158F3ED206A3EDF005CD638 /* ConnectWizardBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectWizardBaseViewController.swift; sourceTree = "<group>"; };
 		1158F3EF206A442A005CD638 /* GoogleMyBusinessPickerTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMyBusinessPickerTableVC.swift; sourceTree = "<group>"; };
-		115C663620729CF50078DF2B /* TodoInReviewPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TodoInReviewPopupViewController.swift; path = todo/TodoInReviewPopupViewController.swift; sourceTree = "<group>"; };
+		115C663620729CF50078DF2B /* TodoInReviewPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoInReviewPopupViewController.swift; sourceTree = "<group>"; };
 		115C66382073B4F40078DF2B /* BaseHubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseHubViewController.swift; path = ipopmetrics/helpers/BaseHubViewController.swift; sourceTree = SOURCE_ROOT; };
 		115C663A2073C1080078DF2B /* HubCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubCard.swift; sourceTree = "<group>"; };
 		115C663C2073CB8D0078DF2B /* HubStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubStore.swift; sourceTree = "<group>"; };
@@ -797,6 +799,16 @@
 			path = actionsheet;
 			sourceTree = "<group>";
 		};
+		1122CF61207A016E00363486 /* popup */ = {
+			isa = PBXGroup;
+			children = (
+				110994FD20724E4C00C45F2F /* TodoInMyActionsPopupViewController.swift */,
+				115C663620729CF50078DF2B /* TodoInReviewPopupViewController.swift */,
+				1122CF62207A01B500363486 /* TodoOrderConfirmationPopupViewController.swift */,
+			);
+			path = popup;
+			sourceTree = "<group>";
+		};
 		1128B3F01ECF256600BDA58C /* SimpleButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -944,6 +956,7 @@
 		11DD96591FC4ECD600386F1E /* hub */ = {
 			isa = PBXGroup;
 			children = (
+				1122CF61207A016E00363486 /* popup */,
 				1158F3E420647D88005CD638 /* wizard */,
 				08C6101A20480510008FCE9E /* payment */,
 				086AF8F0205BCE000073CA1F /* tmp */,
@@ -972,8 +985,6 @@
 				08B6AFAB1F9DC843005E3049 /* IceCardViewCell.swift */,
 				0855C0C81F6FFBDB00ACBFA9 /* EmptyStateCard.xib */,
 				0855C0CA1F6FFBF000ACBFA9 /* EmptyStateCard.swift */,
-				110994FD20724E4C00C45F2F /* TodoInMyActionsPopupViewController.swift */,
-				115C663620729CF50078DF2B /* TodoInReviewPopupViewController.swift */,
 			);
 			path = hub;
 			sourceTree = "<group>";
@@ -1644,6 +1655,7 @@
 				1128B3F91ECF256600BDA58C /* SimpleButtonStateChangeValue.swift in Sources */,
 				08C873AF203F1A15000C02EC /* SettingsFacebookViewController.swift in Sources */,
 				11ACA9AB1E2CE05D0021E64A /* CompletionView.swift in Sources */,
+				1122CF63207A01B500363486 /* TodoOrderConfirmationPopupViewController.swift in Sources */,
 				08CE428F1FD041AE00FF8C80 /* EmailMessages.swift in Sources */,
 				116E339F203461E100D2BCA9 /* SignUpWebsiteViewController.swift in Sources */,
 				085AA0D41F42ECAA0014D4CE /* Todo.swift in Sources */,

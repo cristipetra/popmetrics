@@ -11,7 +11,7 @@ import Stripe
 import EZAlertController
 import EZLoadingActivity
 
-class OneOffPaymentViewController: UITableViewController {
+class OneOffPaymentViewController: BaseTableViewController {
     
     @IBOutlet weak var deliveryTimeText: UITextField!
     @IBOutlet weak var emailText: UITextField!
@@ -31,20 +31,6 @@ class OneOffPaymentViewController: UITableViewController {
     var numberFormatter: NumberFormatter?
     
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-    var paymentInProgress: Bool = false {
-        didSet {
-            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
-                if self.paymentInProgress {
-                    EZLoadingActivity.showLoadingSpinner(disableUI: true)
-                    self.confirmPurchaseButton.isEnabled = false
-                }
-                else {
-                    EZLoadingActivity.hide()
-                    self.confirmPurchaseButton.isEnabled = true
-                }
-            }, completion: nil)
-        }
-    }
     
     func configure(brandId:String, amount: Int, todoCard:TodoCard, currency: String = "usd") {
         self.brandId = brandId
@@ -172,7 +158,28 @@ class OneOffPaymentViewController: UITableViewController {
     }
     
     @IBAction func handlerConfirmPurchase(_ sender: UIButton) {
-        self.paymentContext?.requestPayment()
+//        self.paymentContext?.requestPayment()
+        
+        self.showProgressIndicator()
+        if self.todoCard != nil {
+            HubsApi().postAddToPaidActions(cardId: (self.todoCard?.cardId!)!, brandId: UserStore.currentBrandId) { todoCard in
+                
+                self.hideProgressIndicator()
+                TodoStore.getInstance().addTodoCard(todoCard!)
+                
+                if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
+                    FeedStore.getInstance().updateCardSection(insightCard, section:"None")
+                }
+                
+                NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
+                                                userInfo: ["sucess":true])
+                
+                self.navigationController?.popViewController(animated: true)
+                self.performSegue(withIdentifier: "showOrderedPopupSegue", sender: nil)
+            }
+        }
+        
+        
     }
     
 }
@@ -184,37 +191,23 @@ extension OneOffPaymentViewController: EmailProtocol {
 }
 
 extension OneOffPaymentViewController: STPPaymentContextDelegate{
+    
     func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPErrorBlock) {
-//        let source = paymentResult.source.stripeID
-//        guard let brandId = self.brandId else{ return }
-//
-//        guard let email = self.emailText.text, !email.isEmpty else {
-//            let alertController = UIAlertController(title: "Email required", message: "Please enter an email address", preferredStyle: .alert)
-//            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-//            alertController.addAction(action)
-//            self.navigationController?.present(alertController, animated: true, completion: nil)
-//
-//            return
-//        }
-        
-        
-        
-        self.paymentInProgress = true
-        if self.todoCard != nil {
-            HubsApi().postAddToPaidActions(cardId: (self.todoCard?.cardId!)!, brandId: UserStore.currentBrandId) { todoCard in
-                        self.paymentInProgress = false
-                        TodoStore.getInstance().addTodoCard(todoCard!)
-        
-                        if let insightCard = FeedStore.getInstance().getFeedCardWithRecommendedAction((todoCard?.name)!) {
-                            FeedStore.getInstance().updateCardSection(insightCard, section:"None")
-                        }
+        let source = paymentResult.source.stripeID
+        guard let brandId = self.brandId else{ return }
 
-                        NotificationCenter.default.post(name: Notification.Popmetrics.UiRefreshRequired, object: nil,
-                                                        userInfo: ["sucess":true])
-        
-                        self.navigationController?.popViewController(animated: true)
-            }
+        guard let email = self.emailText.text, !email.isEmpty else {
+            let alertController = UIAlertController(title: "Email required", message: "Please enter an email address", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(action)
+            self.navigationController?.present(alertController, animated: true, completion: nil)
+
+            return
         }
+        
+        
+        
+
         
         
 //        PaymentApi().subscribe(brandId: brandId, planId: planId, source: source, email: email){(title: String, message: String, success:Bool, done:Bool) in
@@ -237,11 +230,16 @@ extension OneOffPaymentViewController: STPPaymentContextDelegate{
     }
     
     func paymentContext(_ paymentContext: STPPaymentContext, didFinishWith status: STPPaymentStatus, error: Error?) {
-        self.paymentInProgress = false
+        self.hideProgressIndicator()
     }
     
     func paymentContextDidChange(_ paymentContext: STPPaymentContext) {
-        self.paymentInProgress = paymentContext.loading
+        if paymentContext.loading {
+            self.showProgressIndicator()
+        }
+        else {
+            self.hideProgressIndicator()
+        }
         if let paymentMethod = paymentContext.selectedPaymentMethod {
             self.infoCardView.changeLabel(label: paymentMethod.label)
         }

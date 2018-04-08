@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol CardActionHandler {
-    func handleRequiredAction(viewController: UIViewController, item: FeedCard )
+    func handleRequiredAction(viewController: UIViewController, item: HubCard )
 }
 
 @objc protocol CardInfoHandler {
