@@ -154,10 +154,14 @@ class MenuViewController: ElasticModalViewController {
         setInitialDateSync()
         UserStore.getInstance().clearCredentials()
         Intercom.logout()
-        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.setInitialViewController()
-        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+        self.dismiss(animated: true) {
+            UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+            appDelegate.setInitialViewController()
+        }
+        
+        
+
     }
     
     private func clearStores() {

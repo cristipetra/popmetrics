@@ -186,7 +186,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // login
     func setInitialViewController() {
-        window = UIWindow(frame: UIScreen.main.bounds)
+        if self.window == nil {
+            window = UIWindow(frame: UIScreen.main.bounds)
+        }
+        
         window!.rootViewController = getInitialViewController()
         window!.makeKeyAndVisible()
     }

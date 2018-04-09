@@ -322,7 +322,7 @@ class TodoHubController: BaseViewController {
         
         let vc = segue.destination as! ActionStatusViewController
         if (self.segueTodoCard != nil) {
-            vc.configure(self.segueTodoCard!)
+            vc.configureWithTodoCard(self.segueTodoCard!, openedFrom: "TodoHub")
         }
     }
     

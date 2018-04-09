@@ -100,10 +100,10 @@ enum NavigationMap {
             return vc
         }
         
-        navigator.register("vnd.popmetrics://action_details/<string:todoName>") { url, values, context in
+        navigator.register("vnd.popmetrics://action_details/<string:action_name>") { url, values, context in
             let vc = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: "ActionDetailsViewController") as! ActionDetailsViewController
             
-            guard let cardName = values["todoName"] as? String else { return nil }
+            guard let cardName = values["action_name"] as? String else { return nil }
             
             guard let todoCard = TodoStore.getInstance().getTodoCardWithName(cardName) else { return nil }
             vc.configureWithTodoCard(todoCard)
@@ -116,7 +116,7 @@ enum NavigationMap {
             guard let cardName = values["action_name"] as? String else { return nil }
             guard let card = TodoStore.getInstance().getTodoCardWithName(cardName) else { return nil }
             
-            vc.configure(card)
+            vc.configureWithTodoCard(card, openedFrom: "")
             return vc
         }
        

@@ -1589,7 +1589,7 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fR7-Ce-hud">
-                                                                    <rect key="frame" x="41" y="9" width="21" height="16.5"/>
+                                                                    <rect key="frame" x="41" y="9.5" width="21" height="16.5"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                                                     <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -1815,13 +1815,13 @@ article has some meta thing telling the computer that it’s magically got to ch
                                                         <rect key="frame" x="0.0" y="422" width="320" height="1725.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What Article You're Sharing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2X-o1-jpr">
-                                                                <rect key="frame" x="25" y="10" width="285" height="37"/>
+                                                                <rect key="frame" x="25" y="10" width="285" height="25"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
                                                                 <color key="textColor" red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customizing Your Marketing" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iin-Nd-63X">
-                                                                <rect key="frame" x="25" y="52.5" width="285" height="70"/>
+                                                                <rect key="frame" x="25" y="40.5" width="285" height="82"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="30"/>
                                                                 <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -3022,7 +3022,6 @@ Companies like Google and Facebook aren’t just creating products anymore. They
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="navigateToHomeHub:" destination="Foa-al-UwY" eventType="touchUpInside" id="m2X-O5-fh7"/>
                                             <action selector="navigateToTodoHub:" destination="Foa-al-UwY" eventType="touchUpInside" id="iTe-A4-Oiv"/>
                                         </connections>
                                     </button>
@@ -3119,7 +3118,7 @@ Companies like Google and Facebook aren’t just creating products anymore. They
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDP-60-5FE">
-                                                    <rect key="frame" x="16" y="19" width="112" height="23.5"/>
+                                                    <rect key="frame" x="16" y="18" width="112" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -3222,13 +3221,13 @@ Companies like Google and Facebook aren’t just creating products anymore. They
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0M-ZB-oYJ">
-                                                    <rect key="frame" x="16" y="18.5" width="36" height="23.5"/>
+                                                    <rect key="frame" x="16" y="18.5" width="40.5" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="0.25098039220000001" green="0.23529411759999999" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$30" placeholder="email@email.com" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e0f-Mg-rur">
-                                                    <rect key="frame" x="62" y="10" width="242" height="39"/>
+                                                    <rect key="frame" x="66.5" y="10" width="237.5" height="39"/>
                                                     <color key="textColor" red="0.25490196079999999" green="0.60784313729999995" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="28"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -3418,7 +3417,7 @@ By placing your order, you agree to Popmetric's Terms and Conditions and Privacy
                                                 <rect key="frame" x="37" y="50" width="245" height="137"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Promo Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJH-WE-2S5">
-                                                <rect key="frame" x="87.5" y="248" width="146.5" height="25"/>
+                                                <rect key="frame" x="87" y="248" width="146.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
                                                 <color key="textColor" name="rock_bottom"/>
                                                 <nil key="highlightedColor"/>

@@ -58,6 +58,9 @@ class ActionDetailsViewController: BaseCardDetailsViewController {
 
         super.viewWillAppear(animated)
         self.whyThisRecommendationView.isHidden = fromInsight
+        let popCard = self.hubCard as! PopHubCard
+        self.diyButton.isHidden = !popCard.diyEnabled
+        self.orderButton.isHidden = !popCard.orderEnabled
         
     }
     
@@ -166,10 +169,6 @@ class ActionDetailsViewController: BaseCardDetailsViewController {
 
     @IBAction func handleDiyAction(_ sender: Any) {
     
-        if !ReachabilityManager.shared.isNetworkAvailable {
-            presentErrorNetwork()
-            return
-        }
         if self.todoCard != nil {
             HubsApi().postAddToMyActions(cardId: self.todoCard.cardId!, brandId: UserStore.currentBrandId) { todoCard in
                 
@@ -215,14 +214,4 @@ class ActionDetailsViewController: BaseCardDetailsViewController {
         return nil
     }
 
-}
-
-extension ActionDetailsViewController: BannerProtocol {
-    
-}
-
-extension ActionDetailsViewController: PopupAlertViewDelegate {
-    func goToHome() {
-        self.navigationController?.popViewController(animated: true)
-    }
 }

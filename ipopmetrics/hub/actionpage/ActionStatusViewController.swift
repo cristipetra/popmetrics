@@ -9,7 +9,7 @@
 import UIKit
 import markymark
 
-class ActionStatusViewController: BaseViewController {
+class ActionStatusViewController: BaseCardDetailsViewController {
     
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var titleArticle: UILabel!
@@ -43,29 +43,25 @@ class ActionStatusViewController: BaseViewController {
     let iceView = IceExtendView()
 
     var bottomContainerViewBottomAnchor: NSLayoutConstraint!
-    internal var isBottomVisible = false
+
     @IBOutlet weak var btnCompleted: UIButton!
     @IBOutlet weak var btnDoItForMe: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if UIScreen.main.nativeBounds.height == 2436 {
-            constraintBottomStackView.constant = constraintBottomStackView.constant - 25
-        }
-        
         addIceView()
-        setupNavigationWithBackButton()
         
         updatView()
         
-        self.view.addSwipeGestureRecognizer {
-            self.navigationController?.popViewController(animated: true)
-        }
+        self.title = "Action Status"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
-        displayActionButton()
-        addHandlerForActionsBtns()
-        
+        super.viewWillAppear(animated)
+        self.btnCompleted.isHidden = true
+        self.btnDoItForMe.isHidden = true
     }
     
     override func viewWillLayoutSubviews() {
@@ -75,13 +71,6 @@ class ActionStatusViewController: BaseViewController {
         iceView.bottomAnchor.constraint(equalTo: self.containerIceView.bottomAnchor, constant: 0).isActive = true
         iceView.leftAnchor.constraint(equalTo: self.containerIceView.leftAnchor, constant: 0).isActive = true
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = false
-        self.tabBarController?.tabBar.isHidden = true
-        super.viewWillAppear(animated)
-
     }
     
     private func addIceView() {
@@ -96,25 +85,14 @@ class ActionStatusViewController: BaseViewController {
         }
     }
     
-    public func configure(_ todoCard: TodoCard, openedFrom: String) {
+    public func configureWithTodoCard(_ todoCard: TodoCard, openedFrom: String) {
+        
+        guard let card = PopHubStore.getInstance().getHubCardWithId(todoCard.cardId!) else { return }
+        self.configure(card: card)
+        
         self.todoCard = todoCard
-        displayActionButton()
         
         iceView.configure(todoCard:todoCard)
-    }
-    
-    public func configure(_ todoCard: TodoCard, handler: RecommendActionHandler? = nil) {
-        self.todoCard = todoCard
-        recommendActionHandler = handler
-        
-        iceView.configure(todoCard: todoCard)
-    }
-    
-    private func displayActionButton() {
-        if todoCard.name == "social.automated_posts" {
-            btnCompleted.isHidden = true
-            btnDoItForMe.isHidden = true
-        }
     }
     
     private func updatView() {
@@ -131,24 +109,6 @@ class ActionStatusViewController: BaseViewController {
         displayMarkdownFixIt()
     }
     
-    private func setupNavigationWithBackButton() {
-        let titleWindow = "Task Status"
-        
-        let leftSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        leftSpace.width = 5
-        
-        let titleButton = UIBarButtonItem(title: titleWindow, style: .plain, target: self, action: #selector(handlerClickBack))
-        titleButton.tintColor = PopmetricsColor.darkGrey
-        let titleFont = UIFont(name: FontBook.extraBold, size: 18)
-        titleButton.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .normal)
-        titleButton.setTitleTextAttributes([NSAttributedStringKey.font: titleFont], for: .selected)
-        
-        let leftButtonItem = UIBarButtonItem.init(image: UIImage(named: "calendarIconLeftArrow"), style: .plain, target: self, action: #selector(handlerClickBack))
-        leftButtonItem.tintColor = PopmetricsColor.darkGrey
-        
-        self.navigationItem.leftBarButtonItems = [leftSpace, leftButtonItem, titleButton]
-        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
-    }
     
     private func getDetailsMarkdownString() -> String {
         return todoCard.detailsMarkdown ?? ""
@@ -216,10 +176,7 @@ class ActionStatusViewController: BaseViewController {
     
 
     @IBAction func markAsCompleteAction(_ sender: Any) {
-        if !ReachabilityManager.shared.isNetworkAvailable {
-            presentErrorNetwork()
-            return
-        }
+        
         if self.todoCard != nil {
             HubsApi().postAddToMyActions(cardId: self.todoCard.cardId!, brandId: UserStore.currentBrandId) { todoCard in
                 
@@ -265,13 +222,5 @@ class ActionStatusViewController: BaseViewController {
         }
         return nil
     }
-    
-    
-    @objc func handlerClickBack() {
-        self.navigationController?.popViewController(animated: true)
-    }
-}
 
-extension ActionStatusViewController: BannerProtocol {
-    
 }

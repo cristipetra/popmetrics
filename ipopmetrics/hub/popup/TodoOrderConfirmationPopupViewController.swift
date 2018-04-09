@@ -53,6 +53,6 @@ class TodoOrderConfirmationPopupViewController: UIViewController {
     @IBAction func navigateToTodoHub(_ sender: Any) {
         self.hidesBottomBarWhenPushed = false
         self.navigationController?.popToRootViewController(animated: true)
-        navigator.open("vnd.popmetrics://hubs/todo")
+        navigator.open("vnd.popmetrics://hubs/todo/sections/Paid Actions")
     }
 }
