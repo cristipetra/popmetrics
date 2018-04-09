@@ -66,24 +66,24 @@ class BaseHubCard: UITableViewCell, HubCell {
             self.primaryActionButton.setTitle(card.primaryActionLabel, for: .selected)
         }
         else {
-            self.primaryActionButton.isHidden = true
+            self.primaryActionButton?.isHidden = true
         }
         
         if card.secondaryAction != "" {
-            self.secondaryActionButton.isHidden = false
-            self.secondaryActionButton.setTitle(card.secondaryActionLabel, for: .normal)
-            self.secondaryActionButton.setTitle(card.secondaryActionLabel, for: .selected)
+            self.secondaryActionButton?.isHidden = false
+            self.secondaryActionButton?.setTitle(card.secondaryActionLabel, for: .normal)
+            self.secondaryActionButton?.setTitle(card.secondaryActionLabel, for: .selected)
         }
         else {
-            self.secondaryActionButton.isHidden = true
+            self.secondaryActionButton?.isHidden = true
         }
         
         let isLastCard = options["isLastCard", default:false] as! Bool
         if isLastCard {
-            self.connectionLineView.isHidden = true
+            self.connectionLineView?.isHidden = true
         }
         else {
-            self.connectionLineView.isHidden = false
+            self.connectionLineView?.isHidden = false
         }
     }
     
@@ -129,9 +129,9 @@ class BaseHubCard: UITableViewCell, HubCell {
     
     internal func changeVisibilityConnectionLine(isHidden: Bool) {
         if isHidden {
-            constraintHeightConnectionLine.constant = 0
+            constraintHeightConnectionLine?.constant = 0
         } else {
-            constraintHeightConnectionLine.constant = 37
+            constraintHeightConnectionLine?.constant = 37
         }
     }
     

@@ -27,10 +27,6 @@ class RequiredActionCard: BaseHubCard {
         //self.containerView.backgroundColor = PopmetricsColor.salmondColor
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
     override func updateHubCell( card: HubCard, hubController: HubControllerProtocol, options:[String:Any] = [String:Any]()) {
         super.updateHubCell(card:card, hubController:hubController, options:options)
         changeTitle(card.headerTitle)

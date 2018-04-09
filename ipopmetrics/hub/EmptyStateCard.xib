@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -42,7 +42,7 @@
                                     <constraint firstAttribute="height" constant="2" id="qKx-3J-5wJ"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="This is an article for you to read" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWm-YO-eOH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="This is an article for you to read" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWm-YO-eOH">
                                 <rect key="frame" x="15" y="16" width="275" height="65.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="80" id="h8R-9u-dhO"/>
@@ -51,36 +51,17 @@
                                 <color key="textColor" name="rock_bottom"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="imagePyramid" translatesAutoresizingMaskIntoConstraints="NO" id="aNv-If-Qw8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePyramid" translatesAutoresizingMaskIntoConstraints="NO" id="aNv-If-Qw8">
                                 <rect key="frame" x="8" y="91.5" width="284" height="179"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" priority="250" constant="179" id="YlU-4J-6qd"/>
+                                    <constraint firstAttribute="height" constant="179" id="YlU-4J-6qd"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ac9-8F-2bQ" customClass="FooterView" customModule="ipopmetrics" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="355.5" width="300" height="14"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5K-rC-Lev">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="2"/>
-                                        <color key="backgroundColor" red="0.74117647060000003" green="0.7725490196" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="2" id="Dtc-3t-Y6u"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="U5K-rC-Lev" firstAttribute="top" secondItem="ac9-8F-2bQ" secondAttribute="top" id="1ea-qH-Yvz"/>
-                                    <constraint firstAttribute="height" constant="14" id="1lS-2x-2le"/>
-                                    <constraint firstAttribute="trailing" secondItem="U5K-rC-Lev" secondAttribute="trailing" id="UP3-bA-wMa"/>
-                                    <constraint firstItem="U5K-rC-Lev" firstAttribute="leading" secondItem="ac9-8F-2bQ" secondAttribute="leading" id="sjn-h1-35N"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Twitter is a key access point to increase your social to increase your social following." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ViH-mX-DwS">
-                                <rect key="frame" x="15" y="279" width="275" height="61.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Twitter is a key access point to increase your social to increase your social following." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ViH-mX-DwS">
+                                <rect key="frame" x="15" y="290.5" width="275" height="61.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="112" id="HfM-9b-kgi"/>
                                 </constraints>
@@ -92,19 +73,15 @@
                         <constraints>
                             <constraint firstItem="ViH-mX-DwS" firstAttribute="top" secondItem="aNv-If-Qw8" secondAttribute="bottom" priority="750" constant="20" id="01c-A5-3y1"/>
                             <constraint firstAttribute="height" constant="370" id="3Ie-cy-UsX"/>
-                            <constraint firstAttribute="bottom" secondItem="ac9-8F-2bQ" secondAttribute="bottom" id="5fn-D0-QBd"/>
                             <constraint firstItem="ViH-mX-DwS" firstAttribute="leading" secondItem="rWm-YO-eOH" secondAttribute="leading" id="AQg-nS-36g"/>
                             <constraint firstAttribute="trailing" secondItem="rWm-YO-eOH" secondAttribute="trailing" constant="10" id="EDF-0p-Xgn"/>
                             <constraint firstItem="aNv-If-Qw8" firstAttribute="leading" secondItem="2qy-Km-f1n" secondAttribute="leading" constant="8" id="Ied-NF-2VO"/>
                             <constraint firstItem="ET2-4F-t9a" firstAttribute="leading" secondItem="2qy-Km-f1n" secondAttribute="leading" id="PKV-Mu-gb5"/>
-                            <constraint firstItem="ac9-8F-2bQ" firstAttribute="top" secondItem="ViH-mX-DwS" secondAttribute="bottom" constant="15" id="R36-kB-zvw"/>
-                            <constraint firstAttribute="trailing" secondItem="ac9-8F-2bQ" secondAttribute="trailing" id="RUX-NO-kmV"/>
                             <constraint firstAttribute="trailing" secondItem="ET2-4F-t9a" secondAttribute="trailing" id="U2F-U2-IQl"/>
                             <constraint firstItem="rWm-YO-eOH" firstAttribute="leading" secondItem="2qy-Km-f1n" secondAttribute="leading" constant="15" id="Uf7-Ns-eKC"/>
                             <constraint firstItem="ET2-4F-t9a" firstAttribute="top" secondItem="2qy-Km-f1n" secondAttribute="top" id="VyX-NU-iyO"/>
                             <constraint firstAttribute="trailing" secondItem="aNv-If-Qw8" secondAttribute="trailing" constant="8" id="WBY-Xe-h7l"/>
                             <constraint firstItem="rWm-YO-eOH" firstAttribute="top" secondItem="2qy-Km-f1n" secondAttribute="top" constant="16" id="Ye8-hk-x4G"/>
-                            <constraint firstItem="ac9-8F-2bQ" firstAttribute="leading" secondItem="2qy-Km-f1n" secondAttribute="leading" id="imJ-b8-pFy"/>
                             <constraint firstItem="ViH-mX-DwS" firstAttribute="trailing" secondItem="rWm-YO-eOH" secondAttribute="trailing" id="qBt-JU-2MC"/>
                             <constraint firstItem="aNv-If-Qw8" firstAttribute="top" secondItem="rWm-YO-eOH" secondAttribute="bottom" constant="10" id="qiI-Rh-coq"/>
                         </constraints>
@@ -122,12 +99,10 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="backgroundImageView" destination="aNv-If-Qw8" id="ILd-dt-2TQ"/>
-                <outlet property="constraintHeightImage" destination="YlU-4J-6qd" id="3B9-0r-zXs"/>
                 <outlet property="containerView" destination="2qy-Km-f1n" id="bY4-59-0jN"/>
-                <outlet property="footerVIew" destination="ac9-8F-2bQ" id="22M-27-dSK"/>
                 <outlet property="messageLabel" destination="ViH-mX-DwS" id="YDa-En-4DB"/>
                 <outlet property="titleLabel" destination="rWm-YO-eOH" id="NId-zu-tPT"/>
-                <outlet property="toolBarView" destination="RHK-Wo-rDa" id="kP3-y1-krI"/>
+                <outlet property="toolbarView" destination="RHK-Wo-rDa" id="WeD-X8-RWS"/>
             </connections>
             <point key="canvasLocation" x="25" y="51"/>
         </tableViewCell>

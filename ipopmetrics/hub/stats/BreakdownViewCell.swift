@@ -159,7 +159,9 @@ class BreakdownViewCell: UITableViewCell {
         self.valueProgress.progress = 0
         
         self.titleLabel.text = metricBreakdown.label
-        self.firstValueLabel.text = "\(Int(metricBreakdown.currentValue!))"
+        if metricBreakdown.currentValue != nil {
+            self.firstValueLabel.text = "\(Int(metricBreakdown.currentValue!))"
+        }
     
         var deltaPercentage = 0 as Float
         var percentageCurrentValue = 0 as Float
