@@ -35,7 +35,7 @@ We recommend keeping the same folder structure so current and future scripts wor
 ```
 mkdir -p ~/code/popmetrics/mobile
 cd ~/code/popmetrics/mobile
-git clone git@git.popmetrics.io:mobile/ipopmetrics.git
+git clone https://github.com/cristipetra/popmetrics.git
 ```
 
 ## Setup cocoapods dependencies
